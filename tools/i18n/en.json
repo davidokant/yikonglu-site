@@ -27,7 +27,7 @@
   "rendering": "Working English rendering by Yikonglu; the Chinese text above is what counts.",
   "errata_title": "Public errata", "errata_sub": "Text · citations · sources · pronunciation · readings",
   "errata_p1": "Where Yikonglu misread or overstated something, the correction is logged here, newest first; old entries are never deleted. Only matters of content are recorded, not visual glitches.",
-  "errata_p2": "To report an error, comment under any Yikonglu video, naming the episode, the line, and your evidence. Entries are added after checking, credited to your username.",
+  "errata_p2": "To report an error, email the address below with the episode, the line, your evidence, and the username you want credited. Entries are added after checking, credited to that username. You can also comment under any Yikonglu video.", "mail_note": "The address is an image to keep spam robots away; please type it in.", "report": "Found an error in this chapter? Email us; once checked, it goes on the errata page under your username:",
   "errata_empty": "No errata yet.",
   "search_title": "Search", "search_sub": "Source text · commentators' words · readings", "search_ph2": "Type a few characters, e.g. 鸟数飞 or 孝弟",
   "search_n": "{n} chapters found", "search_none": "Nothing found. Only chapters already read are indexed.",
