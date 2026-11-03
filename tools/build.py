@@ -52,6 +52,8 @@ def quotes(s):
 
 HEAD_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">'
 
+CSSV = __import__("hashlib").md5(open(os.path.join(HERE, "style.css"), "rb").read()).hexdigest()[:8]
+
 def page(title, desc, canonical, body, jsonld=None, cls=""):
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>' if jsonld else ""
     return f"""<!doctype html>
@@ -71,7 +73,7 @@ def page(title, desc, canonical, body, jsonld=None, cls=""):
 <meta property="og:image" content="{DOMAIN}/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 {HEAD_FONTS}
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v={CSSV}">
 {ld}
 </head>
 <body class="{cls}">
@@ -202,7 +204,7 @@ def main(zdir, outdir):
 
     recent = pub[-6:][::-1]
     home = f'''<section class="banner">
-<picture><source media="(max-width:700px)" srcset="/assets/banner-1000.jpg"><img src="/assets/banner.jpg" alt="一孔录群像：一张长桌边围坐读书的人物" width="3072" height="1024"></picture>
+<picture><source media="(max-width:700px)" srcset="/assets/banner-1000.jpg"><img src="/assets/banner.jpg" alt="一孔录群像：一张长桌边围坐读书的人物" width="3072" height="1024" style="width:100%;height:auto;max-height:420px;object-fit:cover"></picture>
 </section>
 <main class="home">
 <section class="intro wrap narrow">
