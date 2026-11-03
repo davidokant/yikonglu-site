@@ -111,3 +111,11 @@ footer .langs a{margin-right:14px}footer .langs a.cur{color:var(--mute)}
 .rend{margin:14px 0 0;padding-top:12px;border-top:1px dashed var(--line);font-size:17px;line-height:1.75;color:var(--fg)}
 .yuanwen .rend+figcaption{margin-top:6px}
 @media (max-width:700px){.top nav a{margin-left:12px;font-size:15px}.lang{margin-left:10px;font-size:13px}}
+html[lang=ja] body{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+html[lang=ko] body{font-family:"Noto Serif KR","Apple SD Gothic Neo","Malgun Gothic",serif}
+html[lang=ja] .intro h1,html[lang=ko] .intro h1,html[lang=en] .intro h1{letter-spacing:.2em}
+.brand{white-space:nowrap}
+.top nav{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:4px 16px}
+.top nav a{margin-left:0}.lang{margin-left:4px}
+@media (max-width:700px){.top .wrap{height:auto;min-height:52px;padding:8px 16px;gap:6px}.top nav{gap:2px 12px;font-size:14px}.top nav a{font-size:14px}.lang{font-size:13px}.lang summary{padding:1px 7px}}
+.yuanwen blockquote,.rend,.sec p,td{overflow-wrap:anywhere;word-break:break-all}

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>検索｜一孔录</title>
+<meta name="description" content="原文 · 注釈者の言葉 · 読み">
+<link rel="canonical" href="https://yikonglu.com/ja/search.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://yikonglu.com/search.html"><link rel="alternate" hreflang="zh-Hant" href="https://yikonglu.com/zh-hant/search.html"><link rel="alternate" hreflang="en" href="https://yikonglu.com/en/search.html"><link rel="alternate" hreflang="ja" href="https://yikonglu.com/ja/search.html"><link rel="alternate" hreflang="ko" href="https://yikonglu.com/ko/search.html"><link rel="alternate" hreflang="x-default" href="https://yikonglu.com/search.html">
+<link rel="icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/seal-180.png">
+<meta property="og:title" content="検索｜一孔录">
+<meta property="og:description" content="原文 · 注釈者の言葉 · 読み">
+<meta property="og:url" content="https://yikonglu.com/ja/search.html">
+<meta property="og:site_name" content="一孔录">
+<meta property="og:image" content="https://yikonglu.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Noto+Serif+JP:wght@400;600;900&family=Noto+Serif+KR:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/style.css?v=7c6fe48f">
+
+</head>
+<body class="">
+<header class="top"><div class="wrap">
+<a href="/ja/" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>
+<nav><a href="/ja/lunyu/">書目</a><a href="/ja/search.html">検索</a><a href="/ja/kanwu.html">正誤表</a><a href="/ja/about.html">一孔録について</a>
+<details class="lang"><summary>日本語</summary><div><a href="https://yikonglu.com/search.html" data-lang="zh-Hans">简体中文</a><a href="https://yikonglu.com/zh-hant/search.html" data-lang="zh-Hant">繁體中文</a><a href="https://yikonglu.com/en/search.html" data-lang="en">English</a><a href="https://yikonglu.com/ja/search.html" data-lang="ja" class=cur>日本語</a><a href="https://yikonglu.com/ko/search.html" data-lang="ko">한국어</a></div></details></nav>
+</div></header>
+<p class="trnote wrap">日本語版：画面表示と一孔録の言葉を訳し、注釈の引用は中国語のままです。中国語ページが正本です。</p>
+<div class="chhead"><div class="wrap"><h1><span class="no">原文 · 注釈者の言葉 · 読み</span>検索</h1></div></div>
+<main class="wrap narrow"><form class="sbox" onsubmit="go();return false"><input id="q" placeholder="数文字を入力（例：鳥数飛、孝弟）"><button>検索</button></form><div id="res"></div></main>
+<script>
+let D=null;const q=document.getElementById('q'),R=document.getElementById('res');
+const E=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function cut(s,k){const i=s.indexOf(k);if(i<0)return E(s.slice(0,60));const a=Math.max(0,i-24);return(a?'…':'')+E(s.slice(a,i))+'<mark>'+E(k)+'</mark>'+E(s.slice(i+k.length,i+k.length+36))+'…'}
+async function go(){const k=q.value.trim();if(!k){R.innerHTML='';return}
+if(!D){try{D=await (await fetch('/ja/search.json')).json()}catch(e){R.textContent='…';return}}
+history.replaceState(null,'','?q='+encodeURIComponent(k));
+const hit=D.filter(d=>(d.y+d.t+d.x).includes(k));
+R.innerHTML=hit.length?'<p class="lead">'+"N \u7ae0\u304c\u898b\u3064\u304b\u308a\u307e\u3057\u305f".replace('N',hit.length)+'</p><ol class="toc">'+hit.map(d=>'<li><a href="'+d.u+'"><em>'+d.c+'</em><b>'+E(d.t)+'</b><span>'+cut(d.y.includes(k)?d.y:d.x,k)+'</span></a></li>').join('')+'</ol>':"<p class=empty>\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u53ce\u9332\u3057\u3066\u3044\u308b\u306e\u306f\u3001\u3059\u3067\u306b\u8aad\u3093\u3060\u7ae0\u3060\u3051\u3067\u3059\u3002</p>"}
+const p=new URLSearchParams(location.search).get('q');if(p){q.value=p;go()}
+</script>
+<footer><div class="wrap">
+<div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>古典の原文を一字ずつ読む</span></div></div>
+<p>引用は古刻本の原頁により、各ページに底本を記しています。誤りはお知らせください。訂正は公開します。</p>
+<p class="where">YouTube · Bilibili · WeChat · Podcast：「一孔录」で検索</p>
+<p class="langs"><a href="https://yikonglu.com/search.html" data-lang="zh-Hans">简体中文</a><a href="https://yikonglu.com/zh-hant/search.html" data-lang="zh-Hant">繁體中文</a><a href="https://yikonglu.com/en/search.html" data-lang="en">English</a><a href="https://yikonglu.com/ja/search.html" data-lang="ja" class=cur>日本語</a><a href="https://yikonglu.com/ko/search.html" data-lang="ko">한국어</a></p>
+</div></footer>
+<script>
+(function(){var P=document.documentElement.lang,K='yk_lang';try{var s=localStorage.getItem(K)}catch(e){var s=null}
+document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(K,a.dataset.lang)}catch(e){}})});
+if(s)return;var n=(navigator.language||'').toLowerCase(),w=null;
+if(n.startsWith('en'))w='en';else if(n.startsWith('ja'))w='ja';else if(n.startsWith('ko'))w='ko';else if(n.startsWith('zh')&&/tw|hk|mo|hant/.test(n))w='zh-Hant';else if(n.startsWith('zh'))w='zh-Hans';
+if(!w||w===P)return;var a=document.querySelector('link[hreflang="'+w+'"]');if(!a)return;
+var t={en:['This page is available in English.','Switch to English'],ja:['このページには日本語版があります。','日本語に切り替える'],ko:['이 페이지는 한국어판이 있습니다.','한국어로 전환'],'zh-Hant':['本頁有繁體中文版。','切換到繁體'],'zh-Hans':['本页有简体中文版。','切换到简体']}[w];
+var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>'+t[0]+'</span><a href="'+a.href+'">'+t[1]+' →</a><button aria-label="close">×</button>';
+b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}};b.querySelector('button').onclick=function(){try{localStorage.setItem(K,P)}catch(e){}b.remove()};
+document.body.prepend(b)})();
+</script>
+</body>
+</html>

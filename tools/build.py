@@ -25,6 +25,8 @@ LANGS = {  # code: (路径前缀, 自称, hreflang)
     "zh-Hans": ("", "简体中文", "zh-Hans"),
     "zh-Hant": ("zh-hant/", "繁體中文", "zh-Hant"),
     "en": ("en/", "English", "en"),
+    "ja": ("ja/", "日本語", "ja"),
+    "ko": ("ko/", "한국어", "ko"),
 }
 
 ZH_UI = {
@@ -164,16 +166,16 @@ def parse_kanwu(path):
             if len(c) >= 7 and re.match(r"\d{4}-\d{2}-\d{2}", c[0]): rows.append([x.replace("线程", "") for x in c[:7]])
     return rows
 
-HEAD_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">'
+HEAD_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Noto+Serif+JP:wght@400;600;900&family=Noto+Serif+KR:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">'
 CSSV = __import__("hashlib").md5(open(os.path.join(HERE, "style.css"), "rb").read()).hexdigest()[:8]
 
 LANG_JS = """<script>
 (function(){var P=document.documentElement.lang,K='yk_lang';try{var s=localStorage.getItem(K)}catch(e){var s=null}
 document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(K,a.dataset.lang)}catch(e){}})});
 if(s)return;var n=(navigator.language||'').toLowerCase(),w=null;
-if(n.startsWith('en'))w='en';else if(n.startsWith('zh')&&/tw|hk|mo|hant/.test(n))w='zh-Hant';else if(n.startsWith('zh'))w='zh-Hans';
+if(n.startsWith('en'))w='en';else if(n.startsWith('ja'))w='ja';else if(n.startsWith('ko'))w='ko';else if(n.startsWith('zh')&&/tw|hk|mo|hant/.test(n))w='zh-Hant';else if(n.startsWith('zh'))w='zh-Hans';
 if(!w||w===P)return;var a=document.querySelector('link[hreflang="'+w+'"]');if(!a)return;
-var t={en:['This page is available in English.','Switch to English'],'zh-Hant':['本頁有繁體中文版。','切換到繁體'],'zh-Hans':['本页有简体中文版。','切换到简体']}[w];
+var t={en:['This page is available in English.','Switch to English'],ja:['このページには日本語版があります。','日本語に切り替える'],ko:['이 페이지는 한국어판이 있습니다.','한국어로 전환'],'zh-Hant':['本頁有繁體中文版。','切換到繁體'],'zh-Hans':['本页有简体中文版。','切换到简体']}[w];
 var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>'+t[0]+'</span><a href="'+a.href+'">'+t[1]+' →</a><button aria-label="close">×</button>';
 b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}};b.querySelector('button').onclick=function(){try{localStorage.setItem(K,P)}catch(e){}b.remove()};
 document.body.prepend(b)})();
@@ -257,8 +259,8 @@ def build_lang(L, D, write):
         n = notes[c]; pnum, cnum = c.split("."); pname, slug, pfull, _ = PIAN[pnum]
         epname, ep = ch2ep[c]; rel = rel_of(c); url = f"{DOMAIN}/{L.prefix}{rel}"
         bname = L.book(pnum)
-        name = f"《论语·{pname}》{c} {n['title']}" if L.code == "zh-Hans" else f"Analects {c} {title_of(c)}"
-        desc = f"{yw[c][:60]}……原文、朱熹注的关键字、诸家说法与一孔录的读法。" if L.code == "zh-Hans" else f"{yw[c][:40]}… Source text, Zhu Xi's key words, other commentators, and Yikonglu's reading."
+        name = f"《论语·{pname}》{c} {n['title']}" if L.code == "zh-Hans" else f"{L.t('lunyu')} {c} {title_of(c)}"
+        desc = f"{yw[c][:60]}……原文、朱熹注的关键字、诸家说法与一孔录的读法。" if L.code == "zh-Hans" else f"{yw[c][:40]}… {L.t('book_lead')}"
         secs = ""
         for k, lab, mark in FIELDS:
             v, translated = field(c, k)
@@ -318,7 +320,7 @@ def build_lang(L, D, write):
               "video": {"@type": "VideoObject", "name": f"一孔录《{epname}》", "description": f"一孔录讲读《论语·{pname}》，含本章。",
                         "embedUrl": f"https://www.youtube.com/embed/{yt}", "url": f"https://www.youtube.com/watch?v={yt}",
                         "thumbnailUrl": f"https://i.ytimg.com/vi/{yt}/hqdefault.jpg"}}
-        ttl = f"{name}｜原文与读法｜一孔录" if L.code == "zh-Hans" else f"{name} | Text and reading | Yikonglu"
+        ttl = f"{name}｜原文与读法｜一孔录" if L.code == "zh-Hans" else f"{name} | 一孔录 Yikonglu"
         write(rel, page(L, ttl, desc, rel, body, ld, "pg-chapter")); urls.append(url)
 
     def toc(cs):
@@ -334,12 +336,12 @@ def build_lang(L, D, write):
         body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">{L.t("lunyu")}</a></p>
 <h1><span class="no">{L.t("book_no", n=p, done=len(by_pian[p]), total=total)}</span>{L.book(p)}</h1></div></div>
 <main class="wrap narrow"><p class="lead">{L.t("book_lead")}</p>{toc(by_pian[p])}</main>'''
-        ttl = f"《论语·{pname}》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"Analects, {L.book(p)} | Yikonglu"
+        ttl = f"《论语·{pname}》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} · {L.book(p)} | 一孔录 Yikonglu"
         write(f"lunyu/{slug}/index.html", page(L, ttl, L.t("book_lead"), f"lunyu/{slug}/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/{slug}/")
         toc_all += f'<h2 class="ph"><a href="{P}lunyu/{slug}/">{L.book(p)}</a></h2>{toc(by_pian[p])}'
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("lunyu_sub")}</span>{L.t("lunyu")}</h1></div></div>
 <main class="wrap narrow"><p class="lead">{L.t("by_chapter")}</p><div class="pcards">{"".join(pcard(p) for p in sorted(by_pian, key=int))}</div>{toc_all}</main>'''
-    write("lunyu/index.html", page(L, ("《论语》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else "The Analects, chapter by chapter | Yikonglu"), L.t("by_chapter"), "lunyu/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/")
+    write("lunyu/index.html", page(L, ("《论语》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} | 一孔录 Yikonglu"), L.t("by_chapter"), "lunyu/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/")
 
     recent = pub[-6:][::-1]
     home = f'''<section class="banner"><picture><source media="(max-width:700px)" srcset="/assets/banner-1000.jpg"><img src="/assets/banner.jpg" alt="一孔录" width="3072" height="1024" style="width:100%;height:auto;max-height:420px;object-fit:cover"></picture></section>
@@ -359,7 +361,7 @@ def build_lang(L, D, write):
 <section class="wrap narrow"><h2 class="ph">{L.t("books")}</h2><h3 class="bookh"><a href="{P}lunyu/">《论语》{" · " + L.t("lunyu") if L.code == "en" else ""}</a></h3><div class="pcards">{"".join(pcard(p) for p in sorted(by_pian, key=int))}</div></section>
 <section class="wrap narrow"><h2 class="ph">{L.t("recent")}</h2>{toc(recent)}</section>
 </main>'''
-    write("index.html", page(L, (f"一孔录｜{TAGLINE}" if L.code == "zh-Hans" else f"Yikonglu | {L.t('tagline')}"), L.t("intro"), "", home,
+    write("index.html", page(L, (f"一孔录｜{TAGLINE}" if L.code == "zh-Hans" else f"一孔录 Yikonglu | {L.t('tagline')}"), L.t("intro"), "", home,
           {"@context": "https://schema.org", "@type": "Organization", "name": "一孔录", "alternateName": "Yikonglu", "url": DOMAIN, "logo": f"{DOMAIN}/assets/seal-180.png"}, "pg-home"))
     urls.insert(0, f"{DOMAIN}/{L.prefix}")
     about = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("tagline")}</span>{L.t("about_title")}</h1></div></div>
@@ -457,8 +459,9 @@ def main(zdir, outdir, kanwu=None):
         return t
     hant_ui = dict(ZH_UI); hant_ui["translated_note"] = ZH_UI["hant_note"]
     urls += build_lang(Lang("zh-Hant", hant_ui), D, writer("zh-hant", to_hant))
-    en = json.load(open(os.path.join(HERE, "i18n", "en.json"), encoding="utf-8"))
-    urls += build_lang(Lang("en", en["ui"], en), D, writer("en"))
+    for code in ("en", "ja", "ko"):
+        tr = json.load(open(os.path.join(HERE, "i18n", code + ".json"), encoding="utf-8"))
+        urls += build_lang(Lang(code, tr["ui"], tr), D, writer(code))
 
     open(os.path.join(outdir, "sitemap.xml"), "w", encoding="utf-8").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
