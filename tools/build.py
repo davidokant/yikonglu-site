@@ -431,6 +431,8 @@ def main(zdir, outdir, kanwu=None):
             p = os.path.join(outdir, x); shutil.rmtree(p) if os.path.isdir(p) else os.remove(p)
     os.makedirs(outdir, exist_ok=True)
     shutil.copytree(os.path.join(HERE, "assets"), os.path.join(outdir, "assets"))
+    rdir = os.path.join(HERE, "root")  # 站长验证文件等，原样放根目录
+    for f in (os.listdir(rdir) if os.path.isdir(rdir) else []): shutil.copy(os.path.join(rdir, f), os.path.join(outdir, f))
     ydir = os.path.join(HERE, "yuanye"); os.makedirs(ydir, exist_ok=True)
     for png in sorted(glob.glob(os.path.join(GAO_DIR, "*", "p*.png"))):
         jpg = os.path.join(ydir, os.path.basename(png)[:-4] + ".jpg")
