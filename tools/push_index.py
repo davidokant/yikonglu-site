@@ -40,7 +40,11 @@ def main(args):
         zh = [u for u in urls if not re.search(r"/(en|ja|ko|fr|es)/", u)]
         zh.sort(key=lambda u: (0 if re.search(r"/lunyu/[^/]+/\d+\.html$", u) else 1, "/zh-hant/" in u))
         n = int(os.environ.get("BAIDU_MAX", "10"))
-        print("百度:", *post(f"http://data.zz.baidu.com/urls?site={DOMAIN}&token={tok}", "\n".join(zh[:n]).encode(), "text/plain"))
+        api = f"http://data.zz.baidu.com/urls?site={DOMAIN}&token={tok}"
+        while n >= 1:  # 新站额度很小，超额就减半再试，最少推 1 条
+            code, msg = post(api, "\n".join(zh[:n]).encode(), "text/plain"); print(f"百度（{n} 条）:", code, msg)
+            if "over quota" not in msg: break
+            n //= 2
     else:
         print("百度：没有 BAIDU_TOKEN，跳过")
 

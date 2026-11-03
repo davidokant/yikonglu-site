@@ -151,3 +151,16 @@ td.who{white-space:nowrap;color:var(--accent,#9b2c1f)}
 .zbt .k_diff .kind,.zbt .k_word .kind{border-color:var(--accent);color:var(--accent)}
 @media (max-width:640px){.zbt thead{display:none}.zbt tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}.zbt td{display:inline;border:0;padding:0 6px 0 0}.zbt td:last-child{display:block;padding-top:2px}}
 @media (max-width:640px){.cites td:nth-child(2),.cites td:nth-child(3),.zbt td:first-child,.zbt td.zi{white-space:normal}.cites .pg{margin-bottom:2px}}
+/* 11-03 第二批 */
+.jubar{flex-wrap:wrap;max-width:min(92vw,460px)}
+.jubar .jr{flex-basis:100%;font-size:13px;color:var(--mute);padding:2px 2px 0}
+.jubar .jr[hidden]{display:none}
+.sec-白 p[lang]{font-size:18px;line-height:1.9}
+.sec-白 .note{margin-top:4px}
+.kwstats{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:15px}
+.thanks{display:flex;flex-wrap:wrap;gap:8px}.thanks span{border:1px solid var(--gold);color:var(--gold);border-radius:14px;padding:0 12px;font-size:15px}
+footer .flinks{font-size:14px}
+.zitab td,.zitab th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.zitab td.zi{font-size:22px;font-weight:600;width:3em}
+.zitab td:nth-child(2){white-space:nowrap;width:5em}
+.tw table.zitab{min-width:0}
