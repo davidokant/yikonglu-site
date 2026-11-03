@@ -50,6 +50,83 @@ def quotes(s):
     """把“引文”包成 <q>，方便上色。"""
     return re.sub(r"“([^”]+)”", r'<span class="q">“\1”</span>', esc(s).replace("&quot;", '"'))
 
+GAO_DIR = "/mnt/project-files/一孔学-内-自媒体/数据/网站素材"  # 定版稿只在共享盘读取，不进公开仓库
+KANWU_DEFAULT = "/mnt/project-files/一孔学-内-自媒体/数据/网站勘误.md"
+INTERNAL = re.compile(r"（[^（）]*(只|转述|不上屏|不念|常识|核不到|见注|今读)[^（）]*）")
+
+def md_tables(lines, start_pat):
+    """返回以 start_pat 开头的小节里第一张表的行（每行一个栏列表）。"""
+    rows, on, intable = [], False, False
+    for l in lines:
+        if re.match(r"^## ", l):
+            if on and rows: break
+            on = bool(re.match(start_pat, l)); continue
+        if not on: continue
+        if l.startswith("|"):
+            cells = [c.strip() for c in l.strip().strip("|").split("|")]
+            if all(re.fullmatch(r":?-+:?", c) for c in cells): intable = True; continue
+            if intable: rows.append(cells)
+        elif intable and rows and not l.strip(): break
+    return rows
+
+CN = {"一":1,"二":2,"三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9,"十":10}
+def cn2int(t):
+    if t.isdigit(): return int(t)
+    if len(t) == 1: return CN[t]
+    if t[0] == "十": return 10 + CN[t[1]]
+    if t[-1] == "十": return CN[t[0]] * 10
+    return CN[t[0]] * 10 + CN[t[2]]
+PIAN_NUM = {"学而": "1", "为政": "2", "八佾": "3", "里仁": "4"}
+
+def parse_gao(path, yw):
+    """定版稿：取“引文取处”“读音”两表，按章归属。"""
+    L = open(path, encoding="utf-8").read().replace("\r", "").split("\n")
+    kmap, cur = {}, None
+    for l in L:
+        m = re.match(r"^### 第(.+?)章", l)
+        if m: cur = m.group(0)
+        if re.match(r"^### (开场|片尾)", l): cur = None
+        k = re.match(r"^\*\*(K\d+)", l)
+        if k and cur: kmap[k.group(1)] = cur
+    pnum = next((v for k2, v in PIAN_NUM.items() if k2 in os.path.basename(path)), None)
+    out = {}
+    sec2ch = {sec: f"{pnum}.{cn2int(re.match(r'^### 第(.+?)章', sec).group(1))}" for sec in set(kmap.values())} if pnum else {}
+    for row in md_tables(L, r"^## 引文取处"):
+        if len(row) < 4: continue
+        k, text, src, page = row[:4]
+        c = sec2ch.get(kmap.get(k))
+        if not c or "待核" in page or "待核" in text: continue
+        para = bool(re.search(r"（[^（）]*(转述)[^（）]*）", text)) and not re.search(r"只原样念|前半转述|前后转述", text)
+        text = INTERNAL.sub("", text).strip("；; ")
+        if src == "经文" or not text: continue
+        pages = re.findall(r"PDF0*(\d+)", page)
+        other = ""
+        if not pages:
+            m = re.search(r"核到（([^（）]*)", page)
+            other = m.group(1).split("，")[0].split("；")[0] if m else ""
+        out.setdefault(c, {"cites": [], "reads": []})["cites"].append({"text": text, "src": src.replace("**", ""), "pages": pages, "para": para, "other": other})
+    for row in md_tables(L, r"^## 读音"):
+        if len(row) < 3: continue
+        zi, pos, du = row[:3]
+        if "见注" in du: continue
+        for c in sec2ch.values():
+            if c in yw and pos and any(x and x in yw[c] for x in pos.split("、")):
+                r = out.setdefault(c, {"cites": [], "reads": []})["reads"]
+                if (zi, pos) not in [(a["zi"], a["pos"]) for a in r]:
+                    r.append({"zi": zi, "pos": pos, "du": du})
+    return out
+
+def parse_kanwu(path):
+    rows = []
+    if not os.path.exists(path): return rows
+    for cells in md_tables(open(path, encoding="utf-8").read().split("\n") + [""], r"^#"):
+        pass
+    for l in open(path, encoding="utf-8"):
+        if l.startswith("|") and not l.startswith("| 日期") and not re.match(r"^\|[-| ]+\|$", l.strip()):
+            c = [x.strip() for x in l.strip().strip("|").split("|")]
+            if len(c) >= 7 and re.match(r"\d{4}-\d{2}-\d{2}", c[0]): rows.append([x.replace("线程", "") for x in c[:7]])
+    return rows
+
 HEAD_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">'
 
 CSSV = __import__("hashlib").md5(open(os.path.join(HERE, "style.css"), "rb").read()).hexdigest()[:8]
@@ -79,7 +156,7 @@ def page(title, desc, canonical, body, jsonld=None, cls=""):
 <body class="{cls}">
 <header class="top"><div class="wrap">
 <a href="/" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>
-<nav><a href="/lunyu/">论语</a><a href="/about.html">关于</a></nav>
+<nav><a href="/lunyu/">书目</a><a href="/search.html">检索</a><a href="/kanwu.html">勘误</a><a href="/about.html">关于</a></nav>
 </div></header>
 {body}
 <footer><div class="wrap">
@@ -91,13 +168,23 @@ def page(title, desc, canonical, body, jsonld=None, cls=""):
 </html>
 """
 
-def main(zdir, outdir):
+def main(zdir, outdir, kanwu=None):
+    global KANWU_PATH
+    KANWU_PATH = kanwu or KANWU_DEFAULT
     yw = json.load(open(os.path.join(HERE, "yuanwen.json"), encoding="utf-8"))
     eps = json.load(open(os.path.join(HERE, "episodes.json"), encoding="utf-8"))
     notes = {}
     for f in sorted(os.listdir(zdir)):
         if f.endswith(".md") and f not in ("说明.md", "主题线.md"):
             notes.update(parse_zhaji(os.path.join(zdir, f)))
+    gao = {}
+    import glob
+    for f in sorted(glob.glob(os.path.join(GAO_DIR, "*", "*稿*.md"))):
+                for c, v in parse_gao(f, yw).items():
+                    gao.setdefault(c, {"cites": [], "reads": []})
+                    gao[c]["cites"] += v["cites"]; gao[c]["reads"] += v["reads"]
+    pages_avail = set()
+    ydir = os.path.join(HERE, "yuanye")
     ch2ep = {c: (name, e) for name, e in eps.items() for c in e["chapters"]}
     key = lambda c: tuple(map(int, c.split(".")))
     pub = [c for c in sorted(ch2ep, key=key) if c in notes and c in yw]
@@ -111,6 +198,11 @@ def main(zdir, outdir):
             shutil.rmtree(p) if os.path.isdir(p) else os.remove(p)
     os.makedirs(outdir, exist_ok=True)
     shutil.copytree(os.path.join(HERE, "assets"), os.path.join(outdir, "assets"))
+    if os.path.isdir(ydir):
+        shutil.copytree(ydir, os.path.join(outdir, "yuanye"))
+        pages_avail = {re.sub(r"\D", "", f).lstrip("0") for f in os.listdir(ydir) if f.endswith(".jpg")}
+    search_idx = []
+    kw = parse_kanwu(KANWU_PATH)
 
     def write(rel, text):
         p = os.path.join(outdir, rel)
@@ -145,6 +237,32 @@ def main(zdir, outdir):
             f'<li{" class=cur" if cc == c else ""}><a href="/{rel_of(cc)}"><em>{cc.split(".")[1]}</em>{esc(notes[cc]["title"])}</a></li>'
             for cc in by_pian[pnum])
         yt = ep["youtube"]
+        g = gao.get(c, {"cites": [], "reads": []})
+        def pg(nums):
+            out = []
+            for x in nums:
+                if x in pages_avail: out.append(f'<a class="pg" href="/yuanye/p{int(x):03d}.jpg" target="_blank">原页 {x}</a>')
+                else: out.append(f'<span class="pg">原页 {x}</span>')
+            return " ".join(out)
+        extra = ""
+        if g["cites"]:
+            extra += ('<section class="sec cites"><h2><i>核</i>本章引文逐条核对</h2><p class="note">视频里引到的每一句注：原话、出自谁、在底本哪一页。标“转述”的是我们概括的意思，不是原话。</p><table><thead><tr><th>引文原话</th><th>出自</th><th>底本页</th></tr></thead><tbody>'
+                      + "".join(f'<tr><td>{"<span class=para>转述</span>" + esc(x["text"]) if x["para"] else "“" + esc(x["text"]) + "”"}</td><td>{esc(x["src"])}</td><td>{pg(x["pages"]) if x["pages"] else "<span class=oth>" + esc(x["other"] or "另本") + "</span>"}</td></tr>' for x in g["cites"]) + "</tbody></table></section>")
+        if g["reads"]:
+            extra += ('<section class="sec reads"><h2><i>音</i>读音</h2><table><thead><tr><th>字</th><th>位置</th><th>读</th></tr></thead><tbody>'
+                      + "".join(f'<tr><td class="zi">{esc(x["zi"])}</td><td>{esc(x["pos"])}</td><td>{esc(x["du"])}</td></tr>' for x in g["reads"]) + "</tbody></table></section>")
+        allpages = sorted({x for r in g["cites"] for x in r["pages"]}, key=int)
+        imgs = "".join(f'<a href="/yuanye/p{int(x):03d}.jpg" target="_blank"><img loading="lazy" src="/yuanye/p{int(x):03d}.jpg" alt="底本原页 {x}"><span>原页 {x}</span></a>' for x in allpages if x in pages_avail)
+        if imgs:
+            extra += f'<section class="sec shots"><h2><i>页</i>底本原页</h2><div class="pages">{imgs}</div></section>'
+        mine = [r for r in kw if r[2] == c]
+        if mine:
+            extra += ('<section class="sec kw"><h2><i>勘</i>本章勘误</h2><ul>' + "".join(
+                f'<li><b>{esc(r[0])}　{esc(r[3])}</b>原来：{esc(r[4])}；改为：{esc(r[5])}（依据：{esc(r[6])}）</li>' for r in mine) + '</ul></section>')
+        cite_txt = f"一孔录《论语·{pname}》{c}“{n['title']}”，{url}，{today} 版。"
+        extra += f'<section class="citeit"><b>引用本页</b><code>{esc(cite_txt)}</code><button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent=\'已复制\'">复制</button><p>本页最后核对：{today}。改动记在<a href="/kanwu.html">勘误页</a>。</p></section>'
+        search_idx.append({"c": c, "t": n["title"], "u": "/" + rel, "y": yw[c],
+                           "x": " ".join(n["fields"].values()) + " " + " ".join(x["text"] + x["src"] for x in g["cites"])})
         body = f"""<div class="chhead"><div class="wrap">
 <p class="crumb"><a href="/lunyu/">论语</a> › <a href="/lunyu/{slug}/">{pfull}</a></p>
 <h1><span class="no">{pname} · 第 {cnum} 章</span>{esc(n['title'])}</h1>
@@ -153,6 +271,7 @@ def main(zdir, outdir):
 <article>
 <figure class="yuanwen"><blockquote>{esc(yw[c])}</blockquote><figcaption>原文与注据{SOURCE}</figcaption></figure>
 {secs}
+{extra}
 <section class="video"><h2><i>看</i>看这一章的视频</h2>
 <div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{yt}" title="{esc(epname)}" allowfullscreen></iframe></div>
 <p class="vlinks">这一章在一孔录《{epname}》里讲：<a href="https://www.youtube.com/watch?v={yt}">YouTube</a><a href="https://www.bilibili.com/video/{ep['bilibili']}">B站</a>（大陆请点 B站）</p></section>
@@ -209,16 +328,18 @@ def main(zdir, outdir):
 <main class="home">
 <section class="intro wrap narrow">
 <h1>一孔录<small>{TAGLINE}</small></h1>
-<p>一孔录逐字逐章读中国经典原文。每一章从原文和注家原页读起，再落到一个今天的处境里。默认你没读过原书，也不用看过前几期。</p>
-<p class="cta"><a class="btn" href="/{rel_of(pub[0])}">从头读起</a><a class="btn ghost" href="/lunyu/">看目录</a></p>
+<p class="motto">一孔录讲过的每一句，都能在这里核。</p>
+<p>原文、底本页码、注家原话、读音、我们的读法、公开勘误，按书按章排好。视频在各平台看，核对来这里。</p>
+<form class="sbox" action="/search.html"><input name="q" placeholder="搜原文、注家原话，如：鸟数飞"><button>检索</button></form>
+<p class="cta"><a class="btn" href="/lunyu/">按书目找</a><a class="btn ghost" href="/kanwu.html">看勘误</a></p>
 </section>
 <section class="pillars wrap">
-<div><i>原</i><b>原文上屏</b><p>原文和注都从古刻本原页取，写明底本，句句可核。</p></div>
-<div><i>注</i><b>诸家并读</b><p>先讲朱熹在哪个字停、诸家怎么分，再讲我们怎么读。</p></div>
-<div><i>今</i><b>放到今天</b><p>一句原文落到一个具体的人、一个今天的处境上。</p></div>
+<div><i>原</i><b>底本可查</b><p>原文和注都从古刻本原页取，每条引文标出底本页，原页图可放大看。</p></div>
+<div><i>注</i><b>注家原话</b><p>引到谁就写谁，朱熹、程子、谢氏分开标；转述和原话分开，核不到出处的不放。</p></div>
+<div><i>勘</i><b>勘误公开</b><p>讲错的地方改了就记：哪集哪句、原来怎么说、改成什么、依据是什么。</p></div>
 </section>
 <section class="wrap narrow"><h2 class="ph">书目</h2><h3 class="bookh"><a href="/lunyu/">《论语》</a></h3><div class="pcards">{"".join(pcard(p) for p in sorted(by_pian, key=int))}</div></section>
-<section class="wrap narrow"><h2 class="ph">最近讲到</h2>{toc(recent)}</section>
+<section class="wrap narrow"><h2 class="ph">最近收录</h2>{toc(recent)}</section>
 </main>'''
     write("index.html", page(f"一孔录｜{TAGLINE}", "一孔录逐字逐章读中国经典原文：原文、注家原页、诸家说法与一孔录的读法，附讲解视频。", f"{DOMAIN}/", home,
           {"@context": "https://schema.org", "@type": "Organization", "name": "一孔录", "url": DOMAIN,
@@ -227,12 +348,39 @@ def main(zdir, outdir):
     about = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{TAGLINE}</span>关于一孔录</h1></div></div>
 <main class="wrap narrow prose">
 <p>一孔录是一个逐字逐章读中国经典原文的频道，用讲书动画和几位固定的人物，把一句原文落到具体的人和处境上。默认你没读过原书，也不用看过前几期。</p>
+<h2>这个网站做什么</h2><p>平台上的视频面向大众，这里面向想核对的人：一孔录讲过的每一句，原文、底本页码、注家原话、读音、我们的读法，都能在这里查到，讲错的地方在<a href="/kanwu.html">勘误页</a>公开记录。</p>
 <h2>我们的承诺</h2>
 <ul><li>原文和注家的话都从古刻本原页取，页面写明底本。</li><li>先讲注家怎么说，再讲我们怎么读；我们自己的看法明说是一孔录的读法，不冒充古人。</li><li>核不到出处的话不放。发现错误请告诉我们，勘误公开。</li></ul>
 <h2>在哪里看</h2><p>YouTube、B站、视频号「一孔录」，播客「一孔录｜在故事里读经典」（Spotify、Apple 播客、小宇宙、喜马拉雅），公众号「一孔录」。</p>
 </main>'''
     write("about.html", page("关于一孔录", "一孔录是什么、怎么读经典、在哪里看。", f"{DOMAIN}/about.html", about))
     urls.append(f"{DOMAIN}/about.html")
+
+    if kw:
+        trs = "".join(f"<tr><td>{esc(r[0])}</td><td>{esc(r[1])} {esc(r[2])}</td><td>{esc(r[3])}</td><td>{esc(r[4])}</td><td>{esc(r[5])}</td><td>{esc(r[6])}</td></tr>" for r in reversed(kw))
+        ktable = f'<div class="tw"><table><thead><tr><th>日期</th><th>集·章</th><th>类别</th><th>原来</th><th>改为</th><th>依据</th></tr></thead><tbody>{trs}</tbody></table></div>'
+    else:
+        ktable = '<p class="empty">目前没有勘误。</p>'
+    body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">原文·引文·出处·读音·读法</span>公开勘误</h1></div></div>
+<main class="wrap narrow prose"><p>一孔录讲错或说满的地方，改了就记在这里，按时间倒排，旧记录不删。画面上的小问题不记，只记内容。</p>
+<p>发现错误，请在任一平台「一孔录」视频下留言，写明哪集哪句、依据是什么。核实后记入此页。</p>{ktable}</main>'''
+    write("kanwu.html", page("公开勘误｜一孔录", "一孔录讲读经典的公开勘误记录：原文、引文、出处、读音、读法的改动与依据。", f"{DOMAIN}/kanwu.html", body))
+    urls.append(f"{DOMAIN}/kanwu.html")
+    write("search.json", json.dumps(search_idx, ensure_ascii=False))
+    body = '''<div class="chhead"><div class="wrap"><h1><span class="no">原文 · 注家原话 · 读法</span>检索</h1></div></div>
+<main class="wrap narrow"><form class="sbox" onsubmit="go();return false"><input id="q" placeholder="输入几个字，如：鸟数飞、主一无适、孝弟"><button>检索</button></form><div id="res"></div></main>
+<script>
+let D=null;const q=document.getElementById('q'),R=document.getElementById('res');
+const E=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function cut(s,k){const i=s.indexOf(k);if(i<0)return E(s.slice(0,60));const a=Math.max(0,i-24);return(a?'…':'')+E(s.slice(a,i))+'<mark>'+E(k)+'</mark>'+E(s.slice(i+k.length,i+k.length+36))+'…'}
+async function go(){const k=q.value.trim();if(!k){R.innerHTML='';return}
+if(!D){try{D=await (await fetch('/search.json')).json()}catch(e){R.textContent='检索数据载入失败，请稍后再试。';return}}
+history.replaceState(null,'','?q='+encodeURIComponent(k));
+const hit=D.filter(d=>(d.y+d.t+d.x).includes(k));
+R.innerHTML=hit.length?'<p class="lead">找到 '+hit.length+' 章</p><ol class="toc">'+hit.map(d=>'<li><a href="'+d.u+'"><em>'+d.c+'</em><b>'+E(d.t)+'</b><span>'+cut(d.y.includes(k)?d.y:d.x,k)+'</span></a></li>').join('')+'</ol>':'<p class="empty">没有找到。已收录的只有讲过的章节。</p>'}
+const p=new URLSearchParams(location.search).get('q');if(p){q.value=p;go()}
+</script>'''
+    write("search.html", page("检索｜一孔录", "检索一孔录收录的经典原文、注家原话与读法。", f"{DOMAIN}/search.html", body))
 
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
           "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n")
@@ -247,4 +395,4 @@ def main(zdir, outdir):
     print(f"生成 {len(urls)} 页 → {outdir}")
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else None)

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>检索｜一孔录</title>
+<meta name="description" content="检索一孔录收录的经典原文、注家原话与读法。">
+<link rel="canonical" href="https://yikonglu.com/search.html">
+<link rel="icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/seal-180.png">
+<meta property="og:title" content="检索｜一孔录">
+<meta property="og:description" content="检索一孔录收录的经典原文、注家原话与读法。">
+<meta property="og:url" content="https://yikonglu.com/search.html">
+<meta property="og:site_name" content="一孔录">
+<meta property="og:image" content="https://yikonglu.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/style.css?v=5ec7b95d">
+
+</head>
+<body class="">
+<header class="top"><div class="wrap">
+<a href="/" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>
+<nav><a href="/lunyu/">书目</a><a href="/search.html">检索</a><a href="/kanwu.html">勘误</a><a href="/about.html">关于</a></nav>
+</div></header>
+<div class="chhead"><div class="wrap"><h1><span class="no">原文 · 注家原话 · 读法</span>检索</h1></div></div>
+<main class="wrap narrow"><form class="sbox" onsubmit="go();return false"><input id="q" placeholder="输入几个字，如：鸟数飞、主一无适、孝弟"><button>检索</button></form><div id="res"></div></main>
+<script>
+let D=null;const q=document.getElementById('q'),R=document.getElementById('res');
+const E=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function cut(s,k){const i=s.indexOf(k);if(i<0)return E(s.slice(0,60));const a=Math.max(0,i-24);return(a?'…':'')+E(s.slice(a,i))+'<mark>'+E(k)+'</mark>'+E(s.slice(i+k.length,i+k.length+36))+'…'}
+async function go(){const k=q.value.trim();if(!k){R.innerHTML='';return}
+if(!D){try{D=await (await fetch('/search.json')).json()}catch(e){R.textContent='检索数据载入失败，请稍后再试。';return}}
+history.replaceState(null,'','?q='+encodeURIComponent(k));
+const hit=D.filter(d=>(d.y+d.t+d.x).includes(k));
+R.innerHTML=hit.length?'<p class="lead">找到 '+hit.length+' 章</p><ol class="toc">'+hit.map(d=>'<li><a href="'+d.u+'"><em>'+d.c+'</em><b>'+E(d.t)+'</b><span>'+cut(d.y.includes(k)?d.y:d.x,k)+'</span></a></li>').join('')+'</ol>':'<p class="empty">没有找到。已收录的只有讲过的章节。</p>'}
+const p=new URLSearchParams(location.search).get('q');if(p){q.value=p;go()}
+</script>
+<footer><div class="wrap">
+<div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>逐字读经典原文</span></div></div>
+<p>引文均据古刻本原页，各页注明底本。发现错误请告诉我们，勘误公开。</p>
+<p class="where">YouTube · B站 · 视频号 · 公众号 · 播客：搜「一孔录」</p>
+</div></footer>
+</body>
+</html>
