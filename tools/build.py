@@ -84,7 +84,7 @@ def page(title, desc, canonical, body, jsonld=None, cls=""):
 {body}
 <footer><div class="wrap">
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{TAGLINE}</span></div></div>
-<p>引文据{SOURCE}。发现错误请告诉我们，勘误公开。</p>
+<p>引文均据古刻本原页，各页注明底本。发现错误请告诉我们，勘误公开。</p>
 <p class="where">YouTube · B站 · 视频号 · 公众号 · 播客：搜「一孔录」</p>
 </div></footer>
 </body>
@@ -209,24 +209,24 @@ def main(zdir, outdir):
 <main class="home">
 <section class="intro wrap narrow">
 <h1>一孔录<small>{TAGLINE}</small></h1>
-<p>一孔录逐章讲读中国经典，现在读的是《论语》。每一章从原文和注家原页读起，再落到一个今天的处境里。默认你没读过原书，也不用看过前几期。</p>
-<p class="cta"><a class="btn" href="/{rel_of(pub[0])}">从第一章读起</a><a class="btn ghost" href="/lunyu/">看全部目录</a></p>
+<p>一孔录逐字逐章读中国经典原文。每一章从原文和注家原页读起，再落到一个今天的处境里。默认你没读过原书，也不用看过前几期。</p>
+<p class="cta"><a class="btn" href="/{rel_of(pub[0])}">从头读起</a><a class="btn ghost" href="/lunyu/">看目录</a></p>
 </section>
 <section class="pillars wrap">
 <div><i>原</i><b>原文上屏</b><p>原文和注都从古刻本原页取，写明底本，句句可核。</p></div>
 <div><i>注</i><b>诸家并读</b><p>先讲朱熹在哪个字停、诸家怎么分，再讲我们怎么读。</p></div>
 <div><i>今</i><b>放到今天</b><p>一句原文落到一个具体的人、一个今天的处境上。</p></div>
 </section>
-<section class="wrap narrow"><h2 class="ph">正在读：《论语》</h2><div class="pcards">{"".join(pcard(p) for p in sorted(by_pian, key=int))}</div></section>
+<section class="wrap narrow"><h2 class="ph">书目</h2><h3 class="bookh"><a href="/lunyu/">《论语》</a></h3><div class="pcards">{"".join(pcard(p) for p in sorted(by_pian, key=int))}</div></section>
 <section class="wrap narrow"><h2 class="ph">最近讲到</h2>{toc(recent)}</section>
 </main>'''
-    write("index.html", page(f"一孔录｜{TAGLINE}", "一孔录逐章讲读《论语》等中国经典：原文、注家原页、诸家说法与一孔录的读法，附讲解视频。", f"{DOMAIN}/", home,
+    write("index.html", page(f"一孔录｜{TAGLINE}", "一孔录逐字逐章读中国经典原文：原文、注家原页、诸家说法与一孔录的读法，附讲解视频。", f"{DOMAIN}/", home,
           {"@context": "https://schema.org", "@type": "Organization", "name": "一孔录", "url": DOMAIN,
            "logo": f"{DOMAIN}/assets/seal-180.png"}, "pg-home"))
     urls.insert(0, f"{DOMAIN}/")
     about = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{TAGLINE}</span>关于一孔录</h1></div></div>
 <main class="wrap narrow prose">
-<p>一孔录是一个逐章讲读中国经典的频道，用讲书动画和几位固定的人物，把一句原文落到具体的人和处境上。默认你没读过原书，也不用看过前几期。</p>
+<p>一孔录是一个逐字逐章读中国经典原文的频道，用讲书动画和几位固定的人物，把一句原文落到具体的人和处境上。默认你没读过原书，也不用看过前几期。</p>
 <h2>我们的承诺</h2>
 <ul><li>原文和注家的话都从古刻本原页取，页面写明底本。</li><li>先讲注家怎么说，再讲我们怎么读；我们自己的看法明说是一孔录的读法，不冒充古人。</li><li>核不到出处的话不放。发现错误请告诉我们，勘误公开。</li></ul>
 <h2>在哪里看</h2><p>YouTube、B站、视频号「一孔录」，播客「一孔录｜在故事里读经典」（Spotify、Apple 播客、小宇宙、喜马拉雅），公众号「一孔录」。</p>
@@ -237,7 +237,7 @@ def main(zdir, outdir):
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
           "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
-    llms = [f"# 一孔录\n\n> 逐章讲读中国经典（现为《论语》）。每章含原文、朱熹《论语集注》里的关键字、诸家说法与一孔录的读法，附讲解视频。底本：{SOURCE}。引用请注明“一孔录”。\n\n## 论语\n"]
+    llms = [f"# 一孔录\n\n> 逐字逐章读中国经典原文。每章含原文、注家（如朱熹《论语集注》）里的关键字、诸家说法与一孔录的读法，附讲解视频。各书底本见各页。引用请注明“一孔录”。\n\n## 论语\n"]
     for c in pub:
         llms.append(f"- [{c} {notes[c]['title']}]({DOMAIN}/{rel_of(c)}): {notes[c]['fields'].get('片里落点', '')}\n")
     write("llms.txt", "".join(llms))

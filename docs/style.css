@@ -70,3 +70,4 @@ aside li.cur a{color:var(--accent);border-left:2px solid var(--accent);margin-le
 footer{margin-top:50px;border-top:1px solid var(--line);background:var(--paper);padding:28px 0 36px;color:var(--mute);font-size:14px}
 .fbrand{display:flex;gap:12px;align-items:center;margin-bottom:8px}.fbrand b{display:block;color:var(--fg);font-size:18px;letter-spacing:.12em}.fbrand span{font-size:13px}
 footer p{margin:4px 0}
+.bookh{font-size:18px;margin:0 0 10px;font-weight:600}.bookh a{color:var(--fg)}
