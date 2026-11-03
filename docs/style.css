@@ -120,3 +120,4 @@ html[lang=ja] .intro h1,html[lang=ko] .intro h1,html[lang=en] .intro h1,html[lan
 @media (max-width:700px){.top .wrap{height:auto;min-height:52px;padding:8px 16px;gap:6px}.top nav{gap:2px 12px;font-size:14px}.top nav a{font-size:14px}.lang{font-size:13px}.lang summary{padding:1px 7px}}
 .yuanwen blockquote,.rend,.sec p,td{overflow-wrap:anywhere}
 html[lang=zh-Hans] .yuanwen blockquote,html[lang=zh-Hant] .yuanwen blockquote{word-break:break-all}
+td.who{white-space:nowrap;color:var(--accent,#9b2c1f)}

@@ -53,7 +53,7 @@ ZH_UI = {
  "source_line": f"原文与注据{SOURCE}", "rendering": "",
  "errata_title": "公开勘误", "errata_sub": "原文·引文·出处·读音·读法",
  "errata_p1": "一孔录讲错或说满的地方，改了就记在这里，按时间倒排，旧记录不删。画面上的小问题不记，只记内容。",
- "errata_p2": "发现错误，请在任一平台「一孔录」视频下留言，写明哪集哪句、依据是什么。核实后记入此页。", "errata_empty": "目前没有勘误。",
+ "errata_p2": "发现错误，请在任一平台「一孔录」视频下留言，写明哪集哪句、依据是什么。核实后记入此页，勘误者一栏署你的网名。", "errata_empty": "目前没有勘误。",
  "search_title": "检索", "search_sub": "原文 · 注家原话 · 读法", "search_ph2": "输入几个字，如：鸟数飞、主一无适、孝弟",
  "search_n": "找到 {n} 章", "search_none": "没有找到。已收录的只有讲过的章节。",
  "about_title": "关于一孔录", "about_p": "一孔录是一个逐字逐章读中国经典原文的频道，用讲书动画和几位固定的人物，把一句原文落到具体的人和处境上。默认你没读过原书，也不用看过前几期。",
@@ -165,7 +165,10 @@ def parse_kanwu(path):
     for l in open(path, encoding="utf-8"):
         if l.startswith("|") and not l.startswith("| 日期") and not re.match(r"^\|[-| ]+\|$", l.strip()):
             c = [x.strip() for x in l.strip().strip("|").split("|")]
-            if len(c) >= 7 and re.match(r"\d{4}-\d{2}-\d{2}", c[0]): rows.append([x.replace("线程", "") for x in c[:7]])
+            if len(c) >= 7 and re.match(r"\d{4}-\d{2}-\d{2}", c[0]):
+                r = [x.replace("线程", "") for x in c[:8]] + [""] * (8 - len(c[:8]))
+                if not r[7] or r[7] in ("—", "-", "自查", "一孔录"): r[7] = "一孔录自查"
+                rows.append(r)
     return rows
 
 HEAD_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Noto+Serif+JP:wght@400;600;900&family=Noto+Serif+KR:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">'
@@ -289,7 +292,7 @@ def build_lang(L, D, write):
         mine = [r for r in kw if r[2] == c]
         if mine:
             extra += (f'<section class="sec kw"><h2><i>勘</i>{L.t("kw")}</h2>{"<p class=note>" + L.t("kw_note") + "</p>" if L.t("kw_note") else ""}<ul lang="zh-Hans">' + "".join(
-                f'<li><b>{esc(r[0])}　{esc(r[3])}</b>原来：{esc(r[4])}；改为：{esc(r[5])}（依据：{esc(r[6])}）</li>' for r in mine) + '</ul></section>')
+                f'<li><b>{esc(r[0])}　{esc(r[3])}</b>原来：{esc(r[4])}；改为：{esc(r[5])}（依据：{esc(r[6])}；勘误者：{esc(r[7])}）</li>' for r in mine) + '</ul></section>')
         cite_txt = L.t("cite_fmt", book=(pname if L.code == "zh-Hans" else bname), c=c, title=title_of(c), url=url, d=today)
         extra += f'<section class="citeit"><b>{L.t("cite")}</b><code>{esc(cite_txt)}</code><button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent=\'{L.t("copied")}\'">{L.t("copy")}</button><p>{L.t("checked", d=today)}<a href="{P}kanwu.html">{L.t("errata_page")}</a>.</p></section>'
         search_idx.append({"c": c, "t": title_of(c), "u": P + rel, "y": yw[c],
@@ -374,8 +377,8 @@ def build_lang(L, D, write):
     write("about.html", page(L, L.t("about_title"), L.t("about_p")[:120], "about.html", about)); urls.append(f"{DOMAIN}/{L.prefix}about.html")
 
     if kw:
-        trs = "".join(f"<tr><td>{esc(r[0])}</td><td>{esc(r[1])} {esc(r[2])}</td><td>{esc(r[3])}</td><td>{esc(r[4])}</td><td>{esc(r[5])}</td><td>{esc(r[6])}</td></tr>" for r in reversed(kw))
-        ktable = f'<div class="tw"><table lang="zh-Hans"><thead><tr><th>日期</th><th>集·章</th><th>类别</th><th>原来</th><th>改为</th><th>依据</th></tr></thead><tbody>{trs}</tbody></table></div>'
+        trs = "".join(f"<tr><td>{esc(r[0])}</td><td>{esc(r[1])} {esc(r[2])}</td><td>{esc(r[3])}</td><td>{esc(r[4])}</td><td>{esc(r[5])}</td><td>{esc(r[6])}</td><td class=\"who\">{esc(r[7])}</td></tr>" for r in reversed(kw))
+        ktable = f'<div class="tw"><table lang="zh-Hans"><thead><tr><th>日期</th><th>集·章</th><th>类别</th><th>原来</th><th>改为</th><th>依据</th><th>勘误者</th></tr></thead><tbody>{trs}</tbody></table></div>'
     else:
         ktable = f'<p class="empty">{L.t("errata_empty")}</p>'
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("errata_sub")}</span>{L.t("errata_title")}</h1></div></div>
