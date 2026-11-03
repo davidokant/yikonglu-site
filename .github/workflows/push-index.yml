@@ -1,0 +1,25 @@
+name: 推送新页给搜索引擎
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**"]
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "推 sitemap 全部地址"
+        type: boolean
+        default: false
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 2 }
+      - name: 等 Pages 部署完
+        run: sleep 120
+      - name: 推送
+        env:
+          BAIDU_TOKEN: ${{ secrets.BAIDU_TOKEN }}
+        run: |
+          if [ "${{ inputs.all }}" = "true" ]; then python3 tools/push_index.py --all
+          else python3 tools/push_index.py $(git diff --name-only HEAD~1 HEAD -- docs); fi

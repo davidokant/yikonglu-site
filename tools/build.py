@@ -7,7 +7,8 @@
 语种：zh-Hans（根目录）、zh-Hant（/zh-hant/，OpenCC 自动转台湾用字）、en（/en/）。
 用法：python3 tools/build.py <读法札记目录> docs
 """
-import json, re, sys, html, os, shutil, datetime, glob
+import json, re, sys, html, os, shutil, datetime, glob, csv
+import og as OG
 
 DOMAIN = "https://yikonglu.com"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -17,10 +18,13 @@ FIELDS = [("常见读法", "f_common", "常"), ("字眼", "f_keys", "注"), ("�
 SOURCE = "朱熹《论语集注》（《四部备要》本）"
 TAGLINE = "逐字读经典原文"
 GAO_DIR = "/mnt/project-files/一孔学-内-自媒体/数据/网站素材"  # 定版稿只在共享盘读取，不进公开仓库
+ZB_DIR = os.path.join(GAO_DIR, "_注本")  # Codex 注本索引（皇疏、杨伯峻、钱穆逐章 CSV）
+HUANG_SCAN = "https://commons.wikimedia.org/w/index.php?title=File:SSID-13146346_%E7%9F%A5%E4%B8%8D%E8%B6%B3%E9%BD%8B_%E7%AC%AC7%E9%9B%86_%E8%AB%96%E8%AA%9E%E7%BE%A9%E7%96%8F%E6%95%98_%E5%8D%B71-2.pdf&page={n}"
+ANALYTICS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "analytics.json"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "analytics.json")) else {}
 KANWU_DEFAULT = "/mnt/project-files/一孔学-内-自媒体/数据/网站勘误.md"
 INTERNAL = re.compile(r"（[^（）]*(只|转述|不上屏|不念|常识|核不到|见注|今读)[^（）]*）")
 
-HANT_FIX = {"余力": "餘力", "余，": "餘，", "余者": "餘者", "诗云": "詩云", "子云": "子云", "干禄": "干祿"}  # 护住后手工给的繁体
+HANT_FIX = {"余力": "餘力", "余，": "餘，", "余者": "餘者", "托看": "託看", "诗云": "詩云", "子云": "子云", "干禄": "干祿"}  # 护住后手工给的繁体
 LANGS = {  # code: (路径前缀, 自称, hreflang)
     "zh-Hans": ("", "简体中文", "zh-Hans"),
     "zh-Hant": ("zh-hant/", "繁體中文", "zh-Hant"),
@@ -65,6 +69,75 @@ ZH_UI = {
  "cite_fmt": "一孔录《论语·{book}》{c}“{title}”，{url}，{d} 版。",
  "hant_note": "繁體頁面由簡體自動轉換，用字按台灣習慣；原文以底本原頁為準。",
 }
+
+# 11-03 第一批新增界面字（各语种；缺的回落简体）
+EXTRA_UI = {
+ "zh-Hans": {"ju_copy": "复制本句（带出处）", "ju_link": "复制本句链接", "ju_tip": "点原文任一句，可复制带出处的引文。",
+   "zb_h": "各家注本", "zb_note": "本站底本是朱熹《论语集注》，见上文。这里并列别家：古注录疏文第一句，附原刻本扫描页；现代注本只短引一句译文，作通行读法对照。“与朱注异同”是一孔录写的说明，不是注本原文。",
+   "zb_huang": "皇侃《论语义疏》", "zb_huang_meta": "梁 · 知不足斋丛书本 · 卷{j}", "zb_scan": "原刻本扫描第 {n} 页",
+   "zb_yang": "杨伯峻《论语译注》", "zb_yang_meta": "中华书局 · 现代通行本，短引", "zb_qian": "钱穆《论语新解》", "zb_qian_meta": "现代通行本，短引",
+   "zb_diff": "与朱注异同", "th_zb": "注本", "th_key": "关键处", "th_kind": "异同", "th_say": "说明",
+   "k_same": "同解", "k_diff": "异读", "k_add": "补充", "k_shade": "轻重不同", "k_word": "字义不同",
+   "nf_h": "这一页不在了", "nf_p": "链接可能拼错，或这一页改过地址。可以搜原文，或按书目找。"},
+ "en": {"ju_copy": "Copy this line with source", "ju_link": "Copy link to this line", "ju_tip": "Tap any sentence of the original to copy it with its source.",
+   "zb_h": "Other commentaries", "zb_note": "Our base text is Zhu Xi's Collected Commentaries (above). Here are other commentaries side by side: for old commentaries, the first line of the sub-commentary with a link to the woodblock scan; for modern editions, one short quoted translation for comparison. The “compared with Zhu Xi” notes are written by Yikonglu, not quoted.",
+   "zb_huang_meta": "Liang dynasty · Zhibuzu Zhai edition · juan {j}", "zb_scan": "woodblock scan p. {n}", "zb_yang_meta": "Zhonghua Book Co. · modern, short quote", "zb_qian_meta": "modern, short quote",
+   "zb_diff": "Compared with Zhu Xi", "th_zb": "Commentary", "th_key": "Point", "th_kind": "Relation", "th_say": "Note",
+   "k_same": "same", "k_diff": "differs", "k_add": "adds", "k_shade": "nuance", "k_word": "word sense",
+   "nf_h": "Page not found", "nf_p": "The link may be mistyped or the page has moved. Search the original text or browse by book."},
+ "ja": {"zb_huang": "皇侃『論語義疏』", "zb_yang": "楊伯峻『論語訳注』", "zb_qian": "銭穆『論語新解』", "ju_copy": "この句を出典付きでコピー", "ju_link": "この句へのリンクをコピー", "ju_tip": "原文の句をタップすると、出典付きでコピーできます。",
+   "zb_h": "諸家の注釈", "zb_note": "底本は朱熹『論語集注』（上記）。ここでは他の注釈を並べます。古注は疏の最初の一句と原刻本スキャンへのリンク、現代の注釈は訳文一句のみを短く引用します。「朱注との異同」は一孔録による説明です。",
+   "zb_huang_meta": "梁 · 知不足斎叢書本 · 巻{j}", "zb_scan": "原刻本スキャン {n} 頁", "zb_yang_meta": "中華書局 · 現代の通行本、短い引用", "zb_qian_meta": "現代の通行本、短い引用",
+   "zb_diff": "朱注との異同", "th_zb": "注釈", "th_key": "要点", "th_kind": "異同", "th_say": "説明",
+   "k_same": "同じ", "k_diff": "異なる読み", "k_add": "補足", "k_shade": "軽重の差", "k_word": "字義の違い",
+   "nf_h": "ページが見つかりません", "nf_p": "リンクの誤りか、ページが移動しました。原文を検索するか、書目からお探しください。"},
+ "ko": {"zb_huang": "皇侃《論語義疏》", "zb_yang": "楊伯峻《論語譯注》", "zb_qian": "錢穆《論語新解》", "ju_copy": "이 구절을 출처와 함께 복사", "ju_link": "이 구절 링크 복사", "ju_tip": "원문의 구절을 누르면 출처와 함께 복사할 수 있습니다.",
+   "zb_h": "여러 주석서", "zb_note": "저본은 주희 『논어집주』(위)입니다. 여기에는 다른 주석을 나란히 둡니다. 고주는 소(疏)의 첫 구절과 원각본 스캔 링크, 현대 주석은 번역 한 구절만 짧게 인용합니다. '주희 주석과의 이동'은 일공록의 설명입니다.",
+   "zb_huang_meta": "양나라 · 지부족재총서본 · 권{j}", "zb_scan": "원각본 스캔 {n}쪽", "zb_yang_meta": "중화서국 · 현대 통행본, 짧은 인용", "zb_qian_meta": "현대 통행본, 짧은 인용",
+   "zb_diff": "주희 주석과의 이동", "th_zb": "주석", "th_key": "요점", "th_kind": "이동", "th_say": "설명",
+   "k_same": "같음", "k_diff": "다른 해석", "k_add": "보충", "k_shade": "경중 차이", "k_word": "자의 차이",
+   "nf_h": "페이지를 찾을 수 없습니다", "nf_p": "링크가 잘못되었거나 주소가 바뀌었습니다. 원문을 검색하거나 서목에서 찾아보세요."},
+ "fr": {"ju_copy": "Copier la phrase avec la source", "ju_link": "Copier le lien de la phrase", "ju_tip": "Touchez une phrase du texte original pour la copier avec sa source.",
+   "zb_h": "Autres commentaires", "zb_note": "Notre texte de base est le commentaire de Zhu Xi (ci-dessus). Voici d'autres commentaires en regard : pour les anciens, la première phrase du sous-commentaire et un lien vers la xylographie ; pour les modernes, une seule phrase de traduction, citée brièvement. Les notes « par rapport à Zhu Xi » sont de Yikonglu.",
+   "zb_huang_meta": "dynastie Liang · éd. Zhibuzu Zhai · juan {j}", "zb_scan": "xylographie p. {n}", "zb_yang_meta": "Zhonghua · moderne, citation brève", "zb_qian_meta": "moderne, citation brève",
+   "zb_diff": "Par rapport à Zhu Xi", "th_zb": "Commentaire", "th_key": "Point", "th_kind": "Relation", "th_say": "Note",
+   "k_same": "identique", "k_diff": "diverge", "k_add": "complète", "k_shade": "nuance", "k_word": "sens du mot",
+   "nf_h": "Page introuvable", "nf_p": "Le lien est peut-être erroné ou la page a changé d'adresse. Cherchez dans le texte original ou parcourez par livre."},
+ "es": {"ju_copy": "Copiar la frase con la fuente", "ju_link": "Copiar el enlace de la frase", "ju_tip": "Toca una frase del original para copiarla con su fuente.",
+   "zb_h": "Otros comentarios", "zb_note": "Nuestro texto base es el comentario de Zhu Xi (arriba). Aquí van otros comentarios en paralelo: de los antiguos, la primera frase del subcomentario y un enlace a la xilografía; de los modernos, una sola frase de traducción citada brevemente. Las notas «frente a Zhu Xi» son de Yikonglu.",
+   "zb_huang_meta": "dinastía Liang · ed. Zhibuzu Zhai · juan {j}", "zb_scan": "xilografía p. {n}", "zb_yang_meta": "Zhonghua · moderno, cita breve", "zb_qian_meta": "moderno, cita breve",
+   "zb_diff": "Frente a Zhu Xi", "th_zb": "Comentario", "th_key": "Punto", "th_kind": "Relación", "th_say": "Nota",
+   "k_same": "igual", "k_diff": "difiere", "k_add": "añade", "k_shade": "matiz", "k_word": "sentido de la palabra",
+   "nf_h": "Página no encontrada", "nf_p": "Puede que el enlace esté mal escrito o que la página haya cambiado. Busca en el texto original o explora por libro."},
+}
+ZH_UI.update(EXTRA_UI["zh-Hans"])
+
+def split_ju(text):
+    """原文按句切：句末是 。？！ 或其后紧跟的引号。"""
+    out = re.findall(r"[^。？！]+[。？！]+[”’」』]*|[^。？！]+$", text)
+    return [x for x in out if x.strip()]
+
+def parse_zhuben(d):
+    """读 Codex 注本索引 CSV，返回 {章号: {"huang": {...}, "yang": {...}, "qian": {...}}}。"""
+    out = {}
+    if not os.path.isdir(d): return out
+    def rows(prefix):
+        f = sorted(glob.glob(os.path.join(d, prefix + "-*逐章索引*.csv")))
+        return list(csv.DictReader(open(f[-1], encoding="utf-8-sig"))) if f else []
+    for r in rows("皇疏"):
+        t = r["义疏首句"].strip().replace("其其孝悌者也", "其，其孝悌者也")  # 11-03 核收意见：疏先单释“其”字
+        out.setdefault(r["章号"], {})["huang"] = {"text": t, "juan": r["卷"], "page": r["义疏首句PDF页"], "leaf": r.get("章首叶面", "")}
+    pageref = re.compile(r"[^。；]*书\s*\d+(?:[—-]\d+)?页（PDF[^）]*）[。；]?|（PDF[^）]*）")
+    for key, prefix in (("yang", "杨伯峻"), ("qian", "钱穆")):
+        for r in rows(prefix):
+            cmp_ = pageref.sub("", r["与朱注比较"]).strip().rstrip("；")
+            m = re.match(r"^([^：]{1,8})：(.*)$", cmp_)
+            head, body = (m.group(1), m.group(2)) if m else ("", cmp_)
+            kind = {"同解": "k_same", "异读": "k_diff", "补充阐释": "k_add", "补充": "k_add", "有轻重差别": "k_shade"}.get(head)
+            if head and not kind: kind = "k_word"
+            if not head: kind = "k_same" if "同" in cmp_[:4] else "k_diff"
+            out.setdefault(r["章号"], {})[key] = {"text": r["译文一句"].strip(), "key": "" if kind != "k_word" else head, "kind": kind, "say": body if head else cmp_}
+    return out
 
 def esc(s): return html.escape(s, quote=True)
 
@@ -188,6 +261,21 @@ b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}
 document.body.prepend(b)})();
 </script>"""
 
+JU_JS = """<div id="jubar" class="jubar" hidden><button data-a="q">@COPY@</button><button data-a="l">@LINK@</button></div>
+<script>
+(function(){var B=document.getElementById('jubar'),Q=document.querySelector('.yuanwen blockquote'),cur=null;if(!Q)return;
+function put(t,btn){var done=function(){var o=btn.textContent;btn.textContent='@DONE@';setTimeout(function(){btn.textContent=o;B.hidden=true},1200)};
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){prompt('',t)})}else{prompt('',t)}}
+function show(s){cur=s;document.querySelectorAll('.ju.on').forEach(function(x){x.classList.remove('on')});s.classList.add('on');
+var r=s.getBoundingClientRect();B.hidden=false;B.style.top=(window.scrollY+r.bottom+6)+'px';B.style.left=Math.max(8,Math.min(window.scrollX+r.left,document.documentElement.clientWidth-B.offsetWidth-8))+'px'}
+Q.addEventListener('click',function(e){var s=e.target.closest('.ju');if(s)show(s)});
+Q.addEventListener('keydown',function(e){if(e.key==='Enter'){var s=e.target.closest('.ju');if(s)show(s)}});
+document.addEventListener('click',function(e){if(!e.target.closest('.ju')&&!e.target.closest('#jubar')){B.hidden=true;if(cur)cur.classList.remove('on')}});
+B.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||!cur)return;var u=Q.dataset.url+'#'+cur.id;
+put(b.dataset.a==='q'?'\u201c'+cur.textContent+'\u201d\u2014\u2014'+Q.dataset.src+Q.dataset.sep+u:u,b)});
+var h=location.hash.slice(1);if(/^s\\d+$/.test(h)){var t=document.getElementById(h);if(t)t.classList.add('on')}})();
+</script>"""
+
 class Lang:
     def __init__(self, code, ui, tr=None):
         self.code = code; self.prefix, self.name, self.hreflang = LANGS[code]
@@ -200,7 +288,16 @@ class Lang:
     def book(self, p):
         return self.tr.get("books", {}).get(p, PIAN[p][2])
 
-def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None):
+def analytics(L):
+    """访问统计：tools/analytics.json 里填了才加。cloudflare＝Web Analytics token；baidu＝百度统计 hm.js 的 id（只加在中文页）。"""
+    a = ""
+    if ANALYTICS.get("cloudflare"):
+        a += f"<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{{\"token\": \"{ANALYTICS['cloudflare']}\"}}'></script>"
+    if ANALYTICS.get("baidu") and L.code.startswith("zh"):
+        a += f'<script>var _hmt=_hmt||[];(function(){{var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?{ANALYTICS["baidu"]}";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)}})();</script>'
+    return a
+
+def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra=""):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
     url = f"{DOMAIN}/{L.prefix}{rel}"
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>' if jsonld else ""
@@ -224,11 +321,13 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None):
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{url}">
 <meta property="og:site_name" content="一孔录">
-<meta property="og:image" content="{DOMAIN}/assets/og.jpg">
+<meta property="og:image" content="{DOMAIN}/{og_img or "assets/og.jpg"}">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">{head_extra}
 <meta name="twitter:card" content="summary_large_image">
 {HEAD_FONTS}
 <link rel="stylesheet" href="/style.css?v={CSSV}">
 {ld}
+{analytics(L)}
 </head>
 <body class="{cls}">
 <header class="top"><div class="wrap">
@@ -266,6 +365,7 @@ def build_lang(L, D, write):
     for i, c in enumerate(pub):
         n = notes[c]; pnum, cnum = c.split("."); pname, slug, pfull, _ = PIAN[pnum]
         epname, ep = ch2ep[c]; rel = rel_of(c); url = f"{DOMAIN}/{L.prefix}{rel}"
+        og_img = D["og"].get(c, {}).get("hant" if L.code in ("zh-Hant", "ja", "ko") else "hans")
         bname = L.book(pnum)
         name = f"《论语·{pname}》{c} {n['title']}" if L.code == "zh-Hans" else f"{L.t('lunyu')} {c} {title_of(c)}"
         desc = f"{yw[c][:60]}……原文、朱熹注的关键字、诸家说法与一孔录的读法。" if L.code == "zh-Hans" else f"{yw[c][:40]}… {L.t('book_lead')}"
@@ -299,7 +399,27 @@ def build_lang(L, D, write):
         cite_txt = L.t("cite_fmt", book=(pname if L.code == "zh-Hans" else bname), c=c, title=title_of(c), url=url, d=today)
         extra += f'<section class="citeit"><b>{L.t("cite")}</b><code>{esc(cite_txt)}</code><button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent=\'{L.t("copied")}\'">{L.t("copy")}</button><p>{L.t("checked", d=today)}<a href="{P}kanwu.html">{L.t("errata_page")}</a>.</p><p class="mailp">{L.t("report")} {MAIL}</p></section>'
         search_idx.append({"c": c, "t": title_of(c), "u": P + rel, "y": yw[c],
-                           "x": " ".join(v for k, _, _ in FIELDS for v in [field(c, k)[0]] if v) + " " + " ".join(x["text"] + x["src"] for x in g["cites"])})
+                           "x": " ".join(v for k, _, _ in FIELDS for v in [field(c, k)[0]] if v) + " " + " ".join(x["text"] + x["src"] for x in g["cites"])
+                                + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
+        ju_html = "".join(f'<span class="ju" id="s{j}" tabindex="0">{esc(x)}</span>' for j, x in enumerate(split_ju(yw[c]), 1))
+        cite_src = (f"《论语·{pname}》{c}，一孔录" if L.code.startswith("zh") else f"{L.t('lunyu')} {c}, 一孔录 Yikonglu")
+        zb = D["zhuben"].get(c, {})
+        if zb:
+            blocks, diffs = "", []
+            if "huang" in zb:
+                h = zb["huang"]
+                blocks += (f'<div class="zb"><h3>{L.t("zb_huang")}<small>{esc(L.t("zb_huang_meta", j=h["juan"]))}</small></h3>'
+                           f'<p lang="zh-Hant">“{esc(h["text"])}”……</p><p class="zbsrc"><a class="pg" href="{HUANG_SCAN.format(n=h["page"])}" target="_blank" rel="noopener">{L.t("zb_scan", n=h["page"])}</a></p></div>')
+            for key, nk, mk in (("yang", "zb_yang", "zb_yang_meta"), ("qian", "zb_qian", "zb_qian_meta")):
+                if key not in zb: continue
+                z = zb[key]
+                blocks += f'<div class="zb"><h3>{L.t(nk)}<small>{L.t(mk)}</small></h3><p lang="zh-Hans">“{esc(z["text"])}”</p></div>'
+                diffs.append((L.t(nk), z))
+            order = {"k_diff": 0, "k_word": 1, "k_shade": 2, "k_add": 3, "k_same": 4}
+            diffs.sort(key=lambda t: order.get(t[1]["kind"], 9))
+            trs = "".join(f'<tr class="{z["kind"]}"><td>{esc(nm)}</td><td class="zi">{esc(z["key"])}</td><td><span class="kind">{L.t(z["kind"])}</span></td><td lang="zh-Hans">{esc(z["say"])}</td></tr>' for nm, z in diffs)
+            dtab = f'<h3 class="zbd">{L.t("zb_diff")}</h3><table class="zbt"><thead><tr><th>{L.t("th_zb")}</th><th>{L.t("th_key")}</th><th>{L.t("th_kind")}</th><th>{L.t("th_say")}</th></tr></thead><tbody>{trs}</tbody></table>' if diffs else ""
+            extra = f'<section class="sec zhuben"><h2><i>家</i>{L.t("zb_h")}</h2><p class="note">{L.t("zb_note")}</p><div class="zbs">{blocks}</div>{dtab}</section>' + extra
         rend = L.ch(c).get("yw")
         rend_html = f'<p class="rend">{esc(rend)}</p><figcaption>{L.t("rendering")}</figcaption>' if rend else ""
         body = f"""<div class="chhead"><div class="wrap">
@@ -308,7 +428,7 @@ def build_lang(L, D, write):
 </div></div>
 <main class="wrap chapter">
 <article>
-<figure class="yuanwen"><blockquote lang="zh-Hans">{esc(yw[c])}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}</figure>
+<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{'，' if L.code.startswith('zh') else ', '}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}<p class="jutip">{L.t("ju_tip")}</p></figure>
 {secs}
 {extra}
 <section class="video"><h2><i>看</i>{L.t("video")}</h2>
@@ -320,7 +440,7 @@ def build_lang(L, D, write):
 <aside><h3>{bname}</h3><ol>{side}</ol></aside>
 </main>"""
         ld = {"@context": "https://schema.org", "@type": "Article", "headline": name,
-              "inLanguage": L.hreflang, "url": url, "dateModified": today, "image": f"{DOMAIN}/assets/og.jpg",
+              "inLanguage": L.hreflang, "url": url, "dateModified": today, "image": f"{DOMAIN}/{og_img or 'assets/og.jpg'}",
               "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN},
               "publisher": {"@type": "Organization", "name": "一孔录", "url": DOMAIN, "logo": {"@type": "ImageObject", "url": f"{DOMAIN}/assets/seal-180.png"}},
               "about": {"@type": "Book", "name": "论语"},
@@ -329,7 +449,7 @@ def build_lang(L, D, write):
                         "embedUrl": f"https://www.youtube.com/embed/{yt}", "url": f"https://www.youtube.com/watch?v={yt}",
                         "thumbnailUrl": f"https://i.ytimg.com/vi/{yt}/hqdefault.jpg"}}
         ttl = f"{name}｜原文与读法｜一孔录" if L.code == "zh-Hans" else f"{name} | 一孔录 Yikonglu"
-        write(rel, page(L, ttl, desc, rel, body, ld, "pg-chapter")); urls.append(url)
+        write(rel, page(L, ttl, desc, rel, body + JU_JS.replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter", og_img=og_img)); urls.append(url)
 
     def toc(cs):
         return '<ol class="toc">' + "".join(
@@ -402,6 +522,13 @@ R.innerHTML=hit.length?'<p class="lead">'+{json.dumps(L.t("search_n", n="N"))}.r
 const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 </script>'''
     write("search.html", page(L, f'{L.t("search_title")}｜一孔录', L.t("search_sub"), "search.html", body))
+    if L.code == "zh-Hans":  # GitHub Pages 只认根目录 404.html
+        en = EXTRA_UI["en"]
+        body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">404</span>{L.t("nf_h")}</h1></div></div>
+<main class="wrap narrow"><p class="lead">{L.t("nf_p")}</p><p class="lead" lang="en">{en["nf_h"]}. {en["nf_p"]}</p>
+<form class="sbox" action="/search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
+<p class="cta"><a class="btn" href="/lunyu/">{L.t("btn_books")}</a><a class="btn ghost" href="/">yikonglu.com</a></p><h2 class="ph">{L.t("recent")}</h2>{toc(recent)}</main>'''
+        write("404.html", page(L, f'{L.t("nf_h")}｜一孔录', L.t("nf_p"), "404.html", body, head_extra='<meta name="robots" content="noindex">'))
     llms = [f"# 一孔录 Yikonglu ({L.name})\n\n> {L.t('motto')} {L.t('intro')}\n\n## 论语 {L.t('lunyu')}\n"]
     for c in pub:
         llms.append(f"- [{c} {title_of(c)}]({DOMAIN}/{L.prefix}{rel_of(c)}): {field(c, '片里落点')[0] or ''}\n")
@@ -444,7 +571,8 @@ def main(zdir, outdir, kanwu=None):
             im.save(jpg, quality=78, optimize=True, progressive=True)
     shutil.copytree(ydir, os.path.join(outdir, "yuanye"))
     pages_avail = {re.sub(r"\D", "", f).lstrip("0") for f in os.listdir(ydir) if f.endswith(".jpg")}
-    D = dict(notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
+    zhuben = parse_zhuben(ZB_DIR)
+    D = dict(zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
 
     def writer(prefix, post=None):
         def write(rel, text):
@@ -452,13 +580,22 @@ def main(zdir, outdir, kanwu=None):
             open(p, "w", encoding="utf-8").write(post(text) if post else text)
         return write
 
+    # 每章分享图：简体图给简、英、法、西；繁体图给繁、日、韩
+    D["og"] = {}
+    if OG.available():
+        for c in pub:
+            pnum, cnum = c.split(".")
+            head = f"《论语·{PIAN[pnum][0]}》第 {cnum} 章"
+            D["og"][c] = {"hans": OG.make("hans", c, head, yw[c], TAGLINE)}
+    else:
+        print("没有字体，分享图跳过：", OG.FONT)
     urls = build_lang(Lang("zh-Hans", ZH_UI), D, writer(""))
     # 繁体：由简体页面整页转换，台湾用字；站内链接改前缀
     from opencc import OpenCC
     cc = OpenCC("s2twp")
     keep = ("/assets/", "/yuanye/", "/style.css", "https://", "http://", "#")
     # 古文与人名里不能按今字转的（简繁同形或 OpenCC 会转错），先护住再转
-    PROTECT = ["范祖禹", "范氏", "游酢", "游氏", "坐如尸", "尸", "咸", "丑", "干禄", "云：", "云，", "子云", "诗云", "余力", "余，", "余者"]
+    PROTECT = ["范祖禹", "范氏", "游酢", "游氏", "坐如尸", "尸", "咸", "丑", "干禄", "云：", "云，", "子云", "诗云", "余力", "余，", "余者", "托看"]
     def to_hant(text):
         for i, w in enumerate(PROTECT): text = text.replace(w, f"\ue000{i}\ue001")
         t = cc.convert(text)
@@ -467,11 +604,17 @@ def main(zdir, outdir, kanwu=None):
         t = t.replace("fetch('/search.json')", "fetch('/zh-hant/search.json')")
         t = t.replace('"u": "/lunyu', '"u": "/zh-hant/lunyu')
         return t
+    if OG.available():
+        for c in pub:
+            pnum, cnum = c.split(".")
+            D["og"][c]["hant"] = OG.make("hant", c, to_hant(f"《论语·{PIAN[pnum][0]}》第 {cnum} 章"), to_hant(yw[c]), to_hant(TAGLINE))
+        shutil.copytree(os.path.join(HERE, "og"), os.path.join(outdir, "og"), ignore=shutil.ignore_patterns("*.sig"))
     hant_ui = dict(ZH_UI); hant_ui["translated_note"] = ZH_UI["hant_note"]
     urls += build_lang(Lang("zh-Hant", hant_ui), D, writer("zh-hant", to_hant))
     for code in ("en", "ja", "ko", "fr", "es"):
         tr = json.load(open(os.path.join(HERE, "i18n", code + ".json"), encoding="utf-8"))
-        urls += build_lang(Lang(code, tr["ui"], tr), D, writer(code))
+        ui = dict(EXTRA_UI.get(code, {})); ui.update(tr["ui"])
+        urls += build_lang(Lang(code, ui, tr), D, writer(code))
 
     open(os.path.join(outdir, "sitemap.xml"), "w", encoding="utf-8").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

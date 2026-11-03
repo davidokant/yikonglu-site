@@ -126,3 +126,28 @@ td.who{white-space:nowrap;color:var(--accent,#9b2c1f)}
 .follow{margin-top:50px;padding:26px 0;border-top:1px solid var(--line);text-align:center}.follow h2{font-size:18px;margin:0 0 14px;letter-spacing:.1em}.follow .fl{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px 40px}.follow figure{margin:0;display:flex;align-items:center;gap:14px;max-width:420px;text-align:left}.follow img{background:#fff;padding:6px;border-radius:8px;border:1px solid var(--line);flex:none}.follow figcaption{font-size:14px;color:var(--mute)}.follow .btn.yt{background:#c4302b;color:#fff;border-color:#c4302b}
 .follow+footer{margin-top:0}
 .follow.intl .fl{flex-direction:row-reverse}.outl .btn{margin:4px 8px 4px 0}.btn.yt{background:#c4302b;color:#fff}
+/* 11-03 按句链接 */
+.ju{cursor:pointer;border-radius:3px;transition:background .15s}
+.ju:hover,.ju:focus{background:color-mix(in srgb,var(--gold) 18%,transparent);outline:none}
+.ju.on{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+.jutip{margin:4px 0 0;font-size:12px;color:var(--mute)}
+.jubar{position:absolute;z-index:20;display:flex;gap:6px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.jubar[hidden]{display:none}
+.jubar button{border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:4px;font:inherit;font-size:13px;padding:2px 8px;cursor:pointer;white-space:nowrap}
+.jubar button:first-child{background:var(--accent);color:#fff}
+/* 11-03 各家注本 */
+.zbs{display:grid;gap:12px}
+.zb{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+.zb h3{margin:0 0 4px;font-size:16px;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.zb h3 small{font-weight:400;font-size:13px;color:var(--mute)}
+.sec .zb p{padding-left:0;margin:0}
+.zb p[lang]{color:var(--accent2)}
+.zb .zbsrc{margin-top:6px}
+.zbd{font-size:16px;margin:18px 0 6px}
+.zbt td,.zbt th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.zbt td:first-child{white-space:nowrap;font-size:14px;color:var(--mute)}
+.zbt td.zi{font-size:18px;font-weight:600;white-space:nowrap}
+.zbt .kind{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:3px;padding:0 5px;white-space:nowrap;color:var(--mute)}
+.zbt .k_diff .kind,.zbt .k_word .kind{border-color:var(--accent);color:var(--accent)}
+@media (max-width:640px){.zbt thead{display:none}.zbt tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}.zbt td{display:inline;border:0;padding:0 6px 0 0}.zbt td:last-child{display:block;padding-top:2px}}
+@media (max-width:640px){.cites td:nth-child(2),.cites td:nth-child(3),.zbt td:first-child,.zbt td.zi{white-space:normal}.cites .pg{margin-bottom:2px}}
