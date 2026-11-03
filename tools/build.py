@@ -60,7 +60,7 @@ ZH_UI = {
  "about_h1": "这个网站做什么", "about_site": "平台上的视频面向大众，这里面向想核对的人：一孔录讲过的每一句，原文、底本页码、注家原话、读音、我们的读法，都能在这里查到，讲错的地方在<a href=\"kanwu.html\">勘误页</a>公开记录。",
  "about_h2": "我们的承诺", "about_c1": "原文和注家的话都从古刻本原页取，页面写明底本。", "about_c2": "先讲注家怎么说，再讲我们怎么读；我们自己的看法明说是一孔录的读法，不冒充古人。", "about_c3": "核不到出处的话不放。发现错误请告诉我们，勘误公开。",
  "about_h3": "在哪里看", "about_where": "YouTube、B站、视频号「一孔录」，播客「一孔录」（Spotify、Apple 播客、小宇宙、喜马拉雅），公众号「一孔录」。",
- "foot_src": "引文均据古刻本原页，各页注明底本。发现错误请告诉我们，勘误公开。", "foot_where": "YouTube · B站 · 视频号 · 公众号 · 播客：搜「一孔录」",
+ "follow_h": "关注一孔录，轻松读经典", "follow_wx": "微信扫码关注公众号，回复“目录”看全部章节", "follow_yt": "在 YouTube 订阅", "foot_src": "引文均据古刻本原页，各页注明底本。发现错误请告诉我们，勘误公开。", "foot_where": "YouTube · B站 · 视频号 · 公众号 · 播客：搜「一孔录」",
  "lang_bar": "", "lang_go": "", "lang_close": "", "translated_note": "",
  "cite_fmt": "一孔录《论语·{book}》{c}“{title}”，{url}，{d} 版。",
  "hant_note": "繁體頁面由簡體自動轉換，用字按台灣習慣；原文以底本原頁為準。",
@@ -237,6 +237,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None):
 </div></header>
 {note}
 {body}
+<section class="follow"><div class="wrap"><h2>{L.t("follow_h")}</h2><div class="fl"><figure><img src="/assets/wechat-qr.jpg" alt="WeChat QR" width="129" height="129" loading="lazy"><figcaption>{L.t("follow_wx")}</figcaption></figure><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ {L.t("follow_yt")}</a></div></div></section>
 <footer><div class="wrap">
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
