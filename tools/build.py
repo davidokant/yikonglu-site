@@ -50,7 +50,7 @@ def quotes(s):
     """把“引文”包成 <q>，方便上色。"""
     return re.sub(r"“([^”]+)”", r'<span class="q">“\1”</span>', esc(s).replace("&quot;", '"'))
 
-HEAD_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">'
+HEAD_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">'
 
 CSSV = __import__("hashlib").md5(open(os.path.join(HERE, "style.css"), "rb").read()).hexdigest()[:8]
 
@@ -155,7 +155,7 @@ def main(zdir, outdir):
 {secs}
 <section class="video"><h2><i>看</i>看这一章的视频</h2>
 <div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{yt}" title="{esc(epname)}" allowfullscreen></iframe></div>
-<p class="vlinks">这一章在一孔录《{epname}》里讲：<a href="https://www.youtube.com/watch?v={yt}">YouTube</a><a href="https://www.bilibili.com/video/{ep['bilibili']}">B站</a></p></section>
+<p class="vlinks">这一章在一孔录《{epname}》里讲：<a href="https://www.youtube.com/watch?v={yt}">YouTube</a><a href="https://www.bilibili.com/video/{ep['bilibili']}">B站</a>（大陆请点 B站）</p></section>
 <p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>
 <nav class="pn">{card(prev_c,'上一章','prev')}{card(next_c,'下一章','next')}</nav>
 </article>
