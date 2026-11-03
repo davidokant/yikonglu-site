@@ -1,0 +1,25 @@
+# 一孔录 Yikonglu (Español)
+
+> Cada frase que Yikonglu ha leído se puede comprobar aquí. El texto original, las páginas de la edición de base, las palabras exactas de los comentaristas, la pronunciación, nuestra lectura y un registro público de erratas, ordenados por libro y capítulo. Vea los vídeos en las plataformas; venga aquí a comprobar.
+
+## 论语 Las Analectas de Confucio
+- [1.1 Aprender y practicarlo a su tiempo](https://yikonglu.com/es/lunyu/xue-er/1.html): Lo aprendido, sácalo una y otra vez para ejercerlo y hacerlo. Hoy: ver diez veces el tutorial es ver volar el pájaro de otro.
+- [1.2 La piedad filial y fraterna, raíz del ren](https://yikonglu.com/es/lunyu/xue-er/2.html): La piedad filial y fraterna es donde empieza la práctica del ren. Hoy: amable con desconocidos en internet, sin paciencia para los padres en casa, eso es empezar por el extremo equivocado.
+- [1.3 Palabras hábiles y rostro complaciente](https://yikonglu.com/es/lunyu/xue-er/3.html): Fíjese en si lo hace para que la cosa se haga, o solo para caer bien.
+- [1.4 Tres cosas que examino cada día](https://yikonglu.com/es/lunyu/xue-er/4.html): Cuando actúa por alguien, ¿se guardó algo? Hoy: un colega le pide que revise un plan; por pereza de señalar el fallo, dice «me parece bien».
+- [1.5 Gobernar un Estado de mil carros](https://yikonglu.com/es/lunyu/xue-er/5.html): Cheng Yi: “此言至浅……若推其极，尧舜之治亦不过此”: las palabras son sencillas, pero llevadas al límite, ni Yao ni Shun gobernaron de otro modo. Hoy: un tendero que cumple su palabra, no derrocha y no manda al personal a hacer recados personales en plena temporada.
+- [1.6 En casa, el joven es filial](https://yikonglu.com/es/lunyu/xue-er/6.html): Se trata de un orden, no de elegir uno y dejar el otro. Hoy: la persona capaz que nunca estudió no tiene con qué corregirse cuando se equivoca.
+- [1.7 Estimar la valía por encima de la belleza](https://yikonglu.com/es/lunyu/xue-er/7.html): Alguien que nunca estudió pero hace todo esto: Zixia dice que ha estudiado. Hoy: los mayores que solo tuvieron unos pocos años de escuela.
+- [1.8 Sin gravedad, el hombre noble no impone respeto](https://yikonglu.com/es/lunyu/xue-er/8.html): Zhu Xi toma las palabras tal como están y no les da rodeos. Hoy: la única persona dispuesta a decírselo a la cara se lo dice dos veces; si no cambia, la tercera calla.
+- [1.9 Cuidado del final, memoria de los lejanos](https://yikonglu.com/es/lunyu/xue-er/9.html): Poner el corazón donde es fácil descuidar y fácil olvidar. Hoy: conducir doscientos kilómetros para estar diez minutos ante una tumba.
+- [1.10 Siempre que el Maestro llega a un Estado](https://yikonglu.com/es/lunyu/xue-er/10.html): Venir a consultarle no es lo mismo que confiarle el cargo.
+- [1.11 En vida del padre, observar la intención del hijo](https://yikonglu.com/es/lunyu/xue-er/11.html): Lo que está mal, cámbielo ya; lo que puede esperar, déjelo esperar: es tiempo dado a lo que uno no se resigna a soltar. Hoy: la pequeña fábrica que dejó un padre.
+- [1.12 En el uso del rito, se aprecia la armonía](https://yikonglu.com/es/lunyu/xue-er/12.html): La armonía sola, sin nada que la regule, tampoco sirve. Hoy: el equipo donde todos dicen siempre «me parece bien».
+- [1.13 Una promesa cercana a lo justo](https://yikonglu.com/es/lunyu/xue-er/13.html): El trabajo se hace antes de decir que sí. Hoy: aceptar a medianoche, sin pensarlo, prestar el dinero.
+- [1.14 El hombre noble no busca saciarse](https://yikonglu.com/es/lunyu/xue-er/14.html): No es pasar hambre a propósito; es estar demasiado ocupado para que importe.
+- [1.15 Pobre sin adulación](https://yikonglu.com/es/lunyu/xue-er/15.html): Reconocer lo hecho y luego empujar un paso más. Hoy: pasar de inquilino a propietario sin rebajarse ni presumir; Confucio diría «pasa».
+- [1.16 No afligirse de que otros no me conozcan](https://yikonglu.com/es/lunyu/xue-er/16.html): El libro empieza con «no ser reconocido y no guardar rencor» y termina aquí; los dos extremos se encuentran.
+- [2.1 Gobernar por la virtud](https://yikonglu.com/es/lunyu/wei-zheng/1.html): No es que los decretos sobren, sino que quien gobierna debe haber obtenido antes algo él mismo. Hoy: el tutor de clase cuya palabra cuenta.
+- [2.2 Pensamientos sin desvío](https://yikonglu.com/es/lunyu/wei-zheng/2.html): El «sin desvío» está en el lector, no del todo en los poemas. Hoy: una novela sobre un villano todavía puede hacer que un lector se enmiende.
+- [2.3 Guiarlos con decretos](https://yikonglu.com/es/lunyu/wei-zheng/3.html): Castigos y decretos apartan del delito; virtud y rito mueven hacia el bien. Hoy: se estropea la cámara, y la basura vuelve.
+- [2.4 A los quince me propuse aprender](https://yikonglu.com/es/lunyu/wei-zheng/4.html): No un certificado que se expide solo a cierta edad, sino un camino de estudio.
