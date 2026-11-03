@@ -198,6 +198,14 @@ def main(zdir, outdir, kanwu=None):
             shutil.rmtree(p) if os.path.isdir(p) else os.remove(p)
     os.makedirs(outdir, exist_ok=True)
     shutil.copytree(os.path.join(HERE, "assets"), os.path.join(outdir, "assets"))
+    os.makedirs(ydir, exist_ok=True)
+    for png in sorted(glob.glob(os.path.join(GAO_DIR, "*", "p*.png"))):
+        jpg = os.path.join(ydir, os.path.basename(png)[:-4] + ".jpg")
+        if not os.path.exists(jpg):
+            from PIL import Image
+            im = Image.open(png).convert("RGB")
+            if im.width > 1400: im = im.resize((1400, int(im.height * 1400 / im.width)))
+            im.save(jpg, quality=78, optimize=True, progressive=True)
     if os.path.isdir(ydir):
         shutil.copytree(ydir, os.path.join(outdir, "yuanye"))
         pages_avail = {re.sub(r"\D", "", f).lstrip("0") for f in os.listdir(ydir) if f.endswith(".jpg")}
