@@ -1,0 +1,22 @@
+:root{--bg:#f7f3ea;--fg:#2b2620;--mute:#7a6f60;--accent:#9b2c1f;--line:#e2d9c6;--card:#fffdf8}
+@media (prefers-color-scheme:dark){:root{--bg:#1c1a17;--fg:#ece5d8;--mute:#a59a88;--accent:#e0806f;--line:#3a352d;--card:#25221d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.85 "Noto Serif SC","Source Han Serif SC","Songti SC",serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.top{display:flex;justify-content:space-between;align-items:center;max-width:760px;margin:0 auto;padding:18px 16px;border-bottom:1px solid var(--line)}
+.brand{font-size:22px;font-weight:700;color:var(--fg);letter-spacing:.1em}
+.top nav a{margin-left:18px}
+main{max-width:760px;margin:0 auto;padding:8px 16px 40px}
+h1{font-size:30px;line-height:1.4;margin:28px 0 12px}h1 small{display:block;font-size:15px;color:var(--mute);font-weight:400}
+h2{font-size:19px;margin:30px 0 6px;color:var(--accent)}
+.crumb{color:var(--mute);font-size:14px;margin-top:20px}
+.yuanwen{margin:16px 0 4px;padding:18px 22px;background:var(--card);border-left:4px solid var(--accent);font-size:21px;line-height:1.9}
+.src{color:var(--mute);font-size:14px;margin:0}
+.vid{position:relative;padding-top:56.25%;margin:12px 0}.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tags{color:var(--mute);font-size:14px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:30px;padding-top:14px;border-top:1px solid var(--line);font-size:15px}
+.toc{padding-left:0;list-style:none}.toc li{padding:10px 0;border-bottom:1px solid var(--line)}.toc li span{display:block;color:var(--mute);font-size:14px}
+.toc b{margin-right:8px;color:var(--mute);font-weight:400}
+.hero{padding:30px 0 10px}.hero h1{font-size:40px;letter-spacing:.15em;margin-bottom:0}.sub{color:var(--mute);margin-top:4px}
+.btn{display:inline-block;padding:10px 18px;border:1px solid var(--accent);border-radius:6px}
+footer{max-width:760px;margin:0 auto;padding:20px 16px 40px;color:var(--mute);font-size:13px;border-top:1px solid var(--line)}

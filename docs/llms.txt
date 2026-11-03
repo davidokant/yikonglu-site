@@ -1,0 +1,25 @@
+# 一孔录
+
+> 逐章讲读中国经典（现为《论语》）。每章含原文、朱熹《论语集注》里的关键字、诸家说法与一孔录的读法，附讲解视频。底本：朱熹《论语集注》（《四部备要》本）。引用请注明“一孔录”。
+
+## 论语
+- [1.1 学而时习之](https://yikonglu.com/lunyu/xue-er/1.html): 学了时时拿出来练、拿出来做；放到今天：教学视频看十遍是在看别的鸟飞。
+- [1.2 孝弟为仁之本](https://yikonglu.com/lunyu/xue-er/2.html): 孝弟是行仁的起点；放到今天：网上关爱陌生人、回家对父母没耐心，是从远处起了头。
+- [1.3 巧言令色](https://yikonglu.com/lunyu/xue-er/3.html): 看他这样做是为把事做成，还是只为让人喜欢。
+- [1.4 吾日三省吾身](https://yikonglu.com/lunyu/xue-er/4.html): 替人办事有没有留一手；放到今天：同事托看方案，懒得指出毛病回“挺好的”。
+- [1.5 道千乘之国](https://yikonglu.com/lunyu/xue-er/5.html): 程子“此言至浅……若推其极，尧舜之治亦不过此”；放到今天：小店老板兑现承诺、不乱花钱、不在忙时派私活。
+- [1.6 弟子入则孝](https://yikonglu.com/lunyu/xue-er/6.html): 说的是先后，不是取舍；放到今天：能干不读书的人，错了没处对照。
+- [1.7 贤贤易色](https://yikonglu.com/lunyu/xue-er/7.html): 没读书而做得到的人，子夏说他学过了；放到今天：没念几年书的长辈。
+- [1.8 君子不重则不威](https://yikonglu.com/lunyu/xue-er/8.html): 朱熹照字面讲，不替它绕弯；放到今天：肯当面指错的那个人说两回你不改，第三回就不说了。
+- [1.9 慎终追远](https://yikonglu.com/lunyu/xue-er/9.html): 在容易忽略、容易忘的地方用心；放到今天：开两百公里去墓前站十分钟。
+- [1.10 夫子至于是邦](https://yikonglu.com/lunyu/xue-er/10.html): 上门来问不等于把事交给他。
+- [1.11 父在观其志](https://yikonglu.com/lunyu/xue-er/11.html): 错的当下改，能缓的缓一缓，是给不忍留的时间；放到今天：父亲留下的小厂。
+- [1.12 礼之用，和为贵](https://yikonglu.com/lunyu/xue-er/12.html): 光讲和、不以礼节之，也行不通；放到今天：只说“挺好的”的小组。
+- [1.13 信近于义](https://yikonglu.com/lunyu/xue-er/13.html): 功夫在答应之前；放到今天：半夜一口答应借钱。
+- [1.14 君子食无求饱](https://yikonglu.com/lunyu/xue-er/14.html): 不是故意饿着，是顾不上。
+- [1.15 贫而无谄](https://yikonglu.com/lunyu/xue-er/15.html): 已做到的认下，再往前推一步；放到今天：从租房到买房不低头不摆阔，孔子会说“可也”。
+- [1.16 不患人之不己知](https://yikonglu.com/lunyu/xue-er/16.html): 篇首“人不知而不愠”与篇末首尾相合。
+- [2.1 为政以德](https://yikonglu.com/lunyu/wei-zheng/1.html): 不是不要政令，是治理者自己先有所得；放到今天：说话算数的班主任。
+- [2.2 思无邪](https://yikonglu.com/lunyu/wei-zheng/2.html): “无邪”在读者，不全在诗；放到今天：写坏人的小说也能让人归正。
+- [2.3 道之以政](https://yikonglu.com/lunyu/wei-zheng/3.html): 刑政让人远罪，德礼让人迁善；放到今天：摄像头坏了垃圾又回来。
+- [2.4 吾十有五而志于学](https://yikonglu.com/lunyu/wei-zheng/4.html): 不是到岁数自动发的证书，是一条学的路。
