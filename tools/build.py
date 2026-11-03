@@ -386,6 +386,7 @@ def build_lang(L, D, write):
             return f'<a class="pncard {cls}" href="{P}{rel_of(cc)}"><small>{lab}</small><b>{cc}　{esc(title_of(cc))}</b></a>'
         side = "".join(f'<li{" class=cur" if cc == c else ""}><a href="{P}{rel_of(cc)}"><em>{cc.split(".")[1]}</em>{esc(title_of(cc))}</a></li>' for cc in by_pian[pnum])
         yt = ep["youtube"]; g = gao.get(c, {"cites": [], "reads": []})
+        st = ep.get("starts", {}).get(c) or D["starts"].get(c)  # 本章在视频里从第几秒讲起（发布线程补）
         def pg(nums):
             return " ".join(f'<a class="pg" href="/yuanye/p{int(x):03d}.jpg" target="_blank">{L.t("pg", n=x)}</a>' if x in pages_avail else f'<span class="pg">{L.t("pg", n=x)}</span>' for x in nums)
         extra = ""
@@ -441,8 +442,8 @@ def build_lang(L, D, write):
 {secs}
 {extra}
 <section class="video"><h2><i>看</i>{L.t("video")}</h2>
-<div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{yt}" title="{esc(epname)}" allowfullscreen></iframe></div>
-<p class="vlinks">{L.t("video_in", ep=epname)}<a href="https://www.youtube.com/watch?v={yt}">YouTube</a><a href="https://www.bilibili.com/video/{ep['bilibili']}">Bilibili</a>{L.t("cn_note")}</p></section>
+<div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{yt}{f'?start={st}' if st else ''}" title="{esc(epname)}" allowfullscreen></iframe></div>
+<p class="vlinks">{L.t("video_in", ep=epname)}<a href="https://www.youtube.com/watch?v={yt}{f'&amp;t={st}s' if st else ''}">YouTube</a><a href="https://www.bilibili.com/video/{ep['bilibili']}">Bilibili</a>{L.t("cn_note")}</p></section>
 <p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>
 <nav class="pn">{card(prev_c, L.t("prev"), 'prev')}{card(next_c, L.t("next"), 'next')}</nav>
 </article>
@@ -457,6 +458,8 @@ def build_lang(L, D, write):
               "video": {"@type": "VideoObject", "name": f"一孔录《{epname}》", "description": f"一孔录讲读《论语·{pname}》，含本章。",
                         "embedUrl": f"https://www.youtube.com/embed/{yt}", "url": f"https://www.youtube.com/watch?v={yt}",
                         "thumbnailUrl": f"https://i.ytimg.com/vi/{yt}/hqdefault.jpg"}}
+        if st:
+            ld["video"]["hasPart"] = [{"@type": "Clip", "name": f"{c} {title_of(c)}", "startOffset": int(st), "url": f"https://www.youtube.com/watch?v={yt}&t={int(st)}s"}]
         ttl = f"{name}｜原文、白话与读法｜一孔录" if L.code == "zh-Hans" else f"{name} | 一孔录 Yikonglu"
         first = D["first"].get(c, today)
         bc = {"@type": "BreadcrumbList", "itemListElement": [
@@ -632,7 +635,9 @@ def main(zdir, outdir, kanwu=None):
         for l in open(f, encoding="utf-8"):
             m = re.match(r"^- (\d+\.\d+)[：:]\s*(.+)$", l.strip())
             if m: baihua[m.group(1)] = m.group(2).strip()
-    D = dict(first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
+    stp = os.path.join(GAO_DIR, "_时间", "章节起点.json")
+    starts = json.load(open(stp, encoding="utf-8")) if os.path.exists(stp) else {}
+    D = dict(starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
 
     def writer(prefix, post=None):
         def write(rel, text):
