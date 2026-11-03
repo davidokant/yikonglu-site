@@ -164,3 +164,25 @@ footer .flinks{font-size:14px}
 .zitab td.zi{font-size:22px;font-weight:600;width:3em}
 .zitab td:nth-child(2){white-space:nowrap;width:5em}
 .tw table.zitab{min-width:0}
+/* 11-03 第三批 */
+.cp{border:1px solid var(--line);background:transparent;color:var(--mute);border-radius:4px;font:inherit;font-size:12px;padding:0 6px;margin-left:6px;cursor:pointer}
+.cp:hover{border-color:var(--accent);color:var(--accent)}
+a.bb{font-size:12px;margin-left:8px}
+.zb:target,.cites:target{outline:2px solid var(--gold);outline-offset:4px}
+.jubar .hj{flex-basis:100%;font-size:13px;border-top:1px solid var(--line);margin-top:4px;padding-top:4px}
+.jubar .hj b{font-size:12px;color:var(--mute);font-weight:600}
+.jubar .hj ul{margin:2px 0 0;padding-left:16px}.jubar .hj li{margin:1px 0}
+.jubar .hjd i{font-style:normal;color:var(--mute);font-size:12px}
+.bbcard{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 18px;margin:16px 0}
+.bbcard h2{margin:0 0 6px;font-size:18px}
+.bbcard dl{display:grid;grid-template-columns:6em 1fr;gap:4px 12px;margin:0;font-size:15px}
+.bbcard dt{color:var(--mute)}.bbcard dd{margin:0}
+.bbcard:target{outline:2px solid var(--gold)}
+.ztcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:12px}
+.ztcard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center}
+.ztcard b{display:block;font-size:28px;color:var(--fg)}.ztcard small{color:var(--mute)}
+.ztl{list-style:none;padding:0}.ztl li{border-bottom:1px solid var(--line);padding:10px 0}
+.ztl li>a{display:flex;gap:10px;align-items:baseline;color:var(--fg)}.ztl em{font-style:normal;color:var(--accent);font-size:14px}
+.ztl .zy{margin:4px 0 0;font-size:17px}.ztl .zd{margin:2px 0 0;color:var(--mute);font-size:14px}
+.ztl mark{background:color-mix(in srgb,var(--gold) 30%,transparent);color:inherit}
+@media (max-width:640px){.bbcard dl{grid-template-columns:1fr}.bbcard dt{margin-top:6px}}
