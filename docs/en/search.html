@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search｜一孔录</title>
+<meta name="description" content="Source text · commentators&#x27; words · readings">
+<link rel="canonical" href="https://yikonglu.com/en/search.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://yikonglu.com/search.html"><link rel="alternate" hreflang="zh-Hant" href="https://yikonglu.com/zh-hant/search.html"><link rel="alternate" hreflang="en" href="https://yikonglu.com/en/search.html"><link rel="alternate" hreflang="x-default" href="https://yikonglu.com/search.html">
+<link rel="icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/seal-180.png">
+<meta property="og:title" content="Search｜一孔录">
+<meta property="og:description" content="Source text · commentators&#x27; words · readings">
+<meta property="og:url" content="https://yikonglu.com/en/search.html">
+<meta property="og:site_name" content="一孔录">
+<meta property="og:image" content="https://yikonglu.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/style.css?v=d47acd73">
+
+</head>
+<body class="">
+<header class="top"><div class="wrap">
+<a href="/en/" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>
+<nav><a href="/en/lunyu/">Books</a><a href="/en/search.html">Search</a><a href="/en/kanwu.html">Errata</a><a href="/en/about.html">About</a>
+<details class="lang"><summary>English</summary><div><a href="https://yikonglu.com/search.html" data-lang="zh-Hans">简体中文</a><a href="https://yikonglu.com/zh-hant/search.html" data-lang="zh-Hant">繁體中文</a><a href="https://yikonglu.com/en/search.html" data-lang="en" class=cur>English</a></div></details></nav>
+</div></header>
+<p class="trnote wrap">English version: the interface and Yikonglu's notes are translated; quoted commentary stays in Chinese. The Chinese page is authoritative.</p>
+<div class="chhead"><div class="wrap"><h1><span class="no">Source text · commentators' words · readings</span>Search</h1></div></div>
+<main class="wrap narrow"><form class="sbox" onsubmit="go();return false"><input id="q" placeholder="Type a few characters, e.g. 鸟数飞 or 孝弟"><button>Search</button></form><div id="res"></div></main>
+<script>
+let D=null;const q=document.getElementById('q'),R=document.getElementById('res');
+const E=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function cut(s,k){const i=s.indexOf(k);if(i<0)return E(s.slice(0,60));const a=Math.max(0,i-24);return(a?'…':'')+E(s.slice(a,i))+'<mark>'+E(k)+'</mark>'+E(s.slice(i+k.length,i+k.length+36))+'…'}
+async function go(){const k=q.value.trim();if(!k){R.innerHTML='';return}
+if(!D){try{D=await (await fetch('/en/search.json')).json()}catch(e){R.textContent='…';return}}
+history.replaceState(null,'','?q='+encodeURIComponent(k));
+const hit=D.filter(d=>(d.y+d.t+d.x).includes(k));
+R.innerHTML=hit.length?'<p class="lead">'+"N chapters found".replace('N',hit.length)+'</p><ol class="toc">'+hit.map(d=>'<li><a href="'+d.u+'"><em>'+d.c+'</em><b>'+E(d.t)+'</b><span>'+cut(d.y.includes(k)?d.y:d.x,k)+'</span></a></li>').join('')+'</ol>':"<p class=empty>Nothing found. Only chapters already read are indexed.</p>"}
+const p=new URLSearchParams(location.search).get('q');if(p){q.value=p;go()}
+</script>
+<footer><div class="wrap">
+<div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>Reading the classics word by word</span></div></div>
+<p>Citations follow woodblock editions, named on each page. Tell us about any error; corrections are public.</p>
+<p class="where">YouTube · Bilibili · WeChat · Podcast: search “一孔录”</p>
+<p class="langs"><a href="https://yikonglu.com/search.html" data-lang="zh-Hans">简体中文</a><a href="https://yikonglu.com/zh-hant/search.html" data-lang="zh-Hant">繁體中文</a><a href="https://yikonglu.com/en/search.html" data-lang="en" class=cur>English</a></p>
+</div></footer>
+<script>
+(function(){var P=document.documentElement.lang,K='yk_lang';try{var s=localStorage.getItem(K)}catch(e){var s=null}
+document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(K,a.dataset.lang)}catch(e){}})});
+if(s)return;var n=(navigator.language||'').toLowerCase(),w=null;
+if(n.startsWith('en'))w='en';else if(n.startsWith('zh')&&/tw|hk|mo|hant/.test(n))w='zh-Hant';else if(n.startsWith('zh'))w='zh-Hans';
+if(!w||w===P)return;var a=document.querySelector('link[hreflang="'+w+'"]');if(!a)return;
+var t={en:['This page is available in English.','Switch to English'],'zh-Hant':['本頁有繁體中文版。','切換到繁體'],'zh-Hans':['本页有简体中文版。','切换到简体']}[w];
+var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>'+t[0]+'</span><a href="'+a.href+'">'+t[1]+' →</a><button aria-label="close">×</button>';
+b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}};b.querySelector('button').onclick=function(){try{localStorage.setItem(K,P)}catch(e){}b.remove()};
+document.body.prepend(b)})();
+</script>
+</body>
+</html>
