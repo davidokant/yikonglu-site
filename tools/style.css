@@ -205,25 +205,15 @@ a.bb{font-size:12px;margin-left:8px}
 .gsnote{margin:0 0 6px;font-size:13px;color:var(--accent2);letter-spacing:.05em}
 .top nav a.gsnav{color:var(--accent2)}
 .gsmain .lead{font-size:17px}
-.gscards{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
-.gscard{display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 10px;color:var(--fg)}
-.gscard:hover{text-decoration:none;border-color:var(--accent2)}
-.gscard img,.gsav{width:84px;height:84px;border-radius:50%;object-fit:cover;background:color-mix(in srgb,var(--accent2) 18%,var(--paper))}
-.gsav{display:flex;align-items:center;justify-content:center;font-size:34px;color:var(--accent2)}
-.gscard b{margin-top:8px;font-size:18px}.gscard small{color:var(--mute);font-size:13px;line-height:1.5}
-.gsperson{display:flex;gap:22px;align-items:flex-start;margin:8px 0 18px}.gsimg{width:220px;max-width:40%;height:auto;flex:none}
 .gsroute a,.gsroutes a{color:var(--accent2)}.gsroutes{padding-left:1.2em}
-.gsvoice{border-left:3px solid var(--accent2);padding-left:14px;font-style:normal}.gsvoice span{display:block;color:var(--mute);font-size:14px}
 .gsnot{display:flex;gap:10px;color:var(--mute)}.gsnot em{font-style:normal}
 .gsmap{position:relative;margin:12px 0}.gsmap img{width:100%;height:auto;display:block;border-radius:8px}
-.gsmap .spot{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;border:2px solid #fff;background:var(--accent2);box-shadow:0 0 0 1px rgba(0,0,0,.25)}
 .gsmap .spot.now{background:var(--accent);animation:gsp 1.6s infinite}
 @keyframes gsp{50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--accent) 25%,transparent)}}
 .gstab{width:100%;border-collapse:collapse;font-size:15px}.gstab th,.gstab td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
 .gstab tr.now{background:color-mix(in srgb,var(--accent) 10%,transparent)}.gstab tr:target{outline:2px solid var(--accent2)}
 .gsback{margin:14px 0;padding:8px 12px;border-left:3px solid var(--accent2);background:color-mix(in srgb,var(--accent2) 8%,transparent);font-size:14px;color:var(--mute)}
 .gsback a{color:var(--accent2)}
-@media (max-width:700px){.gsperson{flex-direction:column}.gsimg{max-width:70%}}
 .fcopy{margin:8px 0 0;font-size:13px;color:var(--mute)}
 /* 论语人物 */
 .rwcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
@@ -263,3 +253,32 @@ aside li.wj a{color:var(--mute)}
 .yxscore{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:12px;color:var(--accent2)}.yxscore b{font-size:17px;color:var(--fg)}.yxscore strong{font-size:34px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--accent)}.yxscore small{color:var(--mute);font-size:13px}
 .yxfind p{margin:10px 0 0;font-size:13px;color:var(--mute);line-height:1.7}.yxfind a.more{color:var(--accent);font-size:14px}
 .pg-home .yxl{margin-top:36px}
+
+/* 故事栏（演义层）：深色页眉、立绘、字段表、地图卡 */
+.gshero{background:#17211f;color:#e1e7df;border-bottom:3px solid var(--gs,#2f5d62)}.gshero .wrap{padding-top:26px;padding-bottom:26px}
+.gshero .gsnote{color:#a4cdb2}.gshero .crumb{margin:0 0 6px}.gshero .crumb a{color:#a4cdb2}.gshero .ov{display:block;font-size:14px;letter-spacing:.08em;color:#a7b4aa;margin-bottom:4px}
+.gshero h1{margin:0;font-size:38px;line-height:1.2;color:#fff}.gshero.index h1{font-size:44px}
+.gshero.person .gsp{display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:end}.gsfig{margin:-26px 0 -26px;align-self:stretch;display:flex;align-items:flex-end}.gsfig img{width:100%;height:auto;max-height:460px;object-fit:contain;object-position:bottom;display:block;filter:drop-shadow(0 10px 18px rgba(0,0,0,.45))}
+.gshero.person .gshtext{padding:8px 0 4px}
+.gsfields{margin:14px 0 0;display:grid;gap:8px 0;font-size:15px}.gsfields div{display:grid;grid-template-columns:72px 1fr;gap:0 12px;line-height:1.7}.gsfields dt{color:#a7b4aa}.gsfields dd{margin:0;color:#e1e7df}.gsfields p{margin:0;line-height:1.7}
+.gsbtn{display:inline-block;margin-top:16px;padding:7px 14px;border:1px solid #a4cdb2;border-radius:999px;color:#a4cdb2;font-size:14px}.gsbtn:hover{background:#a4cdb2;color:#17211f;text-decoration:none}
+.gsmain .ph small{margin-left:10px;font-size:14px;font-weight:400;color:var(--mute)}.gsep{display:block;margin-top:4px;font-size:12px;color:var(--mute)}
+.gscards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.gscard{display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 10px 14px;color:var(--fg)}
+.gscard:hover{text-decoration:none;border-color:var(--accent2);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.gscard img,.gsav{width:110px;height:110px;border-radius:50%;object-fit:cover;background:radial-gradient(circle at 50% 35%,#e8efe9,#c9d7cc)}
+.gsav{display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--accent2)}
+.gscard b{margin-top:10px;font-size:19px}.gscard small{color:var(--mute);font-size:13px;line-height:1.5;margin-top:2px}.gscard em{font-style:normal;color:var(--accent2);font-size:12px;margin-top:8px}
+.gsroutes{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.gsroute{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--fg)}.gsroute:hover{text-decoration:none;border-color:var(--accent2)}
+.gsroute img,.gsroute .gsav{width:52px;height:52px;flex:none;font-size:22px}.gsroute b{display:block;font-size:15px}.gsroute b span{color:var(--accent2);margin-left:6px}.gsroute p{margin:4px 0 0;font-size:13px;color:var(--mute);line-height:1.6}
+.gsvoice{display:flex;gap:14px;align-items:flex-start;border-left:3px solid var(--accent2);padding-left:14px;margin:4px 0 14px}.gsvoice img,.gsvoice .gsav{width:56px;height:56px;flex:none;font-size:24px}.gsvoice p{margin:0;font-size:17px}.gsvoice span{display:block;color:var(--mute);font-size:14px}
+.gsteaser{position:relative;display:block;border-radius:12px;overflow:hidden;color:#fff;background:#17211f}.gsteaser img{width:100%;height:220px;object-fit:cover;opacity:.85;display:block}
+.gsteaser div{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;background:linear-gradient(transparent,rgba(23,33,31,.92))}.gsteaser .ov{display:block;font-size:13px;letter-spacing:.08em;color:#a4cdb2}.gsteaser b{display:block;font-size:26px}.gsteaser div span:last-child{font-size:14px;color:#e1e7df}.gsteaser:hover{text-decoration:none}.gsteaser:hover img{opacity:1}
+.gsmain .lead.narrow{max-width:760px;margin-left:auto;margin-right:auto}
+.zcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:18px}
+.zcard{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--fg)}.zcard:hover{text-decoration:none;border-color:var(--accent2)}.zcard:target{outline:2px solid var(--accent2)}
+.zcard .ov{font-size:12px;letter-spacing:.08em;color:var(--mute)}.zcard b{font-size:20px;margin:4px 0 6px}.zcard small{font-size:13px;color:var(--mute);line-height:1.6;flex:1}.zcard em{font-style:normal;font-size:13px;color:var(--accent2);margin-top:10px}.zcard.now{border-color:var(--accent)}.zcard.now em{color:var(--accent);font-weight:700}
+@media (max-width:700px){.gshero.person .gsp{grid-template-columns:1fr}.gsfig{margin:0 auto -26px;max-width:70%}.gsfig img{max-height:360px}.gshero h1,.gshero.index h1{font-size:30px}.gsmap .spot span{display:none}.gsmap .spot{position:absolute;width:8%;height:4.2%;transform:translate(-50%,-50%);border-radius:999px;border:2px solid transparent;color:transparent;font-size:0;overflow:hidden}
+.gsmap .spot:hover,.gsmap .spot:focus{border-color:#fff;box-shadow:0 0 0 3px rgba(23,33,31,.6);outline:none}.gsmap .spot.now{border-color:rgba(255,255,255,.7);animation:gsp 1.6s infinite}
+.rwmeta+.ph,.rwcards+.ph{margin-top:26px}h2.ph small{margin-left:10px;font-size:14px;font-weight:400;color:var(--mute)}

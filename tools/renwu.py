@@ -62,7 +62,7 @@ def build(L, D, R, write, page, P, rel_of, title_of, DOMAIN):
     U = lambda rel: f"{DOMAIN}/{L.prefix}{rel}"
     head = lambda h, sub, crumb="": f'<div class="chhead"><div class="wrap">{crumb}<h1><span class="no">{esc(sub)}</span>{esc(h)}</h1></div></div>'
     crumb = f'<p class="crumb"><a href="{P}renwu/">《论语》人物</a></p>'
-    cards = ""
+    cards = ""; card_of = {}
     for p in sorted(R, key=lambda p: -len(p["apps"])):
         n_pub = sum(1 for a in p["apps"] if a[0] in pub)
         items = ""
@@ -82,8 +82,18 @@ def build(L, D, R, write, page, P, rel_of, title_of, DOMAIN):
               "description": p["role"] or None, "url": U(rel), "subjectOf": {"@type": "Book", "name": "论语"}}
         ld = {k: v for k, v in ld.items() if v}
         write(rel, page(L, f"{p['name']}：《论语》里的出场各章｜一孔录", f"{p['name']}（{p['alias']}）{p['role']}，《论语》出场 {len(p['apps'])} 章。"[:110], rel, body, ld)); urls.append(U(rel))
-        cards += f'<a class="rwcard" href="{P}{rel}"><b>{esc(p["name"])}</b><small>{esc(p["alias"])}</small><span>{len(p["apps"])} 章</span></a>'
+        card_of[p["id"]] = f'<a class="rwcard" href="{P}{rel}"><b>{esc(p["name"])}</b><small>{esc(p["alias"])}</small><span>{len(p["apps"])} 章</span></a>'
+    def grp(p):
+        rel, role, n = p["rel"], p["role"], p["name"]
+        if rel in ("本人", "父", "子", "女", "侄女", "兄") or (n.startswith("孔子之") and not n.endswith("友")) or n.startswith("孔子兄"): return 0
+        if "弟子" in role or "弟子" in rel: return 1
+        if "历史人物" in rel or "引述" in rel or "历史人物" in role: return 3
+        return 2
+    GN = ["孔子与家人", "弟子", "当时的人：国君、大夫与问者", "书里提到的古人"]
+    groups = {}
+    for p in sorted(R, key=lambda p: -len(p["apps"])): groups.setdefault(grp(p), []).append(p)
+    cards = "".join(f'<h2 class="ph">{GN[g]}<small>{len(groups[g])} 人</small></h2><div class="rwcards">' + "".join(card_of[p["id"]] for p in groups[g]) + "</div>" for g in sorted(groups))
     body = head("《论语》人物", "书里出场的真实人物，每人一页列出全部出场章") + f'''
-<main class="wrap narrow"><p class="lead">孔子、弟子、国君、大夫与隐者，按出场章数排列。点进去看他在哪几章出现、说了什么、做了什么。</p><div class="rwcards">{cards}</div></main>'''
+<main class="wrap narrow"><p class="lead">孔子、弟子、国君、大夫与隐者，分四组，组内按出场章数排列。点进去看他在哪几章出现、说了什么、做了什么。</p>{cards}</main>'''
     write("renwu/index.html", page(L, "《论语》人物：出场各章索引｜一孔录", "《论语》里出场的真实人物，每人一页，列出全部出场章，链到原文与注家原页。", "renwu/", body)); urls.append(U("renwu/"))
     return urls
