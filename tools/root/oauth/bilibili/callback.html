@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-Hans"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>B站授权回调｜一孔录</title>
+<style>
+body{margin:0;background:#f6f1e6;color:#2a241d;font:16px/1.7 "Noto Serif SC","Songti SC",serif}
+main{max-width:640px;margin:40px auto;padding:0 16px}
+h1{font-size:22px;margin:0 0 8px}p{color:#7b6f5f;margin:6px 0 18px}
+.row{background:#fffcf5;border:1px solid #e4d9c3;border-radius:10px;padding:14px 16px;margin:12px 0}
+.row b{display:block;font-size:13px;color:#7b6f5f;font-weight:400}
+code{display:block;word-break:break-all;font:15px/1.6 ui-monospace,Menlo,Consolas,monospace;margin:4px 0 10px}
+button{border:0;border-radius:999px;background:#a3301f;color:#fff;padding:6px 18px;font-size:14px;cursor:pointer}
+.err{color:#a3301f}
+@media (prefers-color-scheme:dark){body{background:#17150f;color:#eee6d6}.row{background:#211e17;border-color:#353024}p,.row b{color:#a99d89}}
+</style></head>
+<body><main>
+<h1>B站授权回调</h1>
+<p>把下面的 code 复制，粘给本机脚本换取令牌。本页只在你的浏览器里读地址栏，不向任何地方发送数据。</p>
+<div id="out"></div>
+</main>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search),out=document.getElementById('out');
+  function row(k){
+    var v=q.get(k);if(v===null)return '';
+    var d=document.createElement('div');d.className='row';
+    var b=document.createElement('b');b.textContent=k;var c=document.createElement('code');c.textContent=v;
+    var bt=document.createElement('button');bt.textContent='复制';
+    bt.onclick=function(){(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(function(){bt.textContent='已复制'},function(){var r=document.createRange();r.selectNodeContents(c);var s=getSelection();s.removeAllRanges();s.addRange(r);bt.textContent='已选中，请按 Ctrl+C'})};
+    d.appendChild(b);d.appendChild(c);d.appendChild(bt);out.appendChild(d);return v;
+  }
+  var code=row('code');row('state');
+  if(!code){var e=document.createElement('p');e.className='err';e.textContent='地址里没有 code。请回到 B站授权页重新授权一次。';out.appendChild(e);}
+})();
+</script>
+</body></html>
