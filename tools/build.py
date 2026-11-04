@@ -343,7 +343,9 @@ def parse_gao(path, yw):
         if not c or "待核" in page or "待核" in text: continue
         para = bool(re.search(r"（[^（）]*(转述)[^（）]*）", text)) and not re.search(r"只原样念|前半转述|前后转述", text)
         text = INTERNAL.sub("", text).strip("；; ")
-        if src == "经文" or not text: continue
+        if src == "经文":  # 经文所在页也算本章原页（跨页章如 4.18 起于前一页）
+            out.setdefault(c, {"cites": [], "reads": []}).setdefault("qw_pages", []).extend(re.findall(r"PDF0*(\d+)", page)); continue
+        if not text: continue
         pages = re.findall(r"PDF0*(\d+)", page)
         other = ""
         if not pages:
@@ -622,7 +624,7 @@ def build_lang(L, D, write):
         if g["reads"]:
             extra += (f'<section class="sec reads"><h2><i>音</i>{L.t("reads")}</h2><table><thead><tr><th>{L.t("th_zi")}</th><th>{L.t("th_pos")}</th><th>{L.t("th_du")}</th></tr></thead><tbody>'
                       + "".join(f'<tr><td class="zi">{esc(x["zi"])}</td><td>{esc(x["pos"])}</td><td>{esc(x["du"])}</td></tr>' for x in g["reads"]) + "</tbody></table></section>")
-        allpages = sorted({x for r in g["cites"] for x in r["pages"]}, key=int)
+        allpages = sorted({x for r in g["cites"] for x in r["pages"]} | set(g.get("qw_pages", [])), key=int)
         imgs = "".join(f'<a href="/yuanye/p{int(x):03d}.jpg" target="_blank"><img loading="lazy" src="/yuanye/p{int(x):03d}.jpg" alt="{L.t("pg", n=x)}"><span>{L.t("pg", n=x)}</span></a>' for x in allpages if x in pages_avail)
         if imgs: extra += f'<section class="sec shots"><h2><i>页</i>{L.t("shots")}</h2><div class="pages">{imgs}</div></section>'
         mine = [r for r in kw if r[2] == c]
@@ -994,7 +996,7 @@ def main(zdir, outdir, kanwu=None):
     gao = {}
     for f in sorted(glob.glob(os.path.join(GAO_DIR, "*", "*稿*.md"))):
         for c, v in parse_gao(f, yw).items():
-            gao.setdefault(c, {"cites": [], "reads": []}); gao[c]["cites"] += v["cites"]; gao[c]["reads"] += v["reads"]
+            gao.setdefault(c, {"cites": [], "reads": []}); gao[c]["cites"] += v["cites"]; gao[c]["reads"] += v["reads"]; gao[c].setdefault("qw_pages", []).extend(v.get("qw_pages", []))
     ch2ep = {c: (name, e) for name, e in eps.items() for c in e["chapters"]}
     key = lambda c: tuple(map(int, c.split(".")))
     pub = [c for c in sorted(ch2ep, key=key) if c in notes and c in yw]
