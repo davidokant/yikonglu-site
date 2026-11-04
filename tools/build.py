@@ -191,10 +191,16 @@ def parse_zhuben(d):
             cmp_ = pageref.sub("", r["与朱注比较"]).strip().rstrip("；")
             m = re.match(r"^([^：]{1,8})：(.*)$", cmp_)
             head, body = (m.group(1), m.group(2)) if m else ("", cmp_)
-            kind = {"同解": "k_same", "异读": "k_diff", "补充阐释": "k_add", "补充": "k_add", "有轻重差别": "k_shade"}.get(head)
+            META = {"同解": "k_same", "同旨": "k_same", "同解为主": "k_same", "主旨相近": "k_same", "同一方向": "k_same", "同属至、正之解": "k_same",
+                    "异读": "k_diff", "异读（人物）": "k_diff", "名物异读": "k_diff", "数量差异": "k_diff",
+                    "补充阐释": "k_add", "补充": "k_add", "同解而有扩展": "k_add",
+                    "有轻重差别": "k_shade", "主取不同": "k_shade", "解释重心不同": "k_shade", "解法有别": "k_shade", "同旨而申说不同": "k_shade", "字义范围不同": "k_word0"}
+            kind = META.get(head)
+            if kind == "k_word0": kind, head_is_word = "k_word", False
+            else: head_is_word = bool(head and not kind)
             if head and not kind: kind = "k_word"
             if not head: kind = "k_same" if "同" in cmp_[:4] else "k_diff"
-            out.setdefault(r["章号"], {})[key] = {"text": r["译文一句"].strip(), "key": "" if kind != "k_word" else head, "kind": kind, "say": body if head else cmp_, "sure": {"定": "s_ding", "较稳": "s_wen", "存疑": "s_yi"}.get((r.get("把握") or "").strip(), "")}
+            out.setdefault(r["章号"], {})[key] = {"text": r["译文一句"].strip(), "key": head if head_is_word else "", "kind": kind, "say": body if head else cmp_, "sure": {"定": "s_ding", "较稳": "s_wen", "存疑": "s_yi"}.get((r.get("把握") or "").strip(), "")}
     return out
 
 def esc(s): return html.escape(s, quote=True)
@@ -209,6 +215,7 @@ def clean(text):
     text = re.sub(r"（[^（）]*(待核|书里)[^（）]*）", "", text)
     parts = [p for p in re.split(r"(?<=[，；])", text) if "待核" not in p]
     text = "".join(parts).strip()
+    text = re.sub(r"^（标题问）", "", text)
     text = text.replace("照今：", "放到今天：").replace("片里", "这里")
     text = re.sub(r"【[^】]*】", "", text)
     return text.rstrip("；，").strip()
