@@ -98,7 +98,7 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
     # 人物页
     cards = ""
     for p in G["ppl"]:
-        mine = [a for a in G["appear"] if p["id"] in a["who"]]
+        mine = sorted((a for a in G["appear"] if p["id"] in a["who"]), key=lambda a: tuple(int(x) for x in a["c"].split(".")))
         items = "".join(f'<li>{cl(a["c"], ju_anchor(yw[a["c"]], a["ju"], split_ju))}' + (f'<p class="zy" lang="zh-Hans">{esc(a["ju"])}</p>' if a["ju"] else "") + "</li>" for a in mine)
         img = f'<img class="gsimg" src="{p["_立绘"]}" alt="{esc(p["名"])}立绘" loading="lazy">' if p.get("_立绘") else ""
         rt = G["routes"].get(p["id"])
