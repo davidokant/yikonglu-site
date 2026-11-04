@@ -420,7 +420,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <p class="where">{L.t("foot_where")}</p>
 <div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}lunyu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
 <p class="langs">{sw}</p>
-<p class="fcopy">© 2026 {L.t("foot_org")} · <a href="{P}zhichi.html">{L.t("zc_link")}</a></p>
+<p class="fcopy">© 2026 {L.t("foot_org")}</p>
 </div></footer>
 {LANG_JS}
 </body>
