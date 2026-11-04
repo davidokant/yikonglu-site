@@ -186,3 +186,5 @@ a.bb{font-size:12px;margin-left:8px}
 .ztl .zy{margin:4px 0 0;font-size:17px}.ztl .zd{margin:2px 0 0;color:var(--mute);font-size:14px}
 .ztl mark{background:color-mix(in srgb,var(--gold) 30%,transparent);color:inherit}
 @media (max-width:640px){.bbcard dl{grid-template-columns:1fr}.bbcard dt{margin-top:6px}}
+.usdt code{font-size:14px;word-break:break-all;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:4px 8px;display:inline-block}
+.cp2{margin-left:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:4px;font:inherit;font-size:13px;cursor:pointer}
