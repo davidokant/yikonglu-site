@@ -225,3 +225,9 @@ a.bb{font-size:12px;margin-left:8px}
 .gsback a{color:var(--accent2)}
 @media (max-width:700px){.gsperson{flex-direction:column}.gsimg{max-width:70%}}
 .fcopy{margin:8px 0 0;font-size:13px;color:var(--mute)}
+/* 论语人物 */
+.rwcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.rwcard{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 12px;color:var(--fg)}
+.rwcard:hover{text-decoration:none;border-color:var(--accent)}.rwcard b{font-size:20px}.rwcard small{color:var(--mute);font-size:13px}.rwcard span{color:var(--accent);font-size:13px}
+.rwmeta{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:8px 0 16px}.rwmeta dt{color:var(--mute)}.rwmeta dd{margin:0}
+.rwchips{margin:10px 0;font-size:14px;color:var(--mute)}.rwchips a{display:inline-block;margin:0 6px 4px 0;padding:0 10px;border:1px solid var(--line);border-radius:999px}
