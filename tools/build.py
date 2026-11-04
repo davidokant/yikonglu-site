@@ -508,18 +508,12 @@ def yxl_block(L, D, P, full=False):
             f'<a class="c" href="{P}banben/"><b>{n_cites}<small>条</small></b><span>引文可核到底本原页</span></a>'
             f'<a class="c" href="{P}banben/"><b>{fam}<small>家</small></b><span>注本上了原页图</span></a>'
             f'<a class="c" href="{P}kanwu.html"><b>{len(readers)}<small>/ {len(kw)} 条</small></b><span>读者来信勘误，署名公开</span></a></div>')
-    chapters = y.get("chapters") or len(D["pub"]); rows = ""
-    vname = {"TW": "台湾繁体", "US": "美国简体"}
-    seen = set()
+    rows = ""
     for pf in y.get("platforms", []):
-        nm = pf["name"] + (f"（{vname.get(pf.get('variant'), pf.get('variant'))}）" if pf.get("variant") else ""); seen.add(pf["name"])
-        meas = pf.get("measured") or 0; top = pf.get("top20") or 0
-        pct = round(top * 100 / meas) if meas else 0
-        right = f"{top} / {chapters}" + (f'<small>测到 {meas} 章</small>' if meas < chapters else "")
-        rows += f'<div class="row"><span>{esc(nm)}</span><div class="bar"><i style="width:{pct}%"></i></div><em>{right}</em></div>'
-    for nm in ("B站", "谷歌", "必应"):
-        if nm not in seen: rows += f'<div class="row"><span>{nm}</span><div class="bar"><i style="width:0%"></i></div><em class="na">待测</em></div>'
-    hist = y.get("history", []); score = y.get("score", 0)
+        sc = pf.get("score")
+        if sc is None: continue
+        rows += f'<div class="row"><span>{esc(pf["name"])}</span><div class="bar"><i style="width:{min(max(float(sc), 0), 100):g}%"></i></div><em>{sc}</em></div>'
+    hist = [h for h in y.get("history", []) if h.get("score") is not None]; score = y.get("score")
     if len(hist) >= 2:
         W, H = 320, 60; mx = max(max(h["score"] for h in hist), 1)
         pts = " ".join(f"{10 + i * (W - 20) / (len(hist) - 1):.1f},{H - 8 - h['score'] / mx * (H - 16):.1f}" for i, h in enumerate(hist))
@@ -528,10 +522,10 @@ def yxl_block(L, D, P, full=False):
     elif hist:
         trend = f'<svg class="yxline" viewBox="0 0 320 60" width="320" height="60" aria-hidden="true"><circle cx="20" cy="30" r="4" fill="currentColor"/></svg><small>{hist[0]["week"][:7]} 从 {hist[0]["score"]} 分起步</small>'
     else: trend = ""
-    find = (f'<div class="yxfind"><h3>在平台上搜一句原文，能找到一孔录吗</h3>{rows}'
+    find = "" if score is None else (f'<div class="yxfind"><h3>在平台上搜一句原文，能找到一孔录吗</h3>{rows}'
             f'<div class="yxscore"><b>找到分 <strong>{score}</strong></b>{trend}</div>'
-            f'<p>做法：取已发各章首句，不登录搜索，看一孔录讲读是否在前 20 条；台湾繁体、美国简体两种设定；平台搜索因人因地而异，你搜到的可能不同。<a class="more" href="{P}yingxiangli.html">方法与原始数据 ›</a></p></div>')
-    sub = f'每周更新 · 最近一次 {esc(y.get("updated", D["today"]))} · 每个数都可点开核对'
+            f'<p>做法：取已发各章首句，不登录搜索，看一孔录讲读是否在前 20 条，折成 0—100 的平台分；平台搜索因人因地而异，你搜到的可能不同。<a class="more" href="{P}yingxiangli.html">方法与原始数据 ›</a></p></div>')
+    sub = f'每周更新 · 最近一次 {esc(y.get("updated") or D["today"])} · 每个数都可点开核对'
     return f'<section class="wrap narrow yxl"><h2 class="ph">一孔影响力</h2><p class="sub">{sub}</p>{grid}{find}</section>'
 
 def build_lang(L, D, write):
@@ -912,14 +906,14 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <h2>什么是找到分</h2>
 <p>一个平台上，一句原文搜出来，一孔录的讲读排在第 r 名，记 V = 1 / log₂(1 + r)；不在前 20 条记 0。</p>
 <p>平台分 = 100 × 各章 V 的平均。</p>
-<p>找到分 = 各平台平台分的平均；YouTube 取台湾繁体、美国简体两种设定的平均。</p>
+<p>找到分 = 各平台平台分的平均。YouTube 取台湾繁体、美国简体两种设定的平均，合成一个平台分；B站、谷歌、必应各一个平台分。只列有完整数据的平台。</p>
 <h2>怎么测</h2>
-<p>词表：已发各章的第一句原文，简体、繁体各一条。每周测一轮，结果记在周一；本周没测完的章，栏里写“测到 N 章”。</p>
+<p>词表：已发各章的第一句原文，简体、繁体各一条。每周测一轮，整轮跑完才记一次，记在周一。</p>
 <p>搜索用不登录的新会话；YouTube 走数据接口按地区和语言设定搜，和网页搜索结果可能有出入。搜索平台会按人、按地、按时调整结果，你在自己设备上搜到的名次未必一样。</p>
 <h2>规矩</h2>
 <p>不为这个数改标题、改讲书顺序。数字难看也照登，每周原样更新，旧数不删。</p>
 <h2>下载</h2>
-<p><a href="/data/yingxiangli.json">yingxiangli.json</a>（每周的找到分、各平台条数）。逐周逐章的明细，发布满四周后放出。</p>
+<p><a href="/data/yingxiangli.json">yingxiangli.json</a>（每周的找到分、各平台分）。逐周逐章的明细，发布满四周后放出。</p>
 </main>'''
         write("yingxiangli.html", page(L, "一孔影响力：找到分怎么算、怎么测｜一孔录", "在平台上搜一句原文，能找到一孔录吗：每周公开测，分数叫找到分。", "yingxiangli.html", body, codes=["zh-Hans", "zh-Hant"])); urls.append(f"{DOMAIN}/{L.prefix}yingxiangli.html")
     # 开放数据（文件只在根目录 /data/，各语种只出说明页）
