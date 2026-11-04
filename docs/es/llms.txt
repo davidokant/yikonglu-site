@@ -23,46 +23,46 @@
 - [2.2 Pensamientos sin desvío](https://yikonglu.com/es/lunyu/wei-zheng/2.html): El «sin desvío» está en el lector, no del todo en los poemas. Hoy: una novela sobre un villano todavía puede hacer que un lector se enmiende.
 - [2.3 Guiarlos con decretos](https://yikonglu.com/es/lunyu/wei-zheng/3.html): Castigos y decretos apartan del delito; virtud y rito mueven hacia el bien. Hoy: se estropea la cámara, y la basura vuelve.
 - [2.4 A los quince me propuse aprender](https://yikonglu.com/es/lunyu/wei-zheng/4.html): No un certificado que se expide solo a cierta edad, sino un camino de estudio.
-- [2.5 孟懿子问孝](https://yikonglu.com/es/lunyu/wei-zheng/5.html): 放到今天：借钱办风光寿宴，是“不得为而为之”。
-- [2.6 孟武伯问孝](https://yikonglu.com/es/lunyu/wei-zheng/6.html): 一句三读并列；放到今天：熬夜喝酒不戴头盔。
-- [2.7 子游问孝](https://yikonglu.com/es/lunyu/wei-zheng/7.html): 两读落点都是“敬”；放到今天：按时转账、电话里不耐烦。
-- [2.8 子夏问孝（色难）](https://yikonglu.com/es/lunyu/wei-zheng/8.html): 活都干了，脸色没到。
-- [2.9 回也不愚](https://yikonglu.com/es/lunyu/wei-zheng/9.html): 课堂外才看得出学没学会。
-- [2.10 视其所以](https://yikonglu.com/es/lunyu/wei-zheng/10.html): 做什么—为什么做—乐不乐在其中；放到今天：领导出差那周六点下班。
-- [2.11 温故而知新](https://yikonglu.com/es/lunyu/wei-zheng/11.html): 光背得出来，热一百遍也还是那一碗。
-- [2.12 君子不器](https://yikonglu.com/es/lunyu/wei-zheng/12.html): 先德行全了才用得开，不是学一百门手艺；放到今天：会计，大家有事都愿意问她。
-- [2.13 先行其言](https://yikonglu.com/es/lunyu/wei-zheng/13.html): 话还要说，只是放在后面。
-- [2.14 周而不比](https://yikonglu.com/es/lunyu/wei-zheng/14.html): 桌上的菜一模一样，请客的理由不同。
-- [2.15 学而不思则罔](https://yikonglu.com/es/lunyu/wei-zheng/15.html): 一个是空，一个是悬；放到今天：收藏网课不想 vs 不读书自造理论。
-- [2.16 攻乎异端](https://yikonglu.com/es/lunyu/wei-zheng/16.html): 照朱熹取“钻进去有害”。
-- [2.17 知之为知之](https://yikonglu.com/es/lunyu/wei-zheng/17.html): 认下不知道，是起步。
-- [2.18 子张学干禄](https://yikonglu.com/es/lunyu/wei-zheng/18.html): 孔子没有许诺，他把求官变成做人的功课。
-- [2.19 举直错诸枉](https://yikonglu.com/es/lunyu/wei-zheng/19.html): 难的是看清谁是直的；放到今天：提拔报喜的人。
-- [2.20 临之以庄则敬](https://yikonglu.com/es/lunyu/wei-zheng/20.html): 季康子问手段，孔子答本分；把本分当手段又走偏。
-- [2.21 子奚不为政](https://yikonglu.com/es/lunyu/wei-zheng/21.html): 话是托辞，道理也真。
-- [2.22 人而无信](https://yikonglu.com/es/lunyu/wei-zheng/22.html): 少了它，牛是牛，车是车，连不到一起。
-- [2.23 十世可知](https://yikonglu.com/es/lunyu/wei-zheng/23.html): 看了两次交接，看哪些留下、哪些改了。
-- [2.24 非其鬼而祭之](https://yikonglu.com/es/lunyu/wei-zheng/24.html): 往不相干的领导家送礼；开会不吭声。
-- [3.1 八佾舞于庭](https://yikonglu.com/es/lunyu/ba-yi/1.html): 多出来的四行舞，量出一颗心硬到什么地步；放到今天：开会坐了老板的位子。
-- [3.2 三家者以雍彻](https://yikonglu.com/es/lunyu/ba-yi/2.html): 唱的歌自己都不懂；放到今天：小店横幅“恭迎各国元首”。
-- [3.3 人而不仁，如礼何](https://yikonglu.com/es/lunyu/ba-yi/3.html): 排足八行、唱天子的诗，人不对，礼乐拿他没办法。
-- [3.4 林放问礼之本](https://yikonglu.com/es/lunyu/ba-yi/4.html): 两头都偏时，宁偏向根本；放到今天：满桌菜 vs 一碗面。
-- [3.5 夷狄之有君](https://yikonglu.com/es/lunyu/ba-yi/5.html): 骂的不是夷狄，是自己人；放到今天：老字号各房各管各的账。
-- [3.6 季氏旅于泰山](https://yikonglu.com/es/lunyu/ba-yi/6.html): 救的是季氏，不是泰山；放到今天：在老板手下劝不住。
-- [3.7 君子无所争](https://yikonglu.com/es/lunyu/ba-yi/7.html): 靶子不会骗人，争的是自己手稳不稳。
-- [3.8 绘事后素](https://yikonglu.com/es/lunyu/ba-yi/8.html): 底子不平，什么颜色上去都是花的。
-- [3.9 文献不足](https://yikonglu.com/es/lunyu/ba-yi/9.html): 孔子讲得出，但不肯只凭一张嘴；放到今天：奶奶的菜谱，缺的是站在灶台边的人。
-- [3.10 禘自既灌](https://yikonglu.com/es/lunyu/ba-yi/10.html): 往前找，书和人没了；看眼前，礼还在，心不在。
-- [3.11 或问禘之说](https://yikonglu.com/es/lunyu/ba-yi/11.html): 说“不知道”，不是真不知道。
-- [3.12 祭如在](https://yikonglu.com/es/lunyu/ba-yi/12.html): 礼的样子可以照着摆，礼里那份心，得祭的人自己带来。
-- [3.13 媚奥媚灶](https://yikonglu.com/es/lunyu/ba-yi/13.html): 事情做对了，跟谁都好说；做错了，跟谁处好都没用。
-- [3.14 周监于二代](https://yikonglu.com/es/lunyu/ba-yi/14.html): 从周，从的是看着前人一点点改好的功夫；放到今天：年夜饭的菜。
-- [3.15 子入大庙，每事问](https://yikonglu.com/es/lunyu/ba-yi/15.html): 做了三十年才要核对。
-- [3.16 射不主皮](https://yikonglu.com/es/lunyu/ba-yi/16.html): 比的是练得出来的，不比生下来带着的。
-- [3.17 告朔饩羊](https://yikonglu.com/es/lunyu/ba-yi/17.html): 羊是礼的记号，留着记号，礼还认得出、复得了；放到今天：老店冬至照老方子做一锅，不卖。
-- [3.18 事君尽礼](https://yikonglu.com/es/lunyu/ba-yi/18.html): 没多做一分，礼本来就要这样；孔子只说“人以为谄”，不骂回去；放到今天：开会提前坐好、报销单填全，被笑装积极。
-- [3.19 君使臣以礼](https://yikonglu.com/es/lunyu/ba-yi/19.html): 两头的人都只盯自己这一头；定公是国君，问的是他自己那一句；放到今天：带团队的先问给人的体面够不够，做事的先问活干到位没有。
-- [3.20 关雎乐而不淫](https://yikonglu.com/es/lunyu/ba-yi/20.html): 不是情少，是情满了还不过头；放到今天：婚礼上念誓词哭了，擦一擦把最后一句念完。
-- [3.21 哀公问社](https://yikonglu.com/es/lunyu/ba-yi/21.html): 三个“不”不是算了，是重重地责备，要他以后谨慎；放到今天：群里转了没核实的消息，撤回键只管两分钟。
-- [3.22 管仲之器小哉](https://yikonglu.com/es/lunyu/ba-yi/22.html): 孔子没明说小在哪，从奢和僭里看出来；放到今天：公司做大了，老板办公室像宫殿，规矩只管别人。
-- [3.23 子语鲁大师乐](https://yikonglu.com/es/lunyu/ba-yi/23.html): 先合、再和、和里各自清楚、一路连到底；放到今天：合唱团一开口要齐，齐了要和，每个声部还听得出来，一口气唱到底。
+- [2.5 Meng Yizi pregunta por la piedad filial](https://yikonglu.com/es/lunyu/wei-zheng/5.html): Hoy: pedir prestado para dar un banquete de cumpleaños lujoso es «hacer lo que no se puede».
+- [2.6 Meng Wubo pregunta por la piedad filial](https://yikonglu.com/es/lunyu/wei-zheng/6.html): Tres lecturas de una misma frase, lado a lado. Hoy: beber toda la noche, ir en moto sin casco.
+- [2.7 Ziyou pregunta por la piedad filial](https://yikonglu.com/es/lunyu/wei-zheng/7.html): Ambas lecturas desembocan en el respeto. Hoy: transferir el dinero puntualmente, pero impacientarse al teléfono.
+- [2.8 Zixia pregunta por la piedad filial (lo difícil es el semblante)](https://yikonglu.com/es/lunyu/wei-zheng/8.html): Todo el trabajo hecho; el semblante no llegó.
+- [2.9 Hui no es torpe](https://yikonglu.com/es/lunyu/wei-zheng/9.html): Si alguien ha aprendido se ve fuera del aula.
+- [2.10 Mira lo que hace](https://yikonglu.com/es/lunyu/wei-zheng/10.html): Qué hace, por qué lo hace, si disfruta haciéndolo. Hoy: salir a las seis en punto la semana que el jefe está de viaje.
+- [2.11 Repasar lo antiguo para conocer lo nuevo](https://yikonglu.com/es/lunyu/wei-zheng/11.html): Si solo sabes recitarlo, recalentarlo cien veces da siempre el mismo cuenco.
+- [2.12 El caballero no es un utensilio](https://yikonglu.com/es/lunyu/wei-zheng/12.html): Primero la virtud entera, luego sirve en cualquier parte; no es aprender cien oficios. Hoy: la contable a la que todos prefieren pedir consejo.
+- [2.13 Primero actuar, luego hablar](https://yikonglu.com/es/lunyu/wei-zheng/13.html): Se sigue hablando, solo que después.
+- [2.14 Abierto, no partidista](https://yikonglu.com/es/lunyu/wei-zheng/14.html): Los mismos platos en la mesa, distintos motivos para la cena.
+- [2.15 Aprender sin pensar](https://yikonglu.com/es/lunyu/wei-zheng/15.html): Uno está vacío, el otro colgado en el aire. Hoy: guardar cursos en línea sin pensar, o inventar teorías sin leer.
+- [2.16 Dedicarse a doctrinas extrañas](https://yikonglu.com/es/lunyu/wei-zheng/16.html): Según Zhu Xi: lo dañino es meterse dentro.
+- [2.17 Saber lo que se sabe](https://yikonglu.com/es/lunyu/wei-zheng/17.html): Reconocer que no sabes es el punto de partida.
+- [2.18 Zizhang estudia para obtener un cargo](https://yikonglu.com/es/lunyu/wei-zheng/18.html): Confucio no promete nada; convierte la búsqueda del cargo en una lección para ser persona.
+- [2.19 Elevar a los rectos](https://yikonglu.com/es/lunyu/wei-zheng/19.html): Lo difícil es ver quién es recto. Hoy: ascender a quienes solo traen buenas noticias.
+- [2.20 Tratarlos con dignidad](https://yikonglu.com/es/lunyu/wei-zheng/20.html): Ji Kangzi pide un método; Confucio responde con el deber. Usar el deber como método es volver a desviarse.
+- [2.21 ¿Por qué no participa en el gobierno?](https://yikonglu.com/es/lunyu/wei-zheng/21.html): Las palabras son un pretexto, y la idea también es verdad.
+- [2.22 Una persona sin fiabilidad](https://yikonglu.com/es/lunyu/wei-zheng/22.html): Sin ella, el buey es buey y el carro es carro; nunca se unen.
+- [2.23 ¿Se pueden conocer diez generaciones?](https://yikonglu.com/es/lunyu/wei-zheng/23.html): Observó dos relevos y vio qué se quedaba y qué cambiaba.
+- [2.24 Sacrificar a espíritus ajenos](https://yikonglu.com/es/lunyu/wei-zheng/24.html): Llevar regalos a casa de un jefe con quien no tienes nada que ver; callarse en la reunión.
+- [3.1 Ocho filas de danzantes en su patio](https://yikonglu.com/es/lunyu/ba-yi/1.html): Cuatro filas de más miden cuánto se ha endurecido un corazón. Hoy: sentarse en la silla del jefe en la reunión.
+- [3.2 Las tres familias y la oda Yong](https://yikonglu.com/es/lunyu/ba-yi/2.html): Ni siquiera entendían lo que cantaban. Hoy: la pancarta de una tienda de barrio «Bienvenidos, jefes de Estado».
+- [3.3 Sin humanidad, ¿qué hacer con los ritos?](https://yikonglu.com/es/lunyu/ba-yi/3.html): Llena las ocho filas, canta la oda imperial: si la persona no está bien, ritos y música no pueden hacer nada con ella.
+- [3.4 Lin Fang pregunta por la raíz de los ritos](https://yikonglu.com/es/lunyu/ba-yi/4.html): Cuando ambos lados se desvían, mejor inclinarse hacia la raíz. Hoy: una mesa llena de platos frente a un cuenco de fideos.
+- [3.5 Los Yi y los Di tienen soberanos](https://yikonglu.com/es/lunyu/ba-yi/5.html): El reproche no va contra los Yi y los Di, sino contra los suyos. Hoy: una vieja casa comercial en la que cada rama lleva sus propias cuentas.
+- [3.6 Los Ji sacrifican al monte Tai](https://yikonglu.com/es/lunyu/ba-yi/6.html): A quien había que salvar era a los Ji, no al monte Tai. Hoy: trabajar para un jefe al que no logras disuadir.
+- [3.7 El caballero no compite](https://yikonglu.com/es/lunyu/ba-yi/7.html): La diana no miente; lo que se disputa es si tu propia mano está firme.
+- [3.8 La pintura viene después del fondo blanco](https://yikonglu.com/es/lunyu/ba-yi/8.html): Si el fondo no está liso, cualquier color que pongas encima saldrá manchado.
+- [3.9 No hay suficientes documentos](https://yikonglu.com/es/lunyu/ba-yi/9.html): Confucio podía contarlo, pero no quería apoyarse solo en su palabra. Hoy: la receta de la abuela: lo que falta es la persona de pie junto a los fogones.
+- [3.10 El sacrificio di después de la libación](https://yikonglu.com/es/lunyu/ba-yi/10.html): Mirando atrás, los escritos y las personas han desaparecido; mirando alrededor, el rito sigue, pero el corazón no está.
+- [3.11 Alguien pregunta por el sacrificio di](https://yikonglu.com/es/lunyu/ba-yi/11.html): Decir «no lo sé» no significa que no lo supiera.
+- [3.12 Sacrificar como si estuvieran presentes](https://yikonglu.com/es/lunyu/ba-yi/12.html): La forma del rito puede disponerse según el manual; el corazón que lo habita tiene que traerlo quien sacrifica.
+- [3.13 Mejor congraciarse con el fogón](https://yikonglu.com/es/lunyu/ba-yi/13.html): Haz bien las cosas y todos son fáciles de tratar; hazlas mal y llevarse bien con quien sea no servirá de nada.
+- [3.14 Los Zhou miraron a las dos dinastías](https://yikonglu.com/es/lunyu/ba-yi/14.html): Seguir a los Zhou es seguir el trabajo de mejorar poco a poco lo heredado. Hoy: los platos de la cena de Nochevieja china.
+- [3.15 En el Gran Templo preguntaba todo](https://yikonglu.com/es/lunyu/ba-yi/15.html): Treinta años en el oficio, y aún se comprueba.
+- [3.16 En el tiro, atravesar el cuero no es lo principal](https://yikonglu.com/es/lunyu/ba-yi/16.html): Se compite en lo que se entrena, no en lo que se trae de nacimiento.
+- [3.17 La oveja del anuncio de la luna nueva](https://yikonglu.com/es/lunyu/ba-yi/17.html): La oveja marca el rito; si se conserva la señal, el rito aún puede reconocerse y restablecerse. Hoy: una tienda antigua que en el solsticio de invierno prepara una olla con la receta de siempre, sin venderla.
+- [3.18 Servir al señor con todos los ritos](https://yikonglu.com/es/lunyu/ba-yi/18.html): Ni un ápice de más: el rito simplemente lo exige; Confucio solo dice «la gente lo toma por adulación», sin insultar de vuelta. Hoy: llegar antes a la reunión y rellenar entera la hoja de gastos, y que se burlen de ti por pelota.
+- [3.19 El señor emplea a sus ministros según el rito](https://yikonglu.com/es/lunyu/ba-yi/19.html): Cada parte mira solo su lado; el duque Ding era el soberano, y se le respondió con su mitad. Hoy: quien dirige un equipo se pregunta primero si trata a la gente con suficiente respeto; quien trabaja, si ha hecho bien su tarea.
+- [3.20 El Guanju: alegría sin exceso](https://yikonglu.com/es/lunyu/ba-yi/20.html): No es poco sentimiento, sino sentimiento pleno que no se desborda. Hoy: llorar al leer los votos de boda, secarse los ojos y terminar la última frase.
+- [3.21 El duque Ai pregunta por el altar de la tierra](https://yikonglu.com/es/lunyu/ba-yi/21.html): Los tres «no» no significan «da igual», sino una reprimenda severa para que sea cuidadoso en adelante. Hoy: reenviar a un grupo un mensaje sin verificar; el botón de eliminar solo funciona dos minutos.
+- [3.22 Guan Zhong tenía poca talla](https://yikonglu.com/es/lunyu/ba-yi/22.html): Confucio no dice dónde está la pequeñez; se ve en el lujo y la usurpación. Hoy: la empresa crece, el despacho del jefe se vuelve un palacio y las normas son solo para los demás.
+- [3.23 El Maestro habla de música al gran maestro de música de Lu](https://yikonglu.com/es/lunyu/ba-yi/23.html): Primero juntos, luego en armonía, cada parte clara dentro de la armonía, enlazado hasta el final. Hoy: un coro empieza a la vez, luego empasta, cada cuerda sigue oyéndose, y canta de un solo aliento hasta el final.
