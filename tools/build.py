@@ -213,7 +213,7 @@ def parse_zhuben(d):
         """同一家的多份 CSV（分篇交、v1/v2）合起来：版本号小的先读，大的覆盖；同版本按文件名。空行（暂停未核）不覆盖。"""
         ver = lambda f: (int((re.search(r"-v(\d+)", f) or [0, 0])[1]), f)
         out_ = {}
-        for f in sorted(glob.glob(os.path.join(d, prefix + "-*逐章*.csv")), key=ver):
+        for f in sorted((x for x in glob.glob(os.path.join(d, prefix + "-*逐章*.csv")) if "映射" not in x), key=ver):
             for r in csv.DictReader(open(f, encoding="utf-8-sig")):
                 if r.get("章号"): out_[r["章号"].strip()] = r
         return list(out_.values())
@@ -221,7 +221,7 @@ def parse_zhuben(d):
     for r in rows("皇疏"):
         t = (r.get("义疏首句") or "").strip().replace("其其孝悌者也", "其，其孝悌者也")  # 11-03 核收意见：疏先单释“其”字
         sure = (r.get("把握") or "").strip()
-        if not t or not r.get("义疏首句PDF页") or sure == "存疑" or "待" in (r.get("状态") or ""): continue  # 宁缺：存疑、待复核的不上
+        if not t or not r.get("义疏首句PDF页") or sure == "存疑" or re.search(r"待(核|复核|二次|校字|补)|暂停", r.get("状态") or ""): continue  # 宁缺：存疑、待复核的不上
         p = int(r["章号"].split(".")[0]); j = (r.get("卷") or "").strip()
         if j.isdigit(): j = CN[int(j) - 1] if int(j) <= 10 else j
         ed = "zbz" if p <= 4 else "wk"  # 知不足斋本只有卷一二（学而至里仁）；公冶长起用 1750 年和刻本
@@ -230,7 +230,7 @@ def parse_zhuben(d):
     pageref = re.compile(r"[^。；]*书\s*\d+(?:[—-]\d+)?页（PDF[^）]*）[。；]?|（PDF[^）]*）")
     for key, prefix in (("yang", "杨伯峻"), ("qian", "钱穆")):
         for r in rows(prefix):
-            cmp_ = pageref.sub("", r["与朱注比较"]).strip().rstrip("；")
+            cmp_ = pageref.sub("", r["与朱注比较"]).replace("。；", "；").strip().rstrip("；")
             mm = re.match(r"^[杨钱]\d+\.\d+：", cmp_)  # 朱注一章并杨本多章：“杨5.1：同解：……；杨5.2：……”，按第一段判类，说明保留全文
             pre = cmp_[mm.end():] if mm else None
             m = re.match(r"^([^：]{1,8})：(.*)$", pre if pre is not None else cmp_)
