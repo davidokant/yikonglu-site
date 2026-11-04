@@ -238,3 +238,11 @@ aside li.wj a{color:var(--mute)}
 .wjlead{background:var(--paper);border:1px dashed var(--line);border-radius:8px;padding:10px 14px;color:var(--mute);font-size:15px;line-height:1.7}
 .ztl li.wj b{font-weight:400;color:var(--mute)}
 .sec.yiwen td.zi{white-space:nowrap}
+/* 书目：各本书 */
+.bcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.bcard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px;color:var(--fg);box-shadow:var(--shadow)}a.bcard:hover{text-decoration:none;border-color:var(--accent)}
+.bcard b{display:block;font-size:22px;font-weight:900;letter-spacing:.08em}.bcard small{display:block;color:var(--mute);margin-top:4px;font-size:14px}
+.bcard .bar{display:block;height:4px;background:var(--line);border-radius:2px;margin:12px 0 6px;overflow:hidden}.bcard .bar i{display:block;height:100%;background:var(--accent)}
+.bcard em{font-style:normal;font-size:14px;color:var(--mute)}
+.bcard.soon{opacity:.55;box-shadow:none;border-style:dashed;cursor:default}.bcard.soon em{display:inline-block;margin-top:12px;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:0 8px}
+.ph a{color:inherit}
