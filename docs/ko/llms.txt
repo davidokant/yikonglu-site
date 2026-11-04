@@ -23,3 +23,39 @@
 - [2.2 생각에 삿됨이 없다](https://yikonglu.com/ko/lunyu/wei-zheng/2.html): ‘삿됨 없음’은 읽는 이에게 있지 시에만 있는 것이 아니다. 오늘로 옮기면: 악인을 그린 소설도 사람을 바른길로 돌릴 수 있다.
 - [2.3 정령으로 이끌다](https://yikonglu.com/ko/lunyu/wei-zheng/3.html): 형벌과 정령은 사람을 죄에서 멀어지게 하고, 덕과 예는 사람을 선으로 옮겨 가게 한다. 오늘로 옮기면: 감시 카메라가 고장 나면 쓰레기가 다시 돌아온다.
 - [2.4 나는 열다섯에 배움에 뜻을 두었다](https://yikonglu.com/ko/lunyu/wei-zheng/4.html): 나이가 되면 저절로 나오는 자격증이 아니라, 배움의 한 길.
+- [2.5 孟懿子问孝](https://yikonglu.com/ko/lunyu/wei-zheng/5.html): 放到今天：借钱办风光寿宴，是“不得为而为之”。
+- [2.6 孟武伯问孝](https://yikonglu.com/ko/lunyu/wei-zheng/6.html): 一句三读并列；放到今天：熬夜喝酒不戴头盔。
+- [2.7 子游问孝](https://yikonglu.com/ko/lunyu/wei-zheng/7.html): 两读落点都是“敬”；放到今天：按时转账、电话里不耐烦。
+- [2.8 子夏问孝（色难）](https://yikonglu.com/ko/lunyu/wei-zheng/8.html): 活都干了，脸色没到。
+- [2.9 回也不愚](https://yikonglu.com/ko/lunyu/wei-zheng/9.html): 课堂外才看得出学没学会。
+- [2.10 视其所以](https://yikonglu.com/ko/lunyu/wei-zheng/10.html): 做什么—为什么做—乐不乐在其中；放到今天：领导出差那周六点下班。
+- [2.11 温故而知新](https://yikonglu.com/ko/lunyu/wei-zheng/11.html): 光背得出来，热一百遍也还是那一碗。
+- [2.12 君子不器](https://yikonglu.com/ko/lunyu/wei-zheng/12.html): 先德行全了才用得开，不是学一百门手艺；放到今天：会计，大家有事都愿意问她。
+- [2.13 先行其言](https://yikonglu.com/ko/lunyu/wei-zheng/13.html): 话还要说，只是放在后面。
+- [2.14 周而不比](https://yikonglu.com/ko/lunyu/wei-zheng/14.html): 桌上的菜一模一样，请客的理由不同。
+- [2.15 学而不思则罔](https://yikonglu.com/ko/lunyu/wei-zheng/15.html): 一个是空，一个是悬；放到今天：收藏网课不想 vs 不读书自造理论。
+- [2.16 攻乎异端](https://yikonglu.com/ko/lunyu/wei-zheng/16.html): 照朱熹取“钻进去有害”。
+- [2.17 知之为知之](https://yikonglu.com/ko/lunyu/wei-zheng/17.html): 认下不知道，是起步。
+- [2.18 子张学干禄](https://yikonglu.com/ko/lunyu/wei-zheng/18.html): 孔子没有许诺，他把求官变成做人的功课。
+- [2.19 举直错诸枉](https://yikonglu.com/ko/lunyu/wei-zheng/19.html): 难的是看清谁是直的；放到今天：提拔报喜的人。
+- [2.20 临之以庄则敬](https://yikonglu.com/ko/lunyu/wei-zheng/20.html): 季康子问手段，孔子答本分；把本分当手段又走偏。
+- [2.21 子奚不为政](https://yikonglu.com/ko/lunyu/wei-zheng/21.html): 话是托辞，道理也真。
+- [2.22 人而无信](https://yikonglu.com/ko/lunyu/wei-zheng/22.html): 少了它，牛是牛，车是车，连不到一起。
+- [2.23 十世可知](https://yikonglu.com/ko/lunyu/wei-zheng/23.html): 看了两次交接，看哪些留下、哪些改了。
+- [2.24 非其鬼而祭之](https://yikonglu.com/ko/lunyu/wei-zheng/24.html): 往不相干的领导家送礼；开会不吭声。
+- [3.1 八佾舞于庭](https://yikonglu.com/ko/lunyu/ba-yi/1.html): 多出来的四行舞，量出一颗心硬到什么地步；放到今天：开会坐了老板的位子。
+- [3.2 三家者以雍彻](https://yikonglu.com/ko/lunyu/ba-yi/2.html): 唱的歌自己都不懂；放到今天：小店横幅“恭迎各国元首”。
+- [3.3 人而不仁，如礼何](https://yikonglu.com/ko/lunyu/ba-yi/3.html): 排足八行、唱天子的诗，人不对，礼乐拿他没办法。
+- [3.4 林放问礼之本](https://yikonglu.com/ko/lunyu/ba-yi/4.html): 两头都偏时，宁偏向根本；放到今天：满桌菜 vs 一碗面。
+- [3.5 夷狄之有君](https://yikonglu.com/ko/lunyu/ba-yi/5.html): 骂的不是夷狄，是自己人；放到今天：老字号各房各管各的账。
+- [3.6 季氏旅于泰山](https://yikonglu.com/ko/lunyu/ba-yi/6.html): 救的是季氏，不是泰山；放到今天：在老板手下劝不住。
+- [3.7 君子无所争](https://yikonglu.com/ko/lunyu/ba-yi/7.html): 靶子不会骗人，争的是自己手稳不稳。
+- [3.8 绘事后素](https://yikonglu.com/ko/lunyu/ba-yi/8.html): 底子不平，什么颜色上去都是花的。
+- [3.9 文献不足](https://yikonglu.com/ko/lunyu/ba-yi/9.html): 孔子讲得出，但不肯只凭一张嘴；放到今天：奶奶的菜谱，缺的是站在灶台边的人。
+- [3.10 禘自既灌](https://yikonglu.com/ko/lunyu/ba-yi/10.html): 往前找，书和人没了；看眼前，礼还在，心不在。
+- [3.11 或问禘之说](https://yikonglu.com/ko/lunyu/ba-yi/11.html): 说“不知道”，不是真不知道。
+- [3.12 祭如在](https://yikonglu.com/ko/lunyu/ba-yi/12.html): 礼的样子可以照着摆，礼里那份心，得祭的人自己带来。
+- [3.13 媚奥媚灶](https://yikonglu.com/ko/lunyu/ba-yi/13.html): 事情做对了，跟谁都好说；做错了，跟谁处好都没用。
+- [3.14 周监于二代](https://yikonglu.com/ko/lunyu/ba-yi/14.html): 从周，从的是看着前人一点点改好的功夫；放到今天：年夜饭的菜。
+- [3.15 子入大庙，每事问](https://yikonglu.com/ko/lunyu/ba-yi/15.html): 做了三十年才要核对。
+- [3.16 射不主皮](https://yikonglu.com/ko/lunyu/ba-yi/16.html): 比的是练得出来的，不比生下来带着的。

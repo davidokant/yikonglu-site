@@ -1,8 +1,17 @@
 {
- "学而一": {"chapters":["1.1","1.2","1.3"],"youtube":"ZM2fn-qG60I","bilibili":"BV17Qxi6eEoz"},
- "学而二": {"chapters":["1.4","1.5","1.6"],"youtube":"n0VIJD-s-zA","bilibili":"BV1LuxC6jED9"},
- "学而三": {"chapters":["1.7","1.8","1.9","1.10"],"youtube":"f14PYXF5rNM","bilibili":"BV1oSx16dEf4"},
- "学而四": {"chapters":["1.11","1.12","1.13"],"youtube":"eG6kKyO7ooU","bilibili":"BV1dRx16pETC"},
- "学而五": {"chapters":["1.14","1.15","1.16"],"youtube":"XLbeFVg76qA","bilibili":"BV1yyx467EFR"},
- "为政一": {"chapters":["2.1","2.2","2.3","2.4"],"youtube":"IGPC5HlsnKA","bilibili":"BV1ojx46iExL"}
+ "学而一": {"chapters": ["1.1", "1.2", "1.3"], "youtube": "ZM2fn-qG60I", "bilibili": "BV17Qxi6eEoz"},
+ "学而二": {"chapters": ["1.4", "1.5", "1.6"], "youtube": "n0VIJD-s-zA", "bilibili": "BV1LuxC6jED9"},
+ "学而三": {"chapters": ["1.7", "1.8", "1.9", "1.10"], "youtube": "f14PYXF5rNM", "bilibili": "BV1oSx16dEf4"},
+ "学而四": {"chapters": ["1.11", "1.12", "1.13"], "youtube": "eG6kKyO7ooU", "bilibili": "BV1dRx16pETC"},
+ "学而五": {"chapters": ["1.14", "1.15", "1.16"], "youtube": "XLbeFVg76qA", "bilibili": "BV1yyx467EFR"},
+ "为政一": {"chapters": ["2.1", "2.2", "2.3", "2.4"], "youtube": "IGPC5HlsnKA", "bilibili": "BV1ojx46iExL"},
+ "为政二": {"chapters": ["2.5", "2.6", "2.7", "2.8"], "youtube": "xAFXHeFFBcw", "bilibili": "BV18g4F6SEMK"},
+ "为政三": {"chapters": ["2.9", "2.10", "2.11", "2.12"], "youtube": "Gt3yVebr9_M", "bilibili": "BV1nb4F6qE48"},
+ "为政四": {"chapters": ["2.13", "2.14", "2.15", "2.16"], "youtube": "sYilHH0slQw", "bilibili": "BV1eWxS6cErT"},
+ "为政五": {"chapters": ["2.17", "2.18", "2.19", "2.20"], "youtube": "dYWQ2UwmWx4", "bilibili": "BV1vHxS6aERJ"},
+ "为政六": {"chapters": ["2.21", "2.22", "2.23", "2.24"]},
+ "八佾一": {"chapters": ["3.1", "3.2", "3.3", "3.4"]},
+ "八佾二": {"chapters": ["3.5", "3.6", "3.7", "3.8"]},
+ "八佾三": {"chapters": ["3.9", "3.10", "3.11", "3.12"]},
+ "八佾四": {"chapters": ["3.13", "3.14", "3.15", "3.16"]}
 }
