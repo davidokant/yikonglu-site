@@ -15,7 +15,16 @@ import renwu as RW
 DOMAIN = "https://yikonglu.com"
 HERE = os.path.dirname(os.path.abspath(__file__))
 PIAN = {"1": ("学而", "xue-er", "学而第一", 16), "2": ("为政", "wei-zheng", "为政第二", 24),
-        "3": ("八佾", "ba-yi", "八佾第三", 26), "4": ("里仁", "li-ren", "里仁第四", 26)}
+        "3": ("八佾", "ba-yi", "八佾第三", 26), "4": ("里仁", "li-ren", "里仁第四", 26),
+        "5": ("公冶长", "gong-ye-chang", "公冶长第五", 27), "6": ("雍也", "yong-ye", "雍也第六", 28),
+        "7": ("述而", "shu-er", "述而第七", 37), "8": ("泰伯", "tai-bo", "泰伯第八", 21),
+        "9": ("子罕", "zi-han", "子罕第九", 30), "10": ("乡党", "xiang-dang", "乡党第十", 17),
+        "11": ("先进", "xian-jin", "先进第十一", 25), "12": ("颜渊", "yan-yuan", "颜渊第十二", 24),
+        "13": ("子路", "zi-lu", "子路第十三", 30), "14": ("宪问", "xian-wen", "宪问第十四", 47),
+        "15": ("卫灵公", "wei-ling-gong", "卫灵公第十五", 41), "16": ("季氏", "ji-shi", "季氏第十六", 14),
+        "17": ("阳货", "yang-huo", "阳货第十七", 26), "18": ("微子", "wei-zi", "微子第十八", 11),
+        "19": ("子张", "zi-zhang", "子张第十九", 25), "20": ("尧曰", "yao-yue", "尧曰第二十", 3)}  # 章数按朱注分章（乡党 17 节）
+YW_DIR = os.path.join("/mnt/project-files/一孔学-内-自媒体/数据/网站素材", "_原文")  # Codex 全书原文（朱注分章 498 章）、分章对照、异文表
 FIELDS = [("常见读法", "f_common", "常"), ("字眼", "f_keys", "注"), ("诸家", "f_others", "家"), ("片里落点", "f_ours", "读")]
 SOURCE = "朱熹《论语集注》（《四部备要》本）"
 TAGLINE = "逐字读经典原文"
@@ -26,6 +35,7 @@ RENWU_DIR = os.environ.get("YK_RENWU_DIR") or os.path.join(GAO_DIR, "_人物")  
 RENWU_ON = False
 BH_DIR = os.path.join(GAO_DIR, "_白话")  # 白话直译：每行“- 1.1：……”，跟定版稿走
 ZB_DIR = os.path.join(GAO_DIR, "_注本")  # Codex 注本索引（皇疏、杨伯峻、钱穆逐章 CSV）
+HUANG_WK = "https://commons.wikimedia.org/w/index.php?title=File:WUL-ro12_00916_%E8%AB%96%E8%AA%9E%E9%9B%86%E8%A7%A3%E7%BE%A9%E7%96%8F_{ce}.pdf&page={n}"  # 早稻田大学图书馆藏 1750 年和刻本，册2—5
 HUANG_SCAN = "https://commons.wikimedia.org/w/index.php?title=File:SSID-13146346_%E7%9F%A5%E4%B8%8D%E8%B6%B3%E9%BD%8B_%E7%AC%AC7%E9%9B%86_%E8%AB%96%E8%AA%9E%E7%BE%A9%E7%96%8F%E6%95%98_%E5%8D%B71-2.pdf&page={n}"
 SUPPORT = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "support.json"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "support.json")) else {}
 ANALYTICS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "analytics.json"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "analytics.json")) else {}
@@ -67,7 +77,7 @@ ZH_UI = {
  "errata_p1": "一孔录讲错或说满的地方，改了就记在这里，按时间倒排，旧记录不删。画面上的小问题不记，只记内容。",
  "errata_p2": "发现错误，请写邮件到下面这个邮箱，写明哪集哪句、依据是什么，再写上你想署的网名。核实后记入此页，勘误者一栏署你的网名。也可以在任一平台「一孔录」视频下留言。", "mail_note": "邮箱做成了图片防垃圾邮件，请手动输入。", "report": "本章有错？写信告诉我们，核实后署你的网名记入勘误：", "errata_empty": "目前没有勘误。",
  "search_title": "检索", "search_sub": "原文 · 注家原话 · 读法", "search_ph2": "输入几个字，如：鸟数飞、主一无适、孝弟",
- "search_n": "找到 {n} 章", "search_none": "没有找到。已收录的只有讲过的章节。",
+ "search_n": "找到 {n} 章", "search_none": "没有找到。未讲各章只收原文和白话。",
  "about_title": "关于一孔录", "about_p": "一孔录是一个逐字逐章读中国经典原文的频道，用讲书动画和几位固定的人物，把一句原文落到具体的人和处境上。默认你没读过原书，也不用看过前几期。",
  "about_h1": "这个网站做什么", "about_site": "平台上的视频面向大众，这里面向想核对的人：一孔录讲过的每一句，原文、底本页码、注家原话、读音、我们的读法，都能在这里查到，讲错的地方在<a href=\"kanwu.html\">勘误页</a>公开记录。",
  "about_h2": "我们的承诺", "about_c1": "原文和注家的话都从古刻本原页取，页面写明底本。", "about_c2": "先讲注家怎么说，再讲我们怎么读；我们自己的看法明说是一孔录的读法，不冒充古人。", "about_c3": "核不到出处的话不放。发现错误请告诉我们，勘误公开。",
@@ -80,38 +90,38 @@ ZH_UI = {
 
 # 11-03 第一批新增界面字（各语种；缺的回落简体）
 EXTRA_UI = {
- "zh-Hans": {"foot_org": "东亚经籍校读社 · 一孔录独立编纂，无机构或基金资助", "nav_topics": "专题", "nav_more": "更多", "grp_read": "读", "grp_check": "核", "grp_use": "用", "tools_h": "查与用", "t_zt": "按仁、孝、礼等十个字读全书", "t_zi": "配音照读的每个字音", "t_bb": "每家注本用的哪个本子", "t_dt": "按篇下载，CC BY-NC 4.0", "zc_usdt": "加密货币（USDT）", "zc_usdt_net": "网络：{n}。只能用这个网络转 USDT，转错网络或别的币会丢失，无法找回。", "zc_link": "支持一孔录", "zc_title": "支持一孔录", "zc_sub": "内容全部免费，自愿赞助", "zc_p": "一孔录的原文、注、读法、勘误和开放数据永远免费，不会因为赞助多少而锁住任何一页。如果这里帮到了你，可以请我们喝杯茶，钱用在底本、扫描和配音上。", "zc_kofi": "海外读者：在 Ko-fi 赞助", "zc_wx": "国内读者：在公众号「一孔录」任一篇原创文章末尾点“赞赏”。", "zc_soon": "海外赞助页即将开通。", "cp_entry": "复制此条（带出处）", "cp_link": "复制此条链接", "bb_link": "版本说明", "hj_h": "本句互见", "hj_zb": "本章各家注", "hj_cites": "引文逐条核对", "hj_video": "视频里讲本章：{t} 起", "hj_book": "本书互见", "hj_other": "他书出处", "hj_note": "注", "bb_title": "版本与许可", "bb_sub": "每家注本用的哪个本子、页码怎么算、能不能转用", "bb_p": "一孔录引到的每一家注，都在这里说明底本、影像来源、页码算法和许可。章节页每条注旁的“版本说明”链到这里。", "bb_base": "底本", "bb_img": "影像来源", "bb_page": "页码", "bb_lic": "许可", "bb_use": "本站怎么用", "zt_title": "专题", "zt_sub": "按一个字、一个概念读《论语》", "zt_p": "每个专题列出原文里说到它的各章：已讲的章带一孔录的读法，没讲的只放原文。全书原文上网后，未讲各章自动补进来。", "zt_n": "已收 {n} 章", "zt_link": "专题", "zt_none": "已讲章节里还没有。", "dt_title": "开放数据", "dt_sub": "按篇下载原文、白话、读法、引文与读音", "dt_p": "本站数据按篇出 JSON 和 CSV，随网站每周更新。原文与古注是公版，照公版使用；白话、一孔录读法、引文核对表等一孔录自己写的内容，按 CC BY-NC 4.0 许可：可以转载、改编，须署名“一孔录 yikonglu.com”并附原页链接，不得商用。现代注本（杨伯峻、钱穆）的引文不在数据包里。", "dt_file": "文件", "dt_rows": "章数", "dt_lic": "许可：CC BY-NC 4.0（公版部分照公版）", "dt_link": "开放数据", "feed": "订阅更新（RSS）", "zi_title": "读音索引", "zi_sub": "各章配音照读的字音", "zi_p": "一孔录配音时照这里的读音读。点章号看那一章。", "th_ch": "章", "zi_link": "读音索引", "ju_reads": "本句读音：", "kw_stats": "已记 {n} 处勘误（{cats}），其中读者指出 {m} 处。", "thanks_h": "致谢", "thanks_p": "以下读者指出过一孔录的错误，按首次来信先后排：", "thanks_none": "还没有读者来信勘误。第一位指出错误的读者，网名会记在这里。", "baihua": "白话", "baihua_note": "按一孔录的读法直译，和视频一致；别家读法见下。", "ju_copy": "复制本句（带出处）", "ju_link": "复制本句链接", "ju_tip": "点原文任一句，可复制带出处的引文。",
+ "zh-Hans": {"zb_huang_meta2": "梁 · 1750 年日本和刻本 · 卷{j}", "zb_scan2": "和刻本扫描 第 {ce} 册第 {n} 页", "wj": "未讲", "wj_tag": "未讲", "wj_lead": "这一章一孔录还没讲。先放原文和白话直译，开讲后补上注里的关键字、诸家说法和一孔录的读法。", "wj_bh_note": "白话为初稿，按朱注直译；开讲时按定版稿再核。", "wj_src": "原文据{src}，底本第 {n} 页。", "wj_yang": "杨伯峻《论语译注》分章作 {y}。", "yiwen": "异文", "yiwen_note": "底本与通行本用字不同处，原文照底本。", "th_di": "底本", "th_tong": "通行本", "th_shuo": "说明", "toc_wj": "未讲", "wj_title": "《论语·{book}》{c}｜原文与白话（未讲）｜一孔录", "foot_org": "东亚经籍校读社 · 一孔录独立编纂，无机构或基金资助", "nav_topics": "专题", "nav_more": "更多", "grp_read": "读", "grp_check": "核", "grp_use": "用", "tools_h": "查与用", "t_zt": "按仁、孝、礼等十个字读全书", "t_zi": "配音照读的每个字音", "t_bb": "每家注本用的哪个本子", "t_dt": "按篇下载，CC BY-NC 4.0", "zc_usdt": "加密货币（USDT）", "zc_usdt_net": "网络：{n}。只能用这个网络转 USDT，转错网络或别的币会丢失，无法找回。", "zc_link": "支持一孔录", "zc_title": "支持一孔录", "zc_sub": "内容全部免费，自愿赞助", "zc_p": "一孔录的原文、注、读法、勘误和开放数据永远免费，不会因为赞助多少而锁住任何一页。如果这里帮到了你，可以请我们喝杯茶，钱用在底本、扫描和配音上。", "zc_kofi": "海外读者：在 Ko-fi 赞助", "zc_wx": "国内读者：在公众号「一孔录」任一篇原创文章末尾点“赞赏”。", "zc_soon": "海外赞助页即将开通。", "cp_entry": "复制此条（带出处）", "cp_link": "复制此条链接", "bb_link": "版本说明", "hj_h": "本句互见", "hj_zb": "本章各家注", "hj_cites": "引文逐条核对", "hj_video": "视频里讲本章：{t} 起", "hj_book": "本书互见", "hj_other": "他书出处", "hj_note": "注", "bb_title": "版本与许可", "bb_sub": "每家注本用的哪个本子、页码怎么算、能不能转用", "bb_p": "一孔录引到的每一家注，都在这里说明底本、影像来源、页码算法和许可。章节页每条注旁的“版本说明”链到这里。", "bb_base": "底本", "bb_img": "影像来源", "bb_page": "页码", "bb_lic": "许可", "bb_use": "本站怎么用", "zt_title": "专题", "zt_sub": "按一个字、一个概念读《论语》", "zt_p": "每个专题列出原文里说到它的各章：已讲的章带一孔录的读法，没讲的标“未讲”，只放原文。", "zt_n": "已收 {n} 章", "zt_link": "专题", "zt_none": "已讲章节里还没有。", "dt_title": "开放数据", "dt_sub": "按篇下载原文、白话、读法、引文与读音", "dt_p": "本站数据按篇出 JSON 和 CSV，随网站每周更新。原文与古注是公版，照公版使用；白话、一孔录读法、引文核对表等一孔录自己写的内容，按 CC BY-NC 4.0 许可：可以转载、改编，须署名“一孔录 yikonglu.com”并附原页链接，不得商用。现代注本（杨伯峻、钱穆）的引文不在数据包里。", "dt_file": "文件", "dt_rows": "章数", "dt_lic": "许可：CC BY-NC 4.0（公版部分照公版）", "dt_link": "开放数据", "feed": "订阅更新（RSS）", "zi_title": "读音索引", "zi_sub": "各章配音照读的字音", "zi_p": "一孔录配音时照这里的读音读。点章号看那一章。", "th_ch": "章", "zi_link": "读音索引", "ju_reads": "本句读音：", "kw_stats": "已记 {n} 处勘误（{cats}），其中读者指出 {m} 处。", "thanks_h": "致谢", "thanks_p": "以下读者指出过一孔录的错误，按首次来信先后排：", "thanks_none": "还没有读者来信勘误。第一位指出错误的读者，网名会记在这里。", "baihua": "白话", "baihua_note": "按一孔录的读法直译，和视频一致；别家读法见下。", "ju_copy": "复制本句（带出处）", "ju_link": "复制本句链接", "ju_tip": "点原文任一句，可复制带出处的引文。",
    "zb_h": "各家注本", "zb_note": "本站底本是朱熹《论语集注》，见上文。这里并列别家：古注录疏文第一句，附原刻本扫描页；现代注本只短引一句译文，作通行读法对照。“与朱注异同”是一孔录写的说明，不是注本原文。",
    "zb_huang": "皇侃《论语义疏》", "zb_huang_meta": "梁 · 知不足斋丛书本 · 卷{j}", "zb_scan": "原刻本扫描第 {n} 页",
    "zb_yang": "杨伯峻《论语译注》", "zb_yang_meta": "中华书局 · 现代通行本，短引", "zb_qian": "钱穆《论语新解》", "zb_qian_meta": "现代通行本，短引",
    "zb_diff": "与朱注异同", "th_zb": "注本", "th_key": "关键处", "th_kind": "异同", "th_say": "说明",
    "th_sure": "把握", "s_ding": "定", "s_wen": "较稳", "s_yi": "存疑", "k_same": "同解", "k_diff": "异读", "k_add": "补充", "k_shade": "轻重不同", "k_word": "字义不同",
    "nf_h": "这一页不在了", "nf_p": "链接可能拼错，或这一页改过地址。可以搜原文，或按书目找。"},
- "en": {"foot_org": "East Asian Classics Collation Society · independently compiled by Yikonglu, with no institutional or foundation funding", "nav_topics": "Topics", "nav_more": "More", "grp_read": "Read", "grp_check": "Check", "grp_use": "Use", "tools_h": "Tools", "t_zt": "Ten key words across the book", "t_zi": "Every reading our narration follows", "t_bb": "Which edition each commentary uses", "t_dt": "Download by book, CC BY-NC 4.0", "zc_usdt": "Crypto (USDT)", "zc_usdt_net": "Network: {n}. Send USDT on this network only; other networks or tokens will be lost and cannot be recovered.", "zc_link": "Support us", "zc_title": "Support Yikonglu", "zc_sub": "Everything stays free; support is voluntary", "zc_p": "The text, commentaries, readings, corrections and open data on this site will always be free; no page will ever be locked behind support. If this site helps you, you can buy us a tea — it pays for editions, scans and narration.", "zc_kofi": "Support on Ko-fi", "zc_wx": "Readers in mainland China: use “appreciate” at the end of any original article on our WeChat account “一孔录”.", "zc_soon": "Our Ko-fi page is coming soon.", "cp_entry": "Copy with source", "cp_link": "Copy link", "bb_link": "About this edition", "hj_h": "Cross-references", "hj_zb": "Commentaries on this chapter", "hj_cites": "Citation check", "hj_video": "In the video from {t}", "hj_book": "Elsewhere in the Analects", "hj_other": "Other sources", "hj_note": "Commentary", "bb_title": "Editions & licenses", "bb_sub": "Which edition each commentary comes from, how pages are counted, and how it may be reused", "bb_p": "For every commentary we cite, this page states the base edition, image source, page numbering and license. The “about this edition” links on chapter pages lead here.", "bb_base": "Base edition", "bb_img": "Images", "bb_page": "Pages", "bb_lic": "License", "bb_use": "How we use it", "zt_title": "Topics", "zt_sub": "Read the Analects by one word or idea", "zt_p": "Each topic lists the chapters whose original text mentions it: chapters we have covered include our reading; others show the original only. Uncovered chapters will be added automatically once the full text is online.", "zt_n": "{n} chapters", "zt_link": "Topics", "zt_none": "None among covered chapters yet.", "dt_title": "Open data", "dt_sub": "Download text, renderings, readings, citations and pronunciations by book", "dt_p": "Data is published per book as JSON and CSV and updated weekly. The original text and old commentaries are public domain. Our own content (plain renderings, readings, citation tables) is licensed CC BY-NC 4.0: attribute “一孔录 Yikonglu yikonglu.com” with a link, non-commercial. Quotations from modern commentaries are not included.", "dt_file": "File", "dt_rows": "Chapters", "dt_lic": "License: CC BY-NC 4.0 (public-domain parts remain public domain)", "dt_link": "Open data", "feed": "Subscribe (RSS)", "zi_title": "Pronunciation index", "zi_sub": "Readings used in our narration", "zi_p": "These are the readings our narration follows. Click a chapter number to open it.", "th_ch": "Chapter", "zi_link": "Pronunciation index", "ju_reads": "Readings: ", "kw_stats": "{n} corrections recorded ({cats}); {m} reported by readers.", "thanks_h": "Thanks", "thanks_p": "These readers have pointed out our mistakes, in order of first report:", "thanks_none": "No reader corrections yet. The first reader to catch a mistake will be credited here.", "baihua": "Plain Chinese", "baihua_note": "A plain modern-Chinese rendering following Yikonglu's reading.", "ju_copy": "Copy this line with source", "ju_link": "Copy link to this line", "ju_tip": "Tap any sentence of the original to copy it with its source.",
+ "en": {"zb_huang_meta2": "Liang dynasty · 1750 Japanese woodblock edition · juan {j}", "zb_scan2": "woodblock scan vol. {ce} p. {n}", "toc_wj": "not yet covered", "yiwen": "Textual variants", "yiwen_note": "Where the base edition differs from the common text; the original follows the base edition.", "th_di": "Base edition", "th_tong": "Common text", "th_shuo": "Note", "foot_org": "East Asian Classics Collation Society · independently compiled by Yikonglu, with no institutional or foundation funding", "nav_topics": "Topics", "nav_more": "More", "grp_read": "Read", "grp_check": "Check", "grp_use": "Use", "tools_h": "Tools", "t_zt": "Ten key words across the book", "t_zi": "Every reading our narration follows", "t_bb": "Which edition each commentary uses", "t_dt": "Download by book, CC BY-NC 4.0", "zc_usdt": "Crypto (USDT)", "zc_usdt_net": "Network: {n}. Send USDT on this network only; other networks or tokens will be lost and cannot be recovered.", "zc_link": "Support us", "zc_title": "Support Yikonglu", "zc_sub": "Everything stays free; support is voluntary", "zc_p": "The text, commentaries, readings, corrections and open data on this site will always be free; no page will ever be locked behind support. If this site helps you, you can buy us a tea — it pays for editions, scans and narration.", "zc_kofi": "Support on Ko-fi", "zc_wx": "Readers in mainland China: use “appreciate” at the end of any original article on our WeChat account “一孔录”.", "zc_soon": "Our Ko-fi page is coming soon.", "cp_entry": "Copy with source", "cp_link": "Copy link", "bb_link": "About this edition", "hj_h": "Cross-references", "hj_zb": "Commentaries on this chapter", "hj_cites": "Citation check", "hj_video": "In the video from {t}", "hj_book": "Elsewhere in the Analects", "hj_other": "Other sources", "hj_note": "Commentary", "bb_title": "Editions & licenses", "bb_sub": "Which edition each commentary comes from, how pages are counted, and how it may be reused", "bb_p": "For every commentary we cite, this page states the base edition, image source, page numbering and license. The “about this edition” links on chapter pages lead here.", "bb_base": "Base edition", "bb_img": "Images", "bb_page": "Pages", "bb_lic": "License", "bb_use": "How we use it", "zt_title": "Topics", "zt_sub": "Read the Analects by one word or idea", "zt_p": "Each topic lists the chapters whose original text mentions it: chapters we have covered include our reading; others show the original only.", "zt_n": "{n} chapters", "zt_link": "Topics", "zt_none": "None among covered chapters yet.", "dt_title": "Open data", "dt_sub": "Download text, renderings, readings, citations and pronunciations by book", "dt_p": "Data is published per book as JSON and CSV and updated weekly. The original text and old commentaries are public domain. Our own content (plain renderings, readings, citation tables) is licensed CC BY-NC 4.0: attribute “一孔录 Yikonglu yikonglu.com” with a link, non-commercial. Quotations from modern commentaries are not included.", "dt_file": "File", "dt_rows": "Chapters", "dt_lic": "License: CC BY-NC 4.0 (public-domain parts remain public domain)", "dt_link": "Open data", "feed": "Subscribe (RSS)", "zi_title": "Pronunciation index", "zi_sub": "Readings used in our narration", "zi_p": "These are the readings our narration follows. Click a chapter number to open it.", "th_ch": "Chapter", "zi_link": "Pronunciation index", "ju_reads": "Readings: ", "kw_stats": "{n} corrections recorded ({cats}); {m} reported by readers.", "thanks_h": "Thanks", "thanks_p": "These readers have pointed out our mistakes, in order of first report:", "thanks_none": "No reader corrections yet. The first reader to catch a mistake will be credited here.", "baihua": "Plain Chinese", "baihua_note": "A plain modern-Chinese rendering following Yikonglu's reading.", "ju_copy": "Copy this line with source", "ju_link": "Copy link to this line", "ju_tip": "Tap any sentence of the original to copy it with its source.",
    "zb_h": "Other commentaries", "zb_note": "Our base text is Zhu Xi's Collected Commentaries (above). Here are other commentaries side by side: for old commentaries, the first line of the sub-commentary with a link to the woodblock scan; for modern editions, one short quoted translation for comparison. The “compared with Zhu Xi” notes are written by Yikonglu, not quoted.",
    "zb_huang_meta": "Liang dynasty · Zhibuzu Zhai edition · juan {j}", "zb_scan": "woodblock scan p. {n}", "zb_yang_meta": "Zhonghua Book Co. · modern, short quote", "zb_qian_meta": "modern, short quote",
    "zb_diff": "Compared with Zhu Xi", "th_zb": "Commentary", "th_key": "Point", "th_kind": "Relation", "th_say": "Note",
    "th_sure": "Confidence", "s_ding": "settled", "s_wen": "fairly sure", "s_yi": "uncertain", "k_same": "same", "k_diff": "differs", "k_add": "adds", "k_shade": "nuance", "k_word": "word sense",
    "nf_h": "Page not found", "nf_p": "The link may be mistyped or the page has moved. Search the original text or browse by book."},
- "ja": {"foot_org": "東亜経籍校読社 · 一孔録 独立編纂、機関・財団の助成なし", "feed": "更新を購読（RSS）", "zi_title": "読音索引", "zi_sub": "ナレーションで用いた字音", "zi_p": "一孔録のナレーションはこの読音に従います。章番号をクリックすると開きます。", "th_ch": "章", "zi_link": "読音索引", "ju_reads": "この句の読音：", "kw_stats": "勘誤 {n} 件（{cats}）、うち読者の指摘 {m} 件。", "thanks_h": "謝辞", "thanks_p": "一孔録の誤りを指摘してくださった読者（初回の順）：", "thanks_none": "まだ読者からの勘誤はありません。最初に誤りを指摘された方のお名前をここに記します。", "baihua": "現代中国語訳", "baihua_note": "一孔録の読みに沿った現代中国語の直訳です。", "zb_huang": "皇侃『論語義疏』", "zb_yang": "楊伯峻『論語訳注』", "zb_qian": "銭穆『論語新解』", "ju_copy": "この句を出典付きでコピー", "ju_link": "この句へのリンクをコピー", "ju_tip": "原文の句をタップすると、出典付きでコピーできます。",
+ "ja": {"zb_huang_meta2": "梁 · 1750年和刻本 · 巻{j}", "zb_scan2": "和刻本スキャン 第{ce}冊 {n} 頁", "toc_wj": "未講", "yiwen": "異文", "yiwen_note": "底本と通行本で字が異なる箇所。原文は底本に従います。", "th_di": "底本", "th_tong": "通行本", "th_shuo": "説明", "foot_org": "東亜経籍校読社 · 一孔録 独立編纂、機関・財団の助成なし", "feed": "更新を購読（RSS）", "zi_title": "読音索引", "zi_sub": "ナレーションで用いた字音", "zi_p": "一孔録のナレーションはこの読音に従います。章番号をクリックすると開きます。", "th_ch": "章", "zi_link": "読音索引", "ju_reads": "この句の読音：", "kw_stats": "勘誤 {n} 件（{cats}）、うち読者の指摘 {m} 件。", "thanks_h": "謝辞", "thanks_p": "一孔録の誤りを指摘してくださった読者（初回の順）：", "thanks_none": "まだ読者からの勘誤はありません。最初に誤りを指摘された方のお名前をここに記します。", "baihua": "現代中国語訳", "baihua_note": "一孔録の読みに沿った現代中国語の直訳です。", "zb_huang": "皇侃『論語義疏』", "zb_yang": "楊伯峻『論語訳注』", "zb_qian": "銭穆『論語新解』", "ju_copy": "この句を出典付きでコピー", "ju_link": "この句へのリンクをコピー", "ju_tip": "原文の句をタップすると、出典付きでコピーできます。",
    "zb_h": "諸家の注釈", "zb_note": "底本は朱熹『論語集注』（上記）。ここでは他の注釈を並べます。古注は疏の最初の一句と原刻本スキャンへのリンク、現代の注釈は訳文一句のみを短く引用します。「朱注との異同」は一孔録による説明です。",
    "zb_huang_meta": "梁 · 知不足斎叢書本 · 巻{j}", "zb_scan": "原刻本スキャン {n} 頁", "zb_yang_meta": "中華書局 · 現代の通行本、短い引用", "zb_qian_meta": "現代の通行本、短い引用",
    "zb_diff": "朱注との異同", "th_zb": "注釈", "th_key": "要点", "th_kind": "異同", "th_say": "説明",
    "th_sure": "確度", "s_ding": "確定", "s_wen": "ほぼ確実", "s_yi": "存疑", "k_same": "同じ", "k_diff": "異なる読み", "k_add": "補足", "k_shade": "軽重の差", "k_word": "字義の違い",
    "nf_h": "ページが見つかりません", "nf_p": "リンクの誤りか、ページが移動しました。原文を検索するか、書目からお探しください。"},
- "ko": {"foot_org": "東亞經籍校讀社 · 一孔錄 독립 편찬, 기관·재단 후원 없음", "feed": "업데이트 구독(RSS)", "zi_title": "독음 색인", "zi_sub": "내레이션에서 읽은 글자 음", "zi_p": "일공록 내레이션은 이 독음을 따릅니다. 장 번호를 누르면 열립니다.", "th_ch": "장", "zi_link": "독음 색인", "ju_reads": "이 구절의 독음: ", "kw_stats": "감오 {n}건({cats}), 그중 독자 지적 {m}건.", "thanks_h": "감사", "thanks_p": "일공록의 오류를 지적해 주신 독자(첫 제보 순):", "thanks_none": "아직 독자 감오가 없습니다. 처음 오류를 지적한 분의 이름을 여기에 적습니다.", "baihua": "현대 중국어 풀이", "baihua_note": "일공록의 해석에 따른 현대 중국어 직역입니다.", "zb_huang": "皇侃《論語義疏》", "zb_yang": "楊伯峻《論語譯注》", "zb_qian": "錢穆《論語新解》", "ju_copy": "이 구절을 출처와 함께 복사", "ju_link": "이 구절 링크 복사", "ju_tip": "원문의 구절을 누르면 출처와 함께 복사할 수 있습니다.",
+ "ko": {"zb_huang_meta2": "양나라 · 1750년 일본 화각본 · 권{j}", "zb_scan2": "화각본 스캔 제{ce}책 {n}쪽", "toc_wj": "아직 다루지 않음", "yiwen": "이문", "yiwen_note": "저본과 통행본의 글자가 다른 곳. 원문은 저본을 따릅니다.", "th_di": "저본", "th_tong": "통행본", "th_shuo": "설명", "foot_org": "東亞經籍校讀社 · 一孔錄 독립 편찬, 기관·재단 후원 없음", "feed": "업데이트 구독(RSS)", "zi_title": "독음 색인", "zi_sub": "내레이션에서 읽은 글자 음", "zi_p": "일공록 내레이션은 이 독음을 따릅니다. 장 번호를 누르면 열립니다.", "th_ch": "장", "zi_link": "독음 색인", "ju_reads": "이 구절의 독음: ", "kw_stats": "감오 {n}건({cats}), 그중 독자 지적 {m}건.", "thanks_h": "감사", "thanks_p": "일공록의 오류를 지적해 주신 독자(첫 제보 순):", "thanks_none": "아직 독자 감오가 없습니다. 처음 오류를 지적한 분의 이름을 여기에 적습니다.", "baihua": "현대 중국어 풀이", "baihua_note": "일공록의 해석에 따른 현대 중국어 직역입니다.", "zb_huang": "皇侃《論語義疏》", "zb_yang": "楊伯峻《論語譯注》", "zb_qian": "錢穆《論語新解》", "ju_copy": "이 구절을 출처와 함께 복사", "ju_link": "이 구절 링크 복사", "ju_tip": "원문의 구절을 누르면 출처와 함께 복사할 수 있습니다.",
    "zb_h": "여러 주석서", "zb_note": "저본은 주희 『논어집주』(위)입니다. 여기에는 다른 주석을 나란히 둡니다. 고주는 소(疏)의 첫 구절과 원각본 스캔 링크, 현대 주석은 번역 한 구절만 짧게 인용합니다. '주희 주석과의 이동'은 일공록의 설명입니다.",
    "zb_huang_meta": "양나라 · 지부족재총서본 · 권{j}", "zb_scan": "원각본 스캔 {n}쪽", "zb_yang_meta": "중화서국 · 현대 통행본, 짧은 인용", "zb_qian_meta": "현대 통행본, 짧은 인용",
    "zb_diff": "주희 주석과의 이동", "th_zb": "주석", "th_key": "요점", "th_kind": "이동", "th_say": "설명",
    "th_sure": "확실성", "s_ding": "확정", "s_wen": "비교적 확실", "s_yi": "의문", "k_same": "같음", "k_diff": "다른 해석", "k_add": "보충", "k_shade": "경중 차이", "k_word": "자의 차이",
    "nf_h": "페이지를 찾을 수 없습니다", "nf_p": "링크가 잘못되었거나 주소가 바뀌었습니다. 원문을 검색하거나 서목에서 찾아보세요."},
- "fr": {"foot_org": "Société de collation des classiques d’Asie orientale · compilé de façon indépendante par Yikonglu, sans financement institutionnel ni de fondation", "feed": "S'abonner (RSS)", "zi_title": "Index des prononciations", "zi_sub": "Lectures suivies par notre narration", "zi_p": "Notre narration suit ces lectures. Cliquez sur un numéro de chapitre pour l'ouvrir.", "th_ch": "Chapitre", "zi_link": "Index des prononciations", "ju_reads": "Lectures : ", "kw_stats": "{n} corrections enregistrées ({cats}), dont {m} signalées par des lecteurs.", "thanks_h": "Remerciements", "thanks_p": "Ces lecteurs ont relevé nos erreurs, par ordre de premier signalement :", "thanks_none": "Aucune correction de lecteur pour l'instant. Le premier à relever une erreur sera crédité ici.", "baihua": "Chinois moderne", "baihua_note": "Rendu en chinois moderne selon la lecture de Yikonglu.", "ju_copy": "Copier la phrase avec la source", "ju_link": "Copier le lien de la phrase", "ju_tip": "Touchez une phrase du texte original pour la copier avec sa source.",
+ "fr": {"zb_huang_meta2": "dynastie Liang · éd. japonaise de 1750 · juan {j}", "zb_scan2": "xylographie vol. {ce} p. {n}", "toc_wj": "pas encore traité", "yiwen": "Variantes", "yiwen_note": "Là où l'édition de base diffère du texte courant ; l'original suit l'édition de base.", "th_di": "Édition de base", "th_tong": "Texte courant", "th_shuo": "Note", "foot_org": "Société de collation des classiques d’Asie orientale · compilé de façon indépendante par Yikonglu, sans financement institutionnel ni de fondation", "feed": "S'abonner (RSS)", "zi_title": "Index des prononciations", "zi_sub": "Lectures suivies par notre narration", "zi_p": "Notre narration suit ces lectures. Cliquez sur un numéro de chapitre pour l'ouvrir.", "th_ch": "Chapitre", "zi_link": "Index des prononciations", "ju_reads": "Lectures : ", "kw_stats": "{n} corrections enregistrées ({cats}), dont {m} signalées par des lecteurs.", "thanks_h": "Remerciements", "thanks_p": "Ces lecteurs ont relevé nos erreurs, par ordre de premier signalement :", "thanks_none": "Aucune correction de lecteur pour l'instant. Le premier à relever une erreur sera crédité ici.", "baihua": "Chinois moderne", "baihua_note": "Rendu en chinois moderne selon la lecture de Yikonglu.", "ju_copy": "Copier la phrase avec la source", "ju_link": "Copier le lien de la phrase", "ju_tip": "Touchez une phrase du texte original pour la copier avec sa source.",
    "zb_h": "Autres commentaires", "zb_note": "Notre texte de base est le commentaire de Zhu Xi (ci-dessus). Voici d'autres commentaires en regard : pour les anciens, la première phrase du sous-commentaire et un lien vers la xylographie ; pour les modernes, une seule phrase de traduction, citée brièvement. Les notes « par rapport à Zhu Xi » sont de Yikonglu.",
    "zb_huang_meta": "dynastie Liang · éd. Zhibuzu Zhai · juan {j}", "zb_scan": "xylographie p. {n}", "zb_yang_meta": "Zhonghua · moderne, citation brève", "zb_qian_meta": "moderne, citation brève",
    "zb_diff": "Par rapport à Zhu Xi", "th_zb": "Commentaire", "th_key": "Point", "th_kind": "Relation", "th_say": "Note",
    "th_sure": "Certitude", "s_ding": "établi", "s_wen": "assez sûr", "s_yi": "incertain", "k_same": "identique", "k_diff": "diverge", "k_add": "complète", "k_shade": "nuance", "k_word": "sens du mot",
    "nf_h": "Page introuvable", "nf_p": "Le lien est peut-être erroné ou la page a changé d'adresse. Cherchez dans le texte original ou parcourez par livre."},
- "es": {"foot_org": "Sociedad de cotejo de clásicos de Asia oriental · compilado de forma independiente por Yikonglu, sin financiación institucional ni de fundaciones", "feed": "Suscribirse (RSS)", "zi_title": "Índice de pronunciación", "zi_sub": "Lecturas que sigue nuestra narración", "zi_p": "Nuestra narración sigue estas lecturas. Haz clic en un número de capítulo para abrirlo.", "th_ch": "Capítulo", "zi_link": "Índice de pronunciación", "ju_reads": "Lecturas: ", "kw_stats": "{n} correcciones registradas ({cats}); {m} señaladas por lectores.", "thanks_h": "Agradecimientos", "thanks_p": "Estos lectores han señalado nuestros errores, por orden del primer aviso:", "thanks_none": "Aún no hay correcciones de lectores. El primero en señalar un error figurará aquí.", "baihua": "Chino moderno", "baihua_note": "Versión en chino moderno según la lectura de Yikonglu.", "ju_copy": "Copiar la frase con la fuente", "ju_link": "Copiar el enlace de la frase", "ju_tip": "Toca una frase del original para copiarla con su fuente.",
+ "es": {"zb_huang_meta2": "dinastía Liang · ed. japonesa de 1750 · juan {j}", "zb_scan2": "xilografía vol. {ce} p. {n}", "toc_wj": "aún no tratado", "yiwen": "Variantes", "yiwen_note": "Donde la edición base difiere del texto común; el original sigue la edición base.", "th_di": "Edición base", "th_tong": "Texto común", "th_shuo": "Nota", "foot_org": "Sociedad de cotejo de clásicos de Asia oriental · compilado de forma independiente por Yikonglu, sin financiación institucional ni de fundaciones", "feed": "Suscribirse (RSS)", "zi_title": "Índice de pronunciación", "zi_sub": "Lecturas que sigue nuestra narración", "zi_p": "Nuestra narración sigue estas lecturas. Haz clic en un número de capítulo para abrirlo.", "th_ch": "Capítulo", "zi_link": "Índice de pronunciación", "ju_reads": "Lecturas: ", "kw_stats": "{n} correcciones registradas ({cats}); {m} señaladas por lectores.", "thanks_h": "Agradecimientos", "thanks_p": "Estos lectores han señalado nuestros errores, por orden del primer aviso:", "thanks_none": "Aún no hay correcciones de lectores. El primero en señalar un error figurará aquí.", "baihua": "Chino moderno", "baihua_note": "Versión en chino moderno según la lectura de Yikonglu.", "ju_copy": "Copiar la frase con la fuente", "ju_link": "Copiar el enlace de la frase", "ju_tip": "Toca una frase del original para copiarla con su fuente.",
    "zb_h": "Otros comentarios", "zb_note": "Nuestro texto base es el comentario de Zhu Xi (arriba). Aquí van otros comentarios en paralelo: de los antiguos, la primera frase del subcomentario y un enlace a la xilografía; de los modernos, una sola frase de traducción citada brevemente. Las notas «frente a Zhu Xi» son de Yikonglu.",
    "zb_huang_meta": "dinastía Liang · ed. Zhibuzu Zhai · juan {j}", "zb_scan": "xilografía p. {n}", "zb_yang_meta": "Zhonghua · moderno, cita breve", "zb_qian_meta": "moderno, cita breve",
    "zb_diff": "Frente a Zhu Xi", "th_zb": "Comentario", "th_key": "Punto", "th_kind": "Relación", "th_say": "Nota",
@@ -129,11 +139,11 @@ BANBEN = [
    ("bb_lic", "原书是公版。原页图只作核对展示。"),
    ("bb_use", "每章原文、注里的关键字、引文逐条核对表都据此本；转述和原话分开标。")]),
  ("huangkan", "皇侃《论语义疏》（梁）", [
-   ("bb_base", "知不足斋丛书第七集本《论语集解义疏》卷一、二（题魏何晏集解、梁皇侃义疏）。书目著录的乾隆五十三年（1788）是序年，扫描的具体印次未定。"),
-   ("bb_img", '<a href="https://commons.wikimedia.org/wiki/File:SSID-13146346_%E7%9F%A5%E4%B8%8D%E8%B6%B3%E9%BD%8B_%E7%AC%AC7%E9%9B%86_%E8%AB%96%E8%AA%9E%E7%BE%A9%E7%96%8F%E6%95%98_%E5%8D%B71-2.pdf" target="_blank" rel="noopener">Wikimedia Commons 影印扫描</a>（共 164 页）。'),
-   ("bb_page", "“原刻本扫描第 N 页”是该扫描文件的第 N 页（从 1 起算）；卷一第一叶正面是第 29 页，背面第 30 页，以下按版心正背推。"),
+   ("bb_base", "卷一、二（学而至里仁）：知不足斋丛书第七集本《论语集解义疏》（题魏何晏集解、梁皇侃义疏）。书目著录的乾隆五十三年（1788）是序年，扫描的具体印次未定。卷三至卷十（公冶长至尧曰）：日本宽延三年（1750）根本逊志校正和刻本，早稻田大学图书馆藏，第 2 至 5 册。"),
+   ("bb_img", '<a href="https://commons.wikimedia.org/wiki/File:SSID-13146346_%E7%9F%A5%E4%B8%8D%E8%B6%B3%E9%BD%8B_%E7%AC%AC7%E9%9B%86_%E8%AB%96%E8%AA%9E%E7%BE%A9%E7%96%8F%E6%95%98_%E5%8D%B71-2.pdf" target="_blank" rel="noopener">Wikimedia Commons 影印扫描</a>（共 164 页）；卷三起的和刻本是 <a href="https://commons.wikimedia.org/wiki/File:WUL-ro12_00916_%E8%AB%96%E8%AA%9E%E9%9B%86%E8%A7%A3%E7%BE%A9%E7%96%8F_2.pdf" target="_blank" rel="noopener">Wikimedia Commons 早稻田大学图书馆影印</a>（第 2 至 5 册各一个文件）。'),
+   ("bb_page", "“原刻本扫描第 N 页”是该扫描文件的第 N 页（从 1 起算）；卷一第一叶正面是第 29 页，背面第 30 页，以下按版心正背推。和刻本写“第 M 册第 N 页”，是该册扫描文件的第 N 页（含封面，从 1 起算）。"),
    ("bb_lic", "公版。"),
-   ("bb_use", "每章录疏文第一个完整释义单元，句读是一孔录加的；全文请点扫描页看原刻。")]),
+   ("bb_use", "每章录疏文第一个完整释义单元，句读是一孔录加的；全文请点扫描页看原刻。还没对过扫描或把握“存疑”的章先不放。")]),
  ("heyan", "何晏《论语集解》（三国魏）", [
    ("bb_base", "清光绪十八年（1892）湖南宝庆务本书局重镌阮元本《论语注疏》所收《集解》。"),
    ("bb_img", "工坊所藏该本影印扫描，视频里“别家原页”用这一本。"),
@@ -183,30 +193,58 @@ def parse_zhuben(d):
     out = {}
     if not os.path.isdir(d): return out
     def rows(prefix):
-        f = sorted(glob.glob(os.path.join(d, prefix + "-*逐章索引*.csv")))
-        return list(csv.DictReader(open(f[-1], encoding="utf-8-sig"))) if f else []
+        """同一家的多份 CSV（分篇交、v1/v2）合起来：版本号小的先读，大的覆盖；同版本按文件名。空行（暂停未核）不覆盖。"""
+        ver = lambda f: (int((re.search(r"-v(\d+)", f) or [0, 0])[1]), f)
+        out_ = {}
+        for f in sorted(glob.glob(os.path.join(d, prefix + "-*逐章*.csv")), key=ver):
+            for r in csv.DictReader(open(f, encoding="utf-8-sig")):
+                if r.get("章号"): out_[r["章号"].strip()] = r
+        return list(out_.values())
+    CN = "一二三四五六七八九十"
     for r in rows("皇疏"):
-        t = r["义疏首句"].strip().replace("其其孝悌者也", "其，其孝悌者也")  # 11-03 核收意见：疏先单释“其”字
-        out.setdefault(r["章号"], {})["huang"] = {"text": t, "juan": r["卷"], "page": r["义疏首句PDF页"], "leaf": r.get("章首叶面", "")}
+        t = (r.get("义疏首句") or "").strip().replace("其其孝悌者也", "其，其孝悌者也")  # 11-03 核收意见：疏先单释“其”字
+        sure = (r.get("把握") or "").strip()
+        if not t or not r.get("义疏首句PDF页") or sure == "存疑" or "待" in (r.get("状态") or ""): continue  # 宁缺：存疑、待复核的不上
+        p = int(r["章号"].split(".")[0]); j = (r.get("卷") or "").strip()
+        if j.isdigit(): j = CN[int(j) - 1] if int(j) <= 10 else j
+        ed = "zbz" if p <= 4 else "wk"  # 知不足斋本只有卷一二（学而至里仁）；公冶长起用 1750 年和刻本
+        ce = {5: 2, 6: 2, 7: 2, 8: 2, 9: 3, 10: 3, 11: 3, 12: 3, 13: 4, 14: 4, 15: 4, 16: 4}.get(p, 5)
+        out.setdefault(r["章号"], {})["huang"] = {"text": t, "juan": j, "page": r["义疏首句PDF页"].strip(), "leaf": r.get("章首叶面", ""), "ed": ed, "ce": ce}
     pageref = re.compile(r"[^。；]*书\s*\d+(?:[—-]\d+)?页（PDF[^）]*）[。；]?|（PDF[^）]*）")
     for key, prefix in (("yang", "杨伯峻"), ("qian", "钱穆")):
         for r in rows(prefix):
             cmp_ = pageref.sub("", r["与朱注比较"]).strip().rstrip("；")
-            m = re.match(r"^([^：]{1,8})：(.*)$", cmp_)
+            mm = re.match(r"^[杨钱]\d+\.\d+：", cmp_)  # 朱注一章并杨本多章：“杨5.1：同解：……；杨5.2：……”，按第一段判类，说明保留全文
+            pre = cmp_[mm.end():] if mm else None
+            m = re.match(r"^([^：]{1,8})：(.*)$", pre if pre is not None else cmp_)
             head, body = (m.group(1), m.group(2)) if m else ("", cmp_)
+            if pre is not None: body = cmp_
             META = {"同解": "k_same", "同旨": "k_same", "同解为主": "k_same", "主旨相近": "k_same", "同一方向": "k_same", "同属至、正之解": "k_same",
                     "异读": "k_diff", "异读（人物）": "k_diff", "名物异读": "k_diff", "数量差异": "k_diff",
                     "补充阐释": "k_add", "补充": "k_add", "同解而有扩展": "k_add",
                     "有轻重差别": "k_shade", "主取不同": "k_shade", "解释重心不同": "k_shade", "解法有别": "k_shade", "同旨而申说不同": "k_shade", "字义范围不同": "k_word0"}
             kind = META.get(head)
-            if kind == "k_word0": kind, head_is_word = "k_word", False
+            mx = re.match(r"^(.*?)(字|的)?(主取|主训|读义|解释重心|解释|重心|侧重|方向|指向|句法取向|所责|所承|所问|所叹焦点|名物|身份|事迹|范围|语气与章旨|语气|指涉|句读|句义|义|器具解释|历史指称|章旨|经文选择|文字句读|取义)?(不同|有别|相反|相异|略异|异解|有异读|有异)$", head) if head and not kind else None
+            if mx:  # 钱本元判断如“怨的方向不同”“里字主取不同”：关键字取前面的字，类别按轻重
+                kind = "k_shade" if (mx.group(4) == "略异" or (mx.group(3) or "") in ("侧重", "重心", "解释重心")) else "k_diff"
+                head_is_word = True; head = mx.group(1) if 0 < len(mx.group(1)) <= 6 else ""
+                if not head: head_is_word = False
+            if mx: pass
+            elif kind == "k_word0": kind, head_is_word = "k_word", False
             else: head_is_word = bool(head and not kind)
             if head and not kind: kind = "k_word"
             if not head: kind = "k_same" if "同" in cmp_[:4] else "k_diff"
+            if not r.get("译文一句", "").strip(): continue  # 重出省译的章不放
             out.setdefault(r["章号"], {})[key] = {"text": r["译文一句"].strip(), "key": head if head_is_word else "", "kind": kind, "say": body if head else cmp_, "sure": {"定": "s_ding", "较稳": "s_wen", "存疑": "s_yi"}.get((r.get("把握") or "").strip(), "")}
     return out
 
 def esc(s): return html.escape(s, quote=True)
+
+def wj_title(text):
+    """未讲章没有标题：取原文开头一句（去掉“子曰：”之类），最多 12 字。"""
+    t = re.sub(r"^(子|孔子)曰：", "", text)
+    t = re.split(r"[，。？！；：]", t)[0]
+    return t[:12]
 
 def cpbtn(L, text, link, link_only=False):
     """复制按钮：data-t 是要复制的引文（空则只复制链接）。"""
@@ -267,7 +305,7 @@ def cn2int(t):
     if t[0] == "十": return 10 + CN[t[1]]
     if t[-1] == "十": return CN[t[0]] * 10
     return CN[t[0]] * 10 + CN[t[2]]
-PIAN_NUM = {"学而": "1", "为政": "2", "八佾": "3", "里仁": "4"}
+PIAN_NUM = {v[0]: k for k, v in PIAN.items()}
 
 def parse_gao(path, yw):
     L = open(path, encoding="utf-8").read().replace("\r", "").split("\n")
@@ -450,6 +488,53 @@ def build_lang(L, D, write):
         v = L.ch(c).get(k)
         return (v, True) if v else (notes[c]["fields"].get(k), False)
     search_idx = []
+    pubset = set(pub)
+    def href(c):  # 已讲章各语种都有页；未讲章只出简繁，外文页链到简体
+        return (P if c in pubset or L.code.startswith("zh") else "/") + rel_of(c)
+    def ctitle(c): return title_of(c) if c in pubset else wj_title(D["qw"][c]["text"])
+    def hj_of(c):  # 本句互见：链到已讲章（各语种）或未讲章（简繁有页，外文链简体页）
+        kname = {"注": L.t("hj_note"), "本书": L.t("hj_book"), "他书": L.t("hj_other")}
+        hj_data = {}
+        for r in D["hujian"].get(c, []):
+            link = r["link"]
+            m = re.fullmatch(r"(\d+\.\d+)(#s\d+)?", link or "")
+            if m and (m.group(1) in pubset or m.group(1) in D["qw"]): link = href(m.group(1)) + (m.group(2) or "")
+            elif m: link = ""
+            hj_data.setdefault(r["ju"], []).append([kname.get(r["kind"], r["kind"]), r["text"], r["src"], link])
+        return hj_data
+    def sidebar(pnum, c):
+        return "".join(f'<li class="{"cur" if cc == c else ""}{" wj" if cc not in pubset else ""}"><a href="{href(cc)}"><em>{cc.split(".")[1]}</em>{esc(ctitle(cc))}</a></li>' for cc in D["all_by_pian"].get(pnum, by_pian.get(pnum, [])))
+    def yiwen_html(c):
+        rs = D["yiwen"].get(c)
+        if not rs: return ""
+        return (f'<section class="sec yiwen"><h2><i>异</i>{L.t("yiwen")}</h2><p class="note">{L.t("yiwen_note")}</p><table><thead><tr><th>{L.t("th_di")}</th><th>{L.t("th_tong")}</th><th>{L.t("th_shuo")}</th></tr></thead><tbody lang="zh-Hans">'
+                + "".join(f'<tr><td class="zi">{esc(r["底本"])}</td><td>{esc(r["通行本"])}</td><td>{esc(r["说明"])}</td></tr>' for r in rs) + "</tbody></table></section>")
+    def zb_section(c, url, cite_src):
+        zb = D["zhuben"].get(c, {})
+        if not zb: return ""
+        blocks, diffs = "", []
+        if "huang" in zb:
+            h = zb["huang"]
+            hurl = HUANG_SCAN.format(n=h["page"]) if h.get("ed", "zbz") == "zbz" else HUANG_WK.format(ce=h["ce"], n=h["page"])
+            hmeta = L.t("zb_huang_meta", j=h["juan"]) if h.get("ed", "zbz") == "zbz" else L.t("zb_huang_meta2", j=h["juan"])
+            blocks += (f'<div class="zb" id="zb-huangkan"><h3>{L.t("zb_huang")}<small>{esc(hmeta)}</small></h3>'
+                       f'<p lang="zh-Hant">“{esc(h["text"])}”……</p><p class="zbsrc"><a class="pg" href="{hurl}" target="_blank" rel="noopener">{L.t("zb_scan", n=h["page"]) if h.get("ed", "zbz") == "zbz" else L.t("zb_scan2", ce=h["ce"], n=h["page"])}</a>'
+                       + cpbtn(L, f'“{h["text"]}”——皇侃《论语义疏》，{cite_src}', url + "#zb-huangkan") + f'<a class="bb" href="{P}banben/#huangkan">{L.t("bb_link")}</a></p></div>')
+        for key, nk, mk in (("yang", "zb_yang", "zb_yang_meta"), ("qian", "zb_qian", "zb_qian_meta")):
+            if key not in zb: continue
+            z = zb[key]
+            aid = {"yang": "yangbojun", "qian": "qianmu"}[key]; zh_n = {"yang": "杨伯峻《论语译注》", "qian": "钱穆《论语新解》"}[key]
+            blocks += (f'<div class="zb" id="zb-{aid}"><h3>{L.t(nk)}<small>{L.t(mk)}</small></h3><p lang="zh-Hans">“{esc(z["text"])}”</p><p class="zbsrc">'
+                       + cpbtn(L, f'“{z["text"]}”——{zh_n}，转引自{cite_src}', url + f"#zb-{aid}") + f'<a class="bb" href="{P}banben/#{aid}">{L.t("bb_link")}</a></p></div>')
+            diffs.append((L.t(nk), z))
+        order = {"k_diff": 0, "k_word": 1, "k_shade": 2, "k_add": 3, "k_same": 4}
+        diffs.sort(key=lambda t: order.get(t[1]["kind"], 9))
+        has_s = any(z.get("sure") for _, z in diffs)  # “把握”列：CSV 有“把握”列（定／较稳／存疑）才显示
+        scell = lambda z: (f'<td><span class="sure {z["sure"]}">{L.t(z["sure"])}</span></td>' if z.get("sure") else "<td></td>") if has_s else ""
+        trs = "".join(f'<tr class="{z["kind"]}"><td>{esc(nm)}</td><td class="zi">{esc(z["key"])}</td><td><span class="kind">{L.t(z["kind"])}</span></td>{scell(z)}<td lang="zh-Hans">{esc(z["say"])}</td></tr>' for nm, z in diffs)
+        sth = f'<th>{L.t("th_sure")}</th>' if has_s else ""
+        dtab = f'<h3 class="zbd">{L.t("zb_diff")}</h3><table class="zbt"><thead><tr><th>{L.t("th_zb")}</th><th>{L.t("th_key")}</th><th>{L.t("th_kind")}</th>{sth}<th>{L.t("th_say")}</th></tr></thead><tbody>{trs}</tbody></table>' if diffs else ""
+        return f'<section class="sec zhuben" id="zhuben"><h2><i>家</i>{L.t("zb_h")}</h2><p class="note">{L.t("zb_note")}</p><div class="zbs">{blocks}</div>{dtab}</section>'
 
     for i, c in enumerate(pub):
         n = notes[c]; pnum, cnum = c.split("."); pname, slug, pfull, _ = PIAN[pnum]
@@ -467,7 +552,7 @@ def build_lang(L, D, write):
         def card(cc, lab, cls):
             if not cc: return '<span></span>'
             return f'<a class="pncard {cls}" href="{P}{rel_of(cc)}"><small>{lab}</small><b>{cc}　{esc(title_of(cc))}</b></a>'
-        side = "".join(f'<li{" class=cur" if cc == c else ""}><a href="{P}{rel_of(cc)}"><em>{cc.split(".")[1]}</em>{esc(title_of(cc))}</a></li>' for cc in by_pian[pnum])
+        side = sidebar(pnum, c)
         yt = ep.get("youtube", ""); g = gao.get(c, {"cites": [], "reads": []})
         st = ep.get("starts", {}).get(c) or D["starts"].get(yt, {}).get(c)  # 本章在视频里从第几秒讲起（发布线程补）
         pub_at = ep.get("public_at", "")  # 定时公开的集：公开前视频块先藏着，到点由页内脚本显示
@@ -498,37 +583,8 @@ def build_lang(L, D, write):
                                 + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
         ju_html = "".join(f'<span class="ju" id="s{j}" tabindex="0">{esc(x)}</span>' for j, x in enumerate(split_ju(yw[c]), 1))
         cite_src = (f"《论语·{pname}》{c}，一孔录" if L.code.startswith("zh") else f"{L.t('lunyu')} {c}, 一孔录 Yikonglu")
-        zb = D["zhuben"].get(c, {})
-        kname = {"注": L.t("hj_note"), "本书": L.t("hj_book"), "他书": L.t("hj_other")}
-        hj_data = {}
-        for r in D["hujian"].get(c, []):
-            link = r["link"]
-            m = re.fullmatch(r"(\d+\.\d+)(#s\d+)?", link or "")
-            if m and m.group(1) in pub: link = P + rel_of(m.group(1)) + (m.group(2) or "")
-            elif m: link = ""
-            hj_data.setdefault(r["ju"], []).append([kname.get(r["kind"], r["kind"]), r["text"], r["src"], link])
-        if zb:
-            blocks, diffs = "", []
-            if "huang" in zb:
-                h = zb["huang"]
-                blocks += (f'<div class="zb" id="zb-huangkan"><h3>{L.t("zb_huang")}<small>{esc(L.t("zb_huang_meta", j=h["juan"]))}</small></h3>'
-                           f'<p lang="zh-Hant">“{esc(h["text"])}”……</p><p class="zbsrc"><a class="pg" href="{HUANG_SCAN.format(n=h["page"])}" target="_blank" rel="noopener">{L.t("zb_scan", n=h["page"])}</a>'
-                           + cpbtn(L, f'“{h["text"]}”——皇侃《论语义疏》，{cite_src}', url + "#zb-huangkan") + f'<a class="bb" href="{P}banben/#huangkan">{L.t("bb_link")}</a></p></div>')
-            for key, nk, mk in (("yang", "zb_yang", "zb_yang_meta"), ("qian", "zb_qian", "zb_qian_meta")):
-                if key not in zb: continue
-                z = zb[key]
-                aid = {"yang": "yangbojun", "qian": "qianmu"}[key]; zh_n = {"yang": "杨伯峻《论语译注》", "qian": "钱穆《论语新解》"}[key]
-                blocks += (f'<div class="zb" id="zb-{aid}"><h3>{L.t(nk)}<small>{L.t(mk)}</small></h3><p lang="zh-Hans">“{esc(z["text"])}”</p><p class="zbsrc">'
-                           + cpbtn(L, f'“{z["text"]}”——{zh_n}，转引自{cite_src}', url + f"#zb-{aid}") + f'<a class="bb" href="{P}banben/#{aid}">{L.t("bb_link")}</a></p></div>')
-                diffs.append((L.t(nk), z))
-            order = {"k_diff": 0, "k_word": 1, "k_shade": 2, "k_add": 3, "k_same": 4}
-            diffs.sort(key=lambda t: order.get(t[1]["kind"], 9))
-            has_s = any(z.get("sure") for _, z in diffs)  # “把握”列：CSV 有“把握”列（定／较稳／存疑）才显示
-            scell = lambda z: (f'<td><span class="sure {z["sure"]}">{L.t(z["sure"])}</span></td>' if z.get("sure") else "<td></td>") if has_s else ""
-            trs = "".join(f'<tr class="{z["kind"]}"><td>{esc(nm)}</td><td class="zi">{esc(z["key"])}</td><td><span class="kind">{L.t(z["kind"])}</span></td>{scell(z)}<td lang="zh-Hans">{esc(z["say"])}</td></tr>' for nm, z in diffs)
-            sth = f'<th>{L.t("th_sure")}</th>' if has_s else ""
-            dtab = f'<h3 class="zbd">{L.t("zb_diff")}</h3><table class="zbt"><thead><tr><th>{L.t("th_zb")}</th><th>{L.t("th_key")}</th><th>{L.t("th_kind")}</th>{sth}<th>{L.t("th_say")}</th></tr></thead><tbody>{trs}</tbody></table>' if diffs else ""
-            extra = f'<section class="sec zhuben" id="zhuben"><h2><i>家</i>{L.t("zb_h")}</h2><p class="note">{L.t("zb_note")}</p><div class="zbs">{blocks}</div>{dtab}</section>' + extra
+        zb = D["zhuben"].get(c, {}); hj_data = hj_of(c)
+        extra = zb_section(c, url, cite_src) + extra
         bh = D["baihua"].get(c)
         bh_html = f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(bh)}</p><p class="note">{L.t("baihua_note")}</p></section>' if bh else ""
         rend = L.ch(c).get("yw")
@@ -542,6 +598,7 @@ def build_lang(L, D, write):
 <figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}<p class="jutip">{L.t("ju_tip")}</p></figure>
 {bh_html}
 {secs}
+{yiwen_html(c)}
 {extra}
 {vid_html}
 <p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>{RW.chip_line(D.get("renwu"), c, P) if L.code.startswith("zh") else ""}{GS.footer_line(D.get("gushi"), c, P) if L.code.startswith("zh") else ""}
@@ -579,24 +636,72 @@ def build_lang(L, D, write):
             ("DC.title", name), ("DC.creator", "一孔录"), ("DC.date", first), ("DC.language", L.hreflang), ("DC.source", SOURCE)])
         write(rel, page(L, ttl, desc, rel, body + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
 
+
+    # 未讲各章：只出简繁。原文（朱注分章底本）、白话初稿、本句互见、异文、各家注本
+    if L.code.startswith("zh"):
+        for p_, cs in D["all_by_pian"].items():
+            for k, c in enumerate(cs):
+                if c in pubset: continue
+                q = D["qw"][c]; text = q["text"]; pnum, cnum = c.split("."); pname, slug, pfull, _ = PIAN[pnum]
+                rel = rel_of(c); url = f"{DOMAIN}/{L.prefix}{rel}"; bname = L.book(pnum)
+                cite_src = f"《论语·{pname}》{c}，一孔录"
+                ju_html = "".join(f'<span class="ju" id="s{j}" tabindex="0">{esc(x)}</span>' for j, x in enumerate(split_ju(text), 1))
+                pgn = str(q.get("pdf_page", ""))
+                pgl = (f'<a class="pg" href="/yuanye/p{int(pgn):03d}.jpg" target="_blank">{pgn}</a>' if pgn in pages_avail else pgn) if pgn else ""
+                cap = L.t("wj_src", src=SOURCE, n=pgl) if pgn else L.t("source_line")
+                y = D["fz"].get(c)
+                if y and y != c: cap += " " + L.t("wj_yang", y=y)
+                bh = D["baihua"].get(c)
+                bh_html = f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(bh)}</p><p class="note">{L.t("wj_bh_note")}</p></section>' if bh else ""
+                prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
+                pn = "".join(f'<a class="pncard {cl}" href="{href(cc)}"><small>{L.t(lab)}</small><b>{cc}　{esc(ctitle(cc))}</b></a>' if cc else "<span></span>" for cc, lab, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
+                body = f"""<div class="chhead"><div class="wrap">
+<p class="crumb"><a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
+<h1><span class="no">{L.t("chapter_no", book=pname, n=cnum)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(ctitle(c))}</h1>
+</div></div>
+<main class="wrap chapter">
+<article>
+<p class="wjlead">{L.t("wj_lead")}</p>
+<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="[]" data-rl="" data-hj="{esc(json.dumps(hj_of(c), ensure_ascii=False))}">{ju_html}</blockquote><figcaption>{cap}</figcaption><p class="jutip">{L.t("ju_tip")}</p></figure>
+{bh_html}
+{yiwen_html(c)}
+{zb_section(c, url, cite_src)}
+<section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
+<nav class="pn">{pn}</nav>
+</article>
+<aside><h3>{bname}</h3><ol>{sidebar(pnum, c)}</ol></aside>
+</main>"""
+                hj_static = "<ul>" + (f'<li><a href="#zhuben">{L.t("hj_zb")}</a></li>' if D["zhuben"].get(c) else "") + "</ul>"
+                desc = f"{text[:70]}……《论语·{pname}》第 {cnum} 章原文与白话直译。"
+                ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"《论语·{pname}》{c} {ctitle(c)}", "inLanguage": L.hreflang, "url": url,
+                      "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "论语"},
+                      "isBasedOn": {"@type": "Book", "name": "论语集注", "author": {"@type": "Person", "name": "朱熹"}}}
+                write(rel, page(L, L.t("wj_title", book=pname, c=c), desc, rel, body + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter pg-wj", codes=["zh-Hans", "zh-Hant"])); urls.append(url)
+                search_idx.append({"c": c, "t": ctitle(c), "u": P + rel, "y": text, "x": (bh or "") + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
+
     def toc(cs):
-        return '<ol class="toc">' + "".join(
-            f'<li><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(title_of(c))}</b><span>{esc((field(c, "片里落点")[0] or "").split("；")[0].split(". Today")[0])}</span></a></li>' for c in cs) + "</ol>"
+        def li(c):
+            if c in pubset:
+                return f'<li><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(title_of(c))}</b><span>{esc((field(c, "片里落点")[0] or "").split("；")[0].split(". Today")[0])}</span></a></li>'
+            t = D["qw"][c]["text"]
+            return f'<li class="wj"><a href="{href(c)}"><em>{c}</em><b>{esc(ctitle(c))}</b><span><i class="wjtag">{L.t("toc_wj")}</i><span lang="zh-Hans">{esc(t[:40] + ("……" if len(t) > 40 else ""))}</span></span></a></li>'
+        return '<ol class="toc">' + "".join(li(c) for c in cs) + "</ol>"
     def pcard(p):
-        pname, slug, pfull, total = PIAN[p]; done = len(by_pian[p]); pct = round(done * 100 / total)
+        pname, slug, pfull, total = PIAN[p]; done = len(by_pian.get(p, [])); pct = round(done * 100 / total)
         return (f'<a class="pcard" href="{P}lunyu/{slug}/"><b>{pname}</b><small>{L.book(p)}</small><span class="bar"><i style="width:{pct}%"></i></span><em>{L.t("covered", done=done, total=total)}</em></a>')
 
     toc_all = ""
-    for p in sorted(by_pian, key=int):
-        pname, slug, pfull, total = PIAN[p]
+    ALLP = sorted(set(by_pian) | set(D["all_by_pian"]), key=int)
+    for p in ALLP:
+        pname, slug, pfull, total = PIAN[p]; cs = D["all_by_pian"].get(p) or by_pian[p]
         body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">{L.t("lunyu")}</a></p>
-<h1><span class="no">{L.t("book_no", n=p, done=len(by_pian[p]), total=total)}</span>{L.book(p)}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("book_lead")}</p>{toc(by_pian[p])}</main>'''
+<h1><span class="no">{L.t("book_no", n=p, done=len(by_pian.get(p, [])), total=total)}</span>{L.book(p)}</h1></div></div>
+<main class="wrap narrow"><p class="lead">{L.t("book_lead")}</p>{toc(cs)}</main>'''
         ttl = f"《论语·{pname}》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} · {L.book(p)} | 一孔录 Yikonglu"
         write(f"lunyu/{slug}/index.html", page(L, ttl, L.t("book_lead"), f"lunyu/{slug}/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/{slug}/")
-        toc_all += f'<h2 class="ph"><a href="{P}lunyu/{slug}/">{L.book(p)}</a></h2>{toc(by_pian[p])}'
+        if p in by_pian: toc_all += f'<h2 class="ph"><a href="{P}lunyu/{slug}/">{L.book(p)}</a></h2>{toc(by_pian[p])}'
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("lunyu_sub")}</span>{L.t("lunyu")}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("by_chapter")}</p><div class="pcards">{"".join(pcard(p) for p in sorted(by_pian, key=int))}</div>{toc_all}</main>'''
+<main class="wrap narrow"><p class="lead">{L.t("by_chapter")}</p><div class="pcards">{"".join(pcard(p) for p in ALLP)}</div>{toc_all}</main>'''
     write("lunyu/index.html", page(L, ("《论语》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} | 一孔录 Yikonglu"), L.t("by_chapter"), "lunyu/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/")
 
     recent = pub[-6:][::-1]
@@ -615,7 +720,7 @@ def build_lang(L, D, write):
 <div><i>勘</i><b>{L.t("p3t")}</b><p>{L.t("p3")}</p></div>
 </section>
 <section class="wrap narrow"><h2 class="ph">{L.t("tools_h")}</h2><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}zi.html"><b>{L.t("zi_title")}</b><span>{L.t("t_zi")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div></section>
-<section class="wrap narrow"><h2 class="ph">{L.t("books")}</h2><h3 class="bookh"><a href="{P}lunyu/">《论语》{" · " + L.t("lunyu") if L.code in ("en", "fr", "es") else ""}</a></h3><div class="pcards">{"".join(pcard(p) for p in sorted(by_pian, key=int))}</div></section>
+<section class="wrap narrow"><h2 class="ph">{L.t("books")}</h2><h3 class="bookh"><a href="{P}lunyu/">《论语》{" · " + L.t("lunyu") if L.code in ("en", "fr", "es") else ""}</a></h3><div class="pcards">{"".join(pcard(p) for p in ALLP)}</div></section>
 <section class="wrap narrow"><h2 class="ph">{L.t("recent")}</h2>{toc(recent)}</section>
 </main>'''
     write("index.html", page(L, (f"一孔录｜{TAGLINE}" if L.code == "zh-Hans" else f"一孔录 Yikonglu | {L.t('tagline')}"), L.t("intro"), "", home,
@@ -685,13 +790,15 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     # 专题
     zlist = ""
     for slug, name, terms, intro in ZHUANTI:
-        hit = [c for c in pub if any(t in yw[c] for t in terms)]
+        tx = lambda c: yw[c] if c in pubset else D["qw"][c]["text"]
+        allc = sorted(pubset | set(D["qw"]), key=lambda c: tuple(map(int, c.split("."))))
+        hit = [c for c in allc if any(t in tx(c) for t in terms)]
         def mark(t):
             t = esc(t)
             for w in terms: t = t.replace(esc(w), f"<mark>{esc(w)}</mark>")
             return t
-        items = "".join(f'<li><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(title_of(c))}</b></a><p class="zy" lang="zh-Hans">{mark(yw[c])}</p>'
-                        + (f'<p class="zd">{esc(field(c, "片里落点")[0])}</p>' if field(c, "片里落点")[0] else "") + "</li>" for c in hit)
+        items = "".join(f'<li{"" if c in pubset else " class=wj"}><a href="{href(c)}"><em>{c}</em><b>{esc(ctitle(c))}</b>{"" if c in pubset else "<i class=wjtag>" + L.t("toc_wj") + "</i>"}</a><p class="zy" lang="zh-Hans">{mark(tx(c))}</p>'
+                        + (f'<p class="zd">{esc(field(c, "片里落点")[0])}</p>' if c in pubset and field(c, "片里落点")[0] else "") + "</li>" for c in hit)
         body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}zhuanti/">{L.t("zt_title")}</a></p><h1><span class="no">{L.t("zt_n", n=len(hit))}</span>{esc(name)}</h1></div></div>
 <main class="wrap narrow"><p class="lead" lang="zh-Hans">{esc(intro)}</p><p class="note">{L.t("zt_p")}</p>{"<ol class=ztl>" + items + "</ol>" if items else "<p class=empty>" + L.t("zt_none") + "</p>"}</main>'''
         write(f"zhuanti/{slug}.html", page(L, f"《论语》里的“{name}”｜{L.t('zt_title')}｜一孔录" if L.code.startswith("zh") else f"{name} in the Analects | 一孔录 Yikonglu", intro[:110], f"zhuanti/{slug}.html", body)); urls.append(f"{DOMAIN}/{L.prefix}zhuanti/{slug}.html")
@@ -813,11 +920,45 @@ def main(zdir, outdir, kanwu=None):
         for r in csv.DictReader(open(f, encoding="utf-8-sig")):
             if r.get("章号") and r.get("内容"):
                 hujian.setdefault(r["章号"].strip(), []).append({"ju": (r.get("句") or "1").strip().lstrip("s"), "kind": r.get("类别", "").strip(), "text": r["内容"].strip(), "src": (r.get("出处") or "").strip(), "link": (r.get("链接") or "").strip()})
+    # 全书原文（Codex 朱注分章 498 章）：已讲章仍用 yuanwen.json（与视频一致），未讲章用这份
+    qf = sorted(glob.glob(os.path.join(YW_DIR, "论语原文-集注分章-v*.json")))
+    QW = json.load(open(qf[-1], encoding="utf-8")) if qf else {}
+    for c, a, b in (("1.6", "泛爱众", "汎爱众"),):  # Codex JSON 与其异文表不符处，照底本
+        if c in QW: QW[c]["text"] = QW[c]["text"].replace(a, b)
+    fz, yiwen = {}, {}
+    if os.path.exists(os.path.join(YW_DIR, "分章对照表.csv")):
+        for r in csv.DictReader(open(os.path.join(YW_DIR, "分章对照表.csv"), encoding="utf-8-sig")):
+            if r.get("朱注章号"): fz.setdefault(r["朱注章号"].strip(), []).append(r["杨伯峻章号"].strip())
+        fz = {k: "、".join(dict.fromkeys(x for y in v for x in y.split("|"))) for k, v in fz.items()}
+    if os.path.exists(os.path.join(YW_DIR, "异文表.csv")):
+        for r in csv.DictReader(open(os.path.join(YW_DIR, "异文表.csv"), encoding="utf-8-sig")):
+            if r.get("章号"): yiwen.setdefault(r["章号"].strip(), []).append(r)
+    all_by_pian = {}
+    for c in sorted(set(QW) | set(pub), key=key): all_by_pian.setdefault(c.split(".")[0], []).append(c)
+    # 互见的“句”是按 Codex 原文的标点切的；已讲章网站原文标点不全同，按字位换算成网站的句号
+    han = lambda t: re.sub(r"[^\u3400-\u9fff]", "", t)
+    def jmap(c, j):
+        if c not in pub or c not in QW: return j
+        src, dst = split_ju(QW[c]["text"]), split_ju(yw[c])
+        off = sum(len(han(x)) for x in src[:j - 1]); acc = 0
+        for k, x in enumerate(dst, 1):
+            acc += len(han(x))
+            if off < acc: return k
+        return len(dst)
+    from opencc import OpenCC
+    t2s = OpenCC("t2s")
+    for c, rs in hujian.items():
+        for r in rs:
+            if r["ju"].isdigit(): r["ju"] = str(jmap(c, int(r["ju"])))
+            m = re.fullmatch(r"(\d+\.\d+)#s(\d+)", r["link"])
+            if m: r["link"] = f"{m.group(1)}#s{jmap(m.group(1), int(m.group(2)))}"
+            if r["kind"] == "注": r["text"] = t2s.convert(r["text"])
+            r["src"] = re.sub(r"（(?:本章)?底本(?:经文)?PDF(\d+(?:—\d+)?)）", r"（底本第 \1 页）", r["src"])
     global GUSHI_ON, RENWU_ON
     RWD = RW.load(RENWU_DIR); RENWU_ON = bool(RWD)
     G = GS.load(GUSHI_DIR, pub)
     if G: GS.copy_images(G, outdir); GUSHI_ON = True
-    D = dict(renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
+    D = dict(qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
 
     def writer(prefix, post=None):
         def write(rel, text):
@@ -847,7 +988,7 @@ def main(zdir, outdir, kanwu=None):
         t = cc.convert(text)
         for i, w in enumerate(PROTECT): t = t.replace(f"\ue000{i}\ue001", HANT_FIX.get(w, w))
         t = re.sub(r'(href|action|src)="/(?!zh-hant/)([^"]*)"', lambda m: m.group(0) if m.group(2).startswith(("assets/", "yuanye/", "style.css", "data/", "og/", "gushi/img/")) else f'{m.group(1)}="/zh-hant/{m.group(2)}"', t)
-        t = t.replace("fetch('/search.json')", "fetch('/zh-hant/search.json')")
+        t = t.replace("fetch('/search.json')", "fetch('/zh-hant/search.json')").replace("&quot;/lunyu/", "&quot;/zh-hant/lunyu/")
         t = t.replace('"u": "/lunyu', '"u": "/zh-hant/lunyu')
         return t
     if OG.available():

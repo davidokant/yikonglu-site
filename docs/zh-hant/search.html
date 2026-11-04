@@ -18,7 +18,7 @@
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Noto+Serif+JP:wght@400;600;900&family=Noto+Serif+KR:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="/style.css?v=50484b93">
+<link rel="stylesheet" href="/style.css?v=58c751e6">
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "f9a4933affae40b198ca041b91792714"}'></script><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?ed155c4367f781ffb31af8a3659d4ad9";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script>
 </head>
@@ -40,7 +40,7 @@ async function go(){const k=q.value.trim();if(!k){R.innerHTML='';return}
 if(!D){try{D=await (await fetch('/zh-hant/search.json')).json()}catch(e){R.textContent='…';return}}
 history.replaceState(null,'','?q='+encodeURIComponent(k));
 const hit=D.filter(d=>(d.y+d.t+d.x).includes(k));
-R.innerHTML=hit.length?'<p class="lead">'+"\u627e\u5230 N \u7ae0".replace('N',hit.length)+'</p><ol class="toc">'+hit.map(d=>'<li><a href="'+d.u+'"><em>'+d.c+'</em><b>'+E(d.t)+'</b><span>'+cut(d.y.includes(k)?d.y:d.x,k)+'</span></a></li>').join('')+'</ol>':"<p class=empty>\u6ca1\u6709\u627e\u5230\u3002\u5df2\u6536\u5f55\u7684\u53ea\u6709\u8bb2\u8fc7\u7684\u7ae0\u8282\u3002</p>"}
+R.innerHTML=hit.length?'<p class="lead">'+"\u627e\u5230 N \u7ae0".replace('N',hit.length)+'</p><ol class="toc">'+hit.map(d=>'<li><a href="'+d.u+'"><em>'+d.c+'</em><b>'+E(d.t)+'</b><span>'+cut(d.y.includes(k)?d.y:d.x,k)+'</span></a></li>').join('')+'</ol>':"<p class=empty>\u6ca1\u6709\u627e\u5230\u3002\u672a\u8bb2\u5404\u7ae0\u53ea\u6536\u539f\u6587\u548c\u767d\u8bdd\u3002</p>"}
 const p=new URLSearchParams(location.search).get('q');if(p){q.value=p;go()}
 </script>
 <section class="follow"><div class="wrap"><h2>關注一孔錄，輕鬆讀經典</h2><div class="fl"><figure><img src="/assets/wechat-qr.jpg" alt="WeChat QR" width="129" height="129" loading="lazy"><figcaption>微信掃碼關注公眾號，回覆“目錄”看全部章節</figcaption></figure><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ 在 YouTube 訂閱</a></div></div></section>

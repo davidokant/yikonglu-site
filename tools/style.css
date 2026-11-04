@@ -231,3 +231,10 @@ a.bb{font-size:12px;margin-left:8px}
 .rwcard:hover{text-decoration:none;border-color:var(--accent)}.rwcard b{font-size:20px}.rwcard small{color:var(--mute);font-size:13px}.rwcard span{color:var(--accent);font-size:13px}
 .rwmeta{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:8px 0 16px}.rwmeta dt{color:var(--mute)}.rwmeta dd{margin:0}
 .rwchips{margin:10px 0;font-size:14px;color:var(--mute)}.rwchips a{display:inline-block;margin:0 6px 4px 0;padding:0 10px;border:1px solid var(--line);border-radius:999px}
+/* 未讲各章（全书原文） */
+.wjtag{font-style:normal;display:inline-block;font-size:12px;line-height:1.5;padding:0 7px;border:1px solid var(--line);border-radius:999px;color:var(--mute);vertical-align:2px;margin-right:6px}
+.toc li.wj b{font-weight:400;color:var(--mute)}.toc li.wj span span{color:var(--mute)}
+aside li.wj a{color:var(--mute)}
+.wjlead{background:var(--paper);border:1px dashed var(--line);border-radius:8px;padding:10px 14px;color:var(--mute);font-size:15px;line-height:1.7}
+.ztl li.wj b{font-weight:400;color:var(--mute)}
+.sec.yiwen td.zi{white-space:nowrap}
