@@ -249,3 +249,4 @@ aside li.wj a{color:var(--mute)}
 .shumu-home .ph{font-size:17px;margin-top:22px}.shumu-home .ph:first-child{margin-top:0}
 .shumu-home .bcards{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.shumu-home .bcard{padding:12px 14px}.shumu-home .bcard b{font-size:18px}.shumu-home .bcard small{font-size:12px}
 .bcard .kids{display:block;margin-top:8px;border-left:2px solid var(--line);padding-left:10px}.bcard .kids i{display:block;font-style:normal;font-size:14px;line-height:1.7}
+.ztbook{margin-top:28px}.ztbook .ph small{margin-left:10px;font-size:14px;color:var(--mute);font-weight:400}
