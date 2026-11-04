@@ -989,6 +989,13 @@ def write_data(D, outdir):
 def main(zdir, outdir, kanwu=None):
     yw = json.load(open(os.path.join(HERE, "yuanwen.json"), encoding="utf-8"))
     eps = json.load(open(os.path.join(HERE, "episodes.json"), encoding="utf-8"))
+    stp0 = os.path.join(GAO_DIR, "_时间", "章节起点.json")  # 发布线程维护：各集 youtube / bvid / public_at；有则盖过 episodes.json 里的
+    if os.path.exists(stp0):
+        for k, e in json.load(open(stp0, encoding="utf-8")).items():
+            name = k.split("-")[-1] if isinstance(e, dict) else ""
+            if name in eps:
+                for a, b in (("youtube", "youtube"), ("bvid", "bilibili"), ("public_at", "public_at")):
+                    if e.get(a): eps[name][b] = e[a]
     notes = {}
     for f in sorted(os.listdir(zdir)):
         if f.endswith(".md") and f not in ("说明.md", "主题线.md"):
