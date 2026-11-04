@@ -9,6 +9,7 @@
 """
 import json, re, sys, html, os, shutil, datetime, glob, csv
 import og as OG
+import gushi as GS
 
 DOMAIN = "https://yikonglu.com"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -18,6 +19,8 @@ FIELDS = [("常见读法", "f_common", "常"), ("字眼", "f_keys", "注"), ("�
 SOURCE = "朱熹《论语集注》（《四部备要》本）"
 TAGLINE = "逐字读经典原文"
 GAO_DIR = "/mnt/project-files/一孔学-内-自媒体/数据/网站素材"  # 定版稿只在共享盘读取，不进公开仓库
+GUSHI_DIR = os.environ.get("YK_GUSHI_DIR") or os.path.join(GAO_DIR, "_故事")  # “故事”栏资料；没有人物表就整栏不出
+GUSHI_ON = False
 BH_DIR = os.path.join(GAO_DIR, "_白话")  # 白话直译：每行“- 1.1：……”，跟定版稿走
 ZB_DIR = os.path.join(GAO_DIR, "_注本")  # Codex 注本索引（皇疏、杨伯峻、钱穆逐章 CSV）
 HUANG_SCAN = "https://commons.wikimedia.org/w/index.php?title=File:SSID-13146346_%E7%9F%A5%E4%B8%8D%E8%B6%B3%E9%BD%8B_%E7%AC%AC7%E9%9B%86_%E8%AB%96%E8%AA%9E%E7%BE%A9%E7%96%8F%E6%95%98_%E5%8D%B71-2.pdf&page={n}"
@@ -365,13 +368,16 @@ def analytics(L):
         a += f'<script>var _hmt=_hmt||[];(function(){{var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?{ANALYTICS["baidu"]}";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)}})();</script>'
     return a
 
-def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra=""):
+def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
     url = f"{DOMAIN}/{L.prefix}{rel}"
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>' if jsonld else ""
-    alt_links = "".join(f'<link rel="alternate" hreflang="{LANGS[k][2]}" href="{DOMAIN}/{LANGS[k][0]}{rel}">' for k in LANGS)
+    codes = codes or list(LANGS)  # 只有部分语种的页（如“故事”栏只出简繁）
+    if rel.startswith("gushi/"): codes = ["zh-Hans", "zh-Hant"]
+    alt_links = "".join(f'<link rel="alternate" hreflang="{LANGS[k][2]}" href="{DOMAIN}/{LANGS[k][0]}{rel}">' for k in codes)
     alt_links += f'<link rel="alternate" hreflang="x-default" href="{DOMAIN}/{rel}">'
-    sw = "".join(f'<a href="{DOMAIN}/{LANGS[k][0]}{rel}" data-lang="{k}"{" class=cur" if k == L.code else ""}>{LANGS[k][1]}</a>' for k in LANGS)
+    sw = "".join(f'<a href="{DOMAIN}/{LANGS[k][0]}{rel if k in codes else ""}" data-lang="{k}"{" class=cur" if k == L.code else ""}>{LANGS[k][1]}</a>' for k in LANGS)
+    gs = GUSHI_ON and L.code.startswith("zh")
     P = "/" + L.prefix
     note = f'<p class="trnote wrap">{L.t("translated_note")}</p>' if L.t("translated_note") else ""
     return f"""<!doctype html>
@@ -401,7 +407,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <body class="{cls}">
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>
-<nav><a href="{P}lunyu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>
+<nav><a href="{P}lunyu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}gushi/" class="gsnav">故事</a>' if gs else ""}
 <details class="lang more"><summary>{L.t("nav_more")}</summary><div><a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary>{L.name}</summary><div>{sw}</div></details></nav>
 </div></header>
@@ -412,7 +418,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
 <p class="where">{L.t("foot_where")}</p>
-<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}lunyu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a></p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
+<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}lunyu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
 <p class="langs">{sw}</p>
 </div></footer>
 {LANG_JS}
@@ -523,7 +529,7 @@ def build_lang(L, D, write):
 <section class="video"><h2><i>看</i>{L.t("video")}</h2>
 <div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{yt}{f'?start={st}' if st else ''}" title="{esc(epname)}" allowfullscreen></iframe></div>
 <p class="vlinks">{L.t("video_in", ep=epname)}<a href="https://www.youtube.com/watch?v={yt}{f'&amp;t={st}s' if st else ''}">YouTube</a><a href="https://www.bilibili.com/video/{ep['bilibili']}{f'?t={st}' if st else ''}">Bilibili</a>{L.t("cn_note")}</p></section>
-<p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>
+<p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>{GS.footer_line(D.get("gushi"), c, P) if L.code.startswith("zh") else ""}
 <nav class="pn">{card(prev_c, L.t("prev"), 'prev')}{card(next_c, L.t("next"), 'next')}</nav>
 </article>
 <aside><h3>{bname}</h3><ol>{side}</ol></aside>
@@ -677,6 +683,8 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zt_sub")}</span>{L.t("zt_title")}</h1></div></div>
 <main class="wrap narrow"><p class="lead">{L.t("zt_p")}</p><div class="ztcards">{zlist}</div></main>'''
     write("zhuanti/index.html", page(L, f'{L.t("zt_title")}｜一孔录', L.t("zt_sub"), "zhuanti/", body)); urls.append(f"{DOMAIN}/{L.prefix}zhuanti/")
+    if D.get("gushi") and L.code.startswith("zh"):  # “故事”栏：只简繁
+        urls += GS.build(L, D, D["gushi"], write, page, P, rel_of, title_of, split_ju, DOMAIN)
     # 开放数据（文件只在根目录 /data/，各语种只出说明页）
     rows = "".join(f'<tr><td>{L.book(p)}</td><td><a href="/data/lunyu-{PIAN[p][1]}.json">JSON</a> · <a href="/data/lunyu-{PIAN[p][1]}.csv">CSV</a></td><td>{len(by_pian[p])}</td></tr>' for p in sorted(by_pian, key=int))
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("dt_sub")}</span>{L.t("dt_title")}</h1></div></div>
@@ -787,7 +795,10 @@ def main(zdir, outdir, kanwu=None):
         for r in csv.DictReader(open(f, encoding="utf-8-sig")):
             if r.get("章号") and r.get("内容"):
                 hujian.setdefault(r["章号"].strip(), []).append({"ju": (r.get("句") or "1").strip().lstrip("s"), "kind": r.get("类别", "").strip(), "text": r["内容"].strip(), "src": (r.get("出处") or "").strip(), "link": (r.get("链接") or "").strip()})
-    D = dict(hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
+    global GUSHI_ON
+    G = GS.load(GUSHI_DIR, pub)
+    if G: GS.copy_images(G, outdir); GUSHI_ON = True
+    D = dict(gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
 
     def writer(prefix, post=None):
         def write(rel, text):
@@ -816,7 +827,7 @@ def main(zdir, outdir, kanwu=None):
         for i, w in enumerate(PROTECT): text = text.replace(w, f"\ue000{i}\ue001")
         t = cc.convert(text)
         for i, w in enumerate(PROTECT): t = t.replace(f"\ue000{i}\ue001", HANT_FIX.get(w, w))
-        t = re.sub(r'(href|action|src)="/(?!zh-hant/)([^"]*)"', lambda m: m.group(0) if m.group(2).startswith(("assets/", "yuanye/", "style.css", "data/", "og/")) else f'{m.group(1)}="/zh-hant/{m.group(2)}"', t)
+        t = re.sub(r'(href|action|src)="/(?!zh-hant/)([^"]*)"', lambda m: m.group(0) if m.group(2).startswith(("assets/", "yuanye/", "style.css", "data/", "og/", "gushi/img/")) else f'{m.group(1)}="/zh-hant/{m.group(2)}"', t)
         t = t.replace("fetch('/search.json')", "fetch('/zh-hant/search.json')")
         t = t.replace('"u": "/lunyu', '"u": "/zh-hant/lunyu')
         return t

@@ -198,3 +198,29 @@ a.bb{font-size:12px;margin-left:8px}
 .tools b{display:block;font-size:17px}.tools span{font-size:13px;color:var(--mute)}
 @media (max-width:700px){.top nav{gap:2px 10px}.top nav a{font-size:14px}.more summary{padding:1px 7px}}
 .sure{font-size:12px;padding:0 6px;border-radius:8px;border:1px solid var(--line);white-space:nowrap}.s_yi{color:var(--accent);border-color:var(--accent)}
+/* 故事栏（演义层）：另一色页眉，与章节页分开 */
+.pg-gushi{--gs:#2f5d62}.pg-gushi .top{border-bottom:3px solid var(--gs)}
+.chhead.gs{background:color-mix(in srgb,var(--accent2) 14%,var(--bg));border-bottom:1px solid color-mix(in srgb,var(--accent2) 35%,transparent)}
+.chhead.gs h1 .no,.chhead.gs .crumb a{color:var(--accent2)}
+.gsnote{margin:0 0 6px;font-size:13px;color:var(--accent2);letter-spacing:.05em}
+.top nav a.gsnav{color:var(--accent2)}
+.gsmain .lead{font-size:17px}
+.gscards{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.gscard{display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 10px;color:var(--fg)}
+.gscard:hover{text-decoration:none;border-color:var(--accent2)}
+.gscard img,.gsav{width:84px;height:84px;border-radius:50%;object-fit:cover;background:color-mix(in srgb,var(--accent2) 18%,var(--paper))}
+.gsav{display:flex;align-items:center;justify-content:center;font-size:34px;color:var(--accent2)}
+.gscard b{margin-top:8px;font-size:18px}.gscard small{color:var(--mute);font-size:13px;line-height:1.5}
+.gsperson{display:flex;gap:22px;align-items:flex-start;margin:8px 0 18px}.gsimg{width:220px;max-width:40%;height:auto;flex:none}
+.gsroute a,.gsroutes a{color:var(--accent2)}.gsroutes{padding-left:1.2em}
+.gsvoice{border-left:3px solid var(--accent2);padding-left:14px;font-style:normal}.gsvoice span{display:block;color:var(--mute);font-size:14px}
+.gsnot{display:flex;gap:10px;color:var(--mute)}.gsnot em{font-style:normal}
+.gsmap{position:relative;margin:12px 0}.gsmap img{width:100%;height:auto;display:block;border-radius:8px}
+.gsmap .spot{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;border:2px solid #fff;background:var(--accent2);box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+.gsmap .spot.now{background:var(--accent);animation:gsp 1.6s infinite}
+@keyframes gsp{50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--accent) 25%,transparent)}}
+.gstab{width:100%;border-collapse:collapse;font-size:15px}.gstab th,.gstab td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
+.gstab tr.now{background:color-mix(in srgb,var(--accent) 10%,transparent)}.gstab tr:target{outline:2px solid var(--accent2)}
+.gsback{margin:14px 0;padding:8px 12px;border-left:3px solid var(--accent2);background:color-mix(in srgb,var(--accent2) 8%,transparent);font-size:14px;color:var(--mute)}
+.gsback a{color:var(--accent2)}
+@media (max-width:700px){.gsperson{flex-direction:column}.gsimg{max-width:70%}}
