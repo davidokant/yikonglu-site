@@ -584,7 +584,7 @@ def build_lang(L, D, write):
     write("lunyu/index.html", page(L, ("《论语》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} | 一孔录 Yikonglu"), L.t("by_chapter"), "lunyu/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/")
 
     recent = pub[-6:][::-1]
-    home = f'''<section class="banner"><picture><source media="(max-width:700px)" srcset="/assets/banner-1000.jpg"><img src="/assets/banner.jpg" alt="一孔录" width="3072" height="1024" style="width:100%;height:auto;max-height:420px;object-fit:cover"></picture></section>
+    home = f'''<section class="banner"><picture><source media="(max-width:700px)" srcset="/assets/banner-1000.jpg"><img src="/assets/banner.jpg" alt="一孔录片中人物围坐长桌读书" width="3072" height="720"></picture></section>
 <main class="home">
 <section class="intro wrap narrow">
 <h1>一孔录<small>{L.t("tagline")}</small></h1>
