@@ -512,7 +512,8 @@ def yxl_block(L, D, P, full=False):
     for pf in y.get("platforms", []):
         sc = pf.get("score")
         if sc is None: continue
-        rows += f'<div class="row"><span>{esc(pf["name"])}</span><div class="bar"><i style="width:{min(max(float(sc), 0), 100):g}%"></i></div><em>{sc}</em></div>'
+        sh = pf.get("share"); shs = f'<small>占比 {sh}%</small>' if sh is not None else ""
+        rows += f'<div class="row"><span>{esc(pf["name"])}</span><div class="bar"><i style="width:{min(max(float(sc), 0), 100):g}%"></i></div><em>{sc}{shs}</em></div>'
     hist = [h for h in y.get("history", []) if h.get("score") is not None]; score = y.get("score")
     if len(hist) >= 2:
         W, H = 320, 60; mx = max(max(h["score"] for h in hist), 1)
@@ -523,7 +524,7 @@ def yxl_block(L, D, P, full=False):
         trend = f'<svg class="yxline" viewBox="0 0 320 60" width="320" height="60" aria-hidden="true"><circle cx="20" cy="30" r="4" fill="currentColor"/></svg><small>{hist[0]["week"][:7]} 从 {hist[0]["score"]} 分起步</small>'
     else: trend = ""
     find = "" if score is None else (f'<div class="yxfind"><h3>在平台上搜一句原文，能找到一孔录吗</h3>{rows}'
-            f'<div class="yxscore"><b>找到分 <strong>{score}</strong></b>{trend}</div>'
+            f'<div class="yxscore"><b>找到分 <strong>{score}</strong></b>' + (f'<b>占比 <strong>{y["share"]}%</strong></b>' if y.get("share") is not None else "") + f'{trend}</div>'
             f'<p>做法：取已发各章首句，不登录搜索，看一孔录讲读是否在前 20 条，折成 0—100 的平台分；平台搜索因人因地而异，你搜到的可能不同。<a class="more" href="{P}yingxiangli.html">方法与原始数据 ›</a></p></div>')
     sub = f'每周更新 · 最近一次 {esc(y.get("updated") or D["today"])} · 每个数都可点开核对'
     return f'<section class="wrap narrow yxl"><h2 class="ph">一孔影响力</h2><p class="sub">{sub}</p>{grid}{find}</section>'
@@ -906,6 +907,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <h2>什么是找到分</h2>
 <p>一个平台上，一句原文搜出来，一孔录的讲读排在第 r 名，记 V = 1 / log₂(1 + r)；不在前 20 条记 0。</p>
 <p>平台分 = 100 × 各章 V 的平均。</p>
+<p>占比 = 各章搜索结果前 20 条中本站条数之和 ÷ 前 20 条总数。只在能看到全部结果的平台计算（现只 YouTube），不点名其他频道。</p>
 <p>找到分 = 各平台平台分的平均。YouTube 取台湾繁体、美国简体两种设定的平均，合成一个平台分；B站、谷歌、必应各一个平台分。只列有完整数据的平台。</p>
 <h2>怎么测</h2>
 <p>词表：已发各章的第一句原文，简体、繁体各一条。每周测一轮，整轮跑完才记一次，记在周一。</p>
@@ -913,7 +915,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <h2>规矩</h2>
 <p>不为这个数改标题、改讲书顺序。数字难看也照登，每周原样更新，旧数不删。</p>
 <h2>下载</h2>
-<p><a href="/data/yingxiangli.json">yingxiangli.json</a>（每周的找到分、各平台分）。逐周逐章的明细，发布满四周后放出。</p>
+<p><a href="/data/yingxiangli.json">yingxiangli.json</a>（每周的找到分、占比、各平台分）。逐周逐章的明细，发布满四周后放出。</p>
 </main>'''
         write("yingxiangli.html", page(L, "一孔影响力：找到分怎么算、怎么测｜一孔录", "在平台上搜一句原文，能找到一孔录吗：每周公开测，分数叫找到分。", "yingxiangli.html", body, codes=["zh-Hans", "zh-Hant"])); urls.append(f"{DOMAIN}/{L.prefix}yingxiangli.html")
     # 开放数据（文件只在根目录 /data/，各语种只出说明页）
