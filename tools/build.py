@@ -536,7 +536,7 @@ def build_lang(L, D, write):
     urls = []
     def rel_of(c):
         p, n = c.split("."); return f"lunyu/{PIAN[p][1]}/{n}.html"
-    def title_of(c): return L.ch(c).get("title") or notes[c]["title"]
+    def title_of(c): return L.ch(c).get("title") or (notes[c]["title"] if c in notes else wj_title(D["qw"][c]["text"]))
     def field(c, k):
         v = L.ch(c).get(k)
         return (v, True) if v else (notes[c]["fields"].get(k), False)
