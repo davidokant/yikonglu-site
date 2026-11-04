@@ -1,0 +1,31 @@
+{
+ "updated": "2026-11-02",
+ "N": 20,
+ "chapters": 73,
+ "score": 1.2,
+ "platforms": [
+  {
+   "key": "yt.TW",
+   "name": "YouTube",
+   "variant": "TW",
+   "top20": 4,
+   "measured": 13,
+   "score": 1.5
+  },
+  {
+   "key": "yt.US",
+   "name": "YouTube",
+   "variant": "US",
+   "top20": 3,
+   "measured": 13,
+   "score": 1.0
+  }
+ ],
+ "history": [
+  {
+   "week": "2026-11-02",
+   "score": 1.2,
+   "chapters": 73
+  }
+ ]
+}

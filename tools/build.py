@@ -180,6 +180,7 @@ BOOK_GROUPS = [
 ]
 BOOK_SUB = {"liji": [("daxue", "大学"), ("zhongyong", "中庸")]}  # 挂在某书底下的篇
 LIVE_BOOKS = {"lunyu"}
+YXL_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/影响力.json"  # 一孔影响力（找到分），搜索位次线程每天自动更新
 ZT_DIR = os.path.join("/mnt/project-files/一孔学-内-自媒体/数据/网站素材", "_专题")  # 专题表.json：一专题一页、页内按书分段（主人 11-04 定），外参维护
 def load_zhuanti():
     f = os.path.join(ZT_DIR, "专题表.json")
@@ -496,6 +497,43 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 </html>
 """
 
+def yxl_block(L, D, P, full=False):
+    """首页“一孔影响力”栏（简繁）。四格自证数从站内数据算；“能找到吗”用 影响力.json。full=True 给方法页多出的说明。"""
+    y = D.get("yxl") or {}
+    n_all = sum(PIAN[p][3] for p in PIAN)
+    n_cites = sum(1 for g in D["gao"].values() for x in g["cites"] if x["pages"])
+    fam = (1 if D["pages_avail"] else 0) + (1 if any("huang" in v for v in D["zhuben"].values()) else 0)
+    kw = D["kw"]; readers = [r for r in kw if r[7] != "一孔录自查"]
+    grid = (f'<div class="yxgrid"><a class="c" href="{P}shumu/"><b>{len(D["pub"])}<small>/ {n_all} 章</small></b><span>《论语》已讲读</span></a>'
+            f'<a class="c" href="{P}banben/"><b>{n_cites}<small>条</small></b><span>引文可核到底本原页</span></a>'
+            f'<a class="c" href="{P}banben/"><b>{fam}<small>家</small></b><span>注本上了原页图</span></a>'
+            f'<a class="c" href="{P}kanwu.html"><b>{len(readers)}<small>/ {len(kw)} 条</small></b><span>读者来信勘误，署名公开</span></a></div>')
+    chapters = y.get("chapters") or len(D["pub"]); rows = ""
+    vname = {"TW": "台湾繁体", "US": "美国简体"}
+    seen = set()
+    for pf in y.get("platforms", []):
+        nm = pf["name"] + (f"（{vname.get(pf.get('variant'), pf.get('variant'))}）" if pf.get("variant") else ""); seen.add(pf["name"])
+        meas = pf.get("measured") or 0; top = pf.get("top20") or 0
+        pct = round(top * 100 / meas) if meas else 0
+        right = f"{top} / {chapters}" + (f'<small>测到 {meas} 章</small>' if meas < chapters else "")
+        rows += f'<div class="row"><span>{esc(nm)}</span><div class="bar"><i style="width:{pct}%"></i></div><em>{right}</em></div>'
+    for nm in ("B站", "谷歌", "必应"):
+        if nm not in seen: rows += f'<div class="row"><span>{nm}</span><div class="bar"><i style="width:0%"></i></div><em class="na">待测</em></div>'
+    hist = y.get("history", []); score = y.get("score", 0)
+    if len(hist) >= 2:
+        W, H = 320, 60; mx = max(max(h["score"] for h in hist), 1)
+        pts = " ".join(f"{10 + i * (W - 20) / (len(hist) - 1):.1f},{H - 8 - h['score'] / mx * (H - 16):.1f}" for i, h in enumerate(hist))
+        svg = f'<svg class="yxline" viewBox="0 0 {W} {H}" width="{W}" height="{H}" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="2" points="{pts}"/>' + "".join(f'<circle cx="{pt.split(",")[0]}" cy="{pt.split(",")[1]}" r="3" fill="currentColor"/>' for pt in pts.split()) + "</svg>"
+        trend = svg + f'<small>{hist[0]["week"]} 起，每周一点</small>'
+    elif hist:
+        trend = f'<svg class="yxline" viewBox="0 0 320 60" width="320" height="60" aria-hidden="true"><circle cx="20" cy="30" r="4" fill="currentColor"/></svg><small>{hist[0]["week"][:7]} 从 {hist[0]["score"]} 分起步</small>'
+    else: trend = ""
+    find = (f'<div class="yxfind"><h3>在平台上搜一句原文，能找到一孔录吗</h3>{rows}'
+            f'<div class="yxscore"><b>找到分 <strong>{score}</strong></b>{trend}</div>'
+            f'<p>做法：取已发各章首句，不登录搜索，看一孔录讲读是否在前 20 条；台湾繁体、美国简体两种设定；平台搜索因人因地而异，你搜到的可能不同。<a class="more" href="{P}yingxiangli.html">方法与原始数据 ›</a></p></div>')
+    sub = f'每周更新 · 最近一次 {esc(y.get("updated", D["today"]))} · 每个数都可点开核对'
+    return f'<section class="wrap narrow yxl"><h2 class="ph">一孔影响力</h2><p class="sub">{sub}</p>{grid}{find}</section>'
+
 def build_lang(L, D, write):
     """D：公共数据。write(rel, html) 写到该语种目录。返回本语种 URL 列表。"""
     notes, yw, gao, kw, pub, by_pian, ch2ep, pages_avail, today = (D[k] for k in ("notes", "yw", "gao", "kw", "pub", "by_pian", "ch2ep", "pages_avail", "today"))
@@ -756,6 +794,7 @@ def build_lang(L, D, write):
 <div><i>勘</i><b>{L.t("p3t")}</b><p>{L.t("p3")}</p></div>
 </section>
 <section class="wrap narrow"><h2 class="ph">{L.t("tools_h")}</h2><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}zi.html"><b>{L.t("zi_title")}</b><span>{L.t("t_zi")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div></section>
+{yxl_block(L, D, P) if L.code.startswith("zh") else ""}
 <section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}shumu/">{L.t("books")}</a></h2>{bcards}</section>
 <section class="wrap narrow"><h2 class="ph">{L.t("recent")}</h2>{toc(recent)}</section>
 </main>'''
@@ -865,6 +904,24 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
         urls += GS.build(L, D, D["gushi"], write, page, P, rel_of, title_of, split_ju, DOMAIN)
     if D.get("renwu") and L.code.startswith("zh"):  # 论语人物：先只简繁
         urls += RW.build(L, D, D["renwu"], write, page, P, rel_of, title_of, DOMAIN)
+    # 一孔影响力方法页（先只简繁；外文页由语种切换链到简体）
+    if L.code.startswith("zh"):
+        body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">找到分怎么算、怎么测</span>一孔影响力</h1></div></div>
+{yxl_block(L, D, P)}
+<main class="wrap narrow prose">
+<h2>什么是找到分</h2>
+<p>一个平台上，一句原文搜出来，一孔录的讲读排在第 r 名，记 V = 1 / log₂(1 + r)；不在前 20 条记 0。</p>
+<p>平台分 = 100 × 各章 V 的平均。</p>
+<p>找到分 = 各平台平台分的平均；YouTube 取台湾繁体、美国简体两种设定的平均。</p>
+<h2>怎么测</h2>
+<p>词表：已发各章的第一句原文，简体、繁体各一条。每周测一轮，结果记在周一；本周没测完的章，栏里写“测到 N 章”。</p>
+<p>搜索用不登录的新会话；YouTube 走数据接口按地区和语言设定搜，和网页搜索结果可能有出入。搜索平台会按人、按地、按时调整结果，你在自己设备上搜到的名次未必一样。</p>
+<h2>规矩</h2>
+<p>不为这个数改标题、改讲书顺序。数字难看也照登，每周原样更新，旧数不删。</p>
+<h2>下载</h2>
+<p><a href="/data/yingxiangli.json">yingxiangli.json</a>（每周的找到分、各平台条数）。逐周逐章的明细，发布满四周后放出。</p>
+</main>'''
+        write("yingxiangli.html", page(L, "一孔影响力：找到分怎么算、怎么测｜一孔录", "在平台上搜一句原文，能找到一孔录吗：每周公开测，分数叫找到分。", "yingxiangli.html", body, codes=["zh-Hans", "zh-Hant"])); urls.append(f"{DOMAIN}/{L.prefix}yingxiangli.html")
     # 开放数据（文件只在根目录 /data/，各语种只出说明页）
     rows = "".join(f'<tr><td>{L.book(p)}</td><td><a href="/data/lunyu-{PIAN[p][1]}.json">JSON</a> · <a href="/data/lunyu-{PIAN[p][1]}.csv">CSV</a></td><td>{len(by_pian[p])}</td></tr>' for p in sorted(by_pian, key=int))
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("dt_sub")}</span>{L.t("dt_title")}</h1></div></div>
@@ -1025,7 +1082,8 @@ def main(zdir, outdir, kanwu=None):
     RWD = RW.load(RENWU_DIR); RENWU_ON = bool(RWD)
     G = GS.load(GUSHI_DIR, pub)
     if G: GS.copy_images(G, outdir); GUSHI_ON = True
-    D = dict(zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
+    yxl = json.load(open(YXL_FILE, encoding="utf-8")) if os.path.exists(YXL_FILE) else {}
+    D = dict(yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
 
     def writer(prefix, post=None):
         def write(rel, text):
@@ -1044,6 +1102,7 @@ def main(zdir, outdir, kanwu=None):
         print("没有字体，分享图跳过：", OG.FONT)
     urls = build_lang(Lang("zh-Hans", ZH_UI), D, writer(""))
     write_data(D, outdir)
+    if yxl: json.dump(yxl, open(os.path.join(outdir, "data", "yingxiangli.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     # 繁体：由简体页面整页转换，台湾用字；站内链接改前缀
     from opencc import OpenCC
     cc = OpenCC("s2twp")

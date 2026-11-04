@@ -250,3 +250,16 @@ aside li.wj a{color:var(--mute)}
 .shumu-home .bcards{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.shumu-home .bcard{padding:12px 14px}.shumu-home .bcard b{font-size:18px}.shumu-home .bcard small{font-size:12px}
 .bcard .kids{display:block;margin-top:8px;border-left:2px solid var(--line);padding-left:10px}.bcard .kids i{display:block;font-style:normal;font-size:14px;line-height:1.7}
 .ztbook{margin-top:28px}.ztbook .ph small{margin-left:10px;font-size:14px;color:var(--mute);font-weight:400}
+/* 一孔影响力 */
+.yxl{margin-top:36px}.yxl .sub{color:var(--mute);font-size:14px;margin:-6px 0 14px}
+.yxgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}@media (max-width:760px){.yxgrid{grid-template-columns:repeat(2,1fr)}}
+.yxgrid .c{display:block;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px 18px;color:var(--fg)}.yxgrid .c:hover{text-decoration:none;border-color:var(--accent)}
+.yxgrid .c b{display:block;font-size:30px;font-weight:900;line-height:1.2;font-variant-numeric:tabular-nums}.yxgrid .c b small{font-size:15px;font-weight:400;color:var(--mute);margin-left:4px}
+.yxgrid .c span{display:block;font-size:14px;color:var(--mute);line-height:1.6;margin-top:6px}
+.yxfind{margin-top:14px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px 18px}.yxfind h3{margin:0 0 8px;font-size:17px}
+.yxfind .row{display:grid;grid-template-columns:150px 1fr 110px;align-items:center;gap:10px;font-size:15px;padding:4px 0}@media (max-width:600px){.yxfind .row{grid-template-columns:110px 1fr 90px;font-size:14px}}
+.yxfind .bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden}.yxfind .bar i{display:block;height:100%;background:var(--accent2)}
+.yxfind em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums}.yxfind em small{display:block;font-size:12px;color:var(--mute)}.yxfind em.na{color:var(--mute)}
+.yxscore{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:12px;color:var(--accent2)}.yxscore b{font-size:17px;color:var(--fg)}.yxscore strong{font-size:34px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--accent)}.yxscore small{color:var(--mute);font-size:13px}
+.yxfind p{margin:10px 0 0;font-size:13px;color:var(--mute);line-height:1.7}.yxfind a.more{color:var(--accent);font-size:14px}
+.pg-home .yxl{margin-top:36px}
