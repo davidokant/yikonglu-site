@@ -10,6 +10,9 @@
 <link rel="alternate" type="application/atom+xml" title="一孔录" href="/fr/feed.xml">
 <link rel="icon" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/seal-180.png">
+<link rel="manifest" href="/fr/manifest.webmanifest">
+<meta name="theme-color" content="#f6f1e6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="一孔录">
 <meta property="og:title" content="Les Entretiens de Confucius 1.2 Piété filiale et fraternelle, racine du ren | 一孔录 Yikonglu">
 <meta property="og:description" content="有子曰：其为人也孝弟，而好犯上者，鲜矣；不好犯上，而好作乱者，未之有也。君子务本… Chaque chapitre donne le texte source, les mots clés du commentaire, ce que disent les autres commentateurs et la lecture de Yikonglu, avec la vidéo.">
 <meta property="og:url" content="https://yikonglu.com/fr/lunyu/xue-er/2.html">
@@ -87,5 +90,6 @@ var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>'+t
 b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}};b.querySelector('button').onclick=function(){try{localStorage.setItem(K,P)}catch(e){}b.remove()};
 document.body.prepend(b)})();
 </script>
+<script>if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})</script>
 </body>
 </html>

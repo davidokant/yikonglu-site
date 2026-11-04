@@ -10,6 +10,9 @@
 <link rel="alternate" type="application/atom+xml" title="一孔录" href="/en/feed.xml">
 <link rel="icon" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/seal-180.png">
+<link rel="manifest" href="/en/manifest.webmanifest">
+<meta name="theme-color" content="#f6f1e6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="一孔录">
 <meta property="og:title" content="The Analects 4.2 The inhumane cannot long endure hardship | 一孔录 Yikonglu">
 <meta property="og:description" content="子曰：不仁者不可以久处约，不可以长处乐。仁者安仁，知者利仁。… Each chapter gives the source text, the key words in the commentary, what other commentators say, and Yikonglu&#x27;s reading, with the video.">
 <meta property="og:url" content="https://yikonglu.com/en/lunyu/li-ren/2.html">
@@ -85,5 +88,6 @@ var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>'+t
 b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}};b.querySelector('button').onclick=function(){try{localStorage.setItem(K,P)}catch(e){}b.remove()};
 document.body.prepend(b)})();
 </script>
+<script>if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})</script>
 </body>
 </html>

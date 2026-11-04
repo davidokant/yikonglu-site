@@ -10,6 +10,9 @@
 <link rel="alternate" type="application/atom+xml" title="一孔錄" href="/zh-hant/feed.xml">
 <link rel="icon" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/seal-180.png">
+<link rel="manifest" href="/zh-hant/manifest.webmanifest">
+<meta name="theme-color" content="#f6f1e6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="一孔錄">
 <meta property="og:title" content="《論語》裡的“命”｜專題｜一孔錄">
 <meta property="og:description" content="“命”有天命、命令、壽命幾層意思。孔子自述“五十而知天命”，朱熹解天命為“天道之流行而賦於物者”。">
 <meta property="og:url" content="https://yikonglu.com/zh-hant/zhuanti/ming.html">
@@ -52,5 +55,6 @@ var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>'+t
 b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}};b.querySelector('button').onclick=function(){try{localStorage.setItem(K,P)}catch(e){}b.remove()};
 document.body.prepend(b)})();
 </script>
+<script>if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})</script>
 </body>
 </html>

@@ -10,6 +10,9 @@
 <link rel="alternate" type="application/atom+xml" title="一孔录" href="/feed.xml">
 <link rel="icon" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/seal-180.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#f6f1e6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="一孔录">
 <meta property="og:title" content="《论语·泰伯》8.2｜原文与白话（未讲）｜一孔录">
 <meta property="og:description" content="子曰：恭而无礼则劳，慎而无礼则葸，勇而无礼则乱，直而无礼则绞。君子笃于亲，则民兴于仁；故旧不遗，则民不偷。……《论语·泰伯》第 2 章原文与白话直译。">
 <meta property="og:url" content="https://yikonglu.com/lunyu/tai-bo/2.html">
@@ -84,5 +87,6 @@ var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>'+t
 b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}};b.querySelector('button').onclick=function(){try{localStorage.setItem(K,P)}catch(e){}b.remove()};
 document.body.prepend(b)})();
 </script>
+<script>if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})</script>
 </body>
 </html>

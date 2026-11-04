@@ -10,6 +10,9 @@
 <link rel="alternate" type="application/atom+xml" title="一孔录" href="/ja/feed.xml">
 <link rel="icon" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/seal-180.png">
+<link rel="manifest" href="/ja/manifest.webmanifest">
+<meta name="theme-color" content="#f6f1e6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="一孔录">
 <meta property="og:title" content="一孔録について">
 <meta property="og:description" content="一孔録は、中国の古典の原文を一字ずつ、一章ずつ読むチャンネルです。語りのアニメーションと数人の固定の登場人物で、原文の一句を具体的な人と場面に下ろします。原書を読んだことがなくても、前の回を見ていなくても、分かるように作っています。">
 <meta property="og:url" content="https://yikonglu.com/ja/about.html">
@@ -55,5 +58,6 @@ var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>'+t
 b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}};b.querySelector('button').onclick=function(){try{localStorage.setItem(K,P)}catch(e){}b.remove()};
 document.body.prepend(b)})();
 </script>
+<script>if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})</script>
 </body>
 </html>

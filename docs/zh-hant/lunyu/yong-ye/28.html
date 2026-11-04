@@ -10,6 +10,9 @@
 <link rel="alternate" type="application/atom+xml" title="一孔錄" href="/zh-hant/feed.xml">
 <link rel="icon" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/seal-180.png">
+<link rel="manifest" href="/zh-hant/manifest.webmanifest">
+<meta name="theme-color" content="#f6f1e6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#17150f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="一孔錄">
 <meta property="og:title" content="《論語·雍也》6.28｜原文與白話（未講）｜一孔錄">
 <meta property="og:description" content="子貢曰：如有博施於民而能濟眾，何如？可謂仁乎？子曰：何事於仁，必也聖乎！堯舜其猶病諸！夫仁者，己欲立而立人，己欲達而達人。能近取譬，可謂仁之……《論語·雍也》第 28 章原文與白話直譯。">
 <meta property="og:url" content="https://yikonglu.com/zh-hant/lunyu/yong-ye/28.html">
@@ -84,5 +87,6 @@ var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>'+t
 b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}};b.querySelector('button').onclick=function(){try{localStorage.setItem(K,P)}catch(e){}b.remove()};
 document.body.prepend(b)})();
 </script>
+<script>if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})</script>
 </body>
 </html>
