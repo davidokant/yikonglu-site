@@ -224,3 +224,4 @@ a.bb{font-size:12px;margin-left:8px}
 .gsback{margin:14px 0;padding:8px 12px;border-left:3px solid var(--accent2);background:color-mix(in srgb,var(--accent2) 8%,transparent);font-size:14px;color:var(--mute)}
 .gsback a{color:var(--accent2)}
 @media (max-width:700px){.gsperson{flex-direction:column}.gsimg{max-width:70%}}
+.fcopy{margin:8px 0 0;font-size:13px;color:var(--mute)}
