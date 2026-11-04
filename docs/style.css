@@ -246,3 +246,5 @@ aside li.wj a{color:var(--mute)}
 .bcard em{font-style:normal;font-size:14px;color:var(--mute)}
 .bcard.soon{opacity:.55;box-shadow:none;border-style:dashed;cursor:default}.bcard.soon em{display:inline-block;margin-top:12px;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:0 8px}
 .ph a{color:inherit}
+.shumu-home .ph{font-size:17px;margin-top:22px}.shumu-home .ph:first-child{margin-top:0}
+.shumu-home .bcards{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.shumu-home .bcard{padding:12px 14px}.shumu-home .bcard b{font-size:18px}.shumu-home .bcard small{font-size:12px}
