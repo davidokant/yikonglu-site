@@ -564,7 +564,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <footer><div class="wrap">
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
-<p class="where">{L.t("foot_where")}</p>
+<p class="where">{where_html(L)}</p>
 <div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
@@ -953,7 +953,7 @@ def build_lang(L, D, write):
 <h2>{L.t("about_h1")}</h2><p>{L.t("about_site").replace('href="kanwu.html"', f'href="{P}kanwu.html"').replace('href="errata.html"', f'href="{P}kanwu.html"')}</p>
 <h2>{L.t("about_h2")}</h2><ul><li>{L.t("about_c1")}</li><li>{L.t("about_c2")}</li><li>{L.t("about_c3")}</li></ul>
 <h2>{L.t("about_h3")}</h2><p>{L.t("about_where")}</p>
-<h2 id="zhuanzai">{L.t("about_h4")}</h2><ul><li>{L.t("about_r1")}</li><li>{L.t("about_r2")}</li><li>{L.t("about_r3")}</li><li>{L.t("about_r4")}</li><li>{L.t("about_r5", p=P)}</li></ul><p class="mailp">{MAIL}</p><p class="outl"><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ YouTube</a> <a class="btn ghost" href="https://search.bilibili.com/all?keyword=%E4%B8%80%E5%AD%94%E5%BD%95" target="_blank" rel="noopener">Bilibili</a></p></main>'''
+<h2 id="zhuanzai">{L.t("about_h4")}</h2><ul><li>{L.t("about_r1")}</li><li>{L.t("about_r2")}</li><li>{L.t("about_r3")}</li><li>{L.t("about_r4")}</li><li>{L.t("about_r5", p=P)}</li></ul><p class="mailp">{MAIL}</p><p class="outl"><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ YouTube</a> <a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">Bilibili</a></p></main>'''
     write("about.html", page(L, L.t("about_title"), L.t("about_p")[:120], "about.html", about)); urls.append(f"{DOMAIN}/{L.prefix}about.html")
     _, ys_t, ys_sub, ys_items, ys_q = PRIVACY.get(L.code, PRIVACY["en"])
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{ys_sub}</span>{ys_t}</h1></div></div>
@@ -1140,6 +1140,23 @@ def write_data(D, outdir):
             w = csv.writer(f); w.writerow(["章号", "标题", "原文", "白话", "常见读法", "注里的关键字", "诸家", "一孔录读法", "网址"])
             for r in rows: w.writerow([r["chapter"], r["title"], r["text"], r["baihua"], r["common_reading"], r["zhu_keys"], r["others"], r["yikonglu_reading"], r["url"]])
     open(os.path.join(outdir, "data", "LICENSE.txt"), "w", encoding="utf-8").write("一孔录 Yikonglu 开放数据\n原文与古注：公版。\n一孔录所写内容（白话、读法、引文核对表、读音）：CC BY-NC 4.0，署名“一孔录 yikonglu.com”，不得商用。\nhttps://creativecommons.org/licenses/by-nc/4.0/\n")
+
+# 页底平台行：有网页主页的直接外链，微信系只能搜
+PLAT_LINKS = [("YouTube", "https://www.youtube.com/@yikonglu"), ("B站", "https://space.bilibili.com/18385461"),
+              ("Spotify", "https://open.spotify.com/show/2tc129X7b7yqlqqGWzUbon"), ("Apple 播客", "https://podcasts.apple.com/us/podcast/id6808549970"),
+              ("喜马拉雅", "https://www.ximalaya.com/album/132166955")]
+PLAT_NAME = {"B站": "Bilibili", "Apple 播客": "Apple Podcasts", "喜马拉雅": None}
+PLAT_WX = {"zh": "视频号、公众号：微信搜「一孔录」", "en": "WeChat: search “一孔录”", "ja": "WeChat：「一孔录」で検索",
+           "ko": "WeChat: 「一孔录」 검색", "fr": "WeChat : cherchez « 一孔录 »", "es": "WeChat: busque «一孔录»"}
+def where_html(L):
+    zh = L.code.startswith("zh")
+    out = []
+    for name, url in PLAT_LINKS:
+        if not zh:
+            name = PLAT_NAME.get(name, name)
+            if name is None: continue
+        out.append(f'<a href="{url}" target="_blank" rel="noopener">{name}</a>')
+    return " · ".join(out) + " · " + PLAT_WX["zh" if zh else L.code if L.code in PLAT_WX else "en"]
 
 def main(zdir, outdir, kanwu=None):
     yw = json.load(open(os.path.join(HERE, "yuanwen.json"), encoding="utf-8"))
