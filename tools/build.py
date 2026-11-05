@@ -319,11 +319,12 @@ def parse_zhuben(d):
 def esc(s): return html.escape(s, quote=True)
 
 def wj_title(text, n=1):
-    """未讲章没有标题：取原文开头一句（去掉“子曰：”之类），最多 14 字。只剩说话人（“曾子曰”）就接下一句；n 为再多接几句。"""
+    """未讲章没有标题：取原文开头一句（去掉“子曰：”之类），最多 14 字。开头的说话人（“曾子曰”）同“子曰”一样省掉；n 为再多接几句。"""
     t = re.sub(r"^(子|孔子)曰[：；]", "", text)
     seg = [x for x in re.split(r"[，。？！；：]", t) if x]
+    while len(seg) > 1 and seg[0].endswith("曰"): seg = seg[1:]  # “曾子曰”这类说话人和“子曰”一样省掉
     k = 1
-    while k < len(seg) and (seg[k - 1].endswith("曰") or len("".join(seg[:k])) < 2): k += 1
+    while k < len(seg) and len("".join(seg[:k])) < 2: k += 1
     e = min(len(seg), k + n - 1)
     while e < len(seg) and seg[e - 1].endswith("曰"): e += 1
     return "".join(seg[:e])[:14]
