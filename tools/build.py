@@ -359,10 +359,12 @@ def clean(text):
     text = re.sub(r"【[^】]*】", "", text)
     return text.rstrip("；，").strip()
 
+NEIBU_DING = re.compile(r"主人\s*\d{1,2}-\d{1,2}\s*定")  # 内部“谁哪天定的”不上页面，只留定下的结论
+
 def parse_zhaji(path):
     out, cur = {}, None
     for line in open(path, encoding="utf-8"):
-        line = line.rstrip("\n")
+        line = NEIBU_DING.sub("", line.rstrip("\n"))
         m = re.match(r"^### \S+ (\d+\.\d+) (.+)$", line)
         if m:
             cur = {"no": m.group(1), "title": m.group(2).strip(), "fields": {}, "tags": []}
@@ -413,7 +415,7 @@ def pdf_pages(page):  # “PDF084—085”这类跨页范围展开成各页
     return out
 
 def parse_gao(path, yw):
-    L = open(path, encoding="utf-8").read().replace("\r", "").split("\n")
+    L = NEIBU_DING.sub("", open(path, encoding="utf-8").read().replace("\r", "")).split("\n")
     kmap, cur = {}, None
     for l in L:
         m = re.match(r"^### 第(.+?)章", l)

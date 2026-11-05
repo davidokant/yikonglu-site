@@ -14,6 +14,7 @@ for f in glob.glob(os.path.join(out, "**", "*.*"), recursive=True):
     t = open(f, encoding="utf-8").read()
     for w in WORDS:
         if w in t: bad.append(f"{f} 含内部字样或占位符 {w!r}")
+    if re.search(r"主人\s*\d{1,2}-\d{1,2}", t): bad.append(f"{f} 含内部定稿记录（主人+日期）")
     if f.endswith(".html") and t.count("<main") != t.count("</main>"): bad.append(f"{f} <main> 不配对")
 try:
     old = subprocess.run(["git", "show", "HEAD:" + os.path.join(out, "sitemap.xml")], capture_output=True, text=True).stdout.count("<url>")
