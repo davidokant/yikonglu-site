@@ -252,6 +252,8 @@ def parse_zhuben(d):
             if head and not kind: kind = "k_word"
             if not head: kind = "k_same" if "同" in cmp_[:4] else "k_diff"
             if not r.get("译文一句", "").strip(): continue  # 重出省译的章不放
+            src_ch = (r.get("引句实际来源章") or "").strip()
+            if src_ch and src_ch != r["章号"].strip(): continue  # 重出章借用别章译句的不放，免得张冠李戴
             out.setdefault(r["章号"], {})[key] = {"text": r["译文一句"].strip(), "key": head if head_is_word else "", "kind": kind, "say": body if head else cmp_, "sure": {"定": "s_ding", "较稳": "s_wen", "存疑": "s_yi"}.get((r.get("把握") or "").strip(), "")}
     return out
 
@@ -339,7 +341,7 @@ def parse_gao(path, yw):
     for row in md_tables(L, r"^## 引文取处"):
         if len(row) < 4: continue
         k, text, src, page = row[:4]
-        c = sec2ch.get(kmap.get(k))
+        km = re.match(r"\s*(K\d+)", k); c = sec2ch.get(kmap.get(km.group(1) if km else k))
         if not c or "待核" in page or "待核" in text: continue
         para = bool(re.search(r"（[^（）]*(转述)[^（）]*）", text)) and not re.search(r"只原样念|前半转述|前后转述", text)
         text = INTERNAL.sub("", text).strip("；; ")
