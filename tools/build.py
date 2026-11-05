@@ -318,11 +318,29 @@ def parse_zhuben(d):
 
 def esc(s): return html.escape(s, quote=True)
 
-def wj_title(text):
-    """未讲章没有标题：取原文开头一句（去掉“子曰：”之类），最多 12 字。"""
-    t = re.sub(r"^(子|孔子)曰：", "", text)
-    t = re.split(r"[，。？！；：]", t)[0]
-    return t[:12]
+def wj_title(text, n=1):
+    """未讲章没有标题：取原文开头一句（去掉“子曰：”之类），最多 14 字。只剩说话人（“曾子曰”）就接下一句；n 为再多接几句。"""
+    t = re.sub(r"^(子|孔子)曰[：；]", "", text)
+    seg = [x for x in re.split(r"[，。？！；：]", t) if x]
+    k = 1
+    while k < len(seg) and (seg[k - 1].endswith("曰") or len("".join(seg[:k])) < 2): k += 1
+    e = min(len(seg), k + n - 1)
+    while e < len(seg) and seg[e - 1].endswith("曰"): e += 1
+    return "".join(seg[:e])[:14]
+
+_WJT = {}
+def wj_titles(qw):
+    """全书未讲章标题：同一篇里撞名的，逐句往后接到分得开为止。"""
+    if id(qw) in _WJT: return _WJT[id(qw)]
+    out = {c: wj_title(v["text"]) for c, v in qw.items()}
+    for n in range(2, 6):
+        seen = {}
+        for c, t in out.items(): seen.setdefault((c.split(".")[0], t), []).append(c)
+        dup = [c for v in seen.values() if len(v) > 1 for c in v]
+        if not dup: break
+        for c in dup: out[c] = wj_title(qw[c]["text"], n)
+    _WJT[id(qw)] = out
+    return out
 
 def cpbtn(L, text, link, link_only=False):
     """复制按钮：data-t 是要复制的引文（空则只复制链接）。"""
@@ -688,7 +706,7 @@ def build_lang(L, D, write):
     urls = []
     def rel_of(c):
         p, n = c.split("."); return f"lunyu/{PIAN[p][1]}/{n}.html"
-    def title_of(c): return L.ch(c).get("title") or (notes[c]["title"] if c in notes else wj_title(D["qw"][c]["text"]))
+    def title_of(c): return L.ch(c).get("title") or (notes[c]["title"] if c in notes else wj_titles(D["qw"])[c])
     def field(c, k):
         v = L.ch(c).get(k)
         return (v, True) if v else (notes[c]["fields"].get(k), False)
@@ -696,7 +714,7 @@ def build_lang(L, D, write):
     pubset = set(pub)
     def href(c):  # 已讲章各语种都有页；未讲章只出简繁，外文页链到简体
         return (P if c in pubset or L.code.startswith("zh") else "/") + rel_of(c)
-    def ctitle(c): return title_of(c) if c in pubset else wj_title(D["qw"][c]["text"])
+    def ctitle(c): return title_of(c) if c in pubset else wj_titles(D["qw"])[c]
     def hj_of(c):  # 本句互见：链到已讲章（各语种）或未讲章（简繁有页，外文链简体页）
         kname = {"注": L.t("hj_note"), "本书": L.t("hj_book"), "他书": L.t("hj_other")}
         hj_data = {}
