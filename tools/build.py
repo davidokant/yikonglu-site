@@ -272,6 +272,7 @@ def cpbtn(L, text, link, link_only=False):
     return b + f'<button class="cp" data-t="{esc(link)}">{L.t("cp_link")}</button>'
 
 def clean(text):
+    text = re.sub(r"[^。；]*【[^】]*待核[^】]*】[。；]?", "", text)  # 整句带【待核】的不上
     text = re.sub(r"（[^（）]*(待核|书里)[^（）]*）", "", text)
     parts = [p for p in re.split(r"(?<=[，；])", text) if "待核" not in p]
     text = "".join(parts).strip()
@@ -1043,6 +1044,8 @@ def main(zdir, outdir, kanwu=None):
         for l in open(f, encoding="utf-8"):
             m = re.match(r"^- (\d+\.\d+)[：:]\s*(.+)$", l.strip())
             if m: baihua[m.group(1)] = m.group(2).strip()
+    hp = os.path.join(HERE, "baihua_hold.json")
+    for c in (json.load(open(hp, encoding="utf-8")).get("chapters", []) if os.path.exists(hp) else []): baihua.pop(c, None)
     stp = os.path.join(GAO_DIR, "_时间", "章节起点.json")
     starts = {}  # {YouTube ID: {章号: 秒}}，发布线程按集追加
     if os.path.exists(stp):
