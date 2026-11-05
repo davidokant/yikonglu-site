@@ -1161,10 +1161,10 @@ def write_data(D, outdir):
     open(os.path.join(outdir, "data", "LICENSE.txt"), "w", encoding="utf-8").write("一孔录 Yikonglu 开放数据\n原文与古注：公版。\n一孔录所写内容（白话、读法、引文核对表、读音）：CC BY-NC 4.0，署名“一孔录 yikonglu.com”，不得商用。\nhttps://creativecommons.org/licenses/by-nc/4.0/\n")
 
 # 页底平台行：有网页主页的直接外链，微信系只能搜
-PLAT_LINKS = [("YouTube", "https://www.youtube.com/@yikonglu"), ("B站", "https://space.bilibili.com/18385461"), ("TikTok", "https://www.tiktok.com/@yikonglu"), ("知乎", "https://www.zhihu.com/people/yikonglu"), ("百家号", "https://mr.baidu.com/r/25FydpLvBKM"),
+PLAT_LINKS = [("YouTube", "https://www.youtube.com/@yikonglu"), ("B站", "https://space.bilibili.com/18385461"), ("TikTok", "https://www.tiktok.com/@yikonglu"), ("抖音", "https://www.douyin.com/user/MS4wLjABAAAAXpVHXn9zMrJpCNeOBO1s4G2i1KhXcstcIBil6H9TFQM"), ("知乎", "https://www.zhihu.com/people/yikonglu"), ("百家号", "https://mr.baidu.com/r/25FydpLvBKM"),
               ("Spotify", "https://open.spotify.com/show/2tc129X7b7yqlqqGWzUbon"), ("Apple 播客", "https://podcasts.apple.com/us/podcast/id6808549970"),
               ("喜马拉雅", "https://www.ximalaya.com/album/132166955"), ("小宇宙", "https://www.xiaoyuzhoufm.com/podcast/6a9a7681f62860437cd2d85e")]
-PLAT_NAME = {"B站": "Bilibili", "Apple 播客": "Apple Podcasts", "喜马拉雅": None, "知乎": None, "小宇宙": None, "百家号": None}
+PLAT_NAME = {"B站": "Bilibili", "Apple 播客": "Apple Podcasts", "喜马拉雅": None, "知乎": None, "小宇宙": None, "百家号": None, "抖音": None}
 PLAT_WX = {"zh": "视频号、公众号：微信搜「一孔录」", "en": "WeChat: search “一孔录”", "ja": "WeChat：「一孔录」で検索",
            "ko": "WeChat: 「一孔录」 검색", "fr": "WeChat : cherchez « 一孔录 »", "es": "WeChat: busque «一孔录»"}
 def where_html(L):
