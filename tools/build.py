@@ -438,11 +438,11 @@ class Lang:
         return self.tr.get("books", {}).get(p, PIAN[p][2])
 
 def analytics(L):
-    """访问统计：tools/analytics.json 里填了才加。cloudflare＝Web Analytics token；baidu＝百度统计 hm.js 的 id（只加在中文页）。"""
+    """访问统计：tools/analytics.json 里填了才加。cloudflare＝Web Analytics token；baidu＝百度统计 hm.js 的 id（只加在简体页）。"""
     a = ""
     if ANALYTICS.get("cloudflare"):
         a += f"<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{{\"token\": \"{ANALYTICS['cloudflare']}\"}}'></script>"
-    if ANALYTICS.get("baidu") and L.code.startswith("zh"):
+    if ANALYTICS.get("baidu") and L.code == "zh-Hans":
         a += f'<script>var _hmt=_hmt||[];(function(){{var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?{ANALYTICS["baidu"]}";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)}})();</script>'
     return a
 
@@ -500,7 +500,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
 <p class="where">{L.t("foot_where")}</p>
-<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
+<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
 </div></footer>
@@ -544,6 +544,59 @@ def yxl_block(L, D, P, full=False):
             f'<p>做法：取已发各章首句，不登录搜索，看一孔录讲读是否在前 20 条，折成 0—100 的平台分；平台搜索因人因地而异，你搜到的可能不同。<a class="more" href="{P}yingxiangli.html">方法与原始数据 ›</a></p></div>')
     sub = f'每周更新 · 最近一次 {esc(y.get("updated") or D["today"])} · 每个数都可点开核对'
     return f'<section class="wrap narrow yxl"><h2 class="ph">一孔影响力</h2><p class="sub">{sub}</p>{grid}{find}</section>'
+
+# 隐私说明页（/yinsi.html）：七语各一份，繁体由简体转
+PRIVACY = {
+ "zh-Hans": ("隐私", "隐私说明", "本站收什么、不收什么", [
+   "不用注册，不设留言区，不收表单。",
+   "访问统计用 Cloudflare Web Analytics：不设 cookie，不认人，只计页面访问量、来路和国家或地区。简体中文页另装百度统计，它会设 cookie，用来计访问量和来路；繁体和外文页不装。",
+   "章节页里的视频用 YouTube 的隐私增强模式（youtube-nocookie.com）嵌入，点播放之后才由 YouTube 按它的隐私政策处理。",
+   "字体从 Google Fonts 加载，你的浏览器会向谷歌请求字体文件。",
+   "语言选择、是否已关掉“装到桌面”提示，记在你浏览器的本地存储里；看过的页面缓存在你的设备上，离线也能打开。这些都不上传。",
+   "写信来勘误或提问，信只用来核对和回复。记入勘误页时只署你给的网名，不公开邮箱；想撤下署名，写信说一声就撤。",
+   "以上有变动，会改这一页并更新下面的日期。"], "有问题请写信："),
+ "en": ("Privacy", "Privacy", "What this site collects, and what it does not", [
+   "No accounts, no comment section, no forms.",
+   "Visits are counted with Cloudflare Web Analytics, which sets no cookies and does not identify you; it counts page views, referrers and country or region. Simplified-Chinese pages also carry Baidu Tongji, which does set cookies for counting visits and referrers; other language versions do not.",
+   "Videos on chapter pages are embedded in YouTube's privacy-enhanced mode (youtube-nocookie.com); once you press play, YouTube handles data under its own privacy policy.",
+   "Fonts load from Google Fonts, so your browser requests font files from Google.",
+   "Your language choice and whether you dismissed the “add to home screen” tip are kept in your browser's local storage; pages you have read are cached on your device for offline use. None of this is uploaded.",
+   "If you write to us with a correction or question, the email is used only to check and reply. If your correction is listed on the corrections page, we show only the username you give us, never your address; write to us and we will remove it.",
+   "If anything here changes, we will update this page and the date below."], "Questions: "),
+ "ja": ("プライバシー", "プライバシーについて", "このサイトが集めるもの・集めないもの", [
+   "登録不要、コメント欄やフォームはありません。",
+   "アクセス集計は Cloudflare Web Analytics を使います。cookie を使わず個人を識別せず、閲覧数・参照元・国や地域のみを数えます。簡体字中国語のページにのみ百度統計を入れており、これは閲覧数と参照元を数えるため cookie を使います。",
+   "章ページの動画は YouTube のプライバシー強化モード（youtube-nocookie.com）で埋め込んでいます。再生後は YouTube のプライバシーポリシーに従って扱われます。",
+   "フォントは Google Fonts から読み込むため、ブラウザが Google にフォントを要求します。",
+   "言語の選択と「ホーム画面に追加」の案内を閉じたかどうかはブラウザのローカルストレージに保存し、読んだページはオフライン用に端末にキャッシュします。いずれも送信しません。",
+   "訂正や質問のメールは確認と返信にのみ使います。訂正ページに載せる場合はお知らせいただいたハンドル名のみを記し、メールアドレスは公開しません。削除をご希望ならご連絡ください。",
+   "内容を変更した場合はこのページと下の日付を更新します。"], "お問い合わせ："),
+ "ko": ("개인정보", "개인정보 안내", "이 사이트가 수집하는 것과 수집하지 않는 것", [
+   "가입이 필요 없고, 댓글란이나 양식이 없습니다.",
+   "방문 통계는 Cloudflare Web Analytics로 집계합니다. 쿠키를 쓰지 않고 개인을 식별하지 않으며 페이지 조회수, 유입 경로, 국가·지역만 셉니다. 간체 중국어 페이지에만 바이두 통계를 넣었으며, 이는 조회수와 유입 경로 집계를 위해 쿠키를 씁니다.",
+   "장 페이지의 영상은 YouTube 개인정보 보호 강화 모드(youtube-nocookie.com)로 넣었습니다. 재생한 뒤에는 YouTube의 개인정보처리방침에 따릅니다.",
+   "글꼴은 Google Fonts에서 불러오므로 브라우저가 Google에 글꼴 파일을 요청합니다.",
+   "언어 선택과 ‘홈 화면에 추가’ 안내를 닫았는지 여부는 브라우저 로컬 저장소에 두고, 읽은 페이지는 오프라인용으로 기기에 캐시합니다. 어느 것도 전송하지 않습니다.",
+   "정정이나 질문 메일은 확인과 답장에만 씁니다. 정정 페이지에 올릴 때는 알려 주신 닉네임만 적고 메일 주소는 공개하지 않습니다. 삭제를 원하시면 메일로 알려 주세요.",
+   "내용이 바뀌면 이 페이지와 아래 날짜를 고칩니다."], "문의: "),
+ "fr": ("Confidentialité", "Confidentialité", "Ce que ce site recueille, et ce qu'il ne recueille pas", [
+   "Pas de compte, pas d'espace de commentaires, pas de formulaire.",
+   "Les visites sont comptées avec Cloudflare Web Analytics, sans cookie et sans vous identifier : pages vues, provenance, pays ou région. Les pages en chinois simplifié utilisent en plus Baidu Tongji, qui dépose des cookies pour compter les visites et leur provenance ; les autres langues non.",
+   "Les vidéos des pages de chapitre sont intégrées en mode de confidentialité renforcée de YouTube (youtube-nocookie.com) ; une fois la lecture lancée, YouTube traite les données selon sa propre politique.",
+   "Les polices sont chargées depuis Google Fonts : votre navigateur demande les fichiers de police à Google.",
+   "Votre choix de langue et le fait d'avoir fermé l'invitation « ajouter à l'écran d'accueil » sont gardés dans le stockage local de votre navigateur ; les pages lues sont mises en cache sur votre appareil pour la lecture hors ligne. Rien de cela n'est envoyé.",
+   "Si vous nous écrivez pour une correction ou une question, le courriel ne sert qu'à vérifier et à répondre. Une correction citée sur la page des corrections ne porte que le pseudonyme que vous nous donnez, jamais votre adresse ; écrivez-nous pour le faire retirer.",
+   "Si quelque chose change, nous mettrons à jour cette page et la date ci-dessous."], "Questions : "),
+ "es": ("Privacidad", "Privacidad", "Qué recoge este sitio y qué no", [
+   "Sin registro, sin sección de comentarios, sin formularios.",
+   "Las visitas se cuentan con Cloudflare Web Analytics, que no usa cookies ni le identifica: solo cuenta páginas vistas, procedencia y país o región. Las páginas en chino simplificado usan además Baidu Tongji, que sí usa cookies para contar visitas y procedencia; las demás lenguas no.",
+   "Los vídeos de las páginas de capítulo se insertan en el modo de privacidad mejorada de YouTube (youtube-nocookie.com); al pulsar reproducir, YouTube trata los datos según su propia política.",
+   "Las fuentes se cargan desde Google Fonts, así que su navegador pide los archivos de fuente a Google.",
+   "Su elección de idioma y si cerró el aviso de «añadir a la pantalla de inicio» se guardan en el almacenamiento local de su navegador; las páginas leídas quedan en caché en su dispositivo para leer sin conexión. Nada de esto se envía.",
+   "Si nos escribe con una corrección o una pregunta, el correo solo se usa para comprobar y responder. Si su corrección aparece en la página de correcciones, solo figura el nombre de usuario que nos dé, nunca su dirección; escríbanos y lo retiramos.",
+   "Si algo cambia, actualizaremos esta página y la fecha de abajo."], "Preguntas: "),
+}
+PRIVACY["zh-Hant"] = PRIVACY["zh-Hans"]
 
 DATE_TOK, DATE_TOK_SL = "\ue0f0DATE\ue0f1", "\ue0f0DATESL\ue0f1"
 
@@ -821,6 +874,10 @@ def build_lang(L, D, write):
 <h2>{L.t("about_h2")}</h2><ul><li>{L.t("about_c1")}</li><li>{L.t("about_c2")}</li><li>{L.t("about_c3")}</li></ul>
 <h2>{L.t("about_h3")}</h2><p>{L.t("about_where")}</p><p class="outl"><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ YouTube</a> <a class="btn ghost" href="https://search.bilibili.com/all?keyword=%E4%B8%80%E5%AD%94%E5%BD%95" target="_blank" rel="noopener">Bilibili</a></p></main>'''
     write("about.html", page(L, L.t("about_title"), L.t("about_p")[:120], "about.html", about)); urls.append(f"{DOMAIN}/{L.prefix}about.html")
+    _, ys_t, ys_sub, ys_items, ys_q = PRIVACY.get(L.code, PRIVACY["en"])
+    body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{ys_sub}</span>{ys_t}</h1></div></div>
+<main class="wrap narrow prose"><ul>{"".join(f"<li>{esc(x)}</li>" for x in ys_items)}</ul><p class="mailp">{ys_q}{MAIL}</p><p class="note">{today}</p></main>'''
+    write("yinsi.html", page(L, f"{ys_t}｜一孔录", ys_sub, "yinsi.html", body)); urls.append(f"{DOMAIN}/{L.prefix}yinsi.html")
 
     if kw:
         trs = "".join(f"<tr><td>{esc(r[0])}</td><td>{esc(r[1])} {esc(r[2])}</td><td>{esc(r[3])}</td><td>{esc(r[4])}</td><td>{esc(r[5])}</td><td>{esc(r[6])}</td><td class=\"who\">{esc(r[7])}</td></tr>" for r in reversed(kw))
@@ -1149,6 +1206,7 @@ def main(zdir, outdir, kanwu=None):
     def to_hant(text):
         for i, w in enumerate(KEEP): text = text.replace(w, f"\ue002{i}\ue003")
         for i, w in enumerate(PROTECT): text = text.replace(w, f"\ue000{i}\ue001")
+        text = re.sub(r'<script>var _hmt=.*?</script>', "", text)  # 百度统计只留简体页
         t = cc.convert(text)
         for i, w in enumerate(PROTECT): t = t.replace(f"\ue000{i}\ue001", HANT_FIX.get(w, w))
         for a_, b_ in HANT_POST: t = t.replace(a_, b_)
