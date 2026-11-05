@@ -1324,6 +1324,7 @@ def main(zdir, outdir, kanwu=None):
     print(f"生成 {len(urls)} 页 → {outdir}")
     rc = __import__("subprocess").run([sys.executable, os.path.join(HERE, "check.py"), outdir]).returncode  # 发版前检查，不过别推
     if rc: sys.exit("检查没过，先别推。")
+    __import__("subprocess").run([sys.executable, os.path.join(HERE, "shangxian.py"), outdir, os.path.join(os.path.dirname(os.path.abspath(zdir)), "数据", "网站素材")])
 
 if __name__ == "__main__":
     main(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else None)
