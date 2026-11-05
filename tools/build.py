@@ -1163,8 +1163,8 @@ def write_data(D, outdir):
 # 页底平台行：有网页主页的直接外链，微信系只能搜
 PLAT_LINKS = [("YouTube", "https://www.youtube.com/@yikonglu"), ("B站", "https://space.bilibili.com/18385461"), ("TikTok", "https://www.tiktok.com/@yikonglu"), ("知乎", "https://www.zhihu.com/people/yikonglu"),
               ("Spotify", "https://open.spotify.com/show/2tc129X7b7yqlqqGWzUbon"), ("Apple 播客", "https://podcasts.apple.com/us/podcast/id6808549970"),
-              ("喜马拉雅", "https://www.ximalaya.com/album/132166955")]
-PLAT_NAME = {"B站": "Bilibili", "Apple 播客": "Apple Podcasts", "喜马拉雅": None, "知乎": None}
+              ("喜马拉雅", "https://www.ximalaya.com/album/132166955"), ("小宇宙", "https://www.xiaoyuzhoufm.com/podcast/6a9a7681f62860437cd2d85e")]
+PLAT_NAME = {"B站": "Bilibili", "Apple 播客": "Apple Podcasts", "喜马拉雅": None, "知乎": None, "小宇宙": None}
 PLAT_WX = {"zh": "视频号、公众号：微信搜「一孔录」", "en": "WeChat: search “一孔录”", "ja": "WeChat：「一孔录」で検索",
            "ko": "WeChat: 「一孔录」 검색", "fr": "WeChat : cherchez « 一孔录 »", "es": "WeChat: busque «一孔录»"}
 def where_html(L):
