@@ -334,7 +334,7 @@ def parse_gao(path, yw):
         if m: cur = m.group(0)
         if re.match(r"^### (开场|片尾)", l): cur = None
         k = re.match(r"^\*\*(K\d+)", l)
-        if k and cur: kmap[k.group(1)] = cur
+        if k and cur and "引子" not in l: kmap[k.group(1)] = cur  # 下篇引子不算本章
     pnum = next((v for k2, v in PIAN_NUM.items() if k2 in os.path.basename(path)), None)
     out = {}
     sec2ch = {sec: f"{pnum}.{cn2int(re.match(r'^### 第(.+?)章', sec).group(1))}" for sec in set(kmap.values())} if pnum else {}
