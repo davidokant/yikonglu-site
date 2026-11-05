@@ -1040,7 +1040,7 @@ def main(zdir, outdir, kanwu=None):
     for c in pub: first.setdefault(c, today)
     json.dump(first, open(fsp, "w", encoding="utf-8"), ensure_ascii=False, indent=0, sort_keys=True)
     baihua = {}
-    for f in sorted(glob.glob(os.path.join(BH_DIR, "*.md"))):
+    for f in sorted(glob.glob(os.path.join(BH_DIR, "*.md")), key=lambda f: ("改写" in f, f)):  # 改写稿最后读，覆盖同章旧稿
         for l in open(f, encoding="utf-8"):
             m = re.match(r"^- (\d+\.\d+)[：:]\s*(.+)$", l.strip())
             if m: baihua[m.group(1)] = m.group(2).strip()
