@@ -43,6 +43,13 @@ KANWU_DEFAULT = "/mnt/project-files/一孔学-内-自媒体/数据/网站勘误.
 INTERNAL = re.compile(r"（[^（）]*(只|转述|不上屏|不念|常识|核不到|见注|今读)[^（）]*）")
 
 HANT_FIX = {"余力": "餘力", "余，": "餘，", "余者": "餘者", "托看": "託看", "诗云": "詩云", "子云": "子云", "干禄": "干祿"}  # 护住后手工给的繁体
+# 繁体转换后再改的经文与人名（OpenCC 按今语词转错的），左为转出的错形，右为底本字形
+HANT_POST = [("通道不篤", "信道不篤"), ("相維闢公", "相維辟公"), ("師也闢", "師也辟"), ("趨而闢之", "趨而辟之"), ("甯戚", "寧戚"),
+    ("鬱郁", "郁郁"), ("愛之慾其生", "愛之欲其生"), ("惡之慾其死", "惡之欲其死"), ("門人慾厚葬", "門人欲厚葬"), ("無慾速", "無欲速"),
+    ("禮雲禮", "禮云禮"), ("禮云禮雲", "禮云禮云"), ("樂雲樂", "樂云樂"), ("禮雲禮雲", "禮云禮云"), ("樂雲樂雲", "樂云樂云"), ("書雲", "書云"), ("不佔而已", "不占而已"), ("先嚐之", "先嘗之"), ("寢不屍", "寢不尸"),
+    ("亞飯幹", "亞飯干"), ("難與併為仁", "難與並為仁"), ("可以托六尺", "可以託六尺"), ("不捨晝夜", "不舍晝夜"), ("舊谷既沒", "舊穀既沒"),
+    ("新谷既升", "新穀既升"), ("不至於谷", "不至於穀"), ("邦有道，谷", "邦有道，穀"), ("邦無道，谷", "邦無道，穀"), ("必覆命", "必復命"),
+    ("寧媚於灶", "寧媚於竈"), ("媚於灶", "媚於竈"), ("冠不以吊", "冠不以弔"), ("不撤姜食", "不撤薑食"), ("李鬱", "李郁")]
 LANGS = {  # code: (路径前缀, 自称, hreflang)
     "zh-Hans": ("", "简体中文", "zh-Hans"),
     "zh-Hant": ("zh-hant/", "繁體中文", "zh-Hant"),
@@ -1124,10 +1131,15 @@ def main(zdir, outdir, kanwu=None):
     keep = ("/assets/", "/yuanye/", "/style.css", "https://", "http://", "#")
     # 古文与人名里不能按今字转的（简繁同形或 OpenCC 会转错），先护住再转
     PROTECT = ["范祖禹", "范氏", "游酢", "游氏", "坐如尸", "尸", "咸", "丑", "干禄", "云：", "云，", "子云", "诗云", "余力", "余，", "余者", "托看"]
+    # 皇疏录文本来就是原刻字形，不再转一遍（长的先护，免得被短的拆开）
+    KEEP = sorted({x for z in D["zhuben"].values() if "huang" in z for x in (z["huang"]["text"], esc(z["huang"]["text"]))}, key=len, reverse=True)
     def to_hant(text):
+        for i, w in enumerate(KEEP): text = text.replace(w, f"\ue002{i}\ue003")
         for i, w in enumerate(PROTECT): text = text.replace(w, f"\ue000{i}\ue001")
         t = cc.convert(text)
         for i, w in enumerate(PROTECT): t = t.replace(f"\ue000{i}\ue001", HANT_FIX.get(w, w))
+        for a_, b_ in HANT_POST: t = t.replace(a_, b_)
+        for i, w in enumerate(KEEP): t = t.replace(f"\ue002{i}\ue003", w)
         t = re.sub(r'(href|action|src)="/(?!zh-hant/)([^"]*)"', lambda m: m.group(0) if m.group(2).startswith(("assets/", "yuanye/", "style.css", "data/", "og/", "gushi/img/")) else f'{m.group(1)}="/zh-hant/{m.group(2)}"', t)
         t = t.replace("fetch('/search.json')", "fetch('/zh-hant/search.json')").replace("&quot;/lunyu/", "&quot;/zh-hant/lunyu/")
         t = t.replace('"u": "/lunyu', '"u": "/zh-hant/lunyu')
