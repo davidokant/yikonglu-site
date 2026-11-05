@@ -290,7 +290,8 @@ aside li.wj a{color:var(--mute)}
 .a2t{flex:1;min-width:0;font-size:14px;line-height:1.55}.a2t b{display:block;font-size:15px;margin-bottom:2px}.a2t span{color:var(--mute)}
 .a2go{flex:none;align-self:center;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;white-space:nowrap}
 .a2x{flex:none;background:transparent;border:0;color:var(--mute);font-size:20px;line-height:1;padding:0 2px;cursor:pointer}
-.a2steps{margin:8px 0 0;padding:0;list-style:none;counter-reset:a2}.a2steps li{counter-increment:a2;display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:4px 0;color:var(--fg)}
+.a2steps{margin:8px 0 0;padding:0;list-style:none;counter-reset:a2}.a2steps li{counter-increment:a2;display:flex;align-items:flex-start;gap:6px;margin:6px 0;color:var(--fg)}.a2steps li>span{flex:1;min-width:0}.a2steps li::before,.a2steps i{flex:none;margin-top:2px}
 .a2steps li::before{content:counter(a2);display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px}
 .a2steps i{display:inline-grid;place-items:center;color:var(--accent2)}.a2steps small{color:var(--mute);font-size:12px;width:100%;padding-left:24px}
 @media print{.a2hs{display:none}}
+.a2steps li.a2n{counter-increment:none;color:var(--mute);font-size:12px}.a2steps li.a2n::before{display:none}
