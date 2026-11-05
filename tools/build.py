@@ -405,6 +405,13 @@ def cn2int(t):
     return CN[t[0]] * 10 + CN[t[2]]
 PIAN_NUM = {v[0]: k for k, v in PIAN.items()}
 
+def pdf_pages(page):  # “PDF084—085”这类跨页范围展开成各页
+    out = []
+    for a, b in re.findall(r"PDF0*(\d+)(?:\s*[—–-]\s*(?:PDF)?0*(\d+))?", page):
+        a = int(a); b = int(b) if b else a
+        out += [str(n) for n in range(a, b + 1)] if a <= b <= a + 3 else [str(a)]
+    return out
+
 def parse_gao(path, yw):
     L = open(path, encoding="utf-8").read().replace("\r", "").split("\n")
     kmap, cur = {}, None
@@ -425,9 +432,9 @@ def parse_gao(path, yw):
         para = bool(re.search(r"（[^（）]*(转述)[^（）]*）", text)) and not re.search(r"只原样念|前半转述|前后转述", text)
         text = INTERNAL.sub("", text).strip("；; ")
         if src == "经文":  # 经文所在页也算本章原页（跨页章如 4.18 起于前一页）
-            out.setdefault(c, {"cites": [], "reads": []}).setdefault("qw_pages", []).extend(re.findall(r"PDF0*(\d+)", page)); continue
+            out.setdefault(c, {"cites": [], "reads": []}).setdefault("qw_pages", []).extend(pdf_pages(page)); continue
         if not text: continue
-        pages = re.findall(r"PDF0*(\d+)", page)
+        pages = pdf_pages(page)
         other = ""
         if not pages:
             m = re.search(r"核到（([^（）]*)", page)
