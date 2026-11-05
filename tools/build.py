@@ -518,10 +518,12 @@ def yxl_block(L, D, P, full=False):
     n_cites = sum(1 for g in D["gao"].values() for x in g["cites"] if x["pages"])
     fam = (1 if D["pages_avail"] else 0) + (1 if any("huang" in v for v in D["zhuben"].values()) else 0)
     kw = D["kw"]; readers = [r for r in kw if r[7] != "一孔录自查"]
-    grid = (f'<div class="yxgrid"><a class="c" href="{P}shumu/"><b>{len(D["pub"])}<small>/ {n_all} 章</small></b><span>《论语》已讲读</span></a>'
+    now = datetime.datetime.now(datetime.timezone.utc)
+    vid = {c for c in D["pub"] if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now)}
+    grid = (f'<div class="yxgrid"><a class="c" href="{P}shumu/"><b>{len(D["pub"])}<small>/ {n_all} 章</small></b><span>《论语》读法已上 · 视频已公开 {len(vid)} 章</span></a>'
             f'<a class="c" href="{P}banben/"><b>{n_cites}<small>条</small></b><span>引文可核到底本原页</span></a>'
             f'<a class="c" href="{P}banben/"><b>{fam}<small>家</small></b><span>注本上了原页图</span></a>'
-            f'<a class="c" href="{P}kanwu.html"><b>{len(readers)}<small>/ {len(kw)} 条</small></b><span>读者来信勘误，署名公开</span></a></div>')
+            f'<a class="c" href="{P}kanwu.html"><b>{len(readers)}<small>条</small></b><span>读者来信 · 勘误共 {len(kw)} 条（均已改）</span></a></div>')
     rows = ""
     for pf in y.get("platforms", []):
         sc = pf.get("score")
@@ -543,9 +545,12 @@ def yxl_block(L, D, P, full=False):
     sub = f'每周更新 · 最近一次 {esc(y.get("updated") or D["today"])} · 每个数都可点开核对'
     return f'<section class="wrap narrow yxl"><h2 class="ph">一孔影响力</h2><p class="sub">{sub}</p>{grid}{find}</section>'
 
+DATE_TOK, DATE_TOK_SL = "\ue0f0DATE\ue0f1", "\ue0f0DATESL\ue0f1"
+
 def build_lang(L, D, write):
     """D：公共数据。write(rel, html) 写到该语种目录。返回本语种 URL 列表。"""
-    notes, yw, gao, kw, pub, by_pian, ch2ep, pages_avail, today = (D[k] for k in ("notes", "yw", "gao", "kw", "pub", "by_pian", "ch2ep", "pages_avail", "today"))
+    notes, yw, gao, kw, pub, by_pian, ch2ep, pages_avail = (D[k] for k in ("notes", "yw", "gao", "kw", "pub", "by_pian", "ch2ep", "pages_avail"))
+    today = DATE_TOK  # 页内日期先占位，写盘时按本页内容真有变动的那天填
     P = "/" + L.prefix
     urls = []
     def rel_of(c):
@@ -698,7 +703,7 @@ def build_lang(L, D, write):
         ld = {"@context": "https://schema.org", "@graph": [ld, bc]}
         cit = "".join(f'<meta name="{k}" content="{esc(v)}">' for k, v in [
             ("citation_title", name), ("citation_author", "一孔录"), ("citation_publisher", "一孔录 yikonglu.com"),
-            ("citation_publication_date", first.replace("-", "/")), ("citation_online_date", today.replace("-", "/")),
+            ("citation_publication_date", first.replace("-", "/")), ("citation_online_date", DATE_TOK_SL),
             ("citation_language", L.hreflang), ("citation_public_url", url),
             ("DC.title", name), ("DC.creator", "一孔录"), ("DC.date", first), ("DC.language", L.hreflang), ("DC.source", SOURCE)])
         write(rel, page(L, ttl, desc, rel, body + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
@@ -981,7 +986,7 @@ a.sort(function(x,y){{return x[0]<y[0]?-1:1}});a.forEach(function(x){{var li=doc
 def write_data(D, outdir):
     """开放数据：每篇一份 JSON 和 CSV（只含公版原文与古注、一孔录自己的内容；不含现代注本引文）。"""
     os.makedirs(os.path.join(outdir, "data"), exist_ok=True)
-    lic = {"license": "CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/); 原文与古注为公版", "attribution": "一孔录 Yikonglu, https://yikonglu.com", "generated": D["today"]}
+    lic = {"license": "CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/); 原文与古注为公版", "attribution": "一孔录 Yikonglu, https://yikonglu.com"}
     for p, cs in D["by_pian"].items():
         rows = []
         for c in cs:
@@ -1107,10 +1112,18 @@ def main(zdir, outdir, kanwu=None):
     yxl = json.load(open(YXL_FILE, encoding="utf-8")) if os.path.exists(YXL_FILE) else {}
     D = dict(book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
 
+    pdp = os.path.join(HERE, "pagedates.json")  # 每页 [内容指纹, 内容最后变动日]：没改的页不换日期
+    pdates = json.load(open(pdp, encoding="utf-8")) if os.path.exists(pdp) else {}
+    seen = set()
     def writer(prefix, post=None):
         def write(rel, text):
             p = os.path.join(outdir, prefix, rel); os.makedirs(os.path.dirname(p) or outdir, exist_ok=True)
-            open(p, "w", encoding="utf-8").write(post(text) if post else text)
+            text = post(text) if post else text
+            key = (prefix + "/" if prefix else "") + rel
+            h = __import__("hashlib").md5(text.encode()).hexdigest()[:16]
+            if pdates.get(key, [None])[0] != h: pdates[key] = [h, today]
+            seen.add(key)
+            open(p, "w", encoding="utf-8").write(text.replace(DATE_TOK, pdates[key][1]).replace(DATE_TOK_SL, pdates[key][1].replace("-", "/")))
         return write
 
     # 每章分享图：简体图给简、英、法、西；繁体图给繁、日、韩
@@ -1156,10 +1169,14 @@ def main(zdir, outdir, kanwu=None):
         ui = dict(EXTRA_UI.get(code, {})); ui.update(tr["ui"])
         urls += build_lang(Lang(code, ui, tr), D, writer(code))
 
+    def lastmod(u):
+        k = u[len(DOMAIN) + 1:]
+        return pdates.get(k + "index.html" if k.endswith("/") or not k else k, [None, today])[1]
     open(os.path.join(outdir, "sitemap.xml"), "w", encoding="utf-8").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-        "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n")
-    ver = __import__("hashlib").md5((CSSV + today + str(len(urls))).encode()).hexdigest()[:10]
+        "".join(f"<url><loc>{u}</loc><lastmod>{lastmod(u)}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+    json.dump({k: v for k, v in pdates.items() if k in seen}, open(pdp, "w", encoding="utf-8"), ensure_ascii=False, indent=0, sort_keys=True)
+    ver = __import__("hashlib").md5((CSSV + "".join(sorted(v[0] for k, v in pdates.items() if k in seen))).encode()).hexdigest()[:10]
     open(os.path.join(outdir, "sw.js"), "w", encoding="utf-8").write(open(os.path.join(HERE, "sw.js"), encoding="utf-8").read().replace("@VER@", ver).replace("@PREFIXES@", json.dumps([""] + [LANGS[k][0] for k in LANGS if LANGS[k][0]])))
     open(os.path.join(outdir, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
     open(os.path.join(outdir, "CNAME"), "w").write("yikonglu.com\n")
