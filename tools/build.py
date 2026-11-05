@@ -135,6 +135,58 @@ EXTRA_UI = {
    "th_sure": "Certeza", "s_ding": "firme", "s_wen": "bastante firme", "s_yi": "dudoso", "k_same": "igual", "k_diff": "difiere", "k_add": "añade", "k_shade": "matiz", "k_word": "sentido de la palabra",
    "nf_h": "Página no encontrada", "nf_p": "Puede que el enlace esté mal escrito o que la página haya cambiado. Busca en el texto original o explora por libro."},
 }
+# 转载声明与出处标记（页底另起一行；关于页“转载与引用”一节）
+REUSE_UI = {
+ "zh-Hans": {"foot_reuse": "原文与古注为公版；白话、读法、引文核对等一孔录所写内容按 <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a> 许可，转载请署名“一孔录”并附原页链接，不得商用。<a href=\"{p}about.html#zhuanzai\">转载说明</a>",
+  "about_h4": "转载与引用",
+  "about_r1": "原文和古注（朱熹集注、皇侃义疏等古刻本）是公版，谁都可以用。",
+  "about_r2": "一孔录自己写的内容，包括白话、读法、引文核对表、读音索引和专题编排，按 CC BY-NC 4.0 许可：可以转载、改编，须署名“一孔录”、附原页链接、注明有没有改动，不得商用。",
+  "about_r3": "现代注本（杨伯峻、钱穆等）的引文版权归原作者和出版方，不在这个许可之内，本站只作短引。",
+  "about_r4": "视频、配音、片中人物形象和插图不在这个许可之内，转用请先来信。",
+  "about_r5": "引一句时，点原文任一句就能复制带出处的引文。要成批转载，可以直接用<a href=\"{p}kaifang.html\">开放数据</a>，商业使用请先来信。看到没署名的转载，或者照搬全站的网站，也请告诉我们：",
+  "mirror_bar": "本页原载一孔录 yikonglu.com，最新版本和勘误请看原站", "mirror_go": "去原站"},
+ "en": {"foot_reuse": "Original texts and old commentaries are public domain. Yikonglu's own content (plain renderings, readings, citation checks) is licensed <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.en\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a>: credit “Yikonglu (一孔录)” with a link to the original page; no commercial use. <a href=\"{p}about.html#zhuanzai\">Reuse guide</a>",
+  "about_h4": "Reuse and citation",
+  "about_r1": "The original texts and old commentaries (Zhu Xi, Huang Kan and other early printed editions) are public domain and free for anyone to use.",
+  "about_r2": "Content we write ourselves, including plain renderings, readings, citation tables, the pronunciation index and topic arrangements, is licensed CC BY-NC 4.0: you may share and adapt it if you credit “Yikonglu (一孔录)”, link to the original page and say whether you changed it; no commercial use.",
+  "about_r3": "Quotations from modern commentaries (Yang Bojun, Qian Mu and others) belong to their authors and publishers, are not covered by this license, and appear here only as short quotations.",
+  "about_r4": "Videos, narration, our characters and illustrations are not covered by this license; please write to us before reusing them.",
+  "about_r5": "To quote a line, tap any sentence of the original to copy it with its source. For bulk reuse, use our <a href=\"{p}kaifang.html\">open data</a>; for commercial use, write to us first. If you see an uncredited copy or a mirror of this site, please let us know:",
+  "mirror_bar": "This page was first published on Yikonglu (yikonglu.com). See the original for the latest version and corrections.", "mirror_go": "Go to original"},
+ "ja": {"foot_reuse": "原文と古注はパブリックドメインです。現代語訳・読み方・引用照合など一孔録が書いた内容は <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.ja\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a> で公開しています。転載の際は「一孔録」と元ページへのリンクを明記してください。商用不可。<a href=\"{p}about.html#zhuanzai\">転載について</a>",
+  "about_h4": "転載と引用",
+  "about_r1": "原文と古注（朱熹集注、皇侃義疏などの古版本）はパブリックドメインで、どなたでも使えます。",
+  "about_r2": "現代語訳、読み方、引用照合表、読音索引、専題の編成など一孔録が書いた内容は CC BY-NC 4.0 です。「一孔録」の表示、元ページへのリンク、改変の有無の明記を条件に転載・改変でき、商用はできません。",
+  "about_r3": "現代の注釈書（楊伯峻、銭穆など）からの引用の権利は著者と出版社にあり、このライセンスの対象外です。本サイトでは短い引用にとどめています。",
+  "about_r4": "動画、ナレーション、作中の人物と挿絵はこのライセンスの対象外です。転用の前にご連絡ください。",
+  "about_r5": "一文を引くときは、原文のどの文でもタップすれば出典付きでコピーできます。まとめて転載するなら<a href=\"{p}kaifang.html\">オープンデータ</a>をお使いください。商用利用は事前にご連絡を。出典のない転載やサイト丸ごとのミラーを見つけたら、お知らせください：",
+  "mirror_bar": "このページの初出は一孔録 yikonglu.com です。最新版と訂正は元サイトでご覧ください。", "mirror_go": "元サイトへ"},
+ "ko": {"foot_reuse": "원문과 옛 주석은 퍼블릭 도메인입니다. 번역·읽기·인용 대조 등 일공록이 쓴 내용은 <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.ko\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a> 라이선스입니다. 옮겨 실을 때는 “일공록(一孔录)”과 원래 페이지 링크를 밝혀 주십시오. 상업적 이용 불가. <a href=\"{p}about.html#zhuanzai\">전재 안내</a>",
+  "about_h4": "전재와 인용",
+  "about_r1": "원문과 옛 주석(주희 집주, 황간 의소 등 옛 판본)은 퍼블릭 도메인이라 누구나 쓸 수 있습니다.",
+  "about_r2": "번역, 읽기, 인용 대조표, 독음 색인, 전제 편성 등 일공록이 직접 쓴 내용은 CC BY-NC 4.0 라이선스입니다. “일공록(一孔录)” 표기, 원래 페이지 링크, 수정 여부 표시를 조건으로 옮겨 싣고 고칠 수 있으며, 상업적 이용은 할 수 없습니다.",
+  "about_r3": "현대 주석서(양보쥔, 첸무 등) 인용문의 권리는 저자와 출판사에 있어 이 라이선스에 포함되지 않으며, 이 사이트에서는 짧게 인용할 뿐입니다.",
+  "about_r4": "영상, 내레이션, 작품 속 인물과 삽화는 이 라이선스에 포함되지 않습니다. 쓰시려면 먼저 연락해 주십시오.",
+  "about_r5": "한 구절을 인용할 때는 원문의 아무 문장이나 누르면 출처와 함께 복사됩니다. 한꺼번에 옮기려면 <a href=\"{p}kaifang.html\">공개 데이터</a>를 쓰시고, 상업적 이용은 먼저 연락해 주십시오. 출처 없는 전재나 사이트 전체를 베낀 미러를 보시면 알려 주십시오:",
+  "mirror_bar": "이 페이지는 일공록 yikonglu.com에 처음 실렸습니다. 최신판과 정정은 원래 사이트에서 보십시오.", "mirror_go": "원래 사이트로"},
+ "fr": {"foot_reuse": "Les textes originaux et les commentaires anciens sont dans le domaine public. Nos propres contenus (traductions, lectures, vérification des citations) sont sous licence <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.fr\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a> : citez « Yikonglu (一孔录) » avec un lien vers la page d’origine ; pas d’usage commercial. <a href=\"{p}about.html#zhuanzai\">Conditions de reprise</a>",
+  "about_h4": "Reprise et citation",
+  "about_r1": "Les textes originaux et les commentaires anciens (Zhu Xi, Huang Kan et autres éditions anciennes) sont dans le domaine public : chacun peut les utiliser.",
+  "about_r2": "Ce que nous écrivons nous-mêmes (traductions, lectures, tableaux de citations, index des prononciations, organisation des thèmes) est sous licence CC BY-NC 4.0 : vous pouvez le reprendre et l’adapter en citant « Yikonglu (一孔录) », avec un lien vers la page d’origine et en indiquant les modifications ; pas d’usage commercial.",
+  "about_r3": "Les citations de commentaires modernes (Yang Bojun, Qian Mu, etc.) appartiennent à leurs auteurs et éditeurs, ne sont pas couvertes par cette licence et ne figurent ici qu’en courts extraits.",
+  "about_r4": "Les vidéos, la narration, nos personnages et les illustrations ne sont pas couverts par cette licence ; écrivez-nous avant de les réutiliser.",
+  "about_r5": "Pour citer une phrase, touchez-la dans le texte original pour la copier avec sa source. Pour une reprise en nombre, utilisez nos <a href=\"{p}kaifang.html\">données ouvertes</a> ; pour un usage commercial, écrivez-nous d’abord. Si vous voyez une copie sans mention de source ou un miroir de ce site, dites-le-nous :",
+  "mirror_bar": "Cette page a d’abord été publiée sur Yikonglu (yikonglu.com). Voir l’original pour la dernière version et les corrections.", "mirror_go": "Voir l’original"},
+ "es": {"foot_reuse": "Los textos originales y los comentarios antiguos son de dominio público. Nuestro propio contenido (traducciones, lecturas, verificación de citas) tiene licencia <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.es\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a>: cite «Yikonglu (一孔录)» con un enlace a la página original; sin uso comercial. <a href=\"{p}about.html#zhuanzai\">Cómo reutilizar</a>",
+  "about_h4": "Reutilización y cita",
+  "about_r1": "Los textos originales y los comentarios antiguos (Zhu Xi, Huang Kan y otras ediciones antiguas) son de dominio público y cualquiera puede usarlos.",
+  "about_r2": "Lo que escribimos nosotros (traducciones, lecturas, tablas de citas, índice de pronunciación y organización de los temas) tiene licencia CC BY-NC 4.0: puede compartirlo y adaptarlo citando «Yikonglu (一孔录)», con enlace a la página original e indicando si hizo cambios; sin uso comercial.",
+  "about_r3": "Las citas de comentarios modernos (Yang Bojun, Qian Mu y otros) pertenecen a sus autores y editoriales, no están cubiertas por esta licencia y aquí solo aparecen como citas breves.",
+  "about_r4": "Los vídeos, la narración, nuestros personajes y las ilustraciones no están cubiertos por esta licencia; escríbanos antes de reutilizarlos.",
+  "about_r5": "Para citar una frase, toque cualquier frase del original y se copiará con su fuente. Para reutilizar en bloque, use nuestros <a href=\"{p}kaifang.html\">datos abiertos</a>; para uso comercial, escríbanos antes. Si ve una copia sin atribución o un espejo de este sitio, avísenos:",
+  "mirror_bar": "Esta página se publicó primero en Yikonglu (yikonglu.com). Vea el original para la versión más reciente y las correcciones.", "mirror_go": "Ir al original"},
+}
+for _c, _d in REUSE_UI.items(): EXTRA_UI.setdefault(_c, {}).update(_d)
 ZH_UI.update(EXTRA_UI["zh-Hans"])
 
 # 第三批：版本说明（/banben/）。内容是中文底账，外文页照中文显示。
@@ -391,6 +443,10 @@ SAME_AS = ["https://www.youtube.com/@yikonglu", "https://x.com/yikonglu", "https
 CSSV = __import__("hashlib").md5(open(os.path.join(HERE, "style.css"), "rb").read()).hexdigest()[:8]
 A2V = __import__("hashlib").md5(open(os.path.join(HERE, "assets", "a2hs.js"), "rb").read()).hexdigest()[:8]
 
+# 页面被整站搬到别的域名时，顶上提示原站（不挡阅读；翻译代理、网页存档不提示）
+MIRROR_JS = """<script>(function(){var h=location.hostname;if(!h||/(^|\\.)yikonglu\\.com$|^localhost$|^127\\.|\\.translate\\.goog$|archive\\.(org|ph|today|is)$|googleusercontent\\.com$|bingj\\.com$/.test(h))return;
+var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>@BAR@</span><a href="https://yikonglu.com'+location.pathname+'">@GO@ →</a>';document.body.insertBefore(b,document.body.firstChild)})();</script>"""
+
 LANG_JS = """<script>
 (function(){var P=document.documentElement.lang,K='yk_lang';try{var s=localStorage.getItem(K)}catch(e){var s=null}
 document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(K,a.dataset.lang)}catch(e){}})});
@@ -449,6 +505,13 @@ def analytics(L):
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
     url = f"{DOMAIN}/{L.prefix}{rel}"
+    fp = __import__("hashlib").sha1(f"yikonglu.com|{L.code}|{rel}".encode()).hexdigest()[:12]  # 每页固定出处编号，搬走的页也带着
+    def _own(d):
+        if not isinstance(d, dict) or d.get("@type") in (None, "Organization", "BreadcrumbList", "Person"): return d
+        return dict(d, copyrightHolder={"@type": "Organization", "name": "一孔录", "url": DOMAIN},
+                    license="https://creativecommons.org/licenses/by-nc/4.0/", identifier=f"yikonglu:{fp}")
+    if isinstance(jsonld, dict):
+        jsonld = dict(jsonld, **{"@graph": [_own(x) for x in jsonld["@graph"]]}) if "@graph" in jsonld else _own(jsonld)
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>' if jsonld else ""
     codes = codes or list(LANGS)  # 只有部分语种的页（如“故事”栏只出简繁）
     if rel.startswith(("gushi/", "renwu/")): codes = ["zh-Hans", "zh-Hant"]
@@ -460,12 +523,14 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
     P = "/" + L.prefix
     note = f'<p class="trnote wrap">{L.t("translated_note")}</p>' if L.t("translated_note") else ""
     return f"""<!doctype html>
-<html lang="{L.hreflang}">
+<html lang="{L.hreflang}" data-yk="{fp}">
 <head>
 <meta charset="utf-8">
+<!-- 一孔录 yikonglu.com · {fp} · 原载 {url} -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
+<meta name="author" content="一孔录"><meta name="copyright" content="一孔录 yikonglu.com"><link rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
 <link rel="canonical" href="{url}">
 {alt_links}
 <link rel="alternate" type="application/atom+xml" title="一孔录" href="/{L.prefix}feed.xml">
@@ -503,8 +568,10 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
+<p class="freuse">{L.t("foot_reuse", p=P)}</p>
 </div></footer>
 {LANG_JS}
+{MIRROR_JS.replace("@BAR@", L.t("mirror_bar")).replace("@GO@", L.t("mirror_go"))}
 <script>if("serviceWorker" in navigator)addEventListener("load",function(){{navigator.serviceWorker.register("/sw.js").catch(function(){{}})}})</script>
 <script defer src="/assets/a2hs.js?v={A2V}"></script>
 </body>
@@ -872,7 +939,8 @@ def build_lang(L, D, write):
 <main class="wrap narrow prose"><p>{L.t("about_p")}</p>
 <h2>{L.t("about_h1")}</h2><p>{L.t("about_site").replace('href="kanwu.html"', f'href="{P}kanwu.html"').replace('href="errata.html"', f'href="{P}kanwu.html"')}</p>
 <h2>{L.t("about_h2")}</h2><ul><li>{L.t("about_c1")}</li><li>{L.t("about_c2")}</li><li>{L.t("about_c3")}</li></ul>
-<h2>{L.t("about_h3")}</h2><p>{L.t("about_where")}</p><p class="outl"><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ YouTube</a> <a class="btn ghost" href="https://search.bilibili.com/all?keyword=%E4%B8%80%E5%AD%94%E5%BD%95" target="_blank" rel="noopener">Bilibili</a></p></main>'''
+<h2>{L.t("about_h3")}</h2><p>{L.t("about_where")}</p>
+<h2 id="zhuanzai">{L.t("about_h4")}</h2><ul><li>{L.t("about_r1")}</li><li>{L.t("about_r2")}</li><li>{L.t("about_r3")}</li><li>{L.t("about_r4")}</li><li>{L.t("about_r5", p=P)}</li></ul><p class="mailp">{MAIL}</p><p class="outl"><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ YouTube</a> <a class="btn ghost" href="https://search.bilibili.com/all?keyword=%E4%B8%80%E5%AD%94%E5%BD%95" target="_blank" rel="noopener">Bilibili</a></p></main>'''
     write("about.html", page(L, L.t("about_title"), L.t("about_p")[:120], "about.html", about)); urls.append(f"{DOMAIN}/{L.prefix}about.html")
     _, ys_t, ys_sub, ys_items, ys_q = PRIVACY.get(L.code, PRIVACY["en"])
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{ys_sub}</span>{ys_t}</h1></div></div>
