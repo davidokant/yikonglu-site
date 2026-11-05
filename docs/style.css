@@ -296,3 +296,5 @@ aside li.wj a{color:var(--mute)}
 @media print{.a2hs{display:none}}
 .a2steps li.a2n{counter-increment:none;color:var(--mute);font-size:12px}.a2steps li.a2n::before{display:none}
 .freuse{margin:4px 0 0;font-size:12px;color:var(--mute)}.freuse a{color:inherit;text-decoration:underline}
+
+.yxline-s{max-width:520px;margin:8px auto 0;font-size:12.5px;line-height:1.6;color:var(--mute);text-align:center}.yxline-s span{white-space:nowrap}.yxline-s a{color:inherit;text-decoration:underline;text-underline-offset:2px}

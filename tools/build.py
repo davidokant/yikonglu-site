@@ -612,6 +612,19 @@ def yxl_block(L, D, P, full=False):
     sub = f'每周更新 · 最近一次 {esc(y.get("updated") or D["today"])} · 每个数都可点开核对'
     return f'<section class="wrap narrow yxl"><h2 class="ph">一孔影响力</h2><p class="sub">{sub}</p>{grid}{find}</section>'
 
+def yxl_line(L, D, P):
+    """首页搜索框下一行小字：一孔影响力的固定数据（简繁），细节与折线在方法页。"""
+    y = D.get("yxl") or {}
+    n_all = sum(PIAN[p][3] for p in PIAN)
+    n_cites = sum(1 for g in D["gao"].values() for x in g["cites"] if x["pages"])
+    now = datetime.datetime.now(datetime.timezone.utc)
+    vid = sum(1 for c in D["pub"] if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now))
+    parts = [f"读法 {len(D['pub'])} / {n_all} 章", f"视频 {vid} 章", f"可核引文 {n_cites} 条", f"公开勘误 {len(D['kw'])} 条"]
+    if y.get("score") is not None: parts.append(f"找到分 {y['score']}")
+    if y.get("share") is not None: parts.append(f"占比 {y['share']}%")
+    if y.get("updated"): parts.append(f"{esc(str(y['updated']))} 更新")
+    return f'<p class="yxline-s"><a href="{P}yingxiangli.html">一孔影响力</a> · ' + " · ".join(f"<span>{x}</span>" for x in parts) + "</p>"
+
 # 隐私说明页（/yinsi.html）：七语各一份，繁体由简体转
 PRIVACY = {
  "zh-Hans": ("隐私", "隐私说明", "本站收什么、不收什么", [
@@ -920,6 +933,7 @@ def build_lang(L, D, write):
 <p class="motto">{L.t("motto")}</p>
 <p>{L.t("intro")}</p>
 <form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
+{yxl_line(L, D, P) if L.code.startswith("zh") else ""}
 <p class="cta"><a class="btn" href="{P}shumu/">{L.t("btn_books")}</a><a class="btn ghost" href="{P}kanwu.html">{L.t("btn_errata")}</a></p>
 </section>
 <section class="pillars wrap">
@@ -928,7 +942,6 @@ def build_lang(L, D, write):
 <div><i>勘</i><b>{L.t("p3t")}</b><p>{L.t("p3")}</p></div>
 </section>
 <section class="wrap narrow"><h2 class="ph">{L.t("tools_h")}</h2><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}zi.html"><b>{L.t("zi_title")}</b><span>{L.t("t_zi")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div></section>
-{yxl_block(L, D, P) if L.code.startswith("zh") else ""}
 <section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}shumu/">{L.t("books")}</a></h2>{bcards}</section>
 <section class="wrap narrow"><h2 class="ph">{L.t("recent")}</h2>{toc(recent)}</section>
 </main>'''
