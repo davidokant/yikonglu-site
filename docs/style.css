@@ -295,3 +295,4 @@ aside li.wj a{color:var(--mute)}
 .a2steps i{display:inline-grid;place-items:center;color:var(--accent2)}.a2steps small{color:var(--mute);font-size:12px;width:100%;padding-left:24px}
 @media print{.a2hs{display:none}}
 .a2steps li.a2n{counter-increment:none;color:var(--mute);font-size:12px}.a2steps li.a2n::before{display:none}
+.freuse{margin:4px 0 0;font-size:12px;color:var(--mute)}.freuse a{color:inherit;text-decoration:underline}
