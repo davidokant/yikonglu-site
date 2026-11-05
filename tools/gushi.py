@@ -13,7 +13,7 @@
 - 地图.png（可选，有文字层的全图）
 - 路线.csv：人物,题目,导语,章号,起句,说明      （题目、导语只在该人第一行填；起句用来对号，未讲章显示起句；说明可空）
 """
-import csv, os, re, html, json
+import csv, os, re, html, json, datetime
 
 def esc(s): return html.escape(s or "", quote=True)
 
@@ -30,10 +30,16 @@ def load(gdir, pub):
     by = {}
     for p in ppl: by[p["id"]] = p; by[p["名"]] = p
     pubset = set(pub)
-    appear = []  # 只留已上网的章
+    sp = os.path.join(os.path.dirname(gdir), "_时间", "章节起点.json")  # 各集定时公开的时间：没到点的集不算已播
+    now = datetime.datetime.now(datetime.timezone.utc)
+    st = {k: v for k, v in (json.load(open(sp, encoding="utf-8")).items() if os.path.exists(sp) else []) if isinstance(v, dict)}
+    aired = lambda ep: (bool(st[ep].get("youtube")) and (not st[ep].get("public_at") or datetime.datetime.fromisoformat(st[ep]["public_at"]) <= now)) if ep in st else not ep.startswith("论语-")
+    appear = []  # 只留已上网、视频已公开的章
     for r in rows(os.path.join(gdir, "出场.csv")):
         c = (r.get("章号") or "").strip()
         if c not in pubset: continue
+        ep = (r.get("集号") or "").strip()
+        if not aired(ep): continue
         who = [by[w.strip()]["id"] for w in re.split(r"[、,，/ ]+", r.get("人物") or "") if w.strip() in by]
         appear.append({"ep": (r.get("集号") or "").strip(), "c": c, "who": who, "ju": (r.get("句") or "").strip(), "line": (r.get("本章片中") or "").strip()})
     routes, cur = {}, None
