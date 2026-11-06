@@ -239,6 +239,8 @@ BOOK_GROUPS = [
 ]
 BOOK_SUB = {"liji": [("daxue", "大学"), ("zhongyong", "中庸")]}  # 挂在某书底下的篇
 LIVE_BOOKS = {"lunyu"}
+SHOW_DRAFT = True  # “初稿改动”比例：首页小字与方法页
+DRAFT_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/初稿改动.json"
 YXL_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/影响力.json"  # 一孔影响力（找到分），每天自动更新
 ZT_DIR = os.path.join("/mnt/project-files/一孔学-内-自媒体/数据/网站素材", "_专题")  # 专题表.json：一专题一页、页内按书分段
 def load_zhuanti():
@@ -653,6 +655,16 @@ def yxl_block(L, D, P, full=False):
     sub = f'每周更新 · 最近一次 {esc(y.get("updated") or D["today"])} · 每个数都可点开核对'
     return f'<section class="wrap narrow yxl"><h2 class="ph">一孔影响力</h2><p class="sub">{sub}</p>{grid}{find}</section>'
 
+def draft_sec(D):
+    """方法页“初稿改动比例”一节与逐集表。"""
+    dr = D.get("draft") or {}
+    if not SHOW_DRAFT or not dr.get("rows"): return ""
+    trs = "".join(f"<tr><td>{esc(r['ep'])}</td><td>{r['segments']}</td><td>{r['changed']}</td><td>{100 * r['changed'] / r['segments']:.1f}%</td></tr>" for r in dr["rows"] if r.get("segments"))
+    return (f'<h2 id="chugao">初稿改动比例</h2><p>初稿改动比例＝每集最早版与定版旁白/原文段按编号逐段比对，文字不同即算改动，改动段数÷总段数；只算已进定版的集；按季汇总。'
+            f'现为 {dr.get("ratio")}%（{dr.get("episodes")} 集、{dr.get("segments")} 段，{esc(str(dr.get("updated", "")))} 更新）。</p>'
+            f'<table><thead><tr><th>集</th><th>段数</th><th>改动段</th><th>比例</th></tr></thead><tbody>{trs}</tbody></table>'
+            f'<p><a href="/data/chugao-gaidong.json">chugao-gaidong.json</a>（逐集明细）</p>')
+
 def yxl_line(L, D, P):
     """首页搜索框下一行小字：一孔影响力的固定数据（简繁），细节与折线在方法页。"""
     y = D.get("yxl") or {}
@@ -662,6 +674,8 @@ def yxl_line(L, D, P):
     vid = sum(1 for c in D["pub"] if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now))
     nb, zi, ne = yxl_counts(D)
     parts = [f"开讲 {nb} 部书", f"原文已讲 {zi:,} 字", f"视频 {ne} 集", f"可核引文 {n_cites} 条", f"公开勘误 {len(D['kw'])} 条"]
+    dc = y.get("draft_change") or {}
+    if SHOW_DRAFT and dc.get("ratio") is not None: parts.append(f"初稿改动 {dc['ratio']}%")
     if y.get("score") is not None: parts.append(f"找到分 {y['score']}")
     if y.get("share") is not None: parts.append(f"占比 {y['share']}%")
     if y.get("updated"): parts.append(f"{esc(str(y['updated']))} 更新")
@@ -1122,6 +1136,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <p>不为这个数改标题、改讲书顺序。数字难看也照登，每周原样更新，旧数不删。</p>
 <h2>下载</h2>
 <p><a href="/data/yingxiangli.json">yingxiangli.json</a>（每周的找到分、占比、各平台分）。逐周逐章的明细，发布满四周后放出。</p>
+{draft_sec(D)}
 </main>'''
         write("yingxiangli.html", page(L, "一孔影响力：找到分怎么算、怎么测｜一孔录", "在平台上搜一句原文，能找到一孔录吗：每周公开测，分数叫找到分。", "yingxiangli.html", body, codes=["zh-Hans", "zh-Hant"])); urls.append(f"{DOMAIN}/{L.prefix}yingxiangli.html")
     # 开放数据（文件只在根目录 /data/，各语种只出说明页）
@@ -1315,7 +1330,8 @@ def main(zdir, outdir, kanwu=None):
     G = GS.load(GUSHI_DIR, pub)
     if G: GS.copy_images(G, outdir); GUSHI_ON = True
     yxl = json.load(open(YXL_FILE, encoding="utf-8")) if os.path.exists(YXL_FILE) else {}
-    D = dict(book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
+    draft = json.load(open(DRAFT_FILE, encoding="utf-8")) if os.path.exists(DRAFT_FILE) else {}
+    D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
 
     pdp = os.path.join(HERE, "pagedates.json")  # 每页 [内容指纹, 内容最后变动日]：没改的页不换日期
     pdates = json.load(open(pdp, encoding="utf-8")) if os.path.exists(pdp) else {}
@@ -1343,6 +1359,8 @@ def main(zdir, outdir, kanwu=None):
     urls = build_lang(Lang("zh-Hans", ZH_UI), D, writer(""))
     write_data(D, outdir)
     if yxl: json.dump(yxl, open(os.path.join(outdir, "data", "yingxiangli.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    if SHOW_DRAFT and D.get("draft", {}).get("rows"):
+        json.dump(dict({k: v for k, v in D["draft"].items() if k in ("updated", "episodes", "segments", "changed", "ratio")}, rows=[{k: r.get(k) for k in ("ep", "segments", "changed")} for r in D["draft"]["rows"]]), open(os.path.join(outdir, "data", "chugao-gaidong.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     # 繁体：由简体页面整页转换，台湾用字；站内链接改前缀
     from opencc import OpenCC
     cc = OpenCC("s2twp")

@@ -1,0 +1,109 @@
+{
+ "updated": "2026-11-06",
+ "episodes": 20,
+ "segments": 658,
+ "changed": 152,
+ "ratio": 23.1,
+ "rows": [
+  {
+   "ep": "学而一",
+   "segments": 32,
+   "changed": 1
+  },
+  {
+   "ep": "学而二",
+   "segments": 30,
+   "changed": 12
+  },
+  {
+   "ep": "学而三",
+   "segments": 39,
+   "changed": 13
+  },
+  {
+   "ep": "学而四",
+   "segments": 29,
+   "changed": 6
+  },
+  {
+   "ep": "学而五",
+   "segments": 30,
+   "changed": 8
+  },
+  {
+   "ep": "为政一",
+   "segments": 39,
+   "changed": 10
+  },
+  {
+   "ep": "为政二",
+   "segments": 35,
+   "changed": 10
+  },
+  {
+   "ep": "为政三",
+   "segments": 35,
+   "changed": 8
+  },
+  {
+   "ep": "为政四",
+   "segments": 32,
+   "changed": 9
+  },
+  {
+   "ep": "为政五",
+   "segments": 35,
+   "changed": 12
+  },
+  {
+   "ep": "为政六",
+   "segments": 35,
+   "changed": 9
+  },
+  {
+   "ep": "八佾一",
+   "segments": 35,
+   "changed": 13
+  },
+  {
+   "ep": "八佾二",
+   "segments": 35,
+   "changed": 9
+  },
+  {
+   "ep": "八佾三",
+   "segments": 35,
+   "changed": 4
+  },
+  {
+   "ep": "八佾四",
+   "segments": 36,
+   "changed": 5
+  },
+  {
+   "ep": "八佾五",
+   "segments": 33,
+   "changed": 6
+  },
+  {
+   "ep": "八佾六",
+   "segments": 30,
+   "changed": 4
+  },
+  {
+   "ep": "八佾七",
+   "segments": 26,
+   "changed": 3
+  },
+  {
+   "ep": "里仁一",
+   "segments": 30,
+   "changed": 5
+  },
+  {
+   "ep": "里仁二",
+   "segments": 27,
+   "changed": 5
+  }
+ ]
+}
