@@ -1,367 +1,1185 @@
 {
-"_note": "Versi bahasa Indonesia. Antarmuka dan bagian pemahaman diterjemahkan; kutipan komentar tetap dalam bahasa Tionghoa. Halaman bahasa Tionghoa yang berlaku.",
-"ui": {
-"db_link": "Buku baca gratis (PDF)",
-"db_title": "Lunyu kata demi kata",
-"db_sub": "PDF gratis, satu per kitab Lunyu",
-"db_p": "Satu PDF per kitab: teks asli, pelafalan, tafsir Zhu Xi, alih bahasa ke bahasa Tionghoa modern, catatan kami, dan halaman faksimile komentar. Ukuran A5, nyaman dibaca di ponsel dan bisa dicetak. Selalu gratis; tiap kitab yang selesai dibahas di video akan ditambahkan.",
-"db_xueer": "Kitab 1 · Xue er",
-"db_meta": "16 bab · 59 halaman · sekitar 7 MB",
-"db_hans": "Aksara sederhana",
-"db_hant": "Aksara tradisional",
-"db_note": "Buku baca hanya dalam bahasa Tionghoa. Jika menemukan kesalahan, beri tahu kami; ralat diumumkan dan mencantumkan nama Anda.",
-"db_wx": "",
-"zt_sub": "Membaca kitab-kitab lewat satu kata atau gagasan",
-"zt_p": "Setiap topik dibagi per kitab dan mencantumkan bab-bab yang teks aslinya menyebutnya: bab yang sudah dibahas disertai tafsir kami; yang belum hanya menampilkan teks asli.",
-"zt_all": "Semua bab {b}",
-"zt_routes": "Rute",
-"zt_routes_p": "Ikuti salah satu tokoh kami melalui satu pertanyaan.",
-"zt_nb": "{n} kitab · {m} bab",
-"gzi": "Para filsuf (zibu)",
-"gshi": "Sejarah",
-"gbing": "Militer",
-"bk_tanjing": "Sutra Altar",
-"bk_shiji": "Catatan Sejarawan Agung",
-"bk_zizhi": "Zizhi Tongjian",
-"bk_sunzi": "Seni Perang",
-"bk_sub_tanjing": "10 bab",
-"bk_sub_shiji": "130 gulungan",
-"bk_sub_zizhi": "294 gulungan",
-"bk_sub_sunzi": "13 bab",
-"g13": "Tiga Belas Kitab Klasik",
-"gdao": "Tao",
-"gfo": "Buddha",
-"bk_sub_daxue": "Satu bab Liji · salah satu Empat Kitab",
-"bk_sub_zhongyong": "Satu bab Liji · salah satu Empat Kitab",
-"grp_main": "Jalur utama",
-"grp_13": "Tiga Belas Kitab Klasik",
-"grp_13_p": "Yijing, Lunyu, dan Mengzi tercantum di atas.",
-"bk_shijing": "Kitab Puisi (Shijing)",
-"bk_shangshu": "Kitab Sejarah (Shujing)",
-"bk_zhouli": "Ritus Zhou",
-"bk_yili": "Upacara dan Ritus",
-"bk_liji": "Kitab Ritus (Liji)",
-"bk_zuozhuan": "Tradisi Zuo",
-"bk_gongyang": "Komentar Gongyang",
-"bk_guliang": "Komentar Guliang",
-"bk_xiaojing": "Kitab Bakti (Xiaojing)",
-"bk_erya": "Erya",
-"bk_sub_shijing": "305 puisi",
-"bk_sub_shangshu": "58 bab",
-"bk_sub_zhouli": "Enam jawatan",
-"bk_sub_yili": "17 bab",
-"bk_sub_liji": "49 bab",
-"bk_sub_zuozhuan": "Kronik 255 tahun",
-"bk_sub_gongyang": "Komentar atas Chunqiu",
-"bk_sub_guliang": "Komentar atas Chunqiu",
-"bk_sub_xiaojing": "18 bab",
-"bk_sub_erya": "19 bab",
-"shumu_title": "Kitab",
-"shumu_sub": "Membaca teks asli kitab klasik kata demi kata",
-"shumu_p": "Satu kitab demi satu kitab, kata demi kata.",
-"soon": "segera",
-"bk_prog": "{done} / {total} bab",
-"bk_lunyu": "Lunyu (Analek)",
-"bk_daodejing": "Daodejing",
-"bk_xinjing": "Sutra Hati",
-"bk_zhouyi": "Yijing (Kitab Perubahan)",
-"bk_zhuangzi": "Zhuangzi",
-"bk_mengzi": "Mengzi",
-"bk_chuanxilu": "Chuanxilu (Wang Yangming)",
-"bk_daxue": "Ajaran Besar (Daxue)",
-"bk_zhongyong": "Tengah Sempurna (Zhongyong)",
-"bk_sub_lunyu": "20 kitab · edisi Zhu Xi",
-"bk_sub_daodejing": "81 bab",
-"bk_sub_xinjing": "260 aksara",
-"bk_sub_zhouyi": "64 heksagram dan Sepuluh Sayap",
-"bk_sub_zhuangzi": "Bab dalam dan pilihan",
-"bk_sub_mengzi": "7 kitab",
-"bk_sub_chuanxilu": "Catatan percakapan",
-"off_t": "Luring",
-"off_h": "Anda sedang luring",
-"off_p": "Halaman yang pernah Anda buka tersimpan di perangkat ini dan bisa dibuka tanpa internet. Bab yang tersimpan ada di bawah; akan diperbarui saat Anda kembali daring.",
-"off_none": "Belum ada bab tersimpan. Buka beberapa bab saat daring, lain kali akan ada di sini.",
-"off_home": "Beranda",
-"zb_huang_meta2": "Dinasti Liang · cetakan kayu Jepang 1750 · juan {j}",
-"zb_scan2": "pindaian cetakan kayu jil. {ce} hlm. {n}",
-"toc_wj": "belum dibahas",
-"yiwen": "Varian teks",
-"yiwen_note": "Tempat edisi dasar berbeda dari teks umum; teks asli mengikuti edisi dasar.",
-"th_di": "Edisi dasar",
-"th_tong": "Teks umum",
-"th_shuo": "Catatan",
-"foot_org": "Yikonglu (一孔录) · disusun secara mandiri, tanpa dana lembaga atau yayasan",
-"nav_topics": "Topik",
-"nav_more": "Lainnya",
-"grp_read": "Baca",
-"grp_check": "Periksa",
-"grp_use": "Pakai",
-"tools_h": "Alat",
-"t_zt": "Sepuluh kata kunci di seluruh kitab",
-"t_zi": "Setiap pelafalan yang diikuti narasi kami",
-"t_bb": "Edisi yang dipakai tiap komentar",
-"t_dt": "Unduh per kitab, CC BY-NC 4.0",
-"zc_usdt": "Kripto (USDT)",
-"zc_usdt_net": "Jaringan: {n}. Kirim USDT hanya lewat jaringan ini; jaringan atau token lain akan hilang dan tidak bisa dipulihkan.",
-"zc_link": "Dukung kami",
-"zc_title": "Dukung Yikonglu",
-"zc_sub": "Semua tetap gratis; dukungan bersifat sukarela",
-"zc_p": "Teks, komentar, tafsir, ralat, dan data terbuka di situs ini akan selalu gratis; tidak ada halaman yang dikunci karena dukungan. Jika situs ini membantu Anda, Anda bisa mentraktir kami secangkir teh — uangnya untuk edisi, pindaian, dan narasi.",
-"zc_kofi": "Dukung di Ko-fi",
-"zc_wx": "Pembaca di Tiongkok daratan: gunakan “apresiasi” di akhir artikel asli mana pun di akun WeChat kami “一孔录”.",
-"zc_soon": "Halaman Ko-fi kami segera hadir.",
-"cp_entry": "Salin dengan sumber",
-"cp_link": "Salin tautan",
-"bb_link": "Tentang edisi ini",
-"hj_h": "Rujukan silang",
-"hj_zb": "Komentar untuk bab ini",
-"hj_cites": "Pemeriksaan kutipan",
-"hj_video": "Di video mulai {t}",
-"hj_book": "Di bagian lain Lunyu",
-"hj_other": "Sumber lain",
-"hj_note": "Komentar",
-"bb_title": "Edisi & lisensi",
-"bb_sub": "Dari edisi mana tiap komentar berasal, cara menghitung halaman, dan boleh tidaknya dipakai ulang",
-"bb_p": "Untuk setiap komentar yang kami kutip, halaman ini menyebutkan edisi dasar, sumber gambar, penomoran halaman, dan lisensi. Tautan “Tentang edisi ini” di halaman bab mengarah ke sini.",
-"bb_base": "Edisi dasar",
-"bb_img": "Gambar",
-"bb_page": "Halaman",
-"bb_lic": "Lisensi",
-"bb_use": "Cara kami memakainya",
-"zt_title": "Topik",
-"zt_n": "{n} bab",
-"zt_link": "Topik",
-"zt_none": "Belum ada di antara bab yang sudah dibahas.",
-"dt_title": "Data terbuka",
-"dt_sub": "Unduh teks, alih bahasa, sumber kutipan, dan pelafalan per kitab",
-"dt_p": "Data diterbitkan per kitab dalam JSON dan CSV dan diperbarui tiap minggu. Teks asli dan komentar kuno adalah domain publik. Alih bahasa, tabel kutipan, dan tabel pelafalan berlisensi CC BY-NC 4.0: cantumkan “一孔录 Yikonglu yikonglu.com” dengan tautan, nonkomersial. Tafsir Yikonglu sendiri tidak termasuk lisensi terbuka dan tidak ada dalam data; demikian pula kutipan dari komentar modern.",
-"dt_file": "Berkas",
-"dt_rows": "Bab",
-"dt_lic": "Lisensi: CC BY-NC 4.0 (bagian domain publik tetap domain publik)",
-"dt_link": "Data terbuka",
-"feed": "Berlangganan (RSS)",
-"zi_title": "Indeks pelafalan",
-"zi_sub": "Pelafalan dalam narasi kami",
-"zi_p": "Narasi kami mengikuti pelafalan ini. Klik nomor bab untuk membukanya.",
-"th_ch": "Bab",
-"zi_link": "Indeks pelafalan",
-"ju_reads": "Pelafalan: ",
-"kw_stats": "{n} ralat tercatat ({cats}); {m} dilaporkan pembaca.",
-"thanks_h": "Terima kasih",
-"thanks_p": "Para pembaca ini telah menunjukkan kesalahan kami, menurut urutan laporan pertama:",
-"thanks_none": "Belum ada ralat dari pembaca. Pembaca pertama yang menemukan kesalahan akan dicantumkan di sini.",
-"baihua": "Bahasa Tionghoa modern",
-"baihua_note": "Alih bahasa sederhana ke bahasa Tionghoa modern menurut tafsir Yikonglu.",
-"ju_copy": "Salin baris ini dengan sumber",
-"ju_link": "Salin tautan ke baris ini",
-"ju_tip": "Ketuk kalimat mana pun dari teks asli untuk menyalinnya dengan sumber.",
-"zb_h": "Komentar lain",
-"zb_note": "Teks dasar kami adalah Komentar Terhimpun Zhu Xi (di atas). Di sini komentar lain disandingkan: untuk komentar kuno, baris pertama subkomentar dengan tautan ke pindaian cetakan kayu; untuk edisi modern, satu kutipan terjemahan pendek sebagai pembanding. Catatan “Dibandingkan dengan Zhu Xi” ditulis oleh Yikonglu, bukan kutipan.",
-"zb_huang_meta": "Dinasti Liang · edisi Zhibuzu Zhai · juan {j}",
-"zb_scan": "pindaian cetakan kayu hlm. {n}",
-"zb_yang_meta": "Zhonghua Book Co. · modern, kutipan pendek",
-"zb_qian_meta": "modern, kutipan pendek",
-"zb_diff": "Dibandingkan dengan Zhu Xi",
-"th_zb": "Komentar",
-"th_key": "Pokok",
-"th_kind": "Hubungan",
-"th_say": "Catatan",
-"th_sure": "Keyakinan",
-"s_ding": "pasti",
-"s_wen": "cukup yakin",
-"s_yi": "belum pasti",
-"k_same": "sama",
-"k_diff": "berbeda",
-"k_add": "menambah",
-"k_shade": "nuansa",
-"k_word": "makna kata",
-"nf_h": "Halaman tidak ditemukan",
-"nf_p": "Tautan mungkin salah ketik atau halamannya sudah pindah. Cari di teks asli atau telusuri per kitab.",
-"foot_reuse": "Teks asli dan komentar kuno adalah domain publik. Alih bahasa dan pemeriksaan kutipan kami berlisensi <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.id\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a>: cantumkan “Yikonglu (一孔录)” dengan tautan ke halaman asli; tidak untuk komersial. <a href=\"{p}about.html#zhuanzai\">Panduan penggunaan ulang</a>",
-"about_h4": "Penggunaan ulang dan pengutipan",
-"about_r1": "Teks asli dan komentar kuno (Zhu Xi, Huang Kan, dan cetakan awal lainnya) adalah domain publik dan bebas dipakai siapa pun.",
-"about_r2": "Alih bahasa, tabel kutipan, indeks pelafalan, dan susunan topik kami berlisensi CC BY-NC 4.0: Anda boleh membagikan dan menyesuaikannya jika mencantumkan “Yikonglu (一孔录)”, menautkan halaman asli, dan menyebutkan apakah Anda mengubahnya; tidak untuk komersial. Tafsir kami sendiri di halaman bab tidak termasuk lisensi ini: kutip singkat dengan menyebut sumber, dan surati kami sebelum memakai bagian yang lebih panjang.",
-"about_r3": "Kutipan dari komentar modern (Yang Bojun, Qian Mu, dan lainnya) milik penulis dan penerbitnya, tidak termasuk lisensi ini, dan hanya muncul di sini sebagai kutipan pendek.",
-"about_r4": "Video, narasi, tokoh, dan ilustrasi kami tidak termasuk lisensi ini; mohon surati kami sebelum memakainya ulang.",
-"about_r5": "Untuk mengutip satu baris, ketuk kalimat mana pun dari teks asli untuk menyalinnya dengan sumber. Untuk pemakaian dalam jumlah besar, gunakan <a href=\"{p}kaifang.html\">data terbuka</a> kami; untuk pemakaian komersial, surati kami dahulu. Jika Anda melihat salinan tanpa sumber atau cermin situs ini, mohon beri tahu kami:",
-"mirror_bar": "Halaman ini pertama kali terbit di Yikonglu (yikonglu.com). Lihat versi asli untuk pembaruan dan ralat terbaru.",
-"mirror_go": "Ke versi asli",
-"ch_gist": "Inti bab ini",
-"ch_deep": "Membaca cermat dan memeriksa",
-"ch_deep_note": "Bagi yang ingin membaca lebih dalam atau memeriksa kerja kami: kata kunci dalam komentar, pendapat para komentator lain, varian teks, komentar dalam kata-katanya sendiri beserta halaman faksimile, pelafalan, dan ralat. Ketuk judul untuk membukanya. Bagian yang belum diterjemahkan tetap dalam bahasa Tionghoa.",
-"ch_open_all": "Buka semua",
-"ch_close_all": "Tutup semua",
-"cta_db_p": "Satu kitab Lunyu utuh dalam PDF: teks asli, pelafalan, dan bahasa Tionghoa modern. Dalam bahasa Tionghoa.",
-"cta_wen_p": "Ada yang belum jelas? Surati kami; tiap minggu kami menjawab satu dua pertanyaan dan mencantumkan nama Anda.",
-"h_motto": "Membaca kitab klasik, bab demi bab.",
-"h_intro": "Setiap bab dimulai dengan teks asli, terjemahan, dan ringkasan satu kalimat, disertai video pendek. Di bawahnya, bagi pembaca cermat: kata-kata para komentator sendiri, halaman faksimile, dan catatan ralat terbuka.",
-"h_start": "Mulai dari bab terbaru",
-"h_latest": "Bab terbaru",
-"h_read": "Baca bab ini",
-"h_recent": "Baru dibaca",
-"h_deep_h": "Bagi pembaca cermat",
-"h_deep_p": "Setiap baris yang dibacakan Yikonglu bisa diperiksa di sini.",
-"tagline": "Membaca kitab klasik kata demi kata",
-"nav_books": "Kitab",
-"nav_search": "Cari",
-"nav_errata": "Ralat",
-"nav_about": "Tentang",
-"motto": "Setiap baris yang dibacakan Yikonglu bisa diperiksa di sini.",
-"intro": "Teks asli, nomor halaman edisi dasar, kata-kata para komentator sendiri, pelafalan, tafsir kami, dan catatan ralat terbuka, disusun per kitab dan per bab. Tonton videonya di berbagai platform; periksa di sini.",
-"search_ph": "Cari di teks asli atau kata-kata komentator",
-"btn_books": "Telusuri per kitab",
-"btn_errata": "Lihat ralat",
-"p1t": "Edisi dasar bisa dilihat",
-"p1": "Teks dan komentar mengikuti edisi dasar tiap komentator; setiap kutipan mencantumkan halamannya, dan gambar halaman bisa diperbesar.",
-"p2t": "Kata-kata komentator sendiri",
-"p2": "Siapa yang dikutip, namanya disebut: Zhu Xi, Cheng Yi, dan Xie Liangzuo dibedakan; parafrase ditandai; yang sumbernya tidak bisa dilacak tidak dimuat.",
-"p3t": "Ralat terbuka",
-"p3": "Kalau kami keliru, kami mencatatnya: episode mana, baris mana, apa yang kami katakan, apa sekarang, dan mengapa.",
-"books": "Kitab",
-"recent": "Baru ditambahkan",
-"lunyu": "Lunyu (Analek)",
-"lunyu_sub": "Dua puluh kitab · berlanjut",
-"by_chapter": "Disusun per kitab dan bab. Edisi dasar: Zhu Xi, Lunyu jizhu (cetakan Sibu beiyao).",
-"book_lead": "Setiap bab memuat teks asli, kata kunci dalam komentar, pendapat komentator lain, dan tafsir Yikonglu, beserta videonya.",
-"covered": "{done} dari {total} bab",
-"f_common": "Pemahaman umum",
-"f_keys": "Kata kunci dalam komentar",
-"f_others": "Kata komentator lain",
-"f_ours": "Cara Yikonglu membacanya",
-"cites": "Periksa setiap kutipan",
-"cites_note": "Setiap baris komentar yang dikutip di video: kata-kata aslinya, siapa yang mengatakannya, dan halamannya di edisi dasar. “Parafrase” menandai ringkasan kami, bukan kata-kata komentator.",
-"th_quote": "Teks kutipan",
-"th_src": "Sumber",
-"th_page": "Halaman",
-"para": "parafrase",
-"pg": "hlm. {n}",
-"other_ed": "edisi lain",
-"reads": "Pelafalan",
-"th_zi": "Aksara",
-"th_pos": "Dalam baris",
-"th_du": "Dibaca",
-"shots": "Halaman edisi dasar",
-"kw": "Ralat bab ini",
-"kw_note": "Ralat dicatat dalam bahasa Tionghoa.",
-"cite": "Kutip halaman ini",
-"copy": "Salin",
-"copied": "Tersalin",
-"checked": "Terakhir diperiksa: {d}. Perubahan dicatat di",
-"errata_page": "halaman ralat",
-"video": "Tonton bab ini",
-"video_in": "Bab ini dibacakan dalam episode Yikonglu “{ep}”:",
-"cn_note": "(di Tiongkok daratan gunakan Bilibili)",
-"prev": "Sebelumnya",
-"next": "Berikutnya",
-"chapter_no": "{book} · bab {n}",
-"book_no": "Lunyu, kitab {n} · {done} dari {total} bab",
-"source_line": "Teks dan komentar menurut Zhu Xi, Lunyu jizhu (cetakan Sibu beiyao).",
-"rendering": "Terjemahan kerja bahasa Indonesia oleh Yikonglu; yang berlaku adalah teks Tionghoa di atas.",
-"errata_title": "Ralat terbuka",
-"errata_sub": "Teks · kutipan · sumber · pelafalan · tafsir",
-"errata_p1": "Jika Yikonglu salah membaca atau berlebihan, ralatnya dicatat di sini, yang terbaru di atas; entri lama tidak pernah dihapus. Yang dicatat hanya soal isi, bukan gangguan visual.",
-"errata_p2": "Untuk melaporkan kesalahan, kirim surel ke alamat di bawah dengan episode, baris, bukti Anda, dan nama yang ingin dicantumkan. Entri ditambahkan setelah diperiksa, atas nama itu. Anda juga bisa berkomentar di bawah video Yikonglu mana pun.",
-"mail_note": "Alamatnya berupa gambar agar tidak dipanen robot spam; mohon diketik ulang.",
-"report": "Menemukan kesalahan di bab ini? Surati kami; setelah diperiksa, akan dicatat di halaman ralat atas nama Anda:",
-"errata_empty": "Belum ada ralat.",
-"search_title": "Cari",
-"search_sub": "Teks asli · kata-kata komentator · tafsir",
-"search_ph2": "Ketik beberapa aksara, mis. 鸟数飞 atau 孝弟",
-"search_n": "{n} bab ditemukan",
-"search_none": "Tidak ditemukan. Hanya bab yang sudah dibaca yang diindeks.",
-"about_title": "Tentang Yikonglu",
-"about_p": "Yikonglu adalah kanal yang membaca kitab klasik Tionghoa kata demi kata, bab demi bab, dengan animasi bernarasi dan sekelompok kecil tokoh tetap, untuk membawa satu baris teks kepada orang nyata dalam keadaan nyata. Anda tidak perlu pernah membaca kitabnya atau menonton episode sebelumnya.",
-"about_h1": "Untuk apa situs ini",
-"about_site": "Video di berbagai platform untuk semua orang; situs ini untuk yang ingin memeriksa. Setiap baris yang dibacakan Yikonglu bisa dicari di sini: teks asli, halamannya di edisi dasar, kata-kata komentator sendiri, pelafalan, tafsir kami; dan kesalahan kami dicatat di <a href=\"kanwu.html\">halaman ralat</a>.",
-"about_h2": "Komitmen kami",
-"about_c1": "Teks dan komentar mengikuti edisi dasar tiap komentator, dan setiap halaman menyebut edisi dasarnya.",
-"about_c2": "Kami menyampaikan tafsir para komentator lebih dulu, baru tafsir kami; pandangan kami diberi label tafsir Yikonglu dan tidak pernah disamarkan sebagai tafsir kuno.",
-"about_c3": "Yang sumbernya tidak bisa dilacak tidak dimuat. Beri tahu kami jika ada kesalahan; ralat diumumkan.",
-"about_h3": "Tempat menonton",
-"about_where": "YouTube, Bilibili, dan WeChat Channels dengan nama “一孔录 / Yikonglu”; podcast di Spotify, Apple Podcasts, dan Xiaoyuzhou; akun WeChat 一孔录.",
-"follow_h": "Ikuti Yikonglu",
-"follow_wx": "Pindai dengan WeChat untuk mengikuti akun kami; balas “目录” untuk daftar isi lengkap.",
-"follow_yt": "Berlangganan di YouTube",
-"foot_src": "Kutipan mengikuti edisi dasar tiap komentator, yang disebut di setiap halaman. Beri tahu kami jika ada kesalahan; ralat diumumkan.",
-"foot_where": "YouTube · Bilibili · WeChat · Podcast: cari “一孔录”",
-"lang_bar": "Halaman ini tersedia dalam bahasa Indonesia.",
-"lang_go": "Baca dalam bahasa Indonesia",
-"lang_close": "Tutup",
-"translated_note": "Versi bahasa Indonesia: antarmuka, terjemahan, dan ringkasan sudah diterjemahkan; kutipan komentar dan bagian baca cermat sebagian besar tetap dalam bahasa Tionghoa. Halaman bahasa Tionghoa yang berlaku.",
-"cite_fmt": "Yikonglu, Lunyu {book} {c} “{title}”, {url}, versi {d}."
-},
-"books": {"1": "Xue er (Kitab 1)", "2": "Wei zheng (Kitab 2)", "3": "Ba yi (Kitab 3)", "4": "Li ren (Kitab 4)", "5": "Gongye Chang (Kitab 5)", "6": "Yong ye (Kitab 6)", "7": "Shu er (Kitab 7)", "8": "Tai Bo (Kitab 8)", "9": "Zi han (Kitab 9)", "10": "Xiang dang (Kitab 10)", "11": "Xian jin (Kitab 11)", "12": "Yan Yuan (Kitab 12)", "13": "Zi Lu (Kitab 13)", "14": "Xian wen (Kitab 14)", "15": "Wei Ling Gong (Kitab 15)", "16": "Ji shi (Kitab 16)", "17": "Yang Huo (Kitab 17)", "18": "Weizi (Kitab 18)", "19": "Zizhang (Kitab 19)", "20": "Yao yue (Kitab 20)"},
-"src": {
-"朱注": "Komentar Zhu Xi",
-"朱熹“愚谓”": "Catatan Zhu Xi sendiri",
-"朱熹“愚按”": "Catatan Zhu Xi sendiri",
-"朱熹愚谓": "Catatan Zhu Xi sendiri",
-"朱注引程子": "Cheng Yi, dikutip Zhu Xi",
-"朱注引程子（答或问）": "Cheng Yi, dikutip Zhu Xi",
-"朱注引谢氏": "Xie Liangzuo, dikutip Zhu Xi",
-"朱注引尹氏": "Yin Tun, dikutip Zhu Xi",
-"朱注引游氏": "You Zuo, dikutip Zhu Xi",
-"朱注引杨氏": "Yang Shi, dikutip Zhu Xi",
-"朱注引杨氏引《易》": "Yijing, lewat Yang Shi dalam Zhu Xi",
-"朱注引洪氏": "Hong Xingzu, dikutip Zhu Xi",
-"朱注引范氏": "Fan Zuyu, dikutip Zhu Xi",
-"朱注引吴氏": "Wu Yu, dikutip Zhu Xi",
-"朱注引张敬夫": "Zhang Shi, dikutip Zhu Xi",
-"朱注引张氏": "Zhang Shi, dikutip Zhu Xi",
-"何晏《论语集解》所收不署名注": "Catatan tanpa nama dalam Lunyu jijie karya He Yan",
-"何晏《集解》引王肃": "Wang Su, dalam Lunyu jijie karya He Yan",
-"何晏《论语集解》": "He Yan, Lunyu jijie",
-"杨伯峻《论语译注》": "Yang Bojun, Lunyu yizhu",
-"同上": "idem"
-},
-"fangfa": {
-"link": "Cara kami memeriksa",
-"title": "Cara kerja Yikonglu: memeriksa pembacaan kitab klasik yang dibantu zhiqi",
-"sub": "Langkah mana yang memakai zhiqi, mana yang diperiksa manusia, dan apa yang terjadi jika kami keliru",
-"intro": "Yikonglu memakai zhiqi (智器, sebutan kami untuk AI) untuk membuat video yang membaca kitab klasik. Zhiqi bisa mengarang komentar, mengarang sumber, dan salah melafalkan aksara, maka di sini kami jelaskan langkah mana yang memakai zhiqi, mana yang wajib diperiksa manusia, dan apa yang kami lakukan terhadap kesalahan — agar pembaca bisa menguji kami, dan sebagai acuan bagi yang melakukan kerja serupa.",
-"s1h": "1. Edisi dasar dan komentar",
-"s1": ["Sebelum sebuah kitab dimulai, kami menetapkan edisi dasar dan daftar komentarnya di halaman kitab itu. Untuk Lunyu, teks dan komentar Zhu Xi mengikuti edisi Sibu beiyao dari Lunyu jizhu; komentar yang lebih tua memakai cetakan kayu domain publik (Lunyu yishu karya Huang Kan: edisi Zhibuzu Zhai dan cetakan Jepang 1750); komentar modern yang masih berhak cipta (Yang Bojun, Qian Mu) hanya dikutip singkat dengan nomor halaman. Lihat <a href=\"{p}banben/\">Edisi & lisensi</a>.", "Kami tidak pernah memakai teks daring yang asal-usulnya tidak jelas sebagai dasar."],
-"s2h": "2. Bagaimana setiap bab dibuat",
-"s2": ["<b>Teks</b>: dimasukkan aksara demi aksara dari edisi dasar; varian masuk ke tabel varian; tidak ada yang diubah diam-diam.", "<b>Pelafalan</b>: setiap episode punya tabel pelafalan; aksara berbunyi ganda dan aksara langka ditetapkan dari komentar dan bacaan baku, diperiksa sebelum narasi, lalu dibandingkan baris demi baris dengan pengenalan suara; yang tidak cocok direkam ulang. Semua pelafalan ada di <a href=\"{p}zi.html\">indeks pelafalan</a>.", "<b>Kutipan</b>: setiap kutipan di video dicatat dengan sumber dan halaman serta dicocokkan kata demi kata dengan halaman asli sebelum tampil; yang tidak kami temukan di halaman hanya diparafrasekan, tidak pernah ditampilkan sebagai kutipan.", "<b>Halaman asli</b>: ketika kami mengutip seorang komentator, halaman pindaiannya tampil di layar dengan kutipan dibingkai merah; halaman bab di situs ini menampilkan halaman yang sama.", "<b>Terjemahan dan tafsir</b>: kami menulis terjemahan sendiri dan membandingkannya baris demi baris dengan terjemahan baku, menulis ulang setiap kesamaan enam aksara atau lebih; “Cara Yikonglu membacanya” adalah tafsir kami sendiri, diberi label milik kami, tidak pernah diatasnamakan komentator.", "<b>Visual</b>: ilustrasi dan tokoh adalah milik kami; aksara dipotong dari glif edisi dasar dan dipindai mesin untuk kerusakan; tokoh rekaan di video tidak menyatakan “sejarah” di luar teks."],
-"s3h": "3. Di mana zhiqi bekerja, di mana manusia",
-"s3p": "Kami tidak berpura-pura semua langkah dikerjakan tangan. Pembagian kerja sebenarnya:",
-"th": ["Langkah", "Zhiqi mengerjakan", "Manusia mengerjakan"],
-"rows": [["Naskah", "Membuat draf; putaran kedua memeriksa menurut daftar (membuang kata pengisi, memeriksa nama dan atribusi)", "Memilih edisi dan komentar, menentukan tafsir, meninjau dan merevisi"], ["Kutipan dan sumber", "Mendaftar dan mencocokkannya kata demi kata dengan halaman", "Pemeriksaan acak; yang belum diperiksa tidak tampil"], ["Pelafalan", "Membacakan menurut tabel pelafalan; pengenalan suara mencocokkan baris demi baris", "Menetapkan pelafalan; merekam ulang yang terdengar salah"], ["Terjemahan", "Membuat draf; memeriksa kesamaan dengan terjemahan baku", "Teks akhir"], ["Ilustrasi dan animasi", "Membuat gambar, memotong aksara, merender, memindai otomatis", "Memilih gambar dan menetapkan gaya"], ["Video jadi", "Pemeriksaan otomatis (kutipan, pelafalan, durasi, visual)", "<b>Setiap episode ditonton manusia dan baru dirilis setelah lolos</b>; catatan dikembalikan ke naskah dan visual"]],
-"s3n": "Semua video diberi label “berisi konten buatan AI” sesuai aturan dan istilah tiap platform.",
-"s4h": "4. Jika kami keliru",
-"s4": ["Kesalahan isi (teks, kutipan, sumber, pelafalan, tafsir), baik dilaporkan pembaca maupun kami temukan sendiri, semuanya masuk ke <a href=\"{p}kanwu.html\">halaman ralat</a> terbuka: apa yang kami katakan, apa sekarang, mengapa, dengan nama pilihan pembaca.", "Video yang sudah terbit tidak dihapus; bila bisa, kami memperbaiki deskripsinya, dan versi yang dibuat ulang diterbitkan terpisah serta dicatat di halaman ralat.", "Alamat kontak kami ada di halaman <a href=\"{p}about.html\">Tentang</a>."],
-"s5h": "5. Angka yang kami umumkan",
-"s5p": "Setiap minggu kami memperbarui jumlah bab yang dibahas, kutipan yang bisa dicocokkan dengan halaman asli, komentar dengan gambar halaman, dan ralat terbuka, serta apakah mencari satu baris teks di tiap platform menemukan kami.",
-"s5c": "Kami juga mengumumkan porsi segmen yang berubah antara draf pertama dan naskah akhir: naskah paling awal tiap episode dibandingkan dengan naskah akhir segmen demi segmen, perbedaan kata sekecil apa pun dihitung sebagai perubahan. Sejauh ini: {n} episode, {s} segmen, {c} berubah — {r}% (diperbarui {d}).",
-"cth": ["Episode", "Segmen", "Berubah", "Porsi"],
-"s6h": "6. Tentang halaman ini",
-"s6": "Yang diuraikan halaman ini adalah janji kami kepada pembaca. Jika metodenya berubah, halaman ini berubah, dengan catatan revisi di bawah. Teks berlisensi CC BY-NC 4.0; video, narasi, tokoh, dan ilustrasi tidak termasuk.",
-"log": "Revisi",
-"logs": [["2026-11-06", "Versi pertama."], ["2026-11-06", "Kini kami menyebut AI “zhiqi” (智器)."]]
-},
-"kaifang": {
-"h": "Apa yang terbuka dan apa yang tidak",
-"p": "Dasar untuk memeriksa kami terbuka; tafsir dan kerja penyuntingan Yikonglu sendiri tidak.",
-"oh": "Terbuka (CC BY-NC 4.0: atribusi, nonkomersial)",
-"o": ["Teks asli dan varian teks", "Alih bahasa", "Tabel pelafalan", "Tabel kutipan (sumber dan halaman edisi dasar setiap kutipan)", "Indeks komentar per bab dengan nomor halaman", "Catatan ralat", "Tabel tokoh", "Tabel topik"],
-"ch": "Tidak terbuka",
-"c": ["Catatan baca lengkap", "Himpunan catatan “Cara Yikonglu membacanya”", "Gambar halaman beranotasi", "Indeks menurut keadaan hidup", "Video, narasi, tokoh, dan ilustrasi"],
-"biz": "Penggunaan komersial, termasuk pelatihan model dan penyebaran ulang, memerlukan izin tertulis lebih dulu. Surati:",
-"rule": "Setiap jenis data baru akan dinilai menurut garis ini.",
-"log": "Revisi",
-"logs": [["2026-11-06", "Menyatakan apa yang terbuka dan apa yang tidak."], ["2026-11-06", "Empat kolom tafsir kami dikeluarkan dari data; alih bahasa tetap terbuka."]]
-},
-"wen": {
-"link": "Tanya kami",
-"title": "Tanya Yikonglu",
-"sub": "Pertanyaan diterima lewat surel",
-"p": "Punya pertanyaan untuk Yikonglu? Surati kami dengan 问一孔 di subjek. Tiap minggu kami memilih satu dua untuk dijawab di akhir episode berikutnya atau dalam surat Minggu kami, atas nama yang Anda tandatangani.",
-"only": "Kami hanya menerima pertanyaan dari dua tempat: surel dari halaman ini dan pesan ke akun WeChat kami “一孔录”. Komentar di Bilibili, YouTube, atau platform lain tidak ikut dipilih.",
-"btn": "Tulis pertanyaan",
-"nojs": "Jika tombol tidak membuka aplikasi surel Anda, alamat kami ada di halaman <a href=\"{p}about.html\">Tentang</a>; tulis 问一孔 di subjek.",
-"foot": "Atau <a href=\"{p}wen.html\">tanya kami lewat surel</a>"
-},
-"privacy": ["Privasi", "Privasi", "Apa yang dikumpulkan situs ini dan apa yang tidak", ["Tidak ada akun, kolom komentar, atau formulir.", "Kunjungan dihitung dengan Cloudflare Web Analytics, yang tidak memasang cookie dan tidak mengenali Anda; yang dihitung adalah tampilan halaman, perujuk, dan negara atau wilayah. Halaman aksara sederhana juga memakai Baidu Tongji, yang memasang cookie untuk menghitung kunjungan dan perujuk; versi bahasa lain tidak.", "Video di halaman bab disematkan dalam mode privasi YouTube (youtube-nocookie.com); begitu Anda menekan putar, YouTube mengolah data menurut kebijakan privasinya sendiri.", "Huruf dimuat dari Google Fonts, sehingga peramban Anda meminta berkas huruf dari Google.", "Pilihan bahasa Anda dan apakah Anda menutup saran “tambahkan ke layar utama” disimpan di penyimpanan lokal peramban; halaman yang sudah dibaca di-cache di perangkat untuk dibaca luring. Tidak ada yang diunggah.", "Jika Anda menyurati kami dengan ralat atau pertanyaan, surelnya hanya dipakai untuk memeriksa dan membalas. Jika ralat Anda dicantumkan di halaman ralat, kami hanya menampilkan nama yang Anda berikan, tidak pernah alamat Anda; surati kami dan kami akan menghapusnya.", "Jika ada yang berubah di sini, kami akan memperbarui halaman ini dan tanggal di bawah."], "Pertanyaan: "],
-"wx": "WeChat: cari “一孔录”",
-"chapters": {}
+ "_note": "Versi bahasa Indonesia. Antarmuka dan bagian pemahaman diterjemahkan; kutipan komentar tetap dalam bahasa Tionghoa. Halaman bahasa Tionghoa yang berlaku.",
+ "ui": {
+  "db_link": "Buku baca gratis (PDF)",
+  "db_title": "Lunyu kata demi kata",
+  "db_sub": "PDF gratis, satu per kitab Lunyu",
+  "db_p": "Satu PDF per kitab: teks asli, pelafalan, tafsir Zhu Xi, alih bahasa ke bahasa Tionghoa modern, catatan kami, dan halaman faksimile komentar. Ukuran A5, nyaman dibaca di ponsel dan bisa dicetak. Selalu gratis; tiap kitab yang selesai dibahas di video akan ditambahkan.",
+  "db_xueer": "Kitab 1 · Xue er",
+  "db_meta": "16 bab · 59 halaman · sekitar 7 MB",
+  "db_hans": "Aksara sederhana",
+  "db_hant": "Aksara tradisional",
+  "db_note": "Buku baca hanya dalam bahasa Tionghoa. Jika menemukan kesalahan, beri tahu kami; ralat diumumkan dan mencantumkan nama Anda.",
+  "db_wx": "",
+  "zt_sub": "Membaca kitab-kitab lewat satu kata atau gagasan",
+  "zt_p": "Setiap topik dibagi per kitab dan mencantumkan bab-bab yang teks aslinya menyebutnya: bab yang sudah dibahas disertai tafsir kami; yang belum hanya menampilkan teks asli.",
+  "zt_all": "Semua bab {b}",
+  "zt_routes": "Rute",
+  "zt_routes_p": "Ikuti salah satu tokoh kami melalui satu pertanyaan.",
+  "zt_nb": "{n} kitab · {m} bab",
+  "gzi": "Para filsuf (zibu)",
+  "gshi": "Sejarah",
+  "gbing": "Militer",
+  "bk_tanjing": "Sutra Altar",
+  "bk_shiji": "Catatan Sejarawan Agung",
+  "bk_zizhi": "Zizhi Tongjian",
+  "bk_sunzi": "Seni Perang",
+  "bk_sub_tanjing": "10 bab",
+  "bk_sub_shiji": "130 gulungan",
+  "bk_sub_zizhi": "294 gulungan",
+  "bk_sub_sunzi": "13 bab",
+  "g13": "Tiga Belas Kitab Klasik",
+  "gdao": "Tao",
+  "gfo": "Buddha",
+  "bk_sub_daxue": "Satu bab Liji · salah satu Empat Kitab",
+  "bk_sub_zhongyong": "Satu bab Liji · salah satu Empat Kitab",
+  "grp_main": "Jalur utama",
+  "grp_13": "Tiga Belas Kitab Klasik",
+  "grp_13_p": "Yijing, Lunyu, dan Mengzi tercantum di atas.",
+  "bk_shijing": "Kitab Puisi (Shijing)",
+  "bk_shangshu": "Kitab Sejarah (Shujing)",
+  "bk_zhouli": "Ritus Zhou",
+  "bk_yili": "Upacara dan Ritus",
+  "bk_liji": "Kitab Ritus (Liji)",
+  "bk_zuozhuan": "Tradisi Zuo",
+  "bk_gongyang": "Komentar Gongyang",
+  "bk_guliang": "Komentar Guliang",
+  "bk_xiaojing": "Kitab Bakti (Xiaojing)",
+  "bk_erya": "Erya",
+  "bk_sub_shijing": "305 puisi",
+  "bk_sub_shangshu": "58 bab",
+  "bk_sub_zhouli": "Enam jawatan",
+  "bk_sub_yili": "17 bab",
+  "bk_sub_liji": "49 bab",
+  "bk_sub_zuozhuan": "Kronik 255 tahun",
+  "bk_sub_gongyang": "Komentar atas Chunqiu",
+  "bk_sub_guliang": "Komentar atas Chunqiu",
+  "bk_sub_xiaojing": "18 bab",
+  "bk_sub_erya": "19 bab",
+  "shumu_title": "Kitab",
+  "shumu_sub": "Membaca teks asli kitab klasik kata demi kata",
+  "shumu_p": "Satu kitab demi satu kitab, kata demi kata.",
+  "soon": "segera",
+  "bk_prog": "{done} / {total} bab",
+  "bk_lunyu": "Lunyu (Analek)",
+  "bk_daodejing": "Daodejing",
+  "bk_xinjing": "Sutra Hati",
+  "bk_zhouyi": "Yijing (Kitab Perubahan)",
+  "bk_zhuangzi": "Zhuangzi",
+  "bk_mengzi": "Mengzi",
+  "bk_chuanxilu": "Chuanxilu (Wang Yangming)",
+  "bk_daxue": "Ajaran Besar (Daxue)",
+  "bk_zhongyong": "Tengah Sempurna (Zhongyong)",
+  "bk_sub_lunyu": "20 kitab · edisi Zhu Xi",
+  "bk_sub_daodejing": "81 bab",
+  "bk_sub_xinjing": "260 aksara",
+  "bk_sub_zhouyi": "64 heksagram dan Sepuluh Sayap",
+  "bk_sub_zhuangzi": "Bab dalam dan pilihan",
+  "bk_sub_mengzi": "7 kitab",
+  "bk_sub_chuanxilu": "Catatan percakapan",
+  "off_t": "Luring",
+  "off_h": "Anda sedang luring",
+  "off_p": "Halaman yang pernah Anda buka tersimpan di perangkat ini dan bisa dibuka tanpa internet. Bab yang tersimpan ada di bawah; akan diperbarui saat Anda kembali daring.",
+  "off_none": "Belum ada bab tersimpan. Buka beberapa bab saat daring, lain kali akan ada di sini.",
+  "off_home": "Beranda",
+  "zb_huang_meta2": "Dinasti Liang · cetakan kayu Jepang 1750 · juan {j}",
+  "zb_scan2": "pindaian cetakan kayu jil. {ce} hlm. {n}",
+  "toc_wj": "belum dibahas",
+  "yiwen": "Varian teks",
+  "yiwen_note": "Tempat edisi dasar berbeda dari teks umum; teks asli mengikuti edisi dasar.",
+  "th_di": "Edisi dasar",
+  "th_tong": "Teks umum",
+  "th_shuo": "Catatan",
+  "foot_org": "Yikonglu (一孔录) · disusun secara mandiri, tanpa dana lembaga atau yayasan",
+  "nav_topics": "Topik",
+  "nav_more": "Lainnya",
+  "grp_read": "Baca",
+  "grp_check": "Periksa",
+  "grp_use": "Pakai",
+  "tools_h": "Alat",
+  "t_zt": "Sepuluh kata kunci di seluruh kitab",
+  "t_zi": "Setiap pelafalan yang diikuti narasi kami",
+  "t_bb": "Edisi yang dipakai tiap komentar",
+  "t_dt": "Unduh per kitab, CC BY-NC 4.0",
+  "zc_usdt": "Kripto (USDT)",
+  "zc_usdt_net": "Jaringan: {n}. Kirim USDT hanya lewat jaringan ini; jaringan atau token lain akan hilang dan tidak bisa dipulihkan.",
+  "zc_link": "Dukung kami",
+  "zc_title": "Dukung Yikonglu",
+  "zc_sub": "Semua tetap gratis; dukungan bersifat sukarela",
+  "zc_p": "Teks, komentar, tafsir, ralat, dan data terbuka di situs ini akan selalu gratis; tidak ada halaman yang dikunci karena dukungan. Jika situs ini membantu Anda, Anda bisa mentraktir kami secangkir teh — uangnya untuk edisi, pindaian, dan narasi.",
+  "zc_kofi": "Dukung di Ko-fi",
+  "zc_wx": "Pembaca di Tiongkok daratan: gunakan “apresiasi” di akhir artikel asli mana pun di akun WeChat kami “一孔录”.",
+  "zc_soon": "Halaman Ko-fi kami segera hadir.",
+  "cp_entry": "Salin dengan sumber",
+  "cp_link": "Salin tautan",
+  "bb_link": "Tentang edisi ini",
+  "hj_h": "Rujukan silang",
+  "hj_zb": "Komentar untuk bab ini",
+  "hj_cites": "Pemeriksaan kutipan",
+  "hj_video": "Di video mulai {t}",
+  "hj_book": "Di bagian lain Lunyu",
+  "hj_other": "Sumber lain",
+  "hj_note": "Komentar",
+  "bb_title": "Edisi & lisensi",
+  "bb_sub": "Dari edisi mana tiap komentar berasal, cara menghitung halaman, dan boleh tidaknya dipakai ulang",
+  "bb_p": "Untuk setiap komentar yang kami kutip, halaman ini menyebutkan edisi dasar, sumber gambar, penomoran halaman, dan lisensi. Tautan “Tentang edisi ini” di halaman bab mengarah ke sini.",
+  "bb_base": "Edisi dasar",
+  "bb_img": "Gambar",
+  "bb_page": "Halaman",
+  "bb_lic": "Lisensi",
+  "bb_use": "Cara kami memakainya",
+  "zt_title": "Topik",
+  "zt_n": "{n} bab",
+  "zt_link": "Topik",
+  "zt_none": "Belum ada di antara bab yang sudah dibahas.",
+  "dt_title": "Data terbuka",
+  "dt_sub": "Unduh teks, alih bahasa, sumber kutipan, dan pelafalan per kitab",
+  "dt_p": "Data diterbitkan per kitab dalam JSON dan CSV dan diperbarui tiap minggu. Teks asli dan komentar kuno adalah domain publik. Alih bahasa, tabel kutipan, dan tabel pelafalan berlisensi CC BY-NC 4.0: cantumkan “一孔录 Yikonglu yikonglu.com” dengan tautan, nonkomersial. Tafsir Yikonglu sendiri tidak termasuk lisensi terbuka dan tidak ada dalam data; demikian pula kutipan dari komentar modern.",
+  "dt_file": "Berkas",
+  "dt_rows": "Bab",
+  "dt_lic": "Lisensi: CC BY-NC 4.0 (bagian domain publik tetap domain publik)",
+  "dt_link": "Data terbuka",
+  "feed": "Berlangganan (RSS)",
+  "zi_title": "Indeks pelafalan",
+  "zi_sub": "Pelafalan dalam narasi kami",
+  "zi_p": "Narasi kami mengikuti pelafalan ini. Klik nomor bab untuk membukanya.",
+  "th_ch": "Bab",
+  "zi_link": "Indeks pelafalan",
+  "ju_reads": "Pelafalan: ",
+  "kw_stats": "{n} ralat tercatat ({cats}); {m} dilaporkan pembaca.",
+  "thanks_h": "Terima kasih",
+  "thanks_p": "Para pembaca ini telah menunjukkan kesalahan kami, menurut urutan laporan pertama:",
+  "thanks_none": "Belum ada ralat dari pembaca. Pembaca pertama yang menemukan kesalahan akan dicantumkan di sini.",
+  "baihua": "Bahasa Tionghoa modern",
+  "baihua_note": "Alih bahasa sederhana ke bahasa Tionghoa modern menurut tafsir Yikonglu.",
+  "ju_copy": "Salin baris ini dengan sumber",
+  "ju_link": "Salin tautan ke baris ini",
+  "ju_tip": "Ketuk kalimat mana pun dari teks asli untuk menyalinnya dengan sumber.",
+  "zb_h": "Komentar lain",
+  "zb_note": "Teks dasar kami adalah Komentar Terhimpun Zhu Xi (di atas). Di sini komentar lain disandingkan: untuk komentar kuno, baris pertama subkomentar dengan tautan ke pindaian cetakan kayu; untuk edisi modern, satu kutipan terjemahan pendek sebagai pembanding. Catatan “Dibandingkan dengan Zhu Xi” ditulis oleh Yikonglu, bukan kutipan.",
+  "zb_huang_meta": "Dinasti Liang · edisi Zhibuzu Zhai · juan {j}",
+  "zb_scan": "pindaian cetakan kayu hlm. {n}",
+  "zb_yang_meta": "Zhonghua Book Co. · modern, kutipan pendek",
+  "zb_qian_meta": "modern, kutipan pendek",
+  "zb_diff": "Dibandingkan dengan Zhu Xi",
+  "th_zb": "Komentar",
+  "th_key": "Pokok",
+  "th_kind": "Hubungan",
+  "th_say": "Catatan",
+  "th_sure": "Keyakinan",
+  "s_ding": "pasti",
+  "s_wen": "cukup yakin",
+  "s_yi": "belum pasti",
+  "k_same": "sama",
+  "k_diff": "berbeda",
+  "k_add": "menambah",
+  "k_shade": "nuansa",
+  "k_word": "makna kata",
+  "nf_h": "Halaman tidak ditemukan",
+  "nf_p": "Tautan mungkin salah ketik atau halamannya sudah pindah. Cari di teks asli atau telusuri per kitab.",
+  "foot_reuse": "Teks asli dan komentar kuno adalah domain publik. Alih bahasa dan pemeriksaan kutipan kami berlisensi <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.id\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a>: cantumkan “Yikonglu (一孔录)” dengan tautan ke halaman asli; tidak untuk komersial. <a href=\"{p}about.html#zhuanzai\">Panduan penggunaan ulang</a>",
+  "about_h4": "Penggunaan ulang dan pengutipan",
+  "about_r1": "Teks asli dan komentar kuno (Zhu Xi, Huang Kan, dan cetakan awal lainnya) adalah domain publik dan bebas dipakai siapa pun.",
+  "about_r2": "Alih bahasa, tabel kutipan, indeks pelafalan, dan susunan topik kami berlisensi CC BY-NC 4.0: Anda boleh membagikan dan menyesuaikannya jika mencantumkan “Yikonglu (一孔录)”, menautkan halaman asli, dan menyebutkan apakah Anda mengubahnya; tidak untuk komersial. Tafsir kami sendiri di halaman bab tidak termasuk lisensi ini: kutip singkat dengan menyebut sumber, dan surati kami sebelum memakai bagian yang lebih panjang.",
+  "about_r3": "Kutipan dari komentar modern (Yang Bojun, Qian Mu, dan lainnya) milik penulis dan penerbitnya, tidak termasuk lisensi ini, dan hanya muncul di sini sebagai kutipan pendek.",
+  "about_r4": "Video, narasi, tokoh, dan ilustrasi kami tidak termasuk lisensi ini; mohon surati kami sebelum memakainya ulang.",
+  "about_r5": "Untuk mengutip satu baris, ketuk kalimat mana pun dari teks asli untuk menyalinnya dengan sumber. Untuk pemakaian dalam jumlah besar, gunakan <a href=\"{p}kaifang.html\">data terbuka</a> kami; untuk pemakaian komersial, surati kami dahulu. Jika Anda melihat salinan tanpa sumber atau cermin situs ini, mohon beri tahu kami:",
+  "mirror_bar": "Halaman ini pertama kali terbit di Yikonglu (yikonglu.com). Lihat versi asli untuk pembaruan dan ralat terbaru.",
+  "mirror_go": "Ke versi asli",
+  "ch_gist": "Inti bab ini",
+  "ch_deep": "Membaca cermat dan memeriksa",
+  "ch_deep_note": "Bagi yang ingin membaca lebih dalam atau memeriksa kerja kami: kata kunci dalam komentar, pendapat para komentator lain, varian teks, komentar dalam kata-katanya sendiri beserta halaman faksimile, pelafalan, dan ralat. Ketuk judul untuk membukanya. Bagian yang belum diterjemahkan tetap dalam bahasa Tionghoa.",
+  "ch_open_all": "Buka semua",
+  "ch_close_all": "Tutup semua",
+  "cta_db_p": "Satu kitab Lunyu utuh dalam PDF: teks asli, pelafalan, dan bahasa Tionghoa modern. Dalam bahasa Tionghoa.",
+  "cta_wen_p": "Ada yang belum jelas? Surati kami; tiap minggu kami menjawab satu dua pertanyaan dan mencantumkan nama Anda.",
+  "h_motto": "Membaca kitab klasik, bab demi bab.",
+  "h_intro": "Setiap bab dimulai dengan teks asli, terjemahan, dan ringkasan satu kalimat, disertai video pendek. Di bawahnya, bagi pembaca cermat: kata-kata para komentator sendiri, halaman faksimile, dan catatan ralat terbuka.",
+  "h_start": "Mulai dari bab terbaru",
+  "h_latest": "Bab terbaru",
+  "h_read": "Baca bab ini",
+  "h_recent": "Baru dibaca",
+  "h_deep_h": "Bagi pembaca cermat",
+  "h_deep_p": "Setiap baris yang dibacakan Yikonglu bisa diperiksa di sini.",
+  "tagline": "Membaca kitab klasik kata demi kata",
+  "nav_books": "Kitab",
+  "nav_search": "Cari",
+  "nav_errata": "Ralat",
+  "nav_about": "Tentang",
+  "motto": "Setiap baris yang dibacakan Yikonglu bisa diperiksa di sini.",
+  "intro": "Teks asli, nomor halaman edisi dasar, kata-kata para komentator sendiri, pelafalan, tafsir kami, dan catatan ralat terbuka, disusun per kitab dan per bab. Tonton videonya di berbagai platform; periksa di sini.",
+  "search_ph": "Cari di teks asli atau kata-kata komentator",
+  "btn_books": "Telusuri per kitab",
+  "btn_errata": "Lihat ralat",
+  "p1t": "Edisi dasar bisa dilihat",
+  "p1": "Teks dan komentar mengikuti edisi dasar tiap komentator; setiap kutipan mencantumkan halamannya, dan gambar halaman bisa diperbesar.",
+  "p2t": "Kata-kata komentator sendiri",
+  "p2": "Siapa yang dikutip, namanya disebut: Zhu Xi, Cheng Yi, dan Xie Liangzuo dibedakan; parafrase ditandai; yang sumbernya tidak bisa dilacak tidak dimuat.",
+  "p3t": "Ralat terbuka",
+  "p3": "Kalau kami keliru, kami mencatatnya: episode mana, baris mana, apa yang kami katakan, apa sekarang, dan mengapa.",
+  "books": "Kitab",
+  "recent": "Baru ditambahkan",
+  "lunyu": "Lunyu (Analek)",
+  "lunyu_sub": "Dua puluh kitab · berlanjut",
+  "by_chapter": "Disusun per kitab dan bab. Edisi dasar: Zhu Xi, Lunyu jizhu (cetakan Sibu beiyao).",
+  "book_lead": "Setiap bab memuat teks asli, kata kunci dalam komentar, pendapat komentator lain, dan tafsir Yikonglu, beserta videonya.",
+  "covered": "{done} dari {total} bab",
+  "f_common": "Pemahaman umum",
+  "f_keys": "Kata kunci dalam komentar",
+  "f_others": "Kata komentator lain",
+  "f_ours": "Cara Yikonglu membacanya",
+  "cites": "Periksa setiap kutipan",
+  "cites_note": "Setiap baris komentar yang dikutip di video: kata-kata aslinya, siapa yang mengatakannya, dan halamannya di edisi dasar. “Parafrase” menandai ringkasan kami, bukan kata-kata komentator.",
+  "th_quote": "Teks kutipan",
+  "th_src": "Sumber",
+  "th_page": "Halaman",
+  "para": "parafrase",
+  "pg": "hlm. {n}",
+  "other_ed": "edisi lain",
+  "reads": "Pelafalan",
+  "th_zi": "Aksara",
+  "th_pos": "Dalam baris",
+  "th_du": "Dibaca",
+  "shots": "Halaman edisi dasar",
+  "kw": "Ralat bab ini",
+  "kw_note": "Ralat dicatat dalam bahasa Tionghoa.",
+  "cite": "Kutip halaman ini",
+  "copy": "Salin",
+  "copied": "Tersalin",
+  "checked": "Terakhir diperiksa: {d}. Perubahan dicatat di",
+  "errata_page": "halaman ralat",
+  "video": "Tonton bab ini",
+  "video_in": "Bab ini dibacakan dalam episode Yikonglu “{ep}”:",
+  "cn_note": "(di Tiongkok daratan gunakan Bilibili)",
+  "prev": "Sebelumnya",
+  "next": "Berikutnya",
+  "chapter_no": "{book} · bab {n}",
+  "book_no": "Lunyu, kitab {n} · {done} dari {total} bab",
+  "source_line": "Teks dan komentar menurut Zhu Xi, Lunyu jizhu (cetakan Sibu beiyao).",
+  "rendering": "Terjemahan kerja bahasa Indonesia oleh Yikonglu; yang berlaku adalah teks Tionghoa di atas.",
+  "errata_title": "Ralat terbuka",
+  "errata_sub": "Teks · kutipan · sumber · pelafalan · tafsir",
+  "errata_p1": "Jika Yikonglu salah membaca atau berlebihan, ralatnya dicatat di sini, yang terbaru di atas; entri lama tidak pernah dihapus. Yang dicatat hanya soal isi, bukan gangguan visual.",
+  "errata_p2": "Untuk melaporkan kesalahan, kirim surel ke alamat di bawah dengan episode, baris, bukti Anda, dan nama yang ingin dicantumkan. Entri ditambahkan setelah diperiksa, atas nama itu. Anda juga bisa berkomentar di bawah video Yikonglu mana pun.",
+  "mail_note": "Alamatnya berupa gambar agar tidak dipanen robot spam; mohon diketik ulang.",
+  "report": "Menemukan kesalahan di bab ini? Surati kami; setelah diperiksa, akan dicatat di halaman ralat atas nama Anda:",
+  "errata_empty": "Belum ada ralat.",
+  "search_title": "Cari",
+  "search_sub": "Teks asli · kata-kata komentator · tafsir",
+  "search_ph2": "Ketik beberapa aksara, mis. 鸟数飞 atau 孝弟",
+  "search_n": "{n} bab ditemukan",
+  "search_none": "Tidak ditemukan. Hanya bab yang sudah dibaca yang diindeks.",
+  "about_title": "Tentang Yikonglu",
+  "about_p": "Yikonglu adalah kanal yang membaca kitab klasik Tionghoa kata demi kata, bab demi bab, dengan animasi bernarasi dan sekelompok kecil tokoh tetap, untuk membawa satu baris teks kepada orang nyata dalam keadaan nyata. Anda tidak perlu pernah membaca kitabnya atau menonton episode sebelumnya.",
+  "about_h1": "Untuk apa situs ini",
+  "about_site": "Video di berbagai platform untuk semua orang; situs ini untuk yang ingin memeriksa. Setiap baris yang dibacakan Yikonglu bisa dicari di sini: teks asli, halamannya di edisi dasar, kata-kata komentator sendiri, pelafalan, tafsir kami; dan kesalahan kami dicatat di <a href=\"kanwu.html\">halaman ralat</a>.",
+  "about_h2": "Komitmen kami",
+  "about_c1": "Teks dan komentar mengikuti edisi dasar tiap komentator, dan setiap halaman menyebut edisi dasarnya.",
+  "about_c2": "Kami menyampaikan tafsir para komentator lebih dulu, baru tafsir kami; pandangan kami diberi label tafsir Yikonglu dan tidak pernah disamarkan sebagai tafsir kuno.",
+  "about_c3": "Yang sumbernya tidak bisa dilacak tidak dimuat. Beri tahu kami jika ada kesalahan; ralat diumumkan.",
+  "about_h3": "Tempat menonton",
+  "about_where": "YouTube, Bilibili, dan WeChat Channels dengan nama “一孔录 / Yikonglu”; podcast di Spotify, Apple Podcasts, dan Xiaoyuzhou; akun WeChat 一孔录.",
+  "follow_h": "Ikuti Yikonglu",
+  "follow_wx": "Pindai dengan WeChat untuk mengikuti akun kami; balas “目录” untuk daftar isi lengkap.",
+  "follow_yt": "Berlangganan di YouTube",
+  "foot_src": "Kutipan mengikuti edisi dasar tiap komentator, yang disebut di setiap halaman. Beri tahu kami jika ada kesalahan; ralat diumumkan.",
+  "foot_where": "YouTube · Bilibili · WeChat · Podcast: cari “一孔录”",
+  "lang_bar": "Halaman ini tersedia dalam bahasa Indonesia.",
+  "lang_go": "Baca dalam bahasa Indonesia",
+  "lang_close": "Tutup",
+  "translated_note": "Versi bahasa Indonesia: antarmuka, terjemahan, dan ringkasan sudah diterjemahkan; kutipan komentar dan bagian baca cermat sebagian besar tetap dalam bahasa Tionghoa. Halaman bahasa Tionghoa yang berlaku.",
+  "cite_fmt": "Yikonglu, Lunyu {book} {c} “{title}”, {url}, versi {d}."
+ },
+ "books": {
+  "1": "Xue er (Kitab 1)",
+  "2": "Wei zheng (Kitab 2)",
+  "3": "Ba yi (Kitab 3)",
+  "4": "Li ren (Kitab 4)",
+  "5": "Gongye Chang (Kitab 5)",
+  "6": "Yong ye (Kitab 6)",
+  "7": "Shu er (Kitab 7)",
+  "8": "Tai Bo (Kitab 8)",
+  "9": "Zi han (Kitab 9)",
+  "10": "Xiang dang (Kitab 10)",
+  "11": "Xian jin (Kitab 11)",
+  "12": "Yan Yuan (Kitab 12)",
+  "13": "Zi Lu (Kitab 13)",
+  "14": "Xian wen (Kitab 14)",
+  "15": "Wei Ling Gong (Kitab 15)",
+  "16": "Ji shi (Kitab 16)",
+  "17": "Yang Huo (Kitab 17)",
+  "18": "Weizi (Kitab 18)",
+  "19": "Zizhang (Kitab 19)",
+  "20": "Yao yue (Kitab 20)"
+ },
+ "src": {
+  "朱注": "Komentar Zhu Xi",
+  "朱熹“愚谓”": "Catatan Zhu Xi sendiri",
+  "朱熹“愚按”": "Catatan Zhu Xi sendiri",
+  "朱熹愚谓": "Catatan Zhu Xi sendiri",
+  "朱注引程子": "Cheng Yi, dikutip Zhu Xi",
+  "朱注引程子（答或问）": "Cheng Yi, dikutip Zhu Xi",
+  "朱注引谢氏": "Xie Liangzuo, dikutip Zhu Xi",
+  "朱注引尹氏": "Yin Tun, dikutip Zhu Xi",
+  "朱注引游氏": "You Zuo, dikutip Zhu Xi",
+  "朱注引杨氏": "Yang Shi, dikutip Zhu Xi",
+  "朱注引杨氏引《易》": "Yijing, lewat Yang Shi dalam Zhu Xi",
+  "朱注引洪氏": "Hong Xingzu, dikutip Zhu Xi",
+  "朱注引范氏": "Fan Zuyu, dikutip Zhu Xi",
+  "朱注引吴氏": "Wu Yu, dikutip Zhu Xi",
+  "朱注引张敬夫": "Zhang Shi, dikutip Zhu Xi",
+  "朱注引张氏": "Zhang Shi, dikutip Zhu Xi",
+  "何晏《论语集解》所收不署名注": "Catatan tanpa nama dalam Lunyu jijie karya He Yan",
+  "何晏《集解》引王肃": "Wang Su, dalam Lunyu jijie karya He Yan",
+  "何晏《论语集解》": "He Yan, Lunyu jijie",
+  "杨伯峻《论语译注》": "Yang Bojun, Lunyu yizhu",
+  "同上": "idem"
+ },
+ "fangfa": {
+  "link": "Cara kami memeriksa",
+  "title": "Cara kerja Yikonglu: memeriksa pembacaan kitab klasik yang dibantu zhiqi",
+  "sub": "Langkah mana yang memakai zhiqi, mana yang diperiksa manusia, dan apa yang terjadi jika kami keliru",
+  "intro": "Yikonglu memakai zhiqi (智器, sebutan kami untuk AI) untuk membuat video yang membaca kitab klasik. Zhiqi bisa mengarang komentar, mengarang sumber, dan salah melafalkan aksara, maka di sini kami jelaskan langkah mana yang memakai zhiqi, mana yang wajib diperiksa manusia, dan apa yang kami lakukan terhadap kesalahan — agar pembaca bisa menguji kami, dan sebagai acuan bagi yang melakukan kerja serupa.",
+  "s1h": "1. Edisi dasar dan komentar",
+  "s1": [
+   "Sebelum sebuah kitab dimulai, kami menetapkan edisi dasar dan daftar komentarnya di halaman kitab itu. Untuk Lunyu, teks dan komentar Zhu Xi mengikuti edisi Sibu beiyao dari Lunyu jizhu; komentar yang lebih tua memakai cetakan kayu domain publik (Lunyu yishu karya Huang Kan: edisi Zhibuzu Zhai dan cetakan Jepang 1750); komentar modern yang masih berhak cipta (Yang Bojun, Qian Mu) hanya dikutip singkat dengan nomor halaman. Lihat <a href=\"{p}banben/\">Edisi & lisensi</a>.",
+   "Kami tidak pernah memakai teks daring yang asal-usulnya tidak jelas sebagai dasar."
+  ],
+  "s2h": "2. Bagaimana setiap bab dibuat",
+  "s2": [
+   "<b>Teks</b>: dimasukkan aksara demi aksara dari edisi dasar; varian masuk ke tabel varian; tidak ada yang diubah diam-diam.",
+   "<b>Pelafalan</b>: setiap episode punya tabel pelafalan; aksara berbunyi ganda dan aksara langka ditetapkan dari komentar dan bacaan baku, diperiksa sebelum narasi, lalu dibandingkan baris demi baris dengan pengenalan suara; yang tidak cocok direkam ulang. Semua pelafalan ada di <a href=\"{p}zi.html\">indeks pelafalan</a>.",
+   "<b>Kutipan</b>: setiap kutipan di video dicatat dengan sumber dan halaman serta dicocokkan kata demi kata dengan halaman asli sebelum tampil; yang tidak kami temukan di halaman hanya diparafrasekan, tidak pernah ditampilkan sebagai kutipan.",
+   "<b>Halaman asli</b>: ketika kami mengutip seorang komentator, halaman pindaiannya tampil di layar dengan kutipan dibingkai merah; halaman bab di situs ini menampilkan halaman yang sama.",
+   "<b>Terjemahan dan tafsir</b>: kami menulis terjemahan sendiri dan membandingkannya baris demi baris dengan terjemahan baku, menulis ulang setiap kesamaan enam aksara atau lebih; “Cara Yikonglu membacanya” adalah tafsir kami sendiri, diberi label milik kami, tidak pernah diatasnamakan komentator.",
+   "<b>Visual</b>: ilustrasi dan tokoh adalah milik kami; aksara dipotong dari glif edisi dasar dan dipindai mesin untuk kerusakan; tokoh rekaan di video tidak menyatakan “sejarah” di luar teks."
+  ],
+  "s3h": "3. Di mana zhiqi bekerja, di mana manusia",
+  "s3p": "Kami tidak berpura-pura semua langkah dikerjakan tangan. Pembagian kerja sebenarnya:",
+  "th": [
+   "Langkah",
+   "Zhiqi mengerjakan",
+   "Manusia mengerjakan"
+  ],
+  "rows": [
+   [
+    "Naskah",
+    "Membuat draf; putaran kedua memeriksa menurut daftar (membuang kata pengisi, memeriksa nama dan atribusi)",
+    "Memilih edisi dan komentar, menentukan tafsir, meninjau dan merevisi"
+   ],
+   [
+    "Kutipan dan sumber",
+    "Mendaftar dan mencocokkannya kata demi kata dengan halaman",
+    "Pemeriksaan acak; yang belum diperiksa tidak tampil"
+   ],
+   [
+    "Pelafalan",
+    "Membacakan menurut tabel pelafalan; pengenalan suara mencocokkan baris demi baris",
+    "Menetapkan pelafalan; merekam ulang yang terdengar salah"
+   ],
+   [
+    "Terjemahan",
+    "Membuat draf; memeriksa kesamaan dengan terjemahan baku",
+    "Teks akhir"
+   ],
+   [
+    "Ilustrasi dan animasi",
+    "Membuat gambar, memotong aksara, merender, memindai otomatis",
+    "Memilih gambar dan menetapkan gaya"
+   ],
+   [
+    "Video jadi",
+    "Pemeriksaan otomatis (kutipan, pelafalan, durasi, visual)",
+    "<b>Setiap episode ditonton manusia dan baru dirilis setelah lolos</b>; catatan dikembalikan ke naskah dan visual"
+   ]
+  ],
+  "s3n": "Semua video diberi label “berisi konten buatan AI” sesuai aturan dan istilah tiap platform.",
+  "s4h": "4. Jika kami keliru",
+  "s4": [
+   "Kesalahan isi (teks, kutipan, sumber, pelafalan, tafsir), baik dilaporkan pembaca maupun kami temukan sendiri, semuanya masuk ke <a href=\"{p}kanwu.html\">halaman ralat</a> terbuka: apa yang kami katakan, apa sekarang, mengapa, dengan nama pilihan pembaca.",
+   "Video yang sudah terbit tidak dihapus; bila bisa, kami memperbaiki deskripsinya, dan versi yang dibuat ulang diterbitkan terpisah serta dicatat di halaman ralat.",
+   "Alamat kontak kami ada di halaman <a href=\"{p}about.html\">Tentang</a>."
+  ],
+  "s5h": "5. Angka yang kami umumkan",
+  "s5p": "Setiap minggu kami memperbarui jumlah bab yang dibahas, kutipan yang bisa dicocokkan dengan halaman asli, komentar dengan gambar halaman, dan ralat terbuka, serta apakah mencari satu baris teks di tiap platform menemukan kami.",
+  "s5c": "Kami juga mengumumkan porsi segmen yang berubah antara draf pertama dan naskah akhir: naskah paling awal tiap episode dibandingkan dengan naskah akhir segmen demi segmen, perbedaan kata sekecil apa pun dihitung sebagai perubahan. Sejauh ini: {n} episode, {s} segmen, {c} berubah — {r}% (diperbarui {d}).",
+  "cth": [
+   "Episode",
+   "Segmen",
+   "Berubah",
+   "Porsi"
+  ],
+  "s6h": "6. Tentang halaman ini",
+  "s6": "Yang diuraikan halaman ini adalah janji kami kepada pembaca. Jika metodenya berubah, halaman ini berubah, dengan catatan revisi di bawah. Teks berlisensi CC BY-NC 4.0; video, narasi, tokoh, dan ilustrasi tidak termasuk.",
+  "log": "Revisi",
+  "logs": [
+   [
+    "2026-11-06",
+    "Versi pertama."
+   ],
+   [
+    "2026-11-06",
+    "Kini kami menyebut AI “zhiqi” (智器)."
+   ]
+  ]
+ },
+ "kaifang": {
+  "h": "Apa yang terbuka dan apa yang tidak",
+  "p": "Dasar untuk memeriksa kami terbuka; tafsir dan kerja penyuntingan Yikonglu sendiri tidak.",
+  "oh": "Terbuka (CC BY-NC 4.0: atribusi, nonkomersial)",
+  "o": [
+   "Teks asli dan varian teks",
+   "Alih bahasa",
+   "Tabel pelafalan",
+   "Tabel kutipan (sumber dan halaman edisi dasar setiap kutipan)",
+   "Indeks komentar per bab dengan nomor halaman",
+   "Catatan ralat",
+   "Tabel tokoh",
+   "Tabel topik"
+  ],
+  "ch": "Tidak terbuka",
+  "c": [
+   "Catatan baca lengkap",
+   "Himpunan catatan “Cara Yikonglu membacanya”",
+   "Gambar halaman beranotasi",
+   "Indeks menurut keadaan hidup",
+   "Video, narasi, tokoh, dan ilustrasi"
+  ],
+  "biz": "Penggunaan komersial, termasuk pelatihan model dan penyebaran ulang, memerlukan izin tertulis lebih dulu. Surati:",
+  "rule": "Setiap jenis data baru akan dinilai menurut garis ini.",
+  "log": "Revisi",
+  "logs": [
+   [
+    "2026-11-06",
+    "Menyatakan apa yang terbuka dan apa yang tidak."
+   ],
+   [
+    "2026-11-06",
+    "Empat kolom tafsir kami dikeluarkan dari data; alih bahasa tetap terbuka."
+   ]
+  ]
+ },
+ "wen": {
+  "link": "Tanya kami",
+  "title": "Tanya Yikonglu",
+  "sub": "Pertanyaan diterima lewat surel",
+  "p": "Punya pertanyaan untuk Yikonglu? Surati kami dengan 问一孔 di subjek. Tiap minggu kami memilih satu dua untuk dijawab di akhir episode berikutnya atau dalam surat Minggu kami, atas nama yang Anda tandatangani.",
+  "only": "Kami hanya menerima pertanyaan dari dua tempat: surel dari halaman ini dan pesan ke akun WeChat kami “一孔录”. Komentar di Bilibili, YouTube, atau platform lain tidak ikut dipilih.",
+  "btn": "Tulis pertanyaan",
+  "nojs": "Jika tombol tidak membuka aplikasi surel Anda, alamat kami ada di halaman <a href=\"{p}about.html\">Tentang</a>; tulis 问一孔 di subjek.",
+  "foot": "Atau <a href=\"{p}wen.html\">tanya kami lewat surel</a>"
+ },
+ "privacy": [
+  "Privasi",
+  "Privasi",
+  "Apa yang dikumpulkan situs ini dan apa yang tidak",
+  [
+   "Tidak ada akun, kolom komentar, atau formulir.",
+   "Kunjungan dihitung dengan Cloudflare Web Analytics, yang tidak memasang cookie dan tidak mengenali Anda; yang dihitung adalah tampilan halaman, perujuk, dan negara atau wilayah. Halaman aksara sederhana juga memakai Baidu Tongji, yang memasang cookie untuk menghitung kunjungan dan perujuk; versi bahasa lain tidak.",
+   "Video di halaman bab disematkan dalam mode privasi YouTube (youtube-nocookie.com); begitu Anda menekan putar, YouTube mengolah data menurut kebijakan privasinya sendiri.",
+   "Huruf dimuat dari Google Fonts, sehingga peramban Anda meminta berkas huruf dari Google.",
+   "Pilihan bahasa Anda dan apakah Anda menutup saran “tambahkan ke layar utama” disimpan di penyimpanan lokal peramban; halaman yang sudah dibaca di-cache di perangkat untuk dibaca luring. Tidak ada yang diunggah.",
+   "Jika Anda menyurati kami dengan ralat atau pertanyaan, surelnya hanya dipakai untuk memeriksa dan membalas. Jika ralat Anda dicantumkan di halaman ralat, kami hanya menampilkan nama yang Anda berikan, tidak pernah alamat Anda; surati kami dan kami akan menghapusnya.",
+   "Jika ada yang berubah di sini, kami akan memperbarui halaman ini dan tanggal di bawah."
+  ],
+  "Pertanyaan: "
+ ],
+ "wx": "WeChat: cari “一孔录”",
+ "chapters": {
+  "1.1": {
+   "title": "Belajar dan melatihnya pada waktunya",
+   "yw": "Sang Guru berkata: Belajar lalu pada waktunya melatih apa yang telah dipelajari — bukankah itu menyenangkan? Ada sahabat datang dari jauh — bukankah itu menggembirakan? Tidak dikenal orang namun tidak menyesal — bukankah itu seorang junzi?",
+   "片里落点": "Yang sudah dipelajari, terus dikeluarkan untuk dilatih dan dikerjakan. Hari ini: menonton video tutorial sepuluh kali sama dengan menonton burung lain terbang."
+  },
+  "1.2": {
+   "title": "Bakti dan hormat sebagai akar ren",
+   "yw": "Guru You berkata: Orang yang berbakti kepada orang tua dan hormat kepada kakak tetapi suka melawan atasan, jarang ada; yang tidak suka melawan atasan tetapi suka membuat kekacauan, tidak pernah ada. Junzi mengurus akar; bila akar tegak, Jalan pun tumbuh. Bakti dan hormat kepada kakak — bukankah itu akar ren?",
+   "片里落点": "Bakti dan hormat adalah titik awal menjalankan ren. Hari ini: ramah kepada orang asing di internet, tetapi tidak sabar kepada orang tua di rumah — itu memulai dari ujung yang jauh."
+  },
+  "1.3": {
+   "title": "Kata-kata manis dan wajah yang menyenangkan",
+   "yw": "Sang Guru berkata: Kata-kata manis dan wajah yang dibuat menyenangkan — jarang ada ren di dalamnya.",
+   "片里落点": "Lihat apakah ia melakukannya agar pekerjaan beres, atau hanya agar disukai."
+  },
+  "1.4": {
+   "title": "Tiga hal yang kuperiksa setiap hari",
+   "yw": "Guru Zeng berkata: Setiap hari aku memeriksa diri dalam tiga hal. Dalam bekerja untuk orang lain, sudahkah aku sepenuh hati? Dalam bergaul dengan sahabat, sudahkah aku dapat dipercaya? Yang diajarkan kepadaku, sudahkah kulatih?",
+   "片里落点": "Saat bekerja untuk orang lain, adakah yang kau sembunyikan? Hari ini: rekan kerja minta tolong memeriksa rancangan; malas menunjukkan kesalahannya, kau jawab “sudah bagus”."
+  },
+  "1.5": {
+   "title": "Memerintah negeri seribu kereta",
+   "yw": "Sang Guru berkata: Memerintah negeri seribu kereta perang: cermat dalam urusan dan dapat dipercaya, hemat dalam pengeluaran dan mengasihi rakyat, dan memanggil tenaga rakyat hanya pada musim yang tepat.",
+   "片里落点": "Cheng Yi: “此言至浅……若推其极，尧舜之治亦不过此” — kata-katanya sederhana, tetapi bila didorong sampai ujung, pemerintahan Yao dan Shun pun tidak lebih dari ini. Hari ini: pemilik toko kecil yang menepati janji, tidak boros, dan tidak menyuruh karyawan mengurus keperluan pribadinya di musim sibuk."
+  },
+  "1.6": {
+   "title": "Anak muda di rumah berbakti",
+   "yw": "Sang Guru berkata: Anak muda di rumah hendaknya berbakti, di luar hormat kepada yang lebih tua, cermat dan dapat dipercaya, mengasihi semua orang dan dekat dengan yang berperikemanusiaan. Bila masih ada tenaga setelah itu, gunakan untuk mempelajari kitab.",
+   "片里落点": "Ini soal urutan, bukan memilih satu dan membuang yang lain. Hari ini: orang cakap yang tidak pernah belajar tidak punya pembanding saat ia keliru."
+  },
+  "1.7": {
+   "title": "Menghargai orang bijak lebih dari rupa",
+   "yw": "Zixia berkata: Orang yang menghargai orang bijak menggantikan kesukaan akan rupa, melayani orang tua dengan segenap tenaga, mengabdi kepada pemimpin dengan seluruh dirinya, dan menepati kata kepada sahabat — meski orang berkata ia belum belajar, aku pasti berkata ia sudah belajar.",
+   "片里落点": "Orang yang tak pernah sekolah tetapi melakukan semua ini, kata Zixia, sudah belajar. Hari ini: para orang tua yang hanya bersekolah beberapa tahun."
+  },
+  "1.8": {
+   "title": "Junzi tanpa bobot tidak berwibawa",
+   "yw": "Sang Guru berkata: Junzi yang tidak berbobot tidak berwibawa, dan belajarnya tidak kokoh. Jadikan kesetiaan dan kepercayaan sebagai pegangan. Jangan bersahabat dengan yang tidak setara denganmu. Bila keliru, jangan takut memperbaikinya.",
+   "片里落点": "Zhu Xi membacanya apa adanya, tanpa berputar-putar. Hari ini: satu-satunya orang yang mau menegurmu langsung akan bicara dua kali; bila kau tidak berubah, ketiga kalinya ia diam."
+  },
+  "1.9": {
+   "title": "Cermat di akhir, mengenang yang jauh",
+   "yw": "Guru Zeng berkata: Cermatlah pada akhir hayat orang tua, kenanglah leluhur yang telah lama tiada, maka kebajikan rakyat akan kembali penuh.",
+   "片里落点": "Mencurahkan hati pada hal-hal yang mudah diabaikan dan mudah dilupakan. Hari ini: menyetir dua ratus kilometer untuk berdiri sepuluh menit di depan makam."
+  },
+  "1.10": {
+   "title": "Setiap kali Sang Guru tiba di suatu negeri",
+   "yw": "Ziqin bertanya kepada Zigong: Setiap kali Sang Guru tiba di suatu negeri, beliau selalu mendengar urusan pemerintahannya. Apakah beliau memintanya, atau diberi tahu? Zigong berkata: Sang Guru memperolehnya karena hangat, baik, hormat, hemat, dan rendah hati. Cara Sang Guru mencarinya — bukankah berbeda dengan cara orang lain?",
+   "片里落点": "Datang untuk bertanya tidak sama dengan menyerahkan urusannya kepadamu."
+  },
+  "1.11": {
+   "title": "Selagi ayah hidup, lihat cita-citanya",
+   "yw": "Sang Guru berkata: Selagi ayahnya hidup, lihatlah cita-citanya; setelah ayahnya wafat, lihatlah perbuatannya. Bila tiga tahun ia tidak mengubah jalan ayahnya, ia boleh disebut berbakti.",
+   "片里落点": "Yang salah, ubah sekarang; yang bisa ditunda, tundalah — itu waktu bagi apa yang tak tega dilepaskan. Hari ini: pabrik kecil peninggalan ayah."
+  },
+  "1.12": {
+   "title": "Dalam menjalankan ritus, harmoni yang utama",
+   "yw": "Guru You berkata: Dalam menjalankan ritus, harmoni yang paling berharga. Itulah yang membuat jalan para raja terdahulu indah; dalam perkara besar dan kecil mereka mengikutinya. Namun ada kalanya tidak bisa: tahu harmoni lalu mengejar harmoni tanpa mengaturnya dengan ritus — itu pun tidak bisa.",
+   "片里落点": "Harmoni saja, tanpa ritus yang mengaturnya, juga tidak jalan. Hari ini: tim yang semua anggotanya cuma bilang “sudah bagus”."
+  },
+  "1.13": {
+   "title": "Janji yang dekat dengan kebenaran",
+   "yw": "Guru You berkata: Bila janji dekat dengan kebenaran, kata-kata bisa ditepati. Bila hormat dekat dengan ritus, rasa malu dan aib terjauhkan. Bila bersandar pada orang yang tak kehilangan kedekatannya, ia pun bisa dijunjung.",
+   "片里落点": "Kerjanya terjadi sebelum kau berkata ya. Hari ini: tengah malam langsung menyanggupi meminjamkan uang tanpa pikir."
+  },
+  "1.14": {
+   "title": "Junzi tidak mencari kenyang",
+   "yw": "Sang Guru berkata: Junzi makan tidak mencari kenyang, tinggal tidak mencari nyaman; cekatan dalam bertindak dan hati-hati dalam bicara, mendatangi orang yang punya Jalan untuk meluruskan diri. Ia boleh disebut suka belajar.",
+   "片里落点": "Bukan sengaja lapar; hanya terlalu sibuk untuk memikirkannya."
+  },
+  "1.15": {
+   "title": "Miskin tanpa menjilat",
+   "yw": "Zigong berkata: Miskin tanpa menjilat, kaya tanpa sombong — bagaimana? Sang Guru berkata: Boleh. Tetapi belum sebaik miskin namun gembira, kaya namun mencintai ritus. Zigong berkata: Dalam Shijing ada “bagai dipotong, bagai dikikir; bagai dipahat, bagai digosok” — itukah maksudnya? Sang Guru berkata: Ci, kini aku bisa membicarakan Shijing denganmu. Diberi tahu yang lalu, kau tahu yang akan datang.",
+   "片里落点": "Akui apa yang sudah dicapai, lalu dorong selangkah lagi. Hari ini: dari menyewa sampai punya rumah sendiri tanpa merunduk dan tanpa pamer — Konfusius akan berkata “boleh”."
+  },
+  "1.16": {
+   "title": "Tidak susah karena orang tak mengenalku",
+   "yw": "Sang Guru berkata: Jangan susah karena orang tidak mengenalmu; susahlah karena kau tidak mengenal orang.",
+   "片里落点": "Kitab ini dibuka dengan “tidak dikenal namun tidak menyesal” dan ditutup di sini; awal dan akhir bertemu."
+  },
+  "2.1": {
+   "title": "Memerintah dengan kebajikan",
+   "yw": "Sang Guru berkata: Orang yang memerintah dengan kebajikan ibarat bintang kutub: tetap di tempatnya, dan semua bintang lain berputar menghadapnya.",
+   "片里落点": "Bukan berarti peraturan tidak perlu, melainkan yang memerintah harus lebih dulu memiliki kebajikan. Hari ini: wali kelas yang kata-katanya selalu ditepati."
+  },
+  "2.2": {
+   "title": "Pikiran tanpa kesesatan",
+   "yw": "Sang Guru berkata: Tiga ratus puisi Shijing dapat diringkas dalam satu kalimat: pikiran tanpa kesesatan.",
+   "片里落点": "“Tanpa kesesatan” ada pada pembaca, tidak sepenuhnya pada puisinya. Hari ini: novel tentang penjahat pun bisa membawa pembaca kembali ke jalan lurus."
+  },
+  "2.3": {
+   "title": "Menuntun dengan peraturan",
+   "yw": "Sang Guru berkata: Tuntun rakyat dengan peraturan dan tertibkan dengan hukuman, mereka akan menghindari pelanggaran tetapi tanpa rasa malu. Tuntun dengan kebajikan dan tertibkan dengan ritus, mereka akan punya rasa malu dan lagi pula menjadi lurus.",
+   "片里落点": "Hukuman dan peraturan menjauhkan orang dari kejahatan; kebajikan dan ritus menggerakkan mereka ke arah baik. Hari ini: kamera rusak, sampah pun kembali."
+  },
+  "2.4": {
+   "title": "Usia lima belas aku bertekad belajar",
+   "yw": "Sang Guru berkata: Usia lima belas aku bertekad belajar; tiga puluh aku teguh berdiri; empat puluh aku tidak lagi ragu; lima puluh aku memahami kehendak Langit; enam puluh telingaku selaras; tujuh puluh aku bisa mengikuti keinginan hati tanpa melampaui batas.",
+   "片里落点": "Bukan ijazah yang otomatis terbit pada usia tertentu, melainkan jalan belajar."
+  },
+  "2.5": {
+   "title": "Meng Yizi bertanya tentang bakti",
+   "yw": "Meng Yizi bertanya tentang bakti. Sang Guru berkata: Jangan melanggar. Ketika Fan Chi menjadi kusirnya, Sang Guru berkata kepadanya: Mengsun bertanya kepadaku tentang bakti, dan kujawab “jangan melanggar”. Fan Chi berkata: Apa maksudnya? Sang Guru berkata: Selagi hidup, layani mereka menurut ritus; ketika wafat, kuburkan menurut ritus dan persembahkan korban menurut ritus.",
+   "片里落点": "Hari ini: berutang untuk menggelar pesta ulang tahun yang mewah adalah “melakukan yang tidak boleh”."
+  },
+  "2.6": {
+   "title": "Meng Wubo bertanya tentang bakti",
+   "yw": "Meng Wubo bertanya tentang bakti. Sang Guru berkata: Orang tua hanya khawatir anaknya jatuh sakit.",
+   "片里落点": "Tiga tafsir satu kalimat, disandingkan. Hari ini: begadang minum-minum, berkendara tanpa helm."
+  },
+  "2.7": {
+   "title": "Ziyou bertanya tentang bakti",
+   "yw": "Ziyou bertanya tentang bakti. Sang Guru berkata: Bakti zaman sekarang berarti mampu memberi makan orang tua. Tetapi anjing dan kuda pun diberi makan. Tanpa hormat, apa bedanya?",
+   "片里落点": "Kedua tafsir berujung pada hormat. Hari ini: transfer uang tepat waktu, tetapi di telepon terdengar tak sabar."
+  },
+  "2.8": {
+   "title": "Zixia bertanya tentang bakti (yang sulit adalah raut wajah)",
+   "yw": "Zixia bertanya tentang bakti. Sang Guru berkata: Yang sulit adalah raut wajah. Bila ada pekerjaan, yang muda memikul lelahnya; bila ada arak dan makanan, yang tua dilayani lebih dulu — benarkah bakti hanya itu?",
+   "片里落点": "Semua pekerjaan sudah dikerjakan; raut wajahnya tak pernah sampai."
+  },
+  "2.9": {
+   "title": "Hui tidak bodoh",
+   "yw": "Sang Guru berkata: Seharian aku berbicara dengan Hui, ia tak pernah membantah, seolah bodoh. Tetapi setelah ia pergi dan kuamati hidupnya sendiri, ternyata cukup untuk mewujudkan apa yang kukatakan. Hui tidak bodoh.",
+   "片里落点": "Sudah belajar atau belum, terlihat di luar kelas."
+  },
+  "2.10": {
+   "title": "Lihat apa yang ia lakukan",
+   "yw": "Sang Guru berkata: Lihat apa yang ia lakukan, amati dari mana ia bertolak, periksa di mana ia merasa tenteram. Bagaimana orang bisa bersembunyi? Bagaimana orang bisa bersembunyi?",
+   "片里落点": "Apa yang ia lakukan, mengapa, dan apakah ia menikmatinya. Hari ini: pulang tepat pukul enam di minggu atasan dinas ke luar kota."
+  },
+  "2.11": {
+   "title": "Mengulang yang lama, mengetahui yang baru",
+   "yw": "Sang Guru berkata: Orang yang mengulang yang lama lalu mengetahui yang baru, boleh menjadi guru.",
+   "片里落点": "Kalau cuma bisa menghafal, dipanaskan seratus kali pun tetap mangkuk yang sama."
+  },
+  "2.12": {
+   "title": "Junzi bukan sebuah wadah",
+   "yw": "Sang Guru berkata: Junzi bukan sebuah wadah.",
+   "片里落点": "Kebajikan dibuat utuh dulu, baru bisa dipakai di mana saja — bukan belajar seratus keterampilan. Hari ini: akuntan yang semua orang suka mintai pendapat."
+  },
+  "2.13": {
+   "title": "Lakukan dulu, baru bicara",
+   "yw": "Zigong bertanya tentang junzi. Sang Guru berkata: Ia melakukan dulu apa yang hendak dikatakannya, baru kemudian berbicara.",
+   "片里落点": "Tetap bicara — hanya sesudahnya."
+  },
+  "2.14": {
+   "title": "Merangkul, tidak berpihak",
+   "yw": "Sang Guru berkata: Junzi merangkul semua dan tidak berkelompok; orang kecil berkelompok dan tidak merangkul semua.",
+   "片里落点": "Hidangan di meja sama persis, alasan mengundangnya berbeda."
+  },
+  "2.15": {
+   "title": "Belajar tanpa berpikir",
+   "yw": "Sang Guru berkata: Belajar tanpa berpikir akan bingung; berpikir tanpa belajar berbahaya.",
+   "片里落点": "Yang satu kosong, yang lain menggantung. Hari ini: menyimpan kursus daring tanpa berpikir, dibanding membangun teori tanpa membaca."
+  },
+  "2.16": {
+   "title": "Menekuni ajaran yang menyimpang",
+   "yw": "Sang Guru berkata: Menekuni ajaran yang menyimpang — sungguh merugikan.",
+   "片里落点": "Menurut Zhu Xi: menyelam ke dalamnya itulah yang merugikan."
+  },
+  "2.17": {
+   "title": "Tahu apa yang kau tahu",
+   "yw": "Sang Guru berkata: You, maukah kuajari apa itu tahu? Tahu apa yang kau tahu, dan tahu apa yang tidak kau tahu — itulah tahu.",
+   "片里落点": "Mengakui tidak tahu adalah awalnya."
+  },
+  "2.18": {
+   "title": "Zizhang belajar untuk mendapat jabatan",
+   "yw": "Zizhang belajar untuk mendapat jabatan. Sang Guru berkata: Dengar banyak, sisihkan yang meragukan, bicarakan sisanya dengan hati-hati — maka sedikit kesalahan. Lihat banyak, sisihkan yang tidak aman, lakukan sisanya dengan hati-hati — maka sedikit penyesalan. Sedikit salah dalam bicara, sedikit sesal dalam perbuatan: jabatan ada di dalamnya.",
+   "片里落点": "Konfusius tidak menjanjikan apa pun; ia mengubah mencari jabatan menjadi pelajaran menjadi manusia."
+  },
+  "2.19": {
+   "title": "Angkat orang yang lurus",
+   "yw": "Adipati Ai bertanya: Apa yang harus kulakukan agar rakyat tunduk? Konfusius menjawab: Angkat orang yang lurus dan tempatkan di atas yang bengkok, rakyat akan tunduk; angkat yang bengkok dan tempatkan di atas yang lurus, rakyat tidak akan tunduk.",
+   "片里落点": "Yang sulit adalah melihat siapa yang lurus. Hari ini: mempromosikan orang yang hanya membawa kabar baik."
+  },
+  "2.20": {
+   "title": "Hadapi mereka dengan wibawa",
+   "yw": "Ji Kangzi bertanya: Bagaimana membuat rakyat hormat, setia, dan bersemangat? Sang Guru berkata: Hadapi mereka dengan wibawa, mereka akan hormat; berbaktilah dan berbelas kasih, mereka akan setia; angkat yang baik dan ajari yang belum mampu, mereka akan bersemangat.",
+   "片里落点": "Ji Kangzi menanyakan cara; Konfusius menjawab dengan kewajiban. Memperlakukan kewajiban sebagai cara, salah arah lagi."
+  },
+  "2.21": {
+   "title": "Mengapa Anda tidak ikut memerintah?",
+   "yw": "Seseorang berkata kepada Konfusius: Mengapa Anda tidak ikut memerintah? Sang Guru berkata: Kitab Sejarah berkata: “Bakti! Cukup berbakti dan rukun dengan saudara, lalu rentangkan itu ke pemerintahan.” Ini pun ikut memerintah — mengapa harus memegang jabatan?",
+   "片里落点": "Kata-katanya dalih, tetapi maknanya juga benar."
+  },
+  "2.22": {
+   "title": "Orang tanpa kepercayaan",
+   "yw": "Sang Guru berkata: Orang tanpa kepercayaan — aku tidak tahu bagaimana ia bisa berjalan. Kereta besar tanpa pasak kuk, kereta kecil tanpa pasak galah — bagaimana bisa melaju?",
+   "片里落点": "Tanpa itu, lembu tetap lembu, kereta tetap kereta; keduanya tak pernah tersambung."
+  },
+  "2.23": {
+   "title": "Bisakah sepuluh generasi diketahui?",
+   "yw": "Zizhang bertanya: Bisakah sepuluh generasi ke depan diketahui? Sang Guru berkata: Yin mengikuti ritus Xia; apa yang dikurangi dan ditambah bisa diketahui. Zhou mengikuti ritus Yin; apa yang dikurangi dan ditambah bisa diketahui. Siapa pun penerus Zhou, sekalipun seratus generasi, bisa diketahui.",
+   "片里落点": "Ia menyaksikan dua peralihan dan melihat apa yang bertahan dan apa yang berubah."
+  },
+  "2.24": {
+   "title": "Memuja arwah yang bukan milik sendiri",
+   "yw": "Sang Guru berkata: Memuja arwah yang bukan milik sendiri adalah menjilat. Melihat yang benar namun tidak melakukannya adalah pengecut.",
+   "片里落点": "Membawa hadiah ke rumah atasan yang tak ada urusan denganmu; diam saja dalam rapat."
+  },
+  "3.1": {
+   "title": "Delapan baris penari di halamannya",
+   "yw": "Konfusius berkata tentang keluarga Ji: Delapan baris penari di halamannya — bila ini saja ia tega lakukan, apa lagi yang tidak tega ia lakukan?",
+   "片里落点": "Empat baris penari yang berlebih mengukur seberapa keras hati telah menjadi. Hari ini: duduk di kursi bos saat rapat."
+  },
+  "3.2": {
+   "title": "Tiga keluarga menutup upacara dengan lagu Yong",
+   "yw": "Tiga keluarga menyanyikan lagu Yong saat membereskan bejana kurban. Sang Guru berkata: “Para adipati membantu; Putra Langit khidmat dan agung” — apa tempatnya kata-kata ini di aula tiga keluarga?",
+   "片里落点": "Mereka bahkan tidak paham lagu yang mereka nyanyikan. Hari ini: spanduk toko kecil “Selamat datang para kepala negara”."
+  },
+  "3.3": {
+   "title": "Orang tanpa kemanusiaan — untuk apa ritus?",
+   "yw": "Sang Guru berkata: Orang yang tidak berperikemanusiaan — apa urusannya dengan ritus? Orang yang tidak berperikemanusiaan — apa urusannya dengan musik?",
+   "片里落点": "Penuhi delapan baris, nyanyikan lagu kaisar — bila orangnya tidak benar, ritus dan musik tak berdaya terhadapnya."
+  },
+  "3.4": {
+   "title": "Lin Fang bertanya tentang akar ritus",
+   "yw": "Lin Fang bertanya tentang akar ritus. Sang Guru berkata: Pertanyaan besar! Dalam ritus, lebih baik hemat daripada boros; dalam perkabungan, lebih baik duka daripada rapi tertata.",
+   "片里落点": "Bila kedua sisi sama-sama melenceng, condonglah ke akarnya. Hari ini: semeja penuh hidangan dibanding semangkuk mi."
+  },
+  "3.5": {
+   "title": "Bangsa Yi dan Di punya penguasa",
+   "yw": "Sang Guru berkata: Bangsa Yi dan Di yang punya penguasa masih tidak seperti negeri-negeri Xia yang tanpa penguasa.",
+   "片里落点": "Teguran itu bukan untuk Yi dan Di, melainkan untuk bangsanya sendiri. Hari ini: usaha keluarga turun-temurun yang tiap cabangnya memegang pembukuan sendiri."
+  },
+  "3.6": {
+   "title": "Keluarga Ji berkurban ke Gunung Tai",
+   "yw": "Keluarga Ji mempersembahkan kurban lü ke Gunung Tai. Sang Guru berkata kepada Ran You: Tidak bisakah kau mencegahnya? Ia menjawab: Tidak bisa. Sang Guru berkata: Aduh! Apakah Gunung Tai dianggap kalah paham dibanding Lin Fang?",
+   "片里落点": "Yang perlu diselamatkan adalah keluarga Ji, bukan Gunung Tai. Hari ini: bekerja di bawah bos yang tak bisa dibujuk."
+  },
+  "3.7": {
+   "title": "Junzi tidak bersaing",
+   "yw": "Sang Guru berkata: Junzi tidak bersaing — kecuali mungkin dalam memanah! Saling memberi hormat dan mengalah, mereka naik; turun, mereka minum. Bahkan persaingan mereka pun bersifat junzi.",
+   "片里落点": "Sasaran tidak berbohong; yang diperebutkan adalah apakah tanganmu sendiri mantap."
+  },
+  "3.8": {
+   "title": "Lukisan datang setelah dasar putih",
+   "yw": "Zixia bertanya: “Senyumnya manis berlesung pipit, matanya indah jernih, putih untuk menonjolkan warna” — apa artinya? Sang Guru berkata: Lukisan datang setelah dasar putih. Ia berkata: Kalau begitu ritus datang kemudian? Sang Guru berkata: Shang, kaulah yang membuka pikiranku! Kini aku bisa membicarakan Shijing denganmu.",
+   "片里落点": "Bila dasarnya tidak rata, warna apa pun yang dioleskan akan belang."
+  },
+  "3.9": {
+   "title": "Catatan tidak cukup",
+   "yw": "Sang Guru berkata: Ritus Xia bisa kuceritakan, tetapi negeri Qi tidak cukup membuktikannya; ritus Yin bisa kuceritakan, tetapi negeri Song tidak cukup membuktikannya. Sebab catatan dan orang bijaknya tidak cukup. Bila cukup, aku bisa membuktikannya.",
+   "片里落点": "Konfusius bisa menceritakannya, tetapi tak mau bersandar pada mulutnya saja. Hari ini: resep nenek — yang hilang adalah orang yang berdiri di depan tungku."
+  },
+  "3.10": {
+   "title": "Kurban di setelah tuangan arak",
+   "yw": "Sang Guru berkata: Pada kurban di, sejak tuangan arak dan seterusnya, aku tidak ingin menyaksikannya.",
+   "片里落点": "Menengok ke belakang, catatan dan orangnya sudah hilang; melihat ke sekitar, ritusnya ada, hatinya tidak."
+  },
+  "3.11": {
+   "title": "Seseorang bertanya tentang kurban di",
+   "yw": "Seseorang bertanya makna kurban di. Sang Guru berkata: Aku tidak tahu. Orang yang tahu maknanya akan menangani dunia seperti melihat ini — dan ia menunjuk telapak tangannya.",
+   "片里落点": "Berkata “aku tidak tahu” bukan berarti ia benar-benar tidak tahu."
+  },
+  "3.12": {
+   "title": "Berkurban seakan hadir",
+   "yw": "Berkurban kepada leluhur seakan mereka hadir; berkurban kepada roh seakan roh itu hadir. Sang Guru berkata: Bila aku tidak ikut dalam kurban, seakan aku tidak berkurban.",
+   "片里落点": "Bentuk ritus bisa ditata menurut buku; hati di dalamnya harus dibawa sendiri oleh yang berkurban."
+  },
+  "3.13": {
+   "title": "Lebih baik merayu dewa dapur",
+   "yw": "Wangsun Jia bertanya: “Lebih baik merayu dewa dapur daripada sudut barat daya” — apa maksudnya? Sang Guru berkata: Tidak begitu. Orang yang bersalah kepada Langit tidak punya tempat untuk berdoa.",
+   "片里落点": "Kerjakan dengan benar, semua orang mudah diajak bicara; kerjakan dengan salah, akrab dengan siapa pun tak ada gunanya."
+  },
+  "3.14": {
+   "title": "Zhou bercermin pada dua dinasti",
+   "yw": "Sang Guru berkata: Zhou bercermin pada dua dinasti sebelumnya — betapa kaya dan halus budayanya! Aku mengikuti Zhou.",
+   "片里落点": "Mengikuti Zhou berarti mengikuti kerja memperbaiki warisan pendahulu sedikit demi sedikit. Hari ini: hidangan makan malam Tahun Baru."
+  },
+  "3.15": {
+   "title": "Di Kuil Agung ia menanyakan segalanya",
+   "yw": "Ketika Sang Guru memasuki Kuil Agung, ia menanyakan segala hal. Seseorang berkata: Siapa bilang putra orang dari Zou paham ritus? Di Kuil Agung ia menanyakan segalanya. Sang Guru mendengar dan berkata: Inilah ritus.",
+   "片里落点": "Sudah tiga puluh tahun pun tetap memeriksa ulang."
+  },
+  "3.16": {
+   "title": "Dalam memanah, menembus kulit bukan intinya",
+   "yw": "Sang Guru berkata: Dalam memanah, menembus kulit sasaran bukan intinya, sebab tenaga orang tidak sama tingkatnya. Itulah jalan orang dahulu.",
+   "片里落点": "Yang dilombakan adalah yang bisa dilatih, bukan yang dibawa sejak lahir."
+  },
+  "3.17": {
+   "title": "Domba untuk mengumumkan bulan baru",
+   "yw": "Zigong ingin menghapus domba kurban untuk mengumumkan bulan baru. Sang Guru berkata: Ci, kau sayang dombanya; aku sayang ritusnya.",
+   "片里落点": "Domba menandai ritus; pertahankan tandanya, ritus masih bisa dikenali dan dipulihkan. Hari ini: toko tua yang setiap titik balik musim dingin memasak satu panci resep lama, tidak dijual."
+  },
+  "3.18": {
+   "title": "Melayani penguasa dengan ritus lengkap",
+   "yw": "Sang Guru berkata: Melayani penguasa dengan ritus lengkap, orang menganggapnya menjilat.",
+   "片里落点": "Tak sedikit pun berlebih — ritus memang menuntut begitu; Konfusius hanya berkata “orang menganggapnya menjilat”, tanpa membalas memaki. Hari ini: datang rapat lebih awal dan mengisi formulir penggantian biaya dengan lengkap, lalu diejek sok rajin."
+  },
+  "3.19": {
+   "title": "Penguasa memakai menterinya dengan ritus",
+   "yw": "Adipati Ding bertanya: Bagaimana penguasa memakai menterinya, dan menteri melayani penguasanya? Konfusius menjawab: Penguasa memakai menterinya dengan ritus; menteri melayani penguasanya dengan setia.",
+   "片里落点": "Masing-masing pihak hanya melihat ujungnya sendiri; Adipati Ding adalah penguasa, dan pertanyaannya dijawab dengan bagiannya sendiri. Hari ini: pemimpin tim lebih dulu bertanya apakah orang sudah cukup dihormati; anggota tim lebih dulu bertanya apakah pekerjaannya sudah beres."
+  },
+  "3.20": {
+   "title": "Guanju: gembira tanpa berlebihan",
+   "yw": "Sang Guru berkata: Guanju — gembira namun tidak berlebihan, sedih namun tidak melukai.",
+   "片里落点": "Bukan perasaan yang sedikit, melainkan perasaan penuh yang tidak meluap. Hari ini: menangis saat membaca janji pernikahan, menyeka mata, lalu menyelesaikan kalimat terakhir."
+  },
+  "3.21": {
+   "title": "Adipati Ai bertanya tentang altar bumi",
+   "yw": "Adipati Ai bertanya kepada Zai Wo tentang altar bumi. Zai Wo menjawab: Xia memakai pinus, Yin memakai cemara, Zhou memakai kastanye (li), katanya agar rakyat gemetar (zhanli). Sang Guru mendengar dan berkata: Yang sudah jadi tidak dibicarakan; yang sudah selesai tidak ditegur; yang sudah lalu tidak disalahkan.",
+   "片里落点": "Tiga kata “tidak” itu bukan “sudahlah”, melainkan teguran berat agar ia berhati-hati ke depan. Hari ini: meneruskan pesan yang belum dicek di grup obrolan — tombol tarik pesan hanya berlaku dua menit."
+  },
+  "3.22": {
+   "title": "Kapasitas Guan Zhong kecil",
+   "yw": "Sang Guru berkata: Kapasitas Guan Zhong sungguh kecil! Seseorang bertanya: Apakah Guan Zhong hemat? Ia berkata: Guan punya teras Sangui, dan para pejabatnya tidak merangkap jabatan — bagaimana itu hemat? Kalau begitu, apakah Guan Zhong paham ritus? Ia berkata: Penguasa negeri memasang tabir di gerbangnya, Guan pun memasang tabir di gerbangnya; penguasa negeri, untuk pertemuan dua penguasa, punya meja untuk cawan terbalik, Guan pun punya meja itu. Bila Guan paham ritus, siapa yang tidak paham ritus?",
+   "片里落点": "Konfusius tidak berkata terang di mana kecilnya; itu tampak dari kemewahan dan perampasan hak. Hari ini: perusahaan membesar, kantor bos jadi seperti istana, dan aturan hanya berlaku bagi orang lain."
+  },
+  "3.23": {
+   "title": "Sang Guru bicara musik dengan Guru Musik Agung Lu",
+   "yw": "Sang Guru berbicara tentang musik kepada Guru Musik Agung negeri Lu: Musik bisa dipahami. Pada awalnya, semua menyatu; saat berkembang, ia harmonis, jernih, dan bersambung, hingga selesai.",
+   "片里落点": "Mula-mula menyatu, lalu harmonis, tiap bagian jelas di dalam harmoni, tersambung sampai akhir. Hari ini: paduan suara mulai serempak, lalu menyatu, tiap suara tetap terdengar, bernyanyi sampai habis dalam satu napas."
+  },
+  "3.24": {
+   "title": "Penjaga perbatasan Yi minta bertemu",
+   "yw": "Penjaga perbatasan Yi minta diperkenalkan, katanya: Setiap junzi yang datang ke sini, belum pernah tidak kutemui. Para murid memperkenalkannya. Keluar, ia berkata: Kawan-kawan, mengapa risau ia kehilangan jabatan? Dunia sudah lama tanpa Jalan; Langit akan memakai guru kalian sebagai lonceng berlidah kayu.",
+   "片里落点": "Seorang pejabat kecil melihat bobot Konfusius sekali pandang. Hari ini: guru tua yang dipindahkan dari mimbar membuka kelas gratis di lingkungannya, dan yang datang lebih banyak daripada murid di kelasnya dulu."
+  },
+  "3.25": {
+   "title": "Musik Shao sempurna indah dan sempurna baik",
+   "yw": "Sang Guru berkata tentang musik Shao: Sempurna indah, dan sempurna baik. Tentang musik Wu ia berkata: Sempurna indah, tetapi belum sempurna baik.",
+   "片里落点": "Bedanya pada asal-usul: yang satu diserahkan, yang lain direbut. Hari ini: dua kemenangan yang sama gemilang, satu dimenangkan berhadapan langsung, satu karena lawan mundur cedera — di podium rasanya tidak sama."
+  },
+  "3.26": {
+   "title": "Kedudukan tinggi tanpa kemurahan",
+   "yw": "Sang Guru berkata: Berkedudukan tinggi tanpa kemurahan hati, menjalankan ritus tanpa hormat, menghadiri perkabungan tanpa duka — bagaimana aku tahan melihatnya?",
+   "片里落点": "Bukan karena terlihat buruk; tidak ada lagi yang layak dilihat. Hari ini: lelaki yang menelepon urusan bisnis di pintu rumah duka — setebal apa pun amplopnya, tak ada yang ingat ia pernah datang."
+  },
+  "4.1": {
+   "title": "Tinggal di antara orang berperikemanusiaan itu indah",
+   "yw": "Sang Guru berkata: Indah tinggal di tempat yang berperikemanusiaan. Bila memilih tidak tinggal di antara orang yang berperikemanusiaan, bagaimana bisa disebut bijak?",
+   "片里落点": "Salah memilih tempat tinggal, yang hilang bukan rumahnya, melainkan hati yang membedakan benar dan salah. Hari ini: membeli rumah, orang bertanya soal sekolah, kereta, dan cahaya, jarang yang bertanya bagaimana para tetangga saling memperlakukan."
+  },
+  "4.2": {
+   "title": "Yang tak berperikemanusiaan tak tahan lama dalam kesusahan",
+   "yw": "Sang Guru berkata: Orang yang tidak berperikemanusiaan tak tahan lama dalam kesusahan, tak tahan lama dalam kesenangan. Yang berperikemanusiaan tenteram dalam kemanusiaan; yang bijak beroleh manfaat dari kemanusiaan.",
+   "片里落点": "Susah terlalu lama membuat orang melampaui batas, senang terlalu lama membuatnya larut; bisa tidaknya hal luar merenggut seseorang bergantung pada ada tidaknya hati asalnya. Hari ini: orang yang setengah tahun menganggur tetap bangun pukul tujuh, bercukur, dan keluar berlari."
+  },
+  "4.3": {
+   "title": "Hanya yang berperikemanusiaan bisa menyukai dan membenci",
+   "yw": "Sang Guru berkata: Hanya orang yang berperikemanusiaan yang bisa menyukai orang dan bisa membenci orang.",
+   "片里落点": "Suka dan tidak suka semua orang bisa; “bisa” di sini terletak pada melakukannya dengan benar, dan syaratnya hati yang tidak terikat apa pun. Hari ini: juri lomba melihat bekas muridnya naik panggung, berdiri, meninggalkan meja juri, dan tidak memberi nilai di babak itu."
+  },
+  "4.4": {
+   "title": "Bertekad pada kemanusiaan, tak ada kejahatan",
+   "yw": "Sang Guru berkata: Jika seseorang sungguh menetapkan hatinya pada kemanusiaan (ren), ia tidak akan berbuat jahat.",
+   "片里落点": "Tekad tidak menjamin tak pernah salah; yang dijamin adalah tak ada niat berbuat jahat. Hari ini: pelajar menyetir menggores mobil tiga kali setahun, tapi tak sekali pun menerobos lampu merah."
+  },
+  "4.5": {
+   "title": "Kekayaan dan kedudukan, yang diinginkan orang",
+   "yw": "Sang Guru berkata: Kekayaan dan kedudukan adalah yang diinginkan orang; jika tidak diperoleh dengan jalan yang benar, jangan dipertahankan. Kemiskinan dan kehinaan adalah yang dibenci orang; jika datang bukan karena kesalahan sendiri, jangan dihindari dengan jalan bengkok. Jika seorang junzi meninggalkan kemanusiaan, bagaimana ia membangun nama? Junzi tidak meninggalkan kemanusiaan bahkan selama satu kali makan; dalam tergesa ia tetap di situ, dalam guncangan ia tetap di situ.",
+   "片里落点": "Kekayaan yang tak semestinya datang jangan diambil, kemiskinan yang tak semestinya menimpa jangan dihindari lewat jalan bengkok; pilihan besar dan latihan kecil sehari-hari saling menguatkan. Hari ini: bus mengerem mendadak, dan tangan pertama si pemuda meraih untuk menahan nenek di sebelahnya."
+  },
+  "4.6": {
+   "title": "Aku belum melihat orang yang mencintai kemanusiaan",
+   "yw": "Sang Guru berkata: Aku belum melihat orang yang mencintai kemanusiaan, atau orang yang membenci yang tidak manusiawi. Yang mencintai kemanusiaan tidak menaruh apa pun di atasnya; yang membenci yang tidak manusiawi menjalankan kemanusiaan dengan tidak membiarkan yang tidak manusiawi menyentuh dirinya. Adakah yang mampu mencurahkan tenaganya pada kemanusiaan sehari saja? Aku belum melihat yang tenaganya tidak cukup. Mungkin ada, tetapi aku belum melihatnya.",
+   "片里落点": "Ke mana hati pergi, ke situ tenaga pergi; yang sulit bukan tenaga, tetapi mau atau tidak memakainya. Hari ini: orang yang bilang tak sempat olahraga menggulir ponsel dua jam sebelum tidur."
+  },
+  "4.7": {
+   "title": "Kesalahan orang mengikuti jenisnya",
+   "yw": "Sang Guru berkata: Kesalahan orang masing-masing menurut jenisnya. Lihatlah kesalahannya, maka engkau tahu kemanusiaannya.",
+   "片里落点": "Apakah kesalahan condong terlalu murah hati atau terlalu kikir menunjukkan manusiawi atau tidaknya seseorang. Hari ini: dua orang sama-sama telat setengah jam, satu karena mengantar kakek yang jatuh ke rumah sakit, satu karena kesiangan."
+  },
+  "4.8": {
+   "title": "Mendengar Jalan di pagi hari, mati di senja pun rela",
+   "yw": "Sang Guru berkata: Jika pagi hari mendengar Jalan (Dao), senja hari mati pun tak mengapa.",
+   "片里落点": "Yang sulit bukan mendengar, tetapi setelah mendengar tetap sungguh percaya. Hidup dan mati perkara besar; tanpa sesuatu yang sungguh diperoleh dalam hati, tak ada yang sanggup berkata “senja mati pun tak mengapa”. Hari ini: seorang kakek di ranjang rumah sakit akhirnya memahami hal yang seumur hidup tak ia pahami, menggenggam tangan putrinya dan berkata, “Sekarang aku tenang.”"
+  },
+  "4.9": {
+   "title": "Pelajar bertekad pada Jalan tapi malu berbaju buruk",
+   "yw": "Sang Guru berkata: Pelajar yang menetapkan hati pada Jalan tetapi malu karena pakaian dan makanan sederhana, belum layak diajak berbicara.",
+   "片里落点": "Mulut bilang bertekad pada Jalan, tetapi hati diperintah hal di luar diri; masalahnya bukan berpakaian buruk, melainkan menganggapnya memalukan. Hari ini: orang yang bilang akan fokus belajar untuk ujian lebih dulu menghabiskan tiga hari memilih alat tulis termahal."
+  },
+  "4.10": {
+   "title": "Tak ada ya atau tidak yang pasti; ikut yang benar",
+   "yw": "Sang Guru berkata: Junzi menghadapi urusan dunia tanpa harus begini dan tanpa harus tidak begitu; ia berpihak pada yang benar (yi).",
+   "片里落点": "Jangan memutuskan lebih dulu, jangan menolak lebih dulu; lihat saja sesuai kebenaran atau tidak. “Boleh begini boleh begitu” tanpa kebenaran sebagai tuan hanyalah sembarangan. Hari ini: hakim garis tidak menentukan dulu siapa yang pantas menang, ia membungkuk melihat apakah bola ini menyentuh garis."
+  },
+  "4.11": {
+   "title": "Junzi memikirkan kebajikan, orang kecil kenyamanannya",
+   "yw": "Sang Guru berkata: Junzi memikirkan kebajikan, orang kecil memikirkan tanahnya; junzi memikirkan hukum, orang kecil memikirkan keuntungan.",
+   "片里落点": "“Memikirkan tanah” bukan rindu kampung, melainkan hati yang hanya menjaga sedikit kenyamanannya sendiri; beda junzi dan orang kecil hanya terletak antara umum dan pribadi. Hari ini: dua orang menerima tawaran kerja yang sama di kota lain; yang satu bertanya dulu apa yang bisa dipelajari dan dibantu, yang lain hanya melihat di mana lebih nyaman."
+  },
+  "4.12": {
+   "title": "Bertindak demi untung, banyak dendam",
+   "yw": "Sang Guru berkata: Bertindak dengan bersandar pada keuntungan mendatangkan banyak dendam.",
+   "片里落点": "Dendam tidak datang dari kata “untung”, tetapi dari “hanya menguntungkan diri sendiri”. Hari ini: teman sekontrakan yang tak pernah membeli barang bersama tetapi paling banyak memakainya, tak diantar siapa pun saat pindah."
+  },
+  "4.13": {
+   "title": "Bisakah memerintah negara dengan ritus dan mengalah?",
+   "yw": "Sang Guru berkata: Bisakah memerintah negara dengan ritus dan sikap mengalah? Apa sulitnya? Jika tak bisa memerintah negara dengan ritus dan mengalah, apa guna ritus?",
+   "片里落点": "Mengalah adalah lapisan dalam ritus; bila tinggal bentuknya saja, ritus sendiri tak berfungsi, apalagi memerintah negara. Hari ini: pesta pernikahan dengan tata tempat duduk serba lengkap, dua keluarga bertengkar soal siapa duduk di meja utama sampai tamu bubar."
+  },
+  "4.14": {
+   "title": "Jangan risau tak berjabatan, risaukan pijakanmu",
+   "yw": "Sang Guru berkata: Jangan risau tak punya kedudukan; risaukan apa yang membuatmu layak berdiri di sana. Jangan risau tak ada yang mengenalmu; berusahalah menjadi layak dikenal.",
+   "片里落点": "Bukan mencari cara agar dikenal, tetapi lebih dulu memiliki isi yang layak dikenal; diberi jabatan atau tidak, dikenal orang atau tidak, bukan di tangan sendiri. Hari ini: puluhan lamaran tanpa balasan; ada yang menyalahkan perekrut yang tak jeli, ada yang mengerjakan ulang setiap proyek di portofolionya."
+  },
+  "4.15": {
+   "title": "Jalanku dirangkai oleh satu",
+   "yw": "Sang Guru berkata: Shen! Jalanku dirangkai oleh satu hal. Zengzi menjawab: Ya. Sang Guru keluar, para murid bertanya: Apa maksudnya? Zengzi berkata: Jalan Guru hanyalah kesetiaan dan tenggang rasa.",
+   "片里落点": "“Kesetiaan dan tenggang rasa” tidak menuntaskan Jalan, melainkan memberi pegangan bagi yang belajar; “dirangkai oleh satu” hanya diucapkan kepada orang yang sudah siap memahaminya. Hari ini: tukang senior hanya berpesan satu hal kepada pemula: kerjakan tahapmu sampai tuntas, lalu pikirkan orang yang menerima berikutnya."
+  },
+  "4.16": {
+   "title": "Junzi paham kebenaran, orang kecil paham untung",
+   "yw": "Sang Guru berkata: Junzi memahami kebenaran; orang kecil memahami keuntungan.",
+   "片里落点": "Kedua pihak memakai jenis “paham” yang sama; bedanya pada hal apa yang mereka pahami sampai tuntas. Hari ini: penjual barang bekas menemukan goresan yang belum ditulis, lalu sendiri mengubah “90% baru” jadi “70% baru”."
+  },
+  "4.17": {
+   "title": "Melihat orang bijak, ingin setara; melihat yang tidak, periksa diri",
+   "yw": "Sang Guru berkata: Melihat orang bijak, pikirkan cara menyamainya; melihat yang tidak bijak, berbaliklah dan periksa diri sendiri.",
+   "片里落点": "Orang yang dilihat ada baik ada buruk, setiap kali dibalikkan ke diri sendiri. Hari ini: melihat karya bagus teman sebaya, ada yang menyindir “cuma beruntung”, ada yang diam-diam menyimpan tutorialnya."
+  },
+  "4.18": {
+   "title": "Melayani orang tua, menegur dengan lembut",
+   "yw": "Sang Guru berkata: Dalam melayani orang tua, tegurlah dengan lembut. Bila tampak mereka tidak mau mengikuti, tetap hormat dan jangan menentang; bersusah payah tanpa dendam.",
+   "片里落点": "Bukan diam, tetapi bersuara pelan; bila tak masuk, jangan bermusuhan, coba lagi di waktu lain. Kalimat Neize “挞之流血不敢疾怨” (dipukul sampai berdarah pun tak berani mendendam) adalah tuntutan ritus kuno, dan video menyatakan jelas bahwa hari ini tidak ditiru. Hari ini: orang tua meneruskan iklan palsu ke grup keluarga; satu anak membalas “palsu lagi”, satu lagi menelepon secara pribadi dan menjelaskan pelan-pelan."
+  },
+  "4.19": {
+   "title": "Selagi orang tua hidup, jangan pergi jauh",
+   "yw": "Sang Guru berkata: Selagi orang tua masih hidup, jangan bepergian jauh; jika harus pergi, harus ada tujuan yang pasti.",
+   "片里落点": "Bila bisa tidak pergi jauh, jangan; bila harus pergi, beri tahu orang tua di mana engkau berada. Hari ini: begitu mendarat dalam perjalanan dinas, kirim lokasi dulu ke grup keluarga."
+  },
+  "4.20": {
+   "title": "Tiga tahun tak mengubah jalan ayahnya",
+   "yw": "Sang Guru berkata: Jika selama tiga tahun ia tidak mengubah jalan ayahnya, ia dapat disebut berbakti.",
+   "片里落点": "Separuh kalimat ini harus dibaca bersama separuh sebelumnya; “tiga tahun tak mengubah” tak bisa diambil sendiri sebagai hukum besi. Hari ini: waktu muda kita hanya ingat separuh kata orang tua, baru teringat separuh lainnya setelah mengurus rumah tangga sendiri."
+  },
+  "4.21": {
+   "title": "Usia orang tua harus diketahui",
+   "yw": "Sang Guru berkata: Usia orang tua tidak boleh tidak diketahui: di satu sisi untuk bersukacita, di sisi lain untuk khawatir.",
+   "片里落点": "Sukacita dan khawatir adalah satu hal yang sama: bertambah satu hari hidup, berkurang satu hari tersisa. Hari ini: kalender ponsel mengingatkan ulang tahun orang tua setahun sekali, dan angkanya makin besar setiap tahun."
+  },
+  "4.22": {
+   "title": "Orang dahulu tak mudah berucap, malu bila perbuatan tak menyusul",
+   "yw": "Sang Guru berkata: Orang dahulu tidak sembarang mengeluarkan kata, karena malu bila perbuatannya tak mampu menyusul.",
+   "片里落点": "Yang ditakutkan bukan salah ucap, tetapi tak mampu melakukannya. Hari ini: di grup kerja ada yang membalas “minggu ini pasti saya serahkan”, ada yang tak berkata apa-apa dan menyerahkan hari Rabu."
+  },
+  "4.23": {
+   "title": "Yang tersesat karena menahan diri sedikit",
+   "yw": "Sang Guru berkata: Sedikit orang yang keliru karena menahan diri.",
+   "片里落点": "Menahan kata-kata, amarah, dan kemewahan semuanya adalah pengekangan, bukan hanya soal uang. Hari ini: orang yang pindah rumah hanya membawa dua kardus justru tak kehilangan apa pun."
+  },
+  "4.24": {
+   "title": "Junzi ingin lambat bicara, cepat bertindak",
+   "yw": "Sang Guru berkata: Junzi ingin lambat dalam berbicara dan cepat dalam bertindak.",
+   "片里落点": "Dari ujung mudah dan ujung sulit, tahan yang mudah (berbicara), pacu yang sulit (bertindak); bukan tak berbicara, melainkan tak bicara sembarangan."
+  },
+  "4.25": {
+   "title": "Kebajikan tak sendirian, pasti punya tetangga",
+   "yw": "Sang Guru berkata: Kebajikan tidak sendirian; ia pasti punya tetangga.",
+   "片里落点": "Ini bukan “orang baik pasti dibalas baik”, melainkan yang sejenis saling menyahut: apa yang engkau pegang akan menarik orang yang memegang hal yang sama."
+  },
+  "4.26": {
+   "title": "Mendesak raja berbuah hina, mendesak teman berbuah jauh",
+   "yw": "Ziyou berkata: Melayani raja dengan terlalu sering menegur mendatangkan kehinaan; terhadap teman, terlalu sering menasihati membuat jauh.",
+   "片里落点": "Nasihat ada batasnya; bila tak masuk, berhentilah (kepada raja, pergilah); terlalu sering mendesak justru mendorong orang menjauh."
+  },
+  "5.1": {
+   "title": "Gongye Chang layak diberi istri",
+   "yw": "Sang Guru berkata tentang Gongye Chang: Ia layak diberi istri. Meski pernah dibelenggu, itu bukan kesalahannya. Lalu ia menikahkannya dengan putrinya sendiri. Sang Guru berkata tentang Nan Rong: Bila negara berjalan di atas Jalan, ia tidak akan disingkirkan; bila negara kehilangan Jalan, ia lolos dari hukuman. Lalu ia menikahkannya dengan putri kakaknya.",
+   "片里落点": "Yang penting bukan Konfusius toleran, tetapi satu penilaian “apakah kesalahan itu miliknya”: penjara yang ditimpakan dari luar bukan kehormatan atau aibnya. Bagian Nan Rong mengatakan bahwa berhati-hati dalam kata dan tindakan tetap tegak di masa damai maupun kacau. Hari ini: orang yang pernah dihukum secara keliru lalu dipulihkan; ada yang menghindarinya, ada yang tetap menyerahkan urusan penting kepadanya."
+  },
+  "5.2": {
+   "title": "Tentang Zijian: sungguh junzi orang ini",
+   "yw": "Sang Guru berkata tentang Zijian: Sungguh junzi orang ini! Jika negeri Lu tak punya junzi, dari mana ia memperoleh ini?",
+   "片里落点": "Kebajikan seseorang diambil dari orang-orang bijak di sekitarnya, maka memuji dia berarti juga memuji mereka yang membentuknya. Hari ini: pendatang baru menerima penghargaan, dan kalimat pertamanya di panggung menunjuk gurunya di bangku penonton."
+  },
+  "5.3": {
+   "title": "Zigong bertanya: Bagaimana dengan aku?",
+   "yw": "Zigong bertanya: Bagaimana dengan saya, Ci? Sang Guru berkata: Engkau sebuah bejana. Ia bertanya: Bejana apa? Jawabnya: Bejana hulian di kuil leluhur.",
+   "片里落点": "Satu kalimat dua lapis: belum sampai “bukan bejana”, tetapi di antara bejana yang paling berharga; pujian yang mengandung petunjuk arah. Hari ini: bos berkata “kamu orang paling bisa diandalkan di timku”, senang saat itu, tetapi di rumah terasa ada yang kurang."
+  },
+  "5.4": {
+   "title": "Yong manusiawi tapi tak pandai bersilat lidah",
+   "yw": "Seseorang berkata: Yong manusiawi tetapi tidak pandai bicara. Sang Guru berkata: Apa gunanya pandai bicara? Orang yang melayani orang lain dengan lidah tajam sering dibenci. Aku tak tahu apakah ia manusiawi, tetapi apa gunanya pandai bicara?",
+   "片里落点": "Akar masalahnya “tanpa isi nyata”: lidah cepat dan pandai berdebat tanpa kebenaran di dalamnya makin dibenci makin banyak bicara. Konfusius tidak menganugerahkan sebutan manusiawi pada Zhonggong karena kemanusiaan terlalu besar untuk diberikan begitu saja. Hari ini: orang yang menerima semua, menyanggupi semua, dan tak menuntaskan satu pun, tiga bulan kemudian dihindari rekan kerja."
+  },
+  "5.5": {
+   "title": "Sang Guru ingin Qidiao Kai menjabat",
+   "yw": "Sang Guru ingin Qidiao Kai memangku jabatan. Ia menjawab: Saya belum yakin akan hal itu. Sang Guru senang.",
+   "片里落点": "Cukup atau tidak kemampuan, guru bisa melihat; sehelai rambut yang belum sungguh diperoleh di dalam hati hanya diri sendiri yang tahu. Mengakui sehelai itu berarti tak puas pada pencapaian kecil, maka Konfusius gembira. Hari ini: ditawari promosi, ia berkata belum sanggup memikul jabatan itu dan minta enam bulan lagi."
+  },
+  "5.6": {
+   "title": "Bila Jalan tak berjalan, aku naik rakit ke laut",
+   "yw": "Sang Guru berkata: Bila Jalan tak berjalan, aku akan naik rakit mengapung ke laut. Yang akan mengikutiku mungkin You? Zilu mendengar dan gembira. Sang Guru berkata: You lebih menyukai keberanian daripada aku, tetapi tak punya ukuran untuk menimbang perkara.",
+   "片里落点": "Ke laut itu sebuah desahan, sebuah kiasan; Zilu menganggapnya sungguhan, berani berlebih tetapi tak bisa menimbang patut tidaknya. Hari ini: di grup ada yang asal bilang mau berhenti kerja dan keliling dunia, dan ada yang malam itu juga sudah mengemas ransel."
+  },
+  "5.7": {
+   "title": "Meng Wubo bertanya apakah Zilu manusiawi",
+   "yw": "Meng Wubo bertanya: Apakah Zilu manusiawi? Sang Guru berkata: Aku tidak tahu. Ia bertanya lagi. Sang Guru berkata: You dapat diserahi urusan pungutan militer negara berkereta seribu; apakah ia manusiawi, aku tak tahu. Bagaimana dengan Qiu? Sang Guru berkata: Qiu dapat dijadikan kepala kota berpenduduk seribu keluarga atau kepala rumah berkereta seratus; apakah ia manusiawi, aku tak tahu. Bagaimana dengan Chi? Sang Guru berkata: Chi, dengan ikat pinggang terpasang, berdiri di istana, dapat disuruh bercakap dengan tamu; apakah ia manusiawi, aku tak tahu.",
+   "片里落点": "Kemampuan yang tampak dikatakan apa adanya; kemanusiaan datang dan pergi, tak dijamin atas nama orang. Tiga murid tiga bakat, setiap kalimat bilang apa yang bisa mereka kerjakan, tak satu pun bilang manusiawi. Hari ini: dalam pemeriksaan latar belakang, pemberi referensi berkata kemampuannya saya jamin, wataknya saya tak bisa bilang."
+  },
+  "5.8": {
+   "title": "Siapa lebih baik, engkau atau Hui?",
+   "yw": "Sang Guru bertanya kepada Zigong: Siapa lebih baik, engkau atau Hui? Ia menjawab: Bagaimana Ci berani membandingkan diri dengan Hui? Hui mendengar satu tahu sepuluh; Ci mendengar satu tahu dua. Sang Guru berkata: Engkau tidak setara dengannya. Aku setuju engkau tidak setara dengannya.",
+   "片里落点": "Pertanyaan Konfusius menguji apakah Zigong mengenal dirinya; Zigong mengenalnya, dan tak sulit menunduk, maka Konfusius lebih dulu berkata “memang tidak setara”, lalu dengan sungguh mengakuinya. Hari ini: pelatih bertanya kepada dua pemain siapa yang lebih kuat, dan satu orang tanpa pikir menunjuk yang lain."
+  },
+  "5.9": {
+   "title": "Zai Yu tidur di siang hari",
+   "yw": "Zai Yu tidur di siang hari. Sang Guru berkata: Kayu lapuk tak bisa diukir; dinding tanah kotoran tak bisa diplester. Terhadap Yu, apa gunanya menegur? Sang Guru berkata: Dulu terhadap orang, aku mendengar katanya dan memercayai perbuatannya. Kini terhadap orang, aku mendengar katanya dan memperhatikan perbuatannya. Yu yang membuatku berubah.",
+   "片里落点": "Beratnya bukan pada tidur siang, tetapi pada tekad yang kendur dan kata yang tak terbukti; “tak layak ditegur” justru teguran paling berat; Konfusius memakai peristiwa ini untuk menetapkan aturan: dengarkan kata, perhatikan juga perbuatan. Hari ini: tiga kartu anggota gym dalam setahun, tak satu pun pernah dipakai."
+  },
+  "5.10": {
+   "title": "Aku belum melihat orang yang sungguh teguh",
+   "yw": "Sang Guru berkata: Aku belum melihat orang yang sungguh teguh. Seseorang menjawab: Shen Cheng. Sang Guru berkata: Cheng punya hasrat; bagaimana ia bisa teguh?",
+   "片里落点": "Teguh berarti mampu menekan hal-hal luar; hasrat berarti tertutup oleh hal-hal luar. Tampak keras dan suka menang justru sedang dituntun hasratnya sendiri. Hari ini: orang yang paling keras bicara di rapat dan tak tunduk pada siapa pun, tak bisa melewati diskon di mal."
+  },
+  "5.11": {
+   "title": "Yang tak kuinginkan orang lakukan padaku",
+   "yw": "Zigong berkata: Yang tak saya inginkan orang lain lakukan kepada saya, saya pun ingin tidak melakukannya kepada orang lain. Sang Guru berkata: Ci, itu belum engkau capai.",
+   "片里落点": "Bedanya pada satu huruf, wu “tidak ada” dan wu “jangan”: tak punya niat itu sama sekali adalah kemanusiaan, punya niat lalu menahannya adalah tenggang rasa; yang dikatakan Zigong adalah kewajaran orang yang manusiawi, belum ia capai. Hari ini: orang yang paling benci terbangun oleh pesan tengah malam menjadwalkan semua pesan setelah pukul sepuluh malam untuk dikirim besok pagi."
+  },
+  "5.12": {
+   "title": "Wenzhang Sang Guru dapat didengar",
+   "yw": "Zigong berkata: Wenzhang Sang Guru dapat kami dengar; tetapi kata-kata Sang Guru tentang kodrat manusia dan Jalan Langit tak dapat kami dengar.",
+   "片里落点": "Wenzhang bukan karangan tertulis, melainkan kebajikan yang tampak dalam laku dan tutur; Konfusius jarang berbicara tentang kodrat dan Jalan Langit, bukan tak pernah; sekolahnya mengajar berurutan, dan baru saat ini Zigong pertama kali mendengarnya. Kalimat ini kekaguman, bukan keluhan. Hari ini: murid dapur memotong sayur tiga tahun, baru hari ini koki kepala membicarakan api dengannya."
+  },
+  "5.13": {
+   "title": "Ketika Zilu mendengar sesuatu",
+   "yw": "Ketika Zilu mendengar sesuatu dan belum mampu melaksanakannya, ia hanya takut mendengar hal lain lagi.",
+   "片里落点": "Yang ia takutkan bukan belajar lebih banyak, melainkan hal sebelumnya belum dikerjakan; teman seperguruan mencatatnya karena merasa kalah. Hari ini: satu kursus belum dilatih tuntas, jadi jangan dulu mendaftar kursus berikutnya."
+  },
+  "5.14": {
+   "title": "Mengapa Kong Wenzi disebut “wen”?",
+   "yw": "Zigong bertanya: Mengapa Kong Wenzi disebut “wen”? Sang Guru berkata: Ia cerdas dan gemar belajar, tidak malu bertanya kepada yang lebih rendah; karena itu ia disebut “wen”.",
+   "片里落点": "Zigong bertanya karena nama Kong Wenzi buruk; Konfusius hanya menjawab dengan satu kaidah gelar anumerta, tidak membela seluruhnya, juga tidak menghapus kelebihannya; “wen” hanya sampai lapis itu. Hari ini: bos yang reputasinya biasa saja bertanya di depan semua orang dalam rapat kepada anak magang, “Ini saya tidak paham, coba jelaskan.”"
+  },
+  "5.15": {
+   "title": "Zichan memiliki empat jalan junzi",
+   "yw": "Sang Guru berkata tentang Zichan: Ia memiliki empat jalan junzi: dalam membawa diri ia rendah hati; dalam melayani atasan ia hormat; dalam memelihara rakyat ia murah hati; dalam memerintah rakyat ia adil.",
+   "片里落点": "Memuji satu per satu justru menunjukkan masih ada yang belum tercapai; keempatnya punya sasarannya masing-masing; menilai orang dari satu kalimat atau satu peristiwa itu keliru. Hari ini: jangan menilai toko kecil yang sudah buka tiga puluh tahun dari satu ulasan buruk."
+  },
+  "5.16": {
+   "title": "Dengan teman lama, tak perlu sungkan?",
+   "yw": "Sang Guru berkata: Yan Pingzhong pandai bergaul dengan orang; meski sudah lama kenal, ia tetap menghormati mereka.",
+   "片里落点": "Rasa hormat memudar seiring waktu itu lumrah; tetap hormat setelah lama barulah disebut pandai bergaul. Hari ini: lima tahun tinggal sekontrakan, teman sekamar tetap mengetuk pintu sebelum meminjam charger."
+  },
+  "5.17": {
+   "title": "Benarkah Zang Wenzhong cerdik?",
+   "yw": "Sang Guru berkata: Zang Wenzhong memelihara kura-kura besar, kepala tiangnya diukir gunung, balok atapnya dilukis tanaman air. Bagaimana ia bisa disebut bijak?",
+   "片里落点": "Tidak memakai pikiran untuk yang dibutuhkan rakyat, malah mengambil hati roh-roh, tidak terhitung bijak. Hari ini: usaha sepi, alih-alih bertanya kepada pelanggan, pemiliknya menghabiskan banyak uang memutar arah pintu toko."
+  },
+  "5.18": {
+   "title": "Ini pun belum terhitung kemanusiaan?",
+   "yw": "Zizhang bertanya: Perdana menteri Ziwen tiga kali diangkat tanpa raut gembira, tiga kali dicopot tanpa raut kesal; urusan pemerintahan perdana menteri lama selalu ia sampaikan kepada yang baru. Bagaimana menurut Guru? Sang Guru berkata: Ia setia. – Apakah ia manusiawi? – Aku tak tahu; bagaimana bisa disebut manusiawi? – Ketika Cuizi membunuh raja Qi, Chen Wenzi punya sepuluh kereta kuda; ia tinggalkan semuanya dan pergi. Tiba di negeri lain ia berkata: “Mereka seperti menteri kita Cuizi,” lalu pergi. Tiba di negeri lain lagi ia berkata lagi: “Mereka seperti menteri kita Cuizi,” lalu pergi. Bagaimana menurut Guru? Sang Guru berkata: Ia bersih. – Apakah ia manusiawi? – Aku tak tahu; bagaimana bisa disebut manusiawi?",
+   "片里落点": "Setia dan bersih adalah kebajikan satu segi; kemanusiaan melihat apakah seluruhnya selaras dengan prinsip dan sungguh tanpa pamrih; mempercayai hal besar dari hal kecil adalah kelemahan Zizhang. Hari ini: keluar kerja dengan serah terima rapi, bahkan buku kata sandi ditinggalkan, itu setia pada tugas, belum bisa disebut lebih."
+  },
+  "5.19": {
+   "title": "Mengapa berpikir dua kali sudah cukup?",
+   "yw": "Ji Wenzi berpikir tiga kali sebelum bertindak. Sang Guru mendengarnya dan berkata: Dua kali sudah cukup.",
+   "片里落点": "Bila pada kali ketiga masih ragu, tanyakan pada diri sendiri: sedang memikirkan urusannya, atau untung ruginya? Hari ini: membaca kontrak untuk keempat kalinya dan mulai menemukan kesalahan yang sebenarnya bukan kesalahan."
+  },
+  "5.20": {
+   "title": "Mengapa “kebodohan” ini lebih sulit dipelajari daripada kecerdikan?",
+   "yw": "Sang Guru berkata: Ning Wuzi, ketika negara berjalan di atas Jalan, ia bijak; ketika negara kehilangan Jalan, ia bodoh. Kebijakannya dapat ditiru; kebodohannya tak dapat ditiru.",
+   "片里落点": "“Bodoh” berarti mau mengerjakan yang dihindari semua orang pintar, sambil tetap menjaga diri dan menolong rajanya; catatan Cheng tentang Bi Gan menunjukkan ini bukan sekadar pura-pura bodoh. Hari ini: tahun perusahaan dilanda masalah semua orang pergi, ia tetap tinggal membereskan pembukuan yang kacau."
+  },
+  "5.21": {
+   "title": "Setelah bertahun-tahun mengembara, untuk apa Konfusius pulang?",
+   "yw": "Ketika Sang Guru di negeri Chen, ia berkata: Pulanglah! Pulanglah! Anak-anak muda kampungku bercita-cita tinggi tetapi ceroboh; mereka sudah menghasilkan corak yang indah, tetapi belum tahu cara memotongnya.",
+   "片里落点": "Beralih dari menjalankan Jalan ke mewariskan Jalan; orang muda yang bersemangat bisa maju dalam Jalan, hanya dikhawatirkan melampaui batas, maka ia pulang untuk merapikan mereka. Hari ini: proposal karyawan baru berisi delapan ide bagus dalam sepuluh halaman, tetap perlu orang yang membantu memangkasnya."
+  },
+  "5.22": {
+   "title": "Bo Yi dan Shu Qi begitu angkuh, mengapa tak ada yang mendendam?",
+   "yw": "Sang Guru berkata: Bo Yi dan Shu Qi tidak mengingat-ingat kesalahan lama; karena itu jarang ada dendam.",
+   "片里落点": "Begitu bersih hingga seolah tak menoleransi siapa pun, tetapi begitu orang berubah mereka berhenti, maka sedikit yang mendendam; kelapangan orang yang bersih adalah tak menyimpan catatan lama. Hari ini: tetangga yang pernah bertengkar sudah minta maaf, di tangga tetap saling mengangguk."
+  },
+  "5.23": {
+   "title": "Mengapa meminjamkan dari tetangga itu tidak lurus?",
+   "yw": "Sang Guru berkata: Siapa bilang Weisheng Gao lurus? Seseorang meminta cuka kepadanya; ia memintanya dari tetangga lalu memberikannya.",
+   "片里落点": "Bilang “tidak punya” kalau memang tidak punya, itulah lurus; meminjam lalu mengaku milik sendiri adalah membengkokkan diri untuk menyenangkan orang. Perkara kecil, tetapi Cheng berkata yang dirusak adalah kelurusan itu sendiri. Hari ini: rekan kerja minta kabel charger, kita pinjam dari meja sebelah lalu bilang “Ini punyaku, pakai saja.”"
+  },
+  "5.24": {
+   "title": "Mengapa Konfusius malu pada sopan santun berlebihan?",
+   "yw": "Sang Guru berkata: Kata-kata manis, wajah menjilat, hormat berlebihan—Zuoqiu Ming malu akan itu, aku pun malu. Menyembunyikan dendam lalu berteman dengan orangnya—Zuoqiu Ming malu akan itu, aku pun malu.",
+   "片里落点": "Kedua hal memalukan itu sama-sama tak selaras luar dan dalam: kata manis, senyum, dan basa-basi berlebihan untuk mengambil hati; berteman sambil menyimpan dendam adalah kepalsuan. Xie berkata ini lebih memalukan daripada mencuri, karena hatinya tidak lurus. Hari ini: masih menyimpan dendam, tetapi di meja makan menjadi yang pertama mengangkat gelas untuknya."
+  },
+  "5.25": {
+   "title": "Mengapa cita-cita Konfusius lebih besar dari Zilu dan Yan Yuan?",
+   "yw": "Yan Yuan dan Ji Lu mendampingi. Sang Guru berkata: Mengapa kalian tidak masing-masing menyebut cita-cita? Zilu berkata: Saya ingin kereta, kuda, pakaian, dan mantel bulu ringan saya dipakai bersama teman-teman, dan tak menyesal bila rusak. Yan Yuan berkata: Saya ingin tidak memamerkan kebaikan saya dan tidak menonjolkan jasa saya. Zilu berkata: Kami ingin mendengar cita-cita Guru. Sang Guru berkata: Agar orang tua merasa tenteram, teman saling percaya, dan yang muda disayangi.",
+   "片里落点": "Ketiganya berbagi dengan orang lain, bedanya pada besar kecil: Zilu berbagi kereta dan kuda dengan teman, Yan Yuan tak memamerkan diri, Konfusius membuat setiap orang mendapat tempatnya, seperti langit dan bumi memelihara tanpa jejak. Hari ini: ibu di kompleks yang dititipi kunci oleh para lansia dan pintunya jadi tujuan pertama anak-anak sepulang sekolah."
+  },
+  "5.26": {
+   "title": "Mengapa begitu sulit melihat kesalahan sendiri?",
+   "yw": "Sang Guru berkata: Sudahlah! Aku belum melihat orang yang dapat melihat kesalahannya sendiri dan menggugat dirinya dalam hati.",
+   "片里落点": "Dua lapis: tahu kesalahan sendiri sudah jarang; tahu lalu menggugat diri dalam hati lebih jarang lagi; hanya dengan menggugat diri perubahan bisa tuntas. Keluhan “belum melihat” adalah peringatan bagi para pelajar. Hari ini: ia salah menyebut satu angka di rapat dan tak ada yang sadar, seusai rapat ia sendiri mengirim pesan meralatnya."
+  },
+  "5.27": {
+   "title": "Satu hal yang Konfusius akui lebih dari orang lain",
+   "yw": "Sang Guru berkata: Di dusun sepuluh keluarga pasti ada orang yang setia dan tepercaya seperti aku, tetapi tak ada yang gemar belajar seperti aku.",
+   "片里落点": "Setia dan tepercaya adalah dasar, ada di mana-mana; gemar belajar adalah upaya, jarang ditemukan. Konfusius tidak membanggakan pengetahuan bawaan, hanya kegemaran belajar, untuk menyemangati orang. Bab Gongye Chang berakhir di sini. Hari ini: orang jujur dan andal ada di mana-mana; yang masih ikut sekolah malam di usia enam puluh sedikit."
+  },
+  "6.1": {
+   "title": "Mengapa urusan boleh sederhana tetapi hati tidak?",
+   "yw": "Sang Guru berkata: Yong layak diberi kursi menghadap selatan. Zhonggong bertanya tentang Zisang Bozi. Sang Guru berkata: Boleh, ia sederhana. Zhonggong berkata: Berdiam dalam hormat dan bertindak sederhana dalam memerintah rakyat, bukankah itu baik? Berdiam dalam kesederhanaan dan bertindak sederhana, bukankah itu terlalu sederhana? Sang Guru berkata: Kata-kata Yong benar.",
+   "片里落点": "Sama-sama “sederhana”: yang satu hatinya punya pegangan, hormat di mana-mana, sehingga urusan dengan sendirinya tidak ruwet; yang lain sejak awal ingin hemat tenaga dan melepaskan dirinya sendiri, jadi terlalu sederhana. Hari ini: tim dengan aturan paling sedikit justru dipimpin orang yang paling tepat waktu dan paling tertib."
+  },
+  "6.2": {
+   "title": "Mengapa “gemar belajar” bagi Konfusius bukan membaca banyak?",
+   "yw": "Adipati Ai bertanya: Siapa di antara murid-muridmu yang gemar belajar? Konfusius menjawab: Ada Yan Hui yang gemar belajar. Ia tidak memindahkan amarahnya, tidak mengulangi kesalahan. Sayang umurnya pendek dan ia wafat. Kini tak ada lagi; aku belum mendengar ada yang gemar belajar.",
+   "片里落点": "Adipati bertanya tentang ilmu, Konfusius menjawab dengan dua hal pembinaan diri: marah muncul karena perkara dan berhenti setelah perkara lewat, tidak dilampiaskan kepada orang lain; salah sekali langsung tahu, tidak mengulang. Gemar belajar terletak pada menguasai perasaan sendiri, bukan banyak membaca. Hari ini: dimarahi di kantor, sampai di rumah ia tetap berjongkok mengikat tali sepatu anaknya dengan baik."
+  },
+  "6.3": {
+   "title": "Mengapa Konfusius memberi satu orang sedikit beras dan yang lain banyak?",
+   "yw": "Zihua diutus ke Qi, dan Ranzi meminta beras untuk ibunya. Sang Guru berkata: Beri satu fu. Ia minta tambah. Sang Guru berkata: Beri satu yu. Ranzi memberi lima bing. Sang Guru berkata: Chi pergi ke Qi menunggang kuda gemuk dan memakai mantel bulu ringan. Aku mendengar: junzi menolong yang kekurangan, tidak menambah kekayaan yang kaya. Yuan Si menjadi pengurus rumahnya, diberi sembilan ratus takar beras, dan ia menolak. Sang Guru berkata: Jangan! Berikan kepada tetangga dan orang sekampungmu.",
+   "片里落点": "Memberi banyak atau sedikit bukan soal sungkan, melainkan pantas atau tidak. Keluarga Zihua tidak kekurangan, jadi diberi sedikit agar tak menambah kekayaan yang kaya; gaji Yuan Si adalah hak jabatannya, menolaknya justru keliru, kelebihannya dibagikan kepada tetangga. Yang satu “menolong yang mendesak, bukan menambah yang kaya”, yang lain “gaji tetap tak semestinya ditolak”."
+  },
+  "6.4": {
+   "title": "Bolehkah orang berlatar buruk dipakai?",
+   "yw": "Sang Guru berkata tentang Zhonggong: Anak sapi dari sapi belang yang berbulu merah dan bertanduk lurus, meski orang tak mau memakainya, akankah roh gunung dan sungai menolaknya?",
+   "片里落点": "Anak sapi dari sapi bajak belang, merah murni dan tanduknya bagus: meski orang tak mau mempersembahkannya karena asal-usulnya, roh gunung dan sungai tak akan menolaknya. Keburukan ayah tak membatalkan kebaikan anak; catatan Zhu Xi menekankan ini membicarakan Zhonggong, bukan ucapan langsung kepadanya."
+  },
+  "6.5": {
+   "title": "Di mana Yan Hui berbeda dari yang lain?",
+   "yw": "Sang Guru berkata: Hui, hatinya bisa tiga bulan tak meninggalkan kemanusiaan; yang lain hanya mencapainya sehari atau sebulan, tidak lebih.",
+   "片里落点": "Kemanusiaan Yan Hui seperti tuan rumah yang tinggal di rumah, sesekali keluar; milik yang lain seperti tamu yang sesekali datang. Bedanya pada lama tidaknya, bukan ada tidaknya."
+  },
+  "6.6": {
+   "title": "Cukupkah satu keunggulan untuk menjabat?",
+   "yw": "Ji Kangzi bertanya: Bisakah Zhong You diserahi pemerintahan? Sang Guru berkata: You tegas; apa sulitnya dalam pemerintahan? Ia bertanya: Bisakah Ci diserahi pemerintahan? Jawabnya: Ci cerdas; apa sulitnya? Ia bertanya: Bisakah Qiu diserahi pemerintahan? Jawabnya: Qiu serba bisa; apa sulitnya?",
+   "片里落点": "Zilu tegas, Zigong cerdas, Ran Qiu serba bisa: masing-masing punya satu keunggulan sehingga bisa dipakai. Memakai orang berarti mengambil kelebihannya."
+  },
+  "6.7": {
+   "title": "Ditawari jabatan, mengapa ia mau kabur?",
+   "yw": "Keluarga Ji ingin menjadikan Min Ziqian kepala Bi. Min Ziqian berkata: Tolong tolakkan untuk saya dengan baik. Jika ada yang datang lagi mencari saya, pasti saya sudah di seberang Sungai Wen.",
+   "片里落点": "Ia tak mau menjadi abdi keluarga Ji, tetapi meminta utusan menolakkan dengan baik; bila datang lagi, ia menyeberang sungai ke Qi. Tidak melawan keras, tidak pula tunduk: terlalu keras mengundang bencana, terlalu lunak mengundang hina."
+  },
+  "6.8": {
+   "title": "Mengapa Konfusius menggenggam tangan muridnya yang sekarat lewat jendela?",
+   "yw": "Boniu sakit. Sang Guru menjenguknya, menggenggam tangannya lewat jendela, dan berkata: Kita kehilangan dia; ini takdir! Orang seperti ini terkena penyakit seperti ini! Orang seperti ini terkena penyakit seperti ini!",
+   "片里落点": "Keluarga Boniu memindahkan ranjang ke bawah jendela selatan menurut tata cara kunjungan raja; Konfusius tak berani menerima kehormatan itu, maka tidak masuk, hanya menggenggam tangan lewat jendela untuk berpamitan. Kalimat itu diucapkan dua kali: duka bahwa orang seperti ini menderita penyakit seperti ini, diserahkan pada takdir."
+  },
+  "6.9": {
+   "title": "Semiskin itu, apa yang membuat Yan Hui bahagia?",
+   "yw": "Sang Guru berkata: Betapa luhur Hui! Sekeranjang nasi, sekendi air, tinggal di gang sempit; orang lain tak tahan kesusahannya, Hui tak membiarkan kegembiraannya berubah. Betapa luhur Hui!",
+   "片里落点": "Yang ia nikmati bukan kemiskinan, melainkan kegembiraan yang tak dapat diubah kemiskinan. Zhu Xi memilih tidak menjelaskannya, membiarkan pembaca sendiri menemukan isi kata “其” (miliknya)."
+  },
+  "6.10": {
+   "title": "Ia bilang tenaganya kurang, mengapa Konfusius tak percaya?",
+   "yw": "Ran Qiu berkata: Bukan saya tak menyukai Jalan Guru, tenaga saya tak cukup. Sang Guru berkata: Yang tenaganya tak cukup roboh di tengah jalan. Engkau sedang menarik garis batas.",
+   "片里落点": "Orang yang sungguh kekurangan tenaga roboh di tengah jalan; Ran Qiu sudah menggaris di tanah sebelum berangkat. Bukan tak bisa, melainkan tak mau."
+  },
+  "6.11": {
+   "title": "Sama-sama sarjana, di mana bedanya?",
+   "yw": "Sang Guru berkata kepada Zixia: Jadilah sarjana ala junzi, jangan sarjana ala orang kecil.",
+   "片里落点": "Membaca buku yang sama: belajar untuk membangun diri adalah sarjana junzi; belajar agar dilihat orang dan meraih keuntungan adalah sarjana orang kecil. Untung bukan hanya uang; nama juga termasuk."
+  },
+  "6.12": {
+   "title": "Tak mengambil jalan pintas, apakah itu bakat?",
+   "yw": "Ziyou menjadi kepala Wucheng. Sang Guru berkata: Sudahkah engkau menemukan orang baik di sana? Jawabnya: Ada Tantai Mieming, berjalan tak pernah lewat jalan pintas, dan tak pernah datang ke ruangan saya kecuali untuk urusan dinas.",
+   "片里落点": "Berjalan tak lewat jalan pintas, tanpa urusan dinas tak masuk pintu pejabat. Yang teguh dalam hal kecil bisa diandalkan dalam hal besar; Ziyou juga melihat lapis ini saat menilai orang."
+  },
+  "6.13": {
+   "title": "Ia menjaga barisan belakang, mengapa tak mau mengakuinya?",
+   "yw": "Sang Guru berkata: Meng Zhifan tidak membanggakan diri. Ketika pasukan mundur, ia di barisan paling belakang. Saat hendak masuk gerbang kota, ia mencambuk kudanya dan berkata: Bukan saya berani di belakang; kuda saya tak mau maju.",
+   "片里落点": "Menahan musuh di barisan belakang saat mundur adalah jasa besar, tetapi mendekati gerbang ia melimpahkannya pada kuda. Melempar jasa kepada kuda menunjukkan hati yang tak ingin mengungguli orang lain."
+  },
+  "6.14": {
+   "title": "Tanpa lidah fasih dan wajah tampan, bisakah lolos dari bencana?",
+   "yw": "Sang Guru berkata: Tanpa kefasihan pendeta Tuo, tetapi dengan ketampanan Song Zhao, sulit lolos dari bencana di zaman sekarang!",
+   "片里落点": "Ini bukan ajaran untuk melatih lidah dan rupa, melainkan ratapan atas zaman: ketika dunia hanya menghargai mulut manis dan wajah elok, orang jujur sulit lolos dari bencana."
+  },
+  "6.15": {
+   "title": "Semua keluar lewat pintu, mengapa tidak lewat jalan yang benar?",
+   "yw": "Sang Guru berkata: Siapa yang bisa keluar tanpa melalui pintu? Mengapa tak ada yang menempuh Jalan ini?",
+   "片里落点": "Semua tahu keluar lewat pintu, tidak memanjat tembok; jalan yang benar dalam hidup ada di depan mata, tetapi tak ditempuh. Bukan Jalan yang jauh dari manusia, manusialah yang menjauh sendiri."
+  },
+  "6.16": {
+   "title": "Terlalu kasar atau terlalu halus, mana pilihan Konfusius?",
+   "yw": "Sang Guru berkata: Bila isi melebihi bentuk, orang menjadi kasar; bila bentuk melebihi isi, orang menjadi juru tulis. Bila bentuk dan isi seimbang, barulah ia junzi.",
+   "片里落点": "Terlalu polos itu kasar, terlalu berhias itu hampa; keduanya seimbang barulah junzi. Bila harus condong, lebih baik condong ke polos: dasar ada, hiasan bisa ditambah; dasar hilang, hiasan tak punya tempat."
+  },
+  "6.17": {
+   "title": "Bukankah orang yang tidak lurus juga hidup baik-baik saja?",
+   "yw": "Sang Guru berkata: Manusia hidup dengan kelurusan; yang bengkok tetap hidup hanya karena untung, lolos dari bencana.",
+   "片里落点": "Manusia semestinya hidup lurus; yang tidak lurus pun hidup, bukan karena pantas, melainkan karena beruntung lolos."
+  },
+  "6.18": {
+   "title": "Tahu, suka, gembira: apa bedanya?",
+   "yw": "Sang Guru berkata: Yang mengetahuinya tak sebanding dengan yang menyukainya; yang menyukainya tak sebanding dengan yang bergembira di dalamnya.",
+   "片里落点": "Tahu ada semangkuk nasi ini, suka memakannya, makan sampai kenyang dan hati tenang: tiga lapis. Bedanya bukan banyak sedikitnya pengetahuan, tetapi sungguh memperolehnya atau tidak."
+  },
+  "6.19": {
+   "title": "Apakah Konfusius meremehkan orang?",
+   "yw": "Sang Guru berkata: Kepada orang di atas rata-rata, boleh dibicarakan hal yang tinggi; kepada orang di bawah rata-rata, tak boleh dibicarakan hal yang tinggi.",
+   "片里落点": "Bukan memeringkat orang, melainkan menyesuaikan kata dengan pendengar: bicara terlalu tinggi, pendengar tak bisa menangkap, malah merusak. Mengajar sesuai kemampuan, naik setapak demi setapak."
+  },
+  "6.20": {
+   "title": "Apakah Konfusius percaya roh?",
+   "yw": "Fan Chi bertanya tentang kebijaksanaan. Sang Guru berkata: Mencurahkan diri pada yang benar bagi rakyat, menghormati roh-roh tetapi menjaga jarak, itu dapat disebut bijak. Ia bertanya tentang kemanusiaan. Sang Guru berkata: Orang yang manusiawi mendahulukan yang sulit dan mengakhirkan hasilnya; itu dapat disebut manusiawi.",
+   "片里落点": "Bukan soal percaya atau tidak, melainkan menghormati sekaligus menjaga jarak: urusan manusia dituntaskan dulu, roh dihormati tanpa dimintai; bekerja yang sulit dulu, hasilnya belakangan, tanpa menghitung untung lebih dulu."
+  }
+ }
 }

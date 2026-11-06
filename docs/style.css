@@ -342,3 +342,4 @@ details.fold>summary:after{content:"＋";color:var(--accent);font-size:18px;marg
 details.fold[open]>summary:after{content:"－"}
 details.fold[open]{padding-bottom:14px}
 .deep .citeit{margin-top:22px}
+html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font-family:"Noto Serif","Noto Serif SC","Source Han Serif SC",serif}
