@@ -57,6 +57,9 @@ export class Live {
         await this.state.storage.put("copies", C);
       }
       return Response.json({ ok: true });
+    } else if (req.method === "GET" && url.pathname === "/reads") { // 某章今天被读了几次
+      const c = url.searchParams.get("c") || "", R = await this.roll("reads");
+      return Response.json({ today: (OKC.test(c) && R[this.day()] && R[this.day()][c]) || 0 });
     } else if (req.method === "GET" && url.pathname === "/top") {
       const R = await this.roll("reads"), C = await this.roll("copies"), heat = {}, cp = {}, d0 = this.day();
       for (const d in R) for (const c in R[d]) heat[c] = (heat[c] || 0) + R[d][c];
