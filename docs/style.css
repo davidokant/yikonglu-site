@@ -302,15 +302,16 @@ h3.ph{font-size:17px;margin:22px 0 10px;border-left-width:3px}h3.ph small{margin
 /* 一页两层：首页大图与上半入口 */
 .hero{position:relative;margin:0;background:#241a12;overflow:hidden}
 .hero picture{display:block;position:relative;line-height:0}
-.hero picture:after{content:"";position:absolute;left:0;right:0;bottom:0;height:28%;background:linear-gradient(to bottom,rgba(36,26,18,0),#241a12)}
-.hero img{display:block;width:100%;height:auto;max-height:72vh;object-fit:cover;object-position:50% 38%}
-.herotext{position:relative;margin-top:-56px;padding:0 16px 28px;text-align:center;color:#fff}
-.herotext h1{font-size:44px;font-weight:900;letter-spacing:.2em;margin:0;line-height:1.25;text-shadow:0 2px 12px rgba(0,0,0,.5)}
-.herotext h1 small{display:block;font-size:15px;font-weight:400;letter-spacing:.35em;margin-top:4px;opacity:.85}
-.herotext .motto{color:#f3e6cf;font-size:20px;margin:10px 0 0!important}
-.herotext .cta{margin:16px 0 0}.herotext .cta .btn{margin:4px 5px}
+.hero picture:after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(to bottom,rgba(36,26,18,0),#241a12)}
+.hero img{display:block;width:100%;height:auto;max-height:88vh;object-fit:cover;object-position:50% 100%}
+.herotext{position:relative;margin-top:-28px;padding:0 16px 26px;text-align:center;color:#fff}
+.herotext h1{font-size:40px;font-weight:900;letter-spacing:.2em;margin:0;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.herotext h1 small{display:block;font-size:14px;font-weight:400;letter-spacing:.35em;margin-top:2px;opacity:.85}
+.herotext .motto{color:#f3e6cf;font-size:18px;margin:6px 0 0!important}
+.herotext .cta{margin:12px 0 0}.herotext .cta .btn{margin:4px 5px}
 .herotext .btn.ghost{color:#fff;border-color:rgba(255,255,255,.75);background:transparent}
-@media (max-width:700px){.hero img{max-height:none}.herotext{margin-top:-34px;padding-bottom:20px}.herotext h1{font-size:32px}.herotext h1 small{font-size:13px}.herotext .motto{font-size:16px}.herotext .cta .btn{padding:7px 14px;font-size:14px;margin:3px}}
+@media (min-width:1100px){.herotext{position:absolute;left:0;right:0;bottom:0;margin:0;padding:0 16px 2.2%}}
+@media (max-width:700px){.hero img{max-height:none}.herotext{position:absolute;left:0;right:0;bottom:0;margin:0;padding:0 16px 6%}.herotext h1{font-size:32px}.herotext h1 small{font-size:13px}.herotext .motto{font-size:16px}.herotext .cta .btn{padding:7px 14px;font-size:14px;margin:3px}}
 .home .intro{padding-top:26px}
 .latest{display:block;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 22px;box-shadow:var(--shadow);color:var(--fg)}
 .latest:hover{text-decoration:none;border-color:var(--accent)}

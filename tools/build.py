@@ -1049,7 +1049,7 @@ def build_lang(L, D, write):
     recent = pub[-6:][::-1]
     lc = pub[-1]; lc_gist = (field(lc, "片里落点")[0] or "")
     vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">▶ YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">B站</a>' if L.code.startswith("zh") else "")
-    home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录片中人物围坐长桌读书" width="1125" height="633"></picture>
+    home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录片中人物围坐长桌读书" width="1920" height="1080"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1><p class="motto">{L.t("h_motto")}</p>
 <p class="cta"><a class="btn" href="{P}{rel_of(lc)}">{L.t("h_start")}</a>{vids}</p></div></section>
 <main class="home">
