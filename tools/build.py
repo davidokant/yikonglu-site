@@ -540,6 +540,16 @@ def analytics(L):
         a += f'<script>var _hmt=_hmt||[];(function(){{var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?{ANALYTICS["baidu"]}";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)}})();</script>'
     return a
 
+def meta_desc(L, title, rend, yw):  # 外语章页摘要：先本语言（标题＋译文），原文放后，读者在搜索结果里先看到自己的语言
+    if not rend: return f"{yw[:40]}… {L.t('book_lead')}"
+    d = f"{title} — {rend}"
+    cap = 150 if L.code in ("en", "fr", "es") else 90
+    if len(d) > cap:
+        d = d[:cap]
+        if " " in d[cap // 2:]: d = d.rsplit(" ", 1)[0]
+        d = d.rstrip(" ,.;:，。") + "…"
+    return d
+
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
     url = f"{DOMAIN}/{L.prefix}{rel}"
@@ -807,7 +817,7 @@ def build_lang(L, D, write):
         og_img = D["og"].get(c, {}).get("hant" if L.code in ("zh-Hant", "ja", "ko") else "hans")
         bname = L.book(pnum)
         name = f"《论语·{pname}》{c} {n['title']}" if L.code == "zh-Hans" else f"{L.t('lunyu')} {c} {title_of(c)}"
-        desc = f"{yw[c][:60]}……原文、白话、朱熹注的关键字、诸家说法与一孔录的读法。" if L.code == "zh-Hans" else f"{yw[c][:40]}… {L.t('book_lead')}"
+        desc = f"{yw[c][:60]}……原文、白话、朱熹注的关键字、诸家说法与一孔录的读法。" if L.code == "zh-Hans" else meta_desc(L, title_of(c), L.ch(c).get("yw"), yw[c])
         secs = ""
         for k, lab, mark in FIELDS:
             v, translated = field(c, k)
@@ -1427,12 +1437,28 @@ def main(zdir, outdir, kanwu=None):
         ui = dict(EXTRA_UI.get(code, {})); ui.update(tr["ui"])
         urls += build_lang(Lang(code, ui, tr), D, writer(code))
 
+    # 站点地图里写各语种互指（只指真有的页），谷歌、必应据此把同一章的七语版本认作一组
+    pre = sorted(((LANGS[k][0], LANGS[k][2]) for k in LANGS if LANGS[k][0]), key=lambda x: -len(x[0]))
+    def split_lang(u):
+        k = u[len(DOMAIN) + 1:]
+        for pf, hl in pre:
+            if k.startswith(pf): return hl, k[len(pf):]
+        return LANGS["zh-Hans"][2], k
+    groups = {}
+    for u in urls:
+        hl, r = split_lang(u); groups.setdefault(r, {})[hl] = u
+    def sm_alts(u):
+        g = groups[split_lang(u)[1]]
+        if len(g) < 2: return ""
+        x = "".join(f'<xhtml:link rel="alternate" hreflang="{hl}" href="{v}"/>' for hl, v in g.items())
+        dz = g.get(LANGS["zh-Hans"][2])
+        return x + (f'<xhtml:link rel="alternate" hreflang="x-default" href="{dz}"/>' if dz else "")
     def lastmod(u):
         k = u[len(DOMAIN) + 1:]
         return pdates.get(k + "index.html" if k.endswith("/") or not k else k, [None, today])[1]
     open(os.path.join(outdir, "sitemap.xml"), "w", encoding="utf-8").write(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-        "".join(f"<url><loc>{u}</loc><lastmod>{lastmod(u)}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
+        "".join(f"<url><loc>{u}</loc><lastmod>{lastmod(u)}</lastmod>{sm_alts(u)}</url>\n" for u in urls) + "</urlset>\n")
     json.dump({k: v for k, v in pdates.items() if k in seen}, open(pdp, "w", encoding="utf-8"), ensure_ascii=False, indent=0, sort_keys=True)
     ver = __import__("hashlib").md5((CSSV + A2V + open(os.path.join(HERE, "sw.js"), encoding="utf-8").read() + "".join(sorted(v[0] for k, v in pdates.items() if k in seen))).encode()).hexdigest()[:10]
     open(os.path.join(outdir, "sw.js"), "w", encoding="utf-8").write(open(os.path.join(HERE, "sw.js"), encoding="utf-8").read().replace("@VER@", ver).replace("@PREFIXES@", json.dumps([""] + [LANGS[k][0] for k in LANGS if LANGS[k][0]])))
