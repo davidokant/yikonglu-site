@@ -1,7 +1,7 @@
 /* 一孔录 service worker（build.py 生成时填入版本号）
    页面：先走网络，拿到就更新缓存；没网才用缓存，缓存也没有就给离线页。每周日补页、改页后，联网打开就是新版。
    样式、图片、检索索引：先给缓存再后台更新。字体：缓存优先。 */
-const VER = "fdb4c8f0de";
+const VER = "630ccd3b2f";
 const PREFIXES = ["", "zh-hant/", "en/", "ja/", "ko/", "fr/", "es/"];  // "", "zh-hant/", "en/" ...
 const CORE = "yk-core-" + VER, PAGES = "yk-pages", STATIC = "yk-static", FONTS = "yk-fonts";
 const MAX_PAGES = 400, MAX_STATIC = 300;
@@ -28,7 +28,7 @@ self.addEventListener("fetch", e => {
   if (r.method !== "GET") return;
   const u = new URL(r.url);
   if (u.origin === location.origin) {
-    if (u.pathname === "/sw.js") return;
+    if (u.pathname === "/sw.js" || u.pathname.endsWith(".pdf")) return;  // 读本 PDF 不进缓存
     if (r.mode === "navigate" || (r.headers.get("accept") || "").includes("text/html")) {
       e.respondWith(fetch(r).then(res => {
         if (res.ok) { const cp = res.clone(); caches.open(PAGES).then(c => c.put(u.origin + u.pathname, cp)).then(() => trim(PAGES, MAX_PAGES)); }

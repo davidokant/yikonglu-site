@@ -28,7 +28,7 @@ self.addEventListener("fetch", e => {
   if (r.method !== "GET") return;
   const u = new URL(r.url);
   if (u.origin === location.origin) {
-    if (u.pathname === "/sw.js") return;
+    if (u.pathname === "/sw.js" || u.pathname.endsWith(".pdf")) return;  // 读本 PDF 不进缓存
     if (r.mode === "navigate" || (r.headers.get("accept") || "").includes("text/html")) {
       e.respondWith(fetch(r).then(res => {
         if (res.ok) { const cp = res.clone(); caches.open(PAGES).then(c => c.put(u.origin + u.pathname, cp)).then(() => trim(PAGES, MAX_PAGES)); }
