@@ -1048,7 +1048,10 @@ def build_lang(L, D, write):
 <main class="wrap narrow">{bcards}</main>'''
     write("shumu/index.html", page(L, f'{L.t("shumu_title")}｜一孔录', L.t("shumu_p"), "shumu/", body)); urls.append(f"{DOMAIN}/{L.prefix}shumu/")
     recent = pub[-6:][::-1]
-    lc = pub[-1]; lc_gist = (field(lc, "片里落点")[0] or "")
+    # 首页“从最新一章读起”“最新一章”都指向视频已公开的最新一章
+    _now = datetime.datetime.now(datetime.timezone.utc)
+    _vpub = [c for c in pub if ch2ep[c][1].get("youtube") and (not ch2ep[c][1].get("public_at") or datetime.datetime.fromisoformat(ch2ep[c][1]["public_at"]) <= _now)]
+    lc = (_vpub or pub)[-1]; lc_gist = (field(lc, "片里落点")[0] or "")
     vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">▶ YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">B站</a>' if L.code.startswith("zh") else "")
     home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录片中人物围坐长桌读书" width="1920" height="1080"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1><p class="motto">{L.t("h_motto")}</p>
