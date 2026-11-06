@@ -176,23 +176,33 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
         rlist += f'<a class="gsroute" href="{P}{rel}">{av(p)}<div><b>跟着{esc(p["名"])}读<span>{esc(tl)}</span></b><p>{esc(rt["intro"])}</p></div></a>'
     # 十三经岛导览
     if G["zones"] or mapimg:
+        T0 = G.get("ditu") or {}
         def short(z):
             n = z["书名"]; return n[-2:] if n.startswith("春秋") else (n[:2] if len(n) > 3 else n)
+        def bmap(z):  # 这部书有书区图就直接点进去（孝经并在“大学·中庸·孝经”那张）
+            return next((k for k, n0 in T0.items() if n0.get("parent") == "@dao" and z["书名"] in n0["title"].replace(" ", "")), None)
         def book_href(z):
             n = z["书名"]; sl = slugs.get(n) or next((v for k, v in slugs.items() if n in k or k in n), "")
             return f"{P}lunyu/" if sl in live else f"{P}shumu/"
-        spots = "".join(f'<a class="spot{" now" if z.get("状态") == "在讲" else ""}" style="left:{esc(z["x"])}%;top:{esc(z["y"])}%" href="#z{i}" title="{esc(z["书名"])}" aria-label="{esc(z["书名"])}">{esc(short(z))}</a>' for i, z in enumerate(G["zones"]) if z.get("x") and z.get("y"))
+        def zhref(z, i):
+            k = bmap(z); return f"{P}gushi/ditu/{k}.html" if k else f"#z{i}"
+        def zspot(z, i):
+            cls = "spot" + (" now" if z.get("状态") == "在讲" else ""); dn = ' data-now="现在讲到"' if z.get("状态") == "在讲" else ""
+            st = f'left:{esc(z["x"])}%;top:{esc(z["y"])}%'; k = bmap(z)
+            if k: return f'<a class="{cls}"{dn} style="{st}" href="{P}gushi/ditu/{k}.html" title="{esc(z["书名"])}" aria-label="{esc(z["书名"])}">{esc(short(z))}</a>'
+            return f'<span class="{cls} soon"{dn} style="{st}" title="{esc(z["书名"])} · 书区图筹备中">{esc(short(z))}</span>'
+        spots = "".join(zspot(z, i) for i, z in enumerate(G["zones"]) if z.get("x") and z.get("y"))
         mp = f'<div class="gsmap"><img src="{mapimg}" alt="十三经岛地图" width="2000" height="1547">{spots}</div>' if mapimg else ""
         zc = ""
         for i, z in enumerate(G["zones"]):
             pm = [x for x in re.split(r"[、，,]", z.get("篇目") or "") if x]
             pt = "、".join(pm[:6]) + (f" 等 {len(pm)} 篇" if len(pm) > 6 else "")
-            now = z.get("状态") == "在讲"
-            zc += f'<a class="zcard{" now" if now else ""}" id="z{i}" href="{book_href(z)}"><span class="ov">{i + 1:02d} · {esc(z["区名"].split("·")[0])}</span><b>《{esc(z["书名"])}》</b><small>{esc(pt)}</small><em>{"现在讲到这里 ›" if now else "筹备中 · 看书目"}</em></a>'
-        T0 = G.get("ditu") or {}
-        bm = "".join(f'<a class="dchip go" href="{P}gushi/ditu/{k}.html"><b>{esc(n0["title"])}</b><em>书区图 ›</em></a>' for k, n0 in T0.items() if n0.get("parent") == "@dao")
+            now = z.get("状态") == "在讲"; k = bmap(z)
+            href = f"{P}gushi/ditu/{k}.html" if k else book_href(z)
+            tag = ("现在讲到这里 · 进书区 ›" if now else "进书区 ›") if k else ("现在讲到这里 ›" if now else "筹备中 · 看书目")
+            zc += f'<a class="zcard{" now" if now else ""}" id="z{i}" href="{href}"><span class="ov">{i + 1:02d} · {esc(z["区名"].split("·")[0])}</span><b>《{esc(z["书名"])}》</b><small>{esc(pt)}</small><em>{tag}</em></a>'
         h0 = hero("十三经岛", "区域图").replace(f'<a href="{P}gushi/">故事</a>', f'<a href="{P}gushi/">故事</a> › <a href="{P}gushi/ditu/">经典世界</a>') if T0 else hero("十三经岛", "片中的书区地图")
-        body = h0 + f'<main class="wrap gsmain"><p class="lead narrow">片里把每部经典画成一座岛或一片山。这张图是片中的虚构地图，不是历史地理；点岛上的标记或下面的卡片，看那部书的篇目和进度。</p>{mp}' + (f'<h2 class="ph">已有书区图</h2><div class="dchips">{bm}</div>' if bm else "") + f'<div class="zcards">{zc}</div></main>'
+        body = h0 + f'<main class="wrap gsmain"><p class="lead narrow">片里把每部经典画成一座岛或一片山。这张图是片中的虚构地图，不是历史地理；点岛上的书名，进那部书的书区，再往下点到篇章。</p>{mp}</main>'
         write("gushi/dao.html", page(L, "十三经岛｜一孔录·故事", "一孔录片中的书区地图：每部经典一座岛，标着现在讲到哪里。", "gushi/dao.html", body, ld("十三经岛", U("gushi/dao.html"), "一孔录片中的虚构书区地图"), "pg-gushi", og_img=(mapimg or "").lstrip("/") or None)); urls.append(U("gushi/dao.html"))
     # 分层地图：世界 → 区域 → 书区；十三经岛沿用 dao.html
     T = G.get("ditu") or {}
