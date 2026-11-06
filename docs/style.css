@@ -1,5 +1,5 @@
-:root{--bg:#f6f1e6;--paper:#fffcf5;--fg:#2a241d;--mute:#7b6f5f;--accent:#a3301f;--accent2:#2f5d62;--gold:#b08a46;--line:#e4d9c3;--shadow:0 1px 2px rgba(60,40,20,.06),0 8px 24px rgba(60,40,20,.06)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17150f;--paper:#211e17;--fg:#eee6d6;--mute:#a99d89;--accent:#e2836f;--accent2:#7fb3b3;--gold:#d2ad69;--line:#353024;--shadow:none}}
+:root{--bg:#f2f1ea;--paper:#fbfaf5;--fg:#1f2421;--mute:#69716b;--accent:#23503f;--accent2:#8a5a2c;--gold:#9a7f45;--line:#dcded2;--shadow:0 1px 2px rgba(30,45,38,.06),0 8px 24px rgba(30,45,38,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111513;--paper:#19201c;--fg:#e5e8e1;--mute:#9aa49d;--accent:#83bba0;--accent2:#d4a373;--gold:#cdb070;--line:#28312c;--shadow:none}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.9 "Noto Serif SC","Source Han Serif SC","Songti SC",serif}
