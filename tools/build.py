@@ -1173,7 +1173,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     # 问一孔（/wen.html）：按钮由脚本拼出邮箱，源码不露明文
     W = lang_tab(WEN, L.code)
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{W["sub"]}</span>{W["title"]}</h1></div></div>
-<main class="wrap narrow prose"><p>{W["p"]}</p><p><a class="btn" id="wenbtn" href="{P}about.html">{W["btn"]}</a></p><p>{W["only"]}</p><p class="note">{W["nojs"].replace("{p}", P)}</p></main>
+<main class="wrap narrow prose"><p>{W["p"]}</p><p><a class="btn" id="wenbtn" href="{P}about.html">{W["btn"]}</a></p><p class="note">{W["nojs"].replace("{p}", P)}</p></main>
 <script>(function(){{var a=document.getElementById('wenbtn'),u=['yikonglu','99'].join(''),d=['gmail','com'].join('.');a.href='mai'+'lto:'+u+String.fromCharCode(64)+d+'?subject='+encodeURIComponent('\\u95ee\\u4e00\\u5b54\\uff1a');}})();</script>'''
     write("wen.html", page(L, f'{W["title"]}｜一孔录', W["sub"], "wen.html", body)); urls.append(f"{DOMAIN}/{L.prefix}wen.html")
     # 免费读本（PDF 放 tools/root/duben/，原样拷到站点 /duben/）
