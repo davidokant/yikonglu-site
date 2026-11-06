@@ -42,15 +42,19 @@ def load(gdir, pub):
         if not aired(ep): continue
         who = [by[w.strip()]["id"] for w in re.split(r"[、,，/ ]+", r.get("人物") or "") if w.strip() in by]
         appear.append({"ep": (r.get("集号") or "").strip(), "c": c, "who": who, "ju": (r.get("句") or "").strip(), "line": (r.get("本章片中") or "").strip()})
-    routes, cur = {}, None
+    routes, cur, curbk = {}, None, "论语"  # 每人一条跨书的读书线，按书分段（“书”列空着算论语，可只在每段第一行填）
     for r in rows(os.path.join(gdir, "路线.csv")):
         w = (r.get("人物") or "").strip()
-        if w in by: cur = by[w]["id"]
+        if w in by: cur = by[w]["id"]; curbk = "论语"
         if not cur: continue
-        rt = routes.setdefault(cur, {"title": "", "intro": "", "items": []})
-        if (r.get("题目") or "").strip(): rt["title"] = r["题目"].strip()
-        if (r.get("导语") or "").strip(): rt["intro"] = r["导语"].strip()
-        if (r.get("章号") or "").strip(): rt["items"].append(((r["章号"]).strip(), (r.get("说明") or "").strip(), (r.get("起句") or "").strip()))
+        if (r.get("书") or "").strip(): curbk = r["书"].strip().strip("《》")
+        rt = routes.setdefault(cur, {"title": "", "intro": "", "items": [], "books": {}})
+        seg = rt["books"].setdefault(curbk, {"title": "", "intro": "", "items": []})
+        if (r.get("题目") or "").strip(): seg["title"] = r["题目"].strip(); rt["title"] = rt["title"] or seg["title"]
+        if (r.get("导语") or "").strip(): seg["intro"] = r["导语"].strip(); rt["intro"] = rt["intro"] or seg["intro"]
+        if (r.get("章号") or "").strip():
+            it = ((r["章号"]).strip(), (r.get("说明") or "").strip(), (r.get("起句") or "").strip())
+            seg["items"].append(it); rt["items"].append(it)
     zones = [{k: (v or "").strip() for k, v in r.items()} for r in rows(os.path.join(gdir, "书区.csv"))]
     imgdir = os.path.join(gdir, "立绘")
     return {"ppl": ppl, "by": by, "appear": appear, "routes": routes, "zones": zones, "dir": gdir,
@@ -143,7 +147,7 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
         h = (f'<div class="gshero person"><div class="wrap gsp">{fig}<div class="gshtext"><p class="gsnote">{NOTICE}</p><p class="crumb"><a href="{P}gushi/">故事</a></p>'
              f'<span class="ov">{esc(p.get("一句关系") or "一孔录原创角色")}</span><h1>{esc(p["名"])}</h1><dl class="gsfields">{dl}</dl>{rlink}</div></div></div>')
         body = h + (f'<main class="wrap narrow gsmain"><h2 class="ph">出场章句<small>已播 {len(mine)} 章</small></h2>'
-                    + ("<ol class=ztl>" + items + "</ol>" if items else "<p class=empty>已播各集里还没有。</p>")
+                    + ("<h3 class=gsbk>《论语》</h3><ol class=ztl>" + items + "</ol>" if items else "<p class=empty>已播各集里还没有。</p>")
                     + '<p class="note">每条链到章节页的那一句；原文、注家和读法都在章节页，这里只引不解。</p></main>')
         rel = f"gushi/{p['id']}.html"
         write(rel, page(L, f"{p['名']}｜一孔录原创角色｜一孔录·故事", f"{p['名']}，{p.get('一句关系','')}。一孔录原创角色，出场 {len(mine)} 章。"[:100], rel, body, ld(p["名"], U(rel), p.get("一句关系", ""), [p["名"]]), "pg-gushi", og_img=(p.get("_立绘") or "").lstrip("/") or None)); urls.append(U(rel))
@@ -152,19 +156,24 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
     rlist = ""
     for pid, rt in G["routes"].items():
         p = G["by"][pid]
-        items = ""
-        for c, note, qi in rt["items"]:
+        secs = ""
+        for bk, seg in rt["books"].items():
+          if bk != "论语": continue  # 别的书章节页上线后再接（章号链接按书走）
+          items = ""
+          for c, note, qi in seg["items"]:
             k = re.sub(r"[，。？！；：、“”…\s]", "", qi.split("……")[0])[:4]
             if c in pub and k and k not in re.sub(r"[，。？！；：、“”\s]", "", yw[c]): print(f"路线对号不上：{pid} {c} 起句“{qi}”")
             if c in pub:
                 items += f'<li>{cl(c)}<p class="zy" lang="zh-Hans">{esc(yw[c])}</p>' + (f'<p class="zd">{esc(note)}</p>' if note else "") + "</li>"
             else:
                 items += f'<li><span class="gsnot"><em>{c}</em><b>未讲</b></span>' + (f'<p class="zy" lang="zh-Hans">{esc(qi)}……</p>' if qi else "") + (f'<p class="zd">{esc(note)}</p>' if note else "") + "</li>"
+          voice = f'<div class="gsvoice">{av(p)}<p>{esc(seg["intro"])}<span>——{esc(p["名"])}</span></p></div>' if seg["intro"] else ""
+          secs += f'<h2 class="ph" id="{esc(bk)}">《{esc(bk)}》<small>{esc(seg["title"])}</small></h2>{voice}<ol class="ztl">{items}</ol>'
         rel = f"gushi/lu-{pid}.html"
-        voice = f'<div class="gsvoice">{av(p)}<p>{esc(rt["intro"])}<span>——{esc(p["名"])}</span></p></div>' if rt["intro"] else ""
-        body = hero(rt["title"] or f"跟着{p['名']}读", f"跟着{p['名']}读") + f'<main class="wrap narrow gsmain">{voice}<p class="note">下面是原文与章节页链接；人物只在这一句导语里出现，读法以章节页为准。</p><ol class="ztl">{items}</ol></main>'
-        write(rel, page(L, f"跟着{p['名']}读：{rt['title']}｜一孔录·故事", (rt["intro"] or rt["title"])[:100], rel, body, ld(f"跟着{p['名']}读", U(rel), rt["intro"], [p["名"]]), "pg-gushi")); urls.append(U(rel))
-        rlist += f'<a class="gsroute" href="{P}{rel}">{av(p)}<div><b>跟着{esc(p["名"])}读<span>{esc(rt["title"])}</span></b><p>{esc(rt["intro"])}</p></div></a>'
+        tl = " · ".join(f"《{b}》{sg['title']}" for b, sg in rt["books"].items() if b == "论语")
+        body = hero(f"跟着{p['名']}读", "读书线") + f'<main class="wrap narrow gsmain"><p class="note">{esc(p["名"])}一路读过的书，按书分段。下面是原文与章节页链接；角色只在每段导语里出现，读法以章节页为准。</p>{secs}</main>'
+        write(rel, page(L, f"跟着{p['名']}读：{tl}｜一孔录·故事", (rt["intro"] or rt["title"])[:100], rel, body, ld(f"跟着{p['名']}读", U(rel), rt["intro"], [p["名"]]), "pg-gushi")); urls.append(U(rel))
+        rlist += f'<a class="gsroute" href="{P}{rel}">{av(p)}<div><b>跟着{esc(p["名"])}读<span>{esc(tl)}</span></b><p>{esc(rt["intro"])}</p></div></a>'
     # 十三经岛导览
     if G["zones"] or mapimg:
         def short(z):

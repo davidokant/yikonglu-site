@@ -350,3 +350,4 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .dchips{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin:16px 0 24px}
 .dchip{display:flex;flex-direction:column;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--mute)}.dchip b{font-size:16px;color:var(--fg)}.dchip small{font-size:12px;line-height:1.5;margin-top:2px}.dchip em{font-style:normal;font-size:12px;margin-top:6px}
 .dchip.go{color:var(--fg)}.dchip.go em{color:var(--accent2)}.dchip.go:hover{text-decoration:none;border-color:var(--accent2)}
+.gsbk{font-size:17px;margin:14px 0 4px;color:var(--accent2)}
