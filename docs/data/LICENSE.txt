@@ -1,4 +1,6 @@
 一孔录 Yikonglu 开放数据
 原文与古注：公版。
-一孔录所写内容（白话、读法、引文核对表、读音）：CC BY-NC 4.0，署名“一孔录 yikonglu.com”，不得商用。
+一孔录所写的白话、引文出处表、读音：CC BY-NC 4.0，署名“一孔录 yikonglu.com”，不得商用。
+一孔录自己的读法不在开放许可内，也不在本数据包里。
+商用（含训练模型与再分发）须事先取得书面授权。
 https://creativecommons.org/licenses/by-nc/4.0/

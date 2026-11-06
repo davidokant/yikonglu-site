@@ -1,8 +1,218 @@
 {
-"zh-Hans": {"h": "开放什么，不开放什么", "p": "核对用的底子开放，一孔录自己的读法与编纂成果不开放。", "oh": "开放（CC BY-NC 4.0，署名、非商用）", "o": ["原文与异文", "读音表", "引文出处表（每条引文的出处与底本页码）", "注本逐章索引与页码", "勘误记录", "人物表", "专题表"], "ch": "不开放", "c": ["读法札记全文", "“一孔按”辑录", "原页标注图", "按处境编的索引", "视频、配音、片中人物与插图"], "biz": "商用，包括用于训练模型和再分发，须事先取得书面授权，请来信：", "rule": "以后每加一类数据，都按这条分界判断开不开放。", "log": "修订记录", "logs": [["2026-11-06", "写明开放与不开放的分界。"]]},
-"en": {"h": "What is open, and what is not", "p": "The groundwork for checking us is open; Yikonglu's own readings and editorial work are not.", "oh": "Open (CC BY-NC 4.0: attribution, non-commercial)", "o": ["Original text and textual variants", "Pronunciation tables", "Citation tables (source and base-edition page of every quotation)", "Chapter-by-chapter index of commentaries with page numbers", "Corrections log", "Table of people", "Table of topics"], "ch": "Not open", "c": ["Full reading notes", "Collected “Yikonglu reads it” notes", "Annotated page images", "Indexes arranged by life situation", "Videos, narration, characters and illustrations"], "biz": "Commercial use, including model training and redistribution, requires prior written permission. Write to:", "rule": "Every new kind of data will be judged by this line.", "log": "Revisions", "logs": [["2026-11-06", "Stated what is open and what is not."]]},
-"ja": {"h": "公開するもの、しないもの", "p": "照合のための土台は公開し、一孔録自身の読みと編纂の成果は公開しません。", "oh": "公開（CC BY-NC 4.0：表示・非営利）", "o": ["原文と異文", "読音表", "引用出典表（各引用の出典と底本の頁）", "注釈書の章別索引と頁", "勘誤記録", "人物表", "専題表"], "ch": "非公開", "c": ["読み方ノートの全文", "「一孔按」の集成", "原頁の注記画像", "境遇別の索引", "動画・ナレーション・作中人物と挿絵"], "biz": "商用（モデルの学習や再配布を含む）には事前に書面での許可が必要です。ご連絡先：", "rule": "今後新しい種類のデータを加えるときも、この線で判断します。", "log": "改訂記録", "logs": [["2026-11-06", "公開・非公開の線を明記。"]]},
-"ko": {"h": "공개하는 것, 공개하지 않는 것", "p": "대조에 쓰는 바탕은 공개하고, 일공록 자신의 읽기와 편찬 성과는 공개하지 않습니다.", "oh": "공개 (CC BY-NC 4.0: 저작자 표시·비영리)", "o": ["원문과 이문", "독음표", "인용 출처표(각 인용의 출처와 저본 쪽수)", "주석서 장별 색인과 쪽수", "오류 정정 기록", "인물표", "전제표"], "ch": "비공개", "c": ["읽기 노트 전문", "‘일공 안’ 모음", "원래 페이지 표시 이미지", "처지별 색인", "영상·내레이션·작품 속 인물과 삽화"], "biz": "모델 학습과 재배포를 포함한 상업적 이용은 사전에 서면 허가가 필요합니다. 연락처:", "rule": "앞으로 새 종류의 데이터를 더할 때도 이 기준으로 판단합니다.", "log": "개정 기록", "logs": [["2026-11-06", "공개·비공개 기준을 명시."]]},
-"fr": {"h": "Ce qui est ouvert, et ce qui ne l'est pas", "p": "Le socle qui sert à nous vérifier est ouvert ; les lectures et le travail éditorial propres à Yikonglu ne le sont pas.", "oh": "Ouvert (CC BY-NC 4.0 : attribution, pas d'usage commercial)", "o": ["Texte original et variantes", "Tableaux des prononciations", "Tableaux des citations (source et page de l'édition de base de chaque citation)", "Index des commentaires chapitre par chapitre, avec pages", "Registre des corrections", "Table des personnages", "Table des thèmes"], "ch": "Non ouvert", "c": ["Notes de lecture complètes", "Recueil des « lectures de Yikonglu »", "Images de pages annotées", "Index par situation de vie", "Vidéos, narration, personnages et illustrations"], "biz": "Tout usage commercial, y compris l'entraînement de modèles et la redistribution, exige une autorisation écrite préalable. Écrire à :", "rule": "Chaque nouveau type de données sera jugé selon cette ligne.", "log": "Révisions", "logs": [["2026-11-06", "Ligne de partage entre ouvert et non ouvert précisée."]]},
-"es": {"h": "Qué es abierto y qué no", "p": "La base que sirve para comprobarnos es abierta; las lecturas y el trabajo editorial propios de Yikonglu no lo son.", "oh": "Abierto (CC BY-NC 4.0: atribución, no comercial)", "o": ["Texto original y variantes", "Tablas de pronunciación", "Tablas de citas (fuente y página de la edición base de cada cita)", "Índice de comentarios capítulo a capítulo, con páginas", "Registro de correcciones", "Tabla de personajes", "Tabla de temas"], "ch": "No abierto", "c": ["Notas de lectura completas", "Recopilación de «la lectura de Yikonglu»", "Imágenes de páginas anotadas", "Índices por situación vital", "Vídeos, narración, personajes e ilustraciones"], "biz": "El uso comercial, incluido el entrenamiento de modelos y la redistribución, requiere autorización previa por escrito. Escríbanos a:", "rule": "Cada nuevo tipo de datos se juzgará según esta línea.", "log": "Revisiones", "logs": [["2026-11-06", "Se precisa qué es abierto y qué no."]]}
+ "zh-Hans": {
+  "h": "开放什么，不开放什么",
+  "p": "核对用的底子开放，一孔录自己的读法与编纂成果不开放。",
+  "oh": "开放（CC BY-NC 4.0，署名、非商用）",
+  "o": [
+   "原文与异文",
+   "白话",
+   "读音表",
+   "引文出处表（每条引文的出处与底本页码）",
+   "注本逐章索引与页码",
+   "勘误记录",
+   "人物表",
+   "专题表"
+  ],
+  "ch": "不开放",
+  "c": [
+   "读法札记全文",
+   "“一孔按”辑录",
+   "原页标注图",
+   "按处境编的索引",
+   "视频、配音、片中人物与插图"
+  ],
+  "biz": "商用，包括用于训练模型和再分发，须事先取得书面授权，请来信：",
+  "rule": "以后每加一类数据，都按这条分界判断开不开放。",
+  "log": "修订记录",
+  "logs": [
+   [
+    "2026-11-06",
+    "写明开放与不开放的分界。"
+   ],
+   [
+    "2026-11-06",
+    "数据包去掉一孔录读法四项，白话留在开放一侧。"
+   ]
+  ]
+ },
+ "en": {
+  "h": "What is open, and what is not",
+  "p": "The groundwork for checking us is open; Yikonglu's own readings and editorial work are not.",
+  "oh": "Open (CC BY-NC 4.0: attribution, non-commercial)",
+  "o": [
+   "Original text and textual variants",
+   "Plain renderings",
+   "Pronunciation tables",
+   "Citation tables (source and base-edition page of every quotation)",
+   "Chapter-by-chapter index of commentaries with page numbers",
+   "Corrections log",
+   "Table of people",
+   "Table of topics"
+  ],
+  "ch": "Not open",
+  "c": [
+   "Full reading notes",
+   "Collected “Yikonglu reads it” notes",
+   "Annotated page images",
+   "Indexes arranged by life situation",
+   "Videos, narration, characters and illustrations"
+  ],
+  "biz": "Commercial use, including model training and redistribution, requires prior written permission. Write to:",
+  "rule": "Every new kind of data will be judged by this line.",
+  "log": "Revisions",
+  "logs": [
+   [
+    "2026-11-06",
+    "Stated what is open and what is not."
+   ],
+   [
+    "2026-11-06",
+    "Removed our four reading fields from the data; plain renderings stay open."
+   ]
+  ]
+ },
+ "ja": {
+  "h": "公開するもの、しないもの",
+  "p": "照合のための土台は公開し、一孔録自身の読みと編纂の成果は公開しません。",
+  "oh": "公開（CC BY-NC 4.0：表示・非営利）",
+  "o": [
+   "原文と異文",
+   "現代語訳",
+   "読音表",
+   "引用出典表（各引用の出典と底本の頁）",
+   "注釈書の章別索引と頁",
+   "勘誤記録",
+   "人物表",
+   "専題表"
+  ],
+  "ch": "非公開",
+  "c": [
+   "読み方ノートの全文",
+   "「一孔按」の集成",
+   "原頁の注記画像",
+   "境遇別の索引",
+   "動画・ナレーション・作中人物と挿絵"
+  ],
+  "biz": "商用（モデルの学習や再配布を含む）には事前に書面での許可が必要です。ご連絡先：",
+  "rule": "今後新しい種類のデータを加えるときも、この線で判断します。",
+  "log": "改訂記録",
+  "logs": [
+   [
+    "2026-11-06",
+    "公開・非公開の線を明記。"
+   ],
+   [
+    "2026-11-06",
+    "データから一孔録の読み方四項目を外し、現代語訳は公開側に残す。"
+   ]
+  ]
+ },
+ "ko": {
+  "h": "공개하는 것, 공개하지 않는 것",
+  "p": "대조에 쓰는 바탕은 공개하고, 일공록 자신의 읽기와 편찬 성과는 공개하지 않습니다.",
+  "oh": "공개 (CC BY-NC 4.0: 저작자 표시·비영리)",
+  "o": [
+   "원문과 이문",
+   "번역",
+   "독음표",
+   "인용 출처표(각 인용의 출처와 저본 쪽수)",
+   "주석서 장별 색인과 쪽수",
+   "오류 정정 기록",
+   "인물표",
+   "전제표"
+  ],
+  "ch": "비공개",
+  "c": [
+   "읽기 노트 전문",
+   "‘일공 안’ 모음",
+   "원래 페이지 표시 이미지",
+   "처지별 색인",
+   "영상·내레이션·작품 속 인물과 삽화"
+  ],
+  "biz": "모델 학습과 재배포를 포함한 상업적 이용은 사전에 서면 허가가 필요합니다. 연락처:",
+  "rule": "앞으로 새 종류의 데이터를 더할 때도 이 기준으로 판단합니다.",
+  "log": "개정 기록",
+  "logs": [
+   [
+    "2026-11-06",
+    "공개·비공개 기준을 명시."
+   ],
+   [
+    "2026-11-06",
+    "데이터에서 일공록의 읽기 네 항목을 빼고, 번역은 공개 쪽에 남김."
+   ]
+  ]
+ },
+ "fr": {
+  "h": "Ce qui est ouvert, et ce qui ne l'est pas",
+  "p": "Le socle qui sert à nous vérifier est ouvert ; les lectures et le travail éditorial propres à Yikonglu ne le sont pas.",
+  "oh": "Ouvert (CC BY-NC 4.0 : attribution, pas d'usage commercial)",
+  "o": [
+   "Texte original et variantes",
+   "Traductions en chinois moderne",
+   "Tableaux des prononciations",
+   "Tableaux des citations (source et page de l'édition de base de chaque citation)",
+   "Index des commentaires chapitre par chapitre, avec pages",
+   "Registre des corrections",
+   "Table des personnages",
+   "Table des thèmes"
+  ],
+  "ch": "Non ouvert",
+  "c": [
+   "Notes de lecture complètes",
+   "Recueil des « lectures de Yikonglu »",
+   "Images de pages annotées",
+   "Index par situation de vie",
+   "Vidéos, narration, personnages et illustrations"
+  ],
+  "biz": "Tout usage commercial, y compris l'entraînement de modèles et la redistribution, exige une autorisation écrite préalable. Écrire à :",
+  "rule": "Chaque nouveau type de données sera jugé selon cette ligne.",
+  "log": "Révisions",
+  "logs": [
+   [
+    "2026-11-06",
+    "Ligne de partage entre ouvert et non ouvert précisée."
+   ],
+   [
+    "2026-11-06",
+    "Retrait des quatre champs de lecture ; les traductions restent ouvertes."
+   ]
+  ]
+ },
+ "es": {
+  "h": "Qué es abierto y qué no",
+  "p": "La base que sirve para comprobarnos es abierta; las lecturas y el trabajo editorial propios de Yikonglu no lo son.",
+  "oh": "Abierto (CC BY-NC 4.0: atribución, no comercial)",
+  "o": [
+   "Texto original y variantes",
+   "Traducciones al chino moderno",
+   "Tablas de pronunciación",
+   "Tablas de citas (fuente y página de la edición base de cada cita)",
+   "Índice de comentarios capítulo a capítulo, con páginas",
+   "Registro de correcciones",
+   "Tabla de personajes",
+   "Tabla de temas"
+  ],
+  "ch": "No abierto",
+  "c": [
+   "Notas de lectura completas",
+   "Recopilación de «la lectura de Yikonglu»",
+   "Imágenes de páginas anotadas",
+   "Índices por situación vital",
+   "Vídeos, narración, personajes e ilustraciones"
+  ],
+  "biz": "El uso comercial, incluido el entrenamiento de modelos y la redistribución, requiere autorización previa por escrito. Escríbanos a:",
+  "rule": "Cada nuevo tipo de datos se juzgará según esta línea.",
+  "log": "Revisiones",
+  "logs": [
+   [
+    "2026-11-06",
+    "Se precisa qué es abierto y qué no."
+   ],
+   [
+    "2026-11-06",
+    "Se retiran los cuatro campos de lectura; las traducciones siguen abiertas."
+   ]
+  ]
+ }
 }
