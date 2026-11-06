@@ -48,7 +48,7 @@ const hit=D.filter(d=>(d.y+d.t+d.x).includes(k));
 R.innerHTML=hit.length?'<p class="lead">'+"\u627e\u5230 N \u7ae0".replace('N',hit.length)+'</p><ol class="toc">'+hit.map(d=>'<li><a href="'+d.u+'"><em>'+d.c+'</em><b>'+E(d.t)+'</b><span>'+cut(d.y.includes(k)?d.y:d.x,k)+'</span></a></li>').join('')+'</ol>':"<p class=empty>\u6ca1\u6709\u627e\u5230\u3002\u672a\u8bb2\u5404\u7ae0\u53ea\u6536\u539f\u6587\u548c\u767d\u8bdd\u3002</p>"}
 const p=new URLSearchParams(location.search).get('q');if(p){q.value=p;go()}
 </script>
-<section class="follow"><div class="wrap"><h2>關注一孔錄，輕鬆讀經典</h2><div class="fl"><figure><img src="/assets/wechat-qr.jpg" alt="WeChat QR" width="129" height="129" loading="lazy"><figcaption>微信掃碼關注公眾號，回覆“目錄”看全部章節</figcaption></figure><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ 在 YouTube 訂閱</a></div></div></section>
+<section class="follow"><div class="wrap"><h2>關注一孔錄，輕鬆讀經典</h2><div class="fl"><figure><img src="/assets/wechat-qr.jpg" alt="WeChat QR" width="129" height="129" loading="lazy"><figcaption>有問題想問一孔錄？關注公眾號「一孔錄」留言，每週選答，進片署你的網名。</figcaption></figure><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ 在 YouTube 訂閱</a></div></div></section>
 <footer><div class="wrap">
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔錄</b><span>逐字讀經典原文</span></div></div>
 <p>引文據各家底本原頁，各頁註明底本。發現錯誤請告訴我們，勘誤公開。</p>
