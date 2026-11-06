@@ -148,7 +148,7 @@ REUSE_UI = {
   "about_r1": "原文和古注（朱熹集注、皇侃义疏等古刻本）是公版，谁都可以用。",
   "about_r2": "一孔录写的白话、引文核对表、读音索引和专题编排，按 CC BY-NC 4.0 许可：可以转载、改编，须署名“一孔录”、附原页链接、注明有没有改动，不得商用。章页上一孔录自己的读法（常见读法、注里的关键字、诸家、一孔录这样读）不在这个许可之内，短引请注明出处，成段转用请先来信。",
   "about_r3": "现代注本（杨伯峻、钱穆等）的引文版权归原作者和出版方，不在这个许可之内，本站只作短引。",
-  "about_r4": "视频、配音、片中人物形象和插图不在这个许可之内，转用请先来信。",
+  "about_r4": "视频、配音、原创角色形象和插图不在这个许可之内，转用请先来信。",
   "about_r5": "引一句时，点原文任一句就能复制带出处的引文。要成批转载，可以直接用<a href=\"{p}kaifang.html\">开放数据</a>，商业使用请先来信。看到没署名的转载，或者照搬全站的网站，也请告诉我们：",
   "mirror_bar": "本页原载一孔录 yikonglu.com，最新版本和勘误请看原站", "mirror_go": "去原站"},
  "en": {"foot_reuse": "Original texts and old commentaries are public domain. Our plain renderings and citation checks are licensed <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.en\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a>: credit “Yikonglu (一孔录)” with a link to the original page; no commercial use. <a href=\"{p}about.html#zhuanzai\">Reuse guide</a>",
@@ -1063,7 +1063,7 @@ def build_lang(L, D, write):
     lc_js = ("<script>(function(){var L=" + json.dumps([{"t": ch2ep[c][1]["public_at"], "h": P + rel_of(c), "c": _lcard(c)} for c in _fut], ensure_ascii=False).replace("</", "<\\/")
              + ';function f(){var n=Date.now(),x=null;for(var i=0;i<L.length;i++)if(n>=Date.parse(L[i].t))x=L[i];if(!x)return;var a=document.getElementById("lcta"),b=document.getElementById("lcard");if(a)a.href=x.h;if(b){b.href=x.h;b.innerHTML=x.c}}f();setInterval(f,60000)})();</script>') if _fut else ""
     vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">▶ YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">B站</a>' if L.code.startswith("zh") else "")
-    home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录片中人物围坐长桌读书" width="1920" height="1080"></picture>
+    home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录原创角色围坐长桌读书" width="1920" height="1080"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1><p class="motto">{L.t("h_motto")}</p>
 <p class="cta"><a class="btn" id="lcta" href="{P}{rel_of(lc)}">{L.t("h_start")}</a>{vids}</p></div></section>
 <main class="home">
