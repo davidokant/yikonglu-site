@@ -179,7 +179,7 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
     nowtxt = f"，现在讲到《{esc(now_zone['书名'])}》" if now_zone else ""
     teaser = f'<a class="gsteaser" href="{P}gushi/dao.html"><img src="{mapimg}" alt="" loading="lazy"><div><span class="ov">片中的书区地图</span><b>十三经岛</b><span>每部经典一座岛{nowtxt} ›</span></div></a>' if mapimg else ""
     body = hero("故事", "片中的人和岛", crumb=False, cls="index") + (
-        f'<main class="wrap narrow gsmain"><p class="lead">一孔录的视频里有六位原创人物陪着读书，住在一张虚构的书区地图上。这一栏介绍他们，只写已经播出的内容；原文、注家和读法都在<a href="{P}lunyu/">章节页</a>，这里不讲。</p>'
+        f'<main class="wrap narrow gsmain">'
         f'<h2 class="ph">片中人物</h2><div class="gscards">{cards}</div>'
         + (f'<h2 class="ph">跟着一个人读</h2><div class="gsroutes">{rlist}</div>' if rlist else "")
         + (f'<h2 class="ph">地图</h2>{teaser}' if teaser else "") + "</main>")
