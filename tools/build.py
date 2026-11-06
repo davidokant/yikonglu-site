@@ -1052,17 +1052,24 @@ def build_lang(L, D, write):
     _now = datetime.datetime.now(datetime.timezone.utc)
     _vpub = [c for c in pub if ch2ep[c][1].get("youtube") and (not ch2ep[c][1].get("public_at") or datetime.datetime.fromisoformat(ch2ep[c][1]["public_at"]) <= _now)]
     lc = (_vpub or pub)[-1]; lc_gist = (field(lc, "片里落点")[0] or "")
+    def _lcard(c):
+        g = field(c, "片里落点")[0] or ""
+        return f'<small>{L.t("lunyu")} {c}</small><b>{esc(title_of(c))}</b><blockquote lang="zh-Hans">{esc(yw[c])}</blockquote>{f"<p>{esc(g)}</p>" if g else ""}<em>{L.t("h_read")} →</em>'
+    # 已上传、公开时间未到的章：构建时一并写进首页，页面脚本到点自动换上（不必等重建）
+    _fut = [c for c in pub[pub.index(lc) + 1:] if ch2ep[c][1].get("youtube") and ch2ep[c][1].get("public_at") and datetime.datetime.fromisoformat(ch2ep[c][1]["public_at"]) > _now]
+    lc_js = ("<script>(function(){var L=" + json.dumps([{"t": ch2ep[c][1]["public_at"], "h": P + rel_of(c), "c": _lcard(c)} for c in _fut], ensure_ascii=False).replace("</", "<\\/")
+             + ';function f(){var n=Date.now(),x=null;for(var i=0;i<L.length;i++)if(n>=Date.parse(L[i].t))x=L[i];if(!x)return;var a=document.getElementById("lcta"),b=document.getElementById("lcard");if(a)a.href=x.h;if(b){b.href=x.h;b.innerHTML=x.c}}f();setInterval(f,60000)})();</script>') if _fut else ""
     vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">▶ YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">B站</a>' if L.code.startswith("zh") else "")
     home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录片中人物围坐长桌读书" width="1920" height="1080"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1><p class="motto">{L.t("h_motto")}</p>
-<p class="cta"><a class="btn" href="{P}{rel_of(lc)}">{L.t("h_start")}</a>{vids}</p></div></section>
+<p class="cta"><a class="btn" id="lcta" href="{P}{rel_of(lc)}">{L.t("h_start")}</a>{vids}</p></div></section>
 <main class="home">
 <section class="intro wrap narrow">
 <p>{L.t("h_intro")}</p>
 <form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
 </section>
 <section class="wrap narrow"><h2 class="ph">{L.t("h_latest")}</h2>
-<a class="latest" href="{P}{rel_of(lc)}"><small>{L.t("lunyu")} {lc}</small><b>{esc(title_of(lc))}</b><blockquote lang="zh-Hans">{esc(yw[lc])}</blockquote>{f"<p>{esc(lc_gist)}</p>" if lc_gist else ""}<em>{L.t("h_read")} →</em></a></section>
+<a class="latest" id="lcard" href="{P}{rel_of(lc)}">{_lcard(lc)}</a>{lc_js}</section>
 <section class="wrap narrow"><h2 class="ph">{L.t("h_recent")}</h2>{toc(recent[1:])}</section>
 <section class="wrap narrow">{cta_html(L, P)}</section>
 <section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}shumu/">{L.t("books")}</a></h2>{bcards}</section>
