@@ -243,6 +243,7 @@ SHOW_DRAFT = True  # “初稿改动”比例：首页小字与方法页
 DRAFT_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/初稿改动.json"
 YXL_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/影响力.json"  # 一孔影响力（找到分），每天自动更新
 FANGFA = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fangfa.json"), encoding="utf-8"))  # 核验方法页七语文字
+KAIFANG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "kaifang.json"), encoding="utf-8"))  # 开放数据页：开放与不开放的分界（七语）
 EPIS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "episodes.json"), encoding="utf-8"))
 ZT_DIR = os.path.join("/mnt/project-files/一孔学-内-自媒体/数据/网站素材", "_专题")  # 专题表.json：一专题一页、页内按书分段
 def load_zhuanti():
@@ -1164,7 +1165,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     rows = "".join(f'<tr><td>{L.book(p)}</td><td><a href="/data/lunyu-{PIAN[p][1]}.json">JSON</a> · <a href="/data/lunyu-{PIAN[p][1]}.csv">CSV</a></td><td>{len(by_pian[p])}</td></tr>' for p in sorted(by_pian, key=int))
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("dt_sub")}</span>{L.t("dt_title")}</h1></div></div>
 <main class="wrap narrow prose"><p>{L.t("dt_p")}</p><div class="tw"><table class="zitab"><thead><tr><th>{L.t("lunyu")}</th><th>{L.t("dt_file")}</th><th>{L.t("dt_rows")}</th></tr></thead><tbody>{rows}</tbody></table></div>
-<p class="note">{L.t("dt_lic")} · <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans" rel="license noopener" target="_blank">CC BY-NC 4.0</a> · <a href="{P}banben/">{L.t("bb_link")}</a></p></main>'''
+<p class="note">{L.t("dt_lic")} · <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans" rel="license noopener" target="_blank">CC BY-NC 4.0</a> · <a href="{P}banben/">{L.t("bb_link")}</a></p>{kf_html(L)}</main>'''
     write("kaifang.html", page(L, f'{L.t("dt_title")}｜一孔录', L.t("dt_sub"), "kaifang.html", body)); urls.append(f"{DOMAIN}/{L.prefix}kaifang.html")
     # 读音索引
     zi = {}
@@ -1225,6 +1226,12 @@ def write_data(D, outdir):
             w = csv.writer(f); w.writerow(["章号", "标题", "原文", "白话", "常见读法", "注里的关键字", "诸家", "一孔录读法", "网址"])
             for r in rows: w.writerow([r["chapter"], r["title"], r["text"], r["baihua"], r["common_reading"], r["zhu_keys"], r["others"], r["yikonglu_reading"], r["url"]])
     open(os.path.join(outdir, "data", "LICENSE.txt"), "w", encoding="utf-8").write("一孔录 Yikonglu 开放数据\n原文与古注：公版。\n一孔录所写内容（白话、读法、引文核对表、读音）：CC BY-NC 4.0，署名“一孔录 yikonglu.com”，不得商用。\nhttps://creativecommons.org/licenses/by-nc/4.0/\n")
+
+def kf_html(L):  # 开放数据页的分界说明
+    K = KAIFANG.get(L.code) or KAIFANG["zh-Hans"]
+    li = lambda xs: "<ul>" + "".join(f"<li>{x}</li>" for x in xs) + "</ul>"
+    return (f'<h2 id="fenjie">{K["h"]}</h2><p>{K["p"]}</p><h3>{K["oh"]}</h3>{li(K["o"])}<h3>{K["ch"]}</h3>{li(K["c"])}'
+            f'<p>{K["biz"]}</p><p class="mailp">{MAIL}</p><p>{K["rule"]}</p><h3>{K["log"]}</h3>' + li([f"{a} {b}" for a, b in K["logs"]]))
 
 # 页底平台行：有网页主页的直接外链，微信系只能搜
 PLAT_LINKS = [("YouTube", "https://www.youtube.com/@yikonglu"), ("B站", "https://space.bilibili.com/18385461"), ("TikTok", "https://www.tiktok.com/@yikonglu"), ("抖音", "https://www.douyin.com/user/MS4wLjABAAAAXpVHXn9zMrJpCNeOBO1s4G2i1KhXcstcIBil6H9TFQM"), ("快手", "https://www.kuaishou.com/profile/3xi6ey79zwx7edu"), ("知乎", "https://www.zhihu.com/people/yikonglu"), ("百家号", "https://mr.baidu.com/r/25FydpLvBKM"),
