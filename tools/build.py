@@ -187,6 +187,33 @@ REUSE_UI = {
   "mirror_bar": "Esta página se publicó primero en Yikonglu (yikonglu.com). Vea el original para la versión más reciente y las correcciones.", "mirror_go": "Ir al original"},
 }
 for _c, _d in REUSE_UI.items(): EXTRA_UI.setdefault(_c, {}).update(_d)
+LC_UI = {  # 一页两层：上半给普通读者，下半给细读核对的读者
+ "zh-Hans": {"ch_gist": "这一章讲什么", "ch_deep": "细读与核对", "ch_deep_note": "给想细读、要核对的读者：注里的关键字、诸家说法、异文、各家注本原话与底本原页、读音和勘误。点标题展开。", "ch_open_all": "全部展开", "ch_close_all": "全部收起",
+   "cta_db_p": "整篇原文、读音、白话排成 PDF，手机能看，也能打印。", "cta_wen_p": "读到不懂的地方？写信问一孔录，每周选答，进片署你的网名。",
+   "h_motto": "一章一章，把经典原文读明白。", "h_intro": "每章先给原文、白话和一句话读懂，配一段视频；想细读的，往下有注家原话、底本原页和公开勘误，句句可核。",
+   "h_start": "从最新一章读起", "h_latest": "最新一章", "h_read": "读这一章", "h_recent": "最近讲的", "h_deep_h": "给细读的人", "h_deep_p": "一孔录讲过的每一句，都能在这里核。"},
+ "en": {"ch_gist": "What this chapter says", "ch_deep": "Close reading and checking", "ch_deep_note": "For readers who want to go deeper or check our work: key words in the commentary, what other commentators say, textual variants, the commentaries in their own words with facsimile pages, pronunciation and corrections. Tap a heading to open it.", "ch_open_all": "Open all", "ch_close_all": "Close all",
+   "cta_db_p": "A whole book of the Analects as a PDF: original text, pronunciation and plain Chinese. In Chinese.", "cta_wen_p": "Something you don't understand? Write to us; each week we answer a question or two and credit you by name.",
+   "h_motto": "Reading the classics, one chapter at a time.", "h_intro": "Each chapter starts with the original, a plain rendering and a one-line summary, with a short video. Further down, for close readers: the commentators' own words, facsimile pages and a public errata log.",
+   "h_start": "Start with the latest chapter", "h_latest": "Latest chapter", "h_read": "Read this chapter", "h_recent": "Recently read", "h_deep_h": "For close readers", "h_deep_p": "Every line Yikonglu has read aloud can be checked here."},
+ "ja": {"ch_gist": "この章の要点", "ch_deep": "精読と確認", "ch_deep_note": "じっくり読みたい方、確かめたい方へ：注の要となる語、諸家の説、異文、各注釈の原文と底本の頁、読み方、正誤。見出しを押すと開きます。", "ch_open_all": "すべて開く", "ch_close_all": "すべて閉じる",
+   "cta_db_p": "一篇まるごとの原文・読み・現代語訳を PDF に。中国語のみ。", "cta_wen_p": "分からないところは？一孔録に質問を。毎週いくつか選んでお答えし、お名前（ハンドル）を記します。",
+   "h_motto": "一章ずつ、古典の原文を読み解く。", "h_intro": "各章はまず原文、現代語訳、一行の要点と短い動画から。その下に、精読する方のための注釈者の原文、底本の頁、公開の正誤表があります。",
+   "h_start": "最新の章から読む", "h_latest": "最新の章", "h_read": "この章を読む", "h_recent": "最近読んだ章", "h_deep_h": "精読する方へ", "h_deep_p": "一孔録が読み上げた一句一句を、ここで確かめられます。"},
+ "ko": {"ch_gist": "이 장의 요지", "ch_deep": "깊이 읽기와 확인", "ch_deep_note": "더 깊이 읽거나 확인하려는 분께: 주석의 핵심어, 여러 주석가의 설, 이문, 각 주석의 원문과 저본 쪽, 독음, 정오. 제목을 누르면 펼쳐집니다.", "ch_open_all": "모두 펼치기", "ch_close_all": "모두 접기",
+   "cta_db_p": "한 편 전체의 원문·독음·현대어 풀이를 PDF로. 중국어판입니다.", "cta_wen_p": "모르는 대목이 있나요? 일공록에 질문하세요. 매주 한두 개를 골라 답하고 닉네임을 밝힙니다.",
+   "h_motto": "한 장씩, 고전 원문을 읽어 냅니다.", "h_intro": "각 장은 원문, 풀이, 한 줄 요지와 짧은 영상으로 시작합니다. 그 아래에는 깊이 읽는 분을 위한 주석가의 원문, 저본 쪽, 공개 정오표가 있습니다.",
+   "h_start": "최신 장부터 읽기", "h_latest": "최신 장", "h_read": "이 장 읽기", "h_recent": "최근 읽은 장", "h_deep_h": "깊이 읽는 분께", "h_deep_p": "일공록이 읽은 모든 구절은 여기서 확인할 수 있습니다."},
+ "fr": {"ch_gist": "Ce que dit ce chapitre", "ch_deep": "Lecture approfondie et vérification", "ch_deep_note": "Pour qui veut lire de près ou vérifier : mots clés du commentaire, avis des autres commentateurs, variantes, commentaires dans leurs propres mots avec les pages de l'édition, prononciation et errata. Touchez un titre pour l'ouvrir.", "ch_open_all": "Tout ouvrir", "ch_close_all": "Tout fermer",
+   "cta_db_p": "Un livre entier des Entretiens en PDF : texte original, prononciation et chinois moderne. En chinois.", "cta_wen_p": "Un passage obscur ? Écrivez-nous ; chaque semaine nous répondons à une ou deux questions en citant votre pseudo.",
+   "h_motto": "Lire les classiques, un chapitre à la fois.", "h_intro": "Chaque chapitre commence par l'original, une traduction et un résumé en une ligne, avec une courte vidéo. Plus bas, pour les lecteurs attentifs : les mots mêmes des commentateurs, les pages de l'édition et un registre public d'errata.",
+   "h_start": "Commencer par le dernier chapitre", "h_latest": "Dernier chapitre", "h_read": "Lire ce chapitre", "h_recent": "Lus récemment", "h_deep_h": "Pour les lecteurs attentifs", "h_deep_p": "Chaque phrase lue par Yikonglu peut être vérifiée ici."},
+ "es": {"ch_gist": "Qué dice este capítulo", "ch_deep": "Lectura detenida y comprobación", "ch_deep_note": "Para quien quiera leer a fondo o comprobar: palabras clave del comentario, otros comentaristas, variantes, los comentarios con sus propias palabras y las páginas de la edición, pronunciación y erratas. Toque un título para abrirlo.", "ch_open_all": "Abrir todo", "ch_close_all": "Cerrar todo",
+   "cta_db_p": "Un libro entero de las Analectas en PDF: texto original, pronunciación y chino moderno. En chino.", "cta_wen_p": "¿Algo que no entiende? Escríbanos; cada semana respondemos una o dos preguntas y citamos su nombre.",
+   "h_motto": "Leer los clásicos, capítulo a capítulo.", "h_intro": "Cada capítulo empieza con el original, una traducción y un resumen de una línea, con un vídeo breve. Más abajo, para lectores atentos: las palabras exactas de los comentaristas, las páginas de la edición y un registro público de erratas.",
+   "h_start": "Empezar por el último capítulo", "h_latest": "Último capítulo", "h_read": "Leer este capítulo", "h_recent": "Leídos recientemente", "h_deep_h": "Para lectores atentos", "h_deep_p": "Cada frase que Yikonglu ha leído se puede comprobar aquí."},
+}
+for _c, _d in LC_UI.items(): EXTRA_UI.setdefault(_c, {}).update(_d)
 ZH_UI.update(EXTRA_UI["zh-Hans"])
 
 # 第三批：版本说明（/banben/）。内容是中文底账，外文页照中文显示。
@@ -540,6 +567,15 @@ def analytics(L):
         a += f'<script>var _hmt=_hmt||[];(function(){{var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?{ANALYTICS["baidu"]}";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)}})();</script>'
     return a
 
+FOLD_RE = re.compile(r'<section class="sec ([^"]*)"((?: id="[^"]*")?)><h2>(.*?)</h2>(.*?)</section>', re.S)
+def fold(h):  # 下半各节收成可点开的 <details>；锚点跳进来时由 FOLD_JS 自动展开
+    return FOLD_RE.sub(lambda m: f'<details class="sec fold {m.group(1)}"{m.group(2)}><summary><h2>{m.group(3)}</h2></summary>{m.group(4)}</details>', h)
+FOLD_JS = """<script>(function(){function op(){var h=decodeURIComponent(location.hash.slice(1));if(!h)return;var e=document.getElementById(h);if(!e)return;var d=e.closest("details");while(d){d.open=true;d=d.parentElement&&d.parentElement.closest("details")}setTimeout(function(){e.scrollIntoView()},0)}addEventListener("hashchange",op);op();document.addEventListener("click",function(ev){var a=ev.target.closest&&ev.target.closest('a[href^="#"]');if(a&&a.getAttribute("href")==location.hash)op()});var b=document.querySelector(".foldall");if(b)b.onclick=function(){var ds=document.querySelectorAll(".deep details.fold"),o=[].some.call(ds,function(d){return!d.open});[].forEach.call(ds,function(d){d.open=o});b.textContent=o?b.dataset.c:b.dataset.o}})();</script>"""
+def cta_html(L, P):  # 上半末尾：免费读本、问一孔两张卡
+    W = WEN.get(L.code) or WEN["zh-Hans"]
+    return (f'<div class="ctas"><a href="{P}duben.html"><b>{L.t("db_link")}</b><span>{L.t("cta_db_p")}</span></a>'
+            f'<a href="{P}wen.html"><b>{W["link"]}</b><span>{L.t("cta_wen_p")}</span></a></div>')
+
 def meta_desc(L, title, rend, yw):  # 外语章页摘要：先本语言（标题＋译文），原文放后，读者在搜索结果里先看到自己的语言
     if not rend: return f"{yw[:40]}… {L.t('book_lead')}"
     d = f"{title} — {rend}"
@@ -818,10 +854,13 @@ def build_lang(L, D, write):
         bname = L.book(pnum)
         name = f"《论语·{pname}》{c} {n['title']}" if L.code == "zh-Hans" else f"{L.t('lunyu')} {c} {title_of(c)}"
         desc = f"{yw[c][:60]}……原文、白话、朱熹注的关键字、诸家说法与一孔录的读法。" if L.code == "zh-Hans" else meta_desc(L, title_of(c), L.ch(c).get("yw"), yw[c])
-        secs = ""
+        secs = ""; gist_html = ""
         for k, lab, mark in FIELDS:
             v, translated = field(c, k)
             if not v: continue
+            if k == "片里落点":  # 一页两层：落点放上半，当“这一章讲什么”
+                gist_html = f'<section class="gist"><h2>{L.t("ch_gist")}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}>{quotes(v)}</p></section>'
+                continue
             secs += f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{L.t(lab)}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}>{quotes(v)}</p></section>'
         prev_c = pub[i-1] if i > 0 else None; next_c = pub[i+1] if i+1 < len(pub) else None
         def card(cc, lab, cls):
@@ -852,7 +891,7 @@ def build_lang(L, D, write):
             extra += (f'<section class="sec kw"><h2><i>勘</i>{L.t("kw")}</h2>{"<p class=note>" + L.t("kw_note") + "</p>" if L.t("kw_note") else ""}<ul lang="zh-Hans">' + "".join(
                 f'<li><b>{esc(r[0])}　{esc(r[3])}</b>原来：{esc(r[4])}；改为：{esc(r[5])}（依据：{esc(r[6])}；勘误者：{esc(r[7])}）</li>' for r in mine) + '</ul></section>')
         cite_txt = L.t("cite_fmt", book=(pname if L.code == "zh-Hans" else bname), c=c, title=title_of(c), url=url, d=today)
-        extra += f'<section class="citeit"><b>{L.t("cite")}</b><code>{esc(cite_txt)}</code><button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent=\'{L.t("copied")}\'">{L.t("copy")}</button><p>{L.t("checked", d=today)}<a href="{P}kanwu.html">{L.t("errata_page")}</a>.</p><p class="mailp">{L.t("report")} {MAIL}</p></section>'
+        citeit = f'<section class="citeit"><b>{L.t("cite")}</b><code>{esc(cite_txt)}</code><button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent=\'{L.t("copied")}\'">{L.t("copy")}</button><p>{L.t("checked", d=today)}<a href="{P}kanwu.html">{L.t("errata_page")}</a>.</p><p class="mailp">{L.t("report")} {MAIL}</p></section>'
         search_idx.append({"c": c, "t": title_of(c), "u": P + rel, "y": yw[c],
                            "x": " ".join(v for k, _, _ in FIELDS for v in [field(c, k)[0]] if v) + " " + " ".join(x["text"] + x["src"] for x in g["cites"])
                                 + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
@@ -871,11 +910,14 @@ def build_lang(L, D, write):
 <main class="wrap chapter">
 <article>
 <figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}<p class="jutip">{L.t("ju_tip")}</p></figure>
+{gist_html}
 {bh_html}
-{secs}
-{yiwen_html(c)}
-{extra}
 {vid_html}
+{cta_html(L, P)}
+<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
+{fold(secs + yiwen_html(c) + extra)}
+{citeit}
+</div>
 <p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>{RW.chip_line(D.get("renwu"), c, P) if L.code.startswith("zh") else ""}{GS.footer_line(D.get("gushi"), c, P) if L.code.startswith("zh") else ""}
 <nav class="pn">{card(prev_c, L.t("prev"), 'prev')}{card(next_c, L.t("next"), 'next')}</nav>
 </article>
@@ -909,7 +951,7 @@ def build_lang(L, D, write):
             ("citation_publication_date", first.replace("-", "/")), ("citation_online_date", DATE_TOK_SL),
             ("citation_language", L.hreflang), ("citation_public_url", url),
             ("DC.title", name), ("DC.creator", "一孔录"), ("DC.date", first), ("DC.language", L.hreflang), ("DC.source", SOURCE)])
-        write(rel, page(L, ttl, desc, rel, body + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
+        write(rel, page(L, ttl, desc, rel, body + FOLD_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
 
 
     # 未讲各章：只出简繁。原文（朱注分章底本）、白话初稿、本句互见、异文、各家注本
@@ -996,24 +1038,30 @@ def build_lang(L, D, write):
 <main class="wrap narrow">{bcards}</main>'''
     write("shumu/index.html", page(L, f'{L.t("shumu_title")}｜一孔录', L.t("shumu_p"), "shumu/", body)); urls.append(f"{DOMAIN}/{L.prefix}shumu/")
     recent = pub[-6:][::-1]
-    home = f'''<section class="banner"><picture><source media="(max-width:700px)" srcset="/assets/banner-m3.jpg"><img src="/assets/banner-w.jpg" alt="一孔录片中人物围坐长桌读书" width="3072" height="720"></picture></section>
+    lc = pub[-1]; lc_gist = (field(lc, "片里落点")[0] or "")
+    vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">▶ YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">B站</a>' if L.code.startswith("zh") else "")
+    home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录片中人物围坐长桌读书" width="1125" height="633"></picture>
+<div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1><p class="motto">{L.t("h_motto")}</p>
+<p class="cta"><a class="btn" href="{P}{rel_of(lc)}">{L.t("h_start")}</a>{vids}</p></div></section>
 <main class="home">
 <section class="intro wrap narrow">
-<h1>一孔录<small>{L.t("tagline")}</small></h1>
-<p class="motto">{L.t("motto")}</p>
-<p>{L.t("intro")}</p>
+<p>{L.t("h_intro")}</p>
 <form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
-{yxl_line(L, D, P) if L.code.startswith("zh") else ""}
-<p class="cta"><a class="btn" href="{P}shumu/">{L.t("btn_books")}</a><a class="btn ghost" href="{P}kanwu.html">{L.t("btn_errata")}</a></p>
 </section>
+<section class="wrap narrow"><h2 class="ph">{L.t("h_latest")}</h2>
+<a class="latest" href="{P}{rel_of(lc)}"><small>{L.t("lunyu")} {lc}</small><b>{esc(title_of(lc))}</b><blockquote lang="zh-Hans">{esc(yw[lc])}</blockquote>{f"<p>{esc(lc_gist)}</p>" if lc_gist else ""}<em>{L.t("h_read")} →</em></a></section>
+<section class="wrap narrow"><h2 class="ph">{L.t("h_recent")}</h2>{toc(recent[1:])}</section>
+<section class="wrap narrow">{cta_html(L, P)}</section>
+<section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}shumu/">{L.t("books")}</a></h2>{bcards}</section>
+<section class="wrap narrow deephome"><h2 class="ph">{L.t("h_deep_h")}</h2><p class="motto2">{L.t("h_deep_p")}</p></section>
 <section class="pillars wrap">
 <div><i>原</i><b>{L.t("p1t")}</b><p>{L.t("p1")}</p></div>
 <div><i>注</i><b>{L.t("p2t")}</b><p>{L.t("p2")}</p></div>
 <div><i>勘</i><b>{L.t("p3t")}</b><p>{L.t("p3")}</p></div>
 </section>
-<section class="wrap narrow"><h2 class="ph">{L.t("tools_h")}</h2><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}zi.html"><b>{L.t("zi_title")}</b><span>{L.t("t_zi")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div></section>
-<section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}shumu/">{L.t("books")}</a></h2>{bcards}</section>
-<section class="wrap narrow"><h2 class="ph">{L.t("recent")}</h2>{toc(recent)}</section>
+<section class="wrap narrow"><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}zi.html"><b>{L.t("zi_title")}</b><span>{L.t("t_zi")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
+{yxl_line(L, D, P) if L.code.startswith("zh") else ""}
+<p class="cta"><a class="btn ghost" href="{P}kanwu.html">{L.t("btn_errata")}</a><a class="btn ghost" href="{P}fangfa.html">{(FANGFA.get(L.code) or FANGFA["zh-Hans"])["link"]}</a></p></section>
 </main>'''
     write("index.html", page(L, (f"一孔录｜{TAGLINE}" if L.code == "zh-Hans" else f"一孔录 Yikonglu | {L.t('tagline')}"), L.t("intro"), "", home,
           {"@context": "https://schema.org", "@type": "Organization", "name": "一孔录", "alternateName": "Yikonglu", "url": DOMAIN, "logo": f"{DOMAIN}/assets/seal-180.png", "sameAs": SAME_AS}, "pg-home"))

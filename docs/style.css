@@ -299,3 +299,46 @@ aside li.wj a{color:var(--mute)}
 
 .yxline-s{max-width:520px;margin:8px auto 0;font-size:12.5px;line-height:1.6;color:var(--mute);text-align:center}.yxline-s span{white-space:nowrap}.yxline-s a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 h3.ph{font-size:17px;margin:22px 0 10px;border-left-width:3px}h3.ph small{margin-left:10px;font-size:13px;font-weight:400;color:var(--mute)}.rwcards+h3.ph{margin-top:22px}
+/* 一页两层：首页大图与上半入口 */
+.hero{position:relative;margin:0;background:#241a12;overflow:hidden}
+.hero picture{display:block;position:relative;line-height:0}
+.hero picture:after{content:"";position:absolute;left:0;right:0;bottom:0;height:28%;background:linear-gradient(to bottom,rgba(36,26,18,0),#241a12)}
+.hero img{display:block;width:100%;height:auto;max-height:72vh;object-fit:cover;object-position:50% 38%}
+.herotext{position:relative;margin-top:-56px;padding:0 16px 28px;text-align:center;color:#fff}
+.herotext h1{font-size:44px;font-weight:900;letter-spacing:.2em;margin:0;line-height:1.25;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.herotext h1 small{display:block;font-size:15px;font-weight:400;letter-spacing:.35em;margin-top:4px;opacity:.85}
+.herotext .motto{color:#f3e6cf;font-size:20px;margin:10px 0 0!important}
+.herotext .cta{margin:16px 0 0}.herotext .cta .btn{margin:4px 5px}
+.herotext .btn.ghost{color:#fff;border-color:rgba(255,255,255,.75);background:transparent}
+@media (max-width:700px){.hero img{max-height:none}.herotext{margin-top:-34px;padding-bottom:20px}.herotext h1{font-size:32px}.herotext h1 small{font-size:13px}.herotext .motto{font-size:16px}.herotext .cta .btn{padding:7px 14px;font-size:14px;margin:3px}}
+.home .intro{padding-top:26px}
+.latest{display:block;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 22px;box-shadow:var(--shadow);color:var(--fg)}
+.latest:hover{text-decoration:none;border-color:var(--accent)}
+.latest small{color:var(--mute)}.latest b{display:block;font-size:21px;margin:2px 0 8px}
+.latest blockquote{margin:0 0 8px;font-size:19px;line-height:1.9;letter-spacing:.03em}
+.latest p{margin:0 0 8px;color:var(--fg);border-left:3px solid var(--accent);padding-left:12px}
+.latest em{font-style:normal;color:var(--accent)}
+.ctas{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.ctas a{display:block;background:color-mix(in srgb,var(--accent) 7%,var(--paper));border:1px solid var(--line);border-radius:10px;padding:14px 18px;color:var(--fg)}
+.ctas a:hover{text-decoration:none;border-color:var(--accent)}
+.ctas b{display:block;color:var(--accent);font-size:17px;margin-bottom:4px}.ctas span{font-size:14px;color:var(--mute)}
+@media (max-width:560px){.ctas{grid-template-columns:1fr}}
+.deephome{margin-top:20px;border-top:1px solid var(--line)}.deephome .ph{margin-top:30px}.motto2{color:var(--mute);margin:0 0 0 16px}
+/* 章页：这一章讲什么 */
+.gist{margin-top:22px;background:color-mix(in srgb,var(--accent) 8%,var(--paper));border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));border-radius:10px;padding:14px 20px}
+.gist h2{font-size:15px;margin:0 0 4px;color:var(--accent);letter-spacing:.1em}
+.gist p{margin:0;font-size:19px;line-height:1.8}
+/* 章页下半：细读与核对，各节可点开 */
+.deep{margin-top:44px;padding-top:6px;border-top:2px solid var(--line)}
+.deephead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px}
+.deephead h2{font-size:21px;margin:0}
+.foldall{border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;font:inherit;font-size:13px;padding:3px 12px;cursor:pointer}
+.deep>.note{margin:6px 0 10px;color:var(--mute);font-size:14px}
+details.fold{margin-top:0;border-bottom:1px solid var(--line)}
+details.fold>summary{list-style:none;cursor:pointer;padding:12px 0;display:flex;align-items:center}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary h2{margin:0;font-size:17px;flex:1}
+details.fold>summary:after{content:"＋";color:var(--accent);font-size:18px;margin-left:8px}
+details.fold[open]>summary:after{content:"－"}
+details.fold[open]{padding-bottom:14px}
+.deep .citeit{margin-top:22px}
