@@ -583,7 +583,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>
 <nav><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}gushi/" class="gsnav">故事</a>' if gs else ""}
-<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">《论语》人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
+<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary>{L.name}</summary><div>{sw}</div></details></nav>
 </div></header>
 {note}
@@ -606,6 +606,14 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 </html>
 """
 
+def yxl_counts(D):
+    """一孔影响力的跨书计数：开讲几部书、已讲原文多少字、视频已公开几集（章数各书单位不同，不作总数）。"""
+    now = datetime.datetime.now(datetime.timezone.utc)
+    books = len(D.get("live_books") or ["论语"])
+    zi = sum(len(re.sub(r"[^\u4e00-\u9fff]", "", D["yw"].get(c, ""))) for c in D["pub"])
+    eps = {D["ch2ep"][c][0] for c in D["pub"] if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now)}
+    return books, zi, len(eps)
+
 def yxl_block(L, D, P, full=False):
     """首页“一孔影响力”栏（简繁）。四格自证数从站内数据算；“能找到吗”用 影响力.json。full=True 给方法页多出的说明。"""
     y = D.get("yxl") or {}
@@ -615,7 +623,8 @@ def yxl_block(L, D, P, full=False):
     kw = D["kw"]; readers = [r for r in kw if r[7] != "一孔录自查"]
     now = datetime.datetime.now(datetime.timezone.utc)
     vid = {c for c in D["pub"] if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now)}
-    grid = (f'<div class="yxgrid"><a class="c" href="{P}shumu/"><b>{len(D["pub"])}<small>/ {n_all} 章</small></b><span>《论语》读法已上 · 视频已公开 {len(vid)} 章</span></a>'
+    nb, zi, ne = yxl_counts(D)
+    grid = (f'<div class="yxgrid"><a class="c" href="{P}shumu/"><b>{zi:,}<small>字</small></b><span>原文已讲 · 开讲 {nb} 部书 · 视频已公开 {ne} 集</span></a>'
             f'<a class="c" href="{P}banben/"><b>{n_cites}<small>条</small></b><span>引文可核到底本原页</span></a>'
             f'<a class="c" href="{P}banben/"><b>{fam}<small>家</small></b><span>注本上了原页图</span></a>'
             f'<a class="c" href="{P}kanwu.html"><b>{len(readers)}<small>条</small></b><span>读者来信 · 勘误共 {len(kw)} 条（均已改）</span></a></div>')
@@ -647,7 +656,8 @@ def yxl_line(L, D, P):
     n_cites = sum(1 for g in D["gao"].values() for x in g["cites"] if x["pages"])
     now = datetime.datetime.now(datetime.timezone.utc)
     vid = sum(1 for c in D["pub"] if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now))
-    parts = [f"读法 {len(D['pub'])} / {n_all} 章", f"视频 {vid} 章", f"可核引文 {n_cites} 条", f"公开勘误 {len(D['kw'])} 条"]
+    nb, zi, ne = yxl_counts(D)
+    parts = [f"开讲 {nb} 部书", f"原文已讲 {zi:,} 字", f"视频 {ne} 集", f"可核引文 {n_cites} 条", f"公开勘误 {len(D['kw'])} 条"]
     if y.get("score") is not None: parts.append(f"找到分 {y['score']}")
     if y.get("share") is not None: parts.append(f"占比 {y['share']}%")
     if y.get("updated"): parts.append(f"{esc(str(y['updated']))} 更新")

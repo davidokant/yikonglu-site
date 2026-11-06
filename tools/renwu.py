@@ -1,7 +1,8 @@
-"""论语真实人物页（志层）：每人一页，列全书出场章。
+"""经典里的真实人物页（志层）：每人一页，按书列出场章。索引页按书分段，计数以人为单位，章数只在各书段内说。
 
 数据：数据/网站素材/_人物/*.csv，列：
-  id,人名,字/别称,身份,与孔子关系,章号,该章所述,出处
+  id,人名,字/别称,身份,与孔子关系,章号,该章所述,出处[,书]
+- “书”列可省，省了算《论语》；同一人出现在几本书里，各书各填几行。
 - 一人多行，每行一章；人名、字/别称、身份、与孔子关系、出处只需在该人第一行填。
 - id 用拼音小写作网址（如 zilu、zigong）；没填就按出场先后编 r1、r2……（繁体页由简体整页转换，网址不能用汉字）。
 - 章号按本站分章（篇.章）。已上网的章链到章节页，没上网的标“未讲”。
@@ -34,10 +35,12 @@ def load(rdir):
             if not name: continue
             p = ppl.get(name)
             if not p:
-                p = ppl[name] = {"name": name, "id": "", "alias": "", "role": "", "rel": "", "src": "", "apps": []}
+                p = ppl[name] = {"name": name, "id": "", "alias": "", "role": "", "rel": "", "src": "", "apps": [], "books": []}
                 order.append(name)
             for k, col in (("id", "id"), ("alias", "字/别称"), ("role", "身份"), ("rel", "与孔子关系"), ("src", "出处")):
                 if r.get(col) and not p[k]: p[k] = r[col]
+            bk = r.get("书") or "论语"
+            if bk not in p["books"]: p["books"].append(bk)
             if r.get("章号"): p["apps"].append((r["章号"], r.get("该章所述", "")))
     used = set()
     for i, n in enumerate(order, 1):
@@ -61,7 +64,7 @@ def build(L, D, R, write, page, P, rel_of, title_of, DOMAIN):
     for c, q in qw.items(): yw.setdefault(c, q["text"])  # 未讲章也有原文（全书上网后各章都有页）
     U = lambda rel: f"{DOMAIN}/{L.prefix}{rel}"
     head = lambda h, sub, crumb="": f'<div class="chhead"><div class="wrap">{crumb}<h1><span class="no">{esc(sub)}</span>{esc(h)}</h1></div></div>'
-    crumb = f'<p class="crumb"><a href="{P}renwu/">《论语》人物</a></p>'
+    crumb = f'<p class="crumb"><a href="{P}renwu/">人物</a></p>'
     cards = ""; card_of = {}
     for p in sorted(R, key=lambda p: -len(p["apps"])):
         n_pub = sum(1 for a in p["apps"] if a[0] in pub)
@@ -75,8 +78,9 @@ def build(L, D, R, write, page, P, rel_of, title_of, DOMAIN):
                 items += f'<li><span class="gsnot"><em>{c}</em><b>未讲</b></span>' + (f'<p class="zd">{esc(say)}</p>' if say else "") + "</li>"
         meta = "".join(f"<dt>{k}</dt><dd>{esc(v)}</dd>" for k, v in (("字、别称", p["alias"]), ("身份", p["role"]), ("与孔子", p["rel"]), ("出处", p["src"])) if v)
         rel = f"renwu/{p['id']}.html"
-        body = head(p["name"], f"出场 {len(p['apps'])} 章，已讲 {n_pub} 章", crumb) + f'''
-<main class="wrap narrow"><dl class="rwmeta">{meta}</dl><h2 class="ph">出场各章</h2><ol class="ztl">{items}</ol>
+        bk = "、".join(f"《{b}》" for b in p["books"])
+        body = head(p["name"], f"{bk}出场 {len(p['apps'])} 章，已讲 {n_pub} 章", crumb) + f'''
+<main class="wrap narrow"><dl class="rwmeta">{meta}</dl><h2 class="ph">{bk}出场各章</h2><ol class="ztl">{items}</ol>
 <p class="note">按本站分章排列。已讲的章带读法与注家原页；标“未讲”的章只有原文与各家注。</p></main>'''
         ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "alternateName": [x for x in re.split(r"[、，,]", p["alias"]) if x] or None,
               "description": p["role"] or None, "url": U(rel), "subjectOf": {"@type": "Book", "name": "论语"}}
@@ -92,8 +96,8 @@ def build(L, D, R, write, page, P, rel_of, title_of, DOMAIN):
     GN = ["孔子与家人", "弟子", "当时的人：国君、大夫与问者", "书里提到的古人"]
     groups = {}
     for p in sorted(R, key=lambda p: -len(p["apps"])): groups.setdefault(grp(p), []).append(p)
-    cards = "".join(f'<h2 class="ph">{GN[g]}<small>{len(groups[g])} 人</small></h2><div class="rwcards">' + "".join(card_of[p["id"]] for p in groups[g]) + "</div>" for g in sorted(groups))
-    body = head("《论语》人物", "书里出场的真实人物，每人一页列出全部出场章") + f'''
-<main class="wrap narrow"><p class="lead">孔子、弟子、国君、大夫与隐者，分四组，组内按出场章数排列。点进去看他在哪几章出现、说了什么、做了什么。</p>{cards}</main>'''
-    write("renwu/index.html", page(L, "《论语》人物：出场各章索引｜一孔录", "《论语》里出场的真实人物，每人一页，列出全部出场章，链到原文与注家原页。", "renwu/", body)); urls.append(U("renwu/"))
+    cards = f'<h2 class="ph">《论语》<small>{len(R)} 人</small></h2><p class="note">孔子、弟子、国君、大夫与隐者，分四组，组内按出场章数排列。</p>' + "".join(f'<h3 class="ph">{GN[g]}<small>{len(groups[g])} 人</small></h3><div class="rwcards">' + "".join(card_of[p["id"]] for p in groups[g]) + "</div>" for g in sorted(groups))
+    body = head("人物", "经典里出场的真实人物，每人一页列出出场各章") + f'''
+<main class="wrap narrow"><p class="lead">按书分段。点进去看他在哪几章出现、说了什么、做了什么。</p>{cards}</main>'''
+    write("renwu/index.html", page(L, "人物：经典里出场的真实人物｜一孔录", "一孔录所讲经典里出场的真实人物，每人一页，按书列出出场各章，链到原文与注家原页。", "renwu/", body)); urls.append(U("renwu/"))
     return urls
