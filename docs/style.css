@@ -208,8 +208,8 @@ a.bb{font-size:12px;margin-left:8px}
 .gsroute a,.gsroutes a{color:var(--accent2)}.gsroutes{padding-left:1.2em}
 .gsnot{display:flex;gap:10px;color:var(--mute)}.gsnot em{font-style:normal}
 .gsmap{position:relative;margin:12px 0}.gsmap img{width:100%;height:auto;display:block;border-radius:8px}
-.gsmap .spot.now{background:var(--accent);animation:gsp 1.6s infinite}
-@keyframes gsp{50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--accent) 25%,transparent)}}
+.gsmap .spot.now{background:transparent;animation:gsp 1.6s infinite}
+@keyframes gsp{0%,100%{box-shadow:0 0 0 2px rgba(23,33,31,.55),0 0 6px 2px rgba(242,201,76,.55)}50%{box-shadow:0 0 0 2px rgba(23,33,31,.55),0 0 16px 6px rgba(242,201,76,.85)}}
 .gstab{width:100%;border-collapse:collapse;font-size:15px}.gstab th,.gstab td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
 .gstab tr.now{background:color-mix(in srgb,var(--accent) 10%,transparent)}.gstab tr:target{outline:2px solid var(--accent2)}
 .gsback{margin:14px 0;padding:8px 12px;border-left:3px solid var(--accent2);background:color-mix(in srgb,var(--accent2) 8%,transparent);font-size:14px;color:var(--mute)}
@@ -280,7 +280,7 @@ aside li.wj a{color:var(--mute)}
 .zcard{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--fg)}.zcard:hover{text-decoration:none;border-color:var(--accent2)}.zcard:target{outline:2px solid var(--accent2)}
 .zcard .ov{font-size:12px;letter-spacing:.08em;color:var(--mute)}.zcard b{font-size:20px;margin:4px 0 6px}.zcard small{font-size:13px;color:var(--mute);line-height:1.6;flex:1}.zcard em{font-style:normal;font-size:13px;color:var(--accent2);margin-top:10px}.zcard.now{border-color:var(--accent)}.zcard.now em{color:var(--accent);font-weight:700}
 .gsmap .spot{position:absolute;width:8%;height:4.2%;transform:translate(-50%,-50%);border-radius:999px;border:2px solid transparent;color:transparent;font-size:0;overflow:hidden}
-.gsmap .spot:hover,.gsmap .spot:focus{border-color:#fff;box-shadow:0 0 0 3px rgba(23,33,31,.6);outline:none}.gsmap .spot.now{border-color:rgba(255,255,255,.7);animation:gsp 1.6s infinite}
+.gsmap span.spot{cursor:default}.gsmap a.spot:hover,.gsmap a.spot:focus{border-color:#fff;box-shadow:0 0 0 3px rgba(23,33,31,.6);outline:none}.gsmap .spot.now{border:3px solid #F2C94C;overflow:visible;animation:gsp 1.6s infinite}.gsmap .spot.now::after{content:attr(data-now);position:absolute;left:50%;bottom:calc(100% + 4px);transform:translateX(-50%);white-space:nowrap;font-size:12px;line-height:1;padding:4px 7px;border-radius:999px;background:#F2C94C;color:#17211F;font-weight:700;letter-spacing:.05em}
 @media (max-width:700px){.gshero.person .gsp{grid-template-columns:1fr}.gsfig{margin:0 auto -26px;max-width:70%}.gsfig img{max-height:360px}.gshero h1,.gshero.index h1{font-size:30px}.gsmap .spot{width:9%;height:4%}}
 .rwmeta+.ph,.rwcards+.ph{margin-top:26px}h2.ph small{margin-left:10px;font-size:14px;font-weight:400;color:var(--mute)}
 /* 加到桌面提示条 */
