@@ -1,6 +1,10 @@
 // 一孔录网站在线人数与累计读者数（Cloudflare Worker + 一个 Durable Object）
 // POST /hit  {id, first}  页面每 60 秒发一次心跳；first=true 表示这台设备第一次来，累计数加一
 // GET  /stats            返回 {online, total}
+// POST /hit 带 c（章号）时记一次阅读：按天计数（7 天滚动）＋最近读过的章
+// POST /copy {c, s}      某句被复制/分享一次（7 天滚动）
+// GET  /top              {recent:[c…], heat:{c:n}, top:[[c#sN, n]…]}
+// POST /done  {c}         某章“读完了”加一（同一设备只点一次，由页面本地记）；GET /done?c=1.1 返回 {today, total}
 const ORIGINS = ["https://yikonglu.com", "https://www.yikonglu.com", "http://localhost:8767"];
 const WINDOW = 90 * 1000; // 90 秒内有心跳算在线
 
@@ -24,13 +28,51 @@ export class Live {
   constructor(state) { this.state = state; this.seen = new Map(); this.total = null; }
   async getTotal() { if (this.total === null) this.total = (await this.state.storage.get("total")) || 0; return this.total; }
   online() { const n = Date.now(); for (const [k, t] of this.seen) if (n - t > WINDOW) this.seen.delete(k); return this.seen.size; }
+  day() { return new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 10); }
+  async roll(key) { // 7 天滚动的 {day:{k:n}}
+    const o = (await this.state.storage.get(key)) || {}; const keep = new Set();
+    for (let i = 0; i < 7; i++) keep.add(new Date(Date.now() + 8 * 3600e3 - i * 864e5).toISOString().slice(0, 10));
+    for (const d of Object.keys(o)) if (!keep.has(d)) delete o[d];
+    return o;
+  }
   async fetch(req) {
     const url = new URL(req.url);
+    const OKC = /^[0-9]{1,2}\.[0-9]{1,2}$/;
     if (req.method === "POST" && url.pathname === "/hit") {
       let b = {}; try { b = await req.json(); } catch (e) {}
       const id = String(b.id || "").slice(0, 40);
       if (id) this.seen.set(id, Date.now());
       if (b.first === true) { this.total = (await this.getTotal()) + 1; await this.state.storage.put("total", this.total); }
+      const c = String(b.c || "");
+      if (OKC.test(c)) {
+        const d = this.day(), R = await this.roll("reads"); R[d] = R[d] || {}; R[d][c] = (R[d][c] || 0) + 1;
+        let rc = (await this.state.storage.get("recent")) || []; rc = [{ c, d }].concat(rc.filter(x => x.c !== c)).slice(0, 8);
+        await this.state.storage.put({ reads: R, recent: rc });
+      }
+    } else if (req.method === "POST" && url.pathname === "/copy") {
+      let b = {}; try { b = await req.json(); } catch (e) {}
+      const c = String(b.c || ""), sId = String(b.s || "");
+      if (OKC.test(c) && /^s[0-9]{1,2}$/.test(sId)) {
+        const d = this.day(), C = await this.roll("copies"), k = c + "#" + sId; C[d] = C[d] || {}; C[d][k] = (C[d][k] || 0) + 1;
+        await this.state.storage.put("copies", C);
+      }
+      return Response.json({ ok: true });
+    } else if (req.method === "GET" && url.pathname === "/top") {
+      const R = await this.roll("reads"), C = await this.roll("copies"), heat = {}, cp = {}, d0 = this.day();
+      for (const d in R) for (const c in R[d]) heat[c] = (heat[c] || 0) + R[d][c];
+      for (const d in C) for (const k in C[d]) cp[k] = (cp[k] || 0) + C[d][k];
+      const top = Object.entries(cp).sort((a, b) => b[1] - a[1]).slice(0, 3);
+      const recent = ((await this.state.storage.get("recent")) || []).filter(x => x.d === d0).map(x => x.c).slice(0, 5);
+      return Response.json({ recent, heat, top });
+    } else if (url.pathname === "/done") {
+      let c = url.searchParams.get("c") || "";
+      if (req.method === "POST") { try { c = String((await req.json()).c || ""); } catch (e) {} }
+      if (!/^[a-z0-9.\-]{1,24}$/.test(c)) return new Response("bad", { status: 400 });
+      const day = new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 10); // 北京日期
+      const kt = "d:" + c, kd = "dd:" + day + ":" + c;
+      let [t, d] = [(await this.state.storage.get(kt)) || 0, (await this.state.storage.get(kd)) || 0];
+      if (req.method === "POST") { t++; d++; await this.state.storage.put({ [kt]: t, [kd]: d }); }
+      return Response.json({ today: d, total: t });
     } else if (!(req.method === "GET" && url.pathname === "/stats")) return new Response("not found", { status: 404 });
     return Response.json({ online: Math.max(1, this.online()), total: await this.getTotal() });
   }

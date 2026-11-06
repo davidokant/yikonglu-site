@@ -197,27 +197,27 @@ LC_UI = {  # 一页两层：上半给普通读者，下半给细读核对的读�
  "zh-Hans": {"ch_gist": "这一章讲什么", "ch_deep": "细读与核对", "ch_deep_note": "给想细读、要核对的读者：注里的关键字、诸家说法、异文、各家注本原话与底本原页、读音和勘误。点标题展开。", "ch_open_all": "全部展开", "ch_close_all": "全部收起",
    "cta_db_p": "整篇原文、读音、白话排成 PDF，手机能看，也能打印。", "cta_wen_p": "读到不懂的地方？写信问一孔录，每周选答，进片署你的网名。",
    "h_motto": "一章一章，把经典原文读明白。", "h_intro": "每章先给原文、白话和一句话读懂，配一段视频；想细读的，往下有注家原话、底本原页和公开勘误，句句可核。",
-   "h_start": "随机挑一句今日良言", "h_latest": "最新一章", "h_read": "读这一章", "h_recent": "最近讲的", "h_deep_h": "给细读的人", "h_deep_p": "一孔录讲过的每一句，都能在这里核。"},
+   "h_start": "今日共读一章", "h_latest": "最新一章", "h_read": "读这一章", "h_recent": "最近讲的", "h_deep_h": "给细读的人", "h_deep_p": "一孔录讲过的每一句，都能在这里核。"},
  "en": {"ch_gist": "What this chapter says", "ch_deep": "Close reading and checking", "ch_deep_note": "For readers who want to go deeper or check our work: key words in the commentary, what other commentators say, textual variants, the commentaries in their own words with facsimile pages, pronunciation and corrections. Tap a heading to open it.", "ch_open_all": "Open all", "ch_close_all": "Close all",
    "cta_db_p": "A whole book of the Analects as a PDF: original text, pronunciation and plain Chinese. In Chinese.", "cta_wen_p": "Something you don't understand? Write to us; each week we answer a question or two and credit you by name.",
    "h_motto": "Reading the classics, one chapter at a time.", "h_intro": "Each chapter starts with the original, a plain rendering and a one-line summary, with a short video. Further down, for close readers: the commentators' own words, facsimile pages and a public errata log.",
-   "h_start": "A random good word for today", "h_latest": "Latest chapter", "h_read": "Read this chapter", "h_recent": "Recently read", "h_deep_h": "For close readers", "h_deep_p": "Every line Yikonglu has read aloud can be checked here."},
+   "h_start": "Today’s shared chapter", "h_latest": "Latest chapter", "h_read": "Read this chapter", "h_recent": "Recently read", "h_deep_h": "For close readers", "h_deep_p": "Every line Yikonglu has read aloud can be checked here."},
  "ja": {"ch_gist": "この章の要点", "ch_deep": "精読と確認", "ch_deep_note": "じっくり読みたい方、確かめたい方へ：注の要となる語、諸家の説、異文、各注釈の原文と底本の頁、読み方、正誤。見出しを押すと開きます。", "ch_open_all": "すべて開く", "ch_close_all": "すべて閉じる",
    "cta_db_p": "一篇まるごとの原文・読み・現代語訳を PDF に。中国語のみ。", "cta_wen_p": "分からないところは？一孔録に質問を。毎週いくつか選んでお答えし、お名前（ハンドル）を記します。",
    "h_motto": "一章ずつ、古典の原文を読み解く。", "h_intro": "各章はまず原文、現代語訳、一行の要点と短い動画から。その下に、精読する方のための注釈者の原文、底本の頁、公開の正誤表があります。",
-   "h_start": "今日の良い言葉をランダムに", "h_latest": "最新の章", "h_read": "この章を読む", "h_recent": "最近読んだ章", "h_deep_h": "精読する方へ", "h_deep_p": "一孔録が読み上げた一句一句を、ここで確かめられます。"},
+   "h_start": "今日の共読の章", "h_latest": "最新の章", "h_read": "この章を読む", "h_recent": "最近読んだ章", "h_deep_h": "精読する方へ", "h_deep_p": "一孔録が読み上げた一句一句を、ここで確かめられます。"},
  "ko": {"ch_gist": "이 장의 요지", "ch_deep": "깊이 읽기와 확인", "ch_deep_note": "더 깊이 읽거나 확인하려는 분께: 주석의 핵심어, 여러 주석가의 설, 이문, 각 주석의 원문과 저본 쪽, 독음, 정오. 제목을 누르면 펼쳐집니다.", "ch_open_all": "모두 펼치기", "ch_close_all": "모두 접기",
    "cta_db_p": "한 편 전체의 원문·독음·현대어 풀이를 PDF로. 중국어판입니다.", "cta_wen_p": "모르는 대목이 있나요? 일공록에 질문하세요. 매주 한두 개를 골라 답하고 닉네임을 밝힙니다.",
    "h_motto": "한 장씩, 고전 원문을 읽어 냅니다.", "h_intro": "각 장은 원문, 풀이, 한 줄 요지와 짧은 영상으로 시작합니다. 그 아래에는 깊이 읽는 분을 위한 주석가의 원문, 저본 쪽, 공개 정오표가 있습니다.",
-   "h_start": "오늘의 좋은 말 한 구절 뽑기", "h_latest": "최신 장", "h_read": "이 장 읽기", "h_recent": "최근 읽은 장", "h_deep_h": "깊이 읽는 분께", "h_deep_p": "일공록이 읽은 모든 구절은 여기서 확인할 수 있습니다."},
+   "h_start": "오늘 함께 읽는 장", "h_latest": "최신 장", "h_read": "이 장 읽기", "h_recent": "최근 읽은 장", "h_deep_h": "깊이 읽는 분께", "h_deep_p": "일공록이 읽은 모든 구절은 여기서 확인할 수 있습니다."},
  "fr": {"ch_gist": "Ce que dit ce chapitre", "ch_deep": "Lecture approfondie et vérification", "ch_deep_note": "Pour qui veut lire de près ou vérifier : mots clés du commentaire, avis des autres commentateurs, variantes, commentaires dans leurs propres mots avec les pages de l'édition, prononciation et errata. Touchez un titre pour l'ouvrir.", "ch_open_all": "Tout ouvrir", "ch_close_all": "Tout fermer",
    "cta_db_p": "Un livre entier des Entretiens en PDF : texte original, prononciation et chinois moderne. En chinois.", "cta_wen_p": "Un passage obscur ? Écrivez-nous ; chaque semaine nous répondons à une ou deux questions en citant votre pseudo.",
    "h_motto": "Lire les classiques, un chapitre à la fois.", "h_intro": "Chaque chapitre commence par l'original, une traduction et un résumé en une ligne, avec une courte vidéo. Plus bas, pour les lecteurs attentifs : les mots mêmes des commentateurs, les pages de l'édition et un registre public d'errata.",
-   "h_start": "Tirer au hasard une belle parole du jour", "h_latest": "Dernier chapitre", "h_read": "Lire ce chapitre", "h_recent": "Lus récemment", "h_deep_h": "Pour les lecteurs attentifs", "h_deep_p": "Chaque phrase lue par Yikonglu peut être vérifiée ici."},
+   "h_start": "Le chapitre du jour, ensemble", "h_latest": "Dernier chapitre", "h_read": "Lire ce chapitre", "h_recent": "Lus récemment", "h_deep_h": "Pour les lecteurs attentifs", "h_deep_p": "Chaque phrase lue par Yikonglu peut être vérifiée ici."},
  "es": {"ch_gist": "Qué dice este capítulo", "ch_deep": "Lectura detenida y comprobación", "ch_deep_note": "Para quien quiera leer a fondo o comprobar: palabras clave del comentario, otros comentaristas, variantes, los comentarios con sus propias palabras y las páginas de la edición, pronunciación y erratas. Toque un título para abrirlo.", "ch_open_all": "Abrir todo", "ch_close_all": "Cerrar todo",
    "cta_db_p": "Un libro entero de las Analectas en PDF: texto original, pronunciación y chino moderno. En chino.", "cta_wen_p": "¿Algo que no entiende? Escríbanos; cada semana respondemos una o dos preguntas y citamos su nombre.",
    "h_motto": "Leer los clásicos, capítulo a capítulo.", "h_intro": "Cada capítulo empieza con el original, una traducción y un resumen de una línea, con un vídeo breve. Más abajo, para lectores atentos: las palabras exactas de los comentaristas, las páginas de la edición y un registro público de erratas.",
-   "h_start": "Una buena frase del día, al azar", "h_latest": "Último capítulo", "h_read": "Leer este capítulo", "h_recent": "Leídos recientemente", "h_deep_h": "Para lectores atentos", "h_deep_p": "Cada frase que Yikonglu ha leído se puede comprobar aquí."},
+   "h_start": "Capítulo compartido de hoy", "h_latest": "Último capítulo", "h_read": "Leer este capítulo", "h_recent": "Leídos recientemente", "h_deep_h": "Para lectores atentos", "h_deep_p": "Cada frase que Yikonglu ha leído se puede comprobar aquí."},
 }
 for _c, _d in LC_UI.items(): EXTRA_UI.setdefault(_c, {}).update(_d)
 ZH_UI.update(EXTRA_UI["zh-Hans"])
@@ -546,7 +546,7 @@ Q.addEventListener('click',function(e){var s=e.target.closest('.ju');if(s)show(s
 Q.addEventListener('keydown',function(e){if(e.key==='Enter'){var s=e.target.closest('.ju');if(s)show(s)}});
 document.addEventListener('click',function(e){var c=e.target.closest('.cp');if(c){put(c.dataset.t,c);return}if(!e.target.closest('.ju')&&!e.target.closest('#jubar')){B.hidden=true;if(cur)cur.classList.remove('on')}});
 B.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||!cur)return;var u=Q.dataset.url+'#'+cur.id;
-put(b.dataset.a==='q'?'\u201c'+cur.textContent+'\u201d\u2014\u2014'+Q.dataset.src+Q.dataset.sep+u:u,b)});
+put(b.dataset.a==='q'?'\u201c'+cur.textContent+'\u201d\u2014\u2014'+Q.dataset.src+Q.dataset.sep+u:u,b);if(window.yklCopy)window.yklCopy(cur.id)});
 var h=location.hash.slice(1);if(/^s\\d+$/.test(h)){var t=document.getElementById(h);if(t)t.classList.add('on')}})();
 </script>"""
 
@@ -577,12 +577,33 @@ def analytics(L):
     if ANALYTICS.get("live"):  # 在线与累计读者：worker/ 部署的计数服务；首页有 #live 才显示，其他页只发心跳
         tpl = LIVE_TXT.get(L.code, LIVE_TXT["en"]); sp = LIVE_PILL.get(L.code, LIVE_PILL["en"])
         a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",T=" + json.dumps(tpl, ensure_ascii=False) + ",S=" + json.dumps(sp, ensure_ascii=False)
-              + ';var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
+              + ';function RUN(){var DB=document.querySelector(".donebox"),CC=DB?DB.getAttribute("data-c"):"";var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
               + 'function n(x){try{return x.toLocaleString(document.documentElement.lang||undefined)}catch(e){return x}}'
-              + 'function h(first){if(document.hidden&&!first)return;fetch(U+"/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f})}).then(function(r){return r.json()}).then(function(d){if(!d)return;var e=document.getElementById("live"),q=document.getElementById("livep");if(e){e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}if(q){q.textContent=S.replace("{o}",n(d.online)).replace("{t}",n(d.total));q.title=T.replace("{o}",n(d.online)).replace("{t}",n(d.total));q.hidden=false}}).catch(function(){})}'
-              + 'h(true);setInterval(function(){h(false)},60000)})();</script>')
+              + 'function h(first){if(document.hidden&&!first)return;fetch(U+"/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f,c:first?CC:""})}).then(function(r){return r.json()}).then(function(d){if(!d)return;var e=document.getElementById("live"),q=document.getElementById("livep");if(e){e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}if(q){q.textContent=S.replace("{o}",n(d.online)).replace("{t}",n(d.total));q.title=T.replace("{o}",n(d.online)).replace("{t}",n(d.total));q.hidden=false}}).catch(function(){})}'
+              + 'h(true);setInterval(function(){h(false)},60000);'
+              + 'var X=' + json.dumps(DONE_TXT.get(L.code, DONE_TXT["en"]), ensure_ascii=False) + ';'
+              + 'function cnt(c,el){fetch(U+"/done?c="+encodeURIComponent(c)).then(function(r){return r.json()}).then(function(d){if(!d||!d.total){el.hidden=true;return}el.textContent=X.n.replace("{d}",n(d.today)).replace("{t}",n(d.total));el.hidden=false}).catch(function(){})}'
+              + 'window.yklDone=cnt;'
+              + 'document.querySelectorAll(".donebox").forEach(function(bx){var c=bx.getAttribute("data-c"),b=bx.querySelector("button"),p=bx.querySelector(".donecnt"),k="ykl_done_"+c,was=false;try{was=!!localStorage.getItem(k)}catch(e){}'
+              + 'function mark(){b.textContent=X.ok;b.disabled=true;b.classList.add("on")}if(was)mark();bx.hidden=false;cnt(c,p);'
+              + 'b.addEventListener("click",function(){if(b.disabled)return;mark();try{localStorage.setItem(k,"1")}catch(e){}fetch(U+"/done",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:c})}).then(function(r){return r.json()}).then(function(d){p.textContent=X.n.replace("{d}",n(d.today)).replace("{t}",n(d.total));p.hidden=false}).catch(function(){})})});'
+              + 'window.yklCopy=function(sid){if(!CC)return;fetch(U+"/copy",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:CC,s:sid})}).catch(function(){})};'
+              + 'var LJ=null;function lj(cb){if(LJ){cb(LJ);return}fetch("/data/live-"+document.documentElement.lang+".json").then(function(r){return r.json()}).then(function(j){LJ=j;cb(j)}).catch(function(){})}'
+              + 'var ST=document.getElementById("steps"),TJ=document.getElementById("topju"),HL=document.querySelectorAll(".toc li[data-c]"),GD=document.getElementById("gdline");'
+              + 'function lk(j,c){var a=document.createElement("a");a.href=j.p+j.c[c][1];a.textContent=j.c[c][0];return a}'
+              + 'if(ST||TJ||HL.length)fetch(U+"/top").then(function(r){return r.json()}).then(function(t){if(!t)return;'
+              + 'if(HL.length){var mx=0;HL.forEach(function(li){mx=Math.max(mx,t.heat[li.getAttribute("data-c")]||0)});if(mx)HL.forEach(function(li){var v=t.heat[li.getAttribute("data-c")]||0,i=li.querySelector("i.heat");if(i&&v)i.style.width=Math.max(6,Math.round(v*100/mx))+"%"})}'
+              + 'if(ST&&t.recent&&t.recent.length)lj(function(j){var rc=t.recent.filter(function(c){return j.c[c]});if(!rc.length)return;ST.textContent=X.steps+"：";rc.forEach(function(c,i){if(i)ST.appendChild(document.createTextNode("、"));ST.appendChild(lk(j,c))});ST.hidden=false});'
+              + 'if(TJ&&t.top&&t.top.length)lj(function(j){var k=t.top[0][0].split("#"),c=k[0],si=parseInt(k[1].slice(1),10)-1;if(!j.c[c]||!j.c[c][2][si])return;TJ.querySelector("blockquote").textContent=j.c[c][2][si];var a=TJ.querySelector("a");a.href=j.p+j.c[c][1]+"#"+k[1];a.textContent=j.c[c][0];TJ.hidden=false})'
+              + '}).catch(function(){});'
+              + 'if(GD){var gc=GD.getAttribute("data-c");lj(function(j){if(!j.c[gc])return;GD.querySelector(".gdt").textContent="";GD.querySelector(".gdt").appendChild(lk(j,gc));GD.hidden=false});fetch(U+"/done?c="+encodeURIComponent(gc)).then(function(r){return r.json()}).then(function(d){if(d&&d.today){GD.querySelector(".gdn").textContent=" · "+X.gdn.replace("{d}",n(d.today))}}).catch(function(){})}'
+              + '}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",RUN);else RUN()})();</script>')
     return a
 
+DONE_TXT = {"zh-Hans": {"b": "读完了", "ok": "已读完 ✓", "n": "今天 {d} 人读完 · 共 {t} 人", "h": "今日共读", "p": "全站今天一起读这一章，明天换一章。", "steps": "今天有人读了", "topju": "本周被抄走最多的一句", "gd": "今日共读一章", "gdn": "今天 {d} 人读完"}, "zh-Hant": {"b": "讀完了", "ok": "已讀完 ✓", "n": "今天 {d} 人讀完 · 共 {t} 人", "h": "今日共讀", "p": "全站今天一起讀這一章，明天換一章。", "steps": "今天有人讀了", "topju": "本週被抄走最多的一句", "gd": "今日共讀一章", "gdn": "今天 {d} 人讀完"}, "en": {"b": "I’ve read it", "ok": "Read ✓", "n": "{d} finished today · {t} in all", "h": "Today’s shared reading", "p": "Everyone on the site reads this chapter today; a new one tomorrow.", "steps": "Read today", "topju": "Most-copied line this week", "gd": "Today’s shared chapter", "gdn": "{d} finished it today"}, "ja": {"b": "読み終えた", "ok": "読了 ✓", "n": "今日 {d} 人が読了 · 累計 {t} 人", "h": "今日の共読", "p": "今日はサイトのみんなでこの章を読みます。明日は別の章です。", "steps": "今日読まれた章", "topju": "今週いちばん写された一句", "gd": "今日の共読の章", "gdn": "今日 {d} 人が読了"}, "ko": {"b": "다 읽었어요", "ok": "읽음 ✓", "n": "오늘 {d}명 완독 · 누적 {t}명", "h": "오늘 함께 읽기", "p": "오늘은 모두 이 장을 함께 읽습니다. 내일은 다른 장입니다.", "steps": "오늘 읽힌 장", "topju": "이번 주 가장 많이 옮겨 적은 구절", "gd": "오늘 함께 읽는 장", "gdn": "오늘 {d}명 완독"}, "fr": {"b": "Je l’ai lu", "ok": "Lu ✓", "n": "{d} l’ont lu aujourd’hui · {t} en tout", "h": "Lecture commune du jour", "p": "Aujourd’hui, tout le site lit ce chapitre ; demain, un autre.", "steps": "Lus aujourd’hui", "topju": "La phrase la plus copiée cette semaine", "gd": "Le chapitre du jour, ensemble", "gdn": "{d} l’ont lu aujourd’hui"}, "es": {"b": "Lo he leído", "ok": "Leído ✓", "n": "{d} lo leyeron hoy · {t} en total", "h": "Lectura compartida de hoy", "p": "Hoy todo el sitio lee este capítulo; mañana, otro.", "steps": "Leídos hoy", "topju": "La frase más copiada esta semana", "gd": "Capítulo compartido de hoy", "gdn": "{d} lo leyeron hoy"}, "de": {"b": "Gelesen", "ok": "Gelesen ✓", "n": "heute {d} gelesen · insgesamt {t}", "h": "Gemeinsame Lektüre heute", "p": "Heute liest die ganze Seite dieses Kapitel, morgen ein anderes.", "steps": "Heute gelesen", "topju": "Meistkopierter Satz dieser Woche", "gd": "Gemeinsames Kapitel heute", "gdn": "heute {d} gelesen"}, "vi": {"b": "Đã đọc xong", "ok": "Đã đọc ✓", "n": "hôm nay {d} người đọc xong · tổng {t}", "h": "Cùng đọc hôm nay", "p": "Hôm nay cả trang cùng đọc chương này; mai đổi chương khác.", "steps": "Hôm nay có người đọc", "topju": "Câu được chép nhiều nhất tuần này", "gd": "Chương cùng đọc hôm nay", "gdn": "hôm nay {d} người đọc xong"}, "id": {"b": "Sudah selesai", "ok": "Selesai ✓", "n": "{d} selesai hari ini · total {t}", "h": "Baca bersama hari ini", "p": "Hari ini semua pembaca membaca bab ini; besok bab lain.", "steps": "Dibaca hari ini", "topju": "Kalimat paling banyak disalin minggu ini", "gd": "Bab baca bersama hari ini", "gdn": "{d} selesai hari ini"}, "ru": {"b": "Прочитано", "ok": "Прочитано ✓", "n": "сегодня прочитали: {d} · всего: {t}", "h": "Читаем вместе сегодня", "p": "Сегодня весь сайт читает эту главу, завтра — другую.", "steps": "Сегодня читали", "topju": "Самая переписываемая строка недели", "gd": "Глава дня — читаем вместе", "gdn": "сегодня прочитали: {d}"}}
+def done_html(L, c):
+    if not ANALYTICS.get("live"): return ""
+    return f'<section class="donebox" data-c="{c}" hidden><button type="button" class="btn ghost">{DONE_TXT.get(L.code, DONE_TXT["en"])["b"]}</button><p class="donecnt" hidden></p></section>'
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
 LIVE_PILL = {"zh-Hans": "{o} 人在读 · 累计 {t}", "zh-Hant": "{o} 人在讀 · 累計 {t}", "en": "{o} reading · {t} total", "ja": "{o} 人が読書中 · 累計 {t}", "ko": "{o}명 읽는 중 · 누적 {t}", "fr": "{o} lisent · {t} en tout",
              "es": "{o} leyendo · {t} total", "de": "{o} lesen · {t} gesamt", "vi": "{o} đang đọc · {t} lượt", "id": "{o} membaca · total {t}", "ru": "читают {o} · всего {t}"}
@@ -674,7 +695,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <p>{L.t("foot_src")}</p>
 <p class="where">{where_html(L)}</p>
 <div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
-<p class="langs">{sw}</p>
+{'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}<p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
 <p class="freuse">{L.t("foot_reuse", p=P)}</p>
 </div></footer>
@@ -825,6 +846,9 @@ def build_lang(L, D, write):
     def rel_of(c):
         p, n = c.split("."); return f"lunyu/{PIAN[p][1]}/{n}.html"
     def title_of(c): return L.ch(c).get("title") or (notes[c]["title"] if c in notes else wj_titles(D["qw"])[c])
+    if ANALYTICS.get("live") and "OUT_ROOT" in globals():  # 页脚“今天有人读了”、首页“最常被抄走的一句”查标题用
+        os.makedirs(os.path.join(OUT_ROOT, "data"), exist_ok=True)
+        json.dump({"p": "/" + L.prefix, "c": {c: [title_of(c), rel_of(c), split_ju(yw[c])] for c in pub}}, open(os.path.join(OUT_ROOT, "data", f"live-{L.code}.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     def field(c, k):
         v = L.ch(c).get(k)
         return (v, True) if v else (notes[c]["fields"].get(k), False)
@@ -944,6 +968,7 @@ def build_lang(L, D, write):
 {gist_html}
 {bh_html}
 {vid_html}
+{done_html(L, c) if c in D["pub"] else ""}
 {cta_html(L, P)}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
 {fold(secs + yiwen_html(c) + extra)}
@@ -1033,7 +1058,7 @@ def build_lang(L, D, write):
     def toc(cs):
         def li(c):
             if c in pubset:
-                return f'<li><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(title_of(c))}</b><span>{esc((field(c, "片里落点")[0] or "").split("；")[0].split(". Today")[0])}</span></a></li>'
+                return f'<li data-c="{c}"><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(title_of(c))}</b><span>{esc((field(c, "片里落点")[0] or "").split("；")[0].split(". Today")[0])}</span><i class="heat"></i></a></li>'
             t = D["qw"][c]["text"]
             return f'<li class="wj"><a href="{href(c)}"><em>{c}</em><b>{esc(ctitle(c))}</b><span><i class="wjtag">{L.t("toc_wj")}</i><span lang="zh-Hans">{esc(t[:40] + ("……" if len(t) > 40 else ""))}</span></span></a></li>'
         return '<ol class="toc">' + "".join(li(c) for c in cs) + "</ol>"
@@ -1084,12 +1109,13 @@ def build_lang(L, D, write):
     lc_js = ("<script>(function(){var L=" + json.dumps([{"t": ch2ep[c][1]["public_at"], "h": P + rel_of(c), "c": _lcard(c)} for c in _fut], ensure_ascii=False).replace("</", "<\\/")
              + ';function f(){var n=Date.now(),x=null;for(var i=0;i<L.length;i++)if(n>=Date.parse(L[i].t))x=L[i];if(!x)return;var b=document.getElementById("lcard");if(b){b.href=x.h;b.innerHTML=x.c}}f();setInterval(f,60000)})();</script>') if _fut else ""
     # 首页主按钮“今日一句”：在视频已公开（或到点公开）的章里随机抽一章；没有脚本时落到最新一章
-    _rc = [{"h": P + rel_of(c), "t": ch2ep[c][1].get("public_at") or ""} for c in pub if ch2ep[c][1].get("youtube")]
-    rc_js = ("<script>(function(){var R=" + json.dumps(_rc, ensure_ascii=False) + ';var a=document.getElementById("rcta");if(!a)return;a.addEventListener("click",function(e){var n=Date.now(),C=R.filter(function(x){return !x.t||Date.parse(x.t)<=n});if(!C.length)return;e.preventDefault();location.href=C[Math.floor(Math.random()*C.length)].h})})();</script>') if _rc else ""
+    # 首页主按钮“今日共读一章”：按北京日期在视频已公开的章里定一章，全站同一天同一章；没有脚本时落到最新一章
+    _rc = [{"c": c, "h": P + rel_of(c), "t": ch2ep[c][1].get("public_at") or ""} for c in pub if ch2ep[c][1].get("youtube")]
+    rc_js = ("<script>(function(){var R=" + json.dumps(_rc, ensure_ascii=False) + ';var a=document.getElementById("rcta"),g=document.getElementById("gdline");if(!a)return;var n=Date.now(),C=R.filter(function(x){return !x.t||Date.parse(x.t)<=n});if(!C.length)return;var day=Math.floor((n+8*3600e3)/864e5),x=C[(day*7919)%C.length];a.href=x.h;if(g)g.setAttribute("data-c",x.c)})();</script>') if _rc else ""
     vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a>' if L.code.startswith("zh") else "")
     home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录原创角色围坐长桌读书" width="1920" height="1080"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1><p class="motto">{L.t("h_motto")}</p>
-<p class="cta"><a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/><circle cx="16" cy="8" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="8" cy="16" r="1.6" fill="currentColor"/><circle cx="16" cy="16" r="1.6" fill="currentColor"/></svg>{L.t("h_start")}</a>{vids}</p>{rc_js}</div></section>
+<p class="cta"><a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 6.5c-1.6-1.4-3.8-2-7-2v13c3.2 0 5.4.6 7 2 1.6-1.4 3.8-2 7-2v-13c-3.2 0-5.4.6-7 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6.5v13" stroke="currentColor" stroke-width="1.8"/></svg>{L.t("h_start")}</a>{vids}</p>{'<p class="gdline" id="gdline" hidden><span class="gdt"></span><span class="gdn"></span></p>' if ANALYTICS.get("live") else ""}{rc_js}</div></section>
 <main class="home">
 <section class="intro wrap narrow">
 <p>{L.t("h_intro")}</p>
@@ -1097,6 +1123,7 @@ def build_lang(L, D, write):
 </section>
 <section class="wrap narrow"><h2 class="ph">{L.t("h_latest")}</h2>
 <a class="latest" id="lcard" href="{P}{rel_of(lc)}">{_lcard(lc)}</a>{lc_js}</section>
+{f'<section class="wrap narrow topju" id="topju" hidden><h2 class="ph">{DONE_TXT.get(L.code, DONE_TXT["en"])["topju"]}</h2><blockquote lang="zh-Hans"></blockquote><p><a href="{P}"></a></p></section>' if ANALYTICS.get("live") else ""}
 <section class="wrap narrow"><h2 class="ph">{L.t("h_recent")}</h2>{toc(recent[1:])}</section>
 <section class="wrap narrow">{cta_html(L, P)}</section>
 <section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}shumu/">{L.t("books")}</a></h2>{bcards}</section>
@@ -1495,6 +1522,7 @@ def main(zdir, outdir, kanwu=None):
             D["og"][c] = {"hans": OG.make("hans", c, head, yw[c], TAGLINE)}
     else:
         print("没有字体，分享图跳过：", OG.FONT)
+    global OUT_ROOT; OUT_ROOT = outdir
     urls = build_lang(Lang("zh-Hans", ZH_UI), D, writer(""))
     write_data(D, outdir)
     if yxl: json.dump(yxl, open(os.path.join(outdir, "data", "yingxiangli.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
