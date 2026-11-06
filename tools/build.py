@@ -579,12 +579,13 @@ def analytics(L):
         a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",T=" + json.dumps(tpl, ensure_ascii=False) + ",S=" + json.dumps(sp, ensure_ascii=False)
               + ';var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
               + 'function n(x){try{return x.toLocaleString(document.documentElement.lang||undefined)}catch(e){return x}}'
-              + 'function h(first){if(document.hidden&&!first)return;fetch(U+"/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f})}).then(function(r){return r.json()}).then(function(d){if(!d)return;var e=document.getElementById("live"),q=document.getElementById("livep");if(e){e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}if(q){q.textContent=S.replace("{o}",n(d.online));q.title=T.replace("{o}",n(d.online)).replace("{t}",n(d.total));q.hidden=false}}).catch(function(){})}'
+              + 'function h(first){if(document.hidden&&!first)return;fetch(U+"/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f})}).then(function(r){return r.json()}).then(function(d){if(!d)return;var e=document.getElementById("live"),q=document.getElementById("livep");if(e){e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}if(q){q.textContent=S.replace("{o}",n(d.online)).replace("{t}",n(d.total));q.title=T.replace("{o}",n(d.online)).replace("{t}",n(d.total));q.hidden=false}}).catch(function(){})}'
               + 'h(true);setInterval(function(){h(false)},60000)})();</script>')
     return a
 
-LIVE_PILL = {"zh-Hans": "{o} 人在读", "zh-Hant": "{o} 人在讀", "en": "{o} reading", "ja": "{o} 人が読書中", "ko": "{o}명 읽는 중", "fr": "{o} en lecture",
-             "es": "{o} leyendo", "de": "{o} lesen", "vi": "{o} người đang đọc", "id": "{o} membaca", "ru": "читают: {o}"}
+LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
+LIVE_PILL = {"zh-Hans": "{o} 人在读 · 累计 {t}", "zh-Hant": "{o} 人在讀 · 累計 {t}", "en": "{o} reading · {t} total", "ja": "{o} 人が読書中 · 累計 {t}", "ko": "{o}명 읽는 중 · 누적 {t}", "fr": "{o} lisent · {t} en tout",
+             "es": "{o} leyendo · {t} total", "de": "{o} lesen · {t} gesamt", "vi": "{o} đang đọc · {t} lượt", "id": "{o} membaca · total {t}", "ru": "читают {o} · всего {t}"}
 LIVE_TXT = {"zh-Hans": "此刻 {o} 人在读 · 已有 {t} 位读者来过", "zh-Hant": "此刻 {o} 人在讀 · 已有 {t} 位讀者來過",
             "en": "{o} reading now · {t} readers so far", "ja": "いま {o} 人が読書中 · これまでの読者 {t} 人", "ko": "지금 {o}명이 읽는 중 · 지금까지 독자 {t}명",
             "fr": "{o} en train de lire · {t} lecteurs jusqu’ici", "es": "{o} leyendo ahora · {t} lectores hasta hoy", "de": "{o} lesen gerade · bisher {t} Leser",
@@ -663,7 +664,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>{'<span class="livep" id="livep" hidden></span>' if ANALYTICS.get("live") else ""}
 <nav><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}gushi/" class="gsnav">故事</a>' if gs else ""}
 <details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}wen.html">{lang_tab(WEN, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
-<details class="lang"><summary>{L.name}</summary><div>{sw}</div></details></nav>
+<details class="lang"><summary><span class="lfull">{L.name}</span><span class="lshort" aria-hidden="true">{LANG_SHORT.get(L.code, L.code[:2].upper())}</span></summary><div>{sw}</div></details></nav>
 </div></header>
 {note}
 {body}
@@ -1088,7 +1089,7 @@ def build_lang(L, D, write):
     vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a>' if L.code.startswith("zh") else "")
     home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录原创角色围坐长桌读书" width="1920" height="1080"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1><p class="motto">{L.t("h_motto")}</p>
-<p class="cta"><a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/><circle cx="16" cy="8" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="8" cy="16" r="1.6" fill="currentColor"/><circle cx="16" cy="16" r="1.6" fill="currentColor"/></svg>{L.t("h_start")}</a>{vids}</p>{rc_js}<p class="live" id="live" hidden></p></div></section>
+<p class="cta"><a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/><circle cx="16" cy="8" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="8" cy="16" r="1.6" fill="currentColor"/><circle cx="16" cy="16" r="1.6" fill="currentColor"/></svg>{L.t("h_start")}</a>{vids}</p>{rc_js}</div></section>
 <main class="home">
 <section class="intro wrap narrow">
 <p>{L.t("h_intro")}</p>
