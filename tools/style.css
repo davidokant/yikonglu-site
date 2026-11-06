@@ -353,3 +353,16 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .gsbk{font-size:17px;margin:14px 0 4px;color:var(--accent2)}
 
 #rcta{display:inline-flex;align-items:center;gap:8px}#rcta .dice{flex:none;transition:transform .4s}#rcta:hover .dice{transform:rotate(90deg)}
+/* 11-06 手机页首：第一行印章＋语言，第二行栏目一排；首页主按钮独占一行，两个视频按钮并排 */
+@media (max-width:700px){
+.top .wrap{position:relative;flex-wrap:wrap;height:auto;padding:8px 16px 6px;gap:4px}
+.top .brand{height:34px;display:flex;align-items:center}
+.top nav{width:100%;flex-wrap:nowrap;justify-content:space-between;gap:0 10px;overflow-x:auto;scrollbar-width:none;padding:2px 0}
+.top nav::-webkit-scrollbar{display:none}
+.top nav>a,.top nav>.more{flex:none;white-space:nowrap}
+.top nav>.lang:not(.more){position:absolute;right:16px;top:12px;margin:0}
+.top nav>.more div{position:fixed;right:16px;top:auto}
+.herotext .cta{gap:8px 10px}
+.herotext .cta #rcta{flex-basis:100%;max-width:340px;justify-content:center;margin:0 auto}
+.herotext .cta .btn.ghost{margin:0}
+}
