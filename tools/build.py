@@ -575,14 +575,16 @@ def analytics(L):
     if ANALYTICS.get("baidu") and L.code == "zh-Hans":
         a += f'<script>var _hmt=_hmt||[];(function(){{var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?{ANALYTICS["baidu"]}";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)}})();</script>'
     if ANALYTICS.get("live"):  # 在线与累计读者：worker/ 部署的计数服务；首页有 #live 才显示，其他页只发心跳
-        tpl = LIVE_TXT.get(L.code, LIVE_TXT["en"])
-        a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",T=" + json.dumps(tpl, ensure_ascii=False)
+        tpl = LIVE_TXT.get(L.code, LIVE_TXT["en"]); sp = LIVE_PILL.get(L.code, LIVE_PILL["en"])
+        a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",T=" + json.dumps(tpl, ensure_ascii=False) + ",S=" + json.dumps(sp, ensure_ascii=False)
               + ';var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
               + 'function n(x){try{return x.toLocaleString(document.documentElement.lang||undefined)}catch(e){return x}}'
-              + 'function h(first){if(document.hidden&&!first)return;fetch(U+"/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f})}).then(function(r){return r.json()}).then(function(d){var e=document.getElementById("live");if(!e||!d)return;e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}).catch(function(){})}'
+              + 'function h(first){if(document.hidden&&!first)return;fetch(U+"/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f})}).then(function(r){return r.json()}).then(function(d){if(!d)return;var e=document.getElementById("live"),q=document.getElementById("livep");if(e){e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}if(q){q.textContent=S.replace("{o}",n(d.online));q.title=T.replace("{o}",n(d.online)).replace("{t}",n(d.total));q.hidden=false}}).catch(function(){})}'
               + 'h(true);setInterval(function(){h(false)},60000)})();</script>')
     return a
 
+LIVE_PILL = {"zh-Hans": "{o} 人在读", "zh-Hant": "{o} 人在讀", "en": "{o} reading", "ja": "{o} 人が読書中", "ko": "{o}명 읽는 중", "fr": "{o} en lecture",
+             "es": "{o} leyendo", "de": "{o} lesen", "vi": "{o} người đang đọc", "id": "{o} membaca", "ru": "читают: {o}"}
 LIVE_TXT = {"zh-Hans": "此刻 {o} 人在读 · 已有 {t} 位读者来过", "zh-Hant": "此刻 {o} 人在讀 · 已有 {t} 位讀者來過",
             "en": "{o} reading now · {t} readers so far", "ja": "いま {o} 人が読書中 · これまでの読者 {t} 人", "ko": "지금 {o}명이 읽는 중 · 지금까지 독자 {t}명",
             "fr": "{o} en train de lire · {t} lecteurs jusqu’ici", "es": "{o} leyendo ahora · {t} lectores hasta hoy", "de": "{o} lesen gerade · bisher {t} Leser",
@@ -658,7 +660,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 </head>
 <body class="{cls}">
 <header class="top"><div class="wrap">
-<a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>
+<a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>{'<span class="livep" id="livep" hidden></span>' if ANALYTICS.get("live") else ""}
 <nav><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}gushi/" class="gsnav">故事</a>' if gs else ""}
 <details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}wen.html">{lang_tab(WEN, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary>{L.name}</summary><div>{sw}</div></details></nav>
