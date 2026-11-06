@@ -464,7 +464,7 @@ def parse_gao(path, yw):
         if k and cur and "引子" not in l: kmap[k.group(1)] = cur  # 下篇引子不算本章
     pnum = next((v for k2, v in PIAN_NUM.items() if k2 in os.path.basename(path)), None)
     out = {}
-    sec2ch = {sec: f"{pnum}.{cn2int(re.match(r'^### 第(.+?)章', sec).group(1))}" for sec in set(kmap.values())} if pnum else {}
+    sec2ch = {sec: f"{pnum}.{cn2int(re.match(r'^### 第(.+?)章', sec).group(1).split('、')[0])}" for sec in set(kmap.values())} if pnum else {}
     for row in md_tables(L, r"^## 引文取处"):
         if len(row) < 4: continue
         k, text, src, page = row[:4]
@@ -574,7 +574,19 @@ def analytics(L):
         a += f"<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{{\"token\": \"{ANALYTICS['cloudflare']}\"}}'></script>"
     if ANALYTICS.get("baidu") and L.code == "zh-Hans":
         a += f'<script>var _hmt=_hmt||[];(function(){{var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?{ANALYTICS["baidu"]}";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)}})();</script>'
+    if ANALYTICS.get("live"):  # 在线与累计读者：worker/ 部署的计数服务；首页有 #live 才显示，其他页只发心跳
+        tpl = LIVE_TXT.get(L.code, LIVE_TXT["en"])
+        a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",T=" + json.dumps(tpl, ensure_ascii=False)
+              + ';var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
+              + 'function n(x){try{return x.toLocaleString(document.documentElement.lang||undefined)}catch(e){return x}}'
+              + 'function h(first){if(document.hidden&&!first)return;fetch(U+"/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f})}).then(function(r){return r.json()}).then(function(d){var e=document.getElementById("live");if(!e||!d)return;e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}).catch(function(){})}'
+              + 'h(true);setInterval(function(){h(false)},60000)})();</script>')
     return a
+
+LIVE_TXT = {"zh-Hans": "此刻 {o} 人在读 · 已有 {t} 位读者来过", "zh-Hant": "此刻 {o} 人在讀 · 已有 {t} 位讀者來過",
+            "en": "{o} reading now · {t} readers so far", "ja": "いま {o} 人が読書中 · これまでの読者 {t} 人", "ko": "지금 {o}명이 읽는 중 · 지금까지 독자 {t}명",
+            "fr": "{o} en train de lire · {t} lecteurs jusqu’ici", "es": "{o} leyendo ahora · {t} lectores hasta hoy", "de": "{o} lesen gerade · bisher {t} Leser",
+            "vi": "{o} người đang đọc · {t} độc giả đã ghé", "id": "{o} sedang membaca · {t} pembaca sejauh ini", "ru": "Сейчас читают: {o} · всего читателей: {t}"}
 
 FOLD_RE = re.compile(r'<section class="sec ([^"]*)"((?: id="[^"]*")?)><h2>(.*?)</h2>(.*?)</section>', re.S)
 def fold(h):  # 下半各节收成可点开的 <details>；锚点跳进来时由 FOLD_JS 自动展开
@@ -1068,7 +1080,7 @@ def build_lang(L, D, write):
     vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a>' if L.code.startswith("zh") else "")
     home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录原创角色围坐长桌读书" width="1920" height="1080"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1><p class="motto">{L.t("h_motto")}</p>
-<p class="cta"><a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/><circle cx="16" cy="8" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="8" cy="16" r="1.6" fill="currentColor"/><circle cx="16" cy="16" r="1.6" fill="currentColor"/></svg>{L.t("h_start")}</a>{vids}</p>{rc_js}</div></section>
+<p class="cta"><a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/><circle cx="16" cy="8" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="8" cy="16" r="1.6" fill="currentColor"/><circle cx="16" cy="16" r="1.6" fill="currentColor"/></svg>{L.t("h_start")}</a>{vids}</p>{rc_js}<p class="live" id="live" hidden></p></div></section>
 <main class="home">
 <section class="intro wrap narrow">
 <p>{L.t("h_intro")}</p>

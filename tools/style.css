@@ -366,3 +366,4 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .herotext .cta #rcta{flex-basis:100%;max-width:340px;justify-content:center;margin:0 auto}
 .herotext .cta .btn.ghost{margin:0}
 }
+.herotext .live{margin:14px 0 0;font-size:14px;color:rgba(242,241,234,.82);letter-spacing:.03em}.herotext .live b{color:#F2F1EA;font-weight:600}.herotext .live:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#7FC8A0;margin-right:8px;vertical-align:middle;box-shadow:0 0 0 3px rgba(127,200,160,.25)}
