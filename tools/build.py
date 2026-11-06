@@ -242,6 +242,8 @@ LIVE_BOOKS = {"lunyu"}
 SHOW_DRAFT = True  # “初稿改动”比例：首页小字与方法页
 DRAFT_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/初稿改动.json"
 YXL_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/影响力.json"  # 一孔影响力（找到分），每天自动更新
+FANGFA = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fangfa.json"), encoding="utf-8"))  # 核验方法页七语文字
+EPIS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "episodes.json"), encoding="utf-8"))
 ZT_DIR = os.path.join("/mnt/project-files/一孔学-内-自媒体/数据/网站素材", "_专题")  # 专题表.json：一专题一页、页内按书分段
 def load_zhuanti():
     f = os.path.join(ZT_DIR, "专题表.json")
@@ -589,7 +591,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>
 <nav><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}gushi/" class="gsnav">故事</a>' if gs else ""}
-<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
+<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{(FANGFA.get(L.code) or FANGFA["zh-Hans"])["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary>{L.name}</summary><div>{sw}</div></details></nav>
 </div></header>
 {note}
@@ -599,7 +601,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
 <p class="where">{where_html(L)}</p>
-<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
+<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{(FANGFA.get(L.code) or FANGFA["zh-Hans"])["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
 <p class="freuse">{L.t("foot_reuse", p=P)}</p>
@@ -1063,6 +1065,25 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zc_sub")}</span>{L.t("zc_title")}</h1></div></div>
 <main class="wrap narrow prose"><p>{L.t("zc_p")}</p>{"".join(order)}</main>'''
     write("zhichi.html", page(L, f'{L.t("zc_title")}｜一孔录', L.t("zc_sub"), "zhichi.html", body)); urls.append(f"{DOMAIN}/{L.prefix}zhichi.html")
+    # 核验方法页（/fangfa.html）
+    F = FANGFA.get(L.code) or FANGFA["zh-Hans"]
+    try: DC = json.load(open(DRAFT_FILE, encoding="utf-8"))
+    except Exception: DC = None
+    ul = lambda xs: "<ul>" + "".join(f"<li>{x.replace('{p}', P)}</li>" for x in xs) + "</ul>"
+    tbl = '<table><thead><tr>' + "".join(f"<th>{h}</th>" for h in F["th"]) + "</tr></thead><tbody>" + "".join("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in F["rows"]) + "</tbody></table>"
+    s5 = f'<p>{F["s5p"]}</p>'
+    if DC and DC.get("rows"):
+        s5 += f'<p>{F["s5c"].format(n=DC["episodes"], s=DC["segments"], c=DC["changed"], r=DC["ratio"], d=DC["updated"])}</p>'
+        def eplink(ep):
+            ch = (EPIS.get(ep) or {}).get("chapters") or []
+            if not ch: return esc(ep)
+            pn, cn = ch[0].split("."); return f'<a href="{P}lunyu/{PIAN[pn][1]}/{cn}.html">{esc(ep)}</a>'
+        s5 += '<table class="num"><thead><tr>' + "".join(f"<th>{h}</th>" for h in F["cth"]) + "</tr></thead><tbody>" + "".join(f'<tr><td>{eplink(r["ep"])}</td><td>{r["segments"]}</td><td>{r["changed"]}</td><td>{round(100 * r["changed"] / r["segments"], 1) if r["segments"] else 0}%</td></tr>' for r in DC["rows"]) + "</tbody></table>"
+    logs = "".join(f"<li>{a} {b}</li>" for a, b in F["logs"])
+    body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{F["sub"]}</span>{F["title"]}</h1></div></div>
+<main class="wrap narrow prose"><p>{F["intro"]}</p><h2>{F["s1h"]}</h2>{ul(F["s1"])}<h2>{F["s2h"]}</h2><ol>{"".join(f"<li>{x.replace('{p}', P)}</li>" for x in F["s2"])}</ol>
+<h2>{F["s3h"]}</h2><p>{F["s3p"]}</p>{tbl}<p>{F["s3n"]}</p><h2>{F["s4h"]}</h2>{ul(F["s4"])}<h2>{F["s5h"]}</h2>{s5}<h2>{F["s6h"]}</h2><p>{F["s6"]}</p><h3>{F["log"]}</h3><ul>{logs}</ul></main>'''
+    write("fangfa.html", page(L, f'{F["title"]}｜一孔录', F["sub"], "fangfa.html", body)); urls.append(f"{DOMAIN}/{L.prefix}fangfa.html")
     # 免费读本（PDF 放 tools/root/duben/，原样拷到站点 /duben/）
     DUBEN = [("db_xueer", "db_meta", "lunyu-xueer")]
     rows = "".join(f'<li><b>{L.t(n)}</b> <span class="note">{L.t(m)}</span><br><a class="btn" href="/duben/{f}.pdf" download>{L.t("db_hans")} PDF</a> <a class="btn ghost" href="/duben/{f}-hant.pdf" download>{L.t("db_hant")} PDF</a></li>' for n, m, f in DUBEN)
