@@ -1421,7 +1421,7 @@ def main(zdir, outdir, kanwu=None):
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
         "".join(f"<url><loc>{u}</loc><lastmod>{lastmod(u)}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     json.dump({k: v for k, v in pdates.items() if k in seen}, open(pdp, "w", encoding="utf-8"), ensure_ascii=False, indent=0, sort_keys=True)
-    ver = __import__("hashlib").md5((CSSV + "".join(sorted(v[0] for k, v in pdates.items() if k in seen))).encode()).hexdigest()[:10]
+    ver = __import__("hashlib").md5((CSSV + A2V + open(os.path.join(HERE, "sw.js"), encoding="utf-8").read() + "".join(sorted(v[0] for k, v in pdates.items() if k in seen))).encode()).hexdigest()[:10]
     open(os.path.join(outdir, "sw.js"), "w", encoding="utf-8").write(open(os.path.join(HERE, "sw.js"), encoding="utf-8").read().replace("@VER@", ver).replace("@PREFIXES@", json.dumps([""] + [LANGS[k][0] for k in LANGS if LANGS[k][0]])))
     open(os.path.join(outdir, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
     open(os.path.join(outdir, "CNAME"), "w").write("yikonglu.com\n")

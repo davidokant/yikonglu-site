@@ -30,7 +30,8 @@ self.addEventListener("fetch", e => {
   if (u.origin === location.origin) {
     if (u.pathname === "/sw.js" || u.pathname.endsWith(".pdf")) return;  // 读本 PDF 不进缓存
     if (r.mode === "navigate" || (r.headers.get("accept") || "").includes("text/html")) {
-      e.respondWith(fetch(r).then(res => {
+      // 页面绕过浏览器 HTTP 缓存（GitHub Pages 给 10 分钟），向服务器验一次 ETag，刚部署的新页马上看得到
+      e.respondWith(fetch(r.url, { cache: "no-cache", credentials: "same-origin" }).then(res => {
         if (res.ok) { const cp = res.clone(); caches.open(PAGES).then(c => c.put(u.origin + u.pathname, cp)).then(() => trim(PAGES, MAX_PAGES)); }
         return res;
       }).catch(() => caches.match(u.origin + u.pathname, { ignoreSearch: true }).then(m => m || offlineFor(r.url))));

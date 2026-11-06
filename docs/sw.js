@@ -1,7 +1,7 @@
 /* 一孔录 service worker（build.py 生成时填入版本号）
    页面：先走网络，拿到就更新缓存；没网才用缓存，缓存也没有就给离线页。每周日补页、改页后，联网打开就是新版。
    样式、图片、检索索引：先给缓存再后台更新。字体：缓存优先。 */
-const VER = "9299fb0dc8";
+const VER = "37dcd44a61";
 const PREFIXES = ["", "zh-hant/", "en/", "ja/", "ko/", "fr/", "es/"];  // "", "zh-hant/", "en/" ...
 const CORE = "yk-core-" + VER, PAGES = "yk-pages", STATIC = "yk-static", FONTS = "yk-fonts";
 const MAX_PAGES = 400, MAX_STATIC = 300;
@@ -30,7 +30,8 @@ self.addEventListener("fetch", e => {
   if (u.origin === location.origin) {
     if (u.pathname === "/sw.js" || u.pathname.endsWith(".pdf")) return;  // 读本 PDF 不进缓存
     if (r.mode === "navigate" || (r.headers.get("accept") || "").includes("text/html")) {
-      e.respondWith(fetch(r).then(res => {
+      // 页面绕过浏览器 HTTP 缓存（GitHub Pages 给 10 分钟），向服务器验一次 ETag，刚部署的新页马上看得到
+      e.respondWith(fetch(r.url, { cache: "no-cache", credentials: "same-origin" }).then(res => {
         if (res.ok) { const cp = res.clone(); caches.open(PAGES).then(c => c.put(u.origin + u.pathname, cp)).then(() => trim(PAGES, MAX_PAGES)); }
         return res;
       }).catch(() => caches.match(u.origin + u.pathname, { ignoreSearch: true }).then(m => m || offlineFor(r.url))));
