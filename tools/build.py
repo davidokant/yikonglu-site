@@ -476,6 +476,10 @@ MIRROR_JS = """<script>(function(){var h=location.hostname;if(!h||/(^|\\.)yikong
 var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>@BAR@</span><a href="https://yikonglu.com'+location.pathname+'">@GO@ →</a>';document.body.insertBefore(b,document.body.firstChild)})();</script>"""
 
 LANG_JS = """<script>
+(function(){var D=function(){return document.querySelectorAll('details.lang[open]')};
+document.addEventListener('click',function(e){D().forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')D().forEach(function(d){d.removeAttribute('open')})});
+document.querySelectorAll('details.lang').forEach(function(d){d.addEventListener('toggle',function(){if(d.open)D().forEach(function(x){if(x!==d)x.removeAttribute('open')})})})})();
 (function(){var P=document.documentElement.lang,K='yk_lang';try{var s=localStorage.getItem(K)}catch(e){var s=null}
 document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(K,a.dataset.lang)}catch(e){}})});
 if(s)return;var n=(navigator.language||'').toLowerCase(),w=null;
