@@ -344,3 +344,9 @@ details.fold[open]>summary:after{content:"－"}
 details.fold[open]{padding-bottom:14px}
 .deep .citeit{margin-top:22px}
 html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font-family:"Noto Serif","Noto Serif SC","Source Han Serif SC",serif}
+
+.dmap .spot{border-radius:10px}.dmap span.spot{cursor:default}.dmap span.spot:hover{border-color:rgba(255,255,255,.35);box-shadow:none}
+.dmap a.spot.go{border-color:rgba(255,255,255,.55);box-shadow:0 0 0 2px rgba(23,33,31,.35)}.dmap a.spot.go:hover,.dmap a.spot.go:focus{border-color:#fff;background:rgba(255,255,255,.12)}
+.dchips{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin:16px 0 24px}
+.dchip{display:flex;flex-direction:column;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--mute)}.dchip b{font-size:16px;color:var(--fg)}.dchip small{font-size:12px;line-height:1.5;margin-top:2px}.dchip em{font-style:normal;font-size:12px;margin-top:6px}
+.dchip.go{color:var(--fg)}.dchip.go em{color:var(--accent2)}.dchip.go:hover{text-decoration:none;border-color:var(--accent2)}

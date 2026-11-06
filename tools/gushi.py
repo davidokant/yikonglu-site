@@ -13,7 +13,7 @@
 - 地图.png（可选，有文字层的全图）
 - 路线.csv：人物,题目,导语,章号,起句,说明      （题目、导语只在该人第一行填；起句用来对号，未讲章显示起句；说明可空）
 """
-import csv, os, re, html, json, datetime
+import csv, os, re, html, json, datetime, shutil
 
 def esc(s): return html.escape(s or "", quote=True)
 
@@ -54,6 +54,7 @@ def load(gdir, pub):
     zones = [{k: (v or "").strip() for k, v in r.items()} for r in rows(os.path.join(gdir, "书区.csv"))]
     imgdir = os.path.join(gdir, "立绘")
     return {"ppl": ppl, "by": by, "appear": appear, "routes": routes, "zones": zones, "dir": gdir,
+            "ditu": json.load(open(os.path.join(gdir, "_地图", "层级.json"), encoding="utf-8")) if os.path.exists(os.path.join(gdir, "_地图", "层级.json")) else None,
             "imgdir": imgdir if os.path.isdir(imgdir) else None, "map": os.path.join(gdir, "地图.png") if os.path.exists(os.path.join(gdir, "地图.png")) else None}
 
 def copy_images(G, outdir):
@@ -69,6 +70,12 @@ def copy_images(G, outdir):
             if f and G["imgdir"] and os.path.exists(os.path.join(G["imgdir"], f)):
                 p["_" + k] = put(os.path.join(G["imgdir"], f), f"{p['id']}-{'full' if k == '立绘' else 'head'}.png", edge)
     if G["map"]: G["_map"] = put(G["map"], "map.png", 2000)
+    if G.get("ditu"):  # 分层地图：图已在 _地图/ 压好（长边 1600），原样拷到 /gushi/img/ditu/
+        dd = os.path.join(od, "ditu"); os.makedirs(dd, exist_ok=True)
+        for nid in G["ditu"]:
+            for v in "简繁":
+                f = os.path.join(G["dir"], "_地图", f"{nid}-{v}.jpg")
+                if os.path.exists(f): shutil.copy(f, os.path.join(dd, f"{nid}-{v}.jpg"))
 
 def ju_anchor(text, ju, split_ju):
     """原文句 → #sN 锚点（按句切与章节页一致）。"""
@@ -173,11 +180,54 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
             pt = "、".join(pm[:6]) + (f" 等 {len(pm)} 篇" if len(pm) > 6 else "")
             now = z.get("状态") == "在讲"
             zc += f'<a class="zcard{" now" if now else ""}" id="z{i}" href="{book_href(z)}"><span class="ov">{i + 1:02d} · {esc(z["区名"].split("·")[0])}</span><b>《{esc(z["书名"])}》</b><small>{esc(pt)}</small><em>{"现在讲到这里 ›" if now else "筹备中 · 看书目"}</em></a>'
-        body = hero("十三经岛", "片中的书区地图") + f'<main class="wrap gsmain"><p class="lead narrow">片里把每部经典画成一座岛或一片山。这张图是片中的虚构地图，不是历史地理；点岛上的标记或下面的卡片，看那部书的篇目和进度。</p>{mp}<div class="zcards">{zc}</div></main>'
+        T0 = G.get("ditu") or {}
+        bm = "".join(f'<a class="dchip go" href="{P}gushi/ditu/{k}.html"><b>{esc(n0["title"])}</b><em>书区图 ›</em></a>' for k, n0 in T0.items() if n0.get("parent") == "@dao")
+        h0 = hero("十三经岛", "区域图").replace(f'<a href="{P}gushi/">故事</a>', f'<a href="{P}gushi/">故事</a> › <a href="{P}gushi/ditu/">经典世界</a>') if T0 else hero("十三经岛", "片中的书区地图")
+        body = h0 + f'<main class="wrap gsmain"><p class="lead narrow">片里把每部经典画成一座岛或一片山。这张图是片中的虚构地图，不是历史地理；点岛上的标记或下面的卡片，看那部书的篇目和进度。</p>{mp}' + (f'<h2 class="ph">已有书区图</h2><div class="dchips">{bm}</div>' if bm else "") + f'<div class="zcards">{zc}</div></main>'
         write("gushi/dao.html", page(L, "十三经岛｜一孔录·故事", "一孔录片中的书区地图：每部经典一座岛，标着现在讲到哪里。", "gushi/dao.html", body, ld("十三经岛", U("gushi/dao.html"), "一孔录片中的虚构书区地图"), "pg-gushi", og_img=(mapimg or "").lstrip("/") or None)); urls.append(U("gushi/dao.html"))
+    # 分层地图：世界 → 区域 → 书区；十三经岛沿用 dao.html
+    T = G.get("ditu") or {}
+    def dhref(nid):
+        if nid == "@dao": return f"{P}gushi/dao.html"
+        return f"{P}gushi/ditu/" if nid == "world" else f"{P}gushi/ditu/{nid}.html"
+    def dtitle(nid): return "十三经岛" if nid == "@dao" else T[nid]["title"]
+    def dchain(nid):
+        out = []
+        while nid:
+            out.append(nid); nid = T[nid]["parent"] if nid in T else "world"
+        return out[::-1]
+    v = "繁" if L.code == "zh-hant" else "简"
+    KIND = {"world": "世界地图", "region": "区域图", "book": "书区图"}
+    for nid, n in T.items():
+        chain = dchain(nid)[:-1]
+        crumb = '<p class="crumb"><a href="' + P + 'gushi/">故事</a>' + "".join(f' › <a href="{dhref(x)}">{esc(dtitle(x))}</a>' for x in chain) + "</p>"
+        spots, items = "", ""
+        for sp in n["spots"]:
+            to = sp.get("to"); x, y = sp["xy"]; w, h = sp.get("wh") or ([9, 6] if n["kind"] == "world" else [10, 8])
+            href = (dhref(to) if to in T or to == "@dao" else f"{P}{to}") if to else ""
+            sub = sp.get("place") or sp.get("members") or ""
+            tip = sp["name"] + (f"：{sub}" if sub else "")
+            st = f'left:{x}%;top:{y}%;width:{min(w, 30)}%;height:{min(h, 30)}%'
+            if href:
+                spots += f'<a class="spot go" style="{st}" href="{href}" title="{esc(tip)}" aria-label="{esc(sp["name"])}">{esc(sp["name"])}</a>'
+                items += f'<a class="dchip go" href="{href}"><b>{esc(sp["name"])}</b>{f"<small>{esc(sub)}</small>" if sub else ""}<em>{"进入 ›" if (to in T or to == "@dao") else "去读 ›"}</em></a>'
+            else:
+                soon = "尚未开放" if n["kind"] == "world" else ("书区图筹备中" if n["kind"] == "region" else "还没讲到")
+                spots += f'<span class="spot" style="{st}" title="{esc(tip)} · {soon}">{esc(sp["name"])}</span>'
+                items += f'<span class="dchip"><b>{esc(sp["name"])}</b>{f"<small>{esc(sub)}</small>" if sub else ""}<em>{soon}</em></span>'
+        W, H = n["size"]
+        lead = {"world": "片里的经典世界。点亮的地方可以一层层点进去：先到一片区域，再到一部书的书区。",
+                "region": "这一片区域里的几部书。点书名进它的书区图。",
+                "book": "这部书在片里的书区，每个落点对应一组篇章。"}[n["kind"]]
+        body = (f'<div class="gshero"><div class="wrap"><div class="gshtext"><p class="gsnote">{NOTICE}</p>{crumb}<span class="ov">{KIND[n["kind"]]}</span><h1>{esc(n["title"])}</h1></div></div></div>'
+                f'<main class="wrap gsmain"><p class="lead narrow">{lead}</p><div class="gsmap dmap"><img src="/gushi/img/ditu/{nid}-{v}.jpg" alt="{esc(n["title"])}地图" width="{W}" height="{H}">{spots}</div>'
+                f'<div class="dchips">{items}</div></main>')
+        rel = "gushi/ditu/" if nid == "world" else f"gushi/ditu/{nid}.html"
+        write(rel + ("index.html" if nid == "world" else ""), page(L, f'{n["title"]}｜一孔录·地图', f'一孔录片中的虚构地图：{n["title"]}。', rel, body, ld(n["title"], U(rel), "一孔录片中的虚构地图"), "pg-gushi", og_img=f"gushi/img/ditu/{nid}-{v}.jpg")); urls.append(U(rel))
     # 栏目首页
     nowtxt = f"，现在讲到《{esc(now_zone['书名'])}》" if now_zone else ""
-    teaser = f'<a class="gsteaser" href="{P}gushi/dao.html"><img src="{mapimg}" alt="" loading="lazy"><div><span class="ov">片中的书区地图</span><b>十三经岛</b><span>每部经典一座岛{nowtxt} ›</span></div></a>' if mapimg else ""
+    teaser = (f'<a class="gsteaser" href="{P}gushi/ditu/"><img src="/gushi/img/ditu/world-{v}.jpg" alt="" loading="lazy"><div><span class="ov">片中的世界地图</span><b>经典世界</b><span>从世界一层层点进去：区域、书区{nowtxt} ›</span></div></a>' if T else
+              f'<a class="gsteaser" href="{P}gushi/dao.html"><img src="{mapimg}" alt="" loading="lazy"><div><span class="ov">片中的书区地图</span><b>十三经岛</b><span>每部经典一座岛{nowtxt} ›</span></div></a>' if mapimg else "")
     body = hero("故事", "片中的人和岛", crumb=False, cls="index") + (
         f'<main class="wrap narrow gsmain">'
         f'<h2 class="ph">片中人物</h2><div class="gscards">{cards}</div>'

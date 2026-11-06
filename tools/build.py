@@ -943,8 +943,11 @@ def build_lang(L, D, write):
                         "embedUrl": f"https://www.youtube.com/embed/{yt}", "url": f"https://www.youtube.com/watch?v={yt}",
                         "thumbnailUrl": f"https://i.ytimg.com/vi/{yt}/hqdefault.jpg"}}
         if not yt or future: ld.pop("video")
+        else: ld["video"]["uploadDate"] = pub_at or (D["first"].get(c, today) + "T12:00:00+08:00")  # 谷歌视频结构化数据必填
         if st and "video" in ld:
-            ld["video"]["hasPart"] = [{"@type": "Clip", "name": f"{c} {title_of(c)}", "startOffset": int(st), "url": f"https://www.youtube.com/watch?v={yt}&t={int(st)}s"}]
+            _all = {**D["starts"].get(yt, {}), **ep.get("starts", {})}
+            _end = min((int(v) for v in _all.values() if v and int(v) > int(st)), default=None)  # 本章到下一章开讲为止
+            if _end: ld["video"]["hasPart"] = [{"@type": "Clip", "name": f"{c} {title_of(c)}", "startOffset": int(st), "endOffset": _end, "url": f"https://www.youtube.com/watch?v={yt}&t={int(st)}s"}]
         ttl = f"{name}｜原文、白话与读法｜一孔录" if L.code == "zh-Hans" else f"{name} | 一孔录 Yikonglu"
         first = D["first"].get(c, today)
         hj_static = "<ul>" + (f'<li><a href="#zhuben">{L.t("hj_zb")}</a></li>' if zb else "") + (f'<li><a href="#zb-zhuxi">{L.t("hj_cites")}</a></li>' if g["cites"] else "") \
