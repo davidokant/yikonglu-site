@@ -188,7 +188,7 @@
   "mirror_go": "Zum Original",
   "ch_gist": "Worum es in diesem Kapitel geht",
   "ch_deep": "Genau lesen und nachprüfen",
-  "ch_deep_note": "Für alle, die tiefer lesen oder unsere Arbeit prüfen wollen: Schlüsselwörter des Kommentars, was andere Kommentatoren sagen, Textvarianten, die Kommentare im Wortlaut mit Faksimileseiten, Aussprache und Korrekturen. Tippen Sie auf eine Überschrift, um sie zu öffnen. Diese Abschnitte bleiben auf Chinesisch, wo noch keine deutsche Fassung vorliegt.",
+  "ch_deep_note": "Für alle, die tiefer lesen oder unsere Arbeit prüfen wollen: Schlüsselwörter des Kommentars, was andere Kommentatoren sagen, Textvarianten, die Kommentare im Wortlaut mit Faksimileseiten, Aussprache und Korrekturen. Tippen Sie auf eine Überschrift, um sie zu öffnen. Die Erläuterungen sind übersetzt; zitierte Kommentare bleiben im chinesischen Wortlaut.",
   "ch_open_all": "Alle öffnen",
   "ch_close_all": "Alle schließen",
   "cta_db_p": "Ein ganzes Buch der Gespräche als PDF: Originaltext, Aussprache und heutiges Chinesisch. Auf Chinesisch.",
@@ -287,7 +287,7 @@
   "lang_bar": "Diese Seite gibt es auf Deutsch.",
   "lang_go": "Auf Deutsch lesen",
   "lang_close": "Schließen",
-  "translated_note": "Deutsche Fassung: Oberfläche, Übersetzung und Kurzfassung sind übersetzt; zitierte Kommentare und die vertiefenden Abschnitte bleiben weitgehend chinesisch. Maßgeblich ist die chinesische Seite.",
+  "translated_note": "Deutsche Fassung: Oberfläche und die Erläuterungen von Yikonglu sind übersetzt; zitierte Kommentare bleiben auf Chinesisch. Maßgeblich ist die chinesische Seite.",
   "cite_fmt": "Yikonglu, Gespräche {book} {c} „{title}“, {url}, Fassung {d}."
  },
  "books": {
@@ -1003,347 +1003,554 @@
   "4.5": {
    "title": "Reichtum und Rang wünschen sich die Menschen",
    "yw": "Der Meister sprach: Reichtum und Rang wünschen sich die Menschen; erlangt man sie nicht auf rechtem Weg, behält man sie nicht. Armut und Niedrigkeit hassen die Menschen; kommen sie nicht auf rechtem Weg, entflieht man ihnen nicht. Wenn der Edle die Menschlichkeit verlässt, wie soll er sich einen Namen machen? Der Edle weicht nicht einmal für die Dauer einer Mahlzeit von der Menschlichkeit; in Eile hält er an ihr fest, in Wirren hält er an ihr fest.",
-   "片里落点": "Nimm keinen Reichtum, der nicht kommen sollte, und weiche unverdienter Armut nicht auf krummen Wegen aus; die großen Entscheidungen und die kleine tägliche Arbeit tragen einander. Heute: Der Bus bremst scharf, und der junge Mann greift zuerst nach der alten Frau neben ihm."
+   "片里落点": "Nimm keinen Reichtum, der nicht kommen sollte, und weiche unverdienter Armut nicht auf krummen Wegen aus; die großen Entscheidungen und die kleine tägliche Arbeit tragen einander. Heute: Der Bus bremst scharf, und der junge Mann greift zuerst nach der alten Frau neben ihm.",
+   "常见读法": "„Nicht auf rechtem Weg“ beide Male gleich gelesen – warum dann einer unverdienten Armut nicht entgehen?",
+   "字眼": "wu (hassen) im fallenden Ton; „不以其道得之，谓不当得而得之“ – „nicht auf rechtem Weg“ heißt bekommen, was man nicht bekommen soll; „于富贵则不处，于贫贱则不去，君子之审富贵而安贫贱也如此“ – solchen Reichtum behält er nicht, solcher Armut weicht er nicht aus: so wägt der Edle Reichtum und ruht in Armut; wu (wie) als wu gelesen; „若贪富贵而厌贫贱，则是自离其仁，而无君子之实矣“ – Reichtum begehren und Armut verabscheuen heißt, die eigene Menschlichkeit zu verlassen, und vom Edlen bleibt nichts; „终食者，一饭之顷。造次，急遽苟且之时。颠沛，倾覆流离之际“ – eine Mahlzeit ist die Dauer eines Essens; zaoci ist ein Augenblick der Eile; dianpei eine Zeit des Umsturzes und der Vertreibung.",
+   "诸家": "Zhu Xi am Ende des Kapitels: „取舍之分明，然后存养之功密；存养之功密，则其取舍之分益明矣“ – ist die Grenze zwischen Nehmen und Ablehnen klar, wird die Arbeit des Bewahrens und Nährens dicht; ist diese Arbeit dicht, wird die Grenze noch klarer."
   },
   "4.6": {
    "title": "Ich habe niemanden gesehen, der Menschlichkeit liebt",
    "yw": "Der Meister sprach: Ich habe niemanden gesehen, der Menschlichkeit liebt, und niemanden, der das Unmenschliche hasst. Wer Menschlichkeit liebt, stellt nichts über sie; wer das Unmenschliche hasst, übt Menschlichkeit, indem er das Unmenschliche nicht an sich heranlässt. Gibt es jemanden, der einen einzigen Tag seine Kraft auf Menschlichkeit verwenden kann? Ich habe keinen gesehen, dessen Kraft nicht gereicht hätte. Vielleicht gibt es solche, aber ich habe sie nicht gesehen.",
-   "片里落点": "Wohin das Herz geht, dahin geht die Kraft; das Schwere ist nicht die Kraft, sondern das Wollen. Heute: Wer keine Zeit für Sport hat, scrollt vor dem Schlafen zwei Stunden auf dem Handy."
+   "片里落点": "Wohin das Herz geht, dahin geht die Kraft; das Schwere ist nicht die Kraft, sondern das Wollen. Heute: Wer keine Zeit für Sport hat, scrollt vor dem Schlafen zwei Stunden auf dem Handy.",
+   "常见读法": "Scheitern daran ist eine Frage der Fähigkeit?",
+   "字眼": "hao (lieben) und wu (hassen) im fallenden Ton; „好仁者真知仁之可好，故天下之物无以加之“ – wer Menschlichkeit liebt, weiß wirklich, dass sie liebenswert ist, darum kann nichts in der Welt über sie gestellt werden; „恶不仁者……必能绝去不仁之事，而不使少有及于其身“ – wer das Unmenschliche hasst, kann es ganz abschneiden und nicht das Geringste davon an sich heranlassen; „此皆成德之事，故难得而见之也“ – beides ist Sache vollendeter Tugend, darum selten zu sehen; „为仁在己，欲之则是，而志之所至，气必至焉“ – Menschlichkeit liegt bei einem selbst: will man sie, ist sie da; wohin der Wille geht, folgt die Kraft; „盖，疑辞。有之，谓有用力而力不足者“ – gai drückt Zweifel aus; „es gibt solche“ heißt Leute, die es versuchen, deren Kraft aber versagt.",
+   "诸家": "Zhu Xi zu „vielleicht gibt es solche“: „人之气质不同，故疑亦容或有此昏弱之甚……盖不敢终以为易，而又叹人之莫肯用力于仁也“ – Menschen unterscheiden sich in der Anlage, also gibt es vielleicht einige so Stumpfe und Schwache; er wollte es doch nicht leicht nennen und seufzt zugleich, dass die Menschen ihre Kraft nicht auf Menschlichkeit verwenden wollen."
   },
   "4.7": {
    "title": "Die Fehler der Menschen folgen ihrer Art",
    "yw": "Der Meister sprach: Die Fehler der Menschen gehören jeweils zu ihrer Art. Sieh auf den Fehler, und du erkennst die Menschlichkeit.",
-   "片里落点": "Ob ein Fehler zu großzügig oder zu kleinlich ausfällt, zeigt, ob jemand menschlich ist. Heute: Zwei kommen eine halbe Stunde zu spät — der eine hat einen gestürzten alten Mann ins Krankenhaus gebracht, der andere hat verschlafen."
+   "片里落点": "Ob ein Fehler zu großzügig oder zu kleinlich ausfällt, zeigt, ob jemand menschlich ist. Heute: Zwei kommen eine halbe Stunde zu spät — der eine hat einen gestürzten alten Mann ins Krankenhaus gebracht, der andere hat verschlafen.",
+   "常见读法": "Also genügt ein Fehler, um einen Menschen zu beurteilen?",
+   "字眼": "„党，类也“ – dang heißt Art, Sorte; Zhu Xis eigene Anmerkung: „此亦但言人虽有过，犹可即此而知其厚薄，非谓必俟其有过，而后贤否可知也“ – das sagt nur, dass man selbst an den Fehlern eines Menschen sieht, ob er großzügig oder kleinlich ist; nicht, dass man auf einen Fehler warten muss, um seinen Wert zu beurteilen.",
+   "诸家": "Cheng Yi: „君子常失于厚，小人常失于薄；君子过于爱，小人过于忍“ – der Edle irrt auf der Seite der Großzügigkeit, der Gemeine auf der Seite der Kleinlichkeit; der Edle irrt, indem er zu sehr liebt, der Gemeine, indem er zu hart ist; Yin Tun: „于此观之，则人之仁不仁可知矣“ – so betrachtet, lässt sich erkennen, ob ein Mensch menschlich ist; Wu zitiert Wu You aus der Späteren Han: „掾以亲故，受污辱之名，所谓观过知仁是也“ – der Schreiber nahm die Schande um seiner Eltern willen auf sich; das heißt „am Fehler die Menschlichkeit erkennen“."
   },
   "4.8": {
    "title": "Am Morgen den Weg hören, am Abend zufrieden sterben",
    "yw": "Der Meister sprach: Hat man am Morgen den Weg gehört, kann man am Abend ohne Bedauern sterben.",
-   "片里落点": "Das Schwere ist nicht das Hören, sondern nach dem Hören wirklich zu glauben. Leben und Tod sind die große Sache; ohne echten Gewinn im Herzen kann niemand sagen: „Am Abend kann ich sterben.“ Heute: Ein alter Mann im Krankenbett durchschaut endlich, was er sein Leben lang nicht verstand, nimmt die Hand seiner Tochter und sagt: „Jetzt bin ich ruhig.“"
+   "片里落点": "Das Schwere ist nicht das Hören, sondern nach dem Hören wirklich zu glauben. Leben und Tod sind die große Sache; ohne echten Gewinn im Herzen kann niemand sagen: „Am Abend kann ich sterben.“ Heute: Ein alter Mann im Krankenbett durchschaut endlich, was er sein Leben lang nicht verstand, nimmt die Hand seiner Tochter und sagt: „Jetzt bin ich ruhig.“",
+   "常见读法": "Ist das ein heroischer Satz über Todesverachtung, über das Sterben für die Wahrheit?",
+   "字眼": "zhao (Morgen) als zhao gelesen; „道者，事物当然之理。苟得闻之，则生顺死安，无复遗恨矣。朝夕，所以甚言其时之近“ – der Weg ist das Prinzip, nach dem die Dinge sein sollen; hat man ihn wirklich gehört, lebt man im Einklang und stirbt in Frieden, ohne etwas zu bereuen; „Morgen“ und „Abend“ betonen, wie kurz der Abstand sein kann.",
+   "诸家": "Cheng Yi: „言人不可以不知道，苟得闻道，虽死可也“ – der Mensch kann nicht ohne Kenntnis des Weges sein; hat er ihn gehört, ist selbst der Tod annehmbar. Cheng Hao: „皆实理也，人知而信者为难。死生亦大矣！非诚有所得，岂以夕死为可乎“ – all das sind wirkliche Prinzipien; sie zu kennen ist leicht, sie wirklich zu glauben schwer; Leben und Tod sind eine große Sache – wer nicht wirklich etwas gewonnen hat, wie könnte er das Sterben am Abend annehmbar nennen?"
   },
   "4.9": {
    "title": "Ein Gelehrter auf dem Weg, der sich schlechter Kleider schämt",
    "yw": "Der Meister sprach: Ein Gelehrter, der sein Herz auf den Weg richtet und sich doch schlechter Kleider und schlechten Essens schämt, ist kein Gesprächspartner.",
-   "片里落点": "Der Mund sagt, das Herz sei auf den Weg gerichtet, doch das Herz wird von äußeren Dingen herumkommandiert. Das Problem ist nicht die schlichte Kleidung, sondern sie für eine Schande zu halten. Heute: Wer sagt, er wolle sich ganz der Prüfungsvorbereitung widmen, verbringt zuerst drei Tage damit, die teuersten Schreibwaren auszusuchen."
+   "片里落点": "Der Mund sagt, das Herz sei auf den Weg gerichtet, doch das Herz wird von äußeren Dingen herumkommandiert. Das Problem ist nicht die schlichte Kleidung, sondern sie für eine Schande zu halten. Heute: Wer sagt, er wolle sich ganz der Prüfungsvorbereitung widmen, verbringt zuerst drei Tage damit, die teuersten Schreibwaren auszusuchen.",
+   "常见读法": "Sagt das Gelehrten, sie sollen mit Armut zufrieden sein?",
+   "字眼": "e in „恶衣恶食“ heißt grob, ärmlich; „心欲求道，而以口体之奉不若人为耻，其识趣之卑陋甚矣，何足与议于道哉“ – sein Herz will den Weg, doch er schämt sich, dass Mund und Leib weniger Annehmlichkeiten haben als andere: wie niedrig sein Sinn und Geschmack; wie könnte man mit ihm über den Weg sprechen?",
+   "诸家": "Cheng Yi: „志于道而心役乎外，何足与议也“ – auf den Weg gerichtet, doch mit einem Herzen im Dienst äußerer Dinge: wie könnte man mit ihm über irgendetwas sprechen?"
   },
   "4.10": {
    "title": "Kein festes Ja, kein festes Nein; auf der Seite des Rechten",
    "yw": "Der Meister sprach: Der Edle hat im Umgang mit der Welt kein festes Ja und kein festes Nein; er stellt sich auf die Seite des Rechten.",
-   "片里落点": "Nicht im Voraus festlegen und nicht im Voraus ablehnen; nur darauf sehen, ob es dem Rechten entspricht. „Nichts erlaubt, nichts verboten“ ohne das Rechte als Maßstab ist bloße Willkür. Heute: Ein Linienrichter entscheidet nicht vorher, wer gewinnen soll, sondern beugt sich hinunter, um zu sehen, ob dieser eine Ball die Linie berührt hat."
+   "片里落点": "Nicht im Voraus festlegen und nicht im Voraus ablehnen; nur darauf sehen, ob es dem Rechten entspricht. „Nichts erlaubt, nichts verboten“ ohne das Rechte als Maßstab ist bloße Willkür. Heute: Ein Linienrichter entscheidet nicht vorher, wer gewinnen soll, sondern beugt sich hinunter, um zu sehen, ob dieser eine Ball die Linie berührt hat.",
+   "常见读法": "Heißt das „keine Prinzipien, einfach mal sehen“?",
+   "字眼": "di (适) als di, bi (比) als bi gelesen; Zhu Xi: „适，专主也。《春秋传》曰‘吾谁适从’是也。莫，不肯也。比，从也“ – di heißt im Voraus auf einem bestehen, wie im Frühlings-und-Herbst-Kommentar „wem soll ich folgen?“; mo heißt sich weigern; bi heißt folgen.",
+   "诸家": "Zhu Xi verzeichnet auch Xie Liangzuos andere Lesart: „适，可也。莫，不可也。无可无不可，苟无道以主之，不几于猖狂自恣乎？圣人之学不然，于无可无不可之间，有义存焉“ – di heißt „darf“, mo „darf nicht“; wenn nichts erlaubt und nichts verboten ist und kein Weg es lenkt, ist das nicht nahe an rücksichtsloser Selbstgefälligkeit? Die Lehre des Weisen ist anders: zwischen „darf“ und „darf nicht“ ist das Rechte gegenwärtig. Beide Lesarten werden gegeben; das Kapitel schließt mit Xies „das Rechte ist gegenwärtig“."
   },
   "4.11": {
    "title": "Der Edle hängt an der Tugend, der Gemeine an seiner Bequemlichkeit",
    "yw": "Der Meister sprach: Der Edle hängt an der Tugend, der Gemeine hängt an seinem Boden; der Edle hängt am Gesetz, der Gemeine hängt an Vergünstigungen.",
-   "片里落点": "„Am eigenen Boden hängen“ ist kein Heimweh; es ist ein Herz, das nur seine eigene kleine Bequemlichkeit hütet. Der ganze Unterschied zwischen Edlem und Gemeinem liegt zwischen Öffentlichem und Privatem. Heute: Zwei Menschen bekommen dasselbe Jobangebot in einer anderen Stadt; der eine fragt zuerst, was er lernen und wem er helfen kann, der andere nur, wo es sich bequemer bleiben lässt."
+   "片里落点": "„Am eigenen Boden hängen“ ist kein Heimweh; es ist ein Herz, das nur seine eigene kleine Bequemlichkeit hütet. Der ganze Unterschied zwischen Edlem und Gemeinem liegt zwischen Öffentlichem und Privatem. Heute: Zwei Menschen bekommen dasselbe Jobangebot in einer anderen Stadt; der eine fragt zuerst, was er lernen und wem er helfen kann, der andere nur, wo es sich bequemer bleiben lässt.",
+   "常见读法": "Ist „seinen Boden lieben“ bloß Heimweh, und ist der Gemeine einfach ein schlechter Mensch?",
+   "字眼": "„怀，思念也。怀德，谓存其固有之善。怀土，谓溺其所处之安。怀刑，谓畏法。怀惠，谓贪利“ – huai heißt im Sinn haben; Tugend lieben heißt das Gute bewahren, das man schon hat; seinen Boden lieben heißt im Behagen des eigenen Ortes versinken; das Gesetz lieben heißt das Gesetz fürchten; Gunst lieben heißt nach Gewinn gieren; „君子小人趣向不同，公私之间而已矣“ – Edler und Gemeiner unterscheiden sich in ihrer Richtung, und das ist nur die Grenze zwischen öffentlich und privat.",
+   "诸家": "Yin Tun: „乐善恶不善，所以为君子；苟安务得，所以为小人“ – Freude am Guten und Hass auf das Nichtgute machen den Edlen; sich mit Bequemlichkeit begnügen und nach Gewinn streben macht den Gemeinen."
   },
   "4.12": {
    "title": "Handle nach dem Vorteil, und der Groll wächst",
    "yw": "Der Meister sprach: Wer sich beim Handeln auf den Vorteil stützt, zieht viel Groll auf sich.",
-   "片里落点": "Der Groll kommt nicht vom Wort „Vorteil“, sondern davon, nur sich selbst Vorteile zu verschaffen. Heute: Der Mitbewohner, der die gemeinsamen Sachen nie kauft und am meisten verbraucht, wird am Tag seines Auszugs von niemandem verabschiedet."
+   "片里落点": "Der Groll kommt nicht vom Wort „Vorteil“, sondern davon, nur sich selbst Vorteile zu verschaffen. Heute: Der Mitbewohner, der die gemeinsamen Sachen nie kauft und am meisten verbraucht, wird am Tag seines Auszugs von niemandem verabschiedet.",
+   "常见读法": "Heißt das „Handel bringt Hass“ oder „Gewinn ist etwas Schlechtes“?",
+   "字眼": "fang im steigenden Ton gelesen, heißt sich stützen auf; Zhu Xi zitiert Kong Anguo: „放，依也。多怨，谓多取怨“ – fang heißt sich verlassen auf; viel Groll heißt viel Groll auf sich ziehen.",
+   "诸家": "Cheng Yi: „欲利于己，必害于人，故多怨“ – wer Gewinn für sich will, muss anderen schaden, daher viel Groll."
   },
   "4.13": {
    "title": "Kann man einen Staat mit Ritus und Nachgeben regieren?",
    "yw": "Der Meister sprach: Kann man einen Staat mit Ritus und Nachgeben regieren? Was wäre daran schwer? Kann man einen Staat nicht mit Ritus und Nachgeben regieren, was nützt dann der Ritus?",
-   "片里落点": "Das Nachgeben ist das Futter im Inneren des Ritus. Bleibt nur die äußere Form, funktioniert der Ritus selbst nicht mehr, geschweige denn das Regieren eines Staates. Heute: ein Hochzeitsbankett mit tadelloser Sitzordnung und allen Förmlichkeiten, und die beiden Familien streiten, wer an den Haupttisch darf, bis die Gäste gehen."
+   "片里落点": "Das Nachgeben ist das Futter im Inneren des Ritus. Bleibt nur die äußere Form, funktioniert der Ritus selbst nicht mehr, geschweige denn das Regieren eines Staates. Heute: ein Hochzeitsbankett mit tadelloser Sitzordnung und allen Förmlichkeiten, und die beiden Familien streiten, wer an den Haupttisch darf, bis die Gäste gehen.",
+   "常见读法": "Heißt das „gute Manieren und Bescheidenheit können ein Land führen“, mit „Ritual-Nachgeben“ als einem Wort?",
+   "字眼": "Zhu Xi: „让者，礼之实也。何有，言不难也“ – Nachgeben ist das Wesen des Rituals; „was gibt es da“ heißt, es ist nicht schwer; „不然，则其礼文虽具，亦且无如之何矣，而况于为国乎“ – sonst, mögen die Formen des Rituals alle da sein, man kann nichts mit ihnen anfangen, geschweige denn einen Staat regieren.",
+   "诸家": "In dieser Folge wird nur Zhu Xis Kommentar gezeigt."
   },
   "4.14": {
    "title": "Sorge dich nicht um den Posten, sondern um das, worauf du stehst",
    "yw": "Der Meister sprach: Sorge dich nicht, keine Stellung zu haben; sorge dich um das, worauf du darin stehen würdest. Sorge dich nicht, dass niemand dich kennt; strebe danach, es wert zu sein, gekannt zu werden.",
-   "片里落点": "Es geht nicht darum, Wege zu finden, bemerkt zu werden, sondern zuerst die Substanz zu haben, die es wert ist, bemerkt zu werden. Ob man einen Posten bekommt, ob andere einen kennen, liegt nicht in der eigenen Hand. Heute: Dutzende Bewerbungen ohne Antwort; der eine schimpft auf blinde Arbeitgeber, der andere macht jedes Projekt seiner Mappe neu."
+   "片里落点": "Es geht nicht darum, Wege zu finden, bemerkt zu werden, sondern zuerst die Substanz zu haben, die es wert ist, bemerkt zu werden. Ob man einen Posten bekommt, ob andere einen kennen, liegt nicht in der eigenen Hand. Heute: Dutzende Bewerbungen ohne Antwort; der eine schimpft auf blinde Arbeitgeber, der andere macht jedes Projekt seiner Mappe neu.",
+   "常见读法": "Heißt das nur „mach dir nichts daraus, wenn andere dich nicht verstehen“, eine Frage der Haltung?",
+   "字眼": "Zhu Xi: „所以立，谓所以立乎其位者。可知，谓可以见知之实“ – worauf man steht, heißt das, womit man die Stellung halten würde; „wert, gekannt zu werden“ heißt die wirkliche Substanz, die erkannt werden könnte.",
+   "诸家": "Cheng Yi: „君子求其在己者而已矣“ – der Edle sucht nur, was in ihm selbst liegt."
   },
   "4.15": {
    "title": "Mein Weg ist von einem durchzogen",
    "yw": "Der Meister sprach: Shen! Mein Weg ist von einem durchzogen. Zengzi sprach: Ja. Der Meister ging hinaus, und die Schüler fragten: Was meinte er? Zengzi sprach: Der Weg des Meisters ist Treue und Gegenseitigkeit, nichts weiter.",
-   "片里落点": "„Treue und Gegenseitigkeit“ sagen den Weg nicht vollständig; sie geben dem Lernenden etwas zum Festhalten. „Von einem durchzogen“ wird nur dem gesagt, der bereit ist, es zu verstehen. Heute: Ein alter Handwerksmeister sagt dem Lehrling nur eines: Mach deinen eigenen Arbeitsschritt bis zum Ende und denk dann an den, der als Nächster übernimmt."
+   "片里落点": "„Treue und Gegenseitigkeit“ sagen den Weg nicht vollständig; sie geben dem Lernenden etwas zum Festhalten. „Von einem durchzogen“ wird nur dem gesagt, der bereit ist, es zu verstehen. Heute: Ein alter Handwerksmeister sagt dem Lehrling nur eines: Mach deinen eigenen Arbeitsschritt bis zum Ende und denk dann an den, der als Nächster übernimmt.",
+   "常见读法": "Sind „Treue und Gegenseitigkeit“ der ganze Inhalt von Konfuzius' Weg? Und ist „Treue“ Treue zum Herrscher?",
+   "字眼": "Shen (参) als shen, wei (唯) im steigenden Ton gelesen; Zhu Xi: „贯，通也。唯者，应之速而无疑者也“ – guan heißt hindurchgehen; wei ist eine rasche Antwort ohne Zweifel; „尽己之谓忠，推己之谓恕“ – sich ganz geben ist Treue, sich auf andere ausweiten ist Gegenseitigkeit; andere Lesart: „中心为忠，如心为恕“ – das Herz in der Mitte ist zhong, ein Herz wie das eigene ist shu.",
+   "诸家": "Zhu Xi: „圣人之心，浑然一理，而泛应曲当，用各不同。曾子于其用处，盖已随事精察而力行之，但未知其体之一尔“ – der Geist des Weisen ist ein ganzes Prinzip, das überall passend antwortet, mit verschiedenen Anwendungen; Zengzi hatte die Anwendungen schon geprüft und geübt, kannte aber noch nicht die Einheit des Wesens; „曾子有见于此而难言之，故借学者尽己、推己之目以著明之“ – Zengzi sah das und fand es schwer zu sagen, darum entlieh er die Begriffe der Lernenden „sich ganz geben“ und „sich ausweiten“, um es deutlich zu machen. Cheng Yi: „圣人教人各因其才……惟曾子为能达此“ – der Weise lehrt jeden nach seiner Begabung; nur Zengzi konnte dies erreichen."
   },
   "4.16": {
    "title": "Der Edle versteht das Rechte, der Gemeine den Vorteil",
    "yw": "Der Meister sprach: Der Edle versteht sich auf das Rechte; der Gemeine versteht sich auf den Vorteil.",
-   "片里落点": "Beide Seiten nutzen dieselbe Art von „Verstehen“; der Unterschied ist, was sie durch und durch verstanden haben. Heute: Wer etwas gebraucht verkauft, entdeckt einen Kratzer, der nicht in der Anzeige steht, und ändert von sich aus „wie neu“ in „gut erhalten“."
+   "片里落点": "Beide Seiten nutzen dieselbe Art von „Verstehen“; der Unterschied ist, was sie durch und durch verstanden haben. Heute: Wer etwas gebraucht verkauft, entdeckt einen Kratzer, der nicht in der Anzeige steht, und ändert von sich aus „wie neu“ in „gut erhalten“.",
+   "常见读法": "Gelesen als „der Edle spricht nie von Gewinn“ oder „der Kleine ist einfach gierig“.",
+   "字眼": "Zhu Xi: „喻，犹晓也。义者，天理之所宜。利者，人情之所欲“ – yu heißt verstehen; das Rechte ist, was das himmlische Prinzip angemessen findet; Gewinn ist, was das menschliche Gefühl begehrt.",
+   "诸家": "Cheng Yi: „君子之于义，犹小人之于利也。唯其深喻，是以笃好“ – der Edle steht zum Rechten wie der Kleine zum Gewinn; weil er es tief versteht, liebt er es fest. Yang Shi: „君子有舍生而取义者，以利言之……其所喻者义而已，不知利之为利故也“ – ein Edler mag sein Leben für das Rechte geben; in Begriffen des Gewinns gesagt: was er versteht, ist allein das Rechte, und Gewinn kennt er nicht als Gewinn."
   },
   "4.17": {
    "title": "Siehst du einen Würdigen, so eifere ihm nach; siehst du einen Unwürdigen, so prüfe dich selbst",
    "yw": "Der Meister sprach: Siehst du einen Würdigen, so denke daran, ihm gleichzukommen; siehst du einen Unwürdigen, so kehre nach innen und prüfe dich selbst.",
-   "片里落点": "Die Menschen, die man sieht, sind gut und schlecht; jedes Mal wendet man es auf sich selbst zurück. Heute: Beim Scrollen sieht man die gelungene Arbeit eines Gleichaltrigen; der eine spottet „reines Glück“, der andere speichert still die Anleitung."
+   "片里落点": "Die Menschen, die man sieht, sind gut und schlecht; jedes Mal wendet man es auf sich selbst zurück. Heute: Beim Scrollen sieht man die gelungene Arbeit eines Gleichaltrigen; der eine spottet „reines Glück“, der andere speichert still die Anleitung.",
+   "常见读法": "Gelesen als „von Vorbildern lernen“, mit dem Gewicht auf dem anderen.",
+   "字眼": "Xing (省) als xǐng gelesen, prüfen. Zhu Xi: „思齐者，冀己亦有是善；内自省者，恐己亦有是恶“ – an Gleichwerden denken heißt hoffen, auch selbst dieses Gute zu haben; nach innen prüfen heißt fürchten, auch selbst diesen Fehler zu haben.",
+   "诸家": "Hu Yin: „见人之善恶不同，而无不反诸身者，则不徒羡人而甘自弃，不徒责人而忘自责矣“ – wer Gutes und Schlechtes an anderen sieht und es stets auf sich selbst zurückwendet, wird andere nicht bloß beneiden und sich aufgeben, noch andere bloß tadeln und vergessen, sich selbst zu tadeln."
   },
   "4.18": {
    "title": "Den Eltern gegenüber sanft widersprechen",
    "yw": "Der Meister sprach: Im Dienst an den Eltern widersprich sanft. Siehst du, dass sie nicht folgen, so bleib ehrerbietig und stell dich nicht gegen sie; mühe dich weiter ohne Groll.",
-   "片里落点": "Nicht schweigen, sondern leise sprechen; kommt es nicht an, nicht feindselig werden, sondern es ein andermal wieder versuchen. Die Neize-Stelle „挞之流血不敢疾怨“ (selbst blutig geschlagen, wage man keinen Groll) ist eine alte Ritusforderung, und das Video sagt deutlich, dass sie heute nicht nachzuahmen ist. Heute: Ein Elternteil leitet eine falsche Werbung in die Familiengruppe weiter; ein Kind antwortet „schon wieder Fake“, ein anderes ruft privat an und erklärt es langsam."
+   "片里落点": "Nicht schweigen, sondern leise sprechen; kommt es nicht an, nicht feindselig werden, sondern es ein andermal wieder versuchen. Die Neize-Stelle „挞之流血不敢疾怨“ (selbst blutig geschlagen, wage man keinen Groll) ist eine alte Ritusforderung, und das Video sagt deutlich, dass sie heute nicht nachzuahmen ist. Heute: Ein Elternteil leitet eine falsche Werbung in die Familiengruppe weiter; ein Kind antwortet „schon wieder Fake“, ein anderes ruft privat an und erklärt es langsam.",
+   "常见读法": "Gelesen als „den Eltern gehorchen“, wobei „nicht widersetzen“ als „nicht widersprechen“ verstanden wird.",
+   "字眼": "Ji (几) als jī gelesen, leicht. Zhu Xi zitiert das Neize: „父母有过，下气怡色，柔声以谏“ – wenn die Eltern irren, den Atem senken, das Gesicht freundlich machen und mit sanfter Stimme ermahnen; „谏若不入，起敬起孝，悦则复谏“ – dringt die Ermahnung nicht durch, Achtung und Pietät verdoppeln und, wenn sie gut gelaunt sind, erneut ermahnen; „与其得罪于乡党州闾，宁孰谏“ – lieber gründlich ermahnen, als sie die ganze Nachbarschaft kränken zu lassen.",
+   "诸家": "(Diese Folge gibt nur Zhu Xi und das Neize.)"
   },
   "4.19": {
    "title": "Solange die Eltern leben, reise nicht weit",
    "yw": "Der Meister sprach: Solange deine Eltern leben, reise nicht weit; musst du reisen, so habe ein festes Ziel.",
-   "片里落点": "Kannst du weite Reisen vermeiden, so tu es; musst du gehen, so lass die Eltern wissen, wo du bist. Heute: Nach der Landung auf einer Dienstreise zuerst den Standort in die Familiengruppe schicken."
+   "片里落点": "Kannst du weite Reisen vermeiden, so tu es; musst du gehen, so lass die Eltern wissen, wo du bist. Heute: Nach der Landung auf einer Dienstreise zuerst den Standort in die Familiengruppe schicken.",
+   "常见读法": "Gelesen als „solange die Eltern leben, darf man das Haus nicht verlassen“.",
+   "字眼": "Zhu Xi: „远游，则去亲远而为日久，定省旷而音问疏；不惟己之思亲不置，亦恐亲之念我不忘也“ – weit reisen heißt lange fern von den Eltern sein, die Morgen- und Abendgrüße entfallen und Nachrichten werden spärlich; man kann nicht aufhören, an sie zu denken, und fürchtet auch, dass sie nicht aufhören können, an einen zu denken; „游必有方，如己告云之东，则不敢更适西，欲亲必知己之所在而无忧，召己则必至而无失也“ – eine feste Richtung heißt: hat man gesagt, man gehe nach Osten, wagt man nicht, nach Westen zu wechseln, damit die Eltern immer wissen, wo man ist, und sich nicht sorgen, und wenn sie rufen, kommt man gewiss.",
+   "诸家": "Fan Zuyu: „子能以父母之心为心，则孝矣“ – kann ein Kind das Herz der Eltern zu seinem eigenen machen, ist das Pietät."
   },
   "4.20": {
    "title": "Drei Jahre den Weg des Vaters nicht ändern",
    "yw": "Der Meister sprach: Ändert er drei Jahre lang den Weg seines Vaters nicht, so kann man ihn kindesliebend nennen.",
-   "片里落点": "Der halbe Satz muss mit der vorigen Hälfte gelesen werden; „drei Jahre nicht ändern“ lässt sich nicht allein als eisernes Gesetz nehmen. Heute: Als Junge behalten wir nur die Hälfte dessen, was die Eltern sagten, und erinnern uns an die andere erst, wenn wir selbst einen Haushalt führen."
+   "片里落点": "Der halbe Satz muss mit der vorigen Hälfte gelesen werden; „drei Jahre nicht ändern“ lässt sich nicht allein als eisernes Gesetz nehmen. Heute: Als Junge behalten wir nur die Hälfte dessen, was die Eltern sagten, und erinnern uns an die andere erst, wenn wir selbst einen Haushalt führen.",
+   "常见读法": "Für sich genommen gelesen als „nach dem Tod des Vaters darf drei Jahre lang nichts geändert werden“.",
+   "字眼": "Zhu Xi zitiert Hu Yin: „已见首篇，此盖复出而逸其半也“ – das steht schon im ersten Buch; hier wird es wiederholt und hat seine erste Hälfte verloren. Das Kapitel wiederholt Xue Er 1.11 ohne den Anfang „父在，观其志；父没，观其行“ (solange der Vater lebt, beobachte seine Absicht; nach dem Tod des Vaters beobachte sein Handeln).",
+   "诸家": "Unter Xue Er 1.11 zitiert Zhu Xi Yin Tun und You Zuo: Was nicht dem Weg entspricht, muss nicht drei Jahre warten; was geändert werden kann, aber warten kann, bleibt eine Weile, um dem Herzen, das es nicht übers Herz bringt, Zeit zu geben (diese Folge greift die ursprüngliche Seite wieder auf)."
   },
   "4.21": {
    "title": "Man muss das Alter seiner Eltern kennen",
    "yw": "Der Meister sprach: Das Alter der Eltern darf man nicht vergessen: einerseits zur Freude, andererseits zur Sorge.",
-   "片里落点": "Freude und Sorge sind dieselbe Tatsache: ein Tag mehr gelebt ist ein Tag weniger übrig. Heute: Der Handykalender erinnert einmal im Jahr an den Geburtstag der Eltern, und die Zahl wird jedes Jahr größer."
+   "片里落点": "Freude und Sorge sind dieselbe Tatsache: ein Tag mehr gelebt ist ein Tag weniger übrig. Heute: Der Handykalender erinnert einmal im Jahr an den Geburtstag der Eltern, und die Zahl wird jedes Jahr größer.",
+   "常见读法": "Gelesen als „denk an die Geburtstage deiner Eltern“.",
+   "字眼": "Zhu Xi: „知，犹记忆也“ – wissen heißt hier im Gedächtnis behalten; „常知父母之年，则既喜其寿，又惧其衰，而于爱日之诚，自有不能已者“ – kennt man stets ihr Alter, freut man sich über ihr langes Leben und fürchtet ihren Verfall, und die aufrichtige Wertschätzung der Tage kann nicht aufhören.",
+   "诸家": "(Diese Folge gibt nur Zhu Xi.)"
   },
   "4.22": {
    "title": "Die Alten ließen ihre Worte nicht leichtfertig hinaus",
    "yw": "Der Meister sprach: Die Alten ließen ihre Worte nicht leichtfertig hinaus, weil sie sich schämten, wenn ihr Handeln nicht nachkäme.",
-   "片里落点": "Gefürchtet wird nicht, etwas Falsches zu sagen, sondern es nicht zu tun. Heute: Im Arbeitschat antwortet einer „ich gebe es diese Woche bestimmt ab“; ein anderer sagt nichts und gibt am Mittwoch ab."
+   "片里落点": "Gefürchtet wird nicht, etwas Falsches zu sagen, sondern es nicht zu tun. Heute: Im Arbeitschat antwortet einer „ich gebe es diese Woche bestimmt ab“; ein anderer sagt nichts und gibt am Mittwoch ab.",
+   "常见读法": "Gelesen als „wenig reden“ oder „Schweigen ist Gold“.",
+   "字眼": "Dai (逮) heißt erreichen. Zhu Xi: „言古者，以见今之不然……行不及言，可耻之甚“ – „die Alten“ zu sagen zeigt, dass die Leute heute nicht so sind; Handeln, das hinter den Worten zurückbleibt, ist höchst beschämend.",
+   "诸家": "Fan Zuyu: „非言之难，而行之难也。人惟其不行也，是以轻言之“ – nicht das Reden ist schwer, sondern das Tun; nur weil Menschen nicht handeln, reden sie leichtfertig; „言之如其所行，行之如其所言，则出诸其口必不易矣“ – spricht man, wie man handelt, und handelt, wie man spricht, kommen Worte nicht leicht über die Lippen."
   },
   "4.23": {
    "title": "Wer durch Zurückhaltung fehlt, ist selten",
    "yw": "Der Meister sprach: Wer durch Zurückhaltung fehlgeht, ist selten.",
-   "片里落点": "Worte, Temperament und Prunk zurückzuhalten ist alles Zurückhaltung, nicht nur beim Geld. Heute: Wer mit nur zwei Kisten umzieht, ist der, der nichts verliert."
+   "片里落点": "Worte, Temperament und Prunk zurückzuhalten ist alles Zurückhaltung, nicht nur beim Geld. Heute: Wer mit nur zwei Kisten umzieht, ist der, der nichts verliert.",
+   "常见读法": "Gelesen als „Sparsame machen weniger Fehler“, Zurückhaltung als Geldsparen verstanden.",
+   "字眼": "Xian (鲜) heißt wenige. Zhu Xi zitiert Xie Liangzuo: „不侈然以自放之谓约“ – sich nicht in Verschwendung gehen lassen heißt Zurückhaltung; und Yin Tun: „凡事约则鲜失，非止谓俭约也“ – in allen Dingen bedeutet Zurückhaltung wenige Fehler; es meint nicht nur Sparsamkeit.",
+   "诸家": "Xie Liangzuo und Yin Tun (beide von Zhu Xi zitiert)."
   },
   "4.24": {
    "title": "Der Edle will langsam im Reden und rasch im Handeln sein",
    "yw": "Der Meister sprach: Der Edle will langsam im Reden und rasch im Handeln sein.",
-   "片里落点": "Vom leichten und vom schweren Ende zügle das leichte (das Reden) und treibe das schwere (das Tun) an. Es heißt nicht, nicht zu reden, sondern nicht leichtfertig daherzureden."
+   "片里落点": "Vom leichten und vom schweren Ende zügle das leichte (das Reden) und treibe das schwere (das Tun) an. Es heißt nicht, nicht zu reden, sondern nicht leichtfertig daherzureden.",
+   "常见读法": "Gelesen als „der Edle soll wenig reden“, ne (讷) als mangelnde Redegabe verstanden.",
+   "字眼": "Ne (讷) heißt langsam im Reden. Zhu Xi zitiert Xie Liangzuo: „放言易，故欲讷；力行难，故欲敏“ – loses Reden ist leicht, darum will man darin langsam sein; tatkräftiges Handeln ist schwer, darum will man darin schnell sein.",
+   "诸家": "Zhu Xi zitiert auch Hu Yin: „自吾道一贯至此十章，疑皆曾子门人所记也“ – die zehn Kapitel von „mein Weg ist von einem durchzogen“ bis hier wurden vielleicht alle von Zengzis Schülern aufgezeichnet. Das ist eine Vermutung, die Zhu Xi verzeichnet, ohne sie zu entscheiden."
   },
   "4.25": {
    "title": "Tugend ist nicht allein; sie hat gewiss Nachbarn",
    "yw": "Der Meister sprach: Tugend ist nicht einsam; sie hat gewiss Nachbarn.",
-   "片里落点": "Das heißt nicht „gute Taten werden belohnt“, sondern Gleiches antwortet Gleichem. Woran du festhältst, zieht Menschen an, die an demselben festhalten."
+   "片里落点": "Das heißt nicht „gute Taten werden belohnt“, sondern Gleiches antwortet Gleichem. Woran du festhältst, zieht Menschen an, die an demselben festhalten.",
+   "常见读法": "Gelesen als Trost: „gute Menschen sind nie allein“.",
+   "字眼": "Zhu Xi: „邻，犹亲也。德不孤立，必以类应。故有德者，必有其类从之，如居之有邻也“ – Nachbar heißt die Nahestehenden; Tugend steht nicht allein, sondern wird von ihresgleichen beantwortet; darum folgen dem Tugendhaften seinesgleichen, wie ein Haus Nachbarn hat.",
+   "诸家": "(Diese Folge gibt nur Zhu Xi.)"
   },
   "4.26": {
    "title": "Bedrängst du den Fürsten, erntest du Schmach; bedrängst du den Freund, entfernt er sich",
    "yw": "Ziyou sprach: Im Dienst am Fürsten bringt Aufdringlichkeit Schmach; unter Freunden bringt Aufdringlichkeit Entfremdung.",
-   "片里落点": "Überreden hat Grenzen. Kommt es nicht an, hör auf (beim Fürsten: geh); wer zu oft drängt, stößt die Menschen nur fort."
+   "片里落点": "Überreden hat Grenzen. Kommt es nicht an, hör auf (beim Fürsten: geh); wer zu oft drängt, stößt die Menschen nur fort.",
+   "常见读法": "Gelesen als „belästige Chef oder Freunde nicht ständig“ oder shu (数) als „schelten“.",
+   "字眼": "Shuo (数) als shuò gelesen, häufig. Zhu Xi zitiert die Brüder Cheng: „数，烦数也“ – shuo heißt lästige Häufigkeit; und Hu Yin: „事君谏不行，则当去；导友善不纳，则当止“ – wird die Ermahnung des Herrschers nicht befolgt, soll man gehen; wird die Anleitung eines Freundes zum Guten nicht angenommen, soll man aufhören.",
+   "诸家": "Fan Zuyu: „君臣朋友，皆以义合，故其事同也“ – Herrscher und Minister, Freund und Freund sind alle durch das Rechte verbunden, darum ist die Sache dieselbe. Dies sind Ziyous Worte."
   },
   "5.1": {
    "title": "Gongye Chang kann man eine Frau geben",
    "yw": "Der Meister sagte über Gongye Chang: Man kann ihm eine Frau geben. Obwohl er in Fesseln lag, war es nicht seine Schuld. Und er gab ihm seine eigene Tochter zur Frau. Der Meister sagte über Nan Rong: Hat der Staat den Weg, wird er nicht übergangen; fehlt dem Staat der Weg, entgeht er der Strafe. Und er gab ihm die Tochter seines älteren Bruders zur Frau.",
-   "片里落点": "Wichtig ist nicht, dass Konfuzius nachsichtig war, sondern das eine Urteil „war es seine Schuld oder nicht“: Ein von außen auferlegtes Gefängnis ist weder seine Ehre noch seine Schande. Der Abschnitt über Nan Rong sagt, dass Sorgfalt in Wort und Tat in guten wie schlechten Zeiten besteht. Heute: Jemand wurde einst zu Unrecht gemaßregelt und später entlastet — manche meiden ihn, andere geben ihm weiter die wichtige Arbeit."
+   "片里落点": "Wichtig ist nicht, dass Konfuzius nachsichtig war, sondern das eine Urteil „war es seine Schuld oder nicht“: Ein von außen auferlegtes Gefängnis ist weder seine Ehre noch seine Schande. Der Abschnitt über Nan Rong sagt, dass Sorgfalt in Wort und Tat in guten wie schlechten Zeiten besteht. Heute: Jemand wurde einst zu Unrecht gemaßregelt und später entlastet — manche meiden ihn, andere geben ihm weiter die wichtige Arbeit.",
+   "常见读法": "Konfuzius verheiratete seine Tochter mit einem Mann, der im Gefängnis gewesen war: gelesen als „es störte ihn nicht“ oder „er war großherzig“.",
+   "字眼": "Qi (妻) im fallenden Ton: eine Tochter verheiraten. „缧，黑索也。绁，挛也“ – lei ist ein schwarzes Seil, xie eine Fessel; „长之为人无所考，而夫子称其可妻，其必有以取之矣“ – über Changs Charakter ist nichts bekannt, doch da der Meister ihn heiratsfähig nannte, muss etwas für ihn gesprochen haben; „夫有罪无罪，在我而已，岂以自外至者为荣辱哉“ – Schuld oder Unschuld liegt allein bei einem selbst; wie könnte das, was von außen kommt, Ehre oder Schande sein? Zu Nan Rong: „不废，言必见用也……以其谨于言行“ – nicht beiseitegestellt heißt, er wird gewiss eingesetzt, weil er in Wort und Tat sorgfältig war.",
+   "诸家": "Die Brüder Cheng weisen die Lesart „Verdacht vermeiden“ zurück: „此以己之私心窥圣人也。凡人避嫌者，皆内不足也……嫁女必量其才而求配“ – das heißt, den Weisen mit dem eigenen selbstsüchtigen Sinn zu belauern; alle, die Verdacht meiden, haben innen einen Mangel; bei der Verheiratung einer Tochter muss man die Fähigkeit des Mannes wägen und einen passenden suchen."
   },
   "5.2": {
    "title": "Über Zijian sprach der Meister: Ein Edler ist dieser Mann",
    "yw": "Der Meister sagte über Zijian: Ein Edler ist dieser Mann! Gäbe es in Lu keine Edlen, woher hätte er das nehmen sollen?",
-   "片里落点": "Die Tugend eines Menschen stammt von den Würdigen um ihn, darum heißt ihn loben auch die loben, die ihn geformt haben. Heute: Ein Neuling gewinnt einen Preis, und das Erste, was er auf der Bühne tut, ist auf eine Lehrerin im Publikum zu zeigen."
+   "片里落点": "Die Tugend eines Menschen stammt von den Würdigen um ihn, darum heißt ihn loben auch die loben, die ihn geformt haben. Heute: Ein Neuling gewinnt einen Preis, und das Erste, was er auf der Bühne tut, ist auf eine Lehrerin im Publikum zu zeigen.",
+   "常见读法": "Nur als ein Lobsatz auf Zijian gelesen.",
+   "字眼": "Yan (焉) als yān gelesen. Zijians Familienname ist Fu (宓, fú gelesen), sein Rufname Buqi. „上斯斯此人，下斯斯此德“ – das erste si meint diesen Mann, das zweite diese Tugend; „子贱盖能尊贤取友以成其德者……因以见鲁之多贤也“ – Zijian ehrte die Würdigen und wählte Freunde, um seine Tugend zu vollenden; das zeigt auch, wie viele Würdige Lu hatte.",
+   "诸家": "Su Shi (von Zhu Xi zitiert): „称人之善，必本其父兄师友，厚之至也“ – wer jemandes Güte lobt und sie auf Vater, Brüder, Lehrer und Freunde zurückführt, zeigt höchste Großzügigkeit."
   },
   "5.3": {
    "title": "Zigong fragte: Und ich?",
    "yw": "Zigong fragte: Und ich, Ci? Der Meister sprach: Du bist ein Gefäß. Er sprach: Was für ein Gefäß? Er sprach: Ein Hulian-Gefäß des Ahnentempels.",
-   "片里落点": "Zwei Ebenen in einem Satz: noch nicht „kein Gerät“, aber die kostbarste Art von Gefäß; Lob mit einer Richtung darin. Heute: Der Chef sagt „du bist der Brauchbarste in meinem Team“, und es fühlt sich im Moment gut an, auf dem Heimweg aber nicht ganz richtig."
+   "片里落点": "Zwei Ebenen in einem Satz: noch nicht „kein Gerät“, aber die kostbarste Art von Gefäß; Lob mit einer Richtung darin. Heute: Der Chef sagt „du bist der Brauchbarste in meinem Team“, und es fühlt sich im Moment gut an, auf dem Heimweg aber nicht ganz richtig.",
+   "常见读法": "Zigong ein „Gefäß“ zu nennen wird als Herabsetzung gelesen, da „der Edle ist kein Gefäß“.",
+   "字眼": "Ru (女) als rǔ gelesen, „du“; hulian (瑚琏) als hú liǎn. „器者，有用之成材“ – ein Gefäß ist ein fertiges, nützliches Material; das hulian ist „宗庙盛黍稷之器而饰以玉，器之贵重而华美者也“ – ein Tempelgefäß für Hirse, mit Jade verziert, das kostbarste und schönste der Gefäße; „子贡虽未至于不器，其亦器之贵者欤“ – obwohl Zigong „kein Gefäß sein“ noch nicht erreicht hatte, war er ein kostbares unter den Gefäßen.",
+   "诸家": "Zhu Xi gibt nur eine Lesart."
   },
   "5.4": {
    "title": "Yong ist menschlich, aber nicht wortgewandt",
    "yw": "Jemand sagte: Yong ist menschlich, aber nicht wortgewandt. Der Meister sprach: Wozu Wortgewandtheit? Wer den Menschen mit flinker Zunge begegnet, wird oft nicht gemocht. Ob er menschlich ist, weiß ich nicht, aber wozu Wortgewandtheit?",
-   "片里落点": "Das Grundproblem ist „keine echte Substanz“: Eine flinke, streitlustige Zunge ohne Wahres darin macht sich umso unbeliebter, je mehr sie redet. Konfuzius sprach Zhonggong die Menschlichkeit nicht zu, weil sie zu groß ist, um sie leichthin zuzusprechen. Heute: Wer alles übernimmt, allem zustimmt und nichts liefert, um den machen die Kollegen drei Monate später einen Bogen."
+   "片里落点": "Das Grundproblem ist „keine echte Substanz“: Eine flinke, streitlustige Zunge ohne Wahres darin macht sich umso unbeliebter, je mehr sie redet. Konfuzius sprach Zhonggong die Menschlichkeit nicht zu, weil sie zu groß ist, um sie leichthin zuzusprechen. Heute: Wer alles übernimmt, allem zustimmt und nichts liefert, um den machen die Kollegen drei Monate später einen Bogen.",
+   "常见读法": "Gelesen als „schlechte Redner haben das Nachsehen, also trainiere deine Beredsamkeit“.",
+   "字眼": "„佞，口才也“ – ning ist Redegabe; Zhonggong war „重厚简默，而时人以佞为贤“ – gewichtig, schlicht und still, während die Leute seiner Zeit Zungenfertigkeit für eine Tugend hielten; „御，当也，犹应答也。给，辩也。憎，恶也“ – yu heißt entgegentreten, wie beim Antworten; ji ist schlagfertiges Argumentieren; zeng heißt nicht mögen; „佞人所以应答人者，但以口取辩而无情实，徒多为人所憎恶尔“ – die Zungenfertigen antworten mit Argumenten aus dem Mund, aber ohne wirkliche Substanz, und ernten nur viel Abneigung; „其不佞乃所以为贤，不足以为病也。再言焉用佞，所以深晓之“ – dass er nicht zungenfertig ist, ist gerade sein Wert, kein Mangel; zweimal „wozu Zungenfertigkeit“ zu sagen macht es ganz klar.",
+   "诸家": "Zhu Xi dazu, warum Konfuzius ihm Menschlichkeit nicht zusprach: „仁道至大，非全体而不息者，不足以当之。如颜子亚圣，犹不能无违于三月之后“ – der Weg der Menschlichkeit ist sehr groß; nur ein Ganzes und Unablässiges kann ihm entsprechen; selbst Yan Hui, dem Weisen am nächsten, konnte nach drei Monaten nicht ohne Abweichung bleiben."
   },
   "5.5": {
    "title": "Der Meister wollte Qidiao Kai ein Amt antreten lassen",
    "yw": "Der Meister wollte, dass Qidiao Kai ein Amt antritt. Er antwortete: Dessen bin ich mir noch nicht sicher. Der Meister freute sich.",
-   "片里落点": "Ob die Fähigkeit reicht, sieht der Lehrer; den haarfeinen Teil, der innen noch nicht wirklich gewonnen ist, kennt nur man selbst. Dieses Haar zuzugeben heißt, sich mit kleinen Erfolgen nicht zufriedenzugeben; darum freute sich Konfuzius. Heute: Ihr wird eine Beförderung angeboten, und sie sagt, dass sie die Rolle noch nicht tragen kann, und bittet um ein weiteres halbes Jahr."
+   "片里落点": "Ob die Fähigkeit reicht, sieht der Lehrer; den haarfeinen Teil, der innen noch nicht wirklich gewonnen ist, kennt nur man selbst. Dieses Haar zuzugeben heißt, sich mit kleinen Erfolgen nicht zufriedenzugeben; darum freute sich Konfuzius. Heute: Ihr wird eine Beförderung angeboten, und sie sagt, dass sie die Rolle noch nicht tragen kann, und bittet um ein weiteres halbes Jahr.",
+   "常见读法": "Das Ablehnen eines Amtes als Bescheidenheit oder Mangel an Mut gelesen.",
+   "字眼": "Yue (说) als yuè gelesen, erfreut. „斯，指此理而言。信，谓真知其如此，而无毫发之疑也“ – si meint dieses Prinzip; sicher sein heißt wirklich wissen, dass es so ist, ohne den Hauch eines Zweifels; „开自言未能如此，未可以治人，故夫子说其笃志“ – Kai sagte, er könne es noch nicht und sei nicht geeignet, andere zu regieren, darum freute sich der Meister über die Festigkeit seines Ziels.",
+   "诸家": "Die Brüder Cheng: „漆雕开已见大意，故夫子说之“ – Qidiao Kai hatte den großen Sinn erfasst, darum freute sich der Meister. Xie Liangzuo: „至于心术之微，则一毫不自得，不害其为未信。此圣人所不能知，而开自知之。其材可以仕，而其器不安于小成“ – in den feinen Regungen des Geistes genügt ein nicht wirklich gewonnenes Haar, um noch nicht sicher zu sein; das konnte der Weise nicht wissen, Kai aber wusste es selbst; seine Begabung taugte zum Amt, doch sein Format gab sich mit kleinem Erfolg nicht zufrieden."
   },
   "5.6": {
    "title": "Setzt sich der Weg nicht durch, fahre ich auf einem Floß aufs Meer",
    "yw": "Der Meister sprach: Setzt sich der Weg nicht durch, besteige ich ein Floß und treibe aufs Meer hinaus. Wer mir folgen würde, wäre wohl You? Zilu hörte es und freute sich. Der Meister sprach: You liebt den Mut mehr als ich, hat aber nichts, womit er die Dinge abwägt.",
-   "片里落点": "Aufs Meer zu fahren ist ein Seufzer, ein Bild; Zilu nahm es wörtlich, mit Mut im Überfluss, aber ohne Gespür dafür, was angemessen ist. Heute: Im Gruppenchat sagt jemand beiläufig, er kündige und reise um die Welt, und ein anderer packt noch am selben Abend den Rucksack."
+   "片里落点": "Aufs Meer zu fahren ist ein Seufzer, ein Bild; Zilu nahm es wörtlich, mit Mut im Überfluss, aber ohne Gespür dafür, was angemessen ist. Heute: Im Gruppenchat sagt jemand beiläufig, er kündige und reise um die Welt, und ein anderer packt noch am selben Abend den Rucksack.",
+   "常见读法": "Gelesen, als wolle Konfuzius sich wirklich nach Übersee zurückziehen; oder wu suo qu cai (无所取材) als „nirgends Holz bekommen“.",
+   "字眼": "„桴，筏也“ – fu ist ein Floß; hao (好) im fallenden Ton; „材，与裁同，古字借用“ – cai ist dasselbe wie cai „abmessen“, ein altes Lehnzeichen; „子路勇于义，故谓其能从己，皆假设之言耳。子路以为实然……讥其不能裁度事理，以适于义也“ – Zilu war mutig für das Rechte, darum hieß es, er könne folgen; das waren alles hypothetische Worte. Zilu nahm sie wörtlich und wurde getadelt, weil er die Sache nicht abwägen konnte, um dem Rechten zu entsprechen.",
+   "诸家": "Die Brüder Cheng: „浮海之叹，伤天下之无贤君也“ – der Seufzer, aufs Meer hinauszutreiben, ist Trauer darüber, dass die Welt keinen würdigen Herrscher hat."
   },
   "5.7": {
    "title": "Meng Wubo fragt, ob Zilu menschlich sei",
    "yw": "Meng Wubo fragte: Ist Zilu menschlich? Der Meister sprach: Ich weiß es nicht. Er fragte erneut. Der Meister sprach: You könnte man die Abgaben eines Staates von tausend Streitwagen anvertrauen; ob er menschlich ist, weiß ich nicht. Und Qiu? Der Meister sprach: Qiu könnte man zum Verwalter einer Stadt von tausend Haushalten oder eines Hauses von hundert Streitwagen machen; ob er menschlich ist, weiß ich nicht. Und Chi? Der Meister sprach: Chi, mit gebundener Schärpe bei Hofe stehend, könnte man mit den Gästen sprechen lassen; ob er menschlich ist, weiß ich nicht.",
-   "片里落点": "Was an Fähigkeit sichtbar ist, sagt man offen; Menschlichkeit kommt und geht, für sie bürgt man nicht. Drei Schüler, drei Begabungen: Jede Zeile sagt, was sie können, keine sagt, dass sie menschlich sind. Heute: Bei einer Referenzanfrage sagt der Gewährsmann: „Für seine Fähigkeiten bürge ich; zu seinem Charakter kann ich nichts sagen.“"
+   "片里落点": "Was an Fähigkeit sichtbar ist, sagt man offen; Menschlichkeit kommt und geht, für sie bürgt man nicht. Drei Schüler, drei Begabungen: Jede Zeile sagt, was sie können, keine sagt, dass sie menschlich sind. Heute: Bei einer Referenzanfrage sagt der Gewährsmann: „Für seine Fähigkeiten bürge ich; zu seinem Charakter kann ich nichts sagen.“",
+   "常见读法": "Dass Konfuzius seine Schüler nicht bewerten wollte, wird als Schutz oder Bescheidenheit gelesen.",
+   "字眼": "Sheng (乘) als shèng gelesen; „赋，兵也。古者以田赋出兵，故谓兵为赋“ – fu heißt Truppen; im Altertum wurden Truppen über die Grundsteuer ausgehoben, darum hießen Truppen fu; „宰，邑长家臣之通号“ – zai ist der allgemeine Titel eines Stadtvorstehers oder Hausverwalters; chao (朝) als cháo gelesen; „子路之于仁，盖日月至焉者，或在或亡，不能必其有无，故以不知告之“ – Zilu erreichte Menschlichkeit für einen Tag oder einen Monat, mal da, mal nicht, es ließ sich nicht verbürgen, darum antwortete Konfuzius „ich weiß nicht“; „言子路之才，可见者如此，仁则不能知也“ – er sprach von Zilus sichtbarer Fähigkeit; Menschlichkeit ließ sich nicht wissen.",
+   "诸家": "Zhu Xi gibt nur eine Lesart."
   },
   "5.8": {
    "title": "Wer ist besser, du oder Hui?",
    "yw": "Der Meister sagte zu Zigong: Wer ist besser, du oder Hui? Er antwortete: Wie dürfte ich zu Hui aufschauen wollen? Hui hört eins und weiß zehn; ich höre eins und weiß zwei. Der Meister sprach: Du kommst ihm nicht gleich. Ich gebe zu, du kommst ihm nicht gleich.",
-   "片里落点": "Die Frage des Konfuzius prüft, ob Zigong sich selbst klar sieht. Er tut es und findet es nicht schwer, sich zu beugen, darum sagt Konfuzius zuerst „du kommst ihm nicht gleich“ und bestätigt ihn dann feierlich. Heute: Ein Trainer fragt zwei Spieler, wer stärker ist, und einer zeigt ohne Zögern auf den anderen."
+   "片里落点": "Die Frage des Konfuzius prüft, ob Zigong sich selbst klar sieht. Er tut es und findet es nicht schwer, sich zu beugen, darum sagt Konfuzius zuerst „du kommst ihm nicht gleich“ und bestätigt ihn dann feierlich. Heute: Ein Trainer fragt zwei Spieler, wer stärker ist, und einer zeigt ohne Zögern auf den anderen.",
+   "常见读法": "Wu yu ru fu ru ye (吾与女弗如也) gelesen als „weder du noch ich ist ihm gleich“, Konfuzius aus Bescheidenheit.",
+   "字眼": "Ru (女) als rǔ gelesen; „愈，胜也“ – yu heißt besser; „一，数之始。十，数之终。二者，一之对也。颜子明睿所照，即始而见终；子贡推测而知，因此而识彼“ – eins ist der Anfang der Zahlen, zehn das Ende, zwei das Gegenstück zu eins; Yan Huis klare Einsicht sah vom Anfang das Ende; Zigong wusste durch Schließen, von diesem auf jenes; „与，许也“ – yu heißt zugestehen.",
+   "诸家": "Zhu Xi zitiert Hu Yin: „子贡方人，夫子既语以不暇，又问其与回孰愈，以观其自知之如何“ – Zigong verglich gern Menschen; der Meister hatte ihm gesagt, er habe keine Zeit dafür, und fragte dann, wer besser sei, er oder Hui, um zu sehen, wie gut er sich selbst kannte; „夫子以其自知之明，而又不难于自屈，故既然之，又重许之“ – weil er sich klar kannte und sich ohne Mühe beugte, stimmte der Meister ihm zu und bekräftigte es nachdrücklich."
   },
   "5.9": {
    "title": "Zai Yu schlief am Tag",
    "yw": "Zai Yu schlief am Tag. Der Meister sprach: Faules Holz lässt sich nicht schnitzen; eine Mauer aus Dung lässt sich nicht verputzen. Was nützt es, Yu zu schelten? Der Meister sprach: Früher hörte ich die Worte der Menschen und vertraute auf ihr Handeln. Jetzt höre ich ihre Worte und beobachte ihr Handeln. Yu hat mich das ändern lassen.",
-   "片里落点": "Es geht nicht um das Nickerchen, sondern um einen erschlafften Willen und Worte, denen die Taten nicht folgen. „Nicht wert, gescholten zu werden“ ist der schwerste Tadel. Konfuzius nahm den Anlass, eine Regel aufzustellen: die Worte hören und auch das Handeln beobachten. Heute: drei Fitnessstudio-Mitgliedschaften in einem Jahr und kein einziger Besuch."
+   "片里落点": "Es geht nicht um das Nickerchen, sondern um einen erschlafften Willen und Worte, denen die Taten nicht folgen. „Nicht wert, gescholten zu werden“ ist der schwerste Tadel. Konfuzius nahm den Anlass, eine Regel aufzustellen: die Worte hören und auch das Handeln beobachten. Heute: drei Fitnessstudio-Mitgliedschaften in einem Jahr und kein einziger Besuch.",
+   "常见读法": "Gelesen, als tadle Konfuzius einen Schüler viel zu hart wegen eines Nickerchens.",
+   "字眼": "„昼寝，谓当昼而寐“ – Tagschlaf heißt am helllichten Tag schlafen; „朽，腐也。雕，刻画也。杇，镘也“ – xiu ist morsch, diao schnitzen, wu (杇, wū gelesen) verputzen; „言其志气昏惰，教无所施也“ – sein Wille und Geist waren stumpf und träge, die Lehre fand keinen Ansatz; „与，语辞。诛，责也。言不足责，乃所以深责之“ – yu ist eine Partikel; zhu heißt tadeln; zu sagen, er sei keinen Tadel wert, ist der tiefste Tadel; xing (行) im fallenden Ton; „宰予能言而行不逮，故孔子自言于予之事而改此失，亦以重警之也“ – Zai Yu redete gut, doch sein Handeln blieb zurück, darum sagte Konfuzius, er habe durch Yu diesen Fehler berichtigt, auch um ihn ernst zu warnen.",
+   "诸家": "Hu Yin: „子曰疑衍文，不然，则非一日之言也“ – das zweite „der Meister sprach“ ist vielleicht eingeschoben; sonst sind es Worte verschiedener Tage. Fan Zuyu: „君子之于学，惟日孜孜，毙而后已……宰予昼寝，自弃孰甚焉“ – der Edle lernt jeden Tag fleißig bis zum Tod; Zai Yu schläft am Tag – welche Selbstaufgabe wäre größer? Hu Yin: „宰予不能以志帅气，居然而倦。是宴安之气胜，儆戒之志惰也“ – Zai Yu konnte seine Lebenskraft nicht mit dem Willen führen und wurde müde; der Geist der Bequemlichkeit siegte und der Wille zur Wachsamkeit erschlaffte; „特因此立教，以警群弟子，使谨于言而敏于行耳“ – Konfuzius nutzte dies nur, um eine Lehre aufzustellen und alle Schüler zu warnen, vorsichtig im Wort und schnell in der Tat zu sein."
   },
   "5.10": {
    "title": "Ich habe nie jemanden gesehen, der wirklich fest ist",
    "yw": "Der Meister sprach: Ich habe nie jemanden gesehen, der wirklich fest ist. Jemand antwortete: Shen Cheng. Der Meister sprach: Cheng hat Begierden; wie kann er fest sein?",
-   "片里落点": "Festigkeit hält die Dinge nieder; Begierde heißt, von den Dingen bedeckt zu werden. Hart aussehen und gern gewinnen kann bedeuten, von den eigenen Begierden geführt zu werden. Heute: Wer in Besprechungen am schärfsten redet und niemandem nachgibt, kommt an keinem Ausverkauf im Einkaufszentrum vorbei."
+   "片里落点": "Festigkeit hält die Dinge nieder; Begierde heißt, von den Dingen bedeckt zu werden. Hart aussehen und gern gewinnen kann bedeuten, von den eigenen Begierden geführt zu werden. Heute: Wer in Besprechungen am schärfsten redet und niemandem nachgibt, kommt an keinem Ausverkauf im Einkaufszentrum vorbei.",
+   "常见读法": "Ein hartes Temperament und das Nicht-Nachgeben gegenüber jedem für „Festigkeit“ halten.",
+   "字眼": "Cheng (枨) als chéng gelesen; yan (焉) als yān; „刚，坚强不屈之意，最人所难能者“ – Festigkeit heißt stark und unbeugsam, das Schwerste, was Menschen fertigbringen; „欲，多嗜欲也。多嗜欲，则不得为刚矣“ – Begierde heißt viele Gelüste; mit vielen Gelüsten kann man nicht fest sein.",
+   "诸家": "Die Brüder Cheng: „人有欲则无刚，刚则不屈于欲“ – mit Begierden hat man keine Festigkeit; der Feste beugt sich der Begierde nicht. Xie Liangzuo: „刚与欲正相反。能胜物之谓刚，故常伸于万物之上；为物揜之谓欲，故常屈于万物之下“ – Festigkeit und Begierde sind genaue Gegensätze; die Dinge überwinden können heißt Festigkeit, darum steht sie stets über allen Dingen; von den Dingen bedeckt werden heißt Begierde, darum beugt sie sich stets unter sie; „其为人得非悻悻自好者乎？故或者疑以为刚，然不知此其所以为欲尔“ – war er nicht ein stachliger, selbstgefälliger Mensch? So hielten manche ihn für fest, ohne zu wissen, dass gerade das seine Begierde war."
   },
   "5.11": {
    "title": "Was ich nicht will, dass andere mir tun",
    "yw": "Zigong sprach: Was ich nicht will, dass andere mir tun, will ich auch anderen nicht tun. Der Meister sprach: Ci, das hast du noch nicht erreicht.",
-   "片里落点": "Der Unterschied liegt in einem Schriftzeichen, wu „es gibt nicht“ gegenüber wu „tu nicht“: Einen solchen Impuls gar nicht zu haben ist Menschlichkeit; ihn zu haben und zu zügeln ist Gegenseitigkeit. Was Zigong beschrieb, ist die Natürlichkeit des Menschlichen, die er noch nicht erreicht hat. Heute: Wer es hasst, nachts von Nachrichten geweckt zu werden, plant jede Nachricht nach 22 Uhr für den nächsten Morgen ein."
+   "片里落点": "Der Unterschied liegt in einem Schriftzeichen, wu „es gibt nicht“ gegenüber wu „tu nicht“: Einen solchen Impuls gar nicht zu haben ist Menschlichkeit; ihn zu haben und zu zügeln ist Gegenseitigkeit. Was Zigong beschrieb, ist die Natürlichkeit des Menschlichen, die er noch nicht erreicht hat. Heute: Wer es hasst, nachts von Nachrichten geweckt zu werden, plant jede Nachricht nach 22 Uhr für den nächsten Morgen ein.",
+   "常见读法": "Gelesen als weitere Fassung von „was du nicht willst, dass man dir tu“, etwas, das jeder kann.",
+   "字眼": "„子贡言我所不欲人加于我之事，我亦不欲以此加之于人。此仁者之事，不待勉强，故夫子以为非子贡所及“ – Zigong sagte, was er nicht wolle, dass andere ihm tun, wolle er auch anderen nicht tun; das ist die Sache des Menschlichen, ohne Anstrengung, darum hielt der Meister es für jenseits von Zigongs Reichweite; „愚谓无者自然而然，勿者禁止之谓，此所以为仁恕之别“ – meiner Ansicht nach ist wu (无, es gibt nicht) das von selbst Geschehende, wu (勿, tu nicht) das Verbot; das ist der Unterschied zwischen Menschlichkeit und Gegenseitigkeit.",
+   "诸家": "Die Brüder Cheng: „我不欲人之加诸我，吾亦欲无加诸人，仁也；施诸己而不愿，亦勿施于人，恕也。恕则子贡或能勉之，仁则非所及矣“ – was ich nicht angetan haben will, davon soll es auch von mir zu anderen nichts geben: das ist Menschlichkeit; was man sich selbst nicht angetan haben will, tu es anderen nicht an: das ist Gegenseitigkeit. Gegenseitigkeit könnte Zigong mit Mühe schaffen; Menschlichkeit liegt jenseits seiner Reichweite."
   },
   "5.12": {
    "title": "Die äußere Bildung des Meisters kann man hören",
    "yw": "Zigong sprach: Von der äußeren Bildung des Meisters können wir hören; von den Worten des Meisters über die Natur des Menschen und den Weg des Himmels können wir nicht hören.",
-   "片里落点": "Wenzhang sind nicht geschriebene Aufsätze, sondern die Tugend, die sich in Benehmen und Rede zeigt. Über die Natur und den Weg des Himmels sprach Konfuzius wenig, aber nicht nie; seine Schule lehrte der Reihe nach, und erst jetzt hörte Zigong es zum ersten Mal. Der Satz ist Bewunderung, keine Klage. Heute: Eine Küchenauszubildende schneidet drei Jahre Gemüse, bevor der Küchenchef zum ersten Mal mit ihr über die Hitze spricht."
+   "片里落点": "Wenzhang sind nicht geschriebene Aufsätze, sondern die Tugend, die sich in Benehmen und Rede zeigt. Über die Natur und den Weg des Himmels sprach Konfuzius wenig, aber nicht nie; seine Schule lehrte der Reihe nach, und erst jetzt hörte Zigong es zum ersten Mal. Der Satz ist Bewunderung, keine Klage. Heute: Eine Küchenauszubildende schneidet drei Jahre Gemüse, bevor der Küchenchef zum ersten Mal mit ihr über die Hitze spricht.",
+   "常见读法": "Gelesen, als klage Zigong, Konfuzius habe nie über die Natur und den Weg des Himmels gesprochen, oder als habe Konfuzius gar keine Metaphysik betrieben.",
+   "字眼": "„文章，德之见乎外者，威仪文辞皆是也“ – wenzhang ist die nach außen sichtbare Tugend: Haltung und Rede gehören beide dazu; „性者，人所受之天理；天道者，天理自然之本体，其实一理也“ – die Natur ist das himmlische Prinzip, das der Mensch empfängt; der Weg des Himmels ist das natürliche Wesen dieses Prinzips; in Wahrheit sind sie ein Prinzip; „盖圣门教不躐等，子贡至是始得闻之，而叹其美也“ – die Schule des Weisen lehrte nicht außer der Reihe; erst jetzt durfte Zigong es hören und seufzte über seine Schönheit.",
+   "诸家": "Die Brüder Cheng: „此子贡闻夫子之至论而叹美之言也“ – dies sind Zigongs Worte der Bewunderung, als er die höchste Lehre des Meisters hörte."
   },
   "5.13": {
    "title": "Wenn Zilu etwas gehört hatte",
    "yw": "Wenn Zilu etwas gehört und es noch nicht in die Tat umgesetzt hatte, fürchtete er nur, noch etwas zu hören.",
-   "片里落点": "Er fürchtete nicht, mehr zu lernen, sondern dass das Letzte noch nicht getan war. Seine Mitschüler schrieben es auf, weil sie sich ihm unterlegen fühlten. Heute: Einen Kurs noch nicht durchgeübt, also meldet man sich nicht schon zum nächsten an."
+   "片里落点": "Er fürchtete nicht, mehr zu lernen, sondern dass das Letzte noch nicht getan war. Seine Mitschüler schrieben es auf, weil sie sich ihm unterlegen fühlten. Heute: Einen Kurs noch nicht durchgeübt, also meldet man sich nicht schon zum nächsten an.",
+   "常见读法": "Gelesen, als habe Zilu Angst vor Neuem, als lerne er nicht gern.",
+   "字眼": "„前所闻者既未及行，故恐复有所闻而行之不给也“ – was er zuvor gehört hatte, war noch nicht umgesetzt, darum fürchtete er, mehr zu hören und keine Zeit zu haben, es umzusetzen (ji 给 als jǐ gelesen: rechtzeitig sein).",
+   "诸家": "Fan Zuyu: „子路闻善，勇于必行，门人自以为弗及也，故著之。若子路，可谓能用其勇矣“ – hörte Zilu vom Guten, war er kühn, es umzusetzen; seine Mitschüler fühlten, dass sie ihm nicht gleichkamen, darum hielten sie es fest; von einem wie Zilu kann man sagen, dass er seinen Mut gut gebraucht."
   },
   "5.14": {
    "title": "Warum hieß Kong Wenzi „wen“?",
    "yw": "Zigong fragte: Warum wurde Kong Wenzi „wen“ genannt? Der Meister sprach: Er war rege und liebte das Lernen und schämte sich nicht, Niedrigere zu fragen; darum nannte man ihn „wen“.",
-   "片里落点": "Zigong fragte, weil Kong Wenzi einen schlechten Ruf hatte. Konfuzius antwortete nur mit dieser einen Regel der Nachnamen, verteidigte ihn weder pauschal noch tilgte er sein Verdienst; „wen“ reicht nur so weit. Heute: Ein Chef mit mäßigem Ruf fragt in der Besprechung vor allen den Praktikanten: „Das verstehe ich nicht, kannst du es erklären?“"
+   "片里落点": "Zigong fragte, weil Kong Wenzi einen schlechten Ruf hatte. Konfuzius antwortete nur mit dieser einen Regel der Nachnamen, verteidigte ihn weder pauschal noch tilgte er sein Verdienst; „wen“ reicht nur so weit. Heute: Ein Chef mit mäßigem Ruf fragt in der Besprechung vor allen den Praktikanten: „Das verstehe ich nicht, kannst du es erklären?“",
+   "常见读法": "„Sich nicht schämen, Niedrigere zu fragen“ wird als allgemeine Tugend des Fleißes gelesen, ohne Bezug auf den Charakter von Kong Wenzi.",
+   "字眼": "“凡人性敏者多不好学，位高者多耻下问。故谥法有以勤学好问为文者，盖亦人所难也” — wer von Natur aus schnell ist, liebt meist das Lernen nicht, und wer hoch steht, schämt sich meist, Niedrigere zu fragen; darum zählen die Regeln für Nachruhmnamen fleißiges Lernen und Fragen als „wen“, denn es fällt den Menschen schwer; “孔子不没其善，言能如此，亦足以为文矣，非经天纬地之文也” — Konfuzius verschwieg seine guten Seiten nicht; dies zu können genügt für „wen“, wenn auch nicht für das „wen“, das Himmel und Erde ordnet.",
+   "诸家": "Zhu Xi zitiert einen Meister Su zu den Taten von Kong Wenzi — er ließ Taishu Ji seine Frau verstoßen, wollte ihn dann angreifen, und Konfuzius ließ anspannen und ging: “其为人如此而谥曰文，此子贡之所以疑而问也” — so war der Mann, und doch hieß er „wen“; deshalb zweifelte Zigong und fragte."
   },
   "5.15": {
    "title": "Zichan hatte vier Wege des Edlen",
    "yw": "Der Meister sprach über Zichan: Er hatte vier Wege des Edlen. In seinem eigenen Verhalten war er ehrerbietig; im Dienst an den Oberen war er ehrfürchtig; im Versorgen des Volkes war er gütig; im Einsatz des Volkes war er gerecht.",
-   "片里落点": "Punkt für Punkt zu loben zeigt gerade, dass es noch Unerreichtes gibt; die vier haben je ihr eigenes Gegenüber. Einen Menschen nach einem Satz oder einer Tat zu beurteilen ist falsch. Heute: Beurteile einen kleinen Laden, der seit dreißig Jahren offen ist, nicht nach einer schlechten Bewertung."
+   "片里落点": "Punkt für Punkt zu loben zeigt gerade, dass es noch Unerreichtes gibt; die vier haben je ihr eigenes Gegenüber. Einen Menschen nach einem Satz oder einer Tat zu beurteilen ist falsch. Heute: Beurteile einen kleinen Laden, der seit dreißig Jahren offen ist, nicht nach einer schlechten Bewertung.",
+   "常见读法": "Gelesen als Lob des Konfuzius für Zichan, Punkt für Punkt, als wäre Zichan vollkommen gewesen.",
+   "字眼": "“恭，谦逊也。敬，谨恪也。惠，爱利也” — gong ist Bescheidenheit, jing ist Sorgfalt, hui ist liebende Wohltat; “使民义，如都鄙有章，上下有服，田有封洫，庐井有伍之类” — das Volk gerecht einsetzen heißt etwa: Hauptstadt und Umland haben ihre Regeln, Oben und Unten ihre Gewänder, Felder ihre Grenzen und Gräben, und die Haushalte sind in Fünfergruppen geordnet.",
+   "诸家": "Wu Yu: “数其事而责之者，其所善者多也……数其事而称之者，犹有所未至也……今或以一言盖一人，一事盖一时，皆非也” — wer jemandes Taten aufzählt, um ihn zu tadeln, bei dem sind die guten Seiten zahlreich; wer sie aufzählt, um ihn zu loben, bei dem fehlt noch etwas; heute einen Menschen in einem Satz oder eine Zeit in einem Ereignis zusammenzufassen, ist immer falsch."
   },
   "5.16": {
    "title": "Ist es höflicher, bei alten Freunden keine Umstände zu machen?",
    "yw": "Der Meister sprach: Yan Pingzhong verstand es, mit Menschen umzugehen; auch nach langer Bekanntschaft behandelte er sie mit Achtung.",
-   "片里落点": "Dass Achtung mit der Zeit verblasst, ist der Normalfall; sie zu bewahren heißt „gut mit Menschen umgehen“. Heute: Nach fünf Jahren in derselben WG klopft der Mitbewohner immer noch an, bevor er dein Ladegerät leiht."
+   "片里落点": "Dass Achtung mit der Zeit verblasst, ist der Normalfall; sie zu bewahren heißt „gut mit Menschen umgehen“. Heute: Nach fünf Jahren in derselben WG klopft der Mitbewohner immer noch an, bevor er dein Ladegerät leiht.",
+   "常见读法": "Wenn man jemanden lange kennt, braucht man keine Förmlichkeiten mehr; Höflichkeit hält ihn nur auf Abstand.",
+   "字眼": "“久而敬之” — lange bekannt und noch immer respektvoll.",
+   "诸家": "Zhu Xi: “晏平仲，齐大夫，名婴” — Yan Pingzhong, ein Würdenträger aus Qi, persönlicher Name Ying. Er zitiert Meister Cheng: “人交久则敬衰，久而能敬，所以为善” — wenn Menschen sich lange kennen, schwindet der Respekt; ihn nach langer Zeit zu bewahren, macht ihn darin gut."
   },
   "5.17": {
    "title": "War Zang Wenzhong wirklich klug?",
    "yw": "Der Meister sprach: Zang Wenzhong hielt eine große Schildkröte, mit Bergen geschnitzten Kapitellen und Wasserpflanzen bemalten Balken. Wie kann man ihn weise nennen?",
-   "片里落点": "Wer seinen Sinn nicht auf das richtet, was das Volk braucht, und stattdessen Geistern schmeichelt, ist nicht weise. Heute: Das Geschäft läuft schlecht, und statt die Kunden zu fragen, zahlt der Inhaber ein Vermögen, um die Ladentür anders auszurichten."
+   "片里落点": "Wer seinen Sinn nicht auf das richtet, was das Volk braucht, und stattdessen Geistern schmeichelt, ist nicht weise. Heute: Das Geschäft läuft schlecht, und statt die Kunden zu fragen, zahlt der Inhaber ein Vermögen, um die Ladentür anders auszurichten.",
+   "常见读法": "Zang Wenzhong war gelehrt und weit informiert, und alle seiner Zeit hielten ihn für klug.",
+   "字眼": "“居，犹藏也。蔡，大龟也” — „ju“ heißt aufbewahren; „Cai“ ist eine große Schildkröte; “节，柱头斗栱” — „jie“ sind die Konsolen auf den Säulenköpfen; “梲，梁上短柱” — „zhuo“ sind die kurzen Pfosten auf den Balken; “知” wird „zhi“ gelesen, Weisheit.",
+   "诸家": "Zhu Xi: “不务民义，而谄渎鬼神如此，安得为知” — sich nicht um das Rechte für das Volk kümmern, sondern Geistern so schmeicheln und sie entweihen — wie könnte das weise sein?; “春秋传所谓作虚器，即此事也” — was der Zuo-Kommentar „leere Gefäße anfertigen“ nennt, ist genau diese Sache. Er zitiert Zhang Zai: “山节藻梲为藏龟之室，祀爰居之义，同归于不知宜矣” — die geschnitzte Kammer für die Schildkröte und das Opfer für den Yuanju-Vogel laufen auf dasselbe hinaus: nicht zu wissen, was angemessen ist."
   },
   "5.18": {
    "title": "Zählt nicht einmal das als Menschlichkeit?",
    "yw": "Zizhang fragte: Der Kanzler Ziwen wurde dreimal Kanzler ohne eine Miene der Freude und dreimal abgesetzt ohne eine Miene des Grolls; stets unterrichtete er den neuen Kanzler über die Geschäfte des alten. Was haltet Ihr von ihm? Der Meister sprach: Er war loyal. – War er menschlich? – Ich weiß nicht; wie könnte er menschlich sein? – Als Cuizi den Fürsten von Qi tötete, besaß Chen Wenzi zehn Gespanne; er gab sie auf und ging. In einem anderen Staat sagte er: „Sie sind wie unser Großwürdenträger Cuizi“, und ging. In einem weiteren Staat sagte er wieder: „Sie sind wie unser Großwürdenträger Cuizi“, und ging. Was haltet Ihr von ihm? Der Meister sprach: Er war rein. – War er menschlich? – Ich weiß nicht; wie könnte er menschlich sein?",
-   "片里落点": "Loyalität und Reinheit sind Einzeltugenden; Menschlichkeit fragt, ob man ganz dem Prinzip entspricht und wirklich ohne Eigennutz ist. Aus Kleinem auf Großes zu schließen war Zizhangs Fehler. Heute: Eine saubere Übergabe beim Jobwechsel, sogar das Passwortbuch zurückgelassen, ist Pflichttreue – mehr noch nicht."
+   "片里落点": "Loyalität und Reinheit sind Einzeltugenden; Menschlichkeit fragt, ob man ganz dem Prinzip entspricht und wirklich ohne Eigennutz ist. Aus Kleinem auf Großes zu schließen war Zizhangs Fehler. Heute: Eine saubere Übergabe beim Jobwechsel, sogar das Passwortbuch zurückgelassen, ist Pflichttreue – mehr noch nicht.",
+   "常见读法": "Dreimal ohne Freude ins Amt, dreimal ohne Groll entlassen, sein Vermögen aufgegeben, um einen zerrütteten Staat zu verlassen — wie sollte das nicht ren sein?",
+   "字眼": "“三已之” — „yi“ heißt entlassen werden; “十乘，四十匹” — zehn Gespanne sind vierzig Pferde; “违，去也” — „wei“ heißt verlassen; in “未知，焉得仁” behält “知” seine gewöhnliche Lesung, wissen.",
+   "诸家": "Zhu Xi: über Ziwen “但许其忠，而未许其仁” — er gestand nur seine Loyalität zu, nicht sein ren; über Wenzi “特许其清，而不许其仁” — er gestand nur seine Reinheit zu, nicht sein ren. Er zitiert seinen Lehrer: “当理而无私心，则仁矣” — dem Prinzip gemäß ohne eigennützigen Sinn, das ist ren; “子张未识仁体，而悦于苟难，遂以小者信其大者” — Zizhang kannte die Substanz des ren noch nicht und ließ sich von schweren Kunststücken beeindrucken, also ließ er das Kleine für das Große bürgen; “以他书考之” — prüft man andere Bücher, so plante Ziwen “所谋者无非僭王猾夏之事” — nichts als die Anmaßung des Königstitels und die Bedrängung der Zentralstaaten, und Wenzi “不数岁而复反于齐” — kehrte nach wenigen Jahren nach Qi zurück."
   },
   "5.19": {
    "title": "Warum genügt es, zweimal nachzudenken?",
    "yw": "Ji Wenzi dachte dreimal nach, bevor er handelte. Als der Meister davon hörte, sprach er: Zweimal genügt.",
-   "片里落点": "Beim zweiten Durchgang ist die Sache klar; beim dritten schleicht sich private Berechnung ein. Wer beim dritten Mal noch unschlüssig ist, frage sich, ob er an die Sache denkt oder an Gewinn und Verlust. Heute: Den Vertrag zum vierten Mal lesen und anfangen, Fehler zu finden, die keine sind."
+   "片里落点": "Beim zweiten Durchgang ist die Sache klar; beim dritten schleicht sich private Berechnung ein. Wer beim dritten Mal noch unschlüssig ist, frage sich, ob er an die Sache denkt oder an Gewinn und Verlust. Heute: Den Vertrag zum vierten Mal lesen und anfangen, Fehler zu finden, die keine sind.",
+   "常见读法": "„Dreimal nachdenken, bevor man handelt“ wird gewöhnlich als Tugend gelobt — warum sagte Konfuzius, zweimal genüge?",
+   "字眼": "“三” wird hier sàn gelesen, „immer wieder“; “斯，语辞” — „si“ ist eine Partikel.",
+   "诸家": "Zhu Xi: Ji Wenzi “每事必三思而后行，若使晋而求遭丧之礼以行” — dachte vor jeder Tat dreimal nach, so wie er, nach Jin gesandt, zuerst die Riten für einen Trauerfall erkundete. Er zitiert Meister Cheng: “再则已审，三则私意起而反惑矣” — beim zweiten Mal ist es schon klar; beim dritten steigen eigennützige Gedanken auf und verwirren stattdessen. Zhu Xi fügt hinzu: Als Herzog Xuan den Thron usurpierte, “不能讨，反为之使齐而纳赂焉” — konnte Wenzi ihn nicht bestrafen, sondern ging in seinem Auftrag mit Bestechungsgeschenken nach Qi: “君子务穷理而贵果断，不徒多思之为尚” — der Edle bemüht sich, die Dinge ganz zu durchdringen, und schätzt Entschlossenheit, nicht bloße Menge an Gedanken."
   },
   "5.20": {
    "title": "Warum ist diese „Torheit“ schwerer zu lernen als Klugheit?",
    "yw": "Der Meister sprach: Als der Staat den Weg hatte, war Ning Wuzi weise; als er den Weg verloren hatte, war er töricht. Seine Weisheit ist erreichbar; seine Torheit ist unerreichbar.",
-   "片里落点": "Die „Torheit“ besteht darin, auf sich zu nehmen, was alle Klugen meiden, und dabei sich selbst zu bewahren und seinem Fürsten zu helfen; Meister Chengs Hinweis auf Bi Gan zeigt, dass es nicht einfach gespielte Dummheit ist. Heute: Im Krisenjahr der Firma gingen alle, sie blieb und ordnete die faulen Bücher."
+   "片里落点": "Die „Torheit“ besteht darin, auf sich zu nehmen, was alle Klugen meiden, und dabei sich selbst zu bewahren und seinem Fürsten zu helfen; Meister Chengs Hinweis auf Bi Gan zeigt, dass es nicht einfach gespielte Dummheit ist. Heute: Im Krisenjahr der Firma gingen alle, sie blieb und ordnete die faulen Bücher.",
+   "常见读法": "„Seine Torheit ist unerreichbar“ gilt heute als Beleidigung — warum ist diese Torheit schwerer zu lernen als Klugheit?",
+   "字眼": "“知” wird „zhi“ gelesen, Weisheit; “甯” wird nìng gelesen.",
+   "诸家": "Zhu Xi: Ning Wuzi “仕卫，当文公、成公之时” — diente Wei unter den Herzögen Wen und Cheng; unter Herzog Wen, der den Weg hatte, “无事可见，此其知之可及也” — gab es nichts Auffälliges zu sehen, daher war seine Weisheit erreichbar; unter Herzog Cheng, der den Weg nicht hatte und den Staat verlor, “周旋其间，尽心竭力，不避艰险……而能卒保其身以济其君，此其愚之不可及也” — bewegte er sich mittendrin, gab sein ganzes Herz und alle Kraft, mied keine Gefahr und konnte am Ende sich selbst bewahren und seinen Fürsten retten; das ist die Torheit, die unerreichbar ist. Er zitiert Meister Cheng: “邦无道能沉晦以免患……亦有不当愚者，比干是也” — wenn der Staat den Weg nicht hat, kann man sich bedeckt halten, um Unheil zu entgehen; doch manche sollen nicht den Toren spielen, etwa Bi Gan."
   },
   "5.21": {
    "title": "Wozu kehrte Konfuzius nach Jahren der Reise heim?",
    "yw": "Als der Meister in Chen war, sprach er: Lasst uns heimkehren! Lasst uns heimkehren! Die jungen Leute meiner Heimat sind ehrgeizig und unbekümmert; sie haben etwas von schönem Muster geschaffen, wissen es aber nicht zuzuschneiden.",
-   "片里落点": "Er wendet sich vom Verwirklichen des Weges zum Weitergeben; ehrgeizige junge Leute können auf dem Weg vorankommen, schießen aber leicht übers Ziel hinaus, darum geht er heim, um sie zuzuschneiden. Heute: Der Vorschlag eines Neuen hat auf zehn Seiten acht gute Ideen und braucht trotzdem jemanden, der beim Kürzen hilft."
+   "片里落点": "Er wendet sich vom Verwirklichen des Weges zum Weitergeben; ehrgeizige junge Leute können auf dem Weg vorankommen, schießen aber leicht übers Ziel hinaus, darum geht er heim, um sie zuzuschneiden. Heute: Der Vorschlag eines Neuen hat auf zehn Seiten acht gute Ideen und braucht trotzdem jemanden, der beim Kürzen hilft.",
+   "常见读法": "Nach so vielen Jahren Wanderschaft durch die Staaten — wozu ging Konfuzius nach Hause?",
+   "字眼": "“与” wird yú gelesen, eine Partikel; “斐” wird fěi gelesen; “裁，割正也” — „cai“ heißt gerade zuschneiden; “狂简，志大而略于事” — „ehrgeizig und nachlässig“ heißt große Ziele, aber wenig Sinn für praktische Dinge.",
+   "诸家": "Zhu Xi: “此孔子周流四方，道不行而思归之叹也” — das ist der Seufzer des Konfuzius, der sich nach Hause sehnt, nachdem er überall umhergezogen war, ohne dass sein Weg verwirklicht wurde; “夫子初心，欲行其道于天下，至是而知其终不用也。于是始欲成就后学，以传道于来世” — sein ursprünglicher Wunsch war, den Weg in der Welt zu verwirklichen; nun wusste er, dass man ihn nie anstellen würde, also wollte er seine Schüler formen und den Weg an spätere Zeiten weitergeben; “不得中行之士而思其次……但恐其过中失正，而或陷于异端耳，故欲归而裁之也” — da er keine Männer des mittleren Weges fand, dachte er an die Nächstbesten und fürchtete nur, sie würden über die Mitte hinausschießen und in Irrlehren fallen, darum wollte er heimkehren und sie zuschneiden."
   },
   "5.22": {
    "title": "Bo Yi und Shu Qi waren so streng – warum grollte ihnen niemand?",
    "yw": "Der Meister sprach: Bo Yi und Shu Qi trugen alte Kränkungen nicht nach; darum gab es wenig Groll.",
-   "片里落点": "So streng, dass sie scheinbar niemanden duldeten, doch sobald sich jemand änderte, hörten sie auf; darum grollten ihnen wenige. Die Größe des Reinen liegt darin, alte Rechnungen nicht aufzubewahren. Heute: Der Nachbar, mit dem man einmal stritt, hat sich entschuldigt, und im Treppenhaus nickt man sich weiter zu."
+   "片里落点": "So streng, dass sie scheinbar niemanden duldeten, doch sobald sich jemand änderte, hörten sie auf; darum grollten ihnen wenige. Die Größe des Reinen liegt darin, alte Rechnungen nicht aufzubewahren. Heute: Der Nachbar, mit dem man einmal stritt, hat sich entschuldigt, und im Treppenhaus nickt man sich weiter zu.",
+   "常见读法": "Bo Yi und Shu Qi waren so hochgesinnt und unnahbar — warum grollte ihnen niemand?",
+   "字眼": "“怨是用希” — „shi yong“ heißt daher, „xi“ heißt wenig; “浼” wird měi gelesen, beschmutzen; in “所恶” wird “恶” wù gelesen.",
+   "诸家": "Zhu Xi zitiert Mencius: “不立于恶人之朝，不与恶人言……望望然去之，若将浼焉。其介如此，宜若无所容矣” — sie standen nicht am Hof eines schlechten Menschen und sprachen nicht mit ihm, gingen eilig fort, als würde er sie beschmutzen; so heikel, dass man meinen sollte, niemand könne mit ihnen leben; “然其所恶之人，能改即止，故人亦不甚怨之也” — doch sobald die, die sie ablehnten, sich besserten, hörten sie auf, daher grollte man ihnen nicht sehr. Er zitiert Meister Cheng: “不念旧恶，此清者之量” — altes Unrecht nicht nachzutragen ist die Großherzigkeit der Reinen; “二子之心，非夫子孰能知之” — wer außer dem Meister könnte das Herz dieser beiden kennen?"
   },
   "5.23": {
    "title": "Warum ist es nicht aufrichtig, für jemanden beim Nachbarn zu borgen?",
    "yw": "Der Meister sprach: Wer sagt, Weisheng Gao sei aufrichtig? Jemand bat ihn um Essig; er erbat ihn beim Nachbarn und gab ihn weiter.",
-   "片里落点": "„Ich habe keinen“ zu sagen ist aufrichtig; Geborgtes als eigenes auszugeben heißt, sich anzubiedern. Eine kleine Sache, doch Meister Cheng sagt, sie schadet der Aufrichtigkeit selbst. Heute: Ein Kollege fragt nach einem Ladekabel, man leiht eins am Nachbartisch und sagt: „Hier, nimm meins.“"
+   "片里落点": "„Ich habe keinen“ zu sagen ist aufrichtig; Geborgtes als eigenes auszugeben heißt, sich anzubiedern. Eine kleine Sache, doch Meister Cheng sagt, sie schadet der Aufrichtigkeit selbst. Heute: Ein Kollege fragt nach einem Ladekabel, man leiht eins am Nachbartisch und sagt: „Hier, nimm meins.“",
+   "常见读法": "Er lieh etwas für einen anderen aus — warum sollte das als nicht aufrichtig gelten?",
+   "字眼": "“醯” wird xī gelesen, Essig; “乞” wird qǐ gelesen; “徇” wird xùn gelesen; in “掠美” wird “掠” lüè gelesen.",
+   "诸家": "Zhu Xi: “微生姓，高名，鲁人，素有直名者” — Familienname Weisheng, Rufname Gao, ein Mann aus Lu, der lange als aufrichtig galt; “夫子言此，讥其曲意徇物，掠美市恩，不得为直也” — der Meister sagt dies, um ihn dafür zu verspotten, dass er seine Absicht verbog, um anderen zu gefallen, sich fremde Verdienste aneignete und Gunst erkaufte, was nicht aufrichtig heißen kann. Er zitiert Meister Cheng: “微生高所枉虽小，害直为大” — die Biegung war klein, der Schaden für die Aufrichtigkeit groß; und Fan: “是曰是，非曰非，有谓有，无谓无，曰直。圣人观人于其一介之取予，而千驷万钟从可知焉” — ja zu ja, nein zu nein, haben zu haben, nicht haben zu nicht haben: das ist aufrichtig; der Weise beurteilt einen Menschen am kleinsten Nehmen und Geben, und daraus weiß man, wie er mit tausend Gespannen umginge."
   },
   "5.24": {
    "title": "Warum fand Konfuzius übertriebene Höflichkeit beschämend?",
    "yw": "Der Meister sprach: Schöne Worte, ein gefälliges Gesicht, übermäßige Ehrerbietung – Zuoqiu Ming schämte sich ihrer, und auch ich schäme mich ihrer. Groll verbergen und sich mit dem Menschen anfreunden – Zuoqiu Ming schämte sich dessen, und auch ich schäme mich dessen.",
-   "片里落点": "Beide Schanden sind eine Kluft zwischen innen und außen: süße Worte, Lächeln und übertriebene Höflichkeit, um zu gefallen; Freundschaft bei verborgenem Groll ist Heuchelei. Xie sagt, das sei schlimmer als Diebstahl, weil das Herz nicht gerade ist. Heute: Einen Groll hegen und doch bei Tisch als Erster das Glas auf ihn erheben."
+   "片里落点": "Beide Schanden sind eine Kluft zwischen innen und außen: süße Worte, Lächeln und übertriebene Höflichkeit, um zu gefallen; Freundschaft bei verborgenem Groll ist Heuchelei. Xie sagt, das sei schlimmer als Diebstahl, weil das Herz nicht gerade ist. Heute: Einen Groll hegen und doch bei Tisch als Erster das Glas auf ihn erheben.",
+   "常见读法": "Allzu höflich zu sein ist doch harmlos — warum fand Konfuzius es beschämend?",
+   "字眼": "In “足恭” wird “足” jù gelesen; Zhu Xi: “将树反。足，过也” — ausgesprochen jù; es bedeutet übermäßig; “匿” wird nì gelesen; “窬” wird yú gelesen („穿窬“, Diebe, die Mauern durchbrechen oder übersteigen).",
+   "诸家": "Zhu Xi zitiert Meister Cheng: “左丘明，古之闻人也” — Zuoqiu Ming war ein berühmter Mann alter Zeit; und Xie: “二者之可耻，有甚于穿窬也。左丘明耻之，其所养可知矣。夫子自言丘亦耻之，盖窃比老彭之意。又以深戒学者，使察乎此而立心以直也” — diese beiden sind beschämender als Einbruch; dass Zuoqiu Ming sich ihrer schämte, zeigt seine Bildung; das „auch ich schäme mich“ des Meisters trägt den Sinn, sich bescheiden mit Lao Peng zu vergleichen, und warnt die Lernenden eindringlich, dies zu prüfen und ihr Herz auf Aufrichtigkeit zu stellen."
   },
   "5.25": {
    "title": "Warum war der Wunsch des Konfuzius größer als der von Zilu und Yan Yuan?",
    "yw": "Yan Yuan und Ji Lu standen dem Meister zur Seite. Der Meister sprach: Warum sagt nicht jeder von euch seinen Wunsch? Zilu sprach: Ich möchte Wagen, Pferde, Kleider und leichte Pelze mit meinen Freunden teilen und nicht bedauern, wenn sie sie abnutzen. Yan Yuan sprach: Ich möchte mich meines Guten nicht rühmen und meine Verdienste nicht zur Schau stellen. Zilu sprach: Wir möchten Euren Wunsch hören, Meister. Der Meister sprach: Dass die Alten Ruhe haben, die Freunde Vertrauen und die Jungen Zuwendung.",
-   "片里落点": "Alle drei teilen mit anderen, nur in verschiedener Größe: Zilu teilt Wagen und Pferde mit Freunden, Yan Yuan rühmt sich nicht, Konfuzius lässt jeden seinen Platz finden, wie Himmel und Erde ohne Spur nähren. Heute: Die Nachbarin im Wohnblock, der die Alten ihre Schlüssel anvertrauen und zu deren Tür die Kinder nach der Schule zuerst laufen."
+   "片里落点": "Alle drei teilen mit anderen, nur in verschiedener Größe: Zilu teilt Wagen und Pferde mit Freunden, Yan Yuan rühmt sich nicht, Konfuzius lässt jeden seinen Platz finden, wie Himmel und Erde ohne Spur nähren. Heute: Die Nachbarin im Wohnblock, der die Alten ihre Schlüssel anvertrauen und zu deren Tür die Kinder nach der Schule zuerst laufen.",
+   "常见读法": "Warum ist der Wunsch des Konfuzius größer als die von Zilu und Yan Yuan?",
+   "字眼": "“盍” — warum nicht; “衣” wird im fallenden Ton gelesen, tragen; “敝” — abgenutzt; “伐” — prahlen; “施” — zur Schau stellen. Zhu Xi gibt zwei Lesarten von “劳”: Verdienst (wie in “劳而不伐”) oder mühsame Aufgaben (die man anderen nicht aufbürden will), und sagt “亦通” — beides geht.",
+   "诸家": "Zhu Xi: “老者养之以安，朋友与之以信，少者怀之以恩” — die Alten so versorgen, dass sie in Ruhe sind, mit Freunden in Treu und Glauben umgehen, die Jungen mit Güte umsorgen; eine andere Lesart, “安之，安我也；信之，信我也；怀之，怀我也。亦通” — die Alten sind bei mir in Ruhe, Freunde vertrauen mir, die Jungen wenden sich mir zu, geht auch. Er zitiert Meister Cheng: “夫子安仁，颜渊不违仁，子路求仁” — der Meister ruht im ren, Yan Yuan weicht nicht vom ren ab, Zilu sucht das ren; “子路、颜渊、孔子之志，皆与物共者也，但有小大之差尔” — alle drei Wünsche handeln vom Teilen mit anderen und unterscheiden sich nur im Maß; und “羁靮以御马而不以制牛……须要识得圣贤气象” — Zaumzeug ist für Pferde, nicht für Ochsen … man muss die Haltung der Weisen und Würdigen erkennen lernen."
   },
   "5.26": {
    "title": "Warum ist es so schwer, die eigenen Fehler zu sehen?",
    "yw": "Der Meister sprach: Es ist hoffnungslos! Ich habe noch niemanden gesehen, der seine eigenen Fehler sieht und innerlich Anklage gegen sich erhebt.",
-   "片里落点": "Zwei Stufen: Seinen Fehler zu kennen ist schon selten; ihn zu kennen und sich innerlich anzuklagen ist noch seltener; nur Selbstanklage führt zu gründlicher Besserung. Das Seufzen „nie gesehen“ ist eine Warnung an die Lernenden. Heute: Sie nannte in der Besprechung eine falsche Zahl, niemand merkte es, und danach schrieb sie allen selbst eine Korrektur."
+   "片里落点": "Zwei Stufen: Seinen Fehler zu kennen ist schon selten; ihn zu kennen und sich innerlich anzuklagen ist noch seltener; nur Selbstanklage führt zu gründlicher Besserung. Das Seufzen „nie gesehen“ ist eine Warnung an die Lernenden. Heute: Sie nannte in der Besprechung eine falsche Zahl, niemand merkte es, und danach schrieb sie allen selbst eine Korrektur.",
+   "常见读法": "Warum ist es so schwer, die eigenen Fehler zu sehen?",
+   "字眼": "“讼” bedeutet ursprünglich streiten (Shuowen: “讼，争也”); “内自讼” heißt, im eigenen Herzen gegen sich selbst Gericht zu halten; “咎” wird jiù gelesen; “鲜” wird xiǎn gelesen, wenig.",
+   "诸家": "Zhu Xi: “已矣乎者，恐其终不得见而叹之也。内自讼者，口不言而心自咎也” — „es ist hoffnungslos“ ist ein Seufzer aus Furcht, einen solchen Menschen nie zu sehen; „innerlich Anklage erheben“ heißt, nichts laut zu sagen, sich aber im Herzen selbst zu beschuldigen; “人有过而能自知者鲜矣，知过而能内自讼者为尤鲜。能内自讼，则其悔悟深切而能改必矣。夫子自恐终不得见而叹之，其警学者深矣” — wenige, die Fehler haben, kennen sie; noch weniger können, wenn sie sie kennen, sich innerlich anklagen; wer es kann, bereut tief und ändert sich gewiss; der Meister seufzt aus Furcht, es nie zu sehen, eine tiefe Warnung an die Lernenden. Zhu Xi zitiert hier keinen anderen Kommentator."
   },
   "5.27": {
    "title": "Das eine, wovon Konfuzius mehr zu haben behauptete",
    "yw": "Der Meister sprach: In einem Weiler von zehn Haushalten gibt es gewiss Menschen so loyal und treu wie ich, aber keinen, der das Lernen so liebt wie ich.",
-   "片里落点": "Loyalität und Treue sind die Grundlage und überall zu finden; Lernliebe ist Mühe und selten. Konfuzius rühmt sich keines angeborenen Wissens, nur der Lernliebe, um andere zu ermutigen. Mit diesem Satz endet das Buch Gongye Chang. Heute: Ehrliche, verlässliche Menschen gibt es überall; wer mit sechzig noch zur Abendschule geht, ist selten."
+   "片里落点": "Loyalität und Treue sind die Grundlage und überall zu finden; Lernliebe ist Mühe und selten. Konfuzius rühmt sich keines angeborenen Wissens, nur der Lernliebe, um andere zu ermutigen. Mit diesem Satz endet das Buch Gongye Chang. Heute: Ehrliche, verlässliche Menschen gibt es überall; wer mit sechzig noch zur Abendschule geht, ist selten.",
+   "常见读法": "Ist das Einzige, wovon Konfuzius mehr zu haben beanspruchte als andere, nur eine einzige Sache?",
+   "字眼": "“焉” wird yān gelesen; Zhu Xi: “如字，属上句” — normal gelesen, gehört zum vorigen Satzglied (Einschnitt nach “如丘者焉”); das “好” in “好学” steht im fallenden Ton; “邑” — eine kleine Siedlung; “质” — natürliche Anlage.",
+   "诸家": "Zhu Xi: “十室，小邑也。忠信如圣人，生质之美者也” — zehn Haushalte sind eine kleine Siedlung; Loyalität und Verlässlichkeit wie bei einem Weisen sind eine schöne natürliche Anlage; “夫子生知而未尝不好学，故言此以勉人。言美质易得，至道难闻，学之至则可以为圣人，不学则不免为乡人而已。可不勉哉” — der Meister wusste von Geburt an und hörte doch nie auf, das Lernen zu lieben, darum sagte er dies, um andere anzuspornen: schöne Anlagen findet man leicht, den höchsten Weg hört man schwer; wer bis zum Äußersten lernt, kann ein Weiser werden, wer nicht lernt, bleibt ein Dorfbewohner. Wie sollte man sich da nicht anstrengen?"
   },
   "6.1": {
    "title": "Warum dürfen die Geschäfte einfach sein, das Herz aber nicht?",
    "yw": "Der Meister sprach: Yong könnte man den nach Süden gerichteten Sitz geben. Zhonggong fragte nach Zisang Bozi. Der Meister sprach: Er geht an; er ist einfach. Zhonggong sprach: In Ehrfurcht verweilen und im Regieren des Volkes einfach handeln – ist das nicht annehmbar? Aber in Einfachheit verweilen und einfach handeln – ist das nicht zu einfach? Der Meister sprach: Yongs Worte sind richtig.",
-   "片里落点": "Zweierlei „einfach“: das eine mit einem Herrn im Inneren, überall ehrfürchtig, sodass die Dinge von selbst schlicht bleiben; das andere will zuerst Mühe sparen und lässt sogar sich selbst davonkommen – das ist zu einfach. Heute: Das Team mit den wenigsten Regeln ist das, dessen Leiter am pünktlichsten und ordentlichsten ist."
+   "片里落点": "Zweierlei „einfach“: das eine mit einem Herrn im Inneren, überall ehrfürchtig, sodass die Dinge von selbst schlicht bleiben; das andere will zuerst Mühe sparen und lässt sogar sich selbst davonkommen – das ist zu einfach. Heute: Das Team mit den wenigsten Regeln ist das, dessen Leiter am pünktlichsten und ordentlichsten ist.",
+   "常见读法": "Warum dürfen die Geschäfte einfach gehandhabt werden, das Herz aber nicht einfach sein?",
+   "字眼": "“南面者，人君听治之位” — nach Süden blicken ist der Sitz des Herrschers beim Regieren; “可者，仅可而有所未尽之辞。简者，不烦之谓” — „geht an“ heißt gerade noch annehmbar, mit einem Mangel; „einfach“ heißt nicht umständlich; das “大” in “大简” wird tài gelesen; das “衣” in “不衣冠而处” steht im fallenden Ton, tragen. Zisang Bozi ist nach Hus Vermutung der im Zhuangzi erwähnte Zisang Hu.",
+   "诸家": "Zhu Xi: “言自处以敬，则中有主而自治严……岂不失之大简，而无法度之可守乎” — wer sich in Ehrfurcht hält, hat innen einen Herrn, und die Selbstzucht ist streng … sonst, ist es nicht allzu einfach, ohne Regeln, an die man sich hält? Er zitiert das Kongzi Jiayu: Bozi “不衣冠而处，夫子讥其欲同人道于牛马” — lebte ohne ordentliche Kleidung und Kappe; der Meister verspottete ihn, er wolle die Menschenart der von Ochsen und Pferden angleichen; und Meister Cheng: “居敬则心中无物，故所行自简；居简则先有心于简，而多一简字矣，故曰大简” — wer in Ehrfurcht weilt, hat nichts Überflüssiges im Herzen, also ist sein Handeln von selbst einfach; wer in Einfachheit weilt, richtet erst den Sinn auf Einfachheit und fügt ein „einfach“ hinzu, daher „allzu einfach“."
   },
   "6.2": {
    "title": "Warum heißt Lernliebe bei Konfuzius nicht Viellesen?",
    "yw": "Herzog Ai fragte: Wer unter Euren Schülern liebt das Lernen? Konfuzius antwortete: Da war Yan Hui, der das Lernen liebte. Er übertrug seinen Zorn nicht und beging einen Fehler nicht zweimal. Leider war sein Leben kurz, und er starb. Jetzt gibt es keinen; ich habe von keinem gehört, der das Lernen liebt.",
-   "片里落点": "Der Herzog fragt nach Gelehrsamkeit, Konfuzius antwortet mit zwei Dingen der Selbstbildung: Zorn entsteht mit der Sache und endet mit ihr, ohne auf andere überzugehen; ein einmal begangener Fehler wird erkannt und nicht wiederholt. Lernliebe liegt im Beherrschen der eigenen Gefühle, nicht im Viellesen. Heute: Bei der Arbeit angeschrien, kniet er sich zu Hause trotzdem hin und bindet seinem Kind sorgfältig die Schuhe."
+   "片里落点": "Der Herzog fragt nach Gelehrsamkeit, Konfuzius antwortet mit zwei Dingen der Selbstbildung: Zorn entsteht mit der Sache und endet mit ihr, ohne auf andere überzugehen; ein einmal begangener Fehler wird erkannt und nicht wiederholt. Lernliebe liegt im Beherrschen der eigenen Gefühle, nicht im Viellesen. Heute: Bei der Arbeit angeschrien, kniet er sich zu Hause trotzdem hin und bindet seinem Kind sorgfältig die Schuhe.",
+   "常见读法": "Warum bedeutet die „Liebe zum Lernen“ des Konfuzius nicht, viel zu lesen?",
+   "字眼": "“好” im fallenden Ton; “亡，与无同” — „wang“ ist dasselbe wie „keiner“; “迁，移也。贰，复也” — „qian“ heißt verschieben, „er“ heißt wiederholen; Yan Hui “三十二而卒” — starb mit zweiunddreißig (wie Zhu Xi vermerkt).",
+   "诸家": "Meister Cheng: “颜子之怒，在物不在己，故不迁。有不善未尝不知，知之未尝复行，不贰过也” — Yanzis Zorn lag in der Sache, nicht in ihm selbst, darum verschob er sich nicht; wann immer etwas nicht gut war, wusste er es stets, und wusste er es, tat er es nie wieder: das heißt, einen Fehler nicht wiederholen; “喜怒在事，则理之当喜怒者也，不在血气则不迁” — liegen Freude und Zorn in der Sache, sind sie, was das Prinzip verlangt; liegen sie nicht in Blut und Atem, verschieben sie sich nicht; “如鉴之照物，妍媸在彼，随物应之而已” — wie ein Spiegel, der Dinge zeigt: Schönheit und Hässlichkeit liegen in ihnen, er antwortet einfach jedem. Meister Zhang: “慊于己者，不使萌于再” — was einen an sich selbst unzufrieden macht, lässt man nicht ein zweites Mal keimen. Meister Cheng über das Lernen: “学以至乎圣人之道” — Lernen soll zum Weg des Weisen führen; “约其情使合于中，正其心，养其性” — die Gefühle zügeln, damit sie der Mitte entsprechen, das Herz berichtigen, die Natur nähren; und er schließt spottend “今人乃谓圣本生知，非学可至，而所以为学者，不过记诵文辞之间，其亦异乎颜子之学矣” — heute sagt man, Weisheit sei angeboren und durch Lernen nicht erreichbar, und ihr Lernen ist nichts als Auswendiglernen und Verfassen — weit entfernt vom Lernen Yanzis."
   },
   "6.3": {
    "title": "Warum gab Konfuzius dem einen wenig Korn und dem anderen viel?",
    "yw": "Zihua wurde nach Qi gesandt, und Ranzi bat um Korn für seine Mutter. Der Meister sprach: Gib ihr ein Fu. Er bat um mehr. Der Meister sprach: Gib ihr ein Yu. Ranzi gab ihr fünf Bing. Der Meister sprach: Als Chi nach Qi ging, ritt er fette Pferde und trug leichte Pelze. Ich habe gehört: Der Edle hilft dem Bedürftigen und mehrt nicht den Reichtum der Reichen. Als Yuan Si sein Verwalter wurde, gab man ihm neunhundert Maß Korn, und er lehnte ab. Der Meister sprach: Nicht doch! Gib es deinen Nachbarn und Dorfleuten.",
-   "片里落点": "Wie viel man gibt, hängt nicht von Gunst ab, sondern davon, was recht ist. Zihuas Familie war nicht in Not, also gab er wenig, um den Reichen nichts hinzuzufügen; Yuan Sis Gehalt stand seinem Amt zu, es abzulehnen wäre falsch gewesen, und den Überschuss sollte er den Nachbarn geben. Das eine heißt „dem Bedürftigen helfen, nicht den Reichen“, das andere „ein festes Gehalt lehnt man nicht ab“."
+   "片里落点": "Wie viel man gibt, hängt nicht von Gunst ab, sondern davon, was recht ist. Zihuas Familie war nicht in Not, also gab er wenig, um den Reichen nichts hinzuzufügen; Yuan Sis Gehalt stand seinem Amt zu, es abzulehnen wäre falsch gewesen, und den Überschuss sollte er den Nachbarn geben. Das eine heißt „dem Bedürftigen helfen, nicht den Reichen“, das andere „ein festes Gehalt lehnt man nicht ab“.",
+   "常见读法": "Beides waren Getreidegaben — warum gab Konfuzius dem einen wenig und dem anderen viel?",
+   "字眼": "“使、为，并去声” — „shi“ und „wei“ stehen beide im fallenden Ton; ein fu sind sechs dou vier sheng, ein yu sechzehn dou, ein bing sechzehn hu; “衣” im fallenden Ton, tragen; “急，穷迫也。周者，补不足。继者，续有余” — „ji“ ist bittere Not; „zhou“ heißt einen Mangel ausgleichen; „ji“ (fortsetzen) heißt zu einem Überfluss hinzufügen; “毋，禁止辞” — „wu“ ist ein Verbotswort.",
+   "诸家": "Meister Cheng: “圣人宽容，不欲直拒人，故与之少，所以示不当与也……求未达而自与之多，则已过矣” — der Weise ist nachsichtig und will nicht rundweg ablehnen, darum gab er wenig, um zu zeigen, dass man nicht geben sollte … Qiu verstand nicht und gab aus eigenem Antrieb viel, was zu weit ging; “原思为宰，则有常禄。思辞其多，故又教以分诸邻里之贫者，盖亦莫非义也” — als Verwalter hatte Yuan Si ein festes Gehalt; als er es als zu viel ablehnte, lehrte ihn der Meister, es mit den Armen seiner Nachbarschaft zu teilen: auch das war recht. Meister Zhang: “于斯二者，可见圣人之用财矣” — an diesen zwei Fällen sieht man, wie der Weise mit Besitz umgeht."
   },
   "6.4": {
    "title": "Darf man jemanden mit schlechter Herkunft einsetzen?",
    "yw": "Der Meister sprach über Zhonggong: Wenn das Kalb eines gescheckten Rindes rot ist und schöne Hörner hat – mögen die Menschen es auch nicht verwenden wollen, würden die Geister der Berge und Flüsse es verschmähen?",
-   "片里落点": "Ein Kalb eines gescheckten Pflugrinds, rein rot mit wohlgeformten Hörnern: Auch wenn die Menschen es seiner Herkunft wegen nicht opfern, verschmähen die Geister der Berge und Flüsse es nicht. Die Schlechtigkeit des Vaters hebt die Güte des Sohnes nicht auf; Zhu Xi merkt eigens an, dass hier über Zhonggong gesprochen wird, nicht zu ihm."
+   "片里落点": "Ein Kalb eines gescheckten Pflugrinds, rein rot mit wohlgeformten Hörnern: Auch wenn die Menschen es seiner Herkunft wegen nicht opfern, verschmähen die Geister der Berge und Flüsse es nicht. Die Schlechtigkeit des Vaters hebt die Güte des Sohnes nicht auf; Zhu Xi merkt eigens an, dass hier über Zhonggong gesprochen wird, nicht zu ihm.",
+   "常见读法": "Kann ein Mensch aus ärmlicher Herkunft angestellt werden?",
+   "字眼": "“犁，利之反” — „li“ wird lí gelesen, gestreift; “骍，息营反” — „xing“ wird xīng gelesen, rot; “舍，上声” — „she“ im steigenden Ton; “言人虽不用，神必不舍也” — auch wenn die Menschen es nicht verwenden, werden die Geister es gewiss nicht verschmähen.",
+   "诸家": "Zhu Xi: “仲弓父贱而行恶，故夫子以此譬之……然此论仲弓云尔，非与仲弓言也” — Zhonggongs Vater war niedrig und benahm sich schlecht, darum gebrauchte der Meister diesen Vergleich … doch hier wird über Zhonggong gesprochen, nicht zu ihm. Fan: “以瞽瞍为父而有舜，以鲧为父而有禹……子能改父之过，变恶以为美，则可谓孝矣” — mit Gusou als Vater gab es Shun, mit Gun als Vater gab es Yu … ein Sohn, der die Fehler seines Vaters berichtigen und Schlechtes in Gutes verwandeln kann, darf pietätvoll heißen."
   },
   "6.5": {
    "title": "Worin unterschied sich Yan Hui von den anderen?",
    "yw": "Der Meister sprach: Hui – sein Herz konnte drei Monate lang nicht von der Menschlichkeit weichen; die übrigen erreichen sie nur für einen Tag oder einen Monat, und das ist alles.",
-   "片里落点": "Yan Huis Menschlichkeit ist wie ein Hausherr, der zu Hause wohnt und hin und wieder ausgeht; die der anderen wie ein Gast, der hin und wieder vorbeikommt. Der Unterschied liegt in der Dauer, nicht darin, ob sie da ist."
+   "片里落点": "Yan Huis Menschlichkeit ist wie ein Hausherr, der zu Hause wohnt und hin und wieder ausgeht; die der anderen wie ein Gast, der hin und wieder vorbeikommt. Der Unterschied liegt in der Dauer, nicht darin, ob sie da ist.",
+   "常见读法": "Yan Hui und die anderen: Wo genau liegt der Unterschied?",
+   "字眼": "“三月，言其久” — „drei Monate“ heißt eine lange Zeit; “日月至焉，或日一至焉，或月一至焉，能造其域而不能久也” — „für einen Tag oder einen Monat hingelangen“ heißt, einmal am Tag oder einmal im Monat anzukommen: Sie können das Gebiet betreten, aber nicht lange bleiben.",
+   "诸家": "Meister Cheng: “三月，天道小变之节，言其久也……过此则圣人矣” — drei Monate sind eine kleine Wende im Lauf des Himmels, gemeint ist eine lange Zeit … darüber hinaus wäre man ein Weiser. Yin: “此颜子于圣人，未达一间者也” — hier bleibt Yanzi um Haaresbreite hinter dem Weisen zurück. Meister Zhang: “始学之要，当知三月不违与日月至焉内外宾主之辨” — das Wichtigste für den Anfänger ist, den Unterschied von Innen und Außen, Gastgeber und Gast zwischen „drei Monate nicht abweichen“ und „für einen Tag oder Monat hingelangen“ zu kennen."
   },
   "6.6": {
    "title": "Genügt eine einzige Stärke für ein Amt?",
    "yw": "Ji Kangzi fragte: Kann man Zhong You mit der Regierung betrauen? Der Meister sprach: You ist entschlossen; welche Schwierigkeit hätte er mit der Regierung? Er fragte: Kann man Ci mit der Regierung betrauen? Der Meister sprach: Ci ist scharfsinnig; welche Schwierigkeit hätte er mit der Regierung? Er fragte: Kann man Qiu mit der Regierung betrauen? Der Meister sprach: Qiu ist vielseitig begabt; welche Schwierigkeit hätte er mit der Regierung?",
-   "片里落点": "Zilu ist entschlossen, Zigong scharfsinnig, Ran Qiu vielseitig: Jeder hat eine Stärke und ist darum einsetzbar. Menschen einsetzen heißt, ihr Können zu nutzen."
+   "片里落点": "Zilu ist entschlossen, Zigong scharfsinnig, Ran Qiu vielseitig: Jeder hat eine Stärke und ist darum einsetzbar. Menschen einsetzen heißt, ihr Können zu nutzen.",
+   "常见读法": "Kann eine einzige Eigenschaft jemanden für ein Amt befähigen?",
+   "字眼": "“从政，谓为大夫” — „an der Regierung teilnehmen“ heißt als Würdenträger dienen; “果，有决断。达，通事理。艺，多才能” — „guo“ ist Entschlusskraft; „da“ ist Verständnis dafür, wie die Dinge laufen; „yi“ heißt viele Fertigkeiten haben.",
+   "诸家": "Meister Cheng: “季康子问三子之才可以从政乎？夫子答以各有所长。非惟三子，人各有所长，能取其长，皆可用也” — Ji Kangzi fragte, ob die Talente der drei für die Regierung taugten; der Meister antwortete, jeder habe seine Stärke. Nicht nur diese drei: jeder hat eine Stärke, und wer sie zu nutzen weiß, kann alle anstellen."
   },
   "6.7": {
    "title": "Ein Amt angeboten – warum wollte er fliehen?",
    "yw": "Die Familie Ji wollte Min Ziqian zum Verwalter von Bi machen. Min Ziqian sprach: Lehnt es für mich freundlich ab. Wenn noch einmal jemand nach mir kommt, werde ich gewiss am anderen Ufer des Wen sein.",
-   "片里落点": "Er wollte nicht Gefolgsmann der Familie Ji werden, bat aber den Boten, freundlich für ihn abzulehnen; kämen sie wieder, ginge er über den Fluss nach Qi. Weder offen trotzen noch nachgeben: Zu hart zieht Unheil an, zu weich Schande."
+   "片里落点": "Er wollte nicht Gefolgsmann der Familie Ji werden, bat aber den Boten, freundlich für ihn abzulehnen; kämen sie wieder, ginge er über den Fluss nach Qi. Weder offen trotzen noch nachgeben: Zu hart zieht Unheil an, zu weich Schande.",
+   "常见读法": "Zum Amt eingeladen — warum sagte er, er würde davonlaufen?",
+   "字眼": "“费，音祕” — “费” wird bì gelesen; “汶，水名，在齐南鲁北竟上” — der Wen ist ein Fluss an der Grenze, südlich von Qi und nördlich von Lu; “闵子不欲臣季氏，令使者善为己辞；言若再来召我，则当去之齐” — Minzi wollte der Familie Ji nicht dienen, also bat er den Boten, für ihn gut abzulehnen, und sagte: Wenn man mich noch einmal ruft, gehe ich nach Qi.",
+   "诸家": "Meister Cheng: “仲尼之门，能不仕大夫之家者，闵子、曾子数人而已” — in der Schule des Konfuzius waren es nur Minzi, Zengzi und wenige andere, die es vermochten, nicht im Haus eines Würdenträgers zu dienen. Xie: “学者能少知内外之分，皆可以乐道而忘人之势……刚则必取祸，柔则必取辱” — wenn ein Lernender ein wenig den Unterschied zwischen Innen und Außen kennt, kann er sich am Weg freuen und die Macht anderer vergessen … zu hart, und er zieht gewiss Unheil auf sich, zu weich, und er zieht gewiss Schande auf sich; “然则闵子其贤乎” — war Minzi also nicht würdig?"
   },
   "6.8": {
    "title": "Warum hielt Konfuzius dem sterbenden Schüler durchs Fenster die Hand?",
    "yw": "Boniu war krank. Der Meister ging ihn besuchen und hielt seine Hand durchs Fenster und sprach: Wir verlieren ihn; es ist das Schicksal! Dass ein solcher Mensch eine solche Krankheit hat! Dass ein solcher Mensch eine solche Krankheit hat!",
-   "片里落点": "Bonius Familie stellte das Krankenbett unter das Südfenster, wie für den Besuch eines Fürsten; Konfuzius wagte diese Ehre nicht anzunehmen, trat nicht ein und hielt zum Abschied seine Hand durchs Fenster. Der Satz wird zweimal gesagt: Trauer, dass ein solcher Mensch so erkrankt, dem Schicksal zugeschrieben."
+   "片里落点": "Bonius Familie stellte das Krankenbett unter das Südfenster, wie für den Besuch eines Fürsten; Konfuzius wagte diese Ehre nicht anzunehmen, trat nicht ein und hielt zum Abschied seine Hand durchs Fenster. Der Satz wird zweimal gesagt: Trauer, dass ein solcher Mensch so erkrankt, dem Schicksal zugeschrieben.",
+   "常见读法": "Sein Schüler war schwer krank — warum hielt Konfuzius nur von außen durch das Fenster seine Hand?",
+   "字眼": "“夫，音扶” — “夫” wird fú gelesen; “有疾，先儒以为癞也” — frühere Gelehrte hielten die Krankheit für Aussatz; “礼：病者居北牖下，君视之，则迁于南牖下，使君得以南面视己。时伯牛家以此礼尊孔子，孔子不敢当，故不入其室，而自牖执其手，盖与之永诀也” — nach dem Ritus liegt der Kranke unter dem Nordfenster; besucht ihn der Fürst, wird er unter das Südfenster gebracht, damit der Fürst nach Süden blickend ihn sehen kann. Bonius Familie ehrte Konfuzius mit diesem Ritus; er wagte nicht, ihn anzunehmen, betrat daher das Zimmer nicht, sondern hielt durch das Fenster seine Hand, ein letzter Abschied; “命，谓天命” — „ming“ heißt Himmelsbeschluss.",
+   "诸家": "Hou: “伯牛以德行称，亚于颜、闵。故其将死也，孔子尤痛惜之” — Boniu war für tugendhaftes Verhalten bekannt, nur Yan und Min nachstehend; darum betrauerte Konfuzius ihn besonders, als er im Sterben lag."
   },
   "6.9": {
    "title": "So arm – worüber freute sich Yan Hui?",
    "yw": "Der Meister sprach: Wie würdig ist Hui! Ein Bambuskorb Reis, eine Kürbisschale Wasser, wohnhaft in einer ärmlichen Gasse: Andere könnten die Not nicht ertragen, doch Hui lässt sich seine Freude nicht verändern. Wie würdig ist Hui!",
-   "片里落点": "Er freute sich nicht über die Armut, sondern an einer Freude, die auch Armut nicht verändern konnte. Zhu Xi spricht es lieber nicht aus und lässt die Leser selbst finden, was im Wort „其“ (seine) liegt."
+   "片里落点": "Er freute sich nicht über die Armut, sondern an einer Freude, die auch Armut nicht verändern konnte. Zhu Xi spricht es lieber nicht aus und lässt die Leser selbst finden, was im Wort „其“ (seine) liegt.",
+   "常见读法": "Yan Hui war so arm — worüber freute er sich?",
+   "字眼": "“箪，竹器。食，饭也。瓢，瓠也” — „dan“ ist ein Bambusgefäß; „si“ ist gekochter Reis; „piao“ ist ein Kürbis; “颜子之贫如此，而处之泰然，不以害其乐” — Yanzi war so arm, ertrug es aber gelassen und ließ es seiner Freude nicht schaden; man beachte das Wort “其” (seine).",
+   "诸家": "Meister Cheng: “颜子之乐，非乐箪瓢陋巷也，不以贫窭累其心而改其所乐也，故夫子称其贤” — Yanzis Freude war keine Freude an Korb, Kürbis und Gasse; er ließ die Armut sein Herz nicht belasten und änderte nicht, woran er sich freute, darum nannte ihn der Meister würdig; “其字当玩味，自有深意” — das Wort “其” verdient Nachdenken; es birgt einen tiefen Sinn. Zhu Xis Anmerkung: “程子之言，引而不发，盖欲学者深思而自得之。今亦不敢妄为之说” — Meister Cheng spannte den Bogen, ohne den Pfeil loszulassen, denn die Lernenden sollten tief nachdenken und es selbst finden; auch ich wage nicht, es vorschnell zu erklären."
   },
   "6.10": {
    "title": "Er sagte, ihm fehle die Kraft – warum glaubte Konfuzius ihm nicht?",
    "yw": "Ran Qiu sprach: Nicht dass ich an Eurem Weg keine Freude hätte, Meister; meine Kraft reicht nicht. Der Meister sprach: Wem die Kraft nicht reicht, der bricht auf halbem Weg zusammen. Du aber ziehst eine Grenze.",
-   "片里落点": "Wem wirklich die Kraft fehlt, der bricht auf halbem Weg zusammen; Ran Qiu zog eine Linie auf den Boden, bevor er überhaupt losging. Nicht dass er nicht kann, sondern er will nicht."
+   "片里落点": "Wem wirklich die Kraft fehlt, der bricht auf halbem Weg zusammen; Ran Qiu zog eine Linie auf den Boden, bevor er überhaupt losging. Nicht dass er nicht kann, sondern er will nicht.",
+   "常见读法": "Er sagte, seine Kraft reiche nicht — warum glaubte Konfuzius ihm nicht?",
+   "字眼": "“力不足者，欲进而不能” — die Kraft reicht nicht heißt: man will vorankommen, kann aber nicht; “画者，能进而不欲，谓之画者，如画地以自限也” — eine Linie ziehen heißt: man kann vorankommen, will aber nicht, wie wenn man eine Linie auf den Boden zieht, um sich selbst zu begrenzen; “女” wird rǔ gelesen, „du“.",
+   "诸家": "Hu: “夫子称颜回不改其乐，冉求闻之，故有是言。然使求说夫子之道，诚如口之说刍豢，则必将尽力以求之……此冉求之所以局于艺也” — der Meister lobte Yan Hui, weil er seine Freude nicht änderte; Ran Qiu hörte es und sagte deshalb dies. Hätte Qiu sich aber am Weg des Meisters wirklich so erfreut wie der Mund an feinem Fleisch, hätte er gewiss alle Kraft darangesetzt, ihn zu verfolgen … darum blieb Ran Qiu auf Fertigkeiten beschränkt."
   },
   "6.11": {
    "title": "Beide sind Gelehrte – wo liegt der Unterschied?",
    "yw": "Der Meister sprach zu Zixia: Sei ein Gelehrter nach Art des Edlen, nicht ein Gelehrter nach Art des Gemeinen.",
-   "片里落点": "Dieselben Bücher: Wer lernt, um sich selbst zu bilden, ist ein edler Gelehrter; wer lernt, um gesehen zu werden und Vorteile zu erlangen, ist ein gemeiner Gelehrter. Vorteil ist nicht nur Geld; auch Ruf zählt."
+   "片里落点": "Dieselben Bücher: Wer lernt, um sich selbst zu bilden, ist ein edler Gelehrter; wer lernt, um gesehen zu werden und Vorteile zu erlangen, ist ein gemeiner Gelehrter. Vorteil ist nicht nur Geld; auch Ruf zählt.",
+   "常见读法": "Beide sind Gelehrte — wo liegt der Unterschied?",
+   "字眼": "“儒，学者之称” — „ru“ ist eine Bezeichnung für einen Gelehrten.",
+   "诸家": "Meister Cheng: “君子儒为己，小人儒为人” — der edle Gelehrte lernt für sich selbst; der kleinliche Gelehrte lernt für andere. Xie: “君子小人之分，义与利之间而已……虽有及人之功，而不害其为己” — die Trennung zwischen Edlem und Kleinlichem liegt nur zwischen dem Rechten und dem Nutzen … mag sein Wirken auch anderen zugutekommen, so hört es doch nicht auf, für ihn selbst zu sein; “子夏文学虽有余，然意其远者大者或昧焉，故夫子语之以此” — Zixia hatte Gelehrsamkeit im Überfluss, war sich aber vielleicht über das Weitreichende und Große unklar, darum sagte ihm der Meister dies."
   },
   "6.12": {
    "title": "Keine Abkürzungen nehmen – ist das ein Talent?",
    "yw": "Ziyou war Verwalter von Wucheng. Der Meister sprach: Hast du dort gute Leute gefunden? Er sprach: Da ist ein gewisser Tantai Mieming, der nie Abkürzungen nimmt und nie in meine Räume kommt außer in Amtsgeschäften.",
-   "片里落点": "Er nahm nie Schleichwege und kam nie ohne Amtsgeschäft an die Tür des Beamten. Wer im Kleinen standhält, auf den ist im Großen Verlass; das sah auch Ziyou, als er Menschen beurteilte."
+   "片里落点": "Er nahm nie Schleichwege und kam nie ohne Amtsgeschäft an die Tür des Beamten. Wer im Kleinen standhält, auf den ist im Großen Verlass; das sah auch Ziyou, als er Menschen beurteilte.",
+   "常见读法": "Nie eine Abkürzung nehmen — zählt das als Talent?",
+   "字眼": "“武城，鲁下邑” — Wucheng war eine kleinere Stadt in Lu; “澹台姓，灭明名，字子羽” — Tantai ist der Familienname, Mieming der Rufname, Mannesname Ziyu; “径，路之小而捷者” — „jing“ ist ein kleiner, schneller Pfad; “公事，如饮射读法之类” — öffentliche Angelegenheiten sind etwa die Trink- und Bogenschießzeremonien und das Verlesen der Gesetze.",
+   "诸家": "Yang: “为政以人才为先，故孔子以得人为问……非公事不见邑宰，则其有以自守，而无枉己徇人之私可见矣” — beim Regieren kommt das Talent zuerst, darum fragte Konfuzius, ob er Leute gefunden habe … dass er den Stadtverwalter nur in öffentlichen Angelegenheiten aufsuchte, zeigt, dass er an sich festhalten konnte, ohne sich zu verbiegen, um anderen zu gefallen. Zhu Xis Anmerkung: “持身以灭明为法，则无苟贱之羞；取人以子游为法，则无邪媚之惑” — nimmt man Mieming zum Vorbild für die eigene Haltung, entgeht man der Schande der Niedrigkeit; nimmt man Ziyou zum Vorbild für die Auswahl von Menschen, lässt man sich von Schmeichelei nicht täuschen."
   },
   "6.13": {
    "title": "Er deckte den Rückzug – warum gab er es nicht zu?",
    "yw": "Der Meister sprach: Meng Zhifan prahlt nicht. Als das Heer floh, deckte er die Nachhut. Als sie das Tor betreten wollten, trieb er sein Pferd an und sprach: Nicht dass ich es wagte, zurückzubleiben; mein Pferd wollte nicht voran.",
-   "片里落点": "Bei einer Flucht die Nachhut gegen den Feind zu halten ist ein großes Verdienst, doch am Stadttor schob er es aufs Pferd. Das Verdienst dem Pferd zuzuschieben zeigt ein Herz ohne den Wunsch, sich über andere zu erheben."
+   "片里落点": "Bei einer Flucht die Nachhut gegen den Feind zu halten ist ein großes Verdienst, doch am Stadttor schob er es aufs Pferd. Das Verdienst dem Pferd zuzuschieben zeigt ein Herz ohne den Wunsch, sich über andere zu erheben.",
+   "常见读法": "Er war es, der den Rückzug deckte — warum wollte er es nicht zugeben?",
+   "字眼": "“殿，去声” — „dian“ im fallenden Ton; “伐，夸功也” — „fa“ heißt mit Verdiensten prahlen; “奔，败走也。军后曰殿” — „ben“ heißt geschlagen fliehen; die Nachhut eines Heeres heißt „dian“; “策，鞭也” — „ce“ ist eine Peitsche; Hu datiert das Ereignis auf die Schlacht zwischen Qi und Lu im elften Jahr des Herzogs Ai.",
+   "诸家": "Xie: “人能操无欲上人之心，则人欲日消，天理日明，而凡可以矜己夸人者，皆无足道矣……若孟之反，可以为法矣” — wer ein Herz bewahren kann, das sich nicht über andere erheben will, dessen selbstsüchtige Begierde schwindet täglich und dessen himmlisches Prinzip wird täglich klarer, und alles, womit man vor anderen prahlen könnte, ist nicht der Rede wert … einen wie Meng Zhifan kann man sich zum Vorbild nehmen."
   },
   "6.14": {
    "title": "Ohne gewandte Zunge und gutes Aussehen – entgeht man dem Unheil?",
    "yw": "Der Meister sprach: Ohne die Redegewandtheit des Priesters Tuo, aber mit der Schönheit des Song Zhao ist es schwer, in der heutigen Welt dem Unheil zu entgehen!",
-   "片里落点": "Das ist kein Rat, Beredsamkeit und Aussehen zu pflegen, sondern eine Klage über die Zeit: Wenn die Welt nur süße Zungen und hübsche Gesichter schätzt, entgehen ehrliche Menschen kaum dem Unheil."
+   "片里落点": "Das ist kein Rat, Beredsamkeit und Aussehen zu pflegen, sondern eine Klage über die Zeit: Wenn die Welt nur süße Zungen und hübsche Gesichter schätzt, entgehen ehrliche Menschen kaum dem Unheil.",
+   "常见读法": "Ohne Redegabe und gutes Aussehen — ist Unheil dann unvermeidlich?",
+   "字眼": "“鮀，徒何反” — “鮀” wird tuó gelesen; “祝，宗庙之官。鮀，卫大夫，字子鱼，有口才。朝，宋公子，有美色” — „zhu“ ist ein Beamter des Ahnentempels; Tuo war ein Würdenträger aus Wei, Mannesname Ziyu, ein geschickter Redner; Zhao war ein Prinz aus Song, gutaussehend; “言衰世好谀悦色，非此难免，盖伤之也” — es heißt, ein niedergehendes Zeitalter liebe Schmeichelei und schöne Gesichter, und ohne diese entkomme man kaum: er beklagte es.",
+   "诸家": "Nur Zhu Xis Kommentar."
   },
   "6.15": {
    "title": "Alle gehen durch die Tür – warum nicht den rechten Weg?",
    "yw": "Der Meister sprach: Wer kann hinausgehen, ohne die Tür zu benutzen? Warum folgt dann niemand diesem Weg?",
-   "片里落点": "Jeder weiß, dass man durch die Tür hinausgeht und nicht über die Mauer klettert; der rechte Weg des Lebens liegt direkt vor uns, und doch geht man ihn nicht. Nicht der Weg ist fern vom Menschen, der Mensch hat sich selbst entfernt."
+   "片里落点": "Jeder weiß, dass man durch die Tür hinausgeht und nicht über die Mauer klettert; der rechte Weg des Lebens liegt direkt vor uns, und doch geht man ihn nicht. Nicht der Weg ist fern vom Menschen, der Mensch hat sich selbst entfernt.",
+   "常见读法": "Alle gehen durch die Tür hinaus — warum wollen die Menschen im Leben nicht den rechten Weg gehen?",
+   "字眼": "“言人不能出不由户，何故乃不由此道邪？怪而叹之之辞” — niemand kann anders als durch die Tür hinausgehen, warum also folgen die Menschen nicht diesem Weg? Worte des Staunens und der Klage.",
+   "诸家": "Hong: “人知出必由户，而不知行必由道。非道远人，人自远尔” — die Menschen wissen, dass man durch die Tür hinausgehen muss, aber nicht, dass das Handeln dem Weg folgen muss. Nicht der Weg ist den Menschen fern; die Menschen entfernen sich selbst von ihm."
   },
   "6.16": {
    "title": "Zu grob oder zu geschliffen – was wäre Konfuzius lieber?",
    "yw": "Der Meister sprach: Überwiegt das Wesen die Form, ist man bäurisch; überwiegt die Form das Wesen, ist man ein Schreiber. Erst wenn Form und Wesen ausgewogen sind, ist man ein Edler.",
-   "片里落点": "Zu viel Schlichtheit ist plump, zu viel Schmuck ist hohl; nur beides im Gleichgewicht macht den Edlen. Muss man sich neigen, dann lieber zum Schlichten: Ist die Grundlage da, lässt sich Form hinzufügen; fehlt sie, hat die Form keinen Platz."
+   "片里落点": "Zu viel Schlichtheit ist plump, zu viel Schmuck ist hohl; nur beides im Gleichgewicht macht den Edlen. Muss man sich neigen, dann lieber zum Schlichten: Ist die Grundlage da, lässt sich Form hinzufügen; fehlt sie, hat die Form keinen Platz.",
+   "常见读法": "Zu derb oder zu gekünstelt — was wäre Konfuzius lieber?",
+   "字眼": "“野，野人，言鄙略也。史，掌文书，多闻习事，而诚或不足也。彬彬，犹班班，物相杂而适均之貌” — „ye“ ist ein Bauer, grob und nachlässig; „shi“ ist ein Schreiber, der Akten verwahrt, gut unterrichtet und geübt, aber vielleicht ohne Aufrichtigkeit; „binbin“ ist wie „banban“, Dinge im richtigen Verhältnis gemischt; “学者当损有余，补不足，至于成德，则不期然而然矣” — der Lernende soll das Übermaß verringern und den Mangel ausgleichen; ist die vollendete Tugend erreicht, stellt sie sich ungesucht ein.",
+   "诸家": "Yang: “文质不可以相胜。然质之胜文，犹之甘可以受和，白可以受采也。文胜而至于灭质，则其本亡矣。虽有文，将安施乎？然则与其史也，宁野” — Verfeinerung und Substanz dürfen einander nicht überwältigen. Doch Substanz, die die Verfeinerung übertrifft, ist wie Süße, die Würze annehmen kann, oder Weiß, das Farbe annehmen kann. Überwiegt die Verfeinerung so sehr, dass sie die Substanz zerstört, ist die Wurzel verloren; wo sollte die Verfeinerung dann noch angewandt werden? Also lieber der Bauer als der Schreiber."
   },
   "6.17": {
    "title": "Leben krumme Menschen nicht auch ganz gut?",
    "yw": "Der Meister sprach: Der Mensch lebt durch Geradheit; der Krumme lebt nur durch Glück, weil er davongekommen ist.",
-   "片里落点": "Menschen sind dazu bestimmt, gerade zu leben; auch die Krummen leben, aber nicht, weil es ihnen zusteht, sondern weil sie mit Glück davongekommen sind."
+   "片里落点": "Menschen sind dazu bestimmt, gerade zu leben; auch die Krummen leben, aber nicht, weil es ihnen zusteht, sondern weil sie mit Glück davongekommen sind.",
+   "常见读法": "Menschen, die nicht aufrichtig sind, leben doch anscheinend ganz gut, oder?",
+   "字眼": "“罔” — krumm, nicht aufrichtig.",
+   "诸家": "Meister Cheng: “生理本直。罔，不直也，而亦生者，幸而免尔” — das Prinzip des Lebens ist von Natur aus aufrichtig. „Wang“ heißt nicht aufrichtig; dass solche Menschen auch leben, liegt nur daran, dass sie glücklich davongekommen sind."
   },
   "6.18": {
    "title": "Wissen, Lieben, Freude – was ist der Unterschied?",
    "yw": "Der Meister sprach: Wer es weiß, kommt nicht dem gleich, der es liebt; wer es liebt, kommt nicht dem gleich, der Freude daran hat.",
-   "片里落点": "Wissen, dass es diese Schale Reis gibt, sie gern essen und satt und zufrieden sein: drei Stufen. Der Unterschied liegt nicht im Wissensumfang, sondern darin, ob man es wirklich erlangt hat."
+   "片里落点": "Wissen, dass es diese Schale Reis gibt, sie gern essen und satt und zufrieden sein: drei Stufen. Der Unterschied liegt nicht im Wissensumfang, sondern darin, ob man es wirklich erlangt hat.",
+   "常见读法": "Wissen, lieben, sich erfreuen — worin unterscheiden sie sich?",
+   "字眼": "“好” im fallenden Ton, lieben; “乐” wird lè gelesen, sich erfreuen.",
+   "诸家": "Yin: “知之者，知有此道也。好之者，好而未得也。乐之者，有所得而乐之也” — es wissen heißt wissen, dass es diesen Weg gibt; es lieben heißt ihn lieben, ohne ihn schon erlangt zu haben; sich daran erfreuen heißt, etwas erlangt zu haben und sich daran zu freuen. Zhang Jingfu: “譬之五谷，知者知其可食者也，好者食而嗜之者也，乐者嗜之而饱者也……此古之学者，所以自强而不息者欤” — vergleiche die fünf Getreide: Der Wissende weiß, dass sie essbar sind, der Liebende isst sie und genießt sie, der sich Erfreuende genießt sie und ist satt … ist das nicht der Grund, warum die Lernenden alter Zeit unablässig strebten?"
   },
   "6.19": {
    "title": "Sah Konfuzius auf Menschen herab?",
    "yw": "Der Meister sprach: Mit denen über dem Mittelmaß kann man über Höheres sprechen; mit denen unter dem Mittelmaß kann man nicht über Höheres sprechen.",
-   "片里落点": "Das ist keine Rangordnung, sondern die Worte dem Zuhörer anpassen: Spricht man zu hoch, kann der Hörer es nicht fassen, und es schadet. Nach Fähigkeit lehren und Schritt für Schritt aufsteigen."
+   "片里落点": "Das ist keine Rangordnung, sondern die Worte dem Zuhörer anpassen: Spricht man zu hoch, kann der Hörer es nicht fassen, und es schadet. Nach Fähigkeit lehren und Schritt für Schritt aufsteigen.",
+   "常见读法": "Schaut Konfuzius hier auf Menschen herab?",
+   "字眼": "“语，告也” — „yu“ heißt sagen, mitteilen; “言教人者，当随其高下而告语之，则其言易入而无躐等之弊也” — wer lehrt, soll dem Stand des Lernenden gemäß sprechen; dann dringen die Worte leicht ein, und es gibt nicht den Fehler, Stufen zu überspringen; “上” wird shàng gelesen.",
+   "诸家": "Zhang Jingfu: “圣人之道，精粗虽无二致，但其施教，则必因其材而笃焉……使之切问近思，而渐进于高远也” — der Weg des Weisen ist in seinen feinen und groben Teilen eins, doch beim Lehren baut er stets auf die Fähigkeit jedes Einzelnen … lässt sie genau fragen und über das Nahe nachdenken und so allmählich zum Hohen und Fernen vorrücken."
   },
   "6.20": {
    "title": "Glaubte Konfuzius an Geister?",
    "yw": "Fan Chi fragte nach der Weisheit. Der Meister sprach: Sich dem widmen, was für das Volk recht ist, und die Geister ehren, aber Abstand zu ihnen halten – das kann man Weisheit nennen. Er fragte nach der Menschlichkeit. Der Meister sprach: Der Menschliche stellt die Mühe voran und den Lohn zurück; das kann man Menschlichkeit nennen.",
-   "片里落点": "Es geht nicht um Glauben oder Unglauben, sondern um Ehren und Abstandhalten: zuerst das menschlich Gebotene voll tun, die Geister ehren, ohne sie anzuflehen; beim Handeln erst das Schwere, dann der Gewinn, ohne den Nutzen vorab zu berechnen."
+   "片里落点": "Es geht nicht um Glauben oder Unglauben, sondern um Ehren und Abstandhalten: zuerst das menschlich Gebotene voll tun, die Geister ehren, ohne sie anzuflehen; beim Handeln erst das Schwere, dann der Gewinn, ohne den Nutzen vorab zu berechnen.",
+   "常见读法": "Glaubte Konfuzius an Geister und Gottheiten?",
+   "字眼": "“民，亦人也。获，谓得也” — „min“ heißt auch Menschen; „huo“ heißt Gewinn; “专用力于人道之所宜，而不惑于鬼神之不可知，知者之事也。先其事之所难，而后其效之所得，仁者之心也” — seine Kraft ganz auf das zu richten, was im menschlichen Weg angemessen ist, und sich nicht von den unerkennbaren Geistern verwirren zu lassen, ist Sache des Weisen; das Schwere einer Aufgabe voranzustellen und erst danach an den Ertrag zu denken, ist das Herz des Menschlichen; “此必因樊迟之失而告之” — dies muss mit Blick auf Fan Chis Schwächen gesagt worden sein.",
+   "诸家": "Meister Cheng: “人多信鬼神，惑也。而不信者又不能敬，能敬能远，可谓知矣” — viele glauben an Geister, das ist Verwirrung; wer nicht glaubt, kann sie nicht verehren. Sie zugleich verehren und auf Abstand halten zu können, darf Weisheit heißen; “先难，克己也。以所难为先，而不计所获，仁也” — das Schwere voranstellen heißt, sich selbst bezwingen; das Schwere zuerst zu nehmen, ohne den Gewinn zu berechnen, ist Menschlichkeit. Lü: “当务为急，不求所难知；力行所知，不惮所难为” — das gegenwärtig Gebotene als dringlich nehmen und nicht suchen, was schwer zu wissen ist; das Gewusste tatkräftig ausüben und vor dem schwer zu Tuenden nicht zurückschrecken."
   }
  }
 }

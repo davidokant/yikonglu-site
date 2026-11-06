@@ -188,7 +188,7 @@
   "mirror_go": "Ke versi asli",
   "ch_gist": "Inti bab ini",
   "ch_deep": "Membaca cermat dan memeriksa",
-  "ch_deep_note": "Bagi yang ingin membaca lebih dalam atau memeriksa kerja kami: kata kunci dalam komentar, pendapat para komentator lain, varian teks, komentar dalam kata-katanya sendiri beserta halaman faksimile, pelafalan, dan ralat. Ketuk judul untuk membukanya. Bagian yang belum diterjemahkan tetap dalam bahasa Tionghoa.",
+  "ch_deep_note": "Bagi yang ingin membaca lebih dalam atau memeriksa kerja kami: kata kunci dalam komentar, pendapat para komentator lain, varian teks, komentar dalam kata-katanya sendiri beserta halaman faksimile, pelafalan, dan ralat. Ketuk judul untuk membukanya. Penjelasan sudah diterjemahkan; kutipan komentar tetap dalam teks Tionghoa aslinya.",
   "ch_open_all": "Buka semua",
   "ch_close_all": "Tutup semua",
   "cta_db_p": "Satu kitab Lunyu utuh dalam PDF: teks asli, pelafalan, dan bahasa Tionghoa modern. Dalam bahasa Tionghoa.",
@@ -287,7 +287,7 @@
   "lang_bar": "Halaman ini tersedia dalam bahasa Indonesia.",
   "lang_go": "Baca dalam bahasa Indonesia",
   "lang_close": "Tutup",
-  "translated_note": "Versi bahasa Indonesia: antarmuka, terjemahan, dan ringkasan sudah diterjemahkan; kutipan komentar dan bagian baca cermat sebagian besar tetap dalam bahasa Tionghoa. Halaman bahasa Tionghoa yang berlaku.",
+  "translated_note": "Versi bahasa Indonesia: antarmuka dan penjelasan Yikonglu sudah diterjemahkan; kutipan komentar tetap dalam bahasa Tionghoa. Halaman bahasa Tionghoa yang berlaku.",
   "cite_fmt": "Yikonglu, Lunyu {book} {c} “{title}”, {url}, versi {d}."
  },
  "books": {
@@ -1003,347 +1003,554 @@
   "4.5": {
    "title": "Kekayaan dan kedudukan, yang diinginkan orang",
    "yw": "Sang Guru berkata: Kekayaan dan kedudukan adalah yang diinginkan orang; jika tidak diperoleh dengan jalan yang benar, jangan dipertahankan. Kemiskinan dan kehinaan adalah yang dibenci orang; jika datang bukan karena kesalahan sendiri, jangan dihindari dengan jalan bengkok. Jika seorang junzi meninggalkan kemanusiaan, bagaimana ia membangun nama? Junzi tidak meninggalkan kemanusiaan bahkan selama satu kali makan; dalam tergesa ia tetap di situ, dalam guncangan ia tetap di situ.",
-   "片里落点": "Kekayaan yang tak semestinya datang jangan diambil, kemiskinan yang tak semestinya menimpa jangan dihindari lewat jalan bengkok; pilihan besar dan latihan kecil sehari-hari saling menguatkan. Hari ini: bus mengerem mendadak, dan tangan pertama si pemuda meraih untuk menahan nenek di sebelahnya."
+   "片里落点": "Kekayaan yang tak semestinya datang jangan diambil, kemiskinan yang tak semestinya menimpa jangan dihindari lewat jalan bengkok; pilihan besar dan latihan kecil sehari-hari saling menguatkan. Hari ini: bus mengerem mendadak, dan tangan pertama si pemuda meraih untuk menahan nenek di sebelahnya.",
+   "常见读法": "Dua kali dibaca sama-sama “tidak dengan jalan yang benar” — lalu mengapa tidak lepas dari kemiskinan yang tidak layak ditanggung?",
+   "字眼": "wu (benci) dibaca nada pergi; “不以其道得之，谓不当得而得之” — “tidak dengan jalan yang benar” berarti mendapat apa yang tidak semestinya didapat; “于富贵则不处，于贫贱则不去，君子之审富贵而安贫贱也如此” — kekayaan semacam itu tidak ditempati, kemiskinan semacam itu tidak dihindari: begitulah orang budiman menimbang kekayaan dan tenang dalam kemiskinan; wu (bagaimana) dibaca wu; “若贪富贵而厌贫贱，则是自离其仁，而无君子之实矣” — mendambakan kekayaan dan membenci kemiskinan berarti meninggalkan kemanusiaan sendiri, tak tersisa isi seorang budiman; “终食者，一饭之顷。造次，急遽苟且之时。颠沛，倾覆流离之际” — sepanjang makan adalah selama satu kali makan; zaoci adalah saat tergesa-gesa; dianpei adalah saat terguncang dan terlunta-lunta.",
+   "诸家": "Zhu Xi di akhir bab: “取舍之分明，然后存养之功密；存养之功密，则其取舍之分益明矣” — bila batas antara mengambil dan menolak jelas, upaya menjaga dan memupuk menjadi rapat; bila upaya itu rapat, batas itu makin jelas."
   },
   "4.6": {
    "title": "Aku belum melihat orang yang mencintai kemanusiaan",
    "yw": "Sang Guru berkata: Aku belum melihat orang yang mencintai kemanusiaan, atau orang yang membenci yang tidak manusiawi. Yang mencintai kemanusiaan tidak menaruh apa pun di atasnya; yang membenci yang tidak manusiawi menjalankan kemanusiaan dengan tidak membiarkan yang tidak manusiawi menyentuh dirinya. Adakah yang mampu mencurahkan tenaganya pada kemanusiaan sehari saja? Aku belum melihat yang tenaganya tidak cukup. Mungkin ada, tetapi aku belum melihatnya.",
-   "片里落点": "Ke mana hati pergi, ke situ tenaga pergi; yang sulit bukan tenaga, tetapi mau atau tidak memakainya. Hari ini: orang yang bilang tak sempat olahraga menggulir ponsel dua jam sebelum tidur."
+   "片里落点": "Ke mana hati pergi, ke situ tenaga pergi; yang sulit bukan tenaga, tetapi mau atau tidak memakainya. Hari ini: orang yang bilang tak sempat olahraga menggulir ponsel dua jam sebelum tidur.",
+   "常见读法": "Gagal melakukannya itu soal kemampuan?",
+   "字眼": "hao (suka) dan wu (benci) dibaca nada pergi; “好仁者真知仁之可好，故天下之物无以加之” — orang yang mencintai kemanusiaan sungguh tahu bahwa ia layak dicintai, maka tak ada apa pun di dunia yang dapat ditaruh di atasnya; “恶不仁者……必能绝去不仁之事，而不使少有及于其身” — orang yang membenci ketidakmanusiawian dapat memutusnya sama sekali dan tak membiarkan sedikit pun menyentuh dirinya; “此皆成德之事，故难得而见之也” — keduanya urusan kebajikan yang sudah jadi, maka jarang terlihat; “为仁在己，欲之则是，而志之所至，气必至焉” — berbuat manusiawi terletak pada diri sendiri: menghendakinya, maka ia ada; ke mana tekad pergi, tenaga menyusul; “盖，疑辞。有之，谓有用力而力不足者” — gai menyatakan keraguan; “ada yang begitu” berarti orang yang berusaha tetapi tenaganya tak cukup.",
+   "诸家": "Zhu Xi tentang “mungkin ada yang begitu”: “人之气质不同，故疑亦容或有此昏弱之甚……盖不敢终以为易，而又叹人之莫肯用力于仁也” — bawaan orang berbeda, jadi mungkin ada segelintir yang selemah dan sekabur itu; ia tak berani akhirnya menyebutnya mudah, dan juga mengeluh bahwa orang tak mau mengerahkan tenaga untuk kemanusiaan."
   },
   "4.7": {
    "title": "Kesalahan orang mengikuti jenisnya",
    "yw": "Sang Guru berkata: Kesalahan orang masing-masing menurut jenisnya. Lihatlah kesalahannya, maka engkau tahu kemanusiaannya.",
-   "片里落点": "Apakah kesalahan condong terlalu murah hati atau terlalu kikir menunjukkan manusiawi atau tidaknya seseorang. Hari ini: dua orang sama-sama telat setengah jam, satu karena mengantar kakek yang jatuh ke rumah sakit, satu karena kesiangan."
+   "片里落点": "Apakah kesalahan condong terlalu murah hati atau terlalu kikir menunjukkan manusiawi atau tidaknya seseorang. Hari ini: dua orang sama-sama telat setengah jam, satu karena mengantar kakek yang jatuh ke rumah sakit, satu karena kesiangan.",
+   "常见读法": "Jadi satu kesalahan cukup untuk menilai seseorang?",
+   "字眼": "“党，类也” — dang berarti golongan, jenis; catatan Zhu Xi sendiri: “此亦但言人虽有过，犹可即此而知其厚薄，非谓必俟其有过，而后贤否可知也” — ini hanya berkata bahwa bahkan dalam kesalahan seseorang, terlihat apakah ia murah hati atau picik; bukan berarti harus menunggu ia bersalah baru dapat dinilai.",
+   "诸家": "Cheng Yi: “君子常失于厚，小人常失于薄；君子过于爱，小人过于忍” — orang budiman keliru karena terlalu murah hati, orang kecil keliru karena terlalu picik; budiman keliru karena terlalu mengasihi, orang kecil karena terlalu keras; Yin Tun: “于此观之，则人之仁不仁可知矣” — dilihat begini, manusiawi atau tidaknya seseorang dapat diketahui; Wu mengutip Wu You dari Han Akhir: “掾以亲故，受污辱之名，所谓观过知仁是也” — si juru tulis menanggung nama buruk demi orang tuanya; inilah “lihat kesalahannya, kenali kemanusiaannya”."
   },
   "4.8": {
    "title": "Mendengar Jalan di pagi hari, mati di senja pun rela",
    "yw": "Sang Guru berkata: Jika pagi hari mendengar Jalan (Dao), senja hari mati pun tak mengapa.",
-   "片里落点": "Yang sulit bukan mendengar, tetapi setelah mendengar tetap sungguh percaya. Hidup dan mati perkara besar; tanpa sesuatu yang sungguh diperoleh dalam hati, tak ada yang sanggup berkata “senja mati pun tak mengapa”. Hari ini: seorang kakek di ranjang rumah sakit akhirnya memahami hal yang seumur hidup tak ia pahami, menggenggam tangan putrinya dan berkata, “Sekarang aku tenang.”"
+   "片里落点": "Yang sulit bukan mendengar, tetapi setelah mendengar tetap sungguh percaya. Hidup dan mati perkara besar; tanpa sesuatu yang sungguh diperoleh dalam hati, tak ada yang sanggup berkata “senja mati pun tak mengapa”. Hari ini: seorang kakek di ranjang rumah sakit akhirnya memahami hal yang seumur hidup tak ia pahami, menggenggam tangan putrinya dan berkata, “Sekarang aku tenang.”",
+   "常见读法": "Apakah ini kalimat heroik tentang tidak takut mati, mati demi kebenaran?",
+   "字眼": "zhao (pagi) dibaca zhao; “道者，事物当然之理。苟得闻之，则生顺死安，无复遗恨矣。朝夕，所以甚言其时之近” — Jalan adalah prinsip yang semestinya dari segala hal; begitu sungguh mendengarnya, hidup selaras dan mati tenteram, tanpa sesal tersisa; “pagi” dan “senja” menegaskan betapa dekat jaraknya.",
+   "诸家": "Cheng Yi: “言人不可以不知道，苟得闻道，虽死可也” — manusia tak boleh tidak mengenal Jalan; setelah mendengarnya, mati pun boleh. Cheng Hao: “皆实理也，人知而信者为难。死生亦大矣！非诚有所得，岂以夕死为可乎” — semua ini prinsip nyata; mengetahuinya mudah, sungguh memercayainya sulit; hidup dan mati perkara besar — kalau tidak sungguh memperoleh sesuatu, bagaimana bisa mati di senja hari dianggap boleh?"
   },
   "4.9": {
    "title": "Pelajar bertekad pada Jalan tapi malu berbaju buruk",
    "yw": "Sang Guru berkata: Pelajar yang menetapkan hati pada Jalan tetapi malu karena pakaian dan makanan sederhana, belum layak diajak berbicara.",
-   "片里落点": "Mulut bilang bertekad pada Jalan, tetapi hati diperintah hal di luar diri; masalahnya bukan berpakaian buruk, melainkan menganggapnya memalukan. Hari ini: orang yang bilang akan fokus belajar untuk ujian lebih dulu menghabiskan tiga hari memilih alat tulis termahal."
+   "片里落点": "Mulut bilang bertekad pada Jalan, tetapi hati diperintah hal di luar diri; masalahnya bukan berpakaian buruk, melainkan menganggapnya memalukan. Hari ini: orang yang bilang akan fokus belajar untuk ujian lebih dulu menghabiskan tiga hari memilih alat tulis termahal.",
+   "常见读法": "Apakah ini menyuruh kaum terpelajar pasrah pada kemiskinan?",
+   "字眼": "e dalam “恶衣恶食” berarti kasar, buruk; “心欲求道，而以口体之奉不若人为耻，其识趣之卑陋甚矣，何足与议于道哉” — hatinya ingin mencari Jalan, tetapi malu karena kenyamanan mulut dan tubuhnya kalah dari orang lain: betapa rendah wawasan dan seleranya; bagaimana layak diajak membicarakan Jalan?",
+   "诸家": "Cheng Yi: “志于道而心役乎外，何足与议也” — bertekad pada Jalan, tetapi hatinya diperbudak hal luar: bagaimana layak diajak bicara?"
   },
   "4.10": {
    "title": "Tak ada ya atau tidak yang pasti; ikut yang benar",
    "yw": "Sang Guru berkata: Junzi menghadapi urusan dunia tanpa harus begini dan tanpa harus tidak begitu; ia berpihak pada yang benar (yi).",
-   "片里落点": "Jangan memutuskan lebih dulu, jangan menolak lebih dulu; lihat saja sesuai kebenaran atau tidak. “Boleh begini boleh begitu” tanpa kebenaran sebagai tuan hanyalah sembarangan. Hari ini: hakim garis tidak menentukan dulu siapa yang pantas menang, ia membungkuk melihat apakah bola ini menyentuh garis."
+   "片里落点": "Jangan memutuskan lebih dulu, jangan menolak lebih dulu; lihat saja sesuai kebenaran atau tidak. “Boleh begini boleh begitu” tanpa kebenaran sebagai tuan hanyalah sembarangan. Hari ini: hakim garis tidak menentukan dulu siapa yang pantas menang, ia membungkuk melihat apakah bola ini menyentuh garis.",
+   "常见读法": "Apakah ini “tanpa prinsip, lihat saja nanti”?",
+   "字眼": "di (适) dibaca di, bi (比) dibaca bi; Zhu Xi: “适，专主也。《春秋传》曰‘吾谁适从’是也。莫，不肯也。比，从也” — di berarti bersikeras pada satu hal sejak awal, seperti dalam komentar Musim Semi dan Gugur “siapa yang harus kuikuti?”; mo berarti enggan; bi berarti mengikuti.",
+   "诸家": "Zhu Xi juga mencatat bacaan lain dari Xie Liangzuo: “适，可也。莫，不可也。无可无不可，苟无道以主之，不几于猖狂自恣乎？圣人之学不然，于无可无不可之间，有义存焉” — di berarti “boleh”, mo berarti “tidak boleh”; tanpa yang dibolehkan atau dilarang, bila tak ada Jalan yang memimpin, bukankah itu dekat dengan kesewenangan? Ajaran orang bijak tidak begitu: di antara “boleh” dan “tidak boleh”, kebenaran hadir. Kedua bacaan diberikan; bab ini ditutup dengan “kebenaran hadir” dari Xie."
   },
   "4.11": {
    "title": "Junzi memikirkan kebajikan, orang kecil kenyamanannya",
    "yw": "Sang Guru berkata: Junzi memikirkan kebajikan, orang kecil memikirkan tanahnya; junzi memikirkan hukum, orang kecil memikirkan keuntungan.",
-   "片里落点": "“Memikirkan tanah” bukan rindu kampung, melainkan hati yang hanya menjaga sedikit kenyamanannya sendiri; beda junzi dan orang kecil hanya terletak antara umum dan pribadi. Hari ini: dua orang menerima tawaran kerja yang sama di kota lain; yang satu bertanya dulu apa yang bisa dipelajari dan dibantu, yang lain hanya melihat di mana lebih nyaman."
+   "片里落点": "“Memikirkan tanah” bukan rindu kampung, melainkan hati yang hanya menjaga sedikit kenyamanannya sendiri; beda junzi dan orang kecil hanya terletak antara umum dan pribadi. Hari ini: dua orang menerima tawaran kerja yang sama di kota lain; yang satu bertanya dulu apa yang bisa dipelajari dan dibantu, yang lain hanya melihat di mana lebih nyaman.",
+   "常见读法": "Apakah “menyayangi tanah” sekadar rindu kampung, dan orang kecil sekadar orang jahat?",
+   "字眼": "“怀，思念也。怀德，谓存其固有之善。怀土，谓溺其所处之安。怀刑，谓畏法。怀惠，谓贪利” — huai berarti mengingat dalam hati; menyayangi kebajikan berarti menjaga kebaikan yang sudah dimiliki; menyayangi tanah berarti tenggelam dalam kenyamanan tempat tinggal; menyayangi hukum berarti takut hukum; menyayangi kemurahan berarti tamak akan keuntungan; “君子小人趣向不同，公私之间而已矣” — budiman dan orang kecil berbeda arah, dan itu hanyalah garis antara umum dan pribadi.",
+   "诸家": "Yin Tun: “乐善恶不善，所以为君子；苟安务得，所以为小人” — bersuka pada kebaikan dan membenci yang tidak baik menjadikan budiman; mencari aman seadanya dan mengejar untung menjadikan orang kecil."
   },
   "4.12": {
    "title": "Bertindak demi untung, banyak dendam",
    "yw": "Sang Guru berkata: Bertindak dengan bersandar pada keuntungan mendatangkan banyak dendam.",
-   "片里落点": "Dendam tidak datang dari kata “untung”, tetapi dari “hanya menguntungkan diri sendiri”. Hari ini: teman sekontrakan yang tak pernah membeli barang bersama tetapi paling banyak memakainya, tak diantar siapa pun saat pindah."
+   "片里落点": "Dendam tidak datang dari kata “untung”, tetapi dari “hanya menguntungkan diri sendiri”. Hari ini: teman sekontrakan yang tak pernah membeli barang bersama tetapi paling banyak memakainya, tak diantar siapa pun saat pindah.",
+   "常见读法": "Apakah ini “dagang melahirkan dendam”, atau “keuntungan itu buruk”?",
+   "字眼": "fang dibaca nada naik, berarti bersandar; Zhu Xi mengutip Kong Anguo: “放，依也。多怨，谓多取怨” — fang berarti bersandar; banyak dendam berarti menarik banyak dendam kepada diri sendiri.",
+   "诸家": "Cheng Yi: “欲利于己，必害于人，故多怨” — menginginkan untung bagi diri pasti merugikan orang lain, maka banyak dendam."
   },
   "4.13": {
    "title": "Bisakah memerintah negara dengan ritus dan mengalah?",
    "yw": "Sang Guru berkata: Bisakah memerintah negara dengan ritus dan sikap mengalah? Apa sulitnya? Jika tak bisa memerintah negara dengan ritus dan mengalah, apa guna ritus?",
-   "片里落点": "Mengalah adalah lapisan dalam ritus; bila tinggal bentuknya saja, ritus sendiri tak berfungsi, apalagi memerintah negara. Hari ini: pesta pernikahan dengan tata tempat duduk serba lengkap, dua keluarga bertengkar soal siapa duduk di meja utama sampai tamu bubar."
+   "片里落点": "Mengalah adalah lapisan dalam ritus; bila tinggal bentuknya saja, ritus sendiri tak berfungsi, apalagi memerintah negara. Hari ini: pesta pernikahan dengan tata tempat duduk serba lengkap, dua keluarga bertengkar soal siapa duduk di meja utama sampai tamu bubar.",
+   "常见读法": "Apakah ini “sopan santun dan rendah hati bisa memerintah negara”, dengan “ritual-mengalah” dibaca satu kata?",
+   "字眼": "Zhu Xi: “让者，礼之实也。何有，言不难也” — mengalah adalah isi ritual; “apa susahnya” berarti tidak sulit; “不然，则其礼文虽具，亦且无如之何矣，而况于为国乎” — kalau tidak, meski bentuk ritual lengkap, tak ada yang dapat dilakukan dengannya, apalagi memerintah negara.",
+   "诸家": "Episode ini hanya menampilkan komentar Zhu Xi."
   },
   "4.14": {
    "title": "Jangan risau tak berjabatan, risaukan pijakanmu",
    "yw": "Sang Guru berkata: Jangan risau tak punya kedudukan; risaukan apa yang membuatmu layak berdiri di sana. Jangan risau tak ada yang mengenalmu; berusahalah menjadi layak dikenal.",
-   "片里落点": "Bukan mencari cara agar dikenal, tetapi lebih dulu memiliki isi yang layak dikenal; diberi jabatan atau tidak, dikenal orang atau tidak, bukan di tangan sendiri. Hari ini: puluhan lamaran tanpa balasan; ada yang menyalahkan perekrut yang tak jeli, ada yang mengerjakan ulang setiap proyek di portofolionya."
+   "片里落点": "Bukan mencari cara agar dikenal, tetapi lebih dulu memiliki isi yang layak dikenal; diberi jabatan atau tidak, dikenal orang atau tidak, bukan di tangan sendiri. Hari ini: puluhan lamaran tanpa balasan; ada yang menyalahkan perekrut yang tak jeli, ada yang mengerjakan ulang setiap proyek di portofolionya.",
+   "常见读法": "Apakah ini sekadar “tak usah peduli bila orang tak memahamimu”, soal sikap saja?",
+   "字眼": "Zhu Xi: “所以立，谓所以立乎其位者。可知，谓可以见知之实” — pijakan berarti apa yang membuat seseorang layak berdiri di posisinya; “layak dikenal” berarti isi nyata yang dapat dikenal.",
+   "诸家": "Cheng Yi: “君子求其在己者而已矣” — orang budiman hanya mencari apa yang ada di dalam dirinya."
   },
   "4.15": {
    "title": "Jalanku dirangkai oleh satu",
    "yw": "Sang Guru berkata: Shen! Jalanku dirangkai oleh satu hal. Zengzi menjawab: Ya. Sang Guru keluar, para murid bertanya: Apa maksudnya? Zengzi berkata: Jalan Guru hanyalah kesetiaan dan tenggang rasa.",
-   "片里落点": "“Kesetiaan dan tenggang rasa” tidak menuntaskan Jalan, melainkan memberi pegangan bagi yang belajar; “dirangkai oleh satu” hanya diucapkan kepada orang yang sudah siap memahaminya. Hari ini: tukang senior hanya berpesan satu hal kepada pemula: kerjakan tahapmu sampai tuntas, lalu pikirkan orang yang menerima berikutnya."
+   "片里落点": "“Kesetiaan dan tenggang rasa” tidak menuntaskan Jalan, melainkan memberi pegangan bagi yang belajar; “dirangkai oleh satu” hanya diucapkan kepada orang yang sudah siap memahaminya. Hari ini: tukang senior hanya berpesan satu hal kepada pemula: kerjakan tahapmu sampai tuntas, lalu pikirkan orang yang menerima berikutnya.",
+   "常见读法": "Apakah “kesetiaan dan tenggang rasa” seluruh isi Jalan Konfusius? Dan apakah “kesetiaan” itu setia kepada raja?",
+   "字眼": "Shen (参) dibaca shen, wei (唯) dibaca nada naik; Zhu Xi: “贯，通也。唯者，应之速而无疑者也” — guan berarti menembus; wei adalah jawaban cepat tanpa ragu; “尽己之谓忠，推己之谓恕” — memberikan diri sepenuhnya disebut kesetiaan, meluaskan diri kepada orang lain disebut tenggang rasa; bacaan lain: “中心为忠，如心为恕” — hati di tengah adalah zhong, hati seperti hati sendiri adalah shu.",
+   "诸家": "Zhu Xi: “圣人之心，浑然一理，而泛应曲当，用各不同。曾子于其用处，盖已随事精察而力行之，但未知其体之一尔” — pikiran orang bijak adalah satu prinsip utuh yang menanggapi dengan tepat di mana-mana dengan guna yang berbeda; Zengzi sudah meneliti dan menjalankan gunanya, tetapi belum tahu kesatuan hakikatnya; “曾子有见于此而难言之，故借学者尽己、推己之目以著明之” — Zengzi melihat ini dan sulit mengatakannya, maka ia meminjam istilah pelajar “memberikan diri sepenuhnya” dan “meluaskan diri” untuk menjelaskannya. Cheng Yi: “圣人教人各因其才……惟曾子为能达此” — orang bijak mengajar sesuai bakat masing-masing; hanya Zengzi yang dapat mencapai ini."
   },
   "4.16": {
    "title": "Junzi paham kebenaran, orang kecil paham untung",
    "yw": "Sang Guru berkata: Junzi memahami kebenaran; orang kecil memahami keuntungan.",
-   "片里落点": "Kedua pihak memakai jenis “paham” yang sama; bedanya pada hal apa yang mereka pahami sampai tuntas. Hari ini: penjual barang bekas menemukan goresan yang belum ditulis, lalu sendiri mengubah “90% baru” jadi “70% baru”."
+   "片里落点": "Kedua pihak memakai jenis “paham” yang sama; bedanya pada hal apa yang mereka pahami sampai tuntas. Hari ini: penjual barang bekas menemukan goresan yang belum ditulis, lalu sendiri mengubah “90% baru” jadi “70% baru”.",
+   "常见读法": "Dibaca sebagai “budiman tak pernah bicara untung” atau “orang kecil memang serakah”.",
+   "字眼": "Zhu Xi: “喻，犹晓也。义者，天理之所宜。利者，人情之所欲” — yu berarti memahami; kebenaran adalah apa yang dianggap pantas oleh prinsip Langit; keuntungan adalah apa yang diinginkan perasaan manusia.",
+   "诸家": "Cheng Yi: “君子之于义，犹小人之于利也。唯其深喻，是以笃好” — budiman terhadap kebenaran seperti orang kecil terhadap keuntungan; karena memahaminya dalam-dalam, ia mencintainya dengan teguh. Yang Shi: “君子有舍生而取义者，以利言之……其所喻者义而已，不知利之为利故也” — budiman bisa merelakan nyawa demi kebenaran; bila diukur dengan untung, yang ia pahami hanya kebenaran, sebab ia tidak mengenal untung sebagai untung."
   },
   "4.17": {
    "title": "Melihat orang bijak, ingin setara; melihat yang tidak, periksa diri",
    "yw": "Sang Guru berkata: Melihat orang bijak, pikirkan cara menyamainya; melihat yang tidak bijak, berbaliklah dan periksa diri sendiri.",
-   "片里落点": "Orang yang dilihat ada baik ada buruk, setiap kali dibalikkan ke diri sendiri. Hari ini: melihat karya bagus teman sebaya, ada yang menyindir “cuma beruntung”, ada yang diam-diam menyimpan tutorialnya."
+   "片里落点": "Orang yang dilihat ada baik ada buruk, setiap kali dibalikkan ke diri sendiri. Hari ini: melihat karya bagus teman sebaya, ada yang menyindir “cuma beruntung”, ada yang diam-diam menyimpan tutorialnya.",
+   "常见读法": "Dibaca sebagai “belajar dari teladan”, dengan bobot jatuh pada orang lain.",
+   "字眼": "Xing (省) dibaca xǐng, memeriksa diri. Zhu Xi: “思齐者，冀己亦有是善；内自省者，恐己亦有是恶” — berpikir untuk menyamai berarti berharap diri juga memiliki kebaikan itu; memeriksa ke dalam berarti khawatir diri juga memiliki keburukan itu.",
+   "诸家": "Hu Yin: “见人之善恶不同，而无不反诸身者，则不徒羡人而甘自弃，不徒责人而忘自责矣” — bila melihat baik dan buruk pada orang lain selalu dikembalikan ke diri sendiri, ia tak akan sekadar iri pada orang lalu menyerah, atau sekadar menyalahkan orang lalu lupa menyalahkan diri."
   },
   "4.18": {
    "title": "Melayani orang tua, menegur dengan lembut",
    "yw": "Sang Guru berkata: Dalam melayani orang tua, tegurlah dengan lembut. Bila tampak mereka tidak mau mengikuti, tetap hormat dan jangan menentang; bersusah payah tanpa dendam.",
-   "片里落点": "Bukan diam, tetapi bersuara pelan; bila tak masuk, jangan bermusuhan, coba lagi di waktu lain. Kalimat Neize “挞之流血不敢疾怨” (dipukul sampai berdarah pun tak berani mendendam) adalah tuntutan ritus kuno, dan video menyatakan jelas bahwa hari ini tidak ditiru. Hari ini: orang tua meneruskan iklan palsu ke grup keluarga; satu anak membalas “palsu lagi”, satu lagi menelepon secara pribadi dan menjelaskan pelan-pelan."
+   "片里落点": "Bukan diam, tetapi bersuara pelan; bila tak masuk, jangan bermusuhan, coba lagi di waktu lain. Kalimat Neize “挞之流血不敢疾怨” (dipukul sampai berdarah pun tak berani mendendam) adalah tuntutan ritus kuno, dan video menyatakan jelas bahwa hari ini tidak ditiru. Hari ini: orang tua meneruskan iklan palsu ke grup keluarga; satu anak membalas “palsu lagi”, satu lagi menelepon secara pribadi dan menjelaskan pelan-pelan.",
+   "常见读法": "Dibaca sebagai “patuhi orang tua”, dengan “jangan membantah” diartikan “jangan berbeda pendapat”.",
+   "字眼": "Ji (几) dibaca jī, halus. Zhu Xi mengutip Neize: “父母有过，下气怡色，柔声以谏” — bila orang tua keliru, rendahkan napas, lembutkan wajah, dan tegur dengan suara halus; “谏若不入，起敬起孝，悦则复谏” — bila teguran tak diterima, tambah hormat dan bakti, dan saat mereka senang, tegur lagi; “与其得罪于乡党州闾，宁孰谏” — daripada membiarkan mereka menyinggung seluruh lingkungan, lebih baik menegur dengan sungguh-sungguh.",
+   "诸家": "(Episode ini hanya memuat Zhu Xi dan Neize.)"
   },
   "4.19": {
    "title": "Selagi orang tua hidup, jangan pergi jauh",
    "yw": "Sang Guru berkata: Selagi orang tua masih hidup, jangan bepergian jauh; jika harus pergi, harus ada tujuan yang pasti.",
-   "片里落点": "Bila bisa tidak pergi jauh, jangan; bila harus pergi, beri tahu orang tua di mana engkau berada. Hari ini: begitu mendarat dalam perjalanan dinas, kirim lokasi dulu ke grup keluarga."
+   "片里落点": "Bila bisa tidak pergi jauh, jangan; bila harus pergi, beri tahu orang tua di mana engkau berada. Hari ini: begitu mendarat dalam perjalanan dinas, kirim lokasi dulu ke grup keluarga.",
+   "常见读法": "Dibaca sebagai “selama orang tua hidup, tak boleh meninggalkan rumah”.",
+   "字眼": "Zhu Xi: “远游，则去亲远而为日久，定省旷而音问疏；不惟己之思亲不置，亦恐亲之念我不忘也” — bepergian jauh berarti lama jauh dari orang tua, salam pagi dan petang terlewat dan kabar menipis; bukan hanya diri tak berhenti memikirkan mereka, juga khawatir mereka tak berhenti memikirkan diri; “游必有方，如己告云之东，则不敢更适西，欲亲必知己之所在而无忧，召己则必至而无失也” — punya arah tetap berarti bila sudah bilang pergi ke timur, tak berani beralih ke barat, agar orang tua selalu tahu di mana anaknya dan tak cemas, dan bila dipanggil pasti datang.",
+   "诸家": "Fan Zuyu: “子能以父母之心为心，则孝矣” — bila anak dapat menjadikan hati orang tua sebagai hatinya sendiri, itulah bakti."
   },
   "4.20": {
    "title": "Tiga tahun tak mengubah jalan ayahnya",
    "yw": "Sang Guru berkata: Jika selama tiga tahun ia tidak mengubah jalan ayahnya, ia dapat disebut berbakti.",
-   "片里落点": "Separuh kalimat ini harus dibaca bersama separuh sebelumnya; “tiga tahun tak mengubah” tak bisa diambil sendiri sebagai hukum besi. Hari ini: waktu muda kita hanya ingat separuh kata orang tua, baru teringat separuh lainnya setelah mengurus rumah tangga sendiri."
+   "片里落点": "Separuh kalimat ini harus dibaca bersama separuh sebelumnya; “tiga tahun tak mengubah” tak bisa diambil sendiri sebagai hukum besi. Hari ini: waktu muda kita hanya ingat separuh kata orang tua, baru teringat separuh lainnya setelah mengurus rumah tangga sendiri.",
+   "常见读法": "Bila berdiri sendiri, dibaca “setelah ayah wafat, tak boleh mengubah apa pun selama tiga tahun”.",
+   "字眼": "Zhu Xi mengutip Hu Yin: “已见首篇，此盖复出而逸其半也” — ini sudah muncul di buku pertama; di sini diulang dan kehilangan separuh awalnya. Bab ini mengulang Xue Er 1.11 tanpa pembukaannya, “父在，观其志；父没，观其行” (selagi ayah hidup, amati niatnya; setelah ayah wafat, amati perbuatannya).",
+   "诸家": "Pada Xue Er 1.11, Zhu Xi mengutip Yin Tun dan You Zuo: yang tidak sesuai Jalan tak perlu menunggu tiga tahun; yang bisa diubah tetapi bisa menunggu dibiarkan dulu, memberi waktu bagi hati yang tak tega (episode ini meninjau kembali halaman asli itu)."
   },
   "4.21": {
    "title": "Usia orang tua harus diketahui",
    "yw": "Sang Guru berkata: Usia orang tua tidak boleh tidak diketahui: di satu sisi untuk bersukacita, di sisi lain untuk khawatir.",
-   "片里落点": "Sukacita dan khawatir adalah satu hal yang sama: bertambah satu hari hidup, berkurang satu hari tersisa. Hari ini: kalender ponsel mengingatkan ulang tahun orang tua setahun sekali, dan angkanya makin besar setiap tahun."
+   "片里落点": "Sukacita dan khawatir adalah satu hal yang sama: bertambah satu hari hidup, berkurang satu hari tersisa. Hari ini: kalender ponsel mengingatkan ulang tahun orang tua setahun sekali, dan angkanya makin besar setiap tahun.",
+   "常见读法": "Dibaca sebagai “ingat ulang tahun orang tua”.",
+   "字眼": "Zhu Xi: “知，犹记忆也” — tahu di sini berarti mengingat; “常知父母之年，则既喜其寿，又惧其衰，而于爱日之诚，自有不能已者” — selalu ingat usia mereka, orang gembira atas panjang umurnya sekaligus takut akan kemundurannya, dan ketulusan menghargai setiap hari tak bisa berhenti.",
+   "诸家": "(Episode ini hanya memuat Zhu Xi.)"
   },
   "4.22": {
    "title": "Orang dahulu tak mudah berucap, malu bila perbuatan tak menyusul",
    "yw": "Sang Guru berkata: Orang dahulu tidak sembarang mengeluarkan kata, karena malu bila perbuatannya tak mampu menyusul.",
-   "片里落点": "Yang ditakutkan bukan salah ucap, tetapi tak mampu melakukannya. Hari ini: di grup kerja ada yang membalas “minggu ini pasti saya serahkan”, ada yang tak berkata apa-apa dan menyerahkan hari Rabu."
+   "片里落点": "Yang ditakutkan bukan salah ucap, tetapi tak mampu melakukannya. Hari ini: di grup kerja ada yang membalas “minggu ini pasti saya serahkan”, ada yang tak berkata apa-apa dan menyerahkan hari Rabu.",
+   "常见读法": "Dibaca sebagai “bicaralah sedikit” atau “diam itu emas”.",
+   "字眼": "Dai (逮) berarti mencapai. Zhu Xi: “言古者，以见今之不然……行不及言，可耻之甚” — menyebut “orang dahulu” menunjukkan orang sekarang tidak begitu; perbuatan yang tak menyusul kata-kata paling memalukan.",
+   "诸家": "Fan Zuyu: “非言之难，而行之难也。人惟其不行也，是以轻言之” — bukan berbicara yang sulit, melainkan berbuat; justru karena orang tidak berbuat, mereka mudah bicara; “言之如其所行，行之如其所言，则出诸其口必不易矣” — bila berbicara sesuai perbuatan dan berbuat sesuai ucapan, kata-kata tak akan mudah keluar dari mulut."
   },
   "4.23": {
    "title": "Yang tersesat karena menahan diri sedikit",
    "yw": "Sang Guru berkata: Sedikit orang yang keliru karena menahan diri.",
-   "片里落点": "Menahan kata-kata, amarah, dan kemewahan semuanya adalah pengekangan, bukan hanya soal uang. Hari ini: orang yang pindah rumah hanya membawa dua kardus justru tak kehilangan apa pun."
+   "片里落点": "Menahan kata-kata, amarah, dan kemewahan semuanya adalah pengekangan, bukan hanya soal uang. Hari ini: orang yang pindah rumah hanya membawa dua kardus justru tak kehilangan apa pun.",
+   "常见读法": "Dibaca sebagai “orang hemat jarang salah”, dengan pengekangan diartikan menabung uang.",
+   "字眼": "Xian (鲜) berarti sedikit. Zhu Xi mengutip Xie Liangzuo: “不侈然以自放之谓约” — tidak melepaskan diri dalam kemewahan disebut pengekangan; dan Yin Tun: “凡事约则鲜失，非止谓俭约也” — dalam segala hal, pengekangan berarti sedikit kesalahan; bukan sekadar hemat.",
+   "诸家": "Xie Liangzuo dan Yin Tun (keduanya dikutip Zhu Xi)."
   },
   "4.24": {
    "title": "Junzi ingin lambat bicara, cepat bertindak",
    "yw": "Sang Guru berkata: Junzi ingin lambat dalam berbicara dan cepat dalam bertindak.",
-   "片里落点": "Dari ujung mudah dan ujung sulit, tahan yang mudah (berbicara), pacu yang sulit (bertindak); bukan tak berbicara, melainkan tak bicara sembarangan."
+   "片里落点": "Dari ujung mudah dan ujung sulit, tahan yang mudah (berbicara), pacu yang sulit (bertindak); bukan tak berbicara, melainkan tak bicara sembarangan.",
+   "常见读法": "Dibaca sebagai “budiman harus sedikit bicara”, dengan ne (讷) diartikan tidak pandai bicara.",
+   "字眼": "Ne (讷) berarti lambat bicara. Zhu Xi mengutip Xie Liangzuo: “放言易，故欲讷；力行难，故欲敏” — bicara lepas itu mudah, maka ingin lambat di situ; berbuat sungguh-sungguh itu sulit, maka ingin cepat di situ.",
+   "诸家": "Zhu Xi juga mengutip Hu Yin: “自吾道一贯至此十章，疑皆曾子门人所记也” — sepuluh bab dari “Jalanku dirangkai oleh satu” sampai di sini mungkin semuanya dicatat murid-murid Zengzi. Ini dugaan, dan Zhu Xi mencatatnya tanpa memutuskan."
   },
   "4.25": {
    "title": "Kebajikan tak sendirian, pasti punya tetangga",
    "yw": "Sang Guru berkata: Kebajikan tidak sendirian; ia pasti punya tetangga.",
-   "片里落点": "Ini bukan “orang baik pasti dibalas baik”, melainkan yang sejenis saling menyahut: apa yang engkau pegang akan menarik orang yang memegang hal yang sama."
+   "片里落点": "Ini bukan “orang baik pasti dibalas baik”, melainkan yang sejenis saling menyahut: apa yang engkau pegang akan menarik orang yang memegang hal yang sama.",
+   "常见读法": "Dibaca sebagai penghiburan: “orang baik tak pernah sendirian”.",
+   "字眼": "Zhu Xi: “邻，犹亲也。德不孤立，必以类应。故有德者，必有其类从之，如居之有邻也” — tetangga berarti orang dekat; kebajikan tak berdiri sendiri, pasti disambut sejenisnya; maka yang berbudi pasti diikuti sejenisnya, seperti rumah memiliki tetangga.",
+   "诸家": "(Episode ini hanya memuat Zhu Xi.)"
   },
   "4.26": {
    "title": "Mendesak raja berbuah hina, mendesak teman berbuah jauh",
    "yw": "Ziyou berkata: Melayani raja dengan terlalu sering menegur mendatangkan kehinaan; terhadap teman, terlalu sering menasihati membuat jauh.",
-   "片里落点": "Nasihat ada batasnya; bila tak masuk, berhentilah (kepada raja, pergilah); terlalu sering mendesak justru mendorong orang menjauh."
+   "片里落点": "Nasihat ada batasnya; bila tak masuk, berhentilah (kepada raja, pergilah); terlalu sering mendesak justru mendorong orang menjauh.",
+   "常见读法": "Dibaca sebagai “jangan terus merepotkan atasan atau teman”, atau shu (数) diartikan “memarahi”.",
+   "字眼": "Shuo (数) dibaca shuò, sering. Zhu Xi mengutip Cheng bersaudara: “数，烦数也” — shuo berarti kerap sampai menjemukan; dan Hu Yin: “事君谏不行，则当去；导友善不纳，则当止” — bila teguran kepada raja tak dijalankan, sebaiknya pergi; bila tuntunan kepada teman menuju kebaikan tak diterima, sebaiknya berhenti.",
+   "诸家": "Fan Zuyu: “君臣朋友，皆以义合，故其事同也” — raja dan menteri, teman dengan teman, semua disatukan oleh kebenaran, maka perkaranya sama. Ini ucapan Ziyou."
   },
   "5.1": {
    "title": "Gongye Chang layak diberi istri",
    "yw": "Sang Guru berkata tentang Gongye Chang: Ia layak diberi istri. Meski pernah dibelenggu, itu bukan kesalahannya. Lalu ia menikahkannya dengan putrinya sendiri. Sang Guru berkata tentang Nan Rong: Bila negara berjalan di atas Jalan, ia tidak akan disingkirkan; bila negara kehilangan Jalan, ia lolos dari hukuman. Lalu ia menikahkannya dengan putri kakaknya.",
-   "片里落点": "Yang penting bukan Konfusius toleran, tetapi satu penilaian “apakah kesalahan itu miliknya”: penjara yang ditimpakan dari luar bukan kehormatan atau aibnya. Bagian Nan Rong mengatakan bahwa berhati-hati dalam kata dan tindakan tetap tegak di masa damai maupun kacau. Hari ini: orang yang pernah dihukum secara keliru lalu dipulihkan; ada yang menghindarinya, ada yang tetap menyerahkan urusan penting kepadanya."
+   "片里落点": "Yang penting bukan Konfusius toleran, tetapi satu penilaian “apakah kesalahan itu miliknya”: penjara yang ditimpakan dari luar bukan kehormatan atau aibnya. Bagian Nan Rong mengatakan bahwa berhati-hati dalam kata dan tindakan tetap tegak di masa damai maupun kacau. Hari ini: orang yang pernah dihukum secara keliru lalu dipulihkan; ada yang menghindarinya, ada yang tetap menyerahkan urusan penting kepadanya.",
+   "常见读法": "Konfusius menikahkan putrinya dengan pria yang pernah dipenjara: dibaca “ia tak keberatan” atau “ia berlapang dada”.",
+   "字眼": "Qi (妻) nada turun: menikahkan putri. “缧，黑索也。绁，挛也” — lei adalah tali hitam, xie adalah ikatan; “长之为人无所考，而夫子称其可妻，其必有以取之矣” — watak Gongye Chang tak diketahui, tetapi karena Guru menyebutnya layak dinikahkan, pasti ada yang membuatnya layak dipilih; “夫有罪无罪，在我而已，岂以自外至者为荣辱哉” — bersalah atau tidak terletak pada diri sendiri; bagaimana yang datang dari luar bisa menjadi kehormatan atau aib? Tentang Nan Rong: “不废，言必见用也……以其谨于言行” — tidak dibuang berarti pasti dipakai, karena ia berhati-hati dalam kata dan perbuatan.",
+   "诸家": "Cheng bersaudara menolak bacaan “menghindari kecurigaan”: “此以己之私心窥圣人也。凡人避嫌者，皆内不足也……嫁女必量其才而求配” — ini mengintip orang bijak dengan pikiran pribadi; semua yang menghindari kecurigaan kurang di dalam; menikahkan putri harus menimbang kemampuan pria dan mencari pasangan yang sepadan."
   },
   "5.2": {
    "title": "Tentang Zijian: sungguh junzi orang ini",
    "yw": "Sang Guru berkata tentang Zijian: Sungguh junzi orang ini! Jika negeri Lu tak punya junzi, dari mana ia memperoleh ini?",
-   "片里落点": "Kebajikan seseorang diambil dari orang-orang bijak di sekitarnya, maka memuji dia berarti juga memuji mereka yang membentuknya. Hari ini: pendatang baru menerima penghargaan, dan kalimat pertamanya di panggung menunjuk gurunya di bangku penonton."
+   "片里落点": "Kebajikan seseorang diambil dari orang-orang bijak di sekitarnya, maka memuji dia berarti juga memuji mereka yang membentuknya. Hari ini: pendatang baru menerima penghargaan, dan kalimat pertamanya di panggung menunjuk gurunya di bangku penonton.",
+   "常见读法": "Hanya dibaca sebagai satu kalimat pujian untuk Zijian.",
+   "字眼": "Yan (焉) dibaca yān. Marga Zijian adalah Fu (宓, dibaca fú), nama Buqi. “上斯斯此人，下斯斯此德” — si pertama merujuk orang ini, si kedua kebajikan ini; “子贱盖能尊贤取友以成其德者……因以见鲁之多贤也” — Zijian menghormati yang layak dan memilih teman untuk menyempurnakan kebajikannya; ini juga menunjukkan betapa banyak orang layak di Lu.",
+   "诸家": "Su Shi (dikutip Zhu Xi): “称人之善，必本其父兄师友，厚之至也” — memuji kebaikan seseorang dengan menautkannya pada ayah, saudara, guru, dan temannya adalah puncak kemurahan hati."
   },
   "5.3": {
    "title": "Zigong bertanya: Bagaimana dengan aku?",
    "yw": "Zigong bertanya: Bagaimana dengan saya, Ci? Sang Guru berkata: Engkau sebuah bejana. Ia bertanya: Bejana apa? Jawabnya: Bejana hulian di kuil leluhur.",
-   "片里落点": "Satu kalimat dua lapis: belum sampai “bukan bejana”, tetapi di antara bejana yang paling berharga; pujian yang mengandung petunjuk arah. Hari ini: bos berkata “kamu orang paling bisa diandalkan di timku”, senang saat itu, tetapi di rumah terasa ada yang kurang."
+   "片里落点": "Satu kalimat dua lapis: belum sampai “bukan bejana”, tetapi di antara bejana yang paling berharga; pujian yang mengandung petunjuk arah. Hari ini: bos berkata “kamu orang paling bisa diandalkan di timku”, senang saat itu, tetapi di rumah terasa ada yang kurang.",
+   "常见读法": "Menyebut Zigong “bejana” dibaca sebagai merendahkan, karena “budiman bukan bejana”.",
+   "字眼": "Ru (女) dibaca rǔ, “engkau”; hulian (瑚琏) dibaca hú liǎn. “器者，有用之成材” — bejana adalah bahan jadi yang berguna; hulian adalah “宗庙盛黍稷之器而饰以玉，器之贵重而华美者也” — bejana kuil untuk jewawut, dihiasi giok, yang paling berharga dan indah di antara bejana; “子贡虽未至于不器，其亦器之贵者欤” — meski Zigong belum mencapai “bukan bejana”, ia bejana yang berharga.",
+   "诸家": "Zhu Xi hanya memberi satu bacaan."
   },
   "5.4": {
    "title": "Yong manusiawi tapi tak pandai bersilat lidah",
    "yw": "Seseorang berkata: Yong manusiawi tetapi tidak pandai bicara. Sang Guru berkata: Apa gunanya pandai bicara? Orang yang melayani orang lain dengan lidah tajam sering dibenci. Aku tak tahu apakah ia manusiawi, tetapi apa gunanya pandai bicara?",
-   "片里落点": "Akar masalahnya “tanpa isi nyata”: lidah cepat dan pandai berdebat tanpa kebenaran di dalamnya makin dibenci makin banyak bicara. Konfusius tidak menganugerahkan sebutan manusiawi pada Zhonggong karena kemanusiaan terlalu besar untuk diberikan begitu saja. Hari ini: orang yang menerima semua, menyanggupi semua, dan tak menuntaskan satu pun, tiga bulan kemudian dihindari rekan kerja."
+   "片里落点": "Akar masalahnya “tanpa isi nyata”: lidah cepat dan pandai berdebat tanpa kebenaran di dalamnya makin dibenci makin banyak bicara. Konfusius tidak menganugerahkan sebutan manusiawi pada Zhonggong karena kemanusiaan terlalu besar untuk diberikan begitu saja. Hari ini: orang yang menerima semua, menyanggupi semua, dan tak menuntaskan satu pun, tiga bulan kemudian dihindari rekan kerja.",
+   "常见读法": "Dibaca sebagai “yang tak pandai bicara akan rugi, maka latih kefasihanmu”.",
+   "字眼": "“佞，口才也” — ning adalah bakat bicara; Zhonggong “重厚简默，而时人以佞为贤” — berbobot, sederhana, pendiam, sementara orang zaman itu menganggap kefasihan sebagai keutamaan; “御，当也，犹应答也。给，辩也。憎，恶也” — yu berarti menghadapi, seperti menjawab; ji berarti debat cepat; zeng berarti tidak suka; “佞人所以应答人者，但以口取辩而无情实，徒多为人所憎恶尔” — si fasih menjawab orang dengan debat dari mulut tanpa isi nyata, dan hanya menuai banyak ketidaksukaan; “其不佞乃所以为贤，不足以为病也。再言焉用佞，所以深晓之” — ketidakfasihannya justru keutamaannya, bukan cacat; mengucapkan “untuk apa kefasihan” dua kali adalah untuk menegaskannya dalam-dalam.",
+   "诸家": "Zhu Xi tentang mengapa Konfusius tak mengakuinya manusiawi: “仁道至大，非全体而不息者，不足以当之。如颜子亚圣，犹不能无违于三月之后” — jalan kemanusiaan sangat agung; hanya yang utuh dan tak henti yang sepadan; bahkan Yan Hui, kedua setelah orang bijak, tak luput tergelincir setelah tiga bulan."
   },
   "5.5": {
    "title": "Sang Guru ingin Qidiao Kai menjabat",
    "yw": "Sang Guru ingin Qidiao Kai memangku jabatan. Ia menjawab: Saya belum yakin akan hal itu. Sang Guru senang.",
-   "片里落点": "Cukup atau tidak kemampuan, guru bisa melihat; sehelai rambut yang belum sungguh diperoleh di dalam hati hanya diri sendiri yang tahu. Mengakui sehelai itu berarti tak puas pada pencapaian kecil, maka Konfusius gembira. Hari ini: ditawari promosi, ia berkata belum sanggup memikul jabatan itu dan minta enam bulan lagi."
+   "片里落点": "Cukup atau tidak kemampuan, guru bisa melihat; sehelai rambut yang belum sungguh diperoleh di dalam hati hanya diri sendiri yang tahu. Mengakui sehelai itu berarti tak puas pada pencapaian kecil, maka Konfusius gembira. Hari ini: ditawari promosi, ia berkata belum sanggup memikul jabatan itu dan minta enam bulan lagi.",
+   "常见读法": "Menolak jabatan dibaca sebagai rendah hati atau kurang berani.",
+   "字眼": "Yue (说) dibaca yuè, senang. “斯，指此理而言。信，谓真知其如此，而无毫发之疑也” — si merujuk prinsip ini; yakin berarti sungguh tahu bahwa begitulah adanya, tanpa sehelai rambut pun keraguan; “开自言未能如此，未可以治人，故夫子说其笃志” — Kai berkata ia belum bisa begitu dan belum layak memerintah orang, maka Guru senang akan keteguhan tekadnya.",
+   "诸家": "Cheng bersaudara: “漆雕开已见大意，故夫子说之” — Qidiao Kai sudah melihat pokok maknanya, maka Guru senang. Xie Liangzuo: “至于心术之微，则一毫不自得，不害其为未信。此圣人所不能知，而开自知之。其材可以仕，而其器不安于小成” — dalam gerak halus pikiran, sehelai yang belum sungguh diraih cukup membuatnya belum yakin; ini tak dapat diketahui orang bijak, tetapi Kai tahu sendiri; bakatnya layak menjabat, tetapi kapasitasnya tak mau puas dengan capaian kecil."
   },
   "5.6": {
    "title": "Bila Jalan tak berjalan, aku naik rakit ke laut",
    "yw": "Sang Guru berkata: Bila Jalan tak berjalan, aku akan naik rakit mengapung ke laut. Yang akan mengikutiku mungkin You? Zilu mendengar dan gembira. Sang Guru berkata: You lebih menyukai keberanian daripada aku, tetapi tak punya ukuran untuk menimbang perkara.",
-   "片里落点": "Ke laut itu sebuah desahan, sebuah kiasan; Zilu menganggapnya sungguhan, berani berlebih tetapi tak bisa menimbang patut tidaknya. Hari ini: di grup ada yang asal bilang mau berhenti kerja dan keliling dunia, dan ada yang malam itu juga sudah mengemas ransel."
+   "片里落点": "Ke laut itu sebuah desahan, sebuah kiasan; Zilu menganggapnya sungguhan, berani berlebih tetapi tak bisa menimbang patut tidaknya. Hari ini: di grup ada yang asal bilang mau berhenti kerja dan keliling dunia, dan ada yang malam itu juga sudah mengemas ransel.",
+   "常见读法": "Dibaca sebagai Konfusius sungguh ingin menyepi ke seberang laut; atau wu suo qu cai (无所取材) diartikan “tak ada tempat mengambil kayu”.",
+   "字眼": "“桴，筏也” — fu adalah rakit; hao (好) nada turun; “材，与裁同，古字借用” — cai sama dengan cai “menimbang”, aksara pinjaman kuno; “子路勇于义，故谓其能从己，皆假设之言耳。子路以为实然……讥其不能裁度事理，以适于义也” — Zilu berani demi kebenaran, maka dikatakan ia bisa mengikuti; semua itu kata-kata pengandaian. Zilu menganggapnya sungguhan, dan ditegur karena tak dapat menimbang perkara agar sesuai kebenaran.",
+   "诸家": "Cheng bersaudara: “浮海之叹，伤天下之无贤君也” — keluhan tentang mengapung ke laut adalah duka bahwa dunia tak punya raja yang layak."
   },
   "5.7": {
    "title": "Meng Wubo bertanya apakah Zilu manusiawi",
    "yw": "Meng Wubo bertanya: Apakah Zilu manusiawi? Sang Guru berkata: Aku tidak tahu. Ia bertanya lagi. Sang Guru berkata: You dapat diserahi urusan pungutan militer negara berkereta seribu; apakah ia manusiawi, aku tak tahu. Bagaimana dengan Qiu? Sang Guru berkata: Qiu dapat dijadikan kepala kota berpenduduk seribu keluarga atau kepala rumah berkereta seratus; apakah ia manusiawi, aku tak tahu. Bagaimana dengan Chi? Sang Guru berkata: Chi, dengan ikat pinggang terpasang, berdiri di istana, dapat disuruh bercakap dengan tamu; apakah ia manusiawi, aku tak tahu.",
-   "片里落点": "Kemampuan yang tampak dikatakan apa adanya; kemanusiaan datang dan pergi, tak dijamin atas nama orang. Tiga murid tiga bakat, setiap kalimat bilang apa yang bisa mereka kerjakan, tak satu pun bilang manusiawi. Hari ini: dalam pemeriksaan latar belakang, pemberi referensi berkata kemampuannya saya jamin, wataknya saya tak bisa bilang."
+   "片里落点": "Kemampuan yang tampak dikatakan apa adanya; kemanusiaan datang dan pergi, tak dijamin atas nama orang. Tiga murid tiga bakat, setiap kalimat bilang apa yang bisa mereka kerjakan, tak satu pun bilang manusiawi. Hari ini: dalam pemeriksaan latar belakang, pemberi referensi berkata kemampuannya saya jamin, wataknya saya tak bisa bilang.",
+   "常见读法": "Konfusius menolak menilai murid-muridnya dibaca sebagai sikap melindungi atau rendah hati.",
+   "字眼": "Sheng (乘) dibaca shèng; “赋，兵也。古者以田赋出兵，故谓兵为赋” — fu berarti pasukan; di masa kuno pasukan dipungut lewat pajak tanah, maka pasukan disebut fu; “宰，邑长家臣之通号” — zai adalah sebutan umum kepala kota atau pengurus rumah tangga bangsawan; chao (朝) dibaca cháo; “子路之于仁，盖日月至焉者，或在或亡，不能必其有无，故以不知告之” — Zilu mencapai kemanusiaan sehari atau sebulan, kadang ada kadang hilang, tak bisa dipastikan, maka Konfusius menjawab “aku tidak tahu”; “言子路之才，可见者如此，仁则不能知也” — ia berbicara tentang kemampuan Zilu yang tampak; kemanusiaannya tak dapat diketahui.",
+   "诸家": "Zhu Xi hanya memberi satu bacaan."
   },
   "5.8": {
    "title": "Siapa lebih baik, engkau atau Hui?",
    "yw": "Sang Guru bertanya kepada Zigong: Siapa lebih baik, engkau atau Hui? Ia menjawab: Bagaimana Ci berani membandingkan diri dengan Hui? Hui mendengar satu tahu sepuluh; Ci mendengar satu tahu dua. Sang Guru berkata: Engkau tidak setara dengannya. Aku setuju engkau tidak setara dengannya.",
-   "片里落点": "Pertanyaan Konfusius menguji apakah Zigong mengenal dirinya; Zigong mengenalnya, dan tak sulit menunduk, maka Konfusius lebih dulu berkata “memang tidak setara”, lalu dengan sungguh mengakuinya. Hari ini: pelatih bertanya kepada dua pemain siapa yang lebih kuat, dan satu orang tanpa pikir menunjuk yang lain."
+   "片里落点": "Pertanyaan Konfusius menguji apakah Zigong mengenal dirinya; Zigong mengenalnya, dan tak sulit menunduk, maka Konfusius lebih dulu berkata “memang tidak setara”, lalu dengan sungguh mengakuinya. Hari ini: pelatih bertanya kepada dua pemain siapa yang lebih kuat, dan satu orang tanpa pikir menunjuk yang lain.",
+   "常见读法": "Wu yu ru fu ru ye (吾与女弗如也) dibaca “baik engkau maupun aku tak setara dengannya”, Konfusius merendah.",
+   "字眼": "Ru (女) dibaca rǔ; “愈，胜也” — yu berarti lebih baik; “一，数之始。十，数之终。二者，一之对也。颜子明睿所照，即始而见终；子贡推测而知，因此而识彼” — satu adalah awal bilangan, sepuluh akhirnya, dua pasangan satu; wawasan terang Yan Hui melihat akhir dari awal; Zigong tahu dengan menduga, mengenali itu dari ini; “与，许也” — yu berarti mengakui.",
+   "诸家": "Zhu Xi mengutip Hu Yin: “子贡方人，夫子既语以不暇，又问其与回孰愈，以观其自知之如何” — Zigong suka membanding-bandingkan orang; Guru sudah bilang tak sempat untuk itu, lalu bertanya siapa lebih baik, dia atau Hui, untuk melihat seberapa jauh ia mengenal diri; “夫子以其自知之明，而又不难于自屈，故既然之，又重许之” — karena ia mengenal diri dengan jernih dan tak sulit mengalah, Guru menyetujui dan menegaskan pengakuannya."
   },
   "5.9": {
    "title": "Zai Yu tidur di siang hari",
    "yw": "Zai Yu tidur di siang hari. Sang Guru berkata: Kayu lapuk tak bisa diukir; dinding tanah kotoran tak bisa diplester. Terhadap Yu, apa gunanya menegur? Sang Guru berkata: Dulu terhadap orang, aku mendengar katanya dan memercayai perbuatannya. Kini terhadap orang, aku mendengar katanya dan memperhatikan perbuatannya. Yu yang membuatku berubah.",
-   "片里落点": "Beratnya bukan pada tidur siang, tetapi pada tekad yang kendur dan kata yang tak terbukti; “tak layak ditegur” justru teguran paling berat; Konfusius memakai peristiwa ini untuk menetapkan aturan: dengarkan kata, perhatikan juga perbuatan. Hari ini: tiga kartu anggota gym dalam setahun, tak satu pun pernah dipakai."
+   "片里落点": "Beratnya bukan pada tidur siang, tetapi pada tekad yang kendur dan kata yang tak terbukti; “tak layak ditegur” justru teguran paling berat; Konfusius memakai peristiwa ini untuk menetapkan aturan: dengarkan kata, perhatikan juga perbuatan. Hari ini: tiga kartu anggota gym dalam setahun, tak satu pun pernah dipakai.",
+   "常见读法": "Dibaca sebagai Konfusius memarahi murid terlalu keras karena tidur siang.",
+   "字眼": "“昼寝，谓当昼而寐” — tidur siang berarti tidur di siang bolong; “朽，腐也。雕，刻画也。杇，镘也” — xiu berarti busuk, diao berarti mengukir, wu (杇, dibaca wū) berarti memlester; “言其志气昏惰，教无所施也” — tekad dan semangatnya kabur dan malas, maka pengajaran tak punya pijakan; “与，语辞。诛，责也。言不足责，乃所以深责之” — yu adalah partikel; zhu berarti menegur; bilang tak layak ditegur adalah teguran paling dalam; xing (行) nada turun; “宰予能言而行不逮，故孔子自言于予之事而改此失，亦以重警之也” — Zai Yu pandai bicara tetapi perbuatannya tertinggal, maka Konfusius berkata lewat Yu ia memperbaiki kekeliruan ini, juga untuk memperingatkannya keras.",
+   "诸家": "Hu Yin: “子曰疑衍文，不然，则非一日之言也” — “Guru berkata” yang kedua mungkin sisipan; kalau tidak, itu kata-kata dari hari yang berbeda. Fan Zuyu: “君子之于学，惟日孜孜，毙而后已……宰予昼寝，自弃孰甚焉” — budiman dalam belajar tekun setiap hari sampai mati; Zai Yu tidur siang — pengabaian diri apa yang lebih besar? Hu Yin: “宰予不能以志帅气，居然而倦。是宴安之气胜，儆戒之志惰也” — Zai Yu tak dapat memimpin semangatnya dengan tekad dan menjadi lelah; semangat bersantai menang dan tekad waspada mengendur; “特因此立教，以警群弟子，使谨于言而敏于行耳” — Konfusius hanya memakai ini untuk mengajar dan memperingatkan semua murid agar hati-hati dalam kata dan cepat dalam perbuatan."
   },
   "5.10": {
    "title": "Aku belum melihat orang yang sungguh teguh",
    "yw": "Sang Guru berkata: Aku belum melihat orang yang sungguh teguh. Seseorang menjawab: Shen Cheng. Sang Guru berkata: Cheng punya hasrat; bagaimana ia bisa teguh?",
-   "片里落点": "Teguh berarti mampu menekan hal-hal luar; hasrat berarti tertutup oleh hal-hal luar. Tampak keras dan suka menang justru sedang dituntun hasratnya sendiri. Hari ini: orang yang paling keras bicara di rapat dan tak tunduk pada siapa pun, tak bisa melewati diskon di mal."
+   "片里落点": "Teguh berarti mampu menekan hal-hal luar; hasrat berarti tertutup oleh hal-hal luar. Tampak keras dan suka menang justru sedang dituntun hasratnya sendiri. Hari ini: orang yang paling keras bicara di rapat dan tak tunduk pada siapa pun, tak bisa melewati diskon di mal.",
+   "常见读法": "Menganggap watak keras dan tak mau mengalah pada siapa pun sebagai “keteguhan”.",
+   "字眼": "Cheng (枨) dibaca chéng; yan (焉) dibaca yān; “刚，坚强不屈之意，最人所难能者” — keteguhan berarti kuat dan tak membungkuk, hal tersulit bagi manusia; “欲，多嗜欲也。多嗜欲，则不得为刚矣” — keinginan berarti banyak hasrat; dengan banyak hasrat orang tak bisa teguh.",
+   "诸家": "Cheng bersaudara: “人有欲则无刚，刚则不屈于欲” — dengan keinginan tak ada keteguhan; yang teguh tak tunduk pada keinginan. Xie Liangzuo: “刚与欲正相反。能胜物之谓刚，故常伸于万物之上；为物揜之谓欲，故常屈于万物之下” — keteguhan dan keinginan berlawanan persis; mampu mengatasi hal-hal adalah keteguhan, maka selalu tegak di atas segala hal; tertutup oleh hal-hal adalah keinginan, maka selalu membungkuk di bawahnya; “其为人得非悻悻自好者乎？故或者疑以为刚，然不知此其所以为欲尔” — bukankah ia orang yang ketus dan mementingkan diri? Maka ada yang mengira ia teguh, tanpa tahu justru itulah keinginannya."
   },
   "5.11": {
    "title": "Yang tak kuinginkan orang lakukan padaku",
    "yw": "Zigong berkata: Yang tak saya inginkan orang lain lakukan kepada saya, saya pun ingin tidak melakukannya kepada orang lain. Sang Guru berkata: Ci, itu belum engkau capai.",
-   "片里落点": "Bedanya pada satu huruf, wu “tidak ada” dan wu “jangan”: tak punya niat itu sama sekali adalah kemanusiaan, punya niat lalu menahannya adalah tenggang rasa; yang dikatakan Zigong adalah kewajaran orang yang manusiawi, belum ia capai. Hari ini: orang yang paling benci terbangun oleh pesan tengah malam menjadwalkan semua pesan setelah pukul sepuluh malam untuk dikirim besok pagi."
+   "片里落点": "Bedanya pada satu huruf, wu “tidak ada” dan wu “jangan”: tak punya niat itu sama sekali adalah kemanusiaan, punya niat lalu menahannya adalah tenggang rasa; yang dikatakan Zigong adalah kewajaran orang yang manusiawi, belum ia capai. Hari ini: orang yang paling benci terbangun oleh pesan tengah malam menjadwalkan semua pesan setelah pukul sepuluh malam untuk dikirim besok pagi.",
+   "常见读法": "Dibaca sebagai versi lain dari “jangan lakukan kepada orang lain apa yang tak kau ingin dilakukan kepadamu”, sesuatu yang bisa dilakukan siapa saja.",
+   "字眼": "“子贡言我所不欲人加于我之事，我亦不欲以此加之于人。此仁者之事，不待勉强，故夫子以为非子贡所及” — Zigong berkata apa yang tak ia ingin orang lakukan kepadanya, ia pun tak ingin melakukannya kepada orang lain; ini pekerjaan orang yang manusiawi, tanpa perlu memaksa diri, maka Guru menilai itu di luar jangkauan Zigong; “愚谓无者自然而然，勿者禁止之谓，此所以为仁恕之别” — menurut saya, wu (无, tidak ada) adalah yang terjadi dengan sendirinya, wu (勿, jangan) adalah larangan; inilah beda kemanusiaan dan tenggang rasa.",
+   "诸家": "Cheng bersaudara: “我不欲人之加诸我，吾亦欲无加诸人，仁也；施诸己而不愿，亦勿施于人，恕也。恕则子贡或能勉之，仁则非所及矣” — yang tak kuingin dilakukan kepadaku, aku pun ingin tak ada dariku kepada orang lain: itulah kemanusiaan; yang tak ingin dilakukan kepada diri sendiri, jangan lakukan kepada orang lain: itulah tenggang rasa. Tenggang rasa mungkin bisa dicapai Zigong dengan usaha; kemanusiaan di luar jangkauannya."
   },
   "5.12": {
    "title": "Wenzhang Sang Guru dapat didengar",
    "yw": "Zigong berkata: Wenzhang Sang Guru dapat kami dengar; tetapi kata-kata Sang Guru tentang kodrat manusia dan Jalan Langit tak dapat kami dengar.",
-   "片里落点": "Wenzhang bukan karangan tertulis, melainkan kebajikan yang tampak dalam laku dan tutur; Konfusius jarang berbicara tentang kodrat dan Jalan Langit, bukan tak pernah; sekolahnya mengajar berurutan, dan baru saat ini Zigong pertama kali mendengarnya. Kalimat ini kekaguman, bukan keluhan. Hari ini: murid dapur memotong sayur tiga tahun, baru hari ini koki kepala membicarakan api dengannya."
+   "片里落点": "Wenzhang bukan karangan tertulis, melainkan kebajikan yang tampak dalam laku dan tutur; Konfusius jarang berbicara tentang kodrat dan Jalan Langit, bukan tak pernah; sekolahnya mengajar berurutan, dan baru saat ini Zigong pertama kali mendengarnya. Kalimat ini kekaguman, bukan keluhan. Hari ini: murid dapur memotong sayur tiga tahun, baru hari ini koki kepala membicarakan api dengannya.",
+   "常见读法": "Dibaca sebagai Zigong mengeluh bahwa Konfusius tak pernah bicara tentang kodrat dan Jalan Langit, atau bahwa Konfusius sama sekali tak membahas metafisika.",
+   "字眼": "“文章，德之见乎外者，威仪文辞皆是也” — wenzhang adalah kebajikan yang tampak keluar: sikap dan tutur kata termasuk di dalamnya; “性者，人所受之天理；天道者，天理自然之本体，其实一理也” — kodrat adalah prinsip Langit yang diterima manusia; Jalan Langit adalah hakikat alami prinsip itu; sebenarnya satu prinsip; “盖圣门教不躐等，子贡至是始得闻之，而叹其美也” — perguruan orang bijak tak mengajar melompati jenjang; baru sekarang Zigong mendengarnya, dan ia mengagumi keindahannya.",
+   "诸家": "Cheng bersaudara: “此子贡闻夫子之至论而叹美之言也” — ini kata-kata kekaguman Zigong saat mendengar ajaran tertinggi Guru."
   },
   "5.13": {
    "title": "Ketika Zilu mendengar sesuatu",
    "yw": "Ketika Zilu mendengar sesuatu dan belum mampu melaksanakannya, ia hanya takut mendengar hal lain lagi.",
-   "片里落点": "Yang ia takutkan bukan belajar lebih banyak, melainkan hal sebelumnya belum dikerjakan; teman seperguruan mencatatnya karena merasa kalah. Hari ini: satu kursus belum dilatih tuntas, jadi jangan dulu mendaftar kursus berikutnya."
+   "片里落点": "Yang ia takutkan bukan belajar lebih banyak, melainkan hal sebelumnya belum dikerjakan; teman seperguruan mencatatnya karena merasa kalah. Hari ini: satu kursus belum dilatih tuntas, jadi jangan dulu mendaftar kursus berikutnya.",
+   "常见读法": "Dibaca sebagai Zilu takut mempelajari hal baru, seolah ia tak suka belajar.",
+   "字眼": "“前所闻者既未及行，故恐复有所闻而行之不给也” — yang didengar sebelumnya belum dijalankan, maka ia takut mendengar lagi dan tak sempat menjalankannya (ji 给 dibaca jǐ: sempat).",
+   "诸家": "Fan Zuyu: “子路闻善，勇于必行，门人自以为弗及也，故著之。若子路，可谓能用其勇矣” — saat Zilu mendengar kebaikan ia berani menjalankannya; sesama murid merasa tak dapat menyamainya, maka mereka mencatatnya; orang seperti Zilu boleh dikatakan memakai keberaniannya dengan baik."
   },
   "5.14": {
    "title": "Mengapa Kong Wenzi disebut “wen”?",
    "yw": "Zigong bertanya: Mengapa Kong Wenzi disebut “wen”? Sang Guru berkata: Ia cerdas dan gemar belajar, tidak malu bertanya kepada yang lebih rendah; karena itu ia disebut “wen”.",
-   "片里落点": "Zigong bertanya karena nama Kong Wenzi buruk; Konfusius hanya menjawab dengan satu kaidah gelar anumerta, tidak membela seluruhnya, juga tidak menghapus kelebihannya; “wen” hanya sampai lapis itu. Hari ini: bos yang reputasinya biasa saja bertanya di depan semua orang dalam rapat kepada anak magang, “Ini saya tidak paham, coba jelaskan.”"
+   "片里落点": "Zigong bertanya karena nama Kong Wenzi buruk; Konfusius hanya menjawab dengan satu kaidah gelar anumerta, tidak membela seluruhnya, juga tidak menghapus kelebihannya; “wen” hanya sampai lapis itu. Hari ini: bos yang reputasinya biasa saja bertanya di depan semua orang dalam rapat kepada anak magang, “Ini saya tidak paham, coba jelaskan.”",
+   "常见读法": "“Tidak malu bertanya kepada yang lebih rendah” dibaca sebagai kebajikan ketekunan umum, tanpa kaitan dengan watak Kong Wenzi.",
+   "字眼": "“凡人性敏者多不好学，位高者多耻下问。故谥法有以勤学好问为文者，盖亦人所难也” — orang yang cerdas bawaan umumnya tidak suka belajar, dan yang berkedudukan tinggi umumnya malu bertanya kepada bawahan; maka aturan nama anumerta menghitung tekun belajar dan bertanya sebagai “wen”, karena hal itu sulit bagi manusia; “孔子不没其善，言能如此，亦足以为文矣，非经天纬地之文也” — Konfusius tidak mengubur kebaikannya; mampu begini sudah cukup untuk “wen”, meski bukan “wen” yang menata langit dan bumi.",
+   "诸家": "Zhu Xi mengutip seorang Guru Su tentang perbuatan Kong Wenzi — menyuruh Taishu Ji menceraikan istrinya, lalu ingin menyerangnya, dan Konfusius menyuruh menyiapkan kereta lalu pergi: “其为人如此而谥曰文，此子贡之所以疑而问也” — begitulah orangnya, namun ia dinamai “wen”; itulah sebabnya Zigong ragu dan bertanya."
   },
   "5.15": {
    "title": "Zichan memiliki empat jalan junzi",
    "yw": "Sang Guru berkata tentang Zichan: Ia memiliki empat jalan junzi: dalam membawa diri ia rendah hati; dalam melayani atasan ia hormat; dalam memelihara rakyat ia murah hati; dalam memerintah rakyat ia adil.",
-   "片里落点": "Memuji satu per satu justru menunjukkan masih ada yang belum tercapai; keempatnya punya sasarannya masing-masing; menilai orang dari satu kalimat atau satu peristiwa itu keliru. Hari ini: jangan menilai toko kecil yang sudah buka tiga puluh tahun dari satu ulasan buruk."
+   "片里落点": "Memuji satu per satu justru menunjukkan masih ada yang belum tercapai; keempatnya punya sasarannya masing-masing; menilai orang dari satu kalimat atau satu peristiwa itu keliru. Hari ini: jangan menilai toko kecil yang sudah buka tiga puluh tahun dari satu ulasan buruk.",
+   "常见读法": "Dibaca sebagai Konfusius memuji Zichan butir demi butir, seolah Zichan sempurna.",
+   "字眼": "“恭，谦逊也。敬，谨恪也。惠，爱利也” — gong adalah kerendahan hati, jing adalah kehati-hatian, hui adalah kasih yang memberi manfaat; “使民义，如都鄙有章，上下有服，田有封洫，庐井有伍之类” — mempekerjakan rakyat dengan adil berarti hal-hal seperti ibu kota dan daerah pinggiran punya aturan, atas dan bawah punya pakaiannya, sawah punya batas dan parit, dan rumah tangga dikelompokkan per lima.",
+   "诸家": "Wu Yu: “数其事而责之者，其所善者多也……数其事而称之者，犹有所未至也……今或以一言盖一人，一事盖一时，皆非也” — bila perbuatan seseorang dirinci untuk mencelanya, kebaikannya banyak; bila dirinci untuk memujinya, masih ada yang belum dicapainya; kini merangkum seseorang dalam satu kalimat, atau satu zaman dalam satu peristiwa, selalu keliru."
   },
   "5.16": {
    "title": "Dengan teman lama, tak perlu sungkan?",
    "yw": "Sang Guru berkata: Yan Pingzhong pandai bergaul dengan orang; meski sudah lama kenal, ia tetap menghormati mereka.",
-   "片里落点": "Rasa hormat memudar seiring waktu itu lumrah; tetap hormat setelah lama barulah disebut pandai bergaul. Hari ini: lima tahun tinggal sekontrakan, teman sekamar tetap mengetuk pintu sebelum meminjam charger."
+   "片里落点": "Rasa hormat memudar seiring waktu itu lumrah; tetap hormat setelah lama barulah disebut pandai bergaul. Hari ini: lima tahun tinggal sekontrakan, teman sekamar tetap mengetuk pintu sebelum meminjam charger.",
+   "常见读法": "Kalau sudah lama kenal, tak perlu lagi basa-basi; sopan santun hanya menjaga jarak.",
+   "字眼": "“久而敬之” — lama kenal, tetap hormat.",
+   "诸家": "Zhu Xi: “晏平仲，齐大夫，名婴” — Yan Pingzhong, pembesar negeri Qi, nama pribadi Ying. Ia mengutip Guru Cheng: “人交久则敬衰，久而能敬，所以为善” — bila orang sudah lama bergaul, rasa hormat memudar; tetap hormat setelah lama, itulah yang membuatnya pandai bergaul."
   },
   "5.17": {
    "title": "Benarkah Zang Wenzhong cerdik?",
    "yw": "Sang Guru berkata: Zang Wenzhong memelihara kura-kura besar, kepala tiangnya diukir gunung, balok atapnya dilukis tanaman air. Bagaimana ia bisa disebut bijak?",
-   "片里落点": "Tidak memakai pikiran untuk yang dibutuhkan rakyat, malah mengambil hati roh-roh, tidak terhitung bijak. Hari ini: usaha sepi, alih-alih bertanya kepada pelanggan, pemiliknya menghabiskan banyak uang memutar arah pintu toko."
+   "片里落点": "Tidak memakai pikiran untuk yang dibutuhkan rakyat, malah mengambil hati roh-roh, tidak terhitung bijak. Hari ini: usaha sepi, alih-alih bertanya kepada pelanggan, pemiliknya menghabiskan banyak uang memutar arah pintu toko.",
+   "常见读法": "Zang Wenzhong terpelajar dan berwawasan luas, dan semua orang sezamannya menganggapnya pandai.",
+   "字眼": "“居，犹藏也。蔡，大龟也” — “ju” berarti menyimpan; “Cai” adalah kura-kura besar; “节，柱头斗栱” — “jie” adalah susunan konsol di kepala tiang; “梲，梁上短柱” — “zhuo” adalah tiang pendek di atas balok; “知” dibaca “zhi”, kebijaksanaan.",
+   "诸家": "Zhu Xi: “不务民义，而谄渎鬼神如此，安得为知” — tidak mengurus apa yang benar bagi rakyat, malah menyanjung dan menodai roh-roh seperti ini — bagaimana bisa disebut bijak?; “春秋传所谓作虚器，即此事也” — apa yang disebut Komentar Zuo “membuat bejana kosong” adalah perkara ini. Ia mengutip Zhang Zai: “山节藻梲为藏龟之室，祀爰居之义，同归于不知宜矣” — ruang berukir untuk kura-kura dan persembahan bagi burung yuanju bermuara pada hal yang sama: tidak tahu apa yang pantas."
   },
   "5.18": {
    "title": "Ini pun belum terhitung kemanusiaan?",
    "yw": "Zizhang bertanya: Perdana menteri Ziwen tiga kali diangkat tanpa raut gembira, tiga kali dicopot tanpa raut kesal; urusan pemerintahan perdana menteri lama selalu ia sampaikan kepada yang baru. Bagaimana menurut Guru? Sang Guru berkata: Ia setia. – Apakah ia manusiawi? – Aku tak tahu; bagaimana bisa disebut manusiawi? – Ketika Cuizi membunuh raja Qi, Chen Wenzi punya sepuluh kereta kuda; ia tinggalkan semuanya dan pergi. Tiba di negeri lain ia berkata: “Mereka seperti menteri kita Cuizi,” lalu pergi. Tiba di negeri lain lagi ia berkata lagi: “Mereka seperti menteri kita Cuizi,” lalu pergi. Bagaimana menurut Guru? Sang Guru berkata: Ia bersih. – Apakah ia manusiawi? – Aku tak tahu; bagaimana bisa disebut manusiawi?",
-   "片里落点": "Setia dan bersih adalah kebajikan satu segi; kemanusiaan melihat apakah seluruhnya selaras dengan prinsip dan sungguh tanpa pamrih; mempercayai hal besar dari hal kecil adalah kelemahan Zizhang. Hari ini: keluar kerja dengan serah terima rapi, bahkan buku kata sandi ditinggalkan, itu setia pada tugas, belum bisa disebut lebih."
+   "片里落点": "Setia dan bersih adalah kebajikan satu segi; kemanusiaan melihat apakah seluruhnya selaras dengan prinsip dan sungguh tanpa pamrih; mempercayai hal besar dari hal kecil adalah kelemahan Zizhang. Hari ini: keluar kerja dengan serah terima rapi, bahkan buku kata sandi ditinggalkan, itu setia pada tugas, belum bisa disebut lebih.",
+   "常见读法": "Tiga kali menjabat tanpa gembira, tiga kali dicopot tanpa dendam, meninggalkan harta untuk pergi dari negeri yang kacau — bagaimana itu bukan ren?",
+   "字眼": "“三已之” — “yi” berarti dicopot; “十乘，四十匹” — sepuluh kereta adalah empat puluh kuda; “违，去也” — “wei” berarti meninggalkan; dalam “未知，焉得仁” “知” dibaca biasa, mengetahui.",
+   "诸家": "Zhu Xi: tentang Ziwen, “但许其忠，而未许其仁” — ia hanya mengakui kesetiaannya, bukan ren-nya; tentang Wenzi, “特许其清，而不许其仁” — ia hanya mengakui kemurniannya, bukan ren-nya. Ia mengutip gurunya: “当理而无私心，则仁矣” — sesuai prinsip tanpa pikiran pamrih, itulah ren; “子张未识仁体，而悦于苟难，遂以小者信其大者” — Zizhang belum mengenal hakikat ren dan terpikat pada perbuatan yang sulit, maka ia memercayakan yang kecil untuk menjamin yang besar; “以他书考之” — dicek dari buku lain, Ziwen “所谋者无非僭王猾夏之事” — yang ia rencanakan tak lain merebut gelar raja dan mengganggu negeri-negeri tengah, dan Wenzi “不数岁而复反于齐” — dalam beberapa tahun kembali ke Qi."
   },
   "5.19": {
    "title": "Mengapa berpikir dua kali sudah cukup?",
    "yw": "Ji Wenzi berpikir tiga kali sebelum bertindak. Sang Guru mendengarnya dan berkata: Dua kali sudah cukup.",
-   "片里落点": "Bila pada kali ketiga masih ragu, tanyakan pada diri sendiri: sedang memikirkan urusannya, atau untung ruginya? Hari ini: membaca kontrak untuk keempat kalinya dan mulai menemukan kesalahan yang sebenarnya bukan kesalahan."
+   "片里落点": "Bila pada kali ketiga masih ragu, tanyakan pada diri sendiri: sedang memikirkan urusannya, atau untung ruginya? Hari ini: membaca kontrak untuk keempat kalinya dan mulai menemukan kesalahan yang sebenarnya bukan kesalahan.",
+   "常见读法": "“Pikir tiga kali sebelum bertindak” biasanya dipuji sebagai kebajikan — mengapa Konfusius bilang dua kali cukup?",
+   "字眼": "“三” di sini dibaca sàn, berarti “berulang-ulang”; “斯，语辞” — “si” adalah partikel.",
+   "诸家": "Zhu Xi: Ji Wenzi “每事必三思而后行，若使晋而求遭丧之礼以行” — berpikir tiga kali sebelum setiap tindakan, seperti ketika diutus ke Jin ia lebih dulu mencari tata upacara untuk kematian. Ia mengutip Guru Cheng: “再则已审，三则私意起而反惑矣” — pada kali kedua sudah jelas; pada kali ketiga pikiran pamrih muncul dan malah membingungkan. Zhu Xi menambahkan bahwa ketika Adipati Xuan merebut takhta, Wenzi “不能讨，反为之使齐而纳赂焉” — tidak dapat menghukumnya, malah pergi ke Qi atas namanya membawa suap: “君子务穷理而贵果断，不徒多思之为尚” — budiman berusaha memahami tuntas dan menghargai ketegasan, bukan sekadar banyaknya pikiran."
   },
   "5.20": {
    "title": "Mengapa “kebodohan” ini lebih sulit dipelajari daripada kecerdikan?",
    "yw": "Sang Guru berkata: Ning Wuzi, ketika negara berjalan di atas Jalan, ia bijak; ketika negara kehilangan Jalan, ia bodoh. Kebijakannya dapat ditiru; kebodohannya tak dapat ditiru.",
-   "片里落点": "“Bodoh” berarti mau mengerjakan yang dihindari semua orang pintar, sambil tetap menjaga diri dan menolong rajanya; catatan Cheng tentang Bi Gan menunjukkan ini bukan sekadar pura-pura bodoh. Hari ini: tahun perusahaan dilanda masalah semua orang pergi, ia tetap tinggal membereskan pembukuan yang kacau."
+   "片里落点": "“Bodoh” berarti mau mengerjakan yang dihindari semua orang pintar, sambil tetap menjaga diri dan menolong rajanya; catatan Cheng tentang Bi Gan menunjukkan ini bukan sekadar pura-pura bodoh. Hari ini: tahun perusahaan dilanda masalah semua orang pergi, ia tetap tinggal membereskan pembukuan yang kacau.",
+   "常见读法": "“Kebodohannya tak tertandingi” kini dipakai sebagai hinaan — mengapa kebodohan semacam ini lebih sulit dipelajari daripada kepandaian?",
+   "字眼": "“知” dibaca “zhi”, kebijaksanaan; “甯” dibaca nìng.",
+   "诸家": "Zhu Xi: Ning Wuzi “仕卫，当文公、成公之时” — mengabdi di Wei di bawah Adipati Wen dan Cheng; di bawah Adipati Wen yang memiliki Jalan, “无事可见，此其知之可及也” — tak ada yang menonjol untuk dilihat, maka kebijaksanaannya dapat ditandingi; di bawah Adipati Cheng yang tak memiliki Jalan dan kehilangan negeri, ia “周旋其间，尽心竭力，不避艰险……而能卒保其身以济其君，此其愚之不可及也” — bergerak di tengah semuanya, mencurahkan seluruh hati dan tenaga, tidak menghindari bahaya, dan akhirnya menjaga dirinya selamat serta menyelamatkan tuannya; itulah kebodohan yang tak tertandingi. Ia mengutip Guru Cheng: “邦无道能沉晦以免患……亦有不当愚者，比干是也” — bila negeri tak memiliki Jalan, orang boleh merendah untuk menghindari bencana, namun ada yang tak sepatutnya berpura-pura bodoh, seperti Bi Gan."
   },
   "5.21": {
    "title": "Setelah bertahun-tahun mengembara, untuk apa Konfusius pulang?",
    "yw": "Ketika Sang Guru di negeri Chen, ia berkata: Pulanglah! Pulanglah! Anak-anak muda kampungku bercita-cita tinggi tetapi ceroboh; mereka sudah menghasilkan corak yang indah, tetapi belum tahu cara memotongnya.",
-   "片里落点": "Beralih dari menjalankan Jalan ke mewariskan Jalan; orang muda yang bersemangat bisa maju dalam Jalan, hanya dikhawatirkan melampaui batas, maka ia pulang untuk merapikan mereka. Hari ini: proposal karyawan baru berisi delapan ide bagus dalam sepuluh halaman, tetap perlu orang yang membantu memangkasnya."
+   "片里落点": "Beralih dari menjalankan Jalan ke mewariskan Jalan; orang muda yang bersemangat bisa maju dalam Jalan, hanya dikhawatirkan melampaui batas, maka ia pulang untuk merapikan mereka. Hari ini: proposal karyawan baru berisi delapan ide bagus dalam sepuluh halaman, tetap perlu orang yang membantu memangkasnya.",
+   "常见读法": "Setelah bertahun-tahun mengembara di berbagai negeri, untuk apa Konfusius pulang?",
+   "字眼": "“与” dibaca yú, partikel; “斐” dibaca fěi; “裁，割正也” — “cai” berarti memotong lurus; “狂简，志大而略于事” — “ambisius dan ceroboh” berarti cita-cita besar tetapi kurang memperhatikan urusan praktis.",
+   "诸家": "Zhu Xi: “此孔子周流四方，道不行而思归之叹也” — ini keluhan Konfusius yang rindu pulang setelah mengembara ke mana-mana tanpa Jalannya dijalankan; “夫子初心，欲行其道于天下，至是而知其终不用也。于是始欲成就后学，以传道于来世” — keinginan awalnya adalah menjalankan Jalan di seluruh dunia; kini ia tahu tak akan pernah dipakai, maka ia mulai ingin membentuk murid-muridnya dan mewariskan Jalan ke zaman berikutnya; “不得中行之士而思其次……但恐其过中失正，而或陷于异端耳，故欲归而裁之也” — tak menemukan orang yang berjalan di tengah, ia memikirkan yang terbaik berikutnya, hanya khawatir mereka melampaui titik tengah dan jatuh ke ajaran sesat, maka ia ingin pulang dan membentuk mereka."
   },
   "5.22": {
    "title": "Bo Yi dan Shu Qi begitu angkuh, mengapa tak ada yang mendendam?",
    "yw": "Sang Guru berkata: Bo Yi dan Shu Qi tidak mengingat-ingat kesalahan lama; karena itu jarang ada dendam.",
-   "片里落点": "Begitu bersih hingga seolah tak menoleransi siapa pun, tetapi begitu orang berubah mereka berhenti, maka sedikit yang mendendam; kelapangan orang yang bersih adalah tak menyimpan catatan lama. Hari ini: tetangga yang pernah bertengkar sudah minta maaf, di tangga tetap saling mengangguk."
+   "片里落点": "Begitu bersih hingga seolah tak menoleransi siapa pun, tetapi begitu orang berubah mereka berhenti, maka sedikit yang mendendam; kelapangan orang yang bersih adalah tak menyimpan catatan lama. Hari ini: tetangga yang pernah bertengkar sudah minta maaf, di tangga tetap saling mengangguk.",
+   "常见读法": "Bo Yi dan Shu Qi begitu luhur dan menjaga jarak — mengapa tak ada yang dendam kepada mereka?",
+   "字眼": "“怨是用希” — “shi yong” berarti karena itu, “xi” berarti sedikit; “浼” dibaca měi, mengotori; dalam “所恶” “恶” dibaca wù.",
+   "诸家": "Zhu Xi mengutip Mencius: “不立于恶人之朝，不与恶人言……望望然去之，若将浼焉。其介如此，宜若无所容矣” — mereka tak mau berdiri di istana orang jahat dan tak mau bicara dengan orang jahat, lalu pergi tergesa seolah akan dikotori; begitu cerewet, orang kira tak ada yang sanggup hidup bersama mereka; “然其所恶之人，能改即止，故人亦不甚怨之也” — namun begitu orang yang mereka tak sukai memperbaiki diri, mereka berhenti, maka orang tak terlalu dendam kepada mereka. Ia mengutip Guru Cheng: “不念旧恶，此清者之量” — tidak mengingat kesalahan lama adalah kelapangan hati orang yang murni; “二子之心，非夫子孰能知之” — siapa selain Guru yang dapat mengenal hati kedua orang ini?"
   },
   "5.23": {
    "title": "Mengapa meminjamkan dari tetangga itu tidak lurus?",
    "yw": "Sang Guru berkata: Siapa bilang Weisheng Gao lurus? Seseorang meminta cuka kepadanya; ia memintanya dari tetangga lalu memberikannya.",
-   "片里落点": "Bilang “tidak punya” kalau memang tidak punya, itulah lurus; meminjam lalu mengaku milik sendiri adalah membengkokkan diri untuk menyenangkan orang. Perkara kecil, tetapi Cheng berkata yang dirusak adalah kelurusan itu sendiri. Hari ini: rekan kerja minta kabel charger, kita pinjam dari meja sebelah lalu bilang “Ini punyaku, pakai saja.”"
+   "片里落点": "Bilang “tidak punya” kalau memang tidak punya, itulah lurus; meminjam lalu mengaku milik sendiri adalah membengkokkan diri untuk menyenangkan orang. Perkara kecil, tetapi Cheng berkata yang dirusak adalah kelurusan itu sendiri. Hari ini: rekan kerja minta kabel charger, kita pinjam dari meja sebelah lalu bilang “Ini punyaku, pakai saja.”",
+   "常见读法": "Ia meminjamkan sesuatu atas nama orang lain — mengapa itu dianggap tidak lurus?",
+   "字眼": "“醯” dibaca xī, cuka; “乞” dibaca qǐ; “徇” dibaca xùn; dalam “掠美” “掠” dibaca lüè.",
+   "诸家": "Zhu Xi: “微生姓，高名，鲁人，素有直名者” — marga Weisheng, nama Gao, orang Lu yang lama dikenal lurus; “夫子言此，讥其曲意徇物，掠美市恩，不得为直也” — Guru mengatakan ini untuk menyindirnya karena membelokkan niat demi menyenangkan orang, merebut pujian dan membeli budi, yang tak bisa disebut lurus. Ia mengutip Guru Cheng: “微生高所枉虽小，害直为大” — belokannya kecil, tetapi kerusakannya bagi kelurusan besar; dan Fan: “是曰是，非曰非，有谓有，无谓无，曰直。圣人观人于其一介之取予，而千驷万钟从可知焉” — ya untuk ya, tidak untuk tidak, ada untuk ada, tidak ada untuk tidak ada: itulah lurus; orang bijak menilai orang dari mengambil dan memberi yang terkecil, dan dari situ diketahui bagaimana ia menangani seribu kereta kuda."
   },
   "5.24": {
    "title": "Mengapa Konfusius malu pada sopan santun berlebihan?",
    "yw": "Sang Guru berkata: Kata-kata manis, wajah menjilat, hormat berlebihan—Zuoqiu Ming malu akan itu, aku pun malu. Menyembunyikan dendam lalu berteman dengan orangnya—Zuoqiu Ming malu akan itu, aku pun malu.",
-   "片里落点": "Kedua hal memalukan itu sama-sama tak selaras luar dan dalam: kata manis, senyum, dan basa-basi berlebihan untuk mengambil hati; berteman sambil menyimpan dendam adalah kepalsuan. Xie berkata ini lebih memalukan daripada mencuri, karena hatinya tidak lurus. Hari ini: masih menyimpan dendam, tetapi di meja makan menjadi yang pertama mengangkat gelas untuknya."
+   "片里落点": "Kedua hal memalukan itu sama-sama tak selaras luar dan dalam: kata manis, senyum, dan basa-basi berlebihan untuk mengambil hati; berteman sambil menyimpan dendam adalah kepalsuan. Xie berkata ini lebih memalukan daripada mencuri, karena hatinya tidak lurus. Hari ini: masih menyimpan dendam, tetapi di meja makan menjadi yang pertama mengangkat gelas untuknya.",
+   "常见读法": "Terlalu sopan tentu tidak berbahaya — mengapa Konfusius menganggapnya memalukan?",
+   "字眼": "Dalam “足恭”, “足” dibaca jù; Zhu Xi: “将树反。足，过也” — dilafalkan jù; berarti berlebihan; “匿” dibaca nì; “窬” dibaca yú (“穿窬”, pencuri yang membobol atau memanjat tembok).",
+   "诸家": "Zhu Xi mengutip Guru Cheng: “左丘明，古之闻人也” — Zuoqiu Ming adalah orang termasyhur di masa lalu; dan Xie: “二者之可耻，有甚于穿窬也。左丘明耻之，其所养可知矣。夫子自言丘亦耻之，盖窃比老彭之意。又以深戒学者，使察乎此而立心以直也” — kedua hal ini lebih memalukan daripada membobol rumah; bahwa Zuoqiu Ming malu karenanya menunjukkan pembinaan dirinya; “aku pun malu” dari Guru mengandung makna membandingkan diri dengan rendah hati kepada Lao Peng, dan memperingatkan pelajar dalam-dalam agar memeriksa ini dan menetapkan hati pada kelurusan."
   },
   "5.25": {
    "title": "Mengapa cita-cita Konfusius lebih besar dari Zilu dan Yan Yuan?",
    "yw": "Yan Yuan dan Ji Lu mendampingi. Sang Guru berkata: Mengapa kalian tidak masing-masing menyebut cita-cita? Zilu berkata: Saya ingin kereta, kuda, pakaian, dan mantel bulu ringan saya dipakai bersama teman-teman, dan tak menyesal bila rusak. Yan Yuan berkata: Saya ingin tidak memamerkan kebaikan saya dan tidak menonjolkan jasa saya. Zilu berkata: Kami ingin mendengar cita-cita Guru. Sang Guru berkata: Agar orang tua merasa tenteram, teman saling percaya, dan yang muda disayangi.",
-   "片里落点": "Ketiganya berbagi dengan orang lain, bedanya pada besar kecil: Zilu berbagi kereta dan kuda dengan teman, Yan Yuan tak memamerkan diri, Konfusius membuat setiap orang mendapat tempatnya, seperti langit dan bumi memelihara tanpa jejak. Hari ini: ibu di kompleks yang dititipi kunci oleh para lansia dan pintunya jadi tujuan pertama anak-anak sepulang sekolah."
+   "片里落点": "Ketiganya berbagi dengan orang lain, bedanya pada besar kecil: Zilu berbagi kereta dan kuda dengan teman, Yan Yuan tak memamerkan diri, Konfusius membuat setiap orang mendapat tempatnya, seperti langit dan bumi memelihara tanpa jejak. Hari ini: ibu di kompleks yang dititipi kunci oleh para lansia dan pintunya jadi tujuan pertama anak-anak sepulang sekolah.",
+   "常见读法": "Mengapa keinginan Konfusius lebih besar daripada keinginan Zilu dan Yan Yuan?",
+   "字眼": "“盍” — mengapa tidak; “衣” dibaca nada turun, memakai; “敝” — usang; “伐” — membual; “施” — memamerkan. Zhu Xi memberi dua bacaan “劳”: jasa (seperti dalam “劳而不伐”) atau tugas yang melelahkan (tak ingin membebankannya kepada orang lain), dan berkata “亦通” — keduanya bisa.",
+   "诸家": "Zhu Xi: “老者养之以安，朋友与之以信，少者怀之以恩” — merawat orang tua agar tenteram, bergaul dengan teman dalam kepercayaan, menyayangi yang muda dengan kebaikan; bacaan lain, “安之，安我也；信之，信我也；怀之，怀我也。亦通” — orang tua tenteram bersamaku, teman memercayaiku, yang muda mendekat kepadaku, juga bisa. Ia mengutip Guru Cheng: “夫子安仁，颜渊不违仁，子路求仁” — Guru tenteram dalam ren, Yan Yuan tak menyimpang dari ren, Zilu mencari ren; “子路、颜渊、孔子之志，皆与物共者也，但有小大之差尔” — ketiga keinginan itu tentang berbagi dengan orang lain, hanya berbeda ukurannya; dan “羁靮以御马而不以制牛……须要识得圣贤气象” — kekang untuk kuda, bukan untuk sapi... orang harus belajar mengenali sikap orang bijak dan orang layak."
   },
   "5.26": {
    "title": "Mengapa begitu sulit melihat kesalahan sendiri?",
    "yw": "Sang Guru berkata: Sudahlah! Aku belum melihat orang yang dapat melihat kesalahannya sendiri dan menggugat dirinya dalam hati.",
-   "片里落点": "Dua lapis: tahu kesalahan sendiri sudah jarang; tahu lalu menggugat diri dalam hati lebih jarang lagi; hanya dengan menggugat diri perubahan bisa tuntas. Keluhan “belum melihat” adalah peringatan bagi para pelajar. Hari ini: ia salah menyebut satu angka di rapat dan tak ada yang sadar, seusai rapat ia sendiri mengirim pesan meralatnya."
+   "片里落点": "Dua lapis: tahu kesalahan sendiri sudah jarang; tahu lalu menggugat diri dalam hati lebih jarang lagi; hanya dengan menggugat diri perubahan bisa tuntas. Keluhan “belum melihat” adalah peringatan bagi para pelajar. Hari ini: ia salah menyebut satu angka di rapat dan tak ada yang sadar, seusai rapat ia sendiri mengirim pesan meralatnya.",
+   "常见读法": "Mengapa begitu sulit melihat kesalahan sendiri?",
+   "字眼": "“讼” semula berarti berselisih (Shuowen: “讼，争也”); “内自讼” adalah mengadili diri sendiri di dalam hati; “咎” dibaca jiù; “鲜” dibaca xiǎn, sedikit.",
+   "诸家": "Zhu Xi: “已矣乎者，恐其终不得见而叹之也。内自讼者，口不言而心自咎也” — “sudahlah” adalah keluhan karena takut tak akan pernah melihat orang seperti itu; “mendakwa diri di dalam” berarti tak berkata apa-apa tetapi menyalahkan diri di hati; “人有过而能自知者鲜矣，知过而能内自讼者为尤鲜。能内自讼，则其悔悟深切而能改必矣。夫子自恐终不得见而叹之，其警学者深矣” — sedikit orang bersalah yang tahu kesalahannya; lebih sedikit lagi yang tahu lalu dapat mendakwa diri di dalam; yang mampu akan menyesal dalam dan pasti berubah; Guru mengeluh karena takut tak pernah melihatnya, peringatan yang dalam bagi pelajar. Di sini Zhu Xi tidak mengutip komentator lain."
   },
   "5.27": {
    "title": "Satu hal yang Konfusius akui lebih dari orang lain",
    "yw": "Sang Guru berkata: Di dusun sepuluh keluarga pasti ada orang yang setia dan tepercaya seperti aku, tetapi tak ada yang gemar belajar seperti aku.",
-   "片里落点": "Setia dan tepercaya adalah dasar, ada di mana-mana; gemar belajar adalah upaya, jarang ditemukan. Konfusius tidak membanggakan pengetahuan bawaan, hanya kegemaran belajar, untuk menyemangati orang. Bab Gongye Chang berakhir di sini. Hari ini: orang jujur dan andal ada di mana-mana; yang masih ikut sekolah malam di usia enam puluh sedikit."
+   "片里落点": "Setia dan tepercaya adalah dasar, ada di mana-mana; gemar belajar adalah upaya, jarang ditemukan. Konfusius tidak membanggakan pengetahuan bawaan, hanya kegemaran belajar, untuk menyemangati orang. Bab Gongye Chang berakhir di sini. Hari ini: orang jujur dan andal ada di mana-mana; yang masih ikut sekolah malam di usia enam puluh sedikit.",
+   "常见读法": "Apakah satu-satunya hal yang Konfusius akui ia miliki lebih banyak daripada orang lain hanya satu hal?",
+   "字眼": "“焉” dibaca yān; Zhu Xi: “如字，属上句” — dibaca biasa, termasuk anak kalimat sebelumnya (jeda setelah “如丘者焉”); “好” dalam “好学” bernada turun; “邑” — permukiman kecil; “质” — bawaan alami.",
+   "诸家": "Zhu Xi: “十室，小邑也。忠信如圣人，生质之美者也” — sepuluh rumah tangga adalah permukiman kecil; kesetiaan dan keterpercayaan seperti orang bijak adalah bawaan alami yang indah; “夫子生知而未尝不好学，故言此以勉人。言美质易得，至道难闻，学之至则可以为圣人，不学则不免为乡人而已。可不勉哉” — Guru tahu sejak lahir namun tak pernah berhenti mencintai belajar, maka ia berkata ini untuk mendorong orang: bawaan indah mudah ditemukan, Jalan tertinggi sulit didengar; belajar sampai tuntas, orang bisa menjadi bijak, tanpa belajar orang tetap orang kampung. Bagaimana bisa tidak berusaha?"
   },
   "6.1": {
    "title": "Mengapa urusan boleh sederhana tetapi hati tidak?",
    "yw": "Sang Guru berkata: Yong layak diberi kursi menghadap selatan. Zhonggong bertanya tentang Zisang Bozi. Sang Guru berkata: Boleh, ia sederhana. Zhonggong berkata: Berdiam dalam hormat dan bertindak sederhana dalam memerintah rakyat, bukankah itu baik? Berdiam dalam kesederhanaan dan bertindak sederhana, bukankah itu terlalu sederhana? Sang Guru berkata: Kata-kata Yong benar.",
-   "片里落点": "Sama-sama “sederhana”: yang satu hatinya punya pegangan, hormat di mana-mana, sehingga urusan dengan sendirinya tidak ruwet; yang lain sejak awal ingin hemat tenaga dan melepaskan dirinya sendiri, jadi terlalu sederhana. Hari ini: tim dengan aturan paling sedikit justru dipimpin orang yang paling tepat waktu dan paling tertib."
+   "片里落点": "Sama-sama “sederhana”: yang satu hatinya punya pegangan, hormat di mana-mana, sehingga urusan dengan sendirinya tidak ruwet; yang lain sejak awal ingin hemat tenaga dan melepaskan dirinya sendiri, jadi terlalu sederhana. Hari ini: tim dengan aturan paling sedikit justru dipimpin orang yang paling tepat waktu dan paling tertib.",
+   "常见读法": "Mengapa urusan boleh ditangani dengan sederhana, tetapi hati tidak boleh sederhana?",
+   "字眼": "“南面者，人君听治之位” — menghadap selatan adalah kedudukan raja ketika memerintah; “可者，仅可而有所未尽之辞。简者，不烦之谓” — “boleh” berarti nyaris dapat diterima, dengan sesuatu yang kurang; “sederhana” berarti tidak bertele-tele; “大” dalam “大简” dibaca tài; “衣” dalam “不衣冠而处” bernada turun, memakai. Zisang Bozi, menurut dugaan Hu, adalah Zisang Hu yang disebut dalam Zhuangzi.",
+   "诸家": "Zhu Xi: “言自处以敬，则中有主而自治严……岂不失之大简，而无法度之可守乎” — bila menjaga diri dengan hormat, ada tuan di dalam dan disiplin diri ketat … kalau tidak, bukankah terlalu sederhana, tanpa aturan untuk dipegang? Ia mengutip Kongzi Jiayu: Bozi “不衣冠而处，夫子讥其欲同人道于牛马” — hidup tanpa pakaian dan topi yang patut; Guru menyindirnya karena ingin menyamakan cara manusia dengan cara sapi dan kuda; dan Guru Cheng: “居敬则心中无物，故所行自简；居简则先有心于简，而多一简字矣，故曰大简” — berdiam dalam hormat, hati tak menyimpan yang berlebih, maka tindakan dengan sendirinya sederhana; berdiam dalam kesederhanaan, orang lebih dulu memasang niat pada kesederhanaan, menambah satu “sederhana”, maka disebut “terlalu sederhana”."
   },
   "6.2": {
    "title": "Mengapa “gemar belajar” bagi Konfusius bukan membaca banyak?",
    "yw": "Adipati Ai bertanya: Siapa di antara murid-muridmu yang gemar belajar? Konfusius menjawab: Ada Yan Hui yang gemar belajar. Ia tidak memindahkan amarahnya, tidak mengulangi kesalahan. Sayang umurnya pendek dan ia wafat. Kini tak ada lagi; aku belum mendengar ada yang gemar belajar.",
-   "片里落点": "Adipati bertanya tentang ilmu, Konfusius menjawab dengan dua hal pembinaan diri: marah muncul karena perkara dan berhenti setelah perkara lewat, tidak dilampiaskan kepada orang lain; salah sekali langsung tahu, tidak mengulang. Gemar belajar terletak pada menguasai perasaan sendiri, bukan banyak membaca. Hari ini: dimarahi di kantor, sampai di rumah ia tetap berjongkok mengikat tali sepatu anaknya dengan baik."
+   "片里落点": "Adipati bertanya tentang ilmu, Konfusius menjawab dengan dua hal pembinaan diri: marah muncul karena perkara dan berhenti setelah perkara lewat, tidak dilampiaskan kepada orang lain; salah sekali langsung tahu, tidak mengulang. Gemar belajar terletak pada menguasai perasaan sendiri, bukan banyak membaca. Hari ini: dimarahi di kantor, sampai di rumah ia tetap berjongkok mengikat tali sepatu anaknya dengan baik.",
+   "常见读法": "Mengapa “cinta belajar” Konfusius tidak berarti membaca banyak?",
+   "字眼": "“好” bernada turun; “亡，与无同” — “wang” sama dengan “tidak ada”; “迁，移也。贰，复也” — “qian” berarti memindahkan, “er” berarti mengulang; Yan Hui “三十二而卒” — wafat pada usia tiga puluh dua (seperti dicatat Zhu Xi).",
+   "诸家": "Guru Cheng: “颜子之怒，在物不在己，故不迁。有不善未尝不知，知之未尝复行，不贰过也” — amarah Yanzi terletak pada perkaranya, bukan pada dirinya, maka tak berpindah; setiap kali ada yang tidak baik ia selalu tahu, dan setelah tahu tak pernah mengulanginya: itulah tidak mengulang kesalahan; “喜怒在事，则理之当喜怒者也，不在血气则不迁” — bila gembira dan marah terletak pada perkara, itulah yang dituntut prinsip; tidak terletak pada darah dan napas, maka tak berpindah; “如鉴之照物，妍媸在彼，随物应之而已” — seperti cermin memantulkan benda, indah dan buruk ada pada benda itu; cermin hanya menanggapi masing-masing. Guru Zhang: “慊于己者，不使萌于再” — apa yang membuat diri tak puas tidak dibiarkan bertunas kedua kalinya. Guru Cheng tentang belajar: “学以至乎圣人之道” — belajar untuk mencapai Jalan orang bijak; “约其情使合于中，正其心，养其性” — mengekang perasaan agar sesuai titik tengah, meluruskan hati, memupuk kodrat; dan ia menutup dengan menyindir “今人乃谓圣本生知，非学可至，而所以为学者，不过记诵文辞之间，其亦异乎颜子之学矣” — orang sekarang bilang kebijaksanaan itu bawaan dan tak dapat dicapai dengan belajar, dan belajar mereka tak lebih dari menghafal dan menyusun kata — jauh dari belajarnya Yanzi."
   },
   "6.3": {
    "title": "Mengapa Konfusius memberi satu orang sedikit beras dan yang lain banyak?",
    "yw": "Zihua diutus ke Qi, dan Ranzi meminta beras untuk ibunya. Sang Guru berkata: Beri satu fu. Ia minta tambah. Sang Guru berkata: Beri satu yu. Ranzi memberi lima bing. Sang Guru berkata: Chi pergi ke Qi menunggang kuda gemuk dan memakai mantel bulu ringan. Aku mendengar: junzi menolong yang kekurangan, tidak menambah kekayaan yang kaya. Yuan Si menjadi pengurus rumahnya, diberi sembilan ratus takar beras, dan ia menolak. Sang Guru berkata: Jangan! Berikan kepada tetangga dan orang sekampungmu.",
-   "片里落点": "Memberi banyak atau sedikit bukan soal sungkan, melainkan pantas atau tidak. Keluarga Zihua tidak kekurangan, jadi diberi sedikit agar tak menambah kekayaan yang kaya; gaji Yuan Si adalah hak jabatannya, menolaknya justru keliru, kelebihannya dibagikan kepada tetangga. Yang satu “menolong yang mendesak, bukan menambah yang kaya”, yang lain “gaji tetap tak semestinya ditolak”."
+   "片里落点": "Memberi banyak atau sedikit bukan soal sungkan, melainkan pantas atau tidak. Keluarga Zihua tidak kekurangan, jadi diberi sedikit agar tak menambah kekayaan yang kaya; gaji Yuan Si adalah hak jabatannya, menolaknya justru keliru, kelebihannya dibagikan kepada tetangga. Yang satu “menolong yang mendesak, bukan menambah yang kaya”, yang lain “gaji tetap tak semestinya ditolak”.",
+   "常见读法": "Keduanya pemberian gandum — mengapa Konfusius memberi yang satu sedikit dan yang lain banyak?",
+   "字眼": "“使、为，并去声” — “shi” dan “wei” sama-sama bernada turun; satu fu adalah enam dou empat sheng, satu yu enam belas dou, satu bing enam belas hu; “衣” bernada turun, memakai; “急，穷迫也。周者，补不足。继者，续有余” — “ji” adalah kebutuhan mendesak; “zhou” adalah menutup kekurangan; “ji” (melanjutkan) adalah menambah kelebihan; “毋，禁止辞” — “wu” adalah kata larangan.",
+   "诸家": "Guru Cheng: “圣人宽容，不欲直拒人，故与之少，所以示不当与也……求未达而自与之多，则已过矣” — orang bijak toleran dan tak ingin menolak mentah-mentah, maka memberi sedikit untuk menunjukkan bahwa itu tak semestinya diberi … Qiu tak paham dan memberi banyak atas kemauannya sendiri, itu sudah berlebihan; “原思为宰，则有常禄。思辞其多，故又教以分诸邻里之贫者，盖亦莫非义也” — sebagai pengurus Yuan Si punya gaji tetap; ketika ia menolaknya karena terlalu banyak, Guru mengajarinya membaginya kepada orang miskin di lingkungannya: ini pun benar. Guru Zhang: “于斯二者，可见圣人之用财矣” — dari dua kasus ini terlihat bagaimana orang bijak memakai harta."
   },
   "6.4": {
    "title": "Bolehkah orang berlatar buruk dipakai?",
    "yw": "Sang Guru berkata tentang Zhonggong: Anak sapi dari sapi belang yang berbulu merah dan bertanduk lurus, meski orang tak mau memakainya, akankah roh gunung dan sungai menolaknya?",
-   "片里落点": "Anak sapi dari sapi bajak belang, merah murni dan tanduknya bagus: meski orang tak mau mempersembahkannya karena asal-usulnya, roh gunung dan sungai tak akan menolaknya. Keburukan ayah tak membatalkan kebaikan anak; catatan Zhu Xi menekankan ini membicarakan Zhonggong, bukan ucapan langsung kepadanya."
+   "片里落点": "Anak sapi dari sapi bajak belang, merah murni dan tanduknya bagus: meski orang tak mau mempersembahkannya karena asal-usulnya, roh gunung dan sungai tak akan menolaknya. Keburukan ayah tak membatalkan kebaikan anak; catatan Zhu Xi menekankan ini membicarakan Zhonggong, bukan ucapan langsung kepadanya.",
+   "常见读法": "Bisakah orang berlatar belakang rendah dipekerjakan?",
+   "字眼": "“犁，利之反” — “li” dibaca lí, belang; “骍，息营反” — “xing” dibaca xīng, merah; “舍，上声” — “she” bernada naik; “言人虽不用，神必不舍也” — meski manusia tak memakainya, roh-roh pasti tak menolaknya.",
+   "诸家": "Zhu Xi: “仲弓父贱而行恶，故夫子以此譬之……然此论仲弓云尔，非与仲弓言也” — ayah Zhonggong berkedudukan rendah dan berperilaku buruk, maka Guru memakai perumpamaan ini … tetapi ini berbicara tentang Zhonggong, bukan kepadanya. Fan: “以瞽瞍为父而有舜，以鲧为父而有禹……子能改父之过，变恶以为美，则可谓孝矣” — dengan Gusou sebagai ayah ada Shun, dengan Gun sebagai ayah ada Yu … anak yang dapat memperbaiki kesalahan ayahnya dan mengubah buruk menjadi baik boleh disebut berbakti."
   },
   "6.5": {
    "title": "Di mana Yan Hui berbeda dari yang lain?",
    "yw": "Sang Guru berkata: Hui, hatinya bisa tiga bulan tak meninggalkan kemanusiaan; yang lain hanya mencapainya sehari atau sebulan, tidak lebih.",
-   "片里落点": "Kemanusiaan Yan Hui seperti tuan rumah yang tinggal di rumah, sesekali keluar; milik yang lain seperti tamu yang sesekali datang. Bedanya pada lama tidaknya, bukan ada tidaknya."
+   "片里落点": "Kemanusiaan Yan Hui seperti tuan rumah yang tinggal di rumah, sesekali keluar; milik yang lain seperti tamu yang sesekali datang. Bedanya pada lama tidaknya, bukan ada tidaknya.",
+   "常见读法": "Yan Hui dan yang lain: di mana tepatnya perbedaannya?",
+   "字眼": "“三月，言其久” — “tiga bulan” berarti waktu yang lama; “日月至焉，或日一至焉，或月一至焉，能造其域而不能久也” — “mencapainya sehari atau sebulan” berarti tiba sekali sehari atau sekali sebulan: mereka dapat masuk wilayahnya tetapi tak dapat tinggal lama.",
+   "诸家": "Guru Cheng: “三月，天道小变之节，言其久也……过此则圣人矣” — tiga bulan adalah satu pergantian kecil dalam peredaran langit, berarti waktu lama … lebih dari ini orang menjadi bijak. Yin: “此颜子于圣人，未达一间者也” — di sini Yanzi kurang sehelai rambut dari orang bijak. Guru Zhang: “始学之要，当知三月不违与日月至焉内外宾主之辨” — kunci bagi pemula adalah mengenal perbedaan dalam dan luar, tuan rumah dan tamu, antara “tiga bulan tak menyimpang” dan “mencapainya sehari atau sebulan”."
   },
   "6.6": {
    "title": "Cukupkah satu keunggulan untuk menjabat?",
    "yw": "Ji Kangzi bertanya: Bisakah Zhong You diserahi pemerintahan? Sang Guru berkata: You tegas; apa sulitnya dalam pemerintahan? Ia bertanya: Bisakah Ci diserahi pemerintahan? Jawabnya: Ci cerdas; apa sulitnya? Ia bertanya: Bisakah Qiu diserahi pemerintahan? Jawabnya: Qiu serba bisa; apa sulitnya?",
-   "片里落点": "Zilu tegas, Zigong cerdas, Ran Qiu serba bisa: masing-masing punya satu keunggulan sehingga bisa dipakai. Memakai orang berarti mengambil kelebihannya."
+   "片里落点": "Zilu tegas, Zigong cerdas, Ran Qiu serba bisa: masing-masing punya satu keunggulan sehingga bisa dipakai. Memakai orang berarti mengambil kelebihannya.",
+   "常见读法": "Bisakah satu kualitas saja membuat seseorang layak menjabat?",
+   "字眼": "“从政，谓为大夫” — “ikut pemerintahan” berarti menjabat sebagai pembesar; “果，有决断。达，通事理。艺，多才能” — “guo” adalah ketegasan; “da” adalah memahami bagaimana perkara berjalan; “yi” adalah punya banyak keterampilan.",
+   "诸家": "Guru Cheng: “季康子问三子之才可以从政乎？夫子答以各有所长。非惟三子，人各有所长，能取其长，皆可用也” — Ji Kangzi bertanya apakah bakat ketiga orang itu dapat melayani pemerintahan; Guru menjawab masing-masing punya kekuatan. Bukan hanya ketiganya: setiap orang punya kekuatan, dan bila dapat diambil, semua dapat dipekerjakan."
   },
   "6.7": {
    "title": "Ditawari jabatan, mengapa ia mau kabur?",
    "yw": "Keluarga Ji ingin menjadikan Min Ziqian kepala Bi. Min Ziqian berkata: Tolong tolakkan untuk saya dengan baik. Jika ada yang datang lagi mencari saya, pasti saya sudah di seberang Sungai Wen.",
-   "片里落点": "Ia tak mau menjadi abdi keluarga Ji, tetapi meminta utusan menolakkan dengan baik; bila datang lagi, ia menyeberang sungai ke Qi. Tidak melawan keras, tidak pula tunduk: terlalu keras mengundang bencana, terlalu lunak mengundang hina."
+   "片里落点": "Ia tak mau menjadi abdi keluarga Ji, tetapi meminta utusan menolakkan dengan baik; bila datang lagi, ia menyeberang sungai ke Qi. Tidak melawan keras, tidak pula tunduk: terlalu keras mengundang bencana, terlalu lunak mengundang hina.",
+   "常见读法": "Diundang menjabat, mengapa ia bilang akan kabur?",
+   "字眼": "“费，音祕” — “费” dibaca bì; “汶，水名，在齐南鲁北竟上” — Wen adalah sungai di perbatasan, selatan Qi dan utara Lu; “闵子不欲臣季氏，令使者善为己辞；言若再来召我，则当去之齐” — Minzi tak ingin mengabdi pada keluarga Ji, maka ia meminta utusan menolak dengan baik atas namanya, berkata bila mereka memanggilnya lagi ia akan pergi ke Qi.",
+   "诸家": "Guru Cheng: “仲尼之门，能不仕大夫之家者，闵子、曾子数人而已” — di perguruan Konfusius, yang mampu tidak mengabdi di rumah pembesar hanya Minzi, Zengzi, dan beberapa lainnya. Xie: “学者能少知内外之分，皆可以乐道而忘人之势……刚则必取祸，柔则必取辱” — bila pelajar sedikit tahu beda dalam dan luar, ia dapat bersuka dalam Jalan dan melupakan kuasa orang lain … terlalu keras pasti mendatangkan bencana, terlalu lunak pasti mendatangkan aib; “然则闵子其贤乎” — maka bukankah Minzi layak?"
   },
   "6.8": {
    "title": "Mengapa Konfusius menggenggam tangan muridnya yang sekarat lewat jendela?",
    "yw": "Boniu sakit. Sang Guru menjenguknya, menggenggam tangannya lewat jendela, dan berkata: Kita kehilangan dia; ini takdir! Orang seperti ini terkena penyakit seperti ini! Orang seperti ini terkena penyakit seperti ini!",
-   "片里落点": "Keluarga Boniu memindahkan ranjang ke bawah jendela selatan menurut tata cara kunjungan raja; Konfusius tak berani menerima kehormatan itu, maka tidak masuk, hanya menggenggam tangan lewat jendela untuk berpamitan. Kalimat itu diucapkan dua kali: duka bahwa orang seperti ini menderita penyakit seperti ini, diserahkan pada takdir."
+   "片里落点": "Keluarga Boniu memindahkan ranjang ke bawah jendela selatan menurut tata cara kunjungan raja; Konfusius tak berani menerima kehormatan itu, maka tidak masuk, hanya menggenggam tangan lewat jendela untuk berpamitan. Kalimat itu diucapkan dua kali: duka bahwa orang seperti ini menderita penyakit seperti ini, diserahkan pada takdir.",
+   "常见读法": "Muridnya sakit parah — mengapa Konfusius hanya memegang tangannya dari luar jendela?",
+   "字眼": "“夫，音扶” — “夫” dibaca fú; “有疾，先儒以为癞也” — sarjana terdahulu menganggap penyakitnya kusta; “礼：病者居北牖下，君视之，则迁于南牖下，使君得以南面视己。时伯牛家以此礼尊孔子，孔子不敢当，故不入其室，而自牖执其手，盖与之永诀也” — menurut tata upacara, orang sakit berbaring di bawah jendela utara; bila penguasa menjenguk, ia dipindahkan ke bawah jendela selatan agar penguasa dapat menghadap selatan untuk melihatnya. Keluarga Boniu menghormati Konfusius dengan upacara ini; ia tak berani menerimanya, maka tak masuk ke kamar tetapi memegang tangannya lewat jendela, perpisahan terakhir; “命，谓天命” — “ming” berarti ketetapan langit.",
+   "诸家": "Hou: “伯牛以德行称，亚于颜、闵。故其将死也，孔子尤痛惜之” — Boniu dikenal karena perilaku berbudi, hanya di bawah Yan dan Min; maka ketika ia hampir wafat, Konfusius sangat berduka."
   },
   "6.9": {
    "title": "Semiskin itu, apa yang membuat Yan Hui bahagia?",
    "yw": "Sang Guru berkata: Betapa luhur Hui! Sekeranjang nasi, sekendi air, tinggal di gang sempit; orang lain tak tahan kesusahannya, Hui tak membiarkan kegembiraannya berubah. Betapa luhur Hui!",
-   "片里落点": "Yang ia nikmati bukan kemiskinan, melainkan kegembiraan yang tak dapat diubah kemiskinan. Zhu Xi memilih tidak menjelaskannya, membiarkan pembaca sendiri menemukan isi kata “其” (miliknya)."
+   "片里落点": "Yang ia nikmati bukan kemiskinan, melainkan kegembiraan yang tak dapat diubah kemiskinan. Zhu Xi memilih tidak menjelaskannya, membiarkan pembaca sendiri menemukan isi kata “其” (miliknya).",
+   "常见读法": "Yan Hui semiskin ini — apa yang membuatnya bahagia?",
+   "字眼": "“箪，竹器。食，饭也。瓢，瓠也” — “dan” adalah wadah bambu; “si” adalah nasi; “piao” adalah labu; “颜子之贫如此，而处之泰然，不以害其乐” — Yanzi semiskin ini, namun menanggungnya dengan tenang dan tak membiarkannya merusak kegembiraannya; perhatikan kata “其” (-nya).",
+   "诸家": "Guru Cheng: “颜子之乐，非乐箪瓢陋巷也，不以贫窭累其心而改其所乐也，故夫子称其贤” — kegembiraan Yanzi bukan kegembiraan atas keranjang, labu, dan gang; ia tak membiarkan kemiskinan membebani hatinya dan mengubah apa yang ia sukai, maka Guru menyebutnya layak; “其字当玩味，自有深意” — kata “其” patut direnungkan; ia mengandung makna dalam. Catatan Zhu Xi: “程子之言，引而不发，盖欲学者深思而自得之。今亦不敢妄为之说” — Guru Cheng menarik busur tanpa melepas anak panah, ingin pelajar berpikir dalam dan menemukannya sendiri; saya pun tak berani menjelaskannya sembarangan."
   },
   "6.10": {
    "title": "Ia bilang tenaganya kurang, mengapa Konfusius tak percaya?",
    "yw": "Ran Qiu berkata: Bukan saya tak menyukai Jalan Guru, tenaga saya tak cukup. Sang Guru berkata: Yang tenaganya tak cukup roboh di tengah jalan. Engkau sedang menarik garis batas.",
-   "片里落点": "Orang yang sungguh kekurangan tenaga roboh di tengah jalan; Ran Qiu sudah menggaris di tanah sebelum berangkat. Bukan tak bisa, melainkan tak mau."
+   "片里落点": "Orang yang sungguh kekurangan tenaga roboh di tengah jalan; Ran Qiu sudah menggaris di tanah sebelum berangkat. Bukan tak bisa, melainkan tak mau.",
+   "常见读法": "Ia bilang tenaganya tak cukup — mengapa Konfusius tak percaya?",
+   "字眼": "“力不足者，欲进而不能” — kurang tenaga berarti ingin maju tetapi tak mampu; “画者，能进而不欲，谓之画者，如画地以自限也” — menarik garis berarti mampu maju tetapi tak mau, seperti menggambar garis di tanah untuk membatasi diri; “女” dibaca rǔ, “engkau”.",
+   "诸家": "Hu: “夫子称颜回不改其乐，冉求闻之，故有是言。然使求说夫子之道，诚如口之说刍豢，则必将尽力以求之……此冉求之所以局于艺也” — Guru memuji Yan Hui karena tak mengubah kegembiraannya; Ran Qiu mendengarnya, maka berkata begini. Tetapi andai Qiu sungguh menyukai Jalan Guru seperti mulut menyukai daging lezat, ia pasti akan mengerahkan seluruh tenaga untuk mengejarnya … inilah sebabnya Ran Qiu terkurung pada keterampilan."
   },
   "6.11": {
    "title": "Sama-sama sarjana, di mana bedanya?",
    "yw": "Sang Guru berkata kepada Zixia: Jadilah sarjana ala junzi, jangan sarjana ala orang kecil.",
-   "片里落点": "Membaca buku yang sama: belajar untuk membangun diri adalah sarjana junzi; belajar agar dilihat orang dan meraih keuntungan adalah sarjana orang kecil. Untung bukan hanya uang; nama juga termasuk."
+   "片里落点": "Membaca buku yang sama: belajar untuk membangun diri adalah sarjana junzi; belajar agar dilihat orang dan meraih keuntungan adalah sarjana orang kecil. Untung bukan hanya uang; nama juga termasuk.",
+   "常见读法": "Keduanya orang terpelajar — di mana bedanya?",
+   "字眼": "“儒，学者之称” — “ru” adalah sebutan bagi orang terpelajar.",
+   "诸家": "Guru Cheng: “君子儒为己，小人儒为人” — cendekiawan budiman belajar untuk dirinya; cendekiawan kecil belajar untuk orang lain. Xie: “君子小人之分，义与利之间而已……虽有及人之功，而不害其为己” — pembeda budiman dan orang kecil hanya terletak di antara kebenaran dan keuntungan … meski karyanya bermanfaat bagi orang lain, itu tak berhenti menjadi untuk dirinya; “子夏文学虽有余，然意其远者大者或昧焉，故夫子语之以此” — Zixia punya pengetahuan berlebih, tetapi mungkin kabur tentang apa yang jauh jangkauannya dan agung, maka Guru mengatakan ini kepadanya."
   },
   "6.12": {
    "title": "Tak mengambil jalan pintas, apakah itu bakat?",
    "yw": "Ziyou menjadi kepala Wucheng. Sang Guru berkata: Sudahkah engkau menemukan orang baik di sana? Jawabnya: Ada Tantai Mieming, berjalan tak pernah lewat jalan pintas, dan tak pernah datang ke ruangan saya kecuali untuk urusan dinas.",
-   "片里落点": "Berjalan tak lewat jalan pintas, tanpa urusan dinas tak masuk pintu pejabat. Yang teguh dalam hal kecil bisa diandalkan dalam hal besar; Ziyou juga melihat lapis ini saat menilai orang."
+   "片里落点": "Berjalan tak lewat jalan pintas, tanpa urusan dinas tak masuk pintu pejabat. Yang teguh dalam hal kecil bisa diandalkan dalam hal besar; Ziyou juga melihat lapis ini saat menilai orang.",
+   "常见读法": "Tak pernah mengambil jalan pintas — apakah itu terhitung bakat?",
+   "字眼": "“武城，鲁下邑” — Wucheng adalah kota kecil di Lu; “澹台姓，灭明名，字子羽” — Tantai adalah marga, Mieming nama, nama kehormatan Ziyu; “径，路之小而捷者” — “jing” adalah jalan kecil yang cepat; “公事，如饮射读法之类” — urusan umum berarti hal-hal seperti upacara minum dan memanah serta pembacaan hukum.",
+   "诸家": "Yang: “为政以人才为先，故孔子以得人为问……非公事不见邑宰，则其有以自守，而无枉己徇人之私可见矣” — dalam memerintah, bakat didahulukan, maka Konfusius bertanya apakah ia sudah menemukan orang … tidak menemui kepala kota kecuali untuk urusan umum menunjukkan ia dapat memegang diri, tanpa membengkokkan diri demi menyenangkan orang. Catatan Zhu Xi: “持身以灭明为法，则无苟贱之羞；取人以子游为法，则无邪媚之惑” — jadikan Mieming teladan dalam membawa diri, orang terhindar dari aib kerendahan; jadikan Ziyou teladan dalam memilih orang, orang tak tertipu sanjungan."
   },
   "6.13": {
    "title": "Ia menjaga barisan belakang, mengapa tak mau mengakuinya?",
    "yw": "Sang Guru berkata: Meng Zhifan tidak membanggakan diri. Ketika pasukan mundur, ia di barisan paling belakang. Saat hendak masuk gerbang kota, ia mencambuk kudanya dan berkata: Bukan saya berani di belakang; kuda saya tak mau maju.",
-   "片里落点": "Menahan musuh di barisan belakang saat mundur adalah jasa besar, tetapi mendekati gerbang ia melimpahkannya pada kuda. Melempar jasa kepada kuda menunjukkan hati yang tak ingin mengungguli orang lain."
+   "片里落点": "Menahan musuh di barisan belakang saat mundur adalah jasa besar, tetapi mendekati gerbang ia melimpahkannya pada kuda. Melempar jasa kepada kuda menunjukkan hati yang tak ingin mengungguli orang lain.",
+   "常见读法": "Dialah yang melindungi pasukan saat mundur — mengapa ia tak mau mengakuinya?",
+   "字眼": "“殿，去声” — “dian” bernada turun; “伐，夸功也” — “fa” adalah membanggakan jasa; “奔，败走也。军后曰殿” — “ben” adalah lari karena kalah; barisan belakang pasukan disebut “dian”; “策，鞭也” — “ce” adalah cambuk; Hu menempatkan peristiwa ini pada pertempuran Qi dan Lu di tahun kesebelas Adipati Ai.",
+   "诸家": "Xie: “人能操无欲上人之心，则人欲日消，天理日明，而凡可以矜己夸人者，皆无足道矣……若孟之反，可以为法矣” — bila orang dapat menjaga hati yang tak ingin mengungguli orang lain, hasrat pamrih menyusut setiap hari dan prinsip langit makin jelas setiap hari, dan segala yang bisa dibanggakan di depan orang menjadi tak layak disebut … orang seperti Meng Zhifan dapat dijadikan teladan."
   },
   "6.14": {
    "title": "Tanpa lidah fasih dan wajah tampan, bisakah lolos dari bencana?",
    "yw": "Sang Guru berkata: Tanpa kefasihan pendeta Tuo, tetapi dengan ketampanan Song Zhao, sulit lolos dari bencana di zaman sekarang!",
-   "片里落点": "Ini bukan ajaran untuk melatih lidah dan rupa, melainkan ratapan atas zaman: ketika dunia hanya menghargai mulut manis dan wajah elok, orang jujur sulit lolos dari bencana."
+   "片里落点": "Ini bukan ajaran untuk melatih lidah dan rupa, melainkan ratapan atas zaman: ketika dunia hanya menghargai mulut manis dan wajah elok, orang jujur sulit lolos dari bencana.",
+   "常见读法": "Tanpa kefasihan atau rupa yang menawan, apakah masalah tak terhindarkan?",
+   "字眼": "“鮀，徒何反” — “鮀” dibaca tuó; “祝，宗庙之官。鮀，卫大夫，字子鱼，有口才。朝，宋公子，有美色” — “zhu” adalah pejabat kuil leluhur; Tuo adalah pembesar Wei, nama kehormatan Ziyu, pandai bicara; Zhao adalah pangeran Song, tampan; “言衰世好谀悦色，非此难免，盖伤之也” — dikatakan zaman yang merosot menyukai sanjungan dan rupa menawan, dan tanpa itu orang sulit lolos: ia meratapinya.",
+   "诸家": "Hanya komentar Zhu Xi."
   },
   "6.15": {
    "title": "Semua keluar lewat pintu, mengapa tidak lewat jalan yang benar?",
    "yw": "Sang Guru berkata: Siapa yang bisa keluar tanpa melalui pintu? Mengapa tak ada yang menempuh Jalan ini?",
-   "片里落点": "Semua tahu keluar lewat pintu, tidak memanjat tembok; jalan yang benar dalam hidup ada di depan mata, tetapi tak ditempuh. Bukan Jalan yang jauh dari manusia, manusialah yang menjauh sendiri."
+   "片里落点": "Semua tahu keluar lewat pintu, tidak memanjat tembok; jalan yang benar dalam hidup ada di depan mata, tetapi tak ditempuh. Bukan Jalan yang jauh dari manusia, manusialah yang menjauh sendiri.",
+   "常见读法": "Semua orang keluar lewat pintu — mengapa orang tak mau menempuh jalan yang benar dalam hidup?",
+   "字眼": "“言人不能出不由户，何故乃不由此道邪？怪而叹之之辞” — tak ada yang bisa keluar kecuali lewat pintu, lalu mengapa orang tak mengikuti Jalan ini? Kata-kata heran dan ratapan.",
+   "诸家": "Hong: “人知出必由户，而不知行必由道。非道远人，人自远尔” — orang tahu keluar harus lewat pintu, tetapi tak tahu perbuatan harus mengikuti Jalan. Bukan Jalan yang jauh dari manusia; manusialah yang menjauhkan diri darinya."
   },
   "6.16": {
    "title": "Terlalu kasar atau terlalu halus, mana pilihan Konfusius?",
    "yw": "Sang Guru berkata: Bila isi melebihi bentuk, orang menjadi kasar; bila bentuk melebihi isi, orang menjadi juru tulis. Bila bentuk dan isi seimbang, barulah ia junzi.",
-   "片里落点": "Terlalu polos itu kasar, terlalu berhias itu hampa; keduanya seimbang barulah junzi. Bila harus condong, lebih baik condong ke polos: dasar ada, hiasan bisa ditambah; dasar hilang, hiasan tak punya tempat."
+   "片里落点": "Terlalu polos itu kasar, terlalu berhias itu hampa; keduanya seimbang barulah junzi. Bila harus condong, lebih baik condong ke polos: dasar ada, hiasan bisa ditambah; dasar hilang, hiasan tak punya tempat.",
+   "常见读法": "Terlalu kasar atau terlalu bergaya — mana yang lebih disukai Konfusius?",
+   "字眼": "“野，野人，言鄙略也。史，掌文书，多闻习事，而诚或不足也。彬彬，犹班班，物相杂而适均之貌” — “ye” adalah orang desa, kasar dan ceroboh; “shi” adalah juru tulis yang memegang dokumen, berpengetahuan dan terlatih tetapi mungkin kurang tulus; “binbin” seperti “banban”, hal-hal bercampur dalam takaran pas; “学者当损有余，补不足，至于成德，则不期然而然矣” — pelajar hendaknya mengurangi yang berlebih dan menambah yang kurang; setelah mencapai kebajikan sempurna, hal itu terjadi tanpa dicari.",
+   "诸家": "Yang: “文质不可以相胜。然质之胜文，犹之甘可以受和，白可以受采也。文胜而至于灭质，则其本亡矣。虽有文，将安施乎？然则与其史也，宁野” — kehalusan dan isi tak boleh saling mengalahkan. Namun isi yang melebihi kehalusan seperti rasa manis yang masih bisa menerima bumbu, atau putih yang masih bisa menerima warna. Bila kehalusan menang sampai menghancurkan isi, akarnya hilang; meski ada kehalusan, di mana hendak diterapkan? Maka daripada juru tulis, lebih baik orang desa."
   },
   "6.17": {
    "title": "Bukankah orang yang tidak lurus juga hidup baik-baik saja?",
    "yw": "Sang Guru berkata: Manusia hidup dengan kelurusan; yang bengkok tetap hidup hanya karena untung, lolos dari bencana.",
-   "片里落点": "Manusia semestinya hidup lurus; yang tidak lurus pun hidup, bukan karena pantas, melainkan karena beruntung lolos."
+   "片里落点": "Manusia semestinya hidup lurus; yang tidak lurus pun hidup, bukan karena pantas, melainkan karena beruntung lolos.",
+   "常见读法": "Orang yang tidak lurus tampaknya tetap hidup baik-baik saja, bukan?",
+   "字眼": "“罔” — bengkok, tidak lurus.",
+   "诸家": "Guru Cheng: “生理本直。罔，不直也，而亦生者，幸而免尔” — prinsip kehidupan pada dasarnya lurus. “Wang” berarti tidak lurus; bahwa orang seperti itu juga hidup hanyalah karena mereka beruntung lolos."
   },
   "6.18": {
    "title": "Tahu, suka, gembira: apa bedanya?",
    "yw": "Sang Guru berkata: Yang mengetahuinya tak sebanding dengan yang menyukainya; yang menyukainya tak sebanding dengan yang bergembira di dalamnya.",
-   "片里落点": "Tahu ada semangkuk nasi ini, suka memakannya, makan sampai kenyang dan hati tenang: tiga lapis. Bedanya bukan banyak sedikitnya pengetahuan, tetapi sungguh memperolehnya atau tidak."
+   "片里落点": "Tahu ada semangkuk nasi ini, suka memakannya, makan sampai kenyang dan hati tenang: tiga lapis. Bedanya bukan banyak sedikitnya pengetahuan, tetapi sungguh memperolehnya atau tidak.",
+   "常见读法": "Mengetahui, mencintai, bersukacita — di mana bedanya?",
+   "字眼": "“好” bernada turun, mencintai; “乐” dibaca lè, bersukacita.",
+   "诸家": "Yin: “知之者，知有此道也。好之者，好而未得也。乐之者，有所得而乐之也” — mengetahuinya berarti tahu bahwa Jalan ini ada; mencintainya berarti mencintai tanpa sudah memperolehnya; bersukacita di dalamnya berarti telah memperoleh sesuatu dan bergembira karenanya. Zhang Jingfu: “譬之五谷，知者知其可食者也，好者食而嗜之者也，乐者嗜之而饱者也……此古之学者，所以自强而不息者欤” — bandingkan dengan lima biji-bijian: yang mengetahui tahu bahwa itu dapat dimakan, yang mencintai memakan dan menikmatinya, yang bersukacita menikmatinya dan kenyang … bukankah inilah sebabnya pelajar zaman dulu berjuang tanpa henti?"
   },
   "6.19": {
    "title": "Apakah Konfusius meremehkan orang?",
    "yw": "Sang Guru berkata: Kepada orang di atas rata-rata, boleh dibicarakan hal yang tinggi; kepada orang di bawah rata-rata, tak boleh dibicarakan hal yang tinggi.",
-   "片里落点": "Bukan memeringkat orang, melainkan menyesuaikan kata dengan pendengar: bicara terlalu tinggi, pendengar tak bisa menangkap, malah merusak. Mengajar sesuai kemampuan, naik setapak demi setapak."
+   "片里落点": "Bukan memeringkat orang, melainkan menyesuaikan kata dengan pendengar: bicara terlalu tinggi, pendengar tak bisa menangkap, malah merusak. Mengajar sesuai kemampuan, naik setapak demi setapak.",
+   "常见读法": "Apakah Konfusius di sini merendahkan orang?",
+   "字眼": "“语，告也” — “yu” berarti memberi tahu; “言教人者，当随其高下而告语之，则其言易入而无躐等之弊也” — yang mengajar hendaknya berbicara sesuai tingkat pelajar; maka kata-kata mudah masuk dan tak ada kesalahan melompati jenjang; “上” dibaca shàng.",
+   "诸家": "Zhang Jingfu: “圣人之道，精粗虽无二致，但其施教，则必因其材而笃焉……使之切问近思，而渐进于高远也” — Jalan orang bijak satu dalam bagian halus dan kasarnya, tetapi dalam mengajar ia selalu membangun di atas kapasitas tiap orang … membuat mereka bertanya dengan saksama dan merenungkan yang dekat, lalu maju bertahap ke yang tinggi dan jauh."
   },
   "6.20": {
    "title": "Apakah Konfusius percaya roh?",
    "yw": "Fan Chi bertanya tentang kebijaksanaan. Sang Guru berkata: Mencurahkan diri pada yang benar bagi rakyat, menghormati roh-roh tetapi menjaga jarak, itu dapat disebut bijak. Ia bertanya tentang kemanusiaan. Sang Guru berkata: Orang yang manusiawi mendahulukan yang sulit dan mengakhirkan hasilnya; itu dapat disebut manusiawi.",
-   "片里落点": "Bukan soal percaya atau tidak, melainkan menghormati sekaligus menjaga jarak: urusan manusia dituntaskan dulu, roh dihormati tanpa dimintai; bekerja yang sulit dulu, hasilnya belakangan, tanpa menghitung untung lebih dulu."
+   "片里落点": "Bukan soal percaya atau tidak, melainkan menghormati sekaligus menjaga jarak: urusan manusia dituntaskan dulu, roh dihormati tanpa dimintai; bekerja yang sulit dulu, hasilnya belakangan, tanpa menghitung untung lebih dulu.",
+   "常见读法": "Apakah Konfusius percaya pada hantu dan roh?",
+   "字眼": "“民，亦人也。获，谓得也” — “min” juga berarti manusia; “huo” berarti hasil; “专用力于人道之所宜，而不惑于鬼神之不可知，知者之事也。先其事之所难，而后其效之所得，仁者之心也” — mengerahkan tenaga sepenuhnya pada apa yang pantas dalam jalan manusia dan tak bingung oleh roh-roh yang tak dapat diketahui adalah urusan orang bijak; mendahulukan yang sulit dalam tugas dan baru kemudian memikirkan hasilnya adalah hati orang yang manusiawi; “此必因樊迟之失而告之” — ini pasti diucapkan dengan memperhatikan kelemahan Fan Chi.",
+   "诸家": "Guru Cheng: “人多信鬼神，惑也。而不信者又不能敬，能敬能远，可谓知矣” — banyak orang percaya roh, itu kebingungan; yang tak percaya tak dapat menghormatinya. Mampu menghormati sekaligus menjaga jarak boleh disebut kebijaksanaan; “先难，克己也。以所难为先，而不计所获，仁也” — mendahulukan yang sulit adalah menaklukkan diri; mengambil yang sulit lebih dulu tanpa menghitung hasil adalah kemanusiaan. Lü: “当务为急，不求所难知；力行所知，不惮所难为” — dahulukan tugas yang sekarang dan jangan mencari yang sulit diketahui; jalankan dengan giat apa yang kau ketahui dan jangan mundur dari yang sulit dilakukan."
   }
  }
 }
