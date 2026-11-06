@@ -37,7 +37,7 @@ def main(args):
         print("IndexNow:", *post("https://api.indexnow.org/indexnow", json.dumps(body).encode(), "application/json; charset=utf-8"))
     tok = os.environ.get("BAIDU_TOKEN", "").strip()
     if tok:
-        zh = [u for u in urls if not re.search(r"/(en|ja|ko|fr|es)/", u)]
+        zh = [u for u in urls if not re.search(r"/(en|ja|ko|fr|es|de|vi|id|ru)/", u)]
         zh.sort(key=lambda u: (0 if re.search(r"/lunyu/[^/]+/\d+\.html$", u) else 1, "/zh-hant/" in u))
         n = int(os.environ.get("BAIDU_MAX", "10"))
         api = f"http://data.zz.baidu.com/urls?site={DOMAIN}&token={tok}"

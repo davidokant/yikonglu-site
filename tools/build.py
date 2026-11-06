@@ -58,7 +58,13 @@ LANGS = {  # code: (路径前缀, 自称, hreflang)
     "ko": ("ko/", "한국어", "ko"),
     "fr": ("fr/", "Français", "fr"),
     "es": ("es/", "Español", "es"),
+    "de": ("de/", "Deutsch", "de"),
+    "vi": ("vi/", "Tiếng Việt", "vi"),
+    "id": ("id/", "Bahasa Indonesia", "id"),
+    "ru": ("ru/", "Русский", "ru"),
 }
+for _k in [k for k in LANGS if not k.startswith("zh")]:  # 译文文件还没有的语种先不出页、不进互指
+    if not os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", _k + ".json")): del LANGS[_k]
 
 ZH_UI = {
  "tagline": TAGLINE, "nav_books": "书目", "nav_search": "检索", "nav_errata": "勘误", "nav_about": "关于",
@@ -498,7 +504,7 @@ def parse_kanwu(path):
                 rows.append(r)
     return rows
 
-HEAD_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Noto+Serif+JP:wght@400;600;900&family=Noto+Serif+KR:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">'
+HEAD_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Noto+Serif+JP:wght@400;600;900&family=Noto+Serif+KR:wght@400;600;900&family=Noto+Serif:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">'
 MAIL = '<picture class="mail"><source srcset="/assets/mail-dark.png" media="(prefers-color-scheme:dark)"><img src="/assets/mail.png" alt="email (image)" width="211" height="26"></picture>'
 SAME_AS = ["https://www.youtube.com/@yikonglu", "https://x.com/yikonglu", "https://ko-fi.com/yikonglu"]
 CSSV = __import__("hashlib").md5(open(os.path.join(HERE, "style.css"), "rb").read()).hexdigest()[:8]
@@ -516,9 +522,9 @@ document.querySelectorAll('details.lang').forEach(function(d){d.addEventListener
 (function(){var P=document.documentElement.lang,K='yk_lang';try{var s=localStorage.getItem(K)}catch(e){var s=null}
 document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem(K,a.dataset.lang)}catch(e){}})});
 if(s)return;var n=(navigator.language||'').toLowerCase(),w=null;
-if(n.startsWith('en'))w='en';else if(n.startsWith('ja'))w='ja';else if(n.startsWith('ko'))w='ko';else if(n.startsWith('fr'))w='fr';else if(n.startsWith('es'))w='es';else if(n.startsWith('zh')&&/tw|hk|mo|hant/.test(n))w='zh-Hant';else if(n.startsWith('zh'))w='zh-Hans';
+var c2=n.slice(0,2);if(c2=='in')c2='id';if(['en','ja','ko','fr','es','de','vi','id','ru'].indexOf(c2)>=0)w=c2;else if(n.startsWith('zh')&&/tw|hk|mo|hant/.test(n))w='zh-Hant';else if(n.startsWith('zh'))w='zh-Hans';
 if(!w||w===P)return;var a=document.querySelector('link[hreflang="'+w+'"]');if(!a)return;
-var t={en:['This page is available in English.','Switch to English'],ja:['このページには日本語版があります。','日本語に切り替える'],ko:['이 페이지는 한국어판이 있습니다.','한국어로 전환'],fr:['Cette page existe en français.','Passer au français'],es:['Esta página está disponible en español.','Cambiar a español'],'zh-Hant':['本頁有繁體中文版。','切換到繁體'],'zh-Hans':['本页有简体中文版。','切换到简体']}[w];
+var t={en:['This page is available in English.','Switch to English'],ja:['このページには日本語版があります。','日本語に切り替える'],ko:['이 페이지는 한국어판이 있습니다.','한국어로 전환'],fr:['Cette page existe en français.','Passer au français'],es:['Esta página está disponible en español.','Cambiar a español'],de:['Diese Seite gibt es auf Deutsch.','Auf Deutsch lesen'],vi:['Trang này có bản tiếng Việt.','Chuyển sang tiếng Việt'],id:['Halaman ini tersedia dalam bahasa Indonesia.','Baca dalam bahasa Indonesia'],ru:['Эта страница есть на русском.','Читать по-русски'],'zh-Hant':['本頁有繁體中文版。','切換到繁體'],'zh-Hans':['本页有简体中文版。','切换到简体']}[w];
 var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>'+t[0]+'</span><a href="'+a.href+'">'+t[1]+' →</a><button aria-label="close">×</button>';
 b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}};b.querySelector('button').onclick=function(){try{localStorage.setItem(K,P)}catch(e){}b.remove()};
 document.body.prepend(b)})();
@@ -543,6 +549,9 @@ B.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||!
 put(b.dataset.a==='q'?'\u201c'+cur.textContent+'\u201d\u2014\u2014'+Q.dataset.src+Q.dataset.sep+u:u,b)});
 var h=location.hash.slice(1);if(/^s\\d+$/.test(h)){var t=document.getElementById(h);if(t)t.classList.add('on')}})();
 </script>"""
+
+def lang_tab(tab, code):  # 按语种取内容表；外语缺译时用英文，不用中文
+    return tab.get(code) or tab["zh-Hans" if code.startswith("zh") else "en"]
 
 class Lang:
     def __init__(self, code, ui, tr=None):
@@ -572,14 +581,14 @@ def fold(h):  # 下半各节收成可点开的 <details>；锚点跳进来时由
     return FOLD_RE.sub(lambda m: f'<details class="sec fold {m.group(1)}"{m.group(2)}><summary><h2>{m.group(3)}</h2></summary>{m.group(4)}</details>', h)
 FOLD_JS = """<script>(function(){function op(){var h=decodeURIComponent(location.hash.slice(1));if(!h)return;var e=document.getElementById(h);if(!e)return;var d=e.closest("details");while(d){d.open=true;d=d.parentElement&&d.parentElement.closest("details")}setTimeout(function(){e.scrollIntoView()},0)}addEventListener("hashchange",op);op();document.addEventListener("click",function(ev){var a=ev.target.closest&&ev.target.closest('a[href^="#"]');if(a&&a.getAttribute("href")==location.hash)op()});var b=document.querySelector(".foldall");if(b)b.onclick=function(){var ds=document.querySelectorAll(".deep details.fold"),o=[].some.call(ds,function(d){return!d.open});[].forEach.call(ds,function(d){d.open=o});b.textContent=o?b.dataset.c:b.dataset.o}})();</script>"""
 def cta_html(L, P):  # 上半末尾：免费读本、问一孔两张卡
-    W = WEN.get(L.code) or WEN["zh-Hans"]
+    W = lang_tab(WEN, L.code)
     return (f'<div class="ctas"><a href="{P}duben.html"><b>{L.t("db_link")}</b><span>{L.t("cta_db_p")}</span></a>'
             f'<a href="{P}wen.html"><b>{W["link"]}</b><span>{L.t("cta_wen_p")}</span></a></div>')
 
 def meta_desc(L, title, rend, yw):  # 外语章页摘要：先本语言（标题＋译文），原文放后，读者在搜索结果里先看到自己的语言
     if not rend: return f"{yw[:40]}… {L.t('book_lead')}"
     d = f"{title} — {rend}"
-    cap = 150 if L.code in ("en", "fr", "es") else 90
+    cap = 90 if L.code in ("ja", "ko") else 150
     if len(d) > cap:
         d = d[:cap]
         if " " in d[cap // 2:]: d = d.rsplit(" ", 1)[0]
@@ -639,17 +648,17 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>
 <nav><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}gushi/" class="gsnav">故事</a>' if gs else ""}
-<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{(FANGFA.get(L.code) or FANGFA["zh-Hans"])["link"]}</a><a href="{P}wen.html">{(WEN.get(L.code) or WEN["zh-Hans"])["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
+<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}wen.html">{lang_tab(WEN, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary>{L.name}</summary><div>{sw}</div></details></nav>
 </div></header>
 {note}
 {body}
-<section class="follow{'' if L.code.startswith('zh') else ' intl'}"><div class="wrap"><h2>{L.t("follow_h")}</h2><div class="fl"><figure><img src="/assets/wechat-qr.jpg" alt="WeChat QR" width="129" height="129" loading="lazy"><figcaption>{L.t("follow_wx")}{(" " if not L.code.startswith("zh") else "") + (WEN.get(L.code) or WEN["zh-Hans"])["foot"].replace("{p}", P)}{"" if not L.code.startswith("zh") else "。"}</figcaption></figure><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ {L.t("follow_yt")}</a></div></div></section>
+<section class="follow{'' if L.code.startswith('zh') else ' intl'}"><div class="wrap"><h2>{L.t("follow_h")}</h2><div class="fl"><figure><img src="/assets/wechat-qr.jpg" alt="WeChat QR" width="129" height="129" loading="lazy"><figcaption>{L.t("follow_wx")}{(" " if not L.code.startswith("zh") else "") + lang_tab(WEN, L.code)["foot"].replace("{p}", P)}{"" if not L.code.startswith("zh") else "。"}</figcaption></figure><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ {L.t("follow_yt")}</a></div></div></section>
 <footer><div class="wrap">
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
 <p class="where">{where_html(L)}</p>
-<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{(FANGFA.get(L.code) or FANGFA["zh-Hans"])["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
+<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
 <p class="freuse">{L.t("foot_reuse", p=P)}</p>
@@ -1061,7 +1070,7 @@ def build_lang(L, D, write):
 </section>
 <section class="wrap narrow"><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}zi.html"><b>{L.t("zi_title")}</b><span>{L.t("t_zi")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
 {yxl_line(L, D, P) if L.code.startswith("zh") else ""}
-<p class="cta"><a class="btn ghost" href="{P}kanwu.html">{L.t("btn_errata")}</a><a class="btn ghost" href="{P}fangfa.html">{(FANGFA.get(L.code) or FANGFA["zh-Hans"])["link"]}</a></p></section>
+<p class="cta"><a class="btn ghost" href="{P}kanwu.html">{L.t("btn_errata")}</a><a class="btn ghost" href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p></section>
 </main>'''
     write("index.html", page(L, (f"一孔录｜{TAGLINE}" if L.code == "zh-Hans" else f"一孔录 Yikonglu | {L.t('tagline')}"), L.t("intro"), "", home,
           {"@context": "https://schema.org", "@type": "Organization", "name": "一孔录", "alternateName": "Yikonglu", "url": DOMAIN, "logo": f"{DOMAIN}/assets/seal-180.png", "sameAs": SAME_AS}, "pg-home"))
@@ -1126,7 +1135,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <main class="wrap narrow prose"><p>{L.t("zc_p")}</p>{"".join(order)}</main>'''
     write("zhichi.html", page(L, f'{L.t("zc_title")}｜一孔录', L.t("zc_sub"), "zhichi.html", body)); urls.append(f"{DOMAIN}/{L.prefix}zhichi.html")
     # 核验方法页（/fangfa.html）
-    F = FANGFA.get(L.code) or FANGFA["zh-Hans"]
+    F = lang_tab(FANGFA, L.code)
     try: DC = json.load(open(DRAFT_FILE, encoding="utf-8"))
     except Exception: DC = None
     ul = lambda xs: "<ul>" + "".join(f"<li>{x.replace('{p}', P)}</li>" for x in xs) + "</ul>"
@@ -1145,7 +1154,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <h2>{F["s3h"]}</h2><p>{F["s3p"]}</p>{tbl}<p>{F["s3n"]}</p><h2>{F["s4h"]}</h2>{ul(F["s4"])}<h2>{F["s5h"]}</h2>{s5}<h2>{F["s6h"]}</h2><p>{F["s6"]}</p><h3>{F["log"]}</h3><ul>{logs}</ul></main>'''
     write("fangfa.html", page(L, f'{F["title"]}｜一孔录', F["sub"], "fangfa.html", body)); urls.append(f"{DOMAIN}/{L.prefix}fangfa.html")
     # 问一孔（/wen.html）：按钮由脚本拼出邮箱，源码不露明文
-    W = WEN.get(L.code) or WEN["zh-Hans"]
+    W = lang_tab(WEN, L.code)
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{W["sub"]}</span>{W["title"]}</h1></div></div>
 <main class="wrap narrow prose"><p>{W["p"]}</p><p><a class="btn" id="wenbtn" href="{P}about.html">{W["btn"]}</a></p><p>{W["only"]}</p><p class="note">{W["nojs"].replace("{p}", P)}</p></main>
 <script>(function(){{var a=document.getElementById('wenbtn'),u=['yikonglu','99'].join(''),d=['gmail','com'].join('.');a.href='mai'+'lto:'+u+String.fromCharCode(64)+d+'?subject='+encodeURIComponent('\\u95ee\\u4e00\\u5b54\\uff1a');}})();</script>'''
@@ -1292,7 +1301,7 @@ def write_data(D, outdir):
     open(os.path.join(outdir, "data", "LICENSE.txt"), "w", encoding="utf-8").write("一孔录 Yikonglu 开放数据\n原文与古注：公版。\n一孔录所写的白话、引文出处表、读音：CC BY-NC 4.0，署名“一孔录 yikonglu.com”，不得商用。\n一孔录自己的读法不在开放许可内，也不在本数据包里。\n商用（含训练模型与再分发）须事先取得书面授权。\nhttps://creativecommons.org/licenses/by-nc/4.0/\n")
 
 def kf_html(L):  # 开放数据页的分界说明
-    K = KAIFANG.get(L.code) or KAIFANG["zh-Hans"]
+    K = lang_tab(KAIFANG, L.code)
     li = lambda xs: "<ul>" + "".join(f"<li>{x}</li>" for x in xs) + "</ul>"
     return (f'<h2 id="fenjie">{K["h"]}</h2><p>{K["p"]}</p><h3>{K["oh"]}</h3>{li(K["o"])}<h3>{K["ch"]}</h3>{li(K["c"])}'
             f'<p>{K["biz"]}</p><p class="mailp">{MAIL}</p><p>{K["rule"]}</p><h3>{K["log"]}</h3>' + li([f"{a} {b}" for a, b in K["logs"]]))
@@ -1480,8 +1489,12 @@ def main(zdir, outdir, kanwu=None):
         shutil.copytree(os.path.join(HERE, "og"), os.path.join(outdir, "og"), ignore=shutil.ignore_patterns("*.sig"))
     hant_ui = dict(ZH_UI); hant_ui["translated_note"] = ZH_UI["hant_note"]
     urls += build_lang(Lang("zh-Hant", hant_ui), D, writer("zh-hant", to_hant))
-    for code in ("en", "ja", "ko", "fr", "es"):
+    for code in [k for k in LANGS if not k.startswith("zh")]:
         tr = json.load(open(os.path.join(HERE, "i18n", code + ".json"), encoding="utf-8"))
+        for key, tab in (("fangfa", FANGFA), ("kaifang", KAIFANG), ("wen", WEN)):  # 新语种把这些页的译文放在自己的 i18n 文件里
+            if key in tr: tab[code] = tr[key]
+        if "privacy" in tr: PRIVACY[code] = tuple(tr["privacy"])
+        if "wx" in tr: PLAT_WX[code] = tr["wx"]
         ui = dict(EXTRA_UI.get(code, {})); ui.update(tr["ui"])
         urls += build_lang(Lang(code, ui, tr), D, writer(code))
 
