@@ -83,7 +83,7 @@ ZH_UI = {
  "reads": "读音", "th_zi": "字", "th_pos": "位置", "th_du": "读", "shots": "底本原页",
  "kw": "本章勘误", "kw_note": "", "cite": "引用本页", "copy": "复制", "copied": "已复制",
  "checked": "本页最后核对：{d}。改动记在", "errata_page": "勘误页",
- "video": "看这一章的视频", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点 B站）",
+ "video": "看这一章的视频", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点 哔哩哔哩）",
  "prev": "上一章", "next": "下一章", "chapter_no": "{book} · 第 {n} 章", "book_no": "《论语》第 {n} 篇 · 已讲 {done} / {total} 章",
  "source_line": f"原文与注据{SOURCE}", "rendering": "",
  "errata_title": "公开勘误", "errata_sub": "原文·引文·出处·读音·读法",
@@ -94,8 +94,8 @@ ZH_UI = {
  "about_title": "关于一孔录", "about_p": "一孔录是一个逐字逐章读中国经典原文的频道，用讲书动画和几位固定的人物，把一句原文落到具体的人和处境上。默认你没读过原书，也不用看过前几期。",
  "about_h1": "这个网站做什么", "about_site": "平台上的视频面向大众，这里面向想核对的人：一孔录讲过的每一句，原文、底本页码、注家原话、读音、我们的读法，都能在这里查到，讲错的地方在<a href=\"kanwu.html\">勘误页</a>公开记录。",
  "about_h2": "我们的承诺", "about_c1": "原文和注家的话都据各家底本原页，页面写明底本。", "about_c2": "先讲注家怎么说，再讲我们怎么读；我们自己的看法明说是一孔录的读法，不冒充古人。", "about_c3": "核不到出处的话不放。发现错误请告诉我们，勘误公开。",
- "about_h3": "在哪里看", "about_where": "YouTube、B站、视频号「一孔录」，播客「一孔录」（Spotify、Apple 播客、小宇宙、喜马拉雅），公众号「一孔录」。",
- "follow_h": "关注一孔录，轻松读经典", "follow_wx": "有问题想问一孔录？关注公众号「一孔录」留言，每周选答，进片署你的网名。", "follow_yt": "在 YouTube 订阅", "foot_src": "引文据各家底本原页，各页注明底本。发现错误请告诉我们，勘误公开。", "foot_where": "YouTube · B站 · 视频号 · 公众号 · 播客：搜「一孔录」",
+ "about_h3": "在哪里看", "about_where": "YouTube、哔哩哔哩、视频号「一孔录」，播客「一孔录」（Spotify、Apple 播客、小宇宙、喜马拉雅），公众号「一孔录」。",
+ "follow_h": "关注一孔录，轻松读经典", "follow_wx": "有问题想问一孔录？关注公众号「一孔录」留言，每周选答，进片署你的网名。", "follow_yt": "在 YouTube 订阅", "foot_src": "引文据各家底本原页，各页注明底本。发现错误请告诉我们，勘误公开。", "foot_where": "YouTube · 哔哩哔哩 · 视频号 · 公众号 · 播客：搜「一孔录」",
  "lang_bar": "", "lang_go": "", "lang_close": "", "translated_note": "",
  "cite_fmt": "一孔录《论语·{book}》{c}“{title}”，{url}，{d} 版。",
  "hant_note": "繁體頁面由簡體自動轉換，用字按台灣習慣；原文以底本原頁為準。",
@@ -1065,7 +1065,7 @@ def build_lang(L, D, write):
     # 首页主按钮“今日一句”：在视频已公开（或到点公开）的章里随机抽一章；没有脚本时落到最新一章
     _rc = [{"h": P + rel_of(c), "t": ch2ep[c][1].get("public_at") or ""} for c in pub if ch2ep[c][1].get("youtube")]
     rc_js = ("<script>(function(){var R=" + json.dumps(_rc, ensure_ascii=False) + ';var a=document.getElementById("rcta");if(!a)return;a.addEventListener("click",function(e){var n=Date.now(),C=R.filter(function(x){return !x.t||Date.parse(x.t)<=n});if(!C.length)return;e.preventDefault();location.href=C[Math.floor(Math.random()*C.length)].h})})();</script>') if _rc else ""
-    vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">B站</a>' if L.code.startswith("zh") else "")
+    vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a>' if L.code.startswith("zh") else "")
     home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录原创角色围坐长桌读书" width="1920" height="1080"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1><p class="motto">{L.t("h_motto")}</p>
 <p class="cta"><a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/><circle cx="16" cy="8" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="8" cy="16" r="1.6" fill="currentColor"/><circle cx="16" cy="16" r="1.6" fill="currentColor"/></svg>{L.t("h_start")}</a>{vids}</p>{rc_js}</div></section>
@@ -1241,7 +1241,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <p>一个平台上，一句原文搜出来，一孔录的讲读排在第 r 名，记 V = 1 / log₂(1 + r)；不在前 20 条记 0。</p>
 <p>平台分 = 100 × 各章 V 的平均。</p>
 <p>占比 = 各章搜索结果前 20 条中本站条数之和 ÷ 前 20 条总数。只在能看到全部结果的平台计算（现只 YouTube），不点名其他频道。</p>
-<p>找到分 = 各平台平台分的平均。YouTube 取台湾繁体、美国简体两种设定的平均，合成一个平台分；B站、谷歌、必应各一个平台分。只列有完整数据的平台。</p>
+<p>找到分 = 各平台平台分的平均。YouTube 取台湾繁体、美国简体两种设定的平均，合成一个平台分；哔哩哔哩、谷歌、必应各一个平台分。只列有完整数据的平台。</p>
 <h2>怎么测</h2>
 <p>词表：已发各章的第一句原文，简体、繁体各一条。每周滚动测，未测到的章暂不计分，跑完后换成整周数；更新日期为最近一次计算日。</p>
 <p>搜索用不登录的新会话；YouTube 走数据接口按地区和语言设定搜，和网页搜索结果可能有出入。搜索平台会按人、按地、按时调整结果，你在自己设备上搜到的名次未必一样。</p>
@@ -1324,11 +1324,11 @@ def kf_html(L):  # 开放数据页的分界说明
             f'<p>{K["biz"]}</p><p class="mailp">{MAIL}</p><p>{K["rule"]}</p><h3>{K["log"]}</h3>' + li([f"{a} {b}" for a, b in K["logs"]]))
 
 # 页底平台行：有网页主页的直接外链，微信系只能搜
-PLAT_LINKS = [("YouTube", "https://www.youtube.com/@yikonglu"), ("B站", "https://space.bilibili.com/18385461"), ("TikTok", "https://www.tiktok.com/@yikonglu"), ("抖音", "https://www.douyin.com/user/MS4wLjABAAAAXpVHXn9zMrJpCNeOBO1s4G2i1KhXcstcIBil6H9TFQM"), ("快手", "https://www.kuaishou.com/profile/3xi6ey79zwx7edu"), ("知乎", "https://www.zhihu.com/people/yikonglu"), ("百家号", "https://mr.baidu.com/r/25FydpLvBKM"),
+PLAT_LINKS = [("YouTube", "https://www.youtube.com/@yikonglu"), ("哔哩哔哩", "https://space.bilibili.com/18385461"), ("TikTok", "https://www.tiktok.com/@yikonglu"), ("抖音", "https://www.douyin.com/user/MS4wLjABAAAAXpVHXn9zMrJpCNeOBO1s4G2i1KhXcstcIBil6H9TFQM"), ("快手", "https://www.kuaishou.com/profile/3xi6ey79zwx7edu"), ("知乎", "https://www.zhihu.com/people/yikonglu"), ("百家号", "https://mr.baidu.com/r/25FydpLvBKM"),
               ("Spotify", "https://open.spotify.com/show/2tc129X7b7yqlqqGWzUbon"), ("Apple 播客", "https://podcasts.apple.com/us/podcast/id6808549970"),
               ("Amazon Music", "https://music.amazon.co.uk/podcasts/40c8bab4-c9ec-41fa-a5ce-dba2e2d7aa91/%E4%B8%80%E5%AD%94%E5%BD%95%EF%BD%9C%E8%BD%BB%E6%9D%BE%E8%AF%BB%E7%BB%8F%E5%85%B8"),
               ("喜马拉雅", "https://www.ximalaya.com/album/132166955"), ("小宇宙", "https://www.xiaoyuzhoufm.com/podcast/6a9a7681f62860437cd2d85e")]
-PLAT_NAME = {"B站": "Bilibili", "Apple 播客": "Apple Podcasts", "喜马拉雅": None, "知乎": None, "小宇宙": None, "百家号": None, "抖音": None, "快手": None}
+PLAT_NAME = {"哔哩哔哩": "Bilibili", "Apple 播客": "Apple Podcasts", "喜马拉雅": None, "知乎": None, "小宇宙": None, "百家号": None, "抖音": None, "快手": None}
 PLAT_WX = {"zh": "视频号、公众号：微信搜「一孔录」", "en": "WeChat: search “一孔录”", "ja": "WeChat：「一孔录」で検索",
            "ko": "WeChat: 「一孔录」 검색", "fr": "WeChat : cherchez « 一孔录 »", "es": "WeChat: busque «一孔录»"}
 def where_html(L):
