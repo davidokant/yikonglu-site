@@ -244,6 +244,7 @@ DRAFT_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/初
 YXL_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/影响力.json"  # 一孔影响力（找到分），每天自动更新
 FANGFA = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fangfa.json"), encoding="utf-8"))  # 核验方法页七语文字
 KAIFANG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "kaifang.json"), encoding="utf-8"))  # 开放数据页：开放与不开放的分界（七语）
+WEN = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "wen.json"), encoding="utf-8"))  # 问一孔页（七语）
 EPIS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "episodes.json"), encoding="utf-8"))
 ZT_DIR = os.path.join("/mnt/project-files/一孔学-内-自媒体/数据/网站素材", "_专题")  # 专题表.json：一专题一页、页内按书分段
 def load_zhuanti():
@@ -592,12 +593,12 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>
 <nav><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}gushi/" class="gsnav">故事</a>' if gs else ""}
-<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{(FANGFA.get(L.code) or FANGFA["zh-Hans"])["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
+<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{(FANGFA.get(L.code) or FANGFA["zh-Hans"])["link"]}</a><a href="{P}wen.html">{(WEN.get(L.code) or WEN["zh-Hans"])["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary>{L.name}</summary><div>{sw}</div></details></nav>
 </div></header>
 {note}
 {body}
-<section class="follow{'' if L.code.startswith('zh') else ' intl'}"><div class="wrap"><h2>{L.t("follow_h")}</h2><div class="fl"><figure><img src="/assets/wechat-qr.jpg" alt="WeChat QR" width="129" height="129" loading="lazy"><figcaption>{L.t("follow_wx")}</figcaption></figure><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ {L.t("follow_yt")}</a></div></div></section>
+<section class="follow{'' if L.code.startswith('zh') else ' intl'}"><div class="wrap"><h2>{L.t("follow_h")}</h2><div class="fl"><figure><img src="/assets/wechat-qr.jpg" alt="WeChat QR" width="129" height="129" loading="lazy"><figcaption>{L.t("follow_wx")}{(" " if not L.code.startswith("zh") else "") + (WEN.get(L.code) or WEN["zh-Hans"])["foot"].replace("{p}", P)}{"" if not L.code.startswith("zh") else "。"}</figcaption></figure><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ {L.t("follow_yt")}</a></div></div></section>
 <footer><div class="wrap">
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
@@ -1085,6 +1086,12 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <main class="wrap narrow prose"><p>{F["intro"]}</p><h2>{F["s1h"]}</h2>{ul(F["s1"])}<h2>{F["s2h"]}</h2><ol>{"".join(f"<li>{x.replace('{p}', P)}</li>" for x in F["s2"])}</ol>
 <h2>{F["s3h"]}</h2><p>{F["s3p"]}</p>{tbl}<p>{F["s3n"]}</p><h2>{F["s4h"]}</h2>{ul(F["s4"])}<h2>{F["s5h"]}</h2>{s5}<h2>{F["s6h"]}</h2><p>{F["s6"]}</p><h3>{F["log"]}</h3><ul>{logs}</ul></main>'''
     write("fangfa.html", page(L, f'{F["title"]}｜一孔录', F["sub"], "fangfa.html", body)); urls.append(f"{DOMAIN}/{L.prefix}fangfa.html")
+    # 问一孔（/wen.html）：按钮由脚本拼出邮箱，源码不露明文
+    W = WEN.get(L.code) or WEN["zh-Hans"]
+    body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{W["sub"]}</span>{W["title"]}</h1></div></div>
+<main class="wrap narrow prose"><p>{W["p"]}</p><p><a class="btn" id="wenbtn" href="{P}about.html">{W["btn"]}</a></p><p>{W["only"]}</p><p class="note">{W["nojs"].replace("{p}", P)}</p></main>
+<script>(function(){{var a=document.getElementById('wenbtn'),u=['yikonglu','99'].join(''),d=['gmail','com'].join('.');a.href='mai'+'lto:'+u+String.fromCharCode(64)+d+'?subject='+encodeURIComponent('\\u95ee\\u4e00\\u5b54\\uff1a');}})();</script>'''
+    write("wen.html", page(L, f'{W["title"]}｜一孔录', W["sub"], "wen.html", body)); urls.append(f"{DOMAIN}/{L.prefix}wen.html")
     # 免费读本（PDF 放 tools/root/duben/，原样拷到站点 /duben/）
     DUBEN = [("db_xueer", "db_meta", "lunyu-xueer")]
     rows = "".join(f'<li><b>{L.t(n)}</b> <span class="note">{L.t(m)}</span><br><a class="btn" href="/duben/{f}.pdf" download>{L.t("db_hans")} PDF</a> <a class="btn ghost" href="/duben/{f}-hant.pdf" download>{L.t("db_hant")} PDF</a></li>' for n, m, f in DUBEN)
