@@ -757,6 +757,7 @@ PRIVACY = {
  "zh-Hans": ("隐私", "隐私说明", "本站收什么、不收什么", [
    "不用注册，不设留言区，不收表单。",
    "访问统计用 Cloudflare Web Analytics：不设 cookie，不认人，只计页面访问量、来路和国家或地区。简体中文页另装百度统计，它会设 cookie，用来计访问量和来路；繁体和外文页不装。",
+   "首页那行“此刻在读 / 读者来过”的人数，由我们自己在 Cloudflare 上的一个小程序计：你的浏览器本地存一个随机编号，每分钟告诉它一声“还在读”，它只记这个编号和时间，用来数人数，不存 IP，也不记别的。",
    "章节页里的视频用 YouTube 的隐私增强模式（youtube-nocookie.com）嵌入，点播放之后才由 YouTube 按它的隐私政策处理。",
    "字体从 Google Fonts 加载，你的浏览器会向谷歌请求字体文件。",
    "语言选择、是否已关掉“装到桌面”提示，记在你浏览器的本地存储里；看过的页面缓存在你的设备上，离线也能打开。这些都不上传。",
@@ -765,6 +766,7 @@ PRIVACY = {
  "en": ("Privacy", "Privacy", "What this site collects, and what it does not", [
    "No accounts, no comment section, no forms.",
    "Visits are counted with Cloudflare Web Analytics, which sets no cookies and does not identify you; it counts page views, referrers and country or region. Simplified-Chinese pages also carry Baidu Tongji, which does set cookies for counting visits and referrers; other language versions do not.",
+   "The “reading now / readers so far” line on the home page is counted by a small program of ours on Cloudflare: your browser keeps a random ID in local storage and pings it once a minute while you read. It keeps only that ID and the time, to count heads; it does not store your IP address or anything else.",
    "Videos on chapter pages are embedded in YouTube's privacy-enhanced mode (youtube-nocookie.com); once you press play, YouTube handles data under its own privacy policy.",
    "Fonts load from Google Fonts, so your browser requests font files from Google.",
    "Your language choice and whether you dismissed the “add to home screen” tip are kept in your browser's local storage; pages you have read are cached on your device for offline use. None of this is uploaded.",
@@ -773,6 +775,7 @@ PRIVACY = {
  "ja": ("プライバシー", "プライバシーについて", "このサイトが集めるもの・集めないもの", [
    "登録不要、コメント欄やフォームはありません。",
    "アクセス集計は Cloudflare Web Analytics を使います。cookie を使わず個人を識別せず、閲覧数・参照元・国や地域のみを数えます。簡体字中国語のページにのみ百度統計を入れており、これは閲覧数と参照元を数えるため cookie を使います。",
+   "トップページの「いま読書中／これまでの読者」の人数は、Cloudflare 上の小さなプログラムで数えています。ブラウザのローカルストレージにランダムな番号を一つ置き、読んでいる間 1 分ごとに知らせるだけで、記録するのはその番号と時刻のみです。IP アドレスなどは保存しません。",
    "章ページの動画は YouTube のプライバシー強化モード（youtube-nocookie.com）で埋め込んでいます。再生後は YouTube のプライバシーポリシーに従って扱われます。",
    "フォントは Google Fonts から読み込むため、ブラウザが Google にフォントを要求します。",
    "言語の選択と「ホーム画面に追加」の案内を閉じたかどうかはブラウザのローカルストレージに保存し、読んだページはオフライン用に端末にキャッシュします。いずれも送信しません。",
@@ -781,6 +784,7 @@ PRIVACY = {
  "ko": ("개인정보", "개인정보 안내", "이 사이트가 수집하는 것과 수집하지 않는 것", [
    "가입이 필요 없고, 댓글란이나 양식이 없습니다.",
    "방문 통계는 Cloudflare Web Analytics로 집계합니다. 쿠키를 쓰지 않고 개인을 식별하지 않으며 페이지 조회수, 유입 경로, 국가·지역만 셉니다. 간체 중국어 페이지에만 바이두 통계를 넣었으며, 이는 조회수와 유입 경로 집계를 위해 쿠키를 씁니다.",
+   "첫 페이지의 ‘지금 읽는 중 / 지금까지 독자’ 숫자는 Cloudflare에 둔 작은 프로그램이 셉니다. 브라우저 로컬 저장소에 무작위 번호 하나를 두고 읽는 동안 1분마다 알릴 뿐이며, 그 번호와 시각만 기록합니다. IP 주소 등은 저장하지 않습니다.",
    "장 페이지의 영상은 YouTube 개인정보 보호 강화 모드(youtube-nocookie.com)로 넣었습니다. 재생한 뒤에는 YouTube의 개인정보처리방침에 따릅니다.",
    "글꼴은 Google Fonts에서 불러오므로 브라우저가 Google에 글꼴 파일을 요청합니다.",
    "언어 선택과 ‘홈 화면에 추가’ 안내를 닫았는지 여부는 브라우저 로컬 저장소에 두고, 읽은 페이지는 오프라인용으로 기기에 캐시합니다. 어느 것도 전송하지 않습니다.",
@@ -789,6 +793,7 @@ PRIVACY = {
  "fr": ("Confidentialité", "Confidentialité", "Ce que ce site recueille, et ce qu'il ne recueille pas", [
    "Pas de compte, pas d'espace de commentaires, pas de formulaire.",
    "Les visites sont comptées avec Cloudflare Web Analytics, sans cookie et sans vous identifier : pages vues, provenance, pays ou région. Les pages en chinois simplifié utilisent en plus Baidu Tongji, qui dépose des cookies pour compter les visites et leur provenance ; les autres langues non.",
+   "La ligne « en train de lire / lecteurs jusqu’ici » de l’accueil est comptée par un petit programme à nous sur Cloudflare : votre navigateur garde un identifiant aléatoire en stockage local et le signale une fois par minute pendant la lecture. Seuls cet identifiant et l’heure sont gardés, pour compter ; ni votre adresse IP ni rien d’autre n’est conservé.",
    "Les vidéos des pages de chapitre sont intégrées en mode de confidentialité renforcée de YouTube (youtube-nocookie.com) ; une fois la lecture lancée, YouTube traite les données selon sa propre politique.",
    "Les polices sont chargées depuis Google Fonts : votre navigateur demande les fichiers de police à Google.",
    "Votre choix de langue et le fait d'avoir fermé l'invitation « ajouter à l'écran d'accueil » sont gardés dans le stockage local de votre navigateur ; les pages lues sont mises en cache sur votre appareil pour la lecture hors ligne. Rien de cela n'est envoyé.",
@@ -797,6 +802,7 @@ PRIVACY = {
  "es": ("Privacidad", "Privacidad", "Qué recoge este sitio y qué no", [
    "Sin registro, sin sección de comentarios, sin formularios.",
    "Las visitas se cuentan con Cloudflare Web Analytics, que no usa cookies ni le identifica: solo cuenta páginas vistas, procedencia y país o región. Las páginas en chino simplificado usan además Baidu Tongji, que sí usa cookies para contar visitas y procedencia; las demás lenguas no.",
+   "La línea «leyendo ahora / lectores hasta hoy» de la portada la cuenta un pequeño programa nuestro en Cloudflare: su navegador guarda un identificador aleatorio en el almacenamiento local y lo avisa una vez por minuto mientras lee. Solo se guardan ese identificador y la hora, para contar; no se guarda su dirección IP ni nada más.",
    "Los vídeos de las páginas de capítulo se insertan en el modo de privacidad mejorada de YouTube (youtube-nocookie.com); al pulsar reproducir, YouTube trata los datos según su propia política.",
    "Las fuentes se cargan desde Google Fonts, así que su navegador pide los archivos de fuente a Google.",
    "Su elección de idioma y si cerró el aviso de «añadir a la pantalla de inicio» se guardan en el almacenamiento local de su navegador; las páginas leídas quedan en caché en su dispositivo para leer sin conexión. Nada de esto se envía.",

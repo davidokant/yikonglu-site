@@ -476,6 +476,7 @@
   [
    "Tidak ada akun, kolom komentar, atau formulir.",
    "Kunjungan dihitung dengan Cloudflare Web Analytics, yang tidak memasang cookie dan tidak mengenali Anda; yang dihitung adalah tampilan halaman, perujuk, dan negara atau wilayah. Halaman aksara sederhana juga memakai Baidu Tongji, yang memasang cookie untuk menghitung kunjungan dan perujuk; versi bahasa lain tidak.",
+   "Baris “sedang membaca / pembaca sejauh ini” di beranda dihitung oleh program kecil kami di Cloudflare: peramban Anda menyimpan satu ID acak di penyimpanan lokal dan memberi tahu sekali per menit selama membaca. Yang disimpan hanya ID itu dan waktunya, untuk menghitung; alamat IP atau data lain tidak disimpan.",
    "Video di halaman bab disematkan dalam mode privasi YouTube (youtube-nocookie.com); begitu Anda menekan putar, YouTube mengolah data menurut kebijakan privasinya sendiri.",
    "Huruf dimuat dari Google Fonts, sehingga peramban Anda meminta berkas huruf dari Google.",
    "Pilihan bahasa Anda dan apakah Anda menutup saran “tambahkan ke layar utama” disimpan di penyimpanan lokal peramban; halaman yang sudah dibaca di-cache di perangkat untuk dibaca luring. Tidak ada yang diunggah.",
