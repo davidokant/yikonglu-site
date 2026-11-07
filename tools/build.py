@@ -575,7 +575,10 @@ show(cv)}}}
 function show(cv){var M=document.createElement('div');M.className='shmodal';var url=cv.toDataURL('image/png');var fn='yikonglu-'+location.pathname.replace(/[\\/]+/g,'-').replace(/^-|\\.html$/g,'')+'.png';
 M.innerHTML='<div class="shm"><img alt=""><p class="note"></p><div class="shmb"><a class="btn" download></a><button type="button" class="btn ghost snd" hidden></button><button type="button" class="btn ghost cls"></button></div></div>';
 M.querySelector('img').src=url;M.querySelector('.note').textContent=T.tip;var a=M.querySelector('a');a.href=url;a.download=fn;a.textContent=T.save;M.querySelector('.cls').textContent=T.close;
-var sb=M.querySelector('.snd');sb.textContent=T.send;cv.toBlob(function(bl){try{var f=new File([bl],fn,{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[f]})){sb.hidden=false;sb.onclick=function(){navigator.share({files:[f],text:txt+' '+D.u}).catch(function(){})}}}catch(e){}});
+var sb=M.querySelector('.snd');sb.textContent=T.send;var ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1),inapp=/MicroMessenger|Weibo|QQ\\/|xhs|discover|Line\\/|FBAN|FBAV|Instagram|DingTalk|AlipayClient/i.test(ua),nt=M.querySelector('.note');
+cv.toBlob(function(bl){var f=null;try{f=new File([bl],fn,{type:'image/png'})}catch(e){}var cs=!!(f&&navigator.canShare&&navigator.canShare({files:[f]}));try{a.href=URL.createObjectURL(bl)}catch(e){}
+if(cs){sb.hidden=false;sb.onclick=function(){navigator.share({files:[f],text:txt+' '+D.u}).catch(function(){})}}
+a.onclick=function(e){if(inapp||(ios&&!cs)){e.preventDefault();nt.textContent=T.hold;nt.classList.add('hl');return}if(ios&&cs){e.preventDefault();navigator.share({files:[f]}).catch(function(){})}}});
 M.addEventListener('click',function(e){if(e.target===M||e.target.closest('.cls'))M.remove()});document.body.appendChild(M)}
 })();
 </script>"""
@@ -671,8 +674,9 @@ QISHIER_HOU = ("雁北乡 鹊始巢 雉始雊 鸡始乳 征鸟厉疾 水泽腹�
 def rili_data():
     return {"jt": JIEQI_DAYS, "jn": JIEQI_NAMES["zh"], "hou": QISHIER_HOU}
 SHARE_MORE = {"zh-Hans": "发给朋友…", "zh-Hant": "傳給朋友…", "en": "Send via…", "ja": "ほかのアプリで送る…", "ko": "다른 앱으로 보내기…", "fr": "Envoyer via…", "es": "Enviar con…", "de": "Senden über…", "vi": "Gửi qua…", "id": "Kirim lewat…", "ru": "Отправить через…"}
+SHARE_HOLD = {"zh-Hans": "这个浏览器存不了，请长按上面的图片，选“保存图片”。", "zh-Hant": "這個瀏覽器存不了，請長按上面的圖片，選「儲存圖片」。", "en": "This browser can’t save it directly. Press and hold the image above to save it.", "ja": "このブラウザでは直接保存できません。上の画像を長押しして保存してください。", "ko": "이 브라우저에서는 바로 저장할 수 없습니다. 위 이미지를 길게 눌러 저장해 주세요.", "fr": "Ce navigateur ne peut pas l’enregistrer directement. Appuyez longuement sur l’image pour l’enregistrer.", "es": "Este navegador no puede guardarla directamente. Mantenga pulsada la imagen para guardarla.", "de": "Dieser Browser kann es nicht direkt speichern. Bild lange drücken, um es zu speichern.", "vi": "Trình duyệt này không lưu trực tiếp được. Hãy nhấn giữ ảnh phía trên để lưu.", "id": "Browser ini tidak bisa menyimpan langsung. Tekan lama gambar di atas untuk menyimpannya.", "ru": "Этот браузер не сохраняет напрямую. Нажмите и удерживайте картинку, чтобы сохранить её."}
 def share_html(L, c, url, head, title, yw_text, gist, rend):
-    t = SHARE_TXT.get(L.code, SHARE_TXT["en"])
+    t = dict(SHARE_TXT.get(L.code, SHARE_TXT["en"]), hold=SHARE_HOLD.get(L.code, SHARE_HOLD["en"]))
     plats = "".join(f'<button type="button" data-p="{k}">{esc(n)}</button>' for n, k in t["plats"])
     d = json.dumps({"u": url, "h": head, "ti": title, "y": yw_text, "g": gist or "", "r": rend or "", "t": t, "tag": TAGLINE_L.get(L.code, "")}, ensure_ascii=False)
     return (f'<section class="sharebox"><button type="button" class="btn ghost shbtn"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6h14v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{t["sh"]}</button>'
