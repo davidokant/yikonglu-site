@@ -3,7 +3,7 @@ import json,re,sys,os
 from opencc import OpenCC
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__))); from man import M
 t2s=OpenCC("t2s").convert
-S=os.path.dirname(os.path.abspath(__file__))
+S=os.path.dirname(os.path.abspath(__file__))  # pub.json 与 gen.json 放在本目录（不进仓库）
 d=json.load(open(S+"/pub.json"))
 STOP=set("之也者而其以曰子不所于为则矣乎人此言谓故有则亦是与无一")
 P=re.compile(r"[\s，。；：？！、“”‘’「」『』（）《》〈〉·…—]")
