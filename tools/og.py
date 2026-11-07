@@ -59,3 +59,54 @@ def make(variant, c, head, text, foot):
     uf = _font(24, 400); dr.text((W - 90 - dr.textlength("yikonglu.com", font=uf), H - 78), "yikonglu.com", font=uf, fill=MUTE)
     im.save(out, quality=86, optimize=True, progressive=True); open(sigf, "w").write(sig)
     return f"og/{variant}/{c}.jpg"
+
+
+def _wrap_words(draw, text, font, width):
+    lines, cur = [], ""
+    for w in text.split(" "):
+        t = (cur + " " + w).strip()
+        if draw.textlength(t, font=font) > width and cur:
+            lines.append(cur); cur = w
+        else:
+            cur = t
+    if cur: lines.append(cur)
+    return lines
+
+def _clip(lines, n, ell):
+    if len(lines) <= n: return lines
+    lines = lines[:n]; lines[-1] = lines[-1].rstrip("，,;；:： ") + ell
+    return lines
+
+def make3(c, head, text, en, ja, foot):
+    """三语分享图：原文＋英译＋日译，一张图给所有语种。返回 og/tri/<c>.jpg。"""
+    sig = hashlib.md5(f"{head}|{text}|{en}|{ja}|{foot}|t4".encode()).hexdigest()[:10]
+    d = os.path.join(HERE, "og", "tri"); os.makedirs(d, exist_ok=True)
+    out = os.path.join(d, f"{c}.jpg"); sigf = out + ".sig"
+    if os.path.exists(out) and os.path.exists(sigf) and open(sigf).read() == sig:
+        return f"og/tri/{c}.jpg"
+    im = Image.new("RGB", (W, H), BG); dr = ImageDraw.Draw(im)
+    dr.rectangle([28, 28, W - 29, H - 29], outline=LINE, width=2)
+    dr.rectangle([28, 28, 40, H - 29], fill=RED)
+    dr.text((84, 58), head, font=_font(28, 600), fill=RED)
+    bw = W - 84 - 90; top, bottom = 108, H - 122
+    for size, yl, el, jl, sf in ((52, 3, 3, 2, 24), (48, 3, 3, 2, 24), (46, 3, 2, 2, 24), (42, 3, 2, 2, 22), (40, 3, 2, 1, 22), (38, 3, 2, 1, 22), (36, 3, 1, 1, 22), (34, 3, 1, 1, 20)):
+        f = _font(size, 600); lh = int(size * 1.45); ff = _font(sf, 400); slh = int(sf * 1.5)
+        L1 = _clip(_wrap(dr, text, f, bw), yl, "……")
+        L2 = _clip(_wrap_words(dr, en, ff, bw), el, "…") if en else []
+        L3 = _clip(_wrap(dr, ja, ff, bw), jl, "…") if ja else []
+        need = len(L1) * lh + 36 + (len(L2) * slh + 10 if L2 else 0) + (len(L3) * slh if L3 else 0)
+        if need <= bottom - top: break
+    y = top
+    for ln in L1: dr.text((84, y), ln, font=f, fill=INK); y += lh
+    y += 12; dr.line([84, y, 150, y], fill=RED, width=3); y += 24
+    for ls in (L2, L3):
+        for ln in ls: dr.text((84, y), ln, font=ff, fill=(74, 72, 64)); y += slh
+        if ls: y += 10
+    dr.line([84, H - 104, W - 90, H - 104], fill=LINE, width=2)
+    seal = Image.open(os.path.join(HERE, "assets", "seal-180.png")).convert("RGBA").resize((60, 60))
+    im.paste(seal, (84, H - 88), seal)
+    dr.text((160, H - 86), "一孔录", font=_font(34, 900), fill=INK)
+    dr.text((278, H - 78), foot, font=_font(24, 400), fill=MUTE)
+    uf = _font(24, 400); dr.text((W - 90 - dr.textlength("yikonglu.com", font=uf), H - 78), "yikonglu.com", font=uf, fill=MUTE)
+    im.save(out, quality=86, optimize=True, progressive=True); open(sigf, "w").write(sig)
+    return f"og/tri/{c}.jpg"

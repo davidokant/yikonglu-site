@@ -947,7 +947,7 @@ def build_lang(L, D, write):
     for i, c in enumerate(pub):
         n = notes[c]; pnum, cnum = c.split("."); pname, slug, pfull, _ = PIAN[pnum]
         epname, ep = ch2ep[c]; rel = rel_of(c); url = f"{DOMAIN}/{L.prefix}{rel}"
-        og_img = D["og"].get(c, {}).get("hant" if L.code in ("zh-Hant", "ja", "ko") else "hans")
+        og_img = D["og"].get(c, {}).get("tri") or D["og"].get(c, {}).get("hans")  # 三语图（原文＋英＋日），各语种共用
         bname = L.book(pnum)
         name = f"《论语·{pname}》{c} {n['title']}" if L.code == "zh-Hans" else f"{L.t('lunyu')} {c} {title_of(c)}"
         desc = f"{yw[c][:60]}……原文、白话、朱熹注的关键字、诸家说法与一孔录的读法。" if L.code == "zh-Hans" else meta_desc(L, title_of(c), L.ch(c).get("yw"), yw[c])
@@ -1557,11 +1557,13 @@ def main(zdir, outdir, kanwu=None):
 
     # 每章分享图：简体图给简、英、法、西；繁体图给繁、日、韩
     D["og"] = {}
+    _tr_en, _tr_ja = ({k: v for k, v in json.load(open(os.path.join(HERE, "i18n", f"{x}.json"), encoding="utf-8")).get("chapters", {}).items()} if os.path.exists(os.path.join(HERE, "i18n", f"{x}.json")) else {} for x in ("en", "ja"))
     if OG.available():
         for c in pub:
             pnum, cnum = c.split(".")
             head = f"《论语·{PIAN[pnum][0]}》第 {cnum} 章"
             D["og"][c] = {"hans": OG.make("hans", c, head, yw[c], TAGLINE)}
+            D["og"][c]["tri"] = OG.make3(c, f"{head} · Analects {c} · 論語 {c}", yw[c], _tr_en.get(c, {}).get("yw", ""), _tr_ja.get(c, {}).get("yw", ""), "逐字读经典原文 · Reading the classics word by word")
     else:
         print("没有字体，分享图跳过：", OG.FONT)
     global OUT_ROOT; OUT_ROOT = outdir
