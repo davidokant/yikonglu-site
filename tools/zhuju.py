@@ -122,7 +122,7 @@ ZJ_JS = """<div id="zjcard" class="zjcard" hidden><p class="zq"></p><div class="
 <script>
 (function(){var F=document.querySelector('.yuanwen.dz');if(!F)return;var Q=F.querySelector('blockquote'),C=document.getElementById('zjcard'),S=[];try{S=JSON.parse(F.querySelector('.zjdata').textContent)}catch(e){}
 var TABS=@TABS@,cur=null,sel='',tab='bh';
-function hl(n){F.querySelectorAll('.yyp .hl').forEach(function(r){r.classList.toggle('on',r.dataset.s==n)});var r=F.querySelector('.yyp .hl[data-s="'+n+'"]'),P=F.querySelector('.yypane');if(r&&P&&P.scrollHeight>P.clientHeight+4){var a=r.getBoundingClientRect(),b=P.getBoundingClientRect();P.scrollTo({top:P.scrollTop+a.top-b.top-(b.height-a.height)/2,left:P.scrollLeft+a.left-b.left-(b.width-a.width)/2,behavior:'smooth'})}}
+function hl(n){F.querySelectorAll('.yyp .hl').forEach(function(r){r.classList.toggle('on',r.dataset.s==n)});var r=F.querySelector('.yyp .hl[data-s="'+n+'"]'),P=F.querySelector('.yypane');if(r&&P&&P.scrollHeight>P.clientHeight+4){var a=r.getBoundingClientRect(),b=P.getBoundingClientRect();P.scrollTo({top:P.scrollTop+a.top-b.top-(b.height-a.height)/2,left:P.scrollLeft+a.left-b.left-(b.width-a.width)/2,behavior:'smooth'})}else if(r){var q=r.getBoundingClientRect();if(q.top<0||q.bottom>innerHeight)r.scrollIntoView({block:'nearest',behavior:'smooth'})}}
 function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML}
 function body(){var d=S[cur.dataset.n-1]||{},B=C.querySelector('.zb'),v=d[tab];C.querySelectorAll('.zt button').forEach(function(b){b.classList.toggle('on',b.dataset.t===tab)});
 if(!v||!v.length){B.innerHTML='<p><small>@NONE@</small></p>';return}

@@ -394,6 +394,8 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .yuanwen.dz .dzgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,42%);gap:22px;align-items:start}
 @media (max-width:700px){.yuanwen.dz .dzgrid{grid-template-columns:1fr}}
 .yypane{position:sticky;top:12px;max-height:min(78vh,700px);overflow:auto;border:1px solid var(--line);border-radius:6px;background:#efe9da;overscroll-behavior:contain}
+/* 主人 11-07：两页拼的不要小窗滚动，整页直接显示，面板跟着页面走 */
+.yypane:has(.yyp ~ .yyp){position:relative;top:0;max-height:none;overflow:visible}
 @media (max-width:700px){.yypane{position:relative;top:0;max-height:none;overflow:visible}}
 .yyp{display:block;position:relative;color:var(--mute);font-size:12px;text-align:center}
 .yyp svg{display:block;width:100%;height:auto}
