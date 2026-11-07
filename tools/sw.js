@@ -37,6 +37,11 @@ self.addEventListener("fetch", e => {
       }).catch(() => caches.match(u.origin + u.pathname, { ignoreSearch: true }).then(m => m || offlineFor(r.url))));
       return;
     }
+    if (u.pathname.endsWith(".css")) {
+      // 样式不带版本号（免得每改一次样式全站三千页都变、仓库越堆越大），所以先走网络、验 ETag，没网才用缓存
+      e.respondWith(fetch(r.url, { cache: "no-cache" }).then(res => { if (res.ok) { const cp = res.clone(); caches.open(STATIC).then(c => c.put(r, cp)); } return res; }).catch(() => caches.match(r, { ignoreSearch: true })));
+      return;
+    }
     if (/\.(css|png|jpg|jpeg|webp|svg|json|xml|txt)$/.test(u.pathname)) {
       e.respondWith(caches.open(STATIC).then(c => c.match(r).then(m => {
         const net = fetch(r).then(res => { if (res.ok) { c.put(r, res.clone()); trim(STATIC, MAX_STATIC); } return res; }).catch(() => m);

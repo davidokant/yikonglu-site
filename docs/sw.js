@@ -1,7 +1,7 @@
 /* 一孔录 service worker（build.py 生成时填入版本号）
    页面：先走网络，拿到就更新缓存；没网才用缓存，缓存也没有就给离线页。每周日补页、改页后，联网打开就是新版。
    样式、图片、检索索引：先给缓存再后台更新。字体：缓存优先。 */
-const VER = "c0063dcfd0";
+const VER = "8984a19601";
 const PREFIXES = ["", "zh-hant/", "en/", "ja/", "ko/", "fr/", "es/", "de/", "vi/", "id/", "ru/"];  // "", "zh-hant/", "en/" ...
 const CORE = "yk-core-" + VER, PAGES = "yk-pages", STATIC = "yk-static", FONTS = "yk-fonts";
 const MAX_PAGES = 400, MAX_STATIC = 300;
@@ -35,6 +35,11 @@ self.addEventListener("fetch", e => {
         if (res.ok) { const cp = res.clone(); caches.open(PAGES).then(c => c.put(u.origin + u.pathname, cp)).then(() => trim(PAGES, MAX_PAGES)); }
         return res;
       }).catch(() => caches.match(u.origin + u.pathname, { ignoreSearch: true }).then(m => m || offlineFor(r.url))));
+      return;
+    }
+    if (u.pathname.endsWith(".css")) {
+      // 样式不带版本号（免得每改一次样式全站三千页都变、仓库越堆越大），所以先走网络、验 ETag，没网才用缓存
+      e.respondWith(fetch(r.url, { cache: "no-cache" }).then(res => { if (res.ok) { const cp = res.clone(); caches.open(STATIC).then(c => c.put(r, cp)); } return res; }).catch(() => caches.match(r, { ignoreSearch: true })));
       return;
     }
     if (/\.(css|png|jpg|jpeg|webp|svg|json|xml|txt)$/.test(u.pathname)) {
