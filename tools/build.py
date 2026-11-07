@@ -856,6 +856,9 @@ def yxl_block(L, D, P, full=False):
     find = "" if score is None else (f'<div class="yxfind"><h3>在平台上搜一句原文，能找到一孔录吗</h3>{rows}'
             f'<div class="yxscore"><b>找到分 <strong>{score}</strong></b>' + (f'<b>占比 <strong>{y["share"]}%</strong></b>' if y.get("share") is not None else "") + f'{trend}</div>'
             f'<p>做法：取已发各章首句，不登录搜索，看一孔录讲读是否在前 20 条，折成 0—100 的平台分；平台搜索因人因地而异，你搜到的可能不同。<a class="more" href="{P}yingxiangli.html">方法与原始数据 ›</a></p></div>')
+    ix = y.get("index") or {}
+    ixp = [f"{nm} {ix[k]['indexed']} / {ix[k]['total']} 页" for k, nm in (("google", "谷歌"), ("bing", "必应")) if isinstance(ix.get(k), dict) and ix[k].get("indexed") is not None and ix[k].get("total")]
+    if ixp: find += f'<p class="yxindex">收录：{" · ".join(ixp)}</p>'
     sub = f'每周更新 · 最近一次 {esc(y.get("updated") or D["today"])} · 每个数都可点开核对'
     return f'<section class="wrap narrow yxl"><h2 class="ph">一孔影响力</h2><p class="sub">{sub}</p>{grid}{find}</section>'
 
@@ -1428,6 +1431,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <p>平台分 = 100 × 各章 V 的平均。</p>
 <p>占比 = 各章搜索结果前 20 条中本站条数之和 ÷ 前 20 条总数。只在能看到全部结果的平台计算（现只 YouTube），不点名其他频道。</p>
 <p>找到分 = 各平台平台分的平均。YouTube 取台湾繁体、美国简体两种设定的平均，合成一个平台分；哔哩哔哩、谷歌、必应各一个平台分。只列有完整数据的平台。</p>
+<p>收录＝搜索引擎已编入索引的本站页数 ÷ 网站地图页数；谷歌按逐页检查接口每周轮查一遍，必应取 Webmaster 报告的索引页数；百度未接。</p>
 <h2>怎么测</h2>
 <p>词表：已发各章的第一句原文，简体、繁体各一条。每周滚动测，未测到的章暂不计分，跑完后换成整周数；更新日期为最近一次计算日。</p>
 <p>搜索用不登录的新会话；YouTube 走数据接口按地区和语言设定搜，和网页搜索结果可能有出入。搜索平台会按人、按地、按时调整结果，你在自己设备上搜到的名次未必一样。</p>
