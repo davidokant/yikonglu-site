@@ -83,7 +83,7 @@ ZH_UI = {
  "reads": "读音", "th_zi": "字", "th_pos": "位置", "th_du": "读", "shots": "底本原页",
  "kw": "本章勘误", "kw_note": "", "cite": "引用本页", "copy": "复制", "copied": "已复制",
  "checked": "本页最后核对：{d}。改动记在", "errata_page": "勘误页",
- "video": "看这一章的视频", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点 哔哩哔哩）",
+ "video": "看这一章的视频", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点哔哩哔哩）",
  "prev": "上一章", "next": "下一章", "chapter_no": "{book} · 第 {n} 章", "book_no": "《论语》第 {n} 篇 · 已讲 {done} / {total} 章",
  "source_line": f"原文与注据{SOURCE}", "rendering": "",
  "errata_title": "公开勘误", "errata_sub": "原文·引文·出处·读音·读法",
@@ -530,6 +530,39 @@ b.querySelector('a').onclick=function(){try{localStorage.setItem(K,w)}catch(e){}
 document.body.prepend(b)})();
 </script>"""
 
+SHARE_JS = """<script>
+(function(){var B=document.querySelector('.sharebox');if(!B)return;var D=JSON.parse(B.querySelector('.shdata').textContent),T=D.t,P=B.querySelector('.shpanel'),btn=B.querySelector('.shbtn');
+var txt=D.h+'「'+(D.y.length>40?D.y.slice(0,40)+'……':D.y)+'」';
+btn.addEventListener('click',function(){if(navigator.share&&/Mobi|Android|iPhone|iPad/.test(navigator.userAgent)){navigator.share({title:D.h+' · 一孔录',text:txt,url:D.u}).catch(function(){});return}P.hidden=!P.hidden});
+var E=encodeURIComponent,U={weibo:'https://service.weibo.com/share/share.php?url='+E(D.u)+'&title='+E(txt+' — 一孔录'),x:'https://x.com/intent/post?url='+E(D.u)+'&text='+E(txt),fb:'https://www.facebook.com/sharer/sharer.php?u='+E(D.u),tg:'https://t.me/share/url?url='+E(D.u)+'&text='+E(txt),wa:'https://wa.me/?text='+E(txt+' '+D.u),line:'https://social-plugins.line.me/lineit/share?url='+E(D.u),threads:'https://www.threads.net/intent/post?text='+E(txt+' '+D.u),reddit:'https://www.reddit.com/submit?url='+E(D.u)+'&title='+E(txt),vk:'https://vk.com/share.php?url='+E(D.u)+'&title='+E(txt)};
+P.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var k=b.dataset.p;
+if(k==='copy'){var done=function(){var o=b.textContent;b.textContent=T.ok;setTimeout(function(){b.textContent=o},1400)};if(navigator.clipboard)navigator.clipboard.writeText(txt+' '+D.u).then(done,function(){prompt('',D.u)});else prompt('',D.u);return}
+if(k==='card'){card();return}if(U[k])window.open(U[k],'_blank','noopener,width=640,height=560')});
+function qr(cb){if(window.qrcode){cb();return}var s=document.createElement('script');s.src='/assets/qrcode.js';s.onload=cb;document.head.appendChild(s)}
+function wrap(c,t,w){var L=[],cur='';for(var i=0;i<t.length;i++){var ch=t[i];if(c.measureText(cur+ch).width>w&&cur){if('，。；：？！、”’」』）,.;:?!'.indexOf(ch)>=0){cur+=ch;L.push(cur);cur='';continue}L.push(cur);cur=ch}else cur+=ch}if(cur)L.push(cur);return L}
+function wrapW(c,t,w){var ws=t.split(/(\\s+)/),L=[],cur='';ws.forEach(function(x){if(c.measureText(cur+x).width>w&&cur.trim()){L.push(cur.trim());cur=x.trim()}else cur+=x});if(cur.trim())L.push(cur.trim());return L}
+function card(){var lang=document.documentElement.lang,zh=/^zh/.test(lang),F='"Noto Serif SC","Noto Serif TC","Noto Serif JP","Noto Serif KR","Noto Serif",serif';
+var sub=zh?D.g:(D.r||D.g),all=D.h+D.y+sub+T.scan+'一孔录'+D.tag;
+Promise.all(['700 60px '+F,'400 34px '+F].map(function(f){return document.fonts?document.fonts.load(f,all).catch(function(){}):0})).then(function(){qr(draw)})
+function draw(){var W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');
+c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);c.strokeStyle='#23503F';c.lineWidth=3;c.strokeRect(40,40,W-80,H-80);c.strokeStyle='rgba(35,80,63,.25)';c.lineWidth=1;c.strokeRect(52,52,W-104,H-104);
+var seal=new Image();seal.onload=function(){c.drawImage(seal,96,96,72,72);rest()};seal.onerror=rest;seal.src='/assets/seal-180.png';
+function rest(){c.fillStyle='#1E2A25';c.font='900 44px '+F;c.textBaseline='middle';c.fillText('一孔录',186,122);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(zh?D.tag:'Yikonglu',188,160);
+c.textBaseline='alphabetic';c.fillStyle='#8A5A2C';c.font='400 34px '+F;c.fillText(D.h,96,262);
+var size=64,lines;for(;size>=36;size-=4){c.font='700 '+size+'px '+F;lines=wrap(c,D.y,W-192);if(lines.length*size*1.55<=520)break}
+var y=262+size*1.6;c.fillStyle='#1E2A25';lines.slice(0,Math.floor(560/(size*1.55))).forEach(function(l){c.fillText(l,96,y);y+=size*1.55});
+y+=10;c.fillStyle='#23503F';c.fillRect(96,y,64,4);y+=56;
+if(sub){c.fillStyle='#4A4840';c.font='400 32px '+F;var sl=zh||/^(ja|ko)/.test(lang)?wrap(c,sub,W-192):wrapW(c,sub,W-192),max=Math.max(1,Math.floor((1010-y)/52));if(sl.length>max){sl=sl.slice(0,max);sl[max-1]=sl[max-1].replace(/.{2}$/,'…')}sl.forEach(function(l){c.fillText(l,96,y);y+=52})}
+var q=qrcode(0,'M');q.addData(D.u);q.make();var n=q.getModuleCount(),cs=Math.floor(190/n),qs=cs*n,qx=W-96-qs,qy=H-96-qs;c.fillStyle='#fff';c.fillRect(qx-12,qy-12,qs+24,qs+24);c.fillStyle='#1E2A25';for(var r=0;r<n;r++)for(var k=0;k<n;k++)if(q.isDark(r,k))c.fillRect(qx+k*cs,qy+r*cs,cs,cs);
+c.fillStyle='#23503F';c.font='700 30px '+F;c.fillText(T.scan,96,H-150);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(D.u.replace(/^https:\\/\\//,'').replace(/\\.html$/,''),96,H-108);
+show(cv)}}}
+function show(cv){var M=document.createElement('div');M.className='shmodal';var url=cv.toDataURL('image/png');var fn='yikonglu-'+location.pathname.replace(/[\\/]+/g,'-').replace(/^-|\\.html$/g,'')+'.png';
+M.innerHTML='<div class="shm"><img alt=""><p class="note"></p><div class="shmb"><a class="btn" download></a><button type="button" class="btn ghost snd" hidden></button><button type="button" class="btn ghost cls"></button></div></div>';
+M.querySelector('img').src=url;M.querySelector('.note').textContent=T.tip;var a=M.querySelector('a');a.href=url;a.download=fn;a.textContent=T.save;M.querySelector('.cls').textContent=T.close;
+var sb=M.querySelector('.snd');sb.textContent=T.send;cv.toBlob(function(bl){try{var f=new File([bl],fn,{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[f]})){sb.hidden=false;sb.onclick=function(){navigator.share({files:[f],text:txt+' '+D.u}).catch(function(){})}}}catch(e){}});
+M.addEventListener('click',function(e){if(e.target===M||e.target.closest('.cls'))M.remove()});document.body.appendChild(M)}
+})();
+</script>"""
 JU_JS = """<div id="jubar" class="jubar" hidden><button data-a="q">@COPY@</button><button data-a="l">@LINK@</button><span class="jr" hidden></span><div class="hj"><b>@HJH@</b><ul class="hjd"></ul>@HJ@</div></div>
 <script>
 (function(){var B=document.getElementById('jubar'),Q=document.querySelector('.yuanwen blockquote'),cur=null;if(!Q)return;
@@ -604,6 +637,15 @@ DONE_TXT = {"zh-Hans": {"b": "读完了", "ok": "已读完 ✓", "n": "今天 {d
 def done_html(L, c):
     if not ANALYTICS.get("live"): return ""
     return f'<section class="donebox" data-c="{c}" hidden><button type="button" class="btn ghost">{DONE_TXT.get(L.code, DONE_TXT["en"])["b"]}</button><p class="donecnt" hidden></p></section>'
+SHARE_TXT = {"zh-Hans": {"sh": "分享", "cp": "复制链接", "ok": "已复制", "card": "生成分享图", "save": "保存图片", "send": "发送图片", "tip": "微信、小红书、朋友圈：保存图片再发，图上有二维码。", "scan": "扫码读这一章", "close": "关闭", "plats": [["微博", "weibo"], ["X", "x"], ["Telegram", "tg"]]}, "zh-Hant": {"sh": "分享", "cp": "複製連結", "ok": "已複製", "card": "生成分享圖", "save": "儲存圖片", "send": "傳送圖片", "tip": "IG、小紅書、微信：儲存圖片再發，圖上有 QR 碼。", "scan": "掃碼讀這一章", "close": "關閉", "plats": [["LINE", "line"], ["Facebook", "fb"], ["Threads", "threads"], ["X", "x"]]}, "en": {"sh": "Share", "cp": "Copy link", "ok": "Copied", "card": "Make a share image", "save": "Save image", "send": "Send image", "tip": "For Instagram and similar apps, save the image and post it; the QR code leads back here.", "scan": "Scan to read this chapter", "close": "Close", "plats": [["X", "x"], ["Facebook", "fb"], ["WhatsApp", "wa"], ["Reddit", "reddit"]]}, "ja": {"sh": "共有", "cp": "リンクをコピー", "ok": "コピーしました", "card": "シェア画像を作る", "save": "画像を保存", "send": "画像を送る", "tip": "Instagram などは画像を保存して投稿してください。QR コードからこの章に戻れます。", "scan": "読み取ってこの章へ", "close": "閉じる", "plats": [["LINE", "line"], ["X", "x"], ["Facebook", "fb"]]}, "ko": {"sh": "공유", "cp": "링크 복사", "ok": "복사됨", "card": "공유 이미지 만들기", "save": "이미지 저장", "send": "이미지 보내기", "tip": "인스타그램 등은 이미지를 저장해 올려 주세요. QR 코드로 이 장에 돌아올 수 있습니다.", "scan": "스캔해서 이 장 읽기", "close": "닫기", "plats": [["X", "x"], ["Facebook", "fb"], ["LINE", "line"]]}, "fr": {"sh": "Partager", "cp": "Copier le lien", "ok": "Copié", "card": "Créer une image", "save": "Enregistrer l’image", "send": "Envoyer l’image", "tip": "Pour Instagram et autres, enregistrez l’image puis publiez-la ; le QR code ramène ici.", "scan": "Scannez pour lire ce chapitre", "close": "Fermer", "plats": [["X", "x"], ["Facebook", "fb"], ["WhatsApp", "wa"]]}, "es": {"sh": "Compartir", "cp": "Copiar enlace", "ok": "Copiado", "card": "Crear imagen", "save": "Guardar imagen", "send": "Enviar imagen", "tip": "Para Instagram y similares, guarde la imagen y publíquela; el código QR lleva de vuelta aquí.", "scan": "Escanee para leer este capítulo", "close": "Cerrar", "plats": [["WhatsApp", "wa"], ["X", "x"], ["Facebook", "fb"]]}, "de": {"sh": "Teilen", "cp": "Link kopieren", "ok": "Kopiert", "card": "Bild zum Teilen", "save": "Bild speichern", "send": "Bild senden", "tip": "Für Instagram u. Ä. das Bild speichern und posten; der QR-Code führt hierher zurück.", "scan": "Scannen und dieses Kapitel lesen", "close": "Schließen", "plats": [["WhatsApp", "wa"], ["X", "x"], ["Facebook", "fb"]]}, "vi": {"sh": "Chia sẻ", "cp": "Sao chép liên kết", "ok": "Đã sao chép", "card": "Tạo ảnh chia sẻ", "save": "Lưu ảnh", "send": "Gửi ảnh", "tip": "Với Instagram, Zalo…: lưu ảnh rồi đăng; mã QR dẫn về chương này.", "scan": "Quét để đọc chương này", "close": "Đóng", "plats": [["Facebook", "fb"], ["X", "x"], ["Telegram", "tg"]]}, "id": {"sh": "Bagikan", "cp": "Salin tautan", "ok": "Tersalin", "card": "Buat gambar", "save": "Simpan gambar", "send": "Kirim gambar", "tip": "Untuk Instagram dan sejenisnya, simpan gambar lalu unggah; kode QR membawa kembali ke sini.", "scan": "Pindai untuk membaca bab ini", "close": "Tutup", "plats": [["WhatsApp", "wa"], ["Facebook", "fb"], ["X", "x"]]}, "ru": {"sh": "Поделиться", "cp": "Скопировать ссылку", "ok": "Скопировано", "card": "Сделать картинку", "save": "Сохранить", "send": "Отправить картинку", "tip": "Для Instagram и похожих приложений сохраните картинку и опубликуйте; QR-код ведёт сюда.", "scan": "Сканируйте, чтобы прочитать главу", "close": "Закрыть", "plats": [["Telegram", "tg"], ["VK", "vk"], ["WhatsApp", "wa"]]}}
+def share_html(L, c, url, head, title, yw_text, gist, rend):
+    t = SHARE_TXT.get(L.code, SHARE_TXT["en"])
+    plats = "".join(f'<button type="button" data-p="{k}">{esc(n)}</button>' for n, k in t["plats"])
+    d = json.dumps({"u": url, "h": head, "ti": title, "y": yw_text, "g": gist or "", "r": rend or "", "t": t, "tag": TAGLINE_L.get(L.code, "")}, ensure_ascii=False)
+    return (f'<section class="sharebox"><button type="button" class="btn ghost shbtn"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6h14v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{t["sh"]}</button>'
+            f'<div class="shpanel" hidden><button type="button" data-p="copy">{t["cp"]}</button><button type="button" data-p="card" class="on">{t["card"]}</button>{plats}</div>'
+            f'<script type="application/json" class="shdata">{d.replace("</", "<\\/")}</script></section>')
+TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
 LIVE_PILL = {"zh-Hans": "{o} 人在读 · 累计 {t}", "zh-Hant": "{o} 人在讀 · 累計 {t}", "en": "{o} reading · {t} total", "ja": "{o} 人が読書中 · 累計 {t}", "ko": "{o}명 읽는 중 · 누적 {t}", "fr": "{o} lisent · {t} en tout",
              "es": "{o} leyendo · {t} total", "de": "{o} lesen · {t} gesamt", "vi": "{o} đang đọc · {t} lượt", "id": "{o} membaca · total {t}", "ru": "читают {o} · всего {t}"}
@@ -928,7 +970,7 @@ def build_lang(L, D, write):
         future = bool(pub_at) and datetime.datetime.fromisoformat(pub_at) > datetime.datetime.now(datetime.timezone.utc)
         vid_html = (f"""<section class="video"{f' hidden data-pub="{pub_at}"' if future else ""}><h2><i>看</i>{L.t("video")}</h2>
 <div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{yt}{f'?start={st}' if st else ''}" title="{esc(epname)}" allowfullscreen></iframe></div>
-<p class="vlinks">{L.t("video_in", ep=epname)}<a href="https://www.youtube.com/watch?v={yt}{f'&amp;t={st}s' if st else ''}">YouTube</a><a href="https://www.bilibili.com/video/{ep['bilibili']}{f'?t={st}' if st else ''}">Bilibili</a>{L.t("cn_note")}</p></section>""" + (f'<script>(function(){{var s=document.querySelector("section.video[data-pub]");if(!s)return;function f(){{if(Date.now()>=Date.parse(s.dataset.pub)){{s.hidden=false;return true}}}}if(!f())var t=setInterval(function(){{if(f())clearInterval(t)}},60000)}})();</script>' if future else "")) if yt else ""  # 视频还没上传（只排了时间）就先不放视频块
+<p class="vlinks">{L.t("video_in", ep=epname)}<a href="https://www.youtube.com/watch?v={yt}{f'&amp;t={st}s' if st else ''}">YouTube</a><a href="https://www.bilibili.com/video/{ep['bilibili']}{f'?t={st}' if st else ''}">{"哔哩哔哩" if L.code.startswith("zh") else "Bilibili"}</a>{L.t("cn_note")}</p></section>""" + (f'<script>(function(){{var s=document.querySelector("section.video[data-pub]");if(!s)return;function f(){{if(Date.now()>=Date.parse(s.dataset.pub)){{s.hidden=false;return true}}}}if(!f())var t=setInterval(function(){{if(f())clearInterval(t)}},60000)}})();</script>' if future else "")) if yt else ""  # 视频还没上传（只排了时间）就先不放视频块
         def pg(nums):
             return " ".join(f'<a class="pg" href="/yuanye/p{int(x):03d}.jpg" target="_blank">{L.t("pg", n=x)}</a>' if x in pages_avail else f'<span class="pg">{L.t("pg", n=x)}</span>' for x in nums)
         extra = ""
@@ -968,7 +1010,7 @@ def build_lang(L, D, write):
 {gist_html}
 {bh_html}
 {vid_html}
-{done_html(L, c) if c in D["pub"] else ""}
+<div class="chacts">{done_html(L, c) if c in D["pub"] else ""}{share_html(L, c, url, (f"《论语·{pname}》第 {cnum} 章" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)), title_of(c), yw[c], field(c, "片里落点")[0], rend)}</div>
 {cta_html(L, P)}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
 {fold(secs + yiwen_html(c) + extra)}
@@ -1010,7 +1052,7 @@ def build_lang(L, D, write):
             ("citation_publication_date", first.replace("-", "/")), ("citation_online_date", DATE_TOK_SL),
             ("citation_language", L.hreflang), ("citation_public_url", url),
             ("DC.title", name), ("DC.creator", "一孔录"), ("DC.date", first), ("DC.language", L.hreflang), ("DC.source", SOURCE)])
-        write(rel, page(L, ttl, desc, rel, body + FOLD_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
+        write(rel, page(L, ttl, desc, rel, body + SHARE_JS + FOLD_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
 
 
     # 未讲各章：只出简繁。原文（朱注分章底本）、白话初稿、本句互见、异文、各家注本

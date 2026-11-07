@@ -1,9 +1,9 @@
 {
  "updated": "2026-11-06",
- "episodes": 20,
- "segments": 658,
- "changed": 152,
- "ratio": 23.1,
+ "episodes": 39,
+ "segments": 1194,
+ "changed": 242,
+ "ratio": 20.3,
  "rows": [
   {
    "ep": "学而一",
@@ -104,6 +104,101 @@
    "ep": "里仁二",
    "segments": 27,
    "changed": 5
+  },
+  {
+   "ep": "里仁三",
+   "segments": 30,
+   "changed": 7
+  },
+  {
+   "ep": "里仁四",
+   "segments": 33,
+   "changed": 8
+  },
+  {
+   "ep": "里仁五",
+   "segments": 33,
+   "changed": 8
+  },
+  {
+   "ep": "里仁六",
+   "segments": 30,
+   "changed": 7
+  },
+  {
+   "ep": "里仁七",
+   "segments": 23,
+   "changed": 6
+  },
+  {
+   "ep": "公冶长一",
+   "segments": 34,
+   "changed": 5
+  },
+  {
+   "ep": "公冶长二",
+   "segments": 30,
+   "changed": 5
+  },
+  {
+   "ep": "公冶长三",
+   "segments": 26,
+   "changed": 1
+  },
+  {
+   "ep": "公冶长四",
+   "segments": 32,
+   "changed": 4
+  },
+  {
+   "ep": "公冶长五",
+   "segments": 25,
+   "changed": 2
+  },
+  {
+   "ep": "公冶长六",
+   "segments": 32,
+   "changed": 7
+  },
+  {
+   "ep": "公冶长七",
+   "segments": 26,
+   "changed": 4
+  },
+  {
+   "ep": "公冶长八",
+   "segments": 16,
+   "changed": 4
+  },
+  {
+   "ep": "雍也一",
+   "segments": 24,
+   "changed": 2
+  },
+  {
+   "ep": "雍也二",
+   "segments": 21,
+   "changed": 6
+  },
+  {
+   "ep": "雍也三",
+   "segments": 31,
+   "changed": 2
+  },
+  {
+   "ep": "雍也四",
+   "segments": 31,
+   "changed": 6
+  },
+  {
+   "ep": "雍也五",
+   "segments": 30,
+   "changed": 3
+  },
+  {
+   "ep": "雍也六",
+   "segments": 29,
+   "changed": 3
   }
  ]
 }

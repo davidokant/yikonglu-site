@@ -380,3 +380,9 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .topju blockquote{margin:0;font-size:22px;line-height:1.7}.topju p{margin:8px 0 0;font-size:14px;color:var(--mute)}.topju p a:before{content:"—— "}
 .toc li a{position:relative}.toc li i.heat{position:absolute;left:4px;bottom:-1px;height:2px;width:0;background:var(--accent);opacity:.45;transition:width .6s;max-width:calc(100% - 8px)}
 footer .steps{font-size:13px;color:var(--mute);margin:10px 0 4px}footer .steps a{color:var(--mute);margin:0 2px}
+.chacts{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin:18px 0 6px}.chacts .donebox{margin:0}
+.sharebox{position:relative}.sharebox .shbtn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;font-size:15px}
+.shpanel{position:absolute;z-index:30;top:calc(100% + 8px);left:0;display:flex;flex-direction:column;min-width:180px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:6px 0}
+.shpanel button{background:none;border:0;text-align:left;padding:8px 16px;font:inherit;font-size:15px;color:var(--fg);cursor:pointer}.shpanel button:hover{background:var(--bg)}.shpanel button.on{color:var(--accent);font-weight:600;border-bottom:1px solid var(--line)}
+.shmodal{position:fixed;inset:0;z-index:100;background:rgba(20,24,22,.72);display:flex;align-items:center;justify-content:center;padding:16px}
+.shm{background:var(--paper);border-radius:12px;padding:16px;max-width:420px;width:100%;max-height:100%;overflow:auto;text-align:center}.shm img{width:100%;height:auto;border-radius:6px;display:block}.shm .note{font-size:13px;color:var(--mute);margin:10px 0}.shmb{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.shmb .btn{padding:7px 16px;font-size:15px}
