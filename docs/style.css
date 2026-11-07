@@ -388,3 +388,37 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .shmodal{position:fixed;inset:0;z-index:100;background:rgba(20,24,22,.72);display:flex;align-items:center;justify-content:center;padding:16px}
 .shm{background:var(--paper);border-radius:12px;padding:16px;max-width:420px;width:100%;max-height:100%;overflow:auto;text-align:center}.shm img{width:100%;height:auto;border-radius:6px;display:block}.shm .note{font-size:13px;color:var(--mute);margin:10px 0}.shmb{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.shmb .btn{padding:7px 16px;font-size:15px}
 .shmodal .note.hl{color:var(--accent);font-weight:600}
+
+/* 逐句对照（样板：同屏原页、译随文、小卡） */
+.yuanwen.dz .dzgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,42%);gap:22px;align-items:start}
+@media (max-width:700px){.yuanwen.dz .dzgrid{grid-template-columns:1fr}}
+.yypane{position:sticky;top:12px;max-height:min(78vh,700px);overflow:auto;border:1px solid var(--line);border-radius:6px;background:#efe9da;overscroll-behavior:contain}
+@media (max-width:700px){.yypane{position:relative;top:0;max-height:52vh}}
+.yyp{display:block;position:relative;color:var(--mute);font-size:12px;text-align:center}
+.yyp svg{display:block;width:100%;height:auto}
+.yyp span{display:block;padding:2px 0 6px}
+.yyp .hl{fill:rgba(178,34,34,.16);stroke:#B22222;stroke-width:5;opacity:0;transition:opacity .2s}
+.yyp .hl.on{opacity:1}
+.yytip{font-size:12px;color:var(--mute);margin:6px 0 0}
+.dztools{display:flex;gap:8px;align-items:center;margin:0 0 8px;flex-wrap:wrap}
+.dztools .prog{font-size:13px;color:var(--mute);margin-right:auto}
+.dztools button{border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:4px;font:inherit;font-size:14px;line-height:1.4;padding:1px 10px;cursor:pointer}
+.dztools button[aria-pressed=true]{background:var(--accent);color:#fff}
+.yuanwen.dz blockquote .ju{display:inline}
+.yuanwen.dz blockquote .yi{display:block;margin:2px 0 10px;padding:4px 10px;background:color-mix(in srgb,var(--mute) 12%,transparent);border-radius:4px;font-size:16px;line-height:1.75;letter-spacing:0;color:var(--ink)}
+.yuanwen.dz blockquote .yi[hidden]{display:none}
+.yuanwen.dz.yion blockquote .ju{display:block}
+.zjcard{position:absolute;z-index:21;width:min(92vw,440px);background:var(--paper);border:1px solid var(--line);border-radius:8px;box-shadow:0 6px 22px rgba(0,0,0,.18);padding:10px 12px 12px;font-size:15px;line-height:1.75}
+.zjcard[hidden]{display:none}
+.zjcard .zq{font-size:14px;color:var(--mute);margin:0 0 6px;max-height:3.6em;overflow:hidden}
+.zjcard .zt{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:8px}
+.zjcard .zt button{border:0;background:transparent;font:inherit;font-size:14px;padding:3px 9px 5px;cursor:pointer;color:var(--mute);border-bottom:2px solid transparent;margin-bottom:-1px}
+.zjcard .zt button.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
+.zjcard .zb{min-height:3em}
+.zjcard .zb p{margin:0 0 6px}
+.zjcard .zb small{display:block;color:var(--mute);font-size:12px}
+.zjcard .zb .dai{color:#8A5A2C}
+.zjcard .za{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.zjcard .za button{border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:4px;font:inherit;font-size:13px;padding:2px 9px;cursor:pointer}
+.zjcard .za button:first-child{background:var(--accent);color:#fff}
+.zjcard .zx{font-size:12px;color:var(--mute);margin-top:6px}

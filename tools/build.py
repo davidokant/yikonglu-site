@@ -11,6 +11,7 @@ import json, re, sys, html, os, shutil, datetime, glob, csv
 import og as OG
 import gushi as GS
 import renwu as RW
+import zhuju as ZJ
 
 DOMAIN = "https://yikonglu.com"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -550,6 +551,7 @@ var lp='';try{var o={};new Intl.DateTimeFormat('zh-CN-u-ca-chinese',{year:'numer
 if(lm&&ld){var yn=(o.yearName||'').replace(/年$/,'')||(ry>0?'甲乙丙丁戊己庚辛壬癸'[(ry-4)%10]+'子丑寅卯辰巳午未申酉戌亥'[(ry-4)%12]:''),MN=['正','二','三','四','五','六','七','八','九','十','冬','腊'][lm-1]+'月',DN=ld<=10?'初'+N[ld-1]:ld<20?'十'+N[ld-11]:ld===20?'二十':ld<30?'廿'+N[ld-21]:'三十';lp='农历'+(/^[一-鿿]{2}$/.test(yn)?yn+'年':'')+(/闰|bis/.test(o.month)?'闰':'')+MN+DN}}catch(e){}
 return{big:m+'月'+d+'日',wk:y+'年 · 星期'+'日一二三四五六'[now.getDay()]+(lp?' · '+lp:''),jq:(k===0?'今日':'')+R.jn[idx]+' · '+R.hou[idx*3+h]}}catch(e){return null}}
 var X3=JSON.parse(B.querySelector('.shtri').textContent);
+window.yklCard=function(o){if(o.y){X3.y=o.y;X3.en='';X3.ja=''}if(o.u)D.u=o.u;card()};
 function card(){var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',RL=rili(),all=X3.h+X3.y+X3.en+X3.ja+'一孔录逐字读经典原文扫码读这一章'+(RL?RL.big+RL.wk+RL.jq:'');
 Promise.all(['900 72px '+F,'700 60px '+F,'400 30px '+F].map(function(f){return document.fonts?document.fonts.load(f,all).catch(function(){}):0})).then(function(){qr(draw)})
 function draw(){var W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');
@@ -1039,13 +1041,29 @@ def build_lang(L, D, write):
         bh_html = f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(bh)}</p><p class="note">{L.t("baihua_note")}</p></section>' if bh else ""
         rend = L.ch(c).get("yw")
         rend_html = f'<p class="rend">{esc(rend)}</p><figcaption>{L.t("rendering")}</figcaption>' if rend else ""
+        ZJD = D.get("zhuju") or {"on": set(), "jl": {}, "zj": {}}
+        dz = c in ZJD["on"] and L.code.startswith("zh") and c in ZJD["jl"]
+        if dz:
+            sents = split_ju(yw[c]); zpages, zper = ZJ.spans_of(c, sents, ZJD); zs = ZJ.card_data(c, ZJD, len(sents)) or []
+            zrows = []
+            for j, x in enumerate(sents, 1):
+                d = dict(zs[j-1]) if j <= len(zs) else {}
+                d["hj"] = [[f"{h[0]}：{h[1]}", h[2], ""] for h in hj_data.get(str(j), [])]
+                zrows.append(d)
+            ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x)}</span><span class="yi" hidden>{esc(zrows[j-1].get("bh", ""))}</span>' for j, x in enumerate(sents, 1))
+            fig_html = (f'<figure class="yuanwen dz"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span><button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button></div>'
+                        f'<div class="dzgrid"><div><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="{esc(json.dumps([[x["zi"], x["pos"], x["du"]] for x in g["reads"]], ensure_ascii=False))}" data-rl="{esc(L.t("ju_reads"))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}<p class="jutip">点原文任一句：原页亮出那一列，可看白话、朱注，复制带出处。划选几个字也行。</p></div>'
+                        f'<div class="yypane">{ZJ.page_pane(c, zpages, zper, "原页")}</div></div>'
+                        f'<script type="application/json" class="zjdata">{json.dumps(zrows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
+        else:
+            fig_html = f"""<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}<p class="jutip">{L.t("ju_tip")}</p></figure>"""
         body = f"""<div class="chhead"><div class="wrap">
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
 <h1><span class="no">{L.t("chapter_no", book=(pname if L.code=="zh-Hans" else bname), n=cnum)}</span>{esc(title_of(c))}</h1>
 </div></div>
 <main class="wrap chapter">
 <article>
-<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}<p class="jutip">{L.t("ju_tip")}</p></figure>
+{fig_html}
 {gist_html}
 {bh_html}
 {vid_html}
@@ -1092,7 +1110,7 @@ def build_lang(L, D, write):
             ("citation_publication_date", first.replace("-", "/")), ("citation_online_date", DATE_TOK_SL),
             ("citation_language", L.hreflang), ("citation_public_url", url),
             ("DC.title", name), ("DC.creator", "一孔录"), ("DC.date", first), ("DC.language", L.hreflang), ("DC.source", SOURCE)])
-        write(rel, page(L, ttl, desc, rel, body + SHARE_JS + FOLD_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
+        write(rel, page(L, ttl, desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@IMG@", "做成分享图").replace("@NONE@", "这一句没有收。") if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
 
 
     # 未讲各章：只出简繁。原文（朱注分章底本）、白话初稿、本句互见、异文、各家注本
@@ -1513,6 +1531,7 @@ def main(zdir, outdir, kanwu=None):
             im = Image.open(png).convert("RGB")
             if im.width > 1400: im = im.resize((1400, int(im.height * 1400 / im.width)))
             im.save(jpg, quality=78, optimize=True, progressive=True)
+    ZJD = ZJ.load(); ZJ.swap_pages(ZJD, ydir)  # 句列表里校平过的页换成校平图
     shutil.copytree(ydir, os.path.join(outdir, "yuanye"))
     pages_avail = {re.sub(r"\D", "", f).lstrip("0") for f in os.listdir(ydir) if f.endswith(".jpg")}
     zhuben = parse_zhuben(ZB_DIR)
@@ -1580,7 +1599,7 @@ def main(zdir, outdir, kanwu=None):
     if G: GS.copy_images(G, outdir); GUSHI_ON = True
     yxl = json.load(open(YXL_FILE, encoding="utf-8")) if os.path.exists(YXL_FILE) else {}
     draft = json.load(open(DRAFT_FILE, encoding="utf-8")) if os.path.exists(DRAFT_FILE) else {}
-    D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today)
+    D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today, zhuju=ZJD)
 
     pdp = os.path.join(HERE, "pagedates.json")  # 每页 [内容指纹, 内容最后变动日]：没改的页不换日期
     pdates = json.load(open(pdp, encoding="utf-8")) if os.path.exists(pdp) else {}
