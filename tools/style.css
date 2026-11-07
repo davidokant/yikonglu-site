@@ -397,13 +397,13 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 /* 主人 11-07：两页拼的不要小窗滚动，整页直接显示，面板跟着页面走 */
 .yypane:has(.yyp ~ .yyp){position:relative;top:0;max-height:none;overflow:visible}
 /* 手机（样板，待主人定）：原页收成小图贴在原文上方，点句红框照样亮；点小图页内放大，红框保留 */
-@media (max-width:700px){.yypane{position:sticky;top:6px;z-index:5;max-height:none;overflow:visible;order:-1;display:flex;flex-direction:row-reverse;justify-content:center;gap:10px;padding:6px 6px 2px;background:rgba(242,241,234,.94);border:1px solid var(--line);border-radius:8px;backdrop-filter:blur(3px)}
+@media (max-width:700px){.yypane,.yypane:has(.yyp ~ .yyp){position:sticky;top:calc(var(--toph,0px) + 4px);z-index:5;max-height:none;overflow:visible;order:-1;display:flex;flex-direction:row-reverse;justify-content:center;gap:10px;padding:6px 6px 2px;background:var(--bg);border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.06)}
 .yypane .yyp{width:auto}.yypane .yyp svg{width:auto;height:min(40vw,150px);border:1px solid var(--line);background:#fff}.yypane .yyp span{font-size:11px;padding:2px 0 2px}.yypane .yyp .hl{stroke-width:14}}
 .yyzoom{position:fixed;inset:0;z-index:120;background:#1b1e1c;overflow:auto;-webkit-overflow-scrolling:touch}
-.yyzoom .yyzh{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:10px;height:44px;padding:0 10px;background:rgba(27,30,28,.92);color:#eee;font-size:14px}
+.yyzoom .yyzh{position:fixed;top:0;left:0;right:0;z-index:1;display:flex;align-items:center;gap:10px;height:44px;padding:0 10px;background:rgba(27,30,28,.92);color:#eee;font-size:14px}
 .yyzoom .yyzh b{font-weight:600;margin-right:auto}.yyzoom .yyzh button,.yyzoom .yyzh a{font:inherit;color:#eee;background:rgba(255,255,255,.12);border:0;border-radius:6px;padding:6px 12px;line-height:1;text-decoration:none}
 .yyzoom .yyzh button.x{font-size:18px;padding:4px 10px}
-.yyzoom .yyzb{padding:0 0 30px}.yyzoom svg{display:block;width:230vw;height:auto;margin:0}.yyzoom .hl{fill:rgba(178,34,34,.16);stroke:#B22222;stroke-width:6;opacity:0}.yyzoom .hl.on{opacity:1}
+.yyzoom .yyzb{padding:44px 0 30px}.yyzoom svg{display:block;width:230vw;height:auto;margin:0}.yyzoom .hl{fill:rgba(178,34,34,.16);stroke:#B22222;stroke-width:6;opacity:0}.yyzoom .hl.on{opacity:1}
 .yyp{display:block;position:relative;color:var(--mute);font-size:12px;text-align:center}
 .yyp svg{display:block;width:100%;height:auto}
 .yyp span{display:block;padding:2px 0 6px}
