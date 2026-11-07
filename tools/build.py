@@ -1499,12 +1499,12 @@ def kf_html(L):  # 开放数据页的分界说明
             f'<p>{K["biz"]}</p><p class="mailp">{MAIL}</p><p>{K["rule"]}</p><h3>{K["log"]}</h3>' + li([f"{a} {b}" for a, b in K["logs"]]))
 
 # 页底平台行：有网页主页的直接外链，微信系只能搜
-PLAT_LINKS = [("YouTube", "https://www.youtube.com/@yikonglu"), ("哔哩哔哩", "https://space.bilibili.com/18385461"), ("TikTok", "https://www.tiktok.com/@yikonglu"), ("抖音", "https://www.douyin.com/user/MS4wLjABAAAAXpVHXn9zMrJpCNeOBO1s4G2i1KhXcstcIBil6H9TFQM"), ("快手", "https://www.kuaishou.com/profile/3xi6ey79zwx7edu"), ("知乎", "https://www.zhihu.com/people/yikonglu"), ("百家号", "https://mr.baidu.com/r/25FydpLvBKM"),
+PLAT_LINKS = [("YouTube", "https://www.youtube.com/@yikonglu"), ("哔哩哔哩", "https://space.bilibili.com/18385461"), ("TikTok", "https://www.tiktok.com/@yikonglu"), ("抖音", "https://www.douyin.com/user/MS4wLjABAAAAXpVHXn9zMrJpCNeOBO1s4G2i1KhXcstcIBil6H9TFQM"), ("快手", "https://www.kuaishou.com/profile/3xi6ey79zwx7edu"), ("知乎", "https://www.zhihu.com/people/yikonglu"), ("百家号", "https://mr.baidu.com/r/25FydpLvBKM"), ("小红书", "https://www.xiaohongshu.com/user/profile/567f4fd5e4251d7509b0893a"),
               ("Spotify", "https://open.spotify.com/show/2tc129X7b7yqlqqGWzUbon"), ("Apple 播客", "https://podcasts.apple.com/us/podcast/id6808549970"),
               ("Amazon Music", "https://music.amazon.co.uk/podcasts/40c8bab4-c9ec-41fa-a5ce-dba2e2d7aa91/%E4%B8%80%E5%AD%94%E5%BD%95%EF%BD%9C%E8%BD%BB%E6%9D%BE%E8%AF%BB%E7%BB%8F%E5%85%B8"),
               ("喜马拉雅", "https://www.ximalaya.com/album/132166955"), ("小宇宙", "https://www.xiaoyuzhoufm.com/podcast/6a9a7681f62860437cd2d85e")]
-PLAT_NAME = {"哔哩哔哩": "Bilibili", "Apple 播客": "Apple Podcasts", "喜马拉雅": None, "知乎": None, "小宇宙": None, "百家号": None, "抖音": None, "快手": None}
-PLAT_WX = {"zh": "视频号、公众号：微信搜「一孔录」 · 小红书搜「一孔录」", "en": "WeChat: search “一孔录”", "ja": "WeChat：「一孔录」で検索",
+PLAT_NAME = {"哔哩哔哩": "Bilibili", "Apple 播客": "Apple Podcasts", "喜马拉雅": None, "知乎": None, "小宇宙": None, "百家号": None, "抖音": None, "快手": None, "小红书": None}
+PLAT_WX = {"zh": "视频号、公众号：微信搜「一孔录」", "en": "WeChat: search “一孔录”", "ja": "WeChat：「一孔录」で検索",
            "ko": "WeChat: 「一孔录」 검색", "fr": "WeChat : cherchez « 一孔录 »", "es": "WeChat: busque «一孔录»"}
 def where_html(L):
     zh = L.code.startswith("zh")
