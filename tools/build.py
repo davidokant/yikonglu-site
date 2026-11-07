@@ -1539,9 +1539,7 @@ def main(zdir, outdir, kanwu=None):
     shutil.copytree(os.path.join(HERE, "assets"), os.path.join(outdir, "assets"))
     rdir = os.path.join(HERE, "root")  # 站长验证文件等，原样放根目录
     if os.path.isdir(rdir): shutil.copytree(rdir, outdir, dirs_exist_ok=True)
-    ydir = os.path.join(GAO_DIR, "_原页缓存")  # 原页 jpg 缓存放共享盘，不进仓库（11-07：仓库每多一份图就多一份历史）
-    if not os.path.isdir(ydir): ydir = os.path.join(HERE, "yuanye")
-    os.makedirs(ydir, exist_ok=True)
+    ydir = os.path.join(HERE, "yuanye"); os.makedirs(ydir, exist_ok=True)  # 原页 jpg 缓存留在仓库：共享盘会给 jpg 注入 C2PA、字节全变，不能放那里
     for png in sorted(glob.glob(os.path.join(GAO_DIR, "*", "p*.png"))):
         jpg = os.path.join(ydir, os.path.basename(png)[:-4] + ".jpg")
         if not os.path.exists(jpg):
