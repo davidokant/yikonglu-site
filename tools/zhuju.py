@@ -146,6 +146,14 @@ C.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||!
 var a=b.dataset.a;if(a==='q'){put(cite(sel||cur.textContent,cur),b);if(window.yklCopy)window.yklCopy(cur.id)}else if(a==='l')put(Q.dataset.url+'#'+cur.id,b);else if(a==='img'&&window.yklCard){window.yklCard({y:sel||cur.textContent,u:Q.dataset.url+'#'+cur.id,n:cur.dataset.n})}});
 document.addEventListener('click',function(e){if(!C.hidden&&!C.contains(e.target)&&!e.target.closest('.ju')&&!e.target.closest('.dztools'))close()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+F.addEventListener('click',function(e){var a=e.target.closest('.yyp');if(!a||!matchMedia('(max-width:700px)').matches)return;e.preventDefault();zoom(a)});
+function zoom(a){var Z=document.createElement('div'),W=[160,230,320,450],wi=1;Z.className='yyzoom';var sv=a.querySelector('svg').cloneNode(true);
+Z.innerHTML='<div class="yyzh"><b></b><button type="button" class="m" aria-label="缩小">－</button><button type="button" class="p" aria-label="放大">＋</button><a target="_blank" rel="noopener">原图</a><button type="button" class="x" aria-label="关闭">×</button></div><div class="yyzb"></div>';
+Z.querySelector('b').textContent=a.querySelector('span').textContent;Z.querySelector('a').href=a.href;Z.querySelector('.yyzb').appendChild(sv);
+function fit(){sv.style.width=W[wi]+'vw';var r=sv.querySelector('.hl.on');if(!r)return;var b=r.getBoundingClientRect(),z=Z.getBoundingClientRect();Z.scrollTo({left:Z.scrollLeft+b.left-z.left-(z.width-b.width)/2,top:Z.scrollTop+b.top-z.top-(z.height-b.height)/2+22})}
+Z.querySelector('.p').onclick=function(){wi=Math.min(W.length-1,wi+1);fit()};Z.querySelector('.m').onclick=function(){wi=Math.max(0,wi-1);fit()};
+function off(){Z.remove();document.removeEventListener('keydown',k);document.body.style.overflow=''}function k(e){if(e.key==='Escape')off()}
+Z.querySelector('.x').onclick=off;document.addEventListener('keydown',k);document.body.style.overflow='hidden';document.body.appendChild(Z);fit()}
 Q.addEventListener('copy',function(e){var g=getSelection(),t=String(g).replace(/\\s+/g,'');if(!t||!e.clipboardData)return;var n=g.anchorNode&&(g.anchorNode.nodeType===1?g.anchorNode:g.anchorNode.parentNode),s=n&&n.closest&&n.closest('.ju')||Q.querySelector('.ju');e.clipboardData.setData('text/plain',cite(t,s));e.preventDefault()});
 var Y=F.querySelector('.yibtn'),YK='yk_yi';function yi(on){Y.setAttribute('aria-pressed',on?'true':'false');F.classList.toggle('yion',on);F.querySelectorAll('.yi').forEach(function(x){x.hidden=!on});try{localStorage.setItem(YK,on?'1':'0')}catch(e){}}
 if(Y){var on0=false;try{on0=localStorage.getItem(YK)==='1'}catch(e){}yi(on0);Y.addEventListener('click',function(){yi(Y.getAttribute('aria-pressed')!=='true')})}
