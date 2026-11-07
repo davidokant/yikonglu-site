@@ -541,29 +541,36 @@ if(k==='card'){card();return}if(U[k])window.open(U[k],'_blank','noopener,width=6
 function qr(cb){if(window.qrcode){cb();return}var s=document.createElement('script');s.src='/assets/qrcode.js';s.onload=cb;document.head.appendChild(s)}
 function wrap(c,t,w){var L=[],cur='';for(var i=0;i<t.length;i++){var ch=t[i];if(c.measureText(cur+ch).width>w&&cur){if('，。；：？！、”’」』）,.;:?!'.indexOf(ch)>=0){cur+=ch;L.push(cur);cur='';continue}L.push(cur);cur=ch}else cur+=ch}if(cur)L.push(cur);return L}
 function wrapW(c,t,w){var ws=t.split(/(\\s+)/),L=[],cur='';ws.forEach(function(x){if(c.measureText(cur+x).width>w&&cur.trim()){L.push(cur.trim());cur=x.trim()}else cur+=x});if(cur.trim())L.push(cur.trim());return L}
-function rili(){try{var R=D.rl,now=new Date(),y=now.getFullYear(),m=now.getMonth()+1,d=now.getDate(),lang=document.documentElement.lang,zh=/^zh/.test(lang);
+function rili(){try{var R=X3.rl,now=new Date(),y=now.getFullYear(),m=now.getMonth()+1,d=now.getDate();
 function dd(Y,i){var s=R.jt[Y];return s?s.charCodeAt(i)-48:0}
 var idx=-1,sy=y,sm,sd;for(var i=23;i>=0;i--){var mo=1+(i>>1),dy=dd(y,i);if(!dy)return null;if(mo<m||(mo===m&&dy<=d)){idx=i;sm=mo;sd=dy;break}}
 if(idx<0){sy=y-1;idx=23;sm=12;sd=dd(sy,23);if(!sd)return null}
-var k=Math.round((new Date(y,m-1,d)-new Date(sy,sm-1,sd))/864e5),h=Math.min(2,Math.floor(k/5)),jn=R.jn[idx],l1,l2;
-if(zh){l1=(k===0?'今日':'')+jn+' · '+R.hou[idx*3+h];var lp='';try{var o={};new Intl.DateTimeFormat('zh-CN-u-ca-chinese',{year:'numeric',month:'numeric',day:'numeric'}).formatToParts(now).forEach(function(p){o[p.type]=p.value});var ms=(o.month||'').replace(/^闰|bis$/g,'').replace(/月$/,''),CM=['正','二','三','四','五','六','七','八','九','十','十一','十二'],lm=/^\d+$/.test(ms)?parseInt(ms,10):CM.indexOf(ms)+1,ry=parseInt(o.relatedYear||o.year,10),ld=parseInt((o.day||'').replace(/\D/g,''),10),N='一二三四五六七八九十';
-if(lm&&ld){var yn=(o.yearName||'').replace(/年$/,'')||(ry>0?'甲乙丙丁戊己庚辛壬癸'[(ry-4)%10]+'子丑寅卯辰巳午未申酉戌亥'[(ry-4)%12]:''),MN=['正','二','三','四','五','六','七','八','九','十','冬','腊'][lm-1]+'月',DN=ld<=10?'初'+N[ld-1]:ld<20?'十'+N[ld-11]:ld===20?'二十':ld<30?'廿'+N[ld-21]:'三十';lp=' · 农历'+(/^[\u4e00-\u9fff]{2}$/.test(yn)?yn+'年':'')+(/闰|bis/.test(o.month)?'闰':'')+MN+DN}}catch(e){}l2=m+'月'+d+'日 星期'+'日一二三四五六'[now.getDay()]+lp}
-else{l1=R.zn?R.zn[idx]+' · '+jn:jn;l2=now.toLocaleDateString(lang,{year:'numeric',month:'long',day:'numeric',weekday:'long'})}
-return[l1,l2]}catch(e){return null}}
-function card(){var lang=document.documentElement.lang,zh=/^zh/.test(lang),F='"Noto Serif SC","Noto Serif TC","Noto Serif JP","Noto Serif KR","Noto Serif",serif';
-var sub=zh?D.g:(D.r||D.g),RL=rili(),all=D.h+D.y+sub+T.scan+'一孔录'+D.tag+(RL?RL.join(''):'');
-Promise.all(['700 60px '+F,'400 34px '+F].map(function(f){return document.fonts?document.fonts.load(f,all).catch(function(){}):0})).then(function(){qr(draw)})
+var k=Math.round((new Date(y,m-1,d)-new Date(sy,sm-1,sd))/864e5),h=Math.min(2,Math.floor(k/5));
+var lp='';try{var o={};new Intl.DateTimeFormat('zh-CN-u-ca-chinese',{year:'numeric',month:'numeric',day:'numeric'}).formatToParts(now).forEach(function(p){o[p.type]=p.value});var ms=(o.month||'').replace(/^闰|bis$/g,'').replace(/月$/,''),CM=['正','二','三','四','五','六','七','八','九','十','十一','十二'],lm=/^\\d+$/.test(ms)?parseInt(ms,10):CM.indexOf(ms)+1,ry=parseInt(o.relatedYear||o.year,10),ld=parseInt((o.day||'').replace(/\\D/g,''),10),N='一二三四五六七八九十';
+if(lm&&ld){var yn=(o.yearName||'').replace(/年$/,'')||(ry>0?'甲乙丙丁戊己庚辛壬癸'[(ry-4)%10]+'子丑寅卯辰巳午未申酉戌亥'[(ry-4)%12]:''),MN=['正','二','三','四','五','六','七','八','九','十','冬','腊'][lm-1]+'月',DN=ld<=10?'初'+N[ld-1]:ld<20?'十'+N[ld-11]:ld===20?'二十':ld<30?'廿'+N[ld-21]:'三十';lp='农历'+(/^[一-鿿]{2}$/.test(yn)?yn+'年':'')+(/闰|bis/.test(o.month)?'闰':'')+MN+DN}}catch(e){}
+return{big:m+'月'+d+'日',wk:y+'年 · 星期'+'日一二三四五六'[now.getDay()]+(lp?' · '+lp:''),jq:(k===0?'今日':'')+R.jn[idx]+' · '+R.hou[idx*3+h]}}catch(e){return null}}
+var X3=JSON.parse(B.querySelector('.shtri').textContent);
+function card(){var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',RL=rili(),all=X3.h+X3.y+X3.en+X3.ja+'一孔录逐字读经典原文扫码读这一章'+(RL?RL.big+RL.wk+RL.jq:'');
+Promise.all(['900 72px '+F,'700 60px '+F,'400 30px '+F].map(function(f){return document.fonts?document.fonts.load(f,all).catch(function(){}):0})).then(function(){qr(draw)})
 function draw(){var W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');
 c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);c.strokeStyle='#23503F';c.lineWidth=3;c.strokeRect(40,40,W-80,H-80);c.strokeStyle='rgba(35,80,63,.25)';c.lineWidth=1;c.strokeRect(52,52,W-104,H-104);
-var seal=new Image();seal.onload=function(){c.drawImage(seal,96,96,72,72);rest()};seal.onerror=rest;seal.src='/assets/seal-180.png';
-function rest(){c.fillStyle='#1E2A25';c.font='900 44px '+F;c.textBaseline='middle';c.fillText('一孔录',186,122);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(zh?D.tag:'Yikonglu',188,160);if(RL){c.textAlign='right';c.fillStyle='#23503F';c.font='700 32px '+F;c.fillText(RL[0],W-96,118);c.fillStyle='#6E6A60';c.font='400 22px '+F;c.fillText(RL[1],W-96,160);c.textAlign='left'}
-c.textBaseline='alphabetic';c.fillStyle='#8A5A2C';c.font='400 34px '+F;c.fillText(D.h,96,262);
-var size=64,lines;for(;size>=36;size-=4){c.font='700 '+size+'px '+F;lines=wrap(c,D.y,W-192);if(lines.length*size*1.55<=520)break}
-var y=262+size*1.6;c.fillStyle='#1E2A25';lines.slice(0,Math.floor(560/(size*1.55))).forEach(function(l){c.fillText(l,96,y);y+=size*1.55});
-y+=10;c.fillStyle='#23503F';c.fillRect(96,y,64,4);y+=56;
-if(sub){c.fillStyle='#4A4840';c.font='400 32px '+F;var sl=zh||/^(ja|ko)/.test(lang)?wrap(c,sub,W-192):wrapW(c,sub,W-192),max=Math.max(1,Math.floor((1010-y)/52));if(sl.length>max){sl=sl.slice(0,max);sl[max-1]=sl[max-1].replace(/.{2}$/,'…')}sl.forEach(function(l){c.fillText(l,96,y);y+=52})}
+var seal=new Image();seal.onload=function(){c.drawImage(seal,96,100,72,72);rest()};seal.onerror=rest;seal.src='/assets/seal-180.png';
+function rest(){c.textBaseline='middle';c.fillStyle='#1E2A25';c.font='900 44px '+F;c.fillText('一孔录',186,126);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText('逐字读经典原文',188,164);
+c.textBaseline='alphabetic';var top=250;
+if(RL){c.textAlign='right';c.fillStyle='#23503F';c.font='900 76px '+F;c.fillText(RL.big,W-96,160);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(RL.wk,W-96,202);c.fillStyle='#8A5A2C';c.font='700 30px '+F;c.fillText(RL.jq,W-96,246);c.textAlign='left';top=286}
+c.fillStyle='rgba(35,80,63,.3)';c.fillRect(96,top,W-192,1);
+c.fillStyle='#8A5A2C';c.font='400 28px '+F;c.fillText(X3.h,96,top+58);
+var lim=1040,y0=top+58+30,CF=[[60,30,28],[54,28,26],[50,27,25],[46,26,24],[42,25,23],[38,23,22],[34,21,20],[30,19,18]],cf,L1,L2,L3;
+function H3(cf,a,b,j){return a.length*cf[0]*1.45+34+(b.length?b.length*cf[1]*1.5+18:0)+j.length*cf[2]*1.6}
+for(var i=0;i<CF.length;i++){cf=CF[i];c.font='700 '+cf[0]+'px '+F;L1=wrap(c,X3.y,W-192);c.font='400 '+cf[1]+'px '+F;L2=X3.en?wrapW(c,X3.en,W-192):[];c.font='400 '+cf[2]+'px '+F;L3=X3.ja?wrap(c,X3.ja,W-192):[];if(y0+H3(cf,L1,L2,L3)<=lim)break}
+function cut(L,mx){mx=Math.max(1,mx);if(L.length>mx){L=L.slice(0,mx);L[mx-1]=L[mx-1].replace(/.{2}$/,'…')}return L}
+if(y0+H3(cf,L1,L2,L3)>lim){var rest3=lim-y0-L1.length*cf[0]*1.45-34-18,jk=Math.min(L3.length,3);L2=cut(L2,Math.floor((rest3-jk*cf[2]*1.6)/(cf[1]*1.5)));L3=cut(L3,Math.floor((rest3-L2.length*cf[1]*1.5)/(cf[2]*1.6)))}
+var y=y0;c.fillStyle='#1E2A25';c.font='700 '+cf[0]+'px '+F;L1.forEach(function(l){c.fillText(l,96,y+cf[0]*0.95);y+=cf[0]*1.45});
+y+=8;c.fillStyle='#23503F';c.fillRect(96,y,64,4);y+=26;
+c.fillStyle='#4A4840';c.font='400 '+cf[1]+'px '+F;L2.forEach(function(l){c.fillText(l,96,y+cf[1]*0.95);y+=cf[1]*1.5});if(L2.length)y+=18;
+c.font='400 '+cf[2]+'px '+F;L3.forEach(function(l){c.fillText(l,96,y+cf[2]*0.95);y+=cf[2]*1.6});
 var q=qrcode(0,'M');q.addData(D.u);q.make();var n=q.getModuleCount(),cs=Math.floor(190/n),qs=cs*n,qx=W-96-qs,qy=H-96-qs;c.fillStyle='#fff';c.fillRect(qx-12,qy-12,qs+24,qs+24);c.fillStyle='#1E2A25';for(var r=0;r<n;r++)for(var k=0;k<n;k++)if(q.isDark(r,k))c.fillRect(qx+k*cs,qy+r*cs,cs,cs);
-c.fillStyle='#23503F';c.font='700 30px '+F;c.fillText(T.scan,96,H-150);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(D.u.replace(/^https:\\/\\//,'').replace(/\\.html$/,''),96,H-108);
+c.fillStyle='#23503F';c.font='700 30px '+F;c.fillText('扫码读这一章',96,H-150);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(D.u.replace(/^https:\\/\\//,'').replace(/\\.html$/,''),96,H-108);
 show(cv)}}}
 function show(cv){var M=document.createElement('div');M.className='shmodal';var url=cv.toDataURL('image/png');var fn='yikonglu-'+location.pathname.replace(/[\\/]+/g,'-').replace(/^-|\\.html$/g,'')+'.png';
 M.innerHTML='<div class="shm"><img alt=""><p class="note"></p><div class="shmb"><a class="btn" download></a><button type="button" class="btn ghost snd" hidden></button><button type="button" class="btn ghost cls"></button></div></div>';
@@ -661,20 +668,17 @@ QISHIER_HOU = ("雁北乡 鹊始巢 雉始雊 鸡始乳 征鸟厉疾 水泽腹�
                "桐始华 田鼠化为鴽 虹始见 萍始生 鸣鸠拂其羽 戴胜降于桑 蝼蝈鸣 蚯蚓出 王瓜生 苦菜秀 靡草死 麦秋至 螳螂生 鵙始鸣 反舌无声 鹿角解 蜩始鸣 半夏生 "
                "温风至 蟋蟀居壁 鹰始挚 腐草为萤 土润溽暑 大雨时行 凉风至 白露降 寒蝉鸣 鹰乃祭鸟 天地始肃 禾乃登 鸿雁来 玄鸟归 群鸟养羞 雷始收声 蛰虫坯户 水始涸 "
                "鸿雁来宾 雀入大水为蛤 菊有黄华 豺乃祭兽 草木黄落 蛰虫咸俯 水始冰 地始冻 雉入大水为蜃 虹藏不见 天气上升地气下降 闭塞而成冬 鹖鴠不鸣 虎始交 荔挺出 蚯蚓结 麋角解 水泉动").split()
-def rili_data(code):
-    k = "zh" if code.startswith("zh") else code if code in JIEQI_NAMES else "py"
-    d = {"jt": JIEQI_DAYS, "jn": JIEQI_NAMES[k]}
-    if k == "zh": d["hou"] = QISHIER_HOU
-    if k not in ("zh", "ja", "py"): d["zn"] = JIEQI_NAMES["zh"]
-    if k == "py": d["zn"] = JIEQI_NAMES["zh"]
-    return d
+def rili_data():
+    return {"jt": JIEQI_DAYS, "jn": JIEQI_NAMES["zh"], "hou": QISHIER_HOU}
 def share_html(L, c, url, head, title, yw_text, gist, rend):
     t = SHARE_TXT.get(L.code, SHARE_TXT["en"])
     plats = "".join(f'<button type="button" data-p="{k}">{esc(n)}</button>' for n, k in t["plats"])
-    d = json.dumps({"u": url, "h": head, "ti": title, "y": yw_text, "g": gist or "", "r": rend or "", "t": t, "tag": TAGLINE_L.get(L.code, ""), "rl": rili_data(L.code)}, ensure_ascii=False)
+    d = json.dumps({"u": url, "h": head, "ti": title, "y": yw_text, "g": gist or "", "r": rend or "", "t": t, "tag": TAGLINE_L.get(L.code, "")}, ensure_ascii=False)
     return (f'<section class="sharebox"><button type="button" class="btn ghost shbtn"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6h14v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{t["sh"]}</button>'
             f'<div class="shpanel" hidden><button type="button" data-p="copy">{t["cp"]}</button><button type="button" data-p="card" class="on">{t["card"]}</button>{plats}</div>'
-            f'<script type="application/json" class="shdata">{d.replace("</", "<\\/")}</script></section>')
+            f'<script type="application/json" class="shdata">{d.replace("</", "<\\/")}</script>'
+            f'<script type="application/json" class="shtri">{json.dumps(dict(TRI_TXT.get(c, {}), rl=rili_data()))}</script></section>')
+TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
 TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
 LIVE_PILL = {"zh-Hans": "{o} 人在读 · 累计 {t}", "zh-Hant": "{o} 人在讀 · 累計 {t}", "en": "{o} reading · {t} total", "ja": "{o} 人が読書中 · 累計 {t}", "ko": "{o}명 읽는 중 · 누적 {t}", "fr": "{o} lisent · {t} en tout",
@@ -1588,6 +1592,9 @@ def main(zdir, outdir, kanwu=None):
     # 每章分享图：简体图给简、英、法、西；繁体图给繁、日、韩
     D["og"] = {}
     _tr_en, _tr_ja = ({k: v for k, v in json.load(open(os.path.join(HERE, "i18n", f"{x}.json"), encoding="utf-8")).get("chapters", {}).items()} if os.path.exists(os.path.join(HERE, "i18n", f"{x}.json")) else {} for x in ("en", "ja"))
+    for c in pub:
+        pnum, cnum = c.split(".")
+        TRI_TXT[c] = {"h": f"《论语·{PIAN[pnum][0]}》第 {cnum} 章 · Analects {c} · 論語 {c}", "y": yw[c], "en": _tr_en.get(c, {}).get("yw", ""), "ja": _tr_ja.get(c, {}).get("yw", "")}
     if OG.available():
         for c in pub:
             pnum, cnum = c.split(".")
