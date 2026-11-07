@@ -881,7 +881,7 @@ PRIVACY = {
    "不用注册，不设留言区，不收表单。",
    "访问统计用 Cloudflare Web Analytics：不设 cookie，不认人，只计页面访问量、来路和国家或地区。简体中文页另装百度统计，它会设 cookie，用来计访问量和来路；繁体和外文页不装。",
    "首页那行“此刻在读 / 读者来过”的人数，由我们自己在 Cloudflare 上的一个小程序计：你的浏览器本地存一个随机编号，每分钟告诉它一声“还在读”，它只记这个编号和时间，用来数人数，不存 IP，也不记别的。",
-   "章节页里的视频：简体中文页嵌哔哩哔哩播放器（player.bilibili.com），它可能设 cookie，按哔哩哔哩的隐私政策处理；繁体与其他语言页、以及没有哔哩哔哩号的集，用 YouTube 的隐私增强模式（youtube-nocookie.com）嵌入，点播放之后才由 YouTube 按它的隐私政策处理。",
+   "章节页里的视频：简体中文页在中国大陆时区的设备上嵌哔哩哔哩播放器（player.bilibili.com），它可能设 cookie，按哔哩哔哩的隐私政策处理；其他情况用 YouTube 的隐私增强模式（youtube-nocookie.com）嵌入，点播放之后才由 YouTube 按它的隐私政策处理。选哪个只看你设备的时区设置，不上传；你手动切换后，选择记在本地。",
    "字体从 Google Fonts 加载，你的浏览器会向谷歌请求字体文件。",
    "语言选择、是否已关掉“装到桌面”提示，记在你浏览器的本地存储里；看过的页面缓存在你的设备上，离线也能打开。这些都不上传。",
    "写信来勘误或提问，信只用来核对和回复。记入勘误页时只署你给的网名，不公开邮箱；想撤下署名，写信说一声就撤。",
@@ -1025,13 +1025,24 @@ def build_lang(L, D, write):
         st = ep.get("starts", {}).get(c) or D["starts"].get(yt, {}).get(c)  # 本章在视频里从第几秒讲起
         pub_at = ep.get("public_at", "")  # 定时公开的集：公开前视频块先藏着，到点由页内脚本显示
         future = bool(pub_at) and datetime.datetime.fromisoformat(pub_at) > datetime.datetime.now(datetime.timezone.utc)
-        if L.code == "zh-Hans" and ep.get("bilibili"):  # 主人 11-07 定：简体页嵌哔哩哔哩播放器（大陆看得到），繁体与外文页照旧 YouTube；没有哔哩哔哩号的集仍用 YouTube
-            frame = f'<iframe loading="lazy" src="https://player.bilibili.com/player.html?bvid={ep["bilibili"]}&amp;page=1&amp;high_quality=1&amp;danmaku=0&amp;autoplay=0{f"&amp;t={st}" if st else ""}" title="{esc(epname)}" allowfullscreen scrolling="no"></iframe>'
+        yt_src = f'https://www.youtube-nocookie.com/embed/{yt}{f"?start={st}" if st else ""}'
+        if L.code == "zh-Hans" and ep.get("bilibili"):
+            # 主人 11-07 定：简体页给大陆读者嵌哔哩哔哩。哔哩哔哩嵌入播放器在海外打不开（主人在日本实测），
+            # 所以按设备时区选：中国大陆时区放哔哩哔哩，其他放 YouTube；下面一个按钮可以手动切换。没有脚本时默认 YouTube。
+            bl_src = f'https://player.bilibili.com/player.html?bvid={ep["bilibili"]}&page=1&high_quality=1&danmaku=0&autoplay=0{f"&t={st}" if st else ""}'
+            frame = (f'<iframe id="vplayer" loading="lazy" src="{yt_src}" data-yt="{yt_src}" data-bl="{esc(bl_src)}" title="{esc(epname)}" allowfullscreen scrolling="no"></iframe>'
+                     '<script>(function(){var f=document.getElementById("vplayer");if(!f)return;var z="";try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}'
+                     'var cn=/^Asia\\/(Shanghai|Chongqing|Chungking|Harbin|Urumqi|Kashgar)$|^PRC$/.test(z),k="";try{k=localStorage.getItem("yk_vp")||""}catch(e){}'
+                     'var bl=k?k==="bl":cn;function set(b){f.src=b?f.dataset.bl:f.dataset.yt;var s=document.getElementById("vswap");if(s)s.textContent=b?"播放不了？换 YouTube":"播放不了？换哔哩哔哩"}'
+                     'if(bl)set(true);window.ykVswap=function(){bl=!bl;try{localStorage.setItem("yk_vp",bl?"bl":"yt")}catch(e){}set(bl)};'
+                     'document.addEventListener("DOMContentLoaded",function(){set(bl)})})();</script>')
+            swap = '<button type="button" id="vswap" class="vswap" onclick="ykVswap()">播放不了？换哔哩哔哩</button>'
         else:
-            frame = f'<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{yt}{f"?start={st}" if st else ""}" title="{esc(epname)}" allowfullscreen></iframe>'
+            frame = f'<iframe loading="lazy" src="{yt_src}" title="{esc(epname)}" allowfullscreen></iframe>'
+            swap = ""
         vid_html = (f"""<section class="video"{f' hidden data-pub="{pub_at}"' if future else ""}><h2><i>看</i>{L.t("video")}</h2>
 <div class="vid">{frame}</div>
-<p class="vlinks">{L.t("video_in", ep=epname)}<a href="https://www.youtube.com/watch?v={yt}{f'&amp;t={st}s' if st else ''}">YouTube</a>{f'<a href="https://www.bilibili.com/video/{ep["bilibili"]}{f"?t={st}" if st else ""}">{"哔哩哔哩" if L.code.startswith("zh") else "Bilibili"}</a>' if ep.get("bilibili") else ""}</p></section>""" + (f'<script>(function(){{var s=document.querySelector("section.video[data-pub]");if(!s)return;function f(){{if(Date.now()>=Date.parse(s.dataset.pub)){{s.hidden=false;return true}}}}if(!f())var t=setInterval(function(){{if(f())clearInterval(t)}},60000)}})();</script>' if future else "")) if yt else ""  # 视频还没上传（只排了时间）就先不放视频块
+<p class="vlinks">{L.t("video_in", ep=epname)}<a href="https://www.youtube.com/watch?v={yt}{f'&amp;t={st}s' if st else ''}">YouTube</a>{f'<a href="https://www.bilibili.com/video/{ep["bilibili"]}{f"?t={st}" if st else ""}">{"哔哩哔哩" if L.code.startswith("zh") else "Bilibili"}</a>' if ep.get("bilibili") else ""}{swap}</p></section>""" + (f'<script>(function(){{var s=document.querySelector("section.video[data-pub]");if(!s)return;function f(){{if(Date.now()>=Date.parse(s.dataset.pub)){{s.hidden=false;return true}}}}if(!f())var t=setInterval(function(){{if(f())clearInterval(t)}},60000)}})();</script>' if future else "")) if yt else ""  # 视频还没上传（只排了时间）就先不放视频块
         def pg(nums):
             return " ".join(f'<a class="pg" href="/yuanye/p{int(x):03d}.jpg" target="_blank">{L.t("pg", n=x)}</a>' if x in pages_avail else f'<span class="pg">{L.t("pg", n=x)}</span>' for x in nums)
         extra = ""
