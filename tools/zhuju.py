@@ -74,16 +74,33 @@ def spans_of(c, sents, Z):
     return pages, per
 
 
-def page_pane(c, pages, per, label):
-    """原页面板：每页一张 svg（底图＋各句的高亮框，默认隐藏），点句时由 ZJ_JS 显示该句框并滚到那里。"""
+def frame_rows(p, ydir, w, h):
+    """主人 11-07：原页面板裁掉上下白边。按版框横线找：整行四分之一以上是深色像素的最上和最下一行，各留 36 像素。找不到就整页。"""
+    try:
+        from PIL import Image
+        import numpy as np
+        im = np.array(Image.open(os.path.join(ydir, p + ".jpg")).convert("L"))
+        sx = im.shape[1] / w
+        dark = (im < 110).sum(axis=1)
+        rows = np.where(dark > im.shape[1] * 0.25)[0]
+        if len(rows) < 2: return 0, h
+        y0, y1 = int(rows.min() / sx) - 36, int(rows.max() / sx) + 36
+        return max(0, y0), min(h, y1)
+    except Exception:
+        return 0, h
+
+
+def page_pane(c, pages, per, label, ydir=None):
+    """原页面板：每页一张 svg（底图＋各句的高亮框，默认隐藏），点句时由 ZJ_JS 显示该句框并滚到那里。viewBox 只取版框上下，白边不显示。"""
     out = []
     order = sorted(pages, key=lambda p: int(re.sub(r"\D", "", p)), reverse=False)
     for p in order:
         w, h = pages[p]["w"], pages[p]["h"]
+        fy0, fy1 = frame_rows(p, ydir, w, h) if ydir else (0, h)
         rects = "".join(f'<rect class="hl" data-s="{i}" x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="6"/>'
                         for i, bx in enumerate(per, 1) for (pp, x0, y0, x1, y1) in bx if pp == p)
         n = int(re.sub(r"\D", "", p))
-        out.append(f'<a class="yyp" href="/yuanye/{p}.jpg" target="_blank" data-p="{p}"><svg viewBox="0 0 {w} {h}" role="img" aria-label="{label} {n}">'
+        out.append(f'<a class="yyp" href="/yuanye/{p}.jpg" target="_blank" data-p="{p}"><svg viewBox="0 {fy0} {w} {fy1 - fy0}" role="img" aria-label="{label} {n}">'
                    f'<image href="/yuanye/{p}.jpg" width="{w}" height="{h}"/>{rects}</svg><span>{label} {n}</span></a>')
     return "".join(out)
 
