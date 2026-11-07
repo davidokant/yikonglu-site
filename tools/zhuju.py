@@ -21,9 +21,11 @@ def load():
     jl, zj = {}, {}
     for f in glob.glob(os.path.join(JL_DIR, "*.json")):
         c = os.path.basename(f)[:-5]
+        if c.startswith("_"): continue
         jl[c] = json.load(open(f, encoding="utf-8"))
     for f in glob.glob(os.path.join(ZJ_DIR, "*.json")):
         c = os.path.basename(f)[:-5]
+        if c.startswith("_"): continue
         zj[c] = json.load(open(f, encoding="utf-8"))
     return {"on": on, "jl": jl, "zj": zj}
 
