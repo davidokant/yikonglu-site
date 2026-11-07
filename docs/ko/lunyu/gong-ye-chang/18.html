@@ -78,26 +78,39 @@ var lp='';try{var o={};new Intl.DateTimeFormat('zh-CN-u-ca-chinese',{year:'numer
 if(lm&&ld){var yn=(o.yearName||'').replace(/年$/,'')||(ry>0?'甲乙丙丁戊己庚辛壬癸'[(ry-4)%10]+'子丑寅卯辰巳午未申酉戌亥'[(ry-4)%12]:''),MN=['正','二','三','四','五','六','七','八','九','十','冬','腊'][lm-1]+'月',DN=ld<=10?'初'+N[ld-1]:ld<20?'十'+N[ld-11]:ld===20?'二十':ld<30?'廿'+N[ld-21]:'三十';lp='农历'+(/^[一-鿿]{2}$/.test(yn)?yn+'年':'')+(/闰|bis/.test(o.month)?'闰':'')+MN+DN}}catch(e){}
 return{big:m+'月'+d+'日',wk:y+'年 · 星期'+'日一二三四五六'[now.getDay()]+(lp?' · '+lp:''),jq:(k===0?'今日':'')+R.jn[idx]+' · '+R.hou[idx*3+h]}}catch(e){return null}}
 var X3=JSON.parse(B.querySelector('.shtri').textContent);
-window.yklCard=function(o){if(o.y){X3.y=o.y;X3.en='';X3.ja=''}if(o.u)D.u=o.u;card()};
+window.yklCard=function(o){if(o.y){X3.y=o.y;X3.en='';X3.ja=''}if(o.u)D.u=o.u;X3.n=o.n||0;card()};
 function card(){var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',RL=rili(),all=X3.h+X3.y+X3.en+X3.ja+'一孔录逐字读经典原文扫码读这一章'+(RL?RL.big+RL.wk+RL.jq:'');
 Promise.all(['900 72px '+F,'700 60px '+F,'400 30px '+F].map(function(f){return document.fonts?document.fonts.load(f,all).catch(function(){}):0})).then(function(){qr(draw)})
-function draw(){var W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');
+function segs(n){var R=[];document.querySelectorAll('.yuanwen.dz .yyp').forEach(function(a){var sv=a.querySelector('svg'),im=a.querySelector('image');if(!sv||!im)return;var rs=[].slice.call(a.querySelectorAll('rect.hl')).filter(function(r){return !n||r.dataset.s==n});if(!rs.length)return;
+var vb=sv.getAttribute('viewBox').split(' ').map(Number),pw=+im.getAttribute('width'),x0=1e9,x1=0,cw=0;rs.forEach(function(r){var x=+r.getAttribute('x'),w=+r.getAttribute('width');x0=Math.min(x0,x);x1=Math.max(x1,x+w);cw=Math.max(cw,w)});
+var pad=cw*0.55,minw=cw*4.2;x0-=pad;x1+=pad;if(x1-x0<minw){var m=(x0+x1)/2;x0=m-minw/2;x1=m+minw/2}x0=Math.max(0,x0);x1=Math.min(pw,x1);
+R.push({src:im.getAttribute('href'),pw:pw,x0:x0,x1:x1,y0:vb[1],y1:vb[1]+vb[3],p:+a.dataset.p.slice(1),hl:n?rs.map(function(r){return['x','y','width','height'].map(function(k){return +r.getAttribute(k)})}):[]})});return R}
+function draw(){var W=1080,SG=segs(X3.n),ims=SG.map(function(g){return new Promise(function(ok){var m=new Image();m.onload=function(){g.im=m;ok()};m.onerror=function(){ok()};m.src=g.src})});Promise.all(ims).then(function(){SG=SG.filter(function(g){return g.im});draw2(W,SG)})}
+function draw2(W,SG){var M0=document.createElement('canvas').getContext('2d'),RL=rili();
+var top=RL?286:250,y0=top+58+30,CF=[[60,30,28],[54,28,26],[50,27,25],[46,26,24],[42,25,23],[38,23,22],[34,21,20]],cf,L1,L2,L3;
+function H3(cf,a,b,j){return a.length*cf[0]*1.45+34+(b.length?b.length*cf[1]*1.5+18:0)+j.length*cf[2]*1.6}
+for(var i=0;i<CF.length;i++){cf=CF[i];M0.font='700 '+cf[0]+'px '+F;L1=wrap(M0,X3.y,W-192);M0.font='400 '+cf[1]+'px '+F;L2=X3.en?wrapW(M0,X3.en,W-192):[];M0.font='400 '+cf[2]+'px '+F;L3=X3.ja?wrap(M0,X3.ja,W-192):[];if(H3(cf,L1,L2,L3)<=900)break}
+var yT=y0+H3(cf,L1,L2,L3),sc=0,sw=0,sh=0,GAP=14;
+if(SG.length){var tw=0,th=0;SG.forEach(function(g){tw+=g.x1-g.x0;th=Math.max(th,g.y1-g.y0)});tw+=GAP*(SG.length-1);sc=Math.min((W-192)/tw,1000/th);sw=tw*sc;sh=th*sc}
+var yS=yT+36,H=Math.round((SG.length?yS+sh+64:yT)+330);
+var cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');
 c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);c.strokeStyle='#23503F';c.lineWidth=3;c.strokeRect(40,40,W-80,H-80);c.strokeStyle='rgba(35,80,63,.25)';c.lineWidth=1;c.strokeRect(52,52,W-104,H-104);
 var seal=new Image();seal.onload=function(){c.drawImage(seal,96,100,72,72);rest()};seal.onerror=rest;seal.src='/assets/seal-180.png';
 function rest(){c.textBaseline='middle';c.fillStyle='#1E2A25';c.font='900 44px '+F;c.fillText('一孔录',186,126);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText('逐字读经典原文',188,164);
-c.textBaseline='alphabetic';var top=250;
-if(RL){c.textAlign='right';c.fillStyle='#23503F';c.font='900 76px '+F;c.fillText(RL.big,W-96,160);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(RL.wk,W-96,202);c.fillStyle='#8A5A2C';c.font='700 30px '+F;c.fillText(RL.jq,W-96,246);c.textAlign='left';top=286}
+c.textBaseline='alphabetic';
+if(RL){c.textAlign='right';c.fillStyle='#23503F';c.font='900 76px '+F;c.fillText(RL.big,W-96,160);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(RL.wk,W-96,202);c.fillStyle='#8A5A2C';c.font='700 30px '+F;c.fillText(RL.jq,W-96,246);c.textAlign='left'}
 c.fillStyle='rgba(35,80,63,.3)';c.fillRect(96,top,W-192,1);
 c.fillStyle='#8A5A2C';c.font='400 28px '+F;c.fillText(X3.h,96,top+58);
-var lim=1040,y0=top+58+30,CF=[[60,30,28],[54,28,26],[50,27,25],[46,26,24],[42,25,23],[38,23,22],[34,21,20],[30,19,18]],cf,L1,L2,L3;
-function H3(cf,a,b,j){return a.length*cf[0]*1.45+34+(b.length?b.length*cf[1]*1.5+18:0)+j.length*cf[2]*1.6}
-for(var i=0;i<CF.length;i++){cf=CF[i];c.font='700 '+cf[0]+'px '+F;L1=wrap(c,X3.y,W-192);c.font='400 '+cf[1]+'px '+F;L2=X3.en?wrapW(c,X3.en,W-192):[];c.font='400 '+cf[2]+'px '+F;L3=X3.ja?wrap(c,X3.ja,W-192):[];if(y0+H3(cf,L1,L2,L3)<=lim)break}
-function cut(L,mx){mx=Math.max(1,mx);if(L.length>mx){L=L.slice(0,mx);L[mx-1]=L[mx-1].replace(/.{2}$/,'…')}return L}
-if(y0+H3(cf,L1,L2,L3)>lim){var rest3=lim-y0-L1.length*cf[0]*1.45-34-18,jk=Math.min(L3.length,3);L2=cut(L2,Math.floor((rest3-jk*cf[2]*1.6)/(cf[1]*1.5)));L3=cut(L3,Math.floor((rest3-L2.length*cf[1]*1.5)/(cf[2]*1.6)))}
 var y=y0;c.fillStyle='#1E2A25';c.font='700 '+cf[0]+'px '+F;L1.forEach(function(l){c.fillText(l,96,y+cf[0]*0.95);y+=cf[0]*1.45});
 y+=8;c.fillStyle='#23503F';c.fillRect(96,y,64,4);y+=26;
 c.fillStyle='#4A4840';c.font='400 '+cf[1]+'px '+F;L2.forEach(function(l){c.fillText(l,96,y+cf[1]*0.95);y+=cf[1]*1.5});if(L2.length)y+=18;
 c.font='400 '+cf[2]+'px '+F;L3.forEach(function(l){c.fillText(l,96,y+cf[2]*0.95);y+=cf[2]*1.6});
+if(SG.length){var x=(W+sw)/2;c.fillStyle='#fff';c.fillRect((W-sw)/2-10,yS-10,sw+20,sh+20);
+SG.forEach(function(g,k){var k2=g.im.naturalWidth/g.pw,gw=(g.x1-g.x0)*sc,gh=(g.y1-g.y0)*sc;x-=gw;c.drawImage(g.im,g.x0*k2,g.y0*k2,(g.x1-g.x0)*k2,(g.y1-g.y0)*k2,x,yS,gw,gh);
+c.strokeStyle='rgba(176,58,46,.85)';c.lineWidth=3;g.hl.forEach(function(r){c.strokeRect(x+(r[0]-g.x0)*sc,yS+(r[1]-g.y0)*sc,r[2]*sc,r[3]*sc)});
+if(k<SG.length-1){x-=GAP*sc;c.fillStyle='#F2F1EA';c.fillRect(x,yS-10,GAP*sc,sh+20)}});
+c.strokeStyle='rgba(35,80,63,.35)';c.lineWidth=1;c.strokeRect((W-sw)/2-10,yS-10,sw+20,sh+20);
+var ps=SG.map(function(g){return g.p}),pl=ps[0]+(ps.length>1?'—'+ps[ps.length-1]:'');c.fillStyle='#6E6A60';c.font='400 22px '+F;c.textAlign='center';c.fillText('朱熹《论语集注》（四部备要本）原页 '+pl+(ps.length>1?' · 自右向左接读':''),W/2,yS+sh+44);c.textAlign='left'}
 var q=qrcode(0,'M');q.addData(D.u);q.make();var n=q.getModuleCount(),cs=Math.floor(190/n),qs=cs*n,qx=W-96-qs,qy=H-96-qs;c.fillStyle='#fff';c.fillRect(qx-12,qy-12,qs+24,qs+24);c.fillStyle='#1E2A25';for(var r=0;r<n;r++)for(var k=0;k<n;k++)if(q.isDark(r,k))c.fillRect(qx+k*cs,qy+r*cs,cs,cs);
 c.fillStyle='#23503F';c.font='700 30px '+F;c.fillText('扫码读这一章',96,H-150);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(D.u.replace(/^https:\/\//,'').replace(/\.html$/,''),96,H-108);
 show(cv)}}}
