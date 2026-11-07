@@ -1047,7 +1047,7 @@ def build_lang(L, D, write):
             sents = split_ju(yw[c]); zpages, zper = ZJ.spans_of(c, sents, ZJD); zs = ZJ.card_data(c, ZJD, len(sents)) or []
             zrows = []
             for j, x in enumerate(sents, 1):
-                d = dict(zs[j-1]) if j <= len(zs) else {}
+                d = {k: zs[j-1].get(k) for k in ("bh", "zhu", "jj", "yk") if zs[j-1].get(k)} if j <= len(zs) else {}
                 d["hj"] = [[f"{h[0]}：{h[1]}", h[2], ""] for h in hj_data.get(str(j), [])]
                 zrows.append(d)
             ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x)}</span><span class="yi" hidden>{esc(zrows[j-1].get("bh", ""))}</span>' for j, x in enumerate(sents, 1))
