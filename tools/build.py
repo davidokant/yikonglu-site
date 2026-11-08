@@ -1416,6 +1416,31 @@ def build_lang(L, D, write):
                     wj_gist = f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p></section>'
                     wj_faq = ([{"@type": "Question", "name": f"《论语·{pname}》{c} 这一章讲什么？", "acceptedAnswer": {"@type": "Answer", "text": an["片里落点"]}}] if an.get("片里落点") else []) + \
                              [{"@type": "Question", "name": "一孔录怎么读这一章？", "acceptedAnswer": {"@type": "Answer", "text": an_lab + an_txt}}]
+                # 主人 11-08 问“细读与核对为啥只有各家注本”：把未讲章已有的素材也收进来——常见理解、注里的关键字（_未讲）、朱注逐句原话（_逐句，只收核过页的）、本句互见
+                wj_deep = ""
+                if len(an.get("常见读法") or "") >= 10:
+                    wj_deep += f'<section class="sec sec-常"><h2><i>常</i>{L.t("f_common")}</h2><p>{quotes(an["常见读法"])}</p></section>'
+                if an.get("字眼"):
+                    wj_deep += f'<section class="sec sec-注"><h2><i>注</i>{L.t("f_keys")}</h2><p>{quotes(an["字眼"])}</p></section>'
+                _zrows, _seen = [], set()
+                _ss = (ZJD["zj"].get(c) or {}).get("句", []); _ok = len(_ss) == len(sents)  # 句数对不上就不标句
+                for j, z in enumerate(_ss, 1):
+                    for zz in (z.get("zhu") or []):
+                        if not zz or not zz[0] or zz[0] in _seen: continue
+                        _seen.add(zz[0]); _pgs = re.findall(r"\d+", zz[1] if len(zz) > 1 else "")
+                        _pg = ("—".join(_pgs[:2]) if _pgs else "")
+                        _zrows.append((j if _ok else 0, zz[0], _pg))
+                if _zrows:
+                    def _pgl(x):
+                        a = x.split("—")[0]
+                        return f'<a class="pg" href="/yuanye/p{int(a):03d}.jpg" target="_blank">{L.t("pg", n=x)}</a>' if a and a in pages_avail else (L.t("pg", n=x) if x else "")
+                    wj_deep += (f'<section class="sec cites" id="zb-zhuxi"><h2><i>核</i>朱熹集注逐句原话</h2><p class="note">朱注里说到本章各句的原话，都对过底本原页；视频开讲时再补诸家说法。 <a class="bb" href="{P}banben/#zhuxi">{L.t("bb_link")}</a></p>'
+                                f'<table><thead><tr><th>句</th><th>{L.t("th_quote")}</th><th>{L.t("th_page")}</th></tr></thead><tbody>'
+                                + "".join(f'<tr><td>{f"<a href=#s{j}>{esc(sents[j-1][:8])}</a>" if j else ""}</td><td lang="zh-Hans">“{esc(t)}”</td><td>{_pgl(pg_)}</td></tr>' for j, t, pg_ in _zrows) + "</tbody></table></section>")
+                _hjr = [(int(j), r) for j, rs in hjd.items() if str(j).isdigit() for r in rs if not (_zrows and r[0] == L.t("hj_note"))]  # 朱注条上面表里已有
+                if _hjr:
+                    wj_deep += (f'<section class="sec hujian"><h2><i>见</i>{L.t("hj_h")}</h2><ul lang="zh-Hans">'
+                                + "".join(f'<li><a href="#s{j}">{esc(sents[j-1][:8]) if 0 < j <= len(sents) else ""}</a>　{esc(r[0])}：{esc(r[1])}（' + (f'<a href="{r[3]}">{esc(r[2])}</a>' if r[3] else esc(r[2])) + '）</li>' for j, r in sorted(_hjr, key=lambda x: x[0])) + '</ul></section>')
                 TRI_TXT.setdefault(c, {"h": f"《论语·{pname}》第 {cnum} 章 · 論語 {c}", "y": text, "en": "", "ja": ""})  # 分享图：未讲章暂无英日译文，只出原文
                 wj_vid = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
                           f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>')
@@ -1432,7 +1457,7 @@ def build_lang(L, D, write):
 {wj_vid}
 <div class="chacts">{share_html(L, c, url, f"《论语·{pname}》第 {cnum} 章", ctitle(c), text, an.get("片里落点") or (D["zy"].get(c) or {}).get("text", ""), "")}</div>
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
-{fold(yiwen_html(c) + zb_section(c, url, cite_src))}
+{fold(wj_deep + yiwen_html(c) + zb_section(c, url, cite_src))}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
 </div>
 <nav class="pn">{pn}</nav>
