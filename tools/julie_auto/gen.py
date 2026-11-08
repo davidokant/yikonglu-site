@@ -16,7 +16,7 @@ for pn,(toks,asg,dels) in out.items():
     for j,(ch,c,m) in enumerate(toks):
         if m>=0: per.setdefault(c,[]).append((m,ch,asg.get(j)))
     for c,lst in per.items():
-        if c in J: continue
+        if c in J and not J[c][0].get("auto"): continue
         if c in virt or any(i is None or i<0 for _,_,i in lst): skipped.append(c); continue
         text=Q[c]["text"]
         if PUNCT.sub("",text)!="".join(ch for _,ch,_ in lst): skipped.append(c+"(字)"); continue

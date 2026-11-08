@@ -12,14 +12,18 @@ def geom(im):
     mid=b[int(H*0.3):int(H*0.7),:].mean(axis=0)
     vr=[r for r in runs(np.where(mid>0.6)[0]) if r[1]-r[0]>=6]
     R=[r for r in vr if r[0]>W*0.75]; Lf=[r for r in vr if r[1]<W*0.25]
-    if not R or not Lf: return None
-    xr=R[-1][0]; xl=Lf[-1][1]  # 右框内沿、左框内沿
+    if not R and not Lf: return None
+    if R and Lf: xr=R[-1][0]; xl=Lf[-1][1]  # 右框内沿、左框内沿
+    elif Lf: xl=Lf[-1][1]; xr=xl+1234   # 缺一边框（如 p264）：按常见版框宽推
+    else: xr=R[-1][0]; xl=xr-1234
     # 横粗线：在框内的行
     rows=b[:, xl+5:xr-5].mean(axis=1)
     hr=[r for r in runs(np.where(rows>0.6)[0]) if r[1]-r[0]>=6]
     T=[r for r in hr if r[1]<H*0.4]; B=[r for r in hr if r[0]>H*0.6]
-    if not T or not B: return None
-    yt=T[-1][1]; yb=B[0][0]
+    if not T and not B: return None
+    if T and B: yt=T[-1][1]; yb=B[0][0]
+    elif B: yb=B[0][0]; yt=yb-1765   # 缺顶线（如 p264）：按常见版框高推
+    else: yt=T[-1][1]; yb=yt+1765
     return dict(xl=xl, xr=xr, yt=yt, yb=yb, cw=(xr-xl)/10)
 
 def geom2(im):
