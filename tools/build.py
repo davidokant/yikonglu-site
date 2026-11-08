@@ -1671,10 +1671,12 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     write("wen.html", page(L, f'{W["title"]}｜一孔录', W["sub"], "wen.html", body)); urls.append(f"{DOMAIN}/{L.prefix}wen.html")
     # 免费读本（PDF 放 tools/root/duben/，原样拷到站点 /duben/）
     DUBEN = [("db_xueer", "db_meta", "lunyu-xueer")]
-    rows = "".join(f'<li><b>{L.t(n)}</b> <span class="note">{L.t(m)}</span><br><a class="btn" href="/duben/{f}.pdf" download>{L.t("db_hans")} PDF</a> <a class="btn ghost" href="/duben/{f}-hant.pdf" download>{L.t("db_hant")} PDF</a></li>' for n, m, f in DUBEN)
+    # 主人 11-08：书架式，封面图为主、下面下载按钮（封面在 tools/root/duben/cover-<f>[-hant].jpg，新封面定了直接换图）
+    rows = "".join(f'<li><a class="dbcover" href="/duben/{f}{"-hant" if L.code == "zh-Hant" else ""}.pdf" download><img src="/duben/cover-{f}{"-hant" if L.code == "zh-Hant" else ""}.jpg" alt="{L.t(n)}" width="240" height="340" loading="lazy"></a>'
+                   f'<b>{L.t(n)}</b><span class="note">{L.t(m)}</span><span class="dbbtns"><a class="btn" href="/duben/{f}.pdf" download>{L.t("db_hans")} PDF</a><a class="btn ghost" href="/duben/{f}-hant.pdf" download>{L.t("db_hant")} PDF</a></span></li>' for n, m, f in DUBEN)
     wx = ""  # 主人 11-08：删“公众号回复读本领取”——到公众号还是回这条链接，绕圈
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("db_sub")}</span>{L.t("db_title")}</h1></div></div>
-<main class="wrap narrow prose"><p>{L.t("db_p")}</p><ul class="duben">{rows}</ul>{wx}<p class="note">{L.t("db_note")} <a href="{P}kanwu.html">{L.t("nav_errata")}</a></p></main>'''
+<main class="wrap narrow prose"><p>{L.t("db_p")}</p><ul class="duben shelf">{rows}</ul>{wx}<p class="note">{L.t("db_note")} <a href="{P}kanwu.html">{L.t("nav_errata")}</a></p></main>'''
     write("duben.html", page(L, f'{L.t("db_title")}｜一孔录', L.t("db_sub"), "duben.html", body)); urls.append(f"{DOMAIN}/{L.prefix}duben.html")
     # 读本总页地址固定为 /duben.html（11-08 发布线程定，各平台简介指这里）；/duben/ 只做跳转，免得有人敲成目录 404
     write("duben/index.html", f'<!doctype html><meta charset="utf-8"><title>{L.t("db_title")}</title><link rel="canonical" href="{DOMAIN}/{L.prefix}duben.html"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/{L.prefix}duben.html"><a href="/{L.prefix}duben.html">{L.t("db_title")}</a>')

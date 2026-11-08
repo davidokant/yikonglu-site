@@ -437,3 +437,12 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .vlinks .vswap{margin-left:12px;border:1px solid var(--line);background:transparent;color:var(--mute);border-radius:999px;font:inherit;font-size:13px;padding:1px 10px;cursor:pointer}.vlinks .vswap:hover{color:var(--accent);border-color:var(--accent)}
 .gist.ykan .anlab{font-weight:700;color:var(--accent);margin-right:2px}
 .about-def{font-size:17px;border-left:3px solid var(--accent);padding-left:12px;color:var(--fg)}
+
+/* 读本书架（11-08） */
+.duben.shelf{list-style:none;padding:0;margin:28px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:32px 28px}
+.duben.shelf li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin:0}
+.duben.shelf .dbcover{display:block;width:100%;max-width:220px;border-radius:4px;box-shadow:0 2px 4px rgba(0,0,0,.08),0 10px 24px rgba(0,0,0,.14);overflow:hidden;transition:transform .2s;margin-bottom:10px}
+.duben.shelf .dbcover:hover{transform:translateY(-3px)}
+.duben.shelf .dbcover img{display:block;width:100%;height:auto;aspect-ratio:420/595}
+.duben.shelf b{font-size:17px}.duben.shelf .note{font-size:13px}
+.duben.shelf .dbbtns{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:6px}.duben.shelf .dbbtns .btn{margin:0;padding:6px 14px;font-size:14px}
