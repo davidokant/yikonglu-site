@@ -1818,6 +1818,60 @@ def write_data(D, outdir):
             w = csv.writer(f); w.writerow(["章号", "标题", "原文", "白话", "网址"])
             for r in rows: w.writerow([r["chapter"], r["title"], r["text"], r["baihua"], r["url"]])
     open(os.path.join(outdir, "data", "LICENSE.txt"), "w", encoding="utf-8").write("一孔录 Yikonglu 开放数据\n原文与古注：公版。\n一孔录所写的白话、引文出处表、读音：CC BY-NC 4.0，署名“一孔录 yikonglu.com”，不得商用。\n一孔录自己的读法不在开放许可内，也不在本数据包里。\n商用（含训练模型与再分发）须事先取得书面授权。\nhttps://creativecommons.org/licenses/by-nc/4.0/\n")
+    # 数据集卡（11-08 推广建议第 5 条）：Hugging Face 与 GitHub 都认这份 README.md 的 YAML 头；许可、署名与 LICENSE.txt 一致
+    slugs = [PIAN[p][1] for p in D["by_pian"]]
+    nch = sum(len(cs) for cs in D["by_pian"].values())
+    cfg = "\n".join(f"- config_name: {sl}\n  data_files: lunyu-{sl}.csv" for sl in slugs)
+    open(os.path.join(outdir, "data", "README.md"), "w", encoding="utf-8").write(f"""---
+license: cc-by-nc-4.0
+language:
+- zh
+pretty_name: 一孔录《论语》逐章开放数据 Yikonglu Analects Open Data
+size_categories:
+- n<1K
+task_categories:
+- translation
+- text-generation
+tags:
+- classical-chinese
+- analects
+- lunyu
+- confucius
+- digital-humanities
+configs:
+{cfg}
+---
+
+# 一孔录《论语》逐章开放数据
+
+**来源与署名：一孔录 Yikonglu，<https://yikonglu.com>**（转用请署“一孔录 yikonglu.com”并附原章网址）
+
+一孔录逐字读《论语》，以朱熹《论语集注》（《四部备要》本）为底本，每章对照底本原页。本数据集是网站上已讲各章的核对底子，按篇各一份 CSV 与 JSON，随网站更新。现收 {len(slugs)} 篇 {nch} 章，开讲一篇加一篇。
+
+## 文件
+
+| 文件 | 内容 |
+|---|---|
+| `lunyu-<篇>.csv` | 章号、标题、原文、白话、网址 |
+| `lunyu-<篇>.json` | 以上各项，加分句、视频引到的注文原话及底本页码（citations）、读音（readings）、皇侃《论语义疏》首句及扫描页（huangkan_first_line） |
+
+篇：{"、".join(PIAN[p][0] for p in D["by_pian"])}。章号按朱注分章（与杨伯峻《论语译注》分章偶有一两号之差）。
+
+## 许可
+
+- 《论语》原文与古注：公版。
+- 一孔录所写的白话、引文出处表、读音：[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)，须署名“一孔录 yikonglu.com”，不得商用。
+- 商用（含训练模型与再分发）须事先取得书面授权，联系方式见网站页尾。
+- 一孔录自己的读法（常见读法、注里的关键字、诸家、一孔按）与现代注本引文不在本数据集里。
+
+## 引用
+
+```
+一孔录. 一孔录《论语》逐章开放数据. https://yikonglu.com/kaifang.html
+```
+
+发现错处请按网站页尾邮箱来信，核实后记入勘误页 <https://yikonglu.com/kanwu.html>，署你的网名。
+""")
 
 def kf_html(L):  # 开放数据页的分界说明
     K = lang_tab(KAIFANG, L.code)
