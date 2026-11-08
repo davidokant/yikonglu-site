@@ -1367,7 +1367,8 @@ def build_lang(L, D, write):
                 y = D["fz"].get(c)
                 if y and y != c: cap += " " + L.t("wj_yang", y=y)
                 bh = D["baihua"].get(c)
-                bh_html = f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(bh)}</p><p class="note">{L.t("wj_bh_note")}</p></section>' if bh else ""
+                bh_note = "" if c in D.get("bh_ok", ()) else f'<p class="note">{L.t("wj_bh_note")}</p>'
+                bh_html = f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(bh)}</p>{bh_note}</section>' if bh else ""
                 prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
                 pn = "".join(f'<a class="pncard {cl}" href="{href(cc)}"><small>{L.t(lab)}</small><b>{cc}　{esc(ctitle(cc))}</b></a>' if cc else "<span></span>" for cc, lab, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
                 # 主人 11-08：网站先行，不等视频。未讲章也上原页同屏与逐句小卡：有校平句列且字对得上的点句亮列；只有页图的整页并排；
@@ -1835,12 +1836,14 @@ def main(zdir, outdir, kanwu=None):
     for c in pub: first.setdefault(c, today)
     json.dump(first, open(fsp, "w", encoding="utf-8"), ensure_ascii=False, indent=0, sort_keys=True)
     baihua, bh_new = {}, set()
-    for f in sorted(glob.glob(os.path.join(BH_DIR, "*.md")), key=lambda f: ("改写" in f, f)):  # 改写稿最后读，覆盖同章旧稿
+    bh_ok = set()  # 核过的白话（_白话/白话-核定-*.md）：最后读，盖过初稿与改写稿，未讲页不再标“初稿”
+    for f in sorted(glob.glob(os.path.join(BH_DIR, "*.md")), key=lambda f: ("核定" in f, "改写" in f, f)):  # 改写稿后读，覆盖同章旧稿；核定稿最后
         for l in open(f, encoding="utf-8"):
             m = re.match(r"^- (\d+\.\d+)[：:]\s*(.+)$", l.strip())
             if m:
                 baihua[m.group(1)] = m.group(2).strip()
-                if "改写" in f: bh_new.add(m.group(1))
+                if "改写" in f or "核定" in f: bh_new.add(m.group(1))
+                if "核定" in f: bh_ok.add(m.group(1))
     hp = os.path.join(HERE, "baihua_hold.json")
     for c in (json.load(open(hp, encoding="utf-8")).get("chapters", []) if os.path.exists(hp) else []): baihua.pop(c, None)
     for c in [c for c in baihua if int(c.split(".")[0]) <= 10 and c not in pub and c not in bh_new]: baihua.pop(c)  # 前十篇未讲章旧稿白话先不放，改写稿到了再上
@@ -1894,7 +1897,7 @@ def main(zdir, outdir, kanwu=None):
     if G: GS.copy_images(G, outdir); GUSHI_ON = True
     yxl = json.load(open(YXL_FILE, encoding="utf-8")) if os.path.exists(YXL_FILE) else {}
     draft = json.load(open(DRAFT_FILE, encoding="utf-8")) if os.path.exists(DRAFT_FILE) else {}
-    D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today, zhuju=ZJD, wjan=wjan, ddj=load_ddj())
+    D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today, zhuju=ZJD, wjan=wjan, ddj=load_ddj(), bh_ok=bh_ok)
 
     pdp = os.path.join(HERE, "pagedates.json")  # 每页 [内容指纹, 内容最后变动日]：没改的页不换日期
     pdates = json.load(open(pdp, encoding="utf-8")) if os.path.exists(pdp) else {}
