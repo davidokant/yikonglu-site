@@ -1297,9 +1297,9 @@ def build_lang(L, D, write):
     lc_js = ("<script>(function(){var L=" + json.dumps([{"t": ch2ep[c][1]["public_at"], "h": P + rel_of(c), "c": _lcard(c)} for c in _fut], ensure_ascii=False).replace("</", "<\\/")
              + ';function f(){var n=Date.now(),x=null;for(var i=0;i<L.length;i++)if(n>=Date.parse(L[i].t))x=L[i];if(!x)return;var b=document.getElementById("lcard");if(b){b.href=x.h;b.innerHTML=x.c}}f();setInterval(f,60000)})();</script>') if _fut else ""
     # 首页主按钮“今日一句”：在视频已公开（或到点公开）的章里随机抽一章；没有脚本时落到最新一章
-    # 首页主按钮“今日共读一章”：按北京日期在视频已公开的章里定一章，全站同一天同一章；没有脚本时落到最新一章
+    # 首页主按钮“今日共读一章”：按北京日期定一章，候选只取北京当天零点前已公开的章（当天到点公开的不进候选，免得一天里换几次），全站同一天同一章；没有脚本时落到最新一章
     _rc = [{"c": c, "h": P + rel_of(c), "t": ch2ep[c][1].get("public_at") or ""} for c in pub if ch2ep[c][1].get("youtube")]
-    rc_js = ("<script>(function(){var R=" + json.dumps(_rc, ensure_ascii=False) + ';var a=document.getElementById("rcta");if(!a)return;var n=Date.now(),C=R.filter(function(x){return !x.t||Date.parse(x.t)<=n});if(!C.length)return;var day=Math.floor((n+8*3600e3)/864e5),x=C[(day*7919)%C.length];a.href=x.h;a.setAttribute("data-c",x.c)})();</script>') if _rc else ""
+    rc_js = ("<script>(function(){var R=" + json.dumps(_rc, ensure_ascii=False) + ';var a=document.getElementById("rcta");if(!a)return;var n=Date.now(),day=Math.floor((n+8*3600e3)/864e5),d0=day*864e5-8*3600e3,C=R.filter(function(x){return !x.t||Date.parse(x.t)<d0});if(!C.length)return;var x=C[(day*7919)%C.length];a.href=x.h;a.setAttribute("data-c",x.c)})();</script>') if _rc else ""
     vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a>' if L.code.startswith("zh") else "")
     home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录原创角色围坐长桌读书" width="1920" height="1080"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1><p class="motto">{L.t("h_motto")}</p>
