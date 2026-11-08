@@ -796,12 +796,13 @@ def share_html(L, c, url, head, title, yw_text, gist, rend):
 TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
 TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
-LIVE_PILL = {"zh-Hans": "{o} 人在读 · 累计 {t}", "zh-Hant": "{o} 人在讀 · 累計 {t}", "en": "{o} reading · {t} total", "ja": "{o} 人が読書中 · 累計 {t}", "ko": "{o}명 읽는 중 · 누적 {t}", "fr": "{o} lisent · {t} en tout",
-             "es": "{o} leyendo · {t} total", "de": "{o} lesen · {t} gesamt", "vi": "{o} đang đọc · {t} lượt", "id": "{o} membaca · total {t}", "ru": "читают {o} · всего {t}"}
-LIVE_TXT = {"zh-Hans": "此刻 {o} 人在读 · 已有 {t} 位读者来过", "zh-Hant": "此刻 {o} 人在讀 · 已有 {t} 位讀者來過",
-            "en": "{o} reading now · {t} readers so far", "ja": "いま {o} 人が読書中 · これまでの読者 {t} 人", "ko": "지금 {o}명이 읽는 중 · 지금까지 독자 {t}명",
-            "fr": "{o} en train de lire · {t} lecteurs jusqu’ici", "es": "{o} leyendo ahora · {t} lectores hasta hoy", "de": "{o} lesen gerade · bisher {t} Leser",
-            "vi": "{o} người đang đọc · {t} độc giả đã ghé", "id": "{o} sedang membaca · {t} pembaca sejauh ini", "ru": "Сейчас читают: {o} · всего читателей: {t}"}
+LIVE_PILL = {"zh-Hans": "{o} 位儒者在读 · 累计 {t}", "zh-Hant": "{o} 位儒者在讀 · 累計 {t}", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
+             "es": "Letrados leyendo: {o} · {t} en total", "de": "Gelehrte lesen: {o} · {t} gesamt", "vi": "{o} nhà nho đang đọc · {t} lượt", "id": "Cendekiawan membaca: {o} · total {t}", "ru": "Книжники читают: {o} · всего {t}"}
+# 主人 11-08：单位用“儒者”，来的都是儒者；外文取各语里读书人的说法（英文 Confucians、越南 nhà nho、法 lettrés），写成“X：数”免得单复数不合
+LIVE_TXT = {"zh-Hans": "此刻 {o} 位儒者在读 · 已有 {t} 位儒者来过", "zh-Hant": "此刻 {o} 位儒者在讀 · 已有 {t} 位儒者來過",
+            "en": "Confucians reading now: {o} · Confucians so far: {t}", "ja": "いま {o} 人の儒者が読書中 · これまで {t} 人の儒者が来訪", "ko": "지금 유학자 {o}명이 읽는 중 · 지금까지 유학자 {t}명",
+            "fr": "Lettrés en lecture : {o} · lettrés venus jusqu’ici : {t}", "es": "Letrados leyendo ahora: {o} · letrados hasta hoy: {t}", "de": "Gelehrte lesen gerade: {o} · bisher {t} Gelehrte",
+            "vi": "{o} nhà nho đang đọc · {t} nhà nho đã ghé", "id": "Cendekiawan sedang membaca: {o} · cendekiawan sejauh ini: {t}", "ru": "Сейчас читают книжники: {o} · всего книжников: {t}"}
 
 FOLD_RE = re.compile(r'<section class="sec ([^"]*)"((?: id="[^"]*")?)><h2>(.*?)</h2>(.*?)</section>', re.S)
 def fold(h):  # 下半各节收成可点开的 <details>；锚点跳进来时由 FOLD_JS 自动展开
