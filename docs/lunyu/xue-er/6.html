@@ -136,7 +136,7 @@ B.innerHTML=v.map(function(x){return '<p>'+esc(x[0])+(x[1]?'<small>'+esc(x[1])+'
 function open(s,txt){cur=s;sel=txt||'';F.querySelectorAll('.ju.on').forEach(function(x){x.classList.remove('on')});s.classList.add('on');hl(s.dataset.n);
 C.querySelector('.zq').textContent=sel||s.textContent;var d=S[s.dataset.n-1]||{};
 C.querySelector('.zt').innerHTML=TABS.filter(function(t){return d[t[0]]&&d[t[0]].length}).map(function(t){return '<button type="button" data-t="'+t[0]+'">'+t[1]+'</button>'}).join('');
-if(!(d[tab]&&d[tab].length))tab='bh';body();
+if(!(d[tab]&&d[tab].length)){var f0=TABS.filter(function(t){return d[t[0]]&&d[t[0]].length})[0];tab=f0?f0[0]:'bh'}body();
 var R=[];try{R=JSON.parse(Q.dataset.reads||'[]')}catch(e){}var t=s.textContent,hit=R.filter(function(x){return x[1].split('\u3001').some(function(p){return p&&t.indexOf(p)>=0})});
 C.querySelector('.zx').textContent=hit.length?Q.dataset.rl+hit.map(function(x){return x[0]+' '+x[2]}).join(' \u00b7 '):'';
 var r=(window.getSelection&&sel&&getSelection().rangeCount?getSelection().getRangeAt(0):s).getBoundingClientRect();C.hidden=false;C.style.top=(window.scrollY+r.bottom+8)+'px';C.style.left=Math.max(8,Math.min(window.scrollX+r.left,document.documentElement.clientWidth-C.offsetWidth-8))+'px';

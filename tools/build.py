@@ -7,7 +7,7 @@
 语种：zh-Hans（根目录）、zh-Hant（/zh-hant/，OpenCC 自动转台湾用字）、en（/en/）。
 用法：python3 tools/build.py <读法札记目录> docs
 """
-import json, re, sys, html, os, shutil, datetime, glob, csv
+import json, re, sys, html, os, shutil, datetime, glob, csv, io, contextlib
 import og as OG
 import gushi as GS
 import renwu as RW
@@ -84,7 +84,7 @@ ZH_UI = {
  "reads": "读音", "th_zi": "字", "th_pos": "位置", "th_du": "读", "shots": "底本原页",
  "kw": "本章勘误", "kw_note": "", "cite": "引用本页", "copy": "复制", "copied": "已复制",
  "checked": "本页最后核对：{d}。改动记在", "errata_page": "勘误页",
- "video": "看这一章的视频", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点哔哩哔哩）",
+ "video": "看这一章的视频", "wj_vid": "这一章的视频正在制作，上线后就放在这里。先关注一孔录，出片第一时间看到：", "wj_pane": "原页", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点哔哩哔哩）",
  "prev": "上一章", "next": "下一章", "chapter_no": "{book} · 第 {n} 章", "book_no": "《论语》第 {n} 篇 · 已讲 {done} / {total} 章",
  "source_line": f"原文与注据{SOURCE}", "rendering": "",
  "errata_title": "公开勘误", "errata_sub": "原文·引文·出处·读音·读法",
@@ -368,6 +368,15 @@ def parse_zhuben(d):
             if src_ch and src_ch != r["章号"].strip(): continue  # 重出章借用别章译句的不放，免得张冠李戴
             out.setdefault(r["章号"], {})[key] = {"text": r["译文一句"].strip(), "key": head if head_is_word else "", "kind": kind, "say": body if head else cmp_, "sure": {"定": "s_ding", "较稳": "s_wen", "存疑": "s_yi"}.get((r.get("把握") or "").strip(), "")}
     return out
+
+_WJP = {}
+def wj_pages():  # 原页 jpg 尺寸（未讲章原页同屏用）；只读文件头
+    if not _WJP and getattr(ZJ, "YDIR", None):
+        from PIL import Image
+        for f in os.listdir(ZJ.YDIR):
+            if f.endswith(".jpg"):
+                w, h = Image.open(os.path.join(ZJ.YDIR, f)).size; _WJP[f[:-4]] = {"w": w, "h": h}
+    return _WJP
 
 def esc(s): return html.escape(s, quote=True)
 
@@ -1198,8 +1207,10 @@ def build_lang(L, D, write):
         write(rel, page(L, ttl, desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@IMG@", "做成分享图").replace("@NONE@", "这一句没有收。") if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
 
 
-    # 未讲各章：只出简繁。原文（朱注分章底本）、白话初稿、本句互见、异文、各家注本
+    # 未讲各章：只出简繁。原文（朱注分章底本）、白话初稿、本句互见、异文、各家注本；原页同屏、视频位（11-08）
     if L.code.startswith("zh"):
+        ZJD = D.get("zhuju") or {"on": set(), "jl": {}, "zj": {}}
+        WJ_PAGES = wj_pages()
         for p_, cs in D["all_by_pian"].items():
             for k, c in enumerate(cs):
                 if c in pubset: continue
@@ -1216,6 +1227,34 @@ def build_lang(L, D, write):
                 bh_html = f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(bh)}</p><p class="note">{L.t("wj_bh_note")}</p></section>' if bh else ""
                 prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
                 pn = "".join(f'<a class="pncard {cl}" href="{href(cc)}"><small>{L.t(lab)}</small><b>{cc}　{esc(ctitle(cc))}</b></a>' if cc else "<span></span>" for cc, lab, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
+                # 主人 11-08：网站先行，不等视频。未讲章也上原页同屏：有校平句列且字对得上的点句亮列（同已讲章），只有页图的整页并排；视频位先写“正在制作”
+                hjd = hj_of(c); wj_dz = False; wj_rows = []
+                bq = f'<blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="[]" data-rl="" data-hj="{esc(json.dumps(hjd, ensure_ascii=False))}">'
+                if c in ZJD["jl"]:
+                    sents = split_ju(text)
+                    _buf = io.StringIO()
+                    with contextlib.redirect_stdout(_buf): zpages, zper = ZJ.spans_of(c, sents, ZJD)
+                    if zpages and not _buf.getvalue() and all(p_ in WJ_PAGES for p_ in zpages):
+                        wj_dz = True; zs = ZJ.card_data(c, ZJD, len(sents)) or []
+                        for j, x in enumerate(sents, 1):
+                            d = {k_: zs[j-1].get(k_) for k_ in ("bh", "zhu", "jj", "yk") if zs[j-1].get(k_)} if j <= len(zs) else {}
+                            d["hj"] = [[f"{h[0]}：{h[1]}", h[2], ""] for h in hjd.get(str(j), [])]
+                            wj_rows.append(d)
+                        ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x)}</span>' + (f'<span class="yi" hidden>{esc(wj_rows[j-1]["bh"])}</span>' if wj_rows[j-1].get("bh") else "") for j, x in enumerate(sents, 1))
+                        yib = '<button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button>' if any(r.get("bh") for r in wj_rows) else ""
+                        wj_fig = (f'<figure class="yuanwen dz"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span>{yib}</div>'
+                                  f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>'
+                                  f'<div class="yypane">{ZJ.page_pane(c, zpages, zper, L.t("wj_pane"), ZJ.YDIR)}</div></div>'
+                                  f'<script type="application/json" class="zjdata">{json.dumps(wj_rows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
+                if not wj_dz:
+                    pp = f"p{int(pgn):03d}" if pgn else ""
+                    if pp in WJ_PAGES:
+                        wj_fig = (f'<figure class="yuanwen wjpg"><div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>'
+                                  f'<div class="yypane">{ZJ.page_pane(c, {pp: WJ_PAGES[pp]}, [], L.t("wj_pane"), ZJ.YDIR)}</div></div></figure>')
+                    else:
+                        wj_fig = f'<figure class="yuanwen">{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></figure>'
+                wj_vid = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
+                          f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>')
                 body = f"""<div class="chhead"><div class="wrap">
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
 <h1><span class="no">{L.t("chapter_no", book=pname, n=cnum)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(ctitle(c))}</h1>
@@ -1223,8 +1262,9 @@ def build_lang(L, D, write):
 <main class="wrap chapter">
 <article>
 <p class="wjlead">{L.t("wj_lead")}</p>
-<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="[]" data-rl="" data-hj="{esc(json.dumps(hj_of(c), ensure_ascii=False))}">{ju_html}</blockquote><figcaption>{cap}</figcaption></figure>
+{wj_fig}
 {bh_html}
+{wj_vid}
 {yiwen_html(c)}
 {zb_section(c, url, cite_src)}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
@@ -1237,7 +1277,7 @@ def build_lang(L, D, write):
                 ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"《论语·{pname}》{c} {ctitle(c)}", "inLanguage": L.hreflang, "url": url,
                       "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "论语"},
                       "isBasedOn": {"@type": "Book", "name": "论语集注", "author": {"@type": "Person", "name": "朱熹"}}}
-                write(rel, page(L, L.t("wj_title", book=pname, c=c, head=seo_head(text)), desc, rel, body + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter pg-wj", codes=["zh-Hans", "zh-Hant"])); urls.append(url)
+                write(rel, page(L, L.t("wj_title", book=pname, c=c, head=seo_head(text)), desc, rel, body + (ZJ.ZJ_JS.replace('<button data-a="img">@IMG@</button>', "").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。") if wj_dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter pg-wj", codes=["zh-Hans", "zh-Hant"])); urls.append(url)
                 search_idx.append({"c": c, "t": ctitle(c), "u": P + rel, "y": text, "x": (bh or "") + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
 
     def toc(cs):
