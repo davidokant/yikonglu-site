@@ -15,7 +15,7 @@ import zhuju as ZJ
 
 DOMAIN = "https://yikonglu.com"
 # 图片另放 davidokant/yikonglu-img（Pages：img.yikonglu.com，11-08 主人定）：原页、分享图、故事图建好后挪到图片仓库，页面里改用绝对地址。
-# 回退：YK_IMG= （设空）再建站，图片就留在本站 docs 里；本机没有图片仓库目录时也自动回退。
+# 回退：YK_IMG= （设空）再建站，图片就留在本站 docs 里。建站要有图片仓库的克隆（默认与本仓库同级 ../yikonglu-img），没有就停，免得图片又进本仓库。
 IMG = os.environ.get("YK_IMG", "https://img.yikonglu.com").rstrip("/")
 IMG_DIR = os.environ.get("YK_IMG_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "yikonglu-img")
 IMG_SUBS = ("yuanye/", "og/", "gushi/img/")
@@ -1790,8 +1790,10 @@ def where_html(L):
 def img_out(outdir):
     """图片挪去图片仓库：页面里 /yuanye/ /og/ /gushi/img/ 换成 IMG 绝对地址，文件同步到 IMG_DIR（只写有变的、删多余的），再从 docs 删掉。"""
     import filecmp
-    if not IMG or not os.path.isdir(os.path.join(IMG_DIR, ".git")):
-        print(f"  图片留在本站（{'YK_IMG 为空' if not IMG else '没有图片仓库 ' + os.path.abspath(IMG_DIR)}）"); return
+    if not IMG:
+        print("  图片留在本站（YK_IMG 为空，回退）"); return
+    if not os.path.isdir(os.path.join(IMG_DIR, ".git")):  # 别悄悄把两百多兆图片又塞回网站仓库
+        sys.exit(f"没有图片仓库 {os.path.abspath(IMG_DIR)}：先 git clone https://github.com/davidokant/yikonglu-img 到那里（或设 YK_IMG_DIR），要回退就设 YK_IMG= 。")
     for f in glob.glob(os.path.join(outdir, "**", "*.*"), recursive=True):
         if not f.endswith((".html", ".xml", ".json", ".js")) or f.endswith("sw.js"): continue
         t = open(f, encoding="utf-8").read(); t0 = t
