@@ -121,7 +121,7 @@ M.addEventListener('click',function(e){if(e.target===M||e.target.closest('.cls')
 var ZH=/^zh/.test(document.documentElement.lang||'');
 if(ZH){(function(){
 var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',W=1080,H=1350,KIND='he',CN=D.c||'',TOTAL=498;
-var TABS=[['he','原頁卡'],['bing','打卡卡'],['long','天下版']];
+var TABS=[['he','原頁卡'],['bing','打卡卡'],['long','天下卡']];
 function RD(){try{return JSON.parse(localStorage.getItem('yk_rd')||'[]')||[]}catch(e){return []}}
 function WR(a){try{localStorage.setItem('yk_rd',JSON.stringify(a))}catch(e){}}
 function today(){var t=new Date();return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2)}
