@@ -462,11 +462,20 @@ def md_tables(lines, start_pat):
 
 CN = {"一":1,"二":2,"三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9,"十":10}
 def cn2int(t):
+    t = t.strip()
     if t.isdigit(): return int(t)
-    if len(t) == 1: return CN[t]
-    if t[0] == "十": return 10 + CN[t[1]]
-    if t[-1] == "十": return CN[t[0]] * 10
-    return CN[t[0]] * 10 + CN[t[2]]
+    if "十" in t:
+        a, b = t.split("十", 1)
+        return (CN[a] if a else 1) * 10 + (CN[b] if b else 0)
+    return CN[t]
+
+def cn_chs(s):  # 稿里节题的章号：“三十八至四十”“三十、三十一”“一、二” → [38, 39, 40] 等
+    out = []
+    for part in s.split("、"):
+        if "至" in part:
+            a, b = part.split("至", 1); out += list(range(cn2int(a), cn2int(b) + 1))
+        else: out.append(cn2int(part))
+    return out
 PIAN_NUM = {v[0]: k for k, v in PIAN.items()}
 
 def pdf_pages(page):  # “PDF084—085”这类跨页范围展开成各页
@@ -480,23 +489,30 @@ def parse_gao(path, yw):
     L = NEIBU_DING.sub("", open(path, encoding="utf-8").read().replace("\r", "")).split("\n")
     kmap, cur = {}, None
     for l in L:
-        m = re.match(r"^### 第(.+?)章", l)
+        m = re.match(r"^### (?:篇题；)?第(.+?)章", l)
         if m: cur = m.group(0)
         if re.match(r"^### (开场|片尾)", l): cur = None
         k = re.match(r"^\*\*(K\d+)", l)
         if k and cur and "引子" not in l: kmap[k.group(1)] = cur  # 下篇引子不算本章
     pnum = next((v for k2, v in PIAN_NUM.items() if k2 in os.path.basename(path)), None)
     out = {}
-    sec2ch = {sec: f"{pnum}.{cn2int(re.match(r'^### 第(.+?)章', sec).group(1).split('、')[0])}" for sec in set(kmap.values())} if pnum else {}
+    sec2ch = {sec: [f"{pnum}.{n}" for n in cn_chs(re.match(r'^### (?:篇题；)?第(.+?)章', sec).group(1))] for sec in set(kmap.values())} if pnum else {}
+    HAN = lambda t: set(re.sub(r"[^\u3400-\u9fff]", "", t)) - set("之也者而其不以为于曰子乎矣焉则所")
+    def pick(cs, text):  # 合讲一节：引文挂到字面最贴的那一章（数相同字），并列取前一章
+        if len(cs) == 1: return cs[0]
+        h = HAN(text)
+        return max(cs, key=lambda c: (len(h & HAN(yw.get(c, ""))), -cs.index(c)))
     for row in md_tables(L, r"^## 引文取处"):
         if len(row) < 4: continue
         k, text, src, page = row[:4]
-        km = re.match(r"\s*(K\d+)", k); c = sec2ch.get(kmap.get(km.group(1) if km else k))
-        if not c or "待核" in page or "待核" in text: continue
+        km = re.match(r"\s*(K\d+)", k); cs = sec2ch.get(kmap.get(km.group(1) if km else k))
+        if not cs or "待核" in page or "待核" in text: continue
+        if src == "经文":
+            for c in cs: out.setdefault(c, {"cites": [], "reads": []}).setdefault("qw_pages", []).extend(pdf_pages(page))
+            continue
+        c = pick(cs, text)
         para = bool(re.search(r"（[^（）]*(转述)[^（）]*）", text)) and not re.search(r"只原样念|前半转述|前后转述", text)
         text = INTERNAL.sub("", text).strip("；; ")
-        if src == "经文":  # 经文所在页也算本章原页（跨页章如 4.18 起于前一页）
-            out.setdefault(c, {"cites": [], "reads": []}).setdefault("qw_pages", []).extend(pdf_pages(page)); continue
         if not text: continue
         pages = pdf_pages(page)
         other = ""
@@ -508,7 +524,7 @@ def parse_gao(path, yw):
         if len(row) < 3: continue
         zi, pos, du = row[:3]
         if "见注" in du: continue
-        for c in sec2ch.values():
+        for c in dict.fromkeys(c for cs in sec2ch.values() for c in cs):
             if c in yw and pos and any(x and x in yw[c] for x in pos.split("、")):
                 r = out.setdefault(c, {"cites": [], "reads": []})["reads"]
                 if (zi, pos) not in [(a["zi"], a["pos"]) for a in r]:
