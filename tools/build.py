@@ -1672,7 +1672,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     # 免费读本（PDF 放 tools/root/duben/，原样拷到站点 /duben/）
     DUBEN = [("db_xueer", "db_meta", "lunyu-xueer")]
     rows = "".join(f'<li><b>{L.t(n)}</b> <span class="note">{L.t(m)}</span><br><a class="btn" href="/duben/{f}.pdf" download>{L.t("db_hans")} PDF</a> <a class="btn ghost" href="/duben/{f}-hant.pdf" download>{L.t("db_hant")} PDF</a></li>' for n, m, f in DUBEN)
-    wx = f"<p>{L.t('db_wx')}</p>" if L.t("db_wx") else ""
+    wx = ""  # 主人 11-08：删“公众号回复读本领取”——到公众号还是回这条链接，绕圈
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("db_sub")}</span>{L.t("db_title")}</h1></div></div>
 <main class="wrap narrow prose"><p>{L.t("db_p")}</p><ul class="duben">{rows}</ul>{wx}<p class="note">{L.t("db_note")} <a href="{P}kanwu.html">{L.t("nav_errata")}</a></p></main>'''
     write("duben.html", page(L, f'{L.t("db_title")}｜一孔录', L.t("db_sub"), "duben.html", body)); urls.append(f"{DOMAIN}/{L.prefix}duben.html")
