@@ -446,3 +446,4 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .duben.shelf .dbcover img{display:block;width:100%;height:auto;aspect-ratio:420/595}
 .duben.shelf b{font-size:17px}.duben.shelf .note{font-size:13px}
 .duben.shelf .dbbtns{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:6px}.duben.shelf .dbbtns .btn{margin:0;padding:6px 14px;font-size:14px}
+.dbkind{margin:34px 0 10px}.dbkind .dbwho{margin:6px 0;font-size:15px}.dbkind .dbwho b{color:var(--accent,#8A5A2C);font-weight:600}

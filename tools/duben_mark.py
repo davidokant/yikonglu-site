@@ -1,5 +1,5 @@
 """开放下载 PDF 加一孔录署名（11-08 主人定，防扩散后被冒名）：每页页脚居中小印＋“一孔录 · yikonglu.com · 免费读本，转载请署名”，元数据作者填一孔录。
-用法：python3 tools/duben_mark.py 原.pdf 出.pdf [标题]。重复跑会叠两层，须从未加过的原件出。"""
+用法：python3 tools/duben_mark.py 原.pdf 出.pdf [标题] [跳过前 N 页，设计封面不压字，默认 1]。重复跑会叠两层，须从未加过的原件出。"""
 import io, sys, os
 from pypdf import PdfReader, PdfWriter
 from reportlab.pdfgen import canvas
@@ -19,9 +19,10 @@ def stamp(w, h, TXT=TXT):
     c.setFont("ZH", fs); c.setFillColorRGB(0.45, 0.45, 0.42); c.drawString(x0 + sz + gap, y, TXT)
     c.save(); b.seek(0); return PdfReader(b).pages[0]
 
-def main(src, dst, title=None):
+def main(src, dst, title=None, skip="1"):
     r = PdfReader(src); wtr = PdfWriter(); cache = {}
-    for p in r.pages:
+    for i, p in enumerate(r.pages):
+        if i < int(skip): wtr.add_page(p); continue
         w, h = float(p.mediabox.width), float(p.mediabox.height)
         k = (round(w), round(h))
         if k not in cache: cache[k] = stamp(w, h, TXT_HANT if "hant" in os.path.basename(dst) else TXT)
