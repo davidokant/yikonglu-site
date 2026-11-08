@@ -4048,7 +4048,7 @@
 "2026-11-07"
 ],
 "index.html": [
-"72fb0fd999e8c212",
+"163aa927bbb57bb9",
 "2026-11-08"
 ],
 "ja/about.html": [
@@ -10232,7 +10232,7 @@
 "2026-11-08"
 ],
 "zh-hant/index.html": [
-"d6e154d5bf8f6274",
+"4eaf60d21547710f",
 "2026-11-08"
 ],
 "zh-hant/kaifang.html": [
@@ -13160,12 +13160,16 @@
 "2026-11-07"
 ],
 "zh-hant/zhuanti/index.html": [
-"730ba3624c61b609",
-"2026-11-07"
+"bf6d40d4687da165",
+"2026-11-08"
 ],
 "zh-hant/zhuanti/junzi.html": [
 "aa5374bdd7abe027",
 "2026-11-07"
+],
+"zh-hant/zhuanti/keben.html": [
+"a2b179f719674253",
+"2026-11-08"
 ],
 "zh-hant/zhuanti/le.html": [
 "c0591333151da98a",
@@ -13232,12 +13236,16 @@
 "2026-11-07"
 ],
 "zhuanti/index.html": [
-"bf19ed61ec691de8",
-"2026-11-07"
+"6ce79f6f9c7ad894",
+"2026-11-08"
 ],
 "zhuanti/junzi.html": [
 "47512afda629e608",
 "2026-11-07"
+],
+"zhuanti/keben.html": [
+"5677095024a198bc",
+"2026-11-08"
 ],
 "zhuanti/le.html": [
 "5e20a9237bb895db",

@@ -33,6 +33,10 @@ PIAN = {"1": ("学而", "xue-er", "学而第一", 16), "2": ("为政", "wei-zhen
 YW_DIR = os.path.join("/mnt/project-files/一孔学-内-自媒体/数据/网站素材", "_原文")  # 全书原文（朱注分章 498 章）、分章对照、异文表
 FIELDS = [("常见读法", "f_common", "常"), ("字眼", "f_keys", "注"), ("诸家", "f_others", "说"), ("片里落点", "f_ours", "读")]
 SOURCE = "朱熹《论语集注》（《四部备要》本）"
+# 语文课本里的《论语》（统编教材；章号＝朱注分章，11-08 逐章对过 _原文 集注分章原文）。台湾高中论孟选读篇目未核准，先不列
+KEBEN = [("chu7", "七年级上册《〈论语〉十二章》", "初中第一次读《论语》：学习、修身、志向。", ["1.1", "1.4", "2.4", "2.11", "2.15", "6.9", "6.18", "7.15", "7.21", "9.16", "9.25", "19.6"]),
+         ("bixiu", "高中必修下册《子路、曾皙、冉有、公西华侍坐》", "孔子让四个学生各言其志，最后说“吾与点也”。课本按杨伯峻本是《先进》第 26 章，朱注本是第 25 章。", ["11.25"]),
+         ("xuanbi", "高中选择性必修上册《〈论语〉十二章》", "从学而、八佾、里仁、雍也、泰伯、子罕、颜渊、卫灵公、阳货九篇选出，讲仁、礼、义与君子。", ["1.14", "3.3", "4.8", "4.16", "4.17", "6.16", "8.7", "9.18", "9.28", "12.1", "15.23", "17.9"])]
 TAGLINE = "逐字读经典原文"
 GAO_DIR = "/mnt/project-files/一孔学-内-自媒体/数据/网站素材"  # 各期稿只在共享盘读取，不进公开仓库
 GUSHI_DIR = os.environ.get("YK_GUSHI_DIR") or os.path.join(GAO_DIR, "_故事")  # “故事”栏资料；没有人物表就整栏不出
@@ -1560,7 +1564,7 @@ def build_lang(L, D, write):
 <div><i>注</i><b>{L.t("p2t")}</b><p>{L.t("p2")}</p></div>
 <div><i>勘</i><b>{L.t("p3t")}</b><p>{L.t("p3")}</p></div>
 </section>
-<section class="wrap narrow"><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}zi.html"><b>{L.t("zi_title")}</b><span>{L.t("t_zi")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
+<section class="wrap narrow"><div class="tools">{f'<a href="{P}zhuanti/keben.html"><b>语文课本里的《论语》</b><span>初中、高中课文各章：原文、翻译、读音、朱熹注</span></a>' if L.code.startswith("zh") else ""}<a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}zi.html"><b>{L.t("zi_title")}</b><span>{L.t("t_zi")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
 {yxl_line(L, D, P) if L.code.startswith("zh") else ""}
 <p class="cta"><a class="btn ghost" href="{P}kanwu.html">{L.t("btn_errata")}</a><a class="btn ghost" href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p></section>
 </main>'''
@@ -1702,8 +1706,28 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     if D.get("gushi") and L.code.startswith("zh") and D["gushi"]["routes"]:  # 乙类：路线页并入专题栏
         routes = f'<h2 class="ph">{L.t("zt_routes")}</h2><p class="note">{L.t("zt_routes_p")}</p><ul class="gsroutes">' + "".join(
             f'<li><a href="{P}gushi/lu-{pid}.html"><b>跟着{esc(D["gushi"]["by"][pid]["名"])}读</b>：{esc(rt["title"])}</a></li>' for pid, rt in D["gushi"]["routes"].items() if rt["items"]) + "</ul>"
-    body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zt_sub")}</span>{L.t("zt_title")}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("zt_p")}</p><div class="ztcards">{zlist}</div>{routes}</main>'''
+    body_zt_index = lambda zl: f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zt_sub")}</span>{L.t("zt_title")}</h1></div></div>
+<main class="wrap narrow"><p class="lead">{L.t("zt_p")}</p><div class="ztcards">{zl}</div>{routes}</main>'''
+    body = body_zt_index(zlist)
+    if L.code.startswith("zh"):  # 语文课本里的《论语》（11-08 主人定，网站推广建议第 2 条）：只简繁；课文各章逐章对过朱注分章原文
+        kb_items = ""
+        for kid, kname, knote, kcs in KEBEN:
+            lis = ""
+            for k_, c in enumerate(kcs, 1):
+                if c not in pubset and c not in D["qw"]: continue
+                bh_ = D["baihua"].get(c) or ""
+                lis += (f'<li{"" if c in pubset else " class=wj"}><a href="{href(c)}"><em>{c}</em><b>{esc(ctitle(c))}</b>{"" if c in pubset else "<i class=wjtag>" + L.t("toc_wj") + "</i>"}</a>'
+                        f'<p class="zy" lang="zh-Hans">{esc(tx(c))}</p>' + (f'<p class="zd">白话：{esc(bh_)}</p>' if bh_ else "") + "</li>")
+            kb_items += (f'<section class="ztbook" id="{kid}"><h2 class="ph">{esc(kname)}<small>{len(kcs)} 章</small></h2><p class="lead">{esc(knote)}</p><ol class="ztl">{lis}</ol></section>')
+        kb_toc = "".join(f'<a class="ztcard" href="#{kid}"><b>{esc(kname)}</b><small>{len(kcs)} 章</small></a>' for kid, kname, _, kcs in KEBEN)
+        body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}zhuanti/">{L.t("zt_title")}</a></p><h1><span class="no">初中 · 高中 语文课</span>语文课本里的《论语》</h1></div></div>
+<main class="wrap narrow"><p class="lead">统编语文教材选了这几课《论语》：七年级上册《〈论语〉十二章》、高中必修下册《子路、曾皙、冉有、公西华侍坐》、高中选择性必修上册《〈论语〉十二章》。下面按课列出每一章的原文和白话，点进去是这一章的原页、逐句朱熹注、读音和各家注本。</p>
+<div class="ztcards">{kb_toc}</div>{kb_items}
+<p class="note">原文照朱熹《论语集注》（《四部备要》本），标点、个别用字可能和课本不同；章号按朱注分章，课本注释多用杨伯峻本，章号有时差一两号。标“未讲”的章视频还在做，网站先放原文、白话和注。发现错处请写信：{MAIL}</p></main>'''
+        write("zhuanti/keben.html", page(L, "论语十二章原文及翻译、读音、朱熹注｜语文课本里的《论语》｜一孔录", "统编语文七年级上册、高中选择性必修上册《论语》十二章，高中必修下册《侍坐》：每章原文、白话翻译、读音、朱熹注与宋以来各家注本，逐章链到原页。", "zhuanti/keben.html", body))
+        urls.append(f"{DOMAIN}/{L.prefix}zhuanti/keben.html")
+        zlist = f'<a class="ztcard" href="{P}zhuanti/keben.html"><b>语文课本里的《论语》</b><small>3 课 · 25 章</small></a>' + zlist
+        body = body_zt_index(zlist)
     write("zhuanti/index.html", page(L, f'{L.t("zt_title")}｜一孔录', L.t("zt_sub"), "zhuanti/", body)); urls.append(f"{DOMAIN}/{L.prefix}zhuanti/")
     if D.get("gushi") and L.code.startswith("zh"):  # “故事”栏：只简繁
         urls += GS.build(L, D, D["gushi"], write, page, P, rel_of, title_of, split_ju, DOMAIN)
