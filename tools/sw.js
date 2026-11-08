@@ -50,6 +50,15 @@ self.addEventListener("fetch", e => {
     }
     return;
   }
+  if (u.hostname === "img.yikonglu.com") {
+    if (r.mode === "cors") return;  // 分享长图用跨域请求画图，别拿缓存里的不透明响应顶，直接走网络
+    // 图片仓库（原页、分享图、故事图）：先给缓存再后台更新；普通 <img> 拿到的是不透明响应，也收
+    e.respondWith(caches.open(STATIC).then(c => c.match(r).then(m => {
+      const net = fetch(r).then(res => { if (res.ok || res.type === "opaque") { c.put(r, res.clone()); trim(STATIC, MAX_STATIC); } return res; }).catch(() => m);
+      return m || net;
+    })));
+    return;
+  }
   if (u.hostname === "fonts.googleapis.com" || u.hostname === "fonts.gstatic.com") {
     e.respondWith(caches.open(FONTS).then(c => c.match(r).then(m => m || fetch(r).then(res => { c.put(r, res.clone()); return res; }))));
   }

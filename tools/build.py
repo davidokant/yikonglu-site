@@ -14,6 +14,11 @@ import renwu as RW
 import zhuju as ZJ
 
 DOMAIN = "https://yikonglu.com"
+# 图片另放 davidokant/yikonglu-img（Pages：img.yikonglu.com，11-08 主人定）：原页、分享图、故事图建好后挪到图片仓库，页面里改用绝对地址。
+# 回退：YK_IMG= （设空）再建站，图片就留在本站 docs 里；本机没有图片仓库目录时也自动回退。
+IMG = os.environ.get("YK_IMG", "https://img.yikonglu.com").rstrip("/")
+IMG_DIR = os.environ.get("YK_IMG_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..", "yikonglu-img")
+IMG_SUBS = ("yuanye/", "og/", "gushi/img/")
 HERE = os.path.dirname(os.path.abspath(__file__))
 PIAN = {"1": ("学而", "xue-er", "学而第一", 16), "2": ("为政", "wei-zheng", "为政第二", 24),
         "3": ("八佾", "ba-yi", "八佾第三", 26), "4": ("里仁", "li-ren", "里仁第四", 26),
@@ -644,7 +649,7 @@ function segs(n){var R=[];document.querySelectorAll('.yuanwen.dz .yyp').forEach(
 var vb=sv.getAttribute('viewBox').split(' ').map(Number),pw=+im.getAttribute('width'),x0=1e9,x1=0,cw=0;rs.forEach(function(r){var x=+r.getAttribute('x'),w=+r.getAttribute('width');x0=Math.min(x0,x);x1=Math.max(x1,x+w);cw=Math.max(cw,w)});
 var pad=cw*0.55,minw=cw*4.2;x0-=pad;x1+=pad;if(x1-x0<minw){var m=(x0+x1)/2;x0=m-minw/2;x1=m+minw/2}x0=Math.max(0,x0);x1=Math.min(pw,x1);
 R.push({src:im.getAttribute('href'),pw:pw,x0:x0,x1:x1,y0:vb[1],y1:vb[1]+vb[3],p:+a.dataset.p.slice(1),hl:n?rs.map(function(r){return['x','y','width','height'].map(function(k){return +r.getAttribute(k)})}):[]})});return R}
-function draw(){var W=1080,SG=segs(X3.n),ims=SG.map(function(g){return new Promise(function(ok){var m=new Image();m.onload=function(){g.im=m;ok()};m.onerror=function(){ok()};m.src=g.src})});Promise.all(ims).then(function(){SG=SG.filter(function(g){return g.im});draw2(W,SG)})}
+function draw(){var W=1080,SG=segs(X3.n),ims=SG.map(function(g){return new Promise(function(ok){var m=new Image();m.crossOrigin='anonymous';m.onload=function(){g.im=m;ok()};m.onerror=function(){ok()};m.src=g.src})});Promise.all(ims).then(function(){SG=SG.filter(function(g){return g.im});draw2(W,SG)})}
 function draw2(W,SG){var M0=document.createElement('canvas').getContext('2d'),RL=rili();
 var top=RL?286:250,y0=top+58+30,CF=[[60,30,28],[54,28,26],[50,27,25],[46,26,24],[42,25,23],[38,23,22],[34,21,20]],cf,L1,L2,L3;
 function H3(cf,a,b,j){return a.length*cf[0]*1.45+34+(b.length?b.length*cf[1]*1.5+18:0)+j.length*cf[2]*1.6}
@@ -1782,6 +1787,36 @@ def where_html(L):
         out.append(f'<a href="{url}" target="_blank" rel="noopener">{name}</a>')
     return " · ".join(out) + " · " + PLAT_WX["zh" if zh else L.code if L.code in PLAT_WX else "en"]
 
+def img_out(outdir):
+    """图片挪去图片仓库：页面里 /yuanye/ /og/ /gushi/img/ 换成 IMG 绝对地址，文件同步到 IMG_DIR（只写有变的、删多余的），再从 docs 删掉。"""
+    import filecmp
+    if not IMG or not os.path.isdir(os.path.join(IMG_DIR, ".git")):
+        print(f"  图片留在本站（{'YK_IMG 为空' if not IMG else '没有图片仓库 ' + os.path.abspath(IMG_DIR)}）"); return
+    for f in glob.glob(os.path.join(outdir, "**", "*.*"), recursive=True):
+        if not f.endswith((".html", ".xml", ".json", ".js")) or f.endswith("sw.js"): continue
+        t = open(f, encoding="utf-8").read(); t0 = t
+        for sub in IMG_SUBS:
+            if sub not in t: continue
+            t = t.replace(f"{DOMAIN}/{sub}", f"{IMG}/{sub}")
+            for q in "\"'(":
+                t = t.replace(f"{q}/{sub}", f"{q}{IMG}/{sub}")
+        if t != t0: open(f, "w", encoding="utf-8").write(t)
+    nw = nd = 0
+    for sub in IMG_SUBS:
+        src, dst = os.path.join(outdir, sub), os.path.join(IMG_DIR, sub)
+        if not os.path.isdir(src): continue
+        have = set()
+        for f in glob.glob(os.path.join(src, "**", "*"), recursive=True):
+            if os.path.isdir(f): continue
+            r = os.path.relpath(f, src); have.add(r); d = os.path.join(dst, r)
+            if not (os.path.exists(d) and filecmp.cmp(f, d, shallow=False)):
+                os.makedirs(os.path.dirname(d), exist_ok=True); shutil.copy2(f, d); nw += 1
+        for f in glob.glob(os.path.join(dst, "**", "*"), recursive=True):
+            if not os.path.isdir(f) and os.path.relpath(f, dst) not in have: os.remove(f); nd += 1
+        shutil.rmtree(src)
+    print(f"  图片 → {os.path.abspath(IMG_DIR)}：新写 {nw}、删 {nd}；页面改用 {IMG}")
+
+
 def main(zdir, outdir, kanwu=None):
     yw = json.load(open(os.path.join(HERE, "yuanwen.json"), encoding="utf-8"))
     eps = json.load(open(os.path.join(HERE, "episodes.json"), encoding="utf-8"))
@@ -1999,6 +2034,7 @@ def main(zdir, outdir, kanwu=None):
     open(os.path.join(outdir, ".nojekyll"), "w").write("")
     shutil.copy(os.path.join(HERE, "style.css"), os.path.join(outdir, "style.css"))
     print(f"生成 {len(urls)} 页 → {outdir}")
+    img_out(outdir)
     rc = __import__("subprocess").run([sys.executable, os.path.join(HERE, "check.py"), outdir]).returncode  # 发版前检查，不过别推
     if rc: sys.exit("检查没过，先别推。")
     __import__("subprocess").run([sys.executable, os.path.join(HERE, "shangxian.py"), outdir, os.path.join(os.path.dirname(os.path.abspath(zdir)), "数据", "网站素材")])
