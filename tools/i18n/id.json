@@ -288,7 +288,8 @@
   "lang_go": "Baca dalam bahasa Indonesia",
   "lang_close": "Tutup",
   "translated_note": "Versi bahasa Indonesia: antarmuka dan penjelasan Yikonglu sudah diterjemahkan; kutipan komentar tetap dalam bahasa Tionghoa. Halaman bahasa Tionghoa yang berlaku.",
-  "cite_fmt": "Yikonglu, Lunyu {book} {c} “{title}”, {url}, versi {d}."
+  "cite_fmt": "Yikonglu, Lunyu {book} {c} “{title}”, {url}, versi {d}.",
+  "about_def": "Yikonglu (一孔录) adalah proyek berbahasa Tionghoa yang membaca teks asli klasik Tiongkok kata demi kata, bab demi bab. Sejak 2026 proyek ini membaca Analekta lewat video, podcast, dan situs ini; teks dan komentarnya mengikuti Komentar Terhimpun Zhu Xi (edisi Sibu Beiyao), dan setiap kutipan diberi nomor halaman edisi dasar. Bacaan proyek sendiri ditandai “一孔按”. Disusun secara independen, tanpa pendanaan lembaga atau yayasan."
  },
  "books": {
   "1": "Xue er (Kitab 1)",

@@ -288,7 +288,8 @@
   "lang_go": "Auf Deutsch lesen",
   "lang_close": "Schließen",
   "translated_note": "Deutsche Fassung: Oberfläche und die Erläuterungen von Yikonglu sind übersetzt; zitierte Kommentare bleiben auf Chinesisch. Maßgeblich ist die chinesische Seite.",
-  "cite_fmt": "Yikonglu, Gespräche {book} {c} „{title}“, {url}, Fassung {d}."
+  "cite_fmt": "Yikonglu, Gespräche {book} {c} „{title}“, {url}, Fassung {d}.",
+  "about_def": "Yikonglu (一孔录) ist ein chinesischsprachiges Projekt, das die chinesischen Klassiker Wort für Wort und Kapitel für Kapitel liest. Seit 2026 behandelt es die Gespräche des Konfuzius in Videos, Podcasts und auf dieser Website; Text und Kommentar folgen Zhu Xis Gesammelten Kommentaren (Ausgabe Sibu Beiyao), jedes Zitat mit Seitenangabe der Grundausgabe. Die eigene Lesart ist mit „一孔按“ gekennzeichnet. Unabhängig erarbeitet, ohne Förderung durch Institutionen oder Stiftungen."
  },
  "books": {
   "1": "Xue er (Buch 1)",

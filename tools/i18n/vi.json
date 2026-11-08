@@ -288,7 +288,8 @@
   "lang_go": "Chuyển sang tiếng Việt",
   "lang_close": "Đóng",
   "translated_note": "Bản tiếng Việt: giao diện và phần giải thích của Nhất Khổng Lục đã được dịch; lời chú giải trích dẫn giữ nguyên tiếng Trung. Bản tiếng Trung là bản chuẩn.",
-  "cite_fmt": "Nhất Khổng Lục (Yikonglu), Luận Ngữ {book} {c} “{title}”, {url}, bản ngày {d}."
+  "cite_fmt": "Nhất Khổng Lục (Yikonglu), Luận Ngữ {book} {c} “{title}”, {url}, bản ngày {d}.",
+  "about_def": "Yikonglu (一孔录) là một dự án tiếng Trung đọc nguyên văn kinh điển Trung Hoa từng chữ, từng chương. Từ năm 2026, dự án đọc Luận Ngữ qua video, podcast và trang web này; nguyên văn và lời chú theo Luận Ngữ tập chú của Chu Hi (bản Tứ bộ bị yếu), mỗi trích dẫn đều ghi trang của bản gốc. Cách đọc riêng của dự án được ghi là “一孔按”. Biên soạn độc lập, không có tài trợ của tổ chức hay quỹ nào."
  },
  "books": {
   "1": "Học nhi (thiên 1)",
