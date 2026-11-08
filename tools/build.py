@@ -1223,6 +1223,8 @@ def build_lang(L, D, write):
                 gist_html = f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p></section>'
                 continue
             secs += f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{L.t(lab)}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}>{quotes(v)}</p></section>'
+        if L.code == "zh-Hans" and c in D["zy"]:  # 争议读法主人选定的一孔按（11-08，tools/zhengyi.json 出自 规范/争议读法-选定表.md；待核出处已去人名）盖过自动短答；繁体由简体整页转
+            gist_html = f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(YKAN["zh"][0])}</b>{quotes(D["zy"][c]["text"])}</p></section>'
         prev_c = pub[i-1] if i > 0 else None; next_c = pub[i+1] if i+1 < len(pub) else None
         def card(cc, lab, cls):
             if not cc: return '<span></span>'
@@ -1345,7 +1347,7 @@ def build_lang(L, D, write):
         ld.pop("@context"); ld["datePublished"] = first
         faq = ([{"@type": "Question", "name": f"“{seo_q(yw[c])}”是什么意思？", "acceptedAnswer": {"@type": "Answer", "text": bh}}] if bh else []) + \
               ([{"@type": "Question", "name": f"《论语·{pname}》{c} 这一章讲什么？", "acceptedAnswer": {"@type": "Answer", "text": field(c, "片里落点")[0]}}] if field(c, "片里落点")[0] else []) + \
-              ([{"@type": "Question", "name": "一孔录怎么读这一章？", "acceptedAnswer": {"@type": "Answer", "text": "".join(ykan("zh", field(c, "片里落点")[0], field(c, "常见读法")[0], field(c, "字眼")[0]))}}] if field(c, "片里落点")[0] else [])
+              ([{"@type": "Question", "name": "一孔录怎么读这一章？", "acceptedAnswer": {"@type": "Answer", "text": (YKAN["zh"][0] + D["zy"][c]["text"]) if c in D["zy"] else "".join(ykan("zh", field(c, "片里落点")[0], field(c, "常见读法")[0], field(c, "字眼")[0]))}}] if (field(c, "片里落点")[0] or c in D["zy"]) else [])
         ld = {"@context": "https://schema.org", "@graph": [ld, bc] + ([{"@type": "FAQPage", "mainEntity": faq}] if faq and L.code.startswith("zh") else [])}
         cit = "".join(f'<meta name="{k}" content="{esc(v)}">' for k, v in [
             ("citation_title", name), ("citation_author", "一孔录"), ("citation_publisher", "一孔录 yikonglu.com"),
@@ -1409,11 +1411,11 @@ def build_lang(L, D, write):
                     wj_fig = f'<figure class="yuanwen">{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></figure>'
                 an = D.get("wjan", {}).get(c) or {}
                 wj_gist, wj_faq = "", []
-                if an.get("片里落点"):
-                    an_lab, an_txt = ykan("zh", an["片里落点"], an.get("常见读法"), an.get("字眼"))
+                if an.get("片里落点") or c in D["zy"]:
+                    an_lab, an_txt = (YKAN["zh"][0], D["zy"][c]["text"]) if c in D["zy"] else ykan("zh", an["片里落点"], an.get("常见读法"), an.get("字眼"))
                     wj_gist = f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p></section>'
-                    wj_faq = [{"@type": "Question", "name": f"《论语·{pname}》{c} 这一章讲什么？", "acceptedAnswer": {"@type": "Answer", "text": an["片里落点"]}},
-                              {"@type": "Question", "name": "一孔录怎么读这一章？", "acceptedAnswer": {"@type": "Answer", "text": an_lab + an_txt}}]
+                    wj_faq = ([{"@type": "Question", "name": f"《论语·{pname}》{c} 这一章讲什么？", "acceptedAnswer": {"@type": "Answer", "text": an["片里落点"]}}] if an.get("片里落点") else []) + \
+                             [{"@type": "Question", "name": "一孔录怎么读这一章？", "acceptedAnswer": {"@type": "Answer", "text": an_lab + an_txt}}]
                 wj_vid = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
                           f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>')
                 body = f"""<div class="chhead"><div class="wrap">
@@ -1934,7 +1936,7 @@ def main(zdir, outdir, kanwu=None):
     if G: GS.copy_images(G, outdir); GUSHI_ON = True
     yxl = json.load(open(YXL_FILE, encoding="utf-8")) if os.path.exists(YXL_FILE) else {}
     draft = json.load(open(DRAFT_FILE, encoding="utf-8")) if os.path.exists(DRAFT_FILE) else {}
-    D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today, zhuju=ZJD, wjan=wjan, ddj=load_ddj(), bh_ok=bh_ok)
+    D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today, zhuju=ZJD, wjan=wjan, ddj=load_ddj(), bh_ok=bh_ok, zy=json.load(open(os.path.join(HERE, "zhengyi.json"), encoding="utf-8")) if os.path.exists(os.path.join(HERE, "zhengyi.json")) else {})
 
     pdp = os.path.join(HERE, "pagedates.json")  # 每页 [内容指纹, 内容最后变动日]：没改的页不换日期
     pdates = json.load(open(pdp, encoding="utf-8")) if os.path.exists(pdp) else {}
