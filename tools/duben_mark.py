@@ -25,7 +25,7 @@ def main(src, dst, title=None, skip="1"):
         if i < int(skip): wtr.add_page(p); continue
         w, h = float(p.mediabox.width), float(p.mediabox.height)
         k = (round(w), round(h))
-        if k not in cache: cache[k] = stamp(w, h, TXT_HANT if "hant" in os.path.basename(dst) else TXT)
+        if k not in cache: cache[k] = stamp(w, h, TXT_HANT if ("hant" in os.path.basename(dst) or "sanzijing" in os.path.basename(dst)) else TXT)
         p.merge_page(cache[k]); wtr.add_page(p)
     md = {k: v for k, v in (r.metadata or {}).items()}
     md.update({"/Author": "一孔录 Yikonglu", "/Creator": "一孔录 yikonglu.com", "/Producer": "一孔录 yikonglu.com",
