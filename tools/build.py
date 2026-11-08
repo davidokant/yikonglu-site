@@ -84,7 +84,7 @@ ZH_UI = {
  "reads": "读音", "th_zi": "字", "th_pos": "位置", "th_du": "读", "shots": "底本原页",
  "kw": "本章勘误", "kw_note": "", "cite": "引用本页", "copy": "复制", "copied": "已复制",
  "checked": "本页最后核对：{d}。改动记在", "errata_page": "勘误页",
- "video": "看这一章的视频", "wj_vid": "这一章的视频正在制作，上线后就放在这里。先关注一孔录，出片第一时间看到：", "wj_pane": "原页", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点哔哩哔哩）",
+ "video": "看这一章的视频", "wj_vid": "这一章的视频正在制作，上线后就放在这里。先关注一孔录，出片第一时间看到：", "ddj_lead": "王弼本八十一章：道经第 1—37 章，德经第 38—81 章。视频还在制作，网站先放原文、原页、白话和注，开讲后逐章补全。", "bk_prog_wj": "已上 {n} / {total} 章 · 视频制作中", "wj_pane": "原页", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点哔哩哔哩）",
  "prev": "上一章", "next": "下一章", "chapter_no": "{book} · 第 {n} 章", "book_no": "《论语》第 {n} 篇 · 已讲 {done} / {total} 章",
  "source_line": f"原文与注据{SOURCE}", "rendering": "",
  "errata_title": "公开勘误", "errata_sub": "原文·引文·出处·读音·读法",
@@ -560,10 +560,11 @@ YKAN = {  # 语种: (署名开头, 常见读法是陈述时, 常见读法里自�
  "ru": ("Прочтение Yikonglu (一孔按): ", "Обычное прочтение — «{c}»; Yikonglu ставит акцент иначе.", "Обычное прочтение: {c}. Yikonglu ставит акцент иначе.", "Часто спрашивают: «{c}»; выше — ответ Yikonglu.", "Комментарий Чжу Си: "),
 }
 YKAN_LEN = {"zh": (60, 120), "ja": (60, 130), "ko": (70, 160)}  # 其他语种按 (150, 330) 字母算
-def ykan(code, ours, common, keys):
+def ykan(code, ours, common, keys, basis=None):
     """返回 (署名开头, 正文)。正文＝落点（首句结论）＋一句与通行读法的差别；太短再补朱注原话（取札记“字眼”，按分号截）。"""
     k = "zh" if code.startswith("zh") or code not in YKAN else code
     lab, st, st2, qt, bs = YKAN[k]
+    if basis: bs = basis  # 别的书：依据不是朱注（道德经用王弼注等）
     zh = k == "zh"; cjk = k in ("zh", "ja")
     lo, hi = YKAN_LEN.get(k, (150, 330))
     sp = "" if cjk else " "
@@ -1011,6 +1012,129 @@ PRIVACY["zh-Hant"] = PRIVACY["zh-Hans"]
 
 DATE_TOK, DATE_TOK_SL = "\ue0f0DATE\ue0f1", "\ue0f0DATESL\ue0f1"
 
+DDJ_DIR = os.environ.get("YK_DDJ_DIR") or os.path.join(GAO_DIR, "_道德经")  # 道德经网站素材（内容线程交，结构同论语）
+DDJ_CFG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj.json")  # {"live": false, "src": 底本名, "img": 原页图根地址}
+def load_ddj():
+    """主人 11-08 定：网站这条线开始做道德经，不等视频。ddj.json live 为 true 且有原文才出页；原文到前一页不出。"""
+    cfg = json.load(open(DDJ_CFG, encoding="utf-8")) if os.path.exists(DDJ_CFG) else {}
+    if not (cfg.get("live") or os.environ.get("YK_DDJ_LIVE")): return None
+    qf = sorted(glob.glob(os.path.join(DDJ_DIR, "_原文", "道德经原文-v*.json")))
+    if not qf: return None
+    qw = {k: v for k, v in json.load(open(qf[-1], encoding="utf-8")).items() if re.fullmatch(r"\d+", k) and 1 <= int(k) <= 81 and (v or {}).get("text")}
+    if not qw: return None
+    bh, bh_ok = {}, set()
+    for f in sorted(glob.glob(os.path.join(DDJ_DIR, "_白话", "*.md")), key=lambda f: ("核定" in f, f)):  # 核定稿最后读，盖过初稿
+        for l in open(f, encoding="utf-8"):
+            m = re.match(r"^- (\d+)[：:]\s*(.+)$", l.strip())
+            if m:
+                bh[m.group(1)] = m.group(2).strip()
+                if "核定" in f: bh_ok.add(m.group(1))
+    rd = lambda sub: {os.path.basename(f)[:-5]: json.load(open(f, encoding="utf-8")) for f in glob.glob(os.path.join(DDJ_DIR, sub, "*.json")) if re.fullmatch(r"\d+", os.path.basename(f)[:-5])}
+    hj = {}
+    for f in sorted(glob.glob(os.path.join(DDJ_DIR, "_互见", "*.csv"))):
+        for r in csv.DictReader(open(f, encoding="utf-8-sig")):
+            if r.get("章号") and r.get("内容"):
+                hj.setdefault(r["章号"].strip(), {}).setdefault((r.get("句") or "1").strip().lstrip("s"), []).append([r.get("类别", "").strip(), r["内容"].strip(), (r.get("出处") or "").strip(), (r.get("链接") or "").strip()])
+    pm = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_pages.json")  # 原页图尺寸 {"p001": [w, h]}，出图时写
+    return {"qw": qw, "bh": bh, "bh_ok": bh_ok, "zj": rd("_逐句"), "an": rd("_未讲"), "hj": hj, "src": cfg.get("src", ""), "img": cfg.get("img", ""), "zhu": cfg.get("zhu") or "注文",
+            "pages": json.load(open(pm, encoding="utf-8")) if os.path.exists(pm) else {}}
+
+def ddj_title(qw):  # 章题：取原文开头一句，撞名的往后接
+    out = {c: wj_title(v["text"]) for c, v in qw.items()}
+    for n in range(2, 6):
+        seen = {}
+        for c, t in out.items(): seen.setdefault(t, []).append(c)
+        dup = [c for v in seen.values() if len(v) > 1 for c in v]
+        if not dup: break
+        for c in dup: out[c] = wj_title(qw[c]["text"], n)
+    return out
+
+def build_ddj(L, D, write, P):
+    """道德经：书页（道经、德经两组目录）＋各章页（只出简繁）。结构照论语未讲章：原文（可点句）、原页、一孔按、白话、视频位。返回 URL 列表。"""
+    G = D.get("ddj")
+    if not G or not L.code.startswith("zh"): return []
+    qw, urls = G["qw"], []
+    cs = sorted(qw, key=int); tt = ddj_title(qw)
+    part = lambda c: "道经" if int(c) <= 37 else "德经"
+    rel_of = lambda c: f"daodejing/{c}.html"
+    def li(c):
+        t = qw[c]["text"]
+        return f'<li class="wj"><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(tt[c])}</b><span><i class="wjtag">{L.t("toc_wj")}</i><span lang="zh-Hans">{esc(t[:40] + ("……" if len(t) > 40 else ""))}</span></span></a></li>'
+    def side(c0):
+        pt = part(c0)
+        return "".join(f'<li class="{"cur" if c == c0 else ""} wj"><a href="{P}{rel_of(c)}"><em>{c}</em>{esc(tt[c])}</a></li>' for c in cs if part(c) == pt)
+    # 书页
+    groups = "".join(f'<h2 class="ph">{pt}（第 {a}—{b} 章）</h2><ol class="toc">{"".join(li(c) for c in cs if a <= int(c) <= b)}</ol>' for pt, a, b in (("道经", 1, 37), ("德经", 38, 81)) if any(a <= int(c) <= b for c in cs))
+    body = f"""<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
+<h1><span class="no">《道德经》 · 已上 {len(cs)} / 81 章</span>道德经</h1></div></div>
+<main class="wrap narrow"><p class="lead">{L.t("ddj_lead")}</p>{groups}</main>"""
+    ld = {"@context": "https://schema.org", "@type": "Book", "name": "道德经", "author": {"@type": "Person", "name": "老子"}, "url": f"{DOMAIN}/{L.prefix}daodejing/", "inLanguage": L.hreflang}
+    write("daodejing/index.html", page(L, "《道德经》原文、白话与注｜八十一章｜一孔录", f"《道德经》八十一章逐章原文与白话直译，附底本原页。", "daodejing/", body, ld, "pg-book", codes=["zh-Hans", "zh-Hant"])); urls.append(f"{DOMAIN}/{L.prefix}daodejing/")
+    lab = L.t("wj_pane")
+    for k, c in enumerate(cs):
+        q = qw[c]; text = q["text"]; url = f"{DOMAIN}/{L.prefix}{rel_of(c)}"; pt = part(c)
+        cite_src = f"《道德经》第 {c} 章，一孔录"
+        sents = split_ju(text); hjd = G["hj"].get(c, {})
+        pgs = [int(x) for x in (q.get("pages") or ([q["pdf_page"]] if q.get("pdf_page") else []))]
+        cap = f'原文据{esc(G["src"])}' + (f'，底本第 {"、".join(str(x) for x in pgs)} 页' if pgs else "") + "。" if G["src"] else L.t("source_line")
+        pane = "".join(f'<a class="yyp" href="{G["img"]}p{x:03d}.jpg" target="_blank" data-p="p{x:03d}"><svg viewBox="0 0 {G["pages"][f"p{x:03d}"][0]} {G["pages"][f"p{x:03d}"][1]}" role="img" aria-label="{lab} {x}"><image href="{G["img"]}p{x:03d}.jpg" width="{G["pages"][f"p{x:03d}"][0]}" height="{G["pages"][f"p{x:03d}"][1]}"/></svg><span>{lab} {x}</span></a>'
+                       for x in pgs if G["img"] and f"p{x:03d}" in G["pages"])
+        zs = (G["zj"].get(c) or {}).get("句") or []
+        if zs and len(zs) != len(sents): print(f"  道德经逐句条数不符 {c}：网站 {len(sents)} 句，_逐句 {len(zs)} 句"); zs = []
+        bq = f'<blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="[]" data-rl="" data-hj="{esc(json.dumps(hjd, ensure_ascii=False))}">'
+        rows = []
+        dz = bool(zs or pane)
+        if dz:
+            for j, x in enumerate(sents, 1):
+                d = {k_: zs[j-1].get(k_) for k_ in ("bh", "zhu", "jj", "yk") if zs[j-1].get(k_)} if zs else {}
+                d["hj"] = [[f"{h[0]}：{h[1]}", h[2], ""] for h in hjd.get(str(j), [])]
+                rows.append(d)
+        ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x)}</span>' + (f'<span class="yi" hidden>{esc(rows[j-1]["bh"])}</span>' if rows and rows[j-1].get("bh") else "") for j, x in enumerate(sents, 1))
+        if dz:
+            yib = '<button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button>' if any(r.get("bh") for r in rows) else ""
+            fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{pt} · 第 {c}/81 章</span>{yib}</div>'
+                   f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
+                   f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
+        else:
+            fig = f'<figure class="yuanwen">{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></figure>'
+        an = G["an"].get(c) or {}; gist = ""; faq = []
+        if an.get("片里落点"):
+            a_lab, a_txt = ykan("zh", an["片里落点"], an.get("常见读法"), an.get("字眼"), basis=f'{G["zhu"]}原话：')
+            gist = f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(a_lab)}</b>{quotes(a_txt)}</p></section>'
+            faq = [{"@type": "Question", "name": f"《道德经》第 {c} 章讲什么？", "acceptedAnswer": {"@type": "Answer", "text": an["片里落点"]}},
+                   {"@type": "Question", "name": "一孔录怎么读这一章？", "acceptedAnswer": {"@type": "Answer", "text": a_lab + a_txt}}]
+        bh = G["bh"].get(c)
+        bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}：“{esc(seo_q(text))}”是什么意思</h2><p lang="zh-Hans">{esc(bh)}</p>'
+                   + ("" if c in G["bh_ok"] else '<p class="note">白话为初稿，按底本直译；开讲时再核。</p>') + "</section>") if bh else ""
+        vid = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
+               f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>')
+        prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
+        pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{esc(tt[cc])}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
+        body = f"""<div class="chhead"><div class="wrap">
+<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}daodejing/">道德经</a> › {pt}</p>
+<h1><span class="no">{pt} · 第 {c} 章 · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(tt[c])}</h1>
+</div></div>
+<main class="wrap chapter">
+<article>
+<p class="wjlead">{L.t("wj_lead")}</p>
+{fig}
+{gist}
+{bh_html}
+{vid}
+<section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
+<nav class="pn">{pn}</nav>
+</article>
+<aside><h3>{pt}</h3><ol>{side(c)}</ol></aside>
+</main>"""
+        hj_static = "<ul></ul>"
+        ld = {"@type": "Article", "headline": f"《道德经》第 {c} 章 {tt[c]}", "inLanguage": L.hreflang, "url": url,
+              "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "道德经"}}
+        ld = {"@context": "https://schema.org", "@graph": [ld] + ([{"@type": "FAQPage", "mainEntity": faq}] if faq else [])}
+        js = (ZJ.ZJ_JS.replace('<button data-a="img">@IMG@</button>', "").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", G["zhu"]], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。")
+              if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
+        write(rel_of(c), page(L, f"{seo_head(text)}｜原文与白话｜道德经 第 {c} 章｜一孔录", f"{text[:70]}……《道德经》第 {c} 章原文与白话直译。", rel_of(c), body + js, ld, "pg-chapter pg-wj", codes=["zh-Hans", "zh-Hant"])); urls.append(url)
+    return urls
+
 def build_lang(L, D, write):
     """D：公共数据。write(rel, html) 写到该语种目录。返回本语种 URL 列表。"""
     notes, yw, gao, kw, pub, by_pian, ch2ep, pages_avail = (D[k] for k in ("notes", "yw", "gao", "kw", "pub", "by_pian", "ch2ep", "pages_avail"))
@@ -1028,6 +1152,7 @@ def build_lang(L, D, write):
         return (v, True) if v else (notes[c]["fields"].get(k), False)
     search_idx = []
     pubset = set(pub)
+    LB = LIVE_BOOKS | ({"daodejing"} if D.get("ddj") else set())  # 书目、首页亮着的书：论语＋已上原文的书
     def href(c):  # 已讲章各语种都有页；未讲章只出简繁，外文页链到简体
         return (P if c in pubset or L.code.startswith("zh") else "/") + rel_of(c)
     def ctitle(c): return title_of(c) if c in pubset else wj_titles(D["qw"])[c]
@@ -1312,6 +1437,8 @@ def build_lang(L, D, write):
                 write(rel, page(L, L.t("wj_title", book=pname, c=c, head=seo_head(text)), desc, rel, body + (ZJ.ZJ_JS.replace('<button data-a="img">@IMG@</button>', "").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。") if wj_dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter pg-wj", codes=["zh-Hans", "zh-Hant"])); urls.append(url)
                 search_idx.append({"c": c, "t": ctitle(c), "u": P + rel, "y": text, "x": (bh or "") + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
 
+    urls += build_ddj(L, D, write, P)  # 道德经（只简繁；没开就是空）
+
     def toc(cs):
         def li(c):
             if c in pubset:
@@ -1342,17 +1469,20 @@ def build_lang(L, D, write):
     def bcard(slug, zh, live):
         name = L.t("bk_" + slug); sub = L.t("bk_sub_" + slug)
         zhname = f"《{zh}》" if L.code.startswith("zh") else f"《{zh}》 {name}"
+        if live and slug == "daodejing":
+            nd = len(D["ddj"]["qw"])
+            return f'<a class="bcard" href="{P if L.code.startswith("zh") else "/"}daodejing/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:{round(nd * 100 / 81)}%"></i></span><em>{L.t("bk_prog_wj", n=nd, total=81)}</em></a>'
         if live:
             pct = round(len(pub) * 100 / n_all)
             return f'<a class="bcard" href="{P}lunyu/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:{pct}%"></i></span><em>{L.t("bk_prog", done=len(pub), total=n_all)}</em></a>'
         kids = "".join(f'<i>《{z}》 {L.t("bk_" + sl2)}</i>' if not L.code.startswith("zh") else f'<i>《{z}》</i>' for sl2, z in BOOK_SUB.get(slug, []))
         return f'<span class="bcard soon" aria-disabled="true"><b>{zhname}</b><small>{sub}</small>{f"<span class=kids>{kids}</span>" if kids else ""}<em>{L.t("soon")}</em></span>'
     def bgroup(gk, bs):
-        return f'<h2 class="ph">{L.t(gk)}</h2><div class="bcards">' + "".join(bcard(sl, zh, sl in LIVE_BOOKS) for sl, zh in bs) + "</div>"
+        return f'<h2 class="ph">{L.t(gk)}</h2><div class="bcards">' + "".join(bcard(sl, zh, sl in LB) for sl, zh in bs) + "</div>"
     bcards = "".join(bgroup(gk, bs) for gk, bs in BOOK_GROUPS)
     # 首页（主人 11-07 定）：只放开讲的书，其余收成一行“《道德经》等 N 部筹备中”，完整书目在书目页
-    n_soon = sum(1 for _, bs in BOOK_GROUPS for sl, _ in bs if sl not in LIVE_BOOKS)
-    bcards_home = '<div class="bcards">' + "".join(bcard(sl, zh, True) for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LIVE_BOOKS) + f'</div><p class="soonline"><a href="{P}shumu/">{L.t("soon_line", n=n_soon)}</a></p>'
+    n_soon = sum(1 for _, bs in BOOK_GROUPS for sl, _ in bs if sl not in LB)
+    bcards_home = '<div class="bcards">' + "".join(bcard(sl, zh, True) for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB) + f'</div><p class="soonline"><a href="{P}shumu/">{L.t("soon_line", n=n_soon)}</a></p>'
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("shumu_sub")}</span>{L.t("shumu_title")}</h1></div></div>
 <main class="wrap narrow">{bcards}</main>'''
     write("shumu/index.html", page(L, f'{L.t("shumu_title")}｜一孔录', L.t("shumu_p"), "shumu/", body)); urls.append(f"{DOMAIN}/{L.prefix}shumu/")
@@ -1764,7 +1894,7 @@ def main(zdir, outdir, kanwu=None):
     if G: GS.copy_images(G, outdir); GUSHI_ON = True
     yxl = json.load(open(YXL_FILE, encoding="utf-8")) if os.path.exists(YXL_FILE) else {}
     draft = json.load(open(DRAFT_FILE, encoding="utf-8")) if os.path.exists(DRAFT_FILE) else {}
-    D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today, zhuju=ZJD, wjan=wjan)
+    D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today, zhuju=ZJD, wjan=wjan, ddj=load_ddj())
 
     pdp = os.path.join(HERE, "pagedates.json")  # 每页 [内容指纹, 内容最后变动日]：没改的页不换日期
     pdates = json.load(open(pdp, encoding="utf-8")) if os.path.exists(pdp) else {}
