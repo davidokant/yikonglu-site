@@ -1266,7 +1266,7 @@ def build_lang(L, D, write):
             extra += (f'<section class="sec reads"><h2><i>音</i>{L.t("reads")}</h2><table><thead><tr><th>{L.t("th_zi")}</th><th>{L.t("th_pos")}</th><th>{L.t("th_du")}</th></tr></thead><tbody>'
                       + "".join(f'<tr><td class="zi">{esc(x["zi"])}</td><td>{esc(x["pos"])}</td><td>{esc(x["du"])}</td></tr>' for x in g["reads"]) + "</tbody></table></section>")
         allpages = sorted({x for r in g["cites"] for x in r["pages"]} | set(g.get("qw_pages", [])), key=int)
-        imgs = "".join(f'<a href="/yuanye/p{int(x):03d}.jpg" target="_blank"><img loading="lazy" src="/yuanye/p{int(x):03d}.jpg" alt="{L.t("pg", n=x)}"><span>{L.t("pg", n=x)}</span></a>' for x in allpages if x in pages_avail)
+        imgs = "".join(f'<a href="/yuanye/p{int(x):03d}.jpg" target="_blank"><img loading="lazy" src="/yuanye/p{int(x):03d}.jpg" alt="{f"《论语·{pname}》{c} 朱熹集注原页：四部备要本第 {x} 页" if L.code.startswith("zh") else L.t("pg", n=x)}"><span>{L.t("pg", n=x)}</span></a>' for x in allpages if x in pages_avail)
         if imgs: extra += f'<section class="sec shots"><h2><i>页</i>{L.t("shots")}</h2><div class="pages">{imgs}</div></section>'
         mine = [r for r in kw if r[2] == c]
         if mine:
@@ -1298,7 +1298,7 @@ def build_lang(L, D, write):
             ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x)}</span><span class="yi" hidden>{esc(zrows[j-1].get("bh", ""))}</span>' for j, x in enumerate(sents, 1))
             fig_html = (f'<figure class="yuanwen dz"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span><button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button></div>'
                         f'<div class="dzgrid"><div><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="{esc(json.dumps([[x["zi"], x["pos"], x["du"]] for x in g["reads"]], ensure_ascii=False))}" data-rl="{esc(L.t("ju_reads"))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}</div>'
-                        f'<div class="yypane">{ZJ.page_pane(c, zpages, zper, "原页", ZJ.YDIR)}</div></div>'
+                        f'<div class="yypane">{ZJ.page_pane(c, zpages, zper, "原页", ZJ.YDIR, f"《论语·{pname}》{c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页")}</div></div>'
                         f'<script type="application/json" class="zjdata">{json.dumps(zrows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
         else:
             fig_html = f"""<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}</figure>"""
@@ -1392,8 +1392,8 @@ def build_lang(L, D, write):
                     with contextlib.redirect_stdout(_buf): zp_, zr_ = ZJ.spans_of(c, sents, ZJD)
                     if zp_ and not _buf.getvalue() and all(p_ in WJ_PAGES for p_ in zp_): zpages, zper = zp_, zr_
                 pp = f"p{int(pgn):03d}" if pgn else ""
-                pane = (ZJ.page_pane(c, zpages, zper, L.t("wj_pane"), ZJ.YDIR) if zpages
-                        else ZJ.page_pane(c, {pp: WJ_PAGES[pp]}, [], L.t("wj_pane"), ZJ.YDIR) if pp in WJ_PAGES else "")
+                pane = (ZJ.page_pane(c, zpages, zper, L.t("wj_pane"), ZJ.YDIR, f"《论语·{pname}》{c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页") if zpages
+                        else ZJ.page_pane(c, {pp: WJ_PAGES[pp]}, [], L.t("wj_pane"), ZJ.YDIR, f"《论语·{pname}》{c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页") if pp in WJ_PAGES else "")
                 zs = ZJ.card_data(c, ZJD, len(sents)) or []
                 if zs and len(zs) != len(sents): zs = []  # 句数对不上就不挂小卡，免得张冠李戴
                 if zpages or zs:
@@ -1843,6 +1843,28 @@ def where_html(L):
         out.append(f'<a href="{url}" target="_blank" rel="noopener">{name}</a>')
     return " · ".join(out) + " · " + PLAT_WX["zh" if zh else L.code if L.code in PLAT_WX else "en"]
 
+def img_sitemap(outdir):
+    """图片站点地图（11-08 推广建议第 6 条）：简体页面里引到的原页图（img 域名 yuanye/、ddj/），按页面列 image:image，robots.txt 加一行。外语页同图不重复列。"""
+    pre = {LANGS[k][0].strip("/") for k in LANGS if LANGS[k][0]}
+    rx = re.compile(r'(?:href|src)="(https://img\.yikonglu\.com/(?:yuanye|ddj)/[^"]+\.jpg)"')
+    rows = []
+    for root, dirs, files in os.walk(outdir):
+        relr = os.path.relpath(root, outdir)
+        if relr.split(os.sep)[0] in pre: dirs[:] = []; continue
+        for f in sorted(files):
+            if not f.endswith(".html"): continue
+            rel = os.path.normpath(os.path.join(relr, f)).replace(os.sep, "/")
+            imgs = list(dict.fromkeys(rx.findall(open(os.path.join(root, f), encoding="utf-8").read())))
+            if not imgs or rel.startswith("."): continue
+            u = f"{DOMAIN}/" + (rel[:-10] if rel.endswith("index.html") else rel)
+            rows.append(f"<url><loc>{u}</loc>" + "".join(f"<image:image><image:loc>{i}</image:loc></image:image>" for i in imgs[:1000]) + "</url>")
+    rows.sort()
+    open(os.path.join(outdir, "sitemap-images.xml"), "w", encoding="utf-8").write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' + "\n".join(rows) + "\n</urlset>\n")
+    with open(os.path.join(outdir, "robots.txt"), "a") as fh: fh.write(f"Sitemap: {DOMAIN}/sitemap-images.xml\n")
+    print(f"  图片站点地图：{len(rows)} 页、{sum(r.count('<image:image>') for r in rows)} 张")
+
+
 def img_out(outdir):
     """图片挪去图片仓库：页面里 /yuanye/ /og/ /gushi/img/ 换成 IMG 绝对地址，文件同步到 IMG_DIR（只写有变的、删多余的），再从 docs 删掉。"""
     import filecmp
@@ -2093,6 +2115,7 @@ def main(zdir, outdir, kanwu=None):
     shutil.copy(os.path.join(HERE, "style.css"), os.path.join(outdir, "style.css"))
     print(f"生成 {len(urls)} 页 → {outdir}")
     img_out(outdir)
+    img_sitemap(outdir)
     rc = __import__("subprocess").run([sys.executable, os.path.join(HERE, "check.py"), outdir]).returncode  # 发版前检查，不过别推
     if rc: sys.exit("检查没过，先别推。")
     __import__("subprocess").run([sys.executable, os.path.join(HERE, "shangxian.py"), outdir, os.path.join(os.path.dirname(os.path.abspath(zdir)), "数据", "网站素材")])

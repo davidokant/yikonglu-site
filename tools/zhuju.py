@@ -96,7 +96,7 @@ def frame_rows(p, ydir, w, h):
         return 0, h
 
 
-def page_pane(c, pages, per, label, ydir=None):
+def page_pane(c, pages, per, label, ydir=None, alt=None):  # alt：图片说明模板（{n}＝页码），给图片搜索与读屏用
     """原页面板：每页一张 svg（底图＋各句的高亮框，默认隐藏），点句时由 ZJ_JS 显示该句框并滚到那里。viewBox 只取版框上下，白边不显示。"""
     out = []
     order = sorted(pages, key=lambda p: int(re.sub(r"\D", "", p)), reverse=False)
@@ -106,7 +106,7 @@ def page_pane(c, pages, per, label, ydir=None):
         rects = "".join(f'<rect class="hl" data-s="{i}" x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="6"/>'
                         for i, bx in enumerate(per, 1) for (pp, x0, y0, x1, y1) in bx if pp == p)
         n = int(re.sub(r"\D", "", p))
-        out.append(f'<a class="yyp" href="/yuanye/{p}.jpg" target="_blank" data-p="{p}"><svg viewBox="0 {fy0} {w} {fy1 - fy0}" role="img" aria-label="{label} {n}">'
+        out.append(f'<a class="yyp" href="/yuanye/{p}.jpg" target="_blank" data-p="{p}"><svg viewBox="0 {fy0} {w} {fy1 - fy0}" role="img" aria-label="{alt.format(n=n) if alt else f'{label} {n}'}">'
                    f'<image href="/yuanye/{p}.jpg" width="{w}" height="{h}"/>{rects}</svg><span>{label} {n}</span></a>')
     return "".join(out)
 

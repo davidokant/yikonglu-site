@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://yikonglu.com/sitemap.xml
+Sitemap: https://yikonglu.com/sitemap-images.xml
