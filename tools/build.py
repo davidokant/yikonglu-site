@@ -1658,6 +1658,8 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("db_sub")}</span>{L.t("db_title")}</h1></div></div>
 <main class="wrap narrow prose"><p>{L.t("db_p")}</p><ul class="duben">{rows}</ul>{wx}<p class="note">{L.t("db_note")} <a href="{P}kanwu.html">{L.t("nav_errata")}</a></p></main>'''
     write("duben.html", page(L, f'{L.t("db_title")}｜一孔录', L.t("db_sub"), "duben.html", body)); urls.append(f"{DOMAIN}/{L.prefix}duben.html")
+    # 读本总页地址固定为 /duben.html（11-08 发布线程定，各平台简介指这里）；/duben/ 只做跳转，免得有人敲成目录 404
+    write("duben/index.html", f'<!doctype html><meta charset="utf-8"><title>{L.t("db_title")}</title><link rel="canonical" href="{DOMAIN}/{L.prefix}duben.html"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/{L.prefix}duben.html"><a href="/{L.prefix}duben.html">{L.t("db_title")}</a>')
     # 版本与许可
     cards = ""
     for aid, name, rows in BANBEN:
