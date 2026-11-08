@@ -51,6 +51,10 @@ def swap_pages(Z, ydir):
     return done
 
 
+_VAR = str.maketrans({"脩": "修", "愼": "慎", "闲": "间", "閒": "间", "衞": "卫", "雕": "彫", "衆": "众", "犂": "犁", "甯": "寗", "縲": "缧", "絏": "绁", "䯄": "騧", "泛": "汎", "𫐐": "輗", "𫐄": "軏"})
+def _vn(t): return t.translate(_VAR)
+
+
 def spans_of(c, sents, Z):
     from opencc import OpenCC
     t2s = OpenCC("t2s").convert
@@ -62,7 +66,7 @@ def spans_of(c, sents, Z):
     for s in sents:
         need = PUNCT.sub("", s)
         got = chars[k:k + len(need)]; k += len(need)
-        if t2s("".join(x[0] for x in got)) != need:
+        if _vn(t2s("".join(x[0] for x in got))) != _vn(need):  # 底本异体字（脩/修、愼/慎、閒/间、衞/卫、雕/彫）不算对不上
             print(f"  句列对不上 {c}：{need} ≠ {''.join(x[0] for x in got)}")
         boxes = []
         for ch, p, col, x0, y0, x1, y1 in got:
