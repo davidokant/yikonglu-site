@@ -149,6 +149,10 @@ async function startSession(env, uid) {
 async function useInvite(env, uid, code, kinds) {
   code = String(code || "").trim().toUpperCase();
   if (!code) return null;
+  if (env.ADMIN_CODE && kinds.includes("admin") && code === String(env.ADMIN_CODE).toUpperCase()) { // 首位管理员：部署时 --var ADMIN_CODE:… 给一次性码，已有管理员就失效
+    const a = await env.DB.prepare("SELECT 1 FROM users WHERE role='admin'").first();
+    return a ? null : { kind: "admin" };
+  }
   const inv = await env.DB.prepare("SELECT * FROM invites WHERE code=? AND used_by IS NULL").bind(code).first();
   if (!inv || !kinds.includes(inv.kind)) return null;
   const r = await env.DB.prepare("UPDATE invites SET used_by=?, used_at=? WHERE code=? AND used_by IS NULL").bind(uid, now(), code).run();
@@ -201,7 +205,7 @@ async function admin(env, u, msg = "") {
 }
 
 // ---------- 路由 ----------
-export default {
+const App = {
   async fetch(req, env) {
     const url = new URL(req.url), path = url.pathname, M = req.method;
     if (M === "POST") { // 跨站提交一律拒
@@ -323,5 +327,36 @@ export default {
     }
     return notFound(u);
   },
-  async scheduled(_ev, env) { await runScheduled(env); },
+};
+
+// ---------- 存储：一个 SQLite Durable Object（不用 D1，现有 API 令牌就能部署）----------
+import SCHEMA from "../schema.sql";
+class Stmt {
+  constructor(sql, q) { this.sql = sql; this.q = q; this.a = []; }
+  bind(...a) { this.a = a; return this; }
+  first() { const r = this.sql.exec(this.q, ...this.a).toArray(); return r[0] || null; }
+  all() { return { results: this.sql.exec(this.q, ...this.a).toArray() }; }
+  run() {
+    const c = this.sql.exec(this.q, ...this.a); c.toArray();
+    return { meta: { changes: c.rowsWritten, last_row_id: this.sql.exec("SELECT last_insert_rowid() AS id").one().id } };
+  }
+}
+export class Syq {
+  constructor(state, env) {
+    const sql = state.storage.sql;
+    for (const q of SCHEMA.split(/;\s*\n/).map((x) => x.replace(/^\s*--.*$/gm, "").trim()).filter(Boolean)) sql.exec(q);
+    this.env = { ...env, DB: { prepare: (q) => new Stmt(sql, q) } };
+  }
+  async fetch(req) {
+    if (new URL(req.url).pathname === "/__cron") { await runScheduled(this.env); return new Response("ok"); }
+    return App.fetch(req, this.env);
+  }
+}
+const hub = (env) => env.SYQ.get(env.SYQ.idFromName("main"));
+export default {
+  async fetch(req, env) {
+    if (new URL(req.url).pathname === "/__cron") return new Response("not found", { status: 404 });
+    return hub(env).fetch(req);
+  },
+  async scheduled(_ev, env) { await hub(env).fetch("https://internal/__cron"); },
 };

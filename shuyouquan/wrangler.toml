@@ -1,11 +1,15 @@
 name = "yikonglu-shuyouquan"
 main = "src/index.js"
 compatibility_date = "2025-09-01"
+rules = [{ type = "Text", globs = ["**/*.sql"], fallthrough = true }]
 
-[[d1_databases]]
-binding = "DB"
-database_name = "yikonglu-shuyouquan"
-database_id = "LOCAL-ONLY-FILL-AFTER-CREATE"
+[[durable_objects.bindings]]
+name = "SYQ"
+class_name = "Syq"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Syq"]
 
 [triggers]
 crons = ["*/10 * * * *"]
