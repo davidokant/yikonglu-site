@@ -15,7 +15,7 @@ const IDENT = { shusheng: ["书"], youxia: ["侠"], shanglv: ["商"], yizhe: ["�
 const AV_BASE = "https://img.yikonglu.com/shuyuan/av/"; // 头像图（Codex 出图到了放这里：<键>.png）
 const RANKS = [[150, "讲友"], [60, "斋长"], [20, "生员"], [5, "学童"], [0, "初入院"]];
 const rankOf = (n) => RANKS.find(([k]) => (n || 0) >= k)[1];
-const HAS_AV = false; // 头像图上了再改 true
+const HAS_AV = true; // 六张头像已在 img.yikonglu.com/shuyuan/av/（图片仓库并 main 后生效）
 
 // ---------- 小工具 ----------
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
