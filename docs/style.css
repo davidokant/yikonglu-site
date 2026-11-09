@@ -518,3 +518,11 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .bairi .brl li.done a{background:rgba(35,80,63,.08);border-color:rgba(35,80,63,.3)}
 .bairi .brl li.done em::after{content:" ✓";color:var(--accent)}
 .bairi .brl li.now a{border:2px solid #8A5A2C}
+/* 首页统计栏（11-09：页头只留在读人数） */
+.lstat{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:6px 0 14px;padding:12px 4px;border:1px solid var(--line);border-radius:12px;background:var(--paper);text-align:center}
+.lstat[hidden]{display:none}
+.lstat span{display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 6px;min-width:0}
+.lstat span+span{border-left:1px solid var(--line)}
+.lstat span[hidden]{display:none}
+.lstat b{font-size:22px;font-weight:700;color:var(--accent);line-height:1.2;font-variant-numeric:tabular-nums}
+.lstat small{font-size:12.5px;color:var(--mute);line-height:1.35}
