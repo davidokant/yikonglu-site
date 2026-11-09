@@ -1,6 +1,6 @@
 // 一孔录网站在线人数与累计读者数（Cloudflare Worker + 一个 Durable Object）
 // POST /hit  {id, first}  页面每 60 秒发一次心跳；first=true 表示这台设备第一次来，累计数加一
-// GET  /stats            返回 {online, total}
+// GET  /stats            返回 {online, total, k}；k＝来过的国家/地区数（只记 Cloudflare 给的两位国家码，不存 IP）
 // POST /hit 带 c（章号）时记一次阅读：按天计数（7 天滚动）＋最近读过的章
 // POST /copy {c, s}      某句被复制/分享一次（7 天滚动）
 // GET  /top              {recent:[c…], heat:{c:n}, top:[[c#sN, n]…]}
@@ -19,7 +19,8 @@ export default {
   async fetch(req, env) {
     if (req.method === "OPTIONS") return new Response(null, { headers: cors(req) });
     const stub = env.LIVE.get(env.LIVE.idFromName("site"));
-    const r = await stub.fetch(req);
+    const fh = new Headers(req.headers); fh.set("X-Yk-Cc", String((req.cf && req.cf.country) || "")); // 只传国家码
+    const r = await stub.fetch(new Request(req, { headers: fh }));
     const h = new Headers(r.headers); for (const [k, v] of Object.entries(cors(req))) h.set(k, v);
     h.set("Cache-Control", "no-store");
     return new Response(r.body, { status: r.status, headers: h });
@@ -27,7 +28,8 @@ export default {
 };
 
 export class Live {
-  constructor(state) { this.state = state; this.seen = new Map(); this.total = null; }
+  constructor(state) { this.state = state; this.seen = new Map(); this.total = null; this.cc = null; }
+  async getCc() { if (this.cc === null) this.cc = new Set((await this.state.storage.get("cc")) || []); return this.cc; }
   async getTotal() { if (this.total === null) this.total = (await this.state.storage.get("total")) || 0; return this.total; }
   online() { const n = Date.now(); for (const [k, t] of this.seen) if (n - t > WINDOW) this.seen.delete(k); return this.seen.size; }
   day() { return new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 10); }
@@ -44,6 +46,8 @@ export class Live {
       let b = {}; try { b = await req.json(); } catch (e) {}
       const id = String(b.id || "").slice(0, 40);
       if (id) this.seen.set(id, Date.now());
+      const cc = (req.headers.get("X-Yk-Cc") || "").toUpperCase(), S = await this.getCc();
+      if (/^[A-Z]{2}$/.test(cc) && cc !== "XX" && cc !== "T1" && !S.has(cc)) { S.add(cc); await this.state.storage.put("cc", [...S]); }
       if (b.first === true) { this.total = (await this.getTotal()) + 1; await this.state.storage.put("total", this.total); }
       const c = String(b.c || "");
       if (OKC.test(c)) {
@@ -90,6 +94,6 @@ export class Live {
       if (req.method === "POST") { t++; d++; await this.state.storage.put({ [kt]: t, [kd]: d }); }
       return Response.json({ today: d, total: t });
     } else if (!(req.method === "GET" && url.pathname === "/stats")) return new Response("not found", { status: 404 });
-    return Response.json({ online: Math.max(1, this.online()), total: await this.getTotal() });
+    return Response.json({ online: Math.max(1, this.online()), total: await this.getTotal(), k: (await this.getCc()).size });
   }
 }

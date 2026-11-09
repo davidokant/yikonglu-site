@@ -744,10 +744,10 @@ def analytics(L):
         a += f'<script>var _hmt=_hmt||[];(function(){{var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?{ANALYTICS["baidu"]}";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)}})();</script>'
     if ANALYTICS.get("live"):  # 在线与累计读者：worker/ 部署的计数服务；首页有 #live 才显示，其他页只发心跳
         tpl = LIVE_TXT.get(L.code, LIVE_TXT["en"]); sp = LIVE_PILL.get(L.code, LIVE_PILL["en"])
-        a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",T=" + json.dumps(tpl, ensure_ascii=False) + ",S=" + json.dumps(sp, ensure_ascii=False)
+        a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",T=" + json.dumps(tpl, ensure_ascii=False) + ",S=" + json.dumps(sp, ensure_ascii=False) + ",K=" + json.dumps(LIVE_K.get(L.code, LIVE_K["en"]), ensure_ascii=False)
               + ';function RUN(){var DB=document.querySelector(".donebox"),CC=DB?DB.getAttribute("data-c"):"";var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
               + 'function n(x){try{return x.toLocaleString(document.documentElement.lang||undefined)}catch(e){return x}}'
-              + 'function h(first){if(document.hidden&&!first)return;fetch(U+"/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f,c:first?CC:""})}).then(function(r){return r.json()}).then(function(d){if(!d)return;var e=document.getElementById("live"),q=document.getElementById("livep");if(e){e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}if(q){q.textContent=S.replace("{o}",n(d.online)).replace("{t}",n(d.total));q.title=T.replace("{o}",n(d.online)).replace("{t}",n(d.total));q.hidden=false}}).catch(function(){})}'
+              + 'function h(first){if(document.hidden&&!first)return;fetch(U+"/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f,c:first?CC:""})}).then(function(r){return r.json()}).then(function(d){if(!d)return;var e=document.getElementById("live"),q=document.getElementById("livep");if(e){e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}if(q){var kk=d.k>0?K.replace("{k}",n(d.k)):"";q.textContent=S.replace("{o}",n(d.online)).replace("{t}",n(d.total))+kk;q.title=T.replace("{o}",n(d.online)).replace("{t}",n(d.total))+kk;q.hidden=false}}).catch(function(){})}'
               + 'h(true);setInterval(function(){h(false)},60000);'
               + 'var X=' + json.dumps(DONE_TXT.get(L.code, DONE_TXT["en"]), ensure_ascii=False) + ';'
               + 'function cnt(c,el){fetch(U+"/done?c="+encodeURIComponent(c)).then(function(r){return r.json()}).then(function(d){if(!d||!d.total){el.hidden=true;return}el.textContent=X.n.replace("{d}",n(d.today)).replace("{t}",n(d.total));el.hidden=false}).catch(function(){})}'
@@ -816,8 +816,11 @@ SHARE_KEYS = {}  # 章 → 分享图关键句（句号或句中字），章节�
 TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
 TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
-LIVE_PILL = {"zh-Hans": "{o} 位儒者在读 · 累计 {t}", "zh-Hant": "{o} 位儒者在讀 · 累計 {t}", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
+LIVE_PILL = {"zh-Hans": "{o} 位儒者在读 · 累计 {t} 位", "zh-Hant": "{o} 位儒者在讀 · 累計 {t} 位", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
              "es": "Letrados leyendo: {o} · {t} en total", "de": "Gelehrte lesen: {o} · {t} gesamt", "vi": "{o} nhà nho đang đọc · {t} lượt", "id": "Cendekiawan membaca: {o} · total {t}", "ru": "Книжники читают: {o} · всего {t}"}
+# 主人 11-09：后面再接“来自 X 个国家”（计数服务按访客 IP 的国家码数，只存国家码）；k 缺省或为 0 时不显示
+LIVE_K = {"zh-Hans": " · 来自 {k} 个国家", "zh-Hant": " · 來自 {k} 個國家", "en": " · countries: {k}", "ja": " · {k} か国から", "ko": " · {k}개국", "fr": " · pays : {k}",
+          "es": " · países: {k}", "de": " · Länder: {k}", "vi": " · từ {k} quốc gia", "id": " · negara: {k}", "ru": " · стран: {k}"}
 # 主人 11-08：单位用“儒者”，来的都是儒者；外文取各语里读书人的说法（英文 Confucians、越南 nhà nho、法 lettrés），写成“X：数”免得单复数不合
 LIVE_TXT = {"zh-Hans": "此刻 {o} 位儒者在读 · 已有 {t} 位儒者来过", "zh-Hant": "此刻 {o} 位儒者在讀 · 已有 {t} 位儒者來過",
             "en": "Confucians reading now: {o} · Confucians so far: {t}", "ja": "いま {o} 人の儒者が読書中 · これまで {t} 人の儒者が来訪", "ko": "지금 유학자 {o}명이 읽는 중 · 지금까지 유학자 {t}명",
@@ -1576,8 +1579,8 @@ def build_lang(L, D, write):
 <p class="cta"><a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 6.5c-1.6-1.4-3.8-2-7-2v13c3.2 0 5.4.6 7 2 1.6-1.4 3.8-2 7-2v-13c-3.2 0-5.4.6-7 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6.5v13" stroke="currentColor" stroke-width="1.8"/></svg>{L.t("h_start")}</a>{vids}</p>{rc_js}</div></section>
 <main class="home">
 <section class="intro wrap narrow">
-<form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
+<form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
 </section>
 <section class="wrap narrow"><h2 class="ph">{L.t("h_latest")}</h2>
 <a class="latest" id="lcard" href="{P}{rel_of(lc)}">{_lcard(lc)}</a>{lc_js}</section>
