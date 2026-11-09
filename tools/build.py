@@ -823,8 +823,8 @@ LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko":
 LIVE_PILL = {"zh-Hans": "{o} 儒者在读 · 累计 {t}", "zh-Hant": "{o} 儒者在讀 · 累計 {t}", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
              "es": "Letrados leyendo: {o} · {t} en total", "de": "Gelehrte lesen: {o} · {t} gesamt", "vi": "{o} nhà nho đang đọc · {t} lượt", "id": "Cendekiawan membaca: {o} · total {t}", "ru": "Книжники читают: {o} · всего {t}"}
 # 主人 11-09：后面再接“来自 X 个国家”（计数服务按访客 IP 的国家码数，只存国家码）；k 缺省或为 0 时不显示
-LIVE_K = {"zh-Hans": " · 来自 {k} 地区", "zh-Hant": " · 來自 {k} 地區", "en": " · regions: {k}", "ja": " · {k} 地域から", "ko": " · {k}개 지역", "fr": " · régions : {k}",
-          "es": " · regiones: {k}", "de": " · Regionen: {k}", "vi": " · từ {k} khu vực", "id": " · wilayah: {k}", "ru": " · регионов: {k}"}
+LIVE_K = {"zh-Hans": " · 来自 {k} 个国家和地区", "zh-Hant": " · 來自 {k} 個國家和地區", "en": " · from {k} countries and regions", "ja": " · {k} の国と地域から", "ko": " · {k}개 국가·지역에서", "fr": " · de {k} pays et régions",
+          "es": " · de {k} países y regiones", "de": " · aus {k} Ländern und Regionen", "vi": " · từ {k} quốc gia và vùng lãnh thổ", "id": " · dari {k} negara dan wilayah", "ru": " · из {k} стран и регионов"}  # 主人 11-09 晚改：“国家和地区”"}
 # 主人 11-08：单位用“儒者”，来的都是儒者；外文取各语里读书人的说法（英文 Confucians、越南 nhà nho、法 lettrés），写成“X：数”免得单复数不合
 LIVE_TXT = {"zh-Hans": "此刻 {o} 位儒者在读 · 已有 {t} 位儒者来过", "zh-Hant": "此刻 {o} 位儒者在讀 · 已有 {t} 位儒者來過",
             "en": "Confucians reading now: {o} · Confucians so far: {t}", "ja": "いま {o} 人の儒者が読書中 · これまで {t} 人の儒者が来訪", "ko": "지금 유학자 {o}명이 읽는 중 · 지금까지 유학자 {t}명",
