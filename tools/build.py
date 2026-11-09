@@ -813,6 +813,7 @@ def share_html(L, c, url, head, title, yw_text, gist, rend):
             f'<script type="application/json" class="shdata">{d.replace("</", "<\\/")}</script>'
             f'<script type="application/json" class="shtri">{json.dumps(dict(TRI_TXT.get(c, {}), rl=rili_data()))}</script></section>')
 SHARE_KEYS = {}  # 章 → 分享图关键句（句号或句中字），章节起点.json 各集可写 "keys": {"1.16": 1}；缺省取首句
+WJ_TR = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json")) else {}  # 未讲章原文英日译（分享图用）
 TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
 TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
@@ -1496,7 +1497,7 @@ def build_lang(L, D, write):
                 if _hjr:
                     wj_deep += (f'<section class="sec hujian"><h2><i>见</i>{L.t("hj_h")}</h2><ul lang="zh-Hans">'
                                 + "".join(f'<li><a href="#s{j}">{esc(sents[j-1][:8]) if 0 < j <= len(sents) else ""}</a>　{esc(r[0])}：{esc(r[1])}（' + (f'<a href="{r[3]}">{esc(r[2])}</a>' if r[3] else esc(r[2])) + '）</li>' for j, r in sorted(_hjr, key=lambda x: x[0])) + '</ul></section>')
-                TRI_TXT.setdefault(c, {"h": f"《论语·{pname}》第 {cnum} 章 · 論語 {c}", "y": text, "en": "", "ja": ""})  # 分享图：未讲章暂无英日译文，只出原文
+                TRI_TXT.setdefault(c, {"h": f"《论语·{pname}》第 {cnum} 章 · Analects {c} · 論語 {c}", "y": text, "en": WJ_TR.get(c, {}).get("en", ""), "ja": WJ_TR.get(c, {}).get("ja", "")})  # 分享图：未讲章英日译文见 i18n/tri-weijiang.json（11-09 补）
                 wj_vid = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
                           f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>')
                 body = f"""<div class="chhead"><div class="wrap">
@@ -1510,7 +1511,8 @@ def build_lang(L, D, write):
 {wj_gist}
 {bh_html}
 {wj_vid}
-<div class="chacts">{share_html(L, c, url, f"《论语·{pname}》第 {cnum} 章", ctitle(c), text, an.get("片里落点") or (D["zy"].get(c) or {}).get("text", ""), "")}</div>
+<div class="chacts">{done_html(L, c)}{share_html(L, c, url, f"《论语·{pname}》第 {cnum} 章", ctitle(c), text, an.get("片里落点") or (D["zy"].get(c) or {}).get("text", ""), "")}</div>
+{'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
 {fold(wj_deep + yiwen_html(c) + zb_section(c, url, cite_src))}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
@@ -1525,7 +1527,7 @@ def build_lang(L, D, write):
                       "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "论语"},
                       "isBasedOn": {"@type": "Book", "name": "论语集注", "author": {"@type": "Person", "name": "朱熹"}}}
                 if wj_faq: ld.pop("@context"); ld = {"@context": "https://schema.org", "@graph": [ld, {"@type": "FAQPage", "mainEntity": wj_faq}]}
-                write(rel, page(L, L.t("wj_title", book=pname, c=c, head=seo_head(text)), desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace('<button data-a="img">@IMG@</button>', "").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。") if wj_dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter pg-wj", codes=["zh-Hans", "zh-Hant"])); urls.append(url)
+                write(rel, page(L, L.t("wj_title", book=pname, c=c, head=seo_head(text)), desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace('<button data-a="img">@IMG@</button>', "").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。") if wj_dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter pg-wj", og_img=D["og"].get(c, {}).get("tri"), codes=["zh-Hans", "zh-Hant"])); urls.append(url)
                 search_idx.append({"c": c, "t": ctitle(c), "u": P + rel, "y": text, "x": (bh or "") + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
 
     urls += build_ddj(L, D, write, P)  # 道德经（只简繁；没开就是空）
@@ -2166,6 +2168,11 @@ def main(zdir, outdir, kanwu=None):
             D["og"][c]["tri"] = OG.make3(c, f"{head} · Analects {c} · 論語 {c}", yw[c], _tr_en.get(c, {}).get("yw", ""), _tr_ja.get(c, {}).get("yw", ""), "逐字读经典原文 · Reading the classics word by word")
     else:
         print("没有字体，分享图跳过：", OG.FONT)
+    if OG.available():  # 未讲章也出三语分享图（11-09 主人定补齐）
+        for c, q in D["qw"].items():
+            if c in pub or c in D["og"] or not WJ_TR.get(c, {}).get("en"): continue
+            pnum, cnum = c.split(".")
+            D["og"][c] = {"tri": OG.make3(c, f"《论语·{PIAN[pnum][0]}》第 {cnum} 章 · Analects {c} · 論語 {c}", q["text"], WJ_TR[c]["en"], WJ_TR[c].get("ja", ""), "逐字读经典原文 · Reading the classics word by word")}
     global OUT_ROOT; OUT_ROOT = outdir
     urls = build_lang(Lang("zh-Hans", ZH_UI), D, writer(""))
     write_data(D, outdir)
