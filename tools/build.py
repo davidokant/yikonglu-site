@@ -558,17 +558,17 @@ HEAD_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link r
 MAIL = '<picture class="mail"><source srcset="/assets/mail-dark.png" media="(prefers-color-scheme:dark)"><img src="/assets/mail.png" alt="email (image)" width="211" height="26"></picture>'
 SAME_AS = ["https://www.youtube.com/@yikonglu", "https://x.com/yikonglu", "https://ko-fi.com/yikonglu"]  # 各平台账号另由 PLAT_LINKS 补进（见 main 里的首页 Organization）
 # 一孔按署名短答（智器引用，主人 11-08 定）：落点（片里落点）作首句结论，第二句说与通行读法差在哪；素材只取札记里已有的“片里落点”“常见读法”“字眼”，不另编。
-YKAN = {  # 语种: (署名开头, 常见读法是陈述时, 常见读法里自带引号时, 常见读法是问句时, 朱注依据句开头)
- "zh": ("一孔按（一孔录的读法）：", "通行说法多是“{c}”，一孔录的落点不在这里。", "通行说法多是：{c}；一孔录的落点不在这里。", "常有人问“{c}”，上面是一孔录的回答。", "朱注原话："),
- "en": ("Yikonglu's reading (一孔按): ", "The common view is “{c}”; Yikonglu's reading puts the weight elsewhere.", "The common view: {c}. Yikonglu's reading puts the weight elsewhere.", "A common question is “{c}” — the line above is Yikonglu's answer.", "Zhu Xi's commentary: "),
- "ja": ("一孔按（一孔録の読み）：", "よくある読みは「{c}」。一孔録の読みの重心はそこにない。", "よくある読み：{c}。一孔録の読みの重心はそこにない。", "よく出る問いは「{c}」。上がその一孔録の答え。", "朱注の原文："),
- "ko": ("일공안(일공록의 읽기): ", "흔한 읽기는 “{c}”이지만, 일공록의 읽기는 무게를 다른 데 둔다.", "흔한 읽기: {c}. 일공록의 읽기는 무게를 다른 데 둔다.", "흔히 “{c}”라고 묻는데, 위가 일공록의 답이다.", "주희 주석 원문: "),
- "fr": ("Lecture de Yikonglu (一孔按) : ", "La lecture courante dit « {c} » ; Yikonglu place l'accent ailleurs.", "Lecture courante : {c}. Yikonglu place l'accent ailleurs.", "On demande souvent « {c} » ; ce qui précède est la réponse de Yikonglu.", "Commentaire de Zhu Xi : "),
- "es": ("Lectura de Yikonglu (一孔按): ", "La lectura habitual dice «{c}»; Yikonglu pone el peso en otro lugar.", "Lectura habitual: {c}. Yikonglu pone el peso en otro lugar.", "Se pregunta a menudo «{c}»; lo anterior es la respuesta de Yikonglu.", "Comentario de Zhu Xi: "),
- "de": ("Yikonglus Lesart (一孔按): ", "Die übliche Lesart sagt „{c}“; Yikonglu legt das Gewicht anderswohin.", "Übliche Lesart: {c}. Yikonglu legt das Gewicht anderswohin.", "Oft wird gefragt: „{c}“ – oben steht Yikonglus Antwort.", "Zhu Xis Kommentar: "),
- "vi": ("Cách đọc của Yikonglu (一孔按): ", "Cách hiểu thường gặp là “{c}”; Yikonglu đặt trọng tâm ở chỗ khác.", "Cách hiểu thường gặp: {c}. Yikonglu đặt trọng tâm ở chỗ khác.", "Người ta hay hỏi “{c}”; câu trên là câu trả lời của Yikonglu.", "Lời chú của Chu Hi: "),
- "id": ("Bacaan Yikonglu (一孔按): ", "Bacaan umum mengatakan “{c}”; Yikonglu menaruh bobotnya di tempat lain.", "Bacaan umum: {c}. Yikonglu menaruh bobotnya di tempat lain.", "Orang sering bertanya “{c}”; kalimat di atas adalah jawaban Yikonglu.", "Komentar Zhu Xi: "),
- "ru": ("Прочтение Yikonglu (一孔按): ", "Обычное прочтение — «{c}»; Yikonglu ставит акцент иначе.", "Обычное прочтение: {c}. Yikonglu ставит акцент иначе.", "Часто спрашивают: «{c}»; выше — ответ Yikonglu.", "Комментарий Чжу Си: "),
+YKAN = {  # 主人 11-09 晚：署名只写“一孔按”，不带括号解释（解释在方法页、关于页）。语种: (署名开头, 常见读法是陈述时, 常见读法里自带引号时, 常见读法是问句时, 朱注依据句开头)
+ "zh": ("一孔按：", "通行说法多是“{c}”，一孔录的落点不在这里。", "通行说法多是：{c}；一孔录的落点不在这里。", "常有人问“{c}”，上面是一孔录的回答。", "朱注原话："),
+ "en": ("Yikonglu's reading: ", "The common view is “{c}”; Yikonglu's reading puts the weight elsewhere.", "The common view: {c}. Yikonglu's reading puts the weight elsewhere.", "A common question is “{c}” — the line above is Yikonglu's answer.", "Zhu Xi's commentary: "),
+ "ja": ("一孔按：", "よくある読みは「{c}」。一孔録の読みの重心はそこにない。", "よくある読み：{c}。一孔録の読みの重心はそこにない。", "よく出る問いは「{c}」。上がその一孔録の答え。", "朱注の原文："),
+ "ko": ("일공안: ", "흔한 읽기는 “{c}”이지만, 일공록의 읽기는 무게를 다른 데 둔다.", "흔한 읽기: {c}. 일공록의 읽기는 무게를 다른 데 둔다.", "흔히 “{c}”라고 묻는데, 위가 일공록의 답이다.", "주희 주석 원문: "),
+ "fr": ("Lecture de Yikonglu : ", "La lecture courante dit « {c} » ; Yikonglu place l'accent ailleurs.", "Lecture courante : {c}. Yikonglu place l'accent ailleurs.", "On demande souvent « {c} » ; ce qui précède est la réponse de Yikonglu.", "Commentaire de Zhu Xi : "),
+ "es": ("Lectura de Yikonglu: ", "La lectura habitual dice «{c}»; Yikonglu pone el peso en otro lugar.", "Lectura habitual: {c}. Yikonglu pone el peso en otro lugar.", "Se pregunta a menudo «{c}»; lo anterior es la respuesta de Yikonglu.", "Comentario de Zhu Xi: "),
+ "de": ("Yikonglus Lesart: ", "Die übliche Lesart sagt „{c}“; Yikonglu legt das Gewicht anderswohin.", "Übliche Lesart: {c}. Yikonglu legt das Gewicht anderswohin.", "Oft wird gefragt: „{c}“ – oben steht Yikonglus Antwort.", "Zhu Xis Kommentar: "),
+ "vi": ("Cách đọc của Yikonglu: ", "Cách hiểu thường gặp là “{c}”; Yikonglu đặt trọng tâm ở chỗ khác.", "Cách hiểu thường gặp: {c}. Yikonglu đặt trọng tâm ở chỗ khác.", "Người ta hay hỏi “{c}”; câu trên là câu trả lời của Yikonglu.", "Lời chú của Chu Hi: "),
+ "id": ("Bacaan Yikonglu: ", "Bacaan umum mengatakan “{c}”; Yikonglu menaruh bobotnya di tempat lain.", "Bacaan umum: {c}. Yikonglu menaruh bobotnya di tempat lain.", "Orang sering bertanya “{c}”; kalimat di atas adalah jawaban Yikonglu.", "Komentar Zhu Xi: "),
+ "ru": ("Прочтение Yikonglu: ", "Обычное прочтение — «{c}»; Yikonglu ставит акцент иначе.", "Обычное прочтение: {c}. Yikonglu ставит акцент иначе.", "Часто спрашивают: «{c}»; выше — ответ Yikonglu.", "Комментарий Чжу Си: "),
 }
 YKAN_LEN = {"zh": (60, 120), "ja": (60, 130), "ko": (70, 160)}  # 其他语种按 (150, 330) 字母算
 def ykan(code, ours, common, keys, basis=None):
