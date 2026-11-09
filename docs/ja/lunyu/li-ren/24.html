@@ -223,6 +223,7 @@ window.ykPick=pick;
 window.ykBing=function(){var R=RD(),td=today();if(CN&&!R.some(function(r){return r.c===CN})){R.push({d:td,c:CN,n:D.y.replace(/[，。；：？！、“”‘’「」\s]/g,'').length});WR(R)}pick('bing')};
 })()}
 
+if(location.hash==='#ka'){history.replaceState(null,'',location.pathname+location.search);setTimeout(function(){if(window.ykPick)window.ykPick('he');else card()},400)}
 })();
 </script><script>(function(){function op(){var h=decodeURIComponent(location.hash.slice(1));if(!h)return;var e=document.getElementById(h);if(!e)return;var d=e.closest("details");while(d){d.open=true;d=d.parentElement&&d.parentElement.closest("details")}setTimeout(function(){e.scrollIntoView()},0)}addEventListener("hashchange",op);op();document.addEventListener("click",function(ev){var a=ev.target.closest&&ev.target.closest('a[href^="#"]');if(a&&a.getAttribute("href")==location.hash)op()});var b=document.querySelector(".foldall");if(b)b.onclick=function(){var ds=document.querySelectorAll(".deep details.fold"),o=[].some.call(ds,function(d){return!d.open});[].forEach.call(ds,function(d){d.open=o});b.textContent=o?b.dataset.c:b.dataset.o}})();</script><div id="jubar" class="jubar" hidden><button data-a="q">この句を出典付きでコピー</button><button data-a="l">この句へのリンクをコピー</button><span class="jr" hidden></span><div class="hj"><b>Cross-references</b><ul class="hjd"></ul><ul><li><a href="#zhuben">Commentaries on this chapter</a></li><li><a href="#zb-zhuxi">Citation check</a></li><li><a href="https://www.youtube.com/watch?v=ULKx35tce_8&amp;t=42s" target="_blank" rel="noopener">In the video from 0:42</a></li></ul></div></div>
 <script>
@@ -272,6 +273,6 @@ document.body.prepend(b)})();
 var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>このページの初出は一孔録 yikonglu.com です。最新版と訂正は元サイトでご覧ください。</span><a href="https://yikonglu.com'+location.pathname+'">元サイトへ →</a>';document.body.insertBefore(b,document.body.firstChild)})();</script>
 <script>if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})})</script>
 <script defer src="/assets/a2hs.js?v=ffd210af"></script>
-<script defer src="/assets/xudu.js?v=735f3d72"></script>
+<script defer src="/assets/xudu.js?v=0e4cd806"></script>
 </body>
 </html>

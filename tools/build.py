@@ -696,6 +696,7 @@ if(cs){sb.hidden=false;sb.onclick=function(){navigator.share({files:[f],text:txt
 a.onclick=function(e){if(inapp||(ios&&!cs)){e.preventDefault();nt.textContent=T.hold;nt.classList.add('hl');return}if(ios&&cs){e.preventDefault();navigator.share({files:[f]}).catch(function(){})}}});
 M.addEventListener('click',function(e){if(e.target===M||e.target.closest('.cls'))M.remove()});document.body.appendChild(M)}
 @CARDS@
+if(location.hash==='#ka'){history.replaceState(null,'',location.pathname+location.search);setTimeout(function(){if(window.ykPick)window.ykPick('he');else card()},400)}
 })();
 </script>"""
 SHARE_JS = SHARE_JS.replace("@CARDS@", open(os.path.join(HERE, "share_cards.js"), encoding="utf-8").read() if os.environ.get("YK_CARDS", "1") != "0" else "")  # 新分享卡（11-08 主人“过”）；回退设 YK_CARDS=0
@@ -817,6 +818,7 @@ SHARE_KEYS = {}  # 章 → 分享图关键句（句号或句中字），章节�
 WJ_TR = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json")) else {}  # 未讲章原文英日译（分享图用）
 TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
 TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
+MEIRI_TXT = {"zh-Hans": {"h": "今日一句", "read": "读这一章", "card": "生成分享图", "plan": "百日读完《论语》"}, "zh-Hant": {"h": "今日一句", "read": "讀這一章", "card": "生成分享圖", "plan": "百日讀完《論語》"}}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
 LIVE_PILL = {"zh-Hans": "{o} 儒者在读 · 累计 {t}", "zh-Hant": "{o} 儒者在讀 · 累計 {t}", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
              "es": "Letrados leyendo: {o} · {t} en total", "de": "Gelehrte lesen: {o} · {t} gesamt", "vi": "{o} nhà nho đang đọc · {t} lượt", "id": "Cendekiawan membaca: {o} · total {t}", "ru": "Книжники читают: {o} · всего {t}"}
@@ -860,7 +862,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
         jsonld = dict(jsonld, **{"@graph": [_own(x) for x in jsonld["@graph"]]}) if "@graph" in jsonld else _own(jsonld)
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>' if jsonld else ""
     codes = codes or list(LANGS)  # 只有部分语种的页（如“故事”栏只出简繁）
-    if rel.startswith(("gushi/", "renwu/", "zhuanti/lu-")) or (rel.startswith("shuyuan/") and rel != "shuyuan/ruyuan.html") or rel == "zhuanti/keben.html": codes = ["zh-Hans", "zh-Hant"]  # 课本专题只有简繁（11-09 谷歌报外文版 404）
+    if rel.startswith(("gushi/", "renwu/", "zhuanti/lu-")) or (rel.startswith("shuyuan/") and rel != "shuyuan/ruyuan.html") or rel in ("zhuanti/keben.html", "jihua/bairi.html"): codes = ["zh-Hans", "zh-Hant"]  # 课本专题只有简繁（11-09 谷歌报外文版 404）
     if rel == "404.html": codes = ["zh-Hans"]  # 404 页只有一份，不指向不存在的外文 404
     alt_links = "".join(f'<link rel="alternate" hreflang="{LANGS[k][2]}" href="{DOMAIN}/{LANGS[k][0]}{rel}">' for k in codes)
     alt_links += f'<link rel="alternate" hreflang="x-default" href="{DOMAIN}/{rel}">'
@@ -1595,7 +1597,24 @@ def build_lang(L, D, write):
              + ';function f(){var n=Date.now(),x=null;for(var i=0;i<L.length;i++)if(n>=Date.parse(L[i].t))x=L[i];if(!x)return;var b=document.getElementById("lcard");if(b){b.href=x.h;b.innerHTML=x.c}}f();setInterval(f,60000)})();</script>') if _fut else ""
     # 首页主按钮“今日一句”：在视频已公开（或到点公开）的章里随机抽一章；没有脚本时落到最新一章
     # 首页主按钮“今日共读一章”：按北京日期定一章，候选只取北京当天零点前已公开的章（当天到点公开的不进候选，免得一天里换几次），全站同一天同一章；没有脚本时落到最新一章
-    _rc = [{"c": c, "h": P + rel_of(c), "t": ch2ep[c][1].get("public_at") or ""} for c in pub if ch2ep[c][1].get("youtube")]
+    def _key(c):  # 每日一句取该章的关键句（同格物卡：章节起点 keys 指定，缺省取首个够四字的句），白话取逐句白话
+        ss = split_ju(yw[c]); k = SHARE_KEYS.get(c); kn = 0
+        if isinstance(k, int) and 0 < k <= len(ss): kn = k
+        elif isinstance(k, str): kn = next((i for i, x in enumerate(ss, 1) if k in x), 0)
+        strip_ = lambda t: re.sub(r"^[^，。：；？！]{1,8}(曰|问|对曰|问曰)：", "", t)
+        if not kn: kn = next((i for i, x in enumerate(ss, 1) if len(re.sub(r"[^\u3400-\u9fff]", "", strip_(x))) >= 4), 1)
+        ZJD_ = D.get("zhuju") or {"zj": {}}; zs = (ZJD_.get("zj", {}).get(c) or {}).get("句", [])
+        b = (zs[kn - 1].get("bh") if kn <= len(zs) and isinstance(zs[kn - 1], dict) else "") or ""
+        full = D["baihua"].get(c) or ""
+        if not b and (len(ss) == 1 or len(full) <= 48): b = full
+        return strip_(ss[kn - 1]), b
+    _rc = [dict({"c": c, "h": P + rel_of(c), "t": ch2ep[c][1].get("public_at") or "", "ti": title_of(c)}, **(dict(zip(("y", "b"), _key(c))) if L.code.startswith("zh") else {})) for c in pub if ch2ep[c][1].get("youtube")]
+    MY = MEIRI_TXT.get(L.code)  # 每日一句（11-09 主人定，先简繁）
+    meiri_html = (f'<section class="meiri" id="meiri" hidden><p class="mh"><b>{MY["h"]}</b><span class="md"></span></p><blockquote lang="zh-Hans"></blockquote><p class="mb"></p>'
+                  f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a><a class="mp" href="{P}jihua/bairi.html">{MY["plan"]}</a></p></section>') if MY else ""
+    meiri_js = ('<script>(function(){var R=' + json.dumps(_rc, ensure_ascii=False).replace("</", "<\\/") + ',W="日一二三四五六";var n=Date.now(),day=Math.floor((n+8*3600e3)/864e5),d0=day*864e5-8*3600e3,C=R.filter(function(x){return !x.t||Date.parse(x.t)<d0});if(!C.length)return;var x=C[(day*7919)%C.length],M=document.getElementById("meiri");if(!M||!x.y)return;'
+                'var bj=new Date(n+8*3600e3);M.querySelector(".md").textContent=(bj.getUTCMonth()+1)+"月"+bj.getUTCDate()+"日 · 星期"+W[bj.getUTCDay()]+" · 《论语》"+x.c;M.querySelector("blockquote").textContent=x.y;M.querySelector(".mb").textContent=x.b||"";'
+                'M.querySelector(".mc").href=x.h;M.querySelector(".mk").href=x.h+"#ka";M.hidden=false})();</script>') if MY else ""
     rc_js = ("<script>(function(){var R=" + json.dumps(_rc, ensure_ascii=False) + ';var a=document.getElementById("rcta");if(!a)return;var n=Date.now(),day=Math.floor((n+8*3600e3)/864e5),d0=day*864e5-8*3600e3,C=R.filter(function(x){return !x.t||Date.parse(x.t)<d0});if(!C.length)return;var x=C[(day*7919)%C.length];a.href=x.h;a.setAttribute("data-c",x.c)})();</script>') if _rc else ""
     vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a>' if L.code.startswith("zh") else "")
     home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录原创角色围坐长桌读书" width="1920" height="1080"></picture>
@@ -1604,6 +1623,7 @@ def build_lang(L, D, write):
 <main class="home">
 <section class="intro wrap narrow">
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
+{meiri_html}{meiri_js}
 <form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
 </section>
 <section class="wrap narrow"><h2 class="ph">{L.t("h_latest")}</h2>
@@ -1793,6 +1813,42 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <p class="note">原文照朱熹《论语集注》（《四部备要》本），标点、个别用字可能和课本不同；章号按朱注分章，课本注释多用杨伯峻本，章号有时差一两号。标“未讲”的章视频还在做，网站先放原文、白话和注。发现错处请写信：{MAIL}</p></main>'''
         write("zhuanti/keben.html", page(L, "论语十二章原文及翻译、读音、朱熹注｜语文课本里的《论语》｜一孔录", "统编语文七年级上册、高中选择性必修上册《论语》十二章，高中必修下册《侍坐》：每章原文、白话翻译、读音、朱熹注与宋以来各家注本，逐章链到原页。", "zhuanti/keben.html", body))
         urls.append(f"{DOMAIN}/{L.prefix}zhuanti/keben.html")
+        # 百日读完《论语》（11-09 主人定）：全书 498 章按字数切成 100 份，每天一份；进度看本机读过的章，不按日历催
+        allc = sorted(D["qw"], key=lambda c: tuple(map(int, c.split("."))))
+        ln = [len(re.sub(r"[^\u3400-\u9fff]", "", D["qw"][c]["text"])) + 40 for c in allc]  # 每章另加 40 字的“开页”分量，免得一天塞太多短章
+        tot = sum(ln); days = []; cur = []; acc = 0
+        for c, n_ in zip(allc, ln):
+            cur.append(c); acc += n_
+            if acc >= tot * (len(days) + 1) / 100 and len(days) < 99: days.append(cur); cur = []
+        if cur: days.append(cur)
+        def _rng(cs):
+            ps = []
+            for c in cs:
+                p_, n_ = c.split(".")
+                if ps and ps[-1][0] == p_: ps[-1][2] = n_
+                else: ps.append([p_, n_, n_])
+            return "、".join(f"{PIAN[a][0]} {b}" + (f"—{e}" if e != b else "") for a, b, e in ps)
+        if L.code == "zh-Hans" and "OUT_ROOT" in globals():
+            os.makedirs(os.path.join(OUT_ROOT, "data"), exist_ok=True)
+            from opencc import OpenCC as _OC; _tw = _OC("s2twp")
+            json.dump({"d": days, "r": [_rng(x) for x in days], "rt": [_tw.convert(_rng(x)) for x in days]}, open(os.path.join(OUT_ROOT, "data", "bairi.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+        dl = "".join(f'<li data-d="{i}"><a href="{href(x[0])}"><em>第 {i} 天</em><b>{_rng(x)}</b><small>{len(x)} 章</small></a></li>' for i, x in enumerate(days, 1))
+        body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">读经计划</span>百日读完《论语》</h1></div></div>
+<main class="wrap narrow bairi"><p class="lead">《论语》全书 498 章，每天读一份，约五章、十分钟，一百天读完。讲过的章有一孔录的片子和细读，没讲的章有原文、原页和译文。</p>
+<p class="note">哪天没读不要紧，第二天接着读，计划跟着你走，不按日历催。进度只存在这台设备上，一孔录无需登录，不取隐私，不打扰。</p>
+<div class="brbox" id="brbox"><button type="button" class="btn" id="brgo">从今天开始</button></div>
+<ol class="brl">{dl}</ol></main>
+<script>(function(){{var K="yk_xd",S;try{{S=JSON.parse(localStorage.getItem(K)||"{{}}")}}catch(e){{S={{}}}}S.b=S.b||{{}};var seen=(S.b.lunyu||{{}}).seen||[],D={json.dumps(days)},P={json.dumps([[href(c) for c in x] for x in days])};
+function save(){{try{{localStorage.setItem(K,JSON.stringify(S))}}catch(e){{}}}}
+var cur=0;for(var i=0;i<D.length;i++){{var ok=D[i].every(function(c){{return seen.indexOf(c)>=0}});var li=document.querySelector('.brl li[data-d="'+(i+1)+'"]');if(ok)li.classList.add("done");else if(!cur)cur=i+1}}
+var box=document.getElementById("brbox"),go=document.getElementById("brgo");
+function show(){{if(!S.plan||S.plan.id!=="bairi")return;var d=cur||D.length,li=document.querySelector('.brl li[data-d="'+d+'"]');if(li)li.classList.add("now");var nx=D[d-1].filter(function(c){{return seen.indexOf(c)<0}})[0],u=nx?P[d-1][D[d-1].indexOf(nx)]:P[d-1][0];
+var n=0;D.forEach(function(x){{if(x.every(function(c){{return seen.indexOf(c)>=0}}))n++}});
+box.innerHTML='<p class="brnow">已读完 <b>'+n+'</b> / 100 天 · 今天读第 '+d+' 天</p><p><a class="btn" href="'+u+'">接着读 →</a> <button type="button" class="btn ghost" id="brstop">不跟这个计划了</button></p>';
+document.getElementById("brstop").onclick=function(){{if(!confirm("不跟这个计划了？读过的章还记着。"))return;delete S.plan;save();location.reload()}}}}
+go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()}})();</script>'''
+        write("jihua/bairi.html", page(L, "百日读完《论语》：每天五章，一百天读完全书｜一孔录", "《论语》498 章分成一百天，每天约五章、十分钟。免登录，进度存在自己的设备上，哪天没读第二天接着读。", "jihua/bairi.html", body))
+        urls.append(f"{DOMAIN}/{L.prefix}jihua/bairi.html")
         routes = (f'<h2 class="ph">课本</h2><p class="note">按语文课读：课文里的每一章，原文、翻译、读音、朱熹注。</p><p><a href="{P}zhuanti/keben.html"><b>语文课本里的《论语》</b></a>：七年级上册、高中必修下册、高中选择性必修上册，3 课 25 章</p>') + routes  # 主人 11-08：不放单字网格
         body = body_zt_index(zlist)
     write("zhuanti/index.html", page(L, f'{L.t("zt_title")}｜一孔录', L.t("zt_sub"), "zhuanti/", body)); urls.append(f"{DOMAIN}/{L.prefix}zhuanti/")
