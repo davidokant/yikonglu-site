@@ -39,7 +39,7 @@ ZH = dict(
                      "书友的“问一孔”，保证有答；每月一期音频答疑。"]),
            ("工具", ["逐句全注对照（网站会员版）。", "高清原页标注下载。", "打印版全书读本。"]),
            ("名字留下", ["致谢页署你的网名。", "每年年底送一本电子版珍藏读本。"])],
-    h_how="", how_lead="", how="",
+    h_how="", how_lead="智器主持，一孔把关，句句可核，人人有回音。", how="书院里的角色都是一孔录原创角色，由智器主持，每句读法有人审过。",
     h_plan="预计", plan=["<b>按书走</b>：一年跟着读完一部（先论语，后三字经、道德经）。",
                        "<b>开门时间</b>：想加入的书友够了就开。在哪里聚、怎么加入，开门时一并告诉第一批书友。"],
     h_join="想第一批加入？", btn="我想第一批加入", done="已记下，谢谢。", cnt="已有 {n} 位书友想第一批加入",
@@ -61,7 +61,7 @@ EN = dict(
           ("Full sentence-by-sentence commentary, annotated hi-res pages, print-ready full reader", "—", "✓"),
           ("Your name on the thanks page; a year-end keepsake e-reader", "—", "✓")],
     h_tbl="Free vs. Academy", h_cards="", main=None, cast_note="", cards=[],
-    h_how="", how_lead="", how="",
+    h_how="", how_lead="Hosted by AI, checked by Yikonglu: every line verifiable, every reader answered.", how="The characters in the Academy are Yikonglu's original characters, hosted by AI; every reading is reviewed by a person.",
     h_plan="", plan=[],
     h_join="Want to be in the first group?", btn="I'd like to join the first group", done="Noted, thank you.", cnt="{n} readers want to join the first group",
     want_q="What would you want most? (choose any)", want_btn="Send", want_ok="Thank you.",
@@ -84,7 +84,7 @@ def body(L, live):
 <p class="cta"><a class="btn" href="#join">{T["h_join"]}</a></p>
 <h2>{T["h_tbl"]}</h2><div class="sytw"><table class="sytab"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>
 {f'<h2>{T["h_cards"]}</h2>{main}<div class="sycards">{cards}</div>' if cards else ""}
-{f'<h2>{T["h_how"]}</h2><p><b>{T["how_lead"]}</b></p><p>{T["how"]}</p>' if T["h_how"] else ""}
+{f'<p class="sytrust"><b>{T["how_lead"]}</b>{T["how"]}</p>' if T["how_lead"] else ""}
 {f'<h2>{T["h_plan"]}</h2><ul>{"".join(f"<li>{x}</li>" for x in T["plan"])}</ul>' if T["plan"] else ""}
 <h2 id="join">{T["h_join"]}</h2>
 <div class="syjoin"><button type="button" class="btn" id="syb">{T["btn"]}</button><p class="sycnt" id="syn" hidden></p>

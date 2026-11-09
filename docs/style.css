@@ -456,3 +456,4 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .fgrp a.sylink{color:var(--accent)}
 .symain{margin:8px 0 12px}.sycastn{margin:10px 0 6px;color:var(--mute);font-size:14px}.sycast{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.sycast figure{margin:0;text-align:center}.sycast img{width:100%;height:auto;border-radius:8px;background:var(--bg)}.sycast figcaption{font-size:13px;color:var(--mute);margin-top:2px}
 @media(max-width:560px){.sycast{grid-template-columns:repeat(3,1fr)}}
+.sytrust{border-left:3px solid var(--accent);padding:6px 12px;margin:14px 0;color:var(--fg)}.sytrust b{display:block;color:var(--accent);margin-bottom:2px}
