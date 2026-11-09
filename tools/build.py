@@ -1606,19 +1606,19 @@ def build_lang(L, D, write):
         full = D["baihua"].get(c) or ""
         if not b and (len(ss) == 1 or len(full) <= 48): b = full
         return strip_(ss[kn - 1]), b
-    _rc = [dict({"c": c, "h": P + rel_of(c), "t": ch2ep[c][1].get("public_at") or "", "ti": title_of(c)}, **(dict(zip(("y", "b"), _key(c))) if L.code.startswith("zh") else {})) for c in pub if ch2ep[c][1].get("youtube")]
-    MY = MEIRI_TXT.get(L.code)  # 每日一句（11-09 主人定，先简繁）
+    def _fkey(c):  # 外文“今日共读”卡：原文短（≤60 字）就整章原文＋整章译文；长的取关键句原文，下面放本章译名（11-09 主人“外文也动”）
+        t = (L.ch(c).get("yw") or "").strip()
+        if len(re.sub(r"\s", "", yw[c])) <= 60 and t and len(t) <= 260: return {"y": yw[c], "b": t}
+        return {"y": _key(c)[0], "b": title_of(c)}
+    _rc = [dict({"c": c, "h": P + rel_of(c), "t": ch2ep[c][1].get("public_at") or "", "ti": title_of(c)}, **(dict(zip(("y", "b"), _key(c))) if L.code.startswith("zh") else _fkey(c))) for c in pub if ch2ep[c][1].get("youtube")]
+    MY = MEIRI_TXT.get(L.code) or {"h": DONE_TXT.get(L.code, DONE_TXT["en"])["h"].replace("’", "'"), "read": L.t("h_read"), "card": SHARE_TXT.get(L.code, SHARE_TXT["en"])["card"], "plan": ""}  # 今日共读卡（11-09 简繁先上；同晚主人“外文也动”，外文同样，只是没有百日计划）
     meiri_html = (f'<section class="meiri" id="meiri" hidden><p class="mh"><b>{MY["h"]}</b><span class="md"></span></p><blockquote lang="zh-Hans"></blockquote><p class="mb"></p>'
-                  f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a><a class="mp" href="{P}jihua/bairi.html">{MY["plan"]}</a></p></section>') if MY else ""
+                  f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a>{f'<a class="mp" href="{P}jihua/bairi.html">{MY["plan"]}</a>' if MY["plan"] else ""}</p></section>') if MY else ""
     meiri_js = ('<script>(function(){var R=' + json.dumps(_rc, ensure_ascii=False).replace("</", "<\\/") + ',W="日一二三四五六";var n=Date.now(),day=Math.floor((n+8*3600e3)/864e5),d0=day*864e5-8*3600e3,C=R.filter(function(x){return !x.t||Date.parse(x.t)<d0});if(!C.length)return;var x=C[(day*7919)%C.length],M=document.getElementById("meiri");if(!M||!x.y)return;'
-                'var bj=new Date(n+8*3600e3);M.querySelector(".md").textContent=(bj.getUTCMonth()+1)+"月"+bj.getUTCDate()+"日 · 《论语》"+x.c;M.querySelector("blockquote").textContent=x.y;M.querySelector(".mb").textContent=x.b||"";'
+                'var bj=new Date(n+8*3600e3);M.querySelector(".md").textContent=' + ('(bj.getUTCMonth()+1)+"月"+bj.getUTCDate()+"日 · 《论语》"+x.c;' if L.code.startswith("zh") else 'bj.toLocaleDateString(' + json.dumps(L.code) + ',{month:"long",day:"numeric",timeZone:"UTC"})+" · "+' + json.dumps(L.t("lunyu")) + '+" "+x.c;') + 'M.querySelector("blockquote").textContent=x.y;M.querySelector(".mb").textContent=x.b||"";'
                 'M.querySelector(".mc").href=x.h;M.setAttribute("data-c",x.c);M.querySelector(".mk").href=x.h+"#ka";M.hidden=false})();</script>') if MY else ""
-    rc_js = ("<script>(function(){var R=" + json.dumps(_rc, ensure_ascii=False) + ';var a=document.getElementById("rcta");if(!a)return;var n=Date.now(),day=Math.floor((n+8*3600e3)/864e5),d0=day*864e5-8*3600e3,C=R.filter(function(x){return !x.t||Date.parse(x.t)<d0});if(!C.length)return;var x=C[(day*7919)%C.length];a.href=x.h;a.setAttribute("data-c",x.c)})();</script>') if _rc else ""
-    vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a>' if L.code.startswith("zh") else "")
-    rcta_html = "" if MY else f'''<a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 6.5c-1.6-1.4-3.8-2-7-2v13c3.2 0 5.4.6 7 2 1.6-1.4 3.8-2 7-2v-13c-3.2 0-5.4.6-7 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6.5v13" stroke="currentColor" stroke-width="1.8"/></svg>{L.t("h_start")}</a>'''  # 简繁首页有“今日共读”卡，头图里不再放同一章的按钮；YouTube、哔哩哔哩按钮也去掉（页尾“关注”栏有）（11-09 主人）
-    home = f'''<section class="hero{' slim' if MY else ''}"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录原创角色围坐长桌读书" width="1920" height="1080"></picture>
-<div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1>
-{"" if MY else f'<p class="cta">{rcta_html}{vids}</p>'}{rc_js}</div></section>
+    home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录原创角色围坐长桌读书" width="1920" height="1080"></picture>
+<div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div></section>
 <main class="home">
 <section class="intro wrap narrow">
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
