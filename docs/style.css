@@ -518,3 +518,10 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .bairi .brl li.done a{background:rgba(35,80,63,.08);border-color:rgba(35,80,63,.3)}
 .bairi .brl li.done em::after{content:" ✓";color:var(--accent)}
 .bairi .brl li.now a{border:2px solid #8A5A2C}
+/* 简繁首页头图没有按钮了：标题移到人群头上，下面裁到柯基脚下（11-09 主人） */
+.hero.slim img{aspect-ratio:1920/790;height:auto;object-fit:cover;object-position:50% 0}
+.hero.slim picture:before{content:"";position:absolute;left:0;right:0;top:0;height:34%;z-index:1;background:linear-gradient(to bottom,rgba(28,18,10,.72),rgba(28,18,10,0))}
+.hero.slim picture:after{height:10%}
+.hero.slim .herotext{position:absolute;left:0;right:0;top:0;bottom:auto;z-index:2;margin:0;padding:3.2% 16px 0}
+.hero.slim .herotext h1 small{text-shadow:0 1px 6px rgba(0,0,0,.8)}
+@media (max-width:700px){.hero.slim img{aspect-ratio:1000/735}.hero.slim .herotext{padding-top:3%}.hero.slim picture:before{height:30%;background:linear-gradient(to bottom,rgba(28,18,10,.85),rgba(28,18,10,0))}}
