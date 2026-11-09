@@ -607,6 +607,7 @@ def ykan(code, ours, common, keys, basis=None):
     return lab, out
 CSSV = __import__("hashlib").md5(open(os.path.join(HERE, "style.css"), "rb").read()).hexdigest()[:8]
 A2V = __import__("hashlib").md5(open(os.path.join(HERE, "assets", "a2hs.js"), "rb").read()).hexdigest()[:8]
+XDV = __import__("hashlib").md5(open(os.path.join(HERE, "assets", "xudu.js"), "rb").read()).hexdigest()[:8]  # 接着读（11-09 主人“过”）
 
 # 页面被整站搬到别的域名时，顶上提示原站（不挡阅读；翻译代理、网页存档不提示）
 MIRROR_JS = """<script>(function(){var h=location.hostname;if(!h||/(^|\\.)yikonglu\\.com$|^localhost$|^127\\.|\\.translate\\.goog$|archive\\.(org|ph|today|is)$|googleusercontent\\.com$|bingj\\.com$/.test(h))return;
@@ -914,6 +915,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 {MIRROR_JS.replace("@BAR@", L.t("mirror_bar")).replace("@GO@", L.t("mirror_go"))}
 <script>if("serviceWorker" in navigator)addEventListener("load",function(){{navigator.serviceWorker.register("/sw.js").catch(function(){{}})}})</script>
 <script defer src="/assets/a2hs.js?v={A2V}"></script>
+<script defer src="/assets/xudu.js?v={XDV}"></script>
 </body>
 </html>
 """
