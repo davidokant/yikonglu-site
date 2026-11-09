@@ -746,10 +746,10 @@ def analytics(L):
         a += f'<script>var _hmt=_hmt||[];(function(){{var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?{ANALYTICS["baidu"]}";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)}})();</script>'
     if ANALYTICS.get("live"):  # 在线与累计读者：worker/ 部署的计数服务；首页有 #live 才显示，其他页只发心跳
         tpl = LIVE_TXT.get(L.code, LIVE_TXT["en"]); sp = LIVE_PILL.get(L.code, LIVE_PILL["en"])
-        a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",T=" + json.dumps(tpl, ensure_ascii=False) + ",S=" + json.dumps(sp, ensure_ascii=False) + ",K=" + json.dumps(LIVE_K.get(L.code, LIVE_K["en"]), ensure_ascii=False)
+        a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",T=" + json.dumps(tpl, ensure_ascii=False) + ",S=" + json.dumps(sp, ensure_ascii=False)
               + ';function RUN(){var DB=document.querySelector(".donebox"),CC=DB?DB.getAttribute("data-c"):"";var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
               + 'function n(x){try{return x.toLocaleString(document.documentElement.lang||undefined)}catch(e){return x}}'
-              + 'function h(first){if(document.hidden&&!first)return;fetch(U+"/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f,c:first?CC:""})}).then(function(r){return r.json()}).then(function(d){if(!d)return;var e=document.getElementById("live"),q=document.getElementById("livep");if(e){e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}if(q){var kk=d.k>0?K.replace("{k}",n(d.k)):"";q.textContent=S.replace("{o}",n(d.online)).replace("{t}",n(d.total))+kk;q.title=T.replace("{o}",n(d.online)).replace("{t}",n(d.total))+kk;q.hidden=false}}).catch(function(){})}'
+              + 'function h(first){if(document.hidden&&!first)return;fetch(U+"/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f,c:first?CC:""})}).then(function(r){return r.json()}).then(function(d){if(!d)return;var e=document.getElementById("live"),q=document.getElementById("livep");if(e){e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}if(q){var kk="";q.textContent=S.replace("{o}",n(d.online)).replace("{t}",n(d.total))+kk;q.title=T.replace("{o}",n(d.online)).replace("{t}",n(d.total))+kk;q.hidden=false}}).catch(function(){})}'
               + 'h(true);setInterval(function(){h(false)},60000);'
               + 'var X=' + json.dumps(DONE_TXT.get(L.code, DONE_TXT["en"]), ensure_ascii=False) + ';'
               + 'function cnt(c,el){fetch(U+"/done?c="+encodeURIComponent(c)).then(function(r){return r.json()}).then(function(d){if(!d||!d.total){el.hidden=true;return}el.textContent=X.n.replace("{d}",n(d.today)).replace("{t}",n(d.total));el.hidden=false}).catch(function(){})}'
@@ -822,9 +822,7 @@ MEIRI_TXT = {"zh-Hans": {"h": "今日一句", "read": "读这一章", "card": "�
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
 LIVE_PILL = {"zh-Hans": "{o} 儒者在读 · 累计 {t}", "zh-Hant": "{o} 儒者在讀 · 累計 {t}", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
              "es": "Letrados leyendo: {o} · {t} en total", "de": "Gelehrte lesen: {o} · {t} gesamt", "vi": "{o} nhà nho đang đọc · {t} lượt", "id": "Cendekiawan membaca: {o} · total {t}", "ru": "Книжники читают: {o} · всего {t}"}
-# 主人 11-09：后面再接“来自 X 个国家”（计数服务按访客 IP 的国家码数，只存国家码）；k 缺省或为 0 时不显示
-LIVE_K = {"zh-Hans": " · 来自 {k} 个国家和地区", "zh-Hant": " · 來自 {k} 個國家和地區", "en": " · from {k} countries and regions", "ja": " · {k} の国と地域から", "ko": " · {k}개 국가·지역에서", "fr": " · de {k} pays et régions",
-          "es": " · de {k} países y regiones", "de": " · aus {k} Ländern und Regionen", "vi": " · từ {k} quốc gia và vùng lãnh thổ", "id": " · dari {k} negara dan wilayah", "ru": " · из {k} стран и регионов"}  # 主人 11-09 晚改：“国家和地区”"}
+# 11-09 晚主人定：不再显示、也不再统计“来自几个国家和地区”
 # 主人 11-08：单位用“儒者”，来的都是儒者；外文取各语里读书人的说法（英文 Confucians、越南 nhà nho、法 lettrés），写成“X：数”免得单复数不合
 LIVE_TXT = {"zh-Hans": "此刻 {o} 位儒者在读 · 已有 {t} 位儒者来过", "zh-Hant": "此刻 {o} 位儒者在讀 · 已有 {t} 位儒者來過",
             "en": "Confucians reading now: {o} · Confucians so far: {t}", "ja": "いま {o} 人の儒者が読書中 · これまで {t} 人の儒者が来訪", "ko": "지금 유학자 {o}명이 읽는 중 · 지금까지 유학자 {t}명",
