@@ -6,7 +6,7 @@ import html, json
 def esc(s): return html.escape(s or "", quote=True)
 
 WANT = [("shiyong", "这句话怎么用", "How to use this line"), ("shuhou", "书后面的事", "Behind the text"),
-        ("gongdu", "共读", "Reading together"), ("wenda", "问一孔必答", "Every question answered"),
+        ("shuyou", "书友圈", "A circle of like-minded readers"), ("gongdu", "共读", "Reading together"), ("wenda", "问一孔必答", "Every question answered"),
         ("gongju", "工具", "Tools"), ("zhencang", "珍藏读本", "Year-end keepsake reader")]
 
 LINK = {"zh": "一孔书院 · 筹备中", "en": "Yikonglu Academy · coming"}
@@ -21,6 +21,7 @@ ZH = dict(
           ("问一孔", "每周选答", "<b>保证有答</b>"),
           ("每周一集“这句话怎么用”（处境读法）", "—", "✓"),
           ("每月一集“书后面的事”（注家怎么争、一孔按展开、跨章串读）", "—", "✓"),
+          ("书友圈：志趣相投的人聚在一处，读到哪聊到哪", "—", "✓"),
           ("每季共读（孔照今主持）＋每月音频答疑", "—", "✓"),
           ("逐句全注对照、高清原页标注、打印版全书读本", "—", "✓"),
           ("致谢页署名、年底电子版珍藏读本", "—", "✓")],
@@ -33,15 +34,14 @@ ZH = dict(
     cards=[("加餐：每月一集“书后面的事”", ["给想往深里走的书友。", "<b>注家怎么争</b>：一句话，汉儒、朱子、清儒各怎么说，原页摆出来。",
                                      "<b>一孔按展开</b>：片子里一句带过的判断，讲清楚为什么这样定。",
                                      "<b>跨章串读</b>：同一个字、同一件事，全书前后怎么呼应。"]),
-           ("一起读", ["每季一次共读：按进度表一起读一篇，孔照今招呼大家、点名、串场。（孔照今是一孔录原创角色，由智器主持；读法结论仍署“一孔按”。）",
-                     "书友的“问一孔”，保证有答。", "每月一期音频答疑。"]),
+           ("书友圈", ["把读同一部书、口味相近的人聚在一起：读到哪聊到哪，有人接话，有人较真。",
+                     "每季一次共读：按进度表一起读一篇，孔照今招呼大家、点名、串场。",
+                     "书友的“问一孔”，保证有答；每月一期音频答疑。"]),
            ("工具", ["逐句全注对照（网站会员版）。", "高清原页标注下载。", "打印版全书读本。"]),
            ("名字留下", ["致谢页署你的网名。", "每年年底送一本电子版珍藏读本。"])],
-    h_how="怎么运作", how_lead="智器主持，一孔把关，句句可核，人人有回音。",
-    how="书院里没有真人出镜。进度、点名、汇总问题、起草答疑，由智器做；每一句读法，由一孔录主笔审过才发。我们不装成真人，但记得每一位书友：问题必回，署你的网名，进度跟着你走。",
+    h_how="", how_lead="", how="",
     h_plan="预计", plan=["<b>按书走</b>：一年跟着读完一部（先论语，后三字经、道德经）。",
-                       "<b>开门时间</b>：想加入的书友够了就开。",
-                       "<b>交付</b>：国内用知识星球，海外用 YouTube 频道会员或 Ko-fi。不用在本站注册。"],
+                       "<b>开门时间</b>：想加入的书友够了就开。在哪里聚、怎么加入，开门时一并告诉第一批书友。"],
     h_join="想第一批加入？", btn="我想第一批加入", done="已记下，谢谢。", cnt="已有 {n} 位书友想第一批加入",
     want_q="再告诉我们，你最想要哪样（可多选）：", want_btn="提交", want_ok="收到，谢谢。",
     notify="想开门时被通知：公众号「一孔录」回复“书院”，或发邮件到 yikonglu99@gmail.com，主题写“书院”。",
@@ -56,12 +56,12 @@ EN = dict(
           ("Ask Yikonglu", "Selected weekly", "<b>Always answered</b>"),
           ("Weekly “How to use this line”: one line, today's situations, acted out by our original characters", "—", "✓"),
           ("Monthly “Behind the text”: how the commentators disagree, our reading explained", "—", "✓"),
+          ("A circle of like-minded readers, reading and talking together", "—", "✓"),
           ("Seasonal group reading + monthly audio Q&A", "—", "✓"),
           ("Full sentence-by-sentence commentary, annotated hi-res pages, print-ready full reader", "—", "✓"),
           ("Your name on the thanks page; a year-end keepsake e-reader", "—", "✓")],
     h_tbl="Free vs. Academy", h_cards="", main=None, cast_note="", cards=[],
-    h_how="How it works", how_lead="Hosted by AI, checked by Yikonglu, every line verifiable, every reader answered.",
-    how="No real person appears on camera. AI handles schedules, roll calls, gathering questions and drafting answers; every reading is reviewed by Yikonglu's editor before it goes out.",
+    h_how="", how_lead="", how="",
     h_plan="", plan=[],
     h_join="Want to be in the first group?", btn="I'd like to join the first group", done="Noted, thank you.", cnt="{n} readers want to join the first group",
     want_q="What would you want most? (choose any)", want_btn="Send", want_ok="Thank you.",
@@ -84,7 +84,7 @@ def body(L, live):
 <p class="cta"><a class="btn" href="#join">{T["h_join"]}</a></p>
 <h2>{T["h_tbl"]}</h2><div class="sytw"><table class="sytab"><thead><tr>{th}</tr></thead><tbody>{trs}</tbody></table></div>
 {f'<h2>{T["h_cards"]}</h2>{main}<div class="sycards">{cards}</div>' if cards else ""}
-<h2>{T["h_how"]}</h2><p><b>{T["how_lead"]}</b></p><p>{T["how"]}</p>
+{f'<h2>{T["h_how"]}</h2><p><b>{T["how_lead"]}</b></p><p>{T["how"]}</p>' if T["h_how"] else ""}
 {f'<h2>{T["h_plan"]}</h2><ul>{"".join(f"<li>{x}</li>" for x in T["plan"])}</ul>' if T["plan"] else ""}
 <h2 id="join">{T["h_join"]}</h2>
 <div class="syjoin"><button type="button" class="btn" id="syb">{T["btn"]}</button><p class="sycnt" id="syn" hidden></p>

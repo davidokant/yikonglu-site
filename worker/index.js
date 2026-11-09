@@ -70,7 +70,7 @@ export class Live {
       const recent = ((await this.state.storage.get("recent")) || []).filter(x => x.d === d0).map(x => x.c).slice(0, 5);
       return Response.json({ recent, heat, top });
     } else if (url.pathname === "/intent" || url.pathname === "/intent/stats") {
-      const WANT = ["shiyong", "shuhou", "gongdu", "wenda", "gongju", "zhencang"];
+      const WANT = ["shiyong", "shuhou", "shuyou", "gongdu", "wenda", "gongju", "zhencang"];
       let I = (await this.state.storage.get("intent")) || { n: 0, want: {}, days: {} };
       if (req.method === "POST" && url.pathname === "/intent") {
         let b = {}; try { b = await req.json(); } catch (e) {}
