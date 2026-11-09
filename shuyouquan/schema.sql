@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
   role TEXT NOT NULL DEFAULT 'guest', -- guest 注册未入会 | member 会员 | admin 管理 | char 原创角色
   avatar TEXT, tag TEXT,              -- 角色账号的头像与小标
   ident TEXT,                         -- 书院世界里的身份：shusheng youxia shanglv yizhe jiangren fangwai
+  ident_at INTEGER,                   -- 上次改身份的时间（每 30 天可改一次）
   posts INTEGER DEFAULT 0,            -- 发言数，算学籍
   created INTEGER NOT NULL
 );
@@ -47,4 +48,8 @@ INSERT OR IGNORE INTO boards (slug, name, descr, sort, members_only) VALUES
  ('xiantan', '茶寮 · 闲谈', '读书之外的话。', 6, 1);
 INSERT OR IGNORE INTO users (name, role, avatar, tag, created) VALUES
  ('上官有理', 'char', 'https://img.yikonglu.com/gushi/img/youli-head.png', '一孔录原创角色·智器主持', 0),
- ('孔照今', 'char', 'https://img.yikonglu.com/gushi/img/zhaojin-head.png', '一孔录原创角色·智器主持', 0);
+ ('孔照今', 'char', 'https://img.yikonglu.com/gushi/img/zhaojin-head.png', '一孔录原创角色·智器主持', 0),
+ ('林守拙', 'char', 'https://img.yikonglu.com/gushi/img/shouzhuo-head.png', '一孔录原创角色·智器主持', 0),
+ ('陆川', 'char', 'https://img.yikonglu.com/gushi/img/luchuan-head.png', '一孔录原创角色·智器主持', 0),
+ ('阮流绮', 'char', 'https://img.yikonglu.com/gushi/img/liuqi-head.png', '一孔录原创角色·智器主持', 0),
+ ('莎赫拉', 'char', 'https://img.yikonglu.com/gushi/img/shahela-head.png', '一孔录原创角色·智器主持', 0);
