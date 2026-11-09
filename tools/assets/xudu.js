@@ -102,7 +102,9 @@
   if (document.body.classList.contains("pg-home")) {
     var hero = document.querySelector("section.hero"), lastBk = null, lt = 0;
     for (var b2 in S.b) if (S.b[b2].last && S.b[b2].last.ts > lt) { lt = S.b[b2].last.ts; lastBk = b2 }
-    if (hero && lastBk) {
+    var intro = document.querySelector("main.home section.intro");
+    if (lastBk && intro) bar(lastBk, intro, "first"); // 放进首页同一栏，和下面“今天有人读了”、搜索框左右对齐
+    else if (hero && lastBk) {
       bar(lastBk, hero, "after");
     }
     return;

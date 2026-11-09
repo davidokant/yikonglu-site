@@ -473,3 +473,5 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .sydeep{display:grid;grid-template-columns:1fr 1fr;gap:12px}.sydeep a{display:block;border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none}.sydeep b{display:block;font-size:18px}.sydeep span{font-size:14px;color:var(--mute)}
 @media (max-width:700px){.syhero .wrap{padding-top:120px}.syhero h1{font-size:36px}.syhero .symotto{font-size:17px}.syfeats,.sydeep{grid-template-columns:1fr}.sycourts{grid-template-columns:repeat(2,1fr)}}
 .intro .steps:not([hidden]){margin:22px 0 0}.intro .steps:not([hidden])+.sbox{margin-top:12px}
+.home .intro{text-align:left}.home .intro .xdbar{margin:0 0 20px;max-width:none}.home .intro .sbox{max-width:none;margin:22px 0 0}
+.home .intro .steps:not([hidden]){margin:0}.home .intro .steps:not([hidden])+.sbox{margin-top:14px}
