@@ -448,3 +448,11 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .duben.shelf b{font-size:17px}.duben.shelf .note{font-size:13px}
 .duben.shelf .dbbtns{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:6px}.duben.shelf .dbbtns .btn{margin:0;padding:6px 14px;font-size:14px}
 .dbkind{margin:34px 0 10px}.dbkind .dbwho{margin:6px 0;font-size:15px}.dbkind .dbwho b{color:var(--accent,#8A5A2C);font-weight:600}
+/* 一孔书院筹备页（11-09） */
+.shuyuan .symotto{font-size:20px;font-weight:700;color:var(--accent);margin:8px 0 14px}
+.sytw{overflow-x:auto}.sytab{width:100%;border-collapse:collapse;font-size:15px;line-height:1.6}.sytab th,.sytab td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top}.sytab th:nth-child(n+2),.sytab td:nth-child(n+2){text-align:center;width:22%;white-space:nowrap}.sytab th{color:var(--mute);font-weight:600}.sytab td:last-child{color:var(--accent);font-weight:600}.sytab th:last-child{color:var(--accent)}
+.sycards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:8px 0 6px}.sycard{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 16px}.sycard h3{margin:4px 0 6px;font-size:17px;color:var(--accent)}.sycard ul{margin:0;padding-left:1.1em}.sycard li{margin:4px 0;font-size:15px}
+.syjoin{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px;margin:8px 0 14px;text-align:center}.syjoin .btn[disabled]{opacity:.7;cursor:default}.sycnt{color:var(--accent2);margin:10px 0 0}.sywant{margin-top:12px}.syopts{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center;margin:6px 0 12px}.syopts label{white-space:nowrap;cursor:pointer}
+.fgrp a.sylink{color:var(--accent)}
+.symain{margin:8px 0 12px}.sycastn{margin:10px 0 6px;color:var(--mute);font-size:14px}.sycast{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.sycast figure{margin:0;text-align:center}.sycast img{width:100%;height:auto;border-radius:8px;background:var(--bg)}.sycast figcaption{font-size:13px;color:var(--mute);margin-top:2px}
+@media(max-width:560px){.sycast{grid-template-columns:repeat(3,1fr)}}

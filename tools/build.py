@@ -12,6 +12,7 @@ import og as OG
 import gushi as GS
 import renwu as RW
 import zhuju as ZJ
+import shuyuan as SY
 
 DOMAIN = "https://yikonglu.com"
 # 图片另放 davidokant/yikonglu-img（Pages：img.yikonglu.com，11-08 主人定）：原页、分享图、故事图建好后挪到图片仓库，页面里改用绝对地址。
@@ -904,7 +905,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
 <p class="where">{where_html(L)}</p>
-<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a></p></div>
+<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
 <p class="freuse">{L.t("foot_reuse", p=P)}</p>
@@ -985,6 +986,7 @@ PRIVACY = {
    "不用注册，不设留言区，不收表单。",
    "访问统计用 Cloudflare Web Analytics：不设 cookie，不认人，只计页面访问量、来路和国家或地区。简体中文页另装百度统计，它会设 cookie，用来计访问量和来路；繁体和外文页不装。",
    "首页那行“此刻在读 / 读者来过”的人数，由我们自己在 Cloudflare 上的一个小程序计：你的浏览器本地存一个随机编号，每分钟告诉它一声“还在读”，它只记这个编号和时间，用来数人数，不存 IP，也不记别的。",
+   "“一孔书院”筹备页上的“我想第一批加入”和“最想要哪样”，只给计数加一，不收姓名、邮箱、电话；同一浏览器点过一次，本地记个标记，不再重复计。",
    "章节页里的视频：简体中文页在中国大陆时区的设备上嵌哔哩哔哩播放器（player.bilibili.com），它可能设 cookie，按哔哩哔哩的隐私政策处理；其他情况用 YouTube 的隐私增强模式（youtube-nocookie.com）嵌入，点播放之后才由 YouTube 按它的隐私政策处理。选哪个只看你设备的时区设置，不上传；你手动切换后，选择记在本地。",
    "字体从 Google Fonts 加载，你的浏览器会向谷歌请求字体文件。",
    "语言选择、是否已关掉“装到桌面”提示，记在你浏览器的本地存储里；看过的页面缓存在你的设备上，离线也能打开。这些都不上传。",
@@ -994,6 +996,7 @@ PRIVACY = {
    "No accounts, no comment section, no forms.",
    "Visits are counted with Cloudflare Web Analytics, which sets no cookies and does not identify you; it counts page views, referrers and country or region. Simplified-Chinese pages also carry Baidu Tongji, which does set cookies for counting visits and referrers; other language versions do not.",
    "The “reading now / readers so far” line on the home page is counted by a small program of ours on Cloudflare: your browser keeps a random ID in local storage and pings it once a minute while you read. It keeps only that ID and the time, to count heads; it does not store your IP address or anything else.",
+   "On the Yikonglu Academy page, “I'd like to join” and “what would you want most” only add one to a count; no name, email or phone is collected. Your browser keeps a local mark so you are counted once.",
    "Videos on chapter pages are embedded in YouTube's privacy-enhanced mode (youtube-nocookie.com); once you press play, YouTube handles data under its own privacy policy.",
    "Fonts load from Google Fonts, so your browser requests font files from Google.",
    "Your language choice and whether you dismissed the “add to home screen” tip are kept in your browser's local storage; pages you have read are cached on your device for offline use. None of this is uploaded.",
@@ -1003,6 +1006,7 @@ PRIVACY = {
    "登録不要、コメント欄やフォームはありません。",
    "アクセス集計は Cloudflare Web Analytics を使います。cookie を使わず個人を識別せず、閲覧数・参照元・国や地域のみを数えます。簡体字中国語のページにのみ百度統計を入れており、これは閲覧数と参照元を数えるため cookie を使います。",
    "トップページの「いま読書中／これまでの読者」の人数は、Cloudflare 上の小さなプログラムで数えています。ブラウザのローカルストレージにランダムな番号を一つ置き、読んでいる間 1 分ごとに知らせるだけで、記録するのはその番号と時刻のみです。IP アドレスなどは保存しません。",
+   "「一孔書院」準備ページの「最初のメンバーになりたい」「一番ほしいもの」は人数を数えるだけで、名前・メール・電話は集めません。同じブラウザで一度押すとローカルに印を残し、二重に数えません。",
    "章ページの動画は YouTube のプライバシー強化モード（youtube-nocookie.com）で埋め込んでいます。再生後は YouTube のプライバシーポリシーに従って扱われます。",
    "フォントは Google Fonts から読み込むため、ブラウザが Google にフォントを要求します。",
    "言語の選択と「ホーム画面に追加」の案内を閉じたかどうかはブラウザのローカルストレージに保存し、読んだページはオフライン用に端末にキャッシュします。いずれも送信しません。",
@@ -1012,6 +1016,7 @@ PRIVACY = {
    "가입이 필요 없고, 댓글란이나 양식이 없습니다.",
    "방문 통계는 Cloudflare Web Analytics로 집계합니다. 쿠키를 쓰지 않고 개인을 식별하지 않으며 페이지 조회수, 유입 경로, 국가·지역만 셉니다. 간체 중국어 페이지에만 바이두 통계를 넣었으며, 이는 조회수와 유입 경로 집계를 위해 쿠키를 씁니다.",
    "첫 페이지의 ‘지금 읽는 중 / 지금까지 독자’ 숫자는 Cloudflare에 둔 작은 프로그램이 셉니다. 브라우저 로컬 저장소에 무작위 번호 하나를 두고 읽는 동안 1분마다 알릴 뿐이며, 그 번호와 시각만 기록합니다. IP 주소 등은 저장하지 않습니다.",
+   "‘일공서원’ 준비 페이지의 ‘첫 회원이 되고 싶다’와 ‘가장 원하는 것’은 숫자만 하나 더하며 이름·이메일·전화번호는 받지 않습니다. 같은 브라우저에서는 로컬에 표시를 남겨 한 번만 셉니다.",
    "장 페이지의 영상은 YouTube 개인정보 보호 강화 모드(youtube-nocookie.com)로 넣었습니다. 재생한 뒤에는 YouTube의 개인정보처리방침에 따릅니다.",
    "글꼴은 Google Fonts에서 불러오므로 브라우저가 Google에 글꼴 파일을 요청합니다.",
    "언어 선택과 ‘홈 화면에 추가’ 안내를 닫았는지 여부는 브라우저 로컬 저장소에 두고, 읽은 페이지는 오프라인용으로 기기에 캐시합니다. 어느 것도 전송하지 않습니다.",
@@ -1021,6 +1026,7 @@ PRIVACY = {
    "Pas de compte, pas d'espace de commentaires, pas de formulaire.",
    "Les visites sont comptées avec Cloudflare Web Analytics, sans cookie et sans vous identifier : pages vues, provenance, pays ou région. Les pages en chinois simplifié utilisent en plus Baidu Tongji, qui dépose des cookies pour compter les visites et leur provenance ; les autres langues non.",
    "La ligne « en train de lire / lecteurs jusqu’ici » de l’accueil est comptée par un petit programme à nous sur Cloudflare : votre navigateur garde un identifiant aléatoire en stockage local et le signale une fois par minute pendant la lecture. Seuls cet identifiant et l’heure sont gardés, pour compter ; ni votre adresse IP ni rien d’autre n’est conservé.",
+   "Sur la page de l'Académie Yikonglu, « Je veux rejoindre le premier groupe » et « ce que vous voulez le plus » ne font qu'ajouter un à un compteur ; aucun nom, e-mail ni téléphone n'est collecté. Votre navigateur garde une marque locale pour ne compter qu'une fois.",
    "Les vidéos des pages de chapitre sont intégrées en mode de confidentialité renforcée de YouTube (youtube-nocookie.com) ; une fois la lecture lancée, YouTube traite les données selon sa propre politique.",
    "Les polices sont chargées depuis Google Fonts : votre navigateur demande les fichiers de police à Google.",
    "Votre choix de langue et le fait d'avoir fermé l'invitation « ajouter à l'écran d'accueil » sont gardés dans le stockage local de votre navigateur ; les pages lues sont mises en cache sur votre appareil pour la lecture hors ligne. Rien de cela n'est envoyé.",
@@ -1030,6 +1036,7 @@ PRIVACY = {
    "Sin registro, sin sección de comentarios, sin formularios.",
    "Las visitas se cuentan con Cloudflare Web Analytics, que no usa cookies ni le identifica: solo cuenta páginas vistas, procedencia y país o región. Las páginas en chino simplificado usan además Baidu Tongji, que sí usa cookies para contar visitas y procedencia; las demás lenguas no.",
    "La línea «leyendo ahora / lectores hasta hoy» de la portada la cuenta un pequeño programa nuestro en Cloudflare: su navegador guarda un identificador aleatorio en el almacenamiento local y lo avisa una vez por minuto mientras lee. Solo se guardan ese identificador y la hora, para contar; no se guarda su dirección IP ni nada más.",
+   "En la página de la Academia Yikonglu, «Quiero estar en el primer grupo» y «lo que más quiere» solo suman uno a un contador; no se recoge nombre, correo ni teléfono. Su navegador guarda una marca local para contarle una sola vez.",
    "Los vídeos de las páginas de capítulo se insertan en el modo de privacidad mejorada de YouTube (youtube-nocookie.com); al pulsar reproducir, YouTube trata los datos según su propia política.",
    "Las fuentes se cargan desde Google Fonts, así que su navegador pide los archivos de fuente a Google.",
    "Su elección de idioma y si cerró el aviso de «añadir a la pantalla de inicio» se guardan en el almacenamiento local de su navegador; las páginas leídas quedan en caché en su dispositivo para leer sin conexión. Nada de esto se envía.",
@@ -1649,6 +1656,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zc_sub")}</span>{L.t("zc_title")}</h1></div></div>
 <main class="wrap narrow prose"><p>{L.t("zc_p")}</p>{"".join(order)}</main>'''
     write("zhichi.html", page(L, f'{L.t("zc_title")}｜一孔录', L.t("zc_sub"), "zhichi.html", body)); urls.append(f"{DOMAIN}/{L.prefix}zhichi.html")
+    urls += SY.build(L, write, page, ANALYTICS.get("live"), DOMAIN)  # 一孔书院筹备页（11-09）
     # 核验方法页（/fangfa.html）
     F = lang_tab(FANGFA, L.code)
     try: DC = json.load(open(DRAFT_FILE, encoding="utf-8"))

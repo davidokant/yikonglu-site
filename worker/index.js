@@ -4,6 +4,8 @@
 // POST /hit 带 c（章号）时记一次阅读：按天计数（7 天滚动）＋最近读过的章
 // POST /copy {c, s}      某句被复制/分享一次（7 天滚动）
 // GET  /top              {recent:[c…], heat:{c:n}, top:[[c#sN, n]…]}
+// POST /intent {join:true} 一孔书院“我想第一批加入”加一（同一浏览器只点一次，页面本地记）；POST /intent {want:[…]} 各项“最想要”加一
+// GET  /intent          {n}（满 20 才给数，否则 n:null）；GET /intent/stats {n, want, days} 全部计数（不含任何个人信息）
 // POST /done  {c}         某章“读完了”加一（同一设备只点一次，由页面本地记）；GET /done?c=1.1 返回 {today, total}
 const ORIGINS = ["https://yikonglu.com", "https://www.yikonglu.com", "http://localhost:8767"];
 const WINDOW = 90 * 1000; // 90 秒内有心跳算在线
@@ -67,6 +69,17 @@ export class Live {
       const top = Object.entries(cp).sort((a, b) => b[1] - a[1]).slice(0, 3);
       const recent = ((await this.state.storage.get("recent")) || []).filter(x => x.d === d0).map(x => x.c).slice(0, 5);
       return Response.json({ recent, heat, top });
+    } else if (url.pathname === "/intent" || url.pathname === "/intent/stats") {
+      const WANT = ["shiyong", "shuhou", "gongdu", "wenda", "gongju", "zhencang"];
+      let I = (await this.state.storage.get("intent")) || { n: 0, want: {}, days: {} };
+      if (req.method === "POST" && url.pathname === "/intent") {
+        let b = {}; try { b = await req.json(); } catch (e) {}
+        if (b.join === true) { I.n++; const d = this.day(); I.days[d] = (I.days[d] || 0) + 1; }
+        if (Array.isArray(b.want)) for (const w of new Set(b.want.map(String))) if (WANT.includes(w)) I.want[w] = (I.want[w] || 0) + 1;
+        await this.state.storage.put("intent", I);
+      }
+      if (url.pathname === "/intent/stats") return Response.json(I);
+      return Response.json({ n: I.n >= 20 ? I.n : null });
     } else if (url.pathname === "/done") {
       let c = url.searchParams.get("c") || "";
       if (req.method === "POST") { try { c = String((await req.json()).c || ""); } catch (e) {} }
