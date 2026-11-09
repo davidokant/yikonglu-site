@@ -860,7 +860,8 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
         jsonld = dict(jsonld, **{"@graph": [_own(x) for x in jsonld["@graph"]]}) if "@graph" in jsonld else _own(jsonld)
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>' if jsonld else ""
     codes = codes or list(LANGS)  # 只有部分语种的页（如“故事”栏只出简繁）
-    if rel.startswith(("gushi/", "renwu/", "zhuanti/lu-")) or (rel.startswith("shuyuan/") and rel != "shuyuan/ruyuan.html"): codes = ["zh-Hans", "zh-Hant"]
+    if rel.startswith(("gushi/", "renwu/", "zhuanti/lu-")) or (rel.startswith("shuyuan/") and rel != "shuyuan/ruyuan.html") or rel == "zhuanti/keben.html": codes = ["zh-Hans", "zh-Hant"]  # 课本专题只有简繁（11-09 谷歌报外文版 404）
+    if rel == "404.html": codes = ["zh-Hans"]  # 404 页只有一份，不指向不存在的外文 404
     alt_links = "".join(f'<link rel="alternate" hreflang="{LANGS[k][2]}" href="{DOMAIN}/{LANGS[k][0]}{rel}">' for k in codes)
     alt_links += f'<link rel="alternate" hreflang="x-default" href="{DOMAIN}/{rel}">'
     sw = "".join(f'<a href="{DOMAIN}/{LANGS[k][0]}{rel if k in codes else ""}" data-lang="{k}"{" class=cur" if k == L.code else ""}>{LANGS[k][1]}</a>' for k in LANGS)
