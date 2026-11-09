@@ -759,14 +759,14 @@ def analytics(L):
               + 'b.addEventListener("click",function(){if(b.disabled)return;mark();if(window.ykBing)setTimeout(window.ykBing,300);try{localStorage.setItem(k,"1")}catch(e){}fetch(U+"/done",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:c})}).then(function(r){return r.json()}).then(function(d){p.textContent=X.n.replace("{d}",n(d.today)).replace("{t}",n(d.total));p.hidden=false}).catch(function(){})})});'
               + 'window.yklCopy=function(sid){if(!CC)return;fetch(U+"/copy",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:CC,s:sid})}).catch(function(){})};'
               + 'var LJ=null;function lj(cb){if(LJ){cb(LJ);return}fetch("/data/live-"+document.documentElement.lang+".json").then(function(r){return r.json()}).then(function(j){LJ=j;cb(j)}).catch(function(){})}'
-              + 'var ST=document.getElementById("steps"),TJ=document.getElementById("topju"),HL=document.querySelectorAll(".toc li[data-c]"),GD=document.getElementById("rcta");'
+              + 'var ST=document.getElementById("steps"),TJ=document.getElementById("topju"),HL=document.querySelectorAll(".toc li[data-c]"),GD=document.getElementById("rcta")||document.getElementById("meiri");'
               + 'function lk(j,c){var a=document.createElement("a");a.href=j.p+j.c[c][1];a.textContent=j.c[c][0];return a}'
               + 'if(ST||TJ||HL.length)fetch(U+"/top").then(function(r){return r.json()}).then(function(t){if(!t)return;'
               + 'if(HL.length){var mx=0;HL.forEach(function(li){mx=Math.max(mx,t.heat[li.getAttribute("data-c")]||0)});if(mx)HL.forEach(function(li){var v=t.heat[li.getAttribute("data-c")]||0,i=li.querySelector("i.heat");if(i&&v){i.querySelector("s").style.width=Math.max(8,Math.round(v*100/mx))+"%";i.querySelector("small").textContent=X.hn.replace("{n}",n(v));i.hidden=false}})}'
               + 'if(ST&&t.recent&&t.recent.length)lj(function(j){var rc=t.recent.filter(function(c){return j.c[c]});if(!rc.length)return;rc=rc.filter(function(c){return c!==CC}).slice(0,6);if(!rc.length)return;ST.textContent="";var lb=document.createElement("b");lb.textContent=X.steps;ST.appendChild(lb);var sc=document.createElement("span");sc.className="stc";rc.forEach(function(c){sc.appendChild(lk(j,c))});ST.appendChild(sc);ST.hidden=false});'
               + 'if(TJ&&t.top&&t.top.length)lj(function(j){var k=t.top[0][0].split("#"),c=k[0],si=parseInt(k[1].slice(1),10)-1;if(!j.c[c]||!j.c[c][2][si])return;TJ.querySelector("blockquote").textContent=j.c[c][2][si];var a=TJ.querySelector("a");a.href=j.p+j.c[c][1]+"#"+k[1];a.textContent=j.c[c][0];TJ.hidden=false})'
               + '}).catch(function(){});'
-              + 'if(GD&&GD.getAttribute("data-c"))fetch(U+"/reads?c="+encodeURIComponent(GD.getAttribute("data-c"))).then(function(r){return r.json()}).then(function(d){if(d&&d.today){var sp=document.createElement("span");sp.className="gdn";sp.textContent=" · "+X.gdn.replace("{d}",n(d.today));GD.appendChild(sp)}}).catch(function(){});'
+              + 'if(GD&&GD.getAttribute("data-c"))fetch(U+"/reads?c="+encodeURIComponent(GD.getAttribute("data-c"))).then(function(r){return r.json()}).then(function(d){if(d&&d.today){var sp=document.createElement("span");sp.className="gdn";sp.textContent=" · "+X.gdn.replace("{d}",n(d.today));(GD.querySelector(".md")||GD).appendChild(sp)}}).catch(function(){});'
               + '}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",RUN);else RUN()})();</script>')
     return a
 
@@ -818,7 +818,7 @@ SHARE_KEYS = {}  # 章 → 分享图关键句（句号或句中字），章节�
 WJ_TR = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json")) else {}  # 未讲章原文英日译（分享图用）
 TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
 TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
-MEIRI_TXT = {"zh-Hans": {"h": "今日一句", "read": "读这一章", "card": "生成分享图", "plan": "百日读完《论语》"}, "zh-Hant": {"h": "今日一句", "read": "讀這一章", "card": "生成分享圖", "plan": "百日讀完《論語》"}}
+MEIRI_TXT = {"zh-Hans": {"h": "今日共读", "read": "读这一章", "card": "生成分享图", "plan": "百日读完《论语》"}, "zh-Hant": {"h": "今日共讀", "read": "讀這一章", "card": "生成分享圖", "plan": "百日讀完《論語》"}}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
 LIVE_PILL = {"zh-Hans": "{o} 儒者在读 · 累计 {t}", "zh-Hant": "{o} 儒者在讀 · 累計 {t}", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
              "es": "Letrados leyendo: {o} · {t} en total", "de": "Gelehrte lesen: {o} · {t} gesamt", "vi": "{o} nhà nho đang đọc · {t} lượt", "id": "Cendekiawan membaca: {o} · total {t}", "ru": "Книжники читают: {o} · всего {t}"}
@@ -1611,13 +1611,14 @@ def build_lang(L, D, write):
     meiri_html = (f'<section class="meiri" id="meiri" hidden><p class="mh"><b>{MY["h"]}</b><span class="md"></span></p><blockquote lang="zh-Hans"></blockquote><p class="mb"></p>'
                   f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a><a class="mp" href="{P}jihua/bairi.html">{MY["plan"]}</a></p></section>') if MY else ""
     meiri_js = ('<script>(function(){var R=' + json.dumps(_rc, ensure_ascii=False).replace("</", "<\\/") + ',W="日一二三四五六";var n=Date.now(),day=Math.floor((n+8*3600e3)/864e5),d0=day*864e5-8*3600e3,C=R.filter(function(x){return !x.t||Date.parse(x.t)<d0});if(!C.length)return;var x=C[(day*7919)%C.length],M=document.getElementById("meiri");if(!M||!x.y)return;'
-                'var bj=new Date(n+8*3600e3);M.querySelector(".md").textContent=(bj.getUTCMonth()+1)+"月"+bj.getUTCDate()+"日 · 星期"+W[bj.getUTCDay()]+" · 《论语》"+x.c;M.querySelector("blockquote").textContent=x.y;M.querySelector(".mb").textContent=x.b||"";'
-                'M.querySelector(".mc").href=x.h;M.querySelector(".mk").href=x.h+"#ka";M.hidden=false})();</script>') if MY else ""
+                'var bj=new Date(n+8*3600e3);M.querySelector(".md").textContent=(bj.getUTCMonth()+1)+"月"+bj.getUTCDate()+"日 · 《论语》"+x.c;M.querySelector("blockquote").textContent=x.y;M.querySelector(".mb").textContent=x.b||"";'
+                'M.querySelector(".mc").href=x.h;M.setAttribute("data-c",x.c);M.querySelector(".mk").href=x.h+"#ka";M.hidden=false})();</script>') if MY else ""
     rc_js = ("<script>(function(){var R=" + json.dumps(_rc, ensure_ascii=False) + ';var a=document.getElementById("rcta");if(!a)return;var n=Date.now(),day=Math.floor((n+8*3600e3)/864e5),d0=day*864e5-8*3600e3,C=R.filter(function(x){return !x.t||Date.parse(x.t)<d0});if(!C.length)return;var x=C[(day*7919)%C.length];a.href=x.h;a.setAttribute("data-c",x.c)})();</script>') if _rc else ""
     vids = '<a class="btn ghost" href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a>' + ('<a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a>' if L.code.startswith("zh") else "")
+    rcta_html = "" if MY else f'''<a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 6.5c-1.6-1.4-3.8-2-7-2v13c3.2 0 5.4.6 7 2 1.6-1.4 3.8-2 7-2v-13c-3.2 0-5.4.6-7 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6.5v13" stroke="currentColor" stroke-width="1.8"/></svg>{L.t("h_start")}</a>'''  # 简繁首页有“今日共读”卡，头图里不再放同一章的按钮（11-09 主人）
     home = f'''<section class="hero"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg"><img src="/assets/hero-w.jpg" alt="一孔录原创角色围坐长桌读书" width="1920" height="1080"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1>
-<p class="cta"><a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 6.5c-1.6-1.4-3.8-2-7-2v13c3.2 0 5.4.6 7 2 1.6-1.4 3.8-2 7-2v-13c-3.2 0-5.4.6-7 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6.5v13" stroke="currentColor" stroke-width="1.8"/></svg>{L.t("h_start")}</a>{vids}</p>{rc_js}</div></section>
+<p class="cta">{rcta_html}{vids}</p>{rc_js}</div></section>
 <main class="home">
 <section class="intro wrap narrow">
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
