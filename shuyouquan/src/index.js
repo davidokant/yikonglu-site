@@ -63,6 +63,7 @@ async function currentUser(req, env) {
   return await env.DB.prepare("SELECT u.* FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token=? AND s.expires>?").bind(tok, now()).first();
 }
 const isMember = (u) => u && (u.role === "member" || u.role === "admin");
+const canBaodao = (u, b) => u && u.role === "guest" && !b.members_only && !(u.posts > 0); // 免费书友只能在山门发一帖报到
 const isAdmin = (u) => u && u.role === "admin";
 
 // ---------- 页面外壳 ----------
@@ -95,6 +96,8 @@ textarea{min-height:140px}button,.btn{display:inline-block;margin-top:12px;paddi
 .guide{display:flex;gap:12px;align-items:flex-start}.guide img{width:52px;height:52px;border-radius:50%;flex:none;object-fit:cover;background:var(--line)}
 .home{color:#fff;background:var(--accent2);font-size:12px;border-radius:4px;padding:0 6px}.rules{font-size:15px}.list.dim .t{color:var(--mute)}
 header .brand{white-space:nowrap}@media (max-width:520px){header .w{flex-wrap:wrap;gap:4px 12px}header nav{margin-left:0;font-size:14px;align-items:center}}
+.cmp{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}.cmp th,.cmp td{padding:7px 4px;border-bottom:1px solid var(--line);text-align:center}.cmp tbody th{text-align:left;font-weight:400}.cmp thead th{font-size:14px;color:var(--mute)}.cmp thead th:last-child{color:var(--accent);font-weight:700}.cmp td{width:23%}.cmp .y{color:var(--accent);font-weight:700}.cmp .n{color:var(--mute)}.cmp .h{color:var(--accent2)}.why{margin:0 0 6px}
+.pubw{color:#fff;background:var(--accent);font-size:12px;border-radius:4px;padding:0 6px}.list.dim li.opn .t{color:var(--accent)}
 code{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 6px}`;
 
 function page(title, body, u) {
@@ -122,7 +125,22 @@ function whoTag(u) {
 }
 
 // ---------- 页面 ----------
-const FREE_VS_MEMBER = `<div class="box rules"><b>免费注册</b>：只要网名和密码。能进“山门”看帖、发帖，能看到各院落的帖子标题，有自己的身份、引路人和学籍。<br><b>入会（付费）</b>：拿到入会码后，六个院落都能进、能发帖回帖：每周共读、“这句话怎么用”、每月“书后面的事”、问一孔必答；名字旁挂“书院门人”。</div>`;
+const Y = '<td class="y">✓</td>', N = '<td class="n">—</td>';
+const FREE_VS_MEMBER = `<div class="box rules"><p class="why"><b>免费注册＝先试读</b>：读山门公告和每周一篇会员精选，领身份和引路人，发一帖报到。<b>入会＝进圈子</b>：发帖、回帖、和书友聊，参加共读、问一孔。</p>
+<table class="cmp"><thead><tr><th></th><th>免费注册</th><th>书院会员</th></tr></thead><tbody>
+<tr><th>山门：看公告、看帖</th>${Y}${Y}</tr>
+<tr><th>身份、引路人</th>${Y}${Y}</tr>
+<tr><th>每周一篇会员精选</th>${Y}<td class="y">全部</td></tr>
+<tr><th>五个会员院落</th><td class="h">只看标题</td><td class="y">全文</td></tr>
+<tr><th>发帖、回帖、和书友聊</th><td class="h">报到一帖</td>${Y}</tr>
+<tr><th>学籍升级（按发言算）</th>${N}${Y}</tr>
+<tr><th>共读堂：每周共读、周五点名</th>${N}${Y}</tr>
+<tr><th>明用斋：“这句话怎么用”短剧</th>${N}${Y}</tr>
+<tr><th>藏书阁：每月“书后面的事”</th>${N}${Y}</tr>
+<tr><th>问津亭：问一孔，保证有答</th>${N}${Y}</tr>
+<tr><th>电子版珍藏读本</th>${N}${Y}</tr>
+<tr><th>名字旁挂“书院门人”</th>${N}${Y}</tr>
+</tbody></table></div>`;
 function guideBox(u) {
   const id = IDENT[u.ident]; if (!id) return "";
   return `<div class="box guide"><img src="https://img.yikonglu.com/gushi/img/${id[3]}-head.png" alt=""><div><b>${id[2]}</b><span class="mute"> · 你的引路人</span><br>${esc(id[7])}<div class="mute">你是${title(u)}，本院“${id[5]}”排在最前面。<a href="/me">换身份</a></div></div></div>`;
@@ -135,7 +153,7 @@ async function home(env, u) {
   const li = boards.map((b) => `<li><a class="t" href="/b/${b.slug}">${esc(b.name)}</a>${b.slug === homeSlug ? '<span class="home">本院</span>' : ""}${b.members_only ? '<span class="lock">会员</span>' : ""}<span class="mute" style="flex-basis:100%">${esc(b.descr)}</span><span class="m">${b.n} 帖${b.last ? " · " + fmtTime(b.last) : ""}</span></li>`).join("");
   const hello = !u
     ? `<p><a class="btn" href="/register">免费注册</a> <a class="btn ghost" href="/login">登录</a></p>${FREE_VS_MEMBER}`
-    : u.role === "guest" ? `${guideBox(u)}<div class="box">你已注册，还没入会：现在能在山门发帖，能看各院帖子标题。拿到入会码后，<a href="/invite">在这里入会</a>，六个院落都能进。</div>` : guideBox(u);
+    : u.role === "guest" ? `${guideBox(u)}<div class="box">你已注册，还没入会：能看山门、各院帖子标题和每周一篇“本周公开”，可以在山门发一帖报到。入会后才能发帖、回帖、和书友聊。<a href="/invite">用入会码入会</a>。</div>` : guideBox(u);
   return page("首页", `<div class="maphero"><img src="https://img.yikonglu.com/gushi/img/ditu/world-%E7%AE%80.jpg" alt=""><div><h1>一孔书院</h1><p>把读同一部书、口味相近的人聚在一起：读到哪聊到哪，有人接话，有人较真。</p></div></div>${hello}<h2>院落</h2><ul class="list">${li}</ul>${u ? `<p class="mute">你的学籍：${IDENT[u.ident] ? title(u) + " · " : ""}${rankOf(u.posts)}。多发言、多参加共读，学籍会升：初入院 → 学童 → 生员 → 斋长 → 讲友。</p>` : ""}`, u);
 }
 
@@ -146,23 +164,25 @@ async function board(env, u, slug) {
   if (locked && !u) return page(b.name, `<h1>${esc(b.name)}</h1><div class="box">这一区只给书院会员。<a href="/register">免费注册</a>后能看到这里的帖子标题；入会后能进来读、发帖。</div>`, u);
   const { results } = await env.DB.prepare(
     "SELECT t.*, u.name uname FROM threads t JOIN users u ON u.id=t.user_id WHERE board_id=? ORDER BY pinned DESC, last_at DESC LIMIT 100").bind(b.id).all();
-  const li = results.map((t) => `<li>${t.pinned ? '<span class="pin">置顶</span>' : ""}${t.answered ? '<span class="ans">已答</span>' : ""}<a class="t" href="/t/${t.id}">${esc(t.title)}</a><span class="m">${esc(t.uname)} · ${t.replies} 回 · ${fmtTime(t.last_at)}</span></li>`).join("") || '<li class="mute">还没有帖子。</li>';
-  const can = u && !locked;
-  const lockNote = locked ? `<div class="box">这一区是会员区：你能看到帖子标题，点开要入会。<a href="/invite">用入会码入会</a>。</div>` : "";
-  return page(b.name, `<p class="mute"><a href="/">书友圈</a> ›</p><h1>${esc(b.name)}</h1><p class="mute">${esc(b.descr)}</p>${lockNote}${can ? `<a class="btn" href="/new?b=${b.slug}">发帖</a>` : ""}<ul class="list${locked ? " dim" : ""}">${li}</ul>`, u);
+  const li = results.map((t) => `<li${locked && t.open ? ' class="opn"' : ""}>${t.open ? '<span class="pubw">本周公开</span>' : ""}${t.pinned ? '<span class="pin">置顶</span>' : ""}${t.answered ? '<span class="ans">已答</span>' : ""}<a class="t" href="/t/${t.id}">${esc(t.title)}</a><span class="m">${esc(t.uname)} · ${t.replies} 回 · ${fmtTime(t.last_at)}</span></li>`).join("") || '<li class="mute">还没有帖子。</li>';
+  const can = isMember(u), bd = !can && canBaodao(u, b);
+  const lockNote = locked ? `<div class="box">这一区是会员区：你能看到帖子标题，标着“本周公开”的那篇可以读，其余要入会。<a href="/invite">用入会码入会</a>。</div>` : "";
+  return page(b.name, `<p class="mute"><a href="/">书友圈</a> ›</p><h1>${esc(b.name)}</h1><p class="mute">${esc(b.descr)}</p>${lockNote}${can ? `<a class="btn" href="/new?b=${b.slug}">发帖</a>` : bd ? `<a class="btn" href="/new?b=${b.slug}">报到（免费书友可发一帖）</a>` : u && !isMember(u) && !locked ? `<p class="mute">发帖、回帖是会员的事。<a href="/invite">用入会码入会</a>。</p>` : ""}<ul class="list${locked ? " dim" : ""}">${li}</ul>`, u);
 }
 
 async function thread(env, u, id, msg = "") {
   const t = await env.DB.prepare("SELECT t.*, b.slug, b.name bname, b.members_only FROM threads t JOIN boards b ON b.id=t.board_id WHERE t.id=?").bind(id).first();
   if (!t) return notFound(u);
-  if (t.members_only && !isMember(u)) return page(t.bname, `<h1>${esc(t.bname)}</h1><div class="box">这一帖在会员区。${u ? '<a href="/invite">用邀请码入会</a>' : '<a href="/login">登录</a>'}。</div>`, u);
+  const peek = t.members_only && !isMember(u) && u && t.open;
+  if (t.members_only && !isMember(u) && !peek) return page(t.bname, `<h1>${esc(t.bname)}</h1><div class="box">这一帖在会员区。${u ? '<a href="/invite">用邀请码入会</a>' : '<a href="/login">登录</a>'}。</div>`, u);
   const { results } = await env.DB.prepare("SELECT p.*, u.name, u.role, u.avatar, u.tag, u.ident, u.posts FROM posts p JOIN users u ON u.id=p.user_id WHERE thread_id=? ORDER BY p.id").bind(id).all();
   const ps = results.map((p, i) => `<div class="post" id="p${p.id}">${avatar(p)}<div><div><span class="who">${esc(p.name)}</span>${whoTag(p)} <span class="mute">${i ? "#" + i + " · " : ""}${fmtTime(p.created)}</span></div><div class="body">${fmtBody(p.body)}</div></div></div>`).join("");
-  const adm = isAdmin(u) ? `<form method="post" action="/t/${id}/flag" class="mute" style="margin-top:6px"><button name="f" value="pinned" class="btn ghost" style="padding:2px 12px">${t.pinned ? "取消置顶" : "置顶"}</button> <button name="f" value="answered" class="btn ghost" style="padding:2px 12px">${t.answered ? "取消已答" : "标已答"}</button></form>` : "";
-  const canReply = u && (isMember(u) || !t.members_only);
+  const adm = isAdmin(u) ? `<form method="post" action="/t/${id}/flag" class="mute" style="margin-top:6px"><button name="f" value="pinned" class="btn ghost" style="padding:2px 12px">${t.pinned ? "取消置顶" : "置顶"}</button> <button name="f" value="answered" class="btn ghost" style="padding:2px 12px">${t.answered ? "取消已答" : "标已答"}</button> <button name="f" value="open" class="btn ghost" style="padding:2px 12px">${t.open ? "取消本周公开" : "设为本周公开"}</button></form>` : "";
+  const canReply = isMember(u);
+  const peekNote = peek ? `<div class="box">这是会员区的“本周公开”帖，免费书友能读，入会后才能回复。<a href="/invite">用入会码入会</a>。</div>` : "";
   const asSel = isAdmin(u) ? await asSelect(env, u) : "";
-  const form = canReply ? `<form method="post" action="/t/${id}/reply" class="box"><label>回复</label><textarea name="body" required maxlength="8000"></textarea>${asSel}<button>发出</button></form>` : u ? "" : `<p class="mute"><a href="/login">登录</a>后可回复。</p>`;
-  return page(t.title, `<p class="mute"><a href="/">书友圈</a> › <a href="/b/${t.slug}">${esc(t.bname)}</a>${t.chapter ? ` · <a href="${chUrl(t.chapter)}">论语 ${esc(t.chapter)} 原文</a>` : ""}</p><h1>${t.answered ? '<span class="ans">已答</span> ' : ""}${esc(t.title)}</h1>${adm}${msg}${ps}${form}`, u);
+  const form = canReply ? `<form method="post" action="/t/${id}/reply" class="box"><label>回复</label><textarea name="body" required maxlength="8000"></textarea>${asSel}<button>发出</button></form>` : u ? (peek ? "" : `<p class="mute">回复是会员的事。<a href="/invite">用入会码入会</a>。</p>`) : `<p class="mute"><a href="/login">登录</a>后可回复。</p>`;
+  return page(t.title, `<p class="mute"><a href="/">书友圈</a> › <a href="/b/${t.slug}">${esc(t.bname)}</a>${t.chapter ? ` · <a href="${chUrl(t.chapter)}">论语 ${esc(t.chapter)} 原文</a>` : ""}</p><h1>${t.answered ? '<span class="ans">已答</span> ' : ""}${esc(t.title)}</h1>${adm}${msg}${peekNote}${ps}${form}`, u);
 }
 
 async function asSelect(env, u) { // 管理员可用角色账号发
@@ -180,12 +200,12 @@ function identPick(cur) {
 }
 function authForm(kind, err = "", name = "") {
   const reg = kind === "register";
-  return `<h1>${reg ? "注册" : "登录"}</h1>${err ? `<p class="err">${esc(err)}</p>` : ""}<form method="post" class="box">
+  return `<h1>${reg ? "注册" : "登录"}</h1>${reg ? FREE_VS_MEMBER : ""}${err ? `<p class="err">${esc(err)}</p>` : ""}<form method="post" class="box">
 <label>网名（2—16 字，别用真名）</label><input type="text" name="name" value="${esc(name)}" required minlength="2" maxlength="16" autocomplete="username">
 <label>密码（至少 8 位）</label><input type="password" name="pw" required minlength="8" autocomplete="${reg ? "new-password" : "current-password"}">
-${reg ? `<label>挑一个书院里的身份</label><p class="mute" style="margin:0 0 6px">身份决定你的头像、称号、引路人和“本院”（首页排最前的院落）。院落大家都能去，身份只是你的读书口味。30 天可以换一次。</p>${identPick("shusheng")}` : ""}
+${reg ? `<label>挑一个书院里的身份</label><p class="mute" style="margin:0 0 6px">身份决定你的头像、称号、引路人和“本院”（首页排最前的院落）。身份只是读书口味，不影响能进哪个院落。30 天可以换一次。</p>${identPick("shusheng")}` : ""}
 ${reg ? '<label>入会邀请码（有就填，没有可以先空着）</label><input type="text" name="code" autocomplete="off"><input class="hp" name="website" tabindex="-1" autocomplete="off">' : ""}
-<button>${reg ? "注册" : "登录"}</button></form>${reg ? FREE_VS_MEMBER : ""}
+<button>${reg ? "免费注册" : "登录"}</button></form>
 <p class="mute">${reg ? '不要邮箱、不要手机号。忘了密码，找上官有理要一个重置码，在<a href="/reset">这里</a>改。' : '还没有账号？<a href="/register">注册</a>。忘了密码？<a href="/reset">用重置码改</a>。'}</p>`;
 }
 
@@ -340,7 +360,7 @@ const App = {
     if (path === "/new") {
       const slug = url.searchParams.get("b") || f("b"), b = await env.DB.prepare("SELECT * FROM boards WHERE slug=?").bind(slug).first();
       if (!b) return notFound(u);
-      if (b.members_only && !isMember(u)) return redirect("/invite");
+      if (!isMember(u) && !canBaodao(u, b)) return redirect("/invite");
       const ch = (url.searchParams.get("c") || f("c")).match(/^\d{1,2}\.\d{1,2}$/)?.[0] || "";
       if (M === "GET") return page("发帖", `<p class="mute"><a href="/b/${b.slug}">${esc(b.name)}</a> ›</p><h1>发帖</h1><form method="post" class="box"><input type="hidden" name="b" value="${b.slug}"><input type="hidden" name="c" value="${ch}">
 <label>标题</label><input type="text" name="title" required maxlength="80" value="${ch ? "论语 " + ch : ""}"><label>正文</label><textarea name="body" required maxlength="8000"></textarea>${isAdmin(u) ? await asSelect(env, u) : ""}<button>发出</button></form>`, u);
@@ -353,7 +373,7 @@ const App = {
     if ((m = path.match(/^\/t\/(\d+)\/reply$/)) && M === "POST") {
       const t = await env.DB.prepare("SELECT t.id, b.members_only FROM threads t JOIN boards b ON b.id=t.board_id WHERE t.id=?").bind(+m[1]).first();
       if (!t) return notFound(u);
-      if (t.members_only && !isMember(u)) return redirect("/invite");
+      if (!isMember(u)) return redirect("/invite");
       if (await limited(env, "post:" + u.id, 30, 3600e3)) return thread(env, u, t.id, '<p class="err">发得太快了，歇一会儿。</p>');
       const body = f("body").slice(0, 8000);
       if (body) {
@@ -365,7 +385,7 @@ const App = {
       return redirect(`/t/${t.id}#end`);
     }
     if ((m = path.match(/^\/t\/(\d+)\/flag$/)) && M === "POST" && isAdmin(u)) {
-      const col = f("f") === "pinned" ? "pinned" : "answered";
+      const col = { pinned: "pinned", open: "open" }[f("f")] || "answered";
       await env.DB.prepare(`UPDATE threads SET ${col}=1-${col} WHERE id=?`).bind(+m[1]).run();
       return redirect(`/t/${m[1]}`);
     }

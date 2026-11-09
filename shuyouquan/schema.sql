@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS boards (
 );
 CREATE TABLE IF NOT EXISTS threads (
   id INTEGER PRIMARY KEY AUTOINCREMENT, board_id INTEGER NOT NULL, user_id INTEGER NOT NULL,
-  title TEXT NOT NULL, chapter TEXT, pinned INTEGER DEFAULT 0, answered INTEGER DEFAULT 0,
+  title TEXT NOT NULL, chapter TEXT, pinned INTEGER DEFAULT 0, answered INTEGER DEFAULT 0, open INTEGER DEFAULT 0, -- open: 会员区里“本周公开”给免费书友看的一帖
   replies INTEGER DEFAULT 0, created INTEGER NOT NULL, last_at INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS t_board ON threads (board_id, pinned DESC, last_at DESC);
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS scheduled (           -- 角色定时帖：到点由 
 CREATE TABLE IF NOT EXISTS hits (k TEXT PRIMARY KEY, n INTEGER, until INTEGER);  -- 简单限流
 
 INSERT OR IGNORE INTO boards (slug, name, descr, sort, members_only) VALUES
- ('menkou', '山门', '书院介绍、院规、新人报到。上官有理在这里迎新。', 1, 0),
+ ('menkou', '山门', '书院公告、院规、新人报到。谁都能看，免费书友可发一帖报到。', 1, 0),
  ('lunyu', '共读堂 · 论语', '按篇开帖，一篇一帖。孔照今每周一发进度，周五点名。', 2, 1),
  ('shiyong', '明用斋 · 这句话怎么用', '每周会员片一帖，下面聊自己的处境。', 3, 1),
  ('shuhou', '藏书阁 · 书后面的事', '每月加餐：注家怎么争、一孔按展开、跨章串读。', 4, 1),
