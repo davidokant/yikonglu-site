@@ -985,29 +985,25 @@ def about_zh(L, D, P):
     def pub_ok(info): return info.get("youtube") and (not info.get("public_at") or datetime.datetime.fromisoformat(info["public_at"]) <= now)
     eps = {D["ch2ep"][c][0] for c in D["pub"] if c in D["ch2ep"] and pub_ok(D["ch2ep"][c][1]) and "完整版" not in D["ch2ep"][c][0]}
     chs = sum(1 for c in D["pub"] if c in D["ch2ep"] and pub_ok(D["ch2ep"][c][1]))
-    dr = (D.get("draft") or {}).get("ratio"); day = (now + datetime.timedelta(hours=8)).strftime("%m-%d").lstrip("0")
+    day = (now + datetime.timedelta(hours=8)).strftime("%m-%d").lstrip("0")
     kwn = len(D["kw"])
     cards = [
-        ("原", "每句话都有出处", "原文照底本逐字录入；注家的原话标底本页码，章页放原书影像，红框标出在哪一行。《论语》经文与朱注用《四部备要》本。", f"{P}banben/", "看各家用的本子"),
-        ("勘", "讲错了，公开记", "勘误按日期倒排，旧记录不删：原来怎么说、改成什么、依据是什么，署指出者的网名。", f"{P}kanwu.html", f"已记 {kwn} 处"),
-        ("法", "怎么做的，写明白", "智器（我对 AI 的叫法）帮我起草、配音、出图；底本和读法由我定，引文逐字核原页，每一集我看片通过才发。", f"{P}fangfa.html", f"初稿到定版改动 {dr}%" if dr else "看核验方法"),
-        ("按", "我的读法，明说是我的", "先讲注家怎么说，再讲我怎么读，署“一孔按”，不冒充古人。核不到出处的话，我不放。", f"{P}fangfa.html", "看我怎么分开讲"),
-        ("开", "底子都公开", "原文、白话、读音、引文出处表按篇开放下载，懂行的朋友可以拿去逐条核。", f"{P}kaifang.html", "下载开放数据"),
-        ("贯", "一以贯之", "天天更新，标准不变。日子久了，你信的是这块牌子，不是哪一个人。", f"{P}yingxiangli.html", f"截至 {day}：YouTube 已公开 {len(eps)} 集，讲了 {chs} 章；网站已有讲读的章页 {len(D['pub'])} 章"),
+        ("原", "每句有出处", "原文照底本逐字录入，注家原话标页码，附原书影像。", f"{P}banben/", "看底本"),
+        ("勘", "讲错公开记", "原来怎么说、改成什么、依据什么，按日期列着，旧的不删。", f"{P}kanwu.html", f"已记 {kwn} 处"),
+        ("法", "做法写明白", "智器帮我起草、配音、出图；底本、读法、引文由我逐字核定。我的读法署“一孔按”，不冒充古人。", f"{P}fangfa.html", "看做法"),
+        ("开", "数据公开", "原文、白话、读音、引文出处按篇下载，谁都能拿去核。", f"{P}kaifang.html", "下载"),
     ]
     grid = "".join(f'<a href="{h}"><i>{i}</i><b>{t}</b><p>{x}</p><span class="n">{n} →</span></a>' for i, t, x, h, n in cards)
     return f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("tagline")}</span>关于一孔</h1></div></div>
 <main class="wrap narrow prose yks"><p class="about-def">{L.t("about_def")}</p>
-<div class="ykhead"><figure class="ykphoto"><img src="/assets/yikong-kong.svg" alt="一孔的照片：脸是一个空洞，洞里透出《论语》原文" width="400" height="480"><figcaption>一孔 · 照片只有这一张</figcaption></figure>
+<div class="ykhead"><figure class="ykphoto"><img src="/assets/yikong-kong.svg" alt="一孔的照片：脸是一个空洞，洞里透出《论语》原文" width="400" height="480"><figcaption>一孔</figcaption></figure>
 <div><p class="ykmotto">一孔不重要，经文和出处才重要。</p>
-<p>我是一孔。一孔录是我做的：逐字逐章读中国经典原文，2026 年从《论语》读起，视频、播客和这个网站一起走。片里那几位固定的人物是我的原创角色，替我把一句原文落到具体的人和处境上。你不必读过原书，也不必看过前几期。</p></div></div>
-<h2>我不露面</h2>
-<p>照片只有这一张，脸是空的。我的身世、长相都不要紧。古书里“佚名”“某氏曰”多的是，传下来的是话，不是说话的人。你从这一孔看进去，看见的该是经文和出处，不是我。</p>
-<p>所以我不要你先信我。平台上的视频给大家看，这个网站给想核对的人用。能查的，我都摆在下面：</p>
+<p>我是一孔，不露面，不讲身世，照片只有这一张。古书里“佚名”“某氏曰”多的是，传下来的是话，不是说话的人。</p>
+<p>你不必信我，下面这些都能查。</p></div></div>
 <div class="ykg">{grid}</div>
+<p>截至 {day}，YouTube 已公开 {len(eps)} 集，讲了 {chs} 章，天天更新。</p>
 <h2>在哪里找我</h2><p>{L.t("about_where")}</p>
-<p>想跟我说话，在任一平台「一孔录」视频下留言，或者写信到下面这个邮箱。每一封我都看。</p><p class="mailp">{MAIL}</p>
-<p class="ykend">关于我，能说的只有三件：读书，照底本读，讲错了就改。</p>
+<p>留言或写信，每封都看。</p><p class="mailp">{MAIL}</p>
 <h2 id="zhuanzai">{L.t("about_h4")}</h2><ul><li>{L.t("about_r1")}</li><li>{L.t("about_r2")}</li><li>{L.t("about_r3")}</li><li>{L.t("about_r4")}</li><li>{L.t("about_r5", p=P)}</li></ul><p class="outl"><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ YouTube</a> <a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">Bilibili</a></p></main>'''
 
 def yxl_line(L, D, P):
