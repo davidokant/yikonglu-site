@@ -1576,7 +1576,6 @@ def build_lang(L, D, write):
 <p class="cta"><a class="btn" id="rcta" href="{P}{rel_of(lc)}"><svg class="dice" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 6.5c-1.6-1.4-3.8-2-7-2v13c3.2 0 5.4.6 7 2 1.6-1.4 3.8-2 7-2v-13c-3.2 0-5.4.6-7 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6.5v13" stroke="currentColor" stroke-width="1.8"/></svg>{L.t("h_start")}</a>{vids}</p>{rc_js}</div></section>
 <main class="home">
 <section class="intro wrap narrow">
-<p>{L.t("h_intro")}</p>
 <form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
 </section>
