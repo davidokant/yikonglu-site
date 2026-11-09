@@ -29,7 +29,6 @@
     + ".xdmvp{margin-top:10px;padding:10px 12px;background:var(--bg,#f2f1ea);border-radius:8px;font-size:14px}.xdmvp p{margin:0 0 8px}.xdmvp button{margin:0 8px 0 0;padding:5px 14px;border-radius:99px;border:1px solid #23503f;background:#23503f;color:#fff;font:inherit;cursor:pointer}.xdmvp .xdb2,.xdmvp .xdb3{background:transparent;color:#23503f}"
     + ".xdprog{height:6px;background:var(--line,#dcded2);border-radius:99px;overflow:hidden;margin-top:8px}.xdprog i{display:block;height:100%;background:#8a5a2c}"
     + ".xdseen::after{content:'✓';margin-left:6px;color:#8a5a2c;font-weight:700}.xdtoast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1f2421;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;z-index:99;max-width:90vw}"
-    + ".xdpill{display:table;margin:12px auto 4px;background:rgba(251,250,245,.94);color:#23503f;border-radius:99px;padding:7px 16px;font-size:15px;font-weight:700;text-decoration:none;max-width:92%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 2px 10px rgba(0,0,0,.25)}"
     + "@media (prefers-color-scheme:dark){.xdbar .xdgo b{color:#83bba0}.xdbar .xdgo .xdarr{background:#2d6a53}}";
   function style() { if (document.getElementById("xdcss")) return; var st = document.createElement("style"); st.id = "xdcss"; st.textContent = css; document.head.appendChild(st) }
 
@@ -105,8 +104,6 @@
     for (var b2 in S.b) if (S.b[b2].last && S.b[b2].last.ts > lt) { lt = S.b[b2].last.ts; lastBk = b2 }
     if (hero && lastBk) {
       bar(lastBk, hero, "after");
-      var ct = hero.querySelector("p.cta"), L2 = S.b[lastBk].last; // 头图里再放一颗小按钮，手机第一屏就看得见
-      if (ct && L2) { var a2 = document.createElement("a"); a2.className = "xdpill"; a2.href = L2.p + (S.b[lastBk]._y > 0.05 ? "#xd-y" : ""); a2.innerHTML = T.go + "：" + esc(L2.no) + " " + esc(L2.ti) + " →"; ct.parentNode.insertBefore(a2, ct) }
     }
     return;
   }
