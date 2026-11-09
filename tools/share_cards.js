@@ -28,11 +28,11 @@ function cols(kn){var out=[];document.querySelectorAll('.yuanwen.dz .yyp').forEa
 function he(){var kn=keyIdx(),S=sents(),key=strip(S[kn-1]||D.y),bh=keyBh(kn),G=cols(kn);
   Promise.all([fonts(D.h+key+bh+'一孔录逐字读经典原文扫码读懂这一章朱熹《论语集注》四部备要本原页0123456789'),new Promise(function(ok){qr(ok)})].concat(G.map(function(g){return new Promise(function(ok){var m=new Image();m.crossOrigin='anonymous';m.onload=function(){g.im=m;ok()};m.onerror=function(){ok()};m.src=g.src})}))).then(function(){
   G=G.filter(function(g){return g.im});var cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');frame(c);
-  var IH=940,GAP=12,sc=0,iw=0;if(G.length){var th=0,tw=0;G.forEach(function(g){th=Math.max(th,g.y1-g.y0);tw+=g.x1-g.x0});sc=IH/th;tw=tw*sc+GAP*(G.length-1);if(tw>420){sc=sc*420/tw;tw=420}iw=tw}
+  var IH=940,GAP=12,IW=500,sc=0,iw=0;if(G.length){var th=0,tw=0;G.forEach(function(g){th=Math.max(th,g.y1-g.y0);tw+=g.x1-g.x0});sc=IH/th;var need=(IW-GAP*(G.length-1))/sc-tw;if(need>0)G.forEach(function(g){var e=need/G.length/2,a=g.x0-e,b=g.x1+e;if(a<0){b-=a;a=0}if(b>g.pw){a-=b-g.pw;b=g.pw}g.x0=Math.max(0,a);g.x1=b});tw=0;G.forEach(function(g){tw+=g.x1-g.x0});tw=tw*sc+GAP*(G.length-1);if(tw>IW){sc=sc*IW/tw;tw=IW}iw=tw}
   var right=W-110,ix=right-iw,iy=84,leftW=G.length?Math.min(620,ix-84-50):W-168;
   loadSeal(function(seal){c.textBaseline='alphabetic';c.fillStyle='#8A5A2C';c.font='400 26px '+F;c.fillText(D.h,84,96+26);
     var bare=key.replace(/[，。；：？！、“”‘’「」]/g,''),ww=bare.length<=16&&G.length?Math.min(leftW,96*4.6):leftW;
-    var vh=0,VL=[];if(bh){c.font='400 30px '+F;VL=wrap(c,bh,leftW);if(VL.length>3)VL=VL.slice(0,3);vh=VL.length*54+88}
+    var vh=0,VL=[];if(bh){c.font='400 30px '+F;VL=wrap(c,bh,leftW);if(VL.length>5){VL=VL.slice(0,5);VL[4]=VL[4].slice(0,-1)+'……'}vh=VL.length*54+88}
     var ft=fit(c,key,ww,[96,88,80,72,64,58,52,46,40],(G.length?1000:1080)-250-vh,1.45,700),y=250;c.fillStyle='#1a1a1a';
     ft.L.forEach(function(l){c.fillText(l,84,y+ft.s);y+=ft.s*1.45});
     if(VL.length){y+=40;c.fillStyle='#23503F';c.fillRect(84,y,64,4);y+=32;c.fillStyle='#555';c.font='400 30px '+F;VL.forEach(function(l){c.fillText(l,84,y+30);y+=54})}
