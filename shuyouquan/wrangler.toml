@@ -1,0 +1,11 @@
+name = "yikonglu-shuyouquan"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "yikonglu-shuyouquan"
+database_id = "LOCAL-ONLY-FILL-AFTER-CREATE"
+
+[triggers]
+crons = ["*/10 * * * *"]
