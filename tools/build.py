@@ -154,7 +154,7 @@ EXTRA_UI = {
 }
 # 转载声明与出处标记（页底另起一行；关于页“转载与引用”一节）
 REUSE_UI = {
- "zh-Hans": {"foot_reuse": "原文与古注为公版；白话、引文核对等一孔录所写的核对内容按 <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a> 许可，转载请署名“一孔录”并附原页链接，不得商用。<a href=\"{p}about.html#zhuanzai\">转载说明</a>",
+ "zh-Hans": {"foot_reuse": "原文与古注为公版；白话、引文核对等一孔录所写的核对内容按 <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a> 许可，转载请署名“一孔录”并附原页链接，不得商用。<a href=\"{p}kaifang.html\">转载说明</a>",
   "about_h4": "转载与引用",
   "about_r1": "原文和古注（朱熹集注、皇侃义疏等古刻本）是公版，谁都可以用。",
   "about_r2": "一孔录写的白话、引文核对表、读音索引和专题编排，按 CC BY-NC 4.0 许可：可以转载、改编，须署名“一孔录”、附原页链接、注明有没有改动，不得商用。章页上一孔录自己的读法（常见读法、注里的关键字、诸家、一孔录这样读）不在这个许可之内，短引请注明出处，成段转用请先来信。",
@@ -980,12 +980,7 @@ def draft_sec(D):
             f'<p><a href="/data/chugao-gaidong.json">chugao-gaidong.json</a>（逐集明细）</p>')
 
 def about_zh(L, D, P):
-    """关于页（简繁）：一孔自述。主人 11-09 定：不露脸，把匿名当神秘感，信赖靠可查；照片栏放脸是空洞的头像，寓意一孔。数字建站时按数据算，并注明口径。"""
-    now = datetime.datetime.now(datetime.timezone.utc)
-    def pub_ok(info): return info.get("youtube") and (not info.get("public_at") or datetime.datetime.fromisoformat(info["public_at"]) <= now)
-    eps = {D["ch2ep"][c][0] for c in D["pub"] if c in D["ch2ep"] and pub_ok(D["ch2ep"][c][1]) and "完整版" not in D["ch2ep"][c][0]}
-    chs = sum(1 for c in D["pub"] if c in D["ch2ep"] and pub_ok(D["ch2ep"][c][1]))
-    day = (now + datetime.timedelta(hours=8)).strftime("%m-%d").lstrip("0")
+    """关于页（简繁）：一孔自述。主人 11-09 定：不露脸，把匿名当神秘感，信赖靠可查；照片栏放脸是空洞的头像，寓意一孔。主人删掉平台、数字和转载一节（转载说明在开放数据页）。"""
     kwn = len(D["kw"])
     cards = [
         ("原", "每句有出处", "原文照底本逐字录入，注家原话标页码，附原书影像。", f"{P}banben/", "看底本"),
@@ -1001,10 +996,8 @@ def about_zh(L, D, P):
 <p>我是一孔，不露面，不讲身世，照片只有这一张。古书里“佚名”“某氏曰”多的是，传下来的是话，不是说话的人。</p>
 <p>你不必信我，下面这些都能查。</p></div></div>
 <div class="ykg">{grid}</div>
-<p>截至 {day}，YouTube 已公开 {len(eps)} 集，讲了 {chs} 章，天天更新。</p>
-<h2>在哪里找我</h2><p>{L.t("about_where")}</p>
-<p>留言或写信，每封都看。</p><p class="mailp">{MAIL}</p>
-<h2 id="zhuanzai">{L.t("about_h4")}</h2><ul><li>{L.t("about_r1")}</li><li>{L.t("about_r2")}</li><li>{L.t("about_r3")}</li><li>{L.t("about_r4")}</li><li>{L.t("about_r5", p=P)}</li></ul><p class="outl"><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ YouTube</a> <a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">Bilibili</a></p></main>'''
+<h2>在哪里找我</h2><p>留言或写信，每封都看。</p><p class="mailp">{MAIL}</p></main>'''
+
 
 def yxl_line(L, D, P):
     """首页搜索框下一行小字（简繁）。主人 11-07 定：只留原文已讲字数、视频集数、公开勘误数，找到分等都放方法页。"""
