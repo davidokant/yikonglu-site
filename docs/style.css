@@ -518,11 +518,11 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .bairi .brl li.done a{background:rgba(35,80,63,.08);border-color:rgba(35,80,63,.3)}
 .bairi .brl li.done em::after{content:" ✓";color:var(--accent)}
 .bairi .brl li.now a{border:2px solid #8A5A2C}
-/* 首页统计栏（11-09：页头只留在读人数） */
-.lstat{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:6px 0 14px;padding:12px 4px;border:1px solid var(--line);border-radius:12px;background:var(--paper);text-align:center}
+/* 首页统计行（11-09：页头只留在读人数；主人嫌三格占地，改一行小字，窄屏折行） */
+.lstat{margin:4px 0 10px;font-size:13px;line-height:1.7;color:var(--mute);text-align:center}
 .lstat[hidden]{display:none}
-.lstat span{display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 6px;min-width:0}
-.lstat span+span{border-left:1px solid var(--line)}
+.lstat span{display:inline-block;white-space:nowrap;margin:0 5px}
+.lstat span+span:before{content:"·";margin-right:10px}
 .lstat span[hidden]{display:none}
-.lstat b{font-size:22px;font-weight:700;color:var(--accent);line-height:1.2;font-variant-numeric:tabular-nums}
-.lstat small{font-size:12.5px;color:var(--mute);line-height:1.35}
+.lstat b{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;margin-right:3px}
+.lstat small{font-size:inherit}
