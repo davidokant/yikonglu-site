@@ -118,3 +118,38 @@ def build(L, write, page, live, DOMAIN):
 
 def link(L, P):
     return f'<a href="{P}shuyuan/ruyuan.html" class="sylink">{LINK["zh" if L.code.startswith("zh") else "en"]}</a>'
+
+# 书院首页（11-09 主人：书院介绍提到台前，人物线索深入一层，“跟着人物读”并入主题）
+COURTS = [("menkou", "山门", "谁都能进", "书院介绍、院规、新人报到。上官有理在这里迎新。"),
+          ("lunyu", "共读堂", "论语", "按篇开帖，一篇一帖。孔照今每周发进度，周五点名。"),
+          ("shiyong", "明用斋", "这句话怎么用", "每周会员片一帖，下面聊自己的处境。"),
+          ("shuhou", "藏书阁", "书后面的事", "每月加餐：注家怎么争、一孔按展开、跨章串读。"),
+          ("wen", "问津亭", "问一孔", "书友提问，保证有答。"),
+          ("xiantan", "茶寮", "闲谈", "读书之外的话。")]
+IDENTS = ["书生", "游侠", "商旅", "医者", "匠人", "方外"]
+RANKS = ["初入院", "学童", "生员", "斋长", "讲友"]
+
+def hub(P, mapimg, n_ppl, nowtxt):
+    T = ZH
+    feats = [("每周", "这句话怎么用", "从一章里挑一句，放进今天的处境。一孔录原创角色演成情景短剧，不是满屏书页。"),
+             ("每月", "书后面的事", "注家怎么争、一孔按展开、跨章串读，给想往深里走的书友。"),
+             ("常驻", "书友圈", "把读同一部书、口味相近的人聚在一起：读到哪聊到哪，有人接话，有人较真。"),
+             ("保证", "问一孔必答", "书友的问题保证有答；每季共读、每月音频答疑，年底送电子版珍藏读本。")]
+    ft = "".join(f'<div class="syfeat"><span>{a}</span><b>{b}</b><p>{c}</p></div>' for a, b, c in feats)
+    ct = "".join(f'<div class="sycourt c-{k}"><b>{n}</b><span>{s}</span><p>{d}</p></div>' for k, n, s, d in COURTS)
+    host = "".join(f'<figure><img src="/gushi/img/{k}-head.png" alt="" loading="lazy" width="96" height="96"><figcaption><b>{n}</b>{r}</figcaption></figure>'
+                   for k, n, r in (("youli", "上官有理", "迎新、院规、日常提醒"), ("zhaojin", "孔照今", "主持共读、点名、串场")))
+    return f'''<div class="syhero"><img src="{mapimg}" alt="" width="2000" height="1150"><div class="wrap"><span class="ov">会员书院 · 筹备中</span><h1>一孔书院</h1>
+<p class="symotto">{T["motto"]}</p><p class="syhbtn"><a class="btn" href="{P}shuyuan/ruyuan.html#join">我想第一批加入</a><a class="btn ghost" href="{P}shuyuan/ruyuan.html">看会员有什么 ›</a></p></div></div>
+<main class="wrap narrow gsmain shuyuan">
+<p class="lead">{T["p1"]}</p>
+<h2 class="ph">书院里有什么</h2><div class="syfeats">{ft}</div>
+<h2 class="ph">书院的样子<small>开门后在书友圈里</small></h2>
+<p class="note">书友圈做成一座书院：进山门，按院落分区。入院时挑一个身份（{"、".join(IDENTS)}），发言越多学籍越高：{" → ".join(RANKS)}；会员名旁挂“书院门人”。</p>
+<div class="sycourts">{ct}</div>
+<div class="syhosts">{host}</div>
+<p class="sytrust"><b>{T["how_lead"]}</b>{T["how"]}</p>
+<a class="syjoincard" href="{P}shuyuan/ruyuan.html"><span class="ov">书院会员 · 筹备中</span><b>免费与书院，一张表看清</b><span>权益逐条列出；想第一批加入就点一下，只记人数 ›</span></a>
+<h2 class="ph">书院里的人和地方</h2>
+<div class="sydeep"><a href="{P}shuyuan/juese.html"><b>一孔录原创角色</b><span>{n_ppl} 位常驻书院的人：身份、本领、在哪些章出场 ›</span></a><a href="{P}shuyuan/ditu/"><b>经典世界地图</b><span>片里的世界，一层层点到书区{nowtxt} ›</span></a></div>
+</main>'''

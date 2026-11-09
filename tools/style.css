@@ -204,7 +204,7 @@ a.bb{font-size:12px;margin-left:8px}
 .gsnote{margin:0 0 6px;font-size:13px;color:var(--accent2);letter-spacing:.05em}
 .top nav a.gsnav{color:var(--accent2)}
 .gsmain .lead{font-size:17px}
-.gsroute a,.gsroutes a{color:var(--accent2)}.gsroutes{padding-left:1.2em}
+.gsroute a,.gsroutes a{color:var(--accent2)}ul.gsroutes{padding-left:1.2em}
 .gsnot{display:flex;gap:10px;color:var(--mute)}.gsnot em{font-style:normal}
 .gsmap{position:relative;margin:12px 0}.gsmap img{width:100%;height:auto;display:block;border-radius:8px}
 .gsmap .spot.now{background:transparent;animation:gsp 1.6s infinite}
@@ -458,3 +458,17 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 @media(max-width:560px){.sycast{grid-template-columns:repeat(3,1fr)}}
 .sytrust{border-left:3px solid var(--accent);padding:6px 12px;margin:14px 0;color:var(--fg)}.sytrust b{display:block;color:var(--accent);margin-bottom:2px}
 .syjoincard{display:block;margin:18px 0 8px;padding:16px 18px;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none}.syjoincard .ov{display:block;font-size:13px;opacity:.8}.syjoincard b{display:block;font-size:20px;margin:2px 0 4px}.syjoincard span:last-child{font-size:15px;opacity:.92}.syjoincard:hover{text-decoration:none;filter:brightness(1.08)}
+/* 书院首页（11-09 二版：介绍提到台前） */
+.syhero{position:relative;background:#121a17;color:#fff;overflow:hidden}.syhero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.syhero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,14,.15),rgba(10,16,14,.8))}
+.syhero .wrap{position:relative;z-index:1;padding-top:70px;padding-bottom:30px}.syhero .ov{display:block;font-size:14px;letter-spacing:.1em;color:#cfe3d6}
+.syhero h1{margin:4px 0 6px;font-size:48px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}.syhero .symotto{color:#fff;font-size:20px;margin:0 0 16px;text-shadow:0 1px 6px rgba(0,0,0,.7);border:0;padding:0}
+.syhbtn{display:flex;flex-wrap:wrap;gap:10px;margin:0}.syhero .btn.ghost{color:#fff;border-color:#fff;background:rgba(0,0,0,.25)}
+.syfeats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.syfeat{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--card,transparent)}
+.syfeat span{font-size:12px;letter-spacing:.08em;color:#8a5a2c}.syfeat b{display:block;font-size:19px;margin:2px 0 4px}.syfeat p{margin:0;font-size:15px;color:var(--mute)}
+.sycourts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}.sycourt{border-radius:12px;padding:12px 14px;background:#17211f;color:#e1e7df;border-top:4px solid #2f5d62}
+.sycourt b{display:block;font-size:20px;color:#fff}.sycourt span{font-size:13px;color:#a4cdb2}.sycourt p{margin:6px 0 0;font-size:14px;line-height:1.55;color:#c9d3cc}
+.sycourt.c-menkou{border-top-color:#8a5a2c}.sycourt.c-shiyong{border-top-color:#b07a2a}.sycourt.c-shuhou{border-top-color:#6b5a8a}.sycourt.c-wen{border-top-color:#3c7a8a}.sycourt.c-xiantan{border-top-color:#7a6a4a}
+.syhosts{display:flex;gap:18px;flex-wrap:wrap;margin:6px 0 4px}.syhosts figure{display:flex;align-items:center;gap:10px;margin:0}.syhosts img{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#dfe5dd}.syhosts figcaption{font-size:14px;color:var(--mute)}.syhosts figcaption b{display:block;color:var(--fg);font-size:16px}
+.sydeep{display:grid;grid-template-columns:1fr 1fr;gap:12px}.sydeep a{display:block;border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none}.sydeep b{display:block;font-size:18px}.sydeep span{font-size:14px;color:var(--mute)}
+@media (max-width:700px){.syhero .wrap{padding-top:120px}.syhero h1{font-size:36px}.syhero .symotto{font-size:17px}.syfeats,.sydeep{grid-template-columns:1fr}.sycourts{grid-template-columns:repeat(2,1fr)}}

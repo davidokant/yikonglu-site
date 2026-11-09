@@ -14,6 +14,7 @@
 - 路线.csv：人物,题目,导语,章号,起句,说明      （题目、导语只在该人第一行填；起句用来对号，未讲章显示起句；说明可空）
 """
 import csv, os, re, html, json, datetime, shutil
+import shuyuan as SY
 
 def esc(s): return html.escape(s or "", quote=True)
 
@@ -142,9 +143,9 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
         fl = fields_of(p.get("简介"))
         dl = "".join(f'<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' if k else f'<p>{esc(v)}</p>' for k, v in fl)
         rt = G["routes"].get(p["id"])
-        rlink = f'<a class="gsbtn" href="{P}shuyuan/lu-{p["id"]}.html">跟着{esc(p["名"])}读：{esc(rt["title"] or "路线")} ›</a>' if rt and rt["items"] else ""
+        rlink = f'<a class="gsbtn" href="{P}zhuanti/lu-{p["id"]}.html">跟着{esc(p["名"])}读：{esc(rt["title"] or "路线")} ›</a>' if rt and rt["items"] else ""
         fig = f'<div class="gsfig"><img src="{p["_立绘"]}" alt="{esc(p["名"])}" width="400" height="600"></div>' if p.get("_立绘") else ""
-        h = (f'<div class="gshero person"><div class="wrap gsp">{fig}<div class="gshtext"><p class="gsnote">{NOTICE}</p><p class="crumb"><a href="{P}shuyuan/">书院</a></p>'
+        h = (f'<div class="gshero person"><div class="wrap gsp">{fig}<div class="gshtext"><p class="gsnote">{NOTICE}</p><p class="crumb"><a href="{P}shuyuan/">书院</a> › <a href="{P}shuyuan/juese.html">原创角色</a></p>'
              f'<span class="ov">{esc(p.get("一句关系") or "一孔录原创角色")}</span><h1>{esc(p["名"])}</h1><dl class="gsfields">{dl}</dl>{rlink}</div></div></div>')
         body = h + (f'<main class="wrap narrow gsmain"><h2 class="ph">出场章句<small>已播 {len(mine)} 章</small></h2>'
                     + ("<h3 class=gsbk>《论语》</h3><ol class=ztl>" + items + "</ol>" if items else "<p class=empty>已播各集里还没有。</p>")
@@ -169,10 +170,11 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
                 items += f'<li><span class="gsnot"><em>{c}</em><b>未讲</b></span>' + (f'<p class="zy" lang="zh-Hans">{esc(qi)}……</p>' if qi else "") + (f'<p class="zd">{esc(note)}</p>' if note else "") + "</li>"
           voice = f'<div class="gsvoice">{av(p)}<p>{esc(seg["intro"])}<span>——{esc(p["名"])}</span></p></div>' if seg["intro"] else ""
           secs += f'<h2 class="ph" id="{esc(bk)}">《{esc(bk)}》<small>{esc(seg["title"])}</small></h2>{voice}<ol class="ztl">{items}</ol>'
-        rel = f"shuyuan/lu-{pid}.html"
+        rel = f"zhuanti/lu-{pid}.html"
         tl = " · ".join(f"《{b}》{sg['title']}" for b, sg in rt["books"].items() if b == "论语")
-        body = hero(f"跟着{p['名']}读", "读书线") + f'<main class="wrap narrow gsmain"><p class="note">{esc(p["名"])}一路读过的书，按书分段。下面是原文与章节页链接；角色只在每段导语里出现，读法以章节页为准。</p>{secs}</main>'
+        body = hero(f"跟着{p['名']}读", "读书线").replace(f'<a href="{P}shuyuan/">书院</a>', f'<a href="{P}zhuanti/">专题</a>') + f'<main class="wrap narrow gsmain"><p class="note">{esc(p["名"])}一路读过的书，按书分段。下面是原文与章节页链接；角色只在每段导语里出现，读法以章节页为准。</p>{secs}</main>'
         write(rel, page(L, f"跟着{p['名']}读：{tl}｜一孔录·书院", (rt["intro"] or rt["title"])[:100], rel, body, ld(f"跟着{p['名']}读", U(rel), rt["intro"], [p["名"]]), "pg-gushi")); urls.append(U(rel))
+        for old in (f"shuyuan/lu-{pid}.html", f"gushi/lu-{pid}.html"): write(old, SY.redirect(f"/{L.prefix}{rel}"))
         rlist += f'<a class="gsroute" href="{P}{rel}">{av(p)}<div><b>跟着{esc(p["名"])}读<span>{esc(tl)}</span></b><p>{esc(rt["intro"])}</p></div></a>'
     # 十三经岛导览
     if G["zones"] or mapimg:
@@ -245,13 +247,8 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
         write(rel + ("index.html" if nid == "world" else ""), page(L, f'{n["title"]}｜一孔录·地图', f'一孔录片中的虚构地图：{n["title"]}。', rel, body, ld(n["title"], U(rel), "一孔录片中的虚构地图"), "pg-gushi", og_img=f"gushi/img/ditu/{nid}-{v}.jpg")); urls.append(U(rel))
     # 栏目首页
     nowtxt = f"，现在讲到《{esc(now_zone['书名'])}》" if now_zone else ""
-    teaser = (f'<a class="gsteaser" href="{P}shuyuan/ditu/"><img src="/gushi/img/ditu/world-{v}.jpg" alt="" loading="lazy"><div><span class="ov">片中的世界地图</span><b>经典世界</b><span>从世界一层层点进去：区域、书区{nowtxt} ›</span></div></a>' if T else
-              f'<a class="gsteaser" href="{P}shuyuan/dao.html"><img src="{mapimg}" alt="" loading="lazy"><div><span class="ov">片中的书区地图</span><b>十三经岛</b><span>每部经典一座岛{nowtxt} ›</span></div></a>' if mapimg else "")
-    body = hero("一孔书院", "原创角色、经典世界与书友", crumb=False, cls="index") + (
-        f'<main class="wrap narrow gsmain">'
-        f'<a class="syjoincard" href="{P}shuyuan/ruyuan.html"><span class="ov">书院会员 · 筹备中</span><b>入院：和口味相近的书友一起读</b><span>每周“这句话怎么用”、书友圈、问一孔必答……看看里面有什么，想第一批加入就点一下 ›</span></a>'
-        f'<h2 class="ph">一孔录原创角色</h2><div class="gscards">{cards}</div>'
-        + (f'<h2 class="ph">跟着一个人读</h2><div class="gsroutes">{rlist}</div>' if rlist else "")
-        + (f'<h2 class="ph">地图</h2>{teaser}' if teaser else "") + "</main>")
-    write("shuyuan/index.html", page(L, "一孔书院：原创角色、经典世界与书友｜一孔录", "一孔录的书院：视频里的原创人物与书区地图，以及书院会员（筹备中）。", "shuyuan/", body, ld("一孔录·书院", U("shuyuan/"), "一孔录视频里的原创人物与书区地图", [p["名"] for p in G["ppl"]]), "pg-gushi", og_img=(mapimg or "").lstrip("/") or None)); urls.append(U("shuyuan/"))
+    jb = hero("一孔录原创角色", "书院里的人") + f'<main class="wrap narrow gsmain"><p class="lead">书院里常驻的六个人，都是一孔录原创角色，由智器主持，读法以“一孔按”为准。点进去看各人的身份、本领，和在哪些章出场；想跟着一个人读，去<a href="{P}zhuanti/">专题</a>里的“跟着一个人读”。</p><div class="gscards">{cards}</div></main>'
+    write("shuyuan/juese.html", page(L, "一孔录原创角色｜一孔书院", "一孔书院里常驻的六个原创角色：身份、本领与出场章句。", "shuyuan/juese.html", jb, ld("一孔录原创角色", U("shuyuan/juese.html"), "一孔录视频里的原创人物", [p["名"] for p in G["ppl"]]), "pg-gushi")); urls.append(U("shuyuan/juese.html"))
+    body = SY.hub(P, f"/gushi/img/ditu/world-{v}.jpg" if T else mapimg, len(G["ppl"]), nowtxt)
+    write("shuyuan/index.html", page(L, "一孔书院：免费管读懂，书院管用上｜一孔录", "一孔书院（筹备中）：每周“这句话怎么用”、每月“书后面的事”、书友圈、问一孔必答。免费内容永远免费。", "shuyuan/", body, ld("一孔书院", U("shuyuan/"), "一孔录的会员书院（筹备中）与书友圈"), "pg-gushi", og_img=(f"gushi/img/ditu/world-{v}.jpg" if T else (mapimg or "").lstrip("/")) or None)); urls.append(U("shuyuan/"))
     return urls
