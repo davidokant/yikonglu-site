@@ -9,6 +9,13 @@ const now = () => Date.now();
 const PIAN = ["xue-er", "wei-zheng", "ba-yi", "li-ren", "gong-ye-chang", "yong-ye", "shu-er", "tai-bo", "zi-han", "xiang-dang", "xian-jin", "yan-yuan", "zi-lu", "xian-wen", "wei-ling-gong", "ji-shi", "yang-huo", "wei-zi", "zi-zhang", "yao-yue"]; // 论语二十篇网址
 const chUrl = (c) => { const [a, n] = c.split("."); return `https://yikonglu.com/lunyu/${PIAN[+a - 1]}/${n}.html`; };
 
+// ---------- 书院世界：身份与学籍 ----------
+const IDENT = { shusheng: ["书生", "书"], youxia: ["游侠", "侠"], shanglv: ["商旅", "商"], yizhe: ["医者", "医"], jiangren: ["匠人", "匠"], fangwai: ["方外", "方"] };
+const AV_BASE = "https://img.yikonglu.com/shuyuan/av/"; // 身份头像（Codex 出图到了放这里：<身份>.png）；没图时用字
+const RANKS = [[150, "讲友"], [60, "斋长"], [20, "生员"], [5, "学童"], [0, "初入院"]];
+const rankOf = (n) => RANKS.find(([k]) => (n || 0) >= k)[1];
+const HAS_AV = false; // 头像图上了再改 true
+
 // ---------- 小工具 ----------
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 function fmtBody(s) { // 纯文本：转义、自动链接、保留换行
@@ -67,6 +74,11 @@ form label{display:block;margin:10px 0 4px;font-size:15px}input[type=text],input
 textarea{min-height:140px}button,.btn{display:inline-block;margin-top:12px;padding:8px 20px;border:0;border-radius:99px;background:var(--accent);color:#fff;font:inherit;cursor:pointer}
 .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}.err{color:var(--red)}.ok{color:var(--accent)}
 .hp{position:absolute;left:-9999px}footer{color:var(--mute);font-size:13px;text-align:center;padding:30px 16px}
+
+.maphero{position:relative;border-radius:12px;overflow:hidden;margin:4px 0 14px;background:#16201b}.maphero img{display:block;width:100%;height:190px;object-fit:cover;opacity:.7}.maphero div{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff}.maphero h1{margin:0;color:#fff}.maphero p{margin:2px 0 0;font-size:14px;opacity:.92}
+.post .rank{font-size:12px;color:var(--mute);margin-left:6px}.post .tag.men{color:var(--accent);border-color:var(--accent)}
+.av.id-shusheng{background:#dfe8e2;color:#23503f}.av.id-youxia{background:#efe2d6;color:#8a5a2c}.av.id-shanglv{background:#efe9d4;color:#7a6420}.av.id-yizhe{background:#dcebe8;color:#2c6a60}.av.id-jiangren{background:#e6e1dc;color:#5c4a3a}.av.id-fangwai{background:#e7e3ee;color:#5a4a7a}
+.idpick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.idpick label{display:flex;align-items:center;gap:6px;margin:0;border:1px solid var(--line);border-radius:10px;padding:6px 8px;cursor:pointer;font-size:15px}.idpick .av{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}.idpick input{position:absolute;opacity:0;width:0;height:0}.idpick label{position:relative;white-space:nowrap;justify-content:center}.idpick label:has(input:checked){border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset;font-weight:700}
 code{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 6px}`;
 
 function page(title, body, u) {
@@ -81,9 +93,17 @@ function page(title, body, u) {
 }
 const notFound = (u) => { const r = page("找不到", `<h1>找不到这一页</h1><p><a href="/">回书友圈</a></p>`, u); return new Response(r.body, { status: 404, headers: r.headers }); };
 function avatar(u) {
-  return u.avatar ? `<img class="av" src="${esc(u.avatar)}" alt="">` : `<span class="av">${esc((u.name || "?").slice(0, 1))}</span>`;
+  if (u.avatar) return `<img class="av" src="${esc(u.avatar)}" alt="">`;
+  const id = IDENT[u.ident];
+  if (id && HAS_AV) return `<img class="av" src="${AV_BASE}${u.ident}.png" alt="${id[0]}">`;
+  return `<span class="av id-${esc(u.ident || "none")}">${esc(id ? id[1] : (u.name || "?").slice(0, 1))}</span>`;
 }
-const whoTag = (u) => (u.tag ? `<span class="tag">${esc(u.tag)}</span>` : u.role === "admin" ? '<span class="tag">一孔录</span>' : "");
+function whoTag(u) {
+  if (u.tag) return `<span class="tag">${esc(u.tag)}</span>`;
+  if (u.role === "admin") return '<span class="tag">一孔录</span>';
+  const id = IDENT[u.ident];
+  return `<span class="rank">${id ? id[0] + " · " : ""}${rankOf(u.posts)}</span>${u.role === "member" ? '<span class="tag men">书院门人</span>' : ""}`;
+}
 
 // ---------- 页面 ----------
 async function home(env, u) {
@@ -91,9 +111,9 @@ async function home(env, u) {
     "SELECT b.*, (SELECT COUNT(*) FROM threads t WHERE t.board_id=b.id) n, (SELECT MAX(last_at) FROM threads t WHERE t.board_id=b.id) last FROM boards b ORDER BY sort").all();
   const li = boards.map((b) => `<li><a class="t" href="/b/${b.slug}">${esc(b.name)}</a>${b.members_only ? '<span class="lock">会员</span>' : ""}<span class="mute" style="flex-basis:100%">${esc(b.descr)}</span><span class="m">${b.n} 帖${b.last ? " · " + fmtTime(b.last) : ""}</span></li>`).join("");
   const hello = !u
-    ? `<div class="box">书友圈只给一孔书院的书友。先<a href="/register">注册</a>（只要网名和密码），再用入会邀请码进会员区。“门口”谁都能看。</div>`
+    ? `<div class="box">书友圈只给一孔书院的书友。先<a href="/register">注册</a>（只要网名和密码），再用入会邀请码进会员区。“山门”谁都能看。</div>`
     : u.role === "guest" ? `<div class="box">你已注册，还没入会。拿到邀请码后，<a href="/invite">在这里入会</a>。</div>` : "";
-  return page("首页", `<h1>${SITE}</h1><p class="mute">把读同一部书、口味相近的人聚在一起：读到哪聊到哪，有人接话，有人较真。</p>${hello}<ul class="list">${li}</ul>`, u);
+  return page("首页", `<div class="maphero"><img src="https://img.yikonglu.com/gushi/img/ditu/world-%E7%AE%80.jpg" alt=""><div><h1>一孔书院</h1><p>把读同一部书、口味相近的人聚在一起：读到哪聊到哪，有人接话，有人较真。</p></div></div>${hello}<h2>院落</h2><ul class="list">${li}</ul>${u ? `<p class="mute">你的学籍：${IDENT[u.ident] ? IDENT[u.ident][0] + " · " : ""}${rankOf(u.posts)}。多发言、多参加共读，学籍会升：初入院 → 学童 → 生员 → 斋长 → 讲友。</p>` : ""}`, u);
 }
 
 async function board(env, u, slug) {
@@ -111,7 +131,7 @@ async function thread(env, u, id, msg = "") {
   const t = await env.DB.prepare("SELECT t.*, b.slug, b.name bname, b.members_only FROM threads t JOIN boards b ON b.id=t.board_id WHERE t.id=?").bind(id).first();
   if (!t) return notFound(u);
   if (t.members_only && !isMember(u)) return page(t.bname, `<h1>${esc(t.bname)}</h1><div class="box">这一帖在会员区。${u ? '<a href="/invite">用邀请码入会</a>' : '<a href="/login">登录</a>'}。</div>`, u);
-  const { results } = await env.DB.prepare("SELECT p.*, u.name, u.role, u.avatar, u.tag FROM posts p JOIN users u ON u.id=p.user_id WHERE thread_id=? ORDER BY p.id").bind(id).all();
+  const { results } = await env.DB.prepare("SELECT p.*, u.name, u.role, u.avatar, u.tag, u.ident, u.posts FROM posts p JOIN users u ON u.id=p.user_id WHERE thread_id=? ORDER BY p.id").bind(id).all();
   const ps = results.map((p, i) => `<div class="post" id="p${p.id}">${avatar(p)}<div><div><span class="who">${esc(p.name)}</span>${whoTag(p)} <span class="mute">${i ? "#" + i + " · " : ""}${fmtTime(p.created)}</span></div><div class="body">${fmtBody(p.body)}</div></div></div>`).join("");
   const adm = isAdmin(u) ? `<form method="post" action="/t/${id}/flag" class="mute" style="margin-top:6px"><button name="f" value="pinned" class="btn ghost" style="padding:2px 12px">${t.pinned ? "取消置顶" : "置顶"}</button> <button name="f" value="answered" class="btn ghost" style="padding:2px 12px">${t.answered ? "取消已答" : "标已答"}</button></form>` : "";
   const canReply = u && (isMember(u) || !t.members_only);
@@ -135,6 +155,7 @@ function authForm(kind, err = "", name = "") {
   return `<h1>${reg ? "注册" : "登录"}</h1>${err ? `<p class="err">${esc(err)}</p>` : ""}<form method="post" class="box">
 <label>网名（2—16 字，别用真名）</label><input type="text" name="name" value="${esc(name)}" required minlength="2" maxlength="16" autocomplete="username">
 <label>密码（至少 8 位）</label><input type="password" name="pw" required minlength="8" autocomplete="${reg ? "new-password" : "current-password"}">
+${reg ? `<label>你在书院里是什么身份（决定头像）</label><div class="idpick">${Object.entries(IDENT).map(([k, v], i) => `<label><input type="radio" name="ident" value="${k}"${i ? "" : " checked"}><span class="av id-${k}">${v[1]}</span>${v[0]}</label>`).join("")}</div>` : ""}
 ${reg ? '<label>入会邀请码（有就填，没有可以先空着）</label><input type="text" name="code" autocomplete="off"><input class="hp" name="website" tabindex="-1" autocomplete="off">' : ""}
 <button>${reg ? "注册" : "登录"}</button></form>
 <p class="mute">${reg ? '不要邮箱、不要手机号。忘了密码，找上官有理要一个重置码，在<a href="/reset">这里</a>改。' : '还没有账号？<a href="/register">注册</a>。忘了密码？<a href="/reset">用重置码改</a>。'}</p>`;
@@ -181,6 +202,7 @@ async function newThread(env, boardId, uid, title, body, chapter) {
   const r = await env.DB.prepare("INSERT INTO threads (board_id, user_id, title, chapter, created, last_at) VALUES (?, ?, ?, ?, ?, ?)").bind(boardId, uid, title, chapter, t, t).run();
   const id = r.meta.last_row_id;
   await env.DB.prepare("INSERT INTO posts (thread_id, user_id, body, created) VALUES (?, ?, ?, ?)").bind(id, uid, body, t).run();
+  await env.DB.prepare("UPDATE users SET posts=posts+1 WHERE id=?").bind(uid).run();
   return id;
 }
 
@@ -235,7 +257,8 @@ const App = {
       if (pw.length < 8) return page("注册", authForm("register", "密码至少 8 位。", name), u);
       if (await env.DB.prepare("SELECT 1 FROM users WHERE lower(name)=lower(?)").bind(name).first()) return page("注册", authForm("register", "这个网名有人用了，换一个。", name), u);
       const salt = rand(16), h = await hashPw(pw, salt);
-      const r = await env.DB.prepare("INSERT INTO users (name, pw, salt, role, created) VALUES (?, ?, ?, 'guest', ?)").bind(name, h, salt, now()).run();
+      const ident = IDENT[f("ident")] ? f("ident") : "shusheng";
+      const r = await env.DB.prepare("INSERT INTO users (name, pw, salt, role, ident, created) VALUES (?, ?, ?, 'guest', ?, ?)").bind(name, h, salt, ident, now()).run();
       const uid = r.meta.last_row_id, inv = await useInvite(env, uid, f("code"), ["member", "admin"]);
       if (inv) await env.DB.prepare("UPDATE users SET role=? WHERE id=?").bind(inv.kind === "admin" ? "admin" : "member", uid).run();
       return redirect("/", { "Set-Cookie": await startSession(env, uid) });
@@ -301,6 +324,7 @@ const App = {
         const ts = now();
         await env.DB.prepare("INSERT INTO posts (thread_id, user_id, body, created) VALUES (?, ?, ?, ?)").bind(t.id, await resolveAs(env, u, f("as")), body, ts).run();
         await env.DB.prepare("UPDATE threads SET replies=replies+1, last_at=? WHERE id=?").bind(ts, t.id).run();
+        await env.DB.prepare("UPDATE users SET posts=posts+1 WHERE id=?").bind(await resolveAs(env, u, f("as"))).run();
       }
       return redirect(`/t/${t.id}#end`);
     }

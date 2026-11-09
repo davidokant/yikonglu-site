@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS users (
   salt TEXT,
   role TEXT NOT NULL DEFAULT 'guest', -- guest 注册未入会 | member 会员 | admin 管理 | char 原创角色
   avatar TEXT, tag TEXT,              -- 角色账号的头像与小标
+  ident TEXT,                         -- 书院世界里的身份：shusheng youxia shanglv yizhe jiangren fangwai
+  posts INTEGER DEFAULT 0,            -- 发言数，算学籍
   created INTEGER NOT NULL
 );
 CREATE UNIQUE INDEX IF NOT EXISTS u_name ON users (lower(name));
@@ -37,12 +39,12 @@ CREATE TABLE IF NOT EXISTS scheduled (           -- 角色定时帖：到点由 
 CREATE TABLE IF NOT EXISTS hits (k TEXT PRIMARY KEY, n INTEGER, until INTEGER);  -- 简单限流
 
 INSERT OR IGNORE INTO boards (slug, name, descr, sort, members_only) VALUES
- ('menkou', '门口', '书院介绍、群规、新人报到。上官有理在这里迎新。', 1, 0),
- ('lunyu', '共读·论语', '按篇开帖，一篇一帖。孔照今每周一发进度，周五点名。', 2, 1),
- ('shiyong', '这句话怎么用', '每周会员片一帖，下面聊自己的处境。', 3, 1),
- ('shuhou', '书后面的事', '每月加餐：注家怎么争、一孔按展开、跨章串读。', 4, 1),
- ('wen', '问一孔', '书友提问，保证有答；答了标“已答”。', 5, 1),
- ('xiantan', '闲谈', '读书之外的话。', 6, 1);
+ ('menkou', '山门', '书院介绍、院规、新人报到。上官有理在这里迎新。', 1, 0),
+ ('lunyu', '共读堂 · 论语', '按篇开帖，一篇一帖。孔照今每周一发进度，周五点名。', 2, 1),
+ ('shiyong', '明用斋 · 这句话怎么用', '每周会员片一帖，下面聊自己的处境。', 3, 1),
+ ('shuhou', '藏书阁 · 书后面的事', '每月加餐：注家怎么争、一孔按展开、跨章串读。', 4, 1),
+ ('wen', '问津亭 · 问一孔', '书友提问，保证有答；答了标“已答”。', 5, 1),
+ ('xiantan', '茶寮 · 闲谈', '读书之外的话。', 6, 1);
 INSERT OR IGNORE INTO users (name, role, avatar, tag, created) VALUES
  ('上官有理', 'char', 'https://img.yikonglu.com/gushi/img/youli-head.png', '一孔录原创角色·智器主持', 0),
  ('孔照今', 'char', 'https://img.yikonglu.com/gushi/img/zhaojin-head.png', '一孔录原创角色·智器主持', 0);
