@@ -8,11 +8,11 @@
   var K = "yk_xd", TOTAL = { lunyu: 498 }, BOOKN = { lunyu: ["论语", "論語", "Analects"] };
   var lang = document.documentElement.lang || "", HANT = /Hant/.test(lang), ZH = /^zh/.test(lang);
   var T = ZH ? (HANT ? {
-    go: "接着讀", last: "上次讀到", prog: "已讀 {n} / {t} 章", priv: "記錄只存在這台裝置的瀏覽器裡，不用登錄，一孔錄看不到。", move: "帶到別的裝置", clear: "清除記錄", copied: "鏈接已複製：在另一台裝置打開，記錄就帶過去了。", imported: "閱讀記錄已導入。", ago: ["剛剛", "{n} 分鐘前", "{n} 小時前", "{n} 天前"], sure: "清除這台裝置上的閱讀記錄？"
+    go: "接着讀", last: "上次讀到", prog: "已讀 {n} / {t} 章", priv: "一孔錄採用免登錄技術，免隱私，不打擾。", move: "帶到別的裝置", clear: "清除記錄", copied: "鏈接已複製：在另一台裝置打開，記錄就帶過去了。", imported: "閱讀記錄已導入。", ago: ["剛剛", "{n} 分鐘前", "{n} 小時前", "{n} 天前"], sure: "清除這台裝置上的閱讀記錄？"
   } : {
-    go: "接着读", last: "上次读到", prog: "已读 {n} / {t} 章", priv: "记录只存在这台设备的浏览器里，不用登录，一孔录看不到。", move: "带到别的设备", clear: "清除记录", copied: "链接已复制：在另一台设备打开，记录就带过去了。", imported: "阅读记录已导入。", ago: ["刚刚", "{n} 分钟前", "{n} 小时前", "{n} 天前"], sure: "清除这台设备上的阅读记录？"
+    go: "接着读", last: "上次读到", prog: "已读 {n} / {t} 章", priv: "一孔录采用免登录技术，免隐私，不打扰。", move: "带到别的设备", clear: "清除记录", copied: "链接已复制：在另一台设备打开，记录就带过去了。", imported: "阅读记录已导入。", ago: ["刚刚", "{n} 分钟前", "{n} 小时前", "{n} 天前"], sure: "清除这台设备上的阅读记录？"
   }) : {
-    go: "Continue reading", last: "Last read", prog: "{n} of {t} chapters read", priv: "Saved only in this browser. No sign-in; we can't see it.", move: "Move to another device", clear: "Clear", copied: "Link copied. Open it on your other device to bring your progress along.", imported: "Reading progress imported.", ago: ["just now", "{n} min ago", "{n} h ago", "{n} d ago"], sure: "Clear reading progress on this device?"
+    go: "Continue reading", last: "Last read", prog: "{n} of {t} chapters read", priv: "No sign-in, no personal data, no interruptions.", move: "Move to another device", clear: "Clear", copied: "Link copied. Open it on your other device to bring your progress along.", imported: "Reading progress imported.", ago: ["just now", "{n} min ago", "{n} h ago", "{n} d ago"], sure: "Clear reading progress on this device?"
   };
   function load() { try { return JSON.parse(localStorage.getItem(K) || "null") || { b: {} } } catch (e) { return null } }
   function save(s) { try { localStorage.setItem(K, JSON.stringify(s)); return true } catch (e) { return false } }
