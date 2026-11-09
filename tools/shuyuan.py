@@ -104,10 +104,17 @@ fetch(U+'/intent',{method:'POST',headers:{'Content-Type':'application/json'},bod
 })();</script>""")
     return out, T
 
+def redirect(to):  # 搬走的旧网址：只留一张转跳页，不进站点地图
+    return (f'<!doctype html><html><head><meta charset="utf-8"><title>一孔书院</title><link rel="canonical" href="https://yikonglu.com{to}">'
+            f'<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={to}"><script>location.replace({json.dumps(to)}+location.hash)</script></head>'
+            f'<body><main><p>已搬到 <a href="{to}">{to}</a></p></main></body></html>')
+
 def build(L, write, page, live, DOMAIN):
     b, T = body(L, live)
-    write("shuyuan.html", page(L, f'{T["title"]}｜一孔录', T["p1"][:120], "shuyuan.html", b))
-    return [f"{DOMAIN}/{L.prefix}shuyuan.html"]
+    if L.code.startswith("zh"): b = b.replace('<div class="chhead"><div class="wrap"><h1>', f'<div class="chhead"><div class="wrap"><p class="crumb"><a href="/{L.prefix}shuyuan/">一孔书院</a></p><h1>', 1)
+    write("shuyuan/ruyuan.html", page(L, f'{T["title"]}｜一孔录', T["p1"][:120], "shuyuan/ruyuan.html", b))
+    write("shuyuan.html", redirect(f"/{L.prefix}shuyuan/ruyuan.html"))
+    return [f"{DOMAIN}/{L.prefix}shuyuan/ruyuan.html"]
 
 def link(L, P):
-    return f'<a href="{P}shuyuan.html" class="sylink">{LINK["zh" if L.code.startswith("zh") else "en"]}</a>'
+    return f'<a href="{P}shuyuan/ruyuan.html" class="sylink">{LINK["zh" if L.code.startswith("zh") else "en"]}</a>'

@@ -854,7 +854,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
         jsonld = dict(jsonld, **{"@graph": [_own(x) for x in jsonld["@graph"]]}) if "@graph" in jsonld else _own(jsonld)
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>' if jsonld else ""
     codes = codes or list(LANGS)  # 只有部分语种的页（如“故事”栏只出简繁）
-    if rel.startswith(("gushi/", "renwu/")): codes = ["zh-Hans", "zh-Hant"]
+    if rel.startswith(("gushi/", "renwu/")) or (rel.startswith("shuyuan/") and rel != "shuyuan/ruyuan.html"): codes = ["zh-Hans", "zh-Hant"]
     alt_links = "".join(f'<link rel="alternate" hreflang="{LANGS[k][2]}" href="{DOMAIN}/{LANGS[k][0]}{rel}">' for k in codes)
     alt_links += f'<link rel="alternate" hreflang="x-default" href="{DOMAIN}/{rel}">'
     sw = "".join(f'<a href="{DOMAIN}/{LANGS[k][0]}{rel if k in codes else ""}" data-lang="{k}"{" class=cur" if k == L.code else ""}>{LANGS[k][1]}</a>' for k in LANGS)
@@ -894,7 +894,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <body class="{cls}">
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>{'<span class="livep" id="livep" hidden></span>' if ANALYTICS.get("live") else ""}
-<nav><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}gushi/" class="gsnav">故事</a>' if gs else ""}
+<nav><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}shuyuan/" class="gsnav">书院</a>' if gs else ""}
 <details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}wen.html">{lang_tab(WEN, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary><span class="lfull">{L.name}</span><span class="lshort" aria-hidden="true">{LANG_SHORT.get(L.code, L.code[:2].upper())}</span></summary><div>{sw}</div></details></nav>
 </div></header>
@@ -905,7 +905,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
 <p class="where">{where_html(L)}</p>
-<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}gushi/">故事</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
+<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}shuyuan/">书院</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
 <p class="freuse">{L.t("foot_reuse", p=P)}</p>
@@ -1743,7 +1743,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     routes = ""
     if D.get("gushi") and L.code.startswith("zh") and D["gushi"]["routes"]:  # 乙类：路线页并入专题栏
         routes = f'<h2 class="ph">{L.t("zt_routes")}</h2><p class="note">{L.t("zt_routes_p")}</p><ul class="gsroutes">' + "".join(
-            f'<li><a href="{P}gushi/lu-{pid}.html"><b>跟着{esc(D["gushi"]["by"][pid]["名"])}读</b>：{esc(rt["title"])}</a></li>' for pid, rt in D["gushi"]["routes"].items() if rt["items"]) + "</ul>"
+            f'<li><a href="{P}shuyuan/lu-{pid}.html"><b>跟着{esc(D["gushi"]["by"][pid]["名"])}读</b>：{esc(rt["title"])}</a></li>' for pid, rt in D["gushi"]["routes"].items() if rt["items"]) + "</ul>"
     body_zt_index = lambda zl: f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zt_sub")}</span>{L.t("zt_title")}</h1></div></div>
 <main class="wrap narrow"><p class="lead">{L.t("zt_p")}</p><div class="ztcards">{zl}</div>{routes}</main>'''
     body = body_zt_index(zlist)
@@ -1768,7 +1768,10 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
         body = body_zt_index(zlist)
     write("zhuanti/index.html", page(L, f'{L.t("zt_title")}｜一孔录', L.t("zt_sub"), "zhuanti/", body)); urls.append(f"{DOMAIN}/{L.prefix}zhuanti/")
     if D.get("gushi") and L.code.startswith("zh"):  # “故事”栏：只简繁
-        urls += GS.build(L, D, D["gushi"], write, page, P, rel_of, title_of, split_ju, DOMAIN)
+        gsu = GS.build(L, D, D["gushi"], write, page, P, rel_of, title_of, split_ju, DOMAIN); urls += gsu
+        for u in gsu:  # 旧“故事”栏 /gushi/ 全部转跳到 /shuyuan/（11-09 主人改名并入书院）
+            new = u[len(DOMAIN) + 1 + len(L.prefix):]; new_rel = new + ("index.html" if new.endswith("/") else "")
+            write("gushi/" + new_rel[len("shuyuan/"):], SY.redirect(f"/{L.prefix}{new}"))
     if D.get("renwu") and L.code.startswith("zh"):  # 论语人物：先只简繁
         urls += RW.build(L, D, D["renwu"], write, page, P, rel_of, title_of, DOMAIN)
     # 一孔影响力方法页（先只简繁；外文页由语种切换链到简体）
