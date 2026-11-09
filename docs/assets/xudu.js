@@ -8,11 +8,11 @@
   var K = "yk_xd", TOTAL = { lunyu: 498 }, BOOKN = { lunyu: ["论语", "論語", "Analects"] };
   var lang = document.documentElement.lang || "", HANT = /Hant/.test(lang), ZH = /^zh/.test(lang);
   var T = ZH ? (HANT ? {
-    go: "接着讀", last: "上次讀到", prog: "已讀 {n} / {t} 章", priv: "一孔錄無需登錄，不取隱私，不打擾。", move: "帶到別的裝置", clear: "清除記錄", copied: "鏈接已複製：在另一台裝置打開，記錄就帶過去了。", imported: "閱讀記錄已導入。", ago: ["剛剛", "{n} 分鐘前", "{n} 小時前", "{n} 天前"], sure: "清除這台裝置上的閱讀記錄？"
+    go: "接着讀", last: "上次讀到", prog: "已讀 {n} / {t} 章", priv: "一孔錄無需登錄，不取隱私，不打擾。", move: "把閱讀記錄帶到別的裝置", mvh: "在這台裝置生成一個專屬鏈接，到另一台手機或電腦的瀏覽器裡打開，讀到哪、讀過哪些章就都帶過去了。不用登錄。", cpy: "複製鏈接", snd: "發給自己…", cls2: "收起", clear: "清除記錄", copied: "鏈接已複製。到另一台裝置的瀏覽器裡貼上打開即可。", imported: "閱讀記錄已導入。", ago: ["剛剛", "{n} 分鐘前", "{n} 小時前", "{n} 天前"], sure: "清除這台裝置上的閱讀記錄？"
   } : {
-    go: "接着读", last: "上次读到", prog: "已读 {n} / {t} 章", priv: "一孔录无需登录，不取隐私，不打扰。", move: "带到别的设备", clear: "清除记录", copied: "链接已复制：在另一台设备打开，记录就带过去了。", imported: "阅读记录已导入。", ago: ["刚刚", "{n} 分钟前", "{n} 小时前", "{n} 天前"], sure: "清除这台设备上的阅读记录？"
+    go: "接着读", last: "上次读到", prog: "已读 {n} / {t} 章", priv: "一孔录无需登录，不取隐私，不打扰。", move: "把阅读记录带到别的设备", mvh: "在这台设备生成一个专属链接，到另一台手机或电脑的浏览器里打开，读到哪、读过哪些章就都带过去了。不用登录。", cpy: "复制链接", snd: "发给自己…", cls2: "收起", clear: "清除记录", copied: "链接已复制。到另一台设备的浏览器里粘贴打开即可。", imported: "阅读记录已导入。", ago: ["刚刚", "{n} 分钟前", "{n} 小时前", "{n} 天前"], sure: "清除这台设备上的阅读记录？"
   }) : {
-    go: "Continue reading", last: "Last read", prog: "{n} of {t} chapters read", priv: "No sign-in, no personal data, no interruptions.", move: "Move to another device", clear: "Clear", copied: "Link copied. Open it on your other device to bring your progress along.", imported: "Reading progress imported.", ago: ["just now", "{n} min ago", "{n} h ago", "{n} d ago"], sure: "Clear reading progress on this device?"
+    go: "Continue reading", last: "Last read", prog: "{n} of {t} chapters read", priv: "No sign-in, no personal data, no interruptions.", move: "Move reading progress to another device", mvh: "This makes a private link. Open it in a browser on your other phone or computer and your progress comes along. No sign-in.", cpy: "Copy link", snd: "Send to myself…", cls2: "Close", clear: "Clear", copied: "Link copied. Open it on your other device to bring your progress along.", imported: "Reading progress imported.", ago: ["just now", "{n} min ago", "{n} h ago", "{n} d ago"], sure: "Clear reading progress on this device?"
   };
   function load() { try { return JSON.parse(localStorage.getItem(K) || "null") || { b: {} } } catch (e) { return null } }
   function save(s) { try { localStorage.setItem(K, JSON.stringify(s)); return true } catch (e) { return false } }
@@ -26,6 +26,7 @@
   var css = ".xdbar{background:var(--paper,#fbfaf5);border:1px solid var(--line,#dcded2);border-left:4px solid #8a5a2c;border-radius:10px;padding:12px 14px;margin:14px auto;max-width:860px;font-size:15px;line-height:1.6}"
     + ".xdbar .xdgo{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none}.xdbar .xdgo b{color:#23503f;font-size:17px}.xdbar .xdgo .xdarr{margin-left:auto;background:#23503f;color:#fff;border-radius:99px;padding:3px 14px;white-space:nowrap;font-size:14px}"
     + ".xdbar .xdmeta{color:var(--mute,#69716b);font-size:13px;margin-top:6px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}.xdbar .xdmeta button{background:none;border:0;padding:0;color:#23503f;font:inherit;cursor:pointer;text-decoration:underline}"
+    + ".xdmvp{margin-top:10px;padding:10px 12px;background:var(--bg,#f2f1ea);border-radius:8px;font-size:14px}.xdmvp p{margin:0 0 8px}.xdmvp button{margin:0 8px 0 0;padding:5px 14px;border-radius:99px;border:1px solid #23503f;background:#23503f;color:#fff;font:inherit;cursor:pointer}.xdmvp .xdb2,.xdmvp .xdb3{background:transparent;color:#23503f}"
     + ".xdprog{height:6px;background:var(--line,#dcded2);border-radius:99px;overflow:hidden;margin-top:8px}.xdprog i{display:block;height:100%;background:#8a5a2c}"
     + ".xdseen::after{content:'✓';margin-left:6px;color:#8a5a2c;font-weight:700}.xdtoast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1f2421;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;z-index:99;max-width:90vw}"
     + ".xdpill{display:table;margin:12px auto 4px;background:rgba(251,250,245,.94);color:#23503f;border-radius:99px;padding:7px 16px;font-size:15px;font-weight:700;text-decoration:none;max-width:92%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 2px 10px rgba(0,0,0,.25)}"
@@ -46,14 +47,22 @@
       save(S); history.replaceState(null, "", location.pathname + location.search); style(); toast(T.imported);
     } catch (e) { }
   }
-  function moveLink() {
+  function moveUrl() {
     var s = btoa(unescape(encodeURIComponent(JSON.stringify({ b: S.b })))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-    var u = location.origin + "/" + (pre ? pre + "/" : "") + "#xd=" + s;
-    var done = function () { toast(T.copied) };
-    if (navigator.share && /Mobi/.test(navigator.userAgent)) navigator.share({ title: "一孔录", url: u }).catch(function () { });
-    else if (navigator.clipboard) navigator.clipboard.writeText(u).then(done, function () { prompt("", u) });
-    else prompt("", u);
+    return location.origin + "/" + (pre ? pre + "/" : "") + "#xd=" + s;
   }
+  function movePanel(host) { // 先说明，再让人选复制或发送（手机直接弹系统分享会让人看不懂）
+    var old = host.querySelector(".xdmvp"); if (old) { old.remove(); return }
+    var u = moveUrl(), p = document.createElement("div"); p.className = "xdmvp";
+    p.innerHTML = "<p>" + T.mvh + '</p><div><button type="button" class="xdb1">' + T.cpy + "</button>" + (navigator.share ? '<button type="button" class="xdb2">' + T.snd + "</button>" : "") + '<button type="button" class="xdb3">' + T.cls2 + "</button></div>";
+    p.querySelector(".xdb1").onclick = function () {
+      if (navigator.clipboard) navigator.clipboard.writeText(u).then(function () { toast(T.copied) }, function () { prompt("", u) }); else prompt("", u);
+    };
+    var b2 = p.querySelector(".xdb2"); if (b2) b2.onclick = function () { navigator.share({ title: "一孔录 · " + T.move, url: u }).catch(function () { }) };
+    p.querySelector(".xdb3").onclick = function () { p.remove() };
+    host.appendChild(p);
+  }
+
 
   // 章页：记录
   var dataEl = document.querySelector(".shdata");
@@ -86,7 +95,7 @@
     d.innerHTML = '<a class="xdgo" href="' + L.p + (bs._y > 0.05 ? "#xd-y" : "") + '"><span>' + T.last + "：" + name + " · " + esc(L.no) + "<br><b>" + esc(L.ti) + '</b></span><span class="xdarr">' + T.go + " →</span></a>"
       + (t ? '<div class="xdprog" title="' + fmt(T.prog, { n: n, t: t }) + '"><i style="width:' + Math.min(100, n / t * 100).toFixed(1) + '%"></i></div>' : "")
       + '<div class="xdmeta"><span>' + ago(L.ts) + (t ? " · " + fmt(T.prog, { n: n, t: t }) : "") + '</span><button type="button" class="xdmv">' + T.move + '</button><button type="button" class="xdcl">' + T.clear + "</button><span>" + T.priv + "</span></div>";
-    d.querySelector(".xdmv").onclick = moveLink;
+    d.querySelector(".xdmv").onclick = function () { movePanel(d) };
     d.querySelector(".xdcl").onclick = function () { if (confirm(T.sure)) { delete S.b[bk]; save(S); d.remove(); [].forEach.call(document.querySelectorAll(".xdseen"), function (a) { a.classList.remove("xdseen") }) } };
     if (how === "after") where.parentNode.insertBefore(d, where.nextSibling); else where.insertBefore(d, where.firstChild);
   }
