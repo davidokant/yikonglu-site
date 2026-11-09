@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS users (
   salt TEXT,
   role TEXT NOT NULL DEFAULT 'guest', -- guest 注册未入会 | member 会员 | admin 管理 | char 原创角色
   avatar TEXT, tag TEXT,              -- 角色账号的头像与小标
-  ident TEXT,                         -- 书院世界里的身份：shusheng youxia shanglv yizhe jiangren fangwai
-  ident_at INTEGER,                   -- 上次改身份的时间（每 30 天可改一次）
+  ident TEXT,                         -- 挑的头像键：shusheng youxia shanglv yizhe jiangren fangwai
+  ident_at INTEGER,                   -- 备用
   posts INTEGER DEFAULT 0,            -- 发言数，算学籍
   created INTEGER NOT NULL
 );

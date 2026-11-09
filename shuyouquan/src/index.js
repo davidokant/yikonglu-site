@@ -9,20 +9,10 @@ const now = () => Date.now();
 const PIAN = ["xue-er", "wei-zheng", "ba-yi", "li-ren", "gong-ye-chang", "yong-ye", "shu-er", "tai-bo", "zi-han", "xiang-dang", "xian-jin", "yan-yuan", "zi-lu", "xian-wen", "wei-ling-gong", "ji-shi", "yang-huo", "wei-zi", "zi-zhang", "yao-yue"]; // 论语二十篇网址
 const chUrl = (c) => { const [a, n] = c.split("."); return `https://yikonglu.com/lunyu/${PIAN[+a - 1]}/${n}.html`; };
 
-// ---------- 书院世界：身份与学籍 ----------
-// 每种身份：[名, 字, 引路人, 引路人头像, 本院 slug, 本院短名, 读法, 引路人的欢迎话]
-const IDENT = {
-  shusheng: ["书生", "书", "上官有理", "youli", "lunyu", "共读堂", "跟着进度读原文，一章不落", "书生来了？好。共读堂每周一开新篇，跟上进度，有不服的地方尽管来抬杠。"],
-  jiangren: ["匠人", "匠", "林守拙", "shouzhuo", "shuhou", "藏书阁", "看版本、看注家，追问一个字是怎么来的", "匠人好。书是一页页刻出来的，字也是。藏书阁里专讲注家怎么争、哪个本子靠得住。"],
-  shanglv: ["商旅", "商", "陆川", "luchuan", "shiyong", "明用斋", "琢磨这句话放到今天怎么用", "同行！明用斋每周一句话，看它放到你手上的事里值几个钱。"],
-  youxia: ["游侠", "侠", "莎赫拉", "shahela", "wen", "问津亭", "有疑就问，问到底", "你看着像个直性子。问津亭里随便问，问一孔必答，答得不对就接着问。"],
-  yizhe: ["医者", "医", "阮流绮", "liuqi", "xiantan", "茶寮", "看人看事，读出书里的人情", "医者看病，先看人。茶寮里大家闲谈，读书读出的人情世故，都在这儿说。"],
-  fangwai: ["方外", "方", "孔照今", "zhaojin", "menkou", "山门", "不赶进度，读到哪算哪", "欢迎你。在书院不用赶，读到哪算哪。山门这儿常有新书友，有空来说说话。"],
-};
-const IDENT_DAYS = 30; // 身份每 30 天可改一次
-const HOME_OF = (u) => (u && IDENT[u.ident] ? IDENT[u.ident][4] : null);
-const title = (u) => (IDENT[u.ident] ? IDENT[u.ident][5] + IDENT[u.ident][0] : "");
-const AV_BASE = "https://img.yikonglu.com/shuyuan/av/"; // 身份头像（Codex 出图到了放这里：<身份>.png）；没图时用字
+// ---------- 头像与学籍 ----------
+// 头像：注册时挑一个（Codex 出图到了放 AV_BASE/<键>.png；没图时先用带色圆字）
+const IDENT = { shusheng: ["书"], youxia: ["侠"], shanglv: ["商"], yizhe: ["医"], jiangren: ["匠"], fangwai: ["方"] };
+const AV_BASE = "https://img.yikonglu.com/shuyuan/av/"; // 头像图（Codex 出图到了放这里：<键>.png）
 const RANKS = [[150, "讲友"], [60, "斋长"], [20, "生员"], [5, "学童"], [0, "初入院"]];
 const rankOf = (n) => RANKS.find(([k]) => (n || 0) >= k)[1];
 const HAS_AV = false; // 头像图上了再改 true
@@ -98,6 +88,7 @@ textarea{min-height:140px}button,.btn{display:inline-block;margin-top:12px;paddi
 header .brand{white-space:nowrap}@media (max-width:520px){header .w{flex-wrap:wrap;gap:4px 12px}header nav{margin-left:0;font-size:14px;align-items:center}}
 .cmp{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}.cmp th,.cmp td{padding:7px 4px;border-bottom:1px solid var(--line);text-align:center}.cmp tbody th{text-align:left;font-weight:400}.cmp thead th{font-size:14px;color:var(--mute)}.cmp thead th:last-child{color:var(--accent);font-weight:700}.cmp td{width:23%}.cmp .y{color:var(--accent);font-weight:700}.cmp .n{color:var(--mute)}.cmp .h{color:var(--accent2)}.why{margin:0 0 6px}
 .pubw{color:#fff;background:var(--accent);font-size:12px;border-radius:4px;padding:0 6px}.list.dim li.opn .t{color:var(--accent)}
+.avpick{display:flex;flex-wrap:wrap;gap:10px}.avpick label{margin:0;position:relative;cursor:pointer}.avpick input{position:absolute;opacity:0;width:0;height:0}.avpick .av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;object-fit:cover;border:2px solid transparent}.avpick label:has(input:checked) .av{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
 code{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 6px}`;
 
 function page(title, body, u) {
@@ -114,22 +105,21 @@ const notFound = (u) => { const r = page("找不到", `<h1>找不到这一页</h
 function avatar(u) {
   if (u.avatar) return `<img class="av" src="${esc(u.avatar)}" alt="">`;
   const id = IDENT[u.ident];
-  if (id && HAS_AV) return `<img class="av" src="${AV_BASE}${u.ident}.png" alt="${id[0]}">`;
-  return `<span class="av id-${esc(u.ident || "none")}">${esc(id ? id[1] : (u.name || "?").slice(0, 1))}</span>`;
+  if (id && HAS_AV) return `<img class="av" src="${AV_BASE}${u.ident}.png" alt="">`;
+  return `<span class="av id-${esc(u.ident || "none")}">${esc(id ? id[0] : (u.name || "?").slice(0, 1))}</span>`;
 }
 function whoTag(u) {
   if (u.tag) return `<span class="tag">${esc(u.tag)}</span>`;
   if (u.role === "admin") return '<span class="tag">一孔录</span>';
-  const id = IDENT[u.ident];
-  return `<span class="rank">${id ? title(u) + " · " : ""}${rankOf(u.posts)}</span>${u.role === "member" ? '<span class="tag men">书院门人</span>' : ""}`;
+  return `<span class="rank">${rankOf(u.posts)}</span>${u.role === "member" ? '<span class="tag men">书院门人</span>' : ""}`;
 }
 
 // ---------- 页面 ----------
 const Y = '<td class="y">✓</td>', N = '<td class="n">—</td>';
-const FREE_VS_MEMBER = `<div class="box rules"><p class="why"><b>免费注册＝先试读</b>：读山门公告和每周一篇会员精选，领身份和引路人，发一帖报到。<b>入会＝进圈子</b>：发帖、回帖、和书友聊，参加共读、问一孔。</p>
+const FREE_VS_MEMBER = `<div class="box rules"><p class="why"><b>免费注册＝先试读</b>：读山门公告和每周一篇会员精选，发一帖报到。<b>入会＝进圈子</b>：发帖、回帖、和书友聊，参加共读、问一孔。</p>
 <table class="cmp"><thead><tr><th></th><th>免费注册</th><th>书院会员</th></tr></thead><tbody>
 <tr><th>山门：看公告、看帖</th>${Y}${Y}</tr>
-<tr><th>身份、引路人</th>${Y}${Y}</tr>
+<tr><th>挑头像、有学籍</th>${Y}${Y}</tr>
 <tr><th>每周一篇会员精选</th>${Y}<td class="y">全部</td></tr>
 <tr><th>五个会员院落</th><td class="h">只看标题</td><td class="y">全文</td></tr>
 <tr><th>发帖、回帖、和书友聊</th><td class="h">报到一帖</td>${Y}</tr>
@@ -141,20 +131,14 @@ const FREE_VS_MEMBER = `<div class="box rules"><p class="why"><b>免费注册＝
 <tr><th>电子版珍藏读本</th>${N}${Y}</tr>
 <tr><th>名字旁挂“书院门人”</th>${N}${Y}</tr>
 </tbody></table></div>`;
-function guideBox(u) {
-  const id = IDENT[u.ident]; if (!id) return "";
-  return `<div class="box guide"><img src="https://img.yikonglu.com/gushi/img/${id[3]}-head.png" alt=""><div><b>${id[2]}</b><span class="mute"> · 你的引路人</span><br>${esc(id[7])}<div class="mute">你是${title(u)}，本院“${id[5]}”排在最前面。<a href="/me">换身份</a></div></div></div>`;
-}
 async function home(env, u) {
   const { results: boards } = await env.DB.prepare(
     "SELECT b.*, (SELECT COUNT(*) FROM threads t WHERE t.board_id=b.id) n, (SELECT MAX(last_at) FROM threads t WHERE t.board_id=b.id) last FROM boards b ORDER BY sort").all();
-  const homeSlug = HOME_OF(u);
-  if (homeSlug) boards.sort((a, b) => (b.slug === homeSlug) - (a.slug === homeSlug));
-  const li = boards.map((b) => `<li><a class="t" href="/b/${b.slug}">${esc(b.name)}</a>${b.slug === homeSlug ? '<span class="home">本院</span>' : ""}${b.members_only ? '<span class="lock">会员</span>' : ""}<span class="mute" style="flex-basis:100%">${esc(b.descr)}</span><span class="m">${b.n} 帖${b.last ? " · " + fmtTime(b.last) : ""}</span></li>`).join("");
+  const li = boards.map((b) => `<li><a class="t" href="/b/${b.slug}">${esc(b.name)}</a>${b.members_only ? '<span class="lock">会员</span>' : ""}<span class="mute" style="flex-basis:100%">${esc(b.descr)}</span><span class="m">${b.n} 帖${b.last ? " · " + fmtTime(b.last) : ""}</span></li>`).join("");
   const hello = !u
     ? `<p><a class="btn" href="/register">免费注册</a> <a class="btn ghost" href="/login">登录</a></p>${FREE_VS_MEMBER}`
-    : u.role === "guest" ? `${guideBox(u)}<div class="box">你已注册，还没入会：能看山门、各院帖子标题和每周一篇“本周公开”，可以在山门发一帖报到。入会后才能发帖、回帖、和书友聊。<a href="/invite">用入会码入会</a>。</div>` : guideBox(u);
-  return page("首页", `<div class="maphero"><img src="https://img.yikonglu.com/gushi/img/ditu/world-%E7%AE%80.jpg" alt=""><div><h1>一孔书院</h1><p>把读同一部书、口味相近的人聚在一起：读到哪聊到哪，有人接话，有人较真。</p></div></div>${hello}<h2>院落</h2><ul class="list">${li}</ul>${u ? `<p class="mute">你的学籍：${IDENT[u.ident] ? title(u) + " · " : ""}${rankOf(u.posts)}。多发言、多参加共读，学籍会升：初入院 → 学童 → 生员 → 斋长 → 讲友。</p>` : ""}`, u);
+    : u.role === "guest" ? `<div class="box">你已注册，还没入会：能看山门、各院帖子标题和每周一篇“本周公开”，可以在山门发一帖报到。入会后才能发帖、回帖、和书友聊。<a href="/invite">用入会码入会</a>。</div>` : "";
+  return page("首页", `<div class="maphero"><img src="https://img.yikonglu.com/gushi/img/ditu/world-%E7%AE%80.jpg" alt=""><div><h1>一孔书院</h1><p>把读同一部书、口味相近的人聚在一起：读到哪聊到哪，有人接话，有人较真。</p></div></div>${hello}<h2>院落</h2><ul class="list">${li}</ul>${u ? `<p class="mute">你的学籍：${rankOf(u.posts)}。<a href="/me">换头像</a>。多发言、多参加共读，学籍会升：初入院 → 学童 → 生员 → 斋长 → 讲友。</p>` : ""}`, u);
 }
 
 async function board(env, u, slug) {
@@ -196,14 +180,14 @@ async function resolveAs(env, u, as) {
 }
 
 function identPick(cur) {
-  return `<div class="idpick">${Object.entries(IDENT).map(([k, v]) => `<label><input type="radio" name="ident" value="${k}"${k === cur ? " checked" : ""}><span class="av id-${k}">${v[1]}</span><span class="idt"><b>${v[0]}</b><span class="mute">引路人 ${v[2]} · 本院 ${v[5]}</span><span class="mute">${v[6]}</span></span></label>`).join("")}</div>`;
+  return `<div class="avpick">${Object.entries(IDENT).map(([k, v]) => `<label><input type="radio" name="ident" value="${k}"${k === cur ? " checked" : ""}>${HAS_AV ? `<img class="av" src="${AV_BASE}${k}.png" alt="">` : `<span class="av id-${k}">${v[0]}</span>`}</label>`).join("")}</div>`;
 }
 function authForm(kind, err = "", name = "") {
   const reg = kind === "register";
   return `<h1>${reg ? "注册" : "登录"}</h1>${reg ? FREE_VS_MEMBER : ""}${err ? `<p class="err">${esc(err)}</p>` : ""}<form method="post" class="box">
 <label>网名（2—16 字，别用真名）</label><input type="text" name="name" value="${esc(name)}" required minlength="2" maxlength="16" autocomplete="username">
 <label>密码（至少 8 位）</label><input type="password" name="pw" required minlength="8" autocomplete="${reg ? "new-password" : "current-password"}">
-${reg ? `<label>挑一个书院里的身份</label><p class="mute" style="margin:0 0 6px">身份决定你的头像、称号、引路人和“本院”（首页排最前的院落）。身份只是读书口味，不影响能进哪个院落。30 天可以换一次。</p>${identPick("shusheng")}` : ""}
+${reg ? `<label>挑一个头像（以后随时能换）</label>${identPick("shusheng")}` : ""}
 ${reg ? '<label>入会邀请码（有就填，没有可以先空着）</label><input type="text" name="code" autocomplete="off"><input class="hp" name="website" tabindex="-1" autocomplete="off">' : ""}
 <button>${reg ? "免费注册" : "登录"}</button></form>
 <p class="mute">${reg ? '不要邮箱、不要手机号。忘了密码，找上官有理要一个重置码，在<a href="/reset">这里</a>改。' : '还没有账号？<a href="/register">注册</a>。忘了密码？<a href="/reset">用重置码改</a>。'}</p>`;
@@ -341,11 +325,10 @@ const App = {
     if (!u) return M === "GET" ? notFound(u) : redirect("/login");
 
     if (path === "/me") {
-      const wait = Math.ceil(((u.ident_at || 0) + IDENT_DAYS * DAY - now()) / DAY);
-      const fm = (e = "") => `<h1>换身份</h1>${e}<p class="mute">你现在是${title(u) || "（未选）"}。${wait > 0 ? `还要 ${wait} 天才能再换。` : "现在可以换。"}换了以后头像、称号、引路人和本院跟着变，学籍和发言数不变。</p>${wait > 0 ? "" : `<form method="post" class="box">${identPick(u.ident)}<button>换成这个</button></form>`}`;
-      if (M === "GET") return page("换身份", fm(), u);
-      if (wait > 0 || !IDENT[f("ident")]) return page("换身份", fm('<p class="err">现在还不能换。</p>'), u);
-      await env.DB.prepare("UPDATE users SET ident=?, ident_at=? WHERE id=?").bind(f("ident"), now(), u.id).run();
+      const fm = (e = "") => `<h1>换头像</h1>${e}<form method="post" class="box">${identPick(u.ident)}<button>换成这个</button></form>`;
+      if (M === "GET") return page("换头像", fm(), u);
+      if (!IDENT[f("ident")]) return page("换头像", fm('<p class="err">挑一个。</p>'), u);
+      await env.DB.prepare("UPDATE users SET ident=? WHERE id=?").bind(f("ident"), u.id).run();
       return redirect("/");
     }
     if (path === "/invite") {
