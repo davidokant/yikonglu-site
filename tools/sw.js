@@ -52,6 +52,7 @@ self.addEventListener("fetch", e => {
   }
   if (u.hostname === "img.yikonglu.com") {
     if (r.mode === "cors") return;  // 分享长图用跨域请求画图，别拿缓存里的不透明响应顶，直接走网络
+    if (/\.(mp3|m4a|ogg|opus)$/.test(u.pathname)) return;  // 朗读音频走网络（浏览器按段请求，缓存会坏拖动）
     // 图片仓库（原页、分享图、故事图）：先给缓存再后台更新；普通 <img> 拿到的是不透明响应，也收
     e.respondWith(caches.open(STATIC).then(c => c.match(r).then(m => {
       const net = fetch(r).then(res => { if (res.ok || res.type === "opaque") { c.put(r, res.clone()); trim(STATIC, MAX_STATIC); } return res; }).catch(() => m);

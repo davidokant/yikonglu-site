@@ -819,6 +819,14 @@ def share_html(L, c, url, head, title, yw_text, gist, rend):
             f'<script type="application/json" class="shdata">{d.replace("</", "<\\/")}</script>'
             f'<script type="application/json" class="shtri">{json.dumps(dict(TRI_TXT.get(c, {}), rl=rili_data()))}</script></section>')
 SHARE_KEYS = {}  # 章 → 分享图关键句（句号或句中字），章节起点.json 各集可写 "keys": {"1.16": 1}；缺省取首句
+LANGDU = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu.json")) else set()  # 原文朗读（孔照今，11-11 主人定）：有音频的章，文件在 img.yikonglu.com/langdu/lunyu/<章>.mp3
+LANGDU_TXT = {"zh-Hans": ("听原文", "一孔录原创角色孔照今朗读"), "zh-Hant": ("聽原文", "一孔錄原創角色孔照今朗讀"), "en": ("Listen", "Read aloud by Kong Zhaojin, an original Yikonglu character"), "ja": ("原文を聞く", "一孔録オリジナルキャラクター孔照今の朗読"), "ko": ("원문 듣기", "일공록 오리지널 캐릭터 공조금 낭독"), "fr": ("Écouter", "Lu par Kong Zhaojin, personnage original de Yikonglu"), "es": ("Escuchar", "Leído por Kong Zhaojin, personaje original de Yikonglu"), "de": ("Anhören", "Gelesen von Kong Zhaojin, einer Originalfigur von Yikonglu"), "vi": ("Nghe nguyên văn", "Khổng Chiếu Kim, nhân vật gốc của Yikonglu, đọc"), "id": ("Dengarkan", "Dibacakan Kong Zhaojin, tokoh orisinal Yikonglu"), "ru": ("Слушать", "Читает Кун Чжаоцзинь, оригинальный персонаж Yikonglu")}
+def langdu_html(code, c):
+    if c not in LANGDU: return ""
+    a, b = LANGDU_TXT.get(code, LANGDU_TXT["en"])
+    return (f'<p class="ldbar"><button type="button" class="ldbtn" data-src="https://img.yikonglu.com/langdu/lunyu/{c}.mp3" aria-pressed="false"><i aria-hidden="true">▶</i>{esc(a)}</button><small>{esc(b)}</small></p>'
+            '<script>(function(){var B=document.currentScript.previousElementSibling.querySelector(".ldbtn"),A=null,I=B.querySelector("i");function st(p){B.setAttribute("aria-pressed",p?"true":"false");I.textContent=p?"❚❚":"▶"}'
+            'B.addEventListener("click",function(){if(!A){A=new Audio(B.getAttribute("data-src"));A.addEventListener("ended",function(){st(false)});A.addEventListener("pause",function(){st(false)});A.addEventListener("play",function(){st(true)})}if(A.paused)A.play().catch(function(){});else A.pause()})})();</script>')
 WJ_TR = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json")) else {}  # 未讲章原文英日译（分享图用）
 TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
 TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
@@ -1355,11 +1363,11 @@ def build_lang(L, D, write):
                 zrows.append(d)
             ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x)}</span><span class="yi" hidden>{esc(zrows[j-1].get("bh", ""))}</span>' for j, x in enumerate(sents, 1))
             fig_html = (f'<figure class="yuanwen dz"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span><button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button></div>'
-                        f'<div class="dzgrid"><div><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="{esc(json.dumps([[x["zi"], x["pos"], x["du"]] for x in g["reads"]], ensure_ascii=False))}" data-rl="{esc(L.t("ju_reads"))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}</div>'
+                        f'<div class="dzgrid"><div><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="{esc(json.dumps([[x["zi"], x["pos"], x["du"]] for x in g["reads"]], ensure_ascii=False))}" data-rl="{esc(L.t("ju_reads"))}">{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{L.t("source_line")}</figcaption>{rend_html}</div>'
                         f'<div class="yypane">{ZJ.page_pane(c, zpages, zper, "原页", ZJ.YDIR, f"《论语·{pname}》{c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页")}</div></div>'
                         f'<script type="application/json" class="zjdata">{json.dumps(zrows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
         else:
-            fig_html = f"""<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}</figure>"""
+            fig_html = f"""<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{L.t("source_line")}</figcaption>{rend_html}</figure>"""
         body = f"""<div class="chhead"><div class="wrap">
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
 <h1><span class="no">{L.t("chapter_no", book=(pname if L.code=="zh-Hans" else bname), n=cnum)}</span>{esc(title_of(c))}</h1>

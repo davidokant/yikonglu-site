@@ -1,7 +1,7 @@
 /* 一孔录 service worker（build.py 生成时填入版本号）
    页面：先走网络，拿到就更新缓存；没网才用缓存，缓存也没有就给离线页。每周日补页、改页后，联网打开就是新版。
    样式、图片、检索索引：先给缓存再后台更新。字体：缓存优先。 */
-const VER = "ef365e2976";
+const VER = "f20ce92bfd";
 const PREFIXES = ["", "zh-hant/", "en/", "ja/", "ko/", "fr/", "es/", "de/", "vi/", "id/", "ru/"];  // "", "zh-hant/", "en/" ...
 const CORE = "yk-core-" + VER, PAGES = "yk-pages", STATIC = "yk-static", FONTS = "yk-fonts";
 const MAX_PAGES = 400, MAX_STATIC = 300;
@@ -52,6 +52,7 @@ self.addEventListener("fetch", e => {
   }
   if (u.hostname === "img.yikonglu.com") {
     if (r.mode === "cors") return;  // 分享长图用跨域请求画图，别拿缓存里的不透明响应顶，直接走网络
+    if (/\.(mp3|m4a|ogg|opus)$/.test(u.pathname)) return;  // 朗读音频走网络（浏览器按段请求，缓存会坏拖动）
     // 图片仓库（原页、分享图、故事图）：先给缓存再后台更新；普通 <img> 拿到的是不透明响应，也收
     e.respondWith(caches.open(STATIC).then(c => c.match(r).then(m => {
       const net = fetch(r).then(res => { if (res.ok || res.type === "opaque") { c.put(r, res.clone()); trim(STATIC, MAX_STATIC); } return res; }).catch(() => m);
