@@ -1474,15 +1474,15 @@ def build_lang(L, D, write):
                         wj_rows.append(d)
                     ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x)}</span>' + (f'<span class="yi" hidden>{esc(wj_rows[j-1]["bh"])}</span>' if wj_rows[j-1].get("bh") else "") for j, x in enumerate(sents, 1))
                     yib = '<button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button>' if any(r.get("bh") for r in wj_rows) else ""
-                    wj_fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span>{yib}</div>'
+                    wj_fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span>{yib}{langdu_btn(L.code, c)}</div>'
                               f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>'
                               + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
                               f'<script type="application/json" class="zjdata">{json.dumps(wj_rows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
                 elif pane:
-                    wj_fig = (f'<figure class="yuanwen wjpg"><div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>'
+                    wj_fig = (f'<figure class="yuanwen wjpg"><div class="dzgrid"><div>{bq}{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{cap}</figcaption></div>'
                               f'<div class="yypane">{pane}</div></div></figure>')
                 else:
-                    wj_fig = f'<figure class="yuanwen">{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></figure>'
+                    wj_fig = f'<figure class="yuanwen">{bq}{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{cap}</figcaption></figure>'
                 an = D.get("wjan", {}).get(c) or {}
                 wj_gist, wj_faq = "", []
                 if an.get("片里落点") or c in D["zy"]:
