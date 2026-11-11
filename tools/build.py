@@ -287,6 +287,37 @@ LIVE_BOOKS = {"lunyu"}
 SHOW_DRAFT = True  # “初稿改动”比例：首页小字与方法页
 DRAFT_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/初稿改动.json"
 YXL_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/影响力.json"  # 一孔影响力（找到分），每天自动更新
+YXL_WEEK_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/最新.json"  # 本周日采（含没测完的平台）
+
+def yxl_merge(y, w):
+    """主人 11-12 定：日采结果上网站。影响力.json 只收测完的平台，本周没测完的（如 YouTube）从 最新.json 补上，注明已测几章；本周找到分按已有平台重算。"""
+    if not y or not w or w.get("week") != (y.get("history") or [{}])[-1].get("week"): return y
+    y = json.loads(json.dumps(y)); P = w.get("platforms", {}); n = w.get("chapters")
+    have = {p["key"] for p in y.get("platforms", [])}
+    for k, v in P.items():
+        if "." in k: continue
+        subs = [x for kk, x in P.items() if kk.startswith(k + ".")]
+        meas = max((x.get("measured") or 0) for x in subs) if subs else None
+        done = all(x.get("complete", True) for x in subs)
+        if k in have:
+            for p in y["platforms"]:
+                if p["key"] == k: p["measured"] = meas
+            continue
+        if v.get("score") is None: continue
+        y["platforms"].append({"key": k, "name": v["name"], "score": v["score"], "share": v.get("share"), "measured": meas, "partial": not done})
+    sc = [p["score"] for p in y["platforms"] if p.get("score") is not None]
+    if sc:
+        y["score"] = round(sum(sc) / len(sc), 1)
+        y["history"][-1]["score"] = y["score"]
+        shs = [p["share"] for p in y["platforms"] if p.get("share") is not None]
+        y["share"] = round(sum(shs) / len(shs), 2) if shs else None
+        y["history"][-1]["share"] = y["share"]
+    y["chapters"] = n or y.get("chapters")
+    try:  # 日采每天写 最新.json，更新日期取它（北京日期）
+        t = datetime.datetime.fromtimestamp(os.path.getmtime(YXL_WEEK_FILE), datetime.timezone(datetime.timedelta(hours=8)))
+        y["updated"] = max(y.get("updated") or "", t.date().isoformat())
+    except OSError: pass
+    return y
 FANGFA = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fangfa.json"), encoding="utf-8"))  # 核验方法页七语文字
 KAIFANG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "kaifang.json"), encoding="utf-8"))  # 开放数据页：开放与不开放的分界（七语）
 WEN = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "wen.json"), encoding="utf-8"))  # 问一孔页（七语）
@@ -995,7 +1026,8 @@ def yxl_block(L, D, P, full=False):
         sc = pf.get("score")
         if sc is None: continue
         sh = pf.get("share"); shs = f'<small>占比 {sh}%</small>' if sh is not None else ""
-        rows += f'<div class="row"><span>{esc(pf["name"])}</span><div class="bar"><i style="width:{min(max(float(sc), 0), 100):g}%"></i></div><em>{sc}{shs}</em></div>'
+        ms = pf.get("measured"); mtx = f'<small>本周已测 {ms}/{y.get("chapters")} 章</small>' if pf.get("partial") and ms is not None and y.get("chapters") else ""
+        rows += f'<div class="row"><span>{esc(pf["name"])}{mtx}</span><div class="bar"><i style="width:{min(max(float(sc), 0), 100):g}%"></i></div><em>{sc}{shs}</em></div>'
     hist = [h for h in y.get("history", []) if h.get("score") is not None]; score = y.get("score")
     if len(hist) >= 2:
         W, H = 320, 60; mx = max(max(h["score"] for h in hist), 1)
@@ -1011,7 +1043,7 @@ def yxl_block(L, D, P, full=False):
     ix = y.get("index") or {}
     ixp = [f"{nm} {ix[k]['indexed']} / {ix[k]['total']} 页" for k, nm in (("google", "谷歌"), ("bing", "必应")) if isinstance(ix.get(k), dict) and ix[k].get("indexed") is not None and ix[k].get("total")]
     if ixp: find += f'<p class="yxindex">收录：{" · ".join(ixp)}</p>'
-    sub = f'每周更新 · 最近一次 {esc(y.get("updated") or D["today"])} · 每个数都可点开核对'
+    sub = f'每天更新 · 最近一次 {esc(y.get("updated") or D["today"])} · 每个数都可点开核对'
     return f'<section class="wrap narrow yxl"><h2 class="ph">一孔影响力</h2><p class="sub">{sub}</p>{grid}{find}</section>'
 
 def draft_sec(D):
@@ -1912,7 +1944,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
 <p>一个平台上，一句原文搜出来，一孔录的讲读排在第 r 名，记 V = 1 / log₂(1 + r)；不在前 20 条记 0。</p>
 <p>平台分 = 100 × 各章 V 的平均。</p>
 <p>占比 = 各章搜索结果前 20 条中本站条数之和 ÷ 前 20 条总数。只在能看到全部结果的平台计算（现只 YouTube），不点名其他频道。</p>
-<p>找到分 = 各平台平台分的平均。YouTube 取台湾繁体、美国简体两种设定的平均，合成一个平台分；哔哩哔哩、谷歌、必应各一个平台分。只列有完整数据的平台。</p>
+<p>找到分 = 各平台平台分的平均。YouTube 取台湾繁体、美国简体两种设定的平均，合成一个平台分；哔哩哔哩、谷歌、必应各一个平台分。本周还没测完的平台也照列，注明已测几章，测完后换成整周数。</p>
 <p>收录＝搜索引擎已编入索引的本站页数 ÷ 网站地图页数；谷歌按逐页检查接口每周轮查一遍，必应取 Webmaster 报告的索引页数；百度未接。</p>
 <h2>怎么测</h2>
 <p>词表：已发各章的第一句原文，简体、繁体各一条。每周滚动测，未测到的章暂不计分，跑完后换成整周数；更新日期为最近一次计算日。</p>
@@ -2236,6 +2268,7 @@ def main(zdir, outdir, kanwu=None):
     G = GS.load(GUSHI_DIR, pub)
     if G: GS.copy_images(G, outdir); GUSHI_ON = True
     yxl = json.load(open(YXL_FILE, encoding="utf-8")) if os.path.exists(YXL_FILE) else {}
+    yxl = yxl_merge(yxl, json.load(open(YXL_WEEK_FILE, encoding="utf-8")) if os.path.exists(YXL_WEEK_FILE) else {})
     draft = json.load(open(DRAFT_FILE, encoding="utf-8")) if os.path.exists(DRAFT_FILE) else {}
     D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today, zhuju=ZJD, wjan=wjan, ddj=load_ddj(), bh_ok=bh_ok, zy=json.load(open(os.path.join(HERE, "zhengyi.json"), encoding="utf-8")) if os.path.exists(os.path.join(HERE, "zhengyi.json")) else {})
 
