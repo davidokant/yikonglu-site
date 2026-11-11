@@ -529,9 +529,6 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 html:not([lang^="zh"]):not([lang="ja"]):not([lang="ko"]) .herotext h1 small{letter-spacing:.06em}
 html:not([lang^="zh"]):not([lang="ja"]):not([lang="ko"]) .meiri .mh b{letter-spacing:.02em}
 html:not([lang^="zh"]):not([lang="ja"]):not([lang="ko"]) .meiri blockquote{font-size:21px}
-/* 原文朗读按钮（11-11） */
-.ldbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 2px}
-.ldbtn{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;border:1px solid var(--accent);border-radius:999px;background:transparent;color:var(--accent);font:inherit;font-size:15px;cursor:pointer}
-.ldbtn i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--paper);font-size:10px}
-.ldbtn[aria-pressed="true"]{background:color-mix(in srgb,var(--accent) 10%,transparent)}
-.ldbar small{font-size:12px;color:var(--mute)}
+/* 原文朗读按钮（11-11）：和“译”同样的小方按钮 */
+.dztools.ldonly{margin:10px 0 2px}
+.dztools .ldbtn[aria-pressed=true]{background:var(--accent);color:#fff}
