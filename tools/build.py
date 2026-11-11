@@ -831,6 +831,32 @@ def langdu_btn(code, c):
 def langdu_html(code, c):  # 没有“译”按钮的页（外文章页）：单独一行放同样的小按钮
     b = langdu_btn(code, c)
     return f'<div class="dztools ldonly">{b}</div>' if b else ""
+ZD_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "zidian.json")  # 论语难字字典（11-11 主人要提前做）：点字看读音、朱注训诂、全书出处；读音与原文朗读同一张表
+ZD = json.load(open(ZD_FILE, encoding="utf-8")) if os.path.exists(ZD_FILE) else {"occ": {}, "per": {}}
+ZD_ON = os.environ.get("YK_ZIDIAN", "1") != "0"
+def zx(code, c, j, x):  # 句里难字加点线，点了弹小卡（只在中文页）
+    if not (ZD_ON and code.startswith("zh")): return esc(x)
+    m = {o: k for jj, o, k, g, s in ZD["per"].get(c, []) if jj == j}
+    if not m: return esc(x)
+    return "".join(f'<b class="nz" data-o="{j}.{o}">{esc(ch)}</b>' if o in m else esc(ch) for o, ch in enumerate(x))
+ZI_JS = """<div id="zipop" class="zipop" hidden role="dialog"><div class="zh"><b class="zz"></b><span class="zp"></span><button type="button" class="zx" aria-label="关闭">×</button></div><p class="zg"></p><p class="zo"></p></div>
+<script>(function(){var D=JSON.parse(document.getElementById('zidata').textContent),P=document.getElementById('zipop'),cur=null;
+function off(){P.hidden=true;if(cur)cur.classList.remove('on');cur=null}
+function show(z){var it=D.i[z.dataset.o];if(!it)return;if(cur)cur.classList.remove('on');cur=z;z.classList.add('on');
+P.querySelector('.zz').textContent=it[0];P.querySelector('.zp').textContent=it[1];
+var g=P.querySelector('.zg');g.textContent='';if(it[2]){g.appendChild(document.createTextNode(it[2]));var s=document.createElement('small');s.textContent='（'+it[3]+'）';g.appendChild(s)}else{g.textContent='朱注没有单独解释这个字。'}
+var o=P.querySelector('.zo'),L=D.o[it[0]+'|'+it[1]]||[];o.textContent='全书读 '+it[1]+' 的「'+it[0]+'」共 '+L.length+' 章：';
+L.forEach(function(x,i){if(i)o.appendChild(document.createTextNode(' '));var a=document.createElement(x[0]===D.c?'b':'a');a.textContent=x[0];if(x[0]!==D.c)a.href=x[1];o.appendChild(a)});
+var r=z.getBoundingClientRect();P.hidden=false;P.style.top=(window.scrollY+r.bottom+6)+'px';P.style.left=Math.max(8,Math.min(window.scrollX+r.left-12,document.documentElement.clientWidth-P.offsetWidth-8))+'px';var pr=P.getBoundingClientRect();if(pr.bottom>innerHeight)window.scrollBy({top:pr.bottom-innerHeight+12,behavior:'smooth'})}
+document.addEventListener('click',function(e){var z=e.target.closest&&e.target.closest('.nz');if(z){e.stopPropagation();e.preventDefault();if(cur===z)off();else show(z);return}
+if(!P.hidden&&!P.contains(e.target))off();else if(e.target.closest&&e.target.closest('.zx'))off()},true);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')off()})})();</script>"""
+def zi_tail(code, c, P):
+    if not (ZD_ON and code.startswith("zh")) or c not in ZD["per"]: return ""
+    items = {f"{j}.{o}": [k.split("|")[0], k.split("|")[1], g, s] for j, o, k, g, s in ZD["per"][c]}
+    occ = {k: [[x, f"{P}lunyu/{PIAN[x.split('.')[0]][1]}/{x.split('.')[1]}.html"] for x in ZD["occ"].get(k, [])] for k in {r[2] for r in ZD["per"][c]}}
+    d = json.dumps({"i": items, "o": occ, "c": c}, ensure_ascii=False).replace("</", "<\\/")
+    return f'<script type="application/json" id="zidata">{d}</script>' + ZI_JS
 WJ_TR = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json")) else {}  # 未讲章原文英日译（分享图用）
 TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
 TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
@@ -1347,7 +1373,7 @@ def build_lang(L, D, write):
         search_idx.append({"c": c, "t": title_of(c), "u": P + rel, "y": yw[c],
                            "x": " ".join(v for k, _, _ in FIELDS for v in [field(c, k)[0]] if v) + " " + " ".join(x["text"] + x["src"] for x in g["cites"])
                                 + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
-        ju_html = "".join(f'<span class="ju" id="s{j}" tabindex="0">{esc(x)}</span>' for j, x in enumerate(split_ju(yw[c]), 1))
+        ju_html = "".join(f'<span class="ju" id="s{j}" tabindex="0">{zx(L.code, c, j, x)}</span>' for j, x in enumerate(split_ju(yw[c]), 1))
         cite_src = (f"《论语·{pname}》{c}，一孔录" if L.code.startswith("zh") else f"{L.t('lunyu')} {c}, 一孔录 Yikonglu")
         zb = D["zhuben"].get(c, {}); hj_data = hj_of(c)
         extra = zb_section(c, url, cite_src) + extra
@@ -1365,7 +1391,7 @@ def build_lang(L, D, write):
                 d = {k: zs[j-1].get(k) for k in ("bh", "zhu", "jj", "yk") if zs[j-1].get(k)} if j <= len(zs) else {}
                 d["hj"] = [[f"{h[0]}：{h[1]}", h[2], ""] for h in hj_data.get(str(j), [])]
                 zrows.append(d)
-            ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x)}</span><span class="yi" hidden>{esc(zrows[j-1].get("bh", ""))}</span>' for j, x in enumerate(sents, 1))
+            ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{zx(L.code, c, j, x)}</span><span class="yi" hidden>{esc(zrows[j-1].get("bh", ""))}</span>' for j, x in enumerate(sents, 1))
             fig_html = (f'<figure class="yuanwen dz"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span><button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button>{langdu_btn(L.code, c)}</div>'
                         f'<div class="dzgrid"><div><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="{esc(json.dumps([[x["zi"], x["pos"], x["du"]] for x in g["reads"]], ensure_ascii=False))}" data-rl="{esc(L.t("ju_reads"))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}</div>'
                         f'<div class="yypane">{ZJ.page_pane(c, zpages, zper, "原页", ZJ.YDIR, f"《论语·{pname}》{c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页")}</div></div>'
@@ -1378,7 +1404,7 @@ def build_lang(L, D, write):
 </div></div>
 <main class="wrap chapter">
 <article>
-{fig_html}
+{fig_html}{zi_tail(L.code, c, P)}
 {gist_html}
 {bh_html}
 {vid_html}
@@ -1441,7 +1467,7 @@ def build_lang(L, D, write):
                 q = D["qw"][c]; text = q["text"]; pnum, cnum = c.split("."); pname, slug, pfull, _ = PIAN[pnum]
                 rel = rel_of(c); url = f"{DOMAIN}/{L.prefix}{rel}"; bname = L.book(pnum)
                 cite_src = f"《论语·{pname}》{c}，一孔录"
-                ju_html = "".join(f'<span class="ju" id="s{j}" tabindex="0">{esc(x)}</span>' for j, x in enumerate(split_ju(text), 1))
+                ju_html = "".join(f'<span class="ju" id="s{j}" tabindex="0">{zx(L.code, c, j, x)}</span>' for j, x in enumerate(split_ju(text), 1))
                 pgn = str(q.get("pdf_page", ""))
                 pgl = (f'<a class="pg" href="/yuanye/p{int(pgn):03d}.jpg" target="_blank">{pgn}</a>' if pgn in pages_avail else pgn) if pgn else ""
                 cap = L.t("wj_src", src=SOURCE, n=pgl) if pgn else L.t("source_line")
@@ -1472,7 +1498,7 @@ def build_lang(L, D, write):
                         d = {k_: zs[j-1].get(k_) for k_ in ("bh", "zhu", "jj", "yk") if zs[j-1].get(k_)} if j <= len(zs) else {}
                         d["hj"] = [[f"{h[0]}：{h[1]}", h[2], ""] for h in hjd.get(str(j), [])]
                         wj_rows.append(d)
-                    ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x)}</span>' + (f'<span class="yi" hidden>{esc(wj_rows[j-1]["bh"])}</span>' if wj_rows[j-1].get("bh") else "") for j, x in enumerate(sents, 1))
+                    ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{zx(L.code, c, j, x)}</span>' + (f'<span class="yi" hidden>{esc(wj_rows[j-1]["bh"])}</span>' if wj_rows[j-1].get("bh") else "") for j, x in enumerate(sents, 1))
                     yib = '<button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button>' if any(r.get("bh") for r in wj_rows) else ""
                     wj_fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span>{yib}{langdu_btn(L.code, c)}</div>'
                               f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>'
@@ -1525,7 +1551,7 @@ def build_lang(L, D, write):
 <main class="wrap chapter">
 <article>
 <p class="wjlead">{L.t("wj_lead")}</p>
-{wj_fig}
+{wj_fig}{zi_tail(L.code, c, P)}
 {wj_gist}
 {bh_html}
 {wj_vid}

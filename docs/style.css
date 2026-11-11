@@ -532,3 +532,16 @@ html:not([lang^="zh"]):not([lang="ja"]):not([lang="ko"]) .meiri blockquote{font-
 /* 原文朗读按钮（11-11）：和“译”同样的小方按钮 */
 .dztools.ldonly{margin:10px 0 2px}
 .dztools .ldbtn[aria-pressed=true]{background:var(--accent);color:#fff}
+/* 论语难字字典（11-11）：难字下加点线，点了弹小卡 */
+.nz{font-weight:inherit;cursor:pointer;text-decoration:underline dotted color-mix(in srgb,var(--accent) 55%,transparent);text-underline-offset:.22em;text-decoration-thickness:1.5px}
+.nz.on{background:color-mix(in srgb,var(--accent) 14%,transparent);border-radius:3px}
+.zipop{position:absolute;z-index:40;width:min(340px,calc(100vw - 16px));background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 12px 8px;box-shadow:0 6px 20px rgba(0,0,0,.16);font-size:14px;line-height:1.6}
+.zipop[hidden]{display:none}
+.zipop .zh{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.zipop .zz{font-size:30px;line-height:1.1;font-weight:600;color:var(--fg)}
+.zipop .zp{font-size:18px;color:var(--accent)}
+.zipop .zx{margin-left:auto;border:0;background:transparent;color:var(--mute);font-size:20px;cursor:pointer;padding:0 2px}
+.zipop p{margin:4px 0}
+.zipop .zg small{color:var(--mute);font-size:12px}
+.zipop .zo{font-size:13px;color:var(--mute);border-top:1px solid var(--line);padding-top:6px}
+.zipop .zo a,.zipop .zo b{display:inline-block;margin:0 2px}
