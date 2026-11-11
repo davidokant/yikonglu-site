@@ -759,10 +759,12 @@ def analytics(L):
               + 'b.addEventListener("click",function(){if(b.disabled)return;mark();if(window.ykBing)setTimeout(window.ykBing,300);try{localStorage.setItem(k,"1")}catch(e){}fetch(U+"/done",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:c})}).then(function(r){return r.json()}).then(function(d){p.textContent=X.n.replace("{d}",n(d.today)).replace("{t}",n(d.total));p.hidden=false}).catch(function(){})})});'
               + 'window.yklCopy=function(sid){if(!CC)return;fetch(U+"/copy",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:CC,s:sid})}).catch(function(){})};'
               + 'var LJ=null;function lj(cb){if(LJ){cb(LJ);return}fetch("/data/live-"+document.documentElement.lang+".json").then(function(r){return r.json()}).then(function(j){LJ=j;cb(j)}).catch(function(){})}'
-              + 'var ST=document.getElementById("steps"),TJ=document.getElementById("topju"),HL=document.querySelectorAll(".toc li[data-c]"),GD=document.getElementById("rcta")||document.getElementById("meiri");'
+              + 'var RM=document.getElementById("remen"),ST=document.getElementById("steps"),TJ=document.getElementById("topju"),HL=document.querySelectorAll(".toc li[data-c]"),GD=document.getElementById("rcta")||document.getElementById("meiri");'
               + 'function lk(j,c){var a=document.createElement("a");a.href=j.p+j.c[c][1];a.textContent=j.c[c][0];return a}'
-              + 'if(ST||TJ||HL.length)fetch(U+"/top").then(function(r){return r.json()}).then(function(t){if(!t)return;'
-              + 'if(HL.length){var mx=0;HL.forEach(function(li){mx=Math.max(mx,t.heat[li.getAttribute("data-c")]||0)});if(mx)HL.forEach(function(li){var v=t.heat[li.getAttribute("data-c")]||0,i=li.querySelector("i.heat");if(i&&v){i.querySelector("s").style.width=Math.max(8,Math.round(v*100/mx))+"%";i.querySelector("small").textContent=X.hn.replace("{n}",n(v));i.hidden=false}})}'
+              + 'if(RM||ST||TJ||HL.length)fetch(U+"/top").then(function(r){return r.json()}).then(function(t){if(!t)return;'
+              + 'if(HL.length){var mx=0;HL.forEach(function(li){mx=Math.max(mx,t.heat[li.getAttribute("data-c")]||0)});if(mx)HL.forEach(function(li){var v=t.heat[li.getAttribute("data-c")]||0,i=li.querySelector("i.heat");if(i&&v){i.querySelector("s").style.width=Math.max(8,Math.round(v*140/mx))+"px";i.querySelector("small").textContent=X.hn.replace("{n}",n(v));i.hidden=false}})}'
+              + 'if(RM&&t.heat)lj(function(j){var hs=Object.keys(t.heat).filter(function(c){return j.c[c]}).sort(function(a,b){return t.heat[b]-t.heat[a]}).slice(0,5);if(!hs.length)return;var ol=RM.querySelector("ol.toc");if(!ol)return;var old=[].slice.call(ol.querySelectorAll("li[data-c]")).map(function(li){return li.getAttribute("data-c")}).filter(function(c){return j.c[c]&&hs.indexOf(c)<0}),cs=hs.concat(old).slice(0,5),mx=t.heat[hs[0]];ol.textContent="";'
+              + 'cs.forEach(function(c){var v=t.heat[c]||0,li=document.createElement("li"),a=document.createElement("a"),e=function(tg,tx){var x=document.createElement(tg);if(tx!=null)x.textContent=tx;return x};li.setAttribute("data-c",c);a.href=j.p+j.c[c][1];a.appendChild(e("em",c));a.appendChild(e("b",j.c[c][0]));var sp=e("span",(j.c[c][2]||[])[0]||"");sp.lang="zh-Hans";a.appendChild(sp);if(v){var i=e("i");i.className="heat";var sb=e("s");sb.style.width=Math.max(8,Math.round(v*140/mx))+"px";i.appendChild(sb);i.appendChild(e("small",X.hn.replace("{n}",n(v))));a.appendChild(i)}li.appendChild(a);ol.appendChild(li)})});'
               + 'if(ST&&t.recent&&t.recent.length)lj(function(j){var rc=t.recent.filter(function(c){return j.c[c]});if(!rc.length)return;rc=rc.filter(function(c){return c!==CC}).slice(0,6);if(!rc.length)return;ST.textContent="";var lb=document.createElement("b");lb.textContent=X.steps;ST.appendChild(lb);var sc=document.createElement("span");sc.className="stc";rc.forEach(function(c){sc.appendChild(lk(j,c))});ST.appendChild(sc);ST.hidden=false});'
               + 'if(TJ&&t.top&&t.top.length)lj(function(j){var k=t.top[0][0].split("#"),c=k[0],si=parseInt(k[1].slice(1),10)-1;if(!j.c[c]||!j.c[c][2][si])return;TJ.querySelector("blockquote").textContent=j.c[c][2][si];var a=TJ.querySelector("a");a.href=j.p+j.c[c][1]+"#"+k[1];a.textContent=j.c[c][0];TJ.hidden=false})'
               + '}).catch(function(){});'
@@ -784,6 +786,8 @@ for _k, _v in {"zh-Hans": ("今天 {d} 位儒者读完 · 共 {t} 位", "今天 
                "id": ("Cendekiawan selesai hari ini: {d} · total: {t}", "Cendekiawan hari ini: {d}", "Cendekiawan minggu ini: {n}"),
                "ru": ("Книжники прочитали сегодня: {d} · всего: {t}", "Книжники сегодня: {d}", "Книжники за неделю: {n}")}.items():
     if _k in DONE_TXT: DONE_TXT[_k].update(n=_v[0], gdn=_v[1], hn=_v[2])
+HOT_TXT = {"zh-Hans": "热门章节", "zh-Hant": "熱門章節", "en": "Most-read chapters", "ja": "よく読まれている章", "ko": "많이 읽은 장", "fr": "Chapitres les plus lus", "es": "Capítulos más leídos", "de": "Meistgelesene Kapitel", "vi": "Chương được đọc nhiều", "id": "Bab paling banyak dibaca", "ru": "Самые читаемые главы"}  # 首页“热门章节”（11-11 主人：替换“最近讲的”，近 7 天阅读最多的五章）
+for _k in DONE_TXT: DONE_TXT[_k]["hot"] = HOT_TXT.get(_k, HOT_TXT["en"])
 def done_html(L, c):
     if not ANALYTICS.get("live"): return ""
     return f'<section class="donebox" data-c="{c}" hidden><button type="button" class="btn ghost">{DONE_TXT.get(L.code, DONE_TXT["en"])["b"]}</button><p class="donecnt" hidden></p></section>'
@@ -1628,7 +1632,7 @@ def build_lang(L, D, write):
 <section class="wrap narrow"><h2 class="ph">{L.t("h_latest")}</h2>
 <a class="latest" id="lcard" href="{P}{rel_of(lc)}">{_lcard(lc)}</a>{lc_js}</section>
 {f'<section class="wrap narrow topju" id="topju" hidden><h2 class="ph">{DONE_TXT.get(L.code, DONE_TXT["en"])["topju"]}</h2><blockquote lang="zh-Hans"></blockquote><p><a href="{P}"></a></p></section>' if ANALYTICS.get("live") else ""}
-<section class="wrap narrow"><h2 class="ph">{L.t("h_recent")}</h2>{toc(recent[1:])}</section>
+<section class="wrap narrow" id="remen"><h2 class="ph">{DONE_TXT.get(L.code, DONE_TXT["en"])["hot"]}</h2>{toc(recent[1:])}</section>
 <section class="wrap narrow">{cta_html(L, P)}</section>
 <section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}shumu/">{L.t("books")}</a></h2>{bcards_home}</section>
 <section class="wrap narrow deephome"><h2 class="ph">{L.t("h_deep_h")}</h2><p class="motto2">{L.t("h_deep_p")}</p></section>
