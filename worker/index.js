@@ -67,8 +67,10 @@ export class Live {
       for (const d in R) for (const c in R[d]) heat[c] = (heat[c] || 0) + R[d][c];
       for (const d in C) for (const k in C[d]) cp[k] = (cp[k] || 0) + C[d][k];
       const top = Object.entries(cp).sort((a, b) => b[1] - a[1]).slice(0, 3);
-      const recent = ((await this.state.storage.get("recent")) || []).filter(x => x.d === d0).map(x => x.c).slice(0, 40);
-      const rn = Object.keys(R[d0] || {}).length; // 今天有人读过的章数
+      const today = R[d0] || {}, rn = Object.keys(today).length; // 今天有人读过的章数
+      // 11-13：先按最近读的顺序，再补今天读过但已被挤出最近记录的章（按读的次数），列表和章数对得上
+      const rc0 = ((await this.state.storage.get("recent")) || []).filter(x => x.d === d0 && today[x.c]).map(x => x.c);
+      const recent = rc0.concat(Object.keys(today).filter(c => !rc0.includes(c)).sort((a, b) => today[b] - today[a])).slice(0, 40);
       return Response.json({ recent, rn, heat, top });
     } else if (url.pathname === "/intent" || url.pathname === "/intent/stats") {
       const WANT = ["shiyong", "shuhou", "shuyou", "gongdu", "wenda", "gongju", "zhencang"];
