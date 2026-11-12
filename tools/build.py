@@ -1020,7 +1020,7 @@ def yxl_block(L, D, P, full=False):
     grid = (f'<div class="yxgrid"><a class="c" href="{P}shumu/"><b>{zi:,}<small>字</small></b><span>原文已讲 · 开讲 {nb} 部书 · 视频已公开 {ne} 集</span></a>'
             f'<a class="c" href="{P}banben/"><b>{n_cites}<small>条</small></b><span>引文可核到底本原页</span></a>'
             f'<a class="c" href="{P}banben/"><b>{fam}<small>家</small></b><span>注本上了原页图</span></a>'
-            f'<a class="c" href="{P}kanwu.html"><b>{len(readers)}<small>条</small></b><span>读者来信 · 勘误共 {len(kw)} 条（均已改）</span></a></div>')
+            f'<a class="c" href="{P}kanwu.html"><b>{len(readers)}<small>条</small></b><span>读者来信 · 勘误共 {len(kw)} 条（均公开）</span></a></div>')
     rows = ""
     for pf in y.get("platforms", []):
         sc = pf.get("score")
