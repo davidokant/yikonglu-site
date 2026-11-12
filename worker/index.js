@@ -3,7 +3,7 @@
 // GET  /stats            返回 {online, total, k}；k＝来过的国家/地区数（只记 Cloudflare 给的两位国家码，不存 IP）
 // POST /hit 带 c（章号）时记一次阅读：按天计数（7 天滚动）＋最近读过的章
 // POST /copy {c, s}      某句被复制/分享一次（7 天滚动）
-// GET  /top              {recent:[c…], heat:{c:n}, top:[[c#sN, n]…]}
+// GET  /top              {recent:[c…], rn:今天读过的章数, heat:{c:n}, top:[[c#sN, n]…]}
 // POST /intent {join:true} 一孔书院“我想第一批加入”加一（同一浏览器只点一次，页面本地记）；POST /intent {want:[…]} 各项“最想要”加一
 // GET  /intent          {n}（满 20 才给数，否则 n:null）；GET /intent/stats {n, want, days} 全部计数（不含任何个人信息）
 // POST /done  {c}         某章“读完了”加一（同一设备只点一次，由页面本地记）；GET /done?c=1.1 返回 {today, total}
@@ -48,7 +48,7 @@ export class Live {
       const c = String(b.c || "");
       if (OKC.test(c)) {
         const d = this.day(), R = await this.roll("reads"); R[d] = R[d] || {}; R[d][c] = (R[d][c] || 0) + 1;
-        let rc = (await this.state.storage.get("recent")) || []; rc = [{ c, d }].concat(rc.filter(x => x.c !== c)).slice(0, 8);
+        let rc = (await this.state.storage.get("recent")) || []; rc = [{ c, d }].concat(rc.filter(x => x.c !== c)).slice(0, 200); // 11-12 主人：多记一些，原来只留 8 条
         await this.state.storage.put({ reads: R, recent: rc });
       }
     } else if (req.method === "POST" && url.pathname === "/copy") {
@@ -67,8 +67,9 @@ export class Live {
       for (const d in R) for (const c in R[d]) heat[c] = (heat[c] || 0) + R[d][c];
       for (const d in C) for (const k in C[d]) cp[k] = (cp[k] || 0) + C[d][k];
       const top = Object.entries(cp).sort((a, b) => b[1] - a[1]).slice(0, 3);
-      const recent = ((await this.state.storage.get("recent")) || []).filter(x => x.d === d0).map(x => x.c).slice(0, 5);
-      return Response.json({ recent, heat, top });
+      const recent = ((await this.state.storage.get("recent")) || []).filter(x => x.d === d0).map(x => x.c).slice(0, 40);
+      const rn = Object.keys(R[d0] || {}).length; // 今天有人读过的章数
+      return Response.json({ recent, rn, heat, top });
     } else if (url.pathname === "/intent" || url.pathname === "/intent/stats") {
       const WANT = ["shiyong", "shuhou", "shuyou", "gongdu", "wenda", "gongju", "zhencang"];
       let I = (await this.state.storage.get("intent")) || { n: 0, want: {}, days: {} };
