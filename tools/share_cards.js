@@ -68,12 +68,16 @@ function heV(){var kn=keyIdx(),S=sents(),key=strip(S[kn-1]||D.y),bh=keyBh(kn),G=
         c.strokeStyle='#C0392B';c.lineWidth=4;g.rs.forEach(function(r){c.strokeRect(x+(r[0]-g.x0)*sc,iy+(r[1]-g.y0)*sc,r[2]*sc,r[3]*sc)});if(k<G.length-1){x-=GAP;c.fillStyle='#F2F1EA';c.fillRect(x,iy,GAP,HG)}});
       var ps=G.map(function(g){return g.p}),pl=ps[0]+(ps.length>1&&ps[1]!==ps[0]?'—'+ps[ps.length-1]:'');c.fillStyle='#999';c.font='400 22px '+F;c.fillText('朱熹《论语集注》四部备要本 · 原页 '+pl,ix,iy+HG+40)}
     foot(c,seal,'扫码读懂这一章',D.u+'?f=he');show(cv)})})}
+// 内圣卡底纹（11-12 主人“分享卡看着还不错”）：这一章全文的浅色小字铺满，卡面文字周围留白
+function texture(c){var T=sents().join('').replace(/[^\u4e00-\u9fff]/g,'');if(!T)return;var i=0,cs=30;c.save();c.fillStyle='rgba(35,80,63,.065)';c.font='500 24px '+F;c.textAlign='center';c.textBaseline='middle';
+  for(var y=60;y<H-40;y+=cs)for(var x=60;x<W-40;x+=cs){c.fillText(T.charAt(i%T.length),x,y);i++}c.restore();
+  var f0=c.fillText;c.fillText=function(t,x,y){var st=c.strokeStyle,lw=c.lineWidth,lj=c.lineJoin;c.strokeStyle='#F2F1EA';c.lineWidth=Math.max(14,parseFloat(c.font.split(' ')[1])*.35);c.lineJoin='round';c.strokeText(t,x,y);c.strokeStyle=st;c.lineWidth=lw;c.lineJoin=lj;f0.call(c,t,x,y)}}
 function bing(){var R=RD(),td=today(),set={},days=0,chs={},nz=0;R.forEach(function(r){set[r.d]=1;if(!chs[r.c]){chs[r.c]=1;nz+=r.n||0}});var nc=Object.keys(chs).length;
   for(var t=new Date();;t.setDate(t.getDate()-1)){var k=t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);if(set[k])days++;else if(k!==td)break;else if(!set[k])break;if(days>4000)break}
   var cn=(CN.split('.')[1]||''),S=sents(),txt=D.y.length<=40?D.y:strip(S[keyIdx()-1]||D.y),bh=bhAll();if(bh.length>48)bh=keyBh(keyIdx());
   var now=new Date(),RL=rili(),jq=RL&&/^今日/.test(RL.jq)?' · '+RL.jq.split(' · ')[0]:'',dl=(now.getMonth()+1)+'月'+now.getDate()+'日 · 星期'+'日一二三四五六'[now.getDay()]+jq,side=days>=2?'读经第 '+days+' 天':'累计读了 '+nc+' 章';
   Promise.all([fonts(dl+side+txt+bh+'第章我在逐字读《论语》全书已读字已有位儒者在共读今天这一章扫码一起读一孔录逐字读经典原文0123456789,'),new Promise(function(ok){qr(ok)})]).then(function(){
-  var cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');frame(c);
+  var cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');frame(c);texture(c);
   loadSeal(function(seal){c.textBaseline='alphabetic';c.fillStyle='#8A5A2C';c.font='400 26px '+F;c.fillText(dl,84,122);c.textAlign='right';c.fillText('我在逐字读《论语》',W-84,122);var gt=+window.yklTotal||0;if(gt>=10){c.fillStyle='#23503F';c.font='700 28px '+F;c.fillText('已有 '+gt.toLocaleString('en')+' 位儒者在共读《论语》',W-84,170)}c.textAlign='left';
     var big='第'+cn+'章',bs=200;c.font='700 '+bs+'px '+F;while(c.measureText(big).width>W-168-260&&bs>120){bs-=10;c.font='700 '+bs+'px '+F}c.fillStyle='#23503F';c.fillText(big,84,230+bs*0.86);var bw=c.measureText(big).width;
     c.fillStyle='#8A5A2C';c.font='400 40px '+F;c.fillText(side,84+bw+24,230+bs*0.86);
