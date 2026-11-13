@@ -1467,86 +1467,159 @@ SZJ_YW = {  # 讲义与王相本对照（11-13 逐句核对）：组号 → 说�
 }
 LANGDU_SZJ = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-szj.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-szj.json")) else set()
 CNUM = lambda n: "一二三四五六七八九十"[n - 1] if n <= 10 else ("十" + "一二三四五六七八九"[n - 11] if n < 20 else ("一二三四五六七八九"[n // 10 - 1] + "十" + ("一二三四五六七八九"[n % 10 - 1] if n % 10 else "")))
+SZJ_FL = ("en", "ja")  # 三字经外文页（11-13 主人：“三字经的多语种搞定一下”；先英日，译文初稿 tools/i18n/szj-<语种>.json：g 逐组、name 讲名、jt 卷名、sum 讲义摘要、yw 异文）
+SZJ_TR = {x: json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", f"szj-{x}.json"), encoding="utf-8")) for x in SZJ_FL if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", f"szj-{x}.json"))}
+SZJ_CODES = ["zh-Hans", "zh-Hant"] + [x for x in SZJ_FL if x in SZJ_TR]
+SZJ_JUAN = {"卷一": 1, "卷二": 2, "卷三": 3, "卷四": 4, "卷五": 5, "卷六": 6}
+SZJ_UI = {
+ "en": {"book": "Three Character Classic", "juan": "Part {j}", "grp": "Part {j} · {jt} (lectures {a}–{b})", "lec": "Lecture {n}", "prog": "{jt} · lecture {n} · {k} groups",
+        "lead": "The Three Character Classic (Sanzijing), 1,200 characters in 101 groups, read in 39 weekly lectures following Yikonglu's Father's Lecture Notes. Each lecture gives the Chinese text, a scan of the base edition, Wang Xiang's Sanzijing xungu (1831 Japanese reprint), with every group framed on the page, a recording of the text and a draft English translation.",
+        "cap": "Text from Yikonglu's Father's Lecture Notes, checked line by line against the base edition, Wang Xiang's Sanzijing xungu (1831 Japanese reprint). The page scans are from that edition; click a group to frame it on the page.",
+        "cap_nopane": "Text from Yikonglu's Father's Lecture Notes. None of the groups in this lecture are in the base edition, Wang Xiang's Sanzijing xungu; they come from later popular editions, so there is no page scan. See 'Compared with Wang Xiang\'s edition' below.",
+        "cap_no": " Groups marked * are not in Wang Xiang's edition; the lecture notes take them from later popular editions.", "cap_yw": " Differences are listed under 'Compared with Wang Xiang\'s edition'.",
+        "tr_h": "Translation", "tr_note": "Draft translation; it will be revised when the lecture is filmed.", "yw_h": "Compared with Wang Xiang's edition", "grp_n": "Group {g}",
+        "jy_h": "From the Father's Lecture Notes", "jy_note": "Translated from Yikonglu's Father's Lecture Notes for the Three Character Classic, written for a parent teaching a child.",
+        "vlead": "The video for this lecture is still in production. For now this page gives the text, the base-edition pages, a recording and a translation.",
+        "none": "This lecture adds no new text.", "bt": "Three Character Classic (Sanzijing): text, page scans and translation | 39 lectures | 一孔录 Yikonglu",
+        "bd": "The Three Character Classic in 39 lectures: the Chinese text, scans of Wang Xiang's base edition with each group framed, recordings and an English translation.",
+        "md": "Three Character Classic, lecture {n}: the Chinese text, the base-edition pages and an English translation. {tr}", "bili": "Bilibili", "pane": "Page"},
+ "ja": {"book": "三字経", "juan": "巻{j}", "grp": "巻{j}・{jt}（第 {a}—{b} 講）", "lec": "第 {n} 講", "prog": "{jt}・第 {n} 講・{k} 組",
+        "lead": "『三字経』千二百字・百一組を、一孔録『三字経・父の講義』に沿って三十九講に分け、週に一講ずつ読みます。各講に原文、底本の王相『三字経訓詁』（1831 年和刻本）の原本画像（組ごとに枠表示）、朗読、日本語訳（初稿）を載せています。",
+        "cap": "原文は一孔録『三字経・父の講義』本により、底本の王相『三字経訓詁』（1831 年和刻本）と一句ずつ照合済み。原本画像は同本。組をクリックすると原本の該当箇所に枠が出ます。",
+        "cap_nopane": "原文は一孔録『三字経・父の講義』本による。この講の組はどれも底本の王相『三字経訓詁』になく、後世の通行本で補われたものなので、原本画像はありません。下の「王相本との対照」を参照。",
+        "cap_no": "「補」印の組は王相本になく、講義は後世の通行本によって補っています。", "cap_yw": "異同は下の「王相本との対照」に。",
+        "tr_h": "現代語訳", "tr_note": "訳は初稿です。講義動画を作るときに見直します。", "yw_h": "王相本との対照", "grp_n": "第 {g} 組",
+        "jy_h": "『父の講義』より", "jy_note": "一孔録『三字経・父の講義』（親が子に教えるための講義ノート）から訳出。",
+        "vlead": "この講の動画は制作中です。まず原文・原本画像・朗読・訳を載せています。",
+        "none": "この講では新しい原文を読みません。", "bt": "『三字経』原文・原本・現代語訳｜三十九講｜一孔録",
+        "bd": "『三字経』を三十九講で。原文、王相本の原本画像（組ごとに枠表示）、朗読、日本語訳。",
+        "md": "『三字経』第{n}講の原文、原本画像と日本語訳。{tr}", "bili": "ビリビリ", "pane": "原本"}}
+SZJ_PROG = {"zh-Hans": "已上 {n} / {n} 讲 · 视频制作中", "zh-Hant": "已上 {n} / {n} 讲 · 视频制作中", "en": "{n} lectures online", "ja": "全 {n} 講を掲載",
+            "ko": "{n}강 모두 공개", "fr": "{n} leçons en ligne", "es": "{n} lecciones en línea", "de": "Alle {n} Lektionen online",
+            "vi": "Đủ {n} bài", "id": "{n} pelajaran tersedia", "ru": "Все {n} уроков"}
+WJ_PROG = {"en": "{n} / {total} chapters online", "ja": "{n} / {total} 章を掲載", "ko": "{n} / {total}장 공개", "fr": "{n} / {total} chapitres en ligne", "es": "{n} / {total} capítulos en línea",
+           "de": "{n} / {total} Kapitel online", "vi": "{n} / {total} chương", "id": "{n} / {total} bab tersedia", "ru": "{n} / {total} глав"}  # 道德经等未讲书的进度（外文；中文仍用 bk_prog_wj）
+def wjprog(L, n, total): return WJ_PROG[L.code].format(n=n, total=total) if L.code in WJ_PROG else L.t("bk_prog_wj", n=n, total=total)
+
 def build_szj(L, write, P, S_IDX=None):
-    """三字经：书页（六卷三十九讲）＋各讲页（只出简繁；繁体页由整页转繁）。每组十二字一“句”，点组看白话、原页亮框（王相本）。"""
-    if not SZJ or not L.code.startswith("zh"): return []
+    """三字经：书页（六卷三十九讲）＋各讲页。简繁（繁体页由整页转繁）＋英日（SZJ_TR，原文繁体、逐组译文、原页点组亮框）。每组十二字一“句”，点组看白话（中文小卡）或亮框（外文）。"""
+    F = not L.code.startswith("zh"); TR = SZJ_TR.get(L.code) or {}; SU = SZJ_UI.get(L.code, {})
+    if not SZJ or (F and not TR): return []
+    T2S = __import__("opencc").OpenCC("s2t") if F else None
+    Y = (lambda x: T2S.convert(x)) if F else (lambda x: x)
     urls = []; rel_of = lambda n: f"sanzijing/{n}.html"; JS = [j for j in SZJ]
+    jt_of = lambda j: TR["jt"].get(j["jt"], j["jt"]) if F else j["jt"]
+    name_of = lambda j: TR["name"].get(str(j["n"]), j["name"]) if F else j["name"]
+    juan_of = lambda j: (SU["juan"].format(j=(CNUM(SZJ_JUAN[j["juan"]]) if L.code == "ja" and j["juan"] in SZJ_JUAN else SZJ_JUAN.get(j["juan"], j["juan"]))) + (" · " if L.code == "en" else "・") + jt_of(j)) if F else f'{j["juan"]} {j["jt"]}'
+    lec_of = lambda n: SU["lec"].format(n=n) if F else f"第{CNUM(n)}讲"
     def li(j):
-        t = "".join(g[1] for g in j["groups"])
-        sn = esc(t[:36] + ("……" if len(t) > 36 else "")) if t else esc(j["sum"][:36] + "……")
-        return f'<li class="wj" data-c="{j["n"]}"><a href="{P}{rel_of(j["n"])}"><em>{j["n"]}</em><b>{esc(j["name"])}</b><span><i class="wjtag">{L.t("toc_wj")}</i><span>{sn}</span></span></a></li>'
+        if F:
+            t = " ".join(TR["g"].get(str(g[0]), "") for g in j["groups"]) or TR["sum"].get(str(j["n"]), "")
+            sn = esc(t[:70] + ("…" if len(t) > 70 else ""))
+        else:
+            t = "".join(g[1] for g in j["groups"])
+            sn = esc(t[:36] + ("……" if len(t) > 36 else "")) if t else esc(j["sum"][:36] + "……")
+        return f'<li class="wj" data-c="{j["n"]}"><a href="{P}{rel_of(j["n"])}"><em>{j["n"]}</em><b>{esc(name_of(j))}</b><span><i class="wjtag">{L.t("toc_wj")}</i><span>{sn}</span></span></a></li>'
     juans = []
     for j in JS:
         if not juans or juans[-1][0] != j["juan"]: juans.append((j["juan"], j["jt"], []))
         juans[-1][2].append(j)
-    groups = "".join(f'<h2 class="ph">{jn} · {jt}（第 {js[0]["n"]}—{js[-1]["n"]} 讲）</h2><ol class="toc">{"".join(li(j) for j in js)}</ol>' for jn, jt, js in juans)
+    groups = "".join(f'<h2 class="ph">{SU["grp"].format(j=(CNUM(SZJ_JUAN[jn]) if L.code == "ja" and jn in SZJ_JUAN else SZJ_JUAN.get(jn, jn)), jt=jt_of(js[0]), a=js[0]["n"], b=js[-1]["n"]) if F else f"{jn} · {jt}（第 {js[0]["n"]}—{js[-1]["n"]} 讲）"}</h2><ol class="toc">{"".join(li(j) for j in js)}</ol>' for jn, jt, js in juans)
     pdf = os.path.exists(os.path.join(HERE, "root", "duben", "sanzijing-fuqin.pdf"))
-    lead = ("《三字经》一千二百字，一百零一组，按一孔录《三字经·父亲讲义》分六卷三十九讲，每周一讲，一年读完。每讲有原文、逐组白话（初稿）和朗读。"
+    lead = SU["lead"] if F else ("《三字经》一千二百字，一百零一组，按一孔录《三字经·父亲讲义》分六卷三十九讲，每周一讲，一年读完。每讲有原文、逐组白话（初稿）和朗读。"
             "原文据讲义本，已与底本清王相《三字经训诂》（1831 年和刻本）逐句核对，每讲附王相本原页，点一组就在原页上框出来。讲义比王相本多出十一组（五色、五味、五臭、四声，以及辽金元明清到民国七组），是后出通行本补的，页内都标了“补”。" + (f'讲义全本可在<a href="{P}duben/">免费读本</a>下载。' if pdf else ""))
+    bname = SU["book"] if F else "三字经"
     body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "sanzijing", "三字经")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
-<h1><span class="no">《三字经》 · 六卷三十九讲 · 一百零一组</span>三字经</h1></div></div>
+<h1><span class="no">{SZJ_PROG.get(L.code, SZJ_PROG["en"]).format(n=len(JS)) if F else "《三字经》 · 六卷三十九讲 · 一百零一组"}</span>{esc(bname)}</h1></div></div>
 <main class="wrap narrow"><p class="lead">{lead}</p>{groups}</main>"""
-    ld = {"@context": "https://schema.org", "@type": "Book", "name": "三字经", "url": f"{DOMAIN}/{L.prefix}sanzijing/", "inLanguage": L.hreflang}
-    write("sanzijing/index.html", page(L, "《三字经》全文、白话与朗读｜三十九讲｜一孔录", "《三字经》全文按一孔录父亲讲义分三十九讲，逐组白话直译，附原文朗读。", "sanzijing/", body, ld, "pg-book", codes=["zh-Hans", "zh-Hant"])); urls.append(f"{DOMAIN}/{L.prefix}sanzijing/")
+    ld = {"@context": "https://schema.org", "@type": "Book", "name": bname, "url": f"{DOMAIN}/{L.prefix}sanzijing/", "inLanguage": L.hreflang}
+    write("sanzijing/index.html", page(L, SU["bt"] if F else "《三字经》全文、白话与朗读｜三十九讲｜一孔录", SU["bd"] if F else "《三字经》全文按一孔录父亲讲义分三十九讲，逐组白话直译，附王相训诂本原页与原文朗读。", "sanzijing/", body, ld, "pg-book", codes=SZJ_CODES)); urls.append(f"{DOMAIN}/{L.prefix}sanzijing/")
     SH = {"bk": "三字经", "tot": len(JS), "src": "一孔录《三字经》讲义本", "src2": "一孔录《三字经》讲义本", "pf": "szj."}
     for k, j in enumerate(JS):
         n = j["n"]; url = f"{DOMAIN}/{L.prefix}{rel_of(n)}"; gs = j["groups"]; text = "".join(g[1] for g in gs)
-        jtag = f'{j["juan"]} {j["jt"]} · 第{CNUM(n)}讲'
-        cite_src = f"《三字经》第{CNUM(n)}讲，一孔录"
+        jtag = SU["prog"].format(jt=juan_of(j), n=n, k=len(gs)) if F else f'{j["juan"]} {j["jt"]} · 第{CNUM(n)}讲'
+        cite_src = (f"Three Character Classic, lecture {n}, 一孔录 Yikonglu" if L.code == "en" else f"『三字経』第{n}講、一孔録") if F else f"《三字经》第{CNUM(n)}讲，一孔录"
+        trs = [TR["g"].get(str(g[0]), "") for g in gs] if F else []
+        tr_all = " ".join(x for x in trs if x)
         jl = SZJ_JL["jl"].get(str(n), {})
         rect = lambda pg: "".join(f'<rect class="hl" data-s="{i}" x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="6"/>' for i, g in enumerate(gs, 1) for (p_, x0, y0, x1, y1) in jl.get(str(g[0]), []) if p_ == pg)
         pgs = sorted({b[0] for v in jl.values() for b in v if b[0] in SZJ_JL["pages"]})
-        pane = "".join(f'<a class="yyp" href="{SZJ_IMG}{pg}.jpg" target="_blank" data-p="{pg}"><svg viewBox="0 0 {SZJ_JL["pages"][pg][0]} {SZJ_JL["pages"][pg][1]}" role="img" aria-label="王相《三字经训诂》原页 {int(pg[1:])}"><image href="{SZJ_IMG}{pg}.jpg" width="{SZJ_JL["pages"][pg][0]}" height="{SZJ_JL["pages"][pg][1]}"/>{rect(pg)}</svg><span>原页 {int(pg[1:])}</span></a>' for pg in pgs)
+        plab = SU["pane"] if F else "原页"
+        pane = "".join(f'<a class="yyp" href="{SZJ_IMG}{pg}.jpg" target="_blank" data-p="{pg}"><svg viewBox="0 0 {SZJ_JL["pages"][pg][0]} {SZJ_JL["pages"][pg][1]}" role="img" aria-label="{"Wang Xiang, Sanzijing xungu, page" if L.code == "en" else ("王相『三字経訓詁』" if F else "王相《三字经训诂》原页")} {int(pg[1:])}"><image href="{SZJ_IMG}{pg}.jpg" width="{SZJ_JL["pages"][pg][0]}" height="{SZJ_JL["pages"][pg][1]}"/>{rect(pg)}</svg><span>{plab} {int(pg[1:])}</span></a>' for pg in pgs)
         no = [i for i, g in enumerate(gs, 1) if g[0] in SZJ_WX_NO]
-        cap = ("原文据一孔录《三字经·父亲讲义》本，已与底本清王相《三字经训诂》（1831 年和刻本）逐句核对；右边是王相本原页，点一组，原页上框出这一组。"
-               + (f"标“补”的{len(no)}组王相本没有，讲义据后出通行本补。" if no else "") + ("异文见下方“与王相本对照”。" if any(g[0] in SZJ_YW and g[0] not in SZJ_WX_NO for g in gs) else ""))
-        yw_html = ("".join(f'<p><b>第 {g[0]} 组　{esc(g[1])}</b><br>{esc(SZJ_YW[g[0]])}</p>' for g in gs if g[0] in SZJ_YW))
-        yw_html = f'<section class="sec szjyw"><h2>与王相本对照</h2>{yw_html}</section>' if yw_html else ""
-        bq = f'<blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="[]" data-rl="" data-hj="{{}}">'
+        has_yw = any(g[0] in SZJ_YW and g[0] not in SZJ_WX_NO for g in gs)
+        if F and not pane and gs: cap = SU["cap_nopane"]
+        elif F: cap = SU["cap"] + (SU["cap_no"] if no else "") + (SU["cap_yw"] if has_yw else "")
+        elif not pane and gs: cap = "原文据一孔录《三字经·父亲讲义》本。这一讲各组王相《三字经训诂》本都没有，是后出通行本补的，所以不附原页；说明见下方“与王相本对照”。"
+        else: cap = ("原文据一孔录《三字经·父亲讲义》本，已与底本清王相《三字经训诂》（1831 年和刻本）逐句核对；右边是王相本原页，点一组，原页上框出这一组。"
+               + (f"标“补”的{len(no)}组王相本没有，讲义据后出通行本补。" if no else "") + ("异文见下方“与王相本对照”。" if has_yw else ""))
+        ywd = TR.get("yw", {}) if F else {str(x): v for x, v in SZJ_YW.items()}
+        yw_html = "".join(f'<p><b>{esc(SU["grp_n"].format(g=g[0]) if F else f"第 {g[0]} 组")}　<span lang="{"zh-Hant" if F else "zh-Hans"}">{esc(Y(g[1]))}</span></b><br>{esc(ywd[str(g[0])])}</p>' for g in gs if str(g[0]) in ywd)
+        yw_html = f'<section class="sec szjyw"><h2>{esc(SU["yw_h"] if F else "与王相本对照")}</h2>{yw_html}</section>' if yw_html else ""
+        bq = f'<blockquote lang="{"zh-Hant" if F else "zh-Hans"}" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{", " if F else "，"}" data-reads="[]" data-rl="" data-hj="{{}}">'
         rows = [{"bh": g[2], "hj": []} for g in gs]
-        ld_btn = langdu_btn(L.code, str(n), "sanzijing") if str(n) in LANGDU_SZJ else ""
+        NO_T = {"en": "Not in Wang Xiang's edition; taken from later popular editions", "ja": "王相本になく、通行本によって補った組"}.get(L.code, "王相本无此组，讲义据通行本补")
         if gs:
-            ju_html = "".join(f'<span class="ju{" wxno" if g[0] in SZJ_WX_NO else ""}" id="s{i}" data-n="{i}" tabindex="0"{" title=\"王相本无此组，讲义据通行本补\"" if g[0] in SZJ_WX_NO else ""}>{esc(g[1])}</span><span class="yi" hidden>{esc(g[2])}</span>' for i, g in enumerate(gs, 1))
-            fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{jtag} · {len(gs)} 组</span><button type="button" class="yibtn" aria-pressed="false" title="每组下面显示白话">译</button>{ld_btn}</div>'
-                   f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
-                   f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
-            bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}：“{esc(gs[0][1].split("，")[0] + "，" + gs[0][1].split("，")[1])}”是什么意思</h2>'
-                       + "".join(f'<p lang="zh-Hans"><b>{esc(g[1])}</b><br>{esc(g[2])}</p>' for g in gs) + '<p class="note">白话为初稿，开讲时再核。</p></section>')
+            ju_html = "".join(f'<span class="ju{" wxno" if g[0] in SZJ_WX_NO else ""}" id="s{i}" data-n="{i}" tabindex="0"{f" title={chr(34)}{NO_T}{chr(34)}" if g[0] in SZJ_WX_NO else ""}>{esc(Y(g[1]))}</span>' + ("" if F else f'<span class="yi" hidden>{esc(g[2])}</span>') for i, g in enumerate(gs, 1))
+            if F:
+                fig = (f'<figure class="yuanwen dz nocard{"" if pane else " nopane"}"><div class="dzgrid"><div>{bq}{ju_html}</blockquote>{langdu_html(L.code, str(n), "sanzijing")}<figcaption>{esc(cap)}</figcaption></div>'
+                       + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div></figure>')
+                bh_html = (f'<section class="sec sec-白"><h2><i>{"Tr" if L.code == "en" else "訳"}</i>{esc(SU["tr_h"])}</h2>'
+                           + "".join(f'<p><b lang="zh-Hant">{esc(Y(g[1]))}</b><br>{esc(t)}</p>' for g, t in zip(gs, trs) if t) + f'<p class="note">{esc(SU["tr_note"])}</p></section>')
+            else:
+                ld_btn = langdu_btn(L.code, str(n), "sanzijing") if str(n) in LANGDU_SZJ else ""
+                fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{jtag} · {len(gs)} 组</span><button type="button" class="yibtn" aria-pressed="false" title="每组下面显示白话">译</button>{ld_btn}</div>'
+                       f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
+                       f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
+                bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}：“{esc(gs[0][1].split("，")[0] + "，" + gs[0][1].split("，")[1])}”是什么意思</h2>'
+                           + "".join(f'<p lang="zh-Hans"><b>{esc(g[1])}</b><br>{esc(g[2])}</p>' for g in gs) + '<p class="note">白话为初稿，开讲时再核。</p></section>')
         else:
-            fig = f'<p class="note">这一讲不讲新原文。</p>'; bh_html = ""
-        jy = (f'<section class="gist ykan"><h2>父亲讲义里的这一讲</h2><p>{esc(j["sum"])}</p>'
-              + (f'<p class="note">摘自一孔录《三字经·父亲讲义》，全本见<a href="{P}duben/">免费读本</a>。</p>' if pdf else '<p class="note">摘自一孔录《三字经·父亲讲义》。</p>') + "</section>") if j["sum"] else ""
-        vid = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
-               f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>')
+            fig = f'<p class="note">{esc(SU["none"]) if F else "这一讲不讲新原文。"}</p>'; bh_html = ""
+        sm = TR["sum"].get(str(n), "") if F else j["sum"]
+        if F: jy = f'<section class="gist ykan"><h2>{esc(SU["jy_h"])}</h2><p>{esc(sm)}</p><p class="note">{esc(SU["jy_note"])}</p></section>' if sm else ""
+        else: jy = (f'<section class="gist ykan"><h2>父亲讲义里的这一讲</h2><p>{esc(sm)}</p>'
+              + (f'<p class="note">摘自一孔录《三字经·父亲讲义》，全本见<a href="{P}duben/">免费读本</a>。</p>' if pdf else '<p class="note">摘自一孔录《三字经·父亲讲义》。</p>') + "</section>") if sm else ""
+        vid = (f'<section class="video soon"><h2><i>{"▶" if F else "看"}</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
+               f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">{SU["bili"] if F else "哔哩哔哩"}</a></p></section>')
         prev_j = JS[k-1] if k > 0 else None; next_j = JS[k+1] if k+1 < len(JS) else None
-        pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(jj["n"])}"><small>{L.t(lb)}</small><b>第{CNUM(jj["n"])}讲　{esc(jj["name"])}</b></a>' if jj else "<span></span>" for jj, lb, cl in ((prev_j, "prev", "prev"), (next_j, "next", "next")))
-        side = "".join(f'<li class="{"cur" if jj["n"] == n else ""} wj" data-c="{jj["n"]}"><a href="{P}{rel_of(jj["n"])}"><em>{jj["n"]}</em>{esc(jj["name"])}</a></li>' for jj in JS if jj["juan"] == j["juan"])
-        TRI_TXT[f"szj.{n}"] = {"h": f"《三字经》第{CNUM(n)}讲 · Three Character Classic {n} · 三字経 第{n}講", "y": text, "en": "", "ja": ""}
-        share = share_html(L, f"szj.{n}", url, f"《三字经》第{CNUM(n)}讲", j["name"], text, j["sum"][:60], "", SH) if gs else ""
+        pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(jj["n"])}"><small>{L.t(lb)}</small><b>{lec_of(jj["n"])}　{esc(name_of(jj))}</b></a>' if jj else "<span></span>" for jj, lb, cl in ((prev_j, "prev", "prev"), (next_j, "next", "next")))
+        side = "".join(f'<li class="{"cur" if jj["n"] == n else ""} wj" data-c="{jj["n"]}"><a href="{P}{rel_of(jj["n"])}"><em>{jj["n"]}</em>{esc(name_of(jj))}</a></li>' for jj in JS if jj["juan"] == j["juan"])
+        tre = " ".join((SZJ_TR.get("en") or {}).get("g", {}).get(str(g[0]), "") for g in gs).strip()
+        trj = "".join((SZJ_TR.get("ja") or {}).get("g", {}).get(str(g[0]), "") for g in gs)
+        TRI_TXT[f"szj.{n}"] = {"h": f"《三字经》第{CNUM(n)}讲 · Three Character Classic {n} · 三字経 第{n}講", "y": text, "en": tre, "ja": trj}
+        head_t = SU["lec"].format(n=n) if F else f"《三字经》第{CNUM(n)}讲"
+        share = share_html(L, f"szj.{n}", url, f'{bname} · {head_t}' if F else head_t, name_of(j), Y(text) if F else text, "" if F else j["sum"][:60], tr_all if F else "", SH) if gs else ""
+        crumb_j = juan_of(j)
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "sanzijing", "三字经")}
-<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}sanzijing/">三字经</a> › {j["juan"]} {j["jt"]}</p>
-<h1><span class="no">{jtag} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(j["name"])}</h1>
+<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}sanzijing/">{esc(bname)}</a> › {esc(crumb_j)}</p>
+<h1><span class="no">{esc(jtag)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(name_of(j))}</h1>
 </div></div>
 <main class="wrap chapter">
 <article>
-<p class="wjlead">这一讲的视频还在制作。网站先放原文、白话和朗读，视频上线后补全讲解。</p>
+<p class="wjlead">{esc(SU["vlead"]) if F else "这一讲的视频还在制作。网站先放原文、白话和朗读，视频上线后补全讲解。"}</p>
 {fig}
+{bh_html if F else ""}
 {yw_html}
 {jy}
-{bh_html}
+{"" if F else bh_html}
 {vid}
 <div class="chacts">{share}</div>
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
 <nav class="pn">{pn}</nav>
 </article>
-<aside><h3>{j["juan"]} {j["jt"]}</h3><ol>{side}</ol></aside>
-</main><script type="application/json" class="xddata">{json.dumps({"c": str(n), "ti": j["name"]}, ensure_ascii=False)}</script>"""
-        ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"《三字经》第{CNUM(n)}讲 {j['name']}", "inLanguage": L.hreflang, "url": url,
-              "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "三字经"}}
-        js = SHARE_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"]], ensure_ascii=False)).replace("@NONE@", "这一组的白话还在整理。") if gs else "").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
-        if S_IDX is not None and gs: S_IDX.append({"c": f"三字经 第{CNUM(n)}讲", "t": j["name"], "u": P + rel_of(n), "y": text, "x": " ".join(g[2] for g in gs)})
-        head = (gs[0][1][:12] if gs else j["name"])
-        write(rel_of(n), page(L, f"{head}｜原文与白话｜三字经 第{CNUM(n)}讲 {j['name']}｜一孔录", f"{text[:60]}……《三字经》第{CNUM(n)}讲“{j['name']}”原文、逐组白话与朗读。" if gs else f"《三字经》第{CNUM(n)}讲“{j['name']}”。{j['sum'][:60]}", rel_of(n), body + js, ld, "pg-chapter pg-wj", codes=["zh-Hans", "zh-Hant"])); urls.append(url)
+<aside><h3>{esc(crumb_j)}</h3><ol>{side}</ol></aside>
+</main><script type="application/json" class="xddata">{json.dumps({"c": str(n), "ti": name_of(j)}, ensure_ascii=False)}</script>"""
+        ld = {"@context": "https://schema.org", "@type": "Article", "headline": f'{bname} {head_t} {name_of(j)}' if F else f"《三字经》第{CNUM(n)}讲 {j['name']}", "inLanguage": L.hreflang, "url": url,
+              "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": bname}}
+        if F: js = SHARE_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", "<ul></ul>").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + ZJ.HL_JS
+        else: js = SHARE_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"]], ensure_ascii=False)).replace("@NONE@", "这一组的白话还在整理。") if gs else "").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
+        if S_IDX is not None and gs: S_IDX.append({"c": f'{bname} {n}' if F else f"三字经 第{CNUM(n)}讲", "t": name_of(j), "u": P + rel_of(n), "y": Y(text) if F else text, "x": tr_all if F else " ".join(g[2] for g in gs)})
+        if F: ttl, desc = f'{bname} · {head_t}: {name_of(j)} | 一孔录 Yikonglu', SU["md"].format(n=n, tr=tr_all[:110] + ("…" if len(tr_all) > 110 else "")) if gs else f'{bname} · {head_t}: {name_of(j)}. {sm[:100]}'
+        else:
+            head = (gs[0][1][:12] if gs else j["name"])
+            ttl = f"{head}｜原文与白话｜三字经 第{CNUM(n)}讲 {j['name']}｜一孔录"
+            desc = f"{text[:60]}……《三字经》第{CNUM(n)}讲“{j['name']}”原文、逐组白话与朗读。" if gs else f"《三字经》第{CNUM(n)}讲“{j['name']}”。{j['sum'][:60]}"
+        write(rel_of(n), page(L, ttl, desc, rel_of(n), body + js, ld, "pg-chapter pg-wj", codes=SZJ_CODES)); urls.append(url)
     return urls
 
 def build_lang(L, D, write):
@@ -1577,7 +1650,7 @@ def build_lang(L, D, write):
         return f"“{seo_q(yw[c])}”是什么意思？" if yw.get(c) else ""
     search_idx = []
     pubset = set(pub)
-    LB = LIVE_BOOKS | ({"daodejing"} if D.get("ddj") else set()) | ({"sanzijing"} if SZJ and L.code.startswith("zh") else set())  # 书目、首页亮着的书：论语＋已上原文的书
+    LB = LIVE_BOOKS | ({"daodejing"} if D.get("ddj") else set()) | ({"sanzijing"} if SZJ else set())  # 书目、首页亮着的书：论语＋已上原文的书
     def href(c):  # 已讲章各语种都有页；未讲章出简繁和英日（WJ_FL），其余外文页链到简体
         return (P if c in pubset or L.code.startswith("zh") or WJF else "/") + rel_of(c)
     def ctitle(c): return title_of(c) if c in pubset else ((WJF and wj_tr_title(L.code, c)) or wj_titles(D["qw"])[c])
@@ -1914,7 +1987,7 @@ def build_lang(L, D, write):
                 search_idx.append({"c": c, "t": ctitle(c), "u": P + rel, "y": text, "x": (tr + " " if tr else "") + (bh or "") + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
 
     urls += build_ddj(L, D, write, P, search_idx if (L.code.startswith("zh") or L.code in DDJ_TR) else None)
-    urls += build_szj(L, write, P, search_idx if L.code.startswith("zh") else None)  # 三字经（只简繁）  # 道德经（只简繁；没开就是空）
+    urls += build_szj(L, write, P, search_idx if (L.code.startswith("zh") or L.code in SZJ_TR) else None)  # 三字经（只简繁）  # 道德经（只简繁；没开就是空）
 
     def toc(cs):
         def li(c):
@@ -1948,10 +2021,10 @@ def build_lang(L, D, write):
         name = L.t("bk_" + slug); sub = L.t("bk_sub_" + slug)
         zhname = f"《{zh}》" if L.code.startswith("zh") else f"《{zh}》 {name}"
         if live and slug == "sanzijing":
-            return f'<a class="bcard" href="{P}sanzijing/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:100%"></i></span><em>{"已上 39 / 39 讲 · 视频制作中"}</em></a>'
+            return f'<a class="bcard" href="{P if (L.code.startswith("zh") or L.code in SZJ_TR) else "/"}sanzijing/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:100%"></i></span><em>{SZJ_PROG.get(L.code, SZJ_PROG["en"]).format(n=len(SZJ))}</em></a>'
         if live and slug == "daodejing":
             nd = len(D["ddj"]["qw"])
-            return f'<a class="bcard" href="{P if (L.code.startswith("zh") or L.code in DDJ_TR) else "/"}daodejing/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:{round(nd * 100 / 81)}%"></i></span><em>{L.t("bk_prog_wj", n=nd, total=81)}</em></a>'
+            return f'<a class="bcard" href="{P if (L.code.startswith("zh") or L.code in DDJ_TR) else "/"}daodejing/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:{round(nd * 100 / 81)}%"></i></span><em>{wjprog(L, nd, 81)}</em></a>'
         if live:
             pct = round(len(pub) * 100 / n_all)
             return f'<a class="bcard" href="{P}lunyu/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:{pct}%"></i></span><em>{L.t("bk_prog", done=len(pub), total=n_all)}</em></a>'
@@ -1971,12 +2044,12 @@ def build_lang(L, D, write):
         cv = f'<span class="cv"><span class="qian{" l6" if len(zh) >= 6 else (" l5" if len(zh) == 5 else "")}" lang="zh-Hans">{esc(zh)}</span></span>'
         if live:
             if slug == "sanzijing":
-                return (f'<a class="tome on" href="{P}sanzijing/" data-bk="{slug}" data-t="{len(SZJ)}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
-                        f'<span class="bar"><i style="width:100%"></i></span><em>已上 {len(SZJ)} / {len(SZJ)} 讲 · 视频制作中</em><em class="mine" hidden></em></span></a>')
+                return (f'<a class="tome on" href="{P if (zhL or L.code in SZJ_TR) else "/"}sanzijing/" data-bk="{slug}" data-t="{len(SZJ)}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
+                        f'<span class="bar"><i style="width:100%"></i></span><em>{SZJ_PROG.get(L.code, SZJ_PROG["en"]).format(n=len(SZJ))}</em><em class="mine" hidden></em></span></a>')
             if slug == "daodejing": nd, tt, u, key = len(D["ddj"]["qw"]), 81, f'{P if (zhL or L.code in DDJ_TR) else "/"}daodejing/', "bk_prog_wj"
             else: nd, tt, u, key = len(pub), n_all, f"{P}lunyu/", "bk_prog"
             return (f'<a class="tome on" href="{u}" data-bk="{slug}" data-t="{tt}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
-                    f'<span class="bar"><i style="width:{round(nd * 100 / tt)}%"></i></span><em>{L.t(key, done=nd, n=nd, total=tt)}</em><em class="mine" hidden></em></span></a>')
+                    f'<span class="bar"><i style="width:{round(nd * 100 / tt)}%"></i></span><em>{wjprog(L, nd, tt) if key == "bk_prog_wj" else L.t(key, done=nd, n=nd, total=tt)}</em><em class="mine" hidden></em></span></a>')
         return (f'<span class="tome" aria-disabled="true">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}{"<br>" + esc(kids) if kids else ""}</small>'
                 f'<em class="soon">{L.t("soon")}</em></span></span>')
     shelves = "".join(f'<section class="shelf"><h2 class="ph">{L.t(gk)}</h2><div class="shrow">' + "".join(tome(sl, zh, sl in LB) for sl, zh in bs) + "</div></section>" for gk, bs in BOOK_GROUPS)

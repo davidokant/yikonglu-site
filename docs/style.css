@@ -691,3 +691,5 @@ aside h3{padding-bottom:6px;border-bottom:3px double color-mix(in srgb,var(--acc
 :root[data-theme="dark"] .mcv,:root[data-theme="dark"] .pcard::before{background-color:#2c5e4a}:root[data-theme="dark"] .mcv .qian{background:#e8e2d0}
 .yuanwen.nocard .ju{cursor:pointer}.yuanwen.nocard .ju.lit{background:color-mix(in srgb,var(--accent) 16%,transparent)}
 .ju.wxno::after{content:"补";font-size:.62em;vertical-align:super;color:var(--accent);margin-left:.15em;font-weight:600}
+html[lang="en"] .ju.wxno::after{content:"*"}html[lang="ja"] .ju.wxno::after{content:"補"}
+.cv{flex-shrink:0}
