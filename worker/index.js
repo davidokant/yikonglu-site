@@ -6,6 +6,8 @@
 // GET  /top              {recent:[c…], rn:今天读过的章数, heat:{c:n}, top:[[c#sN, n]…]}
 // POST /intent {join:true} 一孔书院“我想第一批加入”加一（同一浏览器只点一次，页面本地记）；POST /intent {want:[…]} 各项“最想要”加一
 // GET  /intent          {n}（满 20 才给数，否则 n:null）；GET /intent/stats {n, want, days} 全部计数（不含任何个人信息）
+// POST /wk {a:n} 或 {l:n}  匿名周读：这台设备本周（北京时间周一起）第 n 天读书（a 各书、l 只算《论语》），每周每个 n 只发一次；不带任何编号
+// GET  /wk               {周一日期: {a:{n:台数}, l:{n:台数}}}，留 12 周；北极星＝本周 a[4]（读满四天的台数）
 // POST /done  {c}         某章“读完了”加一（同一设备只点一次，由页面本地记）；GET /done?c=1.1 返回 {today, total}
 const ORIGINS = ["https://yikonglu.com", "https://www.yikonglu.com", "http://localhost:8767"];
 const WINDOW = 90 * 1000; // 90 秒内有心跳算在线
@@ -83,6 +85,18 @@ export class Live {
       }
       if (url.pathname === "/intent/stats") return Response.json(I);
       return Response.json({ n: I.n >= 20 ? I.n : null });
+    } else if (url.pathname === "/wk") { // 11-14 主人定北极星：每周读满四天的人数
+      const W = (await this.state.storage.get("week")) || {};
+      if (req.method === "POST") {
+        let b = {}; try { b = await req.json(); } catch (e) {}
+        const now = new Date(Date.now() + 8 * 3600e3), mon = new Date(now.getTime() - ((now.getUTCDay() + 6) % 7) * 864e5).toISOString().slice(0, 10);
+        const w = W[mon] = W[mon] || { a: {}, l: {} };
+        for (const k of ["a", "l"]) { const n = Number(b[k]); if (Number.isInteger(n) && n >= 1 && n <= 7) w[k][n] = (w[k][n] || 0) + 1; }
+        for (const k of Object.keys(W).sort().slice(0, -12)) delete W[k];
+        await this.state.storage.put("week", W);
+        return Response.json({ ok: true });
+      }
+      return Response.json(W);
     } else if (url.pathname === "/done") {
       let c = url.searchParams.get("c") || "";
       if (req.method === "POST") { try { c = String((await req.json()).c || ""); } catch (e) {} }
