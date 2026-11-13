@@ -44,7 +44,7 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 .chhead .no{display:block;font-size:15px;font-weight:400;letter-spacing:.2em;color:var(--accent2)}
 .lead{color:var(--mute);margin-top:22px}
 main.chapter{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:40px;padding-top:26px;padding-bottom:30px}
-@media (max-width:900px){main.chapter{grid-template-columns:1fr}main.chapter aside{display:none}}
+@media (max-width:900px){main.chapter{grid-template-columns:minmax(0,1fr)}main.chapter aside{display:none}}
 .yuanwen{margin:0 0 10px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:26px 28px 18px;box-shadow:var(--shadow);position:relative}
 .yuanwen:before{content:"原文";position:absolute;top:-12px;left:20px;background:var(--accent);color:#fff;font-size:13px;letter-spacing:.2em;padding:1px 10px;border-radius:3px}
 .yuanwen blockquote{margin:0;font-size:23px;line-height:2;letter-spacing:.04em}
@@ -392,15 +392,15 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 
 /* 逐句对照（样板：同屏原页、译随文、小卡） */
 .yuanwen.dz .dzgrid,.yuanwen.wjpg .dzgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,42%);gap:22px;align-items:start}
-@media (max-width:700px){.yuanwen.dz .dzgrid,.yuanwen.wjpg .dzgrid{grid-template-columns:1fr}}
+@media (max-width:700px){.yuanwen.dz .dzgrid,.yuanwen.wjpg .dzgrid{grid-template-columns:minmax(0,1fr)}}
 .video.soon .vlinks{margin:0}
 .yuanwen.dz.nopane .dzgrid{grid-template-columns:1fr}
 .yypane{position:sticky;top:12px;max-height:min(78vh,700px);overflow:auto;border:1px solid var(--line);border-radius:6px;background:#efe9da;overscroll-behavior:contain}
 /* 主人 11-07：两页拼的不要小窗滚动，整页直接显示，面板跟着页面走 */
 .yypane:has(.yyp ~ .yyp){position:relative;top:0;max-height:none;overflow:visible}
 /* 手机（样板，待主人定）：原页收成小图贴在原文上方，点句红框照样亮；点小图页内放大，红框保留 */
-@media (max-width:700px){.yypane,.yypane:has(.yyp ~ .yyp){position:sticky;top:calc(var(--toph,0px) + 4px);z-index:5;max-height:none;overflow:visible;order:-1;display:flex;flex-direction:row-reverse;justify-content:center;gap:10px;padding:6px 6px 2px;background:var(--bg);border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.06)}
-.yypane .yyp{width:auto}.yypane .yyp svg{width:auto;height:min(40vw,150px);border:1px solid var(--line);background:#fff}.yypane .yyp span{font-size:11px;padding:2px 0 2px}.yypane .yyp .hl{stroke-width:14}}
+@media (max-width:700px){.yypane,.yypane:has(.yyp ~ .yyp){position:sticky;top:calc(var(--toph,0px) + 4px);z-index:5;max-height:none;overflow-x:auto;overflow-y:hidden;order:-1;display:flex;flex-direction:row-reverse;justify-content:flex-start;gap:10px;padding:6px 6px 2px;background:var(--bg);border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.06)}
+.yypane .yyp{width:auto;flex-shrink:0}.yypane .yyp:first-child{margin-right:auto}.yypane .yyp:last-child{margin-left:auto}.yypane .yyp svg{width:auto;height:min(40vw,150px);border:1px solid var(--line);background:#fff}.yypane .yyp span{font-size:11px;padding:2px 0 2px}.yypane .yyp .hl{stroke-width:14}}
 .yyzoom{position:fixed;inset:0;z-index:120;background:#1b1e1c;overflow:auto;-webkit-overflow-scrolling:touch}
 .yyzoom .yyzh{position:fixed;top:0;left:0;right:0;z-index:1;display:flex;align-items:center;gap:10px;height:44px;padding:0 10px;background:rgba(27,30,28,.92);color:#eee;font-size:14px}
 .yyzoom .yyzh b{font-weight:600;margin-right:auto}.yyzoom .yyzh button,.yyzoom .yyzh a{font:inherit;color:#eee;background:rgba(255,255,255,.12);border:0;border-radius:6px;padding:6px 12px;line-height:1;text-decoration:none}
@@ -545,3 +545,9 @@ html:not([lang^="zh"]):not([lang="ja"]):not([lang="ko"]) .meiri blockquote{font-
 .zipop .zg small{color:var(--mute);font-size:12px}
 .zipop .zo{font-size:13px;color:var(--mute);border-top:1px solid var(--line);padding-top:6px}
 .zipop .zo a,.zipop .zo b{display:inline-block;margin:0 2px}
+/* 11-13 渐进升级：本章勘误标、一孔按引用、下一章问句、点句上一句下一句、来源提示 */
+.kwtag{margin:6px 0 0;font-size:14px}.kwtag a{color:var(--accent)}
+.ykcite{margin:6px 0 0}.ykcite button{border:0;background:none;padding:0;font:inherit;font-size:13px;color:var(--mute);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.pncard .nq{display:block;margin-top:4px;font-size:14px;color:var(--mute);font-weight:400;line-height:1.6}
+.zjcard .znav{display:flex;justify-content:space-between;margin:-2px 0 4px}.zjcard .znav button{border:0;background:none;font:inherit;font-size:13px;color:var(--accent);padding:2px 0;cursor:pointer}.zjcard .znav button:disabled{color:var(--line);cursor:default}
+.fromtip{position:relative;margin:10px 0 0;padding:8px 34px 8px 12px;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:6px;font-size:14px;line-height:1.7;color:var(--ink,inherit)}.fromtip button{margin-left:8px;border:1px solid var(--accent);background:none;color:var(--accent);border-radius:4px;font:inherit;font-size:13px;padding:0 8px;cursor:pointer}.fromtip .fx{position:absolute;right:6px;top:6px;border:0;margin:0;font-size:16px;color:var(--mute)}
