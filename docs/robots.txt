@@ -1,5 +1,12 @@
 User-agent: *
 Allow: /
+Disallow: /done
+Disallow: /copy$
+Disallow: /top$
+Disallow: /hit$
+Disallow: /reads
+Disallow: /intent
+Disallow: /data/live-
 
 Sitemap: https://yikonglu.com/sitemap.xml
 Sitemap: https://yikonglu.com/sitemap-images.xml
