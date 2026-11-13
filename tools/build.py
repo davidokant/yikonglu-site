@@ -1445,10 +1445,30 @@ def build_ddj(L, D, write, P, S_IDX=None):
 
 SZJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "szj.json")  # 三字经（11-13 主人“先上”：按一孔录讲义原文，三十九讲；白话初稿；王相训诂原页待补）
 SZJ = json.load(open(SZJ_FILE, encoding="utf-8")) if os.path.exists(SZJ_FILE) else []
+SZJ_JL_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "szj_julie.json")  # 王相《三字经训诂》1831 年和刻本原页（图片仓库 sanzijing/pNNN.jpg，拆单页、校平）与逐组框 {pages, jl:{讲:{组:[[页,x0,y0,x1,y1],…]}}}
+SZJ_JL = json.load(open(SZJ_JL_FILE, encoding="utf-8")) if os.path.exists(SZJ_JL_FILE) else {"pages": {}, "jl": {}}
+SZJ_IMG = "https://img.yikonglu.com/sanzijing/"
+SZJ_WX_NO = {22, 23, 24, 26, 69, 70, 71, 72, 73, 74, 75}  # 王相本没有的组（讲义据后出通行本补）
+SZJ_YW = {  # 讲义与王相本对照（11-13 逐句核对）：组号 → 说明
+    11: "王相本作“首孝弟”，“弟”通“悌”。",
+    22: "王相本无此组。五色、五味、五臭三组是后出通行本补的，讲义据通行本。",
+    23: "王相本无此组（同上，后出通行本补）。",
+    24: "王相本无此组（同上，后出通行本补）。",
+    26: "王相本无此组。“四声”一组是后出通行本补的，讲义据通行本。",
+    28: "王相本作“至元曾”，清人避康熙帝玄烨的名讳，改“玄”为“元”。",
+    32: "王相本作“详训诂”，“故”“诂”相通。",
+    69: "王相本无此组。王相本讲历代到宋为止（“炎宋兴，受周禅，十八传，南北混”），下接“十七史”；辽、金、元、明、清到民国这七组是后人续写，讲义据通行本。",
+    70: "王相本无此组（后人续写，见第 69 组）。", 71: "王相本无此组（后人续写，见第 69 组）。", 72: "王相本无此组（后人续写，见第 69 组）。",
+    73: "王相本无此组（后人续写，见第 69 组）。", 74: "王相本无此组（后人续写，见第 69 组）。", 75: "王相本无此组（后人续写，见第 69 组）。",
+    76: "王相本作“十七史”。后来正史增多，通行本改作“廿二史”，讲义从通行本。",
+    89: "王相本作“能赋碁”，“碁”同“棋”。",
+    90: "王相本“颖”作“頴”，同字异写。",
+    100: "王相本“籝”作“籯”，同字异写。",
+}
 LANGDU_SZJ = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-szj.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-szj.json")) else set()
 CNUM = lambda n: "一二三四五六七八九十"[n - 1] if n <= 10 else ("十" + "一二三四五六七八九"[n - 11] if n < 20 else ("一二三四五六七八九"[n // 10 - 1] + "十" + ("一二三四五六七八九"[n % 10 - 1] if n % 10 else "")))
 def build_szj(L, write, P, S_IDX=None):
-    """三字经：书页（六卷三十九讲）＋各讲页（只出简繁；繁体页由整页转繁）。每组十二字一“句”，点组看白话；原页待补。"""
+    """三字经：书页（六卷三十九讲）＋各讲页（只出简繁；繁体页由整页转繁）。每组十二字一“句”，点组看白话、原页亮框（王相本）。"""
     if not SZJ or not L.code.startswith("zh"): return []
     urls = []; rel_of = lambda n: f"sanzijing/{n}.html"; JS = [j for j in SZJ]
     def li(j):
@@ -1462,7 +1482,7 @@ def build_szj(L, write, P, S_IDX=None):
     groups = "".join(f'<h2 class="ph">{jn} · {jt}（第 {js[0]["n"]}—{js[-1]["n"]} 讲）</h2><ol class="toc">{"".join(li(j) for j in js)}</ol>' for jn, jt, js in juans)
     pdf = os.path.exists(os.path.join(HERE, "root", "duben", "sanzijing-fuqin.pdf"))
     lead = ("《三字经》一千二百字，一百零一组，按一孔录《三字经·父亲讲义》分六卷三十九讲，每周一讲，一年读完。每讲有原文、逐组白话（初稿）和朗读。"
-            "原文据讲义本；底本王相《三字经训诂》的原页正在找，补上后逐句核对。" + (f'讲义全本可在<a href="{P}duben/">免费读本</a>下载。' if pdf else ""))
+            "原文据讲义本，已与底本清王相《三字经训诂》（1831 年和刻本）逐句核对，每讲附王相本原页，点一组就在原页上框出来。讲义比王相本多出十一组（五色、五味、五臭、四声，以及辽金元明清到民国七组），是后出通行本补的，页内都标了“补”。" + (f'讲义全本可在<a href="{P}duben/">免费读本</a>下载。' if pdf else ""))
     body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "sanzijing", "三字经")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
 <h1><span class="no">《三字经》 · 六卷三十九讲 · 一百零一组</span>三字经</h1></div></div>
 <main class="wrap narrow"><p class="lead">{lead}</p>{groups}</main>"""
@@ -1473,14 +1493,22 @@ def build_szj(L, write, P, S_IDX=None):
         n = j["n"]; url = f"{DOMAIN}/{L.prefix}{rel_of(n)}"; gs = j["groups"]; text = "".join(g[1] for g in gs)
         jtag = f'{j["juan"]} {j["jt"]} · 第{CNUM(n)}讲'
         cite_src = f"《三字经》第{CNUM(n)}讲，一孔录"
-        cap = "原文据一孔录《三字经·父亲讲义》本；底本王相《三字经训诂》原页待补，补上后逐句核对。"
+        jl = SZJ_JL["jl"].get(str(n), {})
+        rect = lambda pg: "".join(f'<rect class="hl" data-s="{i}" x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="6"/>' for i, g in enumerate(gs, 1) for (p_, x0, y0, x1, y1) in jl.get(str(g[0]), []) if p_ == pg)
+        pgs = sorted({b[0] for v in jl.values() for b in v if b[0] in SZJ_JL["pages"]})
+        pane = "".join(f'<a class="yyp" href="{SZJ_IMG}{pg}.jpg" target="_blank" data-p="{pg}"><svg viewBox="0 0 {SZJ_JL["pages"][pg][0]} {SZJ_JL["pages"][pg][1]}" role="img" aria-label="王相《三字经训诂》原页 {int(pg[1:])}"><image href="{SZJ_IMG}{pg}.jpg" width="{SZJ_JL["pages"][pg][0]}" height="{SZJ_JL["pages"][pg][1]}"/>{rect(pg)}</svg><span>原页 {int(pg[1:])}</span></a>' for pg in pgs)
+        no = [i for i, g in enumerate(gs, 1) if g[0] in SZJ_WX_NO]
+        cap = ("原文据一孔录《三字经·父亲讲义》本，已与底本清王相《三字经训诂》（1831 年和刻本）逐句核对；右边是王相本原页，点一组，原页上框出这一组。"
+               + (f"标“补”的{len(no)}组王相本没有，讲义据后出通行本补。" if no else "") + ("异文见下方“与王相本对照”。" if any(g[0] in SZJ_YW and g[0] not in SZJ_WX_NO for g in gs) else ""))
+        yw_html = ("".join(f'<p><b>第 {g[0]} 组　{esc(g[1])}</b><br>{esc(SZJ_YW[g[0]])}</p>' for g in gs if g[0] in SZJ_YW))
+        yw_html = f'<section class="sec szjyw"><h2>与王相本对照</h2>{yw_html}</section>' if yw_html else ""
         bq = f'<blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="[]" data-rl="" data-hj="{{}}">'
         rows = [{"bh": g[2], "hj": []} for g in gs]
         ld_btn = langdu_btn(L.code, str(n), "sanzijing") if str(n) in LANGDU_SZJ else ""
         if gs:
-            ju_html = "".join(f'<span class="ju" id="s{i}" data-n="{i}" tabindex="0">{esc(g[1])}</span><span class="yi" hidden>{esc(g[2])}</span>' for i, g in enumerate(gs, 1))
-            fig = (f'<figure class="yuanwen dz nopane"><div class="dztools"><span class="prog">{jtag} · {len(gs)} 组</span><button type="button" class="yibtn" aria-pressed="false" title="每组下面显示白话">译</button>{ld_btn}</div>'
-                   f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div></div>'
+            ju_html = "".join(f'<span class="ju{" wxno" if g[0] in SZJ_WX_NO else ""}" id="s{i}" data-n="{i}" tabindex="0"{" title=\"王相本无此组，讲义据通行本补\"" if g[0] in SZJ_WX_NO else ""}>{esc(g[1])}</span><span class="yi" hidden>{esc(g[2])}</span>' for i, g in enumerate(gs, 1))
+            fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{jtag} · {len(gs)} 组</span><button type="button" class="yibtn" aria-pressed="false" title="每组下面显示白话">译</button>{ld_btn}</div>'
+                   f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
                    f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
             bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}：“{esc(gs[0][1].split("，")[0] + "，" + gs[0][1].split("，")[1])}”是什么意思</h2>'
                        + "".join(f'<p lang="zh-Hans"><b>{esc(g[1])}</b><br>{esc(g[2])}</p>' for g in gs) + '<p class="note">白话为初稿，开讲时再核。</p></section>')
@@ -1503,6 +1531,7 @@ def build_szj(L, write, P, S_IDX=None):
 <article>
 <p class="wjlead">这一讲的视频还在制作。网站先放原文、白话和朗读，视频上线后补全讲解。</p>
 {fig}
+{yw_html}
 {jy}
 {bh_html}
 {vid}
