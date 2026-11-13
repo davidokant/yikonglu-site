@@ -157,7 +157,7 @@ REUSE_UI = {
  "zh-Hans": {"foot_reuse": "原文与古注为公版；白话、引文核对等一孔录所写的核对内容按 <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a> 许可，转载请署名“一孔录”并附原页链接，不得商用。<a href=\"{p}kaifang.html\">转载说明</a>",
   "about_h4": "转载与引用",
   "about_r1": "原文和古注（朱熹集注、皇侃义疏等古刻本）是公版，谁都可以用。",
-  "about_r2": "一孔录写的白话、引文核对表、读音索引和专题编排，按 CC BY-NC 4.0 许可：可以转载、改编，须署名“一孔录”、附原页链接、注明有没有改动，不得商用。章页上一孔录自己的读法（常见读法、注里的关键字、诸家、一孔录这样读）不在这个许可之内，短引请注明出处，成段转用请先来信。",
+  "about_r2": "一孔录写的白话、引文核对表、读音表和专题编排，按 CC BY-NC 4.0 许可：可以转载、改编，须署名“一孔录”、附原页链接、注明有没有改动，不得商用。章页上一孔录自己的读法（常见读法、注里的关键字、诸家、一孔录这样读）不在这个许可之内，短引请注明出处，成段转用请先来信。",
   "about_r3": "现代注本（杨伯峻、钱穆等）的引文版权归原作者和出版方，不在这个许可之内，本站只作短引。",
   "about_r4": "视频、配音、原创角色形象和插图不在这个许可之内，转用请先来信。",
   "about_r5": "引一句时，点原文任一句就能复制带出处的引文。要成批转载，可以直接用<a href=\"{p}kaifang.html\">开放数据</a>，商业使用请先来信。看到没署名的转载，或者照搬全站的网站，也请告诉我们：",
@@ -987,7 +987,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>{'<span class="livep" id="livep" hidden></span>' if ANALYTICS.get("live") else ""}
 <nav><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}shuyuan/" class="gsnav">书院</a>' if gs else ""}
-<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}wen.html">{lang_tab(WEN, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
+<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}wen.html">{lang_tab(WEN, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary><span class="lfull">{L.name}</span><span class="lshort" aria-hidden="true">{LANG_SHORT.get(L.code, L.code[:2].upper())}</span></summary><div>{sw}</div></details></nav>
 </div></header>
 {note}
@@ -997,7 +997,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
 <p class="where">{where_html(L)}</p>
-<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}shuyuan/">书院</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
+<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}shuyuan/">书院</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
 <p class="freuse">{L.t("foot_reuse", p=P)}</p>
@@ -1729,7 +1729,7 @@ def build_lang(L, D, write):
 <div><i>注</i><b>{L.t("p2t")}</b><p>{L.t("p2")}</p></div>
 <div><i>勘</i><b>{L.t("p3t")}</b><p>{L.t("p3")}</p></div>
 </section>
-<section class="wrap narrow"><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}zi.html"><b>{L.t("zi_title")}</b><span>{L.t("t_zi")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
+<section class="wrap narrow"><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
 {yxl_line(L, D, P) if L.code.startswith("zh") else ""}
 <p class="cta"><a class="btn ghost" href="{P}kanwu.html">{L.t("btn_errata")}</a><a class="btn ghost" href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p></section>
 </main>'''
@@ -1750,8 +1750,11 @@ def build_lang(L, D, write):
     write("yinsi.html", page(L, f"{ys_t}｜一孔录", ys_sub, "yinsi.html", body)); urls.append(f"{DOMAIN}/{L.prefix}yinsi.html")
 
     if kw:
-        trs = "".join(f"<tr><td>{esc(r[0])}</td><td>{esc(r[1])} {esc(r[2])}</td><td>{esc(r[3])}</td><td>{esc(r[4])}</td><td>{esc(r[5])}</td><td>{esc(r[6])}</td><td class=\"who\">{esc(r[7])}</td></tr>" for r in reversed(kw))
-        ktable = f'<div class="tw"><table lang="zh-Hans"><thead><tr><th>日期</th><th>集·章</th><th>类别</th><th>原来</th><th>改为</th><th>依据</th><th>勘误者</th></tr></thead><tbody>{trs}</tbody></table></div>'
+        # 勘误条目（11-13 主人：表格太宽、格子太窄，手机看不了）：改成一条一张卡，电脑上“原来/改为”左右并排，手机上上下排
+        kcards = "".join(f'<li class="kwc"><p class="kwm"><span class="kwd">{esc(r[0])}</span><span class="kwe">{esc(r[1])} {esc(r[2])}</span><span class="kwt">{esc(r[3])}</span><span class="who">{esc(r[7])}</span></p>'
+                         f'<div class="kwx"><p class="kwo"><small>原来</small><span>{esc(r[4])}</span></p><p class="kwn"><small>改为</small><span>{esc(r[5])}</span></p></div>'
+                         + (f'<p class="kwy"><small>依据</small>{esc(r[6])}</p>' if r[6] else "") + "</li>" for r in reversed(kw))
+        ktable = f'<ol class="kwcards" lang="zh-Hans">{kcards}</ol>'
     else:
         ktable = f'<p class="empty">{L.t("errata_empty")}</p>'
     stats = ""
@@ -1980,16 +1983,8 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
 <main class="wrap narrow prose"><p>{L.t("dt_p")}</p><div class="tw"><table class="zitab"><thead><tr><th>{L.t("lunyu")}</th><th>{L.t("dt_file")}</th><th>{L.t("dt_rows")}</th></tr></thead><tbody>{rows}</tbody></table></div>
 <p class="note">{L.t("dt_lic")} · <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans" rel="license noopener" target="_blank">CC BY-NC 4.0</a> · <a href="{P}banben/">{L.t("bb_link")}</a></p>{kf_html(L)}</main>'''
     write("kaifang.html", page(L, f'{L.t("dt_title")}｜一孔录', L.t("dt_sub"), "kaifang.html", body)); urls.append(f"{DOMAIN}/{L.prefix}kaifang.html")
-    # 读音索引
-    zi = {}
-    for c in pub:
-        for x in gao.get(c, {"reads": []})["reads"]:
-            zi.setdefault((x["zi"], x["du"]), []).append((c, x["pos"]))
-    trs = "".join(f'<tr><td class="zi">{esc(z)}</td><td>{esc(du)}</td><td lang="zh-Hans">' + "<br>".join(f'<a href="{P}{rel_of(c)}">{c}</a> {esc(pos)}' for c, pos in lst) + "</td></tr>"
-                  for (z, du), lst in sorted(zi.items(), key=lambda kv: (kv[0][0], kv[0][1])))
-    body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zi_sub")}</span>{L.t("zi_title")}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("zi_p")}</p><div class="tw"><table class="zitab"><thead><tr><th>{L.t("th_zi")}</th><th>{L.t("th_du")}</th><th>{L.t("th_ch")} · {L.t("th_pos")}</th></tr></thead><tbody>{trs}</tbody></table></div></main>'''
-    write("zi.html", page(L, f'{L.t("zi_title")}｜一孔录', L.t("zi_p"), "zi.html", body)); urls.append(f"{DOMAIN}/{L.prefix}zi.html")
+    # 读音索引页撤掉（11-13 主人：读者不会一个个字看下来）；旧地址转到检索页，不进站点地图。章页读音、难字字典不动
+    write("zi.html", f'<!doctype html><meta charset="utf-8"><title>{L.t("search_title")}｜一孔录</title><link rel="canonical" href="{DOMAIN}/{L.prefix}search.html"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/{L.prefix}search.html"><a href="/{L.prefix}search.html">{L.t("search_title")}</a>')
     # 订阅源（Atom）
     X = lambda t: html.escape(t, quote=False)
     ents = ""
