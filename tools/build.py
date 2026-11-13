@@ -537,7 +537,7 @@ def parse_zhaji(path):
         line = NEIBU_DING.sub("", line.rstrip("\n"))
         m = re.match(r"^### \S+ (\d+\.\d+) (.+)$", line)
         if m:
-            cur = {"no": m.group(1), "title": m.group(2).strip(), "fields": {}, "tags": []}
+            cur = {"no": m.group(1), "title": re.sub(r"（[^）]*(?:章号|底本|为准|待核|待定)[^）]*）", "", m.group(2)).strip(), "fields": {}, "tags": []}  # 11-13 主人：编辑注记（如“朱注本章号以底本为准”）不进对外章名
             out[cur["no"]] = cur
             continue
         if not cur: continue
@@ -1637,7 +1637,8 @@ def build_lang(L, D, write):
     def title_of(c): return L.ch(c).get("title") or (notes[c]["title"] if c in notes else ((WJF and wj_tr_title(L.code, c)) or wj_titles(D["qw"])[c]))
     if ANALYTICS.get("live") and "OUT_ROOT" in globals():  # 页脚“今天有人读了”、首页“最常被抄走的一句”查标题用
         os.makedirs(os.path.join(OUT_ROOT, "data"), exist_ok=True)
-        json.dump({"p": "/" + L.prefix, "c": {c: [title_of(c), rel_of(c), split_ju(yw[c])] for c in pub}, "a": {c: [title_of(c), rel_of(c)] for c in sorted(set(pub) | set(wj_titles(D["qw"])), key=lambda x: tuple(map(int, x.split("."))))}}, open(os.path.join(OUT_ROOT, "data", f"live-{L.code}.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+        _pl = lambda t: re.sub(r"\s*[（(][^（）()]*[）)]", "", t).strip() or t  # 11-13 主人：“今天有人读了”等只显示章名，括号里的补充不进阅读记录
+        json.dump({"p": "/" + L.prefix, "c": {c: [_pl(title_of(c)), rel_of(c), split_ju(yw[c])] for c in pub}, "a": {c: [_pl(title_of(c)), rel_of(c)] for c in sorted(set(pub) | set(wj_titles(D["qw"])), key=lambda x: tuple(map(int, x.split("."))))}}, open(os.path.join(OUT_ROOT, "data", f"live-{L.code}.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     def field(c, k):
         v = L.ch(c).get(k)
         return (v, True) if v else (notes[c]["fields"].get(k), False)
