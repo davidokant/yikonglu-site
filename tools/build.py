@@ -1452,7 +1452,7 @@ def build_lang(L, D, write):
         search_idx.append({"c": c, "t": title_of(c), "u": P + rel, "y": yw[c],
                            "x": " ".join(v for k, _, _ in FIELDS for v in [field(c, k)[0]] if v) + " " + " ".join(x["text"] + x["src"] for x in g["cites"])
                                 + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
-        ju_html = "".join(f'<span class="ju" id="s{j}" tabindex="0">{zx(L.code, c, j, x)}</span>' for j, x in enumerate(split_ju(yw[c]), 1))
+        ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{zx(L.code, c, j, x)}</span>' for j, x in enumerate(split_ju(yw[c]), 1))
         cite_src = (f"《论语·{pname}》{c}，一孔录" if L.code.startswith("zh") else f"{L.t('lunyu')} {c}, 一孔录 Yikonglu")
         zb = D["zhuben"].get(c, {}); hj_data = hj_of(c)
         extra = zb_section(c, url, cite_src) + extra
@@ -1476,6 +1476,14 @@ def build_lang(L, D, write):
                         f'<div class="yypane">{ZJ.page_pane(c, zpages, zper, "原页", ZJ.YDIR, f"《论语·{pname}》{c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页")}</div></div>'
                         f'<script type="application/json" class="zjdata">{json.dumps(zrows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
         else:
+            fig_html = None
+            if not L.code.startswith("zh") and c in ZJD["jl"]:  # 外文页（11-13 主人：英日版也要原页）：原文旁同屏原页，点句亮列；小卡只在简繁页
+                _buf = io.StringIO()
+                with contextlib.redirect_stdout(_buf): zp_, zr_ = ZJ.spans_of(c, split_ju(yw[c]), ZJD)
+                if zp_:
+                    fig_html = (f'<figure class="yuanwen dz nocard"><div class="dzgrid"><div><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep=", " data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{L.t("source_line")}</figcaption>{rend_html}</div>'
+                                f'<div class="yypane">{ZJ.page_pane(c, zp_, zr_, L.t("pg", n="").strip(), ZJ.YDIR, L.t("pg", n="{n}"))}</div></div></figure>')
+        if fig_html is None:
             fig_html = f"""<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{L.t("source_line")}</figcaption>{rend_html}</figure>"""
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
@@ -1533,7 +1541,7 @@ def build_lang(L, D, write):
             ("citation_publication_date", first.replace("-", "/")), ("citation_online_date", DATE_TOK_SL),
             ("citation_language", L.hreflang), ("citation_public_url", url),
             ("DC.title", name), ("DC.creator", "一孔录"), ("DC.date", first), ("DC.language", L.hreflang), ("DC.source", SOURCE)])
-        write(rel, page(L, ttl, desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@IMG@", "做成分享图").replace("@NONE@", "这一句没有收。") if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
+        write(rel, page(L, ttl, desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@IMG@", "做成分享图").replace("@NONE@", "这一句没有收。") if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.HL_JS if "nocard" in fig_html else ""), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
 
 
     # 未讲各章：只出简繁。原文（朱注分章底本）、白话初稿、本句互见、异文、各家注本；原页同屏、视频位（11-08）
