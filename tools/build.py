@@ -1769,7 +1769,7 @@ def build_lang(L, D, write):
 <div><i>注</i><b>{L.t("p2t")}</b><p>{L.t("p2")}</p></div>
 <div><i>勘</i><b>{L.t("p3t")}</b><p>{L.t("p3")}</p></div>
 </section>
-<section class="wrap narrow"><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
+<section class="wrap"><div class="tools t3"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
 {yxl_line(L, D, P) if L.code.startswith("zh") else ""}
 <p class="cta"><a class="btn ghost" href="{P}kanwu.html">{L.t("btn_errata")}</a><a class="btn ghost" href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p></section>
 </main>'''
