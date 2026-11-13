@@ -780,7 +780,7 @@ SG.forEach(function(g,k){var k2=g.im.naturalWidth/g.pw,gw=(g.x1-g.x0)*sc,gh=(g.y
 c.strokeStyle='rgba(176,58,46,.85)';c.lineWidth=3;g.hl.forEach(function(r){c.strokeRect(x+(r[0]-g.x0)*sc,yS+(r[1]-g.y0)*sc,r[2]*sc,r[3]*sc)});
 if(k<SG.length-1){x-=GAP*sc;c.fillStyle='#F2F1EA';c.fillRect(x,yS-10,GAP*sc,sh+20)}});
 c.strokeStyle='rgba(35,80,63,.35)';c.lineWidth=1;c.strokeRect((W-sw)/2-10,yS-10,sw+20,sh+20);
-var ps=SG.map(function(g){return g.p}),pl=ps[0]+(ps.length>1?'—'+ps[ps.length-1]:'');c.fillStyle='#6E6A60';c.font='400 22px '+F;c.textAlign='center';c.fillText('朱熹《论语集注》（四部备要本）原页 '+pl+(ps.length>1?' · 自右向左接读':''),W/2,yS+sh+44);c.textAlign='left'}
+var ps=SG.map(function(g){return g.p}),pl=ps[0]+(ps.length>1?'—'+ps[ps.length-1]:'');c.fillStyle='#6E6A60';c.font='400 22px '+F;c.textAlign='center';c.fillText((D.src2||'朱熹《论语集注》（四部备要本）')+'原页 '+pl+(ps.length>1?' · 自右向左接读':''),W/2,yS+sh+44);c.textAlign='left'}
 var q=qrcode(0,'M');q.addData(D.u);q.make();var n=q.getModuleCount(),cs=Math.floor(190/n),qs=cs*n,qx=W-96-qs,qy=H-96-qs;c.fillStyle='#fff';c.fillRect(qx-12,qy-12,qs+24,qs+24);c.fillStyle='#1E2A25';for(var r=0;r<n;r++)for(var k=0;k<n;k++)if(q.isDark(r,k))c.fillRect(qx+k*cs,qy+r*cs,cs,cs);
 c.fillStyle='#23503F';c.font='700 30px '+F;c.fillText('扫码读懂这一章',96,H-150);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(D.u.replace(/^https:\\/\\//,'').replace(/\\.html$/,''),96,H-108);
 show(cv)}}}
@@ -907,10 +907,10 @@ def rili_data():
     return {"jt": JIEQI_DAYS, "jn": JIEQI_NAMES["zh"], "hou": QISHIER_HOU}
 SHARE_MORE = {"zh-Hans": "发给朋友…", "zh-Hant": "傳給朋友…", "en": "Send via…", "ja": "ほかのアプリで送る…", "ko": "다른 앱으로 보내기…", "fr": "Envoyer via…", "es": "Enviar con…", "de": "Senden über…", "vi": "Gửi qua…", "id": "Kirim lewat…", "ru": "Отправить через…"}
 SHARE_HOLD = {"zh-Hans": "这个浏览器存不了，请长按上面的图片，选“保存图片”。", "zh-Hant": "這個瀏覽器存不了，請長按上面的圖片，選「儲存圖片」。", "en": "This browser can’t save it directly. Press and hold the image above to save it.", "ja": "このブラウザでは直接保存できません。上の画像を長押しして保存してください。", "ko": "이 브라우저에서는 바로 저장할 수 없습니다. 위 이미지를 길게 눌러 저장해 주세요.", "fr": "Ce navigateur ne peut pas l’enregistrer directement. Appuyez longuement sur l’image pour l’enregistrer.", "es": "Este navegador no puede guardarla directamente. Mantenga pulsada la imagen para guardarla.", "de": "Dieser Browser kann es nicht direkt speichern. Bild lange drücken, um es zu speichern.", "vi": "Trình duyệt này không lưu trực tiếp được. Hãy nhấn giữ ảnh phía trên để lưu.", "id": "Browser ini tidak bisa menyimpan langsung. Tekan lama gambar di atas untuk menyimpannya.", "ru": "Этот браузер не сохраняет напрямую. Нажмите и удерживайте картинку, чтобы сохранить её."}
-def share_html(L, c, url, head, title, yw_text, gist, rend):
+def share_html(L, c, url, head, title, yw_text, gist, rend, bk=None):  # bk：别的书（道德经等）{"bk": 书名, "tot": 章数, "src": 底本, "src2": 底本（括注式）, "pf": 读过记录前缀}
     t = dict(SHARE_TXT.get(L.code, SHARE_TXT["en"]), hold=SHARE_HOLD.get(L.code, SHARE_HOLD["en"]))
     plats = "".join(f'<button type="button" data-p="{k}">{esc(n)}</button>' for n, k in t["plats"])
-    d = json.dumps({"c": c, "kn": SHARE_KEYS.get(c), "u": url, "h": head, "ti": title, "y": yw_text, "g": gist or "", "r": rend or "", "t": t, "tag": TAGLINE_L.get(L.code, "")}, ensure_ascii=False)
+    d = json.dumps(dict({"c": c, "kn": SHARE_KEYS.get(c), "u": url, "h": head, "ti": title, "y": yw_text, "g": gist or "", "r": rend or "", "t": t, "tag": TAGLINE_L.get(L.code, "")}, **(bk or {})), ensure_ascii=False)
     return (f'<section class="sharebox"><button type="button" class="btn ghost shbtn"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6h14v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{t["sh"]}</button>'
             f'<div class="shpanel" hidden><button type="button" data-p="card" class="on">{t["card"]}</button><button type="button" data-p="sys" hidden>{SHARE_MORE.get(L.code, SHARE_MORE["en"])}</button><button type="button" data-p="copy">{t["cp"]}</button>{plats}</div>'
             f'<script type="application/json" class="shdata">{d.replace("</", "<\\/")}</script>'
@@ -921,10 +921,11 @@ LANGDU_TXT = {"zh-Hans": "音", "zh-Hant": "音", "en": "Audio", "ja": "音", "k
 LANGDU_TITLE = {"zh-Hans": "朗读原文", "zh-Hant": "朗讀原文"}
 LANGDU_JS = ('<script>(function(){var B=document.currentScript.previousElementSibling,A=null;function st(p){B.setAttribute("aria-pressed",p?"true":"false")}'
              'B.addEventListener("click",function(){if(!A){A=new Audio(B.getAttribute("data-src"));A.addEventListener("ended",function(){st(false)});A.addEventListener("pause",function(){st(false)});A.addEventListener("play",function(){st(true)})}if(A.paused)A.play().catch(function(){});else A.pause()})})();</script>')
-def langdu_btn(code, c):
-    if c not in LANGDU: return ""
+LANGDU_DDJ = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-ddj.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-ddj.json")) else set()  # 道德经原文朗读（11-13 主人要上），文件在 langdu/daodejing/<章>.mp3
+def langdu_btn(code, c, book="lunyu"):
+    if c not in (LANGDU_DDJ if book == "daodejing" else LANGDU): return ""
     t = LANGDU_TITLE.get(code, LANGDU_TXT.get(code, "Audio"))
-    return f'<button type="button" class="ldbtn" data-src="https://img.yikonglu.com/langdu/lunyu/{c}.mp3" aria-pressed="false" title="{esc(t)}">{esc(LANGDU_TXT.get(code, "Audio"))}</button>' + LANGDU_JS
+    return f'<button type="button" class="ldbtn" data-src="https://img.yikonglu.com/langdu/{book}/{c}.mp3" aria-pressed="false" title="{esc(t)}">{esc(LANGDU_TXT.get(code, "Audio"))}</button>' + LANGDU_JS
 def langdu_html(code, c):  # 没有“译”按钮的页（外文章页）：单独一行放同样的小按钮
     b = langdu_btn(code, c)
     return f'<div class="dztools ldonly">{b}</div>' if b else ""
@@ -1287,7 +1288,8 @@ def load_ddj():
                 hj.setdefault(r["章号"].strip(), {}).setdefault((r.get("句") or "1").strip().lstrip("s"), []).append([r.get("类别", "").strip(), r["内容"].strip(), (r.get("出处") or "").strip(), (r.get("链接") or "").strip()])
     pm = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_pages.json")  # 原页图尺寸 {"p001": [w, h]}，出图时写
     return {"qw": qw, "bh": bh, "bh_ok": bh_ok, "zj": rd("_逐句"), "an": rd("_未讲"), "hj": hj, "src": cfg.get("src", ""), "img": cfg.get("img", ""), "zhu": cfg.get("zhu") or "注文",
-            "pages": json.load(open(pm, encoding="utf-8")) if os.path.exists(pm) else {}}
+            "pages": json.load(open(pm, encoding="utf-8")) if os.path.exists(pm) else {},
+            "jl": json.load(open(jl, encoding="utf-8")) if os.path.exists(jl := os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_julie.json")) else {}}  # 逐句原页框（11-13 量列对字）
 
 def ddj_title(qw):  # 章题：取原文开头一句，撞名的往后接
     out = {c: wj_title(v["text"]) for c, v in qw.items()}
@@ -1324,13 +1326,16 @@ def build_ddj(L, D, write, P, S_IDX=None):
     ld = {"@context": "https://schema.org", "@type": "Book", "name": "道德经", "author": {"@type": "Person", "name": "老子"}, "url": f"{DOMAIN}/{L.prefix}daodejing/", "inLanguage": L.hreflang}
     write("daodejing/index.html", page(L, "《道德经》原文、白话与注｜八十一章｜一孔录", f"《道德经》八十一章逐章原文与白话直译，附底本原页。", "daodejing/", body, ld, "pg-book", codes=["zh-Hans", "zh-Hant"])); urls.append(f"{DOMAIN}/{L.prefix}daodejing/")
     lab = L.t("wj_pane")
+    DDJ_SH = {"bk": "道德经", "tot": 81, "src": "王弼注《老子道德经》四库全书本", "src2": "王弼注《老子道德经》（四库全书本）", "pf": "ddj."}  # 分享图按书：书名、章数、底本、读过记录分书
     for k, c in enumerate(cs):
         q = qw[c]; text = q["text"]; url = f"{DOMAIN}/{L.prefix}{rel_of(c)}"; pt = part(c)
         cite_src = f"《道德经》第 {c} 章，一孔录"
         sents = split_ju(text); hjd = {j_: [[h[0], Y(h[1]), h[2] if hant else _t2s(h[2]), h[3]] for h in v_] for j_, v_ in G["hj"].get(c, {}).items()}
         pgs = [int(x) for x in (q.get("pages") or ([q["pdf_page"]] if q.get("pdf_page") else []))]
         cap = f'原文据{esc(G["src"])}' + (f'，底本第 {"、".join(str(x) for x in pgs)} 页' if pgs else "") + "。" if G["src"] else L.t("source_line")
-        pane = "".join(f'<a class="yyp" href="{G["img"]}p{x:03d}.jpg" target="_blank" data-p="p{x:03d}"><svg viewBox="0 0 {G["pages"][f"p{x:03d}"][0]} {G["pages"][f"p{x:03d}"][1]}" role="img" aria-label="{lab} {x}"><image href="{G["img"]}p{x:03d}.jpg" width="{G["pages"][f"p{x:03d}"][0]}" height="{G["pages"][f"p{x:03d}"][1]}"/></svg><span>{lab} {x}</span></a>'
+        jl = G["jl"].get(c) if len(G["jl"].get(c) or []) == len(sents) else []  # 点句亮列：每句在原页上的框
+        hlr = lambda pp: "".join(f'<rect class="hl" data-s="{i}" x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="6"/>' for i, bx in enumerate(jl, 1) for (p_, x0, y0, x1, y1) in bx if p_ == pp)
+        pane = "".join(f'<a class="yyp" href="{G["img"]}p{x:03d}.jpg" target="_blank" data-p="p{x:03d}"><svg viewBox="0 0 {G["pages"][f"p{x:03d}"][0]} {G["pages"][f"p{x:03d}"][1]}" role="img" aria-label="{lab} {x}"><image href="{G["img"]}p{x:03d}.jpg" width="{G["pages"][f"p{x:03d}"][0]}" height="{G["pages"][f"p{x:03d}"][1]}"/>{hlr(f"p{x:03d}")}</svg><span>{lab} {x}</span></a>'
                        for x in pgs if G["img"] and f"p{x:03d}" in G["pages"])
         zs = (G["zj"].get(c) or {}).get("句") or []
         if zs and len(zs) != len(sents): print(f"  道德经逐句条数不符 {c}：网站 {len(sents)} 句，_逐句 {len(zs)} 句"); zs = []
@@ -1345,7 +1350,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
         ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(Y(x))}</span>' + (f'<span class="yi" hidden>{esc(rows[j-1]["bh"])}</span>' if rows and rows[j-1].get("bh") else "") for j, x in enumerate(sents, 1))
         if dz:
             yib = '<button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button>' if any(r.get("bh") for r in rows) else ""
-            fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{pt} · 第 {c}/81 章</span>{yib}</div>'
+            fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{pt} · 第 {c}/81 章</span>{yib}{langdu_btn(L.code, c, "daodejing")}</div>'
                    f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
                    f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
         else:
@@ -1363,6 +1368,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
                f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>')
         prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
         pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{esc(Y(tt[cc]))}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
+        TRI_TXT["ddj." + c] = {"h": f"《道德经》第 {c} 章 · Daodejing {c} · 道徳経 第{c}章", "y": text if hant else _t2s(text), "en": "", "ja": ""}  # 分享图（外王卡）；英日译文上了再填
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "daodejing", "道德经")}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}daodejing/">道德经</a> › {pt}</p>
 <h1><span class="no">{pt} · 第 {c} 章 · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(Y(tt[c]))}</h1>
@@ -1374,6 +1380,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
 {gist}
 {bh_html}
 {vid}
+<div class="chacts">{share_html(L, "ddj." + c, url, f"《道德经》第 {c} 章", Y(tt[c]), Y(text), an.get("片里落点") or "", "", DDJ_SH)}</div>
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
 <nav class="pn">{pn}</nav>
 </article>
@@ -1383,7 +1390,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
         ld = {"@type": "Article", "headline": f"《道德经》第 {c} 章 {Y(tt[c])}", "inLanguage": L.hreflang, "url": url,
               "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "道德经"}}
         ld = {"@context": "https://schema.org", "@graph": [ld] + ([{"@type": "FAQPage", "mainEntity": faq}] if faq else [])}
-        js = (ZJ.ZJ_JS.replace('<button data-a="img">@IMG@</button>', "").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", G["zhu"]], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。")
+        js = SHARE_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", G["zhu"]], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。")
               if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
         if S_IDX is not None: S_IDX.append({"c": f"道德经 {c}", "t": Y(tt[c]), "u": P + rel_of(c), "y": Y(text), "x": (bh or "") + " " + (an.get("片里落点") or "")})
         write(rel_of(c), page(L, f"{Y(seo_head(text))}｜原文与白话｜道德经 第 {c} 章｜一孔录", f"{Y(text[:70])}……《道德经》第 {c} 章原文与白话直译。", rel_of(c), body + js, ld, "pg-chapter pg-wj", codes=["zh-Hans", "zh-Hant"])); urls.append(url)
@@ -1405,10 +1412,12 @@ def build_lang(L, D, write):
     def field(c, k):
         v = L.ch(c).get(k)
         return (v, True) if v else (notes[c]["fields"].get(k), False)
-    NEXTQ = json.load(open(os.path.join(HERE, "nextq.json"), encoding="utf-8")) if L.code.startswith("zh") and os.path.exists(os.path.join(HERE, "nextq.json")) else {}  # 11-13 主人要每章都有问句，逐章写在 nextq.json
+    _nqf = os.path.join(HERE, "nextq.json" if L.code.startswith("zh") else f"nextq-{L.code}.json")  # 英日问句译文（11-13 主人定做）：nextq-en/ja.json
+    NEXTQ = json.load(open(_nqf, encoding="utf-8")) if os.path.exists(_nqf) else {}  # 11-13 主人要每章都有问句，逐章写在 nextq.json
     NQ_TW = __import__("opencc").OpenCC("s2twp") if NEXTQ and L.code == "zh-Hant" else None
     def next_q(c):  # 章末“下一章”卡下的一句问话：先用 nextq.json；没有时常见读法本身是问句就用它，否则问原文首句什么意思
-        if c in NEXTQ: return NEXTQ[c] if L.code == "zh-Hans" else NQ_TW.convert(NEXTQ[c])
+        if c in NEXTQ: return NQ_TW.convert(NEXTQ[c]) if L.code == "zh-Hant" else NEXTQ[c]
+        if not L.code.startswith("zh"): return ""
         v = notes[c]["fields"].get("常见读法") or ""
         v = v.strip()
         if v.endswith(("？", "?")) and len(v) <= 40: return v
@@ -1486,7 +1495,7 @@ def build_lang(L, D, write):
         prev_c = pub[i-1] if i > 0 else None; next_c = pub[i+1] if i+1 < len(pub) else None
         def card(cc, lab, cls):
             if not cc: return '<span></span>'
-            hq = f'<span class="nq">{esc(next_q(cc))}</span>' if cls == "next" and L.code.startswith("zh") and next_q(cc) else ""
+            hq = f'<span class="nq">{esc(next_q(cc))}</span>' if cls == "next" and next_q(cc) else ""
             return f'<a class="pncard {cls}" href="{P}{rel_of(cc)}"><small>{lab}</small><b>{cc}　{esc(title_of(cc))}</b>{hq}</a>'
         side = sidebar(pnum, c)
         yt = ep.get("youtube", ""); g = gao.get(c, {"cites": [], "reads": []})
