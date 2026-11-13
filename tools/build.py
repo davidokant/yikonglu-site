@@ -844,7 +844,7 @@ def analytics(L):
     if ANALYTICS.get("live"):  # 在线与累计读者：worker/ 部署的计数服务；首页有 #live 才显示，其他页只发心跳
         tpl = LIVE_TXT.get(L.code, LIVE_TXT["en"]); sp = LIVE_PILL.get(L.code, LIVE_PILL["en"])
         a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",EP=function(x){return [U,x].join(String.fromCharCode(47))},T=" + json.dumps(tpl, ensure_ascii=False) + ",S=" + json.dumps(sp, ensure_ascii=False)
-              + ';function RUN(){var DB=document.querySelector(".donebox"),CC=DB?DB.getAttribute("data-c"):"";var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
+              + ';function RUN(){var DB=document.querySelector(".donebox"),RC=document.getElementById("rc"),CC=DB?DB.getAttribute("data-c"):(RC?RC.getAttribute("data-c"):"");var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
               + 'function n(x){try{return x.toLocaleString(document.documentElement.lang||undefined)}catch(e){return x}}'
               + 'function h(first){if(document.hidden&&!first)return;fetch(EP("hit"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:id,first:first&&f,c:first?CC:""})}).then(function(r){return r.json()}).then(function(d){if(!d)return;window.yklTotal=d.total;var e=document.getElementById("live"),q=document.getElementById("livep");if(e){e.innerHTML=T.replace("{o}","<b>"+n(d.online)+"</b>").replace("{t}","<b>"+n(d.total)+"</b>");e.hidden=false}if(q){var kk="";q.textContent=S.replace("{o}",n(d.online)).replace("{t}",n(d.total))+kk;q.title=T.replace("{o}",n(d.online)).replace("{t}",n(d.total))+kk;q.hidden=false}}).catch(function(){})}'
               + 'h(true);setInterval(function(){h(false)},60000);'
@@ -854,7 +854,7 @@ def analytics(L):
               + 'document.querySelectorAll(".donebox").forEach(function(bx){var c=bx.getAttribute("data-c"),b=bx.querySelector("button"),p=bx.querySelector(".donecnt"),k="ykl_done_"+c,was=false;try{was=!!localStorage.getItem(k)}catch(e){}'
               + 'function mark(){b.textContent=X.ok;b.disabled=true;b.classList.add("on")}if(was)mark();bx.hidden=false;cnt(c,p);'
               + 'b.addEventListener("click",function(){if(b.disabled)return;mark();if(window.ykBing)setTimeout(window.ykBing,300);try{localStorage.setItem(k,"1")}catch(e){}fetch(EP("done"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:c})}).then(function(r){return r.json()}).then(function(d){p.textContent=X.n.replace("{d}",n(d.today)).replace("{t}",n(d.total));p.hidden=false}).catch(function(){})})});'
-              + 'window.yklCopy=function(sid){if(!CC)return;fetch(EP("copy"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:CC,s:sid})}).catch(function(){})};'
+              + 'window.yklCopy=function(sid){if(!CC||!DB)return;fetch(EP("copy"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:CC,s:sid})}).catch(function(){})};'
               + 'var LJ=null;function lj(cb){if(LJ){cb(LJ);return}fetch(["","data","live"].join("/")+"-"+document.documentElement.lang+".json").then(function(r){return r.json()}).then(function(j){LJ=j;cb(j)}).catch(function(){})}'
               + 'var RM=document.getElementById("remen"),ST=document.getElementById("steps"),TJ=document.getElementById("topju"),HL=document.querySelectorAll(".toc li[data-c]"),GD=document.getElementById("rcta")||document.getElementById("meiri");'
               + 'function lk(j,c){var a=document.createElement("a");a.href=j.p+j.c[c][1];a.textContent=j.c[c][0];return a}'
@@ -1412,6 +1412,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
                f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">{DU["bili"] if F else "哔哩哔哩"}</a></p></section>')
         prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
         pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{TL(tt[cc])}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
+        LIVE_A.setdefault(L.code, {})["ddj." + c] = [f'{DU["book"] if F else "道德经"} · {tt[c] if F else Y(tt[c])}', rel_of(c)]
         TRI_TXT["ddj." + c] = {"h": f"《道德经》第 {c} 章 · Daodejing {c} · 道徳経 第{c}章", "y": text if (hant or F) else _t2s(text), "en": (DDJ_TR.get("en") or {}).get(c, ""), "ja": (DDJ_TR.get("ja") or {}).get(c, "")}  # 分享图（外王卡）；英日译文上了再填
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "daodejing", "道德经")}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}daodejing/">{DU["book"] if F else "道德经"}</a> › {pt}</p>
@@ -1429,7 +1430,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
 <nav class="pn">{pn}</nav>
 </article>
 <aside><h3>{pt}</h3><ol>{side(c)}</ol></aside>
-</main><script type="application/json" class="xddata">{json.dumps({"c": c, "ti": tt[c] if F else Y(tt[c])}, ensure_ascii=False)}</script>"""
+</main><i id="rc" data-c="ddj.{c}" hidden></i><script type="application/json" class="xddata">{json.dumps({"c": c, "ti": tt[c] if F else Y(tt[c])}, ensure_ascii=False)}</script>"""
         hj_static = "<ul></ul>"
         ld = {"@type": "Article", "headline": f'{DU["chn"].format(c=c)} {tt[c]}' if F else f"《道德经》第 {c} 章 {Y(tt[c])}", "inLanguage": L.hreflang, "url": url,
               "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "道德经"}}
@@ -1467,6 +1468,7 @@ SZJ_YW = {  # 讲义与王相本对照（11-13 逐句核对）：组号 → 说�
 }
 LANGDU_SZJ = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-szj.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-szj.json")) else set()
 CNUM = lambda n: "一二三四五六七八九十"[n - 1] if n <= 10 else ("十" + "一二三四五六七八九"[n - 11] if n < 20 else ("一二三四五六七八九"[n // 10 - 1] + "十" + ("一二三四五六七八九"[n % 10 - 1] if n % 10 else "")))
+LIVE_A = {}  # 各语种“今天有人读了”里论语之外的书：{语种: {"ddj.6"/"szj.15": [标题, 相对路径]}}（11-13 主人问别的书有没有人读）
 SZJ_FL = ("en", "ja")  # 三字经外文页（11-13 主人：“三字经的多语种搞定一下”；先英日，译文初稿 tools/i18n/szj-<语种>.json：g 逐组、name 讲名、jt 卷名、sum 讲义摘要、yw 异文）
 SZJ_TR = {x: json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", f"szj-{x}.json"), encoding="utf-8")) for x in SZJ_FL if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", f"szj-{x}.json"))}
 SZJ_CODES = ["zh-Hans", "zh-Hant"] + [x for x in SZJ_FL if x in SZJ_TR]
@@ -1586,6 +1588,7 @@ def build_szj(L, write, P, S_IDX=None):
         side = "".join(f'<li class="{"cur" if jj["n"] == n else ""} wj" data-c="{jj["n"]}"><a href="{P}{rel_of(jj["n"])}"><em>{jj["n"]}</em>{esc(name_of(jj))}</a></li>' for jj in JS if jj["juan"] == j["juan"])
         tre = " ".join((SZJ_TR.get("en") or {}).get("g", {}).get(str(g[0]), "") for g in gs).strip()
         trj = "".join((SZJ_TR.get("ja") or {}).get("g", {}).get(str(g[0]), "") for g in gs)
+        LIVE_A.setdefault(L.code, {})[f"szj.{n}"] = [f"{bname} · {name_of(j)}", rel_of(n)]
         TRI_TXT[f"szj.{n}"] = {"h": f"《三字经》第{CNUM(n)}讲 · Three Character Classic {n} · 三字経 第{n}講", "y": text, "en": tre, "ja": trj}
         head_t = SU["lec"].format(n=n) if F else f"《三字经》第{CNUM(n)}讲"
         share = share_html(L, f"szj.{n}", url, f'{bname} · {head_t}' if F else head_t, name_of(j), Y(text) if F else text, "" if F else j["sum"][:60], tr_all if F else "", SH) if gs else ""
@@ -1608,7 +1611,7 @@ def build_szj(L, write, P, S_IDX=None):
 <nav class="pn">{pn}</nav>
 </article>
 <aside><h3>{esc(crumb_j)}</h3><ol>{side}</ol></aside>
-</main><script type="application/json" class="xddata">{json.dumps({"c": str(n), "ti": name_of(j)}, ensure_ascii=False)}</script>"""
+</main><i id="rc" data-c="szj.{n}" hidden></i><script type="application/json" class="xddata">{json.dumps({"c": str(n), "ti": name_of(j)}, ensure_ascii=False)}</script>"""
         ld = {"@context": "https://schema.org", "@type": "Article", "headline": f'{bname} {head_t} {name_of(j)}' if F else f"《三字经》第{CNUM(n)}讲 {j['name']}", "inLanguage": L.hreflang, "url": url,
               "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": bname}}
         if F: js = SHARE_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", "<ul></ul>").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + ZJ.HL_JS
@@ -1988,6 +1991,10 @@ def build_lang(L, D, write):
 
     urls += build_ddj(L, D, write, P, search_idx if (L.code.startswith("zh") or L.code in DDJ_TR) else None)
     urls += build_szj(L, write, P, search_idx if (L.code.startswith("zh") or L.code in SZJ_TR) else None)  # 三字经（只简繁）  # 道德经（只简繁；没开就是空）
+    if ANALYTICS.get("live") and "OUT_ROOT" in globals() and os.path.exists(_lf := os.path.join(OUT_ROOT, "data", f"live-{L.code}.json")):  # 道德经、三字经也进“今天有人读了”；本语种没有的书链简体页
+        _up = "../" * L.prefix.count("/"); _ex = {k: [v[0], _up + v[1]] for k, v in LIVE_A.get("zh-Hans", {}).items()} if L.code != "zh-Hans" else {}
+        _ex.update(LIVE_A.get(L.code, {})); _J = json.load(open(_lf, encoding="utf-8")); _J.setdefault("a", {}).update(_ex)
+        json.dump(_J, open(_lf, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 
     def toc(cs):
         def li(c):

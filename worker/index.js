@@ -39,14 +39,14 @@ export class Live {
   }
   async fetch(req) {
     const url = new URL(req.url);
-    const OKC = /^[0-9]{1,2}\.[0-9]{1,2}$/;
+    const OKC = /^[0-9]{1,2}\.[0-9]{1,2}$/, OKB = /^(ddj|szj)\.[0-9]{1,2}$/;
     if (req.method === "POST" && url.pathname === "/hit") {
       let b = {}; try { b = await req.json(); } catch (e) {}
       const id = String(b.id || "").slice(0, 40);
       if (id) this.seen.set(id, Date.now());
       if (b.first === true) { this.total = (await this.getTotal()) + 1; await this.state.storage.put("total", this.total); }
       const c = String(b.c || "");
-      if (OKC.test(c)) {
+      if (OKC.test(c) || OKB.test(c)) { // 11-13：道德经 ddj.N、三字经 szj.N 也记
         const d = this.day(), R = await this.roll("reads"); R[d] = R[d] || {}; R[d][c] = (R[d][c] || 0) + 1;
         let rc = (await this.state.storage.get("recent")) || []; rc = [{ c, d }].concat(rc.filter(x => x.c !== c)).slice(0, 200); // 11-12 主人：多记一些，原来只留 8 条
         await this.state.storage.put({ reads: R, recent: rc });
@@ -61,7 +61,7 @@ export class Live {
       return Response.json({ ok: true });
     } else if (req.method === "GET" && url.pathname === "/reads") { // 某章今天被读了几次
       const c = url.searchParams.get("c") || "", R = await this.roll("reads");
-      return Response.json({ today: (OKC.test(c) && R[this.day()] && R[this.day()][c]) || 0 });
+      return Response.json({ today: ((OKC.test(c) || OKB.test(c)) && R[this.day()] && R[this.day()][c]) || 0 });
     } else if (req.method === "GET" && url.pathname === "/top") {
       const R = await this.roll("reads"), C = await this.roll("copies"), heat = {}, cp = {}, d0 = this.day();
       for (const d in R) for (const c in R[d]) heat[c] = (heat[c] || 0) + R[d][c];
