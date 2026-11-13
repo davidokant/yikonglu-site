@@ -2592,6 +2592,7 @@ def img_out(outdir):
     import hashlib
     yd = os.path.join(outdir, "yuanye")
     YV = {f[:-4]: hashlib.md5(open(os.path.join(yd, f), "rb").read()).hexdigest()[:8] for f in os.listdir(yd) if f.endswith(".jpg")} if os.path.isdir(yd) else {}
+    XV = {s: {f[:-4]: hashlib.md5(open(os.path.join(IMG_DIR, s, f), "rb").read()).hexdigest()[:8] for f in os.listdir(os.path.join(IMG_DIR, s)) if f.endswith(".jpg")} if os.path.isdir(os.path.join(IMG_DIR, s)) else {} for s in ("ddj", "sanzijing")}
     for f in glob.glob(os.path.join(outdir, "**", "*.*"), recursive=True):
         if not f.endswith((".html", ".xml", ".json", ".js")) or f.endswith("sw.js"): continue
         t = open(f, encoding="utf-8").read(); t0 = t
@@ -2602,6 +2603,8 @@ def img_out(outdir):
                 t = t.replace(f"{q}/{sub}", f"{q}{IMG}/{sub}")
         if f.endswith(".html") and "/yuanye/p" in t:  # 原页图带内容版本号：换图（如 11-13 校平）后浏览器和 sw.js 缓存里的旧图不再顶替
             t = re.sub(r'(/yuanye/(p\d+)\.jpg)(?=["\')])', lambda m: m.group(1) + ("?v=" + YV[m.group(2)] if m.group(2) in YV else ""), t)
+        if f.endswith(".html") and ("/ddj/p" in t or "/sanzijing/p" in t):  # 道德经、三字经原页（只在图片仓库）同样带版本号：11-13 切白边后框坐标跟新图走
+            t = re.sub(r'(/(ddj|sanzijing)/(p\d+)\.jpg)(?=["\')])', lambda m: m.group(1) + ("?v=" + XV[m.group(2)][m.group(3)] if m.group(3) in XV[m.group(2)] else ""), t)
         if t != t0: open(f, "w", encoding="utf-8").write(t)
     nw = nd = 0
     for sub in IMG_SUBS:
