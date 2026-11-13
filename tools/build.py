@@ -370,6 +370,14 @@ def seo_head(text, n=22):
     return s if len(s) <= n else s[:n - 1] + "…"
 
 YKCITE = '<p class="ykcite"><button type="button" onclick="var s=this.closest(\'.ykan\'),t=s.querySelector(\'p\').textContent,u=location.origin+location.pathname+\'#ykan\',b=this,d=function(){b.textContent=\'已复制\';setTimeout(function(){b.textContent=\'引用这段一孔按\'},1200)};t=t+\'——\'+document.querySelector(\'h1\').textContent+\'，一孔录 \'+u;navigator.clipboard?navigator.clipboard.writeText(t).then(d):prompt(\'\',t)">引用这段一孔按</button></p>'
+# 书页观感（11-13 主人：从书架点进去，章页跟着书的逻辑）：书目录、篇目录、章页头部放一册小书封；本篇章节读过的打勾；篇卡显示“你读过几章”
+def mcv(P, qian="", big=False):
+    return f'<a class="mcv{" big" if big else ""}" href="{P}lunyu/" aria-label="论语"><span class="qian{" l5" if len(qian) >= 5 else ""}">{qian or "论语"}</span></a>'
+BOOK_JS = """<script>(function(){var s=[];try{s=((JSON.parse(localStorage.getItem("yk_xd")||"{}").b||{}).lunyu||{}).seen||[]}catch(e){return}if(!s.length)return;
+var S={},P={};s.forEach(function(c){S[c]=1;var p=String(c).split(".")[0];P[p]=(P[p]||0)+1});
+document.querySelectorAll("aside li[data-c]").forEach(function(li){if(S[li.getAttribute("data-c")])li.classList.add("rd")});
+var H=/Hant/.test(document.documentElement.lang),Z=/^zh/.test(document.documentElement.lang);
+document.querySelectorAll(".pcard[data-p]").forEach(function(a){var n=P[a.getAttribute("data-p")];if(!n)return;a.classList.add("rd");if(!Z)return;var e=document.createElement("em");e.className="mine";e.textContent=(H?"你讀過 ":"你读过 ")+n+" 章";a.appendChild(e)})})();</script>"""
 FROM_JS = """<script>(function(){var q=new URLSearchParams(location.search),f=(q.get('from')||'').toLowerCase();if(!f)return;
 var V={yt:'YouTube',bili:'哔哩哔哩',dy:'抖音',ks:'快手',sph:'视频号'},T={xhs:'小红书',pod:'播客',gzh:'公众号',zhihu:'知乎',bjh:'百家号',tt:'头条'},nm=V[f]||T[f];
 try{q.delete('from');history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash)}catch(e){}
@@ -1342,7 +1350,7 @@ def build_lang(L, D, write):
             hj_data.setdefault(r["ju"], []).append([kname.get(r["kind"], r["kind"]), r["text"], r["src"], link])
         return hj_data
     def sidebar(pnum, c):
-        return "".join(f'<li class="{"cur" if cc == c else ""}{" wj" if cc not in pubset else ""}"><a href="{href(cc)}"><em>{cc.split(".")[1]}</em>{esc(ctitle(cc))}</a></li>' for cc in D["all_by_pian"].get(pnum, by_pian.get(pnum, [])))
+        return "".join(f'<li data-c="{cc}" class="{"cur" if cc == c else ""}{" wj" if cc not in pubset else ""}"><a href="{href(cc)}"><em>{cc.split(".")[1]}</em>{esc(ctitle(cc))}</a></li>' for cc in D["all_by_pian"].get(pnum, by_pian.get(pnum, [])))
     def yiwen_html(c):
         rs = D["yiwen"].get(c)
         if not rs: return ""
@@ -1469,7 +1477,7 @@ def build_lang(L, D, write):
                         f'<script type="application/json" class="zjdata">{json.dumps(zrows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
         else:
             fig_html = f"""<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{L.t("source_line")}</figcaption>{rend_html}</figure>"""
-        body = f"""<div class="chhead"><div class="wrap">
+        body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
 <h1><span class="no">{L.t("chapter_no", book=(pname if L.code=="zh-Hans" else bname), n=cnum)}</span>{esc(title_of(c))}</h1>{f'<p class="kwtag"><a href="#kw">{L.t("kw")} {len(mine)} 条</a> · <a href="{P}kanwu.html">全部勘误</a></p>' if mine and L.code.startswith("zh") else ""}
 </div></div>
@@ -1490,7 +1498,7 @@ def build_lang(L, D, write):
 <nav class="pn">{card(prev_c, L.t("prev"), 'prev')}{card(next_c, L.t("next"), 'next')}</nav>
 </article>
 <aside><h3>{bname}</h3><ol>{side}</ol></aside>
-</main>{FROM_JS if L.code.startswith("zh") else ""}"""
+</main>{FROM_JS if L.code.startswith("zh") else ""}{BOOK_JS}"""
         ld = {"@context": "https://schema.org", "@type": "Article", "headline": name,
               "inLanguage": L.hreflang, "url": url, "dateModified": today, "image": f"{DOMAIN}/{og_img or 'assets/og.jpg'}",
               "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN},
@@ -1615,7 +1623,7 @@ def build_lang(L, D, write):
                 TRI_TXT.setdefault(c, {"h": f"《论语·{pname}》第 {cnum} 章 · Analects {c} · 論語 {c}", "y": text, "en": WJ_TR.get(c, {}).get("en", ""), "ja": WJ_TR.get(c, {}).get("ja", "")})  # 分享图：未讲章英日译文见 i18n/tri-weijiang.json（11-09 补）
                 wj_vid = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
                           f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>')
-                body = f"""<div class="chhead"><div class="wrap">
+                body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
 <h1><span class="no">{L.t("chapter_no", book=pname, n=cnum)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(ctitle(c))}</h1>
 </div></div>
@@ -1635,7 +1643,7 @@ def build_lang(L, D, write):
 <nav class="pn">{pn}</nav>
 </article>
 <aside><h3>{bname}</h3><ol>{sidebar(pnum, c)}</ol></aside>
-</main>"""
+</main>{BOOK_JS}"""
                 hj_static = "<ul>" + (f'<li><a href="#zhuben">{L.t("hj_zb")}</a></li>' if D["zhuben"].get(c) else "") + "</ul>"
                 desc = f"{text[:70]}……《论语·{pname}》第 {cnum} 章原文与白话直译。"
                 ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"《论语·{pname}》{c} {ctitle(c)}", "inLanguage": L.hreflang, "url": url,
@@ -1656,20 +1664,20 @@ def build_lang(L, D, write):
         return '<ol class="toc">' + "".join(li(c) for c in cs) + "</ol>"
     def pcard(p):
         pname, slug, pfull, total = PIAN[p]; done = len(by_pian.get(p, [])); pct = round(done * 100 / total)
-        return (f'<a class="pcard" href="{P}lunyu/{slug}/"><b>{pname}</b><small>{L.book(p)}</small><span class="bar"><i style="width:{pct}%"></i></span><em>{L.t("covered", done=done, total=total)}</em></a>')
+        return (f'<a class="pcard" data-p="{p}" href="{P}lunyu/{slug}/"><b>{pname}</b><small>{L.book(p)}</small><span class="bar"><i style="width:{pct}%"></i></span><em>{L.t("covered", done=done, total=total)}</em></a>')
 
     toc_all = ""
     ALLP = sorted(set(by_pian) | set(D["all_by_pian"]), key=int)
     for p in ALLP:
         pname, slug, pfull, total = PIAN[p]; cs = D["all_by_pian"].get(p) or by_pian[p]
-        body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a></p>
+        body = f'''<div class="chhead bk"><div class="wrap">{mcv(P, pfull if L.code.startswith("zh") else "", True)}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a></p>
 <h1><span class="no">{L.t("book_no", n=p, done=len(by_pian.get(p, [])), total=total)}</span>{L.book(p)}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("book_lead")}</p>{toc(cs)}</main>'''
+<main class="wrap narrow"><p class="lead">{L.t("book_lead")}</p><div class="mulu">{toc(cs)}</div></main>{BOOK_JS}'''
         ttl = f"《论语·{pname}》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} · {L.book(p)} | 一孔录 Yikonglu"
         write(f"lunyu/{slug}/index.html", page(L, ttl, L.t("book_lead"), f"lunyu/{slug}/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/{slug}/")
         if p in by_pian: toc_all += f'<h2 class="ph"><a href="{P}lunyu/{slug}/">{L.book(p)}</a></h2>{toc(by_pian[p])}'
-    body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p><h1><span class="no">{L.t("lunyu_sub")}</span>{L.t("lunyu")}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("by_chapter")}</p>{f'<p class="cta"><a class="btn ghost" href="{P}zhuanti/keben.html">语文课本里的《论语》：初中、高中课文各章 ›</a></p>' if L.code.startswith("zh") else ""}<div class="pcards">{"".join(pcard(p) for p in ALLP)}</div>{toc_all}</main>'''
+    body = f'''<div class="chhead bk"><div class="wrap">{mcv(P, "", True)}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p><h1><span class="no">{L.t("lunyu_sub")}</span>{L.t("lunyu")}</h1></div></div>
+<main class="wrap narrow"><p class="lead">{L.t("by_chapter")}</p>{f'<p class="cta"><a class="btn ghost" href="{P}zhuanti/keben.html">语文课本里的《论语》：初中、高中课文各章 ›</a></p>' if L.code.startswith("zh") else ""}<div class="pcards">{"".join(pcard(p) for p in ALLP)}</div>{toc_all}</main>{BOOK_JS}'''
     write("lunyu/index.html", page(L, ("《论语》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} | 一孔录 Yikonglu"), L.t("by_chapter"), "lunyu/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/")
 
     # 书目：各本书一张卡；开讲的链到该书目录，其余是坑位
