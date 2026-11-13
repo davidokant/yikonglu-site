@@ -351,6 +351,18 @@ def seo_head(text, n=22):
     s = s.strip() or t
     return s if len(s) <= n else s[:n - 1] + "…"
 
+YKCITE = '<p class="ykcite"><button type="button" onclick="var s=this.closest(\'.ykan\'),t=s.querySelector(\'p\').textContent,u=location.origin+location.pathname+\'#ykan\',b=this,d=function(){b.textContent=\'已复制\';setTimeout(function(){b.textContent=\'引用这段一孔按\'},1200)};t=t+\'——\'+document.querySelector(\'h1\').textContent+\'，一孔录 \'+u;navigator.clipboard?navigator.clipboard.writeText(t).then(d):prompt(\'\',t)">引用这段一孔按</button></p>'
+FROM_JS = """<script>(function(){var q=new URLSearchParams(location.search),f=(q.get('from')||'').toLowerCase();if(!f)return;
+var V={yt:'YouTube',bili:'哔哩哔哩',dy:'抖音',ks:'快手',sph:'视频号'},T={xhs:'小红书',pod:'播客',gzh:'公众号',zhihu:'知乎',bjh:'百家号',tt:'头条'},nm=V[f]||T[f];
+try{q.delete('from');history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash)}catch(e){}
+if(!nm)return;try{if(sessionStorage.getItem('yk_from'))return;sessionStorage.setItem('yk_from',f)}catch(e){}
+var H=document.querySelector('.chhead .wrap');if(!H)return;var d=document.createElement('p');d.className='fromtip';var m,go=null;
+if(V[f]){m='从'+nm+'过来的？片里讲的原文都在下面，点任何一句，原页上那几列就框出来；朱注和各家说法在“细读与核对”。'}
+else if(f==='xhs'){m='从小红书过来的？这一章可以一键做成带原文底纹的分享图，存下来就能发。';go=['生成分享图',function(){var p=document.querySelector('.shpanel');if(!p)return;if(p.hidden)p.previousElementSibling.click();var b=p.querySelector('[data-p=card]');if(b)b.click()}]}
+else if(f==='pod'){m='从播客过来的？按原文上方的“音”，可以边听原文朗读边看原页。';go=['听原文',function(){var b=document.querySelector('.ldbtn');if(b){b.scrollIntoView({block:'center',behavior:'smooth'});b.click()}}]}
+else{m='从'+nm+'过来的？这里有原文、原页和一孔按，每条引文都标了底本页码，点句就能核。'}
+d.textContent=m;if(go){var a=document.createElement('button');a.type='button';a.textContent=go[0];a.onclick=go[1];d.appendChild(a)}
+var x=document.createElement('button');x.type='button';x.className='fx';x.setAttribute('aria-label','关闭');x.textContent='×';x.onclick=function(){d.remove()};d.appendChild(x);H.appendChild(d)})();</script>"""
 def seo_q(text):  # 问句用的短首句：第一个分句，≤12 字
     return re.split(r"[，。？！；：]", seo_head(text, 40))[0][:12]
 
@@ -1287,6 +1299,11 @@ def build_lang(L, D, write):
     def field(c, k):
         v = L.ch(c).get(k)
         return (v, True) if v else (notes[c]["fields"].get(k), False)
+    def next_q(c):  # 章末“下一章”卡下的一句问话：常见读法本身是问句就用它，否则问原文首句什么意思
+        v = notes[c]["fields"].get("常见读法") or ""
+        v = v.strip()
+        if v.endswith(("？", "?")) and len(v) <= 40: return v
+        return f"“{seo_q(yw[c])}”是什么意思？" if yw.get(c) else ""
     search_idx = []
     pubset = set(pub)
     LB = LIVE_BOOKS | ({"daodejing"} if D.get("ddj") else set())  # 书目、首页亮着的书：论语＋已上原文的书
@@ -1352,15 +1369,16 @@ def build_lang(L, D, write):
             if k == "片里落点":  # 一页两层：落点放上半，当“这一章讲什么”
                 _cm, _ct = field(c, "常见读法"); _ky, _ = field(c, "字眼")
                 an_lab, an_txt = ykan(L.code if translated else "zh", v, _cm if (_ct == translated) else None, _ky)
-                gist_html = f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p></section>'
+                gist_html = f'<section class="gist ykan" id="ykan"><h2>{L.t("ch_gist")}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p>{YKCITE if L.code.startswith("zh") else ""}</section>'
                 continue
             secs += f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{L.t(lab)}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}>{quotes(v)}</p></section>'
         if L.code == "zh-Hans" and c in D["zy"]:  # 争议读法主人选定的一孔按（11-08，tools/zhengyi.json 出自 规范/争议读法-选定表.md；待核出处已去人名）盖过自动短答；繁体由简体整页转
-            gist_html = f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(YKAN["zh"][0])}</b>{quotes(D["zy"][c]["text"])}</p></section>'
+            gist_html = f'<section class="gist ykan" id="ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(YKAN["zh"][0])}</b>{quotes(D["zy"][c]["text"])}</p>{YKCITE}</section>'
         prev_c = pub[i-1] if i > 0 else None; next_c = pub[i+1] if i+1 < len(pub) else None
         def card(cc, lab, cls):
             if not cc: return '<span></span>'
-            return f'<a class="pncard {cls}" href="{P}{rel_of(cc)}"><small>{lab}</small><b>{cc}　{esc(title_of(cc))}</b></a>'
+            hq = f'<span class="nq">{esc(next_q(cc))}</span>' if cls == "next" and L.code.startswith("zh") and next_q(cc) else ""
+            return f'<a class="pncard {cls}" href="{P}{rel_of(cc)}"><small>{lab}</small><b>{cc}　{esc(title_of(cc))}</b>{hq}</a>'
         side = sidebar(pnum, c)
         yt = ep.get("youtube", ""); g = gao.get(c, {"cites": [], "reads": []})
         st = ep.get("starts", {}).get(c) or D["starts"].get(yt, {}).get(c)  # 本章在视频里从第几秒讲起
@@ -1398,7 +1416,7 @@ def build_lang(L, D, write):
         if imgs: extra += f'<section class="sec shots"><h2><i>页</i>{L.t("shots")}</h2><div class="pages">{imgs}</div></section>'
         mine = [r for r in kw if r[2] == c]
         if mine:
-            extra += (f'<section class="sec kw"><h2><i>勘</i>{L.t("kw")}</h2>{"<p class=note>" + L.t("kw_note") + "</p>" if L.t("kw_note") else ""}<ul lang="zh-Hans">' + "".join(
+            extra += (f'<section class="sec kw" id="kw"><h2><i>勘</i>{L.t("kw")}</h2>{"<p class=note>" + L.t("kw_note") + "</p>" if L.t("kw_note") else ""}<ul lang="zh-Hans">' + "".join(
                 f'<li><b>{esc(r[0])}　{esc(r[3])}</b>原来：{esc(r[4])}；改为：{esc(r[5])}（依据：{esc(r[6])}；勘误者：{esc(r[7])}）</li>' for r in mine) + '</ul></section>')
         cite_txt = L.t("cite_fmt", book=(pname if L.code == "zh-Hans" else bname), c=c, title=title_of(c), url=url, d=today)
         citeit = f'<section class="citeit"><b>{L.t("cite")}</b><code>{esc(cite_txt)}</code><button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent=\'{L.t("copied")}\'">{L.t("copy")}</button><p>{L.t("checked", d=today)}<a href="{P}kanwu.html">{L.t("errata_page")}</a>.</p><p class="mailp">{L.t("report")} {MAIL}</p></section>'
@@ -1432,7 +1450,7 @@ def build_lang(L, D, write):
             fig_html = f"""<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{L.t("source_line")}</figcaption>{rend_html}</figure>"""
         body = f"""<div class="chhead"><div class="wrap">
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
-<h1><span class="no">{L.t("chapter_no", book=(pname if L.code=="zh-Hans" else bname), n=cnum)}</span>{esc(title_of(c))}</h1>
+<h1><span class="no">{L.t("chapter_no", book=(pname if L.code=="zh-Hans" else bname), n=cnum)}</span>{esc(title_of(c))}</h1>{f'<p class="kwtag"><a href="#kw">{L.t("kw")} {len(mine)} 条</a> · <a href="{P}kanwu.html">全部勘误</a></p>' if mine and L.code.startswith("zh") else ""}
 </div></div>
 <main class="wrap chapter">
 <article>
@@ -1451,7 +1469,7 @@ def build_lang(L, D, write):
 <nav class="pn">{card(prev_c, L.t("prev"), 'prev')}{card(next_c, L.t("next"), 'next')}</nav>
 </article>
 <aside><h3>{bname}</h3><ol>{side}</ol></aside>
-</main>"""
+</main>{FROM_JS if L.code.startswith("zh") else ""}"""
         ld = {"@context": "https://schema.org", "@type": "Article", "headline": name,
               "inLanguage": L.hreflang, "url": url, "dateModified": today, "image": f"{DOMAIN}/{og_img or 'assets/og.jpg'}",
               "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN},
