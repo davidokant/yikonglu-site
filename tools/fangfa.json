@@ -12,7 +12,7 @@
   "s2h": "二、每一章怎么出",
   "s2": [
    "<b>原文</b>：按底本逐字录入，异文列入异文表，不改字。",
-   "<b>读音</b>：每集出读音表；多音字、生僻字按注本和通行读法定读，配音前过多音字检查，配音后用语音识别逐句比对，不一致的重配。读音都列在<a href=\"{p}zi.html\">读音索引</a>。",
+   "<b>读音</b>：每集出读音表；多音字、生僻字按注本和通行读法定读，配音前过多音字检查，配音后用语音识别逐句比对，不一致的重配。",
    "<b>注家引文</b>：片中每一条引文都在稿中登记出处与页码，逐字核对原页后才能上屏；核不到原页的，只转述、不上屏。",
    "<b>注家原页</b>：讲到哪一家，就把那一页的原书影像放上屏幕，红框标出引文所在；网站章页放同一页影像。",
    "<b>白话与读法</b>：白话由我们自己写，出稿前与通行译本逐句查重，六字以上雷同的改写；“一孔按”是我们自己的读法，明说是我们的，不冒充注家。",
@@ -100,7 +100,7 @@
   "s2h": "2. How each chapter is made",
   "s2": [
    "<b>Text</b>: entered character by character from the base edition; variants go in a variants table; nothing is silently changed.",
-   "<b>Pronunciation</b>: each episode has a reading table; polyphonic and rare characters are fixed from the commentaries and standard readings, checked before narration, and compared line by line with speech recognition afterwards; mismatches are re-recorded. All readings are in the <a href=\"{p}zi.html\">pronunciation index</a>.",
+   "<b>Pronunciation</b>: each episode has a reading table; polyphonic and rare characters are fixed from the commentaries and standard readings, checked before narration, and compared line by line with speech recognition afterwards; mismatches are re-recorded.",
    "<b>Quotations</b>: every quotation in a video is logged with source and page and checked word for word against the original page before it goes on screen; anything we cannot find on the page is only paraphrased, never shown as a quote.",
    "<b>Original pages</b>: when we cite a commentator, the scanned page goes on screen with the quotation boxed in red; the chapter page on this site shows the same page.",
    "<b>Renderings and readings</b>: we write our own plain renderings and check them line by line against standard translations, rewriting any match of six characters or more; “How Yikonglu reads it” is our own reading, labelled as ours, never passed off as a commentator's.",
@@ -188,7 +188,7 @@
   "s2h": "二、各章のつくり方",
   "s2": [
    "<b>原文</b>：底本どおり一字ずつ入力し、異文は異文表に載せ、字を改めません。",
-   "<b>読み</b>：各回に読音表をつくり、多音字や難字は注釈と通行の読みで定め、ナレーション前に点検、ナレーション後は音声認識で一文ずつ照合し、合わなければ録り直します。読みは<a href=\"{p}zi.html\">読音索引</a>に載せています。",
+   "<b>読み</b>：各回に読音表をつくり、多音字や難字は注釈と通行の読みで定め、ナレーション前に点検、ナレーション後は音声認識で一文ずつ照合し、合わなければ録り直します。",
    "<b>注家の引用</b>：動画中の引用はすべて出典と頁を記録し、原頁と一字ずつ照合してから画面に出します。原頁で確かめられないものは要約にとどめ、引用としては出しません。",
    "<b>注家の原頁</b>：ある注家に触れるときは、その頁の画像を画面に出し、引用箇所を赤枠で示します。サイトの章ページにも同じ頁を載せます。",
    "<b>現代語訳と読み方</b>：現代語訳は自分たちで書き、通行の訳と一文ずつ重複を調べ、六字以上一致すれば書き直します。「一孔按」は私たちの読みであり、そう明記し、注家の説と偽りません。",
@@ -276,7 +276,7 @@
   "s2h": "2. 한 장은 이렇게 나옵니다",
   "s2": [
    "<b>원문</b>: 저본대로 한 자씩 입력하고, 이문은 이문표에 올리며, 글자를 고치지 않습니다.",
-   "<b>독음</b>: 회마다 독음표를 만들고, 다음자와 벽자는 주석과 통용 독음으로 정하며, 내레이션 전에 점검하고 내레이션 뒤에는 음성 인식으로 한 문장씩 대조해 어긋나면 다시 녹음합니다. 독음은 <a href=\"{p}zi.html\">독음 색인</a>에 있습니다.",
+   "<b>독음</b>: 회마다 독음표를 만들고, 다음자와 벽자는 주석과 통용 독음으로 정하며, 내레이션 전에 점검하고 내레이션 뒤에는 음성 인식으로 한 문장씩 대조해 어긋나면 다시 녹음합니다.",
    "<b>주석 인용</b>: 영상 속 모든 인용은 출처와 쪽수를 원고에 기록하고 원래 페이지와 한 자씩 대조한 뒤에야 화면에 올립니다. 원래 페이지에서 확인되지 않으면 풀어서 말할 뿐 인용으로 올리지 않습니다.",
    "<b>주석가의 원래 페이지</b>: 어느 주석가를 다룰 때는 그 페이지의 원서 이미지를 화면에 올리고 인용 위치를 빨간 틀로 표시합니다. 사이트 장 페이지에도 같은 페이지를 올립니다.",
    "<b>번역과 읽기</b>: 번역은 우리가 직접 쓰고, 통용 번역과 한 문장씩 중복을 검사해 여섯 자 이상 같으면 고쳐 씁니다. ‘일공 안’은 우리의 읽기이며, 우리 것이라고 밝히고 주석가의 말로 꾸미지 않습니다.",
@@ -364,7 +364,7 @@
   "s2h": "2. Comment chaque chapitre est fait",
   "s2": [
    "<b>Texte</b> : saisi caractère par caractère d'après l'édition de base ; les variantes vont dans un tableau ; rien n'est modifié en silence.",
-   "<b>Prononciation</b> : chaque épisode a un tableau des lectures ; les caractères à plusieurs lectures ou rares sont fixés d'après les commentaires et l'usage, vérifiés avant l'enregistrement, puis comparés phrase par phrase par reconnaissance vocale ; ce qui ne correspond pas est réenregistré. Toutes les lectures sont dans l'<a href=\"{p}zi.html\">index des prononciations</a>.",
+   "<b>Prononciation</b> : chaque épisode a un tableau des lectures ; les caractères à plusieurs lectures ou rares sont fixés d'après les commentaires et l'usage, vérifiés avant l'enregistrement, puis comparés phrase par phrase par reconnaissance vocale ; ce qui ne correspond pas est réenregistré.",
    "<b>Citations</b> : chaque citation d'une vidéo est consignée avec sa source et sa page, et comparée mot à mot à la page originale avant d'apparaître à l'écran ; ce que nous ne trouvons pas sur la page est seulement paraphrasé, jamais présenté comme citation.",
    "<b>Pages originales</b> : quand nous citons un commentateur, la page numérisée s'affiche à l'écran, la citation encadrée en rouge ; la page du chapitre sur ce site montre la même page.",
    "<b>Traductions et lectures</b> : nous écrivons nos propres traductions et les comparons phrase par phrase aux traductions courantes, réécrivant toute coïncidence de six caractères ou plus ; « la lecture de Yikonglu » est notre propre lecture, présentée comme telle, jamais attribuée à un commentateur.",
@@ -452,7 +452,7 @@
   "s2h": "2. Cómo se hace cada capítulo",
   "s2": [
    "<b>Texto</b>: se transcribe carácter a carácter según la edición base; las variantes van a una tabla; no se cambia nada en silencio.",
-   "<b>Pronunciación</b>: cada episodio tiene una tabla de lecturas; los caracteres polifónicos o raros se fijan según los comentarios y el uso, se revisan antes de grabar y después se comparan frase a frase con reconocimiento de voz; lo que no coincide se vuelve a grabar. Todas las lecturas están en el <a href=\"{p}zi.html\">índice de pronunciación</a>.",
+   "<b>Pronunciación</b>: cada episodio tiene una tabla de lecturas; los caracteres polifónicos o raros se fijan según los comentarios y el uso, se revisan antes de grabar y después se comparan frase a frase con reconocimiento de voz; lo que no coincide se vuelve a grabar.",
    "<b>Citas</b>: cada cita de un vídeo se registra con su fuente y página y se compara palabra por palabra con la página original antes de salir en pantalla; lo que no encontramos en la página solo se parafrasea, nunca se muestra como cita.",
    "<b>Páginas originales</b>: cuando citamos a un comentarista, la página escaneada aparece en pantalla con la cita enmarcada en rojo; la página del capítulo en este sitio muestra la misma página.",
    "<b>Traducciones y lecturas</b>: escribimos nuestras propias traducciones y las comparamos frase a frase con las traducciones habituales, reescribiendo toda coincidencia de seis caracteres o más; «la lectura de Yikonglu» es nuestra lectura, presentada como nuestra, nunca atribuida a un comentarista.",

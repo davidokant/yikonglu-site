@@ -551,3 +551,107 @@ html:not([lang^="zh"]):not([lang="ja"]):not([lang="ko"]) .meiri blockquote{font-
 .pncard .nq{display:block;margin-top:4px;font-size:14px;color:var(--mute);font-weight:400;line-height:1.6}
 .zjcard .znav{display:flex;justify-content:space-between;margin:-2px 0 4px}.zjcard .znav button{border:0;background:none;font:inherit;font-size:13px;color:var(--accent);padding:2px 0;cursor:pointer}.zjcard .znav button:disabled{color:var(--line);cursor:default}
 .fromtip{position:relative;margin:10px 0 0;padding:8px 34px 8px 12px;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:6px;font-size:14px;line-height:1.7;color:var(--ink,inherit)}.fromtip button{margin-left:8px;border:1px solid var(--accent);background:none;color:var(--accent);border-radius:4px;font:inherit;font-size:13px;padding:0 8px;cursor:pointer}.fromtip .fx{position:absolute;right:6px;top:6px;border:0;margin:0;font-size:16px;color:var(--mute)}
+/* 勘误页：一条一张卡（11-13） */
+.kwcards{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:12px}
+.kwc{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 16px 10px;box-shadow:var(--shadow);font-size:15px;line-height:1.75}
+.kwc p{margin:0}
+.kwm{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;font-size:14px;color:var(--mute)}
+.kwm .kwe{color:var(--fg);font-weight:700}
+.kwm .kwt{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:0 8px;line-height:1.7}
+.kwm .who{margin-left:auto;white-space:normal;color:var(--accent2)}
+.kwx{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 4px}
+.kwx p{border-radius:6px;padding:6px 10px;overflow-wrap:anywhere}
+.kwx small{display:block;font-size:12px;color:var(--mute);letter-spacing:.1em}
+.kwo{background:color-mix(in srgb,var(--line) 45%,transparent)}
+.kwo span{color:var(--mute);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--accent2) 60%,transparent)}
+.kwn{background:color-mix(in srgb,var(--accent) 9%,transparent)}
+.kwn span{color:var(--fg)}
+.kwy{font-size:13.5px;color:var(--mute);overflow-wrap:anywhere}
+.kwy small{font-size:12px;margin-right:8px;letter-spacing:.1em}
+@media (max-width:640px){.kwx{grid-template-columns:1fr;gap:6px}.kwc{padding:10px 12px 8px}.kwm .who{margin-left:0}}
+/* 书目页书架（11-13）：一格一类，线装书封面＋题签；行高固定，木板用背景横条画，换行也连成一条 */
+.shumu .lead{margin-top:26px}
+.shelf .ph{margin:34px 0 14px}
+.shrow{--cvh:150px;--rowh:292px;display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));grid-auto-rows:var(--rowh);padding:0 6px;
+  background:linear-gradient(to bottom,transparent calc(var(--cvh) + 10px),#8a5a2c calc(var(--cvh) + 10px),#7a4e25 calc(var(--cvh) + 22px),rgba(60,40,20,.18) calc(var(--cvh) + 22px),transparent calc(var(--cvh) + 30px)) 0 0/100% var(--rowh) repeat-y}
+.tome{display:flex;flex-direction:column;align-items:center;padding-top:10px;color:var(--fg);text-decoration:none}
+.tome:hover{text-decoration:none}
+.cv{position:relative;display:block;width:104px;height:var(--cvh);border-radius:2px 5px 5px 2px;
+  background:#cfc8b6 repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 2px,transparent 2px 5px);box-shadow:inset -10px 0 0 rgba(0,0,0,.06),0 2px 4px rgba(30,45,38,.15);transition:transform .2s}
+.cv::after{content:"";position:absolute;top:8px;bottom:8px;right:3px;width:2px;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.55) 0 2px,transparent 2px 26px)}
+.qian{position:absolute;top:10px;left:12px;width:26px;height:64%;background:#f4efe2;border:1px solid rgba(0,0,0,.08);writing-mode:vertical-rl;text-orientation:upright;
+  display:flex;align-items:center;justify-content:flex-start;padding:6px 0;font-size:14px;font-weight:900;letter-spacing:.12em;line-height:1;color:#6d6658;overflow:hidden}
+.tome.on .cv{background:#23503f repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px);box-shadow:inset -10px 0 0 rgba(0,0,0,.14),0 6px 14px rgba(30,45,38,.28)}
+.tome.on .qian{color:#1f2421;background:#fbf7ea}
+.tome.on .qian::after{content:"";display:block;width:12px;height:12px;margin-top:auto;background:url(/assets/seal-180.png) center/contain no-repeat}
+.tome.on:hover .cv{transform:translateY(-6px)}
+.cap{display:block;width:100%;margin-top:30px;text-align:center;line-height:1.45}
+.cap b{display:block;font-size:15px;letter-spacing:.04em}
+.cap small{display:block;font-size:12px;color:var(--mute)}
+.cap .bar{display:block;width:76%;height:3px;margin:6px auto 3px;background:var(--line);border-radius:2px;overflow:hidden}
+.cap .bar i{display:block;height:100%;background:var(--accent)}
+.cap em{display:block;font-style:normal;font-size:12px;color:var(--accent)}
+.cap em.mine{color:var(--accent2)}
+.cap em.soon{display:inline-block;margin-top:4px;font-size:11px;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:0 7px}
+.tome:not(.on) .cap b{color:var(--mute)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cv{background-color:#3a3f3a}:root:not([data-theme="light"]) .qian{background:#5a5d55;color:#c9c9bd}:root:not([data-theme="light"]) .tome.on .cv{background-color:#2c5e4a}}
+:root[data-theme="dark"] .cv{background-color:#3a3f3a}:root[data-theme="dark"] .qian{background:#5a5d55;color:#c9c9bd}:root[data-theme="dark"] .tome.on .cv{background-color:#2c5e4a}
+@media (max-width:640px){.shrow{--cvh:128px;--rowh:272px;grid-template-columns:repeat(3,1fr);padding:0}.cv{width:88px}.qian{left:9px;width:23px;font-size:13px}.cap{margin-top:32px}}
+/* 专题闯关（11-13）：一关一个字，蛇形关卡图；电脑五列、手机三列；进度只看本机读过的章 */
+.quest{margin:18px 0 8px}
+.qstat{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font-size:15px;color:var(--fg)}
+.qmap{list-style:none;margin:22px 0 6px;padding:0;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(var(--rows5),auto);row-gap:26px}
+.qn{grid-row:var(--r5);grid-column:var(--c5);position:relative;text-align:center}
+.qn::before{content:"";position:absolute;top:36px;left:-50%;right:50%;border-top:2px dashed var(--line);z-index:0}
+.qn:first-child::before{display:none}
+.qn a{position:relative;z-index:1;display:inline-flex;flex-direction:column;align-items:center;color:var(--fg);text-decoration:none}
+.qo{display:flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:conic-gradient(var(--accent) var(--p,0%),var(--line) 0);padding:3px;transition:transform .2s}
+.qo b{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:50%;background:var(--paper);font-size:26px;font-weight:900;color:var(--mute)}
+.qn a:hover .qo{transform:scale(1.06)}
+.qno{font-style:normal;font-size:12px;color:var(--mute);margin-top:6px;letter-spacing:.08em}
+.qc{font-size:12px;color:var(--mute)}
+.qn.lit .qo b{color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--paper))}
+.qn.lit::before{border-top-style:solid;border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.qn.done .qo b{background:var(--accent);color:#fff}
+.qo{position:relative}.qn.done .qo::after{content:"";position:absolute;width:24px;height:24px;right:-6px;bottom:-4px;border-radius:3px;background-color:var(--paper);background:url(/assets/seal-180.png) center/contain no-repeat}
+.qn.next .qo{box-shadow:0 0 0 4px color-mix(in srgb,var(--gold) 35%,transparent);animation:qpulse 2.4s ease-in-out infinite}
+.qtag{font-style:normal;font-size:11px;color:#fff;background:var(--accent2);border-radius:999px;padding:0 8px;margin-top:3px;line-height:1.7}
+@keyframes qpulse{50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--gold) 12%,transparent)}}
+@media (prefers-reduced-motion:reduce){.qn.next .qo{animation:none}}
+/* 蛇形连线：同一行接左边那一关；换行那一关接上面那一关 */
+.qn.qt5::before{top:-26px;left:50%;right:auto;bottom:auto;height:26px;border-top:0;border-left:2px dashed var(--line)}
+.qn.qt5.lit::before{border-left-style:solid;border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.qn.qr5::before{left:50%;right:-50%}
+@media (max-width:640px){.qmap{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(var(--rows3),auto)}.qn{grid-row:var(--r3);grid-column:var(--c3)}
+  .qn.qt5::before{top:36px;left:-50%;right:50%;height:0;border-left:0;border-top:2px dashed var(--line)}.qn.qr5::before{left:-50%;right:50%}
+  .qn.qr3::before{left:50%;right:-50%}.qn.qt3::before{top:-26px;left:50%;right:auto;height:26px;border-top:0;border-left:2px dashed var(--line)}
+  .qn.lit.qt3::before{border-left-style:solid}.qo{width:64px;height:64px}.qo b{font-size:23px}}
+.qbar{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:22px 0 6px;box-shadow:var(--shadow)}
+.qbar p{margin:0}
+.qbh{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.qbh b{font-size:17px}.qbs{font-size:14px;color:var(--mute)}
+.qbar .bar{display:block;height:5px;background:var(--line);border-radius:3px;margin:10px 0 8px;overflow:hidden}
+.qbar .bar i{display:block;height:100%;width:0;background:var(--accent)}
+.qgo{font-size:15px}.qgo .btn{font-size:15px}
+.qbar.done .qbs{color:var(--accent)}
+.ztl li.rd>a em::before{content:"✓ ";color:var(--accent)}
+.qnext{text-align:right;margin:26px 0 0}
+.gsroute .qr{display:block;font-size:12px;color:var(--accent);margin-top:4px}
+/* 检索页（11-13）：框下可点的词；没在搜时放今日共读、最近新讲的章、上次读到 */
+.schips{margin:10px 0 0;font-size:14px;color:var(--mute)}
+.schips a{display:inline-block;margin:4px 8px 0 0;padding:0 10px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--fg);line-height:1.9}
+.schips a:hover{border-color:var(--accent);text-decoration:none}
+.smore{margin-top:26px}
+.smore[hidden]{display:none}
+.snew{margin:18px 0 0}
+.snew h2{display:flex;justify-content:space-between;align-items:baseline;font-size:17px;margin:0 0 6px;padding-left:10px;border-left:3px solid var(--accent)}
+.snew h2 a{font-size:13px;font-weight:400}
+.snew ol{list-style:none;margin:0;padding:0}
+.snew li a{display:flex;gap:10px;align-items:baseline;padding:7px 2px;border-bottom:1px solid var(--line);color:var(--fg)}
+.snew li a:hover{text-decoration:none;color:var(--accent)}
+.snew em{font-style:normal;font-size:13px;color:var(--mute);min-width:3.2em}
+.snew b{flex:1;font-weight:700}
+.snew small{color:var(--mute);font-size:12px}
+.slast{margin:16px 0 0;font-size:15px;color:var(--mute)}
+.qian.l5{font-size:12px;letter-spacing:.02em}.qian.l6{font-size:10.5px;letter-spacing:0}
+@media (max-width:640px){.qian.l5{font-size:11px}.qian.l6{font-size:9.5px}}

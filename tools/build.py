@@ -157,7 +157,7 @@ REUSE_UI = {
  "zh-Hans": {"foot_reuse": "原文与古注为公版；白话、引文核对等一孔录所写的核对内容按 <a href=\"https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans\" rel=\"license noopener\" target=\"_blank\">CC BY-NC 4.0</a> 许可，转载请署名“一孔录”并附原页链接，不得商用。<a href=\"{p}kaifang.html\">转载说明</a>",
   "about_h4": "转载与引用",
   "about_r1": "原文和古注（朱熹集注、皇侃义疏等古刻本）是公版，谁都可以用。",
-  "about_r2": "一孔录写的白话、引文核对表、读音索引和专题编排，按 CC BY-NC 4.0 许可：可以转载、改编，须署名“一孔录”、附原页链接、注明有没有改动，不得商用。章页上一孔录自己的读法（常见读法、注里的关键字、诸家、一孔录这样读）不在这个许可之内，短引请注明出处，成段转用请先来信。",
+  "about_r2": "一孔录写的白话、引文核对表、读音表和专题编排，按 CC BY-NC 4.0 许可：可以转载、改编，须署名“一孔录”、附原页链接、注明有没有改动，不得商用。章页上一孔录自己的读法（常见读法、注里的关键字、诸家、一孔录这样读）不在这个许可之内，短引请注明出处，成段转用请先来信。",
   "about_r3": "现代注本（杨伯峻、钱穆等）的引文版权归原作者和出版方，不在这个许可之内，本站只作短引。",
   "about_r4": "视频、配音、原创角色形象和插图不在这个许可之内，转用请先来信。",
   "about_r5": "引一句时，点原文任一句就能复制带出处的引文。要成批转载，可以直接用<a href=\"{p}kaifang.html\">开放数据</a>，商业使用请先来信。看到没署名的转载，或者照搬全站的网站，也请告诉我们：",
@@ -284,6 +284,24 @@ BOOK_GROUPS = [
 ]
 BOOK_SUB = {"liji": [("daxue", "大学"), ("zhongyong", "中庸")]}  # 挂在某书底下的篇
 LIVE_BOOKS = {"lunyu"}
+# 专题闯关的页面脚本（关卡图、专题页进度条、跟着一个人读的进度）；读本机 yk_xd 里读过的章
+QUEST_JS = """<script>(function(){var H=/Hant/.test(document.documentElement.lang),T=H?{st:"已點亮 {a} 關 · 通關 {b} 關 · 讀過其中 {c} 章",nx:"下一關",ok:"通關",go:"接著闖：",all:"本關已通。再讀一遍，也算溫故。",rd:"已讀 {x} / {n} 章",st0:"從第一關開始"}:{st:"已点亮 {a} 关 · 通关 {b} 关 · 读过其中 {c} 章",nx:"下一关",ok:"通关",go:"接着闯：",all:"本关已通。再读一遍，也算温故。",rd:"已读 {x} / {n} 章",st0:"从第一关开始"};
+var seen=[];try{seen=((JSON.parse(localStorage.getItem("yk_xd")||"{}").b||{}).lunyu||{}).seen||[]}catch(e){}
+var S={};seen.forEach(function(c){S[c]=1});function cs(el){try{return JSON.parse(el.getAttribute("data-cs"))}catch(e){return[]}}
+function f(t,o){return t.replace(/\\{(\\w+)\\}/g,function(_,k){return o[k]})}
+var a=0,b=0,u={},nx=null;document.querySelectorAll(".qn").forEach(function(li){var C=cs(li),x=C.filter(function(c){return S[c]}).length,p=C.length?x/C.length:0;
+ li.style.setProperty("--p",(p*100).toFixed(1)+"%");if(x){li.classList.add("lit");a++;C.forEach(function(c){if(S[c])u[c]=1})}if(x&&x==C.length){li.classList.add("done");b++}else if(!nx)nx=li;
+ var q=li.querySelector(".qc");if(q&&x)q.textContent=x+" / "+C.length});
+if(nx){nx.classList.add("next");var tg=document.createElement("em");tg.className="qtag";tg.textContent=T.nx;nx.querySelector("a").appendChild(tg)}
+var st=document.getElementById("qstat");if(st&&a)st.textContent=f(T.st,{a:a,b:b,c:Object.keys(u).length});
+document.querySelectorAll(".qbar").forEach(function(qb){var C=cs(qb),x=C.filter(function(c){return S[c]}).length,n=C.length;qb.querySelector(".bar i").style.width=(n?x*100/n:0)+"%";
+ if(x)qb.classList.add("lit");if(x==n&&n)qb.classList.add("done");var s=qb.querySelector(".qbs");if(x&&s)s.textContent=f(T.rd,{x:x,n:n})+(x==n?" · "+T.ok:"");
+ var g=qb.querySelector(".qgo"),c0=null;document.querySelectorAll(".ztl li[data-c]").forEach(function(li){var c=li.getAttribute("data-c");if(S[c])li.classList.add("rd");else if(!c0&&!li.classList.contains("wj"))c0=li});
+ if(!c0)c0=[].filter.call(document.querySelectorAll(".ztl li[data-c]"),function(li){return !S[li.getAttribute("data-c")]})[0];
+ if(c0){var A=c0.querySelector("a");g.innerHTML='<a class="btn" href="'+A.getAttribute("href")+'">'+T.go+A.querySelector("em").textContent+" "+A.querySelector("b").textContent+" →</a>"}else g.textContent=T.all});
+document.querySelectorAll(".gsroute[data-cs]").forEach(function(r){var C=cs(r),x=C.filter(function(c){return S[c]}).length;if(!x)return;var d=r.querySelector("div"),e=document.createElement("small");e.className="qr";e.textContent=f(T.rd,{x:x,n:C.length});d.appendChild(e);if(x==C.length)r.classList.add("done")})
+})();</script>"""
+
 SHOW_DRAFT = True  # “初稿改动”比例：首页小字与方法页
 DRAFT_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/初稿改动.json"
 YXL_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/影响力.json"  # 一孔影响力（找到分），每天自动更新
@@ -987,7 +1005,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>{'<span class="livep" id="livep" hidden></span>' if ANALYTICS.get("live") else ""}
 <nav><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}shuyuan/" class="gsnav">书院</a>' if gs else ""}
-<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}zi.html">{L.t("zi_link")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}wen.html">{lang_tab(WEN, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
+<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}renwu/">人物</a>' if rw else ""}<a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}wen.html">{lang_tab(WEN, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary><span class="lfull">{L.name}</span><span class="lshort" aria-hidden="true">{LANG_SHORT.get(L.code, L.code[:2].upper())}</span></summary><div>{sw}</div></details></nav>
 </div></header>
 {note}
@@ -997,7 +1015,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
 <p class="where">{where_html(L)}</p>
-<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}zi.html">{L.t("zi_link")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}shuyuan/">书院</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
+<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a>{f'<a href="{P}renwu/">人物</a>' if rw else ""}{f'<a href="{P}shuyuan/">书院</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
 <p class="freuse">{L.t("foot_reuse", p=P)}</p>
@@ -1299,7 +1317,10 @@ def build_lang(L, D, write):
     def field(c, k):
         v = L.ch(c).get(k)
         return (v, True) if v else (notes[c]["fields"].get(k), False)
-    def next_q(c):  # 章末“下一章”卡下的一句问话：常见读法本身是问句就用它，否则问原文首句什么意思
+    NEXTQ = json.load(open(os.path.join(HERE, "nextq.json"), encoding="utf-8")) if L.code.startswith("zh") and os.path.exists(os.path.join(HERE, "nextq.json")) else {}  # 11-13 主人要每章都有问句，逐章写在 nextq.json
+    NQ_TW = __import__("opencc").OpenCC("s2twp") if NEXTQ and L.code == "zh-Hant" else None
+    def next_q(c):  # 章末“下一章”卡下的一句问话：先用 nextq.json；没有时常见读法本身是问句就用它，否则问原文首句什么意思
+        if c in NEXTQ: return NEXTQ[c] if L.code == "zh-Hans" else NQ_TW.convert(NEXTQ[c])
         v = notes[c]["fields"].get("常见读法") or ""
         v = v.strip()
         if v.endswith(("？", "?")) and len(v) <= 40: return v
@@ -1670,8 +1691,27 @@ def build_lang(L, D, write):
     # 首页（主人 11-07 定）：只放开讲的书，其余收成一行“《道德经》等 N 部筹备中”，完整书目在书目页
     n_soon = sum(1 for _, bs in BOOK_GROUPS for sl, _ in bs if sl not in LB)
     bcards_home = '<div class="bcards">' + "".join(bcard(sl, zh, True) for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB) + f'</div><p class="soonline"><a href="{P}shumu/">{L.t("soon_line", n=n_soon)}</a></p>'
+    # 书目页做成书架（11-13 主人：书目页用书架式，首页不动）：一格一类，线装书封面＋题签，亮着的能读，其余筹备中
+    def tome(slug, zh, live):
+        name = L.t("bk_" + slug); sub = L.t("bk_sub_" + slug); zhL = L.code.startswith("zh")
+        cap = f"《{zh}》" if zhL else name
+        kids = "、".join((f"《{z}》" if zhL else L.t("bk_" + sl2)) for sl2, z in BOOK_SUB.get(slug, []))
+        cv = f'<span class="cv"><span class="qian{" l6" if len(zh) >= 6 else (" l5" if len(zh) == 5 else "")}" lang="zh-Hans">{esc(zh)}</span></span>'
+        if live:
+            if slug == "daodejing": nd, tt, u, key = len(D["ddj"]["qw"]), 81, f'{P if zhL else "/"}daodejing/', "bk_prog_wj"
+            else: nd, tt, u, key = len(pub), n_all, f"{P}lunyu/", "bk_prog"
+            return (f'<a class="tome on" href="{u}" data-bk="{slug}" data-t="{tt}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
+                    f'<span class="bar"><i style="width:{round(nd * 100 / tt)}%"></i></span><em>{L.t(key, done=nd, n=nd, total=tt)}</em><em class="mine" hidden></em></span></a>')
+        return (f'<span class="tome" aria-disabled="true">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}{"<br>" + esc(kids) if kids else ""}</small>'
+                f'<em class="soon">{L.t("soon")}</em></span></span>')
+    shelves = "".join(f'<section class="shelf"><h2 class="ph">{L.t(gk)}</h2><div class="shrow">' + "".join(tome(sl, zh, sl in LB) for sl, zh in bs) + "</div></section>" for gk, bs in BOOK_GROUPS)
+    if L.code.startswith("zh"):  # 最上面一格放已经能读的书，手机上不用往下翻找
+        shelves = (f'<section class="shelf"><h2 class="ph">{"能读的书" if L.code == "zh-Hans" else "能讀的書"}</h2><div class="shrow">' + "".join(tome(sl, zh, True) for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB) + "</div></section>") + shelves
+    MINE = {"zh-Hans": "你读过 {n} 章", "zh-Hant": "你讀過 {n} 章"}.get(L.code, "")
+    shelf_js = ("<script>(function(){try{var S=JSON.parse(localStorage.getItem('yk_xd')||'{}');S=S.b||{}}catch(e){return}"
+                "document.querySelectorAll('.tome.on').forEach(function(a){var n=((S[a.dataset.bk]||{}).seen||[]).length,m=a.querySelector('.mine');if(n&&m){m.textContent=" + json.dumps(MINE) + ".replace('{n}',n);m.hidden=false;a.classList.add('read')}})})();</script>") if MINE else ""
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("shumu_sub")}</span>{L.t("shumu_title")}</h1></div></div>
-<main class="wrap narrow">{bcards}</main>'''
+<main class="wrap narrow shumu">{f'<p class="lead">书架一格一类。亮着的书已经能读，点开逐章读原文；其余还在筹备，讲一部上一部。</p>' if L.code == "zh-Hans" else (f'<p class="lead">書架一格一類。亮著的書已經能讀，點開逐章讀原文；其餘還在籌備，講一部上一部。</p>' if L.code == "zh-Hant" else "")}{shelves}</main>{shelf_js}'''
     write("shumu/index.html", page(L, f'{L.t("shumu_title")}｜一孔录', L.t("shumu_p"), "shumu/", body)); urls.append(f"{DOMAIN}/{L.prefix}shumu/")
     recent = pub[-6:][::-1]
     # 首页“从最新一章读起”“最新一章”都指向视频已公开的最新一章
@@ -1729,7 +1769,7 @@ def build_lang(L, D, write):
 <div><i>注</i><b>{L.t("p2t")}</b><p>{L.t("p2")}</p></div>
 <div><i>勘</i><b>{L.t("p3t")}</b><p>{L.t("p3")}</p></div>
 </section>
-<section class="wrap narrow"><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}zi.html"><b>{L.t("zi_title")}</b><span>{L.t("t_zi")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
+<section class="wrap narrow"><div class="tools"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
 {yxl_line(L, D, P) if L.code.startswith("zh") else ""}
 <p class="cta"><a class="btn ghost" href="{P}kanwu.html">{L.t("btn_errata")}</a><a class="btn ghost" href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p></section>
 </main>'''
@@ -1750,8 +1790,11 @@ def build_lang(L, D, write):
     write("yinsi.html", page(L, f"{ys_t}｜一孔录", ys_sub, "yinsi.html", body)); urls.append(f"{DOMAIN}/{L.prefix}yinsi.html")
 
     if kw:
-        trs = "".join(f"<tr><td>{esc(r[0])}</td><td>{esc(r[1])} {esc(r[2])}</td><td>{esc(r[3])}</td><td>{esc(r[4])}</td><td>{esc(r[5])}</td><td>{esc(r[6])}</td><td class=\"who\">{esc(r[7])}</td></tr>" for r in reversed(kw))
-        ktable = f'<div class="tw"><table lang="zh-Hans"><thead><tr><th>日期</th><th>集·章</th><th>类别</th><th>原来</th><th>改为</th><th>依据</th><th>勘误者</th></tr></thead><tbody>{trs}</tbody></table></div>'
+        # 勘误条目（11-13 主人：表格太宽、格子太窄，手机看不了）：改成一条一张卡，电脑上“原来/改为”左右并排，手机上上下排
+        kcards = "".join(f'<li class="kwc"><p class="kwm"><span class="kwd">{esc(r[0])}</span><span class="kwe">{esc(r[1])} {esc(r[2])}</span><span class="kwt">{esc(r[3])}</span><span class="who">{esc(r[7])}</span></p>'
+                         f'<div class="kwx"><p class="kwo"><small>原来</small><span>{esc(r[4])}</span></p><p class="kwn"><small>改为</small><span>{esc(r[5])}</span></p></div>'
+                         + (f'<p class="kwy"><small>依据</small>{esc(r[6])}</p>' if r[6] else "") + "</li>" for r in reversed(kw))
+        ktable = f'<ol class="kwcards" lang="zh-Hans">{kcards}</ol>'
     else:
         ktable = f'<p class="empty">{L.t("errata_empty")}</p>'
     stats = ""
@@ -1765,8 +1808,24 @@ def build_lang(L, D, write):
 <main class="wrap narrow prose"><p>{L.t("errata_p1")}</p><p>{L.t("errata_p2")}</p><p class="mailp">{MAIL}<small>{L.t("mail_note")}</small></p>{"<p class=note>" + L.t("kw_note") + "</p>" if L.t("kw_note") else ""}{stats}{ktable}{thanks}</main>'''
     write("kanwu.html", page(L, f'{L.t("errata_title")}｜一孔录', L.t("errata_p1"), "kanwu.html", body)); urls.append(f"{DOMAIN}/{L.prefix}kanwu.html")
     write("search.json", json.dumps(search_idx, ensure_ascii=False))
+    # 检索页（11-13 主人：简洁，但带点再来的理由）：框下几个可点的词；没在搜时，下面放今日共读、最近新讲的章、上次读到哪
+    s_extra = s_more = ""
+    if L.code.startswith("zh"):
+        SW = (lambda x: x) if L.code == "zh-Hans" else __import__("opencc").OpenCC("s2twp").convert
+        chips = ["鸟数飞", "主一无适", "孝弟", "巧言令色", "君子不器", "温故知新", "朝闻道"]
+        s_extra = '<p class="schips">' + SW("试试") + "：" + "".join(f'<a href="?q={esc(SW(w))}">{esc(SW(w))}</a>' for w in chips) + "</p>"
+        _new = [c for c in (_vpub or pub)][-4:][::-1]
+        def _d(c):
+            t = ch2ep[c][1].get("public_at") or ""
+            return f"{int(t[5:7])}-{int(t[8:10])}" if len(t) >= 10 else ""
+        newl = "".join(f'<li><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(title_of(c))}</b><small>{_d(c)}</small></a></li>' for c in _new)
+        s_more = (f'<div class="smore">{meiri_html}<section class="snew"><h2>{SW("最近新讲的章")}<a href="{P}feed.xml">{SW("订阅更新")}</a></h2><ol>{newl}</ol></section>'
+                  f'<p class="slast" id="slast" hidden></p></div>'
+                  '<script>(function(){try{var L=((JSON.parse(localStorage.getItem("yk_xd")||"{}").b||{}).lunyu||{}).last}catch(e){return}if(!L||!L.p)return;var p=document.getElementById("slast");'
+                  'p.innerHTML=' + json.dumps(SW("上次读到")) + '+\'：<a href="\'+L.p+\'">\'+(L.no||L.c).replace(/[<>&]/g,"")+(L.ti?" "+L.ti.replace(/[<>&]/g,""):"")+\' →</a>\';p.hidden=false})();'
+                  '(function(){var q=document.getElementById("q"),M=document.querySelector(".smore");if(!q||!M)return;function t(){M.hidden=!!new URLSearchParams(location.search).get("q")}t();window.addEventListener("popstate",t);document.querySelector(".sbox").addEventListener("submit",function(){setTimeout(function(){M.hidden=!!q.value.trim()},0)})})();</script>')
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("search_sub")}</span>{L.t("search_title")}</h1></div></div>
-<main class="wrap narrow"><form class="sbox" onsubmit="go();return false"><input id="q" placeholder="{esc(L.t("search_ph2"))}"><button>{L.t("nav_search")}</button></form><div id="res"></div></main>
+<main class="wrap narrow"><form class="sbox" onsubmit="go();return false"><input id="q" placeholder="{esc(L.t("search_ph2"))}"><button>{L.t("nav_search")}</button></form>{s_extra}<div id="res"></div>{s_more}</main>{meiri_js if s_more else ""}
 <script>
 let D=null;const q=document.getElementById('q'),R=document.getElementById('res');
 const E=s=>s.replace(/[&<>"]/g,c=>({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}}[c]));
@@ -1859,24 +1918,40 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
             t = esc(t)
             for w in terms: t = t.replace(esc(w), f"<mark>{esc(w)}</mark>")
             return t
-        return "".join(f'<li{"" if c in pubset else " class=wj"}><a href="{href(c)}"><em>{c}</em><b>{esc(ctitle(c))}</b>{"" if c in pubset else "<i class=wjtag>" + L.t("toc_wj") + "</i>"}</a><p class="zy" lang="zh-Hans">{mark(tx(c))}</p>'
+        return "".join(f'<li data-c="{c}"{"" if c in pubset else " class=wj"}><a href="{href(c)}"><em>{c}</em><b>{esc(ctitle(c))}</b>{"" if c in pubset else "<i class=wjtag>" + L.t("toc_wj") + "</i>"}</a><p class="zy" lang="zh-Hans">{mark(tx(c))}</p>'
                        + (f'<p class="zd">{esc(field(c, "片里落点")[0])}</p>' if c in pubset and field(c, "片里落点")[0] else "") + "</li>" for c in hit)
+    # 专题闯关（11-13 主人：专题页结合游戏任务）：一关一个字，读过本关一章点亮，章章读过通关；进度只看本机读过的章（yk_xd），只在简繁页
+    QUEST = L.code.startswith("zh")
+    _qo = ["xue", "xiao", "you", "xin", "li", "le", "shi", "junzi", "ren", "zheng", "ming", "tianming", "dao", "xin2", "xing"]
+    QORD = [x for x in _qo if any(t["slug"] == x for t in D["zhuanti"])] + [t["slug"] for t in D["zhuanti"] if t["slug"] not in _qo]
+    QNAME = {t["slug"]: t["name"] for t in D["zhuanti"]}
+    QW = (lambda s_: s_) if L.code != "zh-Hant" else __import__("opencc").OpenCC("s2twp").convert
+    qmeta = {}
     for t in D["zhuanti"]:
         slug, name, intro = t["slug"], t["name"], t.get("intro") or ""
         segs, total, nb = "", 0, 0
+        qcs = []
         for bk in book_order:
             bd = t.get("books", {}).get(bk)
             if not bd or bk not in LIVE_BOOKS: continue  # 没上网的书不出段
             terms = [w for w in (bd.get("match") or bd.get("terms") or []) if w]
             hit = [c for c in allc if any(w in tx(c) for w in terms)] if terms else []
             if not hit: continue
-            nb += 1; total += len(hit)
+            nb += 1; total += len(hit); qcs += hit
             bname_ = f"《{dict((x for g in BOOK_GROUPS for x in g[1]))[bk]}》" if L.code.startswith("zh") else L.t("bk_" + bk)
             segs += (f'<section class="ztbook" id="{bk}"><h2 class="ph">{esc(bname_)}<small>{L.t("zt_n", n=len(hit))}</small></h2>'
                      + (f'<p class="lead" lang="zh-Hans">{esc(bd["intro"])}</p>' if bd.get("intro") else "") + f'<ol class="ztl">{zt_items(terms, hit)}</ol>'
                      + f'<p class="note"><a href="{P}lunyu/">{L.t("zt_all", b=bname_.strip("《》"))}</a></p></section>')
+        qmeta[slug] = qcs
+        qk = QORD.index(slug) + 1 if slug in QORD else 0
+        qbar = qnext = ""
+        if QUEST and qk and qcs:
+            qbar = (f'<div class="qbar" data-cs="{esc(json.dumps(qcs))}"><p class="qbh"><b>{QW("第")} {qk} {QW("关")} · {esc(name)}</b><span class="qbs">{QW(f"本关 {len(qcs)} 章：读过一章点亮，章章读过通关")}</span></p>'
+                    f'<span class="bar"><i></i></span><p class="qgo"></p></div>')
+            if qk < len(QORD):
+                n2 = QORD[qk]; qnext = f'<p class="qnext"><a class="btn ghost" href="{P}zhuanti/{n2}.html">{QW("下一关")}：{QW("第")} {qk + 1} {QW("关")} · {esc(QNAME[n2])} ›</a></p>'
         body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}zhuanti/">{L.t("zt_title")}</a></p><h1><span class="no">{L.t("zt_nb", n=nb, m=total)}</span>{esc(name)}</h1></div></div>
-<main class="wrap narrow">{f'<p class="lead" lang="zh-Hans">{esc(intro)}</p>' if intro else ""}<p class="note">{L.t("zt_p")}</p>{segs or "<p class=empty>" + L.t("zt_none") + "</p>"}</main>'''
+<main class="wrap narrow">{qbar}{f'<p class="lead" lang="zh-Hans">{esc(intro)}</p>' if intro else ""}<p class="note">{L.t("zt_p")}</p>{segs or "<p class=empty>" + L.t("zt_none") + "</p>"}{qnext}</main>{QUEST_JS if qbar else ""}'''
         d1 = intro or next((b_.get("intro") for b_ in t.get("books", {}).values() if b_.get("intro")), "")
         write(f"zhuanti/{slug}.html", page(L, f"“{name}”｜{L.t('zt_title')}｜一孔录" if L.code.startswith("zh") else f"{name} | {L.t('zt_title')} | 一孔录 Yikonglu", d1[:110] or name, f"zhuanti/{slug}.html", body)); urls.append(f"{DOMAIN}/{L.prefix}zhuanti/{slug}.html")
         zlist += f'<a class="ztcard" href="{P}zhuanti/{slug}.html"><b>{esc(name)}</b><small>{L.t("zt_n", n=total)}</small></a>'
@@ -1884,8 +1959,25 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     if D.get("gushi") and L.code.startswith("zh") and D["gushi"]["routes"]:  # 乙类：路线页并入专题栏
         routes = f'<h2 class="ph">{L.t("zt_routes")}</h2><p class="note">{L.t("zt_routes_p")}</p><div class="gsroutes">' + "".join(
             f'<a class="gsroute" href="{P}zhuanti/lu-{pid}.html">' + (f'<img src="{D["gushi"]["by"][pid]["_头像"]}" alt="" loading="lazy">' if D["gushi"]["by"][pid].get("_头像") else "") + f'<div><b>跟着{esc(D["gushi"]["by"][pid]["名"])}读<span>{esc(rt["title"])}</span></b><p>{esc(rt["intro"])}</p></div></a>' for pid, rt in D["gushi"]["routes"].items() if rt["items"]) + "</div>"
+    if QUEST and D.get("gushi") and D["gushi"]["routes"]:  # 跟着一个人读：每条路线也记进度
+        routes = routes.replace('<a class="gsroute" href=', '<a class="gsroute" data-cs="@CS@" href=')
+        for pid, rt in D["gushi"]["routes"].items():
+            if rt["items"]: routes = routes.replace('data-cs="@CS@" href="' + f'{P}zhuanti/lu-{pid}.html"', 'data-cs="' + esc(json.dumps([c for c, _, _ in rt["items"]])) + '" href="' + f'{P}zhuanti/lu-{pid}.html"', 1)
+    def qmap():
+        lis = ""
+        for k, sl in enumerate([x for x in QORD if qmeta.get(x)], 1):
+            r5, c5 = (k - 1) // 5 + 1, (k - 1) % 5 + 1
+            if r5 % 2 == 0: c5 = 6 - c5
+            r3, c3 = (k - 1) // 3 + 1, (k - 1) % 3 + 1
+            if r3 % 2 == 0: c3 = 4 - c3
+            dcls = (" qt5" if k > 1 and (k - 1) % 5 == 0 else (" qr5" if r5 % 2 == 0 else "")) + (" qt3" if k > 1 and (k - 1) % 3 == 0 else (" qr3" if r3 % 2 == 0 else ""))
+            lis += (f'<li class="qn{dcls}" style="--r5:{r5};--c5:{c5};--r3:{r3};--c3:{c3}" data-cs="{esc(json.dumps(qmeta[sl]))}"><a href="{P}zhuanti/{sl}.html"><span class="qo"><b>{esc(QNAME[sl])}</b></span>'
+                    f'<i class="qno">{QW("第")} {k} {QW("关")}</i><small class="qc">{len(qmeta[sl])} {QW("章")}</small></a></li>')
+        n = len([x for x in QORD if qmeta.get(x)])
+        return (f'<section class="quest"><p class="qstat" id="qstat">{QW(f"{n} 关，一关一个字。读过本关一章就点亮，章章读过就通关；从第一关“{QNAME[QORD[0]]}”开始。")}</p>'
+                f'<ol class="qmap" style="--rows5:{(n + 4) // 5};--rows3:{(n + 2) // 3}">{lis}</ol><p class="note">{QW("进度只记在这台设备上，一孔录无需登录，不取隐私。")}</p></section>')
     body_zt_index = lambda zl: f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zt_sub")}</span>{L.t("zt_title")}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("zt_p")}</p><div class="ztcards">{zl}</div>{routes}</main>'''
+<main class="wrap narrow"><p class="lead">{L.t("zt_p")}</p>{qmap() if QUEST else f'<div class="ztcards">{zl}</div>'}{routes}</main>{QUEST_JS if QUEST else ""}'''
     body = body_zt_index(zlist)
     if L.code.startswith("zh"):  # 语文课本里的《论语》（11-08 主人定，网站推广建议第 2 条）：只简繁；课文各章逐章对过朱注分章原文
         kb_items = ""
@@ -1980,16 +2072,8 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
 <main class="wrap narrow prose"><p>{L.t("dt_p")}</p><div class="tw"><table class="zitab"><thead><tr><th>{L.t("lunyu")}</th><th>{L.t("dt_file")}</th><th>{L.t("dt_rows")}</th></tr></thead><tbody>{rows}</tbody></table></div>
 <p class="note">{L.t("dt_lic")} · <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans" rel="license noopener" target="_blank">CC BY-NC 4.0</a> · <a href="{P}banben/">{L.t("bb_link")}</a></p>{kf_html(L)}</main>'''
     write("kaifang.html", page(L, f'{L.t("dt_title")}｜一孔录', L.t("dt_sub"), "kaifang.html", body)); urls.append(f"{DOMAIN}/{L.prefix}kaifang.html")
-    # 读音索引
-    zi = {}
-    for c in pub:
-        for x in gao.get(c, {"reads": []})["reads"]:
-            zi.setdefault((x["zi"], x["du"]), []).append((c, x["pos"]))
-    trs = "".join(f'<tr><td class="zi">{esc(z)}</td><td>{esc(du)}</td><td lang="zh-Hans">' + "<br>".join(f'<a href="{P}{rel_of(c)}">{c}</a> {esc(pos)}' for c, pos in lst) + "</td></tr>"
-                  for (z, du), lst in sorted(zi.items(), key=lambda kv: (kv[0][0], kv[0][1])))
-    body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zi_sub")}</span>{L.t("zi_title")}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("zi_p")}</p><div class="tw"><table class="zitab"><thead><tr><th>{L.t("th_zi")}</th><th>{L.t("th_du")}</th><th>{L.t("th_ch")} · {L.t("th_pos")}</th></tr></thead><tbody>{trs}</tbody></table></div></main>'''
-    write("zi.html", page(L, f'{L.t("zi_title")}｜一孔录', L.t("zi_p"), "zi.html", body)); urls.append(f"{DOMAIN}/{L.prefix}zi.html")
+    # 读音索引页撤掉（11-13 主人：读者不会一个个字看下来）；旧地址转到检索页，不进站点地图。章页读音、难字字典不动
+    write("zi.html", f'<!doctype html><meta charset="utf-8"><title>{L.t("search_title")}｜一孔录</title><link rel="canonical" href="{DOMAIN}/{L.prefix}search.html"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/{L.prefix}search.html"><a href="/{L.prefix}search.html">{L.t("search_title")}</a>')
     # 订阅源（Atom）
     X = lambda t: html.escape(t, quote=False)
     ents = ""
