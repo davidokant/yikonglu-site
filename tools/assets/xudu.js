@@ -5,7 +5,7 @@
    换设备：生成一个带记录的链接，在另一台设备打开即导入（记录在链接里，不经服务器）。 */
 (function () {
   var PIAN = ["xue-er", "wei-zheng", "ba-yi", "li-ren", "gong-ye-chang", "yong-ye", "shu-er", "tai-bo", "zi-han", "xiang-dang", "xian-jin", "yan-yuan", "zi-lu", "xian-wen", "wei-ling-gong", "ji-shi", "yang-huo", "wei-zi", "zi-zhang", "yao-yue"];
-  var K = "yk_xd", TOTAL = { lunyu: 498 }, BOOKN = { lunyu: ["论语", "論語", "Analects"] };
+  var K = "yk_xd", TOTAL = { lunyu: 498, daodejing: 81 }, BOOKN = { lunyu: ["论语", "論語", "Analects"], daodejing: ["道德经", "道德經", "Daodejing"] };
   var lang = document.documentElement.lang || "", HANT = /Hant/.test(lang), ZH = /^zh/.test(lang);
   var T = ZH ? (HANT ? {
     go: "接着讀", last: "上次讀到", prog: "已讀 {n} / {t} 章", priv: "一孔錄無需登錄，不取隱私，不打擾。", move: "遷移記錄", mvh: "在這台裝置生成一個專屬鏈接，到另一台手機或電腦的瀏覽器裡打開，讀到哪、讀過哪些章就都帶過去了。不用登錄。", cpy: "複製鏈接", snd: "發給自己…", cls2: "收起", clear: "清除記錄", copied: "鏈接已複製。到另一台裝置的瀏覽器裡貼上打開即可。", imported: "閱讀記錄已導入。", ago: ["剛剛", "{n} 分鐘前", "{n} 小時前", "{n} 天前"], sure: "清除這台裝置上的閱讀記錄？", stk: "已連讀 {n} 天", std: "今天讀一章就接上", plan: "百日計劃 · 第 {d} 天 · 今天讀 {r}"
@@ -83,7 +83,7 @@
 
 
   // 章页：记录
-  var dataEl = document.querySelector(".shdata");
+  var dataEl = document.querySelector(".shdata") || document.querySelector(".xddata");
   if (document.body.classList.contains("pg-chapter") && dataEl && TOTAL[book]) {
     try {
       var D = JSON.parse(dataEl.textContent), h1 = document.querySelector("h1 .no");
@@ -141,6 +141,7 @@
     var seen = S.b[book].seen || [];
     [].forEach.call(document.querySelectorAll('main a[href*="/' + book + '/"]'), function (a) {
       if (a.closest(".xdbar")) return;
+      if (book === "daodejing") { var md = a.getAttribute("href").match(/\/daodejing\/(\d+)\.html$/); if (md && seen.indexOf(md[1]) >= 0) a.classList.add("xdseen"); return }
       var mm = a.getAttribute("href").match(new RegExp("/" + book + "/([a-z-]+)/(\\d+)\\.html$"));
       if (!mm) return;
       var pianIdx = PIAN.indexOf(mm[1]); if (pianIdx < 0) return;
