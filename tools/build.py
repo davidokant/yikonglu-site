@@ -2204,7 +2204,7 @@ def where_html(L):
 def img_sitemap(outdir):
     """图片站点地图（11-08 推广建议第 6 条）：简体页面里引到的原页图（img 域名 yuanye/、ddj/），按页面列 image:image，robots.txt 加一行。外语页同图不重复列。"""
     pre = {LANGS[k][0].strip("/") for k in LANGS if LANGS[k][0]}
-    rx = re.compile(r'(?:href|src)="(https://img\.yikonglu\.com/(?:yuanye|ddj)/[^"]+\.jpg)"')
+    rx = re.compile(r'(?:href|src)="(https://img\.yikonglu\.com/(?:yuanye|ddj)/[^"?]+\.jpg)(?:\?v=\w+)?"')
     rows = []
     for root, dirs, files in os.walk(outdir):
         relr = os.path.relpath(root, outdir)
@@ -2230,6 +2230,9 @@ def img_out(outdir):
         print("  图片留在本站（YK_IMG 为空，回退）"); return
     if not os.path.isdir(os.path.join(IMG_DIR, ".git")):  # 别悄悄把两百多兆图片又塞回网站仓库
         sys.exit(f"没有图片仓库 {os.path.abspath(IMG_DIR)}：先 git clone https://github.com/davidokant/yikonglu-img 到那里（或设 YK_IMG_DIR），要回退就设 YK_IMG= 。")
+    import hashlib
+    yd = os.path.join(outdir, "yuanye")
+    YV = {f[:-4]: hashlib.md5(open(os.path.join(yd, f), "rb").read()).hexdigest()[:8] for f in os.listdir(yd) if f.endswith(".jpg")} if os.path.isdir(yd) else {}
     for f in glob.glob(os.path.join(outdir, "**", "*.*"), recursive=True):
         if not f.endswith((".html", ".xml", ".json", ".js")) or f.endswith("sw.js"): continue
         t = open(f, encoding="utf-8").read(); t0 = t
@@ -2238,6 +2241,8 @@ def img_out(outdir):
             t = t.replace(f"{DOMAIN}/{sub}", f"{IMG}/{sub}")
             for q in "\"'(":
                 t = t.replace(f"{q}/{sub}", f"{q}{IMG}/{sub}")
+        if f.endswith(".html") and "/yuanye/p" in t:  # 原页图带内容版本号：换图（如 11-13 校平）后浏览器和 sw.js 缓存里的旧图不再顶替
+            t = re.sub(r'(/yuanye/(p\d+)\.jpg)(?=["\')])', lambda m: m.group(1) + ("?v=" + YV[m.group(2)] if m.group(2) in YV else ""), t)
         if t != t0: open(f, "w", encoding="utf-8").write(t)
     nw = nd = 0
     for sub in IMG_SUBS:
