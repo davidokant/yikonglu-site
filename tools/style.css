@@ -655,3 +655,33 @@ html:not([lang^="zh"]):not([lang="ja"]):not([lang="ko"]) .meiri blockquote{font-
 .slast{margin:16px 0 0;font-size:15px;color:var(--mute)}
 .qian.l5{font-size:12px;letter-spacing:.02em}.qian.l6{font-size:10.5px;letter-spacing:0}
 @media (max-width:640px){.qian.l5{font-size:11px}.qian.l6{font-size:9.5px}}
+/* 书页观感（11-13）：从书架取书—翻开。书目录、篇目录、章页头部一册小书封（同书架的墨绿线装＋题签）；篇卡做成一册册；篇目录、原文卡加古籍边栏；版心鱼尾；读过的章打勾 */
+.chhead.bk .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:20px;align-items:center}
+.chhead.bk .wrap>*{grid-column:2}
+.chhead.bk .wrap>.mcv{grid-column:1;grid-row:1/span 3;align-self:center}
+.chhead.bk .wrap>.fromtip{grid-column:1/-1}
+.mcv{position:relative;display:block;width:46px;height:66px;border-radius:2px 4px 4px 2px;background:#23503f repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px);box-shadow:inset -5px 0 0 rgba(0,0,0,.14),0 3px 8px rgba(30,45,38,.25);transition:transform .2s}
+.mcv:hover{transform:translateY(-3px);text-decoration:none}
+.mcv::after{content:"";position:absolute;top:5px;bottom:5px;right:1.5px;width:1.5px;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.55) 0 1.5px,transparent 1.5px 13px)}
+.mcv .qian{white-space:nowrap;top:6px;left:7px;width:15px;height:68%;padding:3px 0;font-size:10px;letter-spacing:.06em;color:#1f2421;background:#fbf7ea;justify-content:center}
+.mcv.big{width:96px;height:138px;box-shadow:inset -9px 0 0 rgba(0,0,0,.14),0 6px 14px rgba(30,45,38,.28)}
+.mcv.big::after{top:8px;bottom:8px;right:3px;width:2px;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.55) 0 2px,transparent 2px 24px)}
+.mcv.big .qian{top:10px;left:11px;width:25px;height:76%;padding:6px 0;font-size:14px;letter-spacing:.12em;justify-content:flex-start}
+.mcv.big .qian.l5{font-size:12px;letter-spacing:.02em}
+.mcv.big .qian::after{content:"";display:block;width:12px;height:12px;margin-top:auto;background:url(/assets/seal-180.png) center/contain no-repeat}
+.pcard{position:relative;padding-left:32px;border-radius:3px 10px 10px 3px}
+.pcard::before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:15px;background:#23503f;border-radius:3px 0 0 3px;box-shadow:inset -3px 0 0 rgba(0,0,0,.14)}
+.pcard::after{content:"";position:absolute;left:5px;top:9px;bottom:9px;width:2px;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.6) 0 2px,transparent 2px 22px)}
+.pcard em.mine{display:block;margin-top:2px;font-size:13px;color:var(--accent2)}
+.mulu{margin-top:18px;padding:8px 22px 10px;background:var(--paper);border:2px solid color-mix(in srgb,var(--accent) 50%,transparent);border-radius:3px;box-shadow:var(--shadow),inset 0 0 0 4px var(--paper),inset 0 0 0 5px color-mix(in srgb,var(--accent) 30%,transparent)}
+.mulu .toc li:last-child a{border-bottom:0}
+.toc a.xdseen::after{display:none}.toc a.xdseen em::after,aside li.rd>a em::after{content:"✓";margin-left:3px;color:var(--accent);font-size:12px}
+main.chapter .yuanwen{border:2px solid color-mix(in srgb,var(--accent) 50%,transparent);border-radius:3px;box-shadow:var(--shadow),inset 0 0 0 5px var(--paper),inset 0 0 0 6px color-mix(in srgb,var(--accent) 28%,transparent)}
+.dztools .prog::before{content:"";display:inline-block;width:9px;height:11px;margin-right:6px;vertical-align:-1px;background:var(--accent2);clip-path:polygon(0 0,100% 0,100% 100%,50% 66%,0 100%)}
+.dztools .prog{letter-spacing:.06em}
+aside h3{padding-bottom:6px;border-bottom:3px double color-mix(in srgb,var(--accent) 40%,transparent);color:var(--accent)}
+@media (max-width:640px){.chhead.bk .wrap{column-gap:14px}.mcv{width:38px;height:56px}.mcv .qian{left:6px;width:13px;font-size:9px}
+ .mcv.big{width:72px;height:104px}.mcv.big .qian{left:8px;width:21px;font-size:12px;letter-spacing:.04em;padding:4px 0}.mcv.big .qian.l5{font-size:9.5px;letter-spacing:0}.mcv.big .qian::after{width:10px;height:10px}
+ .mulu{padding:4px 12px 6px}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mcv,:root:not([data-theme="light"]) .pcard::before{background-color:#2c5e4a}:root:not([data-theme="light"]) .mcv .qian{background:#e8e2d0}}
+:root[data-theme="dark"] .mcv,:root[data-theme="dark"] .pcard::before{background-color:#2c5e4a}:root[data-theme="dark"] .mcv .qian{background:#e8e2d0}
