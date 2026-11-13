@@ -1725,9 +1725,10 @@ def build_lang(L, D, write):
         return (f'<span class="tome" aria-disabled="true">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}{"<br>" + esc(kids) if kids else ""}</small>'
                 f'<em class="soon">{L.t("soon")}</em></span></span>')
     shelves = "".join(f'<section class="shelf"><h2 class="ph">{L.t(gk)}</h2><div class="shrow">' + "".join(tome(sl, zh, sl in LB) for sl, zh in bs) + "</div></section>" for gk, bs in BOOK_GROUPS)
-    if L.code.startswith("zh"):  # 最上面一格放已经能读的书，手机上不用往下翻找
-        shelves = (f'<section class="shelf"><h2 class="ph">{"能读的书" if L.code == "zh-Hans" else "能讀的書"}</h2><div class="shrow">' + "".join(tome(sl, zh, True) for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB) + "</div></section>") + shelves
-    MINE = {"zh-Hans": "你读过 {n} 章", "zh-Hant": "你讀過 {n} 章"}.get(L.code, "")
+    CANREAD = {"zh-Hans": "能读的书", "zh-Hant": "能讀的書", "en": "Ready to read", "ja": "いま読める本", "ko": "지금 읽을 수 있는 책", "fr": "Déjà en ligne", "es": "Ya disponibles", "de": "Schon lesbar", "vi": "Sách đã đọc được", "id": "Sudah bisa dibaca", "ru": "Уже можно читать"}
+    if L.code in CANREAD:  # 最上面一格放已经能读的书，手机上不用往下翻找（11-13 各语言一致）
+        shelves = (f'<section class="shelf"><h2 class="ph">{CANREAD[L.code]}</h2><div class="shrow">' + "".join(tome(sl, zh, True) for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB) + "</div></section>") + shelves
+    MINE = {"zh-Hans": "你读过 {n} 章", "zh-Hant": "你讀過 {n} 章", "en": "You've read {n}", "ja": "{n} 章読了", "ko": "{n}장 읽음", "fr": "{n} lus", "es": "{n} leídos", "de": "{n} gelesen", "vi": "Đã đọc {n} chương", "id": "{n} bab dibaca", "ru": "Прочитано: {n}"}.get(L.code, "")
     shelf_js = ("<script>(function(){try{var S=JSON.parse(localStorage.getItem('yk_xd')||'{}');S=S.b||{}}catch(e){return}"
                 "document.querySelectorAll('.tome.on').forEach(function(a){var n=((S[a.dataset.bk]||{}).seen||[]).length,m=a.querySelector('.mine');if(n&&m){m.textContent=" + json.dumps(MINE) + ".replace('{n}',n);m.hidden=false;a.classList.add('read')}})})();</script>") if MINE else ""
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("shumu_sub")}</span>{L.t("shumu_title")}</h1></div></div>
