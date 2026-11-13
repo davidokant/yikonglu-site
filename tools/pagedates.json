@@ -1028,7 +1028,7 @@
 "2026-11-13"
 ],
 "de/search.html": [
-"065ef3970c913edd",
+"120750d3428352b4",
 "2026-11-13"
 ],
 "de/search.json": [
@@ -1060,67 +1060,67 @@
 "2026-11-13"
 ],
 "de/zhuanti/dao.html": [
-"1da16ebfb06d6ae6",
+"c2b8f43764dadf7b",
 "2026-11-13"
 ],
 "de/zhuanti/index.html": [
-"978ad2a938d85acd",
+"b9b2a7e83bda3dde",
 "2026-11-13"
 ],
 "de/zhuanti/junzi.html": [
-"8c8882bf28f10634",
+"23955668b649154d",
 "2026-11-13"
 ],
 "de/zhuanti/le.html": [
-"a304907ce38bd6bb",
+"2fa6e16304511c17",
 "2026-11-13"
 ],
 "de/zhuanti/li.html": [
-"437ac9a181ca0806",
+"f9e24489c3920215",
 "2026-11-13"
 ],
 "de/zhuanti/ming.html": [
-"ce38cb5a403b76a9",
+"49975ea1ca5a89b4",
 "2026-11-13"
 ],
 "de/zhuanti/ren.html": [
-"5b4d601a731f76a4",
+"4884e896f936919f",
 "2026-11-13"
 ],
 "de/zhuanti/shi.html": [
-"8153c612dabf6be3",
+"59156befdcabbb88",
 "2026-11-13"
 ],
 "de/zhuanti/tianming.html": [
-"2c77dd026540e962",
+"2d4d5dfdbea86b73",
 "2026-11-13"
 ],
 "de/zhuanti/xiao.html": [
-"5e165371b454988b",
+"45934f798336f141",
 "2026-11-13"
 ],
 "de/zhuanti/xin.html": [
-"2f1fe944ae189f0d",
+"b94377c7426ce838",
 "2026-11-13"
 ],
 "de/zhuanti/xin2.html": [
-"4aa3cb2e99f9ad2a",
+"c3b8c03c01ef7c68",
 "2026-11-13"
 ],
 "de/zhuanti/xing.html": [
-"e465d0e15d3ec3b8",
+"3c6c7115449d8717",
 "2026-11-13"
 ],
 "de/zhuanti/xue.html": [
-"9059f5b383e00d5a",
+"40dc9d9de0c4cb33",
 "2026-11-13"
 ],
 "de/zhuanti/you.html": [
-"bad57342dcef04b0",
+"9be0947bbb64295d",
 "2026-11-13"
 ],
 "de/zhuanti/zheng.html": [
-"de7c178e4ee56f3d",
+"f0e6366ca39ac00e",
 "2026-11-13"
 ],
 "de/zi.html": [
@@ -1232,7 +1232,7 @@
 "2026-11-13"
 ],
 "en/lunyu/ba-yi/22.html": [
-"48ccc7fee4607310",
+"097b440c391a3714",
 "2026-11-13"
 ],
 "en/lunyu/ba-yi/23.html": [
@@ -1284,7 +1284,7 @@
 "2026-11-13"
 ],
 "en/lunyu/gong-ye-chang/1.html": [
-"2d27abff12b47a23",
+"f74ab582352c89bd",
 "2026-11-13"
 ],
 "en/lunyu/gong-ye-chang/10.html": [
@@ -1348,7 +1348,7 @@
 "2026-11-13"
 ],
 "en/lunyu/gong-ye-chang/24.html": [
-"bd2ce1ac762c15e4",
+"f91cb08a611cdf79",
 "2026-11-13"
 ],
 "en/lunyu/gong-ye-chang/25.html": [
@@ -1399,8 +1399,64 @@
 "0b4b8356976149f6",
 "2026-11-13"
 ],
+"en/lunyu/ji-shi/1.html": [
+"15f1d35783a2f8af",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/10.html": [
+"979959194917f0f8",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/11.html": [
+"2ee780451f9c71a6",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/12.html": [
+"97725d50c3e77b28",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/13.html": [
+"576ebd43fb96ca21",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/14.html": [
+"55bb01d70e2e6f82",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/2.html": [
+"a0d58e6f3a9991b2",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/3.html": [
+"044ba5b46ea991ba",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/4.html": [
+"1981b50a507e9f69",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/5.html": [
+"e6b3728a46d3d92c",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/6.html": [
+"4230af7de3b1e321",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/7.html": [
+"a7bc319e919db499",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/8.html": [
+"0e096f1b54b6554d",
+"2026-11-13"
+],
+"en/lunyu/ji-shi/9.html": [
+"07c017d8cb38cd04",
+"2026-11-13"
+],
 "en/lunyu/ji-shi/index.html": [
-"26c0093eb2c0c7fb",
+"2c0064f1015aa697",
 "2026-11-13"
 ],
 "en/lunyu/li-ren/1.html": [
@@ -1511,16 +1567,412 @@
 "8954427e7fbb0cdd",
 "2026-11-13"
 ],
+"en/lunyu/shu-er/1.html": [
+"f94eb036f309c70f",
+"2026-11-13"
+],
+"en/lunyu/shu-er/10.html": [
+"efe1555a414796e5",
+"2026-11-13"
+],
+"en/lunyu/shu-er/11.html": [
+"9b4caafe719cc2a7",
+"2026-11-13"
+],
+"en/lunyu/shu-er/12.html": [
+"03d8939b42d1c0be",
+"2026-11-13"
+],
+"en/lunyu/shu-er/13.html": [
+"d6663f68809f5c17",
+"2026-11-13"
+],
+"en/lunyu/shu-er/14.html": [
+"8be3fcb5ccbd3c0c",
+"2026-11-13"
+],
+"en/lunyu/shu-er/15.html": [
+"7f74e737a493ecc2",
+"2026-11-13"
+],
+"en/lunyu/shu-er/16.html": [
+"208a3799bfc52c15",
+"2026-11-13"
+],
+"en/lunyu/shu-er/17.html": [
+"33dc58a5081cc9b2",
+"2026-11-13"
+],
+"en/lunyu/shu-er/18.html": [
+"8d0aaf1b400affb8",
+"2026-11-13"
+],
+"en/lunyu/shu-er/19.html": [
+"eda7bb94d9cb10c1",
+"2026-11-13"
+],
+"en/lunyu/shu-er/2.html": [
+"03e3cb1626ffc853",
+"2026-11-13"
+],
+"en/lunyu/shu-er/20.html": [
+"1f905b4a00a9cfde",
+"2026-11-13"
+],
+"en/lunyu/shu-er/21.html": [
+"82994de3623e049e",
+"2026-11-13"
+],
+"en/lunyu/shu-er/22.html": [
+"7270aa5649f9997a",
+"2026-11-13"
+],
+"en/lunyu/shu-er/23.html": [
+"525f3b2e2a93fb46",
+"2026-11-13"
+],
+"en/lunyu/shu-er/24.html": [
+"a9c2070e871dc460",
+"2026-11-13"
+],
+"en/lunyu/shu-er/25.html": [
+"dc313d5959f3d86c",
+"2026-11-13"
+],
+"en/lunyu/shu-er/26.html": [
+"9144a97027ac9e31",
+"2026-11-13"
+],
+"en/lunyu/shu-er/27.html": [
+"33725b98e654c54d",
+"2026-11-13"
+],
+"en/lunyu/shu-er/28.html": [
+"a7c6cc62833b50a5",
+"2026-11-13"
+],
+"en/lunyu/shu-er/29.html": [
+"2d56ea1944e28963",
+"2026-11-13"
+],
+"en/lunyu/shu-er/3.html": [
+"4f092adcfddcf6b3",
+"2026-11-13"
+],
+"en/lunyu/shu-er/30.html": [
+"a2e2b7395ab98a42",
+"2026-11-13"
+],
+"en/lunyu/shu-er/31.html": [
+"b393f28061c09f45",
+"2026-11-13"
+],
+"en/lunyu/shu-er/32.html": [
+"24f133f9c2759207",
+"2026-11-13"
+],
+"en/lunyu/shu-er/33.html": [
+"3fabcde230c129ee",
+"2026-11-13"
+],
+"en/lunyu/shu-er/34.html": [
+"474bce521954e666",
+"2026-11-13"
+],
+"en/lunyu/shu-er/35.html": [
+"67526813a2709be4",
+"2026-11-13"
+],
+"en/lunyu/shu-er/36.html": [
+"55dd255e01f58c6f",
+"2026-11-13"
+],
+"en/lunyu/shu-er/37.html": [
+"2df3a81c3c49d7be",
+"2026-11-13"
+],
+"en/lunyu/shu-er/4.html": [
+"69384d851ea28d6a",
+"2026-11-13"
+],
+"en/lunyu/shu-er/5.html": [
+"728caef0d84832f4",
+"2026-11-13"
+],
+"en/lunyu/shu-er/6.html": [
+"4f98a654b1f103a6",
+"2026-11-13"
+],
+"en/lunyu/shu-er/7.html": [
+"23e933e725ed9bf6",
+"2026-11-13"
+],
+"en/lunyu/shu-er/8.html": [
+"7fa6b660feafd759",
+"2026-11-13"
+],
+"en/lunyu/shu-er/9.html": [
+"4534e6f117ae2b3d",
+"2026-11-13"
+],
 "en/lunyu/shu-er/index.html": [
-"a2225e9f09813f46",
+"577dc65633437ad6",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/1.html": [
+"be13a72a0d9f71cd",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/10.html": [
+"2e5fe686049b00e0",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/11.html": [
+"443f9c68dab12fba",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/12.html": [
+"7dc6e1e3ef414871",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/13.html": [
+"80150028b91a4364",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/14.html": [
+"36fd1b4ed97f58a6",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/15.html": [
+"9b80ddb24cfe7249",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/16.html": [
+"35e9db358faaeb8a",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/17.html": [
+"83368ab3e2179fbe",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/18.html": [
+"2b61da0960941fd5",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/19.html": [
+"10b6187ee9272874",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/2.html": [
+"5ffa37bcef53bc64",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/20.html": [
+"70d589396bfa0670",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/21.html": [
+"13c9dc1b3ae8f9ce",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/3.html": [
+"7562e3398bd3814e",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/4.html": [
+"8b20e1aa699abe72",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/5.html": [
+"1ab08212766fd534",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/6.html": [
+"31e540b9198d34a2",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/7.html": [
+"5509f010e8daebfb",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/8.html": [
+"0909f8279609f777",
+"2026-11-13"
+],
+"en/lunyu/tai-bo/9.html": [
+"aee0a0bc6ae30025",
 "2026-11-13"
 ],
 "en/lunyu/tai-bo/index.html": [
-"ba5e74713180453d",
+"9bdf6f37f4842d32",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/1.html": [
+"2f19b5c245188851",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/10.html": [
+"861970787dea0fc1",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/11.html": [
+"838411f9a882fc6c",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/12.html": [
+"5e32d906f3afd5de",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/13.html": [
+"7dbcb5f056a7471c",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/14.html": [
+"0a8e9eac6a2f1d75",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/15.html": [
+"61dfad69deb424f6",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/16.html": [
+"a98e8edfa824203e",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/17.html": [
+"dcaf68f29626c194",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/18.html": [
+"730795565002f5ba",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/19.html": [
+"3425a489b60c881f",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/2.html": [
+"e66cf28e7bfbeb05",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/20.html": [
+"f5017ac6a61ed537",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/21.html": [
+"daa3d66999035af7",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/22.html": [
+"bea6df64fc7d1663",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/23.html": [
+"3e7a20493d3810d1",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/24.html": [
+"1c7634ba6f5ad338",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/25.html": [
+"3c64ea96c8a85d7c",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/26.html": [
+"7b1ece4d4caa8d83",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/27.html": [
+"975a91bf2932c4c8",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/28.html": [
+"762cc0bcba51d044",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/29.html": [
+"0bbe5a99201b742e",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/3.html": [
+"34d8bcd6142cf7ed",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/30.html": [
+"3d4e6126ab801728",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/31.html": [
+"57c43ac1c6453eb1",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/32.html": [
+"595ee41fcbfdf196",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/33.html": [
+"1408bbb0e237f239",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/34.html": [
+"ed3a248d2a0c8579",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/35.html": [
+"ccfb196aca82f1fd",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/36.html": [
+"5843c348ae9c8fda",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/37.html": [
+"e56fcedeffb41544",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/38.html": [
+"bd664698eec64a5c",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/39.html": [
+"aa47bcbfa49b1c8c",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/4.html": [
+"1f5800c391b8ce41",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/40.html": [
+"2797230539a98bda",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/41.html": [
+"a995e67d73bb78d3",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/5.html": [
+"0a4c08a2ffe7bbfb",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/6.html": [
+"c80e96198b128c52",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/7.html": [
+"980e033b77bcccd5",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/8.html": [
+"c9842743063b4266",
+"2026-11-13"
+],
+"en/lunyu/wei-ling-gong/9.html": [
+"36083999318c69a3",
 "2026-11-13"
 ],
 "en/lunyu/wei-ling-gong/index.html": [
-"3578c4039f935f9d",
+"e0094311c9130f9a",
 "2026-11-13"
 ],
 "en/lunyu/wei-zheng/1.html": [
@@ -1564,7 +2016,7 @@
 "2026-11-13"
 ],
 "en/lunyu/wei-zheng/19.html": [
-"b82d92e42f1a878e",
+"d87023e41722cdf5",
 "2026-11-13"
 ],
 "en/lunyu/wei-zheng/2.html": [
@@ -1623,20 +2075,420 @@
 "3ba7e0dca41880ef",
 "2026-11-13"
 ],
+"en/lunyu/wei-zi/1.html": [
+"969559667bbc7827",
+"2026-11-13"
+],
+"en/lunyu/wei-zi/10.html": [
+"a1cb2db7de9c0b2e",
+"2026-11-13"
+],
+"en/lunyu/wei-zi/11.html": [
+"73441d35178c8d5e",
+"2026-11-13"
+],
+"en/lunyu/wei-zi/2.html": [
+"118b96b392d95708",
+"2026-11-13"
+],
+"en/lunyu/wei-zi/3.html": [
+"3e0fbfb2ee8b2288",
+"2026-11-13"
+],
+"en/lunyu/wei-zi/4.html": [
+"5ae9b8aeb37efc33",
+"2026-11-13"
+],
+"en/lunyu/wei-zi/5.html": [
+"7895deced80edbae",
+"2026-11-13"
+],
+"en/lunyu/wei-zi/6.html": [
+"db519526856435ed",
+"2026-11-13"
+],
+"en/lunyu/wei-zi/7.html": [
+"ccd2b4b6fdd2b28f",
+"2026-11-13"
+],
+"en/lunyu/wei-zi/8.html": [
+"616535520b6c74ba",
+"2026-11-13"
+],
+"en/lunyu/wei-zi/9.html": [
+"a370586c1556a6a5",
+"2026-11-13"
+],
 "en/lunyu/wei-zi/index.html": [
-"22fefc3badd2a5ae",
+"ad35a07610f1a9fb",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/1.html": [
+"561117c81c82fa5a",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/10.html": [
+"08292910f4a19397",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/11.html": [
+"53b815aa1afa9da8",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/12.html": [
+"7492bb614c3de42f",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/13.html": [
+"5f453f269b124225",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/14.html": [
+"13acc5f6d9312599",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/15.html": [
+"7425023def169cce",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/16.html": [
+"02334a806cf389ec",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/17.html": [
+"20486c0e2cf9ca9e",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/18.html": [
+"5690d5fa9221e90c",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/19.html": [
+"6067813449192a66",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/2.html": [
+"97c39c47419f8d76",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/20.html": [
+"a4e26e047a04358a",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/21.html": [
+"a2b94abf47ab654c",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/22.html": [
+"91ae5fbdf19633a8",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/23.html": [
+"fc1df177b6c2b0d4",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/24.html": [
+"e39888ae40037565",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/25.html": [
+"76bfcee17f0b5ec1",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/3.html": [
+"4874dbb29ef11ba4",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/4.html": [
+"33119c5c331611d5",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/5.html": [
+"0b87c026b892ef60",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/6.html": [
+"8c6881da8015beb9",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/7.html": [
+"c231c2bb61a88a4c",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/8.html": [
+"1bd8883c584df554",
+"2026-11-13"
+],
+"en/lunyu/xian-jin/9.html": [
+"3404a2fb24b1e373",
 "2026-11-13"
 ],
 "en/lunyu/xian-jin/index.html": [
-"747cf7d7ca08a7ef",
+"ac5f79fcdb1bd3a4",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/1.html": [
+"568a8f8b79fcb781",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/10.html": [
+"1676b9ff16b4286b",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/11.html": [
+"d015325a408f113a",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/12.html": [
+"0aac6349e5208074",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/13.html": [
+"6e23a79faa19e4c7",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/14.html": [
+"395d6f119ca8127b",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/15.html": [
+"23177b37acfde6a1",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/16.html": [
+"98fb8f0a3a59ac2c",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/17.html": [
+"071281d43b4fdb0a",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/18.html": [
+"60423a347217f78a",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/19.html": [
+"4a1f7e602712deb4",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/2.html": [
+"241694c7e8defabb",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/20.html": [
+"2f3c5759a19a11df",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/21.html": [
+"f4a88c692d78c751",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/22.html": [
+"0cdccaf5e95e9c8c",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/23.html": [
+"4505828f55080550",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/24.html": [
+"ed6dc0aef1475fe8",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/25.html": [
+"7fb0599db397043f",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/26.html": [
+"29d3fff1839c887b",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/27.html": [
+"158c0519d05b8bce",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/28.html": [
+"ae65a59842a1e72b",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/29.html": [
+"65dd536f4877971b",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/3.html": [
+"78ea016238cbd727",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/30.html": [
+"abb61b44433541ec",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/31.html": [
+"625ddadb6a846525",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/32.html": [
+"a90a68a3e82abc50",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/33.html": [
+"e85b074f151d08fd",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/34.html": [
+"5b9117ab181e9585",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/35.html": [
+"6436168a108299ae",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/36.html": [
+"2140f3de1df8b052",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/37.html": [
+"28848813c7ec9f48",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/38.html": [
+"13e464cf467e527a",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/39.html": [
+"2aa8f0bc1b39744e",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/4.html": [
+"e430ecef48b77200",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/40.html": [
+"d4c1412d651f1a06",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/41.html": [
+"e7752c2421b765ee",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/42.html": [
+"e88244303b287cc1",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/43.html": [
+"328e7b459dab2a63",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/44.html": [
+"e370d6dd0124d03c",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/45.html": [
+"78c24434143089d6",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/46.html": [
+"ca5c162466bbdbc3",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/47.html": [
+"094cc8814a093b36",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/5.html": [
+"2e4501abcf7a3598",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/6.html": [
+"ce3f0a0edcdec1bd",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/7.html": [
+"309cd787a3fd3457",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/8.html": [
+"43e23b7963e6ed07",
+"2026-11-13"
+],
+"en/lunyu/xian-wen/9.html": [
+"8ccc80534ae6c5ea",
 "2026-11-13"
 ],
 "en/lunyu/xian-wen/index.html": [
-"2fd70451efc9223c",
+"29229ba4f992db62",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/1.html": [
+"681629d224fdd8f6",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/10.html": [
+"0a0c421986bd96be",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/11.html": [
+"2efa22ccc91a4441",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/12.html": [
+"ebdc9f3ab6b3f277",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/13.html": [
+"32dc93da24dd6c10",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/14.html": [
+"42ee02407db6c571",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/15.html": [
+"9bd0c3ee05ca2c8c",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/16.html": [
+"f32c3c2996e46994",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/17.html": [
+"6d02d4f1a7e60aa0",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/2.html": [
+"34587fe7b3316d5e",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/3.html": [
+"aa54bbab61233c14",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/4.html": [
+"d27b98b6b687e4b0",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/5.html": [
+"255e4186e1256c6c",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/6.html": [
+"8540542cecd897fa",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/7.html": [
+"3a1e893bc06e62af",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/8.html": [
+"d6a88b5ce295edf3",
+"2026-11-13"
+],
+"en/lunyu/xiang-dang/9.html": [
+"0645fe47737cbf8d",
 "2026-11-13"
 ],
 "en/lunyu/xiang-dang/index.html": [
-"23e741f2152ffcb4",
+"b1de00235ba5273b",
 "2026-11-13"
 ],
 "en/lunyu/xue-er/1.html": [
@@ -1644,7 +2496,7 @@
 "2026-11-13"
 ],
 "en/lunyu/xue-er/10.html": [
-"1420a6072168b36a",
+"a8f2881ff1233cb6",
 "2026-11-13"
 ],
 "en/lunyu/xue-er/11.html": [
@@ -1660,7 +2512,7 @@
 "2026-11-13"
 ],
 "en/lunyu/xue-er/14.html": [
-"d554e5174cfbf3ca",
+"3a06f236e6e634f2",
 "2026-11-13"
 ],
 "en/lunyu/xue-er/15.html": [
@@ -1668,7 +2520,7 @@
 "2026-11-13"
 ],
 "en/lunyu/xue-er/16.html": [
-"49985a7cc5b84e46",
+"7342b1a9f4113528",
 "2026-11-13"
 ],
 "en/lunyu/xue-er/2.html": [
@@ -1676,7 +2528,7 @@
 "2026-11-13"
 ],
 "en/lunyu/xue-er/3.html": [
-"669f840dcf5701da",
+"6b43f3d747c117ff",
 "2026-11-13"
 ],
 "en/lunyu/xue-er/4.html": [
@@ -1707,112 +2559,696 @@
 "c9a97af314117ef9",
 "2026-11-13"
 ],
+"en/lunyu/yan-yuan/1.html": [
+"20f9ec701d7f3494",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/10.html": [
+"ce9bbc4338012f82",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/11.html": [
+"12becd6bd90e2550",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/12.html": [
+"ee7542bc861c474c",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/13.html": [
+"4c8e58201b646dca",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/14.html": [
+"8ad766e27a411aad",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/15.html": [
+"99802e0f896ac110",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/16.html": [
+"74ef3f7f1ebda314",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/17.html": [
+"a789115589aee11d",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/18.html": [
+"0cb6a3e6a99ad5d6",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/19.html": [
+"5449769aa56733de",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/2.html": [
+"8da781a3e379ea15",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/20.html": [
+"ac29dd5116d69fbb",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/21.html": [
+"d839ea0c18ef70f4",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/22.html": [
+"f97b49509a1f7201",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/23.html": [
+"20a1dc4e6c7812b0",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/24.html": [
+"e10aa99cd03ec832",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/3.html": [
+"bd526fb48a434a93",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/4.html": [
+"16eef36a4ab3e16c",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/5.html": [
+"7742db4804dd6203",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/6.html": [
+"fa3781accc0b619b",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/7.html": [
+"b7c3e47f53d45231",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/8.html": [
+"dff069ed2fe785ba",
+"2026-11-13"
+],
+"en/lunyu/yan-yuan/9.html": [
+"25e0379a1e4b97f6",
+"2026-11-13"
+],
 "en/lunyu/yan-yuan/index.html": [
-"2a85772f537ffb3a",
+"c50cd6f668013564",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/1.html": [
+"27f7d6111b048413",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/10.html": [
+"ddd92ae34948d946",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/11.html": [
+"f87374a11144de4b",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/12.html": [
+"cb90ecf094c027d6",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/13.html": [
+"ee8cc23f474e700e",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/14.html": [
+"d91139c4f24f7ab8",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/15.html": [
+"b54ddf7ddcd6fd53",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/16.html": [
+"304bead823aebca1",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/17.html": [
+"2c592fc8bf1aa7ec",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/18.html": [
+"bc5dbcadccd8fc24",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/19.html": [
+"35eafce2af54293e",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/2.html": [
+"d51679c93da8f87b",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/20.html": [
+"7fce961185e7d3e3",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/21.html": [
+"bf7a7d5149a5e9dd",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/22.html": [
+"ffe0b91126d90edb",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/23.html": [
+"72aeca2802bb7f2f",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/24.html": [
+"a5320e43cd2959e0",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/25.html": [
+"9020db8866cbf575",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/26.html": [
+"1f27b6a19ccac539",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/3.html": [
+"baf8cfc3ded35ede",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/4.html": [
+"7d1b110167fad36a",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/5.html": [
+"06a349f9d408b52c",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/6.html": [
+"e968a8c0668ade12",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/7.html": [
+"564696632da9606e",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/8.html": [
+"8da6f84a805782b9",
+"2026-11-13"
+],
+"en/lunyu/yang-huo/9.html": [
+"ca315266a75138a5",
 "2026-11-13"
 ],
 "en/lunyu/yang-huo/index.html": [
-"b400360b5e879cac",
+"9af1b441d8bc5e3a",
+"2026-11-13"
+],
+"en/lunyu/yao-yue/1.html": [
+"5cbefb4c23501758",
+"2026-11-13"
+],
+"en/lunyu/yao-yue/2.html": [
+"e2724aa81ebf5a76",
+"2026-11-13"
+],
+"en/lunyu/yao-yue/3.html": [
+"823dffaed7341d86",
 "2026-11-13"
 ],
 "en/lunyu/yao-yue/index.html": [
-"725b13ee222b4f56",
+"36dd4d87f7e8f16d",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/1.html": [
-"45eb2f378811fd7b",
+"02ca43d471eb7f78",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/10.html": [
-"f5708f45548847dc",
+"c8072d5bb09cb53e",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/11.html": [
-"543aefb8aa612a6d",
+"1036d0af2574eaf0",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/12.html": [
-"1bf73212fe6bc085",
+"1d6e49732b03fd50",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/13.html": [
-"57c44842fc2fb7e4",
+"1791d763ec604661",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/14.html": [
-"c9bcb6696de47746",
+"9b11346a417fec07",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/15.html": [
-"2e109fbc63cf0ca0",
+"20c1e045027e3b3a",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/16.html": [
-"0e6838543a957d96",
+"420dc6ae37fd4b0a",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/17.html": [
-"82fc951b89773a5d",
+"1e19e0cababb1b8c",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/18.html": [
-"22417e1e6c063897",
+"572384f0a58b1f44",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/19.html": [
-"37fe77b26254b270",
+"60269ebaa6a3bf2a",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/2.html": [
-"2f10559045af96c0",
+"9306880c3c0d1d13",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/20.html": [
-"b0020588bb8e6d9e",
+"79a1e476f2b4e762",
+"2026-11-13"
+],
+"en/lunyu/yong-ye/21.html": [
+"28ea10e8ff128b61",
+"2026-11-13"
+],
+"en/lunyu/yong-ye/22.html": [
+"9eefcd8cf23407c1",
+"2026-11-13"
+],
+"en/lunyu/yong-ye/23.html": [
+"4a4c6e5827a7a1d6",
+"2026-11-13"
+],
+"en/lunyu/yong-ye/24.html": [
+"97b8566043413445",
+"2026-11-13"
+],
+"en/lunyu/yong-ye/25.html": [
+"ce2d304f6f16d8ca",
+"2026-11-13"
+],
+"en/lunyu/yong-ye/26.html": [
+"53b7c2050935e38e",
+"2026-11-13"
+],
+"en/lunyu/yong-ye/27.html": [
+"95eab26fd2851b25",
+"2026-11-13"
+],
+"en/lunyu/yong-ye/28.html": [
+"f56ed4ecd7f57972",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/3.html": [
-"700410cd92a6bc36",
+"595f53fb6241b850",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/4.html": [
-"925d48df40b3c7ab",
+"887ce90235d728b2",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/5.html": [
-"867fd749aecf30a1",
+"d799f6f8e6d9ae5f",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/6.html": [
-"843cf2e9302cfc58",
+"54ff4e498a084113",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/7.html": [
-"2eb73ddb964a8e24",
+"7dc45ca46848114a",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/8.html": [
-"134f0413550201e0",
+"bab50e9007541752",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/9.html": [
-"95817cfe7d2e5c9e",
+"b5ff697cda17d1cc",
 "2026-11-13"
 ],
 "en/lunyu/yong-ye/index.html": [
-"f0cbbc41ff2176d1",
+"316e229bc0d84b08",
+"2026-11-13"
+],
+"en/lunyu/zi-han/1.html": [
+"8cfc1857d925b64c",
+"2026-11-13"
+],
+"en/lunyu/zi-han/10.html": [
+"0c7690b4472bc791",
+"2026-11-13"
+],
+"en/lunyu/zi-han/11.html": [
+"c245b4764d8244bf",
+"2026-11-13"
+],
+"en/lunyu/zi-han/12.html": [
+"212f869de9e6235e",
+"2026-11-13"
+],
+"en/lunyu/zi-han/13.html": [
+"ad0ec176a5590bb6",
+"2026-11-13"
+],
+"en/lunyu/zi-han/14.html": [
+"0683a04c2265c609",
+"2026-11-13"
+],
+"en/lunyu/zi-han/15.html": [
+"9c8d301ac2d730a4",
+"2026-11-13"
+],
+"en/lunyu/zi-han/16.html": [
+"6846fd27084670de",
+"2026-11-13"
+],
+"en/lunyu/zi-han/17.html": [
+"2e5c30d653dbc6ae",
+"2026-11-13"
+],
+"en/lunyu/zi-han/18.html": [
+"0e8a7f496bc2b327",
+"2026-11-13"
+],
+"en/lunyu/zi-han/19.html": [
+"26c3090e6837bef1",
+"2026-11-13"
+],
+"en/lunyu/zi-han/2.html": [
+"55f6e2bbf3eab41b",
+"2026-11-13"
+],
+"en/lunyu/zi-han/20.html": [
+"940ff4abf0e3ea74",
+"2026-11-13"
+],
+"en/lunyu/zi-han/21.html": [
+"2528468d1058431d",
+"2026-11-13"
+],
+"en/lunyu/zi-han/22.html": [
+"898214b84d3d2b86",
+"2026-11-13"
+],
+"en/lunyu/zi-han/23.html": [
+"a1d9c7b7c42d83cf",
+"2026-11-13"
+],
+"en/lunyu/zi-han/24.html": [
+"42f6b25a0c1a5e08",
+"2026-11-13"
+],
+"en/lunyu/zi-han/25.html": [
+"2afceb38ccdefb71",
+"2026-11-13"
+],
+"en/lunyu/zi-han/26.html": [
+"14f8c398719210a3",
+"2026-11-13"
+],
+"en/lunyu/zi-han/27.html": [
+"7e611f4c6e4bbb3e",
+"2026-11-13"
+],
+"en/lunyu/zi-han/28.html": [
+"3885f7b76500a471",
+"2026-11-13"
+],
+"en/lunyu/zi-han/29.html": [
+"c0faa9284db4c51f",
+"2026-11-13"
+],
+"en/lunyu/zi-han/3.html": [
+"8336d231c4e9f2cc",
+"2026-11-13"
+],
+"en/lunyu/zi-han/30.html": [
+"d4439e93601be0f9",
+"2026-11-13"
+],
+"en/lunyu/zi-han/4.html": [
+"369f4b32d0cb938e",
+"2026-11-13"
+],
+"en/lunyu/zi-han/5.html": [
+"b1cb3d0934ec0078",
+"2026-11-13"
+],
+"en/lunyu/zi-han/6.html": [
+"021924b1ef239162",
+"2026-11-13"
+],
+"en/lunyu/zi-han/7.html": [
+"d03c81c7d7e2b822",
+"2026-11-13"
+],
+"en/lunyu/zi-han/8.html": [
+"619b8a093f6ca42f",
+"2026-11-13"
+],
+"en/lunyu/zi-han/9.html": [
+"cc5a8f1b0f65564d",
 "2026-11-13"
 ],
 "en/lunyu/zi-han/index.html": [
-"f504cf6e6d266b4f",
+"fb430005f68dda8b",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/1.html": [
+"8a618010d8c9a0bb",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/10.html": [
+"dfe9d84ca45d1541",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/11.html": [
+"df34d8b105ff13a9",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/12.html": [
+"2a15509d4e0d8b40",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/13.html": [
+"045a25f5055d84c3",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/14.html": [
+"02ff047746573116",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/15.html": [
+"d50ffa2e057b1454",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/16.html": [
+"23c1ec2a256b1ddd",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/17.html": [
+"6486e416ef0eed17",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/18.html": [
+"0d75011ac4db1cab",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/19.html": [
+"180312decd4ce71d",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/2.html": [
+"5acf425106419834",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/20.html": [
+"4f307585ac2f3e69",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/21.html": [
+"c5fd1fa54ec9ed8a",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/22.html": [
+"b6329added8927e1",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/23.html": [
+"890f008cfb6e9f16",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/24.html": [
+"11bfaa9a0831ca27",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/25.html": [
+"2adb3f4bcc50bd99",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/26.html": [
+"15cb6b176d652187",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/27.html": [
+"403a86270432444b",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/28.html": [
+"b13068a756c33ef2",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/29.html": [
+"df8368afc2347093",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/3.html": [
+"3d87502758db662b",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/30.html": [
+"e9851e9abc8b218d",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/4.html": [
+"6221d3546f8418c2",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/5.html": [
+"af95fda798c8cff4",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/6.html": [
+"6bae14c6c7118736",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/7.html": [
+"6179951e6ca61556",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/8.html": [
+"a1007b8c6602554c",
+"2026-11-13"
+],
+"en/lunyu/zi-lu/9.html": [
+"6c8e9561021ff81d",
 "2026-11-13"
 ],
 "en/lunyu/zi-lu/index.html": [
-"178a544cb269768f",
+"3d43ec96eb5210f4",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/1.html": [
+"9e8bde4897b8b650",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/10.html": [
+"7a60e961229709fd",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/11.html": [
+"a5c53401394bae2e",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/12.html": [
+"502662d4f0a5d67a",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/13.html": [
+"acfab7eec741bf2d",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/14.html": [
+"adc7fccc3fc01682",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/15.html": [
+"b2f77427b2d031d3",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/16.html": [
+"605fbe8130073710",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/17.html": [
+"c7eb206b9d8881f2",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/18.html": [
+"dd155c711bb90b55",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/19.html": [
+"3f3b61f39c4629c4",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/2.html": [
+"a99883f9881b937b",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/20.html": [
+"b1ec2a7cf73cc194",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/21.html": [
+"afaf651e83037588",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/22.html": [
+"288f666edb0fef0e",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/23.html": [
+"bdb3df30ba5fb170",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/24.html": [
+"f9d956519007c24f",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/25.html": [
+"b0247d2bb3585ea2",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/3.html": [
+"1bb0fa83de1dda46",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/4.html": [
+"df7f1de65a414898",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/5.html": [
+"7e00f174a446edda",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/6.html": [
+"5250389d75e882e0",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/7.html": [
+"fb3b7e0bb3402c67",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/8.html": [
+"b66bebd7c9bb130b",
+"2026-11-13"
+],
+"en/lunyu/zi-zhang/9.html": [
+"28f9c313e9d0ad2a",
 "2026-11-13"
 ],
 "en/lunyu/zi-zhang/index.html": [
-"27866ee5a6787665",
+"3ec95894c64c6b94",
 "2026-11-13"
 ],
 "en/manifest.webmanifest": [
@@ -1824,12 +3260,12 @@
 "2026-11-13"
 ],
 "en/search.html": [
-"1edce38ebf877d7d",
+"53db5f34249a3c22",
 "2026-11-13"
 ],
 "en/search.json": [
-"99fc50b68b671a8f",
-"2026-11-11"
+"07dc2ba256b17ea7",
+"2026-11-13"
 ],
 "en/shumu/index.html": [
 "f8e1cd1161c9e700",
@@ -1856,67 +3292,67 @@
 "2026-11-13"
 ],
 "en/zhuanti/dao.html": [
-"0e8da6897ecefbb0",
+"c74977536d731bc8",
 "2026-11-13"
 ],
 "en/zhuanti/index.html": [
-"b57165fb57493d8f",
+"65e52e33e15e600e",
 "2026-11-13"
 ],
 "en/zhuanti/junzi.html": [
-"3219ad84d8903617",
+"c403d715dd0021fb",
 "2026-11-13"
 ],
 "en/zhuanti/le.html": [
-"6005b74fb34afb7a",
+"09a4d439aee40026",
 "2026-11-13"
 ],
 "en/zhuanti/li.html": [
-"57ab7aa8d05a8df3",
+"d15cebb5f047d40c",
 "2026-11-13"
 ],
 "en/zhuanti/ming.html": [
-"804bede43ca9cabd",
+"00f70d778292a1f7",
 "2026-11-13"
 ],
 "en/zhuanti/ren.html": [
-"e0f41ff24b339963",
+"b0b60069c5773f94",
 "2026-11-13"
 ],
 "en/zhuanti/shi.html": [
-"b9ca3fd350ee0800",
+"3c8615c1f2c8d86f",
 "2026-11-13"
 ],
 "en/zhuanti/tianming.html": [
-"4545c750420c32c7",
+"e8a0f4614a35bbbe",
 "2026-11-13"
 ],
 "en/zhuanti/xiao.html": [
-"fc9c23cc6f944506",
+"694d87dc1a1a5398",
 "2026-11-13"
 ],
 "en/zhuanti/xin.html": [
-"3132e3bcce40f58b",
+"ee8aafa5a5a00284",
 "2026-11-13"
 ],
 "en/zhuanti/xin2.html": [
-"e03859eed19fbb92",
+"895dc763855edf40",
 "2026-11-13"
 ],
 "en/zhuanti/xing.html": [
-"e512686aea3e7469",
+"fb666b18aae45a71",
 "2026-11-13"
 ],
 "en/zhuanti/xue.html": [
-"7637221347b45d8d",
+"9cd4a0eaa99a9455",
 "2026-11-13"
 ],
 "en/zhuanti/you.html": [
-"f4b0582fdb6ea77e",
+"f78175356e55d050",
 "2026-11-13"
 ],
 "en/zhuanti/zheng.html": [
-"23d11b82a66dec12",
+"fa4588ab566e2f06",
 "2026-11-13"
 ],
 "en/zi.html": [
@@ -2612,7 +4048,7 @@
 "2026-11-13"
 ],
 "es/search.html": [
-"04a38c7f980776ba",
+"b3809ebf8209fe9f",
 "2026-11-13"
 ],
 "es/search.json": [
@@ -2644,67 +4080,67 @@
 "2026-11-13"
 ],
 "es/zhuanti/dao.html": [
-"a2e54cf2ecd372f5",
+"6ebb9b39b6ba46b9",
 "2026-11-13"
 ],
 "es/zhuanti/index.html": [
-"cbe9f9fc1397c071",
+"8f957af967e72dac",
 "2026-11-13"
 ],
 "es/zhuanti/junzi.html": [
-"4eb481436a47c3b7",
+"a2ce1abea70e7a32",
 "2026-11-13"
 ],
 "es/zhuanti/le.html": [
-"ee41f86a8d2237ef",
+"e779ce67beeb6c16",
 "2026-11-13"
 ],
 "es/zhuanti/li.html": [
-"be6a0e0db0251003",
+"b36e4022d30dc7f4",
 "2026-11-13"
 ],
 "es/zhuanti/ming.html": [
-"f8c33f1d18e136f9",
+"76d5ce02b9f60e50",
 "2026-11-13"
 ],
 "es/zhuanti/ren.html": [
-"f98c06792de4be9a",
+"a0881dfbb2ce1df7",
 "2026-11-13"
 ],
 "es/zhuanti/shi.html": [
-"21e457c004e77d61",
+"73805e65c35d0cca",
 "2026-11-13"
 ],
 "es/zhuanti/tianming.html": [
-"d406658abb1571d7",
+"b80d3e4a3d16d2aa",
 "2026-11-13"
 ],
 "es/zhuanti/xiao.html": [
-"805f853cf8d7515a",
+"5f1fac44983310c4",
 "2026-11-13"
 ],
 "es/zhuanti/xin.html": [
-"060be041aa6e4ffe",
+"a4b8fb465ac6c2cb",
 "2026-11-13"
 ],
 "es/zhuanti/xin2.html": [
-"7ab873e9bb736fc8",
+"10996fe9703f76de",
 "2026-11-13"
 ],
 "es/zhuanti/xing.html": [
-"2b1a4e470ebcc7b1",
+"a015f1e3454add4b",
 "2026-11-13"
 ],
 "es/zhuanti/xue.html": [
-"c820d7ed570cfe23",
+"788e02cf43f1b594",
 "2026-11-13"
 ],
 "es/zhuanti/you.html": [
-"6cfdfbb9d490ab66",
+"57c0598d85773c77",
 "2026-11-13"
 ],
 "es/zhuanti/zheng.html": [
-"5567d7727ceec02a",
+"61c64a96bf1cc439",
 "2026-11-13"
 ],
 "es/zi.html": [
@@ -3408,7 +4844,7 @@
 "2026-11-13"
 ],
 "fr/search.html": [
-"b7bfa0a4c95ced00",
+"a591eb475aabed60",
 "2026-11-13"
 ],
 "fr/search.json": [
@@ -3440,67 +4876,67 @@
 "2026-11-13"
 ],
 "fr/zhuanti/dao.html": [
-"254fa125a34a644d",
+"ba8f46a840d0abf4",
 "2026-11-13"
 ],
 "fr/zhuanti/index.html": [
-"8fc0506962116768",
+"27221b34d931c6c2",
 "2026-11-13"
 ],
 "fr/zhuanti/junzi.html": [
-"53e108108b6ae674",
+"0fa0b0826cf68a31",
 "2026-11-13"
 ],
 "fr/zhuanti/le.html": [
-"9935c7279d04686c",
+"87e13784e848ee87",
 "2026-11-13"
 ],
 "fr/zhuanti/li.html": [
-"2326c686d7ac9be1",
+"816941d87318832e",
 "2026-11-13"
 ],
 "fr/zhuanti/ming.html": [
-"5778cbb357c84cd8",
+"e9d26e801145c261",
 "2026-11-13"
 ],
 "fr/zhuanti/ren.html": [
-"dfd58cf43ca7e127",
+"1c1fc192901d7817",
 "2026-11-13"
 ],
 "fr/zhuanti/shi.html": [
-"94ff43bef5cf718b",
+"d91787e84253258b",
 "2026-11-13"
 ],
 "fr/zhuanti/tianming.html": [
-"11046bb2314d5e4f",
+"ea3c639b509194cb",
 "2026-11-13"
 ],
 "fr/zhuanti/xiao.html": [
-"f332959b3e356d76",
+"2b157cf6e2d8ef0f",
 "2026-11-13"
 ],
 "fr/zhuanti/xin.html": [
-"9e2e62df7fe13557",
+"34c2d6df410900af",
 "2026-11-13"
 ],
 "fr/zhuanti/xin2.html": [
-"2e3cac47f77d4448",
+"72ff92d63080a410",
 "2026-11-13"
 ],
 "fr/zhuanti/xing.html": [
-"0732d74379cac8bd",
+"4e080fd964358b89",
 "2026-11-13"
 ],
 "fr/zhuanti/xue.html": [
-"06e5375e2416de65",
+"36c806eab4b5bb20",
 "2026-11-13"
 ],
 "fr/zhuanti/you.html": [
-"3b43ebbb255de263",
+"2797dfca3a5c1a69",
 "2026-11-13"
 ],
 "fr/zhuanti/zheng.html": [
-"4c66462ccbdac251",
+"f3ee1d6a02d95687",
 "2026-11-13"
 ],
 "fr/zi.html": [
@@ -4320,7 +5756,7 @@
 "2026-11-13"
 ],
 "id/search.html": [
-"5f96912238cc412b",
+"ffa8c27e78d61521",
 "2026-11-13"
 ],
 "id/search.json": [
@@ -4352,67 +5788,67 @@
 "2026-11-13"
 ],
 "id/zhuanti/dao.html": [
-"acb1d275b571fc33",
+"eb9be6e093a94807",
 "2026-11-13"
 ],
 "id/zhuanti/index.html": [
-"1776bb7007d19b5d",
+"994fadc9fbb4a285",
 "2026-11-13"
 ],
 "id/zhuanti/junzi.html": [
-"72549db3b3d8892b",
+"5af322124c7afd8e",
 "2026-11-13"
 ],
 "id/zhuanti/le.html": [
-"a7e2b770c928a196",
+"dd0fe7ab21285a6e",
 "2026-11-13"
 ],
 "id/zhuanti/li.html": [
-"6c54f4a4f91b671c",
+"c62988c13433338a",
 "2026-11-13"
 ],
 "id/zhuanti/ming.html": [
-"55e28e9b3c08079b",
+"4b241156b9a2829f",
 "2026-11-13"
 ],
 "id/zhuanti/ren.html": [
-"34e94ff057b5d9be",
+"da309fba5869526e",
 "2026-11-13"
 ],
 "id/zhuanti/shi.html": [
-"1f70e8fe1d2c67b5",
+"3d9cba3eb00d6f6b",
 "2026-11-13"
 ],
 "id/zhuanti/tianming.html": [
-"fcdf3709e4a64da8",
+"397b238d99c5a747",
 "2026-11-13"
 ],
 "id/zhuanti/xiao.html": [
-"d84dd188ab1c00ee",
+"aafeefcfb932cefd",
 "2026-11-13"
 ],
 "id/zhuanti/xin.html": [
-"3435bbc3bec0271d",
+"3b5b3c3e10f2c2de",
 "2026-11-13"
 ],
 "id/zhuanti/xin2.html": [
-"3f737c8998878a09",
+"6249b1d597c58c49",
 "2026-11-13"
 ],
 "id/zhuanti/xing.html": [
-"d797da5edaa71909",
+"f5f5c8bf0632f950",
 "2026-11-13"
 ],
 "id/zhuanti/xue.html": [
-"3fbc98ec282f4a6e",
+"2d1c14ca19e607af",
 "2026-11-13"
 ],
 "id/zhuanti/you.html": [
-"cc2d2e38c6649902",
+"a3c59b995d5a3ff7",
 "2026-11-13"
 ],
 "id/zhuanti/zheng.html": [
-"4bfe22e61fa0c708",
+"16799370cf90e870",
 "2026-11-13"
 ],
 "id/zi.html": [
@@ -4424,15 +5860,15 @@
 "2026-11-13"
 ],
 "ja/about.html": [
-"f72d95a5197f5ec7",
+"4d4c80d7d5db4a97",
 "2026-11-13"
 ],
 "ja/banben/index.html": [
-"723e335ff4bf5c3d",
+"d1994ecd2f2b7a6a",
 "2026-11-13"
 ],
 "ja/duben.html": [
-"8d717536d0777814",
+"b0171419a7197799",
 "2026-11-13"
 ],
 "ja/duben/index.html": [
@@ -4440,7 +5876,7 @@
 "2026-11-08"
 ],
 "ja/fangfa.html": [
-"e2c8febb6fa5ef54",
+"e2ff837ba31e0b82",
 "2026-11-13"
 ],
 "ja/feed.xml": [
@@ -4448,15 +5884,15 @@
 "2026-11-11"
 ],
 "ja/index.html": [
-"dda704da25437adb",
+"3a6b924fca7f1125",
 "2026-11-13"
 ],
 "ja/kaifang.html": [
-"89b8e6a6767646b2",
+"d5952fb54dcf2ff2",
 "2026-11-13"
 ],
 "ja/kanwu.html": [
-"5eb59293701f5477",
+"68cf267a6fed8712",
 "2026-11-13"
 ],
 "ja/llms.txt": [
@@ -4464,643 +5900,2079 @@
 "2026-11-11"
 ],
 "ja/lunyu/ba-yi/1.html": [
-"bcc3675233efaf10",
+"f562039822d85505",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/10.html": [
-"7563551d706d4487",
+"f801ccbb97e013ac",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/11.html": [
-"7e37333a5af3b8e8",
+"340f709bd33a7dc4",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/12.html": [
-"32ebe20e926c475e",
+"b65c291f7b571722",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/13.html": [
-"6915e48eaa53cbe0",
+"9a701120fa653b28",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/14.html": [
-"f1eabda0f29a1d0a",
+"aa41476740f1918f",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/15.html": [
-"703e203d2237d4a5",
+"7f6ca6bdbb73864b",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/16.html": [
-"a90d85cc2e6ef935",
+"1b81db51f657d54b",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/17.html": [
-"c4fbad1916099516",
+"1bbd1295ff35e0d8",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/18.html": [
-"409114f87f0061de",
+"42585d157e9e87cb",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/19.html": [
-"59104e098b57a8c0",
+"74fbf4490374ad61",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/2.html": [
-"f6bf724d5ebb5a0d",
+"09f13759185be215",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/20.html": [
-"357bde6aa357ce48",
+"2ce33b55b44663ee",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/21.html": [
-"cd4f69c3a608c23b",
+"816b907770390921",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/22.html": [
-"b35edd40267a5493",
+"264290a3b3edcf3d",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/23.html": [
-"46f5c8dd6d26ca34",
+"65df4a19da5aaf25",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/24.html": [
-"1a2500b8f97e3a0e",
+"81c27e1f8cbe8fb9",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/25.html": [
-"3a844c1064009beb",
+"8ba9e65c82b2f4ca",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/26.html": [
-"ade187018e0ab75e",
+"172e5911fb8b1bc0",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/3.html": [
-"34cba009578ecdef",
+"308eeaffd0644541",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/4.html": [
-"70952b2c50705a04",
+"d81ec6c43aa2c906",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/5.html": [
-"b66effce2dcae2c7",
+"26ec1606f68810e9",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/6.html": [
-"35cfe41963a98a25",
+"4c32f11b50e282a4",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/7.html": [
-"6d2195ce41eac9d6",
+"adb549bb6b793d55",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/8.html": [
-"bc748041318a8a8b",
+"79e3154551dc5a82",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/9.html": [
-"01eabd32c77035d6",
+"9bb4992504a6a5d1",
 "2026-11-13"
 ],
 "ja/lunyu/ba-yi/index.html": [
-"c3e7ee6d01992890",
+"cdae827050b03e6f",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/1.html": [
-"6e57c70ba75d4bea",
+"6bd1345ab928ab33",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/10.html": [
-"7030abf92965a5f5",
+"6cb9b5eedc6b9f13",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/11.html": [
-"010228a0556a3408",
+"536cdc8ead0dd77d",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/12.html": [
-"d2fa338ad45d8836",
+"1cb28ba09a6491ef",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/13.html": [
-"810b290d205e9de5",
+"79475eb3eb4ea5d2",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/14.html": [
-"d130200c0f79a0c2",
+"3f2f3ba6ed29e812",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/15.html": [
-"21e8723d695e7fcc",
+"6132292e65c6e656",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/16.html": [
-"fb86db7aa5073fbc",
+"6d407bb8fc393a5e",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/17.html": [
-"167dc82528537db3",
+"cbd6823b1e25832e",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/18.html": [
-"bf9e2536450da9a0",
+"5ae8f53916d2fd53",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/19.html": [
-"f70f59597825294d",
+"aa1a2052f6ef89b3",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/2.html": [
-"b6dab88fda87e7ac",
+"4a1f21c4b7096c28",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/20.html": [
-"b242291323320339",
+"4edcdfa365210b2d",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/21.html": [
-"797e673c5c10215d",
+"b89247c1c56bbd5a",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/22.html": [
-"95fd2ee697e45273",
+"027b8a0fc5698af3",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/23.html": [
-"4ab060aabf7380c2",
+"58176b704f1ebf5d",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/24.html": [
-"0a2893cb82a5e315",
+"b095f83b2ec9fe59",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/25.html": [
-"bae661fec2593e95",
+"12a91618c902c8a5",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/26.html": [
-"47dc146ec1fbc24a",
+"c85e8448cc8dd8a8",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/27.html": [
-"d1599f9c6c5b1380",
+"86fe99d1a246f724",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/3.html": [
-"6a8f98c59ef1f04b",
+"cff559cf2e33fee9",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/4.html": [
-"89135354ce540811",
+"3cdb9dc58d107d20",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/5.html": [
-"4e4afafcbfa8e6d2",
+"a304d43dea4a946b",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/6.html": [
-"3a4736e38be5aba0",
+"8b451ded91e0b274",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/7.html": [
-"558f5082c93c7cfc",
+"68ec6c3903dc92bc",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/8.html": [
-"a9294785ce384268",
+"2bba12ca6e1cff31",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/9.html": [
-"c70a2d1b5a1277ba",
+"12c96fe8df1e14fd",
 "2026-11-13"
 ],
 "ja/lunyu/gong-ye-chang/index.html": [
-"0f2915ba09eab798",
+"f5766cb86c7e0ade",
 "2026-11-13"
 ],
 "ja/lunyu/index.html": [
-"fc26185e14eea049",
+"f3aa88ccec37a510",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/1.html": [
+"828410136beb0b49",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/10.html": [
+"f19350d7c0f60bf1",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/11.html": [
+"73621c0155f8f71f",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/12.html": [
+"3212729c7bc59241",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/13.html": [
+"0aa3954cb4fa87d7",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/14.html": [
+"47658f32e5b44be7",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/2.html": [
+"f69c7afb3601c202",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/3.html": [
+"1b983c3b15e6ea88",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/4.html": [
+"c8e343040c8e4465",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/5.html": [
+"c2bf3c4dda6c5192",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/6.html": [
+"d7f08819e54e8f2d",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/7.html": [
+"35da7f2284d49fcc",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/8.html": [
+"51a7350b028ee387",
+"2026-11-13"
+],
+"ja/lunyu/ji-shi/9.html": [
+"bc14638278a0deda",
 "2026-11-13"
 ],
 "ja/lunyu/ji-shi/index.html": [
-"d4008b6736cf1f92",
+"40b1c2da4167438f",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/1.html": [
-"d0d1f6ae20267351",
+"84f30bd21dabe85b",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/10.html": [
-"5c99f216bc4c2e8b",
+"03ec573fb1c15277",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/11.html": [
-"3e6d7b87a6593b19",
+"849dd68261656036",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/12.html": [
-"defcb916bfd9283c",
+"5d09cd0311bdb797",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/13.html": [
-"3ae852b33717f0e3",
+"1646c81e326ae02d",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/14.html": [
-"9630f0091c400b94",
+"2b73b5c3eee75d2b",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/15.html": [
-"9598a3ca0edbf2c6",
+"8f9ef91a1e3585c5",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/16.html": [
-"5139ca8776565d09",
+"18f3aa2b52664b29",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/17.html": [
-"9d01ddabc68ec631",
+"a4bafb27e9abd0d2",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/18.html": [
-"256c49372af3423d",
+"f49c36012f04b75d",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/19.html": [
-"82ff7a24de616c10",
+"8656f0f07db86f15",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/2.html": [
-"e4172698be8f39b4",
+"d39ec43af0cebf8e",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/20.html": [
-"a1093ecd211610d3",
+"e3547052b2381400",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/21.html": [
-"28be026baee845e0",
+"8f18cf3a5c8bef60",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/22.html": [
-"1c05e7fb334b3310",
+"5f8405416b99f3bc",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/23.html": [
-"ffe21e41d77d0028",
+"5517e9608d6dd890",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/24.html": [
-"407bd66214a54397",
+"3cb9f282675139ec",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/25.html": [
-"a070c239e76519ad",
+"d238af3e48a7a5c8",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/26.html": [
-"9fd530a045bd5da4",
+"4b748af3ad1e23a4",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/3.html": [
-"b64c5b428d96714c",
+"85fbc27dc50c5996",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/4.html": [
-"f55c48bd47e55598",
+"f2b7431c19a3fd24",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/5.html": [
-"b8063c49233eda9d",
+"a3d284e060078a20",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/6.html": [
-"8c1412a3e5db1574",
+"9484d7dd0695a23b",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/7.html": [
-"f992e1f6896aad5a",
+"9f4355ea074f26c8",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/8.html": [
-"695c26b3c0e25b56",
+"c9061c3dac179046",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/9.html": [
-"98ef9f6030539da0",
+"48d78f7b58cbfa22",
 "2026-11-13"
 ],
 "ja/lunyu/li-ren/index.html": [
-"0f9191abe5a44860",
+"7e5ca2e618a46d55",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/1.html": [
+"86931d175508dde3",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/10.html": [
+"b092c8d77f0864f4",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/11.html": [
+"72677b0c49e760a1",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/12.html": [
+"8005b8ae44873c3a",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/13.html": [
+"52f707ef6ce0a461",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/14.html": [
+"ece592678e16aa54",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/15.html": [
+"1e0022e638c03f9c",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/16.html": [
+"eee870d436def184",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/17.html": [
+"69079a20cc57dd02",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/18.html": [
+"39ef5f4d3ece37fe",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/19.html": [
+"0136bd8020f76a2e",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/2.html": [
+"5113ee7ec06e0b62",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/20.html": [
+"14b63782410d795c",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/21.html": [
+"a41e85b155be04ae",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/22.html": [
+"28c2595622f1a432",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/23.html": [
+"21c6746f089e13b3",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/24.html": [
+"8388dc507e85a321",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/25.html": [
+"6244740e2b542051",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/26.html": [
+"996736bb7d8de551",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/27.html": [
+"a8a595b91ab3ec74",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/28.html": [
+"3cad197c1199c8a0",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/29.html": [
+"41a98fc2cbc5cc20",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/3.html": [
+"6260da9d4d5548b6",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/30.html": [
+"960cef7e0a5efc42",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/31.html": [
+"9c025fa52ef8d3a4",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/32.html": [
+"d5e6d27f1d38e5ce",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/33.html": [
+"c382b437445946ca",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/34.html": [
+"ca69a42f4504ecdd",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/35.html": [
+"460d8c340cf9f7f9",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/36.html": [
+"22f00440d15e85ff",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/37.html": [
+"03e38b7f955d262b",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/4.html": [
+"51f36813b8011b2b",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/5.html": [
+"905c975348fba968",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/6.html": [
+"137a0f6638e44d14",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/7.html": [
+"7f5d60849e341066",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/8.html": [
+"5d791c8533a511cf",
+"2026-11-13"
+],
+"ja/lunyu/shu-er/9.html": [
+"ca7e27c1f172ae0a",
 "2026-11-13"
 ],
 "ja/lunyu/shu-er/index.html": [
-"2cb033f2afe93dc4",
+"d0506fa77aac5afc",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/1.html": [
+"403412b6eb9df5fe",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/10.html": [
+"b0b0fc468721be7d",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/11.html": [
+"9fc49491f0ed6f65",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/12.html": [
+"716226e545e1938d",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/13.html": [
+"6cd0611e27c538fe",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/14.html": [
+"be7cab4140b493ad",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/15.html": [
+"ba075a18508639e3",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/16.html": [
+"bfa7c49e16094eb2",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/17.html": [
+"33c3ad2fcfb6c5a7",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/18.html": [
+"1c706ebaba2b03dd",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/19.html": [
+"782ab3125b320dfa",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/2.html": [
+"2d7d09203c3f55f6",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/20.html": [
+"607bfd35cbdfa28c",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/21.html": [
+"38759ef737518208",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/3.html": [
+"a6cb0f7d63672289",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/4.html": [
+"0b0741f7cf326053",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/5.html": [
+"e0bbdb9743ecf2c7",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/6.html": [
+"d05c8d053b613d54",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/7.html": [
+"1287066daa24f0b6",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/8.html": [
+"15fbee10aee1b635",
+"2026-11-13"
+],
+"ja/lunyu/tai-bo/9.html": [
+"d3b12f9c003dd856",
 "2026-11-13"
 ],
 "ja/lunyu/tai-bo/index.html": [
-"7a62d4702216b7a9",
+"9f44653c247a974d",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/1.html": [
+"171bbc0958207c23",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/10.html": [
+"33612e448f684daa",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/11.html": [
+"93072f96f30e3c92",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/12.html": [
+"52b20016f82a3cc7",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/13.html": [
+"55777f05426ea887",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/14.html": [
+"efdd590b4c446771",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/15.html": [
+"f07f608ee4e82e0f",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/16.html": [
+"fe2dc6ef92e57828",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/17.html": [
+"b2d0115e380e138d",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/18.html": [
+"cf606df57f551aca",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/19.html": [
+"707d6ad1f750c03e",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/2.html": [
+"c0a2679e9a0e2ee3",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/20.html": [
+"a189ecb53ec2b169",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/21.html": [
+"7cc3df7aa86266fd",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/22.html": [
+"5182cbcbb0fea0a5",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/23.html": [
+"374c2a43b809e087",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/24.html": [
+"3da14f6747b06e2e",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/25.html": [
+"ab0ebb892363584b",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/26.html": [
+"c36e0210831bcfcb",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/27.html": [
+"685acadd31a687d2",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/28.html": [
+"641a97b39379a4cc",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/29.html": [
+"ed1911ecbdd9ee70",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/3.html": [
+"359fc27a174e37d9",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/30.html": [
+"d8577655076c74a2",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/31.html": [
+"59fce953aabebd1a",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/32.html": [
+"73ade9eef363f508",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/33.html": [
+"08129b4f470d2265",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/34.html": [
+"d1f1cc438d02fc54",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/35.html": [
+"8391cb500459e922",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/36.html": [
+"383ef444f66a95e4",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/37.html": [
+"207655f3a01daf63",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/38.html": [
+"4790842060a5ff09",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/39.html": [
+"a8a73be7f0014887",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/4.html": [
+"4a062bfd23be540b",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/40.html": [
+"3130f63dba5509f7",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/41.html": [
+"925fc453f047e2b7",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/5.html": [
+"73039ce42a665d31",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/6.html": [
+"c14e048819b2b920",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/7.html": [
+"c3fde92588395b11",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/8.html": [
+"9ee69216fe43c8b4",
+"2026-11-13"
+],
+"ja/lunyu/wei-ling-gong/9.html": [
+"7519781d1ff670bc",
 "2026-11-13"
 ],
 "ja/lunyu/wei-ling-gong/index.html": [
-"bdd071ce53f5debb",
+"8f96ea3968ee465c",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/1.html": [
-"2a9f75f0193c9ccc",
+"497ddc3ab6f8441a",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/10.html": [
-"9b6f48ce462a6fe1",
+"0fcad3530e0e6899",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/11.html": [
-"589fe48e3629c4c6",
+"2780a018faf24e67",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/12.html": [
-"f5553d6b6336f3ef",
+"2fbd16701d15a79a",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/13.html": [
-"f75f4516a1484b1e",
+"07dacd5d6ba93895",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/14.html": [
-"c18499e05d8d150f",
+"d6ed6b0964b6d025",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/15.html": [
-"151e44fe3ccbddce",
+"03f8ef8b8ec30830",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/16.html": [
-"1a6823cbfbe5d673",
+"2b80318480a62970",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/17.html": [
-"b7ea86fa5baccea6",
+"d666bb6495bb20b4",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/18.html": [
-"412e1d14c7bc138c",
+"42cce41ff57b7028",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/19.html": [
-"4ec358eb843d90e0",
+"c2c3bfd012a182bb",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/2.html": [
-"e6c6141ef3eb386a",
+"03cda7c4a2768a44",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/20.html": [
-"31260067335528a2",
+"d650064de719bacb",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/21.html": [
-"cb39632d6f5eaf50",
+"b8d881799303b770",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/22.html": [
-"abfdabe2f98c4a12",
+"894367c1aced5061",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/23.html": [
-"183e36f943f093ad",
+"5f86f54646e286de",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/24.html": [
-"2630b1de14c40502",
+"bf69b8eb21cc607d",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/3.html": [
-"5b93948bc8f38e99",
+"afc2f11d2fd408e8",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/4.html": [
-"7eb7656ad672dd8d",
+"27656c1cac9aded3",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/5.html": [
-"92a026841dd4d7eb",
+"c7001f1efe41aff9",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/6.html": [
-"8fa0d117099ca89a",
+"03b550b2bcb98faa",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/7.html": [
-"4d9af4a0c52f9814",
+"8773d66b9d393f30",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/8.html": [
-"27a07015622d754a",
+"afb1d0ec0ea85f42",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/9.html": [
-"41e06be719608618",
+"25ecda8ddaffbfa5",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zheng/index.html": [
-"b33e14f48a48ba40",
+"dbba892cd0d7faef",
+"2026-11-13"
+],
+"ja/lunyu/wei-zi/1.html": [
+"d37b90adf118f93f",
+"2026-11-13"
+],
+"ja/lunyu/wei-zi/10.html": [
+"ce7b42afd039f310",
+"2026-11-13"
+],
+"ja/lunyu/wei-zi/11.html": [
+"9bc329ba213f170f",
+"2026-11-13"
+],
+"ja/lunyu/wei-zi/2.html": [
+"cb5e55ecdadff56f",
+"2026-11-13"
+],
+"ja/lunyu/wei-zi/3.html": [
+"35746d8c43389490",
+"2026-11-13"
+],
+"ja/lunyu/wei-zi/4.html": [
+"a2b9ecfb584af57f",
+"2026-11-13"
+],
+"ja/lunyu/wei-zi/5.html": [
+"4a3927a14bb7ffc3",
+"2026-11-13"
+],
+"ja/lunyu/wei-zi/6.html": [
+"dcc532287f4432a2",
+"2026-11-13"
+],
+"ja/lunyu/wei-zi/7.html": [
+"20642ff96189faad",
+"2026-11-13"
+],
+"ja/lunyu/wei-zi/8.html": [
+"105b2960d42a149f",
+"2026-11-13"
+],
+"ja/lunyu/wei-zi/9.html": [
+"b980db5d0da3fa94",
 "2026-11-13"
 ],
 "ja/lunyu/wei-zi/index.html": [
-"a4573cf3fc225d71",
+"95e5452c16959fa5",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/1.html": [
+"ffdd2add41810e4e",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/10.html": [
+"e577fc7c95d231e4",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/11.html": [
+"435f6b07364b9682",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/12.html": [
+"2ef41b61c4e82df8",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/13.html": [
+"a57e1e00a21ec597",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/14.html": [
+"ba50028a9fb7497a",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/15.html": [
+"8a45d59b62e7d251",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/16.html": [
+"8c9e1ea63680a579",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/17.html": [
+"bf43cf6f39fe0b40",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/18.html": [
+"5b9dc1e1aa467213",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/19.html": [
+"80ed4bc1edec6f1b",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/2.html": [
+"7c846a852f1d8529",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/20.html": [
+"7a0cffd014975a15",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/21.html": [
+"cf4c5bcfa1a14b6f",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/22.html": [
+"6113653952b51f91",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/23.html": [
+"124dabc749386b4a",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/24.html": [
+"af3b70354df53656",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/25.html": [
+"592c2f09af0dc304",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/3.html": [
+"87ced57ed02c8110",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/4.html": [
+"f122cec017fff59b",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/5.html": [
+"b7539beef4af764b",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/6.html": [
+"6869af0320526a50",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/7.html": [
+"e9f2a7984fc31476",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/8.html": [
+"bc0eb6b00f738ec9",
+"2026-11-13"
+],
+"ja/lunyu/xian-jin/9.html": [
+"9c4970016235d635",
 "2026-11-13"
 ],
 "ja/lunyu/xian-jin/index.html": [
-"00fe49b1e7dd55fd",
+"d8a60da851571cc1",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/1.html": [
+"29aa0caaea32c6ba",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/10.html": [
+"27488635823f3dfa",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/11.html": [
+"2e5c96d4a2b6fa7a",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/12.html": [
+"056aa2799e18b0b2",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/13.html": [
+"eac13c3cc1ec5e1f",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/14.html": [
+"3d9a9e97448f101e",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/15.html": [
+"0a805e9c82fff393",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/16.html": [
+"f7fab7c75d5cf2ef",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/17.html": [
+"06368833dc917b02",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/18.html": [
+"43c7de8ebd0d223f",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/19.html": [
+"ddca0b3585a07bcb",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/2.html": [
+"edb398c97af586b0",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/20.html": [
+"797dfd8873de8d5a",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/21.html": [
+"2b97e913e3282e13",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/22.html": [
+"37a5955998711745",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/23.html": [
+"b8d30691b7b0e0e7",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/24.html": [
+"3baa44a71efa8853",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/25.html": [
+"0e6e20fa4dc9aa43",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/26.html": [
+"a0c7d633810e8ce4",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/27.html": [
+"e90f349c32f21575",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/28.html": [
+"1c4558ae5a7d5717",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/29.html": [
+"69fbf2a471a7759d",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/3.html": [
+"92c1b8ba1c8b521a",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/30.html": [
+"f1bbe06ef46ac935",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/31.html": [
+"45a6b86781c80700",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/32.html": [
+"c16d626271f99022",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/33.html": [
+"1ceeaf85c051dc3d",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/34.html": [
+"556748de10aea3a3",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/35.html": [
+"45104cc668c1dbd5",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/36.html": [
+"1f094cd08aeb6b4c",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/37.html": [
+"3ffd4d00c2de3b13",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/38.html": [
+"7c26e978ff0149da",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/39.html": [
+"b6a5926c214231a6",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/4.html": [
+"b0a3532eb93a6937",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/40.html": [
+"76bd11daf3030ed0",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/41.html": [
+"1f84f24201a43b11",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/42.html": [
+"c35a956cac4970e3",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/43.html": [
+"172545f226d0dfa3",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/44.html": [
+"b5170b695de54a47",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/45.html": [
+"936e1022d6424a55",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/46.html": [
+"717f992b9739e89a",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/47.html": [
+"7db28c11e03839de",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/5.html": [
+"8a33b61d60d7f3c3",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/6.html": [
+"9a1f0bf5fccb4fc7",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/7.html": [
+"f04c0cd6d1ff4d4e",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/8.html": [
+"68eee0c109d0c018",
+"2026-11-13"
+],
+"ja/lunyu/xian-wen/9.html": [
+"390e3e7c33ccc769",
 "2026-11-13"
 ],
 "ja/lunyu/xian-wen/index.html": [
-"916c8923f78d1fdb",
+"fdd7691a2e648f27",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/1.html": [
+"22a6f5a5164683a4",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/10.html": [
+"a4251af2e4c07400",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/11.html": [
+"cdfbf98597fb18b4",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/12.html": [
+"005bea7085596325",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/13.html": [
+"0f94062b5d438ab3",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/14.html": [
+"e1e3ec8931b740f6",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/15.html": [
+"a1eb55463a00c652",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/16.html": [
+"e03766604dc9cdcb",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/17.html": [
+"1774311cb625bbbb",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/2.html": [
+"9264c948c503c21c",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/3.html": [
+"d497fd632826c374",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/4.html": [
+"0285d5daa2c92ecd",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/5.html": [
+"63c336bd621a488f",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/6.html": [
+"73633f8958a12145",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/7.html": [
+"354f59cc2334669d",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/8.html": [
+"b0b85951308e73f9",
+"2026-11-13"
+],
+"ja/lunyu/xiang-dang/9.html": [
+"81e3e51c9b5fe5ed",
 "2026-11-13"
 ],
 "ja/lunyu/xiang-dang/index.html": [
-"125e4fa238269856",
+"ab51a818975f05bd",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/1.html": [
-"1de18df07acb0db5",
+"0391a27a764513df",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/10.html": [
-"c04b9d05020cab0f",
+"7ec4b118422286fd",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/11.html": [
-"0964ea8093b0dfca",
+"509e11aed8683e39",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/12.html": [
-"1fd7857322482746",
+"172fa42742b500bc",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/13.html": [
-"88d222663634137e",
+"d7361bd6ccfe833f",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/14.html": [
-"b584d8f40816e391",
+"08827c56eab17b65",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/15.html": [
-"290144c3bc0b640d",
+"194b5729f06f9e69",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/16.html": [
-"1c407c957fece8ae",
+"32cb28ef21e18145",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/2.html": [
-"98201f272846425d",
+"4be4775681c8f4e7",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/3.html": [
-"506fd4d89c812b90",
+"7faa181a1afdde7a",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/4.html": [
-"57dcda9aa55c0c8e",
+"fa8ee47d17853f4c",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/5.html": [
-"544bcbc6ad2ce051",
+"df21a9c655330b3b",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/6.html": [
-"22f98d06273d74ad",
+"66e5efe141761d4e",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/7.html": [
-"511a6a07e3790d0b",
+"bb603d783441c526",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/8.html": [
-"6dec9bfac172f55f",
+"dedee655f12d841f",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/9.html": [
-"c509f31f388bf654",
+"892b92e665f621a1",
 "2026-11-13"
 ],
 "ja/lunyu/xue-er/index.html": [
-"7b5c0fd58578dffc",
+"a5429dfa52a5a8c8",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/1.html": [
+"7522c90897a4a0cc",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/10.html": [
+"da08a2bd75ca5a96",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/11.html": [
+"16fcbbdb8bb90c9b",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/12.html": [
+"f69fe47a499b9da0",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/13.html": [
+"030aaed7e7003dca",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/14.html": [
+"b4755c1e1c67314e",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/15.html": [
+"89900e67d51f933d",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/16.html": [
+"4e8247647828a734",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/17.html": [
+"2ba6bf00f3d40aa0",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/18.html": [
+"ee232d2f133150fa",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/19.html": [
+"d9dd4c7c826bce35",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/2.html": [
+"e6df5ba075086ee2",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/20.html": [
+"07ec2ccf4850db73",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/21.html": [
+"66e9e02e3acc2bd5",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/22.html": [
+"68f833a5abee2cf0",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/23.html": [
+"ca6c1789c17f0965",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/24.html": [
+"087a230244257006",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/3.html": [
+"39e2b69c7358b337",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/4.html": [
+"2ce21955aec8bbd8",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/5.html": [
+"1dee4b0718c1a336",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/6.html": [
+"22c63432cdf2f31b",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/7.html": [
+"a6a68d5f278d1cdc",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/8.html": [
+"777598f1c5ca89d1",
+"2026-11-13"
+],
+"ja/lunyu/yan-yuan/9.html": [
+"d13bd3e7b57cc5d0",
 "2026-11-13"
 ],
 "ja/lunyu/yan-yuan/index.html": [
-"1a6b9b39c3eb2aec",
+"67b799f640bf9c4d",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/1.html": [
+"8a7b28f7fd3048e9",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/10.html": [
+"6f9f639ff6af5ffb",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/11.html": [
+"6c72d0f995e44323",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/12.html": [
+"8b41c17198c4ce4e",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/13.html": [
+"872b652e5557fff2",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/14.html": [
+"4f0f83a4215f6718",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/15.html": [
+"a8a7fa460c4bfb74",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/16.html": [
+"2cbad51e7b8bb351",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/17.html": [
+"e3246f68b51d57ad",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/18.html": [
+"318163ab3849849b",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/19.html": [
+"8b9be35743997ce0",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/2.html": [
+"a538b3cc3a440492",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/20.html": [
+"1a23a25e1b01bc79",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/21.html": [
+"43b7cff3efd67477",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/22.html": [
+"172005438cf25a77",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/23.html": [
+"a57f4fc72175da04",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/24.html": [
+"a4e9cf74eac6c686",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/25.html": [
+"b3d4f86191f26e11",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/26.html": [
+"019b056882188013",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/3.html": [
+"9764d5d7bfc4739c",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/4.html": [
+"789fc7f048107689",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/5.html": [
+"9c84184bc5363b28",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/6.html": [
+"8c0ff8fa95fd86cd",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/7.html": [
+"6de2b3e849d113a4",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/8.html": [
+"dacdc122f45a3bea",
+"2026-11-13"
+],
+"ja/lunyu/yang-huo/9.html": [
+"25f49b75a28dabe6",
 "2026-11-13"
 ],
 "ja/lunyu/yang-huo/index.html": [
-"a34cbf195ed3cbdb",
+"91497cf1e6d4074f",
+"2026-11-13"
+],
+"ja/lunyu/yao-yue/1.html": [
+"9970808f781ee74e",
+"2026-11-13"
+],
+"ja/lunyu/yao-yue/2.html": [
+"a5b791074f0743da",
+"2026-11-13"
+],
+"ja/lunyu/yao-yue/3.html": [
+"2b5129ad96eb62e7",
 "2026-11-13"
 ],
 "ja/lunyu/yao-yue/index.html": [
-"b70d0f5403b14246",
+"919363fa18dab7ef",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/1.html": [
-"f56669d7b1e81aad",
+"e0b9936702b19554",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/10.html": [
-"49e04c907143b2b1",
+"90f35b3b22bf8646",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/11.html": [
-"2af05e28d785da3a",
+"9c9ad11c6562398b",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/12.html": [
-"a3417c53140b6c97",
+"154d5b529a3533b6",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/13.html": [
-"6e2a2bf07bd2f07e",
+"bb93aaa29c18f6fb",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/14.html": [
-"8a78ddbbf421deef",
+"23cd2cc6196e468e",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/15.html": [
-"a5be8ced4a822305",
+"2abb9d3665dce42f",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/16.html": [
-"02f7e4c54f4195e9",
+"e41007d0a98a59db",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/17.html": [
-"5d5f043bf45acf45",
+"0790be0edccb687c",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/18.html": [
-"f9e14e78d89d245b",
+"7567acd096d2debe",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/19.html": [
-"47b19fe7d247e54a",
+"620f72ec8fdbe65d",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/2.html": [
-"ee16987ea9417d8f",
+"1b9b7c440e97afeb",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/20.html": [
-"d7a2abd4b5a1d933",
+"4a3ee767ab218170",
+"2026-11-13"
+],
+"ja/lunyu/yong-ye/21.html": [
+"a6b19ba01bddffee",
+"2026-11-13"
+],
+"ja/lunyu/yong-ye/22.html": [
+"d39421b116d18665",
+"2026-11-13"
+],
+"ja/lunyu/yong-ye/23.html": [
+"1ea649a63d464fcb",
+"2026-11-13"
+],
+"ja/lunyu/yong-ye/24.html": [
+"2d661de8aa6fb15f",
+"2026-11-13"
+],
+"ja/lunyu/yong-ye/25.html": [
+"2d2faed248132a04",
+"2026-11-13"
+],
+"ja/lunyu/yong-ye/26.html": [
+"af4ad63089c09e3e",
+"2026-11-13"
+],
+"ja/lunyu/yong-ye/27.html": [
+"98d4b4d358586579",
+"2026-11-13"
+],
+"ja/lunyu/yong-ye/28.html": [
+"d84600f0e1072f10",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/3.html": [
-"7a7586dab41347a4",
+"445b72403c1c348f",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/4.html": [
-"2eb6944d4035e6b5",
+"63681ab17b5a335c",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/5.html": [
-"d6ad8aa5b15326ad",
+"060adea2b89db351",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/6.html": [
-"55c2dbfdb64c70fe",
+"670e096a8a65c4b8",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/7.html": [
-"7193fd25d2c31425",
+"7aeeb4be13690307",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/8.html": [
-"94f8aad74d320dc6",
+"045a351d53a52c44",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/9.html": [
-"2a752fde95883074",
+"d5d960028ee7db1b",
 "2026-11-13"
 ],
 "ja/lunyu/yong-ye/index.html": [
-"834ec75a57d50d0a",
+"fb96c0e9c08ee57b",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/1.html": [
+"7861134c4b4d1657",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/10.html": [
+"ab54027207efeeed",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/11.html": [
+"235dad489aa0efe9",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/12.html": [
+"0f4f4807dc88ff26",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/13.html": [
+"7a0af7d4925c4095",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/14.html": [
+"469f6f7a5bb57072",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/15.html": [
+"8b3cd3749603ad3b",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/16.html": [
+"e6e2746af9a29d4f",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/17.html": [
+"b56bcdc4824925f2",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/18.html": [
+"917f75bdc38af2a8",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/19.html": [
+"34694fa1d7a827f6",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/2.html": [
+"f582a3c6788865ce",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/20.html": [
+"f6c84a1758fcd06c",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/21.html": [
+"4c718a3c3d298628",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/22.html": [
+"1d05674167a03a2b",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/23.html": [
+"22e6a5f9aa4596ba",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/24.html": [
+"79cfd0f4ebb68221",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/25.html": [
+"ece1c79a078e9812",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/26.html": [
+"fd75e882deb0ad57",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/27.html": [
+"86203d2341669435",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/28.html": [
+"623e95980ed03da0",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/29.html": [
+"f2f447334a874acf",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/3.html": [
+"9c49eb68d282f263",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/30.html": [
+"b33f8e537a0afbd9",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/4.html": [
+"a4f541e8d5876c3e",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/5.html": [
+"35c8a0c6aa1700e5",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/6.html": [
+"cfb79b018bccd165",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/7.html": [
+"1f85174ede91655a",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/8.html": [
+"0bc40dedb10a92f5",
+"2026-11-13"
+],
+"ja/lunyu/zi-han/9.html": [
+"730ea083d38eadf8",
 "2026-11-13"
 ],
 "ja/lunyu/zi-han/index.html": [
-"0c37f4d7e7b08f3a",
+"93e42ec5c8d70251",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/1.html": [
+"d42cf042cff2cbbf",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/10.html": [
+"ac38711583a0bdde",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/11.html": [
+"3a7aa952bb532add",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/12.html": [
+"79d54f9f3df927aa",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/13.html": [
+"3368e7fa58db74f6",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/14.html": [
+"afef1eda7cc3be8a",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/15.html": [
+"58956a6df76d9b71",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/16.html": [
+"3ca566433f1b2098",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/17.html": [
+"23a565a2ebfd7cf3",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/18.html": [
+"223679e4fca929ac",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/19.html": [
+"393767eb08bf9d1a",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/2.html": [
+"897c9e68ad7d28d9",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/20.html": [
+"aa1c7c86685be9aa",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/21.html": [
+"18f0eb8c69f32fc1",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/22.html": [
+"d9d5d56da98fc81f",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/23.html": [
+"f4d79c763d9d328f",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/24.html": [
+"adde26dd70d610c5",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/25.html": [
+"63fa73c71e6710a8",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/26.html": [
+"25af43414a23abce",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/27.html": [
+"bb56f0c06f80b352",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/28.html": [
+"65e2e39d1a0b3d2b",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/29.html": [
+"2568084b8ce2628c",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/3.html": [
+"5fca991638197ac6",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/30.html": [
+"7000638c0e748844",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/4.html": [
+"1df6fc9531b7e048",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/5.html": [
+"8ab0c92ee0be2354",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/6.html": [
+"28c978bfb566ade3",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/7.html": [
+"00f33ab6e7786793",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/8.html": [
+"6801780462e3808c",
+"2026-11-13"
+],
+"ja/lunyu/zi-lu/9.html": [
+"7a4a7b564b2f93fd",
 "2026-11-13"
 ],
 "ja/lunyu/zi-lu/index.html": [
-"3fa3a654d7400c3d",
+"1f64f244fe331415",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/1.html": [
+"74a2ba44dbd9ba62",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/10.html": [
+"eb36430623c60148",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/11.html": [
+"6a3d89bed9d7023b",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/12.html": [
+"d2e2c3b4a5416895",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/13.html": [
+"d7d4bdc91dcfcc81",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/14.html": [
+"d2b7600d1891b82f",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/15.html": [
+"c6d85b360ff7edf7",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/16.html": [
+"80a44c7ae7db492a",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/17.html": [
+"dd16e0c3a8abf70e",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/18.html": [
+"4b9841b09d0a923f",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/19.html": [
+"28788d9c596684af",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/2.html": [
+"5a7ef9eabd214989",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/20.html": [
+"ae3ac8087ed80371",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/21.html": [
+"281fed1d4116107f",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/22.html": [
+"c2b9d4c1b7ce569f",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/23.html": [
+"b460b4e6642f92c1",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/24.html": [
+"0ff93805c128eef4",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/25.html": [
+"aadba0ee478dbbf5",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/3.html": [
+"9b684056ad3e4afb",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/4.html": [
+"4276a71e66ace7d5",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/5.html": [
+"1239dac4b3fe1e8d",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/6.html": [
+"b08f7725c0ab3206",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/7.html": [
+"fb14331e41aa308c",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/8.html": [
+"219e53bc2e99582a",
+"2026-11-13"
+],
+"ja/lunyu/zi-zhang/9.html": [
+"da4e573f4ef42e61",
 "2026-11-13"
 ],
 "ja/lunyu/zi-zhang/index.html": [
-"2ce6caf11d01e99a",
+"a33e0b8863d47f80",
 "2026-11-13"
 ],
 "ja/manifest.webmanifest": [
@@ -5108,19 +7980,19 @@
 "2026-11-06"
 ],
 "ja/offline.html": [
-"05d6abd8467a6643",
+"8fc0f127bf55d54e",
 "2026-11-13"
 ],
 "ja/search.html": [
-"746ee237dd4f0e30",
+"2931703ddb328c50",
 "2026-11-13"
 ],
 "ja/search.json": [
-"0eb1f7c11dcaa9a8",
-"2026-11-11"
+"385b8e75813029db",
+"2026-11-13"
 ],
 "ja/shumu/index.html": [
-"9763c3524bbeb8dc",
+"7648363ca6c30b80",
 "2026-11-13"
 ],
 "ja/shuyuan.html": [
@@ -5128,83 +8000,83 @@
 "2026-11-09"
 ],
 "ja/shuyuan/ruyuan.html": [
-"a9db773825300a22",
+"779b988142cd84cf",
 "2026-11-13"
 ],
 "ja/wen.html": [
-"ae044bbce97bbb6a",
+"aaa400bd4af5d6e4",
 "2026-11-13"
 ],
 "ja/yinsi.html": [
-"1694f577231e73ff",
+"478217320c06fc4a",
 "2026-11-13"
 ],
 "ja/zhichi.html": [
-"db36c6cfb9c4b8db",
+"30f04d5d5b483cc6",
 "2026-11-13"
 ],
 "ja/zhuanti/dao.html": [
-"9a9c4b343bafdd89",
+"93ea7a9b3b22cc23",
 "2026-11-13"
 ],
 "ja/zhuanti/index.html": [
-"a04c6da7101e6a0b",
+"6978c81d091f5736",
 "2026-11-13"
 ],
 "ja/zhuanti/junzi.html": [
-"ac75aa28f6c8fcf9",
+"700c001808cd2f75",
 "2026-11-13"
 ],
 "ja/zhuanti/le.html": [
-"63071fbcbaa7fad2",
+"6116e2e503de2293",
 "2026-11-13"
 ],
 "ja/zhuanti/li.html": [
-"76995f48b177806f",
+"8c87573eac518a5d",
 "2026-11-13"
 ],
 "ja/zhuanti/ming.html": [
-"7e7c00ed6874df12",
+"21a6e34f48b769a4",
 "2026-11-13"
 ],
 "ja/zhuanti/ren.html": [
-"1e01c4f58c6ee60d",
+"e7b3fc5656dceb34",
 "2026-11-13"
 ],
 "ja/zhuanti/shi.html": [
-"4000065b15d78756",
+"5fcb5140a197741d",
 "2026-11-13"
 ],
 "ja/zhuanti/tianming.html": [
-"09df5d628c5f6559",
+"a4c75879bd5113b9",
 "2026-11-13"
 ],
 "ja/zhuanti/xiao.html": [
-"37f6f1f72291e56a",
+"1ec0fc6909c6ad24",
 "2026-11-13"
 ],
 "ja/zhuanti/xin.html": [
-"9536b068037c079e",
+"765211ae4e7ef769",
 "2026-11-13"
 ],
 "ja/zhuanti/xin2.html": [
-"3a2229f216251494",
+"c510c8c8f30745c8",
 "2026-11-13"
 ],
 "ja/zhuanti/xing.html": [
-"e3f0586ad2a9b3e8",
+"5ce0f8bc0a71019d",
 "2026-11-13"
 ],
 "ja/zhuanti/xue.html": [
-"c9f338a3f97d28e5",
+"a23b6455dde33a4a",
 "2026-11-13"
 ],
 "ja/zhuanti/you.html": [
-"3c11371698f967da",
+"c6896bb4d9b69db7",
 "2026-11-13"
 ],
 "ja/zhuanti/zheng.html": [
-"8b12ca31e8408b8f",
+"5ce5f4fc1a04b85c",
 "2026-11-13"
 ],
 "ja/zi.html": [
@@ -5912,7 +8784,7 @@
 "2026-11-13"
 ],
 "ko/search.html": [
-"14ea9927d545e571",
+"8b58b65cf776263e",
 "2026-11-13"
 ],
 "ko/search.json": [
@@ -5944,67 +8816,67 @@
 "2026-11-13"
 ],
 "ko/zhuanti/dao.html": [
-"9552b21162006780",
+"d9021581e281dde8",
 "2026-11-13"
 ],
 "ko/zhuanti/index.html": [
-"027247faf7668f0d",
+"5403d3bd9eed17d8",
 "2026-11-13"
 ],
 "ko/zhuanti/junzi.html": [
-"6d458c34bf302f09",
+"c0b02257af5f9e4a",
 "2026-11-13"
 ],
 "ko/zhuanti/le.html": [
-"454ef809638aa699",
+"53a95f6a9c90ff5f",
 "2026-11-13"
 ],
 "ko/zhuanti/li.html": [
-"d0b9457a0a058964",
+"aed6854d31e3c535",
 "2026-11-13"
 ],
 "ko/zhuanti/ming.html": [
-"d747898dfe89a547",
+"2d148d945ce86b30",
 "2026-11-13"
 ],
 "ko/zhuanti/ren.html": [
-"11a8e5fdcc738095",
+"f38d0eff434e9b21",
 "2026-11-13"
 ],
 "ko/zhuanti/shi.html": [
-"df3ecbfcbc27b31a",
+"e06108b191f27a7c",
 "2026-11-13"
 ],
 "ko/zhuanti/tianming.html": [
-"609f1626be8708d3",
+"e0687cfb9807eb3c",
 "2026-11-13"
 ],
 "ko/zhuanti/xiao.html": [
-"f5a337f8d9263111",
+"f8d748c0ad17cd93",
 "2026-11-13"
 ],
 "ko/zhuanti/xin.html": [
-"ce24fc2a96f5f957",
+"a45998b189f1324f",
 "2026-11-13"
 ],
 "ko/zhuanti/xin2.html": [
-"ad3548bf66fdfb29",
+"9878abeb75c308d7",
 "2026-11-13"
 ],
 "ko/zhuanti/xing.html": [
-"c9b77f87c8460743",
+"79956fc731526f18",
 "2026-11-13"
 ],
 "ko/zhuanti/xue.html": [
-"8b03a5a472f10ec4",
+"2a10bcc1e717b908",
 "2026-11-13"
 ],
 "ko/zhuanti/you.html": [
-"6ef2d36c8e3c5361",
+"2a65b2ee90e80544",
 "2026-11-13"
 ],
 "ko/zhuanti/zheng.html": [
-"2a9a704bee4e3443",
+"5f33a8b2d3a16abf",
 "2026-11-13"
 ],
 "ko/zi.html": [
@@ -6032,11 +8904,11 @@
 "2026-11-13"
 ],
 "lunyu/ba-yi/13.html": [
-"01e99bf876d351fe",
+"85c6737afa376bac",
 "2026-11-13"
 ],
 "lunyu/ba-yi/14.html": [
-"e799b4134b6dd57c",
+"4ebd1fca4b7ab4f4",
 "2026-11-13"
 ],
 "lunyu/ba-yi/15.html": [
@@ -6044,11 +8916,11 @@
 "2026-11-13"
 ],
 "lunyu/ba-yi/16.html": [
-"419722855d51adc0",
+"2454c0ef2f051b59",
 "2026-11-13"
 ],
 "lunyu/ba-yi/17.html": [
-"4cdc4d0a121e05f7",
+"0a6cd8e4d0b70c7e",
 "2026-11-13"
 ],
 "lunyu/ba-yi/18.html": [
@@ -6060,11 +8932,11 @@
 "2026-11-13"
 ],
 "lunyu/ba-yi/2.html": [
-"2c3038c35d03fd2f",
+"a197a14fd483580e",
 "2026-11-13"
 ],
 "lunyu/ba-yi/20.html": [
-"cab3c209e4fc1e3c",
+"1340df3a3f08bcb1",
 "2026-11-13"
 ],
 "lunyu/ba-yi/21.html": [
@@ -6072,15 +8944,15 @@
 "2026-11-13"
 ],
 "lunyu/ba-yi/22.html": [
-"3f6a946267af9fdf",
+"bff6948f26b12217",
 "2026-11-13"
 ],
 "lunyu/ba-yi/23.html": [
-"4ec8674c6cc96776",
+"035512cc243bcd4b",
 "2026-11-13"
 ],
 "lunyu/ba-yi/24.html": [
-"fb216adc10f97889",
+"734914685b291ca1",
 "2026-11-13"
 ],
 "lunyu/ba-yi/25.html": [
@@ -6104,7 +8976,7 @@
 "2026-11-13"
 ],
 "lunyu/ba-yi/6.html": [
-"c7aaca20a0b14a0b",
+"d5a3e88ea365da4e",
 "2026-11-13"
 ],
 "lunyu/ba-yi/7.html": [
@@ -6112,11 +8984,11 @@
 "2026-11-13"
 ],
 "lunyu/ba-yi/8.html": [
-"3f02f32f9d21e584",
+"410331c552a7c62f",
 "2026-11-13"
 ],
 "lunyu/ba-yi/9.html": [
-"9c34a403b41e7f3e",
+"a7036995c2df2a82",
 "2026-11-13"
 ],
 "lunyu/ba-yi/index.html": [
@@ -6124,7 +8996,7 @@
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/1.html": [
-"bc8ecef46cdb7b13",
+"c09c57dc75a268e6",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/10.html": [
@@ -6156,15 +9028,15 @@
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/17.html": [
-"d26c99f4418151af",
+"73c29b2ea150a87d",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/18.html": [
-"c53a865c6817b821",
+"7cd1dad22b21c8f9",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/19.html": [
-"be32f848eb1bc63b",
+"73d0efb53dc9d8cf",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/2.html": [
@@ -6192,7 +9064,7 @@
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/25.html": [
-"86722acd4ec915ad",
+"6c01e76d9e6317a3",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/26.html": [
@@ -6204,31 +9076,31 @@
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/3.html": [
-"b184c04e8522a867",
+"73c6a80de2866e5c",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/4.html": [
-"4556b8fb773755ce",
+"458338e31b4e5d13",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/5.html": [
-"94046e022c542add",
+"e9663b009d825187",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/6.html": [
-"6b5fc35ddf5f6f91",
+"ae5cd32c2f94d3f9",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/7.html": [
-"4c097f5428779327",
+"54eb36959a174375",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/8.html": [
-"d9974982b2709873",
+"fd5d7cede001f727",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/9.html": [
-"53ced7bfaebd0655",
+"6bc6f5306cb13ae7",
 "2026-11-13"
 ],
 "lunyu/gong-ye-chang/index.html": [
@@ -6240,59 +9112,59 @@
 "2026-11-13"
 ],
 "lunyu/ji-shi/1.html": [
-"b15898a49bcfff93",
+"38b1c1abd934dc2c",
 "2026-11-13"
 ],
 "lunyu/ji-shi/10.html": [
-"ef1f2bbbac860ca3",
+"ec1da30535052e4b",
 "2026-11-13"
 ],
 "lunyu/ji-shi/11.html": [
-"dd6c8d40cc3cfbd9",
+"f125164d4cb9c709",
 "2026-11-13"
 ],
 "lunyu/ji-shi/12.html": [
-"09d0a93309a7b2b6",
+"9882ab33475b1e88",
 "2026-11-13"
 ],
 "lunyu/ji-shi/13.html": [
-"33612a150a83f6e6",
+"c7293a187204927f",
 "2026-11-13"
 ],
 "lunyu/ji-shi/14.html": [
-"5b5c75b0a4729cad",
+"fdd153580f72a34d",
 "2026-11-13"
 ],
 "lunyu/ji-shi/2.html": [
-"93272b37bc1dfe64",
+"ff481184cd455925",
 "2026-11-13"
 ],
 "lunyu/ji-shi/3.html": [
-"2f8c61c447847195",
+"17144faea672b6d3",
 "2026-11-13"
 ],
 "lunyu/ji-shi/4.html": [
-"4d7c76414b0a1c15",
+"a5c9b9b3f36cb0f2",
 "2026-11-13"
 ],
 "lunyu/ji-shi/5.html": [
-"5ed48ad62ef4ede8",
+"5f107afa3b4aa6fc",
 "2026-11-13"
 ],
 "lunyu/ji-shi/6.html": [
-"6f3977336458e87a",
+"e2303629e1009ed7",
 "2026-11-13"
 ],
 "lunyu/ji-shi/7.html": [
-"1eb66d7e4dfe0046",
+"3b32a0a5363074dd",
 "2026-11-13"
 ],
 "lunyu/ji-shi/8.html": [
-"f95a1e0fc7008093",
+"f3a0aada99cd0a56",
 "2026-11-13"
 ],
 "lunyu/ji-shi/9.html": [
-"84d6d4dc7a850194",
+"84c472e413b28ce0",
 "2026-11-13"
 ],
 "lunyu/ji-shi/index.html": [
@@ -6304,7 +9176,7 @@
 "2026-11-13"
 ],
 "lunyu/li-ren/10.html": [
-"a1d3d9e0233a7c63",
+"1441e8022e90fa77",
 "2026-11-13"
 ],
 "lunyu/li-ren/11.html": [
@@ -6324,7 +9196,7 @@
 "2026-11-13"
 ],
 "lunyu/li-ren/15.html": [
-"eb22e2b109503f02",
+"e0ce333a4fbdab1a",
 "2026-11-13"
 ],
 "lunyu/li-ren/16.html": [
@@ -6336,7 +9208,7 @@
 "2026-11-13"
 ],
 "lunyu/li-ren/18.html": [
-"c2084a20843d4c1f",
+"e6e452de028a190c",
 "2026-11-13"
 ],
 "lunyu/li-ren/19.html": [
@@ -6344,7 +9216,7 @@
 "2026-11-13"
 ],
 "lunyu/li-ren/2.html": [
-"71a63b23f9ff5c2f",
+"5ff3f7e6a5f507f8",
 "2026-11-13"
 ],
 "lunyu/li-ren/20.html": [
@@ -6364,7 +9236,7 @@
 "2026-11-13"
 ],
 "lunyu/li-ren/24.html": [
-"33ca28b4255c0fc7",
+"ebf0840856c4b3e4",
 "2026-11-13"
 ],
 "lunyu/li-ren/25.html": [
@@ -6376,7 +9248,7 @@
 "2026-11-13"
 ],
 "lunyu/li-ren/3.html": [
-"41e6b0c7631d80b2",
+"2b88e1fe0b834681",
 "2026-11-13"
 ],
 "lunyu/li-ren/4.html": [
@@ -6384,11 +9256,11 @@
 "2026-11-13"
 ],
 "lunyu/li-ren/5.html": [
-"1ca8f9955768ed9e",
+"051e81becdef29bd",
 "2026-11-13"
 ],
 "lunyu/li-ren/6.html": [
-"ee4b5eab0613bb16",
+"76b3695fcaf03c3d",
 "2026-11-13"
 ],
 "lunyu/li-ren/7.html": [
@@ -6408,151 +9280,151 @@
 "2026-11-13"
 ],
 "lunyu/shu-er/1.html": [
-"6fcc9deeee9e87e8",
+"dc1c95ce4f637326",
 "2026-11-13"
 ],
 "lunyu/shu-er/10.html": [
-"359d5be5b76b5fe6",
+"72a827751e6634c2",
 "2026-11-13"
 ],
 "lunyu/shu-er/11.html": [
-"fb74b9fd6cd8db25",
+"ba56ef30ad070706",
 "2026-11-13"
 ],
 "lunyu/shu-er/12.html": [
-"71102b97263d4f0d",
+"53033da136ad4021",
 "2026-11-13"
 ],
 "lunyu/shu-er/13.html": [
-"2c2d2ce68ede2e67",
+"b2d2c078c3a6f11e",
 "2026-11-13"
 ],
 "lunyu/shu-er/14.html": [
-"9cb6e4769922762f",
+"7a182662be4351d7",
 "2026-11-13"
 ],
 "lunyu/shu-er/15.html": [
-"020649f2ab04b1b0",
+"b9ec0529d13c19f4",
 "2026-11-13"
 ],
 "lunyu/shu-er/16.html": [
-"17738ce415fdfa47",
+"382cf5c2ff8a4b20",
 "2026-11-13"
 ],
 "lunyu/shu-er/17.html": [
-"acd8ed6a416ec048",
+"6f1537a378f8a890",
 "2026-11-13"
 ],
 "lunyu/shu-er/18.html": [
-"b43424a2a34b7aec",
+"8bcfafb11dcee97d",
 "2026-11-13"
 ],
 "lunyu/shu-er/19.html": [
-"4f9d10b3a2140b61",
+"eb9c3a9267dc99dd",
 "2026-11-13"
 ],
 "lunyu/shu-er/2.html": [
-"a83494d32615f298",
+"a1d70379bfc2a873",
 "2026-11-13"
 ],
 "lunyu/shu-er/20.html": [
-"9bb89adc98044adf",
+"1cc443fe38d48882",
 "2026-11-13"
 ],
 "lunyu/shu-er/21.html": [
-"4d5e6538f966e6d1",
+"76fe36fcbc39a530",
 "2026-11-13"
 ],
 "lunyu/shu-er/22.html": [
-"f96e33e638df9b35",
+"12494f62e2363115",
 "2026-11-13"
 ],
 "lunyu/shu-er/23.html": [
-"576ffa6c156a466a",
+"c58b17e7a97afcd0",
 "2026-11-13"
 ],
 "lunyu/shu-er/24.html": [
-"57524439874702ba",
+"6a947c756d5e9d3e",
 "2026-11-13"
 ],
 "lunyu/shu-er/25.html": [
-"370e560eb5ab5f15",
+"cf136c15c6a099f4",
 "2026-11-13"
 ],
 "lunyu/shu-er/26.html": [
-"80d3209ddbee136d",
+"6ba9871e985c8cc4",
 "2026-11-13"
 ],
 "lunyu/shu-er/27.html": [
-"a264b8bdb07e8413",
+"08033a18abd92ea3",
 "2026-11-13"
 ],
 "lunyu/shu-er/28.html": [
-"feda4b30f0fb7730",
+"048fc53831358eac",
 "2026-11-13"
 ],
 "lunyu/shu-er/29.html": [
-"36fa82eb340c9bc3",
+"fa7cec6497be8eda",
 "2026-11-13"
 ],
 "lunyu/shu-er/3.html": [
-"cb9b468b8a56f09f",
+"2e9cd06df6fbd241",
 "2026-11-13"
 ],
 "lunyu/shu-er/30.html": [
-"268d99ad4d93eb58",
+"9a5a695841d50e08",
 "2026-11-13"
 ],
 "lunyu/shu-er/31.html": [
-"d1174978cc352295",
+"bafad5aa719cce01",
 "2026-11-13"
 ],
 "lunyu/shu-er/32.html": [
-"7ad1586f20cc037e",
+"aa8e734da871bc75",
 "2026-11-13"
 ],
 "lunyu/shu-er/33.html": [
-"c7ef1d963f7429c5",
+"e8b736c423f724e8",
 "2026-11-13"
 ],
 "lunyu/shu-er/34.html": [
-"98b949363aa30822",
+"fda76e86e9f33ede",
 "2026-11-13"
 ],
 "lunyu/shu-er/35.html": [
-"5c0d6b1e7049e612",
+"ee7a029994de9aeb",
 "2026-11-13"
 ],
 "lunyu/shu-er/36.html": [
-"c1249effe2029609",
+"20f8915fb07070ad",
 "2026-11-13"
 ],
 "lunyu/shu-er/37.html": [
-"2c37edece2397f42",
+"c49e3376cf1e4ef6",
 "2026-11-13"
 ],
 "lunyu/shu-er/4.html": [
-"5ad6b47f71f325bd",
+"bcdf0901d4fd9037",
 "2026-11-13"
 ],
 "lunyu/shu-er/5.html": [
-"1eaea0d45dfca539",
+"2cd0fe9206ea07a1",
 "2026-11-13"
 ],
 "lunyu/shu-er/6.html": [
-"1c7346db98c3da52",
+"bfbdd4562b310d5c",
 "2026-11-13"
 ],
 "lunyu/shu-er/7.html": [
-"596a73dba3b7defc",
+"40571eb35057bd5b",
 "2026-11-13"
 ],
 "lunyu/shu-er/8.html": [
-"1fab903717bf791c",
+"f0385c74bdaae5bf",
 "2026-11-13"
 ],
 "lunyu/shu-er/9.html": [
-"f2c1fbd8d54710f2",
+"93a9c043e4bc72ee",
 "2026-11-13"
 ],
 "lunyu/shu-er/index.html": [
@@ -6560,87 +9432,87 @@
 "2026-11-13"
 ],
 "lunyu/tai-bo/1.html": [
-"5e497ec592acb958",
+"711b8f5bd5bc0a26",
 "2026-11-13"
 ],
 "lunyu/tai-bo/10.html": [
-"e4555996b6815387",
+"4f5c8bfb588b3a9f",
 "2026-11-13"
 ],
 "lunyu/tai-bo/11.html": [
-"cb6cb63a496c305a",
+"d25302b310f145df",
 "2026-11-13"
 ],
 "lunyu/tai-bo/12.html": [
-"9558957b76f42e5a",
+"0b4eed380befa1da",
 "2026-11-13"
 ],
 "lunyu/tai-bo/13.html": [
-"973ed599003d239a",
+"bdbb2d509f06ac05",
 "2026-11-13"
 ],
 "lunyu/tai-bo/14.html": [
-"fbabc2459dc5827a",
+"c9056df416f2269d",
 "2026-11-13"
 ],
 "lunyu/tai-bo/15.html": [
-"7c5b6837d877096a",
+"7a96af18a93caa66",
 "2026-11-13"
 ],
 "lunyu/tai-bo/16.html": [
-"38e9237e85890b8b",
+"fee82ac997325904",
 "2026-11-13"
 ],
 "lunyu/tai-bo/17.html": [
-"46e70b9f85c40eaf",
+"39559df3c685b210",
 "2026-11-13"
 ],
 "lunyu/tai-bo/18.html": [
-"07a5faa145635f43",
+"d80b1eceb7e8c75b",
 "2026-11-13"
 ],
 "lunyu/tai-bo/19.html": [
-"a68b957596089a89",
+"d38f1d5700dabde4",
 "2026-11-13"
 ],
 "lunyu/tai-bo/2.html": [
-"7b9ac4767ee76547",
+"1bfc5f601b6d0300",
 "2026-11-13"
 ],
 "lunyu/tai-bo/20.html": [
-"70410375471e7328",
+"c29331d57620649b",
 "2026-11-13"
 ],
 "lunyu/tai-bo/21.html": [
-"8d0cf1e61edce6ae",
+"1567577ecaa9c83d",
 "2026-11-13"
 ],
 "lunyu/tai-bo/3.html": [
-"f5f74e2a92b16c53",
+"156c564f15523747",
 "2026-11-13"
 ],
 "lunyu/tai-bo/4.html": [
-"5d9f5e7603706456",
+"428bda4b9bea917f",
 "2026-11-13"
 ],
 "lunyu/tai-bo/5.html": [
-"4bfb39ef303be209",
+"2c8d442f55e4a3f7",
 "2026-11-13"
 ],
 "lunyu/tai-bo/6.html": [
-"5d932806198ab00f",
+"6d43a529cd88ee0c",
 "2026-11-13"
 ],
 "lunyu/tai-bo/7.html": [
-"b35958f01aaf3242",
+"4023d144808bdc76",
 "2026-11-13"
 ],
 "lunyu/tai-bo/8.html": [
-"b35468e258c0204b",
+"5100ab135590f417",
 "2026-11-13"
 ],
 "lunyu/tai-bo/9.html": [
-"578fc88eaa8e9a53",
+"0aea4b78185e3c63",
 "2026-11-13"
 ],
 "lunyu/tai-bo/index.html": [
@@ -6648,167 +9520,167 @@
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/1.html": [
-"a6a8aaa245ea78d9",
+"cde6134257ecd7a6",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/10.html": [
-"0d60ef672dcebf3a",
+"81a399dcbd28e2b5",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/11.html": [
-"92f2951d5bae1568",
+"e853aca107154555",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/12.html": [
-"1c0ca9ad20da4c59",
+"4461e0171e92e31e",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/13.html": [
-"f342b404918a193e",
+"68eef74177cf9194",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/14.html": [
-"d33cab4b462e75b1",
+"2583f7d7ad7e51f4",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/15.html": [
-"02bc1c2bfa470fe6",
+"e71a82f9a079f2c4",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/16.html": [
-"d42c32f040b569c9",
+"f91019f629493af3",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/17.html": [
-"200e685b00f49271",
+"bef2e5af92d8e5fd",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/18.html": [
-"5ade1043a0340dc3",
+"b9234fdcca183709",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/19.html": [
-"9818ccf257b8b0f1",
+"15e322aedf8f67ca",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/2.html": [
-"64525becc7db56b9",
+"bbf124590b2eed29",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/20.html": [
-"fbe88bebde690595",
+"fb45c30906b0da82",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/21.html": [
-"a8dbcefc6ce231f1",
+"ed4b339c955ad981",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/22.html": [
-"69da783eb3bccc6f",
+"a4939d39abdc6646",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/23.html": [
-"dd089269c70bf306",
+"bcf2ee9e24fa5802",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/24.html": [
-"9248f03a0ebc8358",
+"b745acdacf9e4917",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/25.html": [
-"4e2029169e4b2a4f",
+"dfd63d5d5c8413e5",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/26.html": [
-"e02cd7a89e498a38",
+"2fdf7386bc2f389b",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/27.html": [
-"f9a9d9fdc5c9e90a",
+"9eac31a12a9d9c74",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/28.html": [
-"e6828a31b90ebec6",
+"c2b7a9595b8b4631",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/29.html": [
-"12beb892cdbf6b19",
+"046b406b2f2ec6d9",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/3.html": [
-"29bd161af83e44e2",
+"33bf2503fefdb70c",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/30.html": [
-"0109fdeae574c561",
+"3496decdb5db8251",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/31.html": [
-"b5910aead40c3fb8",
+"4ee71b757b3b915f",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/32.html": [
-"833442fbdf5df671",
+"929cdd2011d8e1fa",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/33.html": [
-"7d3a15082e4f4ef7",
+"8adcfd4fcff68f6a",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/34.html": [
-"649e1b6021ea9367",
+"86bf32673ef3a234",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/35.html": [
-"3f3b6da2c14d7cf6",
+"0d27d82fa3437105",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/36.html": [
-"db32be6eecbfd944",
+"fc300d23b79781bf",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/37.html": [
-"dbc830074c0fa33d",
+"7e2f769a112256c0",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/38.html": [
-"9485e1d0c8d49c9d",
+"6b6eb0d3a8071b10",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/39.html": [
-"3d4b0ae6c67c9cb7",
+"ec423304a2be4a71",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/4.html": [
-"e7f6b7f8816fae05",
+"4a1a608cfe4c8b0a",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/40.html": [
-"54c33b1339067f1b",
+"99c6793db8c6f65c",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/41.html": [
-"dbb066800a7b8883",
+"cb3f737b3fbaf346",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/5.html": [
-"24d015208a1947b4",
+"a42023459dc34488",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/6.html": [
-"757686fd114e3e95",
+"11f4385b2342823c",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/7.html": [
-"0671dfb9116eaa56",
+"54d9c6b0c2e7142f",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/8.html": [
-"cdc7fb757566d32a",
+"90827517b519ca96",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/9.html": [
-"9771a857cdac11cb",
+"a6eb2c54bf2f2fb9",
 "2026-11-13"
 ],
 "lunyu/wei-ling-gong/index.html": [
@@ -6820,7 +9692,7 @@
 "2026-11-13"
 ],
 "lunyu/wei-zheng/10.html": [
-"e9a8c6c5cfa4ed6d",
+"bcde68013b929e97",
 "2026-11-13"
 ],
 "lunyu/wei-zheng/11.html": [
@@ -6848,15 +9720,15 @@
 "2026-11-13"
 ],
 "lunyu/wei-zheng/17.html": [
-"3754f004860f4359",
+"b1fc1aaf14fb8ae8",
 "2026-11-13"
 ],
 "lunyu/wei-zheng/18.html": [
-"d2f4fda27f2816b8",
+"69fc90b013bd43d7",
 "2026-11-13"
 ],
 "lunyu/wei-zheng/19.html": [
-"8c086aa2c9ce4e8f",
+"1b2ec0bee3283c17",
 "2026-11-13"
 ],
 "lunyu/wei-zheng/2.html": [
@@ -6868,7 +9740,7 @@
 "2026-11-13"
 ],
 "lunyu/wei-zheng/21.html": [
-"65329b497020c5cd",
+"a6fc98f58a6dbfa2",
 "2026-11-13"
 ],
 "lunyu/wei-zheng/22.html": [
@@ -6884,15 +9756,15 @@
 "2026-11-13"
 ],
 "lunyu/wei-zheng/3.html": [
-"d09faa5bb748019b",
+"b75e11e39889f14e",
 "2026-11-13"
 ],
 "lunyu/wei-zheng/4.html": [
-"f8a15de95db16683",
+"087c737f28582e81",
 "2026-11-13"
 ],
 "lunyu/wei-zheng/5.html": [
-"6b049de166767681",
+"f87e23a6783f01a8",
 "2026-11-13"
 ],
 "lunyu/wei-zheng/6.html": [
@@ -6904,11 +9776,11 @@
 "2026-11-13"
 ],
 "lunyu/wei-zheng/8.html": [
-"cf0702dd5852835b",
+"4cd2497b91a174b0",
 "2026-11-13"
 ],
 "lunyu/wei-zheng/9.html": [
-"3c391ee7ffbaa5e7",
+"7c8b18f038301b59",
 "2026-11-13"
 ],
 "lunyu/wei-zheng/index.html": [
@@ -6916,47 +9788,47 @@
 "2026-11-13"
 ],
 "lunyu/wei-zi/1.html": [
-"9bcf42102eecdcdb",
+"54b270170695ff2e",
 "2026-11-13"
 ],
 "lunyu/wei-zi/10.html": [
-"e48a1a1ad4e5cb94",
+"847478b1c5499aa9",
 "2026-11-13"
 ],
 "lunyu/wei-zi/11.html": [
-"3d7d52aa415ce628",
+"8db625dd2069ae1e",
 "2026-11-13"
 ],
 "lunyu/wei-zi/2.html": [
-"4533eb5e61a013fa",
+"c93997e51e6ac444",
 "2026-11-13"
 ],
 "lunyu/wei-zi/3.html": [
-"3571f4bc0d62d4ef",
+"54cacb7587a5ae65",
 "2026-11-13"
 ],
 "lunyu/wei-zi/4.html": [
-"142159be4dd4a0be",
+"50d23bcac2270e4d",
 "2026-11-13"
 ],
 "lunyu/wei-zi/5.html": [
-"b092f6cf01194330",
+"499cd9947b9e6ea2",
 "2026-11-13"
 ],
 "lunyu/wei-zi/6.html": [
-"d17178efa2876f50",
+"c0ea7a15af4e0ae5",
 "2026-11-13"
 ],
 "lunyu/wei-zi/7.html": [
-"60180171cb5f3d42",
+"d746dd5cc97318ce",
 "2026-11-13"
 ],
 "lunyu/wei-zi/8.html": [
-"f38bc3686d89cf5d",
+"c9610e4a6b9bb959",
 "2026-11-13"
 ],
 "lunyu/wei-zi/9.html": [
-"b01224f0ede6d6b6",
+"ec87c0c889c912bc",
 "2026-11-13"
 ],
 "lunyu/wei-zi/index.html": [
@@ -6964,103 +9836,103 @@
 "2026-11-13"
 ],
 "lunyu/xian-jin/1.html": [
-"7214afccdebcb56b",
+"e04ada0748c109e0",
 "2026-11-13"
 ],
 "lunyu/xian-jin/10.html": [
-"190f69c63e2b460d",
+"2d4d6d63d5e77040",
 "2026-11-13"
 ],
 "lunyu/xian-jin/11.html": [
-"31807c89a10c88c2",
+"5d630f702ffdb266",
 "2026-11-13"
 ],
 "lunyu/xian-jin/12.html": [
-"bd81d411de436929",
+"5997fc4fee0015f9",
 "2026-11-13"
 ],
 "lunyu/xian-jin/13.html": [
-"7b87b5540670544e",
+"1d448e64a11d8882",
 "2026-11-13"
 ],
 "lunyu/xian-jin/14.html": [
-"2b340e587ffaef52",
+"20977f99b9a91fd4",
 "2026-11-13"
 ],
 "lunyu/xian-jin/15.html": [
-"6d0918c98feb185b",
+"c4b7eecca0702648",
 "2026-11-13"
 ],
 "lunyu/xian-jin/16.html": [
-"c192ef1cf0ca8be0",
+"76f36a4dc19077ca",
 "2026-11-13"
 ],
 "lunyu/xian-jin/17.html": [
-"004fa7c381da0724",
+"a78cea745cbf1a20",
 "2026-11-13"
 ],
 "lunyu/xian-jin/18.html": [
-"4bc0750af1e741c9",
+"94b7fda79bd7bb9f",
 "2026-11-13"
 ],
 "lunyu/xian-jin/19.html": [
-"6d19db8d6f19796a",
+"2c5c1facc5fef067",
 "2026-11-13"
 ],
 "lunyu/xian-jin/2.html": [
-"f56e394d2c62ee9a",
+"029a59ca84ed5f24",
 "2026-11-13"
 ],
 "lunyu/xian-jin/20.html": [
-"225319413a577e40",
+"430d35befd8e4137",
 "2026-11-13"
 ],
 "lunyu/xian-jin/21.html": [
-"43df17adfed66b36",
+"4cb1786821cd87f5",
 "2026-11-13"
 ],
 "lunyu/xian-jin/22.html": [
-"22f5c3ee77fa531b",
+"dfe211b5c0bd9980",
 "2026-11-13"
 ],
 "lunyu/xian-jin/23.html": [
-"1bff2e63174aa77c",
+"e6673b09bf41e42b",
 "2026-11-13"
 ],
 "lunyu/xian-jin/24.html": [
-"98a53d651d36d7ec",
+"a0856266970d4a79",
 "2026-11-13"
 ],
 "lunyu/xian-jin/25.html": [
-"c6fc38bd0eb91377",
+"6f8c67d7f324f5c1",
 "2026-11-13"
 ],
 "lunyu/xian-jin/3.html": [
-"25f1bfde9afd9eef",
+"3cb4519aa0255bc7",
 "2026-11-13"
 ],
 "lunyu/xian-jin/4.html": [
-"bc2f1bfe3a36b6c2",
+"17cb41702cc77ec4",
 "2026-11-13"
 ],
 "lunyu/xian-jin/5.html": [
-"5cd0561ff77bfb28",
+"7e62c86124204ea4",
 "2026-11-13"
 ],
 "lunyu/xian-jin/6.html": [
-"89774a8d916ccf14",
+"10e7ddec3cb49eae",
 "2026-11-13"
 ],
 "lunyu/xian-jin/7.html": [
-"4cffc33dab41792a",
+"b36f69c5acfcbf3c",
 "2026-11-13"
 ],
 "lunyu/xian-jin/8.html": [
-"7bae38bfd9b1bcc8",
+"8b7357c4a1febd00",
 "2026-11-13"
 ],
 "lunyu/xian-jin/9.html": [
-"220631a9fc5fcf84",
+"a13ad1a2d16c0aae",
 "2026-11-13"
 ],
 "lunyu/xian-jin/index.html": [
@@ -7068,191 +9940,191 @@
 "2026-11-13"
 ],
 "lunyu/xian-wen/1.html": [
-"05fc9ebc69293f51",
+"a482c41f1f3d79f7",
 "2026-11-13"
 ],
 "lunyu/xian-wen/10.html": [
-"c876891d0c2546c5",
+"2df33306c33ce17e",
 "2026-11-13"
 ],
 "lunyu/xian-wen/11.html": [
-"baaac4cd11225934",
+"9ce5ec5e5f4dd013",
 "2026-11-13"
 ],
 "lunyu/xian-wen/12.html": [
-"8532f78997ae0ff5",
+"bea0501b2fdcfb1e",
 "2026-11-13"
 ],
 "lunyu/xian-wen/13.html": [
-"9fb6c7de534bf407",
+"a4803f171947f3e6",
 "2026-11-13"
 ],
 "lunyu/xian-wen/14.html": [
-"febc3ecc25cf0e41",
+"6e83133e93db44cc",
 "2026-11-13"
 ],
 "lunyu/xian-wen/15.html": [
-"4042cd3074a8105d",
+"c8914b9b62a1b193",
 "2026-11-13"
 ],
 "lunyu/xian-wen/16.html": [
-"dcdd0382219b6106",
+"392ae9f7afaaad57",
 "2026-11-13"
 ],
 "lunyu/xian-wen/17.html": [
-"6d86b6c90824983b",
+"1e3a42d648cc6887",
 "2026-11-13"
 ],
 "lunyu/xian-wen/18.html": [
-"a2d698f9f9905266",
+"bc7b1a738c81ace6",
 "2026-11-13"
 ],
 "lunyu/xian-wen/19.html": [
-"38943b21d92579b9",
+"9e9ac45a1b2c5dda",
 "2026-11-13"
 ],
 "lunyu/xian-wen/2.html": [
-"0d31cb5c6b700c90",
+"7afb5de820ae2a66",
 "2026-11-13"
 ],
 "lunyu/xian-wen/20.html": [
-"890960dd3d8a8514",
+"9e4ff2e835249c6b",
 "2026-11-13"
 ],
 "lunyu/xian-wen/21.html": [
-"cce24e95512c4f6f",
+"a5319213809d42c7",
 "2026-11-13"
 ],
 "lunyu/xian-wen/22.html": [
-"21e05d0856dcc97d",
+"578515bb492802db",
 "2026-11-13"
 ],
 "lunyu/xian-wen/23.html": [
-"be29600e7b4fef1a",
+"e6a15466e065e5ae",
 "2026-11-13"
 ],
 "lunyu/xian-wen/24.html": [
-"b30dbca0c93866b1",
+"b34de50359a2ae3a",
 "2026-11-13"
 ],
 "lunyu/xian-wen/25.html": [
-"327188d939cac2e0",
+"37eb14ab37b62a48",
 "2026-11-13"
 ],
 "lunyu/xian-wen/26.html": [
-"5e418ece437d5d4b",
+"a9308657687156ae",
 "2026-11-13"
 ],
 "lunyu/xian-wen/27.html": [
-"88d3f8929686c402",
+"6f06d7cb76a42d16",
 "2026-11-13"
 ],
 "lunyu/xian-wen/28.html": [
-"616d4a6f916fd0ac",
+"a5841606d4a4bdb5",
 "2026-11-13"
 ],
 "lunyu/xian-wen/29.html": [
-"c4d8e343871f2b2c",
+"dfcc0fb397a6fc5f",
 "2026-11-13"
 ],
 "lunyu/xian-wen/3.html": [
-"b4068e51e435f0b4",
+"5dccda5184d602ef",
 "2026-11-13"
 ],
 "lunyu/xian-wen/30.html": [
-"8c4c845f043ae6a6",
+"a91b299d519c87a8",
 "2026-11-13"
 ],
 "lunyu/xian-wen/31.html": [
-"3039c3edc5e288b6",
+"2f7241c67d4c0ced",
 "2026-11-13"
 ],
 "lunyu/xian-wen/32.html": [
-"8c80399cc0c1585b",
+"fcc9d92cb5361247",
 "2026-11-13"
 ],
 "lunyu/xian-wen/33.html": [
-"ac6477d910bb53e8",
+"011526eb02aca9f3",
 "2026-11-13"
 ],
 "lunyu/xian-wen/34.html": [
-"90afcaf57590100a",
+"5d3f62e81f4574de",
 "2026-11-13"
 ],
 "lunyu/xian-wen/35.html": [
-"a5d72b5db5dbea5c",
+"d32a2e9431c6e164",
 "2026-11-13"
 ],
 "lunyu/xian-wen/36.html": [
-"8c5364c2fbbddbe6",
+"b5cdd29daad453e1",
 "2026-11-13"
 ],
 "lunyu/xian-wen/37.html": [
-"7ceec94156bbf687",
+"03fab4ba4666a3fa",
 "2026-11-13"
 ],
 "lunyu/xian-wen/38.html": [
-"4c288362c92e6e38",
+"3974ee597e546537",
 "2026-11-13"
 ],
 "lunyu/xian-wen/39.html": [
-"3dd851834f7e3690",
+"4c34fb044187a75e",
 "2026-11-13"
 ],
 "lunyu/xian-wen/4.html": [
-"eafcb854d88a1d7d",
+"95cb0fc6cc900283",
 "2026-11-13"
 ],
 "lunyu/xian-wen/40.html": [
-"763221c96fa310ad",
+"fb2e0c87e7b466d7",
 "2026-11-13"
 ],
 "lunyu/xian-wen/41.html": [
-"afc4f356be5b3ad3",
+"0802110f89d62eeb",
 "2026-11-13"
 ],
 "lunyu/xian-wen/42.html": [
-"c6db33cc3e4f0ece",
+"291c6b57c4a55534",
 "2026-11-13"
 ],
 "lunyu/xian-wen/43.html": [
-"da5dcc3a6eaab0f3",
+"bb65f0f29773ae8f",
 "2026-11-13"
 ],
 "lunyu/xian-wen/44.html": [
-"559424686a36cb89",
+"aec1f565ddb0c833",
 "2026-11-13"
 ],
 "lunyu/xian-wen/45.html": [
-"684dfa5927a08717",
+"c628380e722528e9",
 "2026-11-13"
 ],
 "lunyu/xian-wen/46.html": [
-"b1adea618a768e1f",
+"c028a58c1b6f7f79",
 "2026-11-13"
 ],
 "lunyu/xian-wen/47.html": [
-"3251e0745dd44647",
+"94b5b323b942be45",
 "2026-11-13"
 ],
 "lunyu/xian-wen/5.html": [
-"731b412912fd3f17",
+"dc3078a8a7b91cbf",
 "2026-11-13"
 ],
 "lunyu/xian-wen/6.html": [
-"4f30d53d74bf39f1",
+"765a8c4a31b2e5b7",
 "2026-11-13"
 ],
 "lunyu/xian-wen/7.html": [
-"7672e75688a26a29",
+"93928d83b1f12450",
 "2026-11-13"
 ],
 "lunyu/xian-wen/8.html": [
-"c411813ca34d11b8",
+"6b46cbce2ab1350f",
 "2026-11-13"
 ],
 "lunyu/xian-wen/9.html": [
-"570bc4967a24306a",
+"a423dbeae0a29e74",
 "2026-11-13"
 ],
 "lunyu/xian-wen/index.html": [
@@ -7260,71 +10132,71 @@
 "2026-11-13"
 ],
 "lunyu/xiang-dang/1.html": [
-"43930e75b3520fa4",
+"1e744b8c3850d9f0",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/10.html": [
-"a41314f1328d52b5",
+"9b5de5313f431a2c",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/11.html": [
-"7c8de46678c6bd0f",
+"f72db097826a5e66",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/12.html": [
-"919fd44b3a088bd3",
+"f903c5e6e49af40b",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/13.html": [
-"692751b7c33c1ff4",
+"a3d3e3c593c2f45c",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/14.html": [
-"051490284fa3180a",
+"65d76d1fc7ab1c07",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/15.html": [
-"e9f7d1b643cd3238",
+"39e1b02d86daf965",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/16.html": [
-"be65a9dcb63ff220",
+"1659767ec2c01df8",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/17.html": [
-"019876e7c94c398b",
+"e8f5b14d64122a1e",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/2.html": [
-"914d2c4adbc67e94",
+"f363e37d6413aac8",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/3.html": [
-"5c06e82ff04be387",
+"921e8a459920eab8",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/4.html": [
-"6760cc34c48300b4",
+"bc22eb7804eaebc4",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/5.html": [
-"fdb39da7f88572f3",
+"7c80477c849640a4",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/6.html": [
-"426850a62030dd78",
+"eef9b3a5d42a98f8",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/7.html": [
-"0a0197636dc1f48f",
+"12e31ca9abb631e7",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/8.html": [
-"cde38d3b769e9751",
+"bd776bcd8c4bc431",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/9.html": [
-"bdccc5fbdb2b4f03",
+"5fadecaebe6c4a55",
 "2026-11-13"
 ],
 "lunyu/xiang-dang/index.html": [
@@ -7332,15 +10204,15 @@
 "2026-11-13"
 ],
 "lunyu/xue-er/1.html": [
-"dcb30dbfcedf252d",
+"190e7e32158e16fc",
 "2026-11-13"
 ],
 "lunyu/xue-er/10.html": [
-"0dd72b23176cd463",
+"db17e6252a8ee3c7",
 "2026-11-13"
 ],
 "lunyu/xue-er/11.html": [
-"630736950c7125cc",
+"e33eda8a3ad062b4",
 "2026-11-13"
 ],
 "lunyu/xue-er/12.html": [
@@ -7348,7 +10220,7 @@
 "2026-11-13"
 ],
 "lunyu/xue-er/13.html": [
-"b441f6674649517e",
+"328563a8e55b6513",
 "2026-11-13"
 ],
 "lunyu/xue-er/14.html": [
@@ -7356,7 +10228,7 @@
 "2026-11-13"
 ],
 "lunyu/xue-er/15.html": [
-"ebccff7c119b8127",
+"3b478f24816efda9",
 "2026-11-13"
 ],
 "lunyu/xue-er/16.html": [
@@ -7364,7 +10236,7 @@
 "2026-11-13"
 ],
 "lunyu/xue-er/2.html": [
-"1257f1080443eade",
+"d3341c22e499906f",
 "2026-11-13"
 ],
 "lunyu/xue-er/3.html": [
@@ -7372,7 +10244,7 @@
 "2026-11-13"
 ],
 "lunyu/xue-er/4.html": [
-"791f94a66c8b5eb3",
+"1e1e3670cc627cd8",
 "2026-11-13"
 ],
 "lunyu/xue-er/5.html": [
@@ -7380,7 +10252,7 @@
 "2026-11-13"
 ],
 "lunyu/xue-er/6.html": [
-"e4c4791269d59293",
+"ca98ad3c1a7efab6",
 "2026-11-13"
 ],
 "lunyu/xue-er/7.html": [
@@ -7388,7 +10260,7 @@
 "2026-11-13"
 ],
 "lunyu/xue-er/8.html": [
-"ebe20867c54a96a0",
+"cd6afa95cf517a3a",
 "2026-11-13"
 ],
 "lunyu/xue-er/9.html": [
@@ -7400,99 +10272,99 @@
 "2026-11-13"
 ],
 "lunyu/yan-yuan/1.html": [
-"9928536678e98c2a",
+"f6129296eae89120",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/10.html": [
-"261d876b3558d250",
+"2cdba310377db7f3",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/11.html": [
-"4291adbfd6b1eac1",
+"2e301eecd098c850",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/12.html": [
-"7233610e0c4a597e",
+"5a50a58a08ec1f3d",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/13.html": [
-"f76617d5f54e06ad",
+"8b00723ee02b43cc",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/14.html": [
-"fc2193f4a2a864b4",
+"08f7bfad682ed032",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/15.html": [
-"5df871615260510c",
+"a94816962fe49349",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/16.html": [
-"643b5afbc561e828",
+"db0de95a96966c3e",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/17.html": [
-"1e9a277a798a5576",
+"ed804e2ca111a5d3",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/18.html": [
-"240f0d630bde28ee",
+"8babd8ae7bba0e7d",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/19.html": [
-"3b613049dacf1319",
+"20520c5e10f29451",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/2.html": [
-"fcddd8962eff4698",
+"78778f7b262986a7",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/20.html": [
-"824f302d466f05c3",
+"239c44e444c1961a",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/21.html": [
-"464f17fb653437fb",
+"cf432308082b8c58",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/22.html": [
-"d77268e2da708e6d",
+"8d6eb987bea541cc",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/23.html": [
-"5de92d63e0f74859",
+"bd175a4551f30312",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/24.html": [
-"19f6639eb10bc7bd",
+"92279775bf6d91b6",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/3.html": [
-"a65970671619ab10",
+"03e9e8d3ae63205f",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/4.html": [
-"0770ed47f42fea7e",
+"4cb4ff3449ecdfc2",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/5.html": [
-"38595db1e8c8425a",
+"05ee84d28b711bda",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/6.html": [
-"4d925973de0207c0",
+"55c2bd50fb4bbe65",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/7.html": [
-"66f637329d9e68ef",
+"6c3f0467eb5acd9b",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/8.html": [
-"0da421f3575a0046",
+"993dd6a08dd95f03",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/9.html": [
-"ef527cd45e9a4e28",
+"2c84853371f7dbdb",
 "2026-11-13"
 ],
 "lunyu/yan-yuan/index.html": [
@@ -7500,107 +10372,107 @@
 "2026-11-13"
 ],
 "lunyu/yang-huo/1.html": [
-"d30de0bca2a4ae35",
+"22f25e2659f47191",
 "2026-11-13"
 ],
 "lunyu/yang-huo/10.html": [
-"914f2ce0b46862e6",
+"aa3d9881ea915a29",
 "2026-11-13"
 ],
 "lunyu/yang-huo/11.html": [
-"34976e09ba01ad92",
+"b4288fb2e20c005a",
 "2026-11-13"
 ],
 "lunyu/yang-huo/12.html": [
-"31e1234b5224b0ec",
+"20a5379d534db60f",
 "2026-11-13"
 ],
 "lunyu/yang-huo/13.html": [
-"ee552f28a567b281",
+"037fbe2c7aefaa9c",
 "2026-11-13"
 ],
 "lunyu/yang-huo/14.html": [
-"6472fac7b80953ef",
+"4c008834ac61c9d6",
 "2026-11-13"
 ],
 "lunyu/yang-huo/15.html": [
-"efa39e32f6275f3e",
+"a1958231eef7615f",
 "2026-11-13"
 ],
 "lunyu/yang-huo/16.html": [
-"6b4a85110cd50a74",
+"710157e1c840f4ac",
 "2026-11-13"
 ],
 "lunyu/yang-huo/17.html": [
-"b37723070eeb57a7",
+"06b1b7bff7122683",
 "2026-11-13"
 ],
 "lunyu/yang-huo/18.html": [
-"f1e71688b7d2fe0d",
+"07e4611de6d8ce60",
 "2026-11-13"
 ],
 "lunyu/yang-huo/19.html": [
-"87ce6df8bfd418a3",
+"b854599f21a430a2",
 "2026-11-13"
 ],
 "lunyu/yang-huo/2.html": [
-"028d884122a93c06",
+"16edf40a6d884160",
 "2026-11-13"
 ],
 "lunyu/yang-huo/20.html": [
-"1dce92dc161ee6dc",
+"51938321a99f5e67",
 "2026-11-13"
 ],
 "lunyu/yang-huo/21.html": [
-"04f044a2559aa51f",
+"cbceff4c5ef071cf",
 "2026-11-13"
 ],
 "lunyu/yang-huo/22.html": [
-"8d3beef985caf4e9",
+"c904ad23d79388b1",
 "2026-11-13"
 ],
 "lunyu/yang-huo/23.html": [
-"213c281677ca2fc4",
+"19b5f8e7e5e35929",
 "2026-11-13"
 ],
 "lunyu/yang-huo/24.html": [
-"6401afc894ec772e",
+"385c4e35a310d2ee",
 "2026-11-13"
 ],
 "lunyu/yang-huo/25.html": [
-"96ab43c0cb407d92",
+"d3689bf19c761b9a",
 "2026-11-13"
 ],
 "lunyu/yang-huo/26.html": [
-"3e7ceec00c8a1b6d",
+"1958889bfb53e882",
 "2026-11-13"
 ],
 "lunyu/yang-huo/3.html": [
-"b55b1e7043c19f8f",
+"3d0a39085a7f87d3",
 "2026-11-13"
 ],
 "lunyu/yang-huo/4.html": [
-"a2100a386ea8a41d",
+"866d48788c9c9818",
 "2026-11-13"
 ],
 "lunyu/yang-huo/5.html": [
-"b29008e41b5a85c9",
+"e7449d37e0e3524e",
 "2026-11-13"
 ],
 "lunyu/yang-huo/6.html": [
-"d86fc080f94fd824",
+"6aedc50302df233f",
 "2026-11-13"
 ],
 "lunyu/yang-huo/7.html": [
-"0e9a04bcea9c9c24",
+"d6198de640730002",
 "2026-11-13"
 ],
 "lunyu/yang-huo/8.html": [
-"3cdfcc7fde88979d",
+"d821ea62ebc62394",
 "2026-11-13"
 ],
 "lunyu/yang-huo/9.html": [
-"71fd0a0b872320b2",
+"26944e39647f375c",
 "2026-11-13"
 ],
 "lunyu/yang-huo/index.html": [
@@ -7608,15 +10480,15 @@
 "2026-11-13"
 ],
 "lunyu/yao-yue/1.html": [
-"2ddfb6871d09fef7",
+"49fb242235eb8b85",
 "2026-11-13"
 ],
 "lunyu/yao-yue/2.html": [
-"574dfee4c842d7cb",
+"7a5db8800075d146",
 "2026-11-13"
 ],
 "lunyu/yao-yue/3.html": [
-"c32dcff554d1843f",
+"b8afe297647dd5dd",
 "2026-11-13"
 ],
 "lunyu/yao-yue/index.html": [
@@ -7628,15 +10500,15 @@
 "2026-11-13"
 ],
 "lunyu/yong-ye/10.html": [
-"4977aeefcfd84974",
+"22128122a15bc689",
 "2026-11-13"
 ],
 "lunyu/yong-ye/11.html": [
-"a24e812a9d315710",
+"c1961268b1e2df09",
 "2026-11-13"
 ],
 "lunyu/yong-ye/12.html": [
-"51e83342e1bc7dcf",
+"2b88043b0bbf06d7",
 "2026-11-13"
 ],
 "lunyu/yong-ye/13.html": [
@@ -7644,7 +10516,7 @@
 "2026-11-13"
 ],
 "lunyu/yong-ye/14.html": [
-"a9295c3ce480cb95",
+"9c3b755cc262b11d",
 "2026-11-13"
 ],
 "lunyu/yong-ye/15.html": [
@@ -7664,55 +10536,55 @@
 "2026-11-13"
 ],
 "lunyu/yong-ye/19.html": [
-"25c67d5c7ac80e4b",
+"53e878aca91581a6",
 "2026-11-13"
 ],
 "lunyu/yong-ye/2.html": [
-"f2b4ddb0662383f8",
+"e1e2ee2bd7da3fbc",
 "2026-11-13"
 ],
 "lunyu/yong-ye/20.html": [
-"85e7d73af804ed38",
+"53b845cde7a81300",
 "2026-11-13"
 ],
 "lunyu/yong-ye/21.html": [
-"b0c34e2d8d2a7ae7",
+"e39a048a57472ecf",
 "2026-11-13"
 ],
 "lunyu/yong-ye/22.html": [
-"32e736283a52cc81",
+"f706edf24d2c716e",
 "2026-11-13"
 ],
 "lunyu/yong-ye/23.html": [
-"f6f0ba5557363083",
+"41a67fc2649f8f49",
 "2026-11-13"
 ],
 "lunyu/yong-ye/24.html": [
-"2ca78bc836c2597f",
+"a87c00988ad00271",
 "2026-11-13"
 ],
 "lunyu/yong-ye/25.html": [
-"85776ea24f25dcfc",
+"807b82064914c8e0",
 "2026-11-13"
 ],
 "lunyu/yong-ye/26.html": [
-"e825a52b40f45b9b",
+"47202ca86630ed84",
 "2026-11-13"
 ],
 "lunyu/yong-ye/27.html": [
-"6f65730f39bc2f95",
+"e9eb49333d44d647",
 "2026-11-13"
 ],
 "lunyu/yong-ye/28.html": [
-"fc991957be579ac5",
+"cb07b3a76d6b0480",
 "2026-11-13"
 ],
 "lunyu/yong-ye/3.html": [
-"8f580bf47469dfc2",
+"fb349769c4ff35dd",
 "2026-11-13"
 ],
 "lunyu/yong-ye/4.html": [
-"e5b110e6dcb45f0d",
+"67f0426eb97c3e26",
 "2026-11-13"
 ],
 "lunyu/yong-ye/5.html": [
@@ -7724,15 +10596,15 @@
 "2026-11-13"
 ],
 "lunyu/yong-ye/7.html": [
-"b20836fd641224a6",
+"297a6f04736e57c1",
 "2026-11-13"
 ],
 "lunyu/yong-ye/8.html": [
-"dd9eaf25c63eb0a1",
+"1b138e30ce72387c",
 "2026-11-13"
 ],
 "lunyu/yong-ye/9.html": [
-"8c719d5bd27b6968",
+"be91ddfd65ddbf30",
 "2026-11-13"
 ],
 "lunyu/yong-ye/index.html": [
@@ -7740,123 +10612,123 @@
 "2026-11-13"
 ],
 "lunyu/zi-han/1.html": [
-"f664abdd7cd48509",
+"e70e15a836cb101d",
 "2026-11-13"
 ],
 "lunyu/zi-han/10.html": [
-"81bcfd5f68eaf835",
+"c695530a8e5143ce",
 "2026-11-13"
 ],
 "lunyu/zi-han/11.html": [
-"41b61b577596d977",
+"f2c4761de2d38cb8",
 "2026-11-13"
 ],
 "lunyu/zi-han/12.html": [
-"61e6c729da9d8291",
+"92a932e7f2f419b2",
 "2026-11-13"
 ],
 "lunyu/zi-han/13.html": [
-"37745550b216696d",
+"53c4ea27ce3bb541",
 "2026-11-13"
 ],
 "lunyu/zi-han/14.html": [
-"02f169c6eb66dd5f",
+"5ba13b77cccf050c",
 "2026-11-13"
 ],
 "lunyu/zi-han/15.html": [
-"08e493263f300d5b",
+"6a0298126d3a79bf",
 "2026-11-13"
 ],
 "lunyu/zi-han/16.html": [
-"7cec0efa76ea18fc",
+"43d36fdfa58bee80",
 "2026-11-13"
 ],
 "lunyu/zi-han/17.html": [
-"e730275d0c96f622",
+"6723d2bf808bd09d",
 "2026-11-13"
 ],
 "lunyu/zi-han/18.html": [
-"c3200552dbf9bad0",
+"70407c2a8df9eac2",
 "2026-11-13"
 ],
 "lunyu/zi-han/19.html": [
-"1f182ead8dc443c2",
+"aa2c508e5f611b7c",
 "2026-11-13"
 ],
 "lunyu/zi-han/2.html": [
-"a940c3de9d543daf",
+"4498dc859b1a07f2",
 "2026-11-13"
 ],
 "lunyu/zi-han/20.html": [
-"81dab577b7b98786",
+"d8781ff7f9ed2cad",
 "2026-11-13"
 ],
 "lunyu/zi-han/21.html": [
-"1d11b4917a150673",
+"c68033ab5ed8fdcd",
 "2026-11-13"
 ],
 "lunyu/zi-han/22.html": [
-"ec45d5d32fcb6371",
+"71c3fda91e739007",
 "2026-11-13"
 ],
 "lunyu/zi-han/23.html": [
-"084f45cd12a4ee09",
+"9a0a9c12c80e1046",
 "2026-11-13"
 ],
 "lunyu/zi-han/24.html": [
-"e75c1f49a0e89894",
+"4ea2254166749b6f",
 "2026-11-13"
 ],
 "lunyu/zi-han/25.html": [
-"7a51798d040aef5d",
+"07569500b14a9ea8",
 "2026-11-13"
 ],
 "lunyu/zi-han/26.html": [
-"c661cc64957a0f98",
+"8333f54b8ae910cb",
 "2026-11-13"
 ],
 "lunyu/zi-han/27.html": [
-"0a0f38320d4fa729",
+"f9c3e593a3da5c4f",
 "2026-11-13"
 ],
 "lunyu/zi-han/28.html": [
-"f8084ba76f70e988",
+"fcfb8d951190e374",
 "2026-11-13"
 ],
 "lunyu/zi-han/29.html": [
-"aa2aab71b84ff3a1",
+"62ccb874bce4f7b9",
 "2026-11-13"
 ],
 "lunyu/zi-han/3.html": [
-"a1e4b79cb48b41a8",
+"37207849211f3f3c",
 "2026-11-13"
 ],
 "lunyu/zi-han/30.html": [
-"e29474a8b5c49e47",
+"6bdc60d45602ca50",
 "2026-11-13"
 ],
 "lunyu/zi-han/4.html": [
-"6e72756a433a9d43",
+"34b8ef9a80b85084",
 "2026-11-13"
 ],
 "lunyu/zi-han/5.html": [
-"cc4303a50ec49b02",
+"0faa6bdc40bdcb4d",
 "2026-11-13"
 ],
 "lunyu/zi-han/6.html": [
-"17d1ffb49bd7373a",
+"bde2e56d6b6fcb5a",
 "2026-11-13"
 ],
 "lunyu/zi-han/7.html": [
-"ec30d41ce4d8cfd4",
+"9af9fa5f4a87976a",
 "2026-11-13"
 ],
 "lunyu/zi-han/8.html": [
-"b79c2d97eda41688",
+"5f3365c66b015008",
 "2026-11-13"
 ],
 "lunyu/zi-han/9.html": [
-"abaf17697d0700cb",
+"21f7b97b1503b6fa",
 "2026-11-13"
 ],
 "lunyu/zi-han/index.html": [
@@ -7864,123 +10736,123 @@
 "2026-11-13"
 ],
 "lunyu/zi-lu/1.html": [
-"a1eef472d486a9f1",
+"9e55fe872982039c",
 "2026-11-13"
 ],
 "lunyu/zi-lu/10.html": [
-"5950bfae99d5f351",
+"0603c8406ea4eba3",
 "2026-11-13"
 ],
 "lunyu/zi-lu/11.html": [
-"e2ef3e24799aa6f8",
+"f626ab8fca7f97ad",
 "2026-11-13"
 ],
 "lunyu/zi-lu/12.html": [
-"d8dac1fe5354ee73",
+"7a9be6c3168aaea6",
 "2026-11-13"
 ],
 "lunyu/zi-lu/13.html": [
-"51958a655775cd72",
+"a1c645f7b8952d02",
 "2026-11-13"
 ],
 "lunyu/zi-lu/14.html": [
-"12471e249d2f84f9",
+"ed7b6f110d089872",
 "2026-11-13"
 ],
 "lunyu/zi-lu/15.html": [
-"2ee60dc0d57290da",
+"bcb4b94d0bc2610c",
 "2026-11-13"
 ],
 "lunyu/zi-lu/16.html": [
-"4c2513303b35071f",
+"ae8bdd384563b250",
 "2026-11-13"
 ],
 "lunyu/zi-lu/17.html": [
-"fa0df6a57c8bf690",
+"68bf2e9f8b5dd837",
 "2026-11-13"
 ],
 "lunyu/zi-lu/18.html": [
-"2824ca6338abd427",
+"2db830c6fd909772",
 "2026-11-13"
 ],
 "lunyu/zi-lu/19.html": [
-"9152ad59d49cda23",
+"4adf69c0393c93f6",
 "2026-11-13"
 ],
 "lunyu/zi-lu/2.html": [
-"119ad7b7b12dfbd2",
+"1470228be8eb0dec",
 "2026-11-13"
 ],
 "lunyu/zi-lu/20.html": [
-"3ffb9bfd1c44b020",
+"027854b1955c507b",
 "2026-11-13"
 ],
 "lunyu/zi-lu/21.html": [
-"361661ada0e0d007",
+"2eee9fd61f57b551",
 "2026-11-13"
 ],
 "lunyu/zi-lu/22.html": [
-"611f37c184dcf921",
+"dff15d72cca07575",
 "2026-11-13"
 ],
 "lunyu/zi-lu/23.html": [
-"90950715a93161dd",
+"53dd3d93179a1f95",
 "2026-11-13"
 ],
 "lunyu/zi-lu/24.html": [
-"955f93f79dec1759",
+"b2a6c2c3e8354474",
 "2026-11-13"
 ],
 "lunyu/zi-lu/25.html": [
-"58f86d3d16c45f84",
+"6018864eaaf270f4",
 "2026-11-13"
 ],
 "lunyu/zi-lu/26.html": [
-"413406210d757da7",
+"b4e5cf368ac35caa",
 "2026-11-13"
 ],
 "lunyu/zi-lu/27.html": [
-"7b24c36e832ff95d",
+"bfdd846b2a1a99f7",
 "2026-11-13"
 ],
 "lunyu/zi-lu/28.html": [
-"8c2e44a5cf785bf3",
+"1a1c74e200201b8f",
 "2026-11-13"
 ],
 "lunyu/zi-lu/29.html": [
-"26d8a9178feec057",
+"af3ed562115060b3",
 "2026-11-13"
 ],
 "lunyu/zi-lu/3.html": [
-"d978164e4be28abf",
+"0052691f50223288",
 "2026-11-13"
 ],
 "lunyu/zi-lu/30.html": [
-"df76a79258ed6c58",
+"73973530c0765c63",
 "2026-11-13"
 ],
 "lunyu/zi-lu/4.html": [
-"67c54d2d4127e3c0",
+"cbe292a1ec147faf",
 "2026-11-13"
 ],
 "lunyu/zi-lu/5.html": [
-"b88b0d173394c0d3",
+"5c84fce70383d373",
 "2026-11-13"
 ],
 "lunyu/zi-lu/6.html": [
-"1f508970ed73b739",
+"8aa026613d0a7ab0",
 "2026-11-13"
 ],
 "lunyu/zi-lu/7.html": [
-"d4c2597459f49f24",
+"6eb7e87cee647257",
 "2026-11-13"
 ],
 "lunyu/zi-lu/8.html": [
-"a5b38f955d9a6193",
+"58fe55bc85760cb2",
 "2026-11-13"
 ],
 "lunyu/zi-lu/9.html": [
-"a7c10fd11ad18413",
+"8a5dd1c01779f2ac",
 "2026-11-13"
 ],
 "lunyu/zi-lu/index.html": [
@@ -7988,103 +10860,103 @@
 "2026-11-13"
 ],
 "lunyu/zi-zhang/1.html": [
-"79b64e9c66ff040f",
+"2f2caca8c499c511",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/10.html": [
-"4d42593eb709c318",
+"dc0a73dd0399ec18",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/11.html": [
-"c05bc97a530010cf",
+"66b9d94bcce414c7",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/12.html": [
-"2b5b24733332fd53",
+"74e95b9d5b6aaa19",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/13.html": [
-"8e4cb3472ad2e328",
+"9f08531017990387",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/14.html": [
-"6b59c0911318359a",
+"6e445300be140654",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/15.html": [
-"38754bccdaaeb3b8",
+"32a5925f7deec7a3",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/16.html": [
-"8645c89ada463db5",
+"bdac58258c0170c6",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/17.html": [
-"b7227d581634a3d0",
+"b15314ee618d2e81",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/18.html": [
-"205236ca33f4dc91",
+"60cb0ae3d8e4ea6c",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/19.html": [
-"3393f75881d47c3c",
+"12e4629de1b8de08",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/2.html": [
-"6abf3a40b1d4b152",
+"633e9285b81d7656",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/20.html": [
-"e21df1139891ec67",
+"8694b4abcd745d9a",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/21.html": [
-"f0ebff72ed9f284c",
+"5558c8435f09ec2e",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/22.html": [
-"20cd2f8a5c9ed117",
+"391b064c7bdfb032",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/23.html": [
-"4fc0b400e104cdfe",
+"263fd431a3848ddf",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/24.html": [
-"d09c00d64e4899ae",
+"1849e12bd4e62974",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/25.html": [
-"cf898f041d8db72b",
+"92b486263e7af159",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/3.html": [
-"777f9c5b24491c50",
+"afda65846185b8d0",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/4.html": [
-"291b0324185f60a6",
+"3a1c2aac201eba5a",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/5.html": [
-"ea78fda966962af3",
+"27d497ba24537e32",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/6.html": [
-"a46da5d7d1b03dfe",
+"eeb3f16ff610f9de",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/7.html": [
-"86b9af74b952e503",
+"669a4e2476058dd1",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/8.html": [
-"bddcfc5557176a12",
+"60f3e99ff3dbbfbc",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/9.html": [
-"b97b1b6d8dbce16d",
+"fe8440745d491561",
 "2026-11-13"
 ],
 "lunyu/zi-zhang/index.html": [
@@ -9584,7 +12456,7 @@
 "2026-11-13"
 ],
 "ru/search.html": [
-"9f07b65e70b227be",
+"c2d43c253d8c4404",
 "2026-11-13"
 ],
 "ru/search.json": [
@@ -9616,67 +12488,67 @@
 "2026-11-13"
 ],
 "ru/zhuanti/dao.html": [
-"93f23a2e24c6fc0f",
+"ed13b88cd582017d",
 "2026-11-13"
 ],
 "ru/zhuanti/index.html": [
-"01edb6a13994b941",
+"96d070b5e2eebbe6",
 "2026-11-13"
 ],
 "ru/zhuanti/junzi.html": [
-"189a2fbc0853d1ba",
+"d8e5e652ec7ed739",
 "2026-11-13"
 ],
 "ru/zhuanti/le.html": [
-"bf25da8c53655304",
+"641147344e3074c6",
 "2026-11-13"
 ],
 "ru/zhuanti/li.html": [
-"5aebf1ea0c07d4da",
+"6b1c373bfa178905",
 "2026-11-13"
 ],
 "ru/zhuanti/ming.html": [
-"4f60178780195af2",
+"85ccc296b47b4d4a",
 "2026-11-13"
 ],
 "ru/zhuanti/ren.html": [
-"3a94a4e8f1594e39",
+"544770fffe91b8c9",
 "2026-11-13"
 ],
 "ru/zhuanti/shi.html": [
-"c73ce3c2971050fe",
+"56cfec6d7eda4988",
 "2026-11-13"
 ],
 "ru/zhuanti/tianming.html": [
-"be4dec25cb0876ef",
+"9d166846810d07ae",
 "2026-11-13"
 ],
 "ru/zhuanti/xiao.html": [
-"98a7a6512467c2a8",
+"c79d0bec7190a3ee",
 "2026-11-13"
 ],
 "ru/zhuanti/xin.html": [
-"a6d82e3be1e1deca",
+"fbb3955ac33a7c2c",
 "2026-11-13"
 ],
 "ru/zhuanti/xin2.html": [
-"4a61b3d2d5203e19",
+"28a76bf5cd097228",
 "2026-11-13"
 ],
 "ru/zhuanti/xing.html": [
-"b4ac2333f3aaa745",
+"89019057cd00f74c",
 "2026-11-13"
 ],
 "ru/zhuanti/xue.html": [
-"1962a12328feedcd",
+"816154fb8d94b75d",
 "2026-11-13"
 ],
 "ru/zhuanti/you.html": [
-"2927ab1cb56bf79a",
+"044619a67f525453",
 "2026-11-13"
 ],
 "ru/zhuanti/zheng.html": [
-"790b0ea91b9ed38c",
+"110b7c8a21f5c906",
 "2026-11-13"
 ],
 "ru/zi.html": [
@@ -9684,7 +12556,7 @@
 "2026-11-13"
 ],
 "search.html": [
-"ce28545b5546bd7c",
+"0d4640a510bb4f2b",
 "2026-11-13"
 ],
 "search.json": [
@@ -10520,7 +13392,7 @@
 "2026-11-13"
 ],
 "vi/search.html": [
-"73b9d65fa7cb79ce",
+"51c03f58e6f7095b",
 "2026-11-13"
 ],
 "vi/search.json": [
@@ -10552,67 +13424,67 @@
 "2026-11-13"
 ],
 "vi/zhuanti/dao.html": [
-"00a6c2d1b9d33280",
+"4a34ab2f7d0e382d",
 "2026-11-13"
 ],
 "vi/zhuanti/index.html": [
-"274130f668c6e0db",
+"3597b5c7bf689b66",
 "2026-11-13"
 ],
 "vi/zhuanti/junzi.html": [
-"0b74fb1f1a2d2238",
+"0f5ec16d038a3161",
 "2026-11-13"
 ],
 "vi/zhuanti/le.html": [
-"a5998f148b5e6084",
+"b9b4354da8406848",
 "2026-11-13"
 ],
 "vi/zhuanti/li.html": [
-"159325d3ed9c8329",
+"4140687af78e3109",
 "2026-11-13"
 ],
 "vi/zhuanti/ming.html": [
-"8388e5dabedef752",
+"642b9a57f5a98803",
 "2026-11-13"
 ],
 "vi/zhuanti/ren.html": [
-"6c98b79706ba2df7",
+"23c20956fe311489",
 "2026-11-13"
 ],
 "vi/zhuanti/shi.html": [
-"05a551f0bcbbc0b7",
+"2f6249c565f446c8",
 "2026-11-13"
 ],
 "vi/zhuanti/tianming.html": [
-"9a616a6a71bc51b5",
+"c046c8951ccb3591",
 "2026-11-13"
 ],
 "vi/zhuanti/xiao.html": [
-"c74e4288fd419208",
+"313230794cc3ca39",
 "2026-11-13"
 ],
 "vi/zhuanti/xin.html": [
-"bd05e797c2e768a2",
+"b5511c133e01d3e0",
 "2026-11-13"
 ],
 "vi/zhuanti/xin2.html": [
-"ae48dec9debd7bfb",
+"a64c4579415f8cb4",
 "2026-11-13"
 ],
 "vi/zhuanti/xing.html": [
-"dea6af199c4d9a19",
+"2be40c668fb24142",
 "2026-11-13"
 ],
 "vi/zhuanti/xue.html": [
-"6297a3fea87d5528",
+"06a74cb9c503cd1f",
 "2026-11-13"
 ],
 "vi/zhuanti/you.html": [
-"4209b5ab9571fe2d",
+"19c08e251fb8018b",
 "2026-11-13"
 ],
 "vi/zhuanti/zheng.html": [
-"d7dc480ba642a7f9",
+"9ed4841e00032b3c",
 "2026-11-13"
 ],
 "vi/zi.html": [
@@ -11144,11 +14016,11 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/13.html": [
-"be2bd27e1f9f9f0c",
+"286c301a3cdc7af1",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/14.html": [
-"8e1cc19dfec33c40",
+"a3439aed67ce51b4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/15.html": [
@@ -11156,11 +14028,11 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/16.html": [
-"fc24b226f0b9e56e",
+"dfb699d42425b073",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/17.html": [
-"ba176c212588b1e8",
+"6676349d40e0d1cc",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/18.html": [
@@ -11172,11 +14044,11 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/2.html": [
-"2b96f0acf90af984",
+"8f675991b79f0a98",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/20.html": [
-"6e56372475ca3241",
+"99c86d64217cdd07",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/21.html": [
@@ -11184,15 +14056,15 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/22.html": [
-"c5c14294d6f8099b",
+"31a5d29dd1e74a9d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/23.html": [
-"8b671fd04ff22f4c",
+"0b85f81e8d1b83ee",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/24.html": [
-"90e4e22589f0a617",
+"d29b25fc734fe6c3",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/25.html": [
@@ -11216,7 +14088,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/6.html": [
-"c09212938451c7d9",
+"9c1290464b04ca86",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/7.html": [
@@ -11224,11 +14096,11 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/8.html": [
-"727daa834a0459e9",
+"b18387b2f9672f34",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/9.html": [
-"806110dbd9b108a4",
+"bba292674f04b289",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ba-yi/index.html": [
@@ -11236,7 +14108,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/1.html": [
-"bc4d7312c78876ed",
+"bf15ddb588259e64",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/10.html": [
@@ -11268,15 +14140,15 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/17.html": [
-"066f858befa8eb05",
+"057407d2172bad44",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/18.html": [
-"0e36ab57a9062247",
+"467f8cbe441687d7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/19.html": [
-"69ce3827afaf5695",
+"c3833ec317cefa08",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/2.html": [
@@ -11304,7 +14176,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/25.html": [
-"1a45ded5261bf427",
+"68012bc87db61e0c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/26.html": [
@@ -11316,31 +14188,31 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/3.html": [
-"7a855112e878479c",
+"844f3c991919a66e",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/4.html": [
-"e3adedc89402f876",
+"ec2511ed1c5c4779",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/5.html": [
-"94f991d83e9df262",
+"d87cad7d12802148",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/6.html": [
-"102594960345a087",
+"ac10e4a451d3a6df",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/7.html": [
-"d64216c90b6a778f",
+"9b70f9512df89bd0",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/8.html": [
-"fd042be8fcb45f2b",
+"80963b1b70ee8c23",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/9.html": [
-"0abc08e736f073e8",
+"253b111361b4214a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/gong-ye-chang/index.html": [
@@ -11352,59 +14224,59 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/1.html": [
-"8c183b0abe597ca5",
+"adbe398e1bc556a7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/10.html": [
-"756559e083c12551",
+"104d6b0a30ec4904",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/11.html": [
-"3313c0f25af17e22",
+"e8effb03ce052d96",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/12.html": [
-"612694a2d967d950",
+"0ccd574692b16c0d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/13.html": [
-"dd205987ca3e0d8b",
+"f78ecf8a42558f24",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/14.html": [
-"8df871cb5596478b",
+"9c13a01ee1704a22",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/2.html": [
-"cf33d7f2d7e97724",
+"2cb8698289ee7a46",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/3.html": [
-"fa6a2d4a3fbb0dc6",
+"9dabb19644a5a331",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/4.html": [
-"6ad35941247a92f6",
+"7e352a1e0f002f0d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/5.html": [
-"11ccddc5f106644d",
+"7428075edd78d35d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/6.html": [
-"1065a32fbaf51631",
+"50793d2f41c5f84a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/7.html": [
-"679e30cc2f216e10",
+"05068e1672e59856",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/8.html": [
-"45e9384124302683",
+"fcccf4555c732364",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/9.html": [
-"5137cd2ae33c7b2b",
+"96b31bd3a5eea454",
 "2026-11-13"
 ],
 "zh-hant/lunyu/ji-shi/index.html": [
@@ -11416,7 +14288,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/10.html": [
-"bc784206c28c1e7e",
+"62944e95424075a2",
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/11.html": [
@@ -11436,7 +14308,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/15.html": [
-"74bcaf0a123ca56f",
+"1b5cc8e1db05dd88",
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/16.html": [
@@ -11448,7 +14320,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/18.html": [
-"599836e6fc3026da",
+"9ebff9d875316d3a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/19.html": [
@@ -11456,7 +14328,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/2.html": [
-"16b5a9ba4ca7bc6d",
+"57f45d4346b5c352",
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/20.html": [
@@ -11476,7 +14348,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/24.html": [
-"a4f5d1cd6f2b968d",
+"4f522135db6ea518",
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/25.html": [
@@ -11488,7 +14360,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/3.html": [
-"1c93ab00dcaa0292",
+"a73df1aeace1dd73",
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/4.html": [
@@ -11496,11 +14368,11 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/5.html": [
-"97ee7eafd03acd03",
+"5654b9671c316352",
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/6.html": [
-"f25a11e818f66ad8",
+"1a2fb62b404ba4fe",
 "2026-11-13"
 ],
 "zh-hant/lunyu/li-ren/7.html": [
@@ -11520,151 +14392,151 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/1.html": [
-"ad7c0346b47237cf",
+"f739f2283931aac8",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/10.html": [
-"b8f1200fca926c48",
+"59e4f0f3fa62085c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/11.html": [
-"e798e8b96aadb3db",
+"82a5cdab31f991e5",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/12.html": [
-"4bf770af316db170",
+"ec432105264bca53",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/13.html": [
-"6e6f660694615d0d",
+"ad030d723ddb7319",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/14.html": [
-"8282a739ea72d9b3",
+"5a34cbbaed36a565",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/15.html": [
-"9754c1acbfd38211",
+"0fbfe2302cd51626",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/16.html": [
-"c44d8771a4c5b1b5",
+"9e0ea1b1134dfba6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/17.html": [
-"46191266d37edec8",
+"52abe55e053e5204",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/18.html": [
-"9d9d82f6cd6bd7fc",
+"1b16bae809510375",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/19.html": [
-"fe639d6913132172",
+"d3f6d753075e92ec",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/2.html": [
-"15df8e0fd9528c4d",
+"4e62dda979be053d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/20.html": [
-"e3ee9d5cb6e830b3",
+"be9090d6a1e85bde",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/21.html": [
-"952ba5ca5dee3db9",
+"46b8b449059d5a24",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/22.html": [
-"b68c702be5fe6b9e",
+"05c9706e0fba9210",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/23.html": [
-"dda65266a327c410",
+"d55cd13487944188",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/24.html": [
-"0d3012745c93be51",
+"f772d90c4ce30db5",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/25.html": [
-"1e7398cccfaaf12f",
+"e2afc5c7b51d542a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/26.html": [
-"6ec92d44cea8c573",
+"488455b9a226581f",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/27.html": [
-"58a3250f9e44596c",
+"3e9f8def1afa96a4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/28.html": [
-"6ea23b901354b2cb",
+"c3e5a3b1b936899f",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/29.html": [
-"3fd3c2a80fcc7a3c",
+"26882352b14a8389",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/3.html": [
-"fabff09e9110853a",
+"ba816f58a21b890c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/30.html": [
-"9adbb3daf7840045",
+"ab845db61da61d5f",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/31.html": [
-"ca33eee87a921ee8",
+"bb9d6a7ff832ba13",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/32.html": [
-"792b523b06fc370c",
+"b2ada793b13225a7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/33.html": [
-"0a8e544663114a9f",
+"e4dd51311947cc60",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/34.html": [
-"5a347aec49c06ec6",
+"0f99b320c289f9ec",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/35.html": [
-"8dd077fdd0fa7bfa",
+"7f3e02303ecdb622",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/36.html": [
-"203ecfdf4ca76e44",
+"c8da89a20d52a41c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/37.html": [
-"818b3e9f92f72aa1",
+"bae38ef20df50426",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/4.html": [
-"ce8f4c68d67962ce",
+"6488e76584edf18a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/5.html": [
-"4e9429ab3fc2add2",
+"de43a9265a07503a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/6.html": [
-"88bdb95b5c3096e8",
+"9ff5e2bca8096d3a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/7.html": [
-"369f6b1926e726e5",
+"2b22b135ffe800f7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/8.html": [
-"70e644ecfda29dd1",
+"ab75cf74d2689055",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/9.html": [
-"d88643401c7b235a",
+"a435326e56dce370",
 "2026-11-13"
 ],
 "zh-hant/lunyu/shu-er/index.html": [
@@ -11672,87 +14544,87 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/1.html": [
-"fae20ee488448cdf",
+"e7590db28eeea107",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/10.html": [
-"4b651a941577f0e1",
+"7ba3bc124665819e",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/11.html": [
-"f931e1a2fc388b74",
+"c7c1ed6ab2877e16",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/12.html": [
-"2e4fc83bab930275",
+"90ba83784dd00668",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/13.html": [
-"52b7a87bf2ab8f3f",
+"ac5a08efeeecd382",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/14.html": [
-"edf58f8e19180cec",
+"09d13c4fd30d336c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/15.html": [
-"e4e2ecf700598058",
+"5779d55f04e2e125",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/16.html": [
-"7761e442c927b2b6",
+"c7851d08f8493aab",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/17.html": [
-"6fea30f4c7853a7a",
+"e3a2c8dbef8b12d3",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/18.html": [
-"ab5f00974cbc2c1f",
+"c9a985111e668b22",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/19.html": [
-"9f5e6810005ada3a",
+"c5fb91201c2c0350",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/2.html": [
-"58f5f6fb559a9264",
+"1af8c0a68db3cd6c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/20.html": [
-"a3d68d47b8c738f4",
+"6bb4d2d690a1ea44",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/21.html": [
-"f0861b9ec3f8ac04",
+"f4a053c5f29c75a4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/3.html": [
-"5ab643dc72c5d805",
+"ab958be5cd1df801",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/4.html": [
-"fb9a3f097ff5add1",
+"4bba7f9f44f838b0",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/5.html": [
-"72190f0963994926",
+"2ab71221d53fb0e4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/6.html": [
-"339344b81c7c6015",
+"7cfe8d8e28e1e605",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/7.html": [
-"4366084972eff46d",
+"ca2476312cb5b9ae",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/8.html": [
-"185c0654188c7a85",
+"482774aa9fd82656",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/9.html": [
-"d040973d7fae3632",
+"0c84edc47bc906b0",
 "2026-11-13"
 ],
 "zh-hant/lunyu/tai-bo/index.html": [
@@ -11760,167 +14632,167 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/1.html": [
-"586a160f08d9b826",
+"c8bdec5f0bff74ca",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/10.html": [
-"1751bb0931aadfcc",
+"5331fe7fa091a81f",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/11.html": [
-"1a57b6e99ea5f503",
+"da71f71bcd43f274",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/12.html": [
-"f23e97922f54f75a",
+"6211144b5f8dd707",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/13.html": [
-"64aed7868ed9772d",
+"a8c288fa1d70a4aa",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/14.html": [
-"4587f829d87b8c07",
+"0f2e8e10252c6a86",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/15.html": [
-"c851a483364e37a4",
+"fdfa89747bb5126f",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/16.html": [
-"87c473e92352c230",
+"0db5b5c728d26572",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/17.html": [
-"f4e059827328de0d",
+"0926978c92578d72",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/18.html": [
-"b1ac2a5b48a8be72",
+"0b4531ad722e6b87",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/19.html": [
-"8a3f23b08fcd9a07",
+"6d9c876c0ed7b96a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/2.html": [
-"127aa54fbd984b9b",
+"db4b474013080411",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/20.html": [
-"5073f011517d3650",
+"84263f9f0804268c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/21.html": [
-"302fae908015954c",
+"cde8ad4b27e1a2a2",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/22.html": [
-"3b84508e191efb65",
+"7e4af93fe6285270",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/23.html": [
-"fce7ddfc74b5c595",
+"56fa9c1cad6451e8",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/24.html": [
-"a0c32caa1000059c",
+"54a35498bdf85cad",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/25.html": [
-"9f30b24664093232",
+"a59ce4f1b8de94b1",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/26.html": [
-"46262ed054b2c5ff",
+"24b4a854afb1ba74",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/27.html": [
-"59b892e05da6bb9a",
+"097eb9bed2e5aaeb",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/28.html": [
-"f637da855bb9d022",
+"05d8ea3c9992a0a4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/29.html": [
-"b53a0ed03026b877",
+"32c7d9316e3c5a15",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/3.html": [
-"fa3fcc77704f85af",
+"563b0a299455a600",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/30.html": [
-"8a0c6f927604675d",
+"89e0008349857444",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/31.html": [
-"d48930bc53a7ddf4",
+"a26db3c923e224c3",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/32.html": [
-"8a153ef34b63a959",
+"e6d3d2e0c1a42ff7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/33.html": [
-"9f9da952fa2ba8a1",
+"af19bd7205ab4c97",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/34.html": [
-"bd90ec4af931e792",
+"5f31b6548b10a574",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/35.html": [
-"fb254b70bd946830",
+"1786d8c34904bdd7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/36.html": [
-"8a943cef1eeb49b6",
+"321e67d37c2da31d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/37.html": [
-"ce997356bf341e96",
+"8db292756ae978db",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/38.html": [
-"b7b3ce7957b31c34",
+"cabd324d2bcdc34d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/39.html": [
-"98fc073dfd1e8d33",
+"96012a04e5348676",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/4.html": [
-"b4e3e43e56daa7e4",
+"1dafdcc4f3b7c3be",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/40.html": [
-"2c10b75d47f69ea9",
+"c5e498cd2cf59f40",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/41.html": [
-"7273fbee98c653e0",
+"075eceb056689bba",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/5.html": [
-"bb874de50cdb21f5",
+"aa37c26419fcf6d6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/6.html": [
-"34c6e931f54a17ed",
+"815c570efce33283",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/7.html": [
-"676c580b0d2b4051",
+"397bd8688bed225b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/8.html": [
-"3bf69090f9fb0351",
+"6a7c3f2ca1194c56",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/9.html": [
-"586479815931fdb6",
+"4ebd5816426da4d0",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-ling-gong/index.html": [
@@ -11932,7 +14804,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/10.html": [
-"89228f656c5d36a6",
+"b7391f8090ff6d1f",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/11.html": [
@@ -11960,15 +14832,15 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/17.html": [
-"0fdaee272e3d25e1",
+"086346fa291b8786",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/18.html": [
-"4fcf320af2943127",
+"5314a29d2ffba251",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/19.html": [
-"d238f42f3628eeaa",
+"c09a4d971227779e",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/2.html": [
@@ -11980,7 +14852,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/21.html": [
-"c324d1bf0e824389",
+"7dc58b0df69477e7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/22.html": [
@@ -11996,15 +14868,15 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/3.html": [
-"2fa0ec5c5cbf7070",
+"85405e4d33d70d6e",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/4.html": [
-"948dbb3c973a7641",
+"ff715420c03a6539",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/5.html": [
-"f0a3a97b30100188",
+"a3fbdba7fcebf1a2",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/6.html": [
@@ -12016,11 +14888,11 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/8.html": [
-"c6e86c9638732539",
+"89819cda84cbd2cd",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/9.html": [
-"dc3f5f51dd8ef76d",
+"0cfcb2a383f51bdf",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zheng/index.html": [
@@ -12028,47 +14900,47 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/1.html": [
-"578f35a6154da034",
+"f61c7d30e76739bf",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/10.html": [
-"a59581c8215888e1",
+"12cfd0548a77d202",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/11.html": [
-"d87122640630f96c",
+"e920126764da5874",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/2.html": [
-"4b4515c24ea36b50",
+"3dfd2a0e756ee91c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/3.html": [
-"362bbcc4b6c6362d",
+"f1640d802e7945e8",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/4.html": [
-"d2112d1702c6258b",
+"8d42147606c34065",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/5.html": [
-"94323c4b755aa427",
+"19108c99e677a5f6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/6.html": [
-"fcf1250082f52f0d",
+"95d359b1a4d302d4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/7.html": [
-"806d77401a54409e",
+"340084dd57931159",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/8.html": [
-"7e08d61fcabd58f6",
+"91c006d8c74fa7b6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/9.html": [
-"996285536584f178",
+"d611e5d7e1f581f6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/wei-zi/index.html": [
@@ -12076,103 +14948,103 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/1.html": [
-"9b9c1a285d54b25c",
+"60b605ba6885f82d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/10.html": [
-"ab5eb150feb2d341",
+"dc18d2de8cd7f1f1",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/11.html": [
-"4ee08783e8bbdf5d",
+"f7e6ad558c82bd7d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/12.html": [
-"0772b4c63ef0a642",
+"fad8c8cd580a7d5a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/13.html": [
-"7f96469a9b681be2",
+"633d19ed143e1376",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/14.html": [
-"dfddd9950bbcc43d",
+"716d08c775568948",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/15.html": [
-"3794cd269463e1b4",
+"292ee178100c05fb",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/16.html": [
-"355042408bce0dc3",
+"0fe665102e6c47ce",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/17.html": [
-"1c0af53b1875cf66",
+"c38af17272e34b7c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/18.html": [
-"f53d519f363656b1",
+"771caa61fc8f2403",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/19.html": [
-"56d61a721d577479",
+"4ac86927462654e1",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/2.html": [
-"dc3b2518593fe215",
+"727461f0ee8c1b64",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/20.html": [
-"1a7459aea65b054f",
+"da3eabb5d0453708",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/21.html": [
-"61afa8b675d39d56",
+"0313870aee2f6a0f",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/22.html": [
-"ff217f6113712b3d",
+"8cc7465dac04235f",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/23.html": [
-"201014f90ab88761",
+"3c33fb7774c678d4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/24.html": [
-"60cf886e18387a86",
+"4db3102dc87b688e",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/25.html": [
-"dfe4ddb82e6e69cf",
+"b9125c773e3444e6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/3.html": [
-"4ffbccb5aa68c433",
+"496bff9acf32c12a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/4.html": [
-"7ea3ee80d1daa9f2",
+"a967bbf74d605f88",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/5.html": [
-"6a5bfa1c72f23210",
+"d0e26392745823ae",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/6.html": [
-"b13e1e24f25d8b89",
+"eabc98d1089432ec",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/7.html": [
-"417063bc7f6efdf6",
+"58f8b93fbe29cdb8",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/8.html": [
-"c52a0dfb381c3c0a",
+"b14dd85e0acc42e2",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/9.html": [
-"1ef01d165b66fbf5",
+"09615dfd79671823",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-jin/index.html": [
@@ -12180,191 +15052,191 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/1.html": [
-"8a1150177540b9c1",
+"86ccf8813a541db7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/10.html": [
-"d2bf88c9c6227fcf",
+"cdd63e4265d76588",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/11.html": [
-"ea328f4a47efe04f",
+"4c843970aa6f4489",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/12.html": [
-"9cc72090a348fa4f",
+"19b821ad9d1afb1f",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/13.html": [
-"49c0f318ca4f76d3",
+"166278de62d59a33",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/14.html": [
-"0c9aec0e78802969",
+"f691c4e8edc4c3e3",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/15.html": [
-"a0c413b6890ec73b",
+"0c6888c8126c6c60",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/16.html": [
-"bcb65d1395d7a1a9",
+"26540b145e2e04e3",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/17.html": [
-"32586d2ae223ef16",
+"bb7f0b99f1bbc418",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/18.html": [
-"5808857a5c7c01f7",
+"2c4108cfe330fad4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/19.html": [
-"ed8e61c6042da83f",
+"31a1ec3a42352c58",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/2.html": [
-"24671467b4930c11",
+"473f36ab8acdc04d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/20.html": [
-"066e31049e85069a",
+"a9945d85ed22468c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/21.html": [
-"5918b51ae20e5c8a",
+"a34bfd986e887dde",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/22.html": [
-"b5e88754bcf2831d",
+"349fcb7d5c76184a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/23.html": [
-"78b3395a6a598a06",
+"0e52bd33e73569d2",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/24.html": [
-"66955d5f1a9754a0",
+"01359fcfda5a5cf2",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/25.html": [
-"b23863bd18812475",
+"1e7682be3b2ac052",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/26.html": [
-"7abc9ccfa0b617dd",
+"ca522ff70ccf5890",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/27.html": [
-"b43edd7b8151fa9d",
+"619d0ea4e306ae4a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/28.html": [
-"420db54a5d3933b1",
+"dc5f82c41be27d9b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/29.html": [
-"95af51b2e3dcf13d",
+"7043c9267cdf5205",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/3.html": [
-"2fdc0ef142f1135d",
+"9dc5e00f900db3b8",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/30.html": [
-"2197183947d0b802",
+"e690531a6cf22c95",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/31.html": [
-"d30363af9fcd04ff",
+"ccf48986cbec01ad",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/32.html": [
-"301f040b1fa21669",
+"3da4ef97e6a5db50",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/33.html": [
-"5632f92cde8e0cc7",
+"c5d9958c1fd44bad",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/34.html": [
-"73342b93ecd72666",
+"cc13b1042750bb2c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/35.html": [
-"ee3939fbef1f0193",
+"c730fe69ee56441a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/36.html": [
-"ce5be849bafbf04d",
+"5f4c80606005a211",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/37.html": [
-"1a66c118dc932151",
+"d5bf7793d7bdfed5",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/38.html": [
-"9a3c219dd60ff824",
+"bf79099370c27d7c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/39.html": [
-"c45e0db27ef81521",
+"da69832628790df8",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/4.html": [
-"518d7859964d0f0e",
+"752c814dec89a44b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/40.html": [
-"36b97bb0d5ff4b1d",
+"44bc81445c323dbb",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/41.html": [
-"6815d610ec528572",
+"de8653538116c08b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/42.html": [
-"acc6ac9f40e9fdb9",
+"252bd084996cf886",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/43.html": [
-"9baacec7fa9ad8d2",
+"2615438934db59f6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/44.html": [
-"6cd221352c96adf5",
+"28c4378a874eee96",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/45.html": [
-"90c92632abeb5c5f",
+"eb600374cdd2b451",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/46.html": [
-"c7779e6227fa3390",
+"fd0d8f045926cc68",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/47.html": [
-"6e9729fcd75f115a",
+"0ed7b0d826ffe7f0",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/5.html": [
-"993b3ff43116ddc3",
+"85019aa44ba6b2a5",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/6.html": [
-"9f5b7ad0f4aebe48",
+"114cb8c0591e2122",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/7.html": [
-"e820fddb46fb17ee",
+"c6672b4fc566aaff",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/8.html": [
-"e5e76c490969ef24",
+"6cfdb3e3d37be37a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/9.html": [
-"1b0a11ced83cd8d0",
+"11574af2b6a6183b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xian-wen/index.html": [
@@ -12372,71 +15244,71 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/1.html": [
-"71f9b8e4eddbc800",
+"c1d08a1fd9e3029b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/10.html": [
-"1fa1ece7c4ed44da",
+"a34f2891a9502b97",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/11.html": [
-"e06ae17c37d554bd",
+"071168d5d2da0baf",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/12.html": [
-"c5a1da02d59af1ca",
+"6512529d267a1a6d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/13.html": [
-"eb3ad5608bea7522",
+"d0b87b2fc1f87679",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/14.html": [
-"44358d5ec54773eb",
+"92fafbed5dcfc68a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/15.html": [
-"642826a33cf8ae2a",
+"1e4bb4167bde375c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/16.html": [
-"1e65784e1ab3ec15",
+"26b3ba98ee55d117",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/17.html": [
-"fa9c31f3eaba2141",
+"940df0e8817423ff",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/2.html": [
-"8b679024b378b1b5",
+"90422a2f74e5e59d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/3.html": [
-"b72052884791e3ce",
+"320cb14665e03fb8",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/4.html": [
-"e943fd0b4494269d",
+"c0d2662d61464d7d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/5.html": [
-"9d7a9eb160180b53",
+"215aee2d5aba9773",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/6.html": [
-"ba6da2d10eb43c04",
+"21a5fec80d7937a9",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/7.html": [
-"3835fb279cd7ad03",
+"1c6f7ddc0d814b68",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/8.html": [
-"7334a9dcf6181d78",
+"8a20fd04e30b480e",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/9.html": [
-"1f92ead62b8f9532",
+"c40679341eea11b8",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xiang-dang/index.html": [
@@ -12444,15 +15316,15 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/1.html": [
-"0c9668e8f2080154",
+"e85a33f658cf8d67",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/10.html": [
-"db1f892057d82055",
+"14750c9fdcac4b85",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/11.html": [
-"7a3c99b5249a6060",
+"7e293a1ea3595c8d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/12.html": [
@@ -12460,7 +15332,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/13.html": [
-"574d89fe0b3c9b4b",
+"32ded635e09527cd",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/14.html": [
@@ -12468,7 +15340,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/15.html": [
-"b04e0beb9b5d07e1",
+"4e0a199dde3dead1",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/16.html": [
@@ -12476,7 +15348,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/2.html": [
-"03ccd90ed5703f7c",
+"860b663af12a7f9a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/3.html": [
@@ -12484,7 +15356,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/4.html": [
-"7f24d019e385c83a",
+"9b3583923adbf58a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/5.html": [
@@ -12492,7 +15364,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/6.html": [
-"250b570474fd75d8",
+"689b7551151363a1",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/7.html": [
@@ -12500,7 +15372,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/8.html": [
-"45cb6876d2bd5290",
+"d090cd4117ea4f2a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/xue-er/9.html": [
@@ -12512,99 +15384,99 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/1.html": [
-"44e04bd17c5d3e92",
+"4ea71fa2156de58a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/10.html": [
-"4430b2fb5329c9f1",
+"360c5780977b56cb",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/11.html": [
-"6d3f4611e245018b",
+"15e65a57f391f33b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/12.html": [
-"6b6dbbd05dd13385",
+"6021b83cb365d5c3",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/13.html": [
-"30661997001fd7da",
+"2c6a6bad7570c8e8",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/14.html": [
-"1507b2bfe00548e0",
+"824440492f04f590",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/15.html": [
-"65c0a967cf67a1ae",
+"91c6ebd85b022fe1",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/16.html": [
-"e36b7712aac83343",
+"1c2fd50340709351",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/17.html": [
-"58ebe4563c4ba169",
+"208384960740228d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/18.html": [
-"a1d76a5601d7b5c4",
+"da49567638d0f846",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/19.html": [
-"bf339c6bd4c05ebc",
+"98a2a7ac55e9c372",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/2.html": [
-"ce91489a7ebf2511",
+"11483b7825492279",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/20.html": [
-"78b3d880efab0404",
+"b57e63210a1bc6dc",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/21.html": [
-"1f57cb25a12039f5",
+"9908087a867658df",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/22.html": [
-"3984ab7ff24f79bf",
+"a5ea5a7fc4cf8934",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/23.html": [
-"060647df5d2b41ff",
+"f92faa7640928bc3",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/24.html": [
-"128b1ede914ef068",
+"5d949621e61b27a9",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/3.html": [
-"bf26c188ce90ea95",
+"d12b53185059b686",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/4.html": [
-"ea3251eab42ebde1",
+"cbccf478bdd4e099",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/5.html": [
-"d17b3c4c38c0124a",
+"96bebe0e42466cd6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/6.html": [
-"484c57b5d7fa5221",
+"ac793112d6984fa1",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/7.html": [
-"c989d1b5c3ed4e0f",
+"73591515ecbe4729",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/8.html": [
-"5d5ae8f9d3ec43de",
+"43d98777fb646053",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/9.html": [
-"5e14fff45979fba7",
+"641fe1e514269070",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yan-yuan/index.html": [
@@ -12612,107 +15484,107 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/1.html": [
-"ce1b8efa557a18eb",
+"7e1feed6ca68c723",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/10.html": [
-"f6b572503cf3b983",
+"6a2a1ce93b5dd1b0",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/11.html": [
-"36c90a68aab9cea1",
+"6bb3af2fe03c1f18",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/12.html": [
-"8e170f6bdca5bcf9",
+"e8561d505e59ac84",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/13.html": [
-"1f614c4e73d3e5ea",
+"243db9786dba3f89",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/14.html": [
-"78cccb73a6bd8959",
+"71a93c5278c2153b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/15.html": [
-"61da783ea6e73d4b",
+"41c9a8be7c78af59",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/16.html": [
-"ddc326a7033701bd",
+"166664d6ae3c1329",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/17.html": [
-"ec17fb5ab6e24523",
+"bbe97674e14435f7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/18.html": [
-"edd2ec800dc98a42",
+"1d8e4b91219a3168",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/19.html": [
-"7a8c91e0183a876f",
+"f63efb6df44e43f2",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/2.html": [
-"9160eb06428a0bd8",
+"1ad4b506e5cfdb33",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/20.html": [
-"cc3fcbf29b8b4747",
+"c90df24b3d817ea6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/21.html": [
-"7b0e5b53514797eb",
+"5f46752b3ad4bec6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/22.html": [
-"912dfe7001edbb8f",
+"a4c7ce3cbfae3a94",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/23.html": [
-"f3d89a8b78f1c974",
+"20fc8b090671a09c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/24.html": [
-"b91d03fc9a51ff1f",
+"8ee43aa106538013",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/25.html": [
-"df15fcc91fc5da71",
+"b1085963aa62e23b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/26.html": [
-"4447dce9f03ca0a1",
+"5538b102efeddccd",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/3.html": [
-"7329c540a5bcf964",
+"e46b608a53cc3d44",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/4.html": [
-"a695d32218e1f149",
+"ddc76e72dfc652ec",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/5.html": [
-"35d57443e3733c0e",
+"c70b4182cb513599",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/6.html": [
-"03717818874ca08e",
+"77c3f02322b5af55",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/7.html": [
-"9c574c6892e9ad71",
+"4fdbd3ffb9496eea",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/8.html": [
-"d8bbc476a53a3642",
+"152760287f369156",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/9.html": [
-"91b95b875d1db5bf",
+"2007f29d6051b11a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yang-huo/index.html": [
@@ -12720,15 +15592,15 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/yao-yue/1.html": [
-"c4d46f1b563dac28",
+"85f7689248b676d4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yao-yue/2.html": [
-"c241c6ea6592e92e",
+"0596ae5e8fcc7606",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yao-yue/3.html": [
-"e0113a8cabc1f72e",
+"3670d2eadf7a5ffc",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yao-yue/index.html": [
@@ -12740,15 +15612,15 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/10.html": [
-"f062e336c1ab8fb6",
+"eeb5b7b411232d0e",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/11.html": [
-"33378b6f8382fd95",
+"b9f5f86b4df18f11",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/12.html": [
-"6cae8e6f84fd404b",
+"dcb0126b983b98ef",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/13.html": [
@@ -12756,7 +15628,7 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/14.html": [
-"97cd25ed0399959b",
+"8d43679dc7d3f48a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/15.html": [
@@ -12776,55 +15648,55 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/19.html": [
-"55d4edd35be5ef62",
+"55e7a37777e97b91",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/2.html": [
-"a6cfbf5c19c4069b",
+"24028b937c4d687a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/20.html": [
-"e4c372b6e91d215a",
+"2ff08873a45d4236",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/21.html": [
-"4261fdfb78c83f45",
+"6562337683dde87d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/22.html": [
-"831c3d70b1b31697",
+"036aab10e67b9ebd",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/23.html": [
-"a1f459902537a872",
+"603e3830b642c3dc",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/24.html": [
-"f23b5423ceee7f9d",
+"1ffa382dd1b5901b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/25.html": [
-"e5874f5eb1114171",
+"04b2243fc25bd4e6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/26.html": [
-"6ad39f2ebaef9f92",
+"ac0a19a61f8beb21",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/27.html": [
-"b844e2157c247831",
+"79682e539eb16dc3",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/28.html": [
-"e9a596828259bfb2",
+"f4c95ddc5b4f877a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/3.html": [
-"3fab5d5eba9adbe7",
+"1f0e2e2210b3cdd7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/4.html": [
-"ef9fb3d5b2611ad1",
+"96d6c9bb9cb8419c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/5.html": [
@@ -12836,15 +15708,15 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/7.html": [
-"6e875c42f7330e1d",
+"4bcd5cd1c303bb52",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/8.html": [
-"9204af18fbb5f147",
+"86cf03861b0ee934",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/9.html": [
-"94199a66fb7da0a4",
+"fa339ba4997572d7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/yong-ye/index.html": [
@@ -12852,123 +15724,123 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/1.html": [
-"b6bfc2b6491c1410",
+"742cb555c0b544c0",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/10.html": [
-"148e103dc5c656f3",
+"b82ba431935194a6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/11.html": [
-"04236ff77dad984c",
+"246b388a2fa9748c",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/12.html": [
-"58be9fc1ee170864",
+"d2cfb76762d95e3d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/13.html": [
-"03b01ef7b134f313",
+"23ee46c13de9540d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/14.html": [
-"d568b386acb9151d",
+"607f22109fb9ea6a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/15.html": [
-"50454bef90b9e266",
+"e400bfd66b672b88",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/16.html": [
-"b64c80ceb652c1e9",
+"516437ad4bf918c7",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/17.html": [
-"cd4c2516845c40c9",
+"cefd1b5dd533abde",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/18.html": [
-"dc19426a0c90a1a5",
+"fa6a0d93e15ccf3a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/19.html": [
-"80b269dca32f71e9",
+"1c629bb6216726ae",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/2.html": [
-"a03cbf0569bc9ca1",
+"804c19864bf6b7c4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/20.html": [
-"c37ddfedb0d1e92c",
+"644a4eb9f94a0ede",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/21.html": [
-"1e1453fe5c8b20d5",
+"2c721791e51f5ab3",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/22.html": [
-"7fdef9929f50bc53",
+"fad2d9376ebab5a2",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/23.html": [
-"6e32452ab1200db9",
+"1ca7e824f7f4d041",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/24.html": [
-"4d361f4e13aa4384",
+"1ad80e778d5855c3",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/25.html": [
-"99c45179b2119c89",
+"c9aa15d4caf030fd",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/26.html": [
-"58925da0c1efb3ec",
+"7b47c1fd9008a344",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/27.html": [
-"3f386f6d63a27df8",
+"71c5dc38a76b940b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/28.html": [
-"09651636f5040e04",
+"0b0a0c088d2ebd6b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/29.html": [
-"b5d4990cf61c387e",
+"37833322edea351d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/3.html": [
-"8aa9683ddc9f8bd9",
+"271cc5a070d50d2d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/30.html": [
-"ed2da341834bace6",
+"b70ee2893d71f7e1",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/4.html": [
-"76dcfde816ddf015",
+"816dcec2ba80b961",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/5.html": [
-"0a0c43fe020f06de",
+"3aec935214d8cbe9",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/6.html": [
-"76b62d9f8b764c2a",
+"92e399c73eb23c19",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/7.html": [
-"a89b011b0a050fc5",
+"d1496db2b29651d4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/8.html": [
-"7d6f54d831eda1ef",
+"cd615f7bac778351",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/9.html": [
-"a1c9b139c147f229",
+"9dd6ff5ef36fb1c2",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-han/index.html": [
@@ -12976,123 +15848,123 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/1.html": [
-"347ddcee009fe4d2",
+"8f8c03036443ebff",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/10.html": [
-"3978352e0fddb6a1",
+"2e3684b5d5795728",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/11.html": [
-"bf0f46e824bdc80f",
+"03e9e4393eaf51e8",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/12.html": [
-"3ff25f7bb3efec9f",
+"deca921c5a4dd574",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/13.html": [
-"813fb43f97ab87d3",
+"7c406020c096f2b3",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/14.html": [
-"63cbd5b28a48963e",
+"c0cc8ba390dfd545",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/15.html": [
-"6028b19d1b34612d",
+"da7a791b52a2e6cb",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/16.html": [
-"a1aba6b41a257c13",
+"c62816cfd8af3a80",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/17.html": [
-"92e63cca21707e23",
+"e202e6fcb2987f62",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/18.html": [
-"7a8f3ca6831574cd",
+"03962c1193bce575",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/19.html": [
-"34367d0469623315",
+"e81f80452a33b61a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/2.html": [
-"4cdd25cf889b9314",
+"cc012db6e826fbf1",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/20.html": [
-"da91b49ff0d66b37",
+"dcbe92102b77eecb",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/21.html": [
-"aad79c74e78e1b0e",
+"89306b6c50df61d4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/22.html": [
-"0893e4faf747a4e8",
+"edd9d2a6d3c06d1f",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/23.html": [
-"cc2595ce6594e981",
+"85bd9cc5f0d5a810",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/24.html": [
-"e5c5e68953117a28",
+"3fbd60008b633d88",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/25.html": [
-"55cb198af373fe39",
+"1385873a07d6c4d6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/26.html": [
-"21e755693568ed8f",
+"0c0e69c4962de4b5",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/27.html": [
-"fbb47d4492e7b91a",
+"5ed0653a04e20625",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/28.html": [
-"a8d91674011a4de2",
+"484438c0b088891b",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/29.html": [
-"1acda26228963889",
+"8dc60e54fb051827",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/3.html": [
-"913ba1da4036c413",
+"125041642483d919",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/30.html": [
-"7d2b4c032461b351",
+"7f119b9a145a0579",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/4.html": [
-"15477e6247d96de6",
+"b32ae56d2a5febfd",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/5.html": [
-"c527b9e0dc51e3ec",
+"3bc0010c1da3d537",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/6.html": [
-"72626665d9762bb3",
+"c9963fc9b74cbf80",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/7.html": [
-"e76a89483c8540b6",
+"46744cb0038e13a6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/8.html": [
-"82eb5bad084c3e04",
+"3c394a69bfae8e60",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/9.html": [
-"097037706ca80e65",
+"7e67e56713b3a381",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-lu/index.html": [
@@ -13100,103 +15972,103 @@
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/1.html": [
-"cd445fd8a22d7cf9",
+"d1dd520081c71652",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/10.html": [
-"eaa1f2546363b06a",
+"1bd9c063ddcadd8a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/11.html": [
-"081f91a4292f51ad",
+"371ad9cbea9eb061",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/12.html": [
-"6f533e6d3f6dde45",
+"aea69cf553ccce9d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/13.html": [
-"eec4aa5661098872",
+"b02ab354202ba917",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/14.html": [
-"7a63a244e1a7ffe6",
+"6e4b8da029885ff5",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/15.html": [
-"8e032e3a8d4e7d13",
+"eb977493a9bb0cc6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/16.html": [
-"21ea775dfed93872",
+"bab960e6ac307a58",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/17.html": [
-"45f00cf1ab38bb59",
+"89515e8d6c23a450",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/18.html": [
-"6f8fc57918363f54",
+"035632412d58fd6d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/19.html": [
-"2ffda5c9d496e10c",
+"93f3cccba79352e8",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/2.html": [
-"ccc6dacbd9da0083",
+"9196691fd6df8cd4",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/20.html": [
-"5ad0e7c546605aef",
+"5e7e6c0b0279dbfb",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/21.html": [
-"6da3a7c67761aeb2",
+"b32eba1dc5064361",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/22.html": [
-"8538d529aa5cdd5e",
+"78082f4b4b12bf0d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/23.html": [
-"35fcb93acd85ac1b",
+"ef7a4988f911fc3a",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/24.html": [
-"584b707da5bb1593",
+"5a1b084738a5378d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/25.html": [
-"955b7d5acc9cdfc8",
+"11b134f2403ab411",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/3.html": [
-"9c56d58efa4f37ad",
+"bff7b887ad75e18f",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/4.html": [
-"0d17b3529b7d5e5d",
+"6cfeaa74ee08398e",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/5.html": [
-"3c109bad56b2c8fa",
+"ac449a6ed99ded08",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/6.html": [
-"b262890942771bd3",
+"858074d0ff2e9769",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/7.html": [
-"bdc1220e578bb0b3",
+"2b457a02597b6a7d",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/8.html": [
-"eaba0cb6c187e821",
+"212f846e86e9a292",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/9.html": [
-"5857a763ffcf8702",
+"04cd262bb5ca28c6",
 "2026-11-13"
 ],
 "zh-hant/lunyu/zi-zhang/index.html": [
@@ -14008,7 +16880,7 @@
 "2026-11-13"
 ],
 "zh-hant/search.html": [
-"86694c9335753990",
+"6e80549e6ddb3386",
 "2026-11-13"
 ],
 "zh-hant/search.json": [
@@ -14172,15 +17044,15 @@
 "2026-11-13"
 ],
 "zh-hant/zhuanti/dao.html": [
-"a26730ed414600be",
+"b8c219e4996dfe3a",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/index.html": [
-"182b5ecfd596ad51",
+"03134444c958bddc",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/junzi.html": [
-"848ee46fb804fc91",
+"e61c8bdda352c335",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/keben.html": [
@@ -14188,11 +17060,11 @@
 "2026-11-13"
 ],
 "zh-hant/zhuanti/le.html": [
-"4f6e7c7f0e8fe221",
+"6c278defb164dab1",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/li.html": [
-"acc42bc1afedbfe0",
+"121df47fc0977452",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/lu-liuqi.html": [
@@ -14220,47 +17092,47 @@
 "2026-11-13"
 ],
 "zh-hant/zhuanti/ming.html": [
-"94df7458547088de",
+"06573ed45172d5ef",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/ren.html": [
-"a064e224a5fede7b",
+"a47f76403ef2fe3a",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/shi.html": [
-"a7931fa020920283",
+"21bf489fb6e88a27",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/tianming.html": [
-"381eb65aa86857d0",
+"d948aa59e7e8313c",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/xiao.html": [
-"717532914bec7f0d",
+"7a7925bbdeac1b7b",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/xin.html": [
-"aaa65863f64d1e8b",
+"8c9f571cca5d186b",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/xin2.html": [
-"c0f24351718a1859",
+"39fc8bb370a32432",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/xing.html": [
-"727c50cddd101a40",
+"d38fa4dd35223443",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/xue.html": [
-"0efb5fb200480ce1",
+"27f431f8f7280622",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/you.html": [
-"b624a60f32a29cfd",
+"49584f5dfd4a54e0",
 "2026-11-13"
 ],
 "zh-hant/zhuanti/zheng.html": [
-"541574b76e85d1df",
+"21290c393c8d780f",
 "2026-11-13"
 ],
 "zh-hant/zi.html": [
@@ -14272,15 +17144,15 @@
 "2026-11-13"
 ],
 "zhuanti/dao.html": [
-"ebcf6f40d5e88889",
+"f1451a9195bf8d3c",
 "2026-11-13"
 ],
 "zhuanti/index.html": [
-"c52387b4ed3a819e",
+"ff3881ee85fb2e3e",
 "2026-11-13"
 ],
 "zhuanti/junzi.html": [
-"c2103ebfd4bd5c39",
+"08a43dcf8d968f88",
 "2026-11-13"
 ],
 "zhuanti/keben.html": [
@@ -14288,11 +17160,11 @@
 "2026-11-13"
 ],
 "zhuanti/le.html": [
-"84ca77deadeb6a54",
+"b0386647ea654608",
 "2026-11-13"
 ],
 "zhuanti/li.html": [
-"2e2978b39b738db4",
+"93cd883edb50170a",
 "2026-11-13"
 ],
 "zhuanti/lu-liuqi.html": [
@@ -14320,47 +17192,47 @@
 "2026-11-13"
 ],
 "zhuanti/ming.html": [
-"f516013da73003bc",
+"d96a88ad8d56353b",
 "2026-11-13"
 ],
 "zhuanti/ren.html": [
-"3857578ba4526d86",
+"2595de62376c8738",
 "2026-11-13"
 ],
 "zhuanti/shi.html": [
-"6f131146fd006c89",
+"ee5a872955ccc782",
 "2026-11-13"
 ],
 "zhuanti/tianming.html": [
-"846b6986bdac6b98",
+"25534b0846b97fb4",
 "2026-11-13"
 ],
 "zhuanti/xiao.html": [
-"cc87bf9f3664297b",
+"d312e9c3f4ecdafe",
 "2026-11-13"
 ],
 "zhuanti/xin.html": [
-"d2cc72aefc9c9430",
+"aec7ff4d0078fcce",
 "2026-11-13"
 ],
 "zhuanti/xin2.html": [
-"5f132b7d95902864",
+"ba8cee2c3dea970d",
 "2026-11-13"
 ],
 "zhuanti/xing.html": [
-"6b169a8f4ca4324a",
+"766835a9d96ab649",
 "2026-11-13"
 ],
 "zhuanti/xue.html": [
-"7297c6391276402b",
+"8e4db9ee02936336",
 "2026-11-13"
 ],
 "zhuanti/you.html": [
-"f3e4ed1c1f9ef468",
+"aabce918c9319b59",
 "2026-11-13"
 ],
 "zhuanti/zheng.html": [
-"01864819696275a4",
+"412aa354ae7e47cb",
 "2026-11-13"
 ],
 "zi.html": [

@@ -285,7 +285,7 @@ BOOK_GROUPS = [
 BOOK_SUB = {"liji": [("daxue", "大学"), ("zhongyong", "中庸")]}  # 挂在某书底下的篇
 LIVE_BOOKS = {"lunyu"}
 # 专题闯关的页面脚本（关卡图、专题页进度条、跟着一个人读的进度）；读本机 yk_xd 里读过的章
-QUEST_JS = """<script>(function(){var H=/Hant/.test(document.documentElement.lang),T=H?{st:"已點亮 {a} 關 · 通關 {b} 關 · 讀過其中 {c} 章",nx:"下一關",ok:"通關",go:"接著闖：",all:"本關已通。再讀一遍，也算溫故。",rd:"已讀 {x} / {n} 章",st0:"從第一關開始"}:{st:"已点亮 {a} 关 · 通关 {b} 关 · 读过其中 {c} 章",nx:"下一关",ok:"通关",go:"接着闯：",all:"本关已通。再读一遍，也算温故。",rd:"已读 {x} / {n} 章",st0:"从第一关开始"};
+QUEST_JS = """<script>(function(){var T=@QT@;
 var seen=[];try{seen=((JSON.parse(localStorage.getItem("yk_xd")||"{}").b||{}).lunyu||{}).seen||[]}catch(e){}
 var S={};seen.forEach(function(c){S[c]=1});function cs(el){try{return JSON.parse(el.getAttribute("data-cs"))}catch(e){return[]}}
 function f(t,o){return t.replace(/\\{(\\w+)\\}/g,function(_,k){return o[k]})}
@@ -301,6 +301,34 @@ document.querySelectorAll(".qbar").forEach(function(qb){var C=cs(qb),x=C.filter(
  if(c0){var A=c0.querySelector("a");g.innerHTML='<a class="btn" href="'+A.getAttribute("href")+'">'+T.go+A.querySelector("em").textContent+" "+A.querySelector("b").textContent+" →</a>"}else g.textContent=T.all});
 document.querySelectorAll(".gsroute[data-cs]").forEach(function(r){var C=cs(r),x=C.filter(function(c){return S[c]}).length;if(!x)return;var d=r.querySelector("div"),e=document.createElement("small");e.className="qr";e.textContent=f(T.rd,{x:x,n:C.length});d.appendChild(e);if(x==C.length)r.classList.add("done")})
 })();</script>"""
+
+# 闯关各语种界面字（11-13 主人：各语言功能尽量一致）。js：页面脚本用；lv 第几关、bar 本关说明、nx 下一关、ch 章数、intro 关卡图说明、note 进度说明
+QUEST_TXT = {
+ "zh-Hans": {"js": {"st": "已点亮 {a} 关 · 通关 {b} 关 · 读过其中 {c} 章", "nx": "下一关", "ok": "通关", "go": "接着闯：", "all": "本关已通。再读一遍，也算温故。", "rd": "已读 {x} / {n} 章", "st0": "从第一关开始"},
+             "lv": "第 {k} 关", "bar": "本关 {n} 章：读过一章点亮，章章读过通关", "nx": "下一关", "ch": "{n} 章", "intro": "{n} 关，一关一个字。读过本关一章就点亮，章章读过就通关；从第一关“{f}”开始。", "note": "进度只记在这台设备上，一孔录无需登录，不取隐私。"},
+ "zh-Hant": {"js": {"st": "已點亮 {a} 關 · 通關 {b} 關 · 讀過其中 {c} 章", "nx": "下一關", "ok": "通關", "go": "接著闖：", "all": "本關已通。再讀一遍，也算溫故。", "rd": "已讀 {x} / {n} 章", "st0": "從第一關開始"},
+             "lv": "第 {k} 關", "bar": "本關 {n} 章：讀過一章點亮，章章讀過通關", "nx": "下一關", "ch": "{n} 章", "intro": "{n} 關，一關一個字。讀過本關一章就點亮，章章讀過就通關；從第一關「{f}」開始。", "note": "進度只記在這台裝置上，一孔錄無需登入，不取隱私。"},
+ "en": {"js": {"st": "{a} levels lit · {b} cleared · {c} chapters read", "nx": "Next", "ok": "cleared", "go": "Continue: ", "all": "Level cleared. Reading it again still counts as review.", "rd": "{x} / {n} chapters read", "st0": "Start from level 1"},
+        "lv": "Level {k}", "bar": "{n} chapters: read one to light it up, read them all to clear it", "nx": "Next level", "ch": "{n} ch.", "intro": "{n} levels, one character each. Read one chapter of a level to light it up; read every chapter to clear it. Start with level 1, “{f}”.", "note": "Progress is kept on this device only. No sign-in, no personal data."},
+ "ja": {"js": {"st": "{a} 関点灯 · {b} 関突破 · うち {c} 章読了", "nx": "次の関", "ok": "突破", "go": "続きから：", "all": "この関は突破済み。もう一度読むのも温故です。", "rd": "{x} / {n} 章読了", "st0": "第一関から"},
+        "lv": "第 {k} 関", "bar": "この関は {n} 章：一章読めば点灯、全章読めば突破", "nx": "次の関", "ch": "{n} 章", "intro": "全 {n} 関、一関一字。その関の章を一つ読めば点灯、全部読めば突破。第一関「{f}」から始めましょう。", "note": "進み具合はこの端末だけに保存されます。ログイン不要、個人情報は取りません。"},
+ "ko": {"js": {"st": "{a}관 점등 · {b}관 통과 · 그중 {c}장 읽음", "nx": "다음 관", "ok": "통과", "go": "이어서: ", "all": "이 관은 통과했습니다. 다시 읽는 것도 온고입니다.", "rd": "{n}장 중 {x}장 읽음", "st0": "제1관부터"},
+        "lv": "제{k}관", "bar": "이 관은 {n}장: 한 장 읽으면 점등, 모두 읽으면 통과", "nx": "다음 관", "ch": "{n}장", "intro": "{n}관, 한 관에 한 글자. 한 장을 읽으면 점등, 모든 장을 읽으면 통과. 제1관 “{f}”부터 시작하세요.", "note": "진행 상황은 이 기기에만 저장됩니다. 로그인도 개인정보도 필요 없습니다."},
+ "fr": {"js": {"st": "{a} niveaux allumés · {b} réussis · {c} chapitres lus", "nx": "Suivant", "ok": "réussi", "go": "Continuer : ", "all": "Niveau réussi. Relire compte aussi comme révision.", "rd": "{x} / {n} chapitres lus", "st0": "Commencer au niveau 1"},
+        "lv": "Niveau {k}", "bar": "{n} chapitres : lisez-en un pour l’allumer, tous pour le réussir", "nx": "Niveau suivant", "ch": "{n} ch.", "intro": "{n} niveaux, un caractère chacun. Un chapitre lu allume le niveau ; tous lus, il est réussi. Commencez par le niveau 1, « {f} ».", "note": "La progression reste sur cet appareil. Sans compte, sans données personnelles."},
+ "es": {"js": {"st": "{a} niveles encendidos · {b} superados · {c} capítulos leídos", "nx": "Siguiente", "ok": "superado", "go": "Continuar: ", "all": "Nivel superado. Releer también cuenta como repaso.", "rd": "{x} / {n} capítulos leídos", "st0": "Empezar por el nivel 1"},
+        "lv": "Nivel {k}", "bar": "{n} capítulos: lee uno para encenderlo, todos para superarlo", "nx": "Siguiente nivel", "ch": "{n} cap.", "intro": "{n} niveles, un carácter cada uno. Un capítulo leído enciende el nivel; todos leídos, lo superas. Empieza por el nivel 1, «{f}».", "note": "El progreso se guarda solo en este dispositivo. Sin registro, sin datos personales."},
+ "de": {"js": {"st": "{a} Stufen erleuchtet · {b} geschafft · {c} Kapitel gelesen", "nx": "Weiter", "ok": "geschafft", "go": "Weiter mit: ", "all": "Stufe geschafft. Nochmals lesen ist Wiederholung.", "rd": "{x} / {n} Kapitel gelesen", "st0": "Mit Stufe 1 beginnen"},
+        "lv": "Stufe {k}", "bar": "{n} Kapitel: eines lesen erleuchtet die Stufe, alle lesen schafft sie", "nx": "Nächste Stufe", "ch": "{n} Kap.", "intro": "{n} Stufen, je ein Schriftzeichen. Ein gelesenes Kapitel erleuchtet die Stufe, alle gelesen heißt geschafft. Beginne mit Stufe 1, „{f}“.", "note": "Der Fortschritt bleibt auf diesem Gerät. Keine Anmeldung, keine persönlichen Daten."},
+ "vi": {"js": {"st": "Đã sáng {a} cửa · qua {b} cửa · đọc {c} chương", "nx": "Cửa tiếp", "ok": "đã qua", "go": "Đọc tiếp: ", "all": "Đã qua cửa này. Đọc lại cũng là ôn cố.", "rd": "Đã đọc {x} / {n} chương", "st0": "Bắt đầu từ cửa 1"},
+        "lv": "Cửa {k}", "bar": "{n} chương: đọc một chương là sáng, đọc hết là qua cửa", "nx": "Cửa tiếp theo", "ch": "{n} chương", "intro": "{n} cửa, mỗi cửa một chữ. Đọc một chương là sáng cửa, đọc hết là qua cửa. Bắt đầu từ cửa 1, “{f}”.", "note": "Tiến độ chỉ lưu trên thiết bị này. Không cần đăng nhập, không lấy dữ liệu cá nhân."},
+ "id": {"js": {"st": "{a} level menyala · {b} tuntas · {c} bab dibaca", "nx": "Berikutnya", "ok": "tuntas", "go": "Lanjut: ", "all": "Level tuntas. Membaca ulang juga terhitung mengulang.", "rd": "{x} / {n} bab dibaca", "st0": "Mulai dari level 1"},
+        "lv": "Level {k}", "bar": "{n} bab: baca satu untuk menyalakan, baca semua untuk menuntaskan", "nx": "Level berikutnya", "ch": "{n} bab", "intro": "{n} level, satu aksara tiap level. Baca satu bab untuk menyalakan level, baca semua untuk menuntaskannya. Mulai dari level 1, “{f}”.", "note": "Progres hanya tersimpan di perangkat ini. Tanpa login, tanpa data pribadi."},
+ "ru": {"js": {"st": "Зажжено уровней: {a} · пройдено: {b} · прочитано глав: {c}", "nx": "Дальше", "ok": "пройден", "go": "Продолжить: ", "all": "Уровень пройден. Перечитать — тоже повторение.", "rd": "Прочитано {x} из {n}", "st0": "Начните с уровня 1"},
+        "lv": "Уровень {k}", "bar": "Глав: {n}. Прочтите одну — уровень зажжётся, все — пройден", "nx": "Следующий уровень", "ch": "гл.: {n}", "intro": "Уровней: {n}, по одному иероглифу. Прочитайте одну главу уровня — он зажжётся, все — пройден. Начните с уровня 1, «{f}».", "note": "Прогресс хранится только на этом устройстве. Без входа и личных данных."},
+}
+def quest_js(code):
+    return QUEST_JS.replace("@QT@", json.dumps(QUEST_TXT.get(code, QUEST_TXT["en"])["js"], ensure_ascii=False))
 
 SHOW_DRAFT = True  # “初稿改动”比例：首页小字与方法页
 DRAFT_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/初稿改动.json"
@@ -927,6 +955,53 @@ def zi_tail(code, c, P):
     d = json.dumps({"i": items, "o": occ, "c": c}, ensure_ascii=False).replace("</", "<\\/")
     return f'<script type="application/json" id="zidata">{d}</script>' + ZI_JS
 WJ_TR = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json")) else {}  # 未讲章原文英日译（分享图用）
+WJ_FL = ("en", "ja")  # 未讲章出页的外文（11-13：译文现成 tri-weijiang.json；其余七语没有译文，先不出空壳页，外文页未讲章仍链简体）
+def wj_tr_title(code, c):
+    """外文未讲章标题：取译文首句（去掉“The Master said:”“先生が言われた。”一类引导语），英文最长 64 字母，日文 24 字。"""
+    t = (WJ_TR.get(c, {}).get(code) or "").strip()
+    if not t: return ""
+    if code == "ja":
+        t = re.sub(r"^[^、。「」]{1,6}(?:が言われた|が言った|が問うた)。", "", t)
+        s = ""
+        for m in re.finditer(r"[^。？！]+[。？！]?", t):
+            s += m.group(0)
+            if len(s) >= 8: break
+        s = (s or t).rstrip("。").lstrip("「『")
+        if "「" not in s: s = s.replace("」", "")
+        return s if len(s) <= 24 else s[:23] + "…"
+    t = re.sub(r"^(?:The Master|Confucius|[A-Z][a-z]+(?: [A-Z][a-z]+)?) (?:said|asked)(?: to [A-Z][a-z]+(?: [A-Z][a-z]+)?)?:\s+", "", t)
+    s = ""
+    for m in re.finditer(r"[^.?!;]+[.?!;]?", t):
+        s += m.group(0)
+        if len(s) >= 24: break
+    s = (s or t).strip().rstrip(".;").lstrip("'\"‘“")
+    if len(s) > 64:
+        s = s[:64]
+        s = (s.rsplit(" ", 1)[0] if " " in s[32:] else s).rstrip(" ,;:") + "…"
+    return s[:1].upper() + s[1:]
+WJ_UI = {  # 外文未讲章与闯关、检索新功能的界面字（11-13 主人：各语言功能尽量一致）
+ "en": {"wj_tag": "not yet covered", "wj": "not yet covered", "wj_lead": "The video for this chapter is still in production. For now this page gives the original text, the facsimile page, a working translation and the commentary; the full reading follows when the video is out.",
+        "wj_bh_note": "Draft plain-Chinese rendering following Zhu Xi; it will be checked when the chapter is covered.", "wj_src": "Text: Zhu Xi's Collected Commentaries on the Analects (Sibu Beiyao edition), page {n} of the base edition.",
+        "wj_yang": "Yang Bojun's Lunyu yizhu numbers this chapter {y}.", "wj_pane": "Facsimile", "wj_vid": "The video for this chapter is in production and will appear here. Follow Yikonglu to see it first:",
+        "wj_an_note": "Yikonglu's reading of this chapter is in Chinese for now; the English version comes with the video.", "wj_deep_zx": "Zhu Xi's commentary, line by line", "wj_deep_zx_p": "Zhu Xi's own words on each line of this chapter, each checked against the base-edition page. Other commentators are added when the chapter is covered.",
+        "th_ju": "Line", "wj_cd_none": "",
+        "search_none": "Nothing found. Covered chapters are indexed in full; other chapters by original text and translation.",
+        "s_new": "Recently covered", "s_feed": "Subscribe", "s_last": "Last read"},
+ "ja": {"wj_tag": "未講", "wj": "未講", "wj_lead": "この章の動画は制作中です。サイトでは先に原文・原頁・作業訳と注を載せ、動画の公開後に講読を補います。",
+        "wj_bh_note": "現代中国語訳は朱注に沿った初稿です。講読時に見直します。", "wj_src": "原文は朱熹『論語集注』（四部備要本）、底本第 {n} 頁による。",
+        "wj_yang": "楊伯峻『論語訳注』ではこの章を {y} とする。", "wj_pane": "原頁", "wj_vid": "この章の動画は制作中で、公開されたらここに載せます。一孔録をフォローすると、いち早く見られます：",
+        "wj_an_note": "この章の一孔按は今のところ中国語のみです。日本語版は動画とともに出します。", "wj_deep_zx": "朱熹集注・句ごとの原文", "wj_deep_zx_p": "この章の各句についての朱注の原文。いずれも底本の頁と照合済みです。諸家の説は講読時に補います。",
+        "th_ju": "句", "hj_h": "本句の互見", "hj_note": "注", "hj_book": "論語の他の箇所", "hj_other": "他書の出典", "hj_zb": "この章の諸注", "bb_link": "版本について", "zt_none": "既講の章にはまだありません。",
+        "search_none": "見つかりませんでした。既講の章は全文、未講の章は原文と訳で検索できます。",
+        "s_new": "最近講じた章", "s_feed": "更新を購読", "s_last": "前回の続き"},
+ "ko": {"s_new": "최근 강독한 장", "s_feed": "구독", "s_last": "마지막으로 읽은 곳"},
+ "fr": {"s_new": "Derniers chapitres lus", "s_feed": "S’abonner", "s_last": "Dernière lecture"},
+ "es": {"s_new": "Capítulos recientes", "s_feed": "Suscribirse", "s_last": "Última lectura"},
+ "de": {"s_new": "Zuletzt besprochen", "s_feed": "Abonnieren", "s_last": "Zuletzt gelesen"},
+ "vi": {"s_new": "Chương mới giảng", "s_feed": "Theo dõi", "s_last": "Lần trước đọc đến"},
+ "id": {"s_new": "Bab terbaru", "s_feed": "Langganan", "s_last": "Terakhir dibaca"},
+ "ru": {"s_new": "Недавно разобранные главы", "s_feed": "Подписаться", "s_last": "Последнее прочитанное"},
+}
 TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
 TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
 MEIRI_TXT = {"zh-Hans": {"h": "今日共读", "read": "读这一章", "card": "生成分享图", "plan": "百日读完《论语》"}, "zh-Hant": {"h": "今日共讀", "read": "讀這一章", "card": "生成分享圖", "plan": "百日讀完《論語》"}}
@@ -1322,7 +1397,8 @@ def build_lang(L, D, write):
     urls = []
     def rel_of(c):
         p, n = c.split("."); return f"lunyu/{PIAN[p][1]}/{n}.html"
-    def title_of(c): return L.ch(c).get("title") or (notes[c]["title"] if c in notes else wj_titles(D["qw"])[c])
+    WJF = L.code in WJ_FL  # 本语种也出未讲章页（英日）
+    def title_of(c): return L.ch(c).get("title") or (notes[c]["title"] if c in notes else ((WJF and wj_tr_title(L.code, c)) or wj_titles(D["qw"])[c]))
     if ANALYTICS.get("live") and "OUT_ROOT" in globals():  # 页脚“今天有人读了”、首页“最常被抄走的一句”查标题用
         os.makedirs(os.path.join(OUT_ROOT, "data"), exist_ok=True)
         json.dump({"p": "/" + L.prefix, "c": {c: [title_of(c), rel_of(c), split_ju(yw[c])] for c in pub}, "a": {c: [title_of(c), rel_of(c)] for c in sorted(set(pub) | set(wj_titles(D["qw"])), key=lambda x: tuple(map(int, x.split("."))))}}, open(os.path.join(OUT_ROOT, "data", f"live-{L.code}.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
@@ -1340,9 +1416,9 @@ def build_lang(L, D, write):
     search_idx = []
     pubset = set(pub)
     LB = LIVE_BOOKS | ({"daodejing"} if D.get("ddj") else set())  # 书目、首页亮着的书：论语＋已上原文的书
-    def href(c):  # 已讲章各语种都有页；未讲章只出简繁，外文页链到简体
-        return (P if c in pubset or L.code.startswith("zh") else "/") + rel_of(c)
-    def ctitle(c): return title_of(c) if c in pubset else wj_titles(D["qw"])[c]
+    def href(c):  # 已讲章各语种都有页；未讲章出简繁和英日（WJ_FL），其余外文页链到简体
+        return (P if c in pubset or L.code.startswith("zh") or WJF else "/") + rel_of(c)
+    def ctitle(c): return title_of(c) if c in pubset else ((WJF and wj_tr_title(L.code, c)) or wj_titles(D["qw"])[c])
     def hj_of(c):  # 本句互见：链到已讲章（各语种）或未讲章（简繁有页，外文链简体页）
         kname = {"注": L.t("hj_note"), "本书": L.t("hj_book"), "他书": L.t("hj_other")}
         hj_data = {}
@@ -1548,8 +1624,10 @@ def build_lang(L, D, write):
         write(rel, page(L, ttl, desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@IMG@", "做成分享图").replace("@NONE@", "这一句没有收。") if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.HL_JS if "nocard" in fig_html else ""), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
 
 
-    # 未讲各章：只出简繁。原文（朱注分章底本）、白话初稿、本句互见、异文、各家注本；原页同屏、视频位（11-08）
-    if L.code.startswith("zh"):
+    # 未讲各章：出简繁和英日（WJ_FL）。原文（朱注分章底本）、白话初稿、本句互见、异文、各家注本；原页同屏、视频位（11-08）
+    # 英日页（11-13 主人：英日版做起来、各语言功能尽量一致）：原文下放英日译文（tri-weijiang.json），一孔按仍中文、加一句说明；原页点句亮列，小卡只在简繁页
+    if L.code.startswith("zh") or WJF:
+        zhL = L.code.startswith("zh"); WJ_CODES = ["zh-Hans", "zh-Hant"] + [x for x in WJ_FL if x in LANGS]
         ZJD = D.get("zhuju") or {"on": set(), "jl": {}, "zj": {}}
         WJ_PAGES = wj_pages()
         for p_, cs in D["all_by_pian"].items():
@@ -1557,7 +1635,9 @@ def build_lang(L, D, write):
                 if c in pubset: continue
                 q = D["qw"][c]; text = q["text"]; pnum, cnum = c.split("."); pname, slug, pfull, _ = PIAN[pnum]
                 rel = rel_of(c); url = f"{DOMAIN}/{L.prefix}{rel}"; bname = L.book(pnum)
-                cite_src = f"《论语·{pname}》{c}，一孔录"
+                cite_src = f"《论语·{pname}》{c}，一孔录" if zhL else f"{L.t('lunyu')} {c}, 一孔录 Yikonglu"
+                tr = "" if zhL else WJ_TR.get(c, {}).get(L.code, "")
+                rend_html = f'<p class="rend">{esc(tr)}</p><figcaption>{L.t("rendering")}</figcaption>' if tr else ""
                 ju_html = "".join(f'<span class="ju" id="s{j}" tabindex="0">{zx(L.code, c, j, x)}</span>' for j, x in enumerate(split_ju(text), 1))
                 pgn = str(q.get("pdf_page", ""))
                 pgl = (f'<a class="pg" href="/yuanye/p{int(pgn):03d}.jpg" target="_blank">{pgn}</a>' if pgn in pages_avail else pgn) if pgn else ""
@@ -1572,18 +1652,23 @@ def build_lang(L, D, write):
                 # 主人 11-08：网站先行，不等视频。未讲章也上原页同屏与逐句小卡：有校平句列且字对得上的点句亮列；只有页图的整页并排；
                 # 逐句白话、朱注取 _逐句（内容线程交，朱注只收稿里核过页的原话）；“这一章讲什么”一孔按取 _未讲/<章>.json；视频位先写“正在制作”
                 hjd = hj_of(c); wj_dz = False; wj_rows = []; sents = split_ju(text)
-                bq = f'<blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="，" data-reads="[]" data-rl="" data-hj="{esc(json.dumps(hjd, ensure_ascii=False))}">'
+                bq = f'<blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-sep="{"，" if zhL else ", "}" data-reads="[]" data-rl="" data-hj="{esc(json.dumps(hjd, ensure_ascii=False))}">'
                 zpages = zper = None
                 if c in ZJD["jl"]:
                     _buf = io.StringIO()
                     with contextlib.redirect_stdout(_buf): zp_, zr_ = ZJ.spans_of(c, sents, ZJD)
                     if zp_ and not _buf.getvalue() and all(p_ in WJ_PAGES for p_ in zp_): zpages, zper = zp_, zr_
                 pp = f"p{int(pgn):03d}" if pgn else ""
-                pane = (ZJ.page_pane(c, zpages, zper, L.t("wj_pane"), ZJ.YDIR, f"《论语·{pname}》{c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页") if zpages
-                        else ZJ.page_pane(c, {pp: WJ_PAGES[pp]}, [], L.t("wj_pane"), ZJ.YDIR, f"《论语·{pname}》{c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页") if pp in WJ_PAGES else "")
-                zs = ZJ.card_data(c, ZJD, len(sents)) or []
+                palt = f"《论语·{pname}》{c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页" if zhL else L.t("pg", n="{n}")
+                pane = (ZJ.page_pane(c, zpages, zper, L.t("wj_pane"), ZJ.YDIR, palt) if zpages
+                        else ZJ.page_pane(c, {pp: WJ_PAGES[pp]}, [], L.t("wj_pane"), ZJ.YDIR, palt) if pp in WJ_PAGES else "")
+                zs = (ZJ.card_data(c, ZJD, len(sents)) or []) if zhL else []
                 if zs and len(zs) != len(sents): zs = []  # 句数对不上就不挂小卡，免得张冠李戴
-                if zpages or zs:
+                if not zhL and zpages:  # 英日：原页同屏点句亮列，不挂小卡（同已讲章外文页）
+                    ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x)}</span>' for j, x in enumerate(sents, 1))
+                    wj_fig = (f'<figure class="yuanwen dz nocard"><div class="dzgrid"><div>{bq}{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{cap}</figcaption>{rend_html}</div>'
+                              f'<div class="yypane">{pane}</div></div></figure>')
+                elif zpages or zs:
                     wj_dz = True
                     for j, x in enumerate(sents, 1):
                         d = {k_: zs[j-1].get(k_) for k_ in ("bh", "zhu", "jj", "yk") if zs[j-1].get(k_)} if j <= len(zs) else {}
@@ -1596,23 +1681,24 @@ def build_lang(L, D, write):
                               + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
                               f'<script type="application/json" class="zjdata">{json.dumps(wj_rows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
                 elif pane:
-                    wj_fig = (f'<figure class="yuanwen wjpg"><div class="dzgrid"><div>{bq}{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{cap}</figcaption></div>'
+                    wj_fig = (f'<figure class="yuanwen wjpg"><div class="dzgrid"><div>{bq}{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{cap}</figcaption>{rend_html}</div>'
                               f'<div class="yypane">{pane}</div></div></figure>')
                 else:
-                    wj_fig = f'<figure class="yuanwen">{bq}{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{cap}</figcaption></figure>'
+                    wj_fig = f'<figure class="yuanwen">{bq}{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{cap}</figcaption>{rend_html}</figure>'
                 an = D.get("wjan", {}).get(c) or {}
                 wj_gist, wj_faq = "", []
                 if an.get("片里落点") or c in D["zy"]:
                     an_lab, an_txt = (YKAN["zh"][0], D["zy"][c]["text"]) if c in D["zy"] else ykan("zh", an["片里落点"], an.get("常见读法"), an.get("字眼"))
-                    wj_gist = f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p></section>'
-                    wj_faq = ([{"@type": "Question", "name": f"《论语·{pname}》{c} 这一章讲什么？", "acceptedAnswer": {"@type": "Answer", "text": an["片里落点"]}}] if an.get("片里落点") else []) + \
+                    wj_gist = (f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p></section>' if zhL else
+                               f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p lang="zh-Hans"><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p><p class="note">{L.t("wj_an_note")}</p></section>')
+                    wj_faq = [] if not zhL else ([{"@type": "Question", "name": f"《论语·{pname}》{c} 这一章讲什么？", "acceptedAnswer": {"@type": "Answer", "text": an["片里落点"]}}] if an.get("片里落点") else []) + \
                              [{"@type": "Question", "name": "一孔录怎么读这一章？", "acceptedAnswer": {"@type": "Answer", "text": an_lab + an_txt}}]
                 # 主人 11-08 问“细读与核对为啥只有各家注本”：把未讲章已有的素材也收进来——常见理解、注里的关键字（_未讲）、朱注逐句原话（_逐句，只收核过页的）、本句互见
                 wj_deep = ""
                 if len(an.get("常见读法") or "") >= 10:
-                    wj_deep += f'<section class="sec sec-常"><h2><i>常</i>{L.t("f_common")}</h2><p>{quotes(an["常见读法"])}</p></section>'
+                    wj_deep += f'<section class="sec sec-常"><h2><i>常</i>{L.t("f_common")}</h2><p{"" if zhL else " lang=zh-Hans"}>{quotes(an["常见读法"])}</p></section>'
                 if an.get("字眼"):
-                    wj_deep += f'<section class="sec sec-注"><h2><i>注</i>{L.t("f_keys")}</h2><p>{quotes(an["字眼"])}</p></section>'
+                    wj_deep += f'<section class="sec sec-注"><h2><i>注</i>{L.t("f_keys")}</h2><p{"" if zhL else " lang=zh-Hans"}>{quotes(an["字眼"])}</p></section>'
                 _zrows, _seen = [], set()
                 _ss = (ZJD["zj"].get(c) or {}).get("句", []); _ok = len(_ss) == len(sents)  # 句数对不上就不标句
                 for j, z in enumerate(_ss, 1):
@@ -1625,8 +1711,8 @@ def build_lang(L, D, write):
                     def _pgl(x):
                         a = x.split("—")[0]
                         return f'<a class="pg" href="/yuanye/p{int(a):03d}.jpg" target="_blank">{L.t("pg", n=x)}</a>' if a and a in pages_avail else (L.t("pg", n=x) if x else "")
-                    wj_deep += (f'<section class="sec cites" id="zb-zhuxi"><h2><i>核</i>朱熹集注逐句原话</h2><p class="note">朱注里说到本章各句的原话，都对过底本原页；视频开讲时再补诸家说法。 <a class="bb" href="{P}banben/#zhuxi">{L.t("bb_link")}</a></p>'
-                                f'<table><thead><tr><th>句</th><th>{L.t("th_quote")}</th><th>{L.t("th_page")}</th></tr></thead><tbody>'
+                    wj_deep += (f'<section class="sec cites" id="zb-zhuxi"><h2><i>核</i>{"朱熹集注逐句原话" if zhL else L.t("wj_deep_zx")}</h2><p class="note">{"朱注里说到本章各句的原话，都对过底本原页；视频开讲时再补诸家说法。" if zhL else L.t("wj_deep_zx_p")} <a class="bb" href="{P}banben/#zhuxi">{L.t("bb_link")}</a></p>'
+                                f'<table><thead><tr><th>{"句" if zhL else L.t("th_ju")}</th><th>{L.t("th_quote")}</th><th>{L.t("th_page")}</th></tr></thead><tbody>'
                                 + "".join(f'<tr><td>{f"<a href=#s{j}>{esc(sents[j-1][:8])}</a>" if j else ""}</td><td lang="zh-Hans">“{esc(t)}”</td><td>{_pgl(pg_)}</td></tr>' for j, t, pg_ in _zrows) + "</tbody></table></section>")
                 _hjr = [(int(j), r) for j, rs in hjd.items() if str(j).isdigit() for r in rs if not (_zrows and r[0] == L.t("hj_note"))]  # 朱注条上面表里已有
                 if _hjr:
@@ -1634,10 +1720,10 @@ def build_lang(L, D, write):
                                 + "".join(f'<li><a href="#s{j}">{esc(sents[j-1][:8]) if 0 < j <= len(sents) else ""}</a>　{esc(r[0])}：{esc(r[1])}（' + (f'<a href="{r[3]}">{esc(r[2])}</a>' if r[3] else esc(r[2])) + '）</li>' for j, r in sorted(_hjr, key=lambda x: x[0])) + '</ul></section>')
                 TRI_TXT.setdefault(c, {"h": f"《论语·{pname}》第 {cnum} 章 · Analects {c} · 論語 {c}", "y": text, "en": WJ_TR.get(c, {}).get("en", ""), "ja": WJ_TR.get(c, {}).get("ja", "")})  # 分享图：未讲章英日译文见 i18n/tri-weijiang.json（11-09 补）
                 wj_vid = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
-                          f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>')
+                          f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">{"哔哩哔哩" if zhL else "Bilibili"}</a></p></section>')
                 body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
-<h1><span class="no">{L.t("chapter_no", book=pname, n=cnum)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(ctitle(c))}</h1>
+<h1><span class="no">{L.t("chapter_no", book=(pname if zhL else bname), n=cnum)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(ctitle(c))}</h1>
 </div></div>
 <main class="wrap chapter">
 <article>
@@ -1646,7 +1732,7 @@ def build_lang(L, D, write):
 {wj_gist}
 {bh_html}
 {wj_vid}
-<div class="chacts">{done_html(L, c)}{share_html(L, c, url, f"《论语·{pname}》第 {cnum} 章", ctitle(c), text, an.get("片里落点") or (D["zy"].get(c) or {}).get("text", ""), "")}</div>
+<div class="chacts">{done_html(L, c)}{share_html(L, c, url, f"《论语·{pname}》第 {cnum} 章" if zhL else L.t("chapter_no", book=bname, n=cnum), ctitle(c), text, an.get("片里落点") or (D["zy"].get(c) or {}).get("text", ""), tr)}</div>
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
 {fold(wj_deep + yiwen_html(c) + zb_section(c, url, cite_src))}
@@ -1657,13 +1743,13 @@ def build_lang(L, D, write):
 <aside><h3>{bname}</h3><ol>{sidebar(pnum, c)}</ol></aside>
 </main>{BOOK_JS}"""
                 hj_static = "<ul>" + (f'<li><a href="#zhuben">{L.t("hj_zb")}</a></li>' if D["zhuben"].get(c) else "") + "</ul>"
-                desc = f"{text[:70]}……《论语·{pname}》第 {cnum} 章原文与白话直译。"
-                ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"《论语·{pname}》{c} {ctitle(c)}", "inLanguage": L.hreflang, "url": url,
+                desc = f"{text[:70]}……《论语·{pname}》第 {cnum} 章原文与白话直译。" if zhL else meta_desc(L, ctitle(c), tr, text)
+                ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"《论语·{pname}》{c} {ctitle(c)}" if zhL else f"{L.t('lunyu')} {c} {ctitle(c)}", "inLanguage": L.hreflang, "url": url,
                       "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "论语"},
                       "isBasedOn": {"@type": "Book", "name": "论语集注", "author": {"@type": "Person", "name": "朱熹"}}}
                 if wj_faq: ld.pop("@context"); ld = {"@context": "https://schema.org", "@graph": [ld, {"@type": "FAQPage", "mainEntity": wj_faq}]}
-                write(rel, page(L, L.t("wj_title", book=pname, c=c, head=seo_head(text)), desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace('<button data-a="img">@IMG@</button>', "").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。") if wj_dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")), ld, "pg-chapter pg-wj", og_img=D["og"].get(c, {}).get("tri"), codes=["zh-Hans", "zh-Hant"])); urls.append(url)
-                search_idx.append({"c": c, "t": ctitle(c), "u": P + rel, "y": text, "x": (bh or "") + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
+                write(rel, page(L, L.t("wj_title", book=pname, c=c, head=seo_head(text)) if zhL else f"{L.t('lunyu')} {c} {ctitle(c)} | 一孔录 Yikonglu", desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace('<button data-a="img">@IMG@</button>', "").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。") if wj_dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.HL_JS if "nocard" in wj_fig else ""), ld, "pg-chapter pg-wj", og_img=D["og"].get(c, {}).get("tri"), codes=WJ_CODES)); urls.append(url)
+                search_idx.append({"c": c, "t": ctitle(c), "u": P + rel, "y": text, "x": (tr + " " if tr else "") + (bh or "") + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
 
     urls += build_ddj(L, D, write, P, search_idx if L.code.startswith("zh") else None)  # 道德经（只简繁；没开就是空）
 
@@ -1671,8 +1757,9 @@ def build_lang(L, D, write):
         def li(c):
             if c in pubset:
                 return f'<li data-c="{c}"><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(title_of(c))}</b><span>{esc((field(c, "片里落点")[0] or "").split("；")[0].split(". Today")[0])}</span><i class="heat" hidden><s></s><small></small></i></a></li>'
-            t = D["qw"][c]["text"]
-            return f'<li class="wj"><a href="{href(c)}"><em>{c}</em><b>{esc(ctitle(c))}</b><span><i class="wjtag">{L.t("toc_wj")}</i><span lang="zh-Hans">{esc(t[:40] + ("……" if len(t) > 40 else ""))}</span></span></a></li>'
+            t = D["qw"][c]["text"]; tt = WJ_TR.get(c, {}).get(L.code, "") if WJF else ""
+            sn = (f'<span>{esc(tt[:90] + ("…" if len(tt) > 90 else ""))}</span>' if tt else f'<span lang="zh-Hans">{esc(t[:40] + ("……" if len(t) > 40 else ""))}</span>')
+            return f'<li class="wj"><a href="{href(c)}"><em>{c}</em><b>{esc(ctitle(c))}</b><span><i class="wjtag">{L.t("toc_wj")}</i>{sn}</span></a></li>'
         return '<ol class="toc">' + "".join(li(c) for c in cs) + "</ol>"
     def pcard(p):
         pname, slug, pfull, total = PIAN[p]; done = len(by_pian.get(p, [])); pct = round(done * 100 / total)
@@ -1831,10 +1918,11 @@ def build_lang(L, D, write):
     write("search.json", json.dumps(search_idx, ensure_ascii=False))
     # 检索页（11-13 主人：简洁，但带点再来的理由）：框下几个可点的词；没在搜时，下面放今日共读、最近新讲的章、上次读到哪
     s_extra = s_more = ""
-    if L.code.startswith("zh"):
-        SW = (lambda x: x) if L.code == "zh-Hans" else __import__("opencc").OpenCC("s2twp").convert
+    if True:  # 11-13 起今日共读、最近新讲、上次读到各语种都有；可点词是中文词，只放简繁
+        zhS = L.code.startswith("zh")
+        SW = (lambda x: x) if L.code == "zh-Hans" else __import__("opencc").OpenCC("s2twp").convert if L.code == "zh-Hant" else (lambda x: {"最近新讲的章": L.t("s_new"), "订阅更新": L.t("s_feed"), "上次读到": L.t("s_last")}.get(x, x))
         chips = ["鸟数飞", "主一无适", "孝弟", "巧言令色", "君子不器", "温故知新", "朝闻道"]
-        s_extra = '<p class="schips">' + SW("试试") + "：" + "".join(f'<a href="?q={esc(SW(w))}">{esc(SW(w))}</a>' for w in chips) + "</p>"
+        if zhS: s_extra = '<p class="schips">' + SW("试试") + "：" + "".join(f'<a href="?q={esc(SW(w))}">{esc(SW(w))}</a>' for w in chips) + "</p>"
         _new = [c for c in (_vpub or pub)][-4:][::-1]
         def _d(c):
             t = ch2ep[c][1].get("public_at") or ""
@@ -1843,19 +1931,19 @@ def build_lang(L, D, write):
         s_more = (f'<div class="smore">{meiri_html}<section class="snew"><h2>{SW("最近新讲的章")}<a href="{P}feed.xml">{SW("订阅更新")}</a></h2><ol>{newl}</ol></section>'
                   f'<p class="slast" id="slast" hidden></p></div>'
                   '<script>(function(){try{var L=((JSON.parse(localStorage.getItem("yk_xd")||"{}").b||{}).lunyu||{}).last}catch(e){return}if(!L||!L.p)return;var p=document.getElementById("slast");'
-                  'p.innerHTML=' + json.dumps(SW("上次读到")) + '+\'：<a href="\'+L.p+\'">\'+(L.no||L.c).replace(/[<>&]/g,"")+(L.ti?" "+L.ti.replace(/[<>&]/g,""):"")+\' →</a>\';p.hidden=false})();'
+                  'p.innerHTML=' + json.dumps(SW("上次读到") + ("：" if zhS or L.code == "ja" else ": ")) + '+\'<a href="\'+L.p+\'">\'+(L.no||L.c).replace(/[<>&]/g,"")+(L.ti?" "+L.ti.replace(/[<>&]/g,""):"")+\' →</a>\';p.hidden=false})();'
                   '(function(){var q=document.getElementById("q"),M=document.querySelector(".smore");if(!q||!M)return;function t(){M.hidden=!!new URLSearchParams(location.search).get("q")}t();window.addEventListener("popstate",t);document.querySelector(".sbox").addEventListener("submit",function(){setTimeout(function(){M.hidden=!!q.value.trim()},0)})})();</script>')
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("search_sub")}</span>{L.t("search_title")}</h1></div></div>
 <main class="wrap narrow"><form class="sbox" onsubmit="go();return false"><input id="q" placeholder="{esc(L.t("search_ph2"))}"><button>{L.t("nav_search")}</button></form>{s_extra}<div id="res"></div>{s_more}</main>{meiri_js if s_more else ""}
 <script>
 let D=null;const q=document.getElementById('q'),R=document.getElementById('res');
 const E=s=>s.replace(/[&<>"]/g,c=>({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}}[c]));
-function cut(s,k){{const i=s.indexOf(k);if(i<0)return E(s.slice(0,60));const a=Math.max(0,i-24);return(a?'…':'')+E(s.slice(a,i))+'<mark>'+E(k)+'</mark>'+E(s.slice(i+k.length,i+k.length+36))+'…'}}
+function cut(s,k){{const i=s.toLowerCase().indexOf(k.toLowerCase());if(i<0)return E(s.slice(0,60));const a=Math.max(0,i-24);return(a?'…':'')+E(s.slice(a,i))+'<mark>'+E(k)+'</mark>'+E(s.slice(i+k.length,i+k.length+36))+'…'}}
 async function go(){{const k=q.value.trim();if(!k){{R.innerHTML='';return}}
 if(!D){{try{{D=await (await fetch('{P}search.json')).json()}}catch(e){{R.textContent='…';return}}}}
 history.replaceState(null,'','?q='+encodeURIComponent(k));
-const hit=D.filter(d=>(d.y+d.t+d.x).includes(k));
-R.innerHTML=hit.length?'<p class="lead">'+{json.dumps(L.t("search_n", n="N"))}.replace('N',hit.length)+'</p><ol class="toc">'+hit.map(d=>'<li><a href="'+d.u+'"><em>'+d.c+'</em><b>'+E(d.t)+'</b><span>'+cut(d.y.includes(k)?d.y:d.x,k)+'</span></a></li>').join('')+'</ol>':{json.dumps("<p class=empty>" + L.t("search_none") + "</p>")}}}
+const kl=k.toLowerCase(),hit=D.filter(d=>(d.y+d.t+d.x).toLowerCase().includes(kl));
+R.innerHTML=hit.length?'<p class="lead">'+{json.dumps(L.t("search_n", n="N"))}.replace('N',hit.length)+'</p><ol class="toc">'+hit.map(d=>'<li><a href="'+d.u+'"><em>'+d.c+'</em><b>'+E(d.t)+'</b><span>'+cut(d.y.toLowerCase().includes(kl)?d.y:(d.x.toLowerCase().includes(kl)?d.x:d.t),k)+'</span></a></li>').join('')+'</ol>':{json.dumps("<p class=empty>" + L.t("search_none") + "</p>")}}}
 const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 </script>'''
     write("search.html", page(L, f'{L.t("search_title")}｜一孔录', L.t("search_sub"), "search.html", body))
@@ -1942,7 +2030,8 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
         return "".join(f'<li data-c="{c}"{"" if c in pubset else " class=wj"}><a href="{href(c)}"><em>{c}</em><b>{esc(ctitle(c))}</b>{"" if c in pubset else "<i class=wjtag>" + L.t("toc_wj") + "</i>"}</a><p class="zy" lang="zh-Hans">{mark(tx(c))}</p>'
                        + (f'<p class="zd">{esc(field(c, "片里落点")[0])}</p>' if c in pubset and field(c, "片里落点")[0] else "") + "</li>" for c in hit)
     # 专题闯关（11-13 主人：专题页结合游戏任务）：一关一个字，读过本关一章点亮，章章读过通关；进度只看本机读过的章（yk_xd），只在简繁页
-    QUEST = L.code.startswith("zh")
+    QUEST = True  # 11-13 起各语种都开（主人：各语言功能尽量一致）
+    QT = QUEST_TXT.get(L.code, QUEST_TXT["en"])
     _qo = ["xue", "xiao", "you", "xin", "li", "le", "shi", "junzi", "ren", "zheng", "ming", "tianming", "dao", "xin2", "xing"]
     QORD = [x for x in _qo if any(t["slug"] == x for t in D["zhuanti"])] + [t["slug"] for t in D["zhuanti"] if t["slug"] not in _qo]
     QNAME = {t["slug"]: t["name"] for t in D["zhuanti"]}
@@ -1967,12 +2056,12 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
         qk = QORD.index(slug) + 1 if slug in QORD else 0
         qbar = qnext = ""
         if QUEST and qk and qcs:
-            qbar = (f'<div class="qbar" data-cs="{esc(json.dumps(qcs))}"><p class="qbh"><b>{QW("第")} {qk} {QW("关")} · {esc(name)}</b><span class="qbs">{QW(f"本关 {len(qcs)} 章：读过一章点亮，章章读过通关")}</span></p>'
+            qbar = (f'<div class="qbar" data-cs="{esc(json.dumps(qcs))}"><p class="qbh"><b>{QT["lv"].format(k=qk)} · {esc(name)}</b><span class="qbs">{esc(QT["bar"].format(n=len(qcs)))}</span></p>'
                     f'<span class="bar"><i></i></span><p class="qgo"></p></div>')
             if qk < len(QORD):
-                n2 = QORD[qk]; qnext = f'<p class="qnext"><a class="btn ghost" href="{P}zhuanti/{n2}.html">{QW("下一关")}：{QW("第")} {qk + 1} {QW("关")} · {esc(QNAME[n2])} ›</a></p>'
+                n2 = QORD[qk]; qnext = f'<p class="qnext"><a class="btn ghost" href="{P}zhuanti/{n2}.html">{QT["nx"]}{"：" if L.code.startswith("zh") or L.code == "ja" else ": "}{QT["lv"].format(k=qk + 1)} · {esc(QNAME[n2])} ›</a></p>'
         body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}zhuanti/">{L.t("zt_title")}</a></p><h1><span class="no">{L.t("zt_nb", n=nb, m=total)}</span>{esc(name)}</h1></div></div>
-<main class="wrap narrow">{qbar}{f'<p class="lead" lang="zh-Hans">{esc(intro)}</p>' if intro else ""}<p class="note">{L.t("zt_p")}</p>{segs or "<p class=empty>" + L.t("zt_none") + "</p>"}{qnext}</main>{QUEST_JS if qbar else ""}'''
+<main class="wrap narrow">{qbar}{f'<p class="lead" lang="zh-Hans">{esc(intro)}</p>' if intro else ""}<p class="note">{L.t("zt_p")}</p>{segs or "<p class=empty>" + L.t("zt_none") + "</p>"}{qnext}</main>{quest_js(L.code) if qbar else ""}'''
         d1 = intro or next((b_.get("intro") for b_ in t.get("books", {}).values() if b_.get("intro")), "")
         write(f"zhuanti/{slug}.html", page(L, f"“{name}”｜{L.t('zt_title')}｜一孔录" if L.code.startswith("zh") else f"{name} | {L.t('zt_title')} | 一孔录 Yikonglu", d1[:110] or name, f"zhuanti/{slug}.html", body)); urls.append(f"{DOMAIN}/{L.prefix}zhuanti/{slug}.html")
         zlist += f'<a class="ztcard" href="{P}zhuanti/{slug}.html"><b>{esc(name)}</b><small>{L.t("zt_n", n=total)}</small></a>'
@@ -1993,12 +2082,12 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
             if r3 % 2 == 0: c3 = 4 - c3
             dcls = (" qt5" if k > 1 and (k - 1) % 5 == 0 else (" qr5" if r5 % 2 == 0 else "")) + (" qt3" if k > 1 and (k - 1) % 3 == 0 else (" qr3" if r3 % 2 == 0 else ""))
             lis += (f'<li class="qn{dcls}" style="--r5:{r5};--c5:{c5};--r3:{r3};--c3:{c3}" data-cs="{esc(json.dumps(qmeta[sl]))}"><a href="{P}zhuanti/{sl}.html"><span class="qo"><b>{esc(QNAME[sl])}</b></span>'
-                    f'<i class="qno">{QW("第")} {k} {QW("关")}</i><small class="qc">{len(qmeta[sl])} {QW("章")}</small></a></li>')
+                    f'<i class="qno">{QT["lv"].format(k=k)}</i><small class="qc">{QT["ch"].format(n=len(qmeta[sl]))}</small></a></li>')
         n = len([x for x in QORD if qmeta.get(x)])
-        return (f'<section class="quest"><p class="qstat" id="qstat">{QW(f"{n} 关，一关一个字。读过本关一章就点亮，章章读过就通关；从第一关“{QNAME[QORD[0]]}”开始。")}</p>'
-                f'<ol class="qmap" style="--rows5:{(n + 4) // 5};--rows3:{(n + 2) // 3}">{lis}</ol><p class="note">{QW("进度只记在这台设备上，一孔录无需登录，不取隐私。")}</p></section>')
+        return (f'<section class="quest"><p class="qstat" id="qstat">{esc(QT["intro"].format(n=n, f=QW(QNAME[QORD[0]])))}</p>'
+                f'<ol class="qmap" style="--rows5:{(n + 4) // 5};--rows3:{(n + 2) // 3}">{lis}</ol><p class="note">{QT["note"]}</p></section>')
     body_zt_index = lambda zl: f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zt_sub")}</span>{L.t("zt_title")}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("zt_p")}</p>{qmap() if QUEST else f'<div class="ztcards">{zl}</div>'}{routes}</main>{QUEST_JS if QUEST else ""}'''
+<main class="wrap narrow"><p class="lead">{L.t("zt_p")}</p>{qmap() if QUEST else f'<div class="ztcards">{zl}</div>'}{routes}</main>{quest_js(L.code) if QUEST else ""}'''
     body = body_zt_index(zlist)
     if L.code.startswith("zh"):  # 语文课本里的《论语》（11-08 主人定，网站推广建议第 2 条）：只简繁；课文各章逐章对过朱注分章原文
         kb_items = ""
@@ -2483,7 +2572,7 @@ def main(zdir, outdir, kanwu=None):
             if key in tr: tab[code] = tr[key]
         if "privacy" in tr: PRIVACY[code] = tuple(tr["privacy"])
         if "wx" in tr: PLAT_WX[code] = tr["wx"]
-        ui = dict(EXTRA_UI.get(code, {})); ui.update(tr["ui"])
+        ui = dict(EXTRA_UI.get(code, {})); ui.update(tr["ui"]); ui.update(WJ_UI.get(code, {}))
         urls += build_lang(Lang(code, ui, tr), D, writer(code))
 
     # 站点地图里写各语种互指（只指真有的页），谷歌、必应据此把同一章的七语版本认作一组
