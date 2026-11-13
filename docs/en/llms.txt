@@ -142,3 +142,21 @@
 - [6.18 Knowing, liking, delighting: what's the difference?](https://yikonglu.com/en/lunyu/yong-ye/18.html): Knowing there is this bowl of rice, loving to eat it, and having eaten your fill and being at ease: three levels. The difference is not how much you know, but whether you have actually gained it.
 - [6.19 Was Confucius looking down on people?](https://yikonglu.com/en/lunyu/yong-ye/19.html): This is not ranking people, but fitting words to the listener: speak too high and the listener cannot catch it, and harm is done. Teach according to capacity, and climb step by step.
 - [6.20 Did Confucius believe in spirits?](https://yikonglu.com/en/lunyu/yong-ye/20.html): The question is not belief or disbelief, but revering and keeping at a distance: first do fully what human affairs require, revere the spirits without petitioning them; in action, the hard part first and the gain after, without reckoning the benefit in advance.
+- [6.21 知者乐水，仁者乐山](https://yikonglu.com/en/lunyu/yong-ye/21.html): 聪明人通达事理，像水流来流去不卡住；厚道人安于义理，像山厚重不挪动。动而不拘所以乐，静而有常所以寿。今例：一个爱沿江跑，一个爱在山亭坐一下午。
+- [6.22 齐一变至于鲁](https://yikonglu.com/en/lunyu/yong-ye/22.html): 强弱看的是眼前，离道远近看的是风俗底子；鲁只要把荒废的修起来，齐得先改掉图功利的习气。今例：门口喇叭喊打折排长队，对面老店不吆喝、称秤一两不少。
+- [6.23 觚不觚](https://yikonglu.com/en/lunyu/yong-ye/23.html): 名还在、样子没了，就不算那个东西；说的是器，指的是君臣各失其道。今例：一把叫“椅子”的东西，好看却没法坐。
+- [6.24 井有仁焉](https://yikonglu.com/en/lunyu/yong-ye/24.html): 仁者急着救人，但站在井上才救得了人；合情理的话能骗他去井边，不合理的事蒙不住他。今例：电话里说家人出事要马上转账，她挂了电话先打给家里人。
+- [6.25 博学于文，约之以礼](https://yikonglu.com/en/lunyu/yong-ye/25.html): 学要广，守要简；只博不约就漫成一片没边际。今例：收藏夹里存了几百节课，哪一节都没看完。
+- [6.26 子见南子](https://yikonglu.com/en/lunyu/yong-ye/26.html): 按礼该见就见，对方不好与己无干；子路一时想不透，孔子才连誓两遍，叫他先信再想。今例：公事上该见的人名声不好，照规矩见，自己守得住，闲话先由它去。
+- [6.27 中庸之为德](https://yikonglu.com/en/lunyu/yong-ye/27.html): 不过头也不够不着，又天天不变，所以难；难在长久。今例：街角小面馆三十年准点开门，汤的咸淡没变过。
+- [6.28 博施济众（能近取譬）](https://yikonglu.com/en/lunyu/yong-ye/28.html): 博施济众连尧舜都觉得做不全，拿它求仁越求越远；仁从近处下手，己欲立而立人。今例：救天下人谁也够不着，地铁里给站不稳的老先生让个座是够得着的。
+- [7.1 述而不作](https://yikonglu.com/en/lunyu/shu-er/1.html): 孔子删诗书、定礼乐，自认只是传旧；德越高心越低，说的是真心，不是客套。可当时作者已多，把它们收拢折中，功劳反比创作大。今例：老字号学徒照师傅的老方子一步步做，方子才没断。
+- [7.2 默而识之](https://yikonglu.com/en/lunyu/shu-er/2.html): 默记在心、学不嫌够、教不嫌累，本不算圣人的顶点，孔子还说自己没做到，是谦上加谦。今例：夜里还在批作业的老师，被夸时说自己还差得远。
+- [7.3 德之不修](https://yikonglu.com/en/lunyu/shu-er/3.html): 四件都是天天要做的功夫，做不到就忧，圣人尚且如此，何况一般人。今例：说好不熬夜又拿起手机，真把手机放远了才算改。
+- [7.4 子之燕居](https://yikonglu.com/en/lunyu/shu-er/4.html): 不是孔子的话，是弟子记的样子：闲在家里身子舒展、脸色和悦，不端着也不瘫着。今例：周末在家笑着给阳台的花浇水。
+- [7.5 甚矣吾衰也](https://yikonglu.com/en/lunyu/shu-er/5.html): 梦不见周公，不是心不向道了，是身子做不动、行道之心也随之歇了；守道的心不分老少，行道的身会老。今例：退休老工程师讲图纸眉飞色舞，说一句“工地我是跑不动了”。
+- [7.6 志于道，据于德，依于仁，游于艺](https://yikonglu.com/en/lunyu/shu-er/6.html): 四步有先后轻重：先立志，再守得住，再不离仁，余力在六艺里游，游也不是闲玩，是让心有处安放。今例：白天上班，晚上练一个钟头字，字不当饭吃，人不会散。
+- [7.7 自行束脩以上](https://yikonglu.com/en/lunyu/shu-er/7.html): 束脩是最薄的见面礼，重点不在学费，在“来学”：肯带着礼主动来，孔子没有不教的；不来，没有上门去教的礼。今例：社区免费夜校门一直开着，带个本子来就够。
+- [7.8 不愤不启，不悱不发](https://yikonglu.com/en/lunyu/shu-er/8.html): 上一集谁来都教，这一章讲怎么教：等学的人急到想通想说的时候再点；举一角推不出三角，就先不往下讲。今例：孩子一道题卡半小时，妈妈不递答案，只问卡在哪一步。
+- [7.9 子食于有丧者之侧（是日哭则不歌）](https://yikonglu.com/en/lunyu/shu-er/9.html): 不是守规矩，是心里真哀伤：挨着办丧事的人吃不出味道，吊丧哭过的那天唱不出来。今例：参加完葬礼开车回家，音乐一响伸手就关了。
+- [7.10 用之则行，舍之则藏](https://yikonglu.com/en/lunyu/shu-er/10.html): 出来做不为贪位，收起来不为只顾自己，心里没有非用不可的念头才做得到；子路以勇自负，孔子要的是遇事知怕、肯谋划、能办成的人。今例：登山队出发前一晚领队一条条问怎么撤，问得最细的人最敢上山。

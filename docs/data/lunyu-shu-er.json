@@ -1,0 +1,511 @@
+{
+ "license": "CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/); 原文与古注为公版",
+ "attribution": "一孔录 Yikonglu, https://yikonglu.com",
+ "book": "论语",
+ "pian": "述而",
+ "chapters": [
+  {
+   "chapter": "7.1",
+   "title": "述而不作",
+   "url": "https://yikonglu.com/lunyu/shu-er/1.html",
+   "text": "子曰：述而不作，信而好古，窃比于我老彭。",
+   "sentences": [
+    "子曰：述而不作，信而好古，窃比于我老彭。"
+   ],
+   "baihua": "孔子说：我只传述前人的东西而不自己创制，信从古道又喜爱古道，私下拿自己跟我们的老彭相比。",
+   "citations": [
+    {
+     "text": "述，传旧而已……盖信古而传述者也",
+     "source": "朱注",
+     "pages": [
+      "91"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "孔子删诗书……此又不可不知也",
+     "source": "朱注",
+     "pages": [
+      "91"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "好",
+     "pos": "信而好古",
+     "du": "hào"
+    },
+    {
+     "zi": "窃",
+     "pos": "窃比",
+     "du": "qiè"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "此孔子自說也。",
+    "scan_page": "42"
+   }
+  },
+  {
+   "chapter": "7.2",
+   "title": "默而识之",
+   "url": "https://yikonglu.com/lunyu/shu-er/2.html",
+   "text": "子曰：默而识之，学而不厌，诲人不倦，何有于我哉？",
+   "sentences": [
+    "子曰：默而识之，学而不厌，诲人不倦，何有于我哉？"
+   ],
+   "baihua": "孔子说：不出声地把学到的记牢，自己求学永不满足，教导旁人永不厌烦，这几件事，我身上哪样算有了呢？",
+   "citations": [
+    {
+     "text": "识，记也……则谦而又谦之辞也",
+     "source": "朱注",
+     "pages": [
+      "91"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "识",
+     "pos": "默而识之、识，记也、默识",
+     "du": "zhì"
+    },
+    {
+     "zi": "厌",
+     "pos": "学而不厌",
+     "du": "yàn"
+    },
+    {
+     "zi": "诲",
+     "pos": "诲人",
+     "du": "huì"
+    },
+    {
+     "zi": "倦",
+     "pos": "不倦",
+     "du": "juàn"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "云默而識之者，見事心識，而口不言，謂之默識也。",
+    "scan_page": "42"
+   }
+  },
+  {
+   "chapter": "7.3",
+   "title": "德之不修",
+   "url": "https://yikonglu.com/lunyu/shu-er/3.html",
+   "text": "子曰：德之不脩，学之不讲，闻义不能徙，不善不能改，是吾忧也。",
+   "sentences": [
+    "子曰：德之不脩，学之不讲，闻义不能徙，不善不能改，是吾忧也。"
+   ],
+   "baihua": "孔子说：品德不去修养，学问不去讲习，听到合宜的事不能跟着去做，有了不好的地方不能改正，这些是我的忧虑。",
+   "citations": [
+    {
+     "text": "尹氏曰：德必脩而后成……况学者乎",
+     "source": "朱注引尹氏",
+     "pages": [
+      "92"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "徙",
+     "pos": "不能徙、能徙",
+     "du": "xǐ"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "夫子常以此四之事宜修治在身也。",
+    "scan_page": "42"
+   }
+  },
+  {
+   "chapter": "7.4",
+   "title": "子之燕居",
+   "url": "https://yikonglu.com/lunyu/shu-er/4.html",
+   "text": "子之燕居，申申如也，夭夭如也。",
+   "sentences": [
+    "子之燕居，申申如也，夭夭如也。"
+   ],
+   "baihua": "孔子闲居在家时，神态舒展，面色和悦。",
+   "citations": [
+    {
+     "text": "燕居，闲暇无事之时。杨氏曰：申申……其色愉也",
+     "source": "朱注；朱注引杨氏",
+     "pages": [
+      "92"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "程子曰：此弟子善形容圣人处也……惟圣人便自有中和之气",
+     "source": "朱注引程子",
+     "pages": [
+      "92"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "燕",
+     "pos": "燕居",
+     "du": "yàn"
+    },
+    {
+     "zi": "申",
+     "pos": "申申",
+     "du": "shēn"
+    },
+    {
+     "zi": "夭",
+     "pos": "夭夭",
+     "du": "yāo"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "云子之燕居者，退朝而居處也。",
+    "scan_page": "43"
+   }
+  },
+  {
+   "chapter": "7.5",
+   "title": "甚矣吾衰也",
+   "url": "https://yikonglu.com/lunyu/shu-er/5.html",
+   "text": "子曰：甚矣吾衰也！久矣吾不复梦见周公！",
+   "sentences": [
+    "子曰：甚矣吾衰也！",
+    "久矣吾不复梦见周公！"
+   ],
+   "baihua": "孔子说：我老得太厉害了！已经很久，梦里没再遇见周公。",
+   "citations": [
+    {
+     "text": "复，扶又反。孔子盛时……自叹其衰之甚也",
+     "source": "朱注",
+     "pages": [
+      "92"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "程子曰：孔子盛时……老则衰也",
+     "source": "朱注引程子",
+     "pages": [
+      "92"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "甚",
+     "pos": "甚矣",
+     "du": "shèn"
+    },
+    {
+     "zi": "复",
+     "pos": "不复梦见、无复是心、无复是梦",
+     "du": "fù"
+    },
+    {
+     "zi": "见",
+     "pos": "梦见、如见之",
+     "du": "jiàn"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "夫聖人行教，既須得德位兼并。",
+    "scan_page": "43"
+   }
+  },
+  {
+   "chapter": "7.6",
+   "title": "志于道，据于德，依于仁，游于艺",
+   "url": "https://yikonglu.com/lunyu/shu-er/6.html",
+   "text": "子曰：志于道，据于德，依于仁，游于艺。",
+   "sentences": [
+    "子曰：志于道，据于德，依于仁，游于艺。"
+   ],
+   "baihua": "孔子说：心志放在道上，立足于德，依凭着仁，在六艺之中涵泳游息。",
+   "citations": [
+    {
+     "text": "志者，心之所之之谓……而心亦无所放矣",
+     "source": "朱注",
+     "pages": [
+      "92",
+      "93"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "此章言人之为学当如是也……忽不自知其入于圣贤之域矣",
+     "source": "朱注",
+     "pages": [
+      "93"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "据",
+     "pos": "据于德、据者",
+     "du": "jù"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "此章明人生處世須道藝自輔也。",
+    "scan_page": "43"
+   }
+  },
+  {
+   "chapter": "7.7",
+   "title": "自行束脩以上",
+   "url": "https://yikonglu.com/lunyu/shu-er/7.html",
+   "text": "子曰：自行束脩以上，吾未尝无诲焉。",
+   "sentences": [
+    "子曰：自行束脩以上，吾未尝无诲焉。"
+   ],
+   "baihua": "孔子说：凡是带着一束干肉作见面礼来求学的，我从没有不教的。",
+   "citations": [
+    {
+     "text": "脩，脯也……则无不有以教之也",
+     "source": "朱注",
+     "pages": [
+      "93"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "脩",
+     "pos": "束脩、脩，脯也",
+     "du": "xiū"
+    },
+    {
+     "zi": "上",
+     "pos": "以上",
+     "du": "shàng"
+    },
+    {
+     "zi": "诲",
+     "pos": "无诲",
+     "du": "huì"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "此明孔子教化有感必應者也。",
+    "scan_page": "44"
+   }
+  },
+  {
+   "chapter": "7.8",
+   "title": "不愤不启，不悱不发",
+   "url": "https://yikonglu.com/lunyu/shu-er/8.html",
+   "text": "子曰：不愤不启，不悱不发。举一隅不以三隅反，则不复也。",
+   "sentences": [
+    "子曰：不愤不启，不悱不发。",
+    "举一隅不以三隅反，则不复也。"
+   ],
+   "baihua": "孔子说：学的人不是心里憋着想通而通不了，我不去开他的窍；不是话到嘴边又讲不明白，我不去替他点破。拿方桌的一角给他看，他不能由此推知其余三角，我也就不再重复了。",
+   "citations": [
+    {
+     "text": "愤者，心求通而未得之意……发，谓达其辞",
+     "source": "朱注",
+     "pages": [
+      "94"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "物之有四隅者……以为受教之地也",
+     "source": "朱注",
+     "pages": [
+      "94"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "程子曰：愤悱……则沛然矣",
+     "source": "朱注引程子",
+     "pages": [
+      "94"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "愤",
+     "pos": "不愤、愤者、愤悱",
+     "du": "fèn"
+    },
+    {
+     "zi": "悱",
+     "pos": "不悱、悱者",
+     "du": "fěi"
+    },
+    {
+     "zi": "启",
+     "pos": "不启、启谓",
+     "du": "qǐ"
+    },
+    {
+     "zi": "隅",
+     "pos": "一隅、三隅、四隅",
+     "du": "yú"
+    },
+    {
+     "zi": "反",
+     "pos": "三隅反、反者",
+     "du": "fǎn"
+    },
+    {
+     "zi": "复",
+     "pos": "不复也、复再告也、乃复告尔",
+     "du": "fù"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "又明孔子教人法也。",
+    "scan_page": "44"
+   }
+  },
+  {
+   "chapter": "7.9",
+   "title": "子食于有丧者之侧（是日哭则不歌）",
+   "url": "https://yikonglu.com/lunyu/shu-er/9.html",
+   "text": "子食于有丧者之侧，未尝饱也。子于是日哭，则不歌。",
+   "sentences": [
+    "子食于有丧者之侧，未尝饱也。",
+    "子于是日哭，则不歌。"
+   ],
+   "baihua": "孔子在服丧的人身旁用饭，从没吃饱过。哪一天他吊丧哭过，那天就不唱歌。",
+   "citations": [
+    {
+     "text": "临丧哀，不能甘也。哭，谓吊哭……自不能歌也",
+     "source": "朱注",
+     "pages": [
+      "94"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "谢氏曰：学者于此二者……然后可以学道",
+     "source": "朱注引谢氏",
+     "pages": [
+      "94"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "丧",
+     "pos": "有丧者、临丧",
+     "du": "sāng"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "為應赴事故必食也。",
+    "scan_page": "45"
+   }
+  },
+  {
+   "chapter": "7.10",
+   "title": "用之则行，舍之则藏",
+   "url": "https://yikonglu.com/lunyu/shu-er/10.html",
+   "text": "子谓颜渊曰：用之则行，舍之则藏；唯我与尔有是夫。子路曰：子行三军，则谁与？子曰：暴虎冯河，死而无悔者，吾不与也。必也，临事而惧，好谋而成者也。",
+   "sentences": [
+    "子谓颜渊曰：用之则行，舍之则藏；唯我与尔有是夫。",
+    "子路曰：子行三军，则谁与？",
+    "子曰：暴虎冯河，死而无悔者，吾不与也。",
+    "必也，临事而惧，好谋而成者也。"
+   ],
+   "baihua": "孔子对颜渊说：用我，就出来行道；不用，就把这道收起来。能这样的，大概只有我和你。子路问：老师若是带兵打仗，愿意跟谁一起？孔子说：赤手打老虎、不坐船硬过大河，送了命也不懊悔的，这种人我不跟他共事。我要的，是临事小心戒惧、肯用心谋划又能办成事的人。",
+   "citations": [
+    {
+     "text": "尹氏曰：用舍无与于己……故亦能之",
+     "source": "朱注引尹氏",
+     "pages": [
+      "94"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "子路曰：子行三军，则谁与？／万二千五百人为军……必与己同",
+     "source": "经文、朱注",
+     "pages": [
+      "94",
+      "95"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "子曰：暴虎冯河……好谋而成者也。／暴虎，徒搏……子路盖不知也",
+     "source": "经文、朱注",
+     "pages": [
+      "95"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "谢氏曰：圣人于行藏之间……而况于行三军乎",
+     "source": "朱注引谢氏",
+     "pages": [
+      "95"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "舍",
+     "pos": "舍之则藏、用舍",
+     "du": "shě"
+    },
+    {
+     "zi": "夫",
+     "pos": "有是夫、夫不谋无成",
+     "du": "fú"
+    },
+    {
+     "zi": "与",
+     "pos": "唯我与尔、则谁与、吾不与也",
+     "du": "yǔ"
+    },
+    {
+     "zi": "行",
+     "pos": "行三军、行师",
+     "du": "xíng"
+    },
+    {
+     "zi": "暴",
+     "pos": "暴虎",
+     "du": "bào"
+    },
+    {
+     "zi": "冯",
+     "pos": "冯河",
+     "du": "píng"
+    },
+    {
+     "zi": "好",
+     "pos": "好谋",
+     "du": "hào"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "云子謂云云者，孔子謂顏淵曰：用之行、舍之藏者，謂時世宜行之事，則可行之；不宜行之事，則可止之也。",
+    "scan_page": "46"
+   }
+  }
+ ]
+}

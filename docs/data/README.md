@@ -27,13 +27,15 @@ configs:
   data_files: lunyu-gong-ye-chang.csv
 - config_name: yong-ye
   data_files: lunyu-yong-ye.csv
+- config_name: shu-er
+  data_files: lunyu-shu-er.csv
 ---
 
 # 一孔录《论语》逐章开放数据
 
 **来源与署名：一孔录 Yikonglu，<https://yikonglu.com>**（转用请署“一孔录 yikonglu.com”并附原章网址）
 
-一孔录逐字读《论语》，以朱熹《论语集注》（《四部备要》本）为底本，每章对照底本原页。本数据集是网站上已讲各章的核对底子，按篇各一份 CSV 与 JSON，随网站更新。现收 6 篇 139 章，开讲一篇加一篇。
+一孔录逐字读《论语》，以朱熹《论语集注》（《四部备要》本）为底本，每章对照底本原页。本数据集是网站上已讲各章的核对底子，按篇各一份 CSV 与 JSON，随网站更新。现收 7 篇 157 章，开讲一篇加一篇。
 
 ## 文件
 
@@ -42,7 +44,7 @@ configs:
 | `lunyu-<篇>.csv` | 章号、标题、原文、白话、网址 |
 | `lunyu-<篇>.json` | 以上各项，加分句、视频引到的注文原话及底本页码（citations）、读音（readings）、皇侃《论语义疏》首句及扫描页（huangkan_first_line） |
 
-篇：学而、为政、八佾、里仁、公冶长、雍也。章号按朱注分章（与杨伯峻《论语译注》分章偶有一两号之差）。
+篇：学而、为政、八佾、里仁、公冶长、雍也、述而。章号按朱注分章（与杨伯峻《论语译注》分章偶有一两号之差）。
 
 ## 许可
 
