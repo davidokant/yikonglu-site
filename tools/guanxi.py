@@ -83,14 +83,30 @@ document.querySelectorAll('.gxtab button').forEach(function(b){b.onclick=functio
 /* 全书一张网 */
 var S=document.getElementById('gxall'),W=760,R=330,C=380,N=D.ch.length,gap=0.035,tot=2*Math.PI-gap*20,pos={},info=document.getElementById('gxinfo');
 var k=0,pi=-1;D.ch.forEach(function(x,i){if(x[1]!==pi){pi=x[1];k++}var a=-Math.PI/2+gap*(k-1)+tot*i/N+gap/2;pos[x[0]]=[C+R*Math.cos(a),C+R*Math.sin(a),a]});
-var gE=el('g',{},S),gN=el('g',{},S);
+var gS=el('g',{},S),gE=el('g',{},S),gN=el('g',{},S);
 function arc(a,b,cls){var p=pos[a],q=pos[b];if(!p||!q)return;el('path',{d:'M'+p[0]+' '+p[1]+' Q'+C+' '+C+' '+q[0]+' '+q[1],'class':'gxe '+cls,'data-a':a,'data-b':b},gE)}
 D.hj.forEach(function(e){arc(e[0],e[1],'hj')});D.wd.forEach(function(g){var m=g.items.map(function(x){return x[0]});for(var i=0;i<m.length;i++)for(var j=i+1;j<m.length;j++)arc(m[i],m[j],'wd')});
-var PN=D.pian,PA={};D.ch.forEach(function(x){var p=pos[x[0]],n=el('circle',{cx:p[0],cy:p[1],r:x[3]?3.6:2.4,'class':'gxn'+(x[3]?' on':''),'data-c':x[0]},gN);n.addEventListener('click',function(){pick(x[0])});
+var PN=D.pian,PA={};D.ch.forEach(function(x){var p=pos[x[0]],n=el('circle',{cx:p[0],cy:p[1],r:x[3]?3.6:2.4,'class':'gxn'+(x[3]?' on':''),'data-c':x[0]},gN);
 var A=PA[x[1]]||(PA[x[1]]=[p[2],p[2]]);A[1]=p[2]});
 Object.keys(PA).forEach(function(q){var a=(PA[q][0]+PA[q][1])/2,t=el('text',{x:C+(R+26)*Math.cos(a),y:C+(R+26)*Math.sin(a)+5,'class':'gxp','text-anchor':'middle'},gN);t.textContent=PN[q]});
 var byc={};D.ch.forEach(function(x){byc[x[0]]=x});
-function pick(c){var x=byc[c];S.querySelectorAll('.gxe').forEach(function(e){var o=e.dataset.a===c||e.dataset.b===c;e.classList.toggle('hi',o)});S.querySelectorAll('.gxn').forEach(function(n){n.classList.toggle('sel',n.dataset.c===c)});
+/* 手机上点不准：点圆周附近任一处取最近的一章；图下先选篇、再选章，左右箭头逐章走 */
+var curP=0,cur=null,nav=document.createElement('div');nav.className='gxnav';S.parentNode.parentNode.insertBefore(nav,S.parentNode.nextSibling);
+nav.innerHTML='<div class="gxps"></div><div class="gxcr"><button type="button" class="gxar" data-d="-1">‹</button><div class="gxcs"></div><button type="button" class="gxar" data-d="1">›</button></div>';
+var PS=nav.querySelector('.gxps'),CS=nav.querySelector('.gxcs'),deg={};D.hj.forEach(function(e){deg[e[0]]=1;deg[e[1]]=1});D.wd.forEach(function(g){g.items.forEach(function(x){deg[x[0]]=1})});
+PS.innerHTML=PN.map(function(n,i){return '<button type="button" data-p="'+i+'">'+esc(n)+'</button>'}).join('');
+function sec(p){while(gS.firstChild)gS.removeChild(gS.firstChild);var A=PA[p];if(!A)return;var r=R,a0=A[0]-.012,a1=A[1]+.012;
+el('path',{d:'M'+(C+r*Math.cos(a0))+' '+(C+r*Math.sin(a0))+' A'+r+' '+r+' 0 '+(a1-a0>Math.PI?1:0)+' 1 '+(C+r*Math.cos(a1))+' '+(C+r*Math.sin(a1)),'class':'gxsec'},gS)}
+function strip(p){curP=p;PS.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',+b.dataset.p===p)});
+CS.innerHTML=D.ch.filter(function(x){return x[1]===p}).map(function(x){return '<button type="button" data-c="'+x[0]+'" class="'+(x[3]?'on ':'')+(deg[x[0]]?'ln ':'')+(x[0]===cur?'sel':'')+'">'+x[0]+'</button>'}).join('');sec(p);
+var b=PS.querySelector('.on');if(b)PS.scrollLeft=b.offsetLeft-PS.clientWidth/2+b.offsetWidth/2;var s=CS.querySelector('.sel');if(s)CS.scrollLeft=s.offsetLeft-CS.clientWidth/2+s.offsetWidth/2}
+PS.addEventListener('click',function(e){var b=e.target.closest('button');if(b)strip(+b.dataset.p)});
+CS.addEventListener('click',function(e){var b=e.target.closest('button');if(b)pick(b.dataset.c)});
+nav.querySelectorAll('.gxar').forEach(function(b){b.onclick=function(){var i=cur?D.ch.findIndex(function(x){return x[0]===cur}):-1,j=i<0?D.ch.findIndex(function(x){return x[1]===curP}):i+(+b.dataset.d);if(j>=0&&j<N)pick(D.ch[j][0])}});
+S.addEventListener('click',function(ev){var m=S.getScreenCTM();if(!m)return;var pt=S.createSVGPoint();pt.x=ev.clientX;pt.y=ev.clientY;var q=pt.matrixTransform(m.inverse()),dx=q.x-C,dy=q.y-C;if(Math.sqrt(dx*dx+dy*dy)<R*.5)return;
+var a=Math.atan2(dy,dx);if(a<-Math.PI/2)a+=2*Math.PI;var best=null,bd=9;D.ch.forEach(function(x){var d=Math.abs(pos[x[0]][2]-a);if(d<bd){bd=d;best=x[0]}});if(best)pick(best)});
+strip(0);
+function pick(c){var x=byc[c];cur=c;strip(x[1]);S.querySelectorAll('.gxe').forEach(function(e){var o=e.dataset.a===c||e.dataset.b===c;e.classList.toggle('hi',o)});S.querySelectorAll('.gxn').forEach(function(n){n.classList.toggle('sel',n.dataset.c===c)});
 var nb=[];S.querySelectorAll('.gxe.hi').forEach(function(e){var o=e.dataset.a===c?e.dataset.b:e.dataset.a;if(nb.indexOf(o)<0)nb.push(o)});
 info.innerHTML='<b><a href="'+x[2]+'">论语 '+c+'</a></b> '+esc(x[4])+(nb.length?'<br>连着：'+nb.map(function(o){return '<a href="'+byc[o][2]+'">'+o+'</a>'}).join(' '):'<br><small>这一章在图上没有连线，章页“这一章连着”里还有人物、别的书等</small>')}
 function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML}
@@ -141,7 +157,7 @@ def build(L, G, write, page, P, href, short, PIAN, pub, DOMAIN):
 <main class="wrap guanxi"><p class="lead">《论语》二十篇四百九十八章，看着一章一章是散的，其实处处连着：同一句话在两处出现，同一个问题孔子答不同的人，同一个弟子在几十章里出场。全书共 {sum(v for k, v in st.items() if k != "年历"):,} 条关系，都记在《论语》智器重建本里，<a href="{P}duben.html">PDF 免费下载</a>。</p>
 <div class="gxtab" role="tablist"><button type="button" data-v="all">全书一张网</button><button type="button" data-v="wd">同问异答</button><button type="button" data-v="rw">人物</button></div>
 <section class="gxview" id="v-all"><p class="note">圆周上一个点是一章，按二十篇排一圈，深色的点是已经讲过的章。绿线是同一句话在书里出现两次（本书互见 {st.get("互见", 0)} 条），赭线连着同一个问题的几问几答（同问异答 {len(wd)} 组）。点一章看它连着哪几章。</p>
-<div class="gxwrap"><svg id="gxall" viewBox="0 0 760 760" role="img" aria-label="《论语》全书 498 章关系图"></svg></div><p id="gxinfo" class="gxinfo">点圆周上任一章。</p></section>
+<div class="gxwrap"><svg id="gxall" viewBox="0 0 760 760" role="img" aria-label="《论语》全书 498 章关系图"></svg></div><p id="gxinfo" class="gxinfo">点圆周上任一处，或在上面先选篇、再选章。</p></section>
 <section class="gxview" id="v-wd" hidden><p class="note">同一个问题，孔子对不同的人答得不一样。这是读《论语》最要紧的一条线：答案跟着人走。</p>{wdh}</section>
 <section class="gxview" id="v-rw" hidden><p class="note">《论语》里有名有姓的人共 {len(rw)} 位。点一个人，内圈是他出场的章，外圈是常和他同章出现的人，数字是同章几次。</p>
 <p><input id="gxq" type="search" placeholder="搜人名，如：子路、颜回、管仲" aria-label="搜人名"></p><p id="gxrwlist" class="gxchips"></p>
