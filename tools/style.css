@@ -724,6 +724,10 @@ header.top nav a.lynav{color:#fff;background:#23503F;border-radius:999px;padding
 .nltag{margin:6px 0 0;font-size:14px}.nltag a{display:inline-block;padding:2px 10px;border:1px solid var(--accent2);color:var(--accent2);border-radius:999px}
 .lycta{display:flex;flex-wrap:wrap;gap:8px}.lycta .btn{font-size:15px;padding:8px 16px}
 .nltoday{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:10px;padding:16px 20px;margin:18px 0;box-shadow:var(--shadow)}
+.nlbday{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:16px 20px;margin:18px 0;box-shadow:var(--shadow)}
+.nlbday .nlbh{margin:0 0 10px}.nlbday form{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.nlbday select{font:inherit;font-size:16px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+.nlbday .btn{padding:8px 20px}.nlbday #nlbo{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}.nlbday blockquote{margin:8px 0 12px;font-size:22px;line-height:1.6}.nlbday #nlbo .btn{margin:4px 6px 0 0}
+.nll li.bd{background:color-mix(in srgb,var(--accent) 12%,transparent);border-radius:6px}
 .nltoday blockquote{margin:8px 0 12px;font-size:22px;line-height:1.6}.nltoday .btn{margin:4px 6px 0 0}
 .nlchips{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}.nlchips a{padding:3px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-size:14px}
 .nll{list-style:none;padding:0;margin:0}.nll li{display:grid;grid-template-columns:76px 64px 1fr;gap:2px 10px;padding:8px 4px;border-bottom:1px dashed var(--line);align-items:baseline}

@@ -139,13 +139,22 @@ def build(L, D, X, write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, zidia
 <main class="wrap narrow nianli"><p class="lead">《论语》全书 498 章，排成 365 课。1 月 1 日读第 1 课“{esc(first["q"])}”，12 月 31 日读第 365 课“{esc(last["q"])}”。年年同一天读同一章，哪天开始都行：从那天那一课读起，读满一年正好一轮。</p>
 <p class="note">首页的“今日《论语》”每天按这张表读一课。一课多是一章，短章两三章并成一课，只在同一篇里并。闰年 2 月 29 日不排新课，做补读日。教师节、孔子诞辰另有加读一章，不挪正课。</p>
 <div class="nltoday" id="nltoday" hidden></div>
+<div class="nlbday" id="nlbday"><p class="nlbh"><b>你生日那天读哪一句？</b>找找看，做成一张卡片，分享给朋友看看。</p>
+<form id="nlbf"><select id="nlbm" aria-label="月">{"".join(f'<option value="{m}">{m} 月</option>' for m in range(1, 13))}</select><select id="nlbd" aria-label="日"></select><button class="btn" type="submit">找一找</button></form><div id="nlbo" hidden></div></div>
 <p class="nlchips">{chips}</p>{mon}
 <p class="note">标“未讲”的章视频还在做，网站先放原文、原页、白话和朱熹注。读过的课（这台设备上读过这一课所有的章）打勾，进度只存在你自己的设备上。</p></main>
 <script>(function(){{var n=Date.now(),bj=new Date(n+288e5),md=(bj.getUTCMonth()+1)+"-"+bj.getUTCDate(),li=document.querySelector('.nll li[data-md="'+md+'"]'),T=document.getElementById("nltoday");
 var S;try{{S=JSON.parse(localStorage.getItem("yk_xd")||"{{}}")}}catch(e){{S={{}}}}var seen=((S.b||{{}}).lunyu||{{}}).seen||[];
 document.querySelectorAll(".nll li[data-cs]").forEach(function(x){{if(JSON.parse(x.getAttribute("data-cs")).every(function(c){{return seen.indexOf(c)>=0}}))x.classList.add("done")}});
 if(!li)return;li.classList.add("now");var a=li.querySelector(".nlc a"),q=li.querySelector("q");
-T.innerHTML='<p><b>今天 '+li.querySelector("em").textContent+(li.querySelector("b")?" · "+li.querySelector("b").textContent:"")+'</b></p>'+(q?'<blockquote lang="zh-Hans">'+q.textContent+'</blockquote>':'')+(a?'<p><a class="btn" href="'+a.getAttribute("href")+'">读今天这一课 →</a> <a class="btn ghost" href="#'+li.id+'">在表里看</a></p>':'<p>'+li.querySelector(".nlc").textContent+'</p>');T.hidden=false}})();</script>'''
+T.innerHTML='<p><b>今天 '+li.querySelector("em").textContent+(li.querySelector("b")?" · "+li.querySelector("b").textContent:"")+'</b></p>'+(q?'<blockquote lang="zh-Hans">'+q.textContent+'</blockquote>':'')+(a?'<p><a class="btn" href="'+a.getAttribute("href")+'">读今天这一课 →</a> <a class="btn ghost" href="#'+li.id+'">在表里看</a></p>':'<p>'+li.querySelector(".nlc").textContent+'</p>');T.hidden=false}})();
+(function(){{var M=document.getElementById("nlbm"),Dd=document.getElementById("nlbd"),O=document.getElementById("nlbo"),F=document.getElementById("nlbf"),N=[31,29,31,30,31,30,31,31,30,31,30,31];
+function days(v){{var m=+M.value,k=v||+Dd.value||1;Dd.innerHTML="";for(var i=1;i<=N[m-1];i++)Dd.insertAdjacentHTML("beforeend",'<option value="'+i+'">'+i+' 日</option>');Dd.value=Math.min(k,N[m-1])}}
+var b0;try{{b0=(localStorage.getItem("yk_bd")||"").split("-")}}catch(e){{b0=[]}}M.value=b0[0]||"1";days(+b0[1]||1);M.onchange=function(){{days()}};
+function show(go){{var md=M.value+"-"+Dd.value,li=document.querySelector('.nll li[data-md="'+md+'"]');try{{localStorage.setItem("yk_bd",md)}}catch(e){{}}if(!li)return;
+document.querySelectorAll(".nll li.bd").forEach(function(x){{x.classList.remove("bd")}});li.classList.add("bd");var a=li.querySelector(".nlc a"),q=li.querySelector("q");
+O.innerHTML='<p><b>'+li.querySelector("em").textContent+(li.querySelector("b")?" · "+li.querySelector("b").textContent:"")+'</b></p>'+(q?'<blockquote lang="zh-Hans">'+q.textContent+'</blockquote>':'')+(a?'<p><a class="btn" href="'+a.getAttribute("href")+'?bd=1">做成我的生日卡 →</a> <a class="btn ghost" href="'+a.getAttribute("href")+'">读这一课</a> <a class="btn ghost" href="#'+li.id+'">在表里看</a></p>':'<p>'+li.querySelector(".nlc").textContent+'</p>');O.hidden=false}}
+F.onsubmit=function(e){{e.preventDefault();show()}};if(b0[0])show()}})();</script>'''
         write("nianli/index.html", page(L, "《论语》年历：一年 365 课，每天一课读完全书｜一孔录",
                                         "《论语》498 章排成 365 课，1 月 1 日“学而时习之”，12 月 31 日“不知命，无以为君子也”。年年同一天读同一章，从今天那一课读起，一年一轮。", "nianli/", body, codes=codes))
         urls.append(f"{DOMAIN}/{L.prefix}nianli/")
