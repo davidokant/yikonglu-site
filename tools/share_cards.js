@@ -124,7 +124,7 @@ function yy(){var kn=keyIdx(),key=keyTxt(),G=cols(kn),g=G[0];
     foot4(c,seal,true,'yy');show(cv)})}
 
 // 二、人物卡：一孔录原创角色（出场表里本章的人；没有就按章轮到谁）
-function rw(){var who=(X4.who||[]).slice(0,2),key=keyTxt(),bh=keyBh(keyIdx());if(!who.length){yy();return}
+function rw(){var who=(X4.who||[]).slice(0,1),key=keyTxt(),bh=keyBh(keyIdx());if(!who.length){yy();return}
   var names=who.map(function(p){return p[1]}).join(HT?'、':'、');
   Promise.all([prep(key+bh+names+who.map(function(p){return p[2]}).join('')+'一孔录原创角色读到这一句')].concat(who.map(function(p){return img('https://img.yikonglu.com/gushi/img/'+p[0]+'-full.png')}))).then(function(a){var seal=a[0],ims=a.slice(1),cv=canvas(),c=cv.getContext('2d');
     var bg=c.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#2C6A52');bg.addColorStop(.62,'#23503F');bg.addColorStop(1,'#1A3B2F');c.fillStyle=bg;c.fillRect(0,0,W,H);
