@@ -8,6 +8,9 @@
 句的切法以网站 split_ju 为准：把 chars 的字序按每句去标点后的字数依次分给各句。
 """
 import json, os, re, glob
+import sys as _sys
+_sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "yuanye_wm"))
+import wm as WM  # 原页切边、角标（11-14）
 
 SRC = "/mnt/project-files/一孔学-内-自媒体/数据/网站素材"
 JL_DIR = os.path.join(SRC, "_句列")
@@ -102,11 +105,22 @@ def page_pane(c, pages, per, label, ydir=None, alt=None):  # alt：图片说明�
     order = sorted(pages, key=lambda p: int(re.sub(r"\D", "", p)), reverse=False)
     for p in order:
         w, h = pages[p]["w"], pages[p]["h"]
+        n = int(re.sub(r"\D", "", p))
+        aria = alt.format(n=n) if alt else f'{label} {n}'
+        if ydir and os.path.exists(os.path.join(ydir, p + ".jpg")):  # 11-14 起原页图切白边、加角标（yuanye_wm）：底图就是切好的那块，句框坐标平移到切图上
+            from PIL import Image
+            jp = os.path.join(ydir, p + ".jpg"); k = Image.open(jp).width / w
+            bx0, by0, bx1, by1 = [v / k for v in WM.crop_box(jp, p)]
+            iw, ih = round(bx1 - bx0, 1), round(by1 - by0, 1)
+            rects = "".join(f'<rect class="hl" data-s="{i}" x="{round(x0 - bx0, 1)}" y="{round(y0 - by0, 1)}" width="{x1 - x0}" height="{y1 - y0}" rx="6"/>'
+                            for i, bx in enumerate(per, 1) for (pp, x0, y0, x1, y1) in bx if pp == p)
+            out.append(f'<a class="yyp" href="/yuanye/{p}.jpg" target="_blank" data-p="{p}"><svg viewBox="0 0 {iw} {ih}" role="img" aria-label="{aria}">'
+                       f'<image href="/yuanye/{p}.jpg" width="{iw}" height="{ih}"/>{rects}</svg><span>{label} {n}</span></a>')
+            continue
         fy0, fy1 = frame_rows(p, ydir, w, h) if ydir else (0, h)
         rects = "".join(f'<rect class="hl" data-s="{i}" x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="6"/>'
                         for i, bx in enumerate(per, 1) for (pp, x0, y0, x1, y1) in bx if pp == p)
-        n = int(re.sub(r"\D", "", p))
-        out.append(f'<a class="yyp" href="/yuanye/{p}.jpg" target="_blank" data-p="{p}"><svg viewBox="0 {fy0} {w} {fy1 - fy0}" role="img" aria-label="{alt.format(n=n) if alt else f'{label} {n}'}">'
+        out.append(f'<a class="yyp" href="/yuanye/{p}.jpg" target="_blank" data-p="{p}"><svg viewBox="0 {fy0} {w} {fy1 - fy0}" role="img" aria-label="{aria}">'
                    f'<image href="/yuanye/{p}.jpg" width="{w}" height="{h}"/>{rects}</svg><span>{label} {n}</span></a>')
     return "".join(out)
 

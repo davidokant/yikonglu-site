@@ -693,7 +693,7 @@ aside h3{padding-bottom:6px;border-bottom:3px double color-mix(in srgb,var(--acc
 .ju.wxno::after{content:"补";font-size:.62em;vertical-align:super;color:var(--accent);margin-left:.15em;font-weight:600}
 html[lang="en"] .ju.wxno::after{content:"*"}html[lang="ja"] .ju.wxno::after{content:"補"}
 .cv{flex-shrink:0}
-/* 11-14 《论语》特殊地位：导航“论语”、今日《论语》大卡、主书一格、全站今日细条 */
+/* 11-14 《论语》特殊地位：导航“论语”、今日《论语》大卡、主经一格、全站今日细条 */
 header.top nav a.lynav{color:#fff;background:#23503F;border-radius:999px;padding:4px 14px;font-weight:700}header.top nav a.lynav:hover{text-decoration:none;background:#1b3f32}
 .meiri.big{padding:26px 28px;border:2px solid #23503F;box-shadow:0 8px 24px rgba(35,80,63,.12)}.meiri.big .mh b{font-size:18px}.meiri.big blockquote{font-size:30px}
 .wk{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:14px 0 0;padding-top:12px;border-top:1px dashed var(--line);font-size:14px;color:var(--mute)}

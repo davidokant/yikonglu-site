@@ -40,27 +40,26 @@
  },
  "en": {
   "h": "What is open, and what is not",
-  "p": "The groundwork for checking us is open; Yikonglu's own readings and editorial work are not.",
-  "oh": "Open (CC BY-NC 4.0: attribution, non-commercial)",
+  "p": "Everything Yikonglu writes is open with credit; videos, narration, original characters and illustrations are not.",
+  "oh": "Open (CC BY 4.0: credit is all we ask, commercial use allowed)",
   "o": [
    "Original text and textual variants",
    "Plain renderings",
+   "Our readings (“Yikonglu reads it”, the text on the chapter pages)",
    "Pronunciation tables",
    "Citation tables (source and base-edition page of every quotation)",
    "Chapter-by-chapter index of commentaries with page numbers",
    "Corrections log",
    "Table of people",
-   "Table of topics"
+   "Table of topics",
+   "Page images (please keep the “Yikonglu” mark and volume/page in the corner)"
   ],
   "ch": "Not open",
   "c": [
-   "Full reading notes",
-   "Collected “Yikonglu reads it” notes",
-   "Annotated page images",
-   "Indexes arranged by life situation",
-   "Videos, narration, characters and illustrations"
+   "Quotations from modern commentaries (Yang Bojun, Qian Mu and others)",
+   "Videos, narration, original characters and illustrations"
   ],
-  "biz": "Commercial use, including model training and redistribution, requires prior written permission. Write to:",
+  "biz": "Commercial use, including model training and redistribution, is allowed; just credit “Yikonglu yikonglu.com” with a link to the original. Questions:",
   "rule": "Every new kind of data will be judged by this line.",
   "log": "Revisions",
   "logs": [
@@ -71,32 +70,35 @@
    [
     "2026-11-06",
     "Removed our four reading fields from the data; plain renderings stay open."
+   ],
+   [
+    "2026-11-14",
+    "License changed from CC BY-NC 4.0 to CC BY 4.0: commercial use is allowed and our readings are open too; credit is all we ask."
    ]
   ]
  },
  "ja": {
   "h": "公開するもの、しないもの",
-  "p": "照合のための土台は公開し、一孔録自身の読みと編纂の成果は公開しません。",
-  "oh": "公開（CC BY-NC 4.0：表示・非営利）",
+  "p": "一孔録が書いた文章はすべて公開、表示だけで使えます。動画・ナレーション・オリジナルキャラクター・挿絵は対象外です。",
+  "oh": "公開（CC BY 4.0：表示のみ、商用可）",
   "o": [
    "原文と異文",
    "現代語訳",
+   "一孔按と読み方（章ページの文章）",
    "読音表",
-   "引用出典表（各引用の出典と底本の頁）",
+   "引用照合表（各引用の出典と底本の頁）",
    "注釈書の章別索引と頁",
-   "勘誤記録",
+   "正誤記録",
    "人物表",
-   "専題表"
+   "専題表",
+   "原頁画像（隅の「一孔録」と巻・頁は残してください）"
   ],
   "ch": "非公開",
   "c": [
-   "読み方ノートの全文",
-   "「一孔按」の集成",
-   "原頁の注記画像",
-   "境遇別の索引",
-   "動画・ナレーション・作中人物と挿絵"
+   "現代の注釈書（楊伯峻・銭穆など）からの引用",
+   "動画・ナレーション・オリジナルキャラクター・挿絵"
   ],
-  "biz": "商用（モデルの学習や再配布を含む）には事前に書面での許可が必要です。ご連絡先：",
+  "biz": "モデル学習や再配布を含む商用利用も、「一孔録 yikonglu.com」と元リンクを明記すれば可能です。ご質問は：",
   "rule": "今後新しい種類のデータを加えるときも、この線で判断します。",
   "log": "改訂記録",
   "logs": [
@@ -107,32 +109,35 @@
    [
     "2026-11-06",
     "データから一孔録の読み方四項目を外し、現代語訳は公開側に残す。"
+   ],
+   [
+    "2026-11-14",
+    "ライセンスを CC BY-NC 4.0 から CC BY 4.0 に変更：商用可、一孔按と読み方も公開、表示のみで利用可。"
    ]
   ]
  },
  "ko": {
   "h": "공개하는 것, 공개하지 않는 것",
-  "p": "대조에 쓰는 바탕은 공개하고, 일공록 자신의 읽기와 편찬 성과는 공개하지 않습니다.",
-  "oh": "공개 (CC BY-NC 4.0: 저작자 표시·비영리)",
+  "p": "일공록이 쓴 글은 모두 공개하며 출처만 밝히면 됩니다. 영상·내레이션·오리지널 캐릭터·삽화는 제외합니다.",
+  "oh": "공개 (CC BY 4.0: 저작자 표시만, 상업적 이용 가능)",
   "o": [
    "원문과 이문",
    "번역",
+   "일공안과 읽기(장 페이지의 글)",
    "독음표",
-   "인용 출처표(각 인용의 출처와 저본 쪽수)",
+   "인용 대조표(각 인용의 출처와 저본 쪽수)",
    "주석서 장별 색인과 쪽수",
-   "오류 정정 기록",
+   "정오 기록",
    "인물표",
-   "전제표"
+   "전제표",
+   "원문 쪽 이미지(모서리의 “일공록”과 권·쪽을 남겨 주십시오)"
   ],
   "ch": "비공개",
   "c": [
-   "읽기 노트 전문",
-   "‘일공 안’ 모음",
-   "원래 페이지 표시 이미지",
-   "처지별 색인",
-   "영상·내레이션·작품 속 인물과 삽화"
+   "현대 주석서(양보쥔·첸무 등)의 인용",
+   "영상·내레이션·오리지널 캐릭터·삽화"
   ],
-  "biz": "모델 학습과 재배포를 포함한 상업적 이용은 사전에 서면 허가가 필요합니다. 연락처:",
+  "biz": "모델 학습과 재배포를 포함한 상업적 이용도 “일공록 yikonglu.com”과 원래 링크만 밝히면 됩니다. 문의:",
   "rule": "앞으로 새 종류의 데이터를 더할 때도 이 기준으로 판단합니다.",
   "log": "개정 기록",
   "logs": [
@@ -143,32 +148,35 @@
    [
     "2026-11-06",
     "데이터에서 일공록의 읽기 네 항목을 빼고, 번역은 공개 쪽에 남김."
+   ],
+   [
+    "2026-11-14",
+    "라이선스를 CC BY-NC 4.0에서 CC BY 4.0으로 변경: 상업적 이용 가능, 일공안과 읽기도 공개, 출처 표시만 하면 됨."
    ]
   ]
  },
  "fr": {
   "h": "Ce qui est ouvert, et ce qui ne l'est pas",
-  "p": "Le socle qui sert à nous vérifier est ouvert ; les lectures et le travail éditorial propres à Yikonglu ne le sont pas.",
-  "oh": "Ouvert (CC BY-NC 4.0 : attribution, pas d'usage commercial)",
+  "p": "Tout ce qu’écrit Yikonglu est ouvert, avec mention de la source ; les vidéos, la narration, les personnages originaux et les illustrations ne le sont pas.",
+  "oh": "Ouvert (CC BY 4.0 : simple mention de la source, usage commercial permis)",
   "o": [
    "Texte original et variantes",
-   "Traductions en chinois moderne",
-   "Tableaux des prononciations",
-   "Tableaux des citations (source et page de l'édition de base de chaque citation)",
-   "Index des commentaires chapitre par chapitre, avec pages",
-   "Registre des corrections",
-   "Table des personnages",
-   "Table des thèmes"
+   "Traductions",
+   "Nos lectures (le texte des pages de chapitre)",
+   "Tables de prononciation",
+   "Tableaux de citations (source et page de l’édition de base de chaque citation)",
+   "Index des commentaires par chapitre avec pages",
+   "Journal des corrections",
+   "Table des personnes",
+   "Table des thèmes",
+   "Images de pages (merci de garder la marque « Yikonglu » et le volume/la page dans le coin)"
   ],
   "ch": "Non ouvert",
   "c": [
-   "Notes de lecture complètes",
-   "Recueil des « lectures de Yikonglu »",
-   "Images de pages annotées",
-   "Index par situation de vie",
-   "Vidéos, narration, personnages et illustrations"
+   "Citations de commentaires modernes (Yang Bojun, Qian Mu, etc.)",
+   "Vidéos, narration, personnages originaux et illustrations"
   ],
-  "biz": "Tout usage commercial, y compris l'entraînement de modèles et la redistribution, exige une autorisation écrite préalable. Écrire à :",
+  "biz": "L’usage commercial, y compris l’entraînement de modèles et la redistribution, est permis : il suffit de citer « Yikonglu yikonglu.com » avec un lien vers l’original. Questions :",
   "rule": "Chaque nouveau type de données sera jugé selon cette ligne.",
   "log": "Révisions",
   "logs": [
@@ -179,32 +187,35 @@
    [
     "2026-11-06",
     "Retrait des quatre champs de lecture ; les traductions restent ouvertes."
+   ],
+   [
+    "2026-11-14",
+    "Licence passée de CC BY-NC 4.0 à CC BY 4.0 : usage commercial permis, nos lectures ouvertes aussi ; seule la mention de la source est demandée."
    ]
   ]
  },
  "es": {
   "h": "Qué es abierto y qué no",
-  "p": "La base que sirve para comprobarnos es abierta; las lecturas y el trabajo editorial propios de Yikonglu no lo son.",
-  "oh": "Abierto (CC BY-NC 4.0: atribución, no comercial)",
+  "p": "Todo lo que escribe Yikonglu es abierto con atribución; los vídeos, la narración, los personajes originales y las ilustraciones no.",
+  "oh": "Abierto (CC BY 4.0: basta con citar, uso comercial permitido)",
   "o": [
    "Texto original y variantes",
-   "Traducciones al chino moderno",
+   "Traducciones",
+   "Nuestras lecturas (el texto de las páginas de capítulo)",
    "Tablas de pronunciación",
    "Tablas de citas (fuente y página de la edición base de cada cita)",
-   "Índice de comentarios capítulo a capítulo, con páginas",
+   "Índice de comentarios por capítulo con páginas",
    "Registro de correcciones",
-   "Tabla de personajes",
-   "Tabla de temas"
+   "Tabla de personas",
+   "Tabla de temas",
+   "Imágenes de página (conserve la marca «Yikonglu» y el volumen/página de la esquina)"
   ],
   "ch": "No abierto",
   "c": [
-   "Notas de lectura completas",
-   "Recopilación de «la lectura de Yikonglu»",
-   "Imágenes de páginas anotadas",
-   "Índices por situación vital",
-   "Vídeos, narración, personajes e ilustraciones"
+   "Citas de comentarios modernos (Yang Bojun, Qian Mu y otros)",
+   "Vídeos, narración, personajes originales e ilustraciones"
   ],
-  "biz": "El uso comercial, incluido el entrenamiento de modelos y la redistribución, requiere autorización previa por escrito. Escríbanos a:",
+  "biz": "El uso comercial, incluido el entrenamiento de modelos y la redistribución, está permitido; basta con citar «Yikonglu yikonglu.com» con un enlace al original. Preguntas:",
   "rule": "Cada nuevo tipo de datos se juzgará según esta línea.",
   "log": "Revisiones",
   "logs": [
@@ -215,6 +226,10 @@
    [
     "2026-11-06",
     "Se retiran los cuatro campos de lectura; las traducciones siguen abiertas."
+   ],
+   [
+    "2026-11-14",
+    "Licencia cambiada de CC BY-NC 4.0 a CC BY 4.0: uso comercial permitido y nuestras lecturas también abiertas; solo pedimos atribución."
    ]
   ]
  }

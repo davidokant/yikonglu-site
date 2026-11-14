@@ -1,5 +1,5 @@
 ---
-license: cc-by-nc-4.0
+license: cc-by-4.0
 language:
 - zh
 pretty_name: 一孔录《论语》逐章开放数据 Yikonglu Analects Open Data
@@ -49,8 +49,7 @@ configs:
 ## 许可
 
 - 《论语》原文与古注：公版。
-- 一孔录所写的白话、引文出处表、读音：[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)，须署名“一孔录 yikonglu.com”，不得商用。
-- 商用（含训练模型与再分发）须事先取得书面授权，联系方式见网站页尾。
+- 一孔录所写的白话、一孔按、引文出处表、读音：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)，可转载、改编、商用（含训练模型与再分发），只须署名“一孔录 yikonglu.com”并附原链接。
 - 一孔录自己的读法（常见读法、注里的关键字、诸家、一孔按）与现代注本引文不在本数据集里。
 
 ## 引用
