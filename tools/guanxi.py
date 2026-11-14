@@ -85,8 +85,9 @@ var k=0,pi=-1;D.ch.forEach(function(x,i){if(x[1]!==pi){pi=x[1];k++}var a=-Math.P
 var gE=el('g',{},S),gN=el('g',{},S);
 function arc(a,b,cls){var p=pos[a],q=pos[b];if(!p||!q)return;el('path',{d:'M'+p[0]+' '+p[1]+' Q'+C+' '+C+' '+q[0]+' '+q[1],'class':'gxe '+cls,'data-a':a,'data-b':b},gE)}
 D.hj.forEach(function(e){arc(e[0],e[1],'hj')});D.wd.forEach(function(g){var m=g.items.map(function(x){return x[0]});for(var i=0;i<m.length;i++)for(var j=i+1;j<m.length;j++)arc(m[i],m[j],'wd')});
-var PN=D.pian;k=0;pi=-1;D.ch.forEach(function(x){var p=pos[x[0]],n=el('circle',{cx:p[0],cy:p[1],r:x[3]?3.6:2.4,'class':'gxn'+(x[3]?' on':''),'data-c':x[0]},gN);n.addEventListener('click',function(){pick(x[0])});
-if(x[1]!==pi){pi=x[1];var a=p[2]+0.12,t=el('text',{x:C+(R+26)*Math.cos(a),y:C+(R+26)*Math.sin(a)+5,'class':'gxp','text-anchor':'middle'},gN);t.textContent=PN[x[1]]}});
+var PN=D.pian,PA={};D.ch.forEach(function(x){var p=pos[x[0]],n=el('circle',{cx:p[0],cy:p[1],r:x[3]?3.6:2.4,'class':'gxn'+(x[3]?' on':''),'data-c':x[0]},gN);n.addEventListener('click',function(){pick(x[0])});
+var A=PA[x[1]]||(PA[x[1]]=[p[2],p[2]]);A[1]=p[2]});
+Object.keys(PA).forEach(function(q){var a=(PA[q][0]+PA[q][1])/2,t=el('text',{x:C+(R+26)*Math.cos(a),y:C+(R+26)*Math.sin(a)+5,'class':'gxp','text-anchor':'middle'},gN);t.textContent=PN[q]});
 var byc={};D.ch.forEach(function(x){byc[x[0]]=x});
 function pick(c){var x=byc[c];S.querySelectorAll('.gxe').forEach(function(e){var o=e.dataset.a===c||e.dataset.b===c;e.classList.toggle('hi',o)});S.querySelectorAll('.gxn').forEach(function(n){n.classList.toggle('sel',n.dataset.c===c)});
 var nb=[];S.querySelectorAll('.gxe.hi').forEach(function(e){var o=e.dataset.a===c?e.dataset.b:e.dataset.a;if(nb.indexOf(o)<0)nb.push(o)});
@@ -135,7 +136,7 @@ def build(L, G, write, page, P, href, short, PIAN, pub, DOMAIN):
         sv += f'<circle cx="{cx}" cy="{cy}" r="40" class="gxme"/><text x="{cx}" y="{cy + 7}" text-anchor="middle" class="gxt b">{esc(g["q"])}</text></svg>'
         li = "".join(f'<li><a href="{href(_c(it["c"]))}">论语 {_c(it["c"])}</a> {esc(it["who"])}：{esc(it["a"])}{f"<small>{esc(it["note"])}</small>" if it.get("note") else ""}</li>' for it in g["items"])
         wdh += f'<section class="gxcard" id="{g["id"]}"><h3>{esc(g["q"])} · 全书 {n} 次</h3>{sv}<ol>{li}</ol></section>'
-    body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">智器把全书 498 章两两比对找线，人逐条核到原页</span>《论语》关系图</h1></div></div>
+    body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">全书 498 章</span>《论语》关系图</h1></div></div>
 <main class="wrap guanxi"><p class="lead">《论语》二十篇四百九十八章，看着一章一章是散的，其实处处连着：同一句话在两处出现，同一个问题孔子答不同的人，同一个弟子在几十章里出场。全书共 {sum(v for k, v in st.items() if k != "年历"):,} 条关系，都记在《论语》智器重建本里，<a href="{P}duben.html">PDF 免费下载</a>。</p>
 <div class="gxtab" role="tablist"><button type="button" data-v="all">全书一张网</button><button type="button" data-v="wd">同问异答</button><button type="button" data-v="rw">人物</button></div>
 <section class="gxview" id="v-all"><p class="note">圆周上一个点是一章，按二十篇排一圈，深色的点是已经讲过的章。绿线是同一句话在书里出现两次（本书互见 {st.get("互见", 0)} 条），赭线连着同一个问题的几问几答（同问异答 {len(wd)} 组）。点一章看它连着哪几章。</p>
@@ -145,5 +146,5 @@ def build(L, G, write, page, P, href, short, PIAN, pub, DOMAIN):
 <p><input id="gxq" type="search" placeholder="搜人名，如：子路、颜回、管仲" aria-label="搜人名"></p><p id="gxrwlist" class="gxchips"></p>
 <p id="gxrwh" class="gxinfo"></p><div class="gxwrap"><svg id="gxrw" viewBox="0 0 760 600" role="img" aria-label="人物与章的关系"></svg></div><p id="gxrwchs" class="gxchips s"></p></section>
 <script type="application/json" id="gxdata">{data}</script>{GX_JS}</main>'''
-    write("guanxi/index.html", page(L, "《论语》关系图：全书 498 章怎样连着｜一孔录", "同问异答、本书互见、人物与章：智器把全书 498 章两两比对找线，人逐条核到原页。", "guanxi/", body))
+    write("guanxi/index.html", page(L, "《论语》关系图：全书 498 章怎样连着｜一孔录", "同问异答、本书互见、人物与章：智器把全书 498 章两两比对找线，人逐条核到原页。", "guanxi/", body, codes=["zh-Hans", "zh-Hant"]))
     return [f"{DOMAIN}/{L.prefix}guanxi/"]
