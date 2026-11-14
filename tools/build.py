@@ -2361,8 +2361,28 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     except Exception: DC = None
     ul = lambda xs: "<ul>" + "".join(f"<li>{x.replace('{p}', P)}</li>" for x in xs) + "</ul>"
     tbl = '<table><thead><tr>' + "".join(f"<th>{h}</th>" for h in F["th"]) + "</tr></thead><tbody>" + "".join("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in F["rows"]) + "</tbody></table>"
-    s5 = f'<p>{F["s5p"]}</p>'
-    if DC and DC.get("rows"):
+    s5 = f'<p>{F["s5p"].replace("{p}", P)}</p>'
+    if "bth" in F:  # 11-14 主人：公开的数字不必按章、按集列，以书为单位算
+        _now = datetime.datetime.now(datetime.timezone.utc)
+        _dc = {}
+        for r in (DC or {}).get("rows", []):
+            bk = (r.get("first") or "论语-").split("-")[0]; t = _dc.setdefault(bk, [0, 0, 0]); t[0] += 1; t[1] += r["segments"]; t[2] += r["changed"]
+        _ly_vid = {D["ch2ep"][c][0] for c in pub if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= _now)}
+        _ddj_v = [c for c in range(1, 82) if ddj_has_vid(c)]
+        BK = [("论语", "lunyu/", sum(PIAN[p][3] for p in PIAN), F["u_zhang"], len(pages_avail), len(pub), len(_ly_vid), None),
+              ("道德经", "daodejing/", 81, F["u_zhang"], len(json.load(open(os.path.join(HERE, "ddj_pages.json"), encoding="utf-8"))), len(_ddj_v), len({DDJ_EPS[str(c)].get("youtube") for c in _ddj_v}), len(DDJ_LYHJ)),
+              ("三字经", "sanzijing/", len(SZJ), F["u_jiang"], len(SZJ_JL["pages"]), 0, 0, len(SZJ_LYHJ))]
+        def _chg(bk):
+            t = _dc.get(bk)
+            return F["chg"].format(e=t[0], s=t[1], c=t[2], r=round(100 * t[2] / t[1], 1)) if t and t[1] else F["chg0"]
+        _rows = [[f"{n}{un}" for b, u, n, un, pg, done, nv, hj in BK], [f"{pg}{F['u_ye']}" for b, u, n, un, pg, done, nv, hj in BK],
+                 [f"{done}{un}" for b, u, n, un, pg, done, nv, hj in BK], [f"{nv}{F['u_ji']}" for b, u, n, un, pg, done, nv, hj in BK],
+                 [F["lyhj_main"] if hj is None else F["lyhj"].format(n=hj) for b, u, n, un, pg, done, nv, hj in BK], [_chg(b) for b, *_ in BK]]
+        s5 += ('<table class="num bybook"><thead><tr><th></th>' + "".join(f'<th><a href="{P}{u}">{b}</a></th>' for b, u, *_ in BK) + "</tr></thead><tbody>"
+               + "".join(f'<tr><th scope="row">{h}</th>' + "".join(f"<td>{v}</td>" for v in r) + "</tr>" for h, r in zip(F["bth"], _rows))
+               + "</tbody></table>")
+        if DC: s5 += f'<p><small>{F["s5c"].format(d=DC.get("updated", ""))}</small></p>'
+    elif DC and DC.get("rows"):
         s5 += f'<p>{F["s5c"].format(n=DC["episodes"], s=DC["segments"], c=DC["changed"], r=DC["ratio"], d=DC["updated"])}</p>'
         def eplink(ep):
             ch = (EPIS.get(ep) or {}).get("chapters") or []
@@ -2372,7 +2392,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     logs = "".join(f"<li>{a} {b}</li>" for a, b in F["logs"])
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{F["sub"]}</span>{F["title"]}</h1></div></div>
 <main class="wrap narrow prose"><p>{F["intro"]}</p><h2>{F["s1h"]}</h2>{ul(F["s1"])}<h2>{F["s2h"]}</h2><ol>{"".join(f"<li>{x.replace('{p}', P)}</li>" for x in F["s2"])}</ol>
-<h2>{F["s3h"]}</h2><p>{F["s3p"]}</p>{tbl}<p>{F["s3n"]}</p><h2>{F["s4h"]}</h2>{ul(F["s4"])}<h2>{F["s5h"]}</h2>{s5}<h2>{F["s6h"]}</h2><p>{F["s6"]}</p><h3>{F["log"]}</h3><ul>{logs}</ul></main>'''
+<h2>{F["s3h"]}</h2><p>{F["s3p"]}</p>{tbl}<p>{F["s3n"]}</p><h2>{F["s4h"]}</h2>{ul(F["s4"])}<h2>{F["s5h"]}</h2>{s5}<h2>{F["s6h"]}</h2><p>{F["s6"].replace("{p}", P)}</p><h3>{F["log"]}</h3><ul>{logs}</ul></main>'''
     write("fangfa.html", page(L, f'{F["title"]}｜一孔录', F["sub"], "fangfa.html", body)); urls.append(f"{DOMAIN}/{L.prefix}fangfa.html")
     # 问一孔（/wen.html）：按钮由脚本拼出邮箱，源码不露明文
     W = lang_tab(WEN, L.code)
