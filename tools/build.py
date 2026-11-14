@@ -2309,11 +2309,9 @@ def build_lang(L, D, write):
         _wd = "一二三四五六日"
         meiri_html = (f'<section class="meiri big mcal" id="meiri" hidden><div class="mrow"><div class="mcalb" aria-hidden="true"><p class="cm"></p><p class="cd"></p><p class="cw"></p><p class="cl"></p></div>'
                       f'<div class="mtxt"><p class="mh"><b>{MY["h"]}</b><span class="md"></span></p><p class="mtag"></p><blockquote lang="zh-Hans"></blockquote><p class="mb"></p>'
-                      f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a></p></div></div>'
-                      f'<div class="mlead"><img class="mav" alt="" width="64" height="64"><p><small class="mlw"></small><b class="mln"></b><span class="mll"></span></p></div>'
+                      f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a></p></div><img class="mhalf" alt="" width="300" height="400" hidden></div>'
                       f'<p class="wk" id="wkl"><span class="wt" data-t="{esc(LU["wk"])}" data-z="{esc(LU["wk0"])}">{esc(LU["wk0"])}</span><span class="dots">'
-                      + "".join(f'<i title="{_T("星期")}{_wd[i]} · {_lead[i][1]}"><img src="/assets/lead/{_lead[i][0]}.jpg" alt="" width="34" height="34" loading="lazy"><em>{_wd[i]}</em></i>' for i in range(7))
-                      + f'</span><span class="wn">{_T("按《论语》年历，一年一轮 · 每天一位领读")}</span></p>'
+                      + "<i></i>" * 7 + f'</span><span class="wn">{_T("按《论语》年历，一年一轮")}</span></p>'
                       + '</section>')
         meiri_js = wk_js_only(wk_html) + ('<script>(function(){var K=' + json.dumps(_cal, ensure_ascii=False).replace("</", "<\\/") + ',HT=' + ("true" if _ht else "false") + ';'
                     'function T(s){return HT?s.replace(/农历/g,"農曆").replace(/后第/g,"後第").replace(/腊/g,"臘").replace(/闰/g,"閏").replace(/节/g,"節").replace(/补读日/g,"補讀日").replace(/马/g,"馬").replace(/鸡/g,"雞").replace(/猪/g,"豬").replace(/龙/g,"龍").replace(/课/g,"課"):s}'
@@ -2326,7 +2324,7 @@ def build_lang(L, D, write):
                     'if(ix>=0){var k=Math.round((dt-new Date(sy,sm-1,sd))/864e5),h=Math.min(2,Math.floor(k/5));jq=(k===0?"今日"+K.jn[ix]:K.jn[ix]+"后第 "+k+" 天")+" · "+K.hou[ix*3+h]}}catch(e){}'
                     'var MN=["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];M.querySelector(".cm").textContent=MN[m-1];M.querySelector(".cd").textContent=d;M.querySelector(".cw").textContent="星期"+"日一二三四五六"[wd];M.querySelector(".cl").textContent=T(lu.replace(/^农历/,""));'
                     'var tg=M.querySelector(".mtag");fe.forEach(function(f){var s=document.createElement("span");s.className="fe";s.textContent=T(f);tg.appendChild(s)});if(jq){var s=document.createElement("span");s.textContent=T(jq);tg.appendChild(s)}'
-                    'var li=(wd+6)%7,P=K.ld[li];M.querySelector(".mav").src="/assets/lead/"+P[0]+".jpg";M.querySelector(".mlw").textContent=T("今日领读 · 星期")+"一二三四五六日"[li];M.querySelector(".mln").textContent=P[1];M.querySelector(".mll").textContent=P[2];'
+                    'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-half.webp";hf.alt=P[1];hf.hidden=false;'
                     'var I=M.querySelectorAll(".dots i");if(I[li])I[li].classList.add("td");'
                     'fetch("/data/nianli-' + L.code + '.json").then(function(r){return r.json()}).then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
                     'if(!x){M.querySelector(".md").textContent=T("补读日");q.textContent=T("今天不排新课，前几天落下的课，今天补上。");b.textContent="";c.href="' + P + 'nianli/";kk.hidden=true;M.hidden=false;return}'
