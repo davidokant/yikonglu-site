@@ -2384,7 +2384,7 @@ def build_lang(L, D, write):
                     'try{var dd=function(y,i){var s=K.jt[y];return s?s.charCodeAt(i)-48:0},ix=-1,sy=Y,sm,sd;for(var i=23;i>=0;i--){var mo=1+(i>>1),dy=dd(Y,i);if(!dy)break;if(mo<m||(mo===m&&dy<=d)){ix=i;sm=mo;sd=dy;break}}if(ix<0&&dd(Y-1,23)){sy=Y-1;ix=23;sm=12;sd=dd(sy,23)}'
                     'if(ix>=0){var k=Math.round((dt-new Date(sy,sm-1,sd))/864e5),h=Math.min(2,Math.floor(k/5));jq=(k===0?U.today.replace("{t}",K.jn[ix]):U.after.replace("{t}",K.jn[ix]).replace("{k}",k))+(K.hou.length?" · "+K.hou[ix*3+h]:"")}}catch(e){}'
                     'var mn="",wn="";try{mn=new Date(Date.UTC(2026,m-1,15)).toLocaleDateString(LC,{month:"long",timeZone:"UTC"});wn=dt.toLocaleDateString(LC,{weekday:"long"})}catch(e){}'
-                    'M.querySelector(".cm").textContent=mn;M.querySelector(".cd").textContent=d;M.querySelector(".cw").textContent=wn;M.querySelector(".cl").textContent=lu?U.lu+"\n"+lu:"";'
+                    'M.querySelector(".cm").textContent=mn;M.querySelector(".cd").textContent=d;M.querySelector(".cw").textContent=wn;M.querySelector(".cl").textContent=lu?U.lu+"\\n"+lu:"";'
                     'var tg=M.querySelector(".mtag");fe.forEach(function(f){var s=document.createElement("span");s.className="fe";s.textContent=f;tg.appendChild(s)});if(jq){var s=document.createElement("span");s.textContent=jq;tg.appendChild(s)}'
                     'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-half.webp";hf.alt=P[1];hf.hidden=false;'
                     'var I=M.querySelectorAll(".dots i");if(I[li])I[li].classList.add("td");'
