@@ -397,10 +397,13 @@
   "title": "Wie Yikonglu arbeitet: Prüfung der Klassikerlektüre mit Zhiqi",
   "sub": "Welche Schritte Zhiqi übernimmt, welche Menschen prüfen und was geschieht, wenn wir uns irren",
   "intro": "Yikonglu nutzt Zhiqi (智器, unser Wort für KI), um Videos zu machen, die die Klassiker lesen. Zhiqi kann Kommentare erfinden, Quellen erfinden und Zeichen falsch aussprechen. Deshalb legen wir hier offen, welche Schritte Zhiqi übernimmt, welche ein Mensch prüfen muss und was wir mit Fehlern tun — damit Leser uns daran messen können, und für andere, die Ähnliches tun.",
-  "s1h": "1. Grundausgaben und Kommentare",
+  "s1h": "1. Grundausgaben und Kommentatoren",
   "s1": [
-   "Bevor ein Buch beginnt, legen wir seine Grundausgabe und die Liste der Kommentare auf der Seite des Buches fest. Für die Gespräche folgen Text und Zhu Xis Kommentar der Sibu-beiyao-Ausgabe des Lunyu jizhu; ältere Kommentare nutzen gemeinfreie Holzdrucke (Huang Kans Lunyu yishu: die Ausgabe Zhibuzu Zhai und ein japanischer Druck von 1750); noch geschützte moderne Kommentare (Yang Bojun, Qian Mu) werden nur kurz und mit Seitenzahl zitiert. Siehe <a href=\"{p}banben/\">Ausgaben & Lizenzen</a>.",
-   "Webtexte unbekannter Herkunft verwenden wir nie als Grundlage."
+   "<b>Erst alles lesen</b>: Bevor ein Buch beginnt, lesen wir die Kommentare, die ausgegrabenen Handschriften und die Textvarianten durch, legen ein Arbeitsheft Kapitel für Kapitel an und legen erst dann Form und Text fest. Wir beginnen nie mit nur einem Grundtext und nutzen keine Netztexte unbekannter Herkunft.",
+   "<b>Gespräche</b>: Text und Kommentar des Zhu Xi folgen der Sibu-Beiyao-Ausgabe des Lunyu Jizhu. Ältere Kommentare stammen aus gemeinfreien Holzdrucken, etwa Huang Kans Lunyu Yishu in der Zhibuzu-Zhai-Ausgabe und einem japanischen Druck von 1750. Moderne, noch geschützte Kommentare (Yang Bojun, Qian Mu) werden nur kurz mit Seitenangabe zitiert.",
+   "<b>Daodejing</b>: Grundlage ist Wang Bis Kommentar in der Ausgabe des Siku Quanshu, Kapitel für Kapitel gelesen neben Heshang Gong, den Seidenhandschriften A und B aus Mawangdui, den Bambusstreifen aus Guodian, den Han-Streifen der Peking-Universität sowie Yan Zun, Kaiser Xuanzong, Su Zhe und den in Jiao Hongs Laozi Yi gesammelten Kommentatoren.",
+   "<b>Drei-Zeichen-Klassiker</b>: Der Text folgt den Vorlesungsnotizen des Vaters von Yikonglu und wird Gruppe für Gruppe mit Wang Xiangs Sanzijing xungu (japanischer Nachdruck 1831) abgeglichen. Gruppen, die bei Wang Xiang fehlen oder anders lauten, sind auf der Seite vermerkt. Weitere Ausgaben, etwa He Xingsis Sanzijing zhujie beiyao und Zhang Taiyans überarbeiteter Sanzijing, werden nach und nach verglichen.",
+   "Herkunft der Ausgaben: <a href=\"{p}banben/\">Ausgaben und Lizenzen</a>."
   ],
   "s2h": "2. Wie jedes Kapitel entsteht",
   "s2": [
@@ -408,6 +411,9 @@
    "<b>Aussprache</b>: Jede Folge hat eine Aussprachetabelle; mehrdeutige und seltene Zeichen werden nach Kommentaren und Standardlesungen festgelegt, vor der Vertonung geprüft und danach Zeile für Zeile mit Spracherkennung verglichen; Abweichungen werden neu aufgenommen. Alle Aussprachen stehen im <a href=\"{p}zi.html\">Ausspracheverzeichnis</a>.",
    "<b>Zitate</b>: Jedes Zitat in einem Video wird mit Quelle und Seite erfasst und vor dem Einblenden Wort für Wort mit der Originalseite verglichen; was wir auf der Seite nicht finden, wird nur paraphrasiert, nie als Zitat gezeigt.",
    "<b>Originalseiten</b>: Wenn wir einen Kommentator zitieren, erscheint die gescannte Seite mit rot umrahmtem Zitat im Bild; die Kapitelseite hier zeigt dieselbe Seite.",
+   "<b>Originalseiten online</b>: Zu jedem Kapitel gehört die Seite der Grundausgabe. Tippen Sie einen Satz im Text an, markiert ein roter Rahmen ihn auf der Seite. Jedes Seitenbild trägt in der Ecke „Yikonglu yikonglu.com“ mit Buch, Band und Seite; bitte lassen Sie das bei Weiterverwendung stehen.",
+   "<b>Kapitelnummern und Quellen</b>: Alle drei Bücher zählen gleich, „Gespräche 2.1“, „Daodejing 1“, „Drei Zeichen 1“, passend zur Adresse, etwa yikonglu.com/lunyu/2.1. Beim Kopieren einer Zeile werden Kapitelnummer und Adresse automatisch angefügt.",
+   "<b>Verweise auf die Gespräche</b>: Die Gespräche sind unser Hauptklassiker. Jedes Kapitel der anderen Bücher wird daneben gelesen, in drei Arten: was die Gespräche direkt sagen (Quelle), Kommentatoren, die die Gespräche zur Erklärung zitieren (von Kommentatoren zitiert), und was im Sinn verwandt ist (verwandt). „Verwandt“ ist unsere eigene Lesart, als „Lesart von Yikonglu“ gekennzeichnet und nie einem Kommentator zugeschrieben.",
    "<b>Übertragungen und Lesarten</b>: Wir schreiben eigene Übertragungen und vergleichen sie Zeile für Zeile mit gängigen Übersetzungen; Übereinstimmungen ab sechs Zeichen werden umgeschrieben. „Wie Yikonglu es liest“ ist unsere eigene, als solche gekennzeichnete Lesart und wird nie einem Kommentator zugeschrieben.",
    "<b>Bild</b>: Illustrationen und Figuren sind unsere eigenen; Schriftzeichen werden aus den Glyphen der Grundausgabe geschnitten und maschinell auf Schäden geprüft; erfundene Figuren in den Videos behaupten keine „Geschichte“ über den Text hinaus."
   ],
@@ -428,6 +434,11 @@
     "Zitate und Quellen",
     "Listet sie auf und vergleicht sie Wort für Wort mit der Seite",
     "Stichproben; nichts Ungeprüftes kommt ins Bild"
+   ],
+   [
+    "Rahmen auf der Seite",
+    "Gleicht Spalten und Zeichen ab und rahmt jeden Satz auf der Seite",
+    "Prüft stichprobenartig Seite für Seite, korrigiert falsche Rahmen"
    ],
    [
     "Aussprache",
@@ -458,8 +469,8 @@
    "Unsere Kontaktadresse steht auf der Seite <a href=\"{p}about.html\">Über uns</a>."
   ],
   "s5h": "5. Zahlen, die wir veröffentlichen",
-  "s5p": "Jede Woche aktualisieren wir die Zahl der besprochenen Kapitel, der an Originalseiten prüfbaren Zitate, der Kommentare mit Seitenbildern und der öffentlichen Korrekturen, dazu ob die Suche nach einer Textzeile auf jeder Plattform uns findet.",
-  "s5c": "Wir veröffentlichen auch den Anteil der Abschnitte, die zwischen erstem Entwurf und Endfassung geändert wurden: Das früheste Skript jeder Folge wird Abschnitt für Abschnitt mit dem endgültigen verglichen, jede Abweichung im Wortlaut zählt als Änderung. Bisher: {n} Folgen, {s} Abschnitte, {c} geändert — {r} % (Stand {d}).",
+  "s5p": "Die Zahlen werden pro Buch geführt, die Einheiten unterscheiden sich: Kapitel bei den Gesprächen und dem Daodejing, Lektionen beim Drei-Zeichen-Klassiker. „Vom Entwurf zur Endfassung“ vergleicht das früheste Sprechskript jeder Folge Abschnitt für Abschnitt mit der Endfassung; jeder Unterschied im Wortlaut zählt als Änderung. Gezählt werden nur fertige Folgen.",
+  "s5c": "Änderungsdaten aktualisiert am {d}.",
   "cth": [
    "Folge",
    "Abschnitte",
@@ -467,7 +478,7 @@
    "Anteil"
   ],
   "s6h": "6. Über diese Seite",
-  "s6": "Was diese Seite beschreibt, ist unser Versprechen an die Leser. Ändert sich die Methode, ändert sich diese Seite, mit einem Vermerk unten. Text unter CC BY 4.0; Videos, Vertonung, Figuren und Illustrationen fallen nicht darunter.",
+  "s6": "Was diese Seite beschreibt, ist unser Versprechen an die Leser. Ändert sich die Methode, ändert sich diese Seite, mit einem Vermerk unten. Die Texte der Website stehen unter CC BY 4.0: Namensnennung genügt, kommerzielle Nutzung ist erlaubt. Videos, Vertonung, eigene Figuren und Illustrationen fallen nicht darunter; siehe <a href=\"{p}kaifang.html\">Offene Daten</a>.",
   "log": "Änderungen",
   "logs": [
    [
@@ -477,8 +488,33 @@
    [
     "2026-11-06",
     "Wir nennen KI jetzt „Zhiqi“ (智器)."
+   ],
+   [
+    "2026-11-14",
+    "Nach heutiger Praxis neu gefasst: Kommentatoren-Arbeitsheft vor jedem Buch, Grundausgaben aller drei Bücher, Seitenmarken und Kapitelnummern, Quelle beim Kopieren, Verweise auf die Gespräche; veröffentlichte Zahlen jetzt pro Buch; Lizenz auf CC BY 4.0 umgestellt."
    ]
-  ]
+  ],
+  "bn": [
+   "Gespräche",
+   "Daodejing",
+   "Drei Zeichen"
+  ],
+  "bth": [
+   "Text online",
+   "Seiten der Grundausgabe",
+   "Behandelt",
+   "Videos veröffentlicht",
+   "Verweise auf die Gespräche",
+   "Entwurf → Endfassung"
+  ],
+  "u_zhang": " Kap.",
+  "u_jiang": " Lektionen",
+  "u_ye": " Seiten",
+  "u_ji": " Folgen",
+  "lyhj_main": "Hauptklassiker",
+  "lyhj": "{n} Einträge",
+  "chg": "{r} %<br><small>{e} Folgen, {s} Abschnitte, {c} geändert</small>",
+  "chg0": "Noch keine Videos"
  },
  "kaifang": {
   "h": "Was offen ist und was nicht",

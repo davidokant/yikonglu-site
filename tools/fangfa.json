@@ -123,10 +123,13 @@
   "title": "How Yikonglu works: verifying zhiqi-assisted readings of the classics",
   "sub": "Which steps use zhiqi, which are checked by people, and what happens when we get it wrong",
   "intro": "Yikonglu uses zhiqi (智器, our word for AI) to make videos that read the classics. Zhiqi can invent commentary, invent sources and mispronounce characters, so we set out here which steps use zhiqi, which must be checked by a person, and what we do about mistakes — for readers to check us against, and for others doing similar work.",
-  "s1h": "1. Base editions and commentaries",
+  "s1h": "1. Base editions and the commentators",
   "s1": [
-   "Before a book begins, we fix its base edition and list of commentaries on the book's page. For the Analects, the text and Zhu Xi's commentary follow the Sibu Beiyao edition of the Lunyu Jizhu; older commentaries use public-domain woodblock editions (Huang Kan's Lunyu Yishu: the Zhibuzu Zhai edition and a 1750 Japanese edition); modern commentaries still in copyright (Yang Bojun, Qian Mu) are quoted only briefly, with page numbers. See <a href=\"{p}banben/\">Editions & licenses</a>.",
-   "We never use web texts of unknown origin as a base."
+   "<b>Read everything first</b>: before a book begins, we read through the commentaries, excavated manuscripts and textual variants, build a chapter-by-chapter workbook, and only then fix the format and write. We never start from a single base text, and never use web texts of unknown origin as a base.",
+   "<b>Analects</b>: the text and Zhu Xi's commentary follow the Sibu Beiyao edition of the Lunyu Jizhu. Older commentaries use public-domain woodblock editions, e.g. Huang Kan's Lunyu Yishu in the Zhibuzu Zhai edition and a 1750 Japanese edition. Modern commentaries still in copyright (Yang Bojun, Qian Mu) are quoted only briefly, with page numbers.",
+   "<b>Daodejing</b>: the base is Wang Bi's commentary in the Siku Quanshu edition, read chapter by chapter against Heshang Gong, the Mawangdui silk manuscripts A and B, the Guodian bamboo slips, the Peking University Han slips, and Yan Zun, Emperor Xuanzong, Su Zhe and the commentators collected in Jiao Hong's Laozi Yi.",
+   "<b>Three Character Classic</b>: the text follows Yikonglu's Father's Lecture Notes, checked group by group against Wang Xiang's Sanzijing xungu (1831 Japanese reprint). Groups missing from Wang Xiang's text, and groups worded differently, are marked on the page. Other editions, such as He Xingsi's Sanzijing zhujie beiyao and Zhang Taiyan's revised Sanzijing, are being read in turn.",
+   "Where each edition comes from: <a href=\"{p}banben/\">Editions & licenses</a>."
   ],
   "s2h": "2. How each chapter is made",
   "s2": [
@@ -134,6 +137,9 @@
    "<b>Pronunciation</b>: each episode has a reading table; polyphonic and rare characters are fixed from the commentaries and standard readings, checked before narration, and compared line by line with speech recognition afterwards; mismatches are re-recorded.",
    "<b>Quotations</b>: every quotation in a video is logged with source and page and checked word for word against the original page before it goes on screen; anything we cannot find on the page is only paraphrased, never shown as a quote.",
    "<b>Original pages</b>: when we cite a commentator, the scanned page goes on screen with the quotation boxed in red; the chapter page on this site shows the same page.",
+   "<b>Page images online</b>: every chapter comes with the base edition's page. Tap any sentence of the text and a red box marks it on the page. Each page image carries “Yikonglu yikonglu.com” with the book, volume and page in the corner; please keep it when you reuse the image.",
+   "<b>Chapter numbers and sources</b>: all three books number chapters the same way, “Analects 2.1”, “Daodejing 1”, “Three Character Classic 1”, matching the address, e.g. yikonglu.com/lunyu/2.1. Copying a line of the text adds the chapter number and address automatically.",
+   "<b>Cross-references to the Analects</b>: the Analects is our main classic. Every chapter of the other books is read against it in three kinds: lines the Analects states directly (source), commentators who cite the Analects to explain (cited by commentators), and lines that share its sense (related). “Related” is our own reading, labelled “Yikonglu's reading”, never passed off as a commentator's.",
    "<b>Renderings and readings</b>: we write our own plain renderings and check them line by line against standard translations, rewriting any match of six characters or more; “How Yikonglu reads it” is our own reading, labelled as ours, never passed off as a commentator's.",
    "<b>Visuals</b>: illustrations and characters are our own; type is cut from the base edition's glyphs and machine-scanned for damage; fictional characters in the videos do not assert “history” beyond the text."
   ],
@@ -154,6 +160,11 @@
     "Quotations and sources",
     "Lists them and compares them word by word with the page",
     "Spot-check; nothing unverified goes on screen"
+   ],
+   [
+    "Page boxes",
+    "Matches columns to characters and boxes each sentence on the page",
+    "Spot-checks page by page; fixes wrong boxes"
    ],
    [
     "Pronunciation",
@@ -184,8 +195,8 @@
    "Our contact address is on the <a href=\"{p}about.html\">about page</a>."
   ],
   "s5h": "5. Numbers we publish",
-  "s5p": "Every week we update the counts of chapters covered, quotations checkable against original pages, commentaries with page images, and public corrections, plus whether searching a line of the text on each platform finds us.",
-  "s5c": "We also publish the share of segments changed between first draft and final script: each episode's earliest script is compared with the final one segment by segment, and any difference in wording counts as a change. So far: {n} episodes, {s} segments, {c} changed — {r}% (updated {d}).",
+  "s5p": "Numbers are kept per book, and units differ: the Analects and the Daodejing count chapters, the Three Character Classic counts lectures. “Draft-to-final changes” compares each episode's earliest narration script with its final one segment by segment; any difference in wording counts as a change. Only finished episodes are counted.",
+  "s5c": "Draft-change data updated {d}.",
   "cth": [
    "Episode",
    "Segments",
@@ -193,7 +204,7 @@
    "Share"
   ],
   "s6h": "6. About this page",
-  "s6": "What this page describes is our promise to readers. If the method changes, this page changes, with a revision note below. Text licensed CC BY 4.0; videos, narration, characters and illustrations are not covered.",
+  "s6": "What this page describes is our promise to readers. If the method changes, this page changes, with a revision note below. The site's text is open under CC BY 4.0: credit is all we ask, and commercial use is allowed. Videos, narration, original characters and illustrations are not covered; see <a href=\"{p}kaifang.html\">Open data</a>.",
   "log": "Revisions",
   "logs": [
    [
@@ -203,18 +214,46 @@
    [
     "2026-11-06",
     "We now call AI “zhiqi” (智器)."
+   ],
+   [
+    "2026-11-14",
+    "Rewritten to match current practice: a commentators' workbook before each book begins, base editions for all three books, page-image marks and chapter numbers, sources on copy, cross-references to the Analects; published numbers now kept per book; license changed to CC BY 4.0."
    ]
-  ]
+  ],
+  "bn": [
+   "Analects",
+   "Daodejing",
+   "Three Character Classic"
+  ],
+  "bth": [
+   "Text online",
+   "Base-edition page images",
+   "Covered",
+   "Videos published",
+   "Cross-references to the Analects",
+   "Draft-to-final changes"
+  ],
+  "u_zhang": " ch.",
+  "u_jiang": " lectures",
+  "u_ye": " pages",
+  "u_ji": " episodes",
+  "lyhj_main": "Main classic",
+  "lyhj": "{n} entries",
+  "chg": "{r}%<br><small>{e} episodes, {s} segments, {c} changed</small>",
+  "chg0": "No videos yet"
  },
  "ja": {
   "link": "検証の方法",
   "title": "一孔録のつくり方：智器による経書講読の検証方法",
   "sub": "どこで智器を使い、どこを人が確かめ、誤りをどう直すか",
   "intro": "一孔録は智器（私たちの AI の呼び方）を使って経書を読む動画をつくっています。智器は注を作り、出典を作り、字を読み違えることがあります。そこで、どの段階で智器を使い、どこを必ず人が確かめ、誤りがあればどうするかをここに書きます。読者に照合していただくため、また同じことをする方の参考のためです。",
-  "s1h": "一、底本と注釈書",
+  "s1h": "一、底本と諸家",
   "s1": [
-   "各書を始める前に底本と注釈書の一覧を定め、その書のページに載せます。『論語』本文と朱熹注は四部備要本『論語集注』、古注はパブリックドメインの古版本（皇侃『論語義疏』は知不足斎叢書本と寛延三年の和刻本）、著作権存続中の現代の注釈書（楊伯峻、銭穆）は短い引用のみで頁を明記します。詳しくは<a href=\"{p}banben/\">版本とライセンス</a>へ。",
-   "出所のわからないネット上のテキストは底本にしません。"
+   "<b>まず通読、それから講読</b>：一冊を始める前に、諸家の注釈書・出土本・異文を通読し、章ごとの台帳を作ってから体裁を決め、原稿を書きます。一つの底本だけで始めることはせず、出所の分からないネット上のテキストも底本にしません。",
+   "<b>『論語』</b>：本文と朱熹注は『四部備要』本『論語集注』によります。古注は公有の古版本を用い、たとえば皇侃『論語義疏』は清の知不足斎叢書本と寛延三年の和刻本です。著作権の残る現代の注釈書（楊伯峻『論語訳注』、銭穆『論語新解』）は短く引いて対照するのみで、頁を明記します。",
+   "<b>『道徳経』</b>：底本は『四庫全書』本の王弼注です。章ごとに河上公注、馬王堆帛書甲乙本、郭店楚簡、北京大学蔵漢簡、さらに厳遵・唐玄宗・蘇轍、焦竑『老子翼』が集めた諸家と読み合わせます。",
+   "<b>『三字経』</b>：本文は一孔録『三字経・父の講義』により、王相『三字経訓詁』（1831 年和刻本）と組ごとに照合します。王相本にない組、字句の異なる組はページに明記します。賀興思『三字経注解備要』、章太炎『重訂三字経』なども順次読み合わせます。",
+   "各本の来歴は<a href=\"{p}banben/\">版本とライセンス</a>をご覧ください。"
   ],
   "s2h": "二、各章のつくり方",
   "s2": [
@@ -222,6 +261,9 @@
    "<b>読み</b>：各回に読音表をつくり、多音字や難字は注釈と通行の読みで定め、ナレーション前に点検、ナレーション後は音声認識で一文ずつ照合し、合わなければ録り直します。",
    "<b>注家の引用</b>：動画中の引用はすべて出典と頁を記録し、原頁と一字ずつ照合してから画面に出します。原頁で確かめられないものは要約にとどめ、引用としては出しません。",
    "<b>注家の原頁</b>：ある注家に触れるときは、その頁の画像を画面に出し、引用箇所を赤枠で示します。サイトの章ページにも同じ頁を載せます。",
+   "<b>原頁の掲載</b>：各章に底本の原頁画像を載せます。本文のどの文でもタップすると、原頁上でその文が赤枠で示されます。原頁画像の隅には「一孔録 yikonglu.com」と書名・巻・頁が入っています。転用の際は残してください。",
+   "<b>章番号と出典</b>：三冊とも章番号を「論語 2.1」「道徳経 1」「三字経 1」の形にそろえ、アドレス（例：yikonglu.com/lunyu/2.1）と一対一で対応させています。本文をコピーすると章番号とアドレスが自動で付きます。",
+   "<b>『論語』互見</b>：『論語』を主経とし、ほかの書は章ごとに『論語』と照らし合わせ、三種に分けます。『論語』が直接述べているもの（出典）、注釈家が『論語』を引いて解くもの（注家引）、意味の通じ合うもの（相通）。「相通」は私たち自身の読み合わせで、「一孔録の対読」と明記し、注釈家の説とは偽りません。",
    "<b>現代語訳と読み方</b>：現代語訳は自分たちで書き、通行の訳と一文ずつ重複を調べ、六字以上一致すれば書き直します。「一孔按」は私たちの読みであり、そう明記し、注家の説と偽りません。",
    "<b>画面</b>：挿絵と人物は本サイトのオリジナルです。活字は底本の字形から切り出し、欠けがないか機械で走査します。作中の架空の人物が経文以外の「史実」を語ることはありません。"
   ],
@@ -242,6 +284,11 @@
     "引用と出典",
     "一覧化し、原頁と一字ずつ比較",
     "抜き取り確認。原頁で確かめられないものは出さない"
+   ],
+   [
+    "原頁の枠",
+    "列と字を照合し、原頁上で各文を枠で囲む",
+    "頁ごとに抜き取り確認し、誤った枠を直す"
    ],
    [
     "読み",
@@ -272,8 +319,8 @@
    "連絡先は<a href=\"{p}about.html\">サイトについて</a>にあります。"
   ],
   "s5h": "五、公開している数字",
-  "s5p": "毎週、講じた章数、原頁で照合できる引用数、原頁画像のある注釈書の数、公開した勘誤数、そして各プラットフォームで原文を検索して一孔録が見つかるかを更新しています。",
-  "s5c": "さらに「初稿から確定稿までに書き換えた段落の割合」を公開します。各回の最初の原稿と確定稿を段落ごとに比べ、文字が違えば変更とします。現在 {n} 回、{s} 段落のうち {c} 段落、{r}%（{d} 更新）。",
+  "s5p": "数字は書ごとに数え、単位は書によって異なります。『論語』『道徳経』は章、『三字経』は講です。「初稿から定稿への改動」は各回の最初のナレーション原稿と定稿を段ごとに比べ、文言が違えば改動とします。定稿済みの回だけを数えます。",
+  "s5c": "改動データは {d} 更新。",
   "cth": [
    "回",
    "段落数",
@@ -281,7 +328,7 @@
    "割合"
   ],
   "s6h": "六、このページについて",
-  "s6": "このページに書いたやり方が、読者への約束です。やり方が変われば、このページを直し、下に改訂記録を残します。文章は CC BY 4.0、動画・ナレーション・人物・挿絵はライセンスの対象外です。",
+  "s6": "このページに書いたやり方が、読者への約束です。やり方が変われば、このページを直し、下に改訂記録を残します。サイトの文章は CC BY 4.0 で公開し、表示だけで商用利用もできます。動画・ナレーション・オリジナルキャラクター・挿絵は対象外です。詳しくは<a href=\"{p}kaifang.html\">オープンデータ</a>へ。",
   "log": "改訂記録",
   "logs": [
    [
@@ -291,18 +338,46 @@
    [
     "2026-11-06",
     "AI の呼び方を「智器」に改めた。"
+   ],
+   [
+    "2026-11-14",
+    "現在のやり方に合わせて改稿：講読前に諸家の台帳を作ること、三冊の底本、原頁の表示と章番号、コピー時の出典、『論語』互見。公開する数字を書ごとに改め、ライセンスを CC BY 4.0 に変更。"
    ]
-  ]
+  ],
+  "bn": [
+   "論語",
+   "道徳経",
+   "三字経"
+  ],
+  "bth": [
+   "本文掲載",
+   "底本原頁画像",
+   "講読済み",
+   "動画公開",
+   "『論語』互見",
+   "初稿→定稿の改動"
+  ],
+  "u_zhang": " 章",
+  "u_jiang": " 講",
+  "u_ye": " 頁",
+  "u_ji": " 回",
+  "lyhj_main": "主経",
+  "lyhj": "{n} 件",
+  "chg": "{r}%<br><small>{e} 回 {s} 段中 {c} 段</small>",
+  "chg0": "動画未公開"
  },
  "ko": {
   "link": "검증 방법",
   "title": "일공록은 이렇게 만듭니다: 지기(智器) 경전 강독 검증 방법",
   "sub": "어느 단계에 지기를 쓰고, 어디를 사람이 확인하며, 틀리면 어떻게 하는가",
   "intro": "일공록은 지기(智器, 우리가 AI를 부르는 이름)로 경전 강독 영상을 만듭니다. 지기는 주석을 지어내고, 출처를 지어내고, 글자를 잘못 읽을 수 있습니다. 그래서 어느 단계에 지기를 쓰고, 어디는 반드시 사람이 확인하며, 틀리면 어떻게 하는지를 여기에 적습니다. 독자가 대조해 보시도록, 그리고 같은 일을 하는 분들이 참고하시도록.",
-  "s1h": "1. 저본과 주석서",
+  "s1h": "1. 저본과 제가",
   "s1": [
-   "책마다 강독을 시작하기 전에 저본과 주석서 목록을 정해 그 책의 페이지에 올립니다. 『논어』 본문과 주희 주는 사부비요본 『논어집주』, 옛 주석은 퍼블릭 도메인 옛 판본(황간 『논어의소』는 지부족재총서본과 1750년 일본 각본), 저작권이 남은 현대 주석서(양보쥔, 첸무)는 짧게만 인용하고 쪽수를 밝힙니다. 자세한 내용은 <a href=\"{p}banben/\">판본과 라이선스</a>.",
-   "출처가 불분명한 인터넷 텍스트는 저본으로 쓰지 않습니다."
+   "<b>먼저 통독, 그다음 강독</b>: 한 책을 시작하기 전에 여러 주석서와 출토본, 이문을 통독하고 장별 대장을 만든 뒤에 체제를 정하고 원고를 씁니다. 저본 하나만으로 시작하지 않으며, 출처를 알 수 없는 인터넷 텍스트를 저본으로 쓰지 않습니다.",
+   "<b>『논어』</b>: 경문과 주희 주는 『사부비요』본 『논어집주』를 따릅니다. 옛 주석은 공유 고판본을 쓰는데, 예컨대 황간 『논어의소』는 청나라 지부족재총서본과 일본 간엔 3년 화각본입니다. 저작권이 남은 현대 주석서(양보쥔 『논어역주』, 첸무 『논어신해』)는 짧게 인용해 대조만 하고 쪽수를 밝힙니다.",
+   "<b>『도덕경』</b>: 저본은 『사고전서』본 왕필 주입니다. 장마다 하상공 주, 마왕퇴 백서 갑·을본, 곽점 초간, 북경대 소장 한간, 그리고 엄준·당 현종·소철과 초횡 『노자익』에 모인 제가를 대조해 읽습니다.",
+   "<b>『삼자경』</b>: 원문은 일공록 『삼자경·아버지의 강의』를 따르고, 왕상 『삼자경훈고』(1831년 화각본)와 조별로 대조합니다. 왕상본에 없는 조와 자구가 다른 조는 페이지에 밝혀 둡니다. 하흥사 『삼자경주해비요』, 장타이옌 『중정삼자경』 등도 차례로 대조합니다.",
+   "각 판본의 내력은 <a href=\"{p}banben/\">판본과 라이선스</a>를 보십시오."
   ],
   "s2h": "2. 한 장은 이렇게 나옵니다",
   "s2": [
@@ -310,6 +385,9 @@
    "<b>독음</b>: 회마다 독음표를 만들고, 다음자와 벽자는 주석과 통용 독음으로 정하며, 내레이션 전에 점검하고 내레이션 뒤에는 음성 인식으로 한 문장씩 대조해 어긋나면 다시 녹음합니다.",
    "<b>주석 인용</b>: 영상 속 모든 인용은 출처와 쪽수를 원고에 기록하고 원래 페이지와 한 자씩 대조한 뒤에야 화면에 올립니다. 원래 페이지에서 확인되지 않으면 풀어서 말할 뿐 인용으로 올리지 않습니다.",
    "<b>주석가의 원래 페이지</b>: 어느 주석가를 다룰 때는 그 페이지의 원서 이미지를 화면에 올리고 인용 위치를 빨간 틀로 표시합니다. 사이트 장 페이지에도 같은 페이지를 올립니다.",
+   "<b>원문 쪽 게재</b>: 장마다 저본의 원문 쪽 이미지를 싣습니다. 원문의 아무 문장이나 누르면 원문 쪽에서 그 문장이 빨간 틀로 표시됩니다. 원문 쪽 이미지 모서리에는 “일공록 yikonglu.com”과 서명·권·쪽이 들어 있으니, 옮겨 쓸 때 남겨 주십시오.",
+   "<b>장 번호와 출처</b>: 세 책 모두 장 번호를 “논어 2.1”, “도덕경 1”, “삼자경 1” 형식으로 통일해 주소(예: yikonglu.com/lunyu/2.1)와 일대일로 맞췄습니다. 원문을 복사하면 장 번호와 주소가 자동으로 붙습니다.",
+   "<b>『논어』 호견</b>: 『논어』를 주경으로 삼고, 다른 책은 장마다 『논어』와 맞대어 세 가지로 나눕니다. 『논어』가 직접 말한 것(출처), 주석가가 『논어』를 끌어와 푼 것(주가 인용), 뜻이 통하는 것(상통). “상통”은 우리 자신의 대조 읽기로, “일공록 대독”이라 밝히며 주석가의 설로 꾸미지 않습니다.",
    "<b>번역과 읽기</b>: 번역은 우리가 직접 쓰고, 통용 번역과 한 문장씩 중복을 검사해 여섯 자 이상 같으면 고쳐 씁니다. ‘일공 안’은 우리의 읽기이며, 우리 것이라고 밝히고 주석가의 말로 꾸미지 않습니다.",
    "<b>화면</b>: 삽화와 인물은 이 사이트의 창작입니다. 활자는 저본의 자형에서 잘라 내고 기계로 훼손 여부를 검사합니다. 영상 속 가상 인물은 경문 밖의 ‘사실’을 말하지 않습니다."
   ],
@@ -330,6 +408,11 @@
     "인용과 출처",
     "목록 작성, 원래 페이지와 한 자씩 비교",
     "표본 확인. 확인되지 않은 것은 화면에 올리지 않음"
+   ],
+   [
+    "원문 쪽 틀",
+    "열과 글자를 맞춰 원문 쪽에서 문장마다 틀을 친다",
+    "쪽마다 표본 확인, 틀린 틀을 고친다"
    ],
    [
     "독음",
@@ -360,8 +443,8 @@
    "연락처는 <a href=\"{p}about.html\">소개 페이지</a>에 있습니다."
   ],
   "s5h": "5. 공개하는 숫자",
-  "s5p": "매주 강독한 장 수, 원래 페이지로 확인할 수 있는 인용 수, 원래 페이지 이미지가 있는 주석서 수, 공개 정정 수, 그리고 각 플랫폼에서 원문을 검색하면 일공록이 나오는지를 갱신합니다.",
-  "s5c": "또 ‘초고에서 확정고까지 바뀐 단락 비율’을 공개합니다. 회마다 가장 처음 원고와 확정 원고를 단락별로 비교해 글자가 다르면 변경으로 셉니다. 현재 {n}회, {s}단락 중 {c}단락, {r}%({d} 갱신).",
+  "s5p": "숫자는 책별로 셉니다. 단위는 책마다 다릅니다: 『논어』와 『도덕경』은 장, 『삼자경』은 강입니다. “초고에서 정본까지의 수정”은 각 회의 첫 내레이션 원고와 정본을 단락별로 비교해 문구가 다르면 수정으로 셉니다. 정본이 확정된 회만 셉니다.",
+  "s5c": "수정 데이터 {d} 갱신.",
   "cth": [
    "회",
    "단락 수",
@@ -369,7 +452,7 @@
    "비율"
   ],
   "s6h": "6. 이 페이지에 대하여",
-  "s6": "이 페이지에 적은 방식이 독자와의 약속입니다. 방식이 바뀌면 이 페이지를 고치고 아래에 개정 기록을 남깁니다. 글은 CC BY 4.0, 영상·내레이션·인물·삽화는 라이선스에 포함되지 않습니다.",
+  "s6": "이 페이지에 적은 방식이 독자와의 약속입니다. 방식이 바뀌면 이 페이지를 고치고 아래에 개정 기록을 남깁니다. 사이트의 글은 CC BY 4.0으로 공개하며, 출처만 밝히면 상업적 이용도 됩니다. 영상·내레이션·오리지널 캐릭터·삽화는 제외되며, 자세한 내용은 <a href=\"{p}kaifang.html\">공개 데이터</a>를 보십시오.",
   "log": "개정 기록",
   "logs": [
    [
@@ -379,18 +462,46 @@
    [
     "2026-11-06",
     "AI를 ‘지기(智器)’로 부르기로 함."
+   ],
+   [
+    "2026-11-14",
+    "현재 방식에 맞춰 고쳐 씀: 강독 전 제가 대장 작성, 세 책의 저본, 원문 쪽 표시와 장 번호, 복사 시 출처, 『논어』 호견. 공개 숫자를 책별로 바꾸고 라이선스를 CC BY 4.0으로 변경."
    ]
-  ]
+  ],
+  "bn": [
+   "논어",
+   "도덕경",
+   "삼자경"
+  ],
+  "bth": [
+   "원문 게재",
+   "저본 원문 쪽 이미지",
+   "강독",
+   "영상 공개",
+   "『논어』 호견",
+   "초고→정본 수정"
+  ],
+  "u_zhang": "장",
+  "u_jiang": "강",
+  "u_ye": "쪽",
+  "u_ji": "회",
+  "lyhj_main": "주경",
+  "lyhj": "{n}건",
+  "chg": "{r}%<br><small>{e}회 {s}단락 중 {c}단락</small>",
+  "chg0": "영상 없음"
  },
  "fr": {
   "link": "Notre méthode",
   "title": "Comment travaille Yikonglu : vérifier une lecture des classiques assistée par le zhiqi",
   "sub": "Quelles étapes utilisent le zhiqi, lesquelles sont vérifiées par des personnes, et que faisons-nous en cas d'erreur",
   "intro": "Yikonglu utilise le zhiqi (智器, notre mot pour l'IA) pour réaliser des vidéos de lecture des classiques. Le zhiqi peut inventer des commentaires, des sources, et mal prononcer des caractères. Nous indiquons donc ici quelles étapes recourent au zhiqi, lesquelles doivent être vérifiées par une personne, et comment nous corrigeons nos erreurs — pour que les lecteurs puissent nous contrôler, et pour ceux qui font un travail semblable.",
-  "s1h": "1. Éditions de base et commentaires",
+  "s1h": "1. Éditions de base et commentateurs",
   "s1": [
-   "Avant de commencer un livre, nous fixons son édition de base et la liste des commentaires sur la page du livre. Pour les Entretiens, le texte et le commentaire de Zhu Xi suivent l'édition Sibu Beiyao du Lunyu Jizhu ; les commentaires anciens viennent d'éditions xylographiques du domaine public (le Lunyu Yishu de Huang Kan : édition Zhibuzu Zhai et édition japonaise de 1750) ; les commentaires modernes encore protégés (Yang Bojun, Qian Mu) ne sont cités que brièvement, avec la page. Voir <a href=\"{p}banben/\">Éditions et licences</a>.",
-   "Nous n'utilisons jamais de texte en ligne d'origine inconnue comme base."
+   "<b>Tout lire d’abord</b> : avant d’ouvrir un livre, nous lisons les commentaires, les manuscrits exhumés et les variantes, nous en tirons un cahier chapitre par chapitre, et seulement ensuite nous fixons la forme et écrivons. Nous ne partons jamais d’un seul texte de base, ni d’un texte en ligne d’origine inconnue.",
+   "<b>Entretiens</b> : le texte et le commentaire de Zhu Xi suivent l’édition Sibu Beiyao du Lunyu Jizhu. Les commentaires anciens viennent d’éditions xylographiques du domaine public, par exemple le Lunyu Yishu de Huang Kan dans l’édition Zhibuzu Zhai et une édition japonaise de 1750. Les commentaires modernes encore protégés (Yang Bojun, Qian Mu) ne sont cités que brièvement, avec la page.",
+   "<b>Daodejing</b> : la base est le commentaire de Wang Bi dans l’édition du Siku Quanshu, lue chapitre par chapitre avec Heshang Gong, les manuscrits sur soie A et B de Mawangdui, les fiches de bambou de Guodian, les fiches Han de l’université de Pékin, ainsi que Yan Zun, l’empereur Xuanzong, Su Zhe et les commentateurs réunis dans le Laozi Yi de Jiao Hong.",
+   "<b>Classique des trois caractères</b> : le texte suit les Notes de cours du père de Yikonglu, vérifiées groupe par groupe sur le Sanzijing xungu de Wang Xiang (réimpression japonaise de 1831). Les groupes absents chez Wang Xiang et ceux dont le libellé diffère sont signalés sur la page. D’autres éditions, comme le Sanzijing zhujie beiyao de He Xingsi et le Sanzijing révisé de Zhang Taiyan, sont lues à leur tour.",
+   "Provenance de chaque édition : <a href=\"{p}banben/\">Éditions et licences</a>."
   ],
   "s2h": "2. Comment chaque chapitre est fait",
   "s2": [
@@ -398,6 +509,9 @@
    "<b>Prononciation</b> : chaque épisode a un tableau des lectures ; les caractères à plusieurs lectures ou rares sont fixés d'après les commentaires et l'usage, vérifiés avant l'enregistrement, puis comparés phrase par phrase par reconnaissance vocale ; ce qui ne correspond pas est réenregistré.",
    "<b>Citations</b> : chaque citation d'une vidéo est consignée avec sa source et sa page, et comparée mot à mot à la page originale avant d'apparaître à l'écran ; ce que nous ne trouvons pas sur la page est seulement paraphrasé, jamais présenté comme citation.",
    "<b>Pages originales</b> : quand nous citons un commentateur, la page numérisée s'affiche à l'écran, la citation encadrée en rouge ; la page du chapitre sur ce site montre la même page.",
+   "<b>Pages originales en ligne</b> : chaque chapitre est accompagné de la page de l’édition de base. Touchez une phrase du texte et un cadre rouge la signale sur la page. Chaque image porte dans le coin « Yikonglu yikonglu.com » avec le livre, le volume et la page ; merci de la garder si vous réutilisez l’image.",
+   "<b>Numéros de chapitre et sources</b> : les trois livres numérotent de la même façon, « Entretiens 2.1 », « Daodejing 1 », « Trois caractères 1 », en correspondance avec l’adresse, par exemple yikonglu.com/lunyu/2.1. Copier une ligne du texte ajoute automatiquement le numéro et l’adresse.",
+   "<b>Renvois aux Entretiens</b> : les Entretiens sont notre classique principal. Chaque chapitre des autres livres est lu en regard, en trois catégories : ce que les Entretiens disent directement (source), les commentateurs qui citent les Entretiens pour expliquer (cité par les commentateurs), et ce qui en partage le sens (apparenté). « Apparenté » est notre propre lecture, signalée « lecture de Yikonglu », jamais attribuée à un commentateur.",
    "<b>Traductions et lectures</b> : nous écrivons nos propres traductions et les comparons phrase par phrase aux traductions courantes, réécrivant toute coïncidence de six caractères ou plus ; « la lecture de Yikonglu » est notre propre lecture, présentée comme telle, jamais attribuée à un commentateur.",
    "<b>Images</b> : illustrations et personnages sont originaux ; les caractères sont découpés dans les formes de l'édition de base et contrôlés par machine ; les personnages fictifs n'affirment pas d'« histoire » au-delà du texte."
   ],
@@ -418,6 +532,11 @@
     "Citations et sources",
     "Les recense et les compare mot à mot à la page",
     "Vérifient par sondage ; rien de non vérifié à l'écran"
+   ],
+   [
+    "Cadres sur la page",
+    "Aligne colonnes et caractères, encadre chaque phrase sur la page",
+    "Vérifie par sondage page par page, corrige les cadres erronés"
    ],
    [
     "Prononciation",
@@ -448,8 +567,8 @@
    "Notre adresse est sur la page <a href=\"{p}about.html\">À propos</a>."
   ],
   "s5h": "5. Les chiffres que nous publions",
-  "s5p": "Chaque semaine nous mettons à jour le nombre de chapitres traités, de citations vérifiables sur les pages originales, de commentaires avec images de pages, de corrections publiques, et si une recherche d'une phrase du texte sur chaque plateforme nous trouve.",
-  "s5c": "Nous publions aussi la part des segments modifiés entre premier jet et script final : pour chaque épisode, le premier script est comparé au script final segment par segment, et toute différence de formulation compte comme modification. À ce jour : {n} épisodes, {s} segments, {c} modifiés — {r} % (mis à jour le {d}).",
+  "s5p": "Les chiffres sont tenus par livre, et les unités diffèrent : chapitres pour les Entretiens et le Daodejing, leçons pour le Classique des trois caractères. « Du premier jet à la version finale » compare segment par segment le premier script de narration de chaque épisode et le script final ; toute différence de formulation compte comme modification. Seuls les épisodes finalisés sont comptés.",
+  "s5c": "Données de modification mises à jour le {d}.",
   "cth": [
    "Épisode",
    "Segments",
@@ -457,7 +576,7 @@
    "Part"
   ],
   "s6h": "6. À propos de cette page",
-  "s6": "Ce que décrit cette page est notre engagement envers les lecteurs. Si la méthode change, la page change, avec une note de révision ci-dessous. Texte sous licence CC BY 4.0 ; vidéos, narration, personnages et illustrations exclus.",
+  "s6": "Ce que décrit cette page est notre engagement envers les lecteurs. Si la méthode change, la page change, avec une note de révision ci-dessous. Les textes du site sont ouverts sous CC BY 4.0 : il suffit de citer la source, l’usage commercial est permis. Vidéos, narration, personnages originaux et illustrations sont exclus ; voir <a href=\"{p}kaifang.html\">Données ouvertes</a>.",
   "log": "Révisions",
   "logs": [
    [
@@ -467,18 +586,46 @@
    [
     "2026-11-06",
     "Nous appelons désormais l'IA « zhiqi » (智器)."
+   ],
+   [
+    "2026-11-14",
+    "Réécrit selon nos pratiques actuelles : cahier des commentateurs avant chaque livre, éditions de base des trois livres, marques sur les pages et numéros de chapitre, source à la copie, renvois aux Entretiens ; chiffres publiés désormais par livre ; licence passée à CC BY 4.0."
    ]
-  ]
+  ],
+  "bn": [
+   "Entretiens",
+   "Daodejing",
+   "Trois caractères"
+  ],
+  "bth": [
+   "Texte en ligne",
+   "Pages de l’édition de base",
+   "Traités",
+   "Vidéos publiées",
+   "Renvois aux Entretiens",
+   "Du premier jet au final"
+  ],
+  "u_zhang": " ch.",
+  "u_jiang": " leçons",
+  "u_ye": " pages",
+  "u_ji": " épisodes",
+  "lyhj_main": "Classique principal",
+  "lyhj": "{n} renvois",
+  "chg": "{r} %<br><small>{e} épisodes, {s} segments, {c} modifiés</small>",
+  "chg0": "Pas encore de vidéo"
  },
  "es": {
   "link": "Cómo verificamos",
   "title": "Cómo trabaja Yikonglu: verificar una lectura de los clásicos hecha con zhiqi",
   "sub": "Qué pasos usan zhiqi, cuáles revisan personas y qué hacemos cuando nos equivocamos",
   "intro": "Yikonglu usa zhiqi (智器, nuestra palabra para la IA) para hacer vídeos de lectura de los clásicos. El zhiqi puede inventar comentarios, inventar fuentes y leer mal caracteres. Por eso explicamos aquí qué pasos usan zhiqi, cuáles debe revisar una persona y qué hacemos con los errores, para que los lectores puedan comprobarlo y para quienes hacen un trabajo parecido.",
-  "s1h": "1. Ediciones base y comentarios",
+  "s1h": "1. Ediciones base y comentaristas",
   "s1": [
-   "Antes de empezar un libro fijamos su edición base y la lista de comentarios en la página del libro. En las Analectas, el texto y el comentario de Zhu Xi siguen la edición Sibu Beiyao del Lunyu Jizhu; los comentarios antiguos usan ediciones xilográficas de dominio público (el Lunyu Yishu de Huang Kan: edición Zhibuzu Zhai y edición japonesa de 1750); los comentarios modernos aún protegidos (Yang Bojun, Qian Mu) solo se citan brevemente, con página. Véase <a href=\"{p}banben/\">Ediciones y licencias</a>.",
-   "Nunca usamos como base textos de internet de origen desconocido."
+   "<b>Primero leerlo todo</b>: antes de empezar un libro leemos los comentarios, los manuscritos excavados y las variantes, hacemos un cuaderno capítulo por capítulo y solo entonces fijamos la forma y escribimos. Nunca partimos de un único texto base, ni de textos de internet de origen desconocido.",
+   "<b>Analectas</b>: el texto y el comentario de Zhu Xi siguen la edición Sibu Beiyao del Lunyu Jizhu. Los comentarios antiguos usan xilografías de dominio público, por ejemplo el Lunyu Yishu de Huang Kan en la edición Zhibuzu Zhai y una edición japonesa de 1750. Los comentarios modernos aún protegidos (Yang Bojun, Qian Mu) solo se citan brevemente, con página.",
+   "<b>Daodejing</b>: la base es el comentario de Wang Bi en la edición del Siku Quanshu, leído capítulo a capítulo junto a Heshang Gong, los manuscritos en seda A y B de Mawangdui, las tablillas de bambú de Guodian, las tablillas Han de la Universidad de Pekín, y Yan Zun, el emperador Xuanzong, Su Zhe y los comentaristas reunidos en el Laozi Yi de Jiao Hong.",
+   "<b>Clásico de los tres caracteres</b>: el texto sigue las Notas de clase del padre de Yikonglu, cotejadas grupo por grupo con el Sanzijing xungu de Wang Xiang (reimpresión japonesa de 1831). Los grupos que faltan en Wang Xiang y los que difieren en la redacción se señalan en la página. Otras ediciones, como el Sanzijing zhujie beiyao de He Xingsi y el Sanzijing revisado de Zhang Taiyan, se van cotejando.",
+   "Procedencia de cada edición: <a href=\"{p}banben/\">Ediciones y licencias</a>."
   ],
   "s2h": "2. Cómo se hace cada capítulo",
   "s2": [
@@ -486,6 +633,9 @@
    "<b>Pronunciación</b>: cada episodio tiene una tabla de lecturas; los caracteres polifónicos o raros se fijan según los comentarios y el uso, se revisan antes de grabar y después se comparan frase a frase con reconocimiento de voz; lo que no coincide se vuelve a grabar.",
    "<b>Citas</b>: cada cita de un vídeo se registra con su fuente y página y se compara palabra por palabra con la página original antes de salir en pantalla; lo que no encontramos en la página solo se parafrasea, nunca se muestra como cita.",
    "<b>Páginas originales</b>: cuando citamos a un comentarista, la página escaneada aparece en pantalla con la cita enmarcada en rojo; la página del capítulo en este sitio muestra la misma página.",
+   "<b>Páginas originales en línea</b>: cada capítulo va con la página de la edición base. Toque cualquier frase del texto y un recuadro rojo la marca en la página. Cada imagen lleva en la esquina «Yikonglu yikonglu.com» con el libro, el volumen y la página; consérvela si reutiliza la imagen.",
+   "<b>Números de capítulo y fuentes</b>: los tres libros numeran igual, «Analectas 2.1», «Daodejing 1», «Tres caracteres 1», en correspondencia con la dirección, por ejemplo yikonglu.com/lunyu/2.1. Al copiar una línea del texto se añaden automáticamente el número y la dirección.",
+   "<b>Referencias a las Analectas</b>: las Analectas son nuestro clásico principal. Cada capítulo de los demás libros se lee frente a ellas en tres tipos: lo que las Analectas dicen directamente (fuente), los comentaristas que citan las Analectas para explicar (citado por comentaristas) y lo que comparte su sentido (afín). «Afín» es nuestra propia lectura, marcada «lectura de Yikonglu», nunca atribuida a un comentarista.",
    "<b>Traducciones y lecturas</b>: escribimos nuestras propias traducciones y las comparamos frase a frase con las traducciones habituales, reescribiendo toda coincidencia de seis caracteres o más; «la lectura de Yikonglu» es nuestra lectura, presentada como nuestra, nunca atribuida a un comentarista.",
    "<b>Imágenes</b>: ilustraciones y personajes son originales; los caracteres se recortan de las formas de la edición base y se revisan a máquina; los personajes ficticios no afirman «historia» más allá del texto."
   ],
@@ -506,6 +656,11 @@
     "Citas y fuentes",
     "Las enumera y compara palabra por palabra con la página",
     "Revisan por muestreo; nada sin verificar sale en pantalla"
+   ],
+   [
+    "Recuadros en la página",
+    "Alinea columnas y caracteres y enmarca cada frase en la página",
+    "Revisa por muestreo página a página y corrige recuadros erróneos"
    ],
    [
     "Pronunciación",
@@ -536,8 +691,8 @@
    "Nuestra dirección está en la página <a href=\"{p}about.html\">Acerca de</a>."
   ],
   "s5h": "5. Las cifras que publicamos",
-  "s5p": "Cada semana actualizamos el número de capítulos tratados, de citas verificables en las páginas originales, de comentarios con imágenes de página, de correcciones públicas, y si al buscar una frase del texto en cada plataforma nos encuentra.",
-  "s5c": "También publicamos la proporción de segmentos cambiados entre el primer borrador y el guion final: en cada episodio se compara el primer guion con el final segmento a segmento, y cualquier diferencia de redacción cuenta como cambio. Hasta ahora: {n} episodios, {s} segmentos, {c} cambiados — {r} % (actualizado el {d}).",
+  "s5p": "Las cifras se llevan por libro, y las unidades difieren: capítulos para las Analectas y el Daodejing, lecciones para el Clásico de los tres caracteres. «Del primer borrador al final» compara segmento a segmento el primer guion de narración de cada episodio con el final; cualquier diferencia de redacción cuenta como cambio. Solo se cuentan los episodios cerrados.",
+  "s5c": "Datos de cambios actualizados el {d}.",
   "cth": [
    "Episodio",
    "Segmentos",
@@ -545,7 +700,7 @@
    "Proporción"
   ],
   "s6h": "6. Sobre esta página",
-  "s6": "Lo que describe esta página es nuestro compromiso con los lectores. Si el método cambia, la página cambia, con una nota de revisión abajo. Texto con licencia CC BY 4.0; vídeos, narración, personajes e ilustraciones no incluidos.",
+  "s6": "Lo que describe esta página es nuestro compromiso con los lectores. Si el método cambia, la página cambia, con una nota de revisión abajo. Los textos del sitio son abiertos bajo CC BY 4.0: basta con citar, y el uso comercial está permitido. Vídeos, narración, personajes originales e ilustraciones no están incluidos; véase <a href=\"{p}kaifang.html\">Datos abiertos</a>.",
   "log": "Revisiones",
   "logs": [
    [
@@ -555,7 +710,32 @@
    [
     "2026-11-06",
     "Ahora llamamos a la IA «zhiqi» (智器)."
+   ],
+   [
+    "2026-11-14",
+    "Reescrita según la práctica actual: cuaderno de comentaristas antes de cada libro, ediciones base de los tres libros, marcas en las páginas y números de capítulo, fuente al copiar, referencias a las Analectas; cifras publicadas ahora por libro; licencia cambiada a CC BY 4.0."
    ]
-  ]
+  ],
+  "bn": [
+   "Analectas",
+   "Daodejing",
+   "Tres caracteres"
+  ],
+  "bth": [
+   "Texto en línea",
+   "Páginas de la edición base",
+   "Tratados",
+   "Vídeos publicados",
+   "Referencias a las Analectas",
+   "Del borrador al final"
+  ],
+  "u_zhang": " cap.",
+  "u_jiang": " lecciones",
+  "u_ye": " págs.",
+  "u_ji": " episodios",
+  "lyhj_main": "Clásico principal",
+  "lyhj": "{n} entradas",
+  "chg": "{r} %<br><small>{e} episodios, {s} segmentos, {c} cambiados</small>",
+  "chg0": "Aún sin vídeos"
  }
 }

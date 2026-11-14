@@ -2378,7 +2378,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
         _rows = [[f"{n}{un}" for b, u, n, un, pg, done, nv, hj in BK], [f"{pg}{F['u_ye']}" for b, u, n, un, pg, done, nv, hj in BK],
                  [f"{done}{un}" for b, u, n, un, pg, done, nv, hj in BK], [f"{nv}{F['u_ji']}" for b, u, n, un, pg, done, nv, hj in BK],
                  [F["lyhj_main"] if hj is None else F["lyhj"].format(n=hj) for b, u, n, un, pg, done, nv, hj in BK], [_chg(b) for b, *_ in BK]]
-        s5 += ('<table class="num bybook"><thead><tr><th></th>' + "".join(f'<th><a href="{P}{u}">{b}</a></th>' for b, u, *_ in BK) + "</tr></thead><tbody>"
+        s5 += ('<table class="num bybook"><thead><tr><th></th>' + "".join(f'<th><a href="{P if (L.code.startswith("zh") or u == "lunyu/" or (u == "daodejing/" and L.code in DDJ_FL) or (u == "sanzijing/" and L.code in SZJ_FL)) else "/"}{u}">{F.get("bn", [x[0] for x in BK])[i]}</a></th>' for i, (b, u, *_) in enumerate(BK)) + "</tr></thead><tbody>"
                + "".join(f'<tr><th scope="row">{h}</th>' + "".join(f"<td>{v}</td>" for v in r) + "</tr>" for h, r in zip(F["bth"], _rows))
                + "</tbody></table>")
         if DC: s5 += f'<p><small>{F["s5c"].format(d=DC.get("updated", ""))}</small></p>'

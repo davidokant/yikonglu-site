@@ -397,10 +397,13 @@
   "title": "Cách Nhất Khổng Lục làm việc: kiểm chứng việc đọc kinh điển có trí khí hỗ trợ",
   "sub": "Bước nào dùng trí khí, bước nào người kiểm, và sai thì xử lý ra sao",
   "intro": "Nhất Khổng Lục dùng trí khí (智器, cách chúng tôi gọi AI) để làm video đọc kinh điển. Trí khí có thể bịa ra chú giải, bịa ra nguồn và đọc sai chữ, nên ở đây chúng tôi nói rõ bước nào dùng trí khí, bước nào phải có người kiểm, và sai thì làm gì — để bạn đọc lấy đó mà đối chiếu, và để những ai làm việc tương tự tham khảo.",
-  "s1h": "1. Bản gốc và các bản chú giải",
+  "s1h": "1. Bản gốc và các nhà chú giải",
   "s1": [
-   "Trước khi bắt đầu một cuốn sách, chúng tôi chốt bản gốc và danh sách chú giải trên trang của cuốn đó. Với Luận Ngữ, nguyên văn và chú của Chu Hy theo bản Tứ bộ bị yếu của Luận Ngữ tập chú; chú giải cổ hơn dùng bản khắc gỗ thuộc phạm vi công cộng (Luận Ngữ nghĩa sớ của Hoàng Khản: bản Tri Bất Túc Trai và một bản Nhật Bản năm 1750); chú giải hiện đại còn bản quyền (Dương Bá Tuấn, Tiền Mục) chỉ trích ngắn, có số trang. Xem <a href=\"{p}banben/\">Bản gốc & giấy phép</a>.",
-   "Chúng tôi không bao giờ lấy văn bản trên mạng không rõ nguồn gốc làm bản gốc."
+   "<b>Đọc hết trước đã</b>: trước khi bắt đầu một cuốn sách, chúng tôi đọc qua các bản chú giải, các bản khai quật và dị bản, lập sổ tay từng chương, rồi mới định thể lệ và viết bài. Chúng tôi không bao giờ bắt đầu chỉ từ một bản gốc, cũng không dùng văn bản trên mạng không rõ nguồn gốc làm bản gốc.",
+   "<b>Luận ngữ</b>: nguyên văn và lời chú của Chu Hy theo bản Tứ bộ bị yếu của Luận ngữ tập chú. Chú giải cổ dùng bản khắc gỗ thuộc phạm vi công cộng, ví dụ Luận ngữ nghĩa sớ của Hoàng Khản theo bản Tri bất túc trai và bản khắc Nhật năm 1750. Chú giải hiện đại còn bản quyền (Dương Bá Tuấn, Tiền Mục) chỉ trích ngắn để đối chiếu, có ghi số trang.",
+   "<b>Đạo đức kinh</b>: bản gốc là chú của Vương Bật trong Tứ khố toàn thư, đọc từng chương cùng chú Hà Thượng Công, bạch thư Mã Vương Đôi bản Giáp và Ất, thẻ tre Quách Điếm, thẻ tre Hán của Đại học Bắc Kinh, cùng Nghiêm Tuân, Đường Huyền Tông, Tô Triệt và các nhà được tập hợp trong Lão Tử dực của Tiêu Hoành.",
+   "<b>Tam tự kinh</b>: nguyên văn theo Bài giảng của cha của Yikonglu, đối chiếu từng nhóm với Tam tự kinh huấn hỗ của Vương Tương (bản in lại tại Nhật năm 1831). Những nhóm không có trong bản Vương Tương và những nhóm khác chữ đều được ghi trên trang. Các bản khác như Tam tự kinh chú giải bị yếu của Hạ Hưng Tư và Tam tự kinh trùng đính của Chương Thái Viêm sẽ lần lượt được đối chiếu.",
+   "Nguồn gốc từng bản: <a href=\"{p}banben/\">Phiên bản và giấy phép</a>."
   ],
   "s2h": "2. Mỗi chương được làm thế nào",
   "s2": [
@@ -408,6 +411,9 @@
    "<b>Âm đọc</b>: mỗi tập có bảng âm đọc; chữ đa âm và chữ hiếm được định theo chú giải và âm chuẩn, kiểm trước khi lồng tiếng, rồi so từng câu bằng nhận dạng giọng nói; chỗ lệch được thu lại. Mọi âm đọc có trong <a href=\"{p}zi.html\">bảng âm đọc</a>.",
    "<b>Trích dẫn</b>: mọi trích dẫn trong video đều ghi nguồn và trang, đối chiếu từng chữ với trang gốc trước khi lên hình; chỗ nào không tìm thấy trên trang thì chỉ thuật lại, không bao giờ trình bày như lời trích.",
    "<b>Trang gốc</b>: khi trích một nhà chú giải, trang chụp được đưa lên hình, đoạn trích đóng khung đỏ; trang chương trên website cũng hiện đúng trang đó.",
+   "<b>Trang gốc trên mạng</b>: mỗi chương kèm trang của bản gốc. Chạm vào bất kỳ câu nào trong nguyên văn, khung đỏ sẽ đánh dấu câu đó trên trang. Mỗi ảnh trang có dòng “Yikonglu yikonglu.com” cùng tên sách, quyển và trang ở góc; khi dùng lại xin giữ nguyên.",
+   "<b>Số chương và nguồn</b>: cả ba cuốn đánh số chương giống nhau, “Luận ngữ 2.1”, “Đạo đức kinh 1”, “Tam tự kinh 1”, khớp với địa chỉ, ví dụ yikonglu.com/lunyu/2.1. Khi sao chép một dòng nguyên văn, số chương và địa chỉ được tự động thêm vào.",
+   "<b>Đối chiếu với Luận ngữ</b>: Luận ngữ là kinh chính của chúng tôi. Mỗi chương của các sách khác đều được đọc đối chiếu với Luận ngữ, chia làm ba loại: điều Luận ngữ nói thẳng (xuất xứ), các nhà chú giải dẫn Luận ngữ để giải thích (nhà chú dẫn), và điều có ý tương thông (tương thông). “Tương thông” là cách đọc đối chiếu của riêng chúng tôi, ghi rõ “Yikonglu đối đọc”, không gán cho nhà chú giải.",
    "<b>Bản dịch và cách đọc</b>: chúng tôi tự viết bản dịch và so từng câu với các bản dịch thông dụng, trùng từ sáu chữ trở lên thì viết lại; “Nhất Khổng Lục đọc thế này” là cách đọc riêng của chúng tôi, ghi rõ là của mình, không bao giờ gán cho nhà chú giải.",
    "<b>Hình ảnh</b>: tranh và nhân vật là của chúng tôi; chữ được cắt từ nét chữ của bản gốc và máy quét kiểm chữ hỏng; nhân vật hư cấu trong video không khẳng định “lịch sử” ngoài văn bản."
   ],
@@ -428,6 +434,11 @@
     "Trích dẫn và nguồn",
     "Liệt kê và so từng chữ với trang gốc",
     "Kiểm xác suất; chưa kiểm thì không lên hình"
+   ],
+   [
+    "Khung trên trang gốc",
+    "Khớp cột với chữ, đóng khung từng câu trên trang",
+    "Kiểm tra ngẫu nhiên từng trang, sửa khung sai"
    ],
    [
     "Âm đọc",
@@ -458,8 +469,8 @@
    "Địa chỉ liên hệ có ở trang <a href=\"{p}about.html\">Giới thiệu</a>."
   ],
   "s5h": "5. Những con số chúng tôi công bố",
-  "s5p": "Mỗi tuần chúng tôi cập nhật số chương đã giảng, số trích dẫn kiểm được với trang gốc, số chú giải có ảnh trang và số đính chính công khai, cùng với việc tìm một câu kinh văn trên từng nền tảng có ra chúng tôi hay không.",
-  "s5c": "Chúng tôi cũng công bố tỉ lệ đoạn được sửa giữa bản nháp đầu và kịch bản cuối: kịch bản sớm nhất của mỗi tập được so với bản cuối từng đoạn, khác một chữ cũng tính là sửa. Đến nay: {n} tập, {s} đoạn, {c} đoạn sửa — {r}% (cập nhật {d}).",
+  "s5p": "Số liệu tính theo từng sách, đơn vị khác nhau: Luận ngữ và Đạo đức kinh tính theo chương, Tam tự kinh tính theo bài giảng. “Từ bản nháp đến bản cuối” so sánh theo đoạn kịch bản lồng tiếng sớm nhất của mỗi tập với bản cuối; khác chữ là tính sửa. Chỉ tính những tập đã chốt.",
+  "s5c": "Dữ liệu sửa đổi cập nhật {d}.",
   "cth": [
    "Tập",
    "Số đoạn",
@@ -467,7 +478,7 @@
    "Tỉ lệ"
   ],
   "s6h": "6. Về trang này",
-  "s6": "Điều trang này mô tả là lời hứa của chúng tôi với bạn đọc. Phương pháp thay đổi thì trang này thay đổi, có ghi chú ở dưới. Văn bản theo giấy phép CC BY 4.0; video, lồng tiếng, nhân vật và tranh minh họa không thuộc giấy phép này.",
+  "s6": "Những gì trang này mô tả là lời hứa của chúng tôi với độc giả. Nếu cách làm thay đổi, trang này sẽ thay đổi, kèm ghi chú sửa đổi bên dưới. Văn bản trên trang mở theo CC BY 4.0: chỉ cần ghi nguồn, được dùng thương mại. Video, lồng tiếng, nhân vật gốc và tranh minh họa không thuộc giấy phép; xem <a href=\"{p}kaifang.html\">Dữ liệu mở</a>.",
   "log": "Lịch sử sửa đổi",
   "logs": [
    [
@@ -477,8 +488,33 @@
    [
     "2026-11-06",
     "Từ nay chúng tôi gọi AI là “trí khí” (智器)."
+   ],
+   [
+    "2026-11-14",
+    "Viết lại theo cách làm hiện nay: lập sổ tay các nhà chú giải trước mỗi sách, bản gốc của ba cuốn, dấu trên ảnh trang và số chương, nguồn khi sao chép, đối chiếu với Luận ngữ; số liệu công bố nay tính theo sách; giấy phép đổi sang CC BY 4.0."
    ]
-  ]
+  ],
+  "bn": [
+   "Luận ngữ",
+   "Đạo đức kinh",
+   "Tam tự kinh"
+  ],
+  "bth": [
+   "Nguyên văn trên mạng",
+   "Ảnh trang bản gốc",
+   "Đã giảng",
+   "Video đã đăng",
+   "Đối chiếu với Luận ngữ",
+   "Nháp → bản cuối"
+  ],
+  "u_zhang": " chương",
+  "u_jiang": " bài",
+  "u_ye": " trang",
+  "u_ji": " tập",
+  "lyhj_main": "Kinh chính",
+  "lyhj": "{n} mục",
+  "chg": "{r}%<br><small>{e} tập, {s} đoạn, sửa {c}</small>",
+  "chg0": "Chưa có video"
  },
  "kaifang": {
   "h": "Cái gì mở, cái gì không",
