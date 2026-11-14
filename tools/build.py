@@ -359,8 +359,8 @@ def quest_js(code):
 
 SHOW_DRAFT = True  # “初稿改动”比例：首页小字与方法页
 DRAFT_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/初稿改动.json"
-YXL_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/影响力.json"  # 一孔影响力（找到分），每天自动更新
-YXL_WEEK_FILE = "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/最新.json"  # 本周日采（含没测完的平台）
+YXL_FILE = os.environ.get("YK_YXL_FILE") or "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/影响力.json"  # 一孔影响力（找到分），每天自动更新
+YXL_WEEK_FILE = os.environ.get("YK_YXL_WEEK_FILE") or "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/最新.json"  # 本周日采（含没测完的平台）
 
 def yxl_merge(y, w):
     """主人 11-12 定：日采结果上网站。影响力.json 只收测完的平台，本周没测完的（如 YouTube）从 最新.json 补上，注明已测几章；本周找到分按已有平台重算。"""
@@ -386,6 +386,7 @@ def yxl_merge(y, w):
         y["share"] = round(sum(shs) / len(shs), 2) if shs else None
         y["history"][-1]["share"] = y["share"]
     y["chapters"] = n or y.get("chapters")
+    if w.get("books"): y["books"] = w["books"]  # 按书分（主人 11-14）：本周日采里已算好
     try:  # 日采每天写 最新.json，更新日期取它（北京日期）
         t = datetime.datetime.fromtimestamp(os.path.getmtime(YXL_WEEK_FILE), datetime.timezone(datetime.timedelta(hours=8)))
         y["updated"] = max(y.get("updated") or "", t.date().isoformat())
@@ -1238,6 +1239,26 @@ def yxl_counts(D):
     eps = {D["ch2ep"][c][0] for c in D["pub"] if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now)}
     return books, zi, len(eps)
 
+def yxl_books(books, P):
+    """找到分按书分（主人 11-14）：每本书一行（书分＝该书各平台分的平均），点开看各平台分和前 20 条里找得到的章。还没开测的书只列书名。"""
+    def bar(sc): return f'<div class="bar"><i style="width:{min(max(float(sc), 0), 100):g}%"></i></div>'
+    def link(c):
+        if c.startswith("ddj."): return f'{P}daodejing/{c[4:]}.html', f"第 {c[4:]} 章"
+        if c.startswith("szj."): return f'{P}sanzijing/{c[4:]}.html', f"第 {c[4:]} 讲"
+        p, n = c.split("."); return f'{P}lunyu/{PIAN[p][1]}/{n}.html', c
+    out = ""
+    for b in books:
+        nm = esc(b["name"])
+        if b.get("score") is None:
+            out += f'<div class="row yxoff"><span>《{nm}》</span><div class="bar"></div><em class="na">有视频后计入</em></div>'; continue
+        prow = "".join(f'<div class="row"><span>{esc(pf["name"])}' + (f'<small>本周已测 {pf["measured"]}/{b["chapters"]} 章</small>' if pf.get("partial") else "") + f'</span>{bar(pf["score"])}<em>{pf["score"]}</em></div>' for pf in b["platforms"])
+        pn = {"yt": "YouTube", "gsc": "谷歌", "bing": "必应", "bili": "哔哩哔哩"}
+        chips = "".join(f'<a href="{h}">{esc(t)}<small>' + " · ".join(f"{pn.get(k, k)} 第 {v} 名" for k, v in f.items() if k != "ch") + "</small></a>" for f in b.get("found", []) for h, t in [link(f["ch"])])
+        fd = f'<p class="yxfd">前 20 条里找得到的 {len(b["found"])} 章：</p><div class="yxch">{chips}</div>' if b.get("found") else '<p class="yxfd">本周还没有哪一章进前 20 条。</p>'
+        out += (f'<details class="yxbk"><summary class="row"><span>《{nm}》<i class="yxt" aria-hidden="true"></i><small>{b["chapters"]} 章 · 点开看</small></span>{bar(b["score"])}<em>{b["score"]}</em></summary>'
+                f'<div class="yxin">{prow}{fd}</div></details>')
+    return out
+
 def yxl_block(L, D, P, full=False):
     """首页“一孔影响力”栏（简繁）。四格自证数从站内数据算；“能找到吗”用 影响力.json。full=True 给方法页多出的说明。"""
     y = D.get("yxl") or {}
@@ -1268,6 +1289,7 @@ def yxl_block(L, D, P, full=False):
     elif hist:
         trend = f'<svg class="yxline" viewBox="0 0 320 60" width="320" height="60" aria-hidden="true"><circle cx="20" cy="30" r="4" fill="currentColor"/></svg><small>{hist[0]["week"][:7]} 从 {hist[0]["score"]} 分起步</small>'
     else: trend = ""
+    if y.get("books"): rows = yxl_books(y["books"], P)
     find = "" if score is None else (f'<div class="yxfind"><h3>在平台上搜一句原文，能找到一孔录吗</h3>{rows}'
             f'<div class="yxscore"><b>找到分 <strong>{score}</strong></b>' + (f'<b>占比 <strong>{y["share"]}%</strong></b>' if y.get("share") is not None else "") + f'{trend}</div>'
             f'<p>做法：取已发各章首句，不登录搜索，看一孔录讲读是否在前 20 条，折成 0—100 的平台分；平台搜索因人因地而异，你搜到的可能不同。<a class="more" href="{P}yingxiangli.html">方法与原始数据 ›</a></p></div>')
@@ -2817,6 +2839,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
 <p>一个平台上，一句原文搜出来，一孔录的讲读排在第 r 名，记 V = 1 / log₂(1 + r)；不在前 20 条记 0。</p>
 <p>平台分 = 100 × 各章 V 的平均。</p>
 <p>占比 = 各章搜索结果前 20 条中本站条数之和 ÷ 前 20 条总数。只在能看到全部结果的平台计算（现只 YouTube），不点名其他频道。</p>
+<p>按书分：每本书单算一行，书分 = 该书各平台分的平均，各平台分只用这本书已发各章算；点开一本书，可看各平台分和前 20 条里找得到的章。道德经、三字经有视频的章自动计入。</p>
 <p>找到分 = 各平台平台分的平均。YouTube 取台湾繁体、美国简体两种设定的平均，合成一个平台分；哔哩哔哩、谷歌、必应各一个平台分。本周还没测完的平台也照列，注明已测几章，测完后换成整周数。</p>
 <p>收录＝搜索引擎已编入索引的本站页数 ÷ 网站地图页数；谷歌按逐页检查接口每周轮查一遍，必应取 Webmaster 报告的索引页数；百度未接。</p>
 <h2>怎么测</h2>

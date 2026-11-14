@@ -253,6 +253,10 @@ aside li.wj a{color:var(--mute)}
 .yxscore{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:12px;color:var(--accent2)}.yxscore b{font-size:17px;color:var(--fg)}.yxscore strong{font-size:34px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--accent)}.yxscore small{color:var(--mute);font-size:13px}
 .yxfind p{margin:10px 0 0;font-size:13px;color:var(--mute);line-height:1.7}.yxfind a.more{color:var(--accent);font-size:14px}
 .pg-home .yxl{margin-top:36px}
+.yxbk>summary{list-style:none;cursor:pointer}.yxbk>summary::-webkit-details-marker{display:none}.yxbk .yxt{font-style:normal;color:var(--accent)}.yxbk .yxt::after{content:" ›"}.yxbk[open] .yxt::after{content:" ⌄"}
+.yxbk .yxin{margin:2px 0 10px 14px;padding-left:12px;border-left:2px solid var(--line)}.yxbk .yxin .row{font-size:14px}
+.yxfind p.yxfd{margin:8px 0 6px}.yxch{display:flex;flex-wrap:wrap;gap:6px}.yxch a{display:inline-flex;flex-direction:column;padding:4px 9px;border:1px solid var(--line);border-radius:6px;font-size:14px;color:var(--fg);text-decoration:none;line-height:1.35}.yxch a small{font-size:11px;color:var(--mute)}.yxch a:hover{border-color:var(--accent)}
+.yxfind .yxoff span{color:var(--mute)}
 
 /* 故事栏（演义层）：深色页眉、立绘、字段表、地图卡 */
 .gshero{background:#17211f;color:#e1e7df;border-bottom:3px solid var(--gs,#2f5d62)}.gshero .wrap{padding-top:26px;padding-bottom:26px}
