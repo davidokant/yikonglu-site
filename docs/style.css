@@ -754,3 +754,8 @@ header.top nav a.lynav{color:#fff;background:#23503F;border-radius:999px;padding
 .lyhj h2{margin:0 0 10px;font-size:18px}.lyhj ul{margin:0;padding:0;list-style:none}.lyhj li{margin:0 0 12px}
 .lyhj li b{font-size:18px}.lyhj li em{font-style:normal;color:var(--accent2);margin-right:8px;font-size:14px;border:1px solid var(--accent2);border-radius:4px;padding:0 5px}
 .lyhj li p{margin:4px 0 0;color:var(--fg);font-size:15px}.lyhj li small{color:var(--mute);margin-left:4px}.lyhj .note{margin:6px 0 0}
+/* 11-14 核验方法页：公开数字按书算 */
+table.bybook{width:100%}
+table.bybook th[scope=row]{text-align:left;font-weight:normal;color:var(--muted,#6b675e);white-space:nowrap}
+table.bybook td,table.bybook thead th{text-align:center}
+table.bybook small{display:block;font-size:.78em;line-height:1.4;color:var(--muted,#6b675e)}
