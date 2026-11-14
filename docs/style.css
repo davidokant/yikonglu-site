@@ -524,7 +524,10 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .hero.slim picture:after{height:10%}
 .hero.slim .herotext{position:absolute;left:0;right:0;top:0;bottom:auto;z-index:2;margin:0;padding:3.2% 16px 0}
 .hero.slim .herotext h1 small{text-shadow:0 1px 6px rgba(0,0,0,.8)}
-@media (max-width:700px){.hero.slim img{aspect-ratio:1080/794}.hero.slim .herotext{padding-top:2.4%}.hero.slim picture:before{height:52%;background:linear-gradient(to bottom,rgba(28,18,10,.9) 0%,rgba(28,18,10,.78) 45%,rgba(28,18,10,0) 100%)}.hero.slim .herotext h1 small{text-shadow:0 1px 3px rgba(0,0,0,.95),0 0 10px rgba(0,0,0,.85)}}
+/* 横幅 v3（11-14）：站名落在匾上；手机匾小，只放站名，副题挪到横幅下 */
+.hero.slim .herotext{padding-top:calc(6.9% - 34px)}
+.hero .herosub{display:none}
+@media (max-width:700px){.hero.slim img{aspect-ratio:1080/886}.hero.slim .herotext{padding-top:calc(18.7% - 13px)}.hero.slim .herotext h1{font-size:21px}.hero.slim .herotext h1 small{display:none}.hero .herosub{display:block;margin:0;padding:2px 16px 12px;text-align:center;color:rgba(242,241,234,.88);font-size:13px;letter-spacing:.35em;background:#241a12;position:relative;z-index:2}.hero.slim picture:before{height:52%;background:linear-gradient(to bottom,rgba(28,18,10,.9) 0%,rgba(28,18,10,.78) 45%,rgba(28,18,10,0) 100%)}.hero.slim .herotext h1 small{text-shadow:0 1px 3px rgba(0,0,0,.95),0 0 10px rgba(0,0,0,.85)}}
 /* 外文首页：拉丁字母不加大字距，标题小字不至于断成两行（11-09） */
 html:not([lang^="zh"]):not([lang="ja"]):not([lang="ko"]) .herotext h1 small{letter-spacing:.06em}
 html:not([lang^="zh"]):not([lang="ja"]):not([lang="ko"]) .meiri .mh b{letter-spacing:.02em}

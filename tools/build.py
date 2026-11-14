@@ -2295,8 +2295,8 @@ def build_lang(L, D, write):
                      'if(!x){M.querySelector(".md").textContent=dt+" · 补读日";q.textContent="今天不排新课，前几天落下的课，今天补上。";b.textContent="";c.href="' + P + 'nianli/";k.hidden=true;M.hidden=false;return}'
                      'M.querySelector(".md").textContent=dt+" · 年历第 "+x[0]+" 课 · 《论语》"+x[6];q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+"今日加读 "+x[5].map(function(a){return a[0]}).join(" "):"");'
                      'c.href=x[2];k.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false}).catch(function(){})})();</script>')
-    home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg" width="1080" height="794"><img src="/assets/hero-w.jpg" alt="一孔录原创角色同坐长桌读《论语》" width="1920" height="790"></picture>
-<div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div></section>
+    home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg" width="1080" height="886"><img src="/assets/hero-w.jpg" alt="一孔录原创角色同坐长桌读《论语》" width="1920" height="790"></picture>
+<div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div><p class="herosub">{L.t("tagline")}</p></section>
 <main class="home">
 <section class="intro wrap narrow">
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
