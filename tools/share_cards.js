@@ -139,41 +139,80 @@ function rw(){var who=(X4.who||[]).slice(0,1),key=keyTxt(),bh=keyBh(keyIdx());if
     if(bh){y+=26;c.fillStyle='rgba(242,241,234,.78)';c.font='400 26px '+F;wrap(c,bh,370).slice(0,4).forEach(function(l){c.fillText(l,84,y+26);y+=44})}
     c.fillStyle='rgba(18,40,32,.9)';c.fillRect(0,H-212,W,212);foot4(c,seal,true,'rw');show(cv)})}
 
-// 三、多语卡：同一章，原文和九种外语并排（讲过的章有十一语；未讲章有英日）
-var LGS=[['en','English'],['ja','日本語'],['ko','한국어'],['fr','Français'],['es','Español'],['de','Deutsch'],['vi','Tiếng Việt'],['id','Bahasa Indonesia'],['ru','Русский']];
-function jaPick(t,key){var P=(t||'').match(/[^。？！]+[。？！]+」?/g);if(!P||P.length<2)return '';var K={};key.replace(/[\u4e00-\u9fff]/g,function(ch){K[ch]=1});var bi=-1,bs=0;P.forEach(function(x,i){var sc=0,seen={};x.replace(/[\u4e00-\u9fff]/g,function(ch){if(K[ch]&&!seen[ch]){seen[ch]=1;sc++}});if(sc>bs){bs=sc;bi=i}});if(bs<2)return '';var r=P[bi].trim();if(/「[^」]*$/.test(r))r=r.replace(/。$/,'')+'」';return r}
+// 三、多语卡：一句原文居中，像石子落水一圈圈荡开，六种外语各占一格（11-14 改：备齐六种外语，重做版式）
+var LGS=[['en','English','London · New York','A'],['ja','日本語','東京','あ'],['ko','한국어','서울','한'],['fr','Français','Paris','É'],['es','Español','Madrid · Ciudad de México','Ñ'],['ru','Русский','Москва','Я']];
+function jaPick(t,key){var P=(t||'').match(/[^。？！]+[。？！]+」?/g);if(!P||P.length<2)return '';var K={};key.replace(/[一-鿿]/g,function(ch){K[ch]=1});var bi=-1,bs=0;P.forEach(function(x,i){var sc=0,seen={};x.replace(/[一-鿿]/g,function(ch){if(K[ch]&&!seen[ch]){seen[ch]=1;sc++}});if(sc>bs){bs=sc;bi=i}});if(bs<2)return '';var r=P[bi].trim();if(/「[^」]*$/.test(r))r=r.replace(/。$/,'')+'」';return r}
 function pickSent(t,n,N){var P=(t||'').match(/[^.?!。？！]+[.?!。？！]+["”」』]?\s*/g);if(P&&N>1&&P.length===N+1)P=[P[0]+P[1]].concat(P.slice(2));if(P&&N>1&&P.length===N&&P[n-1])return P[n-1].trim();
   if(P&&N>1&&P.length>1){var S=sents().map(function(x){return x.replace(/\s/g,'').length}),tot=S.reduce(function(p,q){return p+q},0),a=0;for(var i=0;i<n-1;i++)a+=S[i];var b=(a+S[n-1])/tot;a=a/tot;
-    var T=P.reduce(function(p,q){return p+q.length},0),cum=0,out='',best='',bo=0;P.forEach(function(x){var s0=cum/T,s1=(cum+x.length)/T,ov=Math.max(0,Math.min(b,s1)-Math.max(a,s0));if(ov>=(s1-s0)*.5)out+=x;if(ov>bo){bo=ov;best=x}cum+=x.length});return (out||best||t||'').trim().replace(/^[^「」]*」/,function(m){return m}).replace(/「([^」]*)$/,'「$1」')}return t||''}
-function dy(){var S=sents(),kn=keyIdx(),key=keyTxt(),TR=X3.tr||{},rows=[],nT=LGS.filter(function(l){return l[0]==='en'?X3.en:l[0]==='ja'?X3.ja:TR[l[0]]}).length,whole=nT<=3&&D.y.length<=60;if(whole)key=D.y;
-  LGS.forEach(function(l){var t=l[0]==='en'?X3.en:l[0]==='ja'?X3.ja:TR[l[0]];if(t)rows.push([l[1],whole?t:(l[0]==='ja'&&jaPick(t,key))||pickSent(t,kn,S.length),l[0]])});
-  prep(key+'一句话种语言全球一起读'+rows.map(function(r){return r[1]}).join('')).then(function(seal){var cv=canvas(),c=cv.getContext('2d');c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);
-    var gx=W-110,gy=96,R=300;c.save();c.strokeStyle='rgba(35,80,63,.09)';c.lineWidth=2;c.beginPath();c.arc(gx,gy,R,0,Math.PI*2);c.stroke();
-    for(var i=1;i<6;i++){var rx=R*Math.abs(Math.cos(i*Math.PI/6));c.beginPath();if(rx<1){c.moveTo(gx,gy-R);c.lineTo(gx,gy+R)}else c.ellipse(gx,gy,rx,R,0,0,Math.PI*2);c.stroke()}
-    for(var j=-2;j<=2;j++){var yy3=gy+j*R/3,rx=Math.sqrt(R*R-(j*R/3)*(j*R/3));c.beginPath();c.ellipse(gx,yy3,rx,rx*.12,0,0,Math.PI*2);c.stroke()}c.restore();
-    c.textBaseline='alphabetic';c.fillStyle='#8A5A2C';c.font='400 26px '+F;c.fillText(LBL()+' · 一句话，'+(rows.length+1)+' 种语言',84,104);
-    var y=150,ft=bfit(c,key,W-168,[76,68,60,54,48],220,1.36,900);c.fillStyle='#23503F';ft.L.forEach(function(l){c.font='900 '+ft.s+'px '+F;c.fillText(l,84,y+ft.s);y+=ft.s*1.36});y+=30;
-    var LW=190,TW=W-168-LW,avail=H-212-y-30,ML=rows.length<=3?6:2,fs=rows.length<=3?[34,31,28,25]:[27,25,23,21,20],pick2;
-    for(var z=0;z<fs.length;z++){c.font='400 '+fs[z]+'px '+F;var tot=0,L2=rows.map(function(r){var w=r[2]==='ja'||r[2]==='ko'?wrap(c,r[1],TW):wrapW(c,r[1],TW);if(w.length>ML){w=w.slice(0,ML);w[ML-1]=w[ML-1].replace(/\s*\S{0,3}$/,'')+'…'}tot+=w.length*fs[z]*1.42+22;return w});if(tot<=avail||z===fs.length-1){pick2={s:fs[z],L:L2};break}}
-    rows.forEach(function(r,i){c.fillStyle='rgba(35,80,63,.25)';c.fillRect(84,y,W-168,1);y+=14;c.fillStyle='#8A5A2C';c.font='700 19px '+F;c.fillText(r[0],84,y+pick2.s);c.fillStyle='#1E2A25';c.font='400 '+pick2.s+'px '+F;
-      pick2.L[i].forEach(function(l){c.fillText(l,84+LW,y+pick2.s);y+=pick2.s*1.42});y+=8});
+    var T=P.reduce(function(p,q){return p+q.length},0),cum=0,out='',best='',bo=0;P.forEach(function(x){var s0=cum/T,s1=(cum+x.length)/T,ov=Math.max(0,Math.min(b,s1)-Math.max(a,s0));if(ov>=(s1-s0)*.5)out+=x;if(ov>bo){bo=ov;best=x}cum+=x.length});return (out||best||t||'').trim().replace(/「([^」]*)$/,'「$1」')}return t||''}
+function dy(){var S=sents(),kn=keyIdx(),key=keyTxt(),TR=X3.tr||{},rows=[],whole=D.y.replace(/[，。；：？！、“”‘’「」\s]/g,'').length<=30;if(whole)key=strip(D.y);
+  LGS.forEach(function(l){var t=l[0]==='en'?X3.en:l[0]==='ja'?X3.ja:TR[l[0]];if(t)rows.push({n:l[1],city:l[2],gl:l[3],lg:l[0],t:whole?t:(l[0]==='ja'&&jaPick(t,key))||pickSent(t,kn,S.length)})});
+  var HD=HT?'一句話，'+(rows.length+1)+' 種語言':'一句话，'+(rows.length+1)+' 种语言';
+  prep(key+HD+'原文中文北京'+rows.map(function(r){return r.n+r.city+r.gl+r.t}).join('')).then(function(seal){var cv=canvas(),c=cv.getContext('2d');
+    c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);
+    // 上半：墨绿水面，原文落在正中，金色涟漪一圈圈荡开，荡到下面六种语言里
+    var cx=W/2,cy=292,HB0=520,bg=c.createRadialGradient(cx,cy,40,cx,cy,760);bg.addColorStop(0,'#2E6A53');bg.addColorStop(1,'#1A3B2F');c.fillStyle=bg;c.fillRect(0,0,W,HB0);
+    c.save();c.beginPath();c.rect(0,0,W,HB0);c.clip();for(var i=1;i<=13;i++){var r=96+i*i*6+i*24;c.strokeStyle='rgba(240,206,140,'+Math.max(.05,.42-i*.03)+')';c.lineWidth=i%3===0?2.2:1.1;c.beginPath();c.arc(cx,cy,r,0,Math.PI*2);c.stroke()}c.restore();
+    c.save();c.beginPath();c.rect(0,HB0,W,H-HB0-212);c.clip();for(var i=6;i<=13;i++){var r=96+i*i*6+i*24;c.strokeStyle='rgba(35,80,63,'+Math.max(.04,.16-(i-6)*.016)+')';c.lineWidth=i%3===0?2:1;c.beginPath();c.arc(cx,cy,r,0,Math.PI*2);c.stroke()}c.restore();
+    c.textBaseline='alphabetic';c.textAlign='center';c.fillStyle='#F0CE8C';c.font='400 25px '+F;c.fillText(LBL()+' · '+HD,cx,82);
+    c.font='900 72px '+F;var ft=bfit(c,key,W-220,[84,76,68,60,54,48],230,1.3,900),th=ft.L.length*ft.s*1.3,y=cy-th/2-ft.s*0.16;
+    c.fillStyle='rgba(242,241,234,.7)';c.font='400 22px '+F;c.fillText('原文 · 中文',cx,cy-th/2-34);
+    c.save();c.shadowColor='rgba(0,0,0,.35)';c.shadowBlur=24;c.fillStyle='#FFFFFF';ft.L.forEach(function(l){c.font='900 '+ft.s+'px '+F;c.fillText(l,cx,y+ft.s);y+=ft.s*1.3});c.restore();
+    c.textAlign='left';
+    // 六格
+    var gx=72,gy=HB0+36,gw=(W-gx*2-28)/2,gb=H-224,n=Math.ceil(rows.length/2),gh=(gb-gy-(n-1)*22)/n,pad=26,TW=gw-pad*2,HB=58,avail=gh-HB-pad;
+    var FS=[30,28,26,24,22,21,20],pk=null;
+    for(var z=0;z<FS.length;z++){var ok=true,LL=rows.map(function(r){c.font='400 '+FS[z]+'px '+F;var L=r.lg==='ja'?wrap(c,r.t,TW):wrapW(c,r.t,TW);if(L.length*FS[z]*1.42>avail)ok=false;return L});if(ok||z===FS.length-1){pk={s:FS[z],L:LL};break}}
+    rows.forEach(function(r,i){var col=i%2,row=Math.floor(i/2),x=gx+col*(gw+28),y=gy+row*(gh+22);
+      c.save();c.shadowColor='rgba(30,42,37,.10)';c.shadowBlur=18;c.shadowOffsetY=4;c.fillStyle='#FBFAF6';rr(c,x,y,gw,gh,14);c.fill();c.restore();
+      c.strokeStyle='rgba(35,80,63,.14)';c.lineWidth=1;rr(c,x+.5,y+.5,gw-1,gh-1,14);c.stroke();
+      c.save();rr(c,x,y,gw,gh,14);c.clip();c.fillStyle='rgba(35,80,63,.07)';c.font='900 200px '+F;c.textAlign='right';c.fillText(r.gl,x+gw-10,y+gh+30);c.restore();c.textAlign='left';
+      c.fillStyle='#23503F';rr(c,x,y,8,gh,4);c.fill();
+      c.fillStyle='#23503F';c.font='700 24px '+F;c.fillText(r.n,x+pad,y+40);c.textAlign='right';c.fillStyle='#A39A86';c.font='400 17px '+F;c.fillText(r.city,x+gw-pad,y+40);c.textAlign='left';
+      c.fillStyle='rgba(138,90,44,.35)';c.fillRect(x+pad,y+HB-4,40,2);
+      var L=pk.L[i],mx=Math.max(1,Math.floor(avail/(pk.s*1.42)));if(L.length>mx){L=L.slice(0,mx);L[mx-1]=L[mx-1].replace(/\s*\S{0,3}$/,'')+'…'}
+      var ty=y+HB+6;c.fillStyle='#1E2A25';c.font='400 '+pk.s+'px '+F;L.forEach(function(l){c.fillText(l,x+pad,ty+pk.s);ty+=pk.s*1.42})});
     foot4(c,seal,false,'dy');show(cv)})}
 
-// 四、年历卡：日期为主，《论语》年历这一天读这一章
+// 四、年历卡：日期为主，《论语》年历这一天读这一章；带日历：星期、农历、节气与七十二候、节日（下一次轮到这一天的那一年，最早 2027 年）
 var MON=['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
 function streak(){var R=RD(),set={},days=0,td=today();R.forEach(function(r){set[r.d]=1});for(var t=new Date();;t.setDate(t.getDate()-1)){var k=t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);if(set[k])days++;else break;if(days>4000)break}return days}
-function nl(){var N=X4.nl;if(!N){yy();return}var R0=RD();if(CN&&!R0.some(function(r){return r.c===CN&&r.d===today()})){R0.push({d:today(),c:CN,n:D.y.replace(/[，。；：？！、“”‘’「」\s]/g,'').length});WR(R0)}var n=N[0],m=N[1],d=N[2],q=N[3]||keyTxt(),bh=keyBh(keyIdx()),days=streak();
-  prep(q+bh+MON[m-1]+'年历第课一年课读完论语每年月日读这一章我读经第天0123456789').then(function(seal){var cv=canvas(),c=cv.getContext('2d');c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);
+function lunar(dt){try{var o={};new Intl.DateTimeFormat('zh-CN-u-ca-chinese',{year:'numeric',month:'numeric',day:'numeric'}).formatToParts(dt).forEach(function(p){o[p.type]=p.value});
+  var ms=(o.month||'').replace(/^闰|bis$/g,'').replace(/月$/,''),CM=['正','二','三','四','五','六','七','八','九','十','十一','十二'],lm=/^\d+$/.test(ms)?parseInt(ms,10):CM.indexOf(ms)+1,ld=parseInt((o.day||'').replace(/\D/g,''),10),ry=parseInt(o.relatedYear||o.year,10);if(!lm||!ld)return null;
+  var yn=(o.yearName||'').replace(/年$/,'');if(!/^[一-鿿]{2}$/.test(yn))yn=ry>0?'甲乙丙丁戊己庚辛壬癸'[(ry-4)%10]+'子丑寅卯辰巳午未申酉戌亥'[(ry-4)%12]:'';
+  return{m:lm,d:ld,leap:/闰|bis/.test(o.month||''),yn:yn}}catch(e){return null}}
+function cal(Y,m,d){var N='一二三四五六七八九十',dt=new Date(Y,m-1,d),L=lunar(dt),R=X3.rl||{},out={wk:'星期'+'日一二三四五六'[dt.getDay()],lu:'',yn:'',jq:'',fe:[]};
+  if(L){out.lu=(L.leap?'闰':'')+['正','二','三','四','五','六','七','八','九','十','冬','腊'][L.m-1]+'月'+(L.d<=10?'初'+N[L.d-1]:L.d<20?'十'+N[L.d-11]:L.d===20?'二十':L.d<30?'廿'+N[L.d-21]:'三十');
+    out.yn=L.yn?L.yn+('鼠牛虎兔龙蛇马羊猴鸡狗猪'['子丑寅卯辰巳午未申酉戌亥'.indexOf(L.yn[1])]||'')+'年':'';
+    if(!L.leap){var lk=L.m+'.'+L.d,LF={'1.1':'春节','1.15':'元宵节','5.5':'端午节','7.7':'七夕','8.15':'中秋节','9.9':'重阳节','12.8':'腊八节'};if(LF[lk])out.fe.push(LF[lk]);
+      var L2=lunar(new Date(Y,m-1,d+1));if(L2&&L2.m===1&&L2.d===1&&!L2.leap)out.fe.push('除夕')}}
+  var GF=HT?{'1.1':'元旦','4.23':'世界讀書日','9.28':'教師節 · 孔子誕辰'}:{'1.1':'元旦','4.23':'世界读书日','5.1':'劳动节','5.4':'青年节','6.1':'儿童节','9.10':'教师节','9.28':'孔子诞辰','10.1':'国庆节'};if(GF[m+'.'+d])out.fe.unshift(GF[m+'.'+d]);
+  try{var dd=function(y,i){var s=R.jt[y];return s?s.charCodeAt(i)-48:0},idx=-1,sy=Y,sm,sd;for(var i=23;i>=0;i--){var mo=1+(i>>1),dy=dd(Y,i);if(!dy)break;if(mo<m||(mo===m&&dy<=d)){idx=i;sm=mo;sd=dy;break}}
+    if(idx<0&&dd(Y-1,23)){sy=Y-1;idx=23;sm=12;sd=dd(sy,23)}
+    if(idx>=0){var k=Math.round((dt-new Date(sy,sm-1,sd))/864e5),h=Math.min(2,Math.floor(k/5));out.jq=(k===0?'今日'+R.jn[idx]:R.jn[idx]+'后第 '+k+' 天')+' · '+R.hou[idx*3+h];if(k===0&&/清明|冬至/.test(R.jn[idx]))out.fe.push(R.jn[idx]+'节')}}catch(e){}
+  return out}
+function nlYear(m,d){var t=new Date(),y=t.getFullYear(),td=new Date(y,t.getMonth(),t.getDate());if(y<2027)return 2027;return new Date(y,m-1,d)>=td?y:y+1}
+function vtext(c,t,x,y,s){t.split('').forEach(function(ch,i){c.fillText(ch,x,y+i*s*1.18)})}
+function nl(){var N=X4.nl;if(!N){yy();return}var R0=RD();if(CN&&!R0.some(function(r){return r.c===CN&&r.d===today()})){R0.push({d:today(),c:CN,n:D.y.replace(/[，。；：？！、“”‘’「」\s]/g,'').length});WR(R0)}var n=N[0],m=N[1],d=N[2],q=N[3]||keyTxt(),bh=keyBh(keyIdx()),days=streak(),Y=nlYear(m,d),K=cal(Y,m,d);
+  var T2=function(s){return HT?s.replace(/农历/g,'農曆').replace(/后第/g,'後第').replace(/腊/g,'臘').replace(/闰/g,'閏').replace(/节/g,'節').replace(/马/g,'馬').replace(/鸡/g,'雞').replace(/猪/g,'豬').replace(/龙/g,'龍').replace(/乡/g,'鄉').replace(/动/g,'動').replace(/华/g,'華').replace(/鸟/g,'鳥'):s};
+  prep(q+bh+MON[m-1]+'年历第课一年课读完论语每年月日读这一章我读经第天0123456789星期日一二三四五六农历'+K.lu+K.yn+K.jq+K.fe.join('')+T2(K.lu+K.yn+K.jq+K.fe.join(''))).then(function(seal){var cv=canvas(),c=cv.getContext('2d');c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);
     c.fillStyle='#23503F';c.fillRect(0,0,W,250);c.fillStyle='rgba(242,241,234,.85)';[W/2-170,W/2+170].forEach(function(x){c.beginPath();c.arc(x,58,18,0,Math.PI*2);c.fill()});
-    c.fillStyle='#F2F1EA';c.textBaseline='alphabetic';c.font='400 26px '+F;c.fillText((HT?'《論語》':'《论语》')+'年历',84,150);c.textAlign='right';c.fillText('第 '+n+' 课 / 365',W-84,150);c.textAlign='center';c.font='900 64px '+F;c.fillText(MON[m-1],W/2,212);
+    c.fillStyle='#F2F1EA';c.textBaseline='alphabetic';c.font='400 26px '+F;c.fillText((HT?'《論語》年曆':'《论语》年历'),84,150);c.textAlign='right';c.fillText('第 '+n+' 课 / 365',W-84,150);c.textAlign='center';c.font='900 64px '+F;c.fillText(MON[m-1],W/2,212);
     c.strokeStyle='rgba(35,80,63,.35)';c.setLineDash([10,10]);c.lineWidth=2;c.beginPath();c.moveTo(60,262);c.lineTo(W-60,262);c.stroke();c.setLineDash([]);
-    c.font='700 64px '+F;var QL=bfit(c,q,W-200,[64,58,52,46,40],300,1.4,700);c.font='400 26px '+F;var BL=bh?wrap(c,bh,W-220).slice(0,3):[];
-    var hgt=400+70+40+36+QL.L.length*QL.s*1.4+(BL.length?16+BL.length*44:0)+(days>=2?60:0),y0=262+Math.max(30,((H-212)-262-hgt)/2);
-    c.textAlign='center';c.fillStyle='#A23B2C';c.font='900 400px '+F;c.fillText(String(d),W/2,y0+370);
-    c.fillStyle='#8A5A2C';c.font='400 28px '+F;c.fillText('每年 '+m+' 月 '+d+' 日读这一章 · 一年 365 课读完《论语》',W/2,y0+450);
-    var y=y0+490;c.fillStyle='#23503F';c.fillRect(W/2-32,y,64,4);y+=36;c.fillStyle='#1a1a1a';c.font='700 '+QL.s+'px '+F;
+    c.font='700 64px '+F;var QL=bfit(c,q,W-200,[60,54,48,44,40],230,1.4,700);c.font='400 26px '+F;var BL=bh?wrap(c,bh,W-220).slice(0,2):[];
+    var NB=330,hgt=NB+56+(K.fe.length||K.jq?64:0)+50+40+30+QL.L.length*QL.s*1.4+(BL.length?12+BL.length*42:0)+(days>=2?56:0),y0=262+Math.max(24,((H-212)-262-hgt)/2);
+    // 大字日期，左右两条竖排：农历、干支生肖
+    c.textAlign='center';c.fillStyle='#A23B2C';c.font='900 340px '+F;c.fillText(String(d),W/2,y0+300);
+    if(K.lu){c.fillStyle='#A23B2C';c.font='700 34px '+F;c.fillText(HT?'農曆':'农历',150,y0+44);c.fillStyle='rgba(162,59,44,.35)';c.fillRect(132,y0+60,36,2);c.fillStyle='#A23B2C';c.font='700 46px '+F;vtext(c,T2(K.lu),150,y0+120,46)}
+    if(K.yn){c.fillStyle='#23503F';c.font='700 34px '+F;c.fillText(String(Y),W-150,y0+44);c.fillStyle='rgba(35,80,63,.35)';c.fillRect(W-168,y0+60,36,2);c.fillStyle='#23503F';c.font='400 36px '+F;vtext(c,T2(K.yn),W-150,y0+112,36)}
+    var y=y0+NB+44;c.fillStyle='#23503F';c.font='700 32px '+F;c.fillText(Y+' 年 '+m+' 月 '+d+' 日 · '+K.wk,W/2,y);
+    // 节日、节气做成小签
+    var tags=K.fe.map(function(f){return [T2(f),1]}).concat(K.jq?[[T2(K.jq),0]]:[]);if(tags.length){y+=26;c.font='400 25px '+F;var tw=tags.map(function(t){return c.measureText(t[0]).width+44}),sum=tw.reduce(function(a,b){return a+b},0)+(tags.length-1)*16,tx=W/2-sum/2;
+      tags.forEach(function(t,i){c.fillStyle=t[1]?'#A23B2C':'rgba(35,80,63,.1)';rr(c,tx,y,tw[i],44,22);c.fill();c.fillStyle=t[1]?'#FFFFFF':'#23503F';c.font=(t[1]?'700':'400')+' 25px '+F;c.fillText(t[0],tx+tw[i]/2,y+31);tx+=tw[i]+16});y+=44}
+    y+=50;c.fillStyle='#8A5A2C';c.font='400 26px '+F;c.fillText('每年 '+m+' 月 '+d+' 日读这一章 · 一年 365 课读完《论语》',W/2,y);
+    y+=30;c.fillStyle='#23503F';c.fillRect(W/2-32,y,64,4);y+=30;c.fillStyle='#1a1a1a';c.font='700 '+QL.s+'px '+F;
     QL.L.forEach(function(l){c.fillText(l,W/2,y+QL.s);y+=QL.s*1.4});
-    if(BL.length){y+=16;c.fillStyle='#666';c.font='400 26px '+F;BL.forEach(function(l){c.fillText(l,W/2,y+26);y+=44})}
+    if(BL.length){y+=12;c.fillStyle='#666';c.font='400 26px '+F;BL.forEach(function(l){c.fillText(l,W/2,y+26);y+=42})}
     if(days>=2){c.fillStyle='#23503F';c.font='700 26px '+F;c.fillText('我读经第 '+days+' 天',W/2,y+44)}c.textAlign='left';
     foot4(c,seal,false,'nl');show(cv)})}
 TABS=[['yy','原页卡'],['rw','人物卡'],['dy','多语卡'],['nl','年历卡']].filter(function(t){return (t[0]!=='rw'||(X4.who||[]).length)&&(t[0]!=='nl'||X4.nl)});

@@ -915,6 +915,9 @@ def share_x(D):
         if os.path.exists(f):
             for c, v in (json.load(open(f, encoding="utf-8")).get("chapters") or {}).items():
                 if v.get("yw"): tr.setdefault(c, {})[lg] = v["yw"]
+    for c, v in WJ_TR.items():  # 未讲章：韩法西俄四语只给分享卡用（11-14 主人：多语卡要备齐），在 tri-weijiang.json
+        for lg in ("ko", "fr", "es", "ru"):
+            if v.get(lg): tr.setdefault(c, {}).setdefault(lg, v[lg])
     nl = {}
     for r in (D.get("lx") or {}).get("nl") or []:
         for c in r["cs"]: nl.setdefault(c, [r["n"], r["m"], r["d"], r["q"] if c == r["c"] else ""])
