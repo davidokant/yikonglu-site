@@ -483,7 +483,7 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .steps .stc{display:contents}
 /* 11-09 首页“今天有人读了”做成和接着读条同款的卡片：上一行小标（带在读绿点），下一行书名签一行排开，放不下就横向滑 */
 .home .intro .steps:not([hidden]){display:grid;grid-template-columns:1fr;gap:8px;justify-content:stretch;text-align:left;background:var(--paper);border:1px solid var(--line);border-left:4px solid #3E8E63;border-radius:10px;padding:10px 14px 12px;margin:0;max-width:none}
-.home .intro .steps b{display:flex;align-items:center;gap:7px;font-size:13px;margin:0;color:var(--mute)}.home .intro .steps b:before{content:"";width:7px;height:7px;border-radius:50%;background:#3E8E63}
+.home .intro .steps b{display:block;position:relative;padding-left:14px;font-size:13px;line-height:1.6;margin:0;color:var(--mute)}.home .intro .steps b:before{content:"";position:absolute;left:0;top:.5em;width:7px;height:7px;border-radius:50%;background:#3E8E63}
 .home .intro .steps .stc{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}.home .intro .steps .stc::-webkit-scrollbar{display:none}
 .home .intro .steps .stc a{flex:0 0 auto;white-space:nowrap;background:transparent;font-size:14px}
 .home .intro .steps:not([hidden])+.sbox{margin-top:16px}
@@ -863,3 +863,4 @@ html:not([lang^="zh"]) .mcal .cl{font-size:12px;white-space:pre-line}
 .meiri blockquote::after{content:"\00a0›";font-weight:400;color:var(--accent2);opacity:.75}
 .meiri blockquote:hover,.meiri blockquote:focus-visible{color:var(--accent)}.meiri blockquote:active{color:var(--accent2)}
 .meiri blockquote:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
+.steps .zj{word-break:keep-all}
