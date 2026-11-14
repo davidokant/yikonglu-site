@@ -1228,6 +1228,8 @@ def draft_sec(D):
             f'<table><thead><tr><th>集</th><th>段数</th><th>改动段</th><th>比例</th></tr></thead><tbody>{trs}</tbody></table>'
             f'<p><a href="/data/chugao-gaidong.json">chugao-gaidong.json</a>（逐集明细）</p>')
 
+HERO_V = __import__("hashlib").md5(b"".join(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", f), "rb").read() for f in ("hero-w.jpg", "hero-m.jpg"))).hexdigest()[:8]  # 横幅换图后换地址，免得手机上旧图配新比例（11-14 主人见柯基只剩头）
+
 def redirect_page(L, target, frag, title):
     """旧网址跳新址：保留 #锚点；noindex＋canonical 指新址。"""
     return (f'<!doctype html><meta charset="utf-8"><title>{esc(title)}｜一孔录</title><link rel="canonical" href="{DOMAIN}/{target}">'
@@ -2336,7 +2338,7 @@ def build_lang(L, D, write):
                     'if(!x){M.querySelector(".md").textContent=T("补读日");q.textContent=T("今天不排新课，前几天落下的课，今天补上。");b.textContent="";c.href="' + P + 'nianli/";kk.hidden=true;M.hidden=false;return}'
                     'M.querySelector(".md").textContent=T("年历第 "+x[0]+" 课 / 365 · 《论语》")+x[6];q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+T("今日加读 ")+x[5].map(function(a){return a[0]}).join(" "):"");'
                     'c.href=x[2];kk.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false;try{document.dispatchEvent(new Event("ykmeiri"))}catch(e){}}).catch(function(){})})();</script>')
-    home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg" width="1080" height="745"><img src="/assets/hero-w.jpg" alt="一孔录原创角色同坐长桌读《论语》" width="1920" height="790"></picture>
+    home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg?v={HERO_V}" width="1080" height="745"><img src="/assets/hero-w.jpg?v={HERO_V}" alt="一孔录原创角色同坐长桌读《论语》" width="1920" height="790"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div></section>
 <main class="home">
 <section class="intro wrap narrow">
