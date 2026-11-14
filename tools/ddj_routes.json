@@ -1,0 +1,14 @@
+{"_说明": "道德经书内路线 11 条（11-14 主人“都定”，出自 评审/2026-11-13-道德经诸家底册/交接单-写稿-重做-v1.md“网站与播放列表”）。章按王弼本章号；slug 定了不改。每集发出后，路线页随章页自动带上视频。",
+ "routes": [
+  {"slug": "mingju", "zh": "名句原来不是这样写的", "en": "Famous lines that were once written differently", "ja": "名句はもとはこう書かれていなかった", "cs": [1, 19, 37, 41, 45, 64, 69, 81]},
+  {"slug": "shui", "zh": "水为什么最近道", "en": "Why water is closest to the Way", "ja": "水はなぜ道に最も近いのか", "cs": [8, 36, 43, 66, 76, 78]},
+  {"slug": "wuwei", "zh": "无为是不是什么都不做", "en": "Does wuwei mean doing nothing?", "ja": "無為とは何もしないことか", "cs": [3, 17, 29, 37, 48, 57, 60, 64]},
+  {"slug": "zhizu", "zh": "知足与知止", "en": "Knowing enough, knowing when to stop", "ja": "足るを知る、止まるを知る", "cs": [9, 33, 44, 46]},
+  {"slug": "zhanzheng", "zh": "老子怎么看打仗", "en": "Laozi on war", "ja": "老子は戦争をどう見たか", "cs": [30, 31, 67, 68, 69]},
+  {"slug": "chizi", "zh": "婴儿和赤子", "en": "The infant and the newborn", "ja": "嬰児と赤子", "cs": [10, 20, 28, 49, 55]},
+  {"slug": "pu", "zh": "朴：未雕的木头", "en": "Pu: the uncarved block", "ja": "樸：削られていない木", "cs": [15, 19, 28, 32, 37]},
+  {"slug": "fanfu", "zh": "反与复", "en": "Reversal and return", "ja": "反と復", "cs": [16, 25, 40, 52]},
+  {"slug": "daoming", "zh": "道与名", "en": "The Way and names", "ja": "道と名", "cs": [1, 14, 21, 25, 32, 41]},
+  {"slug": "kongzi", "zh": "老子与孔子：仁义礼", "en": "Laozi and Confucius: humaneness, rightness, ritual", "ja": "老子と孔子：仁・義・礼", "cs": [5, 18, 19, 38, 63, 79, 81]},
+  {"slug": "baixing", "zh": "圣人怎么对百姓", "en": "How the sage treats the people", "ja": "聖人は民をどう扱うか", "cs": [7, 13, 49, 72, 74, 75, 80]}
+ ]}

@@ -716,3 +716,41 @@ header.top nav a.lynav{color:#fff;background:#23503F;border-radius:999px;padding
 @media (max-width:640px){.wk .wn{margin-left:0;flex-basis:100%}.lystrip span{display:none}.lystrip .wrap{justify-content:space-between}
 .zhushu{gap:16px;padding:18px}.zhushu .cvbig{width:92px;height:138px}.zhushu .qb{width:26px;left:11px;font-size:15px}.zhushu h3{font-size:24px}.meiri.big blockquote{font-size:24px}.zhushu .zl a{font-size:14px}}
 @media (max-width:700px){header.top nav a.lynav{padding:3px 10px}}
+/* 11-14 只为《论语》做的：年历 /nianli/、场合用句 /changhe/、课本十二章带读 /daidu/ */
+.nltag{margin:6px 0 0;font-size:14px}.nltag a{display:inline-block;padding:2px 10px;border:1px solid var(--accent2);color:var(--accent2);border-radius:999px}
+.lycta{display:flex;flex-wrap:wrap;gap:8px}.lycta .btn{font-size:15px;padding:8px 16px}
+.nltoday{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:10px;padding:16px 20px;margin:18px 0;box-shadow:var(--shadow)}
+.nltoday blockquote{margin:8px 0 12px;font-size:22px;line-height:1.6}.nltoday .btn{margin:4px 6px 0 0}
+.nlchips{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}.nlchips a{padding:3px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-size:14px}
+.nll{list-style:none;padding:0;margin:0}.nll li{display:grid;grid-template-columns:76px 64px 1fr;gap:2px 10px;padding:8px 4px;border-bottom:1px dashed var(--line);align-items:baseline}
+.nll li em{font-style:normal;color:var(--mute);font-size:14px}.nll li b{font-weight:500;font-size:14px;color:var(--accent2)}
+.nll .nlc a{margin-right:10px;white-space:nowrap}.nll .nlc a.wj{color:var(--mute)}
+.nll q{grid-column:3;quotes:"“" "”";color:var(--fg)}.nll .nladd{grid-column:3;color:var(--mute)}.nll .nladd a{margin-left:6px}
+.nll li.now{background:color-mix(in srgb,var(--accent2) 10%,transparent);border-radius:6px}.nll li.done b::after{content:" ✓";color:var(--accent)}
+.nll li.nlbu{color:var(--mute)}
+.chcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:20px 0}
+.chcard{display:flex;flex-direction:column;gap:6px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px;color:var(--fg);box-shadow:var(--shadow)}.chcard:hover{text-decoration:none;border-color:var(--accent)}
+.chcard b{font-size:20px;color:var(--accent)}.chcard q{quotes:"“" "”";font-size:15px;line-height:1.6}.chcard small{color:var(--mute)}
+.chl{list-style:none;padding:0;margin:20px 0;counter-reset:ch}.chi{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:0 0 14px;box-shadow:var(--shadow)}
+.chq{font-size:24px;line-height:1.55;margin:0 0 6px;color:var(--fg)}.chsrc{margin:0 0 10px;font-size:14px}.chsrc .wjtag{margin-left:8px}
+.chuse{margin:0 0 8px}.chcare b,.chzhu b,.chbh b,.daidu p>b,.ddq>b{display:inline-block;font-size:13px;font-weight:600;color:var(--accent2);border:1px solid var(--accent2);border-radius:4px;padding:0 6px;margin-right:8px;line-height:1.6}
+.chcare,.chzhu{margin:0 0 8px;color:var(--fg)}.chfull{margin-top:6px}.chfull summary{cursor:pointer;color:var(--accent);font-size:15px}
+.chyw{font-size:18px;line-height:1.8;margin:10px 0}.ypgs{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}.ypg{display:flex;flex-direction:column;align-items:center;font-size:13px;color:var(--mute)}
+.ypg img{width:140px;height:auto;border:1px solid var(--line);border-radius:4px;background:#fff}
+.chpcare{border-top:1px solid var(--line);margin-top:20px}.chmore a{margin-right:12px;white-space:nowrap}
+.ddtoc{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:6px;margin:16px 0}.ddtoc a{padding:6px 10px;background:var(--paper);border:1px solid var(--line);border-radius:8px;color:var(--fg)}.ddtoc em{font-style:normal;color:var(--accent2);margin-right:8px}
+.ddc{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:4px 20px 14px;margin:22px 0;box-shadow:var(--shadow)}
+.ddc .ph{margin:18px 0 12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}.ddc .ph small{font-size:14px;color:var(--mute);font-weight:400}.ddk{font-size:14px;color:var(--accent2);font-weight:500}
+.ddyw{font-size:21px;line-height:1.8;margin:6px 0 12px}.ddq ol{margin:6px 0 0;padding-left:22px}.ddq li{margin:4px 0}.ddgo{font-size:15px}
+@media (max-width:700px){.nll li{grid-template-columns:64px 1fr}.nll li b{grid-column:2}.nll .nlc,.nll q,.nll .nladd{grid-column:1/-1}.chq{font-size:21px}.ypg img{width:110px}}
+@media print{.daidu .ddc{break-before:page;box-shadow:none;border:0}.daidu .ddtoc,.lystrip,header.top,footer{display:none}}
+/* 11-14 道德经书内路线 */
+.rtin{list-style:none;padding:0;margin:8px 0;display:flex;flex-wrap:wrap;gap:8px}.rtin a{display:flex;flex-direction:column;padding:8px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--fg)}.rtin a:hover{border-color:var(--accent);text-decoration:none}.rtin small{color:var(--mute);font-size:13px}
+.rdbox{margin:14px 0}.rdbox .bar,.rtcard .bar{max-width:320px}.rdn{font-size:14px;color:var(--mute)}
+.rtl li.done em::after{content:" ✓";color:var(--accent)}
+.rtcards .rtcard b span{display:block;font-weight:400;font-size:13px;color:var(--mute)}.rtcards .rtcard p{margin:6px 0 0}
+/* 11-14 其他书章页“《论语》互见” */
+.lyhj{margin:22px 0;padding:18px 20px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;background:var(--paper)}
+.lyhj h2{margin:0 0 10px;font-size:18px}.lyhj ul{margin:0;padding:0;list-style:none}.lyhj li{margin:0 0 12px}
+.lyhj li b{font-size:18px}.lyhj li em{font-style:normal;color:var(--accent2);margin-right:8px;font-size:14px;border:1px solid var(--accent2);border-radius:4px;padding:0 5px}
+.lyhj li p{margin:4px 0 0;color:var(--fg);font-size:15px}.lyhj li small{color:var(--mute);margin-left:4px}.lyhj .note{margin:6px 0 0}
