@@ -68,7 +68,7 @@ def section(G, c, P, href, short):
     if T["年历"]:
         row.append(("年历", f'<p><a href="{P}nianli/">{esc(T["年历"][0]["note"])}</a></p>'))
     row.sort(key=lambda x: ORDER.index(x[0]))
-    return (f'<section class="gx" id="lian"><h2>这一章连着<small>智器把全书 498 章两两比对找线，人逐条核到原页</small></h2><dl>'
+    return (f'<section class="gx" id="lian"><h2>这一章连着</h2><dl>'
             + "".join(f"<dt>{HEAD[k]}</dt><dd>{v}</dd>" for k, v in row)
             + f'</dl><p class="gxmore"><a href="{P}lunyu/guanxi/">全书关系图</a> · <a href="{P}duben.html">《论语》智器重建本 PDF</a></p></section>')
 
@@ -147,7 +147,7 @@ def build(L, G, write, page, P, href, short, PIAN, pub, DOMAIN):
 <p><input id="gxq" type="search" placeholder="搜人名，如：子路、颜回、管仲" aria-label="搜人名"></p><p id="gxrwlist" class="gxchips"></p>
 <p id="gxrwh" class="gxinfo"></p><div class="gxwrap"><svg id="gxrw" viewBox="0 0 760 600" role="img" aria-label="人物与章的关系"></svg></div><p id="gxrwchs" class="gxchips s"></p></section>
 <script type="application/json" id="gxdata">{data}</script>{GX_JS}</main>'''
-    write("lunyu/guanxi/index.html", page(L, "《论语》关系图与人物：全书 498 章怎样连着｜一孔录", "同问异答、本书互见、197 位人物各在哪几章：智器把全书 498 章两两比对找线，人逐条核到原页。", "lunyu/guanxi/", body, codes=["zh-Hans", "zh-Hant"] + langs()))
+    write("lunyu/guanxi/index.html", page(L, "《论语》关系图与人物：全书 498 章怎样连着｜一孔录", "同问异答、本书互见、197 位人物各在哪几章。", "lunyu/guanxi/", body, codes=["zh-Hans", "zh-Hant"]))
     dst = f"/{L.prefix}lunyu/guanxi/"
     for old, tab in (("guanxi/index.html", ""), ("renwu/index.html", "#rw")):  # 旧网址跳过来，带上 #
         write(old, f'<!doctype html><meta charset="utf-8"><title>《论语》关系图｜一孔录</title><link rel="canonical" href="{DOMAIN}{dst}"><meta name="robots" content="noindex">'
@@ -223,7 +223,7 @@ def section_f(G, c, P, href, short, L):
     if not row: return ""
     row.sort(key=lambda x: ORDER.index(x[0]))
     HD = {"同问异答": S["gx_head_wd"], "互见": S["gx_head_hj"], "书外互见": S["gx_head_bw"], "人物": S["gx_head_rw"], "争议": S["gx_head_zy"], "异文": S["gx_head_yw"]}
-    return (f'<section class="gx" id="lian"><h2>{esc(S["gx_sec_h"])}<small>{esc(S["gx_sec_sub"])}</small></h2><dl>'
+    return (f'<section class="gx" id="lian"><h2>{esc(S["gx_sec_h"])}</h2><dl>'
             + "".join(f"<dt>{esc(HD[k])}</dt><dd>{v}</dd>" for k, v in row)
             + f'</dl><p class="gxmore"><a href="{P}lunyu/guanxi/">{esc(S["gx_more_map"])}</a> · <a href="{P}duben.html">{esc(S["gx_more_pdf"])}</a></p></section>')
 
