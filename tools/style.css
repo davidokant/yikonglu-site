@@ -693,3 +693,26 @@ aside h3{padding-bottom:6px;border-bottom:3px double color-mix(in srgb,var(--acc
 .ju.wxno::after{content:"补";font-size:.62em;vertical-align:super;color:var(--accent);margin-left:.15em;font-weight:600}
 html[lang="en"] .ju.wxno::after{content:"*"}html[lang="ja"] .ju.wxno::after{content:"補"}
 .cv{flex-shrink:0}
+/* 11-14 《论语》特殊地位：导航“论语”、今日《论语》大卡、主书一格、全站今日细条 */
+header.top nav a.lynav{color:#fff;background:#23503F;border-radius:999px;padding:4px 14px;font-weight:700}header.top nav a.lynav:hover{text-decoration:none;background:#1b3f32}
+.meiri.big{padding:26px 28px;border:2px solid #23503F;box-shadow:0 8px 24px rgba(35,80,63,.12)}.meiri.big .mh b{font-size:18px}.meiri.big blockquote{font-size:30px}
+.wk{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:14px 0 0;padding-top:12px;border-top:1px dashed var(--line);font-size:14px;color:var(--mute)}
+.wk span{white-space:nowrap}.wk .wn{margin-left:auto}.wk i{display:inline-block;width:14px;height:14px;border-radius:50%;border:1.5px solid #23503F;margin-right:4px;vertical-align:-2px}.wk i.on{background:#23503F}
+.shumu-home{margin-top:40px}
+.zhushu{display:flex;gap:28px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 28px;box-shadow:var(--shadow)}
+.zhushu .cvbig{flex:0 0 auto;position:relative;display:block;width:130px;height:190px;border-radius:2px 6px 6px 2px;background:#23503f repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px);box-shadow:inset -12px 0 0 rgba(0,0,0,.14),0 10px 20px rgba(30,45,38,.3);transition:transform .2s}
+.zhushu .cvbig:hover{transform:translateY(-4px)}
+.zhushu .cvbig::after{content:"";position:absolute;top:10px;bottom:10px;right:4px;width:2px;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.55) 0 2px,transparent 2px 30px)}
+.zhushu .qb{position:absolute;top:14px;left:16px;width:34px;height:66%;background:#b8342a;color:#fbf7ea;writing-mode:vertical-rl;text-orientation:upright;display:flex;align-items:center;padding:10px 0;font-size:19px;font-weight:900;letter-spacing:.2em}
+.zhushu .qb::after{content:"";display:block;width:16px;height:16px;margin-top:auto;background:#fbf7ea url(/assets/seal-180.png) center/contain no-repeat;border-radius:2px}
+.zhushu h3{margin:0 0 4px;font-size:30px}.zhushu h3 a{color:var(--fg)}.zhushu .zk{margin:0 0 10px;color:#8A5A2C;font-size:16px;letter-spacing:.12em;font-weight:700}
+.zhushu .zs{margin:0 0 14px;color:var(--mute);font-size:14px}.zhushu .zl a{display:inline-block;margin:0 14px 6px 0;font-size:15px}
+.zhushu .zl a.go{background:#23503F;color:#fff;border-radius:999px;padding:6px 16px}.zhushu .zl a.go:hover{text-decoration:none;background:#1b3f32}
+.shelfline{margin:14px 2px 0;font-size:14px;color:var(--mute)}.zsshelf .zhushu{margin:6px 0 30px}
+.lystrip{background:#f4efe2;border-bottom:1px solid var(--line);font-size:14px}.lystrip[hidden]{display:none}
+.lystrip .wrap{display:flex;gap:12px;align-items:center;padding-top:8px;padding-bottom:8px}
+.lystrip b{color:#8A5A2C;white-space:nowrap}.lystrip span{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.lystrip a{white-space:nowrap}
+.lystrip button{border:0;background:none;color:var(--mute);font-size:18px;line-height:1;cursor:pointer;padding:0 2px}
+@media (max-width:640px){.wk .wn{margin-left:0;flex-basis:100%}.lystrip span{display:none}.lystrip .wrap{justify-content:space-between}
+.zhushu{gap:16px;padding:18px}.zhushu .cvbig{width:92px;height:138px}.zhushu .qb{width:26px;left:11px;font-size:15px}.zhushu h3{font-size:24px}.meiri.big blockquote{font-size:24px}.zhushu .zl a{font-size:14px}}
+@media (max-width:700px){header.top nav a.lynav{padding:3px 10px}}

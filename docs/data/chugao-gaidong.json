@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-12",
- "episodes": 39,
- "segments": 1194,
- "changed": 242,
- "ratio": 20.3,
+ "updated": "2026-11-13",
+ "episodes": 44,
+ "segments": 1338,
+ "changed": 263,
+ "ratio": 19.7,
  "rows": [
   {
    "ep": "学而一",
@@ -199,6 +199,31 @@
    "ep": "雍也六",
    "segments": 29,
    "changed": 3
+  },
+  {
+   "ep": "雍也七",
+   "segments": 31,
+   "changed": 4
+  },
+  {
+   "ep": "雍也八",
+   "segments": 34,
+   "changed": 5
+  },
+  {
+   "ep": "述而一",
+   "segments": 29,
+   "changed": 5
+  },
+  {
+   "ep": "述而二",
+   "segments": 24,
+   "changed": 3
+  },
+  {
+   "ep": "述而三",
+   "segments": 26,
+   "changed": 4
   }
  ]
 }
