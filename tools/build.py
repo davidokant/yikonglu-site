@@ -736,7 +736,7 @@ var SY=P.querySelector('[data-p=sys]');if(SY&&navigator.share&&/Mobi|Android|iPh
 var E=encodeURIComponent,U={weibo:'https://service.weibo.com/share/share.php?url='+E(D.u)+'&title='+E(txt+' — 一孔录'),x:'https://x.com/intent/post?url='+E(D.u)+'&text='+E(txt),fb:'https://www.facebook.com/sharer/sharer.php?u='+E(D.u),tg:'https://t.me/share/url?url='+E(D.u)+'&text='+E(txt),wa:'https://wa.me/?text='+E(txt+' '+D.u),line:'https://social-plugins.line.me/lineit/share?url='+E(D.u),threads:'https://www.threads.net/intent/post?text='+E(txt+' '+D.u),reddit:'https://www.reddit.com/submit?url='+E(D.u)+'&title='+E(txt),vk:'https://vk.com/share.php?url='+E(D.u)+'&title='+E(txt),ms:'fb-messenger://share/?link='+E(D.u)};
 P.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var k=b.dataset.p;if(window.yklReset)window.yklReset();
 if(k==='copy'){var done=function(){var o=b.textContent;b.textContent=T.ok;setTimeout(function(){b.textContent=o},1400)};if(navigator.clipboard)navigator.clipboard.writeText(txt+' '+D.u).then(done,function(){prompt('',D.u)});else prompt('',D.u);return}
-if(k==='card'||k==='wx'){P.hidden=true;if(window.ykPick)window.ykPick('he');else card();return}if(k==='sys'){P.hidden=true;navigator.share({title:D.h+' · 一孔录',text:txt,url:D.u}).catch(function(){});return}if(k==='ms'){location.href=U.ms;return}if(U[k])window.open(U[k],'_blank','noopener,width=640,height=560')});
+if(k==='card'||k==='wx'){P.hidden=true;if(window.ykPick)window.ykPick('yy');else card();return}if(k==='sys'){P.hidden=true;navigator.share({title:D.h+' · 一孔录',text:txt,url:D.u}).catch(function(){});return}if(k==='ms'){location.href=U.ms;return}if(U[k])window.open(U[k],'_blank','noopener,width=640,height=560')});
 function qr(cb){if(window.qrcode){cb();return}var s=document.createElement('script');s.src='/assets/qrcode.js';s.onload=cb;document.head.appendChild(s)}
 function wrap(c,t,w){t=QQ(t);var L=[],cur='';for(var i=0;i<t.length;i++){var ch=t[i];if(c.measureText(cur+ch).width>w&&cur){if('，。；：？！、”’」』）,.;:?!'.indexOf(ch)>=0){cur+=ch;L.push(cur);cur='';continue}L.push(cur);cur=ch}else cur+=ch}if(cur)L.push(cur);return L}
 function wrapW(c,t,w){var ws=t.split(/(\\s+)/),L=[],cur='';ws.forEach(function(x){if(c.measureText(cur+x).width>w&&cur.trim()){L.push(cur.trim());cur=x.trim()}else cur+=x});if(cur.trim())L.push(cur.trim());return L}
@@ -795,7 +795,7 @@ if(cs){sb.hidden=false;sb.onclick=function(){navigator.share({files:[f],text:txt
 a.onclick=function(e){if(inapp||(ios&&!cs)){e.preventDefault();nt.textContent=T.hold;nt.classList.add('hl');return}if(ios&&cs){e.preventDefault();navigator.share({files:[f]}).catch(function(){})}}});
 M.addEventListener('click',function(e){if(e.target===M||e.target.closest('.cls'))M.remove()});document.body.appendChild(M)}
 @CARDS@
-if(location.hash==='#ka'){history.replaceState(null,'',location.pathname+location.search);setTimeout(function(){if(window.ykPick)window.ykPick('he');else card()},400)}
+if(location.hash==='#ka'){history.replaceState(null,'',location.pathname+location.search);setTimeout(function(){if(window.ykPick)window.ykPick('yy');else card()},400)}
 })();
 </script>"""
 SHARE_JS = SHARE_JS.replace("@CARDS@", open(os.path.join(HERE, "share_cards.js"), encoding="utf-8").read() if os.environ.get("YK_CARDS", "1") != "0" else "")  # 新分享卡（11-08 主人“过”）；回退设 YK_CARDS=0
@@ -907,6 +907,34 @@ QISHIER_HOU = ("雁北乡 鹊始巢 雉始雊 鸡始乳 征鸟厉疾 水泽腹�
                "桐始华 田鼠化为鴽 虹始见 萍始生 鸣鸠拂其羽 戴胜降于桑 蝼蝈鸣 蚯蚓出 王瓜生 苦菜秀 靡草死 麦秋至 螳螂生 鵙始鸣 反舌无声 鹿角解 蜩始鸣 半夏生 "
                "温风至 蟋蟀居壁 鹰始挚 腐草为萤 土润溽暑 大雨时行 凉风至 白露降 寒蝉鸣 鹰乃祭鸟 天地始肃 禾乃登 鸿雁来 玄鸟归 群鸟养羞 雷始收声 蛰虫坯户 水始涸 "
                "鸿雁来宾 雀入大水为蛤 菊有黄华 豺乃祭兽 草木黄落 蛰虫咸俯 水始冰 地始冻 雉入大水为蜃 虹藏不见 天气上升地气下降 闭塞而成冬 鹖鴠不鸣 虎始交 荔挺出 蚯蚓结 麋角解 水泉动").split()
+def share_x(D):
+    """四种分享卡的每章数据（只《论语》）：七语译文（英日另在 TRI_TXT）、年历第几课与日期、出场的原创角色。"""
+    tr = {}
+    for lg in ("ko", "fr", "es", "de", "vi", "id", "ru"):
+        f = os.path.join(HERE, "i18n", f"{lg}.json")
+        if os.path.exists(f):
+            for c, v in (json.load(open(f, encoding="utf-8")).get("chapters") or {}).items():
+                if v.get("yw"): tr.setdefault(c, {})[lg] = v["yw"]
+    nl = {}
+    for r in (D.get("lx") or {}).get("nl") or []:
+        for c in r["cs"]: nl.setdefault(c, [r["n"], r["m"], r["d"], r["q"] if c == r["c"] else ""])
+    G = os.path.join(GAO_DIR, "_故事"); who, ppl = {}, {}
+    try:
+        for r in csv.DictReader(open(os.path.join(G, "人物.csv"), encoding="utf-8-sig")): ppl[r["名"]] = [r["id"], r["名"], r["一句关系"]]
+        for r in csv.DictReader(open(os.path.join(G, "出场.csv"), encoding="utf-8-sig")):
+            ws = [ppl[n] for n in re.split(r"[、，,\s]+", r["人物"]) if n in ppl]
+            if ws: who.setdefault(r["章号"], ws)
+    except OSError: pass
+    order = list(ppl.values())
+    for c in set(D.get("qw") or {}) | set(D.get("pub") or []):
+        x = {}
+        if c in tr: x["tr"] = tr[c]
+        if c in nl: x["nl"] = nl[c]
+        if order:
+            p, n = (int(v) for v in c.split("."))
+            x["who"] = who.get(c) or [order[(p * 7 + n) % len(order)]]
+        SHARE_X[c] = x
+
 def rili_data():
     return {"jt": JIEQI_DAYS, "jn": JIEQI_NAMES["zh"], "hou": QISHIER_HOU}
 SHARE_MORE = {"zh-Hans": "发给朋友…", "zh-Hant": "傳給朋友…", "en": "Send via…", "ja": "ほかのアプリで送る…", "ko": "다른 앱으로 보내기…", "fr": "Envoyer via…", "es": "Enviar con…", "de": "Senden über…", "vi": "Gửi qua…", "id": "Kirim lewat…", "ru": "Отправить через…"}
@@ -918,7 +946,9 @@ def share_html(L, c, url, head, title, yw_text, gist, rend, bk=None):  # bk：�
     return (f'<section class="sharebox"><button type="button" class="btn ghost shbtn"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6h14v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{t["sh"]}</button>'
             f'<div class="shpanel" hidden><button type="button" data-p="card" class="on">{t["card"]}</button><button type="button" data-p="sys" hidden>{SHARE_MORE.get(L.code, SHARE_MORE["en"])}</button><button type="button" data-p="copy">{t["cp"]}</button>{plats}</div>'
             f'<script type="application/json" class="shdata">{d.replace("</", "<\\/")}</script>'
-            f'<script type="application/json" class="shtri">{json.dumps(dict(TRI_TXT.get(c, {}), rl=rili_data()))}</script></section>')
+            f'<script type="application/json" class="shtri">{json.dumps(dict(TRI_TXT.get(c, {}), rl=rili_data(), tr=SHARE_X.get(c, {}).get("tr", {})))}</script>'
+            f'<script type="application/json" class="shx">{json.dumps({k: v for k, v in SHARE_X.get(c, {}).items() if k != "tr"}, ensure_ascii=False).replace("</", "<\\/")}</script></section>')
+SHARE_X = {}  # 11-14 四种分享卡（原页、人物、多语、年历）用的每章附加数据：tr 七语译文、nl 年历课、who 原创角色
 SHARE_KEYS = {}  # 章 → 分享图关键句（句号或句中字），章节起点.json 各集可写 "keys": {"1.16": 1}；缺省取首句
 LANGDU = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu.json")) else set()  # 原文朗读（孔照今，11-11 主人定）：有音频的章，文件在 img.yikonglu.com/langdu/lunyu/<章>.mp3
 LANGDU_TXT = {"zh-Hans": "音", "zh-Hant": "音", "en": "Audio", "ja": "音", "ko": "음성", "fr": "Audio", "es": "Audio", "de": "Audio", "vi": "Nghe", "id": "Audio", "ru": "Аудио"}  # 11-11 主人：按钮跟“译”一样大小并排，一个译一个音，不写谁的声音
@@ -2965,6 +2995,7 @@ def main(zdir, outdir, kanwu=None):
             open(p, "w", encoding="utf-8").write(text.replace(DATE_TOK, pdates[key][1]).replace(DATE_TOK_SL, pdates[key][1].replace("-", "/")))
         return write
 
+    share_x(D)
     # 每章分享图：简体图给简、英、法、西；繁体图给繁、日、韩
     D["og"] = {}
     _tr_en, _tr_ja = ({k: v for k, v in json.load(open(os.path.join(HERE, "i18n", f"{x}.json"), encoding="utf-8")).get("chapters", {}).items()} if os.path.exists(os.path.join(HERE, "i18n", f"{x}.json")) else {} for x in ("en", "ja"))
