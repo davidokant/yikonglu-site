@@ -128,11 +128,11 @@ function RD(){try{return JSON.parse(localStorage.getItem('yk_rd')||'[]')||[]}cat
 function WR(a){try{localStorage.setItem('yk_rd',JSON.stringify(a))}catch(e){}}
 function today(){var t=new Date();return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2)}
 function sents0(){return [].slice.call(document.querySelectorAll('.yuanwen blockquote .ju')).map(function(s){return s.textContent})}
-var YY=D.yt||D.y,HZ=null;function hz(s){if(!D.yt||!s)return s;var i=D.y.indexOf(s);if(i>=0&&D.y.length===D.yt.length)return D.yt.substr(i,s.length);if(!HZ){HZ={};if(D.y.length===D.yt.length)for(var k=0;k<D.y.length;k++)if(!HZ[D.y[k]])HZ[D.y[k]]=D.yt[k]}return s.replace(/[\s\S]/g,function(c){return HZ[c]||c})}
+var YY=D.yt||D.y,HZ=null;function hz(s){if(!D.yt||!s||D.yt.indexOf(s)>=0)return s;var i=D.y.indexOf(s);if(i>=0&&D.y.length===D.yt.length)return D.yt.substr(i,s.length);if(!HZ){HZ={};if(D.y.length===D.yt.length)for(var k=0;k<D.y.length;k++)if(!HZ[D.y[k]])HZ[D.y[k]]=D.yt[k]}return s.replace(/[\s\S]/g,function(c){return HZ[c]||c})}
 function sents(){return sents0().map(hz)}
 function rows(){try{var z=document.querySelector('.zjdata');return z?JSON.parse(z.textContent):[]}catch(e){return []}}
 function strip(t){return t.replace(/^[^，。：；？！]{1,8}(曰|問|對曰|問曰)：/,'')}
-function keyIdx(){var S=sents0(),k=D.kn;if(typeof k==='number'&&S[k-1])return k;if(typeof k==='string'){for(var i=0;i<S.length;i++)if(S[i].indexOf(k)>=0)return i+1}
+function keyIdx(){var S=sents0(),k=D.kn;if(typeof k==='number'&&S[k-1])return k;if(typeof k==='string'){var k2=hz(k);for(var i=0;i<S.length;i++)if(S[i].indexOf(k)>=0||S[i].indexOf(k2)>=0)return i+1}
   for(var j=0;j<S.length;j++)if(strip(S[j]).replace(/[，。；：？！、“”‘’「」]/g,'').length>=4&&!(j<S.length-1&&/^[^，。：]{1,8}(問|請|請)[^，。：]{0,6}[。？]$/.test(S[j])))return j+1;return 1}
 function bhAll(){var p=document.querySelector('.sec-白 p');return p?p.textContent.trim():''}
 function keyBh(kn){var R=rows(),b=(R[kn-1]||{}).bh||'',S=sents();if(b)return b;var a=bhAll();if(S.length===1||a.length<=48)return a;return ''}

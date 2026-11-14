@@ -73,6 +73,21 @@ def hant_plain(text):  # 经文转繁（与繁体站同一套护字与改字）�
     for i, w in enumerate(HANT_PROTECT): t = t.replace(f"\ue000{i}\ue001", HANT_FIX.get(w, w))
     for a_, b_ in HANT_POST: t = t.replace(a_, b_)
     return t
+_HS_RE = [re.compile(r'(<blockquote lang="zh-Hans"[^>]*>)(.*?)(</blockquote>)', re.S), re.compile(r'(<p class="zy" lang="zh-Hans"[^>]*>)(.*?)(</p>)', re.S)]
+def hant_scripture(html):  # 外文页上的经文原句用繁体（11-14 主人选“分享卡全用繁体，外文页也改”）：只改原文块（章页原文、首页引句、人物卡经文），白话（span.yi）和注不动
+    def _blk(m):
+        head = m.group(1).replace('lang="zh-Hans"', 'lang="zh-Hant"')
+        head = re.sub(r'data-reads="([^"]*)"', lambda a: 'data-reads="' + hant_plain(a.group(1)) + '"', head)
+        out, skip = [], 0
+        for x in re.split(r"(<[^>]+>)", m.group(2)):
+            if x.startswith("<"):
+                if skip: skip += 1 if (x.startswith("<span") and not x.endswith("/>")) else -1 if x == "</span>" else 0
+                elif x.startswith('<span class="yi"'): skip = 1
+                out.append(x)
+            else: out.append(x if skip else hant_plain(x))
+        return head + "".join(out) + m.group(3)
+    for R in _HS_RE: html = R.sub(_blk, html)
+    return html
 LANGS = {  # code: (路径前缀, 自称, hreflang)
     "zh-Hans": ("", "简体中文", "zh-Hans"),
     "zh-Hant": ("zh-hant/", "繁體中文", "zh-Hant"),
@@ -978,7 +993,7 @@ def share_html(L, c, url, head, title, yw_text, gist, rend, bk=None):  # bk：�
             f'<script type="application/json" class="shtri">{json.dumps(tri)}</script>'
             f'<script type="application/json" class="shx">{json.dumps({k: v for k, v in SHARE_X.get(c, {}).items() if k != "tr"}, ensure_ascii=False).replace("</", "<\\/")}</script>{shi_tag(L)}</section>')
 SHI_CACHE = {}
-HANT_CARD = {"en", "ja", "ko", "fr", "es", "de", "vi", "id", "ru"}  # 11-14 主人：分享卡经文一律繁体；只改外文时去掉 zh-Hans
+HANT_CARD = {"zh-Hans", "en", "ja", "ko", "fr", "es", "de", "vi", "id", "ru"}  # 11-14 主人：分享卡经文一律繁体；只改外文时去掉 zh-Hans
 def shi_tag(L):  # 11-14 外文页四种分享卡的本语种文字（智器译，fill-<语种>.json）
     if L.code.startswith("zh") or not (FILL.get(L.code) or {}).get("c"): return ""
     if L.code not in SHI_CACHE:
@@ -1119,6 +1134,7 @@ def meta_desc(L, title, rend, yw):  # 外语章页摘要：先本语言（标题
 
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
+    if not L.code.startswith("zh"): body = hant_scripture(body)
     url = f"{DOMAIN}/{L.prefix}{rel}"
     fp = __import__("hashlib").sha1(f"yikonglu.com|{L.code}|{rel}".encode()).hexdigest()[:12]  # 每页固定出处编号，搬走的页也带着
     def _own(d):
@@ -2375,7 +2391,7 @@ def build_lang(L, D, write):
     if MY and D["lx"]["nl"] and L.code not in LX.ZH and FU and NLTR:  # 11-14 外文首页同步：今日《论语》按年历取课、日历样、七位领读人；今日一句用本语种译文
         if "OUT_ROOT" in globals():
             os.makedirs(os.path.join(OUT_ROOT, "data"), exist_ok=True)
-            json.dump({r["md"]: [r["n"], r["c"], href(r["c"]), r["q"], (NLTR.get(str(r["n"])) or {}).get(L.code, ""), [[a, href(a)] for a in r["add"]], " ".join(r["cs"])] for r in D["lx"]["nl"]},
+            json.dump({r["md"]: [r["n"], r["c"], href(r["c"]), hant_plain(r["q"]), (NLTR.get(str(r["n"])) or {}).get(L.code, ""), [[a, href(a)] for a in r["add"]], " ".join(r["cs"])] for r in D["lx"]["nl"]},
                       open(os.path.join(OUT_ROOT, "data", f"nianli-{L.code}.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
         FL_ = FILL[L.code]; LD_ = FL_.get("lead") or {}
         _jn = FL_.get("jq") or JIEQI_NAMES.get(L.code) or JIEQI_NAMES["en"]
