@@ -104,3 +104,34 @@ def build(L, D, R, write, page, P, rel_of, title_of, DOMAIN):
     if not GXID:  # 有关系图时总页并入关系图（11-14 主人定），/renwu/ 由 guanxi.build 写跳转
         write("renwu/index.html", page(L, "人物：经典里出场的真实人物｜一孔录", "一孔录所讲经典里出场的真实人物，每人一页，按书列出出场各章，链到原文与注家原页。", "renwu/", body)); urls.append(U("renwu/"))
     return urls
+
+
+def build_f(L, D, R, write, page, P, rel_of, title_of, DOMAIN, TRL, codes):
+    """11-14 外文人物卡（每人一页）：人名、别称、身份、与孔子关系按本语种（智器译，i18n/gx-<语种>.json 的 p），各章标题用本语种，原文照录。"""
+    S = TRL["S"]; PT = TRL.get("p") or {}
+    urls = []; pub = set(D["pub"]); yw = dict(D["yw"]); qw = D.get("qw") or {}
+    for c, q in qw.items(): yw.setdefault(c, q["text"])
+    U = lambda rel: f"{DOMAIN}/{L.prefix}{rel}"
+    crumb = f'<p class="crumb"><a href="{P}lunyu/">{esc(L.t("lunyu"))}</a> › <a href="{P}lunyu/guanxi/#rw">{esc(S["rw_crumb"])}</a></p>'
+    for p in R:
+        t = PT.get(p["name"]) or {}
+        nm = t.get("name") or p["name"]; al = t.get("alias2") or t.get("alias") or p["alias"]; role = t.get("role2") or t.get("role") or p["role"]; rl = t.get("rel") or p["rel"]
+        src = S["rw_src_std"] if (not p["src"] or p["src"].startswith("《论语》本章经文")) else (t.get("src") or p["src"])
+        n_pub = sum(1 for a in p["apps"] if a[0] in pub)
+        items = ""
+        for c, say in p["apps"]:
+            if c in pub or c in qw:
+                tag = "" if c in pub else f'<i class="wjtag">{esc(S["rw_wj"])}</i>'
+                items += f'<li><a href="{P if c in pub or L.code in ("en", "ja") else "/"}{rel_of(c)}"><em>{c}</em><b>{esc(title_of(c))}</b>{tag}</a>' + (f'<p class="zy" lang="zh-Hans">{esc(yw[c])}</p>' if c in yw else "") + "</li>"
+            else:
+                items += f'<li><span class="gsnot"><em>{c}</em><b>{esc(S["rw_wj"])}</b></span></li>'
+        meta = "".join(f"<dt>{esc(k)}</dt><dd>{esc(v)}</dd>" for k, v in ((S["rw_alias"], al), (S["rw_role"], role), (S["rw_rel"], rl), (S["rw_src"], src)) if v)
+        rel = f"renwu/{p['id']}.html"
+        head = f'<div class="chhead"><div class="wrap">{crumb}<h1><span class="no">{esc(S["rw_sub"].replace("{n}", str(len(p["apps"]))).replace("{d}", str(n_pub)))}</span>{esc(nm)}<small lang="zh-Hans"> {esc(p["name"])}</small></h1></div></div>'
+        body = head + f'''
+<main class="wrap narrow"><dl class="rwmeta">{meta}</dl>{f'<p class="gxmore"><a href="{P}lunyu/guanxi/#p-{GXID[p["id"]]}">{esc(S["rw_in_map"].replace("{name}", nm))}</a></p>' if p["id"] in GXID else ""}<h2 class="ph">{esc(S["rw_h2"])}</h2><ol class="ztl">{items}</ol>
+<p class="note">{esc(S["rw_note"])}</p></main>'''
+        ld = {"@context": "https://schema.org", "@type": "Person", "name": nm, "alternateName": [p["name"]] + [x for x in re.split(r"[、，,；;]", al) if x.strip()], "description": role or None, "url": U(rel)}
+        ld = {k: v for k, v in ld.items() if v}
+        write(rel, page(L, S["rw_title"].replace("{name}", nm), S["rw_desc"].replace("{name}", nm).replace("{alias}", al).replace("{role}", role).replace("{n}", str(len(p["apps"])))[:150], rel, body, ld, codes=codes)); urls.append(U(rel))
+    return urls

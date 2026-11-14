@@ -963,7 +963,19 @@ def share_html(L, c, url, head, title, yw_text, gist, rend, bk=None):  # bk：�
             f'<div class="shpanel" hidden><button type="button" data-p="card" class="on">{t["card"]}</button><button type="button" data-p="sys" hidden>{SHARE_MORE.get(L.code, SHARE_MORE["en"])}</button><button type="button" data-p="copy">{t["cp"]}</button>{plats}</div>'
             f'<script type="application/json" class="shdata">{d.replace("</", "<\\/")}</script>'
             f'<script type="application/json" class="shtri">{json.dumps(dict(TRI_TXT.get(c, {}), rl=rili_data(), tr=SHARE_X.get(c, {}).get("tr", {})))}</script>'
-            f'<script type="application/json" class="shx">{json.dumps({k: v for k, v in SHARE_X.get(c, {}).items() if k != "tr"}, ensure_ascii=False).replace("</", "<\\/")}</script></section>')
+            f'<script type="application/json" class="shx">{json.dumps({k: v for k, v in SHARE_X.get(c, {}).items() if k != "tr"}, ensure_ascii=False).replace("</", "<\\/")}</script>{shi_tag(L)}</section>')
+SHI_CACHE = {}
+def shi_tag(L):  # 11-14 外文页四种分享卡的本语种文字（智器译，fill-<语种>.json）
+    if L.code.startswith("zh") or not (FILL.get(L.code) or {}).get("c"): return ""
+    if L.code not in SHI_CACHE:
+        F = FILL[L.code]; C = F["c"]
+        o = {k[3:]: v for k, v in C.items() if k.startswith("sh_")}
+        o.update({k: C[k] for k in ("rec_note", "rec_ex", "rec_copied", "rec_code", "rec_im", "rec_paste", "rec_bad")})
+        o.update(on=1, lg=L.code, sl=1 if L.code in WJ_FL else 0, tag=L.t("tagline"), lmd=C["lunar_md"], leap=C["lunar_leap"], after=C["cal_after"], today=C["cal_today"], lunar=C["cal_lunar"], zod=C["zodiac"],
+                 fe={k[3:]: v for k, v in C.items() if k.startswith("fe_")}, jn=F.get("jq") or JIEQI_NAMES.get(L.code) or JIEQI_NAMES["en"], hou=F.get("hou") or [],
+                 rw={k: [v["name"], v["line"]] for k, v in (F.get("lead") or {}).items()})
+        SHI_CACHE[L.code] = f'<script type="application/json" class="shi">{json.dumps(o, ensure_ascii=False).replace("</", "<\\/")}</script>'
+    return SHI_CACHE[L.code]
 SHARE_X = {}  # 11-14 四种分享卡（原页、人物、多语、年历）用的每章附加数据：tr 七语译文、nl 年历课、who 原创角色
 SHARE_KEYS = {}  # 章 → 分享图关键句（句号或句中字），章节起点.json 各集可写 "keys": {"1.16": 1}；缺省取首句
 LANGDU = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu.json")) else set()  # 原文朗读（孔照今，11-11 主人定）：有音频的章，文件在 img.yikonglu.com/langdu/lunyu/<章>.mp3
@@ -1006,6 +1018,12 @@ def zi_tail(code, c, P):
     d = json.dumps({"i": items, "o": occ, "c": c}, ensure_ascii=False).replace("</", "<\\/")
     return f'<script type="application/json" id="zidata">{d}</script>' + ZI_JS
 WJ_TR = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json")) else {}  # 未讲章原文英日译（分享图用）
+# 11-14 外文补译（智器译，见 tools/i18n/fill-<语种>.json）：界面漏译、首页日历与领读人、四种分享卡、关系图页框；nianli-tr.json 是年历 365 课“今日一句”九种外文
+FILL = {}
+for _l in ("en", "ja", "ko", "fr", "es", "de", "vi", "id", "ru"):
+    _f = os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", f"fill-{_l}.json")
+    if os.path.exists(_f): FILL[_l] = json.load(open(_f, encoding="utf-8"))
+NLTR = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "nianli-tr.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "nianli-tr.json")) else {}
 WJ_FL = ("en", "ja")  # 未讲章出页的外文（11-13：译文现成 tri-weijiang.json；其余七语没有译文，先不出空壳页，外文页未讲章仍链简体）
 def wj_tr_title(code, c):
     """外文未讲章标题：取译文首句（去掉“The Master said:”“先生が言われた。”一类引导语），英文最长 64 字母，日文 24 字。"""
@@ -1097,7 +1115,8 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
         jsonld = dict(jsonld, **{"@graph": [_own(x) for x in jsonld["@graph"]]}) if "@graph" in jsonld else _own(jsonld)
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>' if jsonld else ""
     codes = codes or list(LANGS)  # 只有部分语种的页（如“故事”栏只出简繁）
-    if rel.startswith(("gushi/", "renwu/", "zhuanti/lu-")) or (rel.startswith("shuyuan/") and rel != "shuyuan/ruyuan.html") or rel in ("zhuanti/keben.html", "jihua/bairi.html"): codes = ["zh-Hans", "zh-Hant"]  # 课本专题只有简繁（11-09 谷歌报外文版 404）
+    if rel.startswith("renwu/"): codes = ["zh-Hans", "zh-Hant"] + [k for k in GX.langs() if k in LANGS]  # 人物卡：简繁＋已译的外文（11-14）
+    elif rel.startswith(("gushi/", "zhuanti/lu-")) or (rel.startswith("shuyuan/") and rel != "shuyuan/ruyuan.html") or rel in ("zhuanti/keben.html", "jihua/bairi.html"): codes = ["zh-Hans", "zh-Hant"]  # 课本专题只有简繁（11-09 谷歌报外文版 404）
     if rel == "404.html": codes = ["zh-Hans"]  # 404 页只有一份，不指向不存在的外文 404
     alt_links = "".join(f'<link rel="alternate" hreflang="{LANGS[k][2]}" href="{DOMAIN}/{LANGS[k][0]}{rel}">' for k in codes)
     alt_links += f'<link rel="alternate" hreflang="x-default" href="{DOMAIN}/{rel}">'
@@ -1110,7 +1129,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
         LU = lyui(L)
         note += (f'<div class="lystrip" id="lyst" hidden><div class="wrap"><b></b><span lang="zh-Hans"></span><a href="#">{esc(LU["read"])}</a><button type="button" title="{esc(LU["close"])}" aria-label="{esc(LU["close"])}">×</button></div></div>'
                  '<script>(function(){var d=Math.floor((Date.now()+288e5)/864e5),k="ykl_lyst";try{if(localStorage.getItem(k)==String(d))return}catch(e){}'
-                 + ('if(d>=' + str(LX.NL0) + '){var bj=new Date(Date.now()+288e5);fetch("/data/nianli-' + L.code + '.json").then(function(r){return r.json()}).then(function(N){var y=N[(bj.getUTCMonth()+1)+"-"+bj.getUTCDate()];if(!y)return;var S=document.getElementById("lyst");S.querySelector("b").textContent=' + json.dumps(LU["strip"], ensure_ascii=False) + '+" "+y[6];S.querySelector("span").textContent=y[3];S.querySelector("a").href=y[2];S.hidden=false;S.querySelector("button").onclick=function(){S.hidden=true;try{localStorage.setItem(k,String(d))}catch(e){}}}).catch(function(){});return}' if L.code in ("zh-Hans", "zh-Hant") else '')
+                 + ('if(d>=' + str(LX.NL0) + '){var bj=new Date(Date.now()+288e5);fetch("/data/nianli-' + L.code + '.json").then(function(r){return r.json()}).then(function(N){var y=N[(bj.getUTCMonth()+1)+"-"+bj.getUTCDate()];if(!y)return;var S=document.getElementById("lyst");S.querySelector("b").textContent=' + json.dumps(LU["strip"], ensure_ascii=False) + '+" "+y[6];S.querySelector("span").textContent=y[3];S.querySelector("a").href=y[2];S.hidden=false;S.querySelector("button").onclick=function(){S.hidden=true;try{localStorage.setItem(k,String(d))}catch(e){}}}).catch(function(){});return}' if L.code in ("zh-Hans", "zh-Hant") or ((FILL.get(L.code) or {}).get("c") and NLTR) else '')
                  + 'fetch("/data/meiri-' + L.code + '.json").then(function(r){return r.json()}).then(function(R){var d0=d*864e5-288e5,C=R.filter(function(x){return !x[2]||Date.parse(x[2])<d0});if(!C.length)return;'
                  'var x=C[(d*7919)%C.length],S=document.getElementById("lyst");S.querySelector("b").textContent=' + json.dumps(LU["strip"], ensure_ascii=False) + '+" "+x[0];S.querySelector("span").textContent=x[3];S.querySelector("a").href=x[1];S.hidden=false;'
                  'S.querySelector("button").onclick=function(){S.hidden=true;try{localStorage.setItem(k,String(d))}catch(e){}}}).catch(function(){})})();</script>')
@@ -1147,7 +1166,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>{'<span class="livep" id="livep" hidden></span>' if ANALYTICS.get("live") else ""}
 <nav><a href="{P}lunyu/" class="lynav">{lyui(L)["nav"]}</a><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}shuyuan/" class="gsnav">书院</a>' if gs else ""}
-<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}lunyu/guanxi/">关系图</a>' if rw else ""}<a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
+<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}lunyu/guanxi/">关系图</a>' if rw else (f'<a href="{P}lunyu/guanxi/">{esc(GX.TR[L.code]["S"]["gx_h1"])}</a>' if not L.code.startswith("zh") and GXD and GX.has_lang(L.code) else "")}<a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary><span class="lfull">{L.name}</span><span class="lshort" aria-hidden="true">{LANG_SHORT.get(L.code, L.code[:2].upper())}</span></summary><div>{sw}</div></details></nav>
 </div></header>
 {note}
@@ -1157,7 +1176,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
 <p class="where">{where_html(L)}</p>
-<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a>{f'<a href="{P}lunyu/guanxi/">《论语》关系图</a>' if rw else ""}{f'<a href="{P}shuyuan/">书院</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}lunyu/banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
+<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a>{f'<a href="{P}lunyu/guanxi/">《论语》关系图</a>' if rw else (f'<a href="{P}lunyu/guanxi/">{esc(GX.TR[L.code]["S"]["gx_h1"])}</a>' if not L.code.startswith("zh") and GXD and GX.has_lang(L.code) else "")}{f'<a href="{P}shuyuan/">书院</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}lunyu/banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
 <p class="freuse">{L.t("foot_reuse", p=P)}</p>
@@ -1648,7 +1667,7 @@ LY_UI = {
  "ja": {"nav": "論語", "h": "主たる一冊", "k": "一日一章、一年で一巡り", "s": "全 {n} 章の原文を掲載 · 動画で解説 {d} 章 · 朱熹『論語集注』の原本画像つき", "go": "学而篇から読む", "toc": "目次", "kb": "", "db": "",
         "more": "書架にはほかに：", "soon": "ほか {n} 部を準備中 ›", "open": "『論語』を開く", "strip": "今日の『論語』", "read": "この章を読む →", "close": "今日は表示しない", "wk": "今週読んだ日：{n} 日", "wk0": "今週はまだ読んでいません", "cal": "", "shelf": "書架"},
 }
-def lyui(L): return dict(LY_UI["en"], nav=L.t("lunyu").replace("The ", "")) if L.code not in LY_UI else LY_UI[L.code]
+def lyui(L): return dict(LY_UI["en"], **{k: v for k, v in ((FILL.get(L.code) or {}).get("ly") or {}).items() if LY_UI["en"].get(k) and k != "nav"}, nav=L.t("lunyu").replace("The ", "")) if L.code not in LY_UI else LY_UI[L.code]
 SZJ_PROG = {"zh-Hans": "原文全 · 视频制作中", "zh-Hant": "原文全 · 視頻製作中", "en": "{n} lectures online", "ja": "全 {n} 講を掲載",
             "ko": "{n}강 모두 공개", "fr": "{n} leçons en ligne", "es": "{n} lecciones en línea", "de": "Alle {n} Lektionen online",
             "vi": "Đủ {n} bài", "id": "{n} pelajaran tersedia", "ru": "Все {n} уроков"}
@@ -1994,7 +2013,7 @@ def build_lang(L, D, write):
 {vid_html}
 <div class="chacts">{done_html(L, c) if c in D["pub"] else ""}{share_html(L, c, url, (f"论语 {c} · {pname}" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)), title_of(c), yw[c], field(c, "片里落点")[0], rend)}</div>
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") and c in D["pub"] else ""}
-{GX.section(GXD, c, P, href, gx_short) if L.code.startswith("zh") else ""}
+{GX.section(GXD, c, P, href, gx_short) if L.code.startswith("zh") else (GX.section_f(GXD, c, P, href, gx_short, L) if GXD and GX.has_lang(L.code) else "")}
 {cta_html(L, P)}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
 {fold(secs + yiwen_html(c) + extra)}
@@ -2152,7 +2171,7 @@ def build_lang(L, D, write):
 {wj_vid}
 <div class="chacts">{done_html(L, c)}{share_html(L, c, url, f"论语 {c} · {pname}" if zhL else L.t("chapter_no", book=bname, n=cnum), ctitle(c), text, an.get("片里落点") or (D["zy"].get(c) or {}).get("text", ""), tr)}</div>
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
-{GX.section(GXD, c, P, href, gx_short) if zhL else ""}
+{GX.section(GXD, c, P, href, gx_short) if zhL else (GX.section_f(GXD, c, P, href, gx_short, L) if GXD and GX.has_lang(L.code) else "")}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
 {fold(wj_deep + yiwen_html(c) + zb_section(c, url, cite_src))}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
@@ -2200,7 +2219,7 @@ def build_lang(L, D, write):
         write(f"lunyu/{slug}/index.html", page(L, ttl, L.t("book_lead"), f"lunyu/{slug}/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/{slug}/")
         if p in by_pian: toc_all += f'<h2 class="ph"><a href="{P}lunyu/{slug}/">{L.book(p)}</a></h2>{toc(by_pian[p])}'
     body = f'''<div class="chhead bk"><div class="wrap">{mcv(P, "", True)}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p><h1><span class="no">{L.t("lunyu_sub")}</span>{L.t("lunyu")}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("by_chapter")}</p>{('<p class="cta lycta">' + (f'<a class="btn ghost" href="{P}nianli/">《论语》年历：一天一课，一年一轮 ›</a>' if D["lx"]["nl"] else "") + (f'<a class="btn ghost" href="{P}lunyu/guanxi/">关系图：498 章怎样连着，197 位人物各在哪几章 ›</a>' if GXD else "") + (f'<a class="btn ghost" href="{P}lunyu/banben/">{"版本说明：五家注本用的哪个本子，原页从哪来 ›" if L.code == "zh-Hans" else L.t("bb_title") + " ›"}</a>') + (f'<a class="btn ghost" href="{P}changhe/">场合用句：取名、开学、结婚、送别 ›</a>' if D["lx"]["ch"] else "") + f'<a class="btn ghost" href="{P}zhuanti/keben.html">语文课本里的《论语》：初中、高中课文各章 ›</a>' + (f'<a class="btn ghost" href="{P}daidu/">课本十二章带读：给老师和家长 ›</a>' if D["lx"]["dd"] else "") + '</p>') if L.code.startswith("zh") else ""}<div class="pcards">{"".join(pcard(p) for p in ALLP)}</div>{toc_all}</main>{BOOK_JS}'''
+<main class="wrap narrow"><p class="lead">{L.t("by_chapter")}</p>{('<p class="cta lycta">' + (f'<a class="btn ghost" href="{P}nianli/">《论语》年历：一天一课，一年一轮 ›</a>' if D["lx"]["nl"] else "") + (f'<a class="btn ghost" href="{P}lunyu/guanxi/">关系图：498 章怎样连着，197 位人物各在哪几章 ›</a>' if GXD else "") + (f'<a class="btn ghost" href="{P}lunyu/banben/">{"版本说明：五家注本用的哪个本子，原页从哪来 ›" if L.code == "zh-Hans" else L.t("bb_title") + " ›"}</a>') + (f'<a class="btn ghost" href="{P}changhe/">场合用句：取名、开学、结婚、送别 ›</a>' if D["lx"]["ch"] else "") + f'<a class="btn ghost" href="{P}zhuanti/keben.html">语文课本里的《论语》：初中、高中课文各章 ›</a>' + (f'<a class="btn ghost" href="{P}daidu/">课本十二章带读：给老师和家长 ›</a>' if D["lx"]["dd"] else "") + '</p>') if L.code.startswith("zh") else (('<p class="cta lycta">' + (f'<a class="btn ghost" href="{P}lunyu/guanxi/">{esc(L.t("ly_btn_gx"))}</a>' if GXD and GX.has_lang(L.code) else "") + f'<a class="btn ghost" href="{P}lunyu/banben/">{esc(L.t("ly_btn_bb"))}</a></p>') if L.ui.get("ly_btn_bb") else "")}<div class="pcards">{"".join(pcard(p) for p in ALLP)}</div>{toc_all}</main>{BOOK_JS}'''
     write("lunyu/index.html", page(L, ("《论语》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} | 一孔录 Yikonglu"), L.t("by_chapter"), "lunyu/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/")
 
     # 书目：各本书一张卡；开讲的链到该书目录，其余是坑位
@@ -2338,7 +2357,42 @@ def build_lang(L, D, write):
                     'if(!x){M.querySelector(".md").textContent=T("补读日");q.textContent=T("今天不排新课，前几天落下的课，今天补上。");b.textContent="";c.href="' + P + 'nianli/";kk.hidden=true;M.hidden=false;return}'
                     'M.querySelector(".md").textContent=T("年历第 "+x[0]+" 课 / 365 · 《论语》")+x[6];q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+T("今日加读 ")+x[5].map(function(a){return a[0]}).join(" "):"");'
                     'c.href=x[2];kk.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false;try{document.dispatchEvent(new Event("ykmeiri"))}catch(e){}}).catch(function(){})})();</script>')
-    home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg?v={HERO_V}" width="1080" height="745"><img src="/assets/hero-w.jpg?v={HERO_V}" alt="一孔录原创角色同坐长桌读《论语》" width="1920" height="790"></picture>
+    FU = (FILL.get(L.code) or {}).get("c") or {}
+    if MY and D["lx"]["nl"] and L.code not in LX.ZH and FU and NLTR:  # 11-14 外文首页同步：今日《论语》按年历取课、日历样、七位领读人；今日一句用本语种译文
+        if "OUT_ROOT" in globals():
+            os.makedirs(os.path.join(OUT_ROOT, "data"), exist_ok=True)
+            json.dump({r["md"]: [r["n"], r["c"], href(r["c"]), r["q"], (NLTR.get(str(r["n"])) or {}).get(L.code, ""), [[a, href(a)] for a in r["add"]], " ".join(r["cs"])] for r in D["lx"]["nl"]},
+                      open(os.path.join(OUT_ROOT, "data", f"nianli-{L.code}.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+        FL_ = FILL[L.code]; LD_ = FL_.get("lead") or {}
+        _jn = FL_.get("jq") or JIEQI_NAMES.get(L.code) or JIEQI_NAMES["en"]
+        _y0 = datetime.date.today().year
+        _u = {"lu": FU["cal_lunar"], "lmd": FU["lunar_md"], "leap": FU["lunar_leap"], "after": FU["cal_after"], "today": FU["cal_today"], "lesson": FU["cal_lesson"], "mkh": FU["cal_makeup_h"], "mkp": FU["cal_makeup_p"], "add": FU["cal_add"],
+              "gf": {"1.1": FU["fe_ny"], "4.23": FU["fe_book"], "9.28": FU["fe_kz"]},
+              "lf": {"1.1": FU["fe_spring"], "1.15": FU["fe_lantern"], "5.5": FU["fe_duanwu"], "7.7": FU["fe_qixi"], "8.15": FU["fe_mid"], "9.9": FU["fe_chongyang"], "12.8": FU["fe_laba"]}}
+        _cal = {"jt": {str(y): JIEQI_DAYS[str(y)] for y in range(_y0 - 1, _y0 + 2) if str(y) in JIEQI_DAYS}, "jn": _jn, "hou": FL_.get("hou") or [], "ld": [[k, (LD_.get(k) or {}).get("name") or n] for k, n, t in LEAD_WEEK], "u": _u}
+        meiri_html = (f'<section class="meiri big mcal" id="meiri" hidden><div class="mrow"><div class="mcalb" aria-hidden="true"><p class="cm"></p><p class="cd"></p><p class="cw"></p><p class="cl"></p></div>'
+                      f'<div class="mtxt"><p class="mh"><b>{esc(L.t("cal_h"))}</b></p><p class="mtag"></p><blockquote lang="zh-Hans"></blockquote><p class="mb"></p>'
+                      f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a></p></div><img class="mhalf" alt="" width="300" height="400" hidden></div>'
+                      f'<p class="wk" id="wkl"><span class="wt" data-t="{esc(LU["wk"])}" data-z="{esc(LU["wk0"])}">{esc(LU["wk0"])}</span><span class="dots">'
+                      + "<i></i>" * 7 + '</span><span class="wn md"></span></p></section>')
+        meiri_js = wk_js_only(wk_html) + ('<script>(function(){var K=' + json.dumps(_cal, ensure_ascii=False).replace("</", "<\\/") + ',U=K.u,LC=' + json.dumps(L.code) + ';'
+                    'var n=Date.now(),bj=new Date(n+288e5),Y=bj.getUTCFullYear(),m=bj.getUTCMonth()+1,d=bj.getUTCDate(),wd=bj.getUTCDay(),M=document.getElementById("meiri");if(!M)return;'
+                    'var dt=new Date(Y,m-1,d),lu="",fe=[],jq="";'
+                    'try{var o={};new Intl.DateTimeFormat("zh-CN-u-ca-chinese",{year:"numeric",month:"numeric",day:"numeric"}).formatToParts(dt).forEach(function(p){o[p.type]=p.value});var ms=(o.month||"").replace(/^闰|bis$/g,"").replace(/月$/,""),CM=["正","二","三","四","五","六","七","八","九","十","十一","十二"],lm=/^\\d+$/.test(ms)?parseInt(ms,10):CM.indexOf(ms)+1,ld=parseInt((o.day||"").replace(/\\D/g,""),10),lp=/闰|bis/.test(o.month||"");'
+                    'if(lm&&ld){lu=(lp?U.leap:"")+U.lmd.replace("{m}",lm).replace("{d}",ld);if(!lp&&U.lf[lm+"."+ld])fe.push(U.lf[lm+"."+ld])}}catch(e){}'
+                    'if(U.gf[m+"."+d])fe.unshift(U.gf[m+"."+d]);'
+                    'try{var dd=function(y,i){var s=K.jt[y];return s?s.charCodeAt(i)-48:0},ix=-1,sy=Y,sm,sd;for(var i=23;i>=0;i--){var mo=1+(i>>1),dy=dd(Y,i);if(!dy)break;if(mo<m||(mo===m&&dy<=d)){ix=i;sm=mo;sd=dy;break}}if(ix<0&&dd(Y-1,23)){sy=Y-1;ix=23;sm=12;sd=dd(sy,23)}'
+                    'if(ix>=0){var k=Math.round((dt-new Date(sy,sm-1,sd))/864e5),h=Math.min(2,Math.floor(k/5));jq=(k===0?U.today.replace("{t}",K.jn[ix]):U.after.replace("{t}",K.jn[ix]).replace("{k}",k))+(K.hou.length?" · "+K.hou[ix*3+h]:"")}}catch(e){}'
+                    'var mn="",wn="";try{mn=new Date(Date.UTC(2026,m-1,15)).toLocaleDateString(LC,{month:"long",timeZone:"UTC"});wn=dt.toLocaleDateString(LC,{weekday:"long"})}catch(e){}'
+                    'M.querySelector(".cm").textContent=mn;M.querySelector(".cd").textContent=d;M.querySelector(".cw").textContent=wn;M.querySelector(".cl").textContent=lu?U.lu+"\n"+lu:"";'
+                    'var tg=M.querySelector(".mtag");fe.forEach(function(f){var s=document.createElement("span");s.className="fe";s.textContent=f;tg.appendChild(s)});if(jq){var s=document.createElement("span");s.textContent=jq;tg.appendChild(s)}'
+                    'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-half.webp";hf.alt=P[1];hf.hidden=false;'
+                    'var I=M.querySelectorAll(".dots i");if(I[li])I[li].classList.add("td");'
+                    'fetch("/data/nianli-' + L.code + '.json").then(function(r){return r.json()}).then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
+                    'if(!x){M.querySelector(".md").textContent=U.mkh;q.textContent=U.mkp;q.lang=LC;b.textContent="";c.href="/nianli/";kk.hidden=true;M.hidden=false;return}'
+                    'M.querySelector(".md").textContent=U.lesson.replace("{n}",x[0]).replace("{c}",x[6]);q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+U.add+" "+x[5].map(function(a){return a[0]}).join(" "):"");'
+                    'c.href=x[2];kk.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false;try{document.dispatchEvent(new Event("ykmeiri"))}catch(e){}}).catch(function(){})})();</script>')
+    home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg?v={HERO_V}" width="1080" height="745"><img src="/assets/hero-w.jpg?v={HERO_V}" alt="{"一孔录原创角色同坐长桌读《论语》" if L.code.startswith("zh") else esc(L.t("hero_alt"))}" width="1920" height="790"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div></section>
 <main class="home">
 <section class="intro wrap narrow">
@@ -2671,6 +2725,13 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
     if D.get("renwu") and L.code.startswith("zh"):  # 论语人物：先只简繁
         RW.GXID = {v: k for k, v in GX.rw_ids(GXD, D["renwu"]).items()}  # 11-14 主人定：人物总页并入关系图，每人一页留作人物卡
         urls += RW.build(L, D, D["renwu"], write, page, P, rel_of, title_of, DOMAIN)
+    if not L.code.startswith("zh") and GXD and GX.has_lang(L.code):  # 11-14 外文关系图与人物卡（智器译）
+        GX.RWID = GX.rw_ids(GXD, D.get("renwu"))
+        _gxc = ["zh-Hans", "zh-Hant"] + [k for k in GX.langs() if k in LANGS]
+        urls += GX.build_f(L, GXD, write, page, P, href, gx_short, PIAN, pubset, DOMAIN, _gxc)
+        if D.get("renwu"):
+            RW.GXID = {v: k for k, v in GX.rw_ids(GXD, D["renwu"]).items()}
+            urls += RW.build_f(L, D, D["renwu"], write, page, P, rel_of, ctitle, DOMAIN, GX.TR[L.code], _gxc)
     # 一孔影响力方法页（先只简繁；外文页由语种切换链到简体）
     if L.code.startswith("zh"):
         body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">找到分怎么算、怎么测</span>一孔影响力</h1></div></div>
@@ -3121,7 +3182,7 @@ def main(zdir, outdir, kanwu=None):
             if key in tr: tab[code] = tr[key]
         if "privacy" in tr: PRIVACY[code] = tuple(tr["privacy"])
         if "wx" in tr: PLAT_WX[code] = tr["wx"]
-        ui = dict(EXTRA_UI.get(code, {})); ui.update(tr["ui"]); ui.update(WJ_UI.get(code, {}))
+        ui = dict((FILL.get(code) or {}).get("ui") or {}); ui.update(EXTRA_UI.get(code, {})); ui.update(tr["ui"]); ui.update(WJ_UI.get(code, {}))
         urls += build_lang(Lang(code, ui, tr), D, writer(code))
 
     # 站点地图里写各语种互指（只指真有的页），谷歌、必应据此把同一章的七语版本认作一组

@@ -1,0 +1,2673 @@
+{
+"p": {
+"仲由": {
+"name": "Zhong You",
+"common": "Zilu",
+"alias": "Zilu; Jilu; You",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"端木赐": {
+"name": "Duanmu Ci",
+"common": "Zigong",
+"alias": "Zigong; Ci",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"颜回": {
+"name": "Yan Hui",
+"common": "Yan Yuan",
+"alias": "Yan Yuan; Hui",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"卜商": {
+"name": "Bu Shang",
+"common": "Zixia",
+"alias": "Zixia; Shang",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"颛孙师": {
+"name": "Zhuansun Shi",
+"common": "Zizhang",
+"alias": "Zizhang; Shi",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"冉求": {
+"name": "Ran Qiu",
+"common": "Ran You",
+"alias": "Ran You; Ranzi; Qiu",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"曾参": {
+"name": "Zeng Shen",
+"common": "Zengzi",
+"alias": "Zengzi; Ziyu; Shen",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"言偃": {
+"name": "Yan Yan",
+"common": "Ziyou",
+"alias": "Ziyou; Yan",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"季康子": {
+"name": "Ji Kangzi",
+"common": "Ji Kangzi",
+"alias": "Kangzi; Jisun Fei",
+"role": "Großwürdenträger von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe Kapitel"
+},
+"季氏": {
+"name": "Familie Ji",
+"common": "Familie Ji",
+"alias": "",
+"role": "Bezeichnung des Ministergeschlechts von Lu bzw. seines Oberhaupts; kein bestimmtes Oberhaupt festgelegt",
+"rel": "Im Text gemeintes Ministergeschlecht von Lu; konkrete Person im Kapitel nicht bestimmt"
+},
+"舜": {
+"name": "Shun",
+"common": "Shun",
+"alias": "",
+"role": "Herrscher des Altertums",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"樊须": {
+"name": "Fan Xu",
+"common": "Fan Chi",
+"alias": "Fan Chi; Xu",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"冉雍": {
+"name": "Ran Yong",
+"common": "Zhonggong",
+"alias": "Zhonggong; Yong",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"鲁哀公": {
+"name": "Herzog Ai von Lu",
+"common": "Herzog Ai von Lu",
+"alias": "Herzog Ai",
+"role": "Herrscher von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe Kapitel"
+},
+"宰予": {
+"name": "Zai Yu",
+"common": "Zai Wo",
+"alias": "Zai Wo; Yu",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"公西赤": {
+"name": "Gongxi Chi",
+"common": "Gongxi Hua",
+"alias": "Gongxi Hua; Zihua; Chi",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"闵损": {
+"name": "Min Sun",
+"common": "Min Ziqian",
+"alias": "Min Ziqian; Minzi; Sun",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"有若": {
+"name": "You Ruo",
+"common": "Youzi",
+"alias": "Youzi",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"管仲": {
+"name": "Guan Zhong",
+"common": "Guan Zhong",
+"alias": "Herr Guan",
+"role": "Kanzler von Qi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe Kapitel"
+},
+"伯夷": {
+"name": "Bo Yi",
+"common": "Bo Yi",
+"alias": "",
+"role": "Zurückgezogener Weiser des Altertums",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"叔齐": {
+"name": "Shu Qi",
+"common": "Shu Qi",
+"alias": "",
+"role": "Zurückgezogener Weiser des Altertums",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"尧": {
+"name": "Yao",
+"common": "Yao",
+"alias": "",
+"role": "Herrscher des Altertums",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"周公": {
+"name": "Herzog von Zhou",
+"common": "Herzog von Zhou",
+"alias": "",
+"role": "Angehöriger der Zhou; laut Text Vater des Herzogs von Lu",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"禹": {
+"name": "Yu",
+"common": "Yu",
+"alias": "",
+"role": "Früherer König der Xia-Zeit",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"陈亢": {
+"name": "Chen Kang",
+"common": "Chen Kang",
+"alias": "Ziqin; Chen Ziqin",
+"role": "Bei Zhu Xi als Schüler des Konfuzius geführt, auch als möglicher Schüler Zigongs verzeichnet; ungeklärt",
+"rel": "Lehrerbeziehung umstritten"
+},
+"南容": {
+"name": "Nan Rong",
+"common": "Nan Rong",
+"alias": "Nangong Kuo; Nangong Tao; Zirong",
+"role": "Laut Zhu Xi Schüler des Konfuzius",
+"rel": "Schüler; heiratete die Tochter von Konfuzius' älterem Bruder"
+},
+"子产": {
+"name": "Zichan",
+"common": "Zichan",
+"alias": "Dongli Zichan",
+"role": "Großwürdenträger von Zheng",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe Kapitel"
+},
+"原宪": {
+"name": "Yuan Xian",
+"common": "Yuan Si",
+"alias": "Yuan Si; Xian",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"叶公": {
+"name": "Herzog von She",
+"common": "Herzog von She",
+"alias": "",
+"role": "Statthalter von She in Chu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe Kapitel"
+},
+"周武王": {
+"name": "König Wu von Zhou",
+"common": "König Wu von Zhou",
+"alias": "König Wu",
+"role": "Früherer König der Zhou",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"周文王": {
+"name": "König Wen von Zhou",
+"common": "König Wen von Zhou",
+"alias": "König Wen",
+"role": "Früherer König der Zhou",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"孔鲤": {
+"name": "Kong Li",
+"common": "Kong Li",
+"alias": "Boyu; Li",
+"role": "Sohn des Konfuzius",
+"rel": "Sohn"
+},
+"司马耕": {
+"name": "Sima Geng",
+"common": "Sima Niu",
+"alias": "Sima Niu",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"齐景公": {
+"name": "Herzog Jing von Qi",
+"common": "Herzog Jing von Qi",
+"alias": "Herzog Jing",
+"role": "Herrscher von Qi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe Kapitel"
+},
+"齐桓公": {
+"name": "Herzog Huan von Qi",
+"common": "Herzog Huan von Qi",
+"alias": "Herzog Huan",
+"role": "Herrscher von Qi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe Kapitel"
+},
+"柳下惠": {
+"name": "Liuxia Hui",
+"common": "Liuxia Hui",
+"alias": "",
+"role": "Mann aus Lu, einst Strafrichter",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"孟武伯": {
+"name": "Meng Wubo",
+"common": "Meng Wubo",
+"alias": "Wubo; Zhi",
+"role": "Sohn des Meng Yizi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe Kapitel"
+},
+"林放": {
+"name": "Lin Fang",
+"common": "Lin Fang",
+"alias": "",
+"role": "Mann aus Lu; fragte nach den Riten",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe Kapitel"
+},
+"王孙贾": {
+"name": "Wangsun Jia",
+"common": "Wangsun Jia",
+"alias": "",
+"role": "Großwürdenträger von Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe Kapitel"
+},
+"鲁定公": {
+"name": "Herzog Ding von Lu",
+"common": "Herzog Ding von Lu",
+"alias": "Herzog Ding",
+"role": "Herrscher von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe Kapitel"
+},
+"孔子兄之女": {
+"name": "Tochter des älteren Bruders des Konfuzius",
+"common": "Tochter des älteren Bruders des Konfuzius",
+"alias": "",
+"role": "Im Text genannte Frau, die mit Nan Rong verheiratet wurde",
+"rel": "Nichte"
+},
+"孔子之兄": {
+"name": "Älterer Bruder des Konfuzius",
+"common": "Älterer Bruder des Konfuzius",
+"alias": "",
+"role": "Der im Text mit „Tochter des älteren Bruders“ gemeinte Vater; Name in diesem Kapitel nicht genannt",
+"rel": "Älterer Bruder"
+},
+"孔文子": {
+"name": "Kong Wenzi",
+"common": "Kong Wenzi",
+"alias": "Zhongshu Yu; Kong Yu",
+"role": "Großwürdenträger von Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"臧文仲": {
+"name": "Zang Wenzhong",
+"common": "Zang Wenzhong",
+"alias": "",
+"role": "Großwürdenträger von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"冉耕": {
+"name": "Ran Geng",
+"common": "Boniu",
+"alias": "Boniu; Ran Boniu",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"祝鮀": {
+"name": "Zhu Tuo",
+"common": "Zhu Tuo",
+"alias": "Zhu Tuo; Ziyu",
+"role": "Großwürdenträger von Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"卫出公": {
+"name": "Herzog Chu von Wei",
+"common": "Herzog Chu von Wei",
+"alias": "Fürst von Wei",
+"role": "Laut Zhu Xis Kommentar Zhe von Wei; Fürst von Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"师挚": {
+"name": "Musikmeister Zhi",
+"common": "Musikmeister Zhi",
+"alias": "Großer Musikmeister Zhi",
+"role": "Musikbeamter oder Musiker; Titel nach dem Text",
+"rel": "Im Text erwähnt oder in Kontakt"
+},
+"高柴": {
+"name": "Gao Chai",
+"common": "Zigao",
+"alias": "Zigao; Chai",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"商汤": {
+"name": "Tang von Shang",
+"common": "Tang von Shang",
+"alias": "Tang; Lü",
+"role": "Früherer König der Shang",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"孟公绰": {
+"name": "Meng Gongchuo",
+"common": "Meng Gongchuo",
+"alias": "Gongchuo",
+"role": "Großwürdenträger von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"臧武仲": {
+"name": "Zang Wuzhong",
+"common": "Zang Wuzhong",
+"alias": "",
+"role": "Großwürdenträger von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"公叔文子": {
+"name": "Gongshu Wenzi",
+"common": "Gongshu Wenzi",
+"alias": "Gongsun Ba",
+"role": "Großwürdenträger von Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"公子纠": {
+"name": "Prinz Jiu",
+"common": "Prinz Jiu",
+"alias": "",
+"role": "Prinz von Qi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"卫灵公": {
+"name": "Herzog Ling von Wei",
+"common": "Herzog Ling von Wei",
+"alias": "Herzog Ling",
+"role": "Fürst von Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"蘧瑗": {
+"name": "Qu Yuan",
+"common": "Qu Yuan",
+"alias": "Qu Boyu",
+"role": "Mann aus Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"子服景伯": {
+"name": "Zifu Jingbo",
+"common": "Zifu Jingbo",
+"alias": "Zifu He",
+"role": "Großwürdenträger von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"商纣": {
+"name": "Zhou von Shang",
+"common": "Zhou von Shang",
+"alias": "Zhou",
+"role": "Letzter Herrscher der Shang",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"孟氏": {
+"name": "Familie Meng",
+"common": "Familie Meng",
+"alias": "",
+"role": "Bezeichnung des Ministerklans bzw. seines Oberhaupts in Lu; nicht auf ein bestimmtes Oberhaupt festgelegt",
+"rel": "Im Text gemeinter Ministerklan von Lu; konkrete Person in diesem Kapitel unbestimmt"
+},
+"叔孙武叔": {
+"name": "Shusun Wushu",
+"common": "Shusun Wushu",
+"alias": "",
+"role": "Großwürdenträger von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"孟懿子": {
+"name": "Meng Yizi",
+"common": "Meng Yizi",
+"alias": "Mengsun; Zhongsun Heji",
+"role": "Großwürdenträger von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"或谓孔子者": {
+"name": "Jemand, der zu Konfuzius sprach",
+"common": "Jemand, der zu Konfuzius sprach",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe dieses Kapitel"
+},
+"三家": {
+"name": "Die Drei Familien",
+"common": "Die Drei Familien",
+"alias": "Jisun-Klan; Mengsun-Klan; Shusun-Klan",
+"role": "Sammelbezeichnung der drei Familien von Lu, keine Einzelperson",
+"rel": "Unter der ursprünglichen Bezeichnung belassen, nicht in unbelegte Familienoberhäupter aufgeteilt"
+},
+"或问禘者": {
+"name": "Jemand, der nach dem Di-Opfer fragte",
+"common": "Jemand, der nach dem Di-Opfer fragte",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe dieses Kapitel"
+},
+"或讥问礼者": {
+"name": "Jemand, der spottete, Konfuzius frage nach den Riten",
+"common": "Jemand, der spottete, Konfuzius frage nach den Riten",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe dieses Kapitel"
+},
+"鄹人": {
+"name": "Der Mann aus Zou",
+"common": "Der Mann aus Zou",
+"alias": "Shuliang He",
+"role": "Laut Zhu Xis Kommentar der Vater des Konfuzius; einst Würdenträger des Ortes Zou",
+"rel": "Vater"
+},
+"或问管仲者": {
+"name": "Jemand, der nach Guan Zhong fragte",
+"common": "Jemand, der nach Guan Zhong fragte",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe dieses Kapitel"
+},
+"鲁大师": {
+"name": "Großer Musikmeister von Lu",
+"common": "Großer Musikmeister von Lu",
+"alias": "",
+"role": "Musikbeamter oder Musiker; Titel nach dem Text",
+"rel": "Im Text erwähnt oder in Kontakt"
+},
+"仪封人": {
+"name": "Grenzwächter von Yi",
+"common": "Grenzwächter von Yi",
+"alias": "",
+"role": "Für die Grenzen zuständiger Beamter des Ortes Yi in Wei; laut Zhu Xi ein Weiser, der sich in niedriger Stellung verbarg",
+"rel": "In Kontakt mit Konfuzius oder seinen Schülern; siehe dieses Kapitel"
+},
+"公冶长": {
+"name": "Gongye Chang",
+"common": "Gongye Chang",
+"alias": "",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"孔子之女": {
+"name": "Tochter des Konfuzius",
+"common": "Tochter des Konfuzius",
+"alias": "",
+"role": "Die im Text mit „gab ihm seine Tochter zur Frau“ gemeinte Tochter",
+"rel": "Tochter"
+},
+"宓不齐": {
+"name": "Fu Buqi",
+"common": "Zijian",
+"alias": "Zijian",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"或论雍者": {
+"name": "Jemand, der über Yong urteilte",
+"common": "Jemand, der über Yong urteilte",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe dieses Kapitel"
+},
+"漆雕开": {
+"name": "Qidiao Kai",
+"common": "Qidiao Kai",
+"alias": "",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"申枨": {
+"name": "Shen Cheng",
+"common": "Cheng",
+"alias": "Cheng",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"或答申枨者": {
+"name": "Jemand, der mit „Shen Cheng“ antwortete",
+"common": "Jemand, der mit „Shen Cheng“ antwortete",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe dieses Kapitel"
+},
+"晏婴": {
+"name": "Yan Ying",
+"common": "Yan Ying",
+"alias": "Yan Pingzhong",
+"role": "Großwürdenträger von Qi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"子文": {
+"name": "Ziwen",
+"common": "Ziwen",
+"alias": "Dou Gouwutu",
+"role": "Kanzler (Lingyin) von Chu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"崔杼": {
+"name": "Cui Zhu",
+"common": "Cui Zhu",
+"alias": "Cuizi",
+"role": "Großwürdenträger von Qi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"齐庄公": {
+"name": "Herzog Zhuang von Qi",
+"common": "Herzog Zhuang von Qi",
+"alias": "Fürst von Qi; Guang",
+"role": "Von Cui Zhu ermordeter Fürst von Qi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"陈文子": {
+"name": "Chen Wenzi",
+"common": "Chen Wenzi",
+"alias": "Xu Wu",
+"role": "Großwürdenträger von Qi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"季文子": {
+"name": "Ji Wenzi",
+"common": "Ji Wenzi",
+"alias": "",
+"role": "Großwürdenträger von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"宁武子": {
+"name": "Ning Wuzi",
+"common": "Ning Wuzi",
+"alias": "Ning Wuzi (Schreibvariante 寗); Yu",
+"role": "Großwürdenträger von Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"微生高": {
+"name": "Weisheng Gao",
+"common": "Weisheng Gao",
+"alias": "",
+"role": "Im Text als angeblich Aufrichtiger erörtert",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"乞醯者": {
+"name": "Der um Essig Bittende",
+"common": "Der um Essig Bittende",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"微生高之邻": {
+"name": "Nachbar des Weisheng Gao",
+"common": "Nachbar des Weisheng Gao",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"左丘明": {
+"name": "Zuoqiu Ming",
+"common": "Zuoqiu Ming",
+"alias": "",
+"role": "Im Text genannt als einer, der schöne Worte und gefällige Mienen als schändlich empfand",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"子桑伯子": {
+"name": "Zisang Bozi",
+"common": "Zisang Bozi",
+"alias": "",
+"role": "Person, nach der Zhonggong fragte",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"公西赤之母": {
+"name": "Mutter des Gongxi Chi",
+"common": "Mutter des Gongxi Chi",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"季氏使者": {
+"name": "Bote der Familie Ji",
+"common": "Bote der Familie Ji",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"澹台灭明": {
+"name": "Tantai Mieming",
+"common": "Tantai Mieming",
+"alias": "",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"孟之反": {
+"name": "Meng Zhifan",
+"common": "Meng Zhifan",
+"alias": "",
+"role": "Mann aus Lu; im Text derjenige, der beim Rückzug die Nachhut bildete",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"宋朝": {
+"name": "Song Chao",
+"common": "Song Chao",
+"alias": "",
+"role": "Prinz von Song; für seine Schönheit bekannt",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"南子": {
+"name": "Nanzi",
+"common": "Nanzi",
+"alias": "",
+"role": "Gemahlin des Herzogs Ling von Wei",
+"rel": "Konfuzius traf sie einmal"
+},
+"老彭": {
+"name": "Lao Peng",
+"common": "Lao Peng",
+"alias": "",
+"role": "Gestalt des Altertums, mit der sich Konfuzius verglich; genaue Identität unklar",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"有丧者": {
+"name": "Ein Trauernder",
+"common": "Ein Trauernder",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"桓魋": {
+"name": "Huan Tui",
+"common": "Huan Tui",
+"alias": "",
+"role": "Mann aus Song; im Text derjenige, der Konfuzius bedrohte",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"互乡童子": {
+"name": "Knabe aus Huxiang",
+"common": "Knabe aus Huxiang",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"陈司败": {
+"name": "Chen Sibai",
+"common": "Chen Sibai",
+"alias": "Sibai",
+"role": "Justizminister (Sibai) von Chen, Name unbekannt",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"鲁昭公": {
+"name": "Herzog Zhao von Lu",
+"common": "Herzog Zhao von Lu",
+"alias": "Herzog Zhao; Chou",
+"role": "Herrscher von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"巫马施": {
+"name": "Wuma Shi",
+"common": "Wuma Qi",
+"alias": "Wuma Qi",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"吴孟子": {
+"name": "Wu Mengzi",
+"common": "Wu Mengzi",
+"alias": "",
+"role": "Frau aus Wu mit gleichem Klannamen, die Herzog Zhao von Lu heiratete",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"与孔子歌者": {
+"name": "Der mit Konfuzius Singende",
+"common": "Der mit Konfuzius Singende",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"泰伯": {
+"name": "Taibo",
+"common": "Taibo",
+"alias": "",
+"role": "Gestalt des Altertums, die dreimal auf das Reich verzichtete",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"孟敬子": {
+"name": "Meng Jingzi",
+"common": "Meng Jingzi",
+"alias": "",
+"role": "Im Text derjenige, der Zengzi in seiner Krankheit besuchte",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"曾子之友": {
+"name": "Freund des Zengzi",
+"common": "Freund des Zengzi",
+"alias": "",
+"role": "Im Text nicht namentlich genannt; Zhu Xis Kommentar führt Herrn Ma an, der ihn für Yan Yuan hielt; nicht gesichert",
+"rel": "Freund des Zengzi"
+},
+"妇人": {
+"name": "Die Frau",
+"common": "Die Frau",
+"alias": "",
+"role": "Die Frau unter den zehn fähigen Ministern in 8.20; im Text nicht namentlich genannt",
+"rel": "Zitierte historische Person"
+},
+"达巷党人": {
+"name": "Leute aus dem Dorf Daxiang",
+"common": "Leute aus dem Dorf Daxiang",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"大宰": {
+"name": "Der Großkanzler (Taizai)",
+"common": "Der Großkanzler (Taizai)",
+"alias": "",
+"role": "Amtstitel; Staat und Name fraglich, nicht eindeutig einer Person aus Wu oder Song zuzuordnen",
+"rel": "Fragte Zigong, ob Konfuzius ein Weiser sei"
+},
+"琴牢": {
+"name": "Qin Lao",
+"common": "Lao",
+"alias": "Lao; Zikai; Zizhang",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"鄙夫": {
+"name": "Ein einfacher Mann",
+"common": "Ein einfacher Mann",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"或问九夷者": {
+"name": "Jemand, der nach den Neun Yi fragte",
+"common": "Jemand, der nach den Neun Yi fragte",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"孔子之友": {
+"name": "Freund des Konfuzius",
+"common": "Freund des Konfuzius",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"闵子骞之父": {
+"name": "Vater des Min Ziqian",
+"common": "Vater des Min Ziqian",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"闵子骞之母": {
+"name": "Mutter des Min Ziqian",
+"common": "Mutter des Min Ziqian",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"颜路": {
+"name": "Yan Lu",
+"common": "Yan Lu",
+"alias": "",
+"role": "Vater des Yan Hui",
+"rel": "Vater des Schülers Yan Hui"
+},
+"从者": {
+"name": "Gefolgsleute",
+"common": "Gefolgsleute",
+"alias": "",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"季子然": {
+"name": "Ji Ziran",
+"common": "Ji Ziran",
+"alias": "",
+"role": "Im Text derjenige, der nach Zhong You und Ran Qiu fragte",
+"rel": "Gesprächspartner des Konfuzius"
+},
+"曾点": {
+"name": "Zeng Dian",
+"common": "Zeng Xi",
+"alias": "Zeng Xi; Dian",
+"role": "Schüler des Konfuzius",
+"rel": "Schüler"
+},
+"棘子成": {
+"name": "Ji Zicheng",
+"common": "Ji Zicheng",
+"alias": "",
+"role": "Großwürdenträger von Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"皋陶": {
+"name": "Gao Yao",
+"common": "Gao Yao",
+"role": "Von Shun erhobener Minister",
+"rel": "Zitierte oder besprochene historische Person"
+},
+"伊尹": {
+"name": "Yi Yin",
+"common": "Yi Yin",
+"role": "Von Tang erhobener Minister",
+"rel": "Zitierte oder besprochene historische Person"
+},
+"公子荆": {
+"name": "Prinz Jing",
+"common": "Prinz Jing",
+"alias": "Prinz Jing von Wei",
+"role": "Prinz von Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"直躬": {
+"name": "Zhi Gong",
+"common": "Zhi Gong",
+"role": "Vom Fürsten von She erwähnter Mann, der bezeugte, dass sein Vater ein Schaf entwendet hatte; Name unbekannt",
+"rel": "Vom Fürsten von She angeführte Person"
+},
+"直躬之父": {
+"name": "Vater des Zhi Gong",
+"common": "Vater des Zhi Gong",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"羿": {
+"name": "Yi",
+"common": "Yi",
+"role": "Meisterschütze des Altertums",
+"rel": "Zitierte oder besprochene historische Person"
+},
+"奡": {
+"name": "Ao",
+"common": "Ao",
+"role": "Ein Mann des Altertums, der Boote über Land schob",
+"rel": "Zitierte oder besprochene historische Person"
+},
+"后稷": {
+"name": "Hou Ji",
+"common": "Hou Ji",
+"alias": "Ji",
+"role": "Ein Mann des Altertums, der selbst den Acker bestellte",
+"rel": "Zitierte oder besprochene historische Person"
+},
+"裨谌": {
+"name": "Bi Chen",
+"common": "Bi Chen",
+"role": "Großwürdenträger von Zheng",
+"rel": "Von Konfuzius beurteilt"
+},
+"世叔": {
+"name": "Shi Shu",
+"common": "Shi Shu",
+"role": "Großwürdenträger von Zheng",
+"rel": "Von Konfuzius beurteilt"
+},
+"子羽": {
+"name": "Ziyu",
+"common": "Ziyu",
+"alias": "Gesandter Ziyu",
+"role": "Großwürdenträger von Zheng",
+"rel": "Von Konfuzius beurteilt"
+},
+"子西": {
+"name": "Zixi",
+"common": "Zixi",
+"alias": "Prinz Shen",
+"role": "Prinz von Chu",
+"rel": "Von Konfuzius beurteilt"
+},
+"伯氏": {
+"name": "Bo",
+"common": "Bo",
+"role": "Großwürdenträger von Qi; Name unbekannt",
+"rel": "Von Konfuzius beurteilt"
+},
+"或问子产者": {
+"name": "Jemand, der nach Zichan fragte",
+"common": "Jemand, der nach Zichan fragte",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"卞庄子": {
+"name": "Bian Zhuangzi",
+"common": "Bian Zhuangzi",
+"role": "Großwürdenträger von Bian in Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"公明贾": {
+"name": "Gongming Jia",
+"common": "Gongming Jia",
+"role": "Mann aus Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"晋文公": {
+"name": "Herzog Wen von Jin",
+"common": "Herzog Wen von Jin",
+"role": "Herrscher von Jin",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"召忽": {
+"name": "Shao Hu",
+"common": "Shao Hu",
+"role": "Gefolgsmann des Prinzen Jiu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"僎": {
+"name": "Zhuan",
+"common": "Zhuan",
+"alias": "Großwürdenträger Zhuan",
+"role": "Hausbeamter des Gongshu Wenzi, später Großwürdenträger",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"陈恒": {
+"name": "Chen Heng",
+"common": "Chen Heng",
+"alias": "Chen Chengzi",
+"role": "Mörder des Herzogs Jian von Qi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"齐简公": {
+"name": "Herzog Jian von Qi",
+"common": "Herzog Jian von Qi",
+"alias": "Herzog Jian",
+"role": "Herrscher von Qi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"三子": {
+"name": "Die drei Herren",
+"common": "Die drei Herren",
+"alias": "Die drei Häuser",
+"role": "Sammelbezeichnung in 14.22 für die Häupter der drei Familien von Lu",
+"rel": "Namen der einzelnen Familienhäupter nicht festgelegt"
+},
+"蘧伯玉使者": {
+"name": "Bote des Qu Boyu",
+"common": "Bote des Qu Boyu",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"微生亩": {
+"name": "Weisheng Mu",
+"common": "Weisheng Mu",
+"role": "Stellte Konfuzius wegen seines rastlosen Umherziehens zur Rede",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"或问报怨者": {
+"name": "Jemand, der nach der Vergeltung von Unrecht fragte",
+"common": "Jemand, der nach der Vergeltung von Unrecht fragte",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"公伯寮": {
+"name": "Gongbo Liao",
+"common": "Gongbo Liao",
+"role": "Verleumdete Zilu bei Jisun",
+"rel": "Mit dem Schüler Zilu verbunden"
+},
+"季孙": {
+"name": "Jisun",
+"common": "Jisun",
+"role": "Bezeichnung der Ministerfamilie oder ihres Hauptes in Lu; nicht auf ein bestimmtes Familienhaupt festgelegt",
+"rel": "Im Text gemeinte Ministerfamilie von Lu; konkrete Person in diesem Kapitel nicht bestimmt"
+},
+"晨门": {
+"name": "Morgentorwächter",
+"common": "Morgentorwächter",
+"role": "Wächter, der morgens das Tor öffnete; laut Zhu Xi ein Weiser, der sich als Torhüter verbarg",
+"rel": "Begegnung mit Konfuzius oder seinen Schülern; siehe dieses Kapitel"
+},
+"荷蒉者": {
+"name": "Der Korbträger",
+"common": "Der Korbträger",
+"alias": "Der Mann, der mit einem Korb an Konfuzius' Tür vorbeiging",
+"role": "Einsiedler; Korbträger, Name unbekannt",
+"rel": "Begegnung mit Konfuzius oder seinen Schülern; siehe dieses Kapitel"
+},
+"商高宗": {
+"name": "Gaozong von Shang",
+"common": "Gaozong von Shang",
+"alias": "Gaozong",
+"role": "König von Shang",
+"rel": "Zitierte oder besprochene historische Person"
+},
+"原壤": {
+"name": "Yuan Rang",
+"common": "Yuan Rang",
+"role": "Erwartete Konfuzius breitbeinig hockend und erhielt von ihm einen Stockschlag",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"阙党童子": {
+"name": "Knabe aus Que",
+"common": "Knabe aus Que",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"或问童子者": {
+"name": "Jemand, der nach dem Knaben fragte",
+"common": "Jemand, der nach dem Knaben fragte",
+"role": "Im Text genannte konkrete Person; Name oder Identität unbekannt",
+"rel": "Siehe Darstellung in diesem Kapitel"
+},
+"史鱼": {
+"name": "Shi Yu",
+"common": "Shi Yu",
+"role": "Großwürdenträger von Wei, Rufname Qiu; Shi ist eine Amtsbezeichnung",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"师冕": {
+"name": "Musikmeister Mian",
+"common": "Musikmeister Mian",
+"alias": "Mian",
+"role": "Musikbeamter oder Musiker; Titel nach dem Text",
+"rel": "Im Text erwähnt oder im Umgang mit Konfuzius"
+},
+"周任": {
+"name": "Zhou Ren",
+"common": "Zhou Ren",
+"role": "Mann des Altertums, zitiert mit dem Spruch, man solle nach seinen Kräften ein Amt übernehmen",
+"rel": "Zitierte oder besprochene historische Person"
+},
+"阳货": {
+"name": "Yang Huo",
+"common": "Yang Huo",
+"role": "Wollte Konfuzius treffen",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"公山弗扰": {
+"name": "Gongshan Furao",
+"common": "Gongshan Furao",
+"alias": "Gongshan",
+"role": "Rebell, der sich in Bi festsetzte",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"佛肸": {
+"name": "Bi Xi",
+"common": "Bi Xi",
+"role": "Rebell, der sich in Zhongmou festsetzte",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"孺悲": {
+"name": "Ru Bei",
+"common": "Ru Bei",
+"role": "Wollte Konfuzius treffen",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"将命者": {
+"name": "Der Bote",
+"common": "Der Bote",
+"alias": "",
+"role": "Im Text erwähnte Person; Name oder Identität unbekannt",
+"rel": "Siehe dieses Kapitel"
+},
+"微子": {
+"name": "Weizi",
+"common": "Weizi",
+"alias": "",
+"role": "Mann aus Yin",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"箕子": {
+"name": "Jizi",
+"common": "Jizi",
+"alias": "",
+"role": "Mann aus Yin",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"比干": {
+"name": "Bi Gan",
+"common": "Bi Gan",
+"alias": "",
+"role": "Mann aus Yin",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"谓柳下惠者": {
+"name": "Der Mann, der zu Liuxia Hui sprach",
+"common": "Der Mann, der zu Liuxia Hui sprach",
+"alias": "",
+"role": "Im Text erwähnte Person; Name oder Identität unbekannt",
+"rel": "Siehe dieses Kapitel"
+},
+"季桓子": {
+"name": "Ji Huanzi",
+"common": "Ji Huanzi",
+"alias": "",
+"role": "Machthaber des Jisun-Klans in Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"接舆": {
+"name": "Jieyu",
+"common": "Jieyu",
+"alias": "Jieyu, der Verrückte von Chu",
+"role": "Mann aus Chu, der sich verrückt stellte, um sich der Welt zu entziehen",
+"rel": "Begegnung mit Konfuzius oder seinen Schülern; siehe dieses Kapitel"
+},
+"长沮": {
+"name": "Changju",
+"common": "Changju",
+"alias": "",
+"role": "Einsiedler, pflügte zusammen mit Jieni; wahrer Name unbekannt",
+"rel": "Begegnung mit Konfuzius oder seinen Schülern; siehe dieses Kapitel"
+},
+"桀溺": {
+"name": "Jieni",
+"common": "Jieni",
+"alias": "",
+"role": "Einsiedler, pflügte zusammen mit Changju; wahrer Name unbekannt",
+"rel": "Begegnung mit Konfuzius oder seinen Schülern; siehe dieses Kapitel"
+},
+"荷蓧丈人": {
+"name": "Der Alte mit dem Korb",
+"common": "Der Alte mit dem Korb",
+"alias": "Der Alte; Der den Korb am Stab trug",
+"role": "Einsiedler; Name unbekannt",
+"rel": "Begegnung mit Konfuzius oder seinen Schülern; siehe dieses Kapitel"
+},
+"荷蓧丈人之子一": {
+"name": "Erster Sohn des Alten mit dem Korb",
+"common": "Erster Sohn des Alten mit dem Korb",
+"alias": "",
+"role": "Im Text erwähnte Person; Name oder Identität unbekannt",
+"rel": "Siehe dieses Kapitel"
+},
+"荷蓧丈人之子二": {
+"name": "Zweiter Sohn des Alten mit dem Korb",
+"common": "Zweiter Sohn des Alten mit dem Korb",
+"alias": "",
+"role": "Im Text erwähnte Person; Name oder Identität unbekannt",
+"rel": "Siehe dieses Kapitel"
+},
+"虞仲": {
+"name": "Yu Zhong",
+"common": "Yu Zhong",
+"alias": "",
+"role": "Zurückgezogen lebender Weiser",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"夷逸": {
+"name": "Yi Yi",
+"common": "Yi Yi",
+"alias": "",
+"role": "Zurückgezogen lebender Weiser",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"朱张": {
+"name": "Zhu Zhang",
+"common": "Zhu Zhang",
+"alias": "",
+"role": "Zurückgezogen lebender Weiser",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"少连": {
+"name": "Shao Lian",
+"common": "Shao Lian",
+"alias": "",
+"role": "Zurückgezogen lebender Weiser",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"亚饭干": {
+"name": "Gan, Musiker der zweiten Mahlzeit",
+"common": "Gan, Musiker der zweiten Mahlzeit",
+"alias": "Gan",
+"role": "Musikbeamter oder Hofmusiker; Titel nach dem Text",
+"rel": "Im Text erwähnt; Weggang beschrieben"
+},
+"三饭缭": {
+"name": "Liao, Musiker der dritten Mahlzeit",
+"common": "Liao, Musiker der dritten Mahlzeit",
+"alias": "Liao",
+"role": "Musikbeamter oder Hofmusiker; Titel nach dem Text",
+"rel": "Im Text erwähnt; Weggang beschrieben"
+},
+"四饭缺": {
+"name": "Que, Musiker der vierten Mahlzeit",
+"common": "Que, Musiker der vierten Mahlzeit",
+"alias": "Que",
+"role": "Musikbeamter oder Hofmusiker; Titel nach dem Text",
+"rel": "Im Text erwähnt; Weggang beschrieben"
+},
+"鼓方叔": {
+"name": "Fang Shu, der Trommler",
+"common": "Fang Shu, der Trommler",
+"alias": "Fang Shu",
+"role": "Musikbeamter oder Hofmusiker; Titel nach dem Text",
+"rel": "Im Text erwähnt; Weggang beschrieben"
+},
+"播鼗武": {
+"name": "Wu, der Handtrommelspieler",
+"common": "Wu, der Handtrommelspieler",
+"alias": "Wu",
+"role": "Musikbeamter oder Hofmusiker; Titel nach dem Text",
+"rel": "Im Text erwähnt; Weggang beschrieben"
+},
+"少师阳": {
+"name": "Yang, der Vize-Musikmeister",
+"common": "Yang, der Vize-Musikmeister",
+"alias": "Yang",
+"role": "Musikbeamter oder Hofmusiker; Titel nach dem Text",
+"rel": "Im Text erwähnt; Weggang beschrieben"
+},
+"击磬襄": {
+"name": "Xiang, der Klangsteinspieler",
+"common": "Xiang, der Klangsteinspieler",
+"alias": "Xiang",
+"role": "Musikbeamter oder Hofmusiker; Titel nach dem Text",
+"rel": "Im Text erwähnt; Weggang beschrieben"
+},
+"鲁公": {
+"name": "Herzog von Lu",
+"common": "Herzog von Lu",
+"alias": "Boqin",
+"role": "Sohn des Herzogs von Zhou",
+"rel": "Zitierte oder kommentierte historische Person"
+},
+"伯达": {
+"name": "Bo Da",
+"common": "Bo Da",
+"alias": "",
+"role": "Einer der im Text genannten acht Gelehrten der Zhou",
+"rel": "Im Text erwähnte historische Person"
+},
+"伯适": {
+"name": "Bo Kuo",
+"common": "Bo Kuo",
+"alias": "",
+"role": "Einer der im Text genannten acht Gelehrten der Zhou",
+"rel": "Im Text erwähnte historische Person"
+},
+"仲突": {
+"name": "Zhong Tu",
+"common": "Zhong Tu",
+"alias": "",
+"role": "Einer der im Text genannten acht Gelehrten der Zhou",
+"rel": "Im Text erwähnte historische Person"
+},
+"仲忽": {
+"name": "Zhong Hu",
+"common": "Zhong Hu",
+"alias": "",
+"role": "Einer der im Text genannten acht Gelehrten der Zhou",
+"rel": "Im Text erwähnte historische Person"
+},
+"叔夜": {
+"name": "Shu Ye",
+"common": "Shu Ye",
+"alias": "",
+"role": "Einer der im Text genannten acht Gelehrten der Zhou",
+"rel": "Im Text erwähnte historische Person"
+},
+"叔夏": {
+"name": "Shu Xia",
+"common": "Shu Xia",
+"alias": "",
+"role": "Einer der im Text genannten acht Gelehrten der Zhou",
+"rel": "Im Text erwähnte historische Person"
+},
+"季随": {
+"name": "Ji Sui",
+"common": "Ji Sui",
+"alias": "",
+"role": "Einer der im Text genannten acht Gelehrten der Zhou",
+"rel": "Im Text erwähnte historische Person"
+},
+"季騧": {
+"name": "Ji Gua",
+"common": "Ji Gua",
+"alias": "",
+"role": "Einer der im Text genannten acht Gelehrten der Zhou",
+"rel": "Im Text erwähnte historische Person"
+},
+"子夏门人": {
+"name": "Schüler des Zixia",
+"common": "Schüler des Zixia",
+"alias": "",
+"role": "Im Text erwähnte Person; Name oder Identität unbekannt",
+"rel": "Siehe dieses Kapitel"
+},
+"孟庄子": {
+"name": "Meng Zhuangzi",
+"common": "Meng Zhuangzi",
+"alias": "Su",
+"role": "Großwürdenträger von Lu",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"孟献子": {
+"name": "Meng Xianzi",
+"common": "Meng Xianzi",
+"alias": "Mie",
+"role": "Vater des Meng Zhuangzi",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"阳肤": {
+"name": "Yang Fu",
+"common": "Yang Fu",
+"alias": "",
+"role": "Vom Meng-Klan eingesetzter Strafrichter",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"公孙朝": {
+"name": "Gongsun Chao",
+"common": "Gongsun Chao",
+"alias": "Gongsun Chao aus Wei",
+"role": "Mann aus Wei",
+"rel": "Im Text erwähnt oder Gesprächspartner; siehe dieses Kapitel"
+},
+"孔子": {
+"name": "Konfuzius",
+"common": "",
+"alias": "",
+"role": "",
+"alias2": "Qiu; Zhongni; der Meister; Fuzi",
+"role2": "Mann aus Lu; der Lehrer, von dem dieses Buch berichtet",
+"rel": "Er selbst"
+}
+},
+"S": {
+"gx_h1": "Die Gespräche des Konfuzius: Beziehungskarte",
+"gx_sub": "498 Kapitel · 197 Personen",
+"gx_title": "Die Gespräche des Konfuzius – Beziehungskarte und Personen: wie die 498 Kapitel zusammenhängen | Yikonglu",
+"gx_desc": "Gleiche Frage, verschiedene Antworten; wiederkehrende Sätze; in welchen Kapiteln jede der 197 Personen vorkommt. Eine KI hat alle 498 Kapitel paarweise verglichen, um Verbindungen zu finden. Jede Verbindung wurde von Hand an den Originalseiten geprüft.",
+"gx_lead": "Die Gespräche umfassen 20 Bücher mit 498 Kapiteln. Sie wirken wie verstreute Aussprüche, hängen aber überall zusammen: Derselbe Satz steht an zwei Stellen, Konfuzius beantwortet dieselbe Frage für verschiedene Menschen verschieden, und ein Schüler tritt in Dutzenden Kapiteln auf. Insgesamt gibt es {n} Verbindungen. Eine KI hat alle Kapitel paarweise verglichen, um sie zu finden, und jede wurde von Hand an den Originalseiten geprüft.",
+"gx_tab_all": "Das ganze Netz",
+"gx_tab_wd": "Gleiche Frage, verschiedene Antworten",
+"gx_tab_rw": "Personen",
+"gx_all_note": "Jeder Punkt auf dem Kreis ist ein Kapitel, die 20 Bücher der Reihe nach im Ring. Dunkle Punkte sind Kapitel, die bereits im Video besprochen wurden. Grüne Linien verbinden einen Satz, der zweimal im Buch vorkommt ({hj} Paare). Ockerfarbene Linien verbinden die Antworten auf dieselbe Frage ({wd} Gruppen). Tippen Sie auf ein Kapitel, um zu sehen, womit es verbunden ist.",
+"gx_all_aria": "Beziehungskarte der 498 Kapitel der Gespräche",
+"gx_pick": "Tippen Sie auf ein beliebiges Kapitel im Kreis.",
+"gx_links": "Verbunden mit: ",
+"gx_nolink": "Für dieses Kapitel gibt es auf der Karte keine Linien. Auf seiner Kapitelseite finden Sie unter „Verbindungen“ Personen, andere Bücher und mehr",
+"gx_wd_note": "Dieselbe Frage, für verschiedene Menschen verschieden beantwortet. Das ist der wichtigste Faden beim Lesen der Gespräche: Die Antwort richtet sich nach dem Menschen.",
+"gx_times": "{n}-mal im Buch",
+"gx_rw_note": "In den Gespräche werden {n} Personen namentlich genannt. Tippen Sie auf eine Person: Der innere Ring zeigt die Kapitel, in denen sie vorkommt. Der äußere Ring zeigt die Personen, die am häufigsten in denselben Kapiteln erscheinen, mit der Zahl der gemeinsamen Kapitel.",
+"gx_q_ph": "Namen suchen, z. B. Zilu, Yan Hui, Guan Zhong",
+"gx_q_aria": "Namen suchen",
+"gx_rw_aria": "Personen und Kapitel",
+"gx_nch": "{n} Kapitel",
+"gx_card": "Personenkarte: Identität, Quellen, alle Kapitel ›",
+"gx_sec_h": "Verbindungen",
+"gx_sec_sub": "Eine KI hat alle Kapitel paarweise verglichen, um Verbindungen zu finden. Jede wurde von Hand an den Originalseiten geprüft",
+"gx_head_wd": "Gleiche Frage",
+"gx_head_hj": "Derselbe Satz an anderer Stelle",
+"gx_head_bw": "Andere Bücher",
+"gx_head_rw": "Personen",
+"gx_head_zy": "Umstrittene Lesart",
+"gx_head_yw": "Textvarianten",
+"gx_wd_line": "{q}: {n}-mal im Buch. Verschiedene Menschen fragten und erhielten verschiedene Antworten:",
+"gx_in_map": "Auf der Karte ansehen",
+"gx_kind_cc": "Quelle",
+"gx_kind_zj": "Von Kommentatoren zitiert",
+"gx_kind_xt": "Parallel gelesen (Yikonglu)",
+"gx_zy_pick": "Yikonglu liest: „{p}“.",
+"gx_zy_link": "Unsere Anmerkung",
+"gx_more_map": "Beziehungskarte des ganzen Buches",
+"gx_more_pdf": "Die Gespräche, KI-rekonstruierte Ausgabe (PDF)",
+"rw_crumb": "Karte · Personen",
+"rw_alias": "Mannesnamen, andere Namen",
+"rw_role": "Wer",
+"rw_rel": "Beziehung zu Konfuzius",
+"rw_src": "Quelle",
+"rw_src_std": "Der Text des jeweiligen Kapitels; die Identität folgt Zhu Xis Kommentar (Sibu-beiyao-Ausgabe der Vier Bücher)",
+"rw_sub": "Kommt in {n} Kapiteln der Gespräche vor, davon {d} im Video besprochen",
+"rw_in_map": "{name} auf der Karte ansehen: Kapitel und häufige Mitpersonen ›",
+"rw_h2": "Kapitel in den Gesprächen",
+"rw_wj": "noch nicht besprochen",
+"rw_note": "In der Kapitelfolge dieser Website. Besprochene Kapitel enthalten unsere Lesart und die Seiten der Kommentatoren. Kapitel mit dem Vermerk „noch nicht besprochen“ enthalten den Originaltext und die Kommentare.",
+"rw_title": "{name} in den Gesprächen: alle Kapitel | Yikonglu",
+"rw_desc": "{name} ({alias}), {role}: kommt in {n} Kapiteln der Gespräche vor.",
+"rw_chips": "Personen in diesem Kapitel: "
+},
+"W": [
+{
+"id": "wen-ren",
+"q": "Frage nach der Menschlichkeit",
+"items": [
+{
+"c": "lunyu:6.20",
+"who": "Fan Chi",
+"a": "Der Menschliche nimmt zuerst das Schwere auf sich und denkt erst danach an den Gewinn."
+},
+{
+"c": "lunyu:12.1",
+"who": "Yan Yuan",
+"a": "Sich selbst überwinden und zu den Riten zurückkehren, das ist Menschlichkeit."
+},
+{
+"c": "lunyu:12.2",
+"who": "Zhonggong",
+"a": "Was du selbst nicht wünschst, das tu auch anderen nicht an."
+},
+{
+"c": "lunyu:12.3",
+"who": "Sima Niu",
+"a": "Der Menschliche ist zurückhaltend im Reden."
+},
+{
+"c": "lunyu:12.22",
+"who": "Fan Chi",
+"a": "Die Menschen lieben."
+},
+{
+"c": "lunyu:13.19",
+"who": "Fan Chi",
+"a": "Im Alltag ehrerbietig, im Dienst gewissenhaft, anderen gegenüber loyal."
+},
+{
+"c": "lunyu:15.9",
+"who": "Zigong",
+"a": "Diene den Tüchtigen unter den Würdenträgern, befreunde dich mit den Menschlichen unter den Gelehrten.",
+"note": "Gefragt war, wie man Menschlichkeit übt (问为仁)"
+},
+{
+"c": "lunyu:17.6",
+"who": "Zizhang",
+"a": "Ehrerbietung, Großzügigkeit, Vertrauenswürdigkeit, Eifer, Güte."
+}
+]
+},
+{
+"id": "wen-xiao",
+"q": "Frage nach der Kindespietät",
+"items": [
+{
+"c": "lunyu:2.5",
+"who": "Meng Yizi",
+"a": "Nicht zuwiderhandeln."
+},
+{
+"c": "lunyu:2.6",
+"who": "Meng Wubo",
+"a": "Die Eltern sorgen sich allein darum, dass ihr krank werdet."
+},
+{
+"c": "lunyu:2.7",
+"who": "Ziyou",
+"a": "Ohne Ehrerbietung – worin läge da der Unterschied?"
+},
+{
+"c": "lunyu:2.8",
+"who": "Zixia",
+"a": "Die Miene ist das Schwere."
+}
+]
+},
+{
+"id": "wen-zheng",
+"q": "Frage nach dem Regieren",
+"items": [
+{
+"c": "lunyu:12.7",
+"who": "Zigong",
+"a": "Genug Nahrung, genug Heer, und das Volk vertraut einem."
+},
+{
+"c": "lunyu:12.11",
+"who": "Herzog Jing von Qi",
+"a": "Der Herrscher sei Herrscher, der Untertan Untertan, der Vater Vater, der Sohn Sohn."
+},
+{
+"c": "lunyu:12.14",
+"who": "Zizhang",
+"a": "Im Amt nicht ermüden, es mit Loyalität ausführen."
+},
+{
+"c": "lunyu:12.17",
+"who": "Ji Kangzi",
+"a": "Regieren heißt richtigstellen."
+},
+{
+"c": "lunyu:12.19",
+"who": "Ji Kangzi",
+"a": "Ihr regiert – wozu braucht Ihr das Töten?"
+},
+{
+"c": "lunyu:13.1",
+"who": "Zilu",
+"a": "Ihnen vorangehen, sich für sie mühen."
+},
+{
+"c": "lunyu:13.2",
+"who": "Zhonggong",
+"a": "Zuerst die Beamten einsetzen, kleine Fehler verzeihen, Tüchtige und Begabte erheben."
+},
+{
+"c": "lunyu:13.16",
+"who": "der Herzog von She",
+"a": "Die Nahen sind erfreut, die Fernen kommen."
+},
+{
+"c": "lunyu:13.17",
+"who": "Zixia",
+"a": "Nicht nach Schnelligkeit streben, nicht auf kleinen Vorteil sehen."
+},
+{
+"c": "lunyu:20.2",
+"who": "Zizhang",
+"a": "Die fünf Vorzüge ehren, die vier Übel abwehren.",
+"note": "Gefragt war, wie man ein Amt führt"
+}
+]
+},
+{
+"id": "wen-junzi",
+"q": "Frage nach dem Edlen",
+"items": [
+{
+"c": "lunyu:2.13",
+"who": "Zigong",
+"a": "Er tut zuerst, was er sagen will, und spricht dann entsprechend."
+},
+{
+"c": "lunyu:12.4",
+"who": "Sima Niu",
+"a": "Der Edle sorgt sich nicht und fürchtet sich nicht."
+},
+{
+"c": "lunyu:14.45",
+"who": "Zilu",
+"a": "Sich selbst in Ehrerbietung vervollkommnen."
+}
+]
+},
+{
+"id": "wen-shi",
+"q": "Frage nach dem Gelehrten (shi)",
+"items": [
+{
+"c": "lunyu:12.20",
+"who": "Zizhang",
+"a": "Schlicht und aufrecht, die Rechtlichkeit liebend, Worte prüfen und Mienen beobachten, darauf bedacht, sich unter andere zu stellen.",
+"note": "Gefragt war, wann ein Gelehrter als „durchgedrungen“ (达) gilt"
+},
+{
+"c": "lunyu:13.20",
+"who": "Zigong",
+"a": "Im eigenen Handeln Scham kennen und als Gesandter in alle Richtungen den Auftrag des Fürsten nicht entehren."
+},
+{
+"c": "lunyu:13.28",
+"who": "Zilu",
+"a": "Ernsthaft ermahnend, herzlich und freundlich."
+}
+]
+},
+{
+"id": "wen-zhi",
+"q": "Frage nach dem Wissen",
+"items": [
+{
+"c": "lunyu:6.20",
+"who": "Fan Chi",
+"a": "Sich dem widmen, was für das Volk recht ist, Geister und Götter ehren, aber auf Abstand halten."
+},
+{
+"c": "lunyu:12.22",
+"who": "Fan Chi",
+"a": "Die Menschen kennen."
+}
+]
+},
+{
+"id": "wen-chongde",
+"q": "Frage, wie man die Tugend erhöht",
+"items": [
+{
+"c": "lunyu:12.10",
+"who": "Zizhang",
+"a": "Loyalität und Vertrauen zur Hauptsache machen und sich dem Rechten zuwenden."
+},
+{
+"c": "lunyu:12.21",
+"who": "Fan Chi",
+"a": "Erst die Aufgabe, dann der Gewinn."
+}
+]
+}
+],
+"X": {
+"4": {
+"book": "Buch der Lieder",
+"note": "Buch der Lieder, Wei Feng, Qi Yu: „Wie geschnitten, wie gefeilt, wie geschliffen, wie poliert.“ (如切如磋，如琢如磨。)"
+},
+"7": {
+"book": "Buch der Lieder",
+"note": "Buch der Lieder, Lu Song, Jiong: „Seine Gedanken ohne Abweg; er denkt an die Pferde, und sie eilen dahin.“ (思無邪，思馬斯徂。)"
+},
+"8": {
+"book": "Mengzi",
+"note": "Mengzi, Teng Wen Gong I, Kap. 2: Zengzi sagte: „Zu Lebzeiten diene ihnen nach den Riten; nach dem Tod begrabe sie nach den Riten und opfere ihnen nach den Riten …“"
+},
+"10": {
+"book": "Buch der Lieder",
+"note": "Buch der Lieder, Wei Feng, Shuo Ren: „Ihr reizendes Lächeln, wie anmutig! Ihre schönen Augen, wie klar!“ (巧笑倩兮，美目盼兮。)"
+},
+"12": {
+"book": "Mengzi",
+"note": "Mengzi, Gongsun Chou I, Kap. 7: Konfuzius sagte: „Schön ist es, dort zu wohnen, wo Menschlichkeit herrscht.“ (孔子曰：里仁為美。)"
+},
+"13": {
+"book": "Mengzi",
+"note": "Mengzi, Gongsun Chou I, Kap. 7: „Wer bei seiner Wahl nicht dort weilt, wo Menschlichkeit ist, wie kann der weise sein?“ (擇不處仁，焉得智？)"
+},
+"23": {
+"book": "Buch der Lieder",
+"note": "Buch der Lieder, Xiao Ya, Xiao Min: „Zitternd und bebend, als stünde man am Rand eines tiefen Abgrunds, als schritte man über dünnes Eis.“ (戰戰兢兢，如臨深淵，如履薄冰。)"
+},
+"25": {
+"book": "Mengzi",
+"note": "Mengzi, Teng Wen Gong I, Kap. 4: Konfuzius sagte: „Wie groß war Yao als Herrscher!“ (孔子曰：大哉，堯之為君！)"
+},
+"26": {
+"book": "Mengzi",
+"note": "Mengzi, Teng Wen Gong I, Kap. 4: „Nur der Himmel ist groß, und nur Yao nahm ihn sich zum Maß.“ (惟天為大，惟堯則之。)"
+},
+"27": {
+"book": "Mengzi",
+"note": "Mengzi, Teng Wen Gong I, Kap. 4: „So weit und unermesslich, dass das Volk keinen Namen dafür fand!“ (蕩蕩乎，民無能名焉！)"
+},
+"31": {
+"book": "Buch der Lieder",
+"note": "Buch der Lieder, Bei Feng, Xiong Zhi: „Ohne Neid, ohne Begehren – wie sollte er nicht gut sein?“ (不忮不求，何用不臧。)"
+},
+"37": {
+"book": "Buch der Lieder",
+"note": "Buch der Lieder, Xiao Ya, Wo xing qi ye: „Wahrlich nicht um des Reichtums willen, sondern bloß aus Neigung zum Neuen.“ (成不以富，亦祇以異。)"
+},
+"45": {
+"book": "Buch der Lieder",
+"note": "Buch der Lieder, Bei Feng, Pao you ku ye: „Ist es tief, geht man in Kleidern hindurch; ist es seicht, schürzt man sie.“ (深則厲，淺則揭。)"
+},
+"57": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Die beiden Zeilen „Von Natur sind sie einander nahe, durch Übung entfernen sie sich weit“ sind direkt Konfuzius' eigenen Worten entnommen."
+},
+"58": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Mengs Mutter zog dreimal um, um die richtige Nachbarschaft zu wählen. Die Kommentatoren erklären das alle mit diesem Kapitel: Man soll seinen Wohnort dort wählen, wo Menschlichkeit herrscht."
+},
+"59": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Was soll aus dem Alter werden?“: Wer in der Jugend nicht lernt und mit vierzig, fünfzig noch nichts erreicht hat, vor dem braucht man keine Ehrfurcht mehr zu haben."
+},
+"60": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Den Schluss seiner Lernermahnung bildet das Beiyao mit den Worten, mit denen Yang Huo Konfuzius zum Amt drängte: Die Zeit wartet auf niemanden."
+},
+"61": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Jade, die nicht geschliffen wird, wird kein Gefäß“: Zigong greift auf das Buch der Lieder zurück, um zu sagen, dass man an sich arbeiten soll wie an Jade – schneiden, feilen, schleifen, polieren."
+},
+"62": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Handwerker vollenden ihre Werke in der Werkstatt, der Edle erreicht den Weg durch Lernen. Das schließt genau an „Wer nicht lernt, kennt die Rechtlichkeit nicht“ an."
+},
+"63": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Welche Freunde man bei „Lehrer und Freunde nahe halten“ suchen soll: die aufrechten, die verlässlichen und die mit weitem Wissen."
+},
+"64": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Für die Reihenfolge „Zuerst Kindespietät und Bruderliebe, dann Wissen“ berufen sich Wang Xiang und Atsumi beide auf dieses Kapitel."
+},
+"65": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Wie man „Wissen“ gebraucht: viel hören, viel sehen und das Unsichere vorerst beiseitelassen."
+},
+"66": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Kong Rong überlässt anderen die größeren Birnen: Das ist die Pflicht des jüngeren Bruders. Youzi sagt, Kindespietät und Bruderliebe seien die Wurzel der Menschlichkeit."
+},
+"67": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Die Drei Bande regeln die Stellung von Herrscher und Untertan, Vater und Sohn, Mann und Frau. Nach Konfuzius erfüllt zuerst jeder seinen eigenen Teil."
+},
+"68": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Diese vier Jahreszeiten, ihr Lauf endet nie“: Der Himmel spricht nicht, und doch nehmen die vier Jahreszeiten ihren Lauf."
+},
+"69": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Der Mitte entsprechend“: Der Polarstern steht unbewegt in der Mitte, und alle Sterne kreisen um ihn."
+},
+"70": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Der Yinshu erklärt die „Fünf Beständigkeiten“ mit Huang Kans Subkommentar zu diesem Kapitel: Die Drei Bande und die Fünf Beständigkeiten ändern sich in hundert Generationen nicht."
+},
+"71": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Die letzte der Fünf Beständigkeiten ist die Vertrauenswürdigkeit: Von einem Menschen, der nicht vertrauenswürdig ist, weiß man nicht, wozu er noch taugt."
+},
+"72": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Zu den sechs Getreiden passt der Satz des alten Mannes mit dem Korb: Wer Hände und Füße nicht rührt, kann nicht einmal die fünf Getreidearten unterscheiden."
+},
+"73": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "So wichtig die sechs Haustiere sind, an den Menschen reichen sie nicht heran: Als der Stall brannte, fragte Konfuzius nur, ob ein Mensch verletzt sei."
+},
+"74": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Die sieben Gefühle muss man nicht auslöschen, nur maßvoll halten: Freude ohne Ausschweifung, Trauer ohne Selbstverletzung."
+},
+"75": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Die acht Klänge sind Instrumente. Konfuzius spricht vom Nutzen der Musik: In der Musik vollendet sich der Mensch."
+},
+"76": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Musik ist mehr als Glocken und Trommeln. Das lässt sich neben den „acht Klängen“ lesen."
+},
+"77": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Der Herrscher sei achtungsvoll, der Untertan loyal“: Der Herrscher behandelt den Untertan nach den Riten, der Untertan dient ihm mit Loyalität. Beide Seiten haben ihre Pflicht."
+},
+"78": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Der Geist der Zehn Rechtlichkeiten: Jeder erfüllt die Pflicht seiner Stellung."
+},
+"79": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Ist die Elementarschule beendet, kommen die Vier Bücher“: Erst lernt man, ein Mensch zu sein, und wenn Kraft übrig bleibt, lernt man die Schriften."
+},
+"80": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Mit Fegen, Sprengen, Antworten und Aufwarten beginnen und Schritt für Schritt nach oben durchdringen: Das ist der Weg von der Elementarschule zu den Vier Büchern."
+},
+"81": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Die Gespräche umfassen zwanzig Bücher“: Ein Klick führt zum Inhaltsverzeichnis aller zwanzig Bücher der Gespräche."
+},
+"82": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Wie die „aufgezeichneten guten Worte“ aussehen, zeigt schon das erste Kapitel: ein Satz, eine Einsicht."
+},
+"83": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Die beiden Zeichen im Buchtitel Zhongyong (Maß und Mitte) hat Konfuzius schon als höchste Tugend bezeichnet."
+},
+"84": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Zu den drei Yi passt, dass Konfuzius sagt, er habe im Alter das Buch der Wandlungen studiert."
+},
+"85": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Die Reihenfolge von Liedern, Riten und Musik unter den Sechs Klassikern nennt Konfuzius vollständig in diesem einen Satz."
+},
+"86": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Unser Herzog von Zhou schuf die Zhou-Riten“: Konfuzius sagt, die Zhou-Riten hätten von Xia und Shang gelernt, darum folge er den Zhou."
+},
+"87": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Riten und Musik sind vollständig“: Konfuzius sagte zu seinem Sohn, wer die Riten nicht lerne, habe keinen festen Stand."
+},
+"88": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Das „Überliefern“ in „die Worte der Weisen überliefern“ ist genau das Wort, mit dem Konfuzius sagt, er überliefere und erfinde nicht."
+},
+"89": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Warum man die Lieder „rezitieren“ soll: Das Beiyao zitiert eben dieses Kapitel."
+},
+"90": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Das Zhongshuo des Wang Tong (Wenzhongzi) ist den Gesprächen nachgebildet. Die Kommentatoren vergleichen es alle mit den Gesprächen."
+},
+"91": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Wang Xiang erklärt Yao mit genau diesem Lob, das Konfuzius Yao zollt."
+},
+"92": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Tang und Yu“ meint Yao und Shun. Shun regierte die Welt mit fünf weisen Ministern."
+},
+"93": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "König Wu von Zhou hatte „zehn Minister, die Ordnung schaffen“: luan 乱 bedeutet hier „ordnen“, also zehn Minister, die das Chaos bändigen."
+},
+"94": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Die drei Dynastien Xia, Shang und Zhou folgten aufeinander. Die Riten wurden ergänzt und gekürzt, und das lässt sich erschließen."
+},
+"95": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Wie es aussieht, wenn „das Königsband zerfällt“: Riten, Musik und Feldzüge gehen nicht mehr vom Himmelssohn aus."
+},
+"96": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Die fünf Hegemonen sind mächtig“: Konfuzius lobt und tadelt zwei der Hegemonen."
+},
+"97": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Auch Hegemonen haben Verdienste: Konfuzius rühmt Guan Zhong, weil er die Welt ins Lot brachte."
+},
+"98": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Das Wort „usurpieren“ in „Wang Mang usurpierte“ ist die Festlegung der Historiker. Steht die Bezeichnung fest, ist klar, was recht und was unrecht ist."
+},
+"99": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Vor seiner Usurpation war Wang Mang bescheiden und höflich. Einen Menschen beurteilt man auf lange Sicht, nicht nach dem Augenblick."
+},
+"100": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Wer in der Zeit der Drei Reiche die legitime Linie war, darum stritten die Historiker: um die rechte Bezeichnung."
+},
+"101": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Die Sui „vererbten nicht weiter und verloren die Linie“: Konfuzius sagte längst, wer die Welt nicht auf rechtem Weg gewinnt, hält sie nicht viele Generationen."
+},
+"102": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Der Text schreibt „empfing die Abdankung der Zhou“, die Kommentatoren schreiben „usurpierte“: Es geht um Name und Wirklichkeit."
+},
+"103": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "In der Zeit der Fünf Dynastien rissen meist Generäle den Thron an sich, und oft war nach ein, zwei Generationen alles zu Ende."
+},
+"104": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Dass sich Liao und Jin Kaiser nannten, lässt sich neben diesem Satz des Konfuzius lesen: Ob man einen Herrscher hat oder nicht, hängt an den Riten."
+},
+"105": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Machtgierige Eunuchen wüten“: Konfuzius sagt, beim Regieren solle man sich von Schmeichlern fernhalten."
+},
+"106": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Unheil entsteht oft in nächster Nähe: Die Ming gingen an Eunuchen zugrunde, also innerhalb der eigenen Mauern."
+},
+"107": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Mit dem Mund rezitieren, mit dem Herzen bedenken“: Rezitieren ist Lernen, Bedenken ist Denken. Keines von beiden darf fehlen."
+},
+"108": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Morgens dabei, abends dabei“: Wang Xiang sagt, das sei das stete Üben."
+},
+"109": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Sie verzeichnen Ordnung und Chaos und lehren Aufstieg und Niedergang“: Wer Geschichte liest, kann auf spätere Zeiten schließen. Konfuzius sagt, auch hundert Generationen seien erkennbar."
+},
+"110": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Konfuzius nahm Xiang Tuo zum Lehrer: Er hatte keinen festen Lehrer und lernte von jedem, der den Weg besaß."
+},
+"111": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Die „Lu-Gespräche“, die Zhao Pu las, sind die heutigen Gespräche in zwanzig Büchern."
+},
+"112": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Er war schon im Amt und lernte doch fleißig“: Wer im Amt Kraft übrig hat, soll weiter lernen."
+},
+"113": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Das Haar an den Balken binden, sich mit der Ahle in den Schenkel stechen: Das ist hartes Lernen. Konfuzius sagt von sich, beim Lernen vergesse er das Essen."
+},
+"114": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Sich abmühen heißt noch nicht, richtig zu lernen: Lernen ohne Denken bleibt verworren."
+},
+"115": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Das „Hohe“ in „mühte sich um das Hohe“: Yan Yuan sagt, die Lehre des Konfuzius stehe hoch aufgerichtet da und sei unerreichbar."
+},
+"116": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Su Xun „fasste erst mit siebenundzwanzig Eifer“. Der Yinshu erklärt „Eifer fassen“ mit diesem Satz des Konfuzius."
+},
+"117": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Konfuzius setzte sich mit fünfzehn sein Ziel, Su Xun fasste erst mit siebenundzwanzig Eifer. Beides lässt sich vergleichend lesen."
+},
+"118": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Wunderkinder „werden bestaunt“. Konfuzius sagt, die Jungen seien zu achten, mahnt aber auch: Wer mit vierzig, fünfzig nichts von sich hören lässt, verdient keine Ehrfurcht."
+},
+"119": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Nach den Wunderkindern schließt das Beiyao mit „unten lernen und nach oben durchdringen“: Neben Begabung braucht es schrittweises Lernen."
+},
+"120": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Man soll sich selbst ermahnen“: Ermahnt wird man selbst. Man setzt damit nicht andere unter Druck."
+},
+"121": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Cai Wenji und Xie Daoyun konnten lernen. Beim Lehren macht man ohnehin keinen Unterschied der Herkunft."
+},
+"122": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Liu Yan wurde mit sieben Jahren Beamter, Konfuzius setzte sich erst mit fünfzehn sein Ziel. Ob früh oder spät, ist nicht wichtig. Wichtig ist das Ziel."
+},
+"123": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Liu Yan verspottete mit seiner Antwort zum Zeichen 朋 die Cliquen. Dazu passt Konfuzius' „gesellig, aber nicht parteiisch“."
+},
+"124": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Wer nicht lernt, steht unter den Geschöpfen“: Der Zengzhu verwendet diesen Satz des Konfuzius."
+},
+"125": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Jung lernen, im Mannesalter handeln“: Lernen und Tun wechseln sich ein Leben lang ab."
+},
+"126": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Den Namen bekannt machen“: Der Edle fürchtet, sein Leben lang nichts Rühmenswertes getan zu haben."
+},
+"127": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "Zum „Nutzen“ in „Spiel bringt keinen Nutzen“ zitiert der Yinshu dieses Kapitel: Fortschritt braucht langsame Arbeit, keine schnellen Erfolge."
+},
+"128": {
+"book": "Drei-Zeichen-Klassiker",
+"note": "„Spiel bringt keinen Nutzen“ heißt nicht, dass jedes Spiel verboten ist: Auch Konfuzius sagt „sich in den Künsten ergehen“."
+},
+"129": {
+"book": "Daodejing",
+"note": "Laozi sagt, das Dao lasse sich nicht aussprechen. Auch Konfuzius sagt, der Himmel spreche nie, und doch laufen die vier Jahreszeiten."
+},
+"130": {
+"book": "Daodejing",
+"note": "„Das Werk vollbracht, verweilt er nicht darin“: Shun und Yu gewannen die Welt, betrachteten sie aber nicht als ihr Eigen."
+},
+"131": {
+"book": "Daodejing",
+"note": "Lü Huiqing erklärt „Das Begehrenswerte nicht zeigen, damit das Herz des Volkes nicht verwirrt wird“ mit Konfuzius' Antwort an Ji Kangzi: Wenn Ihr selbst nicht gierig seid …"
+},
+"132": {
+"book": "Daodejing",
+"note": "Heshang Gong zitiert diesen Satz zu „die Tüchtigen nicht hervorheben“ und schreibt „sich von Schönen fernhalten“ (远美人) statt „sich von Schmeichlern fernhalten“ (远佞人). Nur ein Zeichen ist anders."
+},
+"133": {
+"book": "Daodejing",
+"note": "Konfuzius will „die Tüchtigen und Begabten erheben“, Laozi sagt „die Tüchtigen nicht hervorheben“. In der Frage, wen man einsetzt, stehen sich die beiden Schulen genau entgegen."
+},
+"134": {
+"book": "Daodejing",
+"note": "Laozi spricht vom „Licht dämpfen und sich dem Staub angleichen“, Konfuzius von „Harmonie ohne Gleichmacherei“. Beide reden von Harmonie: Der eine meint das Verschmelzen, der andere das Wahren des Eigenen."
+},
+"135": {
+"book": "Daodejing",
+"note": "Du Daojian sagt, Laozi berufe sich oft auf „was die Alten sagten“ und „ein Spruch lautet“. Er gebe also die Alten wieder, wie Konfuzius, der „überliefert und nicht erfindet“."
+},
+"136": {
+"book": "Daodejing",
+"note": "„Er stellt sich hintan und ist doch voran“: Wer zuerst an andere denkt, hat selbst festen Stand. Auch Konfuzius sagt: „Will man selbst feststehen, hilft man anderen feststehen.“"
+},
+"137": {
+"book": "Daodejing",
+"note": "Laozi sagt „Das höchste Gute ist wie Wasser“, Konfuzius „Der Wissende freut sich am Wasser“: Konfuzianer und Daoisten vergleichen beide den Menschen mit Wasser."
+},
+"138": {
+"book": "Daodejing",
+"note": "Beide blicken aufs Wasser. Konfuzius sieht darin die unaufhaltsam verrinnende Zeit."
+},
+"139": {
+"book": "Daodejing",
+"note": "„Reich und vornehm und dabei hochmütig – das bringt sich selbst Unheil.“ Auch Konfuzius sagt, „reich, aber nicht hochmütig“ genüge nicht, man solle „reich sein und die Riten lieben“."
+},
+"140": {
+"book": "Daodejing",
+"note": "„Festhalten und randvoll füllen ist schlechter als aufhören“: Man muss wissen, wann man aufhört. Konfuzius nennt Warnungen für Jugend, Mannesalter und Alter."
+},
+"141": {
+"book": "Daodejing",
+"note": "„Hell und klar nach allen Seiten – kann man da ohne Wissen sein?“ Auch Konfuzius sagt von sich „ich weiß nichts“. Fragt ihn jemand, klärt er die Sache von beiden Enden her."
+},
+"142": {
+"book": "Daodejing",
+"note": "Heshang Gong deutet das „Himmelstor“ als den Polarstern. Konfuzius vergleicht das Regieren durch Tugend mit dem Polarstern."
+},
+"143": {
+"book": "Daodejing",
+"note": "Laozi sagt, der Nutzen der Dinge liege im „Leeren“. Konfuzius sagt, der Edle sei kein bloßes Gerät."
+},
+"144": {
+"book": "Daodejing",
+"note": "Wu Cheng zitiert Dong Sijing: Unter Konfuzius' „vier Nicht“ steht das Sehen zuerst. Das passt zu Laozis „Die fünf Farben machen das Auge blind“ und „für den Bauch, nicht für das Auge“."
+},
+"145": {
+"book": "Daodejing",
+"note": "Wang Pang erklärt „Mein großes Übel ist, dass ich einen Leib habe“ mit Konfuzius' „kein Ich“ und sagt, der Gedanke sei derselbe."
+},
+"146": {
+"book": "Daodejing",
+"note": "„Gunst und Schmach erschrecken gleichermaßen“: Wer etwas nicht hat, fürchtet, es nicht zu bekommen, und wer es hat, fürchtet, es zu verlieren. Genau so ist der „gemeine Mensch“, von dem Konfuzius spricht."
+},
+"147": {
+"book": "Daodejing",
+"note": "„Wer seinen Leib wertschätzt, um für die Welt zu wirken“: Die Kommentatoren greifen Konfuzius' Lob auf Shun und Yu auf, die „die Welt besaßen und doch nicht an ihr hingen“."
+},
+"148": {
+"book": "Daodejing",
+"note": "„Das Dao der Alten ergreifen, um das Heutige zu lenken“: Auch Konfuzius sagt von sich, er vertraue dem Alten und liebe es."
+},
+"149": {
+"book": "Daodejing",
+"note": "Erst wer die alten Prinzipien kennt, wird mit dem Gegenwärtigen fertig. Konfuzius nennt das „das Alte pflegen und das Neue erkennen“."
+},
+"150": {
+"book": "Daodejing",
+"note": "„Zögernd, wie wer im Winter einen Fluss durchquert“: Man ist so vorsichtig wie auf einem gefrorenen Fluss. Ebenso wirkt Zengzi, als er das Buch der Lieder zitiert."
+},
+"151": {
+"book": "Daodejing",
+"note": "„Würdevoll, wie ein Gast“: Man ist ernst wie ein Gast. Konfuzius sagt, außer Haus solle man sich verhalten, als empfange man einen hohen Gast."
+},
+"152": {
+"book": "Daodejing",
+"note": "Kaiser Xuanzong von Tang erklärt „Wer das Beständige nicht kennt, handelt blindlings – Unheil“ mit diesem Satz: Wer keine Beständigkeit hat, erleidet Schande."
+},
+"153": {
+"book": "Daodejing",
+"note": "Laozi sagt, vom besten Herrscher wisse das Volk nur, dass es ihn gibt. Auch Konfuzius rühmt Shun, der „durch Nicht-Handeln regierte“."
+},
+"154": {
+"book": "Daodejing",
+"note": "„Wo das Vertrauen nicht genügt, da gibt es Misstrauen“: Auch Konfuzius stellt das Vertrauen über Nahrung und Heer."
+},
+"155": {
+"book": "Daodejing",
+"note": "Der Herrscher bewegt sich nicht, und alle kreisen von selbst um ihn. Das ist genau Laozis „Höchster“."
+},
+"156": {
+"book": "Daodejing",
+"note": "Laozi sagt, erst wenn die sechs Verwandten uneins sind, zeigen sich Kindespietät und Güte. Konfuzius sagt, sind die Oberen pietätvoll und gütig, sind die Unteren loyal. Dieselben Wörter werden auf zwei Arten gedeutet."
+},
+"157": {
+"book": "Daodejing",
+"note": "Die Konfuzianer sehen in der Kindespietät die Wurzel der Menschlichkeit. Laozi aber sagt: „Wird das große Dao aufgegeben, gibt es Menschlichkeit und Rechtlichkeit.“"
+},
+"158": {
+"book": "Daodejing",
+"note": "Laozi will „Kunstfertigkeit abschaffen und Gewinn aufgeben“. Auch Konfuzius verabscheut „geschickte Worte und gefällige Miene“."
+},
+"159": {
+"book": "Daodejing",
+"note": "„Zwischen ‚wei‘ und ‚a‘ – wie groß ist der Unterschied?“ „Wei“ (唯) ist die respektvolle Antwort des Schülers an den Lehrer. So antwortet Zengzi dem Konfuzius."
+},
+"160": {
+"book": "Daodejing",
+"note": "„Was die Menschen fürchten, muss man fürchten“: Konfuzius nennt drei Dinge, vor denen der Edle Ehrfurcht hat."
+},
+"161": {
+"book": "Daodejing",
+"note": "Laozi sagt „Das Lernen abschaffen, und es gibt keine Sorgen“. Konfuzius sagt, einen ganzen Tag zu grübeln sei schlechter als zu lernen."
+},
+"162": {
+"book": "Daodejing",
+"note": "Der von Jiao Hong aufgenommene Kommentar des Chunfu zitiert Su Shis „Das Vergehende ist wie dies und ist doch nie fortgegangen“. Er erklärt „von alters bis heute …“ mit Konfuzius' Seufzer am Fluss."
+},
+"163": {
+"book": "Daodejing",
+"note": "Heshang Gong deutet „unversehrt zurückgeben“ so, dass man den Leib unversehrt den Eltern zurückgibt. Genau das tut Zengzi auf dem Sterbebett: „Deckt meine Füße auf, deckt meine Hände auf.“"
+},
+"164": {
+"book": "Daodejing",
+"note": "„Gerade weil er nicht streitet, kann niemand in der Welt mit ihm streiten.“ Auch Konfuzius sagt, der Edle habe nichts, worum er streite."
+},
+"165": {
+"book": "Daodejing",
+"note": "Su Zhe erklärt „Wer eins ist mit dem Verlust, den nimmt auch der Verlust gern auf“ mit Konfuzius: Wer ganz auf Menschlichkeit gerichtet ist, tut nichts Böses. Umso mehr gilt das für den, der auf das Dao gerichtet ist."
+},
+"166": {
+"book": "Daodejing",
+"note": "Laozi sagt, ein Sturm dauere keinen ganzen Morgen. Konfuzius vergleicht die Tugend des Edlen mit dem Wind. Dasselbe Wort wird auf zwei Arten gebraucht."
+},
+"167": {
+"book": "Daodejing",
+"note": "„Wer sich selbst rühmt, hat kein Verdienst“: Yan Yuans Wunsch war gerade, seine Vorzüge nicht zu rühmen."
+},
+"168": {
+"book": "Daodejing",
+"note": "Meng Zhifan deckte nach einer Niederlage den Rückzug. Beim Einzug in die Stadt sagte er, sein Pferd sei nicht vorangekommen, denn er wollte kein Verdienst beanspruchen."
+},
+"169": {
+"book": "Daodejing",
+"note": "Jiao Hong überliefert, wie Li Yue „法地地，法天天，法道道“ liest. Er belegt diese Lesart mit dem Satzbau von Konfuzius' „君君臣臣父父子子“ (der Herrscher sei Herrscher, der Untertan Untertan …)."
+},
+"170": {
+"book": "Daodejing",
+"note": "Laozi sagt: „Der Himmel ist groß, die Erde ist groß, auch der König ist groß.“ Konfuzius rühmt Yao: „Nur der Himmel ist groß, und nur Yao nahm ihn sich zum Maß.“"
+},
+"171": {
+"book": "Daodejing",
+"note": "Die ausgegrabenen Fassungen haben „Der Edle reist den ganzen Tag, ohne sich von seinem schweren Tross zu trennen“. Konfuzius sagt: „Ist der Edle nicht gewichtig, hat er keine Würde.“"
+},
+"172": {
+"book": "Daodejing",
+"note": "Su Zhe erklärt „Gutes Reden hat keinen Makel“ mit „erst zur rechten Zeit sprechen“. Diese Worte stammen aus diesem Kapitel."
+},
+"173": {
+"book": "Daodejing",
+"note": "„Der gute Mensch ist der Lehrer des nicht guten, der nicht gute ist das Material des guten.“ Konfuzius sagt, Gute wie Schlechte seien Lehrer."
+},
+"174": {
+"book": "Daodejing",
+"note": "„Er versteht es stets, Menschen zu retten, darum verwirft er keinen.“ Auch Konfuzius sagt, beim Lehren mache man keinen Unterschied der Herkunft."
+},
+"175": {
+"book": "Daodejing",
+"note": "Jiao Hong überliefert Lü Huiqings Kommentar. Dieser zitiert „Erhaben, wie Shun und Yu die Welt besaßen und doch nicht an ihr hingen“, um „Die Welt ist ein heiliges Gefäß, man kann nicht an ihr handeln“ zu erklären."
+},
+"176": {
+"book": "Daodejing",
+"note": "Kaiser Xuanzongs Kommentar verwendet „die Abfolge des Himmels ruht auf deiner Person“. Das stammt aus Yaos Worten bei der Übergabe der Herrschaft an Shun."
+},
+"177": {
+"book": "Daodejing",
+"note": "„Erfolgreich, aber nicht prahlend, erfolgreich, aber nicht sich rühmend“: Auch Konfuzius will einen Heerführer, „der vor der Aufgabe Furcht hat und gern plant, um sie zu vollenden“."
+},
+"178": {
+"book": "Daodejing",
+"note": "Laozi sagt, man solle „nicht mit Waffen die Welt bezwingen“. Konfuzius sagt, erst nach sieben Jahren Unterweisung dürfe das Volk in den Krieg. Beide greifen nicht leichtfertig zu den Waffen."
+},
+"179": {
+"book": "Daodejing",
+"note": "„Waffen sind unheilvolle Werkzeuge“: Unter den drei Dingen, bei denen Konfuzius am vorsichtigsten war, ist der Krieg."
+},
+"180": {
+"book": "Daodejing",
+"note": "Herzog Ling von Wei fragte nach der Kriegsführung. Konfuzius sagte, das habe er nicht gelernt, und reiste am nächsten Tag ab."
+},
+"181": {
+"book": "Daodejing",
+"note": "„Mit dem ersten Ordnen entstehen Namen. Sind die Namen da, soll man wissen, wo aufzuhören ist.“ Konfuzius will die Namen richtigstellen, Laozi sagt, stehen die Namen fest, müsse man wissen, wann Schluss ist."
+},
+"182": {
+"book": "Daodejing",
+"note": "Su Zhe erklärt „Wer sich selbst besiegt, ist stark“ mit „sich selbst überwinden und zur eigenen Natur zurückkehren“. Das lehnt sich deutlich an Konfuzius' „sich selbst überwinden und zu den Riten zurückkehren“ an."
+},
+"183": {
+"book": "Daodejing",
+"note": "Su Zhe erklärt „Das große Dao strömt überallhin, es kann nach links und nach rechts“ mit Konfuzius' Wort über sich selbst: „Nichts ist mir unbedingt erlaubt, nichts unbedingt verboten.“"
+},
+"184": {
+"book": "Daodejing",
+"note": "„Ist das Werk vollbracht, beansprucht er es nicht als sein Eigen“ (功成不名有): Konfuzius preist Yao, denn das Volk konnte nicht sagen, worin seine Größe lag."
+},
+"185": {
+"book": "Daodejing",
+"note": "„Wenn das Dao aus dem Mund kommt, ist es fad und ohne Geschmack“ (道之出口，淡乎其无味): Schöne Worte halten niemanden fest."
+},
+"186": {
+"book": "Daodejing",
+"note": "Kaiser Xuanzong von Tang verteidigt „Was man zusammenziehen will, muss man erst ausdehnen“ (将欲歙之，必固张之) mit Konfuzius’ Wort „Mit manchem kann man gemeinsam feststehen, aber noch nicht gemeinsam abwägen“ (可与立，未可与权): Das sei Abwägen nach den Umständen…"
+},
+"187": {
+"book": "Daodejing",
+"note": "Laozi sagt: „Das Dao ist stets ohne Tun, und doch bleibt nichts ungetan“ (道常无为而无不为). Auch Konfuzius sagt von Shun, er habe „sich nur ehrfürchtig gehalten und das Gesicht nach Süden gewandt“ (恭己正南面而已)."
+},
+"188": {
+"book": "Daodejing",
+"note": "Die ausgegrabenen Fassungen lesen „Himmel und Erde werden sich von selbst berichtigen“ (天地将自正). Konfuzius sagt: „Geht Ihr mit Rechtschaffenheit voran, wer wagte da, nicht rechtschaffen zu sein?“ (子帅以正，孰敢不正)"
+},
+"189": {
+"book": "Daodejing",
+"note": "Su Zhe erklärt „Hohe Tugend hält sich nicht für Tugend“ (上德不德) mit Konfuzius’ Wort über sich mit siebzig: „Ich folgte den Wünschen meines Herzens, ohne das Maß zu überschreiten“ (从心所欲，不逾矩)."
+},
+"190": {
+"book": "Daodejing",
+"note": "Kaiser Xuanzong von Tang erklärt „Die Riten sind das Dünnwerden von Loyalität und Treue“ (礼者忠信之薄) mit Konfuzius: Sind die Riten etwa nur Jade und Seide?"
+},
+"191": {
+"book": "Daodejing",
+"note": "Jiao Hong überliefert den Kommentar des Xizhai, der „Die einst das Eine erlangten“ (昔之得一者) mit Konfuzius’ „Mein Weg ist von einem einzigen Faden durchzogen“ (吾道一以贯之) erklärt."
+},
+"192": {
+"book": "Daodejing",
+"note": "„Umkehr ist die Bewegung des Dao“ (反者道之动): Auch Konfuzius wusste, dass man über das Festhalten am Beständigen hinaus auch den Wandel beherrschen muss."
+},
+"193": {
+"book": "Daodejing",
+"note": "Su Zhe erklärt „Hört der höchste Gelehrte vom Dao, so übt er es eifrig aus“ (上士闻道，勤而行之) und sagt, Yan Hui sei eben ein solcher höchster Gelehrter."
+},
+"194": {
+"book": "Daodejing",
+"note": "Jiao Hong überliefert den Kommentar Lü Huiqings, der „Hört man am Morgen vom Dao, kann man am Abend sterben“ (朝闻道，夕死可矣) anführt: Der höchste Gelehrte habe das Dao wirklich verstanden."
+},
+"195": {
+"book": "Daodejing",
+"note": "Wang Pang erklärt „Das große Gefäß wird spät vollendet“ (大器晚成) mit Konfuzius’ Urteil, Guan Zhong sei ein kleines Gefäß gewesen."
+},
+"196": {
+"book": "Daodejing",
+"note": "„Die Gewaltsamen sterben keinen natürlichen Tod“ (强梁者不得其死): Dieselbe Sorge hatte Konfuzius um den ungestümen Zilu."
+},
+"197": {
+"book": "Daodejing",
+"note": "Die „Lehre ohne Worte“ (不言之教) ist Lehre durch das eigene Vorbild: Konfuzius sagt, wer selbst rechtschaffen ist, setzt sich auch ohne Befehle durch."
+},
+"198": {
+"book": "Daodejing",
+"note": "Die „Lehre ohne Worte“ (不言之教): Auch Konfuzius sagt, der Himmel spricht nicht, und doch nehmen die vier Jahreszeiten ihren Lauf."
+},
+"199": {
+"book": "Daodejing",
+"note": "Laozi fragt: „Name oder eigenes Leben – was steht einem näher?“ (名与身孰亲) Konfuzius dagegen fürchtet, nach dem Tod keinen guten Namen zu hinterlassen: Beim „Namen“ prallen Konfuzianer und Daoisten direkt aufeinander."
+},
+"200": {
+"book": "Daodejing",
+"note": "„Große Beredsamkeit wirkt wie Stammeln“ (大辩若讷): Auch Konfuzius sagt, wer schwerfällig redet, ist der Menschlichkeit nahe."
+},
+"201": {
+"book": "Daodejing",
+"note": "„Große Fülle wirkt wie leer“ (大盈若冲): Zengzi sagt von seinem Freund (nach Zhu Xi Yan Yuan), er habe gehabt, als hätte er nichts, sei voll gewesen, als wäre er leer."
+},
+"202": {
+"book": "Daodejing",
+"note": "„Kein Unheil ist größer, als kein Genügen zu kennen“ (祸莫大于不知足): Konfuzius sagt, beim Regieren sei nicht der Mangel zu fürchten, sondern die ungleiche Verteilung."
+},
+"203": {
+"book": "Daodejing",
+"note": "Laozi sagt: „Ohne aus der Tür zu gehen, kennt man die Welt“ (不出户，知天下). Konfuzius dagegen sagt, Nachdenken ohne Lernen nützt nichts."
+},
+"204": {
+"book": "Daodejing",
+"note": "Su Zhe erklärt „Wer lernt, mehrt täglich“ (为学日益) mit Konfuzius’ „Viel hören, das Gute auswählen und ihm folgen“ (多闻择其善者而从之) und sagt, dies sei nur „die zweite Stufe des Wissens“ (知之次)."
+},
+"205": {
+"book": "Daodejing",
+"note": "Su Zhe zitiert weiter Konfuzius’ Frage an Zigong: Ich bin nicht einer, der viel lernt und behält, sondern „ein einziger Faden durchzieht alles“ (一以贯之) – genau das sei „Wer dem Dao folgt, mindert täglich“ (为道日损)."
+},
+"206": {
+"book": "Daodejing",
+"note": "„Auch die nicht Guten behandle ich gut“ (不善者吾亦善之); Konfuzius dagegen fordert, „Groll mit Geradheit zu vergelten“ (以直报怨)."
+},
+"207": {
+"book": "Daodejing",
+"note": "Dieses Kapitel Laozis handelt ganz von Leben und Tod; Konfuzius sagt: Wenn man das Leben noch nicht versteht, wie soll man den Tod verstehen?"
+},
+"208": {
+"book": "Daodejing",
+"note": "„Hervorbringen, ohne zu besitzen; wirken, ohne sich darauf zu stützen“ (生而不有，为而不恃): die Welt innehaben, ohne sie als sein Eigentum zu betrachten."
+},
+"209": {
+"book": "Daodejing",
+"note": "„Verstopfe die Öffnungen, verschließe die Tore“ (塞其兑，闭其门): Laozi schließt die Tore von Auge und Ohr, Konfuzius lehrt, nichts anzusehen und anzuhören, was den Riten widerspricht."
+},
+"210": {
+"book": "Daodejing",
+"note": "Wang Bi erklärt „Güter und Reichtum im Überfluss“ (财货有余) mit Konfuzius’ Worten „wenn es nicht auf dem rechten Weg erlangt wurde“ (不以其道得之)."
+},
+"211": {
+"book": "Daodejing",
+"note": "„Das Volk liebt Schleichwege“ (民好径), während die Schule des Konfuzius Tantai Mieming lobt, der „keine Schleichwege geht“ (行不由径): derselbe schmale Pfad."
+},
+"212": {
+"book": "Daodejing",
+"note": "„Pflegt man es an sich selbst, so wird die Tugend echt“ (修之于身，其德乃真), Stufe um Stufe bis zur ganzen Welt; Konfuzius spricht davon, „sich selbst zu kultivieren, um dem Volk Frieden zu bringen“ (修己以安百姓)."
+},
+"213": {
+"book": "Daodejing",
+"note": "Heshang Gong erklärt „Wer redet, weiß nicht“ (言者不知) mit Zigongs Wort „Selbst ein Vierspänner holt die Zunge nicht ein“ (驷不及舌)."
+},
+"214": {
+"book": "Daodejing",
+"note": "„Wer weiß, redet nicht; wer redet, weiß nicht“ (知者不言，言者不知); Konfuzius sagt, wer Tugend hat, hat gewiss auch Worte, doch wer Worte hat, hat nicht unbedingt Tugend."
+},
+"215": {
+"book": "Daodejing",
+"note": "Heshang Gong sagt: „Man schätze das Handeln, nicht die Worte“ (贵行不贵言); Konfuzius sagt, der Edle ist langsam im Reden und rasch im Handeln."
+},
+"216": {
+"book": "Daodejing",
+"note": "Jiao Hong überliefert den Kommentar des Xizhai, der „Weht der Wind über das Gras, so beugt es sich gewiss“ (草上之风必偃) anführt, um „Ich handle nicht, und das Volk wandelt sich von selbst“ (我无为而民自化) zu erklären."
+},
+"217": {
+"book": "Daodejing",
+"note": "Su Zhe erklärt „Je mehr Gesetze und Verordnungen hervortreten“ (法令滋彰) mit dem Kapitel über die Richtigstellung der Namen: „Das Volk weiß nicht, wohin mit Händen und Füßen“ (民无所措手足)."
+},
+"218": {
+"book": "Daodejing",
+"note": "„Ich handle nicht, und das Volk wandelt sich von selbst“ (我无为而民自化); auch Konfuzius rühmt Shun dafür, „ohne Tun regiert“ zu haben (无为而治)."
+},
+"219": {
+"book": "Daodejing",
+"note": "„Gerade, aber nicht zügellos“ (直而不肆): Geradheit braucht Maß; Konfuzius sagt, Geradheit ohne Riten verletzt die anderen."
+},
+"220": {
+"book": "Daodejing",
+"note": "„Kantig, aber nicht verletzend“ (廉而不刿): Konfuzius war „mild und doch streng, würdevoll und doch nicht grimmig“ (温而厉，威而不猛) – dieselbe Form „A, aber nicht B“."
+},
+"221": {
+"book": "Daodejing",
+"note": "„Um Menschen zu regieren und dem Himmel zu dienen, geht nichts über Sparsamkeit“ (治人事天莫若啬): Auch Konfuzius fordert beim Regieren, „sparsam zu wirtschaften und die Menschen zu lieben“ (节用而爱人)."
+},
+"222": {
+"book": "Daodejing",
+"note": "„Ein großes Reich regiert man, wie man kleine Fische brät“ (治大国若烹小鲜): Die Kommentatoren erklären es mit Shuns Nicht-Tun, und so rühmt auch Konfuzius Shun."
+},
+"223": {
+"book": "Daodejing",
+"note": "„Regiert man die Welt mit dem Dao, so wirken die Geister nicht als Geister“ (以道莅天下，其鬼不神); Konfuzius sagt, Geister und Götter solle man ehren, sich aber von ihnen fernhalten."
+},
+"224": {
+"book": "Daodejing",
+"note": "„Das große Reich ist der Unterlauf“ (大国者下流): Zigong sagt, der Edle scheue nichts mehr, als am Unterlauf zu stehen; Laozi dagegen will, dass das große Reich sich willig unten hält."
+},
+"225": {
+"book": "Daodejing",
+"note": "„Stellt sich das große Reich unter das kleine, so gewinnt es das kleine“ (大国以下小国，则取小国); Konfuzius sagt, unterwerfen sich die Fernen nicht, so pflege man Kultur und Tugend, damit sie von selbst kommen."
+},
+"226": {
+"book": "Daodejing",
+"note": "Su Zhe erklärt „Wie könnte man die Nicht-Guten verwerfen?“ (人之不善，何弃之有) mit „am Morgen Unrecht tun und am Abend vom großen Dao hören“ (朝为不义而夕闻大道), in Anlehnung an Konfuzius’ „Hört man am Morgen vom Dao“ (朝闻道)."
+},
+"227": {
+"book": "Daodejing",
+"note": "„Wie könnte man die Nicht-Guten verwerfen?“ (人之不善，何弃之有) – auch Konfuzius sagt, beim Lehren mache er keinen Unterschied der Herkunft."
+},
+"228": {
+"book": "Daodejing",
+"note": "„Groll mit Tugend vergelten“ (报怨以德): In den Gesprächen legt jemand Konfuzius dieses Wort als Frage vor, und er antwortet: „Groll mit Geradheit vergelten“ (以直报怨). Zhu Xi kommentiert: „Was jener Mann anführte…“"
+},
+"229": {
+"book": "Daodejing",
+"note": "Lü Huiqing erklärt „Wer leichthin verspricht, verdient wenig Vertrauen“ (轻诺必寡信) mit dem Ausdruck „Worte einlösen“ (复言), der aus Youzis Satz stammt: „Ist die Treue dem Rechten nahe, so lassen sich die Worte einlösen“ (信近于义，言可复也)."
+},
+"230": {
+"book": "Daodejing",
+"note": "„Ein Turm von neun Stockwerken beginnt mit einem Haufen Erde“ (九层之台，起于累土): Konfuzius sagt, wer beim Aufschütten eines Hügels einen Korb Erde vor dem Ziel aufhört, hat selbst aufgehört."
+},
+"231": {
+"book": "Daodejing",
+"note": "„Nicht um das Volk aufzuklären, sondern um es einfältig zu halten“ (非以明民，将以愚之): Die beiden Sätze werden oft nebeneinander gelesen; bei beiden kommt es darauf an, wie die alten Kommentare sie verstehen."
+},
+"232": {
+"book": "Daodejing",
+"note": "Wang Bi sagt, wer mit Klugheit regiert, dem begegnet das Volk mit Klugheit; Konfuzius sagt, lenkt man das Volk mit Strafen, so entgeht es ihnen, kennt aber keine Scham."
+},
+"233": {
+"book": "Daodejing",
+"note": "„Will man dem Volk vorangehen, muss man sich selbst hintanstellen“ (欲先民，必以身后之): Konfuzius sagt, beim Regieren solle man selbst vorangehen und die Mühen auf sich nehmen."
+},
+"234": {
+"book": "Daodejing",
+"note": "„Weil er nicht streitet, kann niemand in der Welt mit ihm streiten“ (以其不争，故天下莫能与之争)."
+},
+"235": {
+"book": "Daodejing",
+"note": "Jiao Hong überliefert den Kommentar Wang Pangs, der „Das zweite heißt Sparsamkeit“ (二曰俭) mit Konfuzius’ „Bei den Riten lieber sparsam als verschwenderisch“ (礼，与其奢也，宁俭) erklärt."
+},
+"236": {
+"book": "Daodejing",
+"note": "„Aus Güte kann man mutig sein“ (慈故能勇): Auch Konfuzius sagt, wer Menschlichkeit besitzt, hat gewiss auch Mut."
+},
+"237": {
+"book": "Daodejing",
+"note": "„Aus Sparsamkeit kann man weit ausgreifen“ (俭故能广); Konfuzius spricht davon, „sparsam zu wirtschaften und die Menschen zu lieben“ (节用而爱人)."
+},
+"238": {
+"book": "Daodejing",
+"note": "„Wer ein guter Krieger ist, ist nicht kriegerisch“ (善为士者不武): Zu den Dingen, die Konfuzius mit größter Vorsicht behandelte, gehörte der Krieg."
+},
+"239": {
+"book": "Daodejing",
+"note": "„Kein Unheil ist größer, als den Feind zu unterschätzen“ (祸莫大于轻敌): Konfuzius wollte gerade Menschen, die „einer Aufgabe mit Besorgnis begegnen“ (临事而惧)."
+},
+"240": {
+"book": "Daodejing",
+"note": "„Die Kriegskundigen haben ein Wort“ (用兵有言); Konfuzius dagegen sagt, das Kriegswesen habe er nie gelernt."
+},
+"241": {
+"book": "Daodejing",
+"note": "„Im groben Kleid, die Jade im Busen“ (被褐怀玉): dieselbe Jade – Konfuzius will „sie verkaufen“ (沽之哉), Laozi trägt sie verborgen am Busen."
+},
+"242": {
+"book": "Daodejing",
+"note": "„Die mich kennen, sind selten“ (知我者希); auch Konfuzius seufzt: „Niemand kennt mich!“ (莫我知也夫)"
+},
+"243": {
+"book": "Daodejing",
+"note": "„Die mich kennen, sind selten; die mir nacheifern, sind kostbar“ (知我者希，则我者贵); Konfuzius sagt, man grolle nicht, wenn andere einen nicht kennen."
+},
+"244": {
+"book": "Daodejing",
+"note": "„Wissen, dass man nicht weiß, ist das Höchste“ (知不知，上): der Satz, in dem sich beide Schulen am ähnlichsten sind."
+},
+"245": {
+"book": "Daodejing",
+"note": "Konfuzius nennt sich selbst unwissend – ein direkter Anschluss an Laozis „wissen, dass man nicht weiß“ (知不知)."
+},
+"246": {
+"book": "Daodejing",
+"note": "„Fürchtet das Volk die Macht nicht, so kommt die große Macht“ (民不畏威，则大威至); Konfuzius lehrt die drei Ehrfurchten des Edlen."
+},
+"247": {
+"book": "Daodejing",
+"note": "Su Zhe erklärt „Der Weg des Himmels: nicht streiten und doch siegen, nicht reden und doch Antwort finden“ (天之道，不争而善胜，不言而善应) mit Konfuzius’ „Was redet denn der Himmel?“ (天何言哉)."
+},
+"248": {
+"book": "Daodejing",
+"note": "„Wer mutig im Wagen ist, wird getötet“ (勇于敢则杀) – genau das befürchtete Konfuzius für Zilu."
+},
+"249": {
+"book": "Daodejing",
+"note": "„Wer mutig im Nicht-Wagen ist, bleibt am Leben“ (勇于不敢则活); Konfuzius will keine Leute, die mit bloßen Händen einen Tiger angehen und ohne Boot einen Fluss durchwaten."
+},
+"250": {
+"book": "Daodejing",
+"note": "Su Zhe erklärt „Fürchtet das Volk den Tod nicht“ (民不畏死) wiederum mit Konfuzius’ „Das Volk weiß nicht, wohin mit Händen und Füßen“ (民无所措手足)."
+},
+"251": {
+"book": "Daodejing",
+"note": "„Stets gibt es den Henker, der tötet“ (常有司杀者杀); Konfuzius fragt, wozu man beim Regieren das Töten brauche."
+},
+"252": {
+"book": "Daodejing",
+"note": "Konfuzius sagt, wenn gute Menschen hundert Jahre lang einen Staat regieren, können sie die Grausamkeit überwinden und das Töten abschaffen."
+},
+"253": {
+"book": "Daodejing",
+"note": "„Das Volk hungert, weil die Oberen zu viele Steuern verzehren“ (民之饥，以其上食税之多); You Ruo rät Herzog Ai, die Steuern zu senken: „Hat das Volk genug, mit wem sollte der Fürst nicht genug haben?“"
+},
+"254": {
+"book": "Daodejing",
+"note": "„Das Volk ist schwer zu regieren, weil die Oberen eingreifen“ (民之难治，以其上之有为); Konfuzius sagt, sind die Oberen rechtschaffen, wagen die Unteren nicht, es nicht zu sein."
+},
+"255": {
+"book": "Daodejing",
+"note": "„Das Starke und Große steht unten, das Weiche und Schwache oben“ (强大处下，柔弱处上): Zengzi sagt von seinem Freund (nach Zhu Xi Yan Yuan), er habe gehabt, als hätte er nichts, sei voll gewesen, als wäre er leer."
+},
+"256": {
+"book": "Daodejing",
+"note": "„Der Weg des Himmels mindert den Überfluss und ergänzt den Mangel“ (天之道，损有余而补不足); Konfuzius sagt, nicht der Mangel sei zu fürchten, sondern die ungleiche Verteilung."
+},
+"257": {
+"book": "Daodejing",
+"note": "„Wer kann mit seinem Überfluss der Welt dienen?“ (孰能有余以奉天下): Konfuzius sagt, der Edle hilft den Notleidenden und vermehrt nicht den Reichtum der Reichen."
+},
+"258": {
+"book": "Daodejing",
+"note": "Lü Huiqing erklärt „Wer den Schmutz des Landes auf sich nimmt, heißt Herr der Erd- und Hirsealtäre“ (受国之垢，是谓社稷主) mit Tangs Worten „Haben die zehntausend Lande Schuld, so liegt die Schuld bei mir“ (万方有罪，罪在朕躬)…"
+},
+"259": {
+"book": "Daodejing",
+"note": "„Das Unheil des Landes auf sich nehmen“ (受国不祥): viel von sich selbst fordern, wenig anderen vorwerfen."
+},
+"260": {
+"book": "Daodejing",
+"note": "„Schlichtet man großen Groll, bleibt gewiss Groll zurück“ (和大怨，必有余怨); Konfuzius fordert, „Groll mit Geradheit und Tugend mit Tugend zu vergelten“ (以直报怨，以德报德)."
+},
+"261": {
+"book": "Daodejing",
+"note": "„Wer Tugend hat, verwaltet den Schuldschein; wer keine hat, verwaltet die Abgabe“ (有德司契，无德司彻): Che (彻) war das Abgabensystem der Zhou, und You Ruo riet Herzog Ai, es einzuführen."
+},
+"262": {
+"book": "Daodejing",
+"note": "Jiao Hong überliefert den Kommentar Wang Pangs: Die Gespräche und der Mengzi preisen an ihrem Ende Yao, Shun, Yu und Tang; Laozi schließt mit diesem Kapitel in derselben Absicht."
+},
+"263": {
+"book": "Daodejing",
+"note": "„Die Nachbarstaaten sehen einander … und das Volk verkehrt bis ins Alter und bis zum Tod nicht miteinander“; Konfuzius dagegen will, dass sich die Nahen freuen und die Fernen herbeikommen."
+},
+"264": {
+"book": "Daodejing",
+"note": "„Wahre Worte sind nicht schön, schöne Worte sind nicht wahr“ (信言不美，美言不信); Konfuzius sagt: „Glatte Worte und gefällige Miene – selten ist da Menschlichkeit“ (巧言令色，鲜矣仁)."
+},
+"265": {
+"book": "Daodejing",
+"note": "„Der Gute disputiert nicht“ (善者不辩); Konfuzius sagt, der Edle ist langsam im Reden und rasch im Handeln."
+},
+"266": {
+"book": "Daodejing",
+"note": "„Der Wissende ist nicht vielwissend, der Vielwissende ist nicht wissend“ (知者不博，博者不知); Konfuzius lehrt, breites Lernen müsse durch die Riten gebündelt werden."
+},
+"1346": {
+"note": "Der Basistext hat „出则弟／汎爱众“, der gängige Text „出则悌／泛爱众“"
+},
+"1347": {
+"note": "Der Basistext hat „大庙“, der gängige Text „太庙“"
+},
+"1348": {
+"note": "Der Basistext hat „寗武子“, der gängige Text „宁武子“"
+},
+"1349": {
+"note": "Der Basistext hat „焉尔乎“, der gängige Text „焉耳乎“"
+},
+"1350": {
+"note": "Der Basistext hat „唯我与尔“, der gängige Text „惟我与尔“"
+},
+"1351": {
+"note": "Der Basistext hat „大宰“, der gängige Text „太宰“"
+},
+"1352": {
+"note": "Der Basistext hat „韫匵“, der gängige Text „韫椟“"
+},
+"1353": {
+"note": "Der Basistext hat „后彫“, der gängige Text „后凋“"
+},
+"1354": {
+"note": "Der Basistext hat „没阶趋翼如也“, der gängige Text „没阶趋进翼如也“"
+},
+"1355": {
+"note": "Der Basistext hat „惟酒无量“, der gängige Text „唯酒无量“"
+},
+"1356": {
+"note": "Der Basistext hat „居不容“, der gängige Text „居不客“"
+},
+"1357": {
+"note": "Der Basistext hat „敢问死“, der gängige Text „曰敢问死“"
+},
+"1358": {
+"note": "Der Basistext hat „亦祗以异“, der gängige Text „亦只以异“"
+},
+"1359": {
+"note": "Der Basistext hat „曰举尔所知“, der gängige Text „子曰举尔所知“"
+},
+"1360": {
+"note": "Der Basistext hat „无所措手足“, der gängige Text „无所错手足“"
+},
+"1361": {
+"note": "Der Basistext hat „涖之“, der gängige Text „莅之“"
+},
+"1362": {
+"note": "Der Basistext hat „遇诸涂“, der gängige Text „遇诸途“"
+},
+"1363": {
+"note": "Der Basistext hat „乡原“, der gängige Text „乡愿“"
+},
+"1364": {
+"note": "Der Basistext hat „道听而涂说“, der gängige Text „道听而途说“"
+},
+"1365": {
+"note": "Der Basistext hat „季孟之閒“, der gängige Text „季孟之间“"
+},
+"1366": {
+"note": "Der Basistext hat „子曰“, der gängige Text „孔子曰“"
+},
+"1367": {
+"pick": "ständiges Üben"
+},
+"1368": {
+"pick": "Deutung auf Mann und Frau"
+},
+"1369": {
+"pick": "Lesart A"
+},
+"1370": {
+"pick": "der Leser erfasst das Rechte"
+},
+"1371": {
+"pick": "an einem Extrem festhalten"
+},
+"1372": {
+"pick": "Lesart A"
+},
+"1373": {
+"pick": "Lesart A"
+},
+"1374": {
+"pick": "Lesart A"
+},
+"1375": {
+"pick": "Lesart A"
+},
+"1376": {
+"pick": "Beide Lesarten gelten nebeneinander"
+},
+"1377": {
+"pick": "Lesart A"
+},
+"1378": {
+"pick": "与 = billigen"
+},
+"1379": {
+"pick": "Lesart A"
+},
+"1380": {
+"pick": "Beide Lesarten gelten nebeneinander"
+},
+"1381": {
+"pick": "sich selbst zügeln"
+},
+"1382": {
+"pick": "Lesart A"
+},
+"1383": {
+"pick": "Lesart A, mit der Abgrenzung von B"
+},
+"1384": {
+"pick": "Lesart A"
+},
+"1385": {
+"pick": "Lesart A"
+},
+"1386": {
+"pick": "ohne Unterschied von Stand und Herkunft"
+},
+"1387": {
+"pick": "Wortlaut nach B, Sinn nach A"
+},
+"1388": {
+"pick": "Lesart A"
+},
+"1389": {
+"pick": "Lesart A"
+},
+"1390": {
+"pick": "Lesart A"
+},
+"1391": {
+"pick": "Lesart A"
+},
+"1392": {
+"pick": "Beide Lesarten gelten nebeneinander"
+},
+"1393": {
+"pick": "Zhu Xi"
+},
+"1394": {
+"pick": "drei Dinge"
+},
+"1395": {
+"pick": "Unterscheidung von Gut und Böse, Verkehrt und Recht"
+},
+"1396": {
+"pick": "gefährdet und unsicher"
+}
+},
+"_note": "11-14 智器译（Opus 5.5）：S 关系图与人物卡页面文字、W 同问异答、X 关系注（按 lunyu_guanxi.json rels 序号）、p 人名身份（按中文本名）"
+}

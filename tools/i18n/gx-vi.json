@@ -1,0 +1,2701 @@
+{
+"p": {
+"仲由": {
+"name": "Trọng Do",
+"common": "Tử Lộ",
+"alias": "Tử Lộ; Quý Lộ; Do",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"端木赐": {
+"name": "Đoan Mộc Tứ",
+"common": "Tử Cống",
+"alias": "Tử Cống; Tứ",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"颜回": {
+"name": "Nhan Hồi",
+"common": "Nhan Uyên",
+"alias": "Nhan Uyên; Hồi",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"卜商": {
+"name": "Bốc Thương",
+"common": "Tử Hạ",
+"alias": "Tử Hạ; Thương",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"颛孙师": {
+"name": "Chuyên Tôn Sư",
+"common": "Tử Trương",
+"alias": "Tử Trương; Sư",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"冉求": {
+"name": "Nhiễm Cầu",
+"common": "Nhiễm Hữu",
+"alias": "Nhiễm Hữu; Nhiễm Tử; Cầu",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"曾参": {
+"name": "Tăng Sâm",
+"common": "Tăng Tử",
+"alias": "Tăng Tử; Tử Dư; Sâm",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"言偃": {
+"name": "Ngôn Yển",
+"common": "Tử Du",
+"alias": "Tử Du; Yển",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"季康子": {
+"name": "Quý Khang Tử",
+"common": "Quý Khang Tử",
+"alias": "Khang Tử; Quý Tôn Phì",
+"role": "Đại phu nước Lỗ",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"季氏": {
+"name": "Quý thị",
+"common": "Quý thị",
+"alias": "",
+"role": "Danh xưng chỉ dòng khanh tộc hoặc gia chủ nước Lỗ; không xác định cụ thể đời gia chủ nào",
+"rel": "Dòng khanh tộc nước Lỗ được nói đến trong kinh văn; nhân vật cụ thể chưa xác định ở chương này"
+},
+"舜": {
+"name": "Thuấn",
+"common": "Thuấn",
+"alias": "",
+"role": "Đế vương thời cổ",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"樊须": {
+"name": "Phàn Tu",
+"common": "Phàn Trì",
+"alias": "Phàn Trì; Tu",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"冉雍": {
+"name": "Nhiễm Ung",
+"common": "Trọng Cung",
+"alias": "Trọng Cung; Ung",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"鲁哀公": {
+"name": "Lỗ Ai Công",
+"common": "Lỗ Ai Công",
+"alias": "Ai Công",
+"role": "Vua nước Lỗ",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"宰予": {
+"name": "Tể Dư",
+"common": "Tể Ngã",
+"alias": "Tể Ngã; Dư",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"公西赤": {
+"name": "Công Tây Xích",
+"common": "Công Tây Hoa",
+"alias": "Công Tây Hoa; Tử Hoa; Xích",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"闵损": {
+"name": "Mẫn Tổn",
+"common": "Mẫn Tử Khiên",
+"alias": "Mẫn Tử Khiên; Mẫn Tử; Tổn",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"有若": {
+"name": "Hữu Nhược",
+"common": "Hữu Tử",
+"alias": "Hữu Tử",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"管仲": {
+"name": "Quản Trọng",
+"common": "Quản Trọng",
+"alias": "Quản thị",
+"role": "Tướng quốc nước Tề",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"伯夷": {
+"name": "Bá Di",
+"common": "Bá Di",
+"alias": "",
+"role": "Dật dân thời cổ",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"叔齐": {
+"name": "Thúc Tề",
+"common": "Thúc Tề",
+"alias": "",
+"role": "Dật dân thời cổ",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"尧": {
+"name": "Nghiêu",
+"common": "Nghiêu",
+"alias": "",
+"role": "Đế vương thời cổ",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"周公": {
+"name": "Chu Công",
+"common": "Chu Công",
+"alias": "",
+"role": "Người nhà Chu; theo kinh văn là cha của Lỗ công",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"禹": {
+"name": "Vũ",
+"common": "Vũ",
+"alias": "",
+"role": "Tiên vương nhà Hạ",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"陈亢": {
+"name": "Trần Cang",
+"common": "Trần Cang",
+"alias": "Tử Cầm; Trần Tử Cầm",
+"role": "Chu chú liệt vào đệ tử Khổng Tử, lại chép có thể là đệ tử của Tử Cống, chưa định",
+"rel": "Sư thừa có dị thuyết"
+},
+"南容": {
+"name": "Nam Dung",
+"common": "Nam Dung",
+"alias": "Nam Cung Quát; Nam Cung Thao; Tử Dung",
+"role": "Đệ tử Khổng Tử theo Chu chú",
+"rel": "Đệ tử; lấy con gái của anh trai Khổng Tử"
+},
+"子产": {
+"name": "Tử Sản",
+"common": "Tử Sản",
+"alias": "Đông Lý Tử Sản",
+"role": "Đại phu nước Trịnh",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"原宪": {
+"name": "Nguyên Hiến",
+"common": "Nguyên Tư",
+"alias": "Nguyên Tư; Hiến",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"叶公": {
+"name": "Diệp Công",
+"common": "Diệp Công",
+"alias": "",
+"role": "Quan trưởng đất Diệp nước Sở",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"周武王": {
+"name": "Chu Vũ Vương",
+"common": "Chu Vũ Vương",
+"alias": "Vũ Vương",
+"role": "Tiên vương nhà Chu",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"周文王": {
+"name": "Chu Văn Vương",
+"common": "Chu Văn Vương",
+"alias": "Văn Vương",
+"role": "Tiên vương nhà Chu",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"孔鲤": {
+"name": "Khổng Lý",
+"common": "Khổng Lý",
+"alias": "Bá Ngư; Lý",
+"role": "Con trai Khổng Tử",
+"rel": "Con"
+},
+"司马耕": {
+"name": "Tư Mã Canh",
+"common": "Tư Mã Ngưu",
+"alias": "Tư Mã Ngưu",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"齐景公": {
+"name": "Tề Cảnh Công",
+"common": "Tề Cảnh Công",
+"alias": "Cảnh Công",
+"role": "Vua nước Tề",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"齐桓公": {
+"name": "Tề Hoàn Công",
+"common": "Tề Hoàn Công",
+"alias": "Hoàn Công",
+"role": "Vua nước Tề",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"柳下惠": {
+"name": "Liễu Hạ Huệ",
+"common": "Liễu Hạ Huệ",
+"alias": "",
+"role": "Người nước Lỗ, từng làm sĩ sư",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"孟武伯": {
+"name": "Mạnh Vũ Bá",
+"common": "Mạnh Vũ Bá",
+"alias": "Vũ Bá; Trệ",
+"role": "Con của Mạnh Ý Tử",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"林放": {
+"name": "Lâm Phóng",
+"common": "Lâm Phóng",
+"alias": "",
+"role": "Người nước Lỗ; người hỏi về lễ",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"王孙贾": {
+"name": "Vương Tôn Giả",
+"common": "Vương Tôn Giả",
+"alias": "",
+"role": "Đại phu nước Vệ",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"鲁定公": {
+"name": "Lỗ Định Công",
+"common": "Lỗ Định Công",
+"alias": "Định Công",
+"role": "Vua nước Lỗ",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"孔子兄之女": {
+"name": "Con gái anh Khổng Tử",
+"common": "Con gái anh Khổng Tử",
+"alias": "",
+"role": "Người con gái được kinh văn chép là gả cho Nam Dung",
+"rel": "Cháu gái"
+},
+"孔子之兄": {
+"name": "Anh của Khổng Tử",
+"common": "Anh của Khổng Tử",
+"alias": "",
+"role": "Người cha được kinh văn ngầm chỉ qua cụm \"con của anh\"; tên họ không ghi rõ trong chương này",
+"rel": "Anh"
+},
+"孔文子": {
+"name": "Khổng Văn Tử",
+"common": "Khổng Văn Tử",
+"alias": "Trọng Thúc Ngữ; Khổng Ngữ",
+"role": "Đại phu nước Vệ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"臧文仲": {
+"name": "Tang Văn Trọng",
+"common": "Tang Văn Trọng",
+"alias": "",
+"role": "Đại phu nước Lỗ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"冉耕": {
+"name": "Nhiễm Canh",
+"common": "Bá Ngưu",
+"alias": "Bá Ngưu; Nhiễm Bá Ngưu",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"祝鮀": {
+"name": "Chúc Đà",
+"common": "Chúc Đà",
+"alias": "Chúc Đà; Tử Ngư",
+"role": "Đại phu nước Vệ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"卫出公": {
+"name": "Vệ Xuất Công",
+"common": "Vệ Xuất Công",
+"alias": "Vệ quân",
+"role": "Vệ Triếp theo chú giải của Chu Hi; vua nước Vệ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"师挚": {
+"name": "Sư Chí",
+"common": "Sư Chí",
+"alias": "Thái sư Chí",
+"role": "Nhạc quan hoặc nhạc sư, chức danh theo kinh văn",
+"rel": "Được kinh văn nhắc đến hoặc có giao tiếp"
+},
+"高柴": {
+"name": "Cao Sài",
+"common": "Tử Cao",
+"alias": "Tử Cao; Sài",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"商汤": {
+"name": "Thương Thang",
+"common": "Thương Thang",
+"alias": "Thang; Lý",
+"role": "Tiên vương nhà Thương",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"孟公绰": {
+"name": "Mạnh Công Xước",
+"common": "Mạnh Công Xước",
+"alias": "Công Xước",
+"role": "Đại phu nước Lỗ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"臧武仲": {
+"name": "Tang Vũ Trọng",
+"common": "Tang Vũ Trọng",
+"alias": "",
+"role": "Đại phu nước Lỗ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"公叔文子": {
+"name": "Công Thúc Văn Tử",
+"common": "Công Thúc Văn Tử",
+"alias": "Công Tôn Bạt",
+"role": "Đại phu nước Vệ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"公子纠": {
+"name": "Công tử Củ",
+"common": "Công tử Củ",
+"alias": "",
+"role": "Công tử nước Tề",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"卫灵公": {
+"name": "Vệ Linh Công",
+"common": "Vệ Linh Công",
+"alias": "Linh Công",
+"role": "Vua nước Vệ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"蘧瑗": {
+"name": "Cừ Viện",
+"common": "Cừ Viện",
+"alias": "Cừ Bá Ngọc",
+"role": "Người nước Vệ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"子服景伯": {
+"name": "Tử Phục Cảnh Bá",
+"common": "Tử Phục Cảnh Bá",
+"alias": "Tử Phục Hà",
+"role": "Đại phu nước Lỗ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"商纣": {
+"name": "Thương Trụ",
+"common": "Thương Trụ",
+"alias": "Trụ",
+"role": "Vua cuối đời Thương",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"孟氏": {
+"name": "Mạnh thị",
+"common": "Mạnh thị",
+"alias": "",
+"role": "Danh xưng họ khanh hoặc gia chủ nước Lỗ; không định rõ là gia chủ đời nào",
+"rel": "Họ khanh nước Lỗ được kinh văn nhắc tới; nhân vật cụ thể chưa xác định trong chương"
+},
+"叔孙武叔": {
+"name": "Thúc Tôn Vũ Thúc",
+"common": "Thúc Tôn Vũ Thúc",
+"alias": "",
+"role": "Đại phu nước Lỗ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"孟懿子": {
+"name": "Mạnh Ý Tử",
+"common": "Mạnh Ý Tử",
+"alias": "Mạnh Tôn; Trọng Tôn Hà Kỵ",
+"role": "Đại phu nước Lỗ",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"或谓孔子者": {
+"name": "Người nói với Khổng Tử",
+"common": "Người nói với Khổng Tử",
+"alias": "",
+"role": "Nhân vật cụ thể được kinh văn ghi lại; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương"
+},
+"三家": {
+"name": "Tam gia",
+"common": "Tam gia",
+"alias": "Quý Tôn thị; Mạnh Tôn thị; Thúc Tôn thị",
+"role": "Tên gọi chung ba nhà quyền thần nước Lỗ, không phải một cá nhân",
+"rel": "Giữ nguyên danh xưng gốc, không tách thành các gia chủ khi không có chứng cứ"
+},
+"或问禘者": {
+"name": "Người hỏi về lễ đế",
+"common": "Người hỏi về lễ đế",
+"alias": "",
+"role": "Nhân vật cụ thể được kinh văn ghi lại; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương"
+},
+"或讥问礼者": {
+"name": "Người chê việc hỏi lễ",
+"common": "Người chê việc hỏi lễ",
+"alias": "",
+"role": "Nhân vật cụ thể được kinh văn ghi lại; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương"
+},
+"鄹人": {
+"name": "Trâu nhân",
+"common": "Trâu nhân",
+"alias": "Thúc Lương Ngột",
+"role": "Chu Hi chú rõ là cha Khổng Tử; từng làm đại phu ấp Trâu",
+"rel": "Cha"
+},
+"或问管仲者": {
+"name": "Người hỏi về Quản Trọng",
+"common": "Người hỏi về Quản Trọng",
+"alias": "",
+"role": "Nhân vật cụ thể được kinh văn ghi lại; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương"
+},
+"鲁大师": {
+"name": "Thái sư nước Lỗ",
+"common": "Thái sư nước Lỗ",
+"alias": "",
+"role": "Nhạc quan hoặc nhạc sư, chức danh theo kinh văn",
+"rel": "Được kinh văn nhắc đến hoặc có giao tiếp"
+},
+"仪封人": {
+"name": "Nghi phong nhân",
+"common": "Nghi phong nhân",
+"alias": "",
+"role": "Quan coi việc biên cương ở ấp Nghi nước Vệ; Chu Hi cho là bậc hiền ẩn mình ở địa vị thấp",
+"rel": "Có tiếp xúc với Khổng Tử hoặc đệ tử, xem chương này"
+},
+"公冶长": {
+"name": "Công Dã Tràng",
+"common": "Công Dã Tràng",
+"alias": "",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"孔子之女": {
+"name": "Con gái Khổng Tử",
+"common": "Con gái Khổng Tử",
+"alias": "",
+"role": "Người con gái được kinh văn chỉ đến qua câu \"đem con mình gả cho\"",
+"rel": "Con gái"
+},
+"宓不齐": {
+"name": "Mật Bất Tề",
+"common": "Tử Tiện",
+"alias": "Tử Tiện",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"或论雍者": {
+"name": "Người bàn về Ung",
+"common": "Người bàn về Ung",
+"alias": "",
+"role": "Nhân vật cụ thể được kinh văn ghi lại; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương"
+},
+"漆雕开": {
+"name": "Tất Điêu Khai",
+"common": "Tất Điêu Khai",
+"alias": "",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"申枨": {
+"name": "Thân Trành",
+"common": "Trành",
+"alias": "Trành",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"或答申枨者": {
+"name": "Người đáp về Thân Trành",
+"common": "Người đáp về Thân Trành",
+"alias": "",
+"role": "Nhân vật cụ thể được kinh văn ghi lại; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương"
+},
+"晏婴": {
+"name": "Án Anh",
+"common": "Án Anh",
+"alias": "Án Bình Trọng",
+"role": "Đại phu nước Tề",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"子文": {
+"name": "Tử Văn",
+"common": "Tử Văn",
+"alias": "Đấu Cấu Ô Đồ",
+"role": "Lệnh doãn nước Sở",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"崔杼": {
+"name": "Thôi Trữ",
+"common": "Thôi Trữ",
+"alias": "Thôi Tử",
+"role": "Đại phu nước Tề",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"齐庄公": {
+"name": "Tề Trang Công",
+"common": "Tề Trang Công",
+"alias": "Tề quân; Quang",
+"role": "Vua Tề bị Thôi Trữ giết",
+"rel": "Được kinh văn nhắc đến hoặc đối đáp; xem chi tiết trong chương"
+},
+"陈文子": {
+"name": "Trần Văn Tử",
+"common": "Trần Văn Tử",
+"alias": "Tu Vô",
+"role": "Đại phu nước Tề",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"季文子": {
+"name": "Quý Văn Tử",
+"common": "Quý Văn Tử",
+"alias": "",
+"role": "Đại phu nước Lỗ",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"宁武子": {
+"name": "Ninh Vũ Tử",
+"common": "Ninh Vũ Tử",
+"alias": "Ninh Vũ Tử (viết 寗武子); Du",
+"role": "Đại phu nước Vệ",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"微生高": {
+"name": "Vi Sinh Cao",
+"common": "Vi Sinh Cao",
+"alias": "",
+"role": "Người được kinh văn bàn đến về tính ngay thẳng",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"乞醯者": {
+"name": "Người xin giấm",
+"common": "Người xin giấm",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"微生高之邻": {
+"name": "Người hàng xóm của Vi Sinh Cao",
+"common": "Người hàng xóm của Vi Sinh Cao",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"左丘明": {
+"name": "Tả Khâu Minh",
+"common": "Tả Khâu Minh",
+"alias": "",
+"role": "Người được kinh văn nhắc là lấy làm hổ thẹn với lời nói khéo, sắc mặt giả",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"子桑伯子": {
+"name": "Tử Tang Bá Tử",
+"common": "Tử Tang Bá Tử",
+"alias": "",
+"role": "Nhân vật được Trọng Cung hỏi đến",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"公西赤之母": {
+"name": "Mẹ của Công Tây Xích",
+"common": "Mẹ của Công Tây Xích",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"季氏使者": {
+"name": "Sứ giả của họ Quý",
+"common": "Sứ giả của họ Quý",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"澹台灭明": {
+"name": "Đạm Đài Diệt Minh",
+"common": "Đạm Đài Diệt Minh",
+"alias": "",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"孟之反": {
+"name": "Mạnh Chi Phản",
+"common": "Mạnh Chi Phản",
+"alias": "",
+"role": "Người nước Lỗ; người được kinh văn ghi là chạy sau cùng để chặn hậu",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"宋朝": {
+"name": "Tống Triều",
+"common": "Tống Triều",
+"alias": "",
+"role": "Công tử nước Tống; có nhan sắc đẹp",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"南子": {
+"name": "Nam Tử",
+"common": "Nam Tử",
+"alias": "",
+"role": "Phu nhân của Vệ Linh Công",
+"rel": "Khổng Tử từng gặp bà"
+},
+"老彭": {
+"name": "Lão Bành",
+"common": "Lão Bành",
+"alias": "",
+"role": "Người xưa mà Khổng Tử tự ví mình, không rõ chính xác là ai",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"有丧者": {
+"name": "Người có tang",
+"common": "Người có tang",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"桓魋": {
+"name": "Hoàn Khôi",
+"common": "Hoàn Khôi",
+"alias": "",
+"role": "Người nước Tống; người được kinh văn ghi là đe dọa Khổng Tử",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"互乡童子": {
+"name": "Đồng tử làng Hỗ Hương",
+"common": "Đồng tử làng Hỗ Hương",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"陈司败": {
+"name": "Trần Tư Bại",
+"common": "Trần Tư Bại",
+"alias": "Tư Bại",
+"role": "Quan Tư bại nước Trần, tên họ không rõ",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"鲁昭公": {
+"name": "Lỗ Chiêu Công",
+"common": "Lỗ Chiêu Công",
+"alias": "Chiêu Công; Trù",
+"role": "Vua nước Lỗ",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"巫马施": {
+"name": "Vu Mã Thi",
+"common": "Vu Mã Kỳ",
+"alias": "Vu Mã Kỳ",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"吴孟子": {
+"name": "Ngô Mạnh Tử",
+"common": "Ngô Mạnh Tử",
+"alias": "",
+"role": "Người con gái nước Ngô cùng họ mà Lỗ Chiêu Công cưới làm vợ",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"与孔子歌者": {
+"name": "Người cùng hát với Khổng Tử",
+"common": "Người cùng hát với Khổng Tử",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"泰伯": {
+"name": "Thái Bá",
+"common": "Thái Bá",
+"alias": "",
+"role": "Người xưa, ba lần nhường thiên hạ",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"孟敬子": {
+"name": "Mạnh Kính Tử",
+"common": "Mạnh Kính Tử",
+"alias": "",
+"role": "Người được kinh văn ghi là đến thăm bệnh Tăng Tử",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"曾子之友": {
+"name": "Bạn của Tăng Tử",
+"common": "Bạn của Tăng Tử",
+"alias": "",
+"role": "Kinh văn không nêu tên; chú giải của Chu Hi dẫn Mã thị cho là Nhan Uyên, chưa chắc chắn",
+"rel": "Bạn của Tăng Tử"
+},
+"妇人": {
+"name": "Người phụ nữ",
+"common": "Người phụ nữ",
+"alias": "",
+"role": "Người phụ nữ trong số mười bề tôi trị loạn ở chương 8.20, tên không xuất hiện trong kinh văn",
+"rel": "Nhân vật lịch sử được dẫn thuật"
+},
+"达巷党人": {
+"name": "Người làng Đạt Hạng",
+"common": "Người làng Đạt Hạng",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"大宰": {
+"name": "Thái tể",
+"common": "Thái tể",
+"alias": "",
+"role": "Tên chức quan; nước và tên họ còn nghi vấn, không khẳng định là người nào của nước Ngô hay nước Tống",
+"rel": "Hỏi Tử Cống xem Khổng Tử có phải bậc thánh không"
+},
+"琴牢": {
+"name": "Cầm Lao",
+"common": "Lao",
+"alias": "Lao; Tử Khai; Tử Trương",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"鄙夫": {
+"name": "Kẻ quê mùa",
+"common": "Kẻ quê mùa",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"或问九夷者": {
+"name": "Người hỏi về Cửu Di",
+"common": "Người hỏi về Cửu Di",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"孔子之友": {
+"name": "Bạn của Khổng Tử",
+"common": "Bạn của Khổng Tử",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"闵子骞之父": {
+"name": "Cha của Mẫn Tử Khiên",
+"common": "Cha của Mẫn Tử Khiên",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"闵子骞之母": {
+"name": "Mẹ của Mẫn Tử Khiên",
+"common": "Mẹ của Mẫn Tử Khiên",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"颜路": {
+"name": "Nhan Lộ",
+"common": "Nhan Lộ",
+"alias": "",
+"role": "Cha của Nhan Hồi",
+"rel": "Cha của đệ tử Nhan Hồi"
+},
+"从者": {
+"name": "Người theo hầu",
+"common": "Người theo hầu",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem nội dung chương này"
+},
+"季子然": {
+"name": "Quý Tử Nhiên",
+"common": "Quý Tử Nhiên",
+"alias": "",
+"role": "Người được kinh văn ghi là hỏi về Trọng Do và Nhiễm Cầu",
+"rel": "Người đối thoại với Khổng Tử"
+},
+"曾点": {
+"name": "Tăng Điểm",
+"common": "Tăng Tích",
+"alias": "Tăng Tích; Điểm",
+"role": "Đệ tử Khổng môn",
+"rel": "Đệ tử"
+},
+"棘子成": {
+"name": "Cức Tử Thành",
+"common": "Cức Tử Thành",
+"alias": "",
+"role": "Đại phu nước Vệ",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"皋陶": {
+"name": "Cao Dao",
+"common": "Cao Dao",
+"alias": "",
+"role": "Người được vua Thuấn tiến cử",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"伊尹": {
+"name": "Y Doãn",
+"common": "Y Doãn",
+"alias": "",
+"role": "Người được vua Thang tiến cử",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"公子荆": {
+"name": "Công tử Kinh",
+"common": "Công tử Kinh",
+"alias": "Công tử Kinh nước Vệ",
+"role": "Công tử nước Vệ",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"直躬": {
+"name": "Trực Cung",
+"common": "Trực Cung",
+"alias": "",
+"role": "Người làm chứng cha mình trộm dê, do Diệp Công kể lại; tên họ không rõ",
+"rel": "Nhân vật được Diệp Công dẫn thuật"
+},
+"直躬之父": {
+"name": "Cha của Trực Cung",
+"common": "Cha của Trực Cung",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem lời thuật trong chương này"
+},
+"羿": {
+"name": "Nghệ",
+"common": "Nghệ",
+"alias": "",
+"role": "Người bắn cung giỏi thời cổ",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"奡": {
+"name": "Ngạo",
+"common": "Ngạo",
+"alias": "",
+"role": "Người thời cổ có sức đẩy thuyền trên cạn",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"后稷": {
+"name": "Hậu Tắc",
+"common": "Hậu Tắc",
+"alias": "Tắc",
+"role": "Người thời cổ tự thân cày cấy",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"裨谌": {
+"name": "Tỳ Thầm",
+"common": "Tỳ Thầm",
+"alias": "",
+"role": "Đại phu nước Trịnh",
+"rel": "Người được Khổng Tử bình luận"
+},
+"世叔": {
+"name": "Thế Thúc",
+"common": "Thế Thúc",
+"alias": "",
+"role": "Đại phu nước Trịnh",
+"rel": "Người được Khổng Tử bình luận"
+},
+"子羽": {
+"name": "Tử Vũ",
+"common": "Tử Vũ",
+"alias": "Hành nhân Tử Vũ",
+"role": "Đại phu nước Trịnh",
+"rel": "Người được Khổng Tử bình luận"
+},
+"子西": {
+"name": "Tử Tây",
+"common": "Tử Tây",
+"alias": "Công tử Thân",
+"role": "Công tử nước Sở",
+"rel": "Người được Khổng Tử bình luận"
+},
+"伯氏": {
+"name": "Bá thị",
+"common": "Bá thị",
+"alias": "",
+"role": "Đại phu nước Tề; tên họ không rõ",
+"rel": "Người được Khổng Tử bình luận"
+},
+"或问子产者": {
+"name": "Người hỏi về Tử Sản",
+"common": "Người hỏi về Tử Sản",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem lời thuật trong chương này"
+},
+"卞庄子": {
+"name": "Biện Trang Tử",
+"common": "Biện Trang Tử",
+"alias": "",
+"role": "Đại phu ấp Biện nước Lỗ",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"公明贾": {
+"name": "Công Minh Giả",
+"common": "Công Minh Giả",
+"alias": "",
+"role": "Người nước Vệ",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"晋文公": {
+"name": "Tấn Văn Công",
+"common": "Tấn Văn Công",
+"alias": "",
+"role": "Vua nước Tấn",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"召忽": {
+"name": "Thiệu Hốt",
+"common": "Thiệu Hốt",
+"alias": "",
+"role": "Bề tôi của Công tử Củ",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"僎": {
+"name": "Soạn",
+"common": "Soạn",
+"alias": "Đại phu Soạn",
+"role": "Gia thần của Công Thúc Văn Tử, sau làm đại phu",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"陈恒": {
+"name": "Trần Hằng",
+"common": "Trần Hằng",
+"alias": "Trần Thành Tử",
+"role": "Kẻ giết vua Tề Giản Công",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"齐简公": {
+"name": "Tề Giản Công",
+"common": "Tề Giản Công",
+"alias": "Giản Công",
+"role": "Vua nước Tề",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"三子": {
+"name": "Tam tử",
+"common": "Tam tử",
+"alias": "Tam gia",
+"role": "Gọi chung ba vị chủ nhà của Tam gia nước Lỗ được nói đến ở 14.22",
+"rel": "Không khẳng định tên của từng vị chủ nhà"
+},
+"蘧伯玉使者": {
+"name": "Sứ giả của Cừ Bá Ngọc",
+"common": "Sứ giả của Cừ Bá Ngọc",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem lời thuật trong chương này"
+},
+"微生亩": {
+"name": "Vi Sinh Mẫu",
+"common": "Vi Sinh Mẫu",
+"alias": "",
+"role": "Người chất vấn Khổng Tử vì sao bôn ba tất tả",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"或问报怨者": {
+"name": "Người hỏi về báo oán",
+"common": "Người hỏi về báo oán",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem lời thuật trong chương này"
+},
+"公伯寮": {
+"name": "Công Bá Liêu",
+"common": "Công Bá Liêu",
+"alias": "",
+"role": "Người gièm pha Tử Lộ với Quý Tôn",
+"rel": "Có liên quan đến đệ tử Tử Lộ"
+},
+"季孙": {
+"name": "Quý Tôn",
+"common": "Quý Tôn",
+"alias": "",
+"role": "Danh xưng dòng khanh hoặc chủ nhà họ Quý nước Lỗ; không chỉ định một đời chủ nhà cụ thể",
+"rel": "Dòng khanh nước Lỗ được nói đến trong kinh văn; chương này không xác định nhân vật cụ thể"
+},
+"晨门": {
+"name": "Thần Môn",
+"common": "Thần Môn",
+"alias": "",
+"role": "Người giữ việc mở cổng buổi sớm; Chu Hy chú là bậc hiền ẩn mình trong nghề canh cổng",
+"rel": "Có tiếp xúc với Khổng Tử hoặc đệ tử, xem chương này"
+},
+"荷蒉者": {
+"name": "Người vác sọt cỏ",
+"common": "Người vác sọt cỏ",
+"alias": "Người vác sọt cỏ đi qua cửa nhà họ Khổng",
+"role": "Ẩn sĩ; người vác sọt cỏ, tên họ không rõ",
+"rel": "Có tiếp xúc với Khổng Tử hoặc đệ tử, xem chương này"
+},
+"商高宗": {
+"name": "Thương Cao Tông",
+"common": "Thương Cao Tông",
+"alias": "Cao Tông",
+"role": "Vua nhà Thương",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"原壤": {
+"name": "Nguyên Nhưỡng",
+"common": "Nguyên Nhưỡng",
+"alias": "",
+"role": "Người ngồi xổm chờ, bị Khổng Tử lấy gậy gõ vào ống chân",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"阙党童子": {
+"name": "Đồng tử làng Khuyết",
+"common": "Đồng tử làng Khuyết",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem lời thuật trong chương này"
+},
+"或问童子者": {
+"name": "Người hỏi về đồng tử",
+"common": "Người hỏi về đồng tử",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận không rõ",
+"rel": "Xem lời thuật trong chương này"
+},
+"史鱼": {
+"name": "Sử Ngư",
+"common": "Sử Ngư",
+"alias": "",
+"role": "Đại phu nước Vệ, tên Thu; Sử là tên chức quan",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"师冕": {
+"name": "Sư Miện",
+"common": "Sư Miện",
+"alias": "Miện",
+"role": "Nhạc quan hoặc nhạc sư; chức danh theo kinh văn",
+"rel": "Được nhắc đến hoặc tiếp đón trong kinh văn"
+},
+"周任": {
+"name": "Chu Nhậm",
+"common": "Chu Nhậm",
+"alias": "",
+"role": "Người xưa được dẫn lời \"đem hết sức mới nhận chức\"",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"阳货": {
+"name": "Dương Hóa",
+"common": "Dương Hóa",
+"alias": "",
+"role": "Người muốn gặp Khổng Tử",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"公山弗扰": {
+"name": "Công Sơn Phất Nhiễu",
+"common": "Công Sơn Phất Nhiễu",
+"alias": "Công Sơn thị",
+"role": "Kẻ chiếm ấp Phí làm phản",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"佛肸": {
+"name": "Bật Hật",
+"common": "Bật Hật",
+"alias": "",
+"role": "Kẻ chiếm đất Trung Mâu làm phản",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"孺悲": {
+"name": "Nhụ Bi",
+"common": "Nhụ Bi",
+"alias": "",
+"role": "Người muốn gặp Khổng Tử",
+"rel": "Được nhắc đến hoặc đối đáp trong kinh văn; xem chi tiết ở chương này"
+},
+"将命者": {
+"name": "Người truyền mệnh",
+"common": "Người truyền mệnh",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận chưa rõ",
+"rel": "Xem nội dung chương này"
+},
+"微子": {
+"name": "Vi Tử",
+"common": "Vi Tử",
+"alias": "",
+"role": "Người nhà Ân",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"箕子": {
+"name": "Cơ Tử",
+"common": "Cơ Tử",
+"alias": "",
+"role": "Người nhà Ân",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"比干": {
+"name": "Tỉ Can",
+"common": "Tỉ Can",
+"alias": "",
+"role": "Người nhà Ân",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"谓柳下惠者": {
+"name": "Người nói với Liễu Hạ Huệ",
+"common": "Người nói với Liễu Hạ Huệ",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận chưa rõ",
+"rel": "Xem nội dung chương này"
+},
+"季桓子": {
+"name": "Quý Hoàn Tử",
+"common": "Quý Hoàn Tử",
+"alias": "",
+"role": "Người cầm quyền họ Quý Tôn nước Lỗ",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"接舆": {
+"name": "Tiếp Dư",
+"common": "Tiếp Dư",
+"alias": "Sở Cuồng Tiếp Dư",
+"role": "Người nước Sở, giả cuồng để lánh đời",
+"rel": "Có tiếp xúc với Khổng Tử hoặc đệ tử của ông, xem chương này"
+},
+"长沮": {
+"name": "Trường Thư",
+"common": "Trường Thư",
+"alias": "",
+"role": "Ẩn sĩ, cùng Kiệt Nịch cày ruộng; tên thật chưa rõ",
+"rel": "Có tiếp xúc với Khổng Tử hoặc đệ tử của ông, xem chương này"
+},
+"桀溺": {
+"name": "Kiệt Nịch",
+"common": "Kiệt Nịch",
+"alias": "",
+"role": "Ẩn sĩ, cùng Trường Thư cày ruộng; tên thật chưa rõ",
+"rel": "Có tiếp xúc với Khổng Tử hoặc đệ tử của ông, xem chương này"
+},
+"荷蓧丈人": {
+"name": "Hà Điệu Trượng Nhân",
+"common": "Hà Điệu Trượng Nhân",
+"alias": "Trượng nhân; Dĩ trượng hà điệu giả",
+"role": "Ẩn sĩ; tên họ chưa rõ",
+"rel": "Có tiếp xúc với Khổng Tử hoặc đệ tử của ông, xem chương này"
+},
+"荷蓧丈人之子一": {
+"name": "Con thứ nhất của Hà Điệu Trượng Nhân",
+"common": "Con thứ nhất của Hà Điệu Trượng Nhân",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận chưa rõ",
+"rel": "Xem nội dung chương này"
+},
+"荷蓧丈人之子二": {
+"name": "Con thứ hai của Hà Điệu Trượng Nhân",
+"common": "Con thứ hai của Hà Điệu Trượng Nhân",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận chưa rõ",
+"rel": "Xem nội dung chương này"
+},
+"虞仲": {
+"name": "Ngu Trọng",
+"common": "Ngu Trọng",
+"alias": "",
+"role": "Dật dân",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"夷逸": {
+"name": "Di Dật",
+"common": "Di Dật",
+"alias": "",
+"role": "Dật dân",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"朱张": {
+"name": "Chu Trương",
+"common": "Chu Trương",
+"alias": "",
+"role": "Dật dân",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"少连": {
+"name": "Thiếu Liên",
+"common": "Thiếu Liên",
+"alias": "",
+"role": "Dật dân",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"亚饭干": {
+"name": "Á Phạn Can",
+"common": "Á Phạn Can",
+"alias": "Can",
+"role": "Nhạc quan hoặc nhạc sư; chức danh theo kinh văn",
+"rel": "Được kinh văn nhắc đến hoặc có giao tiếp"
+},
+"三饭缭": {
+"name": "Tam Phạn Liêu",
+"common": "Tam Phạn Liêu",
+"alias": "Liêu",
+"role": "Nhạc quan hoặc nhạc sư; chức danh theo kinh văn",
+"rel": "Được kinh văn nhắc đến hoặc có giao tiếp"
+},
+"四饭缺": {
+"name": "Tứ Phạn Khuyết",
+"common": "Tứ Phạn Khuyết",
+"alias": "Khuyết",
+"role": "Nhạc quan hoặc nhạc sư; chức danh theo kinh văn",
+"rel": "Được kinh văn nhắc đến hoặc có giao tiếp"
+},
+"鼓方叔": {
+"name": "Cổ Phương Thúc",
+"common": "Cổ Phương Thúc",
+"alias": "Phương Thúc",
+"role": "Nhạc quan hoặc nhạc sư; chức danh theo kinh văn",
+"rel": "Được kinh văn nhắc đến hoặc có giao tiếp"
+},
+"播鼗武": {
+"name": "Bá Đào Vũ",
+"common": "Bá Đào Vũ",
+"alias": "Vũ",
+"role": "Nhạc quan hoặc nhạc sư; chức danh theo kinh văn",
+"rel": "Được kinh văn nhắc đến hoặc có giao tiếp"
+},
+"少师阳": {
+"name": "Thiếu Sư Dương",
+"common": "Thiếu Sư Dương",
+"alias": "Dương",
+"role": "Nhạc quan hoặc nhạc sư; chức danh theo kinh văn",
+"rel": "Được kinh văn nhắc đến hoặc có giao tiếp"
+},
+"击磬襄": {
+"name": "Kích Khánh Tương",
+"common": "Kích Khánh Tương",
+"alias": "Tương",
+"role": "Nhạc quan hoặc nhạc sư; chức danh theo kinh văn",
+"rel": "Được kinh văn nhắc đến hoặc có giao tiếp"
+},
+"鲁公": {
+"name": "Lỗ Công",
+"common": "Lỗ Công",
+"alias": "Bá Cầm",
+"role": "Con của Chu Công",
+"rel": "Nhân vật lịch sử được dẫn thuật hoặc bình luận"
+},
+"伯达": {
+"name": "Bá Đạt",
+"common": "Bá Đạt",
+"alias": "",
+"role": "Một trong tám kẻ sĩ nhà Chu được kinh văn liệt kê",
+"rel": "Nhân vật lịch sử được kinh văn nhắc đến"
+},
+"伯适": {
+"name": "Bá Quát",
+"common": "Bá Quát",
+"alias": "",
+"role": "Một trong tám kẻ sĩ nhà Chu được kinh văn liệt kê",
+"rel": "Nhân vật lịch sử được kinh văn nhắc đến"
+},
+"仲突": {
+"name": "Trọng Đột",
+"common": "Trọng Đột",
+"alias": "",
+"role": "Một trong tám kẻ sĩ nhà Chu được kinh văn liệt kê",
+"rel": "Nhân vật lịch sử được kinh văn nhắc đến"
+},
+"仲忽": {
+"name": "Trọng Hốt",
+"common": "Trọng Hốt",
+"alias": "",
+"role": "Một trong tám kẻ sĩ nhà Chu được kinh văn liệt kê",
+"rel": "Nhân vật lịch sử được kinh văn nhắc đến"
+},
+"叔夜": {
+"name": "Thúc Dạ",
+"common": "Thúc Dạ",
+"alias": "",
+"role": "Một trong tám kẻ sĩ nhà Chu được kinh văn liệt kê",
+"rel": "Nhân vật lịch sử được kinh văn nhắc đến"
+},
+"叔夏": {
+"name": "Thúc Hạ",
+"common": "Thúc Hạ",
+"alias": "",
+"role": "Một trong tám kẻ sĩ nhà Chu được kinh văn liệt kê",
+"rel": "Nhân vật lịch sử được kinh văn nhắc đến"
+},
+"季随": {
+"name": "Quý Tùy",
+"common": "Quý Tùy",
+"alias": "",
+"role": "Một trong tám kẻ sĩ nhà Chu được kinh văn liệt kê",
+"rel": "Nhân vật lịch sử được kinh văn nhắc đến"
+},
+"季騧": {
+"name": "Quý Qua",
+"common": "Quý Qua",
+"alias": "",
+"role": "Một trong tám kẻ sĩ nhà Chu được kinh văn liệt kê",
+"rel": "Nhân vật lịch sử được kinh văn nhắc đến"
+},
+"子夏门人": {
+"name": "Môn nhân của Tử Hạ",
+"common": "Môn nhân của Tử Hạ",
+"alias": "",
+"role": "Nhân vật cụ thể được ghi trong kinh văn; tên họ hoặc thân phận chưa rõ",
+"rel": "Xem nội dung chương này"
+},
+"孟庄子": {
+"name": "Mạnh Trang Tử",
+"common": "Mạnh Trang Tử",
+"alias": "Tốc",
+"role": "Đại phu nước Lỗ",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"孟献子": {
+"name": "Mạnh Hiến Tử",
+"common": "Mạnh Hiến Tử",
+"alias": "Miệt",
+"role": "Cha của Mạnh Trang Tử",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"阳肤": {
+"name": "Dương Phu",
+"common": "Dương Phu",
+"alias": "",
+"role": "Quan sĩ sư do họ Mạnh bổ nhiệm",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"公孙朝": {
+"name": "Công Tôn Triều",
+"common": "Công Tôn Triều",
+"alias": "Công Tôn Triều nước Vệ",
+"role": "Người nước Vệ",
+"rel": "Được nhắc đến hoặc đối thoại trong kinh văn; xem chi tiết ở chương này"
+},
+"孔子": {
+"name": "Khổng Tử",
+"common": "",
+"alias": "",
+"role": "",
+"alias2": "Khâu; Trọng Ni; Tử; Phu Tử",
+"role2": "Người nước Lỗ; bậc thầy được ghi chép trong sách này",
+"rel": "Chính ông"
+}
+},
+"S": {
+"gx_h1": "Bản đồ quan hệ Luận ngữ",
+"gx_sub": "498 chương · 197 nhân vật",
+"gx_title": "Bản đồ quan hệ và nhân vật Luận ngữ: 498 chương nối với nhau thế nào | Yikonglu",
+"gx_desc": "Cùng một câu hỏi mà trả lời khác nhau; những câu lặp lại trong sách; mỗi người trong 197 nhân vật xuất hiện ở những chương nào. AI so sánh từng cặp trong 498 chương để tìm mối nối, và từng mối nối đều được người đối chiếu thủ công với trang gốc.",
+"gx_lead": "Luận ngữ có 20 thiên, 498 chương. Nhìn thì như từng chương rời rạc, thật ra chỗ nào cũng nối với nhau. Có câu xuất hiện ở hai nơi. Có câu hỏi Khổng Tử trả lời khác nhau cho những người khác nhau. Có người học trò xuất hiện trong mấy chục chương. Toàn sách có {n} mối quan hệ. AI so sánh từng cặp trong 498 chương để tìm mối nối, và từng mối nối đều được người đối chiếu thủ công với trang gốc.",
+"gx_tab_all": "Toàn bộ mạng lưới",
+"gx_tab_wd": "Cùng hỏi, khác đáp",
+"gx_tab_rw": "Nhân vật",
+"gx_all_note": "Mỗi chấm trên vòng tròn là một chương, xếp quanh vòng theo thứ tự 20 thiên. Chấm sẫm màu là chương đã giảng. Đường xanh lục nối một câu xuất hiện hai lần trong sách ({hj} cặp). Đường màu đất son nối các câu trả lời cho cùng một câu hỏi ({wd} nhóm). Bấm vào một chương để xem nó nối với những chương nào.",
+"gx_all_aria": "Bản đồ quan hệ 498 chương Luận ngữ",
+"gx_pick": "Bấm vào bất kỳ chương nào trên vòng tròn.",
+"gx_links": "Nối với: ",
+"gx_nolink": "Chương này không có đường nối trên bản đồ. Trang chương có mục “Chương này nối với” liệt kê nhân vật, sách khác và nhiều thứ khác",
+"gx_wd_note": "Cùng một câu hỏi, Khổng Tử trả lời mỗi người một khác. Đây là sợi chỉ quan trọng nhất khi đọc Luận ngữ: câu trả lời đi theo con người.",
+"gx_times": "{n} lần trong sách",
+"gx_rw_note": "Luận ngữ nêu tên {n} người. Bấm vào một người: vòng trong là các chương người ấy xuất hiện, vòng ngoài là những người thường xuất hiện cùng chương, con số là số chương chung.",
+"gx_q_ph": "Tìm tên người, ví dụ: Tử Lộ, Nhan Hồi, Quản Trọng",
+"gx_q_aria": "Tìm tên người",
+"gx_rw_aria": "Quan hệ giữa nhân vật và các chương",
+"gx_nch": "{n} chương",
+"gx_card": "Thẻ nhân vật: thân phận, xuất xứ, nguyên văn từng chương ›",
+"gx_sec_h": "Chương này nối với",
+"gx_sec_sub": "AI so sánh từng cặp trong 498 chương để tìm mối nối, và từng mối nối đều được người đối chiếu thủ công với trang gốc",
+"gx_head_wd": "Cùng hỏi, khác đáp",
+"gx_head_hj": "Câu lặp ở chỗ khác",
+"gx_head_bw": "Sách khác",
+"gx_head_rw": "Nhân vật",
+"gx_head_zy": "Tranh luận về cách đọc",
+"gx_head_yw": "Dị văn",
+"gx_wd_line": "{q}: {n} lần trong sách. Mỗi lần một người hỏi, mỗi lần một câu trả lời khác:",
+"gx_in_map": "Xem trên bản đồ quan hệ",
+"gx_kind_cc": "Xuất xứ",
+"gx_kind_zj": "Nhà chú giải dẫn",
+"gx_kind_xt": "Đọc đối chiếu (Yikonglu)",
+"gx_zy_pick": "Yikonglu đọc theo “{p}”.",
+"gx_zy_link": "Xem lời bàn của Yikonglu",
+"gx_more_map": "Bản đồ quan hệ toàn sách",
+"gx_more_pdf": "Luận ngữ, bản AI tái dựng (PDF)",
+"rw_crumb": "Bản đồ quan hệ · Nhân vật",
+"rw_alias": "Tên tự, tên gọi khác",
+"rw_role": "Thân phận",
+"rw_rel": "Quan hệ với Khổng Tử",
+"rw_src": "Xuất xứ",
+"rw_src_std": "Kinh văn từng chương Luận ngữ; thân phận theo chú của Chu Hi (Tứ thư tập chú, bản Tứ bộ bị yếu)",
+"rw_sub": "Xuất hiện trong {n} chương Luận ngữ, đã giảng {d} chương",
+"rw_in_map": "Xem {name} trên bản đồ quan hệ: các chương xuất hiện và những người thường cùng chương ›",
+"rw_h2": "Các chương xuất hiện trong Luận ngữ",
+"rw_wj": "chưa giảng",
+"rw_note": "Xếp theo thứ tự chương của trang này. Chương đã giảng có cách đọc của chúng tôi và trang gốc của các nhà chú giải. Chương ghi “chưa giảng” chỉ có nguyên văn và lời chú của các nhà.",
+"rw_title": "{name} trong Luận ngữ: từng chương xuất hiện | Yikonglu",
+"rw_desc": "{name} ({alias}), {role}, xuất hiện trong {n} chương Luận ngữ.",
+"rw_chips": "Nhân vật trong chương: "
+},
+"W": [
+{
+"id": "wen-ren",
+"q": "Hỏi về nhân",
+"items": [
+{
+"c": "lunyu:6.20",
+"who": "Phàn Trì",
+"a": "Người nhân trước lo việc khó, sau mới nghĩ đến điều thu được"
+},
+{
+"c": "lunyu:12.1",
+"who": "Nhan Uyên",
+"a": "Khắc chế bản thân, trở về với lễ, ấy là nhân"
+},
+{
+"c": "lunyu:12.2",
+"who": "Trọng Cung",
+"a": "Điều mình không muốn, chớ làm cho người"
+},
+{
+"c": "lunyu:12.3",
+"who": "Tư Mã Ngưu",
+"a": "Người nhân thì lời nói dè dặt, khó nói ra"
+},
+{
+"c": "lunyu:12.22",
+"who": "Phàn Trì",
+"a": "Yêu người"
+},
+{
+"c": "lunyu:13.19",
+"who": "Phàn Trì",
+"a": "Ở nhà thì cung kính, làm việc thì nghiêm cẩn, đối với người thì hết lòng"
+},
+{
+"c": "lunyu:15.9",
+"who": "Tử Cống",
+"a": "Thờ người hiền trong hàng đại phu, kết bạn với người nhân trong hàng sĩ",
+"note": "Câu hỏi là làm thế nào để thực hành nhân (hỏi vi nhân)"
+},
+{
+"c": "lunyu:17.6",
+"who": "Tử Trương",
+"a": "Cung kính, khoan dung, thành tín, mẫn cán, ban ơn"
+}
+]
+},
+{
+"id": "wen-xiao",
+"q": "Hỏi về hiếu",
+"items": [
+{
+"c": "lunyu:2.5",
+"who": "Mạnh Ý Tử",
+"a": "Đừng làm trái"
+},
+{
+"c": "lunyu:2.6",
+"who": "Mạnh Vũ Bá",
+"a": "Cha mẹ chỉ lo con đau ốm"
+},
+{
+"c": "lunyu:2.7",
+"who": "Tử Du",
+"a": "Nếu không kính, thì lấy gì mà phân biệt?"
+},
+{
+"c": "lunyu:2.8",
+"who": "Tử Hạ",
+"a": "Giữ được sắc mặt mới là khó"
+}
+]
+},
+{
+"id": "wen-zheng",
+"q": "Hỏi về chính sự",
+"items": [
+{
+"c": "lunyu:12.7",
+"who": "Tử Cống",
+"a": "Đủ lương thực, đủ binh lực, dân tin theo"
+},
+{
+"c": "lunyu:12.11",
+"who": "Tề Cảnh Công",
+"a": "Vua ra vua, tôi ra tôi, cha ra cha, con ra con"
+},
+{
+"c": "lunyu:12.14",
+"who": "Tử Trương",
+"a": "Ở chức thì không lơi lả, thi hành thì hết lòng"
+},
+{
+"c": "lunyu:12.17",
+"who": "Quý Khang Tử",
+"a": "Chính sự là ngay chính"
+},
+{
+"c": "lunyu:12.19",
+"who": "Quý Khang Tử",
+"a": "Ông làm chính sự, cần gì phải giết?"
+},
+{
+"c": "lunyu:13.1",
+"who": "Tử Lộ",
+"a": "Mình làm gương đi trước, mình chịu khó nhọc vì dân"
+},
+{
+"c": "lunyu:13.2",
+"who": "Trọng Cung",
+"a": "Giao việc cho các quan trước, tha lỗi nhỏ, cất nhắc người hiền tài"
+},
+{
+"c": "lunyu:13.16",
+"who": "Diệp Công",
+"a": "Người gần vui lòng, người xa tìm đến"
+},
+{
+"c": "lunyu:13.17",
+"who": "Tử Hạ",
+"a": "Đừng mong nhanh, đừng ham lợi nhỏ"
+},
+{
+"c": "lunyu:20.2",
+"who": "Tử Trương",
+"a": "Tôn trọng năm điều tốt, gạt bỏ bốn điều xấu",
+"note": "Câu hỏi là làm thế nào để làm chính sự"
+}
+]
+},
+{
+"id": "wen-junzi",
+"q": "Hỏi về quân tử",
+"items": [
+{
+"c": "lunyu:2.13",
+"who": "Tử Cống",
+"a": "Làm trước điều mình định nói, rồi sau mới nói theo"
+},
+{
+"c": "lunyu:12.4",
+"who": "Tư Mã Ngưu",
+"a": "Quân tử không lo, không sợ"
+},
+{
+"c": "lunyu:14.45",
+"who": "Tử Lộ",
+"a": "Tu dưỡng bản thân bằng lòng kính cẩn"
+}
+]
+},
+{
+"id": "wen-shi",
+"q": "Hỏi về kẻ sĩ",
+"items": [
+{
+"c": "lunyu:12.20",
+"who": "Tử Trương",
+"a": "Chất phác ngay thẳng mà ưa điều nghĩa, xét lời nói mà xem sắc mặt, lo nghĩ để hạ mình dưới người",
+"note": "Câu hỏi là kẻ sĩ thế nào thì gọi là “đạt”"
+},
+{
+"c": "lunyu:13.20",
+"who": "Tử Cống",
+"a": "Giữ mình biết hổ thẹn, đi sứ bốn phương không làm nhục mệnh vua"
+},
+{
+"c": "lunyu:13.28",
+"who": "Tử Lộ",
+"a": "Khẩn thiết khuyên răn nhau, vui vẻ hòa thuận"
+}
+]
+},
+{
+"id": "wen-zhi",
+"q": "Hỏi về trí",
+"items": [
+{
+"c": "lunyu:6.20",
+"who": "Phàn Trì",
+"a": "Chuyên lo điều nghĩa cho dân, kính quỷ thần mà giữ khoảng cách"
+},
+{
+"c": "lunyu:12.22",
+"who": "Phàn Trì",
+"a": "Biết người"
+}
+]
+},
+{
+"id": "wen-chongde",
+"q": "Hỏi cách nâng cao đức",
+"items": [
+{
+"c": "lunyu:12.10",
+"who": "Tử Trương",
+"a": "Lấy trung tín làm chủ, dời theo điều nghĩa"
+},
+{
+"c": "lunyu:12.21",
+"who": "Phàn Trì",
+"a": "Lo làm việc trước, nghĩ đến điều thu được sau"
+}
+]
+}
+],
+"X": {
+"4": {
+"book": "Kinh Thi",
+"note": "Kinh Thi, Vệ phong, Kỳ Úc: Như cắt rồi giũa, như đẽo rồi mài. (如切如磋，如琢如磨。)"
+},
+"7": {
+"book": "Kinh Thi",
+"note": "Kinh Thi, Lỗ tụng, Quynh: Lòng nghĩ không tà, ngựa cứ thế mà tiến. (思無邪，思馬斯徂。)"
+},
+"8": {
+"book": "Mạnh Tử",
+"note": "Mạnh Tử, Đằng Văn Công thượng, chương 2: Tăng Tử nói: “Khi sống, thờ theo lễ; khi chết, chôn theo lễ, cúng tế theo lễ…”"
+},
+"10": {
+"book": "Kinh Thi",
+"note": "Kinh Thi, Vệ phong, Thạc Nhân: Cười khéo má lúm xinh, mắt đẹp đen trắng rõ. (巧笑倩兮，美目盼兮。)"
+},
+"12": {
+"book": "Mạnh Tử",
+"note": "Mạnh Tử, Công Tôn Sửu thượng, chương 7: Khổng Tử nói: “Chỗ ở có nhân là đẹp.” (孔子曰：里仁為美。)"
+},
+"13": {
+"book": "Mạnh Tử",
+"note": "Mạnh Tử, Công Tôn Sửu thượng, chương 7: Chọn chỗ mà không ở nơi có nhân, sao gọi là trí? (擇不處仁，焉得智？)"
+},
+"23": {
+"book": "Kinh Thi",
+"note": "Kinh Thi, Tiểu nhã, Tiểu Mân: Nơm nớp dè chừng, như đứng bên vực sâu, như bước trên băng mỏng. (戰戰兢兢，如臨深淵，如履薄冰。)"
+},
+"25": {
+"book": "Mạnh Tử",
+"note": "Mạnh Tử, Đằng Văn Công thượng, chương 4: Khổng Tử nói: “Lớn thay, Nghiêu làm vua!” (孔子曰：大哉，堯之為君！)"
+},
+"26": {
+"book": "Mạnh Tử",
+"note": "Mạnh Tử, Đằng Văn Công thượng, chương 4: Chỉ trời là lớn, chỉ Nghiêu noi theo được trời. (惟天為大，惟堯則之。)"
+},
+"27": {
+"book": "Mạnh Tử",
+"note": "Mạnh Tử, Đằng Văn Công thượng, chương 4: Mênh mông thay, dân không biết lấy gì mà gọi tên! (蕩蕩乎，民無能名焉！)"
+},
+"31": {
+"book": "Kinh Thi",
+"note": "Kinh Thi, Bội phong, Hùng Trĩ: Không ganh ghét, không tham cầu, làm gì mà chẳng tốt. (不忮不求，何用不臧。)"
+},
+"37": {
+"book": "Kinh Thi",
+"note": "Kinh Thi, Tiểu nhã, Ngã Hành Kỳ Dã: Thật chẳng phải vì giàu, chỉ là vì khác lạ. (成不以富，亦祇以異。)"
+},
+"45": {
+"book": "Kinh Thi",
+"note": "Kinh Thi, Bội phong, Bào Hữu Khổ Diệp: Sâu thì mặc nguyên áo mà lội, nông thì vén áo mà qua. (深則厲，淺則揭。)"
+},
+"57": {
+"book": "Tam Tự Kinh",
+"note": "Hai câu “tính tương cận, tập tương viễn” (bản tính gần nhau, thói quen làm xa nhau) lấy thẳng từ lời Khổng Tử."
+},
+"58": {
+"book": "Tam Tự Kinh",
+"note": "Mẹ Mạnh Tử ba lần dời nhà để chọn láng giềng. Các nhà chú giải đều dùng chương này để giải: chỗ ở phải chọn nơi có nhân đức."
+},
+"59": {
+"book": "Tam Tự Kinh",
+"note": "“Lão hà vi” (già rồi làm được gì): trẻ không học, đến bốn năm mươi tuổi vẫn chưa tiến bộ thì không còn đáng nể nữa."
+},
+"60": {
+"book": "Tam Tự Kinh",
+"note": "Câu kết khuyên học trong bản Bị yếu dùng chính lời Dương Hóa khuyên Khổng Tử ra làm quan: thời gian không chờ người."
+},
+"61": {
+"book": "Tam Tự Kinh",
+"note": "“Ngọc bất trác, bất thành khí” (ngọc không mài giũa thì không thành đồ dùng): Tử Cống mượn Kinh Thi để nói làm người phải như sửa ngọc, cắt, giũa, đẽo, mài."
+},
+"62": {
+"book": "Tam Tự Kinh",
+"note": "Người thợ làm nên đồ vật trong xưởng, người quân tử nhờ học mà đạt tới đạo. Câu này nối đúng vào “nhân bất học, bất tri nghĩa” (người không học thì không biết nghĩa)."
+},
+"63": {
+"book": "Tam Tự Kinh",
+"note": "“Thân sư hữu” (gần thầy, gần bạn) thì nên gần bạn thế nào: ba loại bạn ngay thẳng, thành tín, hiểu biết rộng."
+},
+"64": {
+"book": "Tam Tự Kinh",
+"note": "Về thứ tự “thủ hiếu đễ, thứ kiến văn” (trước hết là hiếu đễ, sau mới đến kiến văn), Vương Tương và Atsumi đều dẫn chương này làm chứng."
+},
+"65": {
+"book": "Tam Tự Kinh",
+"note": "“Kiến văn” dùng thế nào: nghe nhiều, thấy nhiều, điều gì còn nghi thì tạm gác lại."
+},
+"66": {
+"book": "Tam Tự Kinh",
+"note": "Chuyện Khổng Dung nhường lê nói về đạo làm em. Hữu Tử nói hiếu đễ là gốc của nhân."
+},
+"67": {
+"book": "Tam Tự Kinh",
+"note": "Tam cương nói về danh phận vua tôi, cha con, vợ chồng. Khổng Tử thì nói mỗi bên trước hết phải làm tròn phần của mình."
+},
+"68": {
+"book": "Tam Tự Kinh",
+"note": "“Thử tứ thời, vận bất cùng” (bốn mùa ấy xoay vần không dứt): trời không nói, bốn mùa vẫn vận hành."
+},
+"69": {
+"book": "Tam Tự Kinh",
+"note": "“Ứng hồ trung” (ứng ở chính giữa): sao Bắc Cực ở giữa không động, các sao vây quanh."
+},
+"70": {
+"book": "Tam Tự Kinh",
+"note": "Bản Âm sớ giải “ngũ thường”, dẫn lời sớ của Hoàng Khản cho chương này: tam cương ngũ thường trăm đời không đổi."
+},
+"71": {
+"book": "Tam Tự Kinh",
+"note": "Điều cuối cùng trong ngũ thường là “tín”: người mà không có chữ tín thì không biết còn làm được gì."
+},
+"72": {
+"book": "Tam Tự Kinh",
+"note": "Phần nói về lục cốc nối đúng vào câu của ông lão vác giỏ tre: tay chân không siêng thì đến ngũ cốc cũng không phân biệt được."
+},
+"73": {
+"book": "Tam Tự Kinh",
+"note": "Lục súc dù quan trọng đến đâu cũng không bằng con người: chuồng ngựa cháy, Khổng Tử chỉ hỏi có ai bị thương không."
+},
+"74": {
+"book": "Tam Tự Kinh",
+"note": "Thất tình không cần diệt đi, chỉ cần có chừng mực: vui mà không quá đà, buồn mà không hại thân."
+},
+"75": {
+"book": "Tam Tự Kinh",
+"note": "Bát âm là các loại nhạc khí. Khổng Tử nói về công dụng của nhạc: nhân cách cuối cùng được hoàn thành trong nhạc."
+},
+"76": {
+"book": "Tam Tự Kinh",
+"note": "Nhạc không chỉ là chuông trống và các nhạc khí. Có thể đọc đối chiếu với “bát âm”."
+},
+"77": {
+"book": "Tam Tự Kinh",
+"note": "“Quân tắc kính, thần tắc trung” (vua thì kính, tôi thì trung): vua đối với tôi có lễ, tôi thờ vua hết lòng trung, hai bên đều có bổn phận."
+},
+"78": {
+"book": "Tam Tự Kinh",
+"note": "Tinh thần của thập nghĩa: mỗi danh phận đều làm tròn phận mình."
+},
+"79": {
+"book": "Tam Tự Kinh",
+"note": "“Tiểu học chung, chí Tứ thư” (học xong tiểu học thì đến Tứ thư): trước hết học làm người, còn dư sức mới học văn."
+},
+"80": {
+"book": "Tam Tự Kinh",
+"note": "Học từ việc quét dọn, ứng đối, rồi từng bước đi lên cho thông suốt. Đó chính là con đường từ tiểu học đến Tứ thư."
+},
+"81": {
+"book": "Tam Tự Kinh",
+"note": "“Luận ngữ giả, nhị thập thiên” (Luận ngữ gồm hai mươi thiên): bấm vào là thấy mục lục toàn bộ hai mươi thiên Luận ngữ."
+},
+"82": {
+"book": "Tam Tự Kinh",
+"note": "“Ký thiện ngôn” (ghi lại lời hay) thì ghi thành ra sao? Xem chương đầu là biết: một câu nói, một đạo lý."
+},
+"83": {
+"book": "Tam Tự Kinh",
+"note": "Hai chữ trong tên sách Trung dung, Khổng Tử đã sớm nói là đức cao nhất."
+},
+"84": {
+"book": "Tam Tự Kinh",
+"note": "Phần nói về Tam Dịch có thể nối với lời Khổng Tử kể rằng về già ông học Kinh Dịch."
+},
+"85": {
+"book": "Tam Tự Kinh",
+"note": "Thứ tự Thi, Lễ, Nhạc trong Lục kinh đã được câu này của Khổng Tử nói đủ."
+},
+"86": {
+"book": "Tam Tự Kinh",
+"note": "“Ngã Chu Công, tác Chu lễ” (Chu Công nhà ta làm ra Chu lễ): Khổng Tử nói lễ nhà Chu đã tham khảo hai đời Hạ, Thương, nên ông theo nhà Chu."
+},
+"87": {
+"book": "Tam Tự Kinh",
+"note": "“Lễ nhạc bị” (lễ nhạc đầy đủ): lời Khổng Tử dạy con rằng không học lễ thì không đứng vững được."
+},
+"88": {
+"book": "Tam Tự Kinh",
+"note": "Chữ “thuật” trong “thuật thánh ngôn” (thuật lại lời thánh) chính là chữ “thuật” trong câu Khổng Tử tự nói về mình: “thuật nhi bất tác” (thuật lại mà không sáng tác)."
+},
+"89": {
+"book": "Tam Tự Kinh",
+"note": "Về việc vì sao “đương phúng vịnh” (nên ngâm vịnh) thì phải đọc Kinh Thi, bản Bị yếu dẫn chính chương này."
+},
+"90": {
+"book": "Tam Tự Kinh",
+"note": "Sách Trung thuyết của Văn Trung Tử Vương Thông viết phỏng theo Luận ngữ, nên các nhà chú giải đều đem Luận ngữ ra so sánh."
+},
+"91": {
+"book": "Tam Tự Kinh",
+"note": "Khi Vương Tương nói về vua Nghiêu, ông dùng chính câu Khổng Tử khen Nghiêu."
+},
+"92": {
+"book": "Tam Tự Kinh",
+"note": "“Đường hữu Ngu” nói về Nghiêu, Thuấn. Vua Thuấn nhờ năm bề tôi hiền mà trị thiên hạ."
+},
+"93": {
+"book": "Tam Tự Kinh",
+"note": "“Loạn thần thập nhân” của Chu Vũ Vương: chữ “loạn” ở đây nghĩa là trị, tức mười bề tôi giỏi dẹp loạn, trị nước."
+},
+"94": {
+"book": "Tam Tự Kinh",
+"note": "Ba triều Hạ, Thương, Chu nối nhau từng đời, lễ có thêm có bớt, có thể suy ra mà biết."
+},
+"95": {
+"book": "Tam Tự Kinh",
+"note": "“Vương cương trụy” (giềng mối nhà vua sụp đổ) là thế nào: lễ nhạc và việc chinh phạt không còn do thiên tử ban ra."
+},
+"96": {
+"book": "Tam Tự Kinh",
+"note": "“Ngũ bá cường” (năm bá chủ hùng mạnh): Khổng Tử đối với hai vị bá chủ có khen có chê."
+},
+"97": {
+"book": "Tam Tự Kinh",
+"note": "Bá chủ cũng có công lao: Khổng Tử khen Quản Trọng một tay chấn chỉnh thiên hạ."
+},
+"98": {
+"book": "Tam Tự Kinh",
+"note": "Chữ “soán” trong “Vương Mãng soán” (Vương Mãng cướp ngôi) là tên gọi do sử gia định ra. Danh phận đã định thì phải trái sẽ rõ ràng."
+},
+"99": {
+"book": "Tam Tự Kinh",
+"note": "Trước khi cướp ngôi, Vương Mãng khiêm cung có lễ. Xem người phải xem lâu dài, không xem một lúc."
+},
+"100": {
+"book": "Tam Tự Kinh",
+"note": "Thời Tam Quốc ai là chính thống? Điều sử gia tranh cãi chính là danh phận."
+},
+"101": {
+"book": "Tam Tự Kinh",
+"note": "Nhà Tùy “bất tái truyền, thất thống tự” (không truyền được sang đời thứ hai, mất mối chính thống): Khổng Tử đã sớm nói được thiên hạ không bằng chính đạo thì không truyền được mấy đời."
+},
+"102": {
+"book": "Tam Tự Kinh",
+"note": "Kinh văn viết “thụ Chu thiện” (nhận ngôi do nhà Chu nhường), còn nhà chú giải viết “soán”. Điều tranh nhau là danh và thực."
+},
+"103": {
+"book": "Tam Tự Kinh",
+"note": "Thời Ngũ Đại phần nhiều là tướng lĩnh cướp ngôi, thường chỉ một hai đời là mất."
+},
+"104": {
+"book": "Tam Tự Kinh",
+"note": "Liêu, Kim xưng đế, có thể đọc đối chiếu với câu này của Khổng Tử: có vua hay không có vua là xét ở chỗ có lễ hay không."
+},
+"105": {
+"book": "Tam Tự Kinh",
+"note": "“Quyền yêm tứ” (hoạn quan chuyên quyền lộng hành): Khổng Tử nói trị nước phải tránh xa kẻ nịnh."
+},
+"106": {
+"book": "Tam Tự Kinh",
+"note": "Họa loạn thường nổi lên ngay bên cạnh mình: nhà Minh mất vì hoạn quan, đúng là họa từ trong bức tường bình phong."
+},
+"107": {
+"book": "Tam Tự Kinh",
+"note": "“Khẩu nhi tụng, tâm nhi duy” (miệng đọc, lòng nghĩ): miệng đọc là học, lòng nghĩ là tư, hai việc không thể thiếu việc nào."
+},
+"108": {
+"book": "Tam Tự Kinh",
+"note": "“Triêu ư tư, tịch ư tư” (sáng ở đó, tối ở đó): Vương Tương nói đó chính là thường xuyên ôn tập."
+},
+"109": {
+"book": "Tam Tự Kinh",
+"note": "“Tải trị loạn, tri hưng suy” (ghi lại trị loạn, biết được thịnh suy): đọc sử có thể suy ra đời sau. Khổng Tử nói trăm đời sau cũng có thể biết."
+},
+"110": {
+"book": "Tam Tự Kinh",
+"note": "Khổng Tử bái Hạng Thác làm thầy: không có thầy cố định, ai có đạo thì theo người ấy mà học."
+},
+"111": {
+"book": "Tam Tự Kinh",
+"note": "“Lỗ luận” mà Triệu Phổ đọc chính là bộ Luận ngữ hai mươi thiên ngày nay."
+},
+"112": {
+"book": "Tam Tự Kinh",
+"note": "“Bỉ ký sĩ, học thả cần” (ông ấy đã làm quan mà vẫn chăm học): làm quan còn dư sức thì vẫn phải học."
+},
+"113": {
+"book": "Tam Tự Kinh",
+"note": "Treo tóc lên xà nhà, lấy dùi đâm vào đùi là chuyện khổ học. Khổng Tử tự nói khi học thì quên cả ăn."
+},
+"114": {
+"book": "Tam Tự Kinh",
+"note": "Cố chịu khổ chưa hẳn đã là biết học: chỉ học mà không suy nghĩ thì vẫn mờ mịt."
+},
+"115": {
+"book": "Tam Tự Kinh",
+"note": "Chữ “trác” trong “do khổ trác” (vẫn khổ học để vượt lên): Nhan Uyên nói học vấn của Khổng Tử sừng sững cao vời, đuổi mãi không kịp."
+},
+"116": {
+"book": "Tam Tự Kinh",
+"note": "Tô Tuân hai mươi bảy tuổi “thủy phát phẫn” (mới bắt đầu phát phẫn). Bản Âm sớ dẫn câu này của Khổng Tử để giải hai chữ “phát phẫn”."
+},
+"117": {
+"book": "Tam Tự Kinh",
+"note": "Khổng Tử mười lăm tuổi lập chí, Tô Tuân hai mươi bảy tuổi mới phát phẫn, có thể đọc đối chiếu."
+},
+"118": {
+"book": "Tam Tự Kinh",
+"note": "Thần đồng thì “nhân xưng kỳ” (người đời khen lạ). Khổng Tử nói hậu sinh khả úy, nhưng cũng nhắc rằng đến bốn năm mươi tuổi mà không có tiếng tăm gì thì không còn đáng nể."
+},
+"119": {
+"book": "Tam Tự Kinh",
+"note": "Bản Bị yếu nói xong về thần đồng thì kết ở câu “hạ học nhi thượng đạt” (học từ dưới mà thông lên trên): ngoài thông minh còn phải học từng bước."
+},
+"120": {
+"book": "Tam Tự Kinh",
+"note": "“Đương tự cảnh” (nên tự răn mình): răn chính mình, không phải lấy người khác ra để ép người."
+},
+"121": {
+"book": "Tam Tự Kinh",
+"note": "Thái Văn Cơ, Tạ Đạo Uẩn đều học được. Dạy người vốn không phân biệt xuất thân."
+},
+"122": {
+"book": "Tam Tự Kinh",
+"note": "Lưu Yến bảy tuổi đã làm quan, Khổng Tử mười lăm tuổi mới lập chí. Sớm hay muộn không quan trọng, quan trọng là chí."
+},
+"123": {
+"book": "Tam Tự Kinh",
+"note": "Lưu Yến giải chữ “bằng” để châm biếm bè đảng, có thể nối với câu Khổng Tử “quần nhi bất đảng” (hợp quần mà không kết bè đảng)."
+},
+"124": {
+"book": "Tam Tự Kinh",
+"note": "Câu “nhân bất học, bất như vật” (người không học thì không bằng vật) được bản Tăng chú giải bằng chính câu này của Khổng Tử."
+},
+"125": {
+"book": "Tam Tự Kinh",
+"note": "“Ấu nhi học, tráng nhi hành” (nhỏ thì học, lớn thì làm): học và làm thay nhau suốt cả đời."
+},
+"126": {
+"book": "Tam Tự Kinh",
+"note": "“Dương danh thanh” (làm rạng danh tiếng): điều quân tử sợ là cả đời không làm được việc gì đáng được khen."
+},
+"127": {
+"book": "Tam Tự Kinh",
+"note": "Chữ “ích” trong “hí vô ích” (chơi đùa vô ích): bản Âm sớ dẫn chương này, muốn tiến bộ phải bền bỉ, không thể cầu nhanh."
+},
+"128": {
+"book": "Tam Tự Kinh",
+"note": "“Hí vô ích” không có nghĩa là cái gì cũng không được chơi: Khổng Tử cũng nói “du ư nghệ” (thong dong trong lục nghệ)."
+},
+"129": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói đạo không thể nói ra được. Khổng Tử cũng nói trời chẳng hề nói, mà bốn mùa vẫn vận hành."
+},
+"130": {
+"book": "Đạo Đức Kinh",
+"note": "“Công thành nhi phất cư” (công thành mà không ở lại nhận công): Thuấn, Vũ có được thiên hạ mà không coi thiên hạ là của riêng mình."
+},
+"131": {
+"book": "Đạo Đức Kinh",
+"note": "Lã Huệ Khanh giải câu “bất kiến khả dục, sử dân tâm bất loạn” (không phô bày điều đáng ham, khiến lòng dân không loạn), dẫn lời Khổng Tử đáp Quý Khang Tử: nếu ông không tham…"
+},
+"132": {
+"book": "Đạo Đức Kinh",
+"note": "Hà Thượng Công giải “bất thượng hiền” (không tôn chuộng người hiền) có dẫn câu này, nhưng viết “viễn nịnh nhân” (xa kẻ nịnh) thành “viễn mỹ nhân” (xa người đẹp), khác nhau một chữ."
+},
+"133": {
+"book": "Đạo Đức Kinh",
+"note": "Khổng Tử chủ trương “cử hiền tài” (cất nhắc người hiền tài), Lão Tử lại nói “bất thượng hiền”. Về việc dùng người, hai nhà hoàn toàn trái ngược."
+},
+"134": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói “hòa kỳ quang, đồng kỳ trần” (hòa với ánh sáng, cùng với bụi trần), Khổng Tử nói “hòa nhi bất đồng” (hòa mà không đồng). Cả hai đều nói hòa: một bên là hòa lẫn vào, một bên là giữ được mình."
+},
+"135": {
+"book": "Đạo Đức Kinh",
+"note": "Đỗ Đạo Kiên nói Lão Tử thường viết “cổ chi sở vị” (người xưa có nói) và “kiến ngôn hữu chi” (lời xưa có câu), tức là thuật lại người xưa, giống như Khổng Tử “thuật nhi bất tác”."
+},
+"136": {
+"book": "Đạo Đức Kinh",
+"note": "“Hậu kỳ thân nhi thân tiên” (để mình ra sau mà mình lại ở trước): nghĩ cho người trước thì mình lại đứng vững. Khổng Tử cũng nói “kỷ dục lập nhi lập nhân” (mình muốn đứng vững thì giúp người đứng vững)."
+},
+"137": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói “thượng thiện nhược thủy” (điều thiện cao nhất như nước), Khổng Tử nói “trí giả nhạo thủy” (người trí thích nước). Nho gia và Đạo gia đều lấy nước để ví con người."
+},
+"138": {
+"book": "Đạo Đức Kinh",
+"note": "Cùng là ngắm nước, Khổng Tử thấy thời gian trôi không ngừng."
+},
+"139": {
+"book": "Đạo Đức Kinh",
+"note": "“Phú quý nhi kiêu, tự di kỳ cữu” (giàu sang mà kiêu thì tự chuốc lấy lỗi). Khổng Tử cũng nói “phú nhi vô kiêu” (giàu mà không kiêu) vẫn chưa đủ, phải “phú nhi hiếu lễ” (giàu mà ưa lễ)."
+},
+"140": {
+"book": "Đạo Đức Kinh",
+"note": "“Trì nhi doanh chi, bất như kỳ dĩ” (giữ mà làm cho đầy, chẳng bằng thôi đi): phải biết lúc nào nên dừng. Khổng Tử chia ba thời trẻ, tráng, già để nói những điều cần răn."
+},
+"141": {
+"book": "Đạo Đức Kinh",
+"note": "“Minh bạch tứ đạt, năng vô tri hồ” (sáng suốt thông khắp, có thể không dùng trí chăng). Khổng Tử cũng tự nói mình “vô tri” (không biết gì), có người đến hỏi thì hỏi rõ từ hai đầu."
+},
+"142": {
+"book": "Đạo Đức Kinh",
+"note": "Hà Thượng Công giải “thiên môn” (cửa trời) là Bắc Cực, còn Khổng Tử lấy sao Bắc Cực để ví việc lấy đức mà làm chính sự."
+},
+"143": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói đồ vật có ích là nhờ chỗ “vô” (trống không), Khổng Tử nói quân tử không thể chỉ là một món đồ dùng."
+},
+"144": {
+"book": "Đạo Đức Kinh",
+"note": "Ngô Trừng dẫn lời Đổng Tư Tĩnh: “tứ vật” của Khổng Tử nói đến “thị” (nhìn) trước tiên, hợp đúng với câu Lão Tử “ngũ sắc lệnh nhân mục manh” (năm màu làm người ta mù mắt) và “vị phúc bất vị mục” (lo cho bụng chứ không lo cho mắt)."
+},
+"145": {
+"book": "Đạo Đức Kinh",
+"note": "Vương Bàng giải câu “ngô hữu đại hoạn, vị ngô hữu thân” (ta có mối lo lớn vì ta có thân), dẫn câu Khổng Tử “vô ngã” (không cố chấp cái tôi), cho rằng đạo lý là một."
+},
+"146": {
+"book": "Đạo Đức Kinh",
+"note": "“Sủng nhục nhược kinh” (được sủng hay bị nhục đều như kinh sợ): chưa được thì sợ không được, được rồi lại sợ mất. Hạng “bỉ phu” (kẻ hèn mọn) Khổng Tử nói chính là như vậy."
+},
+"147": {
+"book": "Đạo Đức Kinh",
+"note": "“Quý dĩ thân vi thiên hạ” (quý thân mình như quý thiên hạ): nhà chú giải vận dụng lời Khổng Tử khen Thuấn, Vũ “hữu thiên hạ nhi bất dự yên” (có thiên hạ mà không coi là của mình)."
+},
+"148": {
+"book": "Đạo Đức Kinh",
+"note": "“Chấp cổ chi đạo, dĩ ngự kim chi hữu” (giữ đạo xưa để chế ngự việc nay). Khổng Tử cũng tự nói mình “tín nhi hiếu cổ” (tin và ưa chuộng điều xưa)."
+},
+"149": {
+"book": "Đạo Đức Kinh",
+"note": "Biết đạo lý từ xưa mới ứng phó được việc trước mắt. Khổng Tử gọi đó là “ôn cố nhi tri tân” (ôn cũ mà biết mới)."
+},
+"150": {
+"book": "Đạo Đức Kinh",
+"note": "“Dự hề nhược đông thiệp xuyên” (dè dặt như mùa đông lội sông): cẩn thận như mùa đông qua sông băng. Tăng Tử dẫn Kinh Thi cũng là dáng vẻ ấy."
+},
+"151": {
+"book": "Đạo Đức Kinh",
+"note": "“Nghiễm hề kỳ nhược khách” (nghiêm trang như người đi làm khách). Khổng Tử nói ra khỏi cửa phải như gặp khách quý."
+},
+"152": {
+"book": "Đạo Đức Kinh",
+"note": "Đường Huyền Tông giải câu “bất tri thường, vọng tác, hung” (không biết lẽ thường mà làm càn thì gặp dữ), có dẫn câu này: làm người không có hằng tâm thì sẽ chuốc nhục."
+},
+"153": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói bậc vua tốt nhất thì dân chỉ biết là có ông ấy. Khổng Tử cũng khen Thuấn “vô vi nhi trị” (không làm gì mà thiên hạ được trị)."
+},
+"154": {
+"book": "Đạo Đức Kinh",
+"note": "“Tín bất túc yên, hữu bất tín yên” (lòng tin không đủ thì sẽ có sự không tin). Khổng Tử cũng đặt chữ tín lên trước lương thực và binh lực."
+},
+"155": {
+"book": "Đạo Đức Kinh",
+"note": "Vua không động mà mọi người tự nhiên vây quanh, chính là điều Lão Tử gọi là “thái thượng” (bậc cao nhất)."
+},
+"156": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói khi lục thân bất hòa mới lộ ra hiếu từ, Khổng Tử nói bề trên hiếu từ thì bề dưới mới trung. Cùng một nhóm chữ, hai cách nói."
+},
+"157": {
+"book": "Đạo Đức Kinh",
+"note": "Nho gia coi hiếu là gốc của nhân, Lão Tử lại nói “đại đạo phế, hữu nhân nghĩa” (đạo lớn bị bỏ thì mới có nhân nghĩa)."
+},
+"158": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử muốn “tuyệt xảo khí lợi” (dứt khéo léo, bỏ lợi lộc), Khổng Tử cũng ghét “xảo ngôn lệnh sắc” (lời khéo, sắc mặt chiều người)."
+},
+"159": {
+"book": "Đạo Đức Kinh",
+"note": "“Duy chi dữ a, tương khứ kỷ hà” (tiếng dạ với tiếng ừ, cách nhau bao xa): “duy” là tiếng dạ cung kính của học trò đáp thầy. Tăng Tử đáp Khổng Tử dùng chính chữ này."
+},
+"160": {
+"book": "Đạo Đức Kinh",
+"note": "“Nhân chi sở úy, bất khả bất úy” (điều người ta sợ thì không thể không sợ). Khổng Tử nói quân tử có ba điều kính sợ."
+},
+"161": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói “tuyệt học vô ưu” (dứt bỏ học thì không còn lo), Khổng Tử nói nghĩ suông cả ngày không bằng đi học."
+},
+"162": {
+"book": "Đạo Đức Kinh",
+"note": "Lời chú của Thuần Phủ do Tiêu Hoành chép lại có dẫn câu của Tô Thức “thệ giả như tư nhi vị thường vãng” (cái trôi đi như thế mà chưa từng mất đi), dùng tiếng than bên sông của Khổng Tử để giảng “tự cổ cập kim…”"
+},
+"163": {
+"book": "Đạo Đức Kinh",
+"note": "Hà Thượng Công giảng “toàn nhi quy chi” (giữ toàn vẹn mà trả về) là giữ thân thể nguyên vẹn để trả lại cha mẹ. Tăng Tử lúc lâm chung nói “khải dư túc, khải dư thủ” (mở chân ta ra xem, mở tay ta ra xem) chính là như thế."
+},
+"164": {
+"book": "Đạo Đức Kinh",
+"note": "“Phù duy bất tranh, cố thiên hạ mạc năng dữ chi tranh” (chỉ vì không tranh nên thiên hạ không ai tranh được với mình). Khổng Tử cũng nói quân tử không có gì phải tranh."
+},
+"165": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt giải câu “đồng ư thất giả, thất diệc lạc đắc chi” (người hòa cùng cái mất thì cái mất cũng vui lòng đón nhận), dẫn lời Khổng Tử: một lòng hướng về nhân thì sẽ không làm điều ác, huống chi là hướng về đạo."
+},
+"166": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói gió dữ không thổi hết một buổi sáng, Khổng Tử lấy gió để ví đức của người quân tử. Cùng một chữ “phong” (gió), hai cách dùng."
+},
+"167": {
+"book": "Đạo Đức Kinh",
+"note": "“Tự phạt giả vô công” (tự khoe thì không có công): chí nguyện của Nhan Uyên chính là không khoe điều tốt của mình."
+},
+"168": {
+"book": "Đạo Đức Kinh",
+"note": "Mạnh Chi Phản thua trận, đi đoạn hậu, khi vào thành lại nói là do ngựa không chạy nổi, không chịu nhận công."
+},
+"169": {
+"book": "Đạo Đức Kinh",
+"note": "Tiêu Hoành chép cách đọc của Lý Ước “pháp địa địa, pháp thiên thiên, pháp đạo đạo”, lấy lối câu “quân quân thần thần phụ phụ tử tử” (vua ra vua, tôi ra tôi, cha ra cha, con ra con) của Khổng Tử làm chứng."
+},
+"170": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói “thiên đại, địa đại, vương diệc đại” (trời lớn, đất lớn, vua cũng lớn), Khổng Tử khen Nghiêu “duy thiên vi đại, duy Nghiêu tắc chi” (chỉ trời là lớn, chỉ Nghiêu noi theo được trời)."
+},
+"171": {
+"book": "Đạo Đức Kinh",
+"note": "Bản khai quật viết “quân tử chung nhật hành bất ly kỳ truy trọng” (quân tử đi suốt ngày không rời xe chở đồ nặng), còn Khổng Tử nói “quân tử bất trọng tắc bất uy” (quân tử không trang trọng thì không có uy)."
+},
+"172": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt giải câu “thiện ngôn vô hà trích” (lời khéo không tì vết), và câu “thời nhiên hậu ngôn” (đúng lúc rồi mới nói) mà ông dùng xuất phát từ chính chương này."
+},
+"173": {
+"book": "Đạo Đức Kinh",
+"note": "“Thiện nhân giả, bất thiện nhân chi sư; bất thiện nhân giả, thiện nhân chi tư” (người thiện là thầy của người bất thiện; người bất thiện là vốn liếng của người thiện). Khổng Tử nói người tốt hay kẻ xấu đều là thầy."
+},
+"174": {
+"book": "Đạo Đức Kinh",
+"note": "“Thường thiện cứu nhân, cố vô khí nhân” (thường khéo cứu người nên không bỏ ai). Khổng Tử cũng nói dạy người không phân biệt xuất thân."
+},
+"175": {
+"book": "Đạo Đức Kinh",
+"note": "Tiêu Hoành chép lời chú của Lã Huệ Khanh, dẫn câu “nguy nguy hồ Thuấn Vũ chi hữu thiên hạ dã, nhi bất dự yên” (cao vời thay, Thuấn, Vũ có thiên hạ mà không coi là của mình) để giải “thiên hạ thần khí, bất khả vi dã” (thiên hạ là vật thần, không thể cưỡng mà làm)."
+},
+"176": {
+"book": "Đạo Đức Kinh",
+"note": "Lời chú của Đường Huyền Tông dùng câu “lịch số tại cung” (vận số trời ở nơi mình), xuất phát từ lời vua Nghiêu khi nhường ngôi cho Thuấn."
+},
+"177": {
+"book": "Đạo Đức Kinh",
+"note": "“Quả nhi vật căng, quả nhi vật phạt” (thành công mà chớ kiêu, thành công mà chớ khoe). Người cầm quân mà Khổng Tử muốn cũng là người “lâm sự nhi cụ, hảo mưu nhi thành” (gặp việc thì biết lo sợ, khéo mưu tính mà làm nên việc)."
+},
+"178": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói “bất dĩ binh cường thiên hạ” (không dùng binh để mạnh hơn thiên hạ), Khổng Tử nói dạy dân bảy năm mới cho ra trận. Cả hai đều không khinh suất dùng binh."
+},
+"179": {
+"book": "Đạo Đức Kinh",
+"note": "“Binh giả bất tường chi khí” (binh khí là đồ chẳng lành). Trong ba việc Khổng Tử thận trọng nhất có việc chiến tranh."
+},
+"180": {
+"book": "Đạo Đức Kinh",
+"note": "Vệ Linh Công hỏi về việc đánh trận, Khổng Tử nói chưa từng học, hôm sau liền ra đi."
+},
+"181": {
+"book": "Đạo Đức Kinh",
+"note": "“Thủy chế hữu danh, danh diệc ký hữu, phu diệc tương tri chỉ” (mới đặt ra thì có danh, danh đã có thì cũng phải biết dừng). Khổng Tử muốn chính danh, Lão Tử nói danh đã lập thì phải biết dừng."
+},
+"182": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt giải câu “tự thắng giả cường” (tự thắng mình là mạnh), nói “năng khắc kỷ phục tính” (biết khắc chế mình để trở về bản tính), rõ ràng là vận dụng câu Khổng Tử “khắc kỷ phục lễ”."
+},
+"183": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt giải câu “đại đạo phiếm hề, kỳ khả tả hữu” (đạo lớn tràn khắp, có thể sang trái sang phải), dùng câu Khổng Tử tự nói về mình “vô khả vô bất khả” (không có gì nhất định được, không có gì nhất định không)."
+},
+"184": {
+"book": "Đạo Đức Kinh",
+"note": "“Công thành mà không nhận là của mình” (功成不名有): Khổng Tử khen vua Nghiêu, trăm họ không biết gọi tên cái hay của ông ở đâu."
+},
+"185": {
+"book": "Đạo Đức Kinh",
+"note": "“Đạo khi nói ra, nhạt nhẽo không vị” (道之出口，淡乎其无味): lời nói nghe hay không giữ chân được người."
+},
+"186": {
+"book": "Đạo Đức Kinh",
+"note": "Đường Huyền Tông bênh vực câu “muốn thu lại, ắt trước hãy mở ra” (将欲歙之，必固张之), dẫn lời Khổng Tử “có thể cùng đứng vững, chưa thể cùng quyền biến” (可与立，未可与权): đó là quyền biến…"
+},
+"187": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói “Đạo thường vô vi mà không gì không làm” (道常无为而无不为); Khổng Tử cũng nói vua Thuấn “chỉ cung kính giữ mình, ngồi ngay hướng nam mà thôi” (恭己正南面而已)."
+},
+"188": {
+"book": "Đạo Đức Kinh",
+"note": "Bản khai quật chép “trời đất sẽ tự chính” (天地将自正); Khổng Tử nói “ngài lấy chính mà dẫn dắt, ai dám không chính” (子帅以正，孰敢不正)."
+},
+"189": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt giải câu “đức cao không tự cho là đức” (上德不德), dẫn lời Khổng Tử năm bảy mươi tuổi “theo điều lòng muốn mà không vượt khuôn phép” (从心所欲，不逾矩)."
+},
+"190": {
+"book": "Đạo Đức Kinh",
+"note": "Đường Huyền Tông giải câu “lễ là sự mỏng manh của trung tín” (礼者忠信之薄), dẫn lời Khổng Tử: lễ há chỉ là ngọc lụa?"
+},
+"191": {
+"book": "Đạo Đức Kinh",
+"note": "Tiêu Hoành chép chú của Tức Trai, dùng câu của Khổng Tử “đạo ta lấy một mà xuyên suốt” (吾道一以贯之) để giải “những gì xưa kia đạt được cái Một” (昔之得一者)."
+},
+"192": {
+"book": "Đạo Đức Kinh",
+"note": "“Trở lại là sự vận động của Đạo” (反者道之动): Khổng Tử cũng biết ngoài giữ cái thường còn phải biết thông biến."
+},
+"193": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt giải câu “kẻ sĩ bậc trên nghe Đạo thì chăm chỉ thực hành” (上士闻道，勤而行之), nói Nhan Hồi chính là kẻ sĩ bậc trên."
+},
+"194": {
+"book": "Đạo Đức Kinh",
+"note": "Tiêu Hoành chép chú của Lã Huệ Khanh, dẫn câu “sáng nghe Đạo, tối chết cũng được” (朝闻道，夕死可矣), nói kẻ sĩ bậc trên là người thật sự hiểu Đạo."
+},
+"195": {
+"book": "Đạo Đức Kinh",
+"note": "Vương Bàng giải “đồ lớn thành muộn” (大器晚成), dẫn lời Khổng Tử chê Quản Trọng khí lượng nhỏ."
+},
+"196": {
+"book": "Đạo Đức Kinh",
+"note": "“Kẻ cứng cỏi ngang ngạnh không được chết yên lành” (强梁者不得其死); Khổng Tử cũng lo như vậy cho Tử Lộ cương cường."
+},
+"197": {
+"book": "Đạo Đức Kinh",
+"note": "“Dạy bằng không lời” (不言之教) chính là dạy bằng thân mình; Khổng Tử nói bản thân ngay chính thì không ra lệnh việc vẫn được thi hành."
+},
+"198": {
+"book": "Đạo Đức Kinh",
+"note": "“Dạy bằng không lời” (不言之教): Khổng Tử cũng nói trời có nói gì đâu, bốn mùa vẫn vận hành."
+},
+"199": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử hỏi “danh với thân, cái nào gần gũi hơn” (名与身孰亲), còn Khổng Tử lại sợ chết rồi mà không có danh tốt: Nho và Đạo đối đầu trực diện ở chữ “danh”."
+},
+"200": {
+"book": "Đạo Đức Kinh",
+"note": "“Biện luận giỏi nhất như vụng về” (大辩若讷): Khổng Tử cũng nói người ăn nói chậm chạp thì gần với nhân."
+},
+"201": {
+"book": "Đạo Đức Kinh",
+"note": "“Đầy nhất như trống rỗng” (大盈若冲): Tăng Tử nói người bạn của ông (Chu Hy chú là Nhan Uyên) có mà như không, đầy mà như rỗng."
+},
+"202": {
+"book": "Đạo Đức Kinh",
+"note": "“Họa không gì lớn bằng không biết đủ” (祸莫大于不知足): Khổng Tử nói trị nước không lo ít, chỉ lo không đều."
+},
+"203": {
+"book": "Đạo Đức Kinh",
+"note": "Lão Tử nói “không ra khỏi cửa mà biết thiên hạ” (不出户，知天下), còn Khổng Tử lại nói chỉ nghĩ mà không học thì vô ích."
+},
+"204": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt giải “làm học thì mỗi ngày thêm” (为学日益), dẫn lời Khổng Tử “nghe nhiều, chọn điều thiện mà theo” (多闻择其善者而从之), nói đó chỉ là “bậc thứ của sự biết” (知之次)."
+},
+"205": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt tiếp đó dẫn lời Khổng Tử hỏi Tử Cống: ta không phải học nhiều mà nhớ, mà là “lấy một mà xuyên suốt” (一以贯之), chính là “làm Đạo thì mỗi ngày bớt” (为道日损)."
+},
+"206": {
+"book": "Đạo Đức Kinh",
+"note": "“Người không thiện, ta cũng đối tốt” (不善者吾亦善之), còn Khổng Tử lại chủ trương “lấy ngay thẳng đáp oán” (以直报怨)."
+},
+"207": {
+"book": "Đạo Đức Kinh",
+"note": "Chương này của Lão Tử chuyên bàn chuyện sống chết; Khổng Tử nói chưa hiểu được sống, sao biết được chết."
+},
+"208": {
+"book": "Đạo Đức Kinh",
+"note": "“Sinh ra mà không chiếm hữu, làm mà không cậy công” (生而不有，为而不恃): có thiên hạ mà không coi là của riêng mình."
+},
+"209": {
+"book": "Đạo Đức Kinh",
+"note": "“Lấp chỗ hở, đóng cửa lại” (塞其兑，闭其门): Lão Tử đóng cửa tai mắt, Khổng Tử dạy điều không hợp lễ thì không nhìn, không nghe."
+},
+"210": {
+"book": "Đạo Đức Kinh",
+"note": "Vương Bật giải “của cải có thừa” (财货有余), dùng lời Khổng Tử “không theo đạo mà có được” (不以其道得之)."
+},
+"211": {
+"book": "Đạo Đức Kinh",
+"note": "“Dân thích đường tắt” (民好径); cửa Khổng khen Đạm Đài Diệt Minh “đi không theo đường tắt” (行不由径): cùng một lối nhỏ."
+},
+"212": {
+"book": "Đạo Đức Kinh",
+"note": "“Tu ở thân thì đức mới chân thật” (修之于身，其德乃真), rồi suy rộng từng tầng ra đến thiên hạ; Khổng Tử nói “tu mình để yên trăm họ” (修己以安百姓)."
+},
+"213": {
+"book": "Đạo Đức Kinh",
+"note": "Hà Thượng Công giải “người nói thì không biết” (言者不知), dùng câu của Tử Cống “xe bốn ngựa không đuổi kịp lưỡi” (驷不及舌)."
+},
+"214": {
+"book": "Đạo Đức Kinh",
+"note": "“Người biết không nói, người nói không biết” (知者不言，言者不知); Khổng Tử nói người có đức ắt có lời hay, người có lời hay chưa chắc có đức."
+},
+"215": {
+"book": "Đạo Đức Kinh",
+"note": "Hà Thượng Công nói “quý việc làm, không quý lời nói” (贵行不贵言); Khổng Tử nói người quân tử nói thì chậm, làm thì nhanh."
+},
+"216": {
+"book": "Đạo Đức Kinh",
+"note": "Tiêu Hoành chép chú của Tức Trai, dẫn câu “gió thổi trên cỏ, cỏ ắt rạp” (草上之风必偃) để giải “ta vô vi mà dân tự hóa” (我无为而民自化)."
+},
+"217": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt giải “pháp lệnh càng rõ” (法令滋彰), dẫn chương chính danh của Khổng Tử: “dân không biết đặt tay chân vào đâu” (民无所措手足)."
+},
+"218": {
+"book": "Đạo Đức Kinh",
+"note": "“Ta vô vi mà dân tự hóa” (我无为而民自化); Khổng Tử cũng khen vua Thuấn “vô vi mà trị” (无为而治)."
+},
+"219": {
+"book": "Đạo Đức Kinh",
+"note": "“Thẳng mà không buông tuồng” (直而不肆): thẳng phải có chừng mực; Khổng Tử nói thẳng mà không có lễ thì làm tổn thương người."
+},
+"220": {
+"book": "Đạo Đức Kinh",
+"note": "“Liêm mà không làm tổn thương” (廉而不刿): Khổng Tử “ôn hòa mà nghiêm, uy mà không dữ” (温而厉，威而不猛), cùng một kiểu “A mà không B”."
+},
+"221": {
+"book": "Đạo Đức Kinh",
+"note": "“Trị người thờ trời không gì bằng tiết kiệm” (治人事天莫若啬): Khổng Tử trị nước cũng dạy “tiết kiệm chi dùng mà thương người” (节用而爱人)."
+},
+"222": {
+"book": "Đạo Đức Kinh",
+"note": "“Trị nước lớn như nấu cá nhỏ” (治大国若烹小鲜): các nhà chú giải lấy sự vô vi của vua Thuấn để giải, Khổng Tử cũng khen Thuấn như vậy."
+},
+"223": {
+"book": "Đạo Đức Kinh",
+"note": "“Lấy Đạo mà đến với thiên hạ thì quỷ không thiêng” (以道莅天下，其鬼不神); Khổng Tử nói đối với quỷ thần thì kính mà xa."
+},
+"224": {
+"book": "Đạo Đức Kinh",
+"note": "“Nước lớn ở chỗ hạ lưu” (大国者下流): Tử Cống nói người quân tử ghét nhất ở chỗ hạ lưu, Lão Tử lại muốn nước lớn cam ở hạ lưu."
+},
+"225": {
+"book": "Đạo Đức Kinh",
+"note": "“Nước lớn chịu nhún trước nước nhỏ thì thu phục được nước nhỏ” (大国以下小国，则取小国); Khổng Tử nói người phương xa không phục thì sửa sang văn đức để họ tìm đến."
+},
+"226": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt giải “người không thiện, có gì mà bỏ” (人之不善，何弃之有), nói “sáng làm điều bất nghĩa mà tối nghe được Đạo lớn”, phỏng theo câu “sáng nghe Đạo” (朝闻道) của Khổng Tử."
+},
+"227": {
+"book": "Đạo Đức Kinh",
+"note": "“Người không thiện, có gì mà bỏ” (人之不善，何弃之有); Khổng Tử cũng nói dạy người không phân biệt xuất thân."
+},
+"228": {
+"book": "Đạo Đức Kinh",
+"note": "Câu “lấy đức báo oán” (报怨以德) trong Luận Ngữ có người đem hỏi Khổng Tử, Khổng Tử đáp “lấy ngay thẳng báo oán” (以直报怨). Chu Hy chú: “Điều người ấy nói…”"
+},
+"229": {
+"book": "Đạo Đức Kinh",
+"note": "Lã Huệ Khanh giải “hứa dễ ắt ít tin” (轻诺必寡信), nói đến “phục ngôn” (复言, lời có thể thực hiện), xuất xứ từ câu của Hữu Tử “giữ tín gần với nghĩa thì lời nói có thể thực hiện” (信近于义，言可复也)."
+},
+"230": {
+"book": "Đạo Đức Kinh",
+"note": "“Đài chín tầng khởi từ nắm đất” (九层之台，起于累土): Khổng Tử nói đắp núi chỉ còn thiếu một sọt đất mà dừng, thì cũng là tự mình dừng."
+},
+"231": {
+"book": "Đạo Đức Kinh",
+"note": "“Không phải để làm dân sáng ra, mà để làm dân chất phác” (非以明民，将以愚之): hai câu thường được đem ra đối chiếu, đều phải xem cổ chú đọc thế nào."
+},
+"232": {
+"book": "Đạo Đức Kinh",
+"note": "Vương Bật nói dùng trí xảo trị nước thì trăm họ cũng dùng trí xảo đối phó; Khổng Tử nói dùng hình phạt trị dân thì dân tránh được tội mà không biết hổ thẹn."
+},
+"233": {
+"book": "Đạo Đức Kinh",
+"note": "“Muốn đứng trước dân, ắt phải đặt thân mình ở sau” (欲先民，必以身后之): Khổng Tử nói làm chính trị thì tự mình đi đầu chịu vất vả."
+},
+"234": {
+"book": "Đạo Đức Kinh",
+"note": "“Vì không tranh, nên thiên hạ không ai tranh được với mình” (以其不争，故天下莫能与之争)."
+},
+"235": {
+"book": "Đạo Đức Kinh",
+"note": "Tiêu Hoành chép chú của Vương Bàng, dùng câu Khổng Tử “lễ, xa xỉ chẳng bằng tiết kiệm” (礼，与其奢也，宁俭) để giải “thứ hai là kiệm” (二曰俭)."
+},
+"236": {
+"book": "Đạo Đức Kinh",
+"note": "“Có lòng từ nên dũng được” (慈故能勇): Khổng Tử cũng nói người có nhân ắt có dũng."
+},
+"237": {
+"book": "Đạo Đức Kinh",
+"note": "“Kiệm nên rộng được” (俭故能广); Khổng Tử nói “tiết kiệm chi dùng mà thương người” (节用而爱人)."
+},
+"238": {
+"book": "Đạo Đức Kinh",
+"note": "“Kẻ sĩ giỏi không chuộng võ” (善为士者不武): trong những việc Khổng Tử thận trọng nhất có việc chiến tranh."
+},
+"239": {
+"book": "Đạo Đức Kinh",
+"note": "“Họa không gì lớn bằng khinh địch” (祸莫大于轻敌): người Khổng Tử cần chính là người “gặp việc thì biết sợ” (临事而惧)."
+},
+"240": {
+"book": "Đạo Đức Kinh",
+"note": "“Nhà dùng binh có câu” (用兵有言), còn Khổng Tử lại nói việc quân lữ thì chưa từng học."
+},
+"241": {
+"book": "Đạo Đức Kinh",
+"note": "“Mặc áo vải thô mà ôm ngọc” (被褐怀玉): cùng một viên ngọc, Khổng Tử muốn “bán đi thôi” (沽之哉), Lão Tử thì giữ trong lòng."
+},
+"242": {
+"book": "Đạo Đức Kinh",
+"note": "“Người hiểu ta thật hiếm” (知我者希); Khổng Tử cũng than “không ai hiểu ta chăng” (莫我知也夫)."
+},
+"243": {
+"book": "Đạo Đức Kinh",
+"note": "“Người hiểu ta hiếm, thì người noi theo ta càng quý” (知我者希，则我者贵); Khổng Tử nói người khác không hiểu mình cũng không giận."
+},
+"244": {
+"book": "Đạo Đức Kinh",
+"note": "“Biết mà như không biết là bậc trên” (知不知，上): câu giống nhau nhất của hai nhà."
+},
+"245": {
+"book": "Đạo Đức Kinh",
+"note": "Khổng Tử tự nhận mình không biết gì, vừa khớp với câu “biết điều không biết” (知不知) của Lão Tử."
+},
+"246": {
+"book": "Đạo Đức Kinh",
+"note": "“Dân không sợ uy thì uy lớn sẽ đến” (民不畏威，则大威至); Khổng Tử nói người quân tử có ba điều sợ."
+},
+"247": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt giải “Đạo của trời không tranh mà khéo thắng, không nói mà khéo ứng”, dẫn lời Khổng Tử “trời có nói gì đâu” (天何言哉)."
+},
+"248": {
+"book": "Đạo Đức Kinh",
+"note": "“Dũng ở chỗ dám thì chết” (勇于敢则杀); Khổng Tử chính là lo cho Tử Lộ như vậy."
+},
+"249": {
+"book": "Đạo Đức Kinh",
+"note": "“Dũng ở chỗ không dám thì sống” (勇于不敢则活); Khổng Tử không cần kẻ tay không đánh hổ, lội bộ qua sông."
+},
+"250": {
+"book": "Đạo Đức Kinh",
+"note": "Tô Triệt giải “dân không sợ chết” (民不畏死), lại dẫn câu của Khổng Tử “dân không biết đặt tay chân vào đâu” (民无所措手足)."
+},
+"251": {
+"book": "Đạo Đức Kinh",
+"note": "“Thường có người coi việc giết thì giết” (常有司杀者杀); Khổng Tử nói làm chính trị cần gì phải dùng đến giết chóc."
+},
+"252": {
+"book": "Đạo Đức Kinh",
+"note": "Khổng Tử nói người thiện trị nước trăm năm cũng có thể khiến tàn bạo và giết chóc biến mất."
+},
+"253": {
+"book": "Đạo Đức Kinh",
+"note": "“Dân đói là vì người trên thu thuế quá nhiều” (民之饥，以其上食税之多); Hữu Nhược khuyên Ai Công giảm thuế: “Trăm họ đủ, vua cùng ai mà thiếu?”"
+},
+"254": {
+"book": "Đạo Đức Kinh",
+"note": "“Dân khó trị là vì người trên hữu vi” (民之难治，以其上之有为); Khổng Tử nói người trên ngay chính thì kẻ dưới không dám không chính."
+},
+"255": {
+"book": "Đạo Đức Kinh",
+"note": "“Mạnh lớn ở dưới, mềm yếu ở trên” (强大处下，柔弱处上): Tăng Tử nói người bạn của ông (Chu Hy chú là Nhan Uyên) có mà như không, đầy mà như rỗng."
+},
+"256": {
+"book": "Đạo Đức Kinh",
+"note": "“Đạo của trời bớt chỗ thừa mà bù chỗ thiếu” (天之道，损有余而补不足); Khổng Tử nói không lo ít, chỉ lo không đều."
+},
+"257": {
+"book": "Đạo Đức Kinh",
+"note": "“Ai có thể lấy chỗ thừa mà phụng thiên hạ” (孰能有余以奉天下): Khổng Tử nói người quân tử giúp người túng quẫn, không làm giàu thêm cho người giàu."
+},
+"258": {
+"book": "Đạo Đức Kinh",
+"note": "Lã Huệ Khanh giải “nhận lấy cái nhơ của nước, ấy gọi là chủ xã tắc” (受国之垢，是谓社稷主), dẫn lời vua Thang “muôn phương có tội, tội ở nơi thân trẫm” (万方有罪，罪在朕躬)…"
+},
+"259": {
+"book": "Đạo Đức Kinh",
+"note": "“Nhận lấy điều chẳng lành của nước” (受国不祥): trách mình nhiều, trách người ít."
+},
+"260": {
+"book": "Đạo Đức Kinh",
+"note": "“Hòa giải oán lớn, ắt còn oán thừa” (和大怨，必有余怨); Khổng Tử chủ trương “lấy ngay thẳng đáp oán, lấy đức đáp đức” (以直报怨，以德报德)."
+},
+"261": {
+"book": "Đạo Đức Kinh",
+"note": "“Có đức giữ khế ước, không đức giữ phép thuế” (有德司契，无德司彻): “triệt” (彻) là phép thuế đời Chu, Hữu Nhược khuyên Ai Công thi hành phép triệt."
+},
+"262": {
+"book": "Đạo Đức Kinh",
+"note": "Tiêu Hoành chép chú của Vương Bàng: Luận Ngữ và Mạnh Tử ở thiên cuối đều xưng Nghiêu, Thuấn, Vũ, Thang; Lão Tử khép lại bằng chương này, dụng ý cũng như vậy."
+},
+"263": {
+"book": "Đạo Đức Kinh",
+"note": "“Nước láng giềng trông thấy nhau… dân đến già chết không qua lại với nhau”, còn Khổng Tử lại nói phải khiến người gần vui lòng, người xa tìm về."
+},
+"264": {
+"book": "Đạo Đức Kinh",
+"note": "“Lời thật không đẹp, lời đẹp không thật” (信言不美，美言不信); Khổng Tử nói “lời khéo, sắc mặt giả, ít có nhân” (巧言令色，鲜矣仁)."
+},
+"265": {
+"book": "Đạo Đức Kinh",
+"note": "“Người thiện không biện bác” (善者不辩); Khổng Tử nói người quân tử nói thì chậm, làm thì nhanh."
+},
+"266": {
+"book": "Đạo Đức Kinh",
+"note": "“Người biết không rộng, người rộng không biết” (知者不博，博者不知); Khổng Tử dạy học rộng còn phải lấy lễ mà ước thúc."
+},
+"1346": {
+"note": "Bản gốc chép “出则弟／汎爱众”, bản thông hành chép “出则悌／泛爱众”"
+},
+"1347": {
+"note": "Bản gốc chép “大庙”, bản thông hành chép “太庙”"
+},
+"1348": {
+"note": "Bản gốc chép “寗武子”, bản thông hành chép “宁武子”"
+},
+"1349": {
+"note": "Bản gốc chép “焉尔乎”, bản thông hành chép “焉耳乎”"
+},
+"1350": {
+"note": "Bản gốc chép “唯我与尔”, bản thông hành chép “惟我与尔”"
+},
+"1351": {
+"note": "Bản gốc chép “大宰”, bản thông hành chép “太宰”"
+},
+"1352": {
+"note": "Bản gốc chép “韫匵”, bản thông hành chép “韫椟”"
+},
+"1353": {
+"note": "Bản gốc chép “后彫”, bản thông hành chép “后凋”"
+},
+"1354": {
+"note": "Bản gốc chép “没阶趋翼如也”, bản thông hành chép “没阶趋进翼如也”"
+},
+"1355": {
+"note": "Bản gốc chép “惟酒无量”, bản thông hành chép “唯酒无量”"
+},
+"1356": {
+"note": "Bản gốc chép “居不容”, bản thông hành chép “居不客”"
+},
+"1357": {
+"note": "Bản gốc chép “敢问死”, bản thông hành chép “曰敢问死”"
+},
+"1358": {
+"note": "Bản gốc chép “亦祗以异”, bản thông hành chép “亦只以异”"
+},
+"1359": {
+"note": "Bản gốc chép “曰举尔所知”, bản thông hành chép “子曰举尔所知”"
+},
+"1360": {
+"note": "Bản gốc chép “无所措手足”, bản thông hành chép “无所错手足”"
+},
+"1361": {
+"note": "Bản gốc chép “涖之”, bản thông hành chép “莅之”"
+},
+"1362": {
+"note": "Bản gốc chép “遇诸涂”, bản thông hành chép “遇诸途”"
+},
+"1363": {
+"note": "Bản gốc chép “乡原”, bản thông hành chép “乡愿”"
+},
+"1364": {
+"note": "Bản gốc chép “道听而涂说”, bản thông hành chép “道听而途说”"
+},
+"1365": {
+"note": "Bản gốc chép “季孟之閒”, bản thông hành chép “季孟之间”"
+},
+"1366": {
+"note": "Bản gốc chép “子曰”, bản thông hành chép “孔子曰”"
+},
+"1367": {
+"pick": "Luyện tập thường xuyên"
+},
+"1368": {
+"pick": "Thuyết vợ chồng"
+},
+"1369": {
+"pick": "A"
+},
+"1370": {
+"pick": "Người đọc đạt được sự chính"
+},
+"1371": {
+"pick": "Chấp vào một mặt"
+},
+"1372": {
+"pick": "A"
+},
+"1373": {
+"pick": "A"
+},
+"1374": {
+"pick": "A"
+},
+"1375": {
+"pick": "A"
+},
+"1376": {
+"pick": "Hai thuyết cùng tồn tại"
+},
+"1377": {
+"pick": "A"
+},
+"1378": {
+"pick": "与 = tán thành"
+},
+"1379": {
+"pick": "A"
+},
+"1380": {
+"pick": "Hai thuyết cùng tồn tại"
+},
+"1381": {
+"pick": "Ước thúc bản thân"
+},
+"1382": {
+"pick": "A"
+},
+"1383": {
+"pick": "A + ranh giới của B"
+},
+"1384": {
+"pick": "A"
+},
+"1385": {
+"pick": "A"
+},
+"1386": {
+"pick": "Không phân sang hèn, chủng tộc"
+},
+"1387": {
+"pick": "Văn tự theo B, nghĩa theo A"
+},
+"1388": {
+"pick": "A"
+},
+"1389": {
+"pick": "A"
+},
+"1390": {
+"pick": "A"
+},
+"1391": {
+"pick": "A"
+},
+"1392": {
+"pick": "Hai thuyết cùng tồn tại"
+},
+"1393": {
+"pick": "Chu Hy"
+},
+"1394": {
+"pick": "Ba việc"
+},
+"1395": {
+"pick": "Phân biệt thiện ác, tà chính"
+},
+"1396": {
+"pick": "Nguy mà không yên"
+}
+},
+"_note": "11-14 智器译（Opus 5.5）：S 关系图与人物卡页面文字、W 同问异答、X 关系注（按 lunyu_guanxi.json rels 序号）、p 人名身份（按中文本名）"
+}

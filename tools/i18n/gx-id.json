@@ -1,0 +1,2701 @@
+{
+"p": {
+"仲由": {
+"name": "Zhong You",
+"common": "Zilu",
+"alias": "Zilu; Jilu; You",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"端木赐": {
+"name": "Duanmu Ci",
+"common": "Zigong",
+"alias": "Zigong; Ci",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"颜回": {
+"name": "Yan Hui",
+"common": "Yan Yuan",
+"alias": "Yan Yuan; Hui",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"卜商": {
+"name": "Bu Shang",
+"common": "Zixia",
+"alias": "Zixia; Shang",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"颛孙师": {
+"name": "Zhuansun Shi",
+"common": "Zizhang",
+"alias": "Zizhang; Shi",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"冉求": {
+"name": "Ran Qiu",
+"common": "Ran You",
+"alias": "Ran You; Ranzi; Qiu",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"曾参": {
+"name": "Zeng Shen",
+"common": "Zengzi",
+"alias": "Zengzi; Ziyu; Shen",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"言偃": {
+"name": "Yan Yan",
+"common": "Ziyou",
+"alias": "Ziyou; Yan",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"季康子": {
+"name": "Ji Kangzi",
+"common": "Ji Kangzi",
+"alias": "Kangzi; Jisun Fei",
+"role": "Pejabat tinggi negeri Lu",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"季氏": {
+"name": "Klan Ji",
+"common": "Klan Ji",
+"alias": "",
+"role": "Sebutan bagi klan menteri Lu atau kepala keluarganya; tidak merujuk pasti pada kepala klan tertentu",
+"rel": "Klan menteri Lu yang dirujuk teks; tokoh spesifiknya tidak ditentukan dalam bab ini"
+},
+"舜": {
+"name": "Shun",
+"common": "Shun",
+"alias": "",
+"role": "Raja bijak zaman kuno",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"樊须": {
+"name": "Fan Xu",
+"common": "Fan Chi",
+"alias": "Fan Chi; Xu",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"冉雍": {
+"name": "Ran Yong",
+"common": "Zhonggong",
+"alias": "Zhonggong; Yong",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"鲁哀公": {
+"name": "Adipati Ai dari Lu",
+"common": "Adipati Ai dari Lu",
+"alias": "Adipati Ai",
+"role": "Penguasa negeri Lu",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"宰予": {
+"name": "Zai Yu",
+"common": "Zai Wo",
+"alias": "Zai Wo; Yu",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"公西赤": {
+"name": "Gongxi Chi",
+"common": "Gongxi Hua",
+"alias": "Gongxi Hua; Zihua; Chi",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"闵损": {
+"name": "Min Sun",
+"common": "Min Ziqian",
+"alias": "Min Ziqian; Minzi; Sun",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"有若": {
+"name": "You Ruo",
+"common": "Youzi",
+"alias": "Youzi",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"管仲": {
+"name": "Guan Zhong",
+"common": "Guan Zhong",
+"alias": "Guan Shi",
+"role": "Perdana menteri negeri Qi",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"伯夷": {
+"name": "Boyi",
+"common": "Boyi",
+"alias": "",
+"role": "Pertapa yang menarik diri dari dunia pada zaman kuno",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"叔齐": {
+"name": "Shuqi",
+"common": "Shuqi",
+"alias": "",
+"role": "Pertapa yang menarik diri dari dunia pada zaman kuno",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"尧": {
+"name": "Yao",
+"common": "Yao",
+"alias": "",
+"role": "Raja bijak zaman kuno",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"周公": {
+"name": "Adipati Zhou",
+"common": "Adipati Zhou",
+"alias": "",
+"role": "Tokoh Zhou; dalam teks disebut ayah adipati Lu",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"禹": {
+"name": "Yu",
+"common": "Yu",
+"alias": "",
+"role": "Raja pendahulu dinasti Xia",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"陈亢": {
+"name": "Chen Kang",
+"common": "Chen Kang",
+"alias": "Ziqin; Chen Ziqin",
+"role": "Menurut catatan Zhu Xi termasuk murid Konfusius, tetapi juga disebut mungkin murid Zigong; belum pasti",
+"rel": "Garis perguruannya diperdebatkan"
+},
+"南容": {
+"name": "Nan Rong",
+"common": "Nan Rong",
+"alias": "Nangong Kuo; Nangong Tao; Zirong",
+"role": "Murid Konfusius menurut catatan Zhu Xi",
+"rel": "Murid; menikahi putri kakak laki-laki Konfusius"
+},
+"子产": {
+"name": "Zichan",
+"common": "Zichan",
+"alias": "Dongli Zichan",
+"role": "Pejabat tinggi negeri Zheng",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"原宪": {
+"name": "Yuan Xian",
+"common": "Yuan Si",
+"alias": "Yuan Si; Xian",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"叶公": {
+"name": "Adipati She",
+"common": "Adipati She",
+"alias": "",
+"role": "Penguasa daerah She di negeri Chu",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"周武王": {
+"name": "Raja Wu dari Zhou",
+"common": "Raja Wu dari Zhou",
+"alias": "Raja Wu",
+"role": "Raja pendahulu Zhou",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"周文王": {
+"name": "Raja Wen dari Zhou",
+"common": "Raja Wen dari Zhou",
+"alias": "Raja Wen",
+"role": "Raja pendahulu Zhou",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"孔鲤": {
+"name": "Kong Li",
+"common": "Kong Li",
+"alias": "Boyu; Li",
+"role": "Putra Konfusius",
+"rel": "Putra"
+},
+"司马耕": {
+"name": "Sima Geng",
+"common": "Sima Niu",
+"alias": "Sima Niu",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"齐景公": {
+"name": "Adipati Jing dari Qi",
+"common": "Adipati Jing dari Qi",
+"alias": "Adipati Jing",
+"role": "Penguasa negeri Qi",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"齐桓公": {
+"name": "Adipati Huan dari Qi",
+"common": "Adipati Huan dari Qi",
+"alias": "Adipati Huan",
+"role": "Penguasa negeri Qi",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"柳下惠": {
+"name": "Liuxia Hui",
+"common": "Liuxia Hui",
+"alias": "",
+"role": "Orang Lu yang pernah menjabat hakim",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"孟武伯": {
+"name": "Meng Wubo",
+"common": "Meng Wubo",
+"alias": "Wubo; Zhi",
+"role": "Putra Meng Yizi",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"林放": {
+"name": "Lin Fang",
+"common": "Lin Fang",
+"alias": "",
+"role": "Orang Lu; penanya tentang ritus",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"王孙贾": {
+"name": "Wangsun Jia",
+"common": "Wangsun Jia",
+"alias": "",
+"role": "Pejabat tinggi negeri Wei",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"鲁定公": {
+"name": "Adipati Ding dari Lu",
+"common": "Adipati Ding dari Lu",
+"alias": "Adipati Ding",
+"role": "Penguasa negeri Lu",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"孔子兄之女": {
+"name": "Putri kakak Konfusius",
+"common": "Putri kakak Konfusius",
+"alias": "",
+"role": "Perempuan yang menurut teks dinikahkan dengan Nan Rong",
+"rel": "Keponakan perempuan"
+},
+"孔子之兄": {
+"name": "Kakak Konfusius",
+"common": "Kakak Konfusius",
+"alias": "",
+"role": "Ayah yang dirujuk frasa 'anak sang kakak' dalam teks; namanya tidak disebut jelas dalam bab ini",
+"rel": "Kakak laki-laki"
+},
+"孔文子": {
+"name": "Kong Wenzi",
+"common": "Kong Wenzi",
+"alias": "Zhongshu Yu; Kong Yu",
+"role": "Pejabat tinggi (dafu) negara Wei",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"臧文仲": {
+"name": "Zang Wenzhong",
+"common": "Zang Wenzhong",
+"alias": "",
+"role": "Pejabat tinggi (dafu) negara Lu",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"冉耕": {
+"name": "Ran Geng",
+"common": "Boniu",
+"alias": "Boniu; Ran Boniu",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"祝鮀": {
+"name": "Zhu Tuo",
+"common": "Zhu Tuo",
+"alias": "Zhu Tuo (varian aksara); Ziyu",
+"role": "Pejabat tinggi (dafu) negara Wei",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"卫出公": {
+"name": "Adipati Chu dari Wei",
+"common": "Adipati Chu dari Wei",
+"alias": "Penguasa Wei",
+"role": "Wei Zhe menurut tafsir Zhu Xi; penguasa Wei",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"师挚": {
+"name": "Shi Zhi",
+"common": "Shi Zhi",
+"alias": "Taishi Zhi",
+"role": "Pejabat musik atau musisi; sebutan jabatan mengikuti teks",
+"rel": "Disebut dalam teks atau berinteraksi"
+},
+"高柴": {
+"name": "Gao Chai",
+"common": "Zigao",
+"alias": "Zigao; Chai",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"商汤": {
+"name": "Tang dari Shang",
+"common": "Tang dari Shang",
+"alias": "Tang; Lü",
+"role": "Raja terdahulu Shang",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"孟公绰": {
+"name": "Meng Gongchuo",
+"common": "Meng Gongchuo",
+"alias": "Gongchuo",
+"role": "Pejabat tinggi (dafu) negara Lu",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"臧武仲": {
+"name": "Zang Wuzhong",
+"common": "Zang Wuzhong",
+"alias": "",
+"role": "Pejabat tinggi (dafu) negara Lu",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"公叔文子": {
+"name": "Gongshu Wenzi",
+"common": "Gongshu Wenzi",
+"alias": "Gongsun Ba",
+"role": "Pejabat tinggi (dafu) negara Wei",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"公子纠": {
+"name": "Pangeran Jiu",
+"common": "Pangeran Jiu",
+"alias": "",
+"role": "Pangeran negara Qi",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"卫灵公": {
+"name": "Adipati Ling dari Wei",
+"common": "Adipati Ling dari Wei",
+"alias": "Adipati Ling",
+"role": "Penguasa Wei",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"蘧瑗": {
+"name": "Qu Yuan",
+"common": "Qu Yuan",
+"alias": "Qu Boyu",
+"role": "Orang Wei",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"子服景伯": {
+"name": "Zifu Jingbo",
+"common": "Zifu Jingbo",
+"alias": "Zifu He",
+"role": "Pejabat tinggi (dafu) negara Lu",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"商纣": {
+"name": "Zhou dari Shang",
+"common": "Zhou dari Shang",
+"alias": "Zhou",
+"role": "Penguasa terakhir Shang",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"孟氏": {
+"name": "Keluarga Meng",
+"common": "Keluarga Meng",
+"alias": "",
+"role": "Sebutan klan menteri Lu atau kepala keluarganya; tidak merujuk kepala keluarga tertentu",
+"rel": "Klan menteri Lu yang dirujuk teks; tokoh spesifik tidak ditentukan dalam bab ini"
+},
+"叔孙武叔": {
+"name": "Shusun Wushu",
+"common": "Shusun Wushu",
+"alias": "",
+"role": "Pejabat tinggi (dafu) negara Lu",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"孟懿子": {
+"name": "Meng Yizi",
+"common": "Meng Yizi",
+"alias": "Mengsun; Zhongsun Heji",
+"role": "Pejabat tinggi (dafu) negara Lu",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"或谓孔子者": {
+"name": "Seseorang yang berkata kepada Konfusius",
+"common": "Seseorang yang berkata kepada Konfusius",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"三家": {
+"name": "Tiga Keluarga",
+"common": "Tiga Keluarga",
+"alias": "Klan Jisun; Klan Mengsun; Klan Shusun",
+"role": "Sebutan gabungan tiga keluarga besar Lu, bukan satu orang",
+"rel": "Dipertahankan sebagai sebutan asli, tidak dipecah menjadi kepala keluarga tanpa bukti"
+},
+"或问禘者": {
+"name": "Seseorang yang bertanya tentang upacara di",
+"common": "Seseorang yang bertanya tentang upacara di",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"或讥问礼者": {
+"name": "Seseorang yang mencela Konfusius karena bertanya tentang ritus",
+"common": "Seseorang yang mencela Konfusius karena bertanya tentang ritus",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"鄹人": {
+"name": "Orang dari Zou",
+"common": "Orang dari Zou",
+"alias": "Shuliang He",
+"role": "Menurut tafsir Zhu Xi adalah ayah Konfusius; pernah menjadi pejabat kota Zou",
+"rel": "Ayah"
+},
+"或问管仲者": {
+"name": "Seseorang yang bertanya tentang Guan Zhong",
+"common": "Seseorang yang bertanya tentang Guan Zhong",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"鲁大师": {
+"name": "Kepala musisi Lu",
+"common": "Kepala musisi Lu",
+"alias": "",
+"role": "Pejabat musik atau musisi; sebutan jabatan mengikuti teks",
+"rel": "Disebut dalam teks atau berinteraksi"
+},
+"仪封人": {
+"name": "Penjaga perbatasan Yi",
+"common": "Penjaga perbatasan Yi",
+"alias": "",
+"role": "Pejabat penjaga perbatasan di kota Yi, negara Wei; menurut Zhu Xi orang bijak yang bersembunyi di jabatan rendah",
+"rel": "Berinteraksi dengan Konfusius atau muridnya; lihat bab ini"
+},
+"公冶长": {
+"name": "Gongye Chang",
+"common": "Gongye Chang",
+"alias": "",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"孔子之女": {
+"name": "Putri Konfusius",
+"common": "Putri Konfusius",
+"alias": "",
+"role": "Putri yang dimaksud frasa 'menikahkan putrinya dengannya' dalam teks",
+"rel": "Putri"
+},
+"宓不齐": {
+"name": "Fu Buqi",
+"common": "Zijian",
+"alias": "Zijian",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"或论雍者": {
+"name": "Seseorang yang menilai Yong",
+"common": "Seseorang yang menilai Yong",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"漆雕开": {
+"name": "Qidiao Kai",
+"common": "Qidiao Kai",
+"alias": "",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"申枨": {
+"name": "Shen Cheng",
+"common": "Cheng",
+"alias": "Cheng",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"或答申枨者": {
+"name": "Seseorang yang menjawab dengan menyebut Shen Cheng",
+"common": "Seseorang yang menjawab dengan menyebut Shen Cheng",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"晏婴": {
+"name": "Yan Ying",
+"common": "Yan Ying",
+"alias": "Yan Pingzhong",
+"role": "Pejabat tinggi (dafu) negara Qi",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"子文": {
+"name": "Ziwen",
+"common": "Ziwen",
+"alias": "Dou Gouwutu",
+"role": "Perdana menteri (lingyin) negara Chu",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"崔杼": {
+"name": "Cui Zhu",
+"common": "Cui Zhu",
+"alias": "Cuizi",
+"role": "Pejabat tinggi (dafu) negara Qi",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"齐庄公": {
+"name": "Adipati Zhuang dari Qi",
+"common": "Adipati Zhuang dari Qi",
+"alias": "Penguasa Qi; Guang",
+"role": "Penguasa Qi yang dibunuh oleh Cui Zhu",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"陈文子": {
+"name": "Chen Wenzi",
+"common": "Chen Wenzi",
+"alias": "Xu Wu",
+"role": "Pejabat tinggi negeri Qi",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"季文子": {
+"name": "Ji Wenzi",
+"common": "Ji Wenzi",
+"alias": "",
+"role": "Pejabat tinggi negeri Lu",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"宁武子": {
+"name": "Ning Wuzi",
+"common": "Ning Wuzi",
+"alias": "Ning Wuzi (ditulis 寗武子); Yu",
+"role": "Pejabat tinggi negeri Wei",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"微生高": {
+"name": "Weisheng Gao",
+"common": "Weisheng Gao",
+"alias": "",
+"role": "Dibahas dalam teks sehubungan dengan kejujuran",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"乞醯者": {
+"name": "Orang yang meminta cuka",
+"common": "Orang yang meminta cuka",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"微生高之邻": {
+"name": "Tetangga Weisheng Gao",
+"common": "Tetangga Weisheng Gao",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"左丘明": {
+"name": "Zuoqiu Ming",
+"common": "Zuoqiu Ming",
+"alias": "",
+"role": "Disebut dalam teks sebagai orang yang malu akan kata-kata manis dan wajah yang dibuat-buat",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"子桑伯子": {
+"name": "Zisang Bozi",
+"common": "Zisang Bozi",
+"alias": "",
+"role": "Tokoh yang ditanyakan oleh Zhonggong",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"公西赤之母": {
+"name": "Ibu Gongxi Chi",
+"common": "Ibu Gongxi Chi",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"季氏使者": {
+"name": "Utusan keluarga Ji",
+"common": "Utusan keluarga Ji",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"澹台灭明": {
+"name": "Tantai Mieming",
+"common": "Tantai Mieming",
+"alias": "",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"孟之反": {
+"name": "Meng Zhifan",
+"common": "Meng Zhifan",
+"alias": "",
+"role": "Orang Lu; dalam teks ia berada paling belakang ketika pasukan mundur",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"宋朝": {
+"name": "Song Chao",
+"common": "Song Chao",
+"alias": "",
+"role": "Pangeran negeri Song; terkenal tampan",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"南子": {
+"name": "Nanzi",
+"common": "Nanzi",
+"alias": "",
+"role": "Istri Adipati Ling dari Wei",
+"rel": "Pernah ditemui Konfusius"
+},
+"老彭": {
+"name": "Lao Peng",
+"common": "Lao Peng",
+"alias": "",
+"role": "Tokoh kuno yang dijadikan perbandingan diri oleh Konfusius; identitas pastinya tidak jelas",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"有丧者": {
+"name": "Orang yang sedang berkabung",
+"common": "Orang yang sedang berkabung",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"桓魋": {
+"name": "Huan Tui",
+"common": "Huan Tui",
+"alias": "",
+"role": "Orang Song; dalam teks ia mengancam Konfusius",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"互乡童子": {
+"name": "Pemuda dari Huxiang",
+"common": "Pemuda dari Huxiang",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"陈司败": {
+"name": "Chen Sibai",
+"common": "Chen Sibai",
+"alias": "Sibai",
+"role": "Sibai (menteri kehakiman) negeri Chen; namanya tidak diketahui",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"鲁昭公": {
+"name": "Adipati Zhao dari Lu",
+"common": "Adipati Zhao dari Lu",
+"alias": "Adipati Zhao; Chou",
+"role": "Penguasa negeri Lu",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"巫马施": {
+"name": "Wuma Shi",
+"common": "Wuma Qi",
+"alias": "Wuma Qi",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"吴孟子": {
+"name": "Wu Mengzi",
+"common": "Wu Mengzi",
+"alias": "",
+"role": "Perempuan dari Wu bermarga sama yang dinikahi Adipati Zhao dari Lu",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"与孔子歌者": {
+"name": "Orang yang bernyanyi bersama Konfusius",
+"common": "Orang yang bernyanyi bersama Konfusius",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"泰伯": {
+"name": "Taibo",
+"common": "Taibo",
+"alias": "",
+"role": "Tokoh kuno yang tiga kali menyerahkan kekuasaan atas dunia",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"孟敬子": {
+"name": "Meng Jingzi",
+"common": "Meng Jingzi",
+"alias": "",
+"role": "Dalam teks ia menjenguk Zengzi yang sakit",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"曾子之友": {
+"name": "Sahabat Zengzi",
+"common": "Sahabat Zengzi",
+"alias": "",
+"role": "Tidak disebut namanya dalam teks; catatan Zhu Xi memuat pendapat Ma bahwa ia adalah Yan Yuan, tetapi tidak pasti",
+"rel": "Sahabat Zengzi"
+},
+"妇人": {
+"name": "Seorang perempuan",
+"common": "Seorang perempuan",
+"alias": "",
+"role": "Perempuan di antara sepuluh menteri pengatur pada 8.20; namanya tidak muncul dalam teks",
+"rel": "Tokoh sejarah yang dikutip"
+},
+"达巷党人": {
+"name": "Orang dari kampung Daxiang",
+"common": "Orang dari kampung Daxiang",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"大宰": {
+"name": "Taizai",
+"common": "Taizai",
+"alias": "",
+"role": "Nama jabatan; negeri dan namanya diragukan, tidak dipastikan sebagai tokoh tertentu dari Wu atau Song",
+"rel": "Bertanya kepada Zigong apakah Konfusius seorang bijak suci"
+},
+"琴牢": {
+"name": "Qin Lao",
+"common": "Lao",
+"alias": "Lao; Zikai; Zizhang",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"鄙夫": {
+"name": "Orang desa yang sederhana",
+"common": "Orang desa yang sederhana",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"或问九夷者": {
+"name": "Seseorang yang bertanya tentang Sembilan Yi",
+"common": "Seseorang yang bertanya tentang Sembilan Yi",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"孔子之友": {
+"name": "Sahabat Konfusius",
+"common": "Sahabat Konfusius",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"闵子骞之父": {
+"name": "Ayah Min Ziqian",
+"common": "Ayah Min Ziqian",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"闵子骞之母": {
+"name": "Ibu Min Ziqian",
+"common": "Ibu Min Ziqian",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"颜路": {
+"name": "Yan Lu",
+"common": "Yan Lu",
+"alias": "",
+"role": "Ayah Yan Hui",
+"rel": "Ayah murid Yan Hui"
+},
+"从者": {
+"name": "Para pengikut",
+"common": "Para pengikut",
+"alias": "",
+"role": "Tokoh tertentu dalam teks; nama atau identitas tidak diketahui",
+"rel": "Lihat uraian bab ini"
+},
+"季子然": {
+"name": "Ji Ziran",
+"common": "Ji Ziran",
+"alias": "",
+"role": "Dalam teks ia bertanya tentang Zhong You dan Ran Qiu",
+"rel": "Lawan bicara Konfusius"
+},
+"曾点": {
+"name": "Zeng Dian",
+"common": "Zeng Xi",
+"alias": "Zeng Xi; Dian",
+"role": "Murid Konfusius",
+"rel": "Murid"
+},
+"棘子成": {
+"name": "Ji Zicheng",
+"common": "Ji Zicheng",
+"alias": "",
+"role": "Pejabat tinggi negeri Wei",
+"rel": "Disebut atau berdialog dalam teks; lihat bab ini"
+},
+"皋陶": {
+"name": "Gao Yao",
+"common": "Gao Yao",
+"alias": "",
+"role": "orang yang diangkat oleh Shun",
+"rel": "tokoh sejarah yang dikutip atau dikomentari"
+},
+"伊尹": {
+"name": "Yi Yin",
+"common": "Yi Yin",
+"alias": "",
+"role": "orang yang diangkat oleh Tang",
+"rel": "tokoh sejarah yang dikutip atau dikomentari"
+},
+"公子荆": {
+"name": "Gongzi Jing",
+"common": "Gongzi Jing",
+"alias": "Gongzi Jing dari Wei",
+"role": "pangeran Wei",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"直躬": {
+"name": "Zhi Gong",
+"common": "Zhi Gong",
+"alias": "",
+"role": "orang yang menurut Adipati She bersaksi bahwa ayahnya mencuri domba; nama tidak diketahui",
+"rel": "tokoh yang dikutip Adipati She"
+},
+"直躬之父": {
+"name": "Ayah Zhi Gong",
+"common": "Ayah Zhi Gong",
+"alias": "",
+"role": "tokoh tertentu yang dicatat dalam teks; nama atau identitas tidak diketahui",
+"rel": "lihat uraian bab ini"
+},
+"羿": {
+"name": "Yi",
+"common": "Yi",
+"alias": "",
+"role": "pemanah ulung zaman kuno",
+"rel": "tokoh sejarah yang dikutip atau dikomentari"
+},
+"奡": {
+"name": "Ao",
+"common": "Ao",
+"alias": "",
+"role": "orang kuno yang mampu mendorong perahu di daratan",
+"rel": "tokoh sejarah yang dikutip atau dikomentari"
+},
+"后稷": {
+"name": "Hou Ji",
+"common": "Hou Ji",
+"alias": "Ji",
+"role": "orang kuno yang bercocok tanam sendiri",
+"rel": "tokoh sejarah yang dikutip atau dikomentari"
+},
+"裨谌": {
+"name": "Bi Chen",
+"common": "Bi Chen",
+"alias": "",
+"role": "pejabat tinggi Zheng",
+"rel": "dikomentari oleh Konfusius"
+},
+"世叔": {
+"name": "Shishu",
+"common": "Shishu",
+"alias": "",
+"role": "pejabat tinggi Zheng",
+"rel": "dikomentari oleh Konfusius"
+},
+"子羽": {
+"name": "Ziyu",
+"common": "Ziyu",
+"alias": "Ziyu sang utusan (xingren)",
+"role": "pejabat tinggi Zheng",
+"rel": "dikomentari oleh Konfusius"
+},
+"子西": {
+"name": "Zixi",
+"common": "Zixi",
+"alias": "Gongzi Shen",
+"role": "pangeran Chu",
+"rel": "dikomentari oleh Konfusius"
+},
+"伯氏": {
+"name": "Bo Shi",
+"common": "Bo Shi",
+"alias": "",
+"role": "pejabat tinggi Qi, nama tidak diketahui",
+"rel": "dikomentari oleh Konfusius"
+},
+"或问子产者": {
+"name": "Orang yang bertanya tentang Zichan",
+"common": "Orang yang bertanya tentang Zichan",
+"alias": "",
+"role": "tokoh tertentu yang dicatat dalam teks; nama atau identitas tidak diketahui",
+"rel": "lihat uraian bab ini"
+},
+"卞庄子": {
+"name": "Bian Zhuangzi",
+"common": "Bian Zhuangzi",
+"alias": "",
+"role": "pejabat tinggi kota Bian di Lu",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"公明贾": {
+"name": "Gongming Jia",
+"common": "Gongming Jia",
+"alias": "",
+"role": "orang Wei",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"晋文公": {
+"name": "Adipati Wen dari Jin",
+"common": "Adipati Wen dari Jin",
+"alias": "",
+"role": "penguasa Jin",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"召忽": {
+"name": "Shao Hu",
+"common": "Shao Hu",
+"alias": "",
+"role": "menteri Pangeran Jiu",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"僎": {
+"name": "Zhuan",
+"common": "Zhuan",
+"alias": "Zhuan sang pejabat tinggi",
+"role": "pengikut keluarga Gongshu Wenzi, kemudian menjadi pejabat tinggi",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"陈恒": {
+"name": "Chen Heng",
+"common": "Chen Heng",
+"alias": "Chen Chengzi",
+"role": "pembunuh Adipati Jian dari Qi",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"齐简公": {
+"name": "Adipati Jian dari Qi",
+"common": "Adipati Jian dari Qi",
+"alias": "Adipati Jian",
+"role": "penguasa Qi",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"三子": {
+"name": "Tiga Tuan",
+"common": "Tiga Tuan",
+"alias": "Tiga Keluarga",
+"role": "sebutan bersama bagi kepala tiga keluarga Lu yang dimaksud di 14.22",
+"rel": "nama kepala masing-masing keluarga tidak dipastikan"
+},
+"蘧伯玉使者": {
+"name": "Utusan Qu Boyu",
+"common": "Utusan Qu Boyu",
+"alias": "",
+"role": "tokoh tertentu yang dicatat dalam teks; nama atau identitas tidak diketahui",
+"rel": "lihat uraian bab ini"
+},
+"微生亩": {
+"name": "Weisheng Mu",
+"common": "Weisheng Mu",
+"alias": "",
+"role": "orang yang mempertanyakan Konfusius yang sibuk berkeliling tanpa henti",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"或问报怨者": {
+"name": "Orang yang bertanya tentang membalas kebencian",
+"common": "Orang yang bertanya tentang membalas kebencian",
+"alias": "",
+"role": "tokoh tertentu yang dicatat dalam teks; nama atau identitas tidak diketahui",
+"rel": "lihat uraian bab ini"
+},
+"公伯寮": {
+"name": "Gongbo Liao",
+"common": "Gongbo Liao",
+"alias": "",
+"role": "orang yang memfitnah Zilu kepada Jisun",
+"rel": "terkait dengan murid Zilu"
+},
+"季孙": {
+"name": "Jisun",
+"common": "Jisun",
+"alias": "",
+"role": "sebutan klan menteri atau kepala keluarga Lu; tidak merujuk kepala keluarga tertentu",
+"rel": "klan menteri Lu yang dimaksud teks; tokoh spesifik tidak dipastikan dalam bab ini"
+},
+"晨门": {
+"name": "Penjaga gerbang pagi",
+"common": "Penjaga gerbang pagi",
+"alias": "",
+"role": "orang yang bertugas membuka gerbang di pagi hari; komentar Zhu Xi menyebutnya orang bijak yang bersembunyi sebagai penjaga gerbang",
+"rel": "berinteraksi dengan Konfusius atau muridnya, lihat bab ini"
+},
+"荷蒉者": {
+"name": "Pemikul keranjang",
+"common": "Pemikul keranjang",
+"alias": "Orang yang memikul keranjang melewati pintu rumah Konfusius",
+"role": "pertapa; pemikul keranjang, nama tidak diketahui",
+"rel": "berinteraksi dengan Konfusius atau muridnya, lihat bab ini"
+},
+"商高宗": {
+"name": "Raja Gaozong dari Shang",
+"common": "Raja Gaozong dari Shang",
+"alias": "Gaozong",
+"role": "raja Shang",
+"rel": "tokoh sejarah yang dikutip atau dikomentari"
+},
+"原壤": {
+"name": "Yuan Rang",
+"common": "Yuan Rang",
+"alias": "",
+"role": "orang yang menunggu sambil berjongkok dan dipukul tongkat oleh Konfusius pada tulang keringnya",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"阙党童子": {
+"name": "Pemuda dari Que Dang",
+"common": "Pemuda dari Que Dang",
+"alias": "",
+"role": "tokoh tertentu yang dicatat dalam teks; nama atau identitas tidak diketahui",
+"rel": "lihat uraian bab ini"
+},
+"或问童子者": {
+"name": "Orang yang bertanya tentang pemuda itu",
+"common": "Orang yang bertanya tentang pemuda itu",
+"alias": "",
+"role": "tokoh tertentu yang dicatat dalam teks; nama atau identitas tidak diketahui",
+"rel": "lihat uraian bab ini"
+},
+"史鱼": {
+"name": "Shi Yu",
+"common": "Shi Yu",
+"alias": "",
+"role": "pejabat tinggi Wei, bernama Qiu; Shi adalah nama jabatan (juru tulis)",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"师冕": {
+"name": "Guru Musik Mian",
+"common": "Guru Musik Mian",
+"alias": "Mian",
+"role": "pejabat musik atau pemusik; sebutan jabatan mengikuti teks",
+"rel": "disebut atau disambut dalam teks"
+},
+"周任": {
+"name": "Zhou Ren",
+"common": "Zhou Ren",
+"alias": "",
+"role": "orang kuno yang dikutip ucapannya tentang mengerahkan kemampuan sebelum mengambil jabatan",
+"rel": "tokoh sejarah yang dikutip atau dikomentari"
+},
+"阳货": {
+"name": "Yang Huo",
+"common": "Yang Huo",
+"alias": "",
+"role": "orang yang ingin menemui Konfusius",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"公山弗扰": {
+"name": "Gongshan Furao",
+"common": "Gongshan Furao",
+"alias": "Gongshan-shi",
+"role": "pemberontak yang menguasai Bi",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"佛肸": {
+"name": "Bi Xi",
+"common": "Bi Xi",
+"alias": "",
+"role": "pemberontak yang menguasai Zhongmou",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"孺悲": {
+"name": "Ru Bei",
+"common": "Ru Bei",
+"alias": "",
+"role": "orang yang ingin menemui Konfusius",
+"rel": "disebut dalam teks atau berdialog; lihat bab ini"
+},
+"将命者": {
+"name": "Pembawa Pesan",
+"common": "Pembawa Pesan",
+"alias": "",
+"role": "Tokoh tertentu yang dicatat dalam teks; nama atau identitasnya tidak diketahui",
+"rel": "Lihat uraian dalam bab ini"
+},
+"微子": {
+"name": "Weizi",
+"common": "Weizi",
+"alias": "",
+"role": "Orang Yin",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"箕子": {
+"name": "Jizi",
+"common": "Jizi",
+"alias": "",
+"role": "Orang Yin",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"比干": {
+"name": "Bi Gan",
+"common": "Bi Gan",
+"alias": "",
+"role": "Orang Yin",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"谓柳下惠者": {
+"name": "Orang yang berbicara kepada Liuxia Hui",
+"common": "Orang yang berbicara kepada Liuxia Hui",
+"alias": "",
+"role": "Tokoh tertentu yang dicatat dalam teks; nama atau identitasnya tidak diketahui",
+"rel": "Lihat uraian dalam bab ini"
+},
+"季桓子": {
+"name": "Ji Huanzi",
+"common": "Ji Huanzi",
+"alias": "",
+"role": "Pemegang kekuasaan klan Jisun di Lu",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"接舆": {
+"name": "Jieyu",
+"common": "Jieyu",
+"alias": "Jieyu, Orang Gila dari Chu",
+"role": "Orang Chu yang berpura-pura gila untuk menjauhi dunia",
+"rel": "Berjumpa dengan Konfusius atau muridnya; lihat bab ini"
+},
+"长沮": {
+"name": "Changju",
+"common": "Changju",
+"alias": "",
+"role": "Pertapa yang membajak sawah bersama Jieni; nama aslinya tidak diketahui",
+"rel": "Berjumpa dengan Konfusius atau muridnya; lihat bab ini"
+},
+"桀溺": {
+"name": "Jieni",
+"common": "Jieni",
+"alias": "",
+"role": "Pertapa yang membajak sawah bersama Changju; nama aslinya tidak diketahui",
+"rel": "Berjumpa dengan Konfusius atau muridnya; lihat bab ini"
+},
+"荷蓧丈人": {
+"name": "Orang Tua Pemikul Keranjang",
+"common": "Orang Tua Pemikul Keranjang",
+"alias": "Orang Tua; Orang yang memikul keranjang dengan tongkat",
+"role": "Pertapa; namanya tidak diketahui",
+"rel": "Berjumpa dengan Konfusius atau muridnya; lihat bab ini"
+},
+"荷蓧丈人之子一": {
+"name": "Putra Pertama Orang Tua Pemikul Keranjang",
+"common": "Putra Pertama Orang Tua Pemikul Keranjang",
+"alias": "",
+"role": "Tokoh tertentu yang dicatat dalam teks; nama atau identitasnya tidak diketahui",
+"rel": "Lihat uraian dalam bab ini"
+},
+"荷蓧丈人之子二": {
+"name": "Putra Kedua Orang Tua Pemikul Keranjang",
+"common": "Putra Kedua Orang Tua Pemikul Keranjang",
+"alias": "",
+"role": "Tokoh tertentu yang dicatat dalam teks; nama atau identitasnya tidak diketahui",
+"rel": "Lihat uraian dalam bab ini"
+},
+"虞仲": {
+"name": "Yu Zhong",
+"common": "Yu Zhong",
+"alias": "",
+"role": "Yimin (orang bijak yang menyingkir dari dunia)",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"夷逸": {
+"name": "Yi Yi",
+"common": "Yi Yi",
+"alias": "",
+"role": "Yimin (orang bijak yang menyingkir dari dunia)",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"朱张": {
+"name": "Zhu Zhang",
+"common": "Zhu Zhang",
+"alias": "",
+"role": "Yimin (orang bijak yang menyingkir dari dunia)",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"少连": {
+"name": "Shao Lian",
+"common": "Shao Lian",
+"alias": "",
+"role": "Yimin (orang bijak yang menyingkir dari dunia)",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"亚饭干": {
+"name": "Yafan Gan",
+"common": "Yafan Gan",
+"alias": "Gan",
+"role": "Pejabat musik atau pemusik; gelar mengikuti teks",
+"rel": "Disebut dalam teks atau terkait"
+},
+"三饭缭": {
+"name": "Sanfan Liao",
+"common": "Sanfan Liao",
+"alias": "Liao",
+"role": "Pejabat musik atau pemusik; gelar mengikuti teks",
+"rel": "Disebut dalam teks atau terkait"
+},
+"四饭缺": {
+"name": "Sifan Que",
+"common": "Sifan Que",
+"alias": "Que",
+"role": "Pejabat musik atau pemusik; gelar mengikuti teks",
+"rel": "Disebut dalam teks atau terkait"
+},
+"鼓方叔": {
+"name": "Gu Fangshu",
+"common": "Gu Fangshu",
+"alias": "Fangshu",
+"role": "Pejabat musik atau pemusik; gelar mengikuti teks",
+"rel": "Disebut dalam teks atau terkait"
+},
+"播鼗武": {
+"name": "Botao Wu",
+"common": "Botao Wu",
+"alias": "Wu",
+"role": "Pejabat musik atau pemusik; gelar mengikuti teks",
+"rel": "Disebut dalam teks atau terkait"
+},
+"少师阳": {
+"name": "Shaoshi Yang",
+"common": "Shaoshi Yang",
+"alias": "Yang",
+"role": "Pejabat musik atau pemusik; gelar mengikuti teks",
+"rel": "Disebut dalam teks atau terkait"
+},
+"击磬襄": {
+"name": "Jiqing Xiang",
+"common": "Jiqing Xiang",
+"alias": "Xiang",
+"role": "Pejabat musik atau pemusik; gelar mengikuti teks",
+"rel": "Disebut dalam teks atau terkait"
+},
+"鲁公": {
+"name": "Adipati Lu",
+"common": "Adipati Lu",
+"alias": "Boqin",
+"role": "Putra Adipati Zhou",
+"rel": "Tokoh sejarah yang dikutip atau dikomentari"
+},
+"伯达": {
+"name": "Bo Da",
+"common": "Bo Da",
+"alias": "",
+"role": "Salah satu dari delapan shi Zhou yang disebut dalam teks",
+"rel": "Tokoh sejarah yang disebut dalam teks"
+},
+"伯适": {
+"name": "Bo Kuo",
+"common": "Bo Kuo",
+"alias": "",
+"role": "Salah satu dari delapan shi Zhou yang disebut dalam teks",
+"rel": "Tokoh sejarah yang disebut dalam teks"
+},
+"仲突": {
+"name": "Zhong Tu",
+"common": "Zhong Tu",
+"alias": "",
+"role": "Salah satu dari delapan shi Zhou yang disebut dalam teks",
+"rel": "Tokoh sejarah yang disebut dalam teks"
+},
+"仲忽": {
+"name": "Zhong Hu",
+"common": "Zhong Hu",
+"alias": "",
+"role": "Salah satu dari delapan shi Zhou yang disebut dalam teks",
+"rel": "Tokoh sejarah yang disebut dalam teks"
+},
+"叔夜": {
+"name": "Shu Ye",
+"common": "Shu Ye",
+"alias": "",
+"role": "Salah satu dari delapan shi Zhou yang disebut dalam teks",
+"rel": "Tokoh sejarah yang disebut dalam teks"
+},
+"叔夏": {
+"name": "Shu Xia",
+"common": "Shu Xia",
+"alias": "",
+"role": "Salah satu dari delapan shi Zhou yang disebut dalam teks",
+"rel": "Tokoh sejarah yang disebut dalam teks"
+},
+"季随": {
+"name": "Ji Sui",
+"common": "Ji Sui",
+"alias": "",
+"role": "Salah satu dari delapan shi Zhou yang disebut dalam teks",
+"rel": "Tokoh sejarah yang disebut dalam teks"
+},
+"季騧": {
+"name": "Ji Gua",
+"common": "Ji Gua",
+"alias": "",
+"role": "Salah satu dari delapan shi Zhou yang disebut dalam teks",
+"rel": "Tokoh sejarah yang disebut dalam teks"
+},
+"子夏门人": {
+"name": "Murid Zixia",
+"common": "Murid Zixia",
+"alias": "",
+"role": "Tokoh tertentu yang dicatat dalam teks; nama atau identitasnya tidak diketahui",
+"rel": "Lihat uraian dalam bab ini"
+},
+"孟庄子": {
+"name": "Meng Zhuangzi",
+"common": "Meng Zhuangzi",
+"alias": "Su",
+"role": "Pejabat tinggi (dafu) Lu",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"孟献子": {
+"name": "Meng Xianzi",
+"common": "Meng Xianzi",
+"alias": "Mie",
+"role": "Ayah Meng Zhuangzi",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"阳肤": {
+"name": "Yang Fu",
+"common": "Yang Fu",
+"alias": "",
+"role": "Hakim (shishi) yang diangkat oleh klan Meng",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"公孙朝": {
+"name": "Gongsun Chao",
+"common": "Gongsun Chao",
+"alias": "Gongsun Chao dari Wei",
+"role": "Orang Wei",
+"rel": "Disebut dalam teks atau berdialog; lihat bab ini"
+},
+"孔子": {
+"name": "Konfusius",
+"common": "",
+"alias": "",
+"role": "",
+"alias2": "Qiu; Zhongni; Zi; Fuzi",
+"role2": "Orang Lu; guru yang ajarannya dicatat dalam kitab ini",
+"rel": "Dirinya sendiri"
+}
+},
+"S": {
+"gx_h1": "Peta hubungan Analek",
+"gx_sub": "498 bab · 197 tokoh",
+"gx_title": "Peta hubungan Analek: bagaimana 498 bab saling terhubung | Yikonglu",
+"gx_desc": "Satu pertanyaan, jawaban berbeda; kalimat yang muncul berulang; di bab mana saja 197 tokoh muncul. AI membandingkan setiap pasang dari 498 bab untuk menemukan kaitan, dan tiap kaitan diperiksa manual dengan halaman aslinya.",
+"gx_lead": "Analek terdiri atas 20 jilid dan 498 bab. Sekilas tampak seperti ucapan yang tercerai-berai, padahal saling terhubung di mana-mana: kalimat yang sama muncul dua kali, Konfusius menjawab pertanyaan yang sama secara berbeda untuk orang yang berbeda, seorang murid muncul di puluhan bab. Seluruhnya ada {n} kaitan: AI membandingkan setiap pasang bab untuk menemukannya, dan tiap kaitan diperiksa manual dengan halaman aslinya.",
+"gx_tab_all": "Seluruh jaringan",
+"gx_tab_wd": "Satu pertanyaan, jawaban berbeda",
+"gx_tab_rw": "Tokoh",
+"gx_all_note": "Setiap titik di lingkaran adalah satu bab, kedua puluh jilid berurutan mengelilingi lingkaran; titik gelap adalah bab yang sudah diajarkan dalam video. Garis hijau menghubungkan kalimat yang muncul dua kali dalam kitab ({hj} pasang); garis oker menghubungkan jawaban-jawaban atas pertanyaan yang sama ({wd} kelompok). Ketuk sebuah bab untuk melihat kaitannya.",
+"gx_all_aria": "Peta hubungan 498 bab Analek",
+"gx_pick": "Ketuk bab mana pun di lingkaran.",
+"gx_links": "Terhubung dengan: ",
+"gx_nolink": "Bab ini tidak punya garis di peta; halaman babnya mencantumkan tokoh, kitab lain, dan lainnya di bagian “Kaitan”",
+"gx_wd_note": "Pertanyaan yang sama, dijawab berbeda untuk orang yang berbeda. Inilah benang terpenting dalam Analek: jawaban mengikuti orangnya.",
+"gx_times": "{n} kali dalam kitab",
+"gx_rw_note": "Analek menyebut {n} tokoh. Ketuk salah satunya: lingkar dalam adalah bab-bab tempat ia muncul, lingkar luar adalah tokoh yang paling sering muncul di bab yang sama, beserta jumlah bab bersama.",
+"gx_q_ph": "Cari nama, mis. Zilu, Yan Hui, Guan Zhong",
+"gx_q_aria": "Cari nama",
+"gx_rw_aria": "Tokoh dan bab",
+"gx_nch": "{n} bab",
+"gx_card": "Kartu tokoh: identitas, sumber, setiap bab ›",
+"gx_sec_h": "Kaitan",
+"gx_sec_sub": "AI membandingkan setiap pasang bab untuk menemukan kaitan; tiap kaitan diperiksa manual dengan halaman aslinya",
+"gx_head_wd": "Pertanyaan yang sama",
+"gx_head_hj": "Kalimat yang sama di bab lain",
+"gx_head_bw": "Kitab lain",
+"gx_head_rw": "Tokoh",
+"gx_head_zy": "Tafsiran yang diperdebatkan",
+"gx_head_yw": "Varian teks",
+"gx_wd_line": "{q}: {n} kali dalam kitab; penanyanya berbeda, jawabannya pun berbeda:",
+"gx_in_map": "Lihat di peta",
+"gx_kind_cc": "Sumber",
+"gx_kind_zj": "Dikutip para komentator",
+"gx_kind_xt": "Dibaca berdampingan (Yikonglu)",
+"gx_zy_pick": "Yikonglu membacanya sebagai “{p}”.",
+"gx_zy_link": "Lihat catatan kami",
+"gx_more_map": "Peta hubungan seluruh kitab",
+"gx_more_pdf": "Analek, edisi rekonstruksi AI (PDF)",
+"rw_crumb": "Peta · Tokoh",
+"rw_alias": "Nama kehormatan, nama lain",
+"rw_role": "Siapa",
+"rw_rel": "Hubungan dengan Konfusius",
+"rw_src": "Sumber",
+"rw_src_std": "Teks setiap bab; identitas mengikuti komentar Zhu Xi (edisi Sibu beiyao Empat Kitab)",
+"rw_sub": "Muncul di {n} bab Analek, {d} sudah diajarkan dalam video",
+"rw_in_map": "Lihat {name} di peta: bab-babnya dan siapa yang muncul bersamanya ›",
+"rw_h2": "Bab-bab dalam Analek",
+"rw_wj": "belum diajarkan",
+"rw_note": "Disusun menurut urutan bab situs ini. Bab yang sudah diajarkan dalam video memuat tafsiran kami dan halaman para komentator; bab bertanda “belum diajarkan” memuat teks asli dan komentar-komentarnya.",
+"rw_title": "{name} dalam Analek: setiap bab | Yikonglu",
+"rw_desc": "{name} ({alias}), {role}: muncul di {n} bab Analek.",
+"rw_chips": "Tokoh dalam bab ini: "
+},
+"W": [
+{
+"id": "wen-ren",
+"q": "Bertanya tentang kemanusiaan (ren)",
+"items": [
+{
+"c": "lunyu:6.20",
+"who": "Fan Chi",
+"a": "Orang yang berperikemanusiaan mendahulukan yang sukar dan baru kemudian memikirkan hasilnya"
+},
+{
+"c": "lunyu:12.1",
+"who": "Yan Yuan",
+"a": "Mengendalikan diri dan kembali pada ritus, itulah kemanusiaan"
+},
+{
+"c": "lunyu:12.2",
+"who": "Zhonggong",
+"a": "Apa yang tidak kauinginkan bagi dirimu, jangan lakukan kepada orang lain"
+},
+{
+"c": "lunyu:12.3",
+"who": "Sima Niu",
+"a": "Orang yang berperikemanusiaan menahan diri dalam berbicara"
+},
+{
+"c": "lunyu:12.22",
+"who": "Fan Chi",
+"a": "Mengasihi sesama"
+},
+{
+"c": "lunyu:13.19",
+"who": "Fan Chi",
+"a": "Di rumah bersikap santun, dalam bertugas bersikap khidmat, terhadap orang lain bersikap setia"
+},
+{
+"c": "lunyu:15.9",
+"who": "Zigong",
+"a": "Layanilah yang cakap di antara para pembesarnya, bersahabatlah dengan yang berperikemanusiaan di antara para sarjananya",
+"note": "Yang ditanyakan adalah bagaimana menjalankan kemanusiaan (为仁)"
+},
+{
+"c": "lunyu:17.6",
+"who": "Zizhang",
+"a": "Santun, lapang hati, tepercaya, cekatan, murah hati"
+}
+]
+},
+{
+"id": "wen-xiao",
+"q": "Bertanya tentang bakti",
+"items": [
+{
+"c": "lunyu:2.5",
+"who": "Meng Yizi",
+"a": "Jangan menyalahi"
+},
+{
+"c": "lunyu:2.6",
+"who": "Meng Wubo",
+"a": "Orang tua hanya mencemaskan sakitnya anak"
+},
+{
+"c": "lunyu:2.7",
+"who": "Ziyou",
+"a": "Tanpa rasa hormat, apa bedanya?"
+},
+{
+"c": "lunyu:2.8",
+"who": "Zixia",
+"a": "Yang sulit adalah raut wajah"
+}
+]
+},
+{
+"id": "wen-zheng",
+"q": "Bertanya tentang pemerintahan",
+"items": [
+{
+"c": "lunyu:12.7",
+"who": "Zigong",
+"a": "Pangan cukup, kekuatan militer cukup, dan rakyat memercayainya"
+},
+{
+"c": "lunyu:12.11",
+"who": "Adipati Jing dari Qi",
+"a": "Penguasa sebagai penguasa, menteri sebagai menteri, ayah sebagai ayah, anak sebagai anak"
+},
+{
+"c": "lunyu:12.14",
+"who": "Zizhang",
+"a": "Jalankan tanpa jemu, laksanakan dengan setia"
+},
+{
+"c": "lunyu:12.17",
+"who": "Ji Kangzi",
+"a": "Memerintah berarti meluruskan"
+},
+{
+"c": "lunyu:12.19",
+"who": "Ji Kangzi",
+"a": "Tuan memerintah, mengapa perlu membunuh?"
+},
+{
+"c": "lunyu:13.1",
+"who": "Zilu",
+"a": "Dahului mereka dengan teladan, bersusah payahlah bagi mereka"
+},
+{
+"c": "lunyu:13.2",
+"who": "Zhonggong",
+"a": "Dahulukan para pejabat bawahan, ampuni kesalahan kecil, angkat orang yang cakap dan berbakat"
+},
+{
+"c": "lunyu:13.16",
+"who": "Adipati She",
+"a": "Yang dekat bergembira, yang jauh berdatangan"
+},
+{
+"c": "lunyu:13.17",
+"who": "Zixia",
+"a": "Jangan ingin cepat, jangan terpaku pada keuntungan kecil"
+},
+{
+"c": "lunyu:20.2",
+"who": "Zizhang",
+"a": "Muliakan lima keindahan, singkirkan empat keburukan",
+"note": "Yang ditanyakan adalah bagaimana menjalankan pemerintahan"
+}
+]
+},
+{
+"id": "wen-junzi",
+"q": "Bertanya tentang junzi (orang luhur)",
+"items": [
+{
+"c": "lunyu:2.13",
+"who": "Zigong",
+"a": "Lebih dulu laksanakan apa yang hendak dikatakan, baru kemudian berkata sesuai dengannya"
+},
+{
+"c": "lunyu:12.4",
+"who": "Sima Niu",
+"a": "Junzi tidak cemas dan tidak takut"
+},
+{
+"c": "lunyu:14.45",
+"who": "Zilu",
+"a": "Membina diri dengan sikap khidmat"
+}
+]
+},
+{
+"id": "wen-shi",
+"q": "Bertanya tentang shi (kaum terpelajar)",
+"items": [
+{
+"c": "lunyu:12.20",
+"who": "Zizhang",
+"a": "Berwatak lurus dan mencintai kebenaran, menimbang ucapan dan mengamati raut wajah, senantiasa berpikir untuk merendah kepada orang lain",
+"note": "Yang ditanyakan adalah kapan seorang shi disebut “tembus” (达)"
+},
+{
+"c": "lunyu:13.20",
+"who": "Zigong",
+"a": "Menjaga diri dengan rasa malu, dan bila diutus ke empat penjuru tidak mempermalukan titah penguasa"
+},
+{
+"c": "lunyu:13.28",
+"who": "Zilu",
+"a": "Tulus mendesak dan tekun menasihati, juga hangat dan rukun"
+}
+]
+},
+{
+"id": "wen-zhi",
+"q": "Bertanya tentang kebijaksanaan",
+"items": [
+{
+"c": "lunyu:6.20",
+"who": "Fan Chi",
+"a": "Tekunilah apa yang benar bagi rakyat, hormati roh dan dewa tetapi jagalah jarak darinya"
+},
+{
+"c": "lunyu:12.22",
+"who": "Fan Chi",
+"a": "Mengenal manusia"
+}
+]
+},
+{
+"id": "wen-chongde",
+"q": "Bertanya tentang meninggikan kebajikan",
+"items": [
+{
+"c": "lunyu:12.10",
+"who": "Zizhang",
+"a": "Utamakan kesetiaan dan kepercayaan, beralihlah kepada kebenaran"
+},
+{
+"c": "lunyu:12.21",
+"who": "Fan Chi",
+"a": "Dahulukan kerja, kebelakangkan perolehan"
+}
+]
+}
+],
+"X": {
+"4": {
+"book": "Kitab Puisi",
+"note": "Kitab Puisi, Wei Feng, Qi Yu: Bagaikan dipotong, bagaikan dikikir; bagaikan dipahat, bagaikan digosok. (如切如磋，如琢如磨。)"
+},
+"7": {
+"book": "Kitab Puisi",
+"note": "Kitab Puisi, Lu Song, Jiong: Pikiran tanpa kesesatan; pikiran tertuju pada kuda-kuda yang melaju. (思無邪，思馬斯徂。)"
+},
+"8": {
+"book": "Mengzi",
+"note": "Mengzi, Teng Wen Gong I, bab 2: Zengzi berkata: Selagi hidup, layani mereka sesuai ritus; ketika wafat, makamkan mereka sesuai ritus dan persembahkan korban sesuai ritus…"
+},
+"10": {
+"book": "Kitab Puisi",
+"note": "Kitab Puisi, Wei Feng, Shuo Ren: Senyum memikat dengan lesung pipit manis, mata indah yang jernih hitam-putihnya. (巧笑倩兮，美目盼兮。)"
+},
+"12": {
+"book": "Mengzi",
+"note": "Mengzi, Gongsun Chou I, bab 7: Konfusius berkata: Lingkungan yang berperikemanusiaan itulah yang indah. (孔子曰：里仁為美。)"
+},
+"13": {
+"book": "Mengzi",
+"note": "Mengzi, Gongsun Chou I, bab 7: Bila memilih tidak tinggal di tengah kemanusiaan, bagaimana bisa disebut bijak? (擇不處仁，焉得智？)"
+},
+"23": {
+"book": "Kitab Puisi",
+"note": "Kitab Puisi, Xiao Ya, Xiao Min: Gemetar dan waspada, bagai di tepi jurang dalam, bagai berjalan di atas es tipis. (戰戰兢兢，如臨深淵，如履薄冰。)"
+},
+"25": {
+"book": "Mengzi",
+"note": "Mengzi, Teng Wen Gong I, bab 4: Konfusius berkata: Agung nian Yao sebagai penguasa! (孔子曰：大哉，堯之為君！)"
+},
+"26": {
+"book": "Mengzi",
+"note": "Mengzi, Teng Wen Gong I, bab 4: Hanya Langit yang agung, hanya Yao yang meneladaninya. (惟天為大，惟堯則之。)"
+},
+"27": {
+"book": "Mengzi",
+"note": "Mengzi, Teng Wen Gong I, bab 4: Begitu luas, rakyat tak mampu menamainya! (蕩蕩乎，民無能名焉！)"
+},
+"31": {
+"book": "Kitab Puisi",
+"note": "Kitab Puisi, Bei Feng, Xiong Zhi: Tidak iri, tidak tamak, bagaimana mungkin tidak baik? (不忮不求，何用不臧。)"
+},
+"37": {
+"book": "Kitab Puisi",
+"note": "Kitab Puisi, Xiao Ya, Wo Xing Qi Ye: Sungguh bukan karena kekayaannya, melainkan semata karena hal yang lain. (成不以富，亦祇以異。)"
+},
+"45": {
+"book": "Kitab Puisi",
+"note": "Kitab Puisi, Bei Feng, Pao You Ku Ye: Bila dalam, seberangi dengan tetap berpakaian; bila dangkal, singsingkan pakaian. (深則厲，淺則揭。)"
+},
+"57": {
+"book": "Klasik Tiga Aksara",
+"note": "Dua baris “sifat manusia saling dekat, kebiasaanlah yang menjauhkan” diambil langsung dari ucapan Konfusius."
+},
+"58": {
+"book": "Klasik Tiga Aksara",
+"note": "Ibu Mengzi tiga kali pindah rumah demi memilih tetangga; para komentator menjelaskannya dengan bab ini: tempat tinggal harus dipilih di lingkungan yang berperikemanusiaan."
+},
+"59": {
+"book": "Klasik Tiga Aksara",
+"note": "“Apa jadinya di masa tua”: tidak belajar semasa muda, hingga usia empat puluh atau lima puluh belum juga maju, maka ia tak perlu lagi disegani."
+},
+"60": {
+"book": "Klasik Tiga Aksara",
+"note": "Kalimat penutup anjuran belajar dalam edisi Beiyao memakai kata-kata Yang Huo yang membujuk Konfusius agar menjabat: waktu tidak menunggu kita."
+},
+"61": {
+"book": "Klasik Tiga Aksara",
+"note": "“Giok yang tak dipahat tak menjadi perkakas”: Zigong meminjam Kitab Puisi untuk berkata bahwa membentuk diri harus seperti mengolah giok: dipotong, dikikir, dipahat, digosok."
+},
+"62": {
+"book": "Klasik Tiga Aksara",
+"note": "Tukang menyelesaikan barang di bengkelnya, junzi mencapai Jalan melalui belajar; ini pas menyambung “manusia yang tak belajar tak mengenal kebenaran”."
+},
+"63": {
+"book": "Klasik Tiga Aksara",
+"note": "“Dekatilah guru dan sahabat”: sahabat seperti apa? Tiga jenis: yang lurus, yang tepercaya, dan yang luas pengetahuannya."
+},
+"64": {
+"book": "Klasik Tiga Aksara",
+"note": "Urutan “pertama bakti dan hormat kepada kakak, lalu pengetahuan”: Wang Xiang dan Atsumi sama-sama mengutip bab ini sebagai bukti."
+},
+"65": {
+"book": "Klasik Tiga Aksara",
+"note": "Cara memakai “pengetahuan”: banyak mendengar, banyak melihat, yang meragukan disisihkan dulu."
+},
+"66": {
+"book": "Klasik Tiga Aksara",
+"note": "Kong Rong mengalah soal buah pir mengajarkan kewajiban seorang adik; Youzi berkata bakti dan hormat kepada kakak adalah akar kemanusiaan."
+},
+"67": {
+"book": "Klasik Tiga Aksara",
+"note": "Tiga Ikatan mengatur kedudukan penguasa dan menteri, ayah dan anak, suami dan istri; menurut Konfusius, masing-masing lebih dulu menunaikan bagiannya sendiri."
+},
+"68": {
+"book": "Klasik Tiga Aksara",
+"note": "“Empat musim ini berputar tiada henti”: Langit tak berbicara, namun empat musim tetap berjalan."
+},
+"69": {
+"book": "Klasik Tiga Aksara",
+"note": "“Selaras dengan pusat”: Bintang Utara diam di tengah, bintang-bintang lain mengitarinya."
+},
+"70": {
+"book": "Klasik Tiga Aksara",
+"note": "Yinshu menjelaskan “Lima Kebajikan Tetap” dengan mengutip subkomentar Huang Kan atas bab ini: Tiga Ikatan dan Lima Kebajikan Tetap tak berubah selama seratus generasi."
+},
+"71": {
+"book": "Klasik Tiga Aksara",
+"note": "Yang terakhir dari Lima Kebajikan Tetap, “kepercayaan”: orang yang tak dapat dipercaya, entah apa lagi yang bisa ia lakukan."
+},
+"72": {
+"book": "Klasik Tiga Aksara",
+"note": "Bahasan enam jenis biji-bijian pas disambung dengan kata-kata orang tua pemikul keranjang: kaki dan tangan tak rajin, lima biji-bijian pun tak bisa dibedakan."
+},
+"73": {
+"book": "Klasik Tiga Aksara",
+"note": "Sepenting apa pun enam hewan ternak, tak sebanding dengan manusia: kandang kuda terbakar, Konfusius hanya bertanya adakah orang yang terluka."
+},
+"74": {
+"book": "Klasik Tiga Aksara",
+"note": "Tujuh emosi tak perlu dimatikan, cukup dijaga takarannya: gembira tanpa berlebihan, sedih tanpa melukai diri."
+},
+"75": {
+"book": "Klasik Tiga Aksara",
+"note": "Delapan bunyi adalah alat musik; Konfusius berbicara tentang guna musik: kepribadian akhirnya disempurnakan dalam musik."
+},
+"76": {
+"book": "Klasik Tiga Aksara",
+"note": "Musik bukan sekadar lonceng dan genderang; bisa dibaca berdampingan dengan “delapan bunyi”."
+},
+"77": {
+"book": "Klasik Tiga Aksara",
+"note": "“Penguasa menghormati, menteri setia”: penguasa memperlakukan menteri dengan ritus, menteri melayani penguasa dengan setia; kedua pihak punya kewajiban."
+},
+"78": {
+"book": "Klasik Tiga Aksara",
+"note": "Semangat Sepuluh Kewajiban: setiap kedudukan menunaikan bagiannya sendiri."
+},
+"79": {
+"book": "Klasik Tiga Aksara",
+"note": "“Selesai pelajaran dasar, lanjut ke Empat Kitab”: belajar menjadi manusia dulu, bila masih ada tenaga barulah belajar sastra."
+},
+"80": {
+"book": "Klasik Tiga Aksara",
+"note": "Mulai dari menyapu dan menjawab sapaan, lalu naik selangkah demi selangkah: itulah jalan dari pelajaran dasar menuju Empat Kitab."
+},
+"81": {
+"book": "Klasik Tiga Aksara",
+"note": "“Lunyu terdiri atas dua puluh jilid”: klik untuk membuka daftar isi lengkap dua puluh jilid Analek."
+},
+"82": {
+"book": "Klasik Tiga Aksara",
+"note": "Seperti apa “mencatat kata-kata baik” itu, lihat saja bab pertama: satu kalimat, satu prinsip."
+},
+"83": {
+"book": "Klasik Tiga Aksara",
+"note": "Dua aksara pada judul Zhongyong sejak dulu sudah disebut Konfusius sebagai kebajikan tertinggi."
+},
+"84": {
+"book": "Klasik Tiga Aksara",
+"note": "Bahasan tiga Kitab Perubahan bisa disambung dengan ucapan Konfusius bahwa ia mempelajari Yijing di masa tuanya."
+},
+"85": {
+"book": "Klasik Tiga Aksara",
+"note": "Urutan Puisi, Ritus, dan Musik di antara Enam Klasik tercakup lengkap dalam kalimat Konfusius ini."
+},
+"86": {
+"book": "Klasik Tiga Aksara",
+"note": "“Adipati Zhou kita menyusun Ritus Zhou”: Konfusius berkata ritus Zhou berkaca pada dua dinasti Xia dan Shang, maka ia mengikuti Zhou."
+},
+"87": {
+"book": "Klasik Tiga Aksara",
+"note": "“Ritus dan musik lengkap”: nasihat Konfusius kepada putranya, tanpa mempelajari ritus orang tak dapat berdiri teguh."
+},
+"88": {
+"book": "Klasik Tiga Aksara",
+"note": "“Menuturkan” (述) dalam “menuturkan kata-kata orang suci” persis sama dengan “menuturkan” dalam ucapan Konfusius tentang dirinya: “menuturkan, bukan mencipta”."
+},
+"89": {
+"book": "Klasik Tiga Aksara",
+"note": "Mengapa “hendaknya dilantunkan”, mengapa harus membaca puisi: edisi Beiyao mengutip bab ini."
+},
+"90": {
+"book": "Klasik Tiga Aksara",
+"note": "Zhongshuo karya Wang Tong (Wenzhongzi) ditulis meniru Analek; para komentator membandingkannya dengan Analek."
+},
+"91": {
+"book": "Klasik Tiga Aksara",
+"note": "Wang Xiang menjelaskan Yao dengan kalimat pujian Konfusius untuk Yao ini."
+},
+"92": {
+"book": "Klasik Tiga Aksara",
+"note": "“Tang dan Yu” membahas Yao dan Shun; Shun memerintah dunia berkat lima menteri yang cakap."
+},
+"93": {
+"book": "Klasik Tiga Aksara",
+"note": "Raja Wu dari Zhou memiliki “sepuluh menteri luan”: luan (乱) di sini berarti mengatur, yaitu sepuluh menteri yang mampu menertibkan kekacauan."
+},
+"94": {
+"book": "Klasik Tiga Aksara",
+"note": "Tiga dinasti Xia, Shang, dan Zhou silih berganti; ritus ada yang ditambah dan dikurangi, dan itu dapat diketahui."
+},
+"95": {
+"book": "Klasik Tiga Aksara",
+"note": "Seperti apa “runtuhnya tatanan raja”: ritus, musik, dan perang tak lagi berasal dari Putra Langit."
+},
+"96": {
+"book": "Klasik Tiga Aksara",
+"note": "“Lima hegemon berjaya”: Konfusius memuji sekaligus mengkritik dua hegemon."
+},
+"97": {
+"book": "Klasik Tiga Aksara",
+"note": "Hegemon pun punya jasa: Konfusius memuji Guan Zhong yang menata seluruh dunia."
+},
+"98": {
+"book": "Klasik Tiga Aksara",
+"note": "Kata “merebut takhta” dalam “Wang Mang merebut takhta” adalah sebutan para sejarawan; begitu nama dan kedudukan ditetapkan, benar dan salah pun menjadi jelas."
+},
+"99": {
+"book": "Klasik Tiga Aksara",
+"note": "Sebelum merebut takhta, Wang Mang rendah hati dan santun; menilai orang harus dalam waktu lama, bukan sesaat."
+},
+"100": {
+"book": "Klasik Tiga Aksara",
+"note": "Siapa yang sah di masa Tiga Negara: yang diperdebatkan para sejarawan adalah soal nama dan kedudukan."
+},
+"101": {
+"book": "Klasik Tiga Aksara",
+"note": "Sui “tak sempat diwariskan lagi, kehilangan garis sah”: Konfusius sudah lama berkata, kekuasaan yang diperoleh tidak dengan jalan benar tak bertahan beberapa generasi."
+},
+"102": {
+"book": "Klasik Tiga Aksara",
+"note": "Teks menulis “menerima penyerahan takhta dari Zhou”, para komentator menulis “merebut”; yang diperdebatkan adalah nama dan kenyataan."
+},
+"103": {
+"book": "Klasik Tiga Aksara",
+"note": "Lima Dinasti kebanyakan didirikan jenderal yang merampas takhta, dan sering runtuh dalam satu atau dua generasi."
+},
+"104": {
+"book": "Klasik Tiga Aksara",
+"note": "Liao dan Jin menyatakan diri sebagai kaisar; bisa dibaca bersama kalimat Konfusius ini: ada atau tidaknya penguasa dilihat dari ada atau tidaknya ritus."
+},
+"105": {
+"book": "Klasik Tiga Aksara",
+"note": "“Kasim berkuasa merajalela”: Konfusius berkata memerintah negara harus menjauhi orang bermulut manis."
+},
+"106": {
+"book": "Klasik Tiga Aksara",
+"note": "Malapetaka sering muncul dari dekat: Ming runtuh karena kasim, persis “di balik tembok istana sendiri”."
+},
+"107": {
+"book": "Klasik Tiga Aksara",
+"note": "“Mulut melafalkan, hati merenungkan”: melafalkan adalah belajar, merenungkan adalah berpikir; keduanya tak boleh kurang."
+},
+"108": {
+"book": "Klasik Tiga Aksara",
+"note": "“Pagi di sini, malam di sini”: menurut Wang Xiang, inilah “senantiasa mempraktikkannya”."
+},
+"109": {
+"book": "Klasik Tiga Aksara",
+"note": "“Mencatat masa tertib dan kacau, mengetahui kejayaan dan keruntuhan”: membaca sejarah memungkinkan kita menduga masa depan; Konfusius berkata seratus generasi pun dapat diketahui."
+},
+"110": {
+"book": "Klasik Tiga Aksara",
+"note": "Konfusius berguru kepada Xiang Tuo: ia tak punya guru tetap, siapa pun yang memiliki Jalan, darinya ia belajar."
+},
+"111": {
+"book": "Klasik Tiga Aksara",
+"note": "“Lunyu Lu” yang dibaca Zhao Pu adalah Analek dua puluh jilid yang kita kenal sekarang."
+},
+"112": {
+"book": "Klasik Tiga Aksara",
+"note": "“Meski sudah menjabat, ia tetap rajin belajar”: menjabat pun, bila masih ada tenaga, tetap harus belajar."
+},
+"113": {
+"book": "Klasik Tiga Aksara",
+"note": "Rambut diikat ke balok dan paha ditusuk penusuk adalah kisah belajar keras; Konfusius sendiri berkata ia lupa makan ketika bersemangat belajar."
+},
+"114": {
+"book": "Klasik Tiga Aksara",
+"note": "Bertahan dengan susah payah tidak sama dengan pandai belajar: belajar tanpa berpikir tetap saja bingung."
+},
+"115": {
+"book": "Klasik Tiga Aksara",
+"note": "Zhuo (卓) dalam “tetap berjuang keras”: Yan Yuan berkata ilmu Konfusius berdiri menjulang di sana, dikejar pun tak tergapai."
+},
+"116": {
+"book": "Klasik Tiga Aksara",
+"note": "Su Xun baru “mulai bertekad keras” pada usia dua puluh tujuh; Yinshu mengutip kalimat Konfusius ini untuk menjelaskan “bertekad keras” (发愤)."
+},
+"117": {
+"book": "Klasik Tiga Aksara",
+"note": "Konfusius bertekad belajar pada usia lima belas, Su Xun baru bertekad pada usia dua puluh tujuh; keduanya bisa dibaca berdampingan."
+},
+"118": {
+"book": "Klasik Tiga Aksara",
+"note": "Anak ajaib “dikagumi orang”; Konfusius berkata generasi muda patut disegani, tetapi juga mengingatkan: sampai usia empat puluh atau lima puluh tak terdengar namanya, ia tak perlu disegani lagi."
+},
+"119": {
+"book": "Klasik Tiga Aksara",
+"note": "Selesai membahas anak ajaib, edisi Beiyao menutup dengan “belajar dari bawah, menembus ke atas”: selain cerdas, tetap harus belajar selangkah demi selangkah."
+},
+"120": {
+"book": "Klasik Tiga Aksara",
+"note": "“Hendaknya mawas diri”: yang diwaspadai adalah diri sendiri, bukan untuk menekan orang lain."
+},
+"121": {
+"book": "Klasik Tiga Aksara",
+"note": "Cai Wenji dan Xie Daoyun mampu belajar; mengajar memang tidak membeda-bedakan asal-usul."
+},
+"122": {
+"book": "Klasik Tiga Aksara",
+"note": "Liu Yan menjabat pada usia tujuh, Konfusius baru bertekad pada usia lima belas; cepat atau lambat tidak penting, yang penting tekadnya."
+},
+"123": {
+"book": "Klasik Tiga Aksara",
+"note": "Jawaban Liu Yan tentang aksara peng (朋) menyindir faksi-faksi; bisa disambung dengan ucapan Konfusius “bergaul tetapi tidak berkomplot”."
+},
+"124": {
+"book": "Klasik Tiga Aksara",
+"note": "“Manusia yang tak belajar tak lebih baik daripada hewan”: Zengzhu memakai kalimat Konfusius ini."
+},
+"125": {
+"book": "Klasik Tiga Aksara",
+"note": "“Belajar di masa muda, berkarya di masa dewasa”: belajar dan berbuat silih berganti seumur hidup."
+},
+"126": {
+"book": "Klasik Tiga Aksara",
+"note": "“Mengharumkan nama”: yang dikhawatirkan junzi adalah sepanjang hidup tak berbuat sesuatu yang layak dipuji."
+},
+"127": {
+"book": "Klasik Tiga Aksara",
+"note": "“Manfaat” (益) dalam “bermain tak ada manfaatnya” dijelaskan Yinshu dengan bab ini: kemajuan butuh usaha perlahan, tak bisa terburu-buru."
+},
+"128": {
+"book": "Klasik Tiga Aksara",
+"note": "“Bermain tak ada manfaatnya” bukan berarti sama sekali tak boleh bermain: Konfusius pun berkata “bersantailah dalam seni”."
+},
+"129": {
+"book": "Daodejing",
+"note": "Laozi berkata Dao tak dapat diungkapkan; Konfusius pun berkata Langit tak pernah berbicara, namun empat musim tetap berjalan."
+},
+"130": {
+"book": "Daodejing",
+"note": "“Berjasa tetapi tidak bersandar padanya”: Shun dan Yu memperoleh dunia, tetapi tidak menganggapnya milik sendiri."
+},
+"131": {
+"book": "Daodejing",
+"note": "Lü Huiqing menjelaskan “tidak memamerkan yang menggoda, agar hati rakyat tidak kacau” dengan mengutip jawaban Konfusius kepada Ji Kangzi: bila Tuan sendiri tidak serakah…"
+},
+"132": {
+"book": "Daodejing",
+"note": "Heshang Gong mengutip kalimat ini untuk menjelaskan “tidak mengagungkan orang cakap”, dengan “jauhi orang bermulut manis” (远佞人) tertulis sebagai “jauhi perempuan cantik” (远美人): beda satu aksara."
+},
+"133": {
+"book": "Daodejing",
+"note": "Konfusius menganjurkan “mengangkat orang cakap dan berbakat”, Laozi berkata “jangan mengagungkan orang cakap”: dalam hal memakai orang, keduanya bertolak belakang."
+},
+"134": {
+"book": "Daodejing",
+"note": "Laozi berkata “redupkan cahayamu, berbaurlah dengan debu”, Konfusius berkata “harmonis tetapi tidak seragam”: keduanya bicara keselarasan, yang satu membaur, yang lain menjaga diri."
+},
+"135": {
+"book": "Daodejing",
+"note": "Du Daojian mencatat Laozi sering berkata “yang disebut orang dahulu” dan “ada pepatah yang berkata”, yaitu menuturkan orang dahulu, sama dengan “menuturkan, bukan mencipta” Konfusius."
+},
+"136": {
+"book": "Daodejing",
+"note": "“Menaruh diri di belakang, justru diri tampil di depan”: dahulukan orang lain, diri sendiri justru tegak; Konfusius pun berkata “ingin tegak sendiri, tegakkan pula orang lain”."
+},
+"137": {
+"book": "Daodejing",
+"note": "Laozi berkata “kebaikan tertinggi bagaikan air”, Konfusius berkata “orang bijak menyukai air”: Konfusianisme dan Daoisme sama-sama mengibaratkan manusia dengan air."
+},
+"138": {
+"book": "Daodejing",
+"note": "Sama-sama memandang air, yang dilihat Konfusius adalah waktu yang tak pernah berhenti."
+},
+"139": {
+"book": "Daodejing",
+"note": "“Kaya dan mulia lalu sombong, mendatangkan celaka sendiri”; Konfusius pun berkata “kaya tetapi tidak sombong” belum cukup, harus “kaya dan mencintai ritus”."
+},
+"140": {
+"book": "Daodejing",
+"note": "“Memegang lalu mengisi sampai penuh, lebih baik berhenti”: tahu kapan berhenti; Konfusius membagi peringatan dalam tiga tahap: muda, dewasa, tua."
+},
+"141": {
+"book": "Daodejing",
+"note": "“Terang dan menembus empat penjuru, dapatkah tanpa pengetahuan?”: Konfusius pun menyebut dirinya “tak tahu apa-apa”; bila ada yang bertanya, ia mengurainya dari kedua ujung."
+},
+"142": {
+"book": "Daodejing",
+"note": "Heshang Gong menafsirkan “gerbang langit” sebagai kutub utara; Konfusius mengibaratkan memerintah dengan kebajikan seperti Bintang Utara."
+},
+"143": {
+"book": "Daodejing",
+"note": "Laozi berkata kegunaan benda terletak pada “kekosongan”; Konfusius berkata junzi bukan sekadar sebuah perkakas."
+},
+"144": {
+"book": "Daodejing",
+"note": "Wu Cheng mengutip Dong Sijing: “empat jangan” Konfusius dimulai dengan melihat, cocok dengan “lima warna membutakan mata” dan “untuk perut, bukan untuk mata” dari Laozi."
+},
+"145": {
+"book": "Daodejing",
+"note": "Wang Pang menjelaskan “kemalangan besarku adalah karena aku punya diri” dengan mengutip “tanpa keakuan” Konfusius, dan menyebut prinsipnya sama."
+},
+"146": {
+"book": "Daodejing",
+"note": "“Pujian dan hinaan sama-sama mengejutkan”: belum mendapat takut tak mendapat, sudah mendapat takut kehilangan; itulah “orang picik” menurut Konfusius."
+},
+"147": {
+"book": "Daodejing",
+"note": "“Menghargai diri seperti menghargai dunia”: para komentator mengadaptasi pujian Konfusius bagi Shun dan Yu, “memiliki dunia namun tidak menganggapnya milik sendiri”."
+},
+"148": {
+"book": "Daodejing",
+"note": "“Pegang Dao masa lalu untuk mengendalikan yang ada kini”: Konfusius pun berkata dirinya “percaya dan mencintai masa lalu”."
+},
+"149": {
+"book": "Daodejing",
+"note": "Mengenal prinsip dari masa lalu barulah bisa menangani urusan di depan mata; Konfusius menyebutnya “mengulang yang lama untuk mengetahui yang baru”."
+},
+"150": {
+"book": "Daodejing",
+"note": "“Ragu-ragu bagai menyeberangi sungai di musim dingin”: berhati-hati seperti menyeberangi sungai beku; Zengzi mengutip Kitab Puisi dengan nada yang sama."
+},
+"151": {
+"book": "Daodejing",
+"note": "“Khidmat bagai seorang tamu”: serius seperti sedang bertamu; Konfusius berkata keluar rumah hendaknya seperti menemui tamu agung."
+},
+"152": {
+"book": "Daodejing",
+"note": "Kaisar Xuanzong dari Tang menjelaskan “tak mengenal yang tetap, bertindak sembarangan, celaka” dengan mengutip kalimat ini: orang yang tak punya keteguhan akan menanggung aib."
+},
+"153": {
+"book": "Daodejing",
+"note": "Laozi berkata penguasa terbaik hanya diketahui keberadaannya oleh rakyat; Konfusius pun memuji Shun yang “memerintah tanpa bertindak”."
+},
+"154": {
+"book": "Daodejing",
+"note": "“Bila kepercayaan tak cukup, muncullah ketidakpercayaan”: Konfusius pun menaruh kepercayaan di atas pangan dan kekuatan militer."
+},
+"155": {
+"book": "Daodejing",
+"note": "Penguasa tidak bergerak, semua orang dengan sendirinya mengitarinya, persis “yang tertinggi” menurut Laozi."
+},
+"156": {
+"book": "Daodejing",
+"note": "Laozi berkata bakti dan kasih baru tampak ketika keluarga tak rukun; Konfusius berkata bila atasan berbakti dan pengasih, bawahan akan setia: kelompok kata yang sama, dua tafsiran."
+},
+"157": {
+"book": "Daodejing",
+"note": "Kaum Konfusian menjadikan bakti sebagai akar kemanusiaan, Laozi justru berkata “Dao agung ditinggalkan, maka muncullah kemanusiaan dan kebenaran”."
+},
+"158": {
+"book": "Daodejing",
+"note": "Laozi ingin “membuang kelicikan dan meninggalkan keuntungan”; Konfusius pun membenci “kata-kata manis dan wajah yang dibuat-buat”."
+},
+"159": {
+"book": "Daodejing",
+"note": "“Wei dan a, seberapa jauh bedanya?”: wei (唯) adalah jawaban hormat murid kepada guru; Zengzi menjawab Konfusius dengan kata itu."
+},
+"160": {
+"book": "Daodejing",
+"note": "“Yang ditakuti orang, tak boleh tidak ditakuti”: Konfusius berkata junzi punya tiga hal yang disegani."
+},
+"161": {
+"book": "Daodejing",
+"note": "Laozi berkata “hentikan belajar, maka tak ada kecemasan”; Konfusius berkata merenung sepanjang hari tak sebanding dengan belajar."
+},
+"162": {
+"book": "Daodejing",
+"note": "Komentar Chunfu yang dicatat Jiao Hong mengutip Su Shi, “yang berlalu seperti ini namun tak pernah benar-benar pergi”, memakai keluh Konfusius di tepi sungai untuk menjelaskan “sejak dahulu hingga kini…”"
+},
+"163": {
+"book": "Daodejing",
+"note": "Heshang Gong menjelaskan “utuh lalu kembalikan” sebagai mengembalikan tubuh yang utuh kepada orang tua; Zengzi menjelang wafat berkata “bukalah kakiku, bukalah tanganku”, persis demikian."
+},
+"164": {
+"book": "Daodejing",
+"note": "“Justru karena tidak bersaing, tak ada di dunia yang dapat bersaing dengannya”; Konfusius pun berkata junzi tak punya apa pun untuk diperebutkan."
+},
+"165": {
+"book": "Daodejing",
+"note": "Su Zhe menjelaskan “yang menyatu dengan kehilangan, kehilangan pun senang mendapatkannya” dengan mengutip Konfusius: bila sepenuh hati mengarah pada kemanusiaan, takkan berbuat jahat, apalagi bila mengarah pada Dao."
+},
+"166": {
+"book": "Daodejing",
+"note": "Laozi berkata angin kencang tak bertiup sepanjang pagi; Konfusius mengibaratkan kebajikan junzi dengan angin: aksara “angin” yang sama, dua penggunaan."
+},
+"167": {
+"book": "Daodejing",
+"note": "“Yang membanggakan diri tak berjasa”: cita-cita Yan Yuan justru tidak memamerkan kebaikannya sendiri."
+},
+"168": {
+"book": "Daodejing",
+"note": "Meng Zhifan menjaga barisan belakang saat kalah perang; ketika masuk kota ia berkata kudanya tak mau berlari, enggan mengklaim jasa."
+},
+"169": {
+"book": "Daodejing",
+"note": "Jiao Hong mencatat Li Yue membaca “meneladani bumi sebagai bumi, langit sebagai langit, Dao sebagai Dao”, dengan pola kalimat Konfusius “penguasa sebagai penguasa, menteri sebagai menteri, ayah sebagai ayah, anak sebagai anak” sebagai bukti."
+},
+"170": {
+"book": "Daodejing",
+"note": "Laozi berkata “Langit agung, Bumi agung, raja pun agung”; Konfusius memuji Yao: “hanya Langit yang agung, hanya Yao yang meneladaninya”."
+},
+"171": {
+"book": "Daodejing",
+"note": "Teks hasil galian berbunyi “junzi sepanjang hari berjalan tak lepas dari bawaan beratnya”; Konfusius berkata “junzi yang tidak berbobot tidak berwibawa”."
+},
+"172": {
+"book": "Daodejing",
+"note": "Su Zhe menjelaskan “ucapan yang baik tanpa cela”; “berbicara pada waktunya” yang ia sebut berasal dari bab ini."
+},
+"173": {
+"book": "Daodejing",
+"note": "“Orang baik adalah guru bagi yang tidak baik; yang tidak baik adalah bahan bagi orang baik”: Konfusius berkata yang baik dan yang buruk sama-sama guru."
+},
+"174": {
+"book": "Daodejing",
+"note": "“Selalu pandai menolong orang, maka tak ada orang yang dibuang”: Konfusius pun berkata mengajar tidak membeda-bedakan asal-usul."
+},
+"175": {
+"book": "Daodejing",
+"note": "Jiao Hong mencatat komentar Lü Huiqing yang mengutip “agung nian Shun dan Yu memiliki dunia, namun tidak menganggapnya milik sendiri” untuk menjelaskan “dunia adalah bejana sakral, tak bisa diperlakukan sesuka hati”."
+},
+"176": {
+"book": "Daodejing",
+"note": "Komentar Kaisar Xuanzong dari Tang memakai “urutan mandat Langit ada padamu”, dari kata-kata Yao ketika menyerahkan takhta kepada Shun."
+},
+"177": {
+"book": "Daodejing",
+"note": "“Berhasil tetapi jangan membanggakan, berhasil tetapi jangan memamerkan”: komandan yang dikehendaki Konfusius pun “gentar menghadapi tugas, gemar merencanakan hingga berhasil”."
+},
+"178": {
+"book": "Daodejing",
+"note": "Laozi berkata “jangan menguasai dunia dengan senjata”, Konfusius berkata rakyat harus dididik tujuh tahun barulah boleh turun ke medan perang: keduanya tak gegabah berperang."
+},
+"179": {
+"book": "Daodejing",
+"note": "“Senjata adalah alat yang membawa sial”: di antara tiga hal yang paling diwaspadai Konfusius ada perang."
+},
+"180": {
+"book": "Daodejing",
+"note": "Adipati Ling dari Wei bertanya tentang perang; Konfusius menjawab tak pernah mempelajarinya, dan keesokan harinya pergi."
+},
+"181": {
+"book": "Daodejing",
+"note": "“Begitu mulai diatur, muncullah nama; setelah nama ada, harus tahu kapan berhenti”: Konfusius ingin meluruskan nama, Laozi berkata begitu nama ditegakkan, harus tahu kapan berhenti."
+},
+"182": {
+"book": "Daodejing",
+"note": "Su Zhe menjelaskan “yang mengalahkan diri sendiri itulah kuat” sebagai “mampu mengendalikan diri dan kembali pada kodrat”, jelas mengadaptasi “mengendalikan diri dan kembali pada ritus” Konfusius."
+},
+"183": {
+"book": "Daodejing",
+"note": "Su Zhe menjelaskan “Dao agung meluap, bisa ke kiri dan ke kanan” dengan ucapan Konfusius tentang dirinya: “tak ada yang harus, tak ada yang tak boleh”."
+},
+"184": {
+"book": "Daodejing",
+"note": "“Berjasa namun tidak mengklaim” (功成不名有): Konfusius memuji Yao, dan rakyat tak mampu menyebutkan di mana kebaikannya."
+},
+"185": {
+"book": "Daodejing",
+"note": "“Dao yang terucap, hambar tanpa rasa” (道之出口，淡乎其无味): kata-kata yang enak didengar tidak membuat orang bertahan."
+},
+"186": {
+"book": "Daodejing",
+"note": "Kaisar Xuanzong dari Tang membela “jika hendak menciutkan, haruslah lebih dulu mengembangkan” (将欲歙之，必固张之) dengan mengutip Konfusius “dapat berdiri bersama, belum tentu dapat menimbang keadaan bersama” (可与立，未可与权): inilah kebijaksanaan menyesuaikan diri dengan keadaan…"
+},
+"187": {
+"book": "Daodejing",
+"note": "Laozi berkata “Dao senantiasa tidak berbuat, namun tiada yang tak terlaksana” (道常无为而无不为), dan Konfusius pun berkata Shun “hanya menjaga sikap hormat dan duduk menghadap selatan” (恭己正南面而已)."
+},
+"188": {
+"book": "Daodejing",
+"note": "Naskah hasil galian berbunyi “langit dan bumi akan lurus dengan sendirinya” (天地将自正), dan Konfusius berkata “jika Anda memimpin dengan lurus, siapa berani tidak lurus?” (子帅以正，孰敢不正)."
+},
+"189": {
+"book": "Daodejing",
+"note": "Su Zhe menafsirkan “kebajikan tertinggi tidak menganggap dirinya berkebajikan” (上德不德) dengan mengutip Konfusius pada usia tujuh puluh: “mengikuti kehendak hati tanpa melanggar batas” (从心所欲，不逾矩)."
+},
+"190": {
+"book": "Daodejing",
+"note": "Kaisar Xuanzong dari Tang menafsirkan “ritus adalah tipisnya kesetiaan dan kepercayaan” (礼者忠信之薄) dengan mengutip Konfusius: apakah ritus hanya soal giok dan sutra?"
+},
+"191": {
+"book": "Daodejing",
+"note": "Jiao Hong mencatat komentar Xizhai, yang memakai ucapan Konfusius “Jalanku diresapi oleh satu benang” (吾道一以贯之) untuk menafsirkan “mereka yang dahulu memperoleh Yang Satu” (昔之得一者)."
+},
+"192": {
+"book": "Daodejing",
+"note": "“Kembali adalah gerak Dao” (反者道之动): Konfusius pun tahu bahwa selain memegang yang tetap, orang juga harus luwes menyesuaikan diri dengan perubahan."
+},
+"193": {
+"book": "Daodejing",
+"note": "Su Zhe menafsirkan “cendekiawan unggul mendengar Dao, lalu tekun menjalankannya” (上士闻道，勤而行之) dan berkata bahwa Yan Hui adalah cendekiawan unggul itu."
+},
+"194": {
+"book": "Daodejing",
+"note": "Jiao Hong mencatat komentar Lü Huiqing, yang mengutip “pagi mendengar Dao, sore mati pun tak mengapa” (朝闻道，夕死可矣) untuk menyatakan bahwa cendekiawan unggul sungguh-sungguh memahami Dao."
+},
+"195": {
+"book": "Daodejing",
+"note": "Wang Pang menafsirkan “bejana besar rampung belakangan” (大器晚成) dengan mengutip ucapan Konfusius bahwa Guan Zhong berkapasitas kecil."
+},
+"196": {
+"book": "Daodejing",
+"note": "“Orang yang kasar dan keras tak akan mati secara wajar” (强梁者不得其死); Konfusius pun mengkhawatirkan Zilu yang keras hati dengan cara yang sama."
+},
+"197": {
+"book": "Daodejing",
+"note": "“Ajaran tanpa kata” (不言之教) adalah mengajar dengan teladan; Konfusius berkata jika diri sendiri lurus, tanpa perintah pun semuanya berjalan."
+},
+"198": {
+"book": "Daodejing",
+"note": "“Ajaran tanpa kata” (不言之教): Konfusius juga berkata langit tidak berbicara, namun empat musim tetap berjalan."
+},
+"199": {
+"book": "Daodejing",
+"note": "Laozi bertanya “nama dan diri, mana yang lebih dekat?” (名与身孰亲), sedangkan Konfusius justru khawatir tak memiliki nama baik setelah mati: Konfusianisme dan Daoisme berbenturan langsung soal “nama”."
+},
+"200": {
+"book": "Daodejing",
+"note": "“Kefasihan agung tampak gagap” (大辩若讷): Konfusius juga berkata orang yang lamban bicara dekat dengan kemanusiaan (ren)."
+},
+"201": {
+"book": "Daodejing",
+"note": "“Kepenuhan agung tampak kosong” (大盈若冲): Zengzi berkata sahabatnya (menurut komentar Zhu Xi, Yan Yuan) punya tetapi seolah tak punya, penuh tetapi seolah kosong."
+},
+"202": {
+"book": "Daodejing",
+"note": "“Tiada bencana lebih besar daripada tak tahu cukup” (祸莫大于不知足): Konfusius berkata yang dikhawatirkan dalam memerintah negara bukan kekurangan, melainkan ketidakmerataan."
+},
+"203": {
+"book": "Daodejing",
+"note": "Laozi berkata “tanpa keluar pintu, mengetahui dunia” (不出户，知天下), sedangkan Konfusius berkata hanya berpikir tanpa belajar tak ada gunanya."
+},
+"204": {
+"book": "Daodejing",
+"note": "Su Zhe menafsirkan “menuntut ilmu, bertambah setiap hari” (为学日益) dengan mengutip Konfusius “banyak mendengar, memilih yang baik lalu mengikutinya” (多闻择其善者而从之), dan berkata bahwa ini hanyalah “pengetahuan tingkat kedua” (知之次)."
+},
+"205": {
+"book": "Daodejing",
+"note": "Su Zhe lalu mengutip Konfusius yang bertanya kepada Zigong: aku bukan orang yang banyak belajar lalu menghafal, melainkan “diresapi oleh satu benang” (一以贯之) — inilah “menempuh Dao, berkurang setiap hari” (为道日损)."
+},
+"206": {
+"book": "Daodejing",
+"note": "“Yang tidak baik pun kuperlakukan dengan baik” (不善者吾亦善之), sedangkan Konfusius menganjurkan “membalas dendam dengan kelurusan” (以直报怨)."
+},
+"207": {
+"book": "Daodejing",
+"note": "Bab Laozi ini khusus membahas hidup dan mati; Konfusius berkata hidup saja belum dipahami, bagaimana dapat memahami mati."
+},
+"208": {
+"book": "Daodejing",
+"note": "“Melahirkan tanpa memiliki, berbuat tanpa bergantung” (生而不有，为而不恃): memiliki dunia tanpa menganggapnya milik sendiri."
+},
+"209": {
+"book": "Daodejing",
+"note": "“Tutuplah lubangnya, kuncilah pintunya” (塞其兑，闭其门): Laozi menutup pintu mata dan telinga, sedangkan Konfusius berkata jangan melihat atau mendengar apa pun yang tidak sesuai ritus."
+},
+"210": {
+"book": "Daodejing",
+"note": "Wang Bi menafsirkan “harta benda berlebih” (财货有余) dengan kata-kata Konfusius “bila tidak diperoleh dengan jalan yang benar” (不以其道得之)."
+},
+"211": {
+"book": "Daodejing",
+"note": "“Rakyat suka jalan pintas” (民好径), sedangkan murid-murid Konfusius memuji Tantai Mieming yang “tidak berjalan lewat jalan pintas” (行不由径): jalan setapak yang sama."
+},
+"212": {
+"book": "Daodejing",
+"note": "“Bina pada diri, kebajikannya pun sejati” (修之于身，其德乃真), meluas lapis demi lapis hingga ke seluruh dunia; Konfusius berkata “membina diri untuk menenteramkan rakyat” (修己以安百姓)."
+},
+"213": {
+"book": "Daodejing",
+"note": "Heshang Gong menafsirkan “yang berbicara tidak tahu” (言者不知) dengan ucapan Zigong “kereta berkuda empat pun tak dapat mengejar lidah” (驷不及舌)."
+},
+"214": {
+"book": "Daodejing",
+"note": "“Yang tahu tidak berbicara, yang berbicara tidak tahu” (知者不言，言者不知); Konfusius berkata orang berkebajikan pasti memiliki kata-kata yang baik, tetapi orang yang memiliki kata-kata belum tentu berkebajikan."
+},
+"215": {
+"book": "Daodejing",
+"note": "Heshang Gong berkata “menghargai perbuatan, bukan kata-kata” (贵行不贵言); Konfusius berkata junzi lamban dalam bicara, tetapi cekatan dalam bertindak."
+},
+"216": {
+"book": "Daodejing",
+"note": "Jiao Hong mencatat komentar Xizhai, yang mengutip “angin di atas rumput, rumput pasti merunduk” (草上之风必偃) untuk menafsirkan “aku tidak berbuat, rakyat berubah dengan sendirinya” (我无为而民自化)."
+},
+"217": {
+"book": "Daodejing",
+"note": "Su Zhe menafsirkan “hukum dan peraturan makin mencolok” (法令滋彰) dengan mengutip bab Konfusius tentang pelurusan nama: “rakyat tak tahu harus menaruh tangan dan kaki di mana” (民无所措手足)."
+},
+"218": {
+"book": "Daodejing",
+"note": "“Aku tidak berbuat, rakyat berubah dengan sendirinya” (我无为而民自化); Konfusius juga menyebut Shun “memerintah tanpa berbuat” (无为而治)."
+},
+"219": {
+"book": "Daodejing",
+"note": "“Lurus tetapi tidak semena-mena” (直而不肆): kelurusan harus berukuran; Konfusius berkata lurus tanpa ritus akan melukai orang."
+},
+"220": {
+"book": "Daodejing",
+"note": "“Tajam tetapi tidak melukai” (廉而不刿): Konfusius “hangat namun tegas, berwibawa namun tidak garang” (温而厉，威而不猛) — pola “A tetapi tidak B” yang sama."
+},
+"221": {
+"book": "Daodejing",
+"note": "“Untuk memerintah manusia dan melayani langit, tiada yang melebihi hemat” (治人事天莫若啬): Konfusius dalam memerintah negara juga menekankan “hemat dalam pengeluaran dan mengasihi orang” (节用而爱人)."
+},
+"222": {
+"book": "Daodejing",
+"note": "“Memerintah negara besar bagaikan memasak ikan kecil” (治大国若烹小鲜): para komentator menafsirkannya dengan ketakberbuatan Shun, dan Konfusius pun memuji Shun dengan cara itu."
+},
+"223": {
+"book": "Daodejing",
+"note": "“Bila dunia dipimpin dengan Dao, hantu-hantunya kehilangan daya gaib” (以道莅天下，其鬼不神); Konfusius berkata hormatilah roh dan dewa, tetapi jagalah jarak."
+},
+"224": {
+"book": "Daodejing",
+"note": "“Negara besar ialah hilir” (大国者下流): Zigong berkata junzi paling enggan berada di hilir (tempat rendah), sedangkan Laozi justru meminta negara besar rela berada di hilir."
+},
+"225": {
+"book": "Daodejing",
+"note": "“Bila negara besar merendah kepada negara kecil, ia akan memperoleh negara kecil” (大国以下小国，则取小国); Konfusius berkata bila orang jauh tidak tunduk, binalah kebajikan budaya agar mereka datang."
+},
+"226": {
+"book": "Daodejing",
+"note": "Su Zhe menafsirkan “orang yang tidak baik, mengapa dibuang?” (人之不善，何弃之有) dengan berkata “pagi berbuat tidak benar, sore mendengar Dao agung” — mengadaptasi “pagi mendengar Dao” (朝闻道) dari Konfusius."
+},
+"227": {
+"book": "Daodejing",
+"note": "“Orang yang tidak baik, mengapa dibuang?” (人之不善，何弃之有); Konfusius juga berkata bahwa dalam mengajar ia tak membeda-bedakan asal-usul."
+},
+"228": {
+"book": "Daodejing",
+"note": "“Membalas dendam dengan kebajikan” (报怨以德) dalam Lunyu diajukan seseorang kepada Konfusius, dan Konfusius menjawab “membalas dendam dengan kelurusan” (以直报怨). Komentar Zhu Xi: “Yang disebut orang itu…”"
+},
+"229": {
+"book": "Daodejing",
+"note": "Lü Huiqing menafsirkan “janji yang ringan pasti kurang dapat dipercaya” (轻诺必寡信) dengan menyebut “menepati kata” (复言), yang berasal dari ucapan Youzi “kepercayaan yang dekat dengan kebenaran, kata-katanya dapat ditepati” (信近于义，言可复也)."
+},
+"230": {
+"book": "Daodejing",
+"note": "“Menara sembilan tingkat bermula dari tumpukan tanah” (九层之台，起于累土): Konfusius berkata orang yang menimbun gunung lalu berhenti saat kurang satu keranjang tanah, ia berhenti karena dirinya sendiri."
+},
+"231": {
+"book": "Daodejing",
+"note": "“Bukan untuk mencerahkan rakyat, melainkan untuk membuatnya bersahaja” (非以明民，将以愚之): dua kalimat ini sering dibandingkan, dan keduanya bergantung pada cara komentar kuno membacanya."
+},
+"232": {
+"book": "Daodejing",
+"note": "Wang Bi berkata bila negara diperintah dengan kecerdikan, rakyat pun menanggapinya dengan kecerdikan; Konfusius berkata bila rakyat diatur dengan hukuman, rakyat menghindari hukuman tetapi tak punya rasa malu."
+},
+"233": {
+"book": "Daodejing",
+"note": "“Ingin mendahului rakyat, harus menempatkan diri di belakang” (欲先民，必以身后之): Konfusius berkata dalam memerintah, pimpinlah lebih dulu dengan bersusah payah."
+},
+"234": {
+"book": "Daodejing",
+"note": "“Karena ia tidak bersaing, maka tiada seorang pun di dunia yang dapat bersaing dengannya” (以其不争，故天下莫能与之争)."
+},
+"235": {
+"book": "Daodejing",
+"note": "Jiao Hong mencatat komentar Wang Pang, yang memakai ucapan Konfusius “dalam ritus, daripada mewah lebih baik hemat” (礼，与其奢也，宁俭) untuk menafsirkan “yang kedua: hemat” (二曰俭)."
+},
+"236": {
+"book": "Daodejing",
+"note": "“Karena kasih, maka berani” (慈故能勇): Konfusius juga berkata orang yang berperikemanusiaan pasti berani."
+},
+"237": {
+"book": "Daodejing",
+"note": "“Karena hemat, maka dapat meluas” (俭故能广); Konfusius berkata “hemat dalam pengeluaran dan mengasihi orang” (节用而爱人)."
+},
+"238": {
+"book": "Daodejing",
+"note": "“Kesatria yang baik tidak mengandalkan kekerasan” (善为士者不武): di antara hal yang paling diwaspadai Konfusius terdapat perang."
+},
+"239": {
+"book": "Daodejing",
+"note": "“Tiada bencana lebih besar daripada meremehkan musuh” (祸莫大于轻敌): yang dicari Konfusius justru orang yang “gentar saat menghadapi urusan” (临事而惧)."
+},
+"240": {
+"book": "Daodejing",
+"note": "“Ahli perang punya pepatah” (用兵有言), sedangkan Konfusius berkata ia tak pernah mempelajari urusan perang."
+},
+"241": {
+"book": "Daodejing",
+"note": "“Berpakaian kasar namun menyimpan giok” (被褐怀玉): giok yang sama — Konfusius ingin “menjualnya!” (沽之哉), sedangkan Laozi menyimpannya di dada."
+},
+"242": {
+"book": "Daodejing",
+"note": "“Yang mengenalku sedikit” (知我者希); Konfusius pun mengeluh “tak ada yang mengenalku!” (莫我知也夫)."
+},
+"243": {
+"book": "Daodejing",
+"note": "“Yang mengenalku sedikit, maka yang meneladaniku berharga” (知我者希，则我者贵); Konfusius berkata ia tidak kesal walau orang lain tak mengenal dirinya."
+},
+"244": {
+"book": "Daodejing",
+"note": "“Tahu bahwa diri tak tahu, itulah yang tertinggi” (知不知，上): kalimat yang paling mirip di antara kedua aliran."
+},
+"245": {
+"book": "Daodejing",
+"note": "Konfusius menyebut dirinya tak berpengetahuan, tepat bersambung dengan “tahu bahwa tak tahu” (知不知) dari Laozi."
+},
+"246": {
+"book": "Daodejing",
+"note": "“Bila rakyat tak takut wibawa, wibawa yang besar akan tiba” (民不畏威，则大威至); Konfusius berkata junzi memiliki tiga hal yang ditakuti."
+},
+"247": {
+"book": "Daodejing",
+"note": "Su Zhe menafsirkan “Dao langit: tak bersaing namun pandai menang, tak berbicara namun pandai menanggapi” dengan mengutip Konfusius “apakah langit berbicara?” (天何言哉)."
+},
+"248": {
+"book": "Daodejing",
+"note": "“Berani dalam kenekatan, maka terbunuh” (勇于敢则杀): justru inilah kekhawatiran Konfusius tentang Zilu."
+},
+"249": {
+"book": "Daodejing",
+"note": "“Berani dalam ketidaknekatan, maka hidup” (勇于不敢则活): Konfusius tidak menginginkan orang yang melawan harimau dengan tangan kosong dan menyeberangi sungai tanpa perahu."
+},
+"250": {
+"book": "Daodejing",
+"note": "Su Zhe menafsirkan “rakyat tak takut mati” (民不畏死) dengan kembali mengutip Konfusius “rakyat tak tahu harus menaruh tangan dan kaki di mana” (民无所措手足)."
+},
+"251": {
+"book": "Daodejing",
+"note": "“Selalu ada pejabat pembunuh yang membunuh” (常有司杀者杀); Konfusius berkata dalam memerintah, mengapa harus membunuh?"
+},
+"252": {
+"book": "Daodejing",
+"note": "Konfusius berkata bila orang baik memerintah negara selama seratus tahun, kekejaman dan pembunuhan pun dapat dihapuskan."
+},
+"253": {
+"book": "Daodejing",
+"note": "“Rakyat kelaparan karena atasan memungut pajak terlalu banyak” (民之饥，以其上食税之多); Youruo menasihati Adipati Ai untuk mengurangi pajak: “Bila rakyat berkecukupan, bersama siapa sang penguasa akan berkekurangan?” (百姓足，君孰与不足)"
+},
+"254": {
+"book": "Daodejing",
+"note": "“Rakyat sulit diatur karena atasan banyak berbuat” (民之难治，以其上之有为); Konfusius berkata bila atasan lurus, bawahan tak berani tidak lurus."
+},
+"255": {
+"book": "Daodejing",
+"note": "“Yang kuat dan besar berada di bawah, yang lunak dan lemah berada di atas” (强大处下，柔弱处上): Zengzi berkata sahabatnya (menurut komentar Zhu Xi, Yan Yuan) punya tetapi seolah tak punya, berisi tetapi seolah kosong."
+},
+"256": {
+"book": "Daodejing",
+"note": "“Dao langit mengurangi yang berlebih dan menambah yang kurang” (天之道，损有余而补不足); Konfusius berkata jangan takut kekurangan, takutlah ketidakmerataan."
+},
+"257": {
+"book": "Daodejing",
+"note": "“Siapa yang dapat memakai kelebihannya untuk melayani dunia?” (孰能有余以奉天下): Konfusius berkata junzi menolong orang yang terdesak, bukan menambah kekayaan orang kaya."
+},
+"258": {
+"book": "Daodejing",
+"note": "Lü Huiqing menafsirkan “yang menanggung noda negara disebut tuan altar negara” (受国之垢，是谓社稷主) dengan mengutip ucapan Tang “bila berbagai negeri bersalah, kesalahan itu ada pada diriku” (万方有罪，罪在朕躬)…"
+},
+"259": {
+"book": "Daodejing",
+"note": "“Menanggung kemalangan negara” (受国不祥): banyak menyalahkan diri sendiri, sedikit menyalahkan orang lain."
+},
+"260": {
+"book": "Daodejing",
+"note": "“Mendamaikan dendam besar, pasti masih tersisa dendam” (和大怨，必有余怨); Konfusius menganjurkan “membalas dendam dengan kelurusan, membalas kebajikan dengan kebajikan” (以直报怨，以德报德)."
+},
+"261": {
+"book": "Daodejing",
+"note": "“Yang berkebajikan memegang kontrak, yang tak berkebajikan memegang pajak” (有德司契，无德司彻): che (彻) adalah sistem pajak dinasti Zhou; Youruo menasihati Adipati Ai untuk menerapkan sistem che."
+},
+"262": {
+"book": "Daodejing",
+"note": "Jiao Hong mencatat komentar Wang Pang: Lunyu dan Mengzi pada bab penutupnya sama-sama menyebut Yao, Shun, Yu, dan Tang; Laozi menutup kitabnya dengan bab ini, maksudnya sama."
+},
+"263": {
+"book": "Daodejing",
+"note": "“Negeri-negeri tetangga saling memandang… rakyat hingga tua dan mati tak saling berkunjung”, sedangkan Konfusius berkata buatlah yang dekat bergembira dan yang jauh datang bernaung."
+},
+"264": {
+"book": "Daodejing",
+"note": "“Kata yang tepercaya tidak indah, kata yang indah tidak tepercaya” (信言不美，美言不信); Konfusius berkata “kata-kata manis dan wajah yang dibuat-buat, jarang disertai kemanusiaan” (巧言令色，鲜矣仁)."
+},
+"265": {
+"book": "Daodejing",
+"note": "“Orang baik tidak berdebat” (善者不辩); Konfusius berkata junzi lamban dalam bicara, tetapi cekatan dalam bertindak."
+},
+"266": {
+"book": "Daodejing",
+"note": "“Yang tahu tidak serba luas, yang serba luas tidak tahu” (知者不博，博者不知); Konfusius berkata belajar secara luas harus dikekang dengan ritus."
+},
+"1346": {
+"note": "Teks dasar berbunyi “出则弟／汎爱众”, teks umum berbunyi “出则悌／泛爱众”"
+},
+"1347": {
+"note": "Teks dasar berbunyi “大庙”, teks umum berbunyi “太庙”"
+},
+"1348": {
+"note": "Teks dasar berbunyi “寗武子”, teks umum berbunyi “宁武子”"
+},
+"1349": {
+"note": "Teks dasar berbunyi “焉尔乎”, teks umum berbunyi “焉耳乎”"
+},
+"1350": {
+"note": "Teks dasar berbunyi “唯我与尔”, teks umum berbunyi “惟我与尔”"
+},
+"1351": {
+"note": "Teks dasar berbunyi “大宰”, teks umum berbunyi “太宰”"
+},
+"1352": {
+"note": "Teks dasar berbunyi “韫匵”, teks umum berbunyi “韫椟”"
+},
+"1353": {
+"note": "Teks dasar berbunyi “后彫”, teks umum berbunyi “后凋”"
+},
+"1354": {
+"note": "Teks dasar berbunyi “没阶趋翼如也”, teks umum berbunyi “没阶趋进翼如也”"
+},
+"1355": {
+"note": "Teks dasar berbunyi “惟酒无量”, teks umum berbunyi “唯酒无量”"
+},
+"1356": {
+"note": "Teks dasar berbunyi “居不容”, teks umum berbunyi “居不客”"
+},
+"1357": {
+"note": "Teks dasar berbunyi “敢问死”, teks umum berbunyi “曰敢问死”"
+},
+"1358": {
+"note": "Teks dasar berbunyi “亦祗以异”, teks umum berbunyi “亦只以异”"
+},
+"1359": {
+"note": "Teks dasar berbunyi “曰举尔所知”, teks umum berbunyi “子曰举尔所知”"
+},
+"1360": {
+"note": "Teks dasar berbunyi “无所措手足”, teks umum berbunyi “无所错手足”"
+},
+"1361": {
+"note": "Teks dasar berbunyi “涖之”, teks umum berbunyi “莅之”"
+},
+"1362": {
+"note": "Teks dasar berbunyi “遇诸涂”, teks umum berbunyi “遇诸途”"
+},
+"1363": {
+"note": "Teks dasar berbunyi “乡原”, teks umum berbunyi “乡愿”"
+},
+"1364": {
+"note": "Teks dasar berbunyi “道听而涂说”, teks umum berbunyi “道听而途说”"
+},
+"1365": {
+"note": "Teks dasar berbunyi “季孟之閒”, teks umum berbunyi “季孟之间”"
+},
+"1366": {
+"note": "Teks dasar berbunyi “子曰”, teks umum berbunyi “孔子曰”"
+},
+"1367": {
+"pick": "Berlatih setiap saat"
+},
+"1368": {
+"pick": "Tafsiran suami-istri"
+},
+"1369": {
+"pick": "Tafsiran A"
+},
+"1370": {
+"pick": "Pembaca memperoleh yang benar"
+},
+"1371": {
+"pick": "Memegang satu ujung"
+},
+"1372": {
+"pick": "Tafsiran A"
+},
+"1373": {
+"pick": "Tafsiran A"
+},
+"1374": {
+"pick": "Tafsiran A"
+},
+"1375": {
+"pick": "Tafsiran A"
+},
+"1376": {
+"pick": "Kedua tafsiran dipertahankan"
+},
+"1377": {
+"pick": "Tafsiran A"
+},
+"1378": {
+"pick": "与 = memuji/menyetujui"
+},
+"1379": {
+"pick": "Tafsiran A"
+},
+"1380": {
+"pick": "Kedua tafsiran dipertahankan"
+},
+"1381": {
+"pick": "Mengekang diri sendiri"
+},
+"1382": {
+"pick": "Tafsiran A"
+},
+"1383": {
+"pick": "A, dengan batasan dari B"
+},
+"1384": {
+"pick": "Tafsiran A"
+},
+"1385": {
+"pick": "Tafsiran A"
+},
+"1386": {
+"pick": "Tanpa membedakan status maupun golongan"
+},
+"1387": {
+"pick": "Teks menurut B, makna menurut A"
+},
+"1388": {
+"pick": "Tafsiran A"
+},
+"1389": {
+"pick": "Tafsiran A"
+},
+"1390": {
+"pick": "Tafsiran A"
+},
+"1391": {
+"pick": "Tafsiran A"
+},
+"1392": {
+"pick": "Kedua tafsiran dipertahankan"
+},
+"1393": {
+"pick": "Zhu Xi"
+},
+"1394": {
+"pick": "Tiga hal"
+},
+"1395": {
+"pick": "Perbedaan baik-jahat dan sesat-lurus"
+},
+"1396": {
+"pick": "Berbahaya dan tidak tenteram"
+}
+},
+"_note": "11-14 智器译（Opus 5.5）：S 关系图与人物卡页面文字、W 同问异答、X 关系注（按 lunyu_guanxi.json rels 序号）、p 人名身份（按中文本名）"
+}

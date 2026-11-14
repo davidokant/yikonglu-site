@@ -117,7 +117,7 @@ def build(L, write, page, live, DOMAIN):
     return [f"{DOMAIN}/{L.prefix}shuyuan/ruyuan.html"]
 
 def link(L, P):
-    return f'<a href="{P}shuyuan/ruyuan.html" class="sylink">{LINK["zh" if L.code.startswith("zh") else "en"]}</a>'
+    return f'<a href="{P}shuyuan/ruyuan.html" class="sylink">{LINK["zh"] if L.code.startswith("zh") else L.ui.get("academy") or LINK["en"]}</a>'
 
 # 书院首页（11-09 主人：书院介绍提到台前，人物线索深入一层，“跟着人物读”并入主题）
 COURTS = [("menkou", "山门", "谁都能进", "书院介绍、院规、新人报到。上官有理在这里迎新。"),
