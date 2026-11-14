@@ -1293,7 +1293,7 @@ def ly_links(L, D, P):
     zh = L.code.startswith("zh")
     rows = []
     if zh:
-        if D["lx"]["nl"]: rows.append(("nl", f"{P}nianli/", "《论语》年历", "一天一课，一年一轮，从元旦读到除夕"))
+        if D["lx"]["nl"]: rows.append(("nl", f"{P}nianli/", "《论语》年历", "一天一课，一年一轮；看你生日是哪一句"))
         if GXD: rows.append(("gx", f"{P}lunyu/guanxi/", "关系图", "498 章怎样连着，197 位人物各在哪几章"))
         if D["lx"]["ch"]: rows.append(("ch", f"{P}changhe/", "场合用句", "取名、开学、结婚、送别，该说哪一句"))
         rows.append(("kb", f"{P}zhuanti/keben.html", "语文课本里的《论语》", "初中、高中课文选的各章"))
