@@ -788,3 +788,27 @@ table.bybook small{display:block;font-size:.78em;line-height:1.4;color:var(--mut
 .gxcard{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:16px 0}.gxcard h3{margin:0 0 6px}
 .gxwdsvg{width:100%;max-width:560px;height:auto;display:block;margin:0 auto}.gxcard ol{margin:8px 0 0;padding-left:1.3em;font-size:15.5px}.gxcard small{display:block;color:var(--mute);font-size:13px}
 #gxq{font:inherit;font-size:15px;padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--fg);width:min(100%,320px)}
+/* 11-14 首页今日《论语》日历样式＋一周七位领读人（右边半身像） */
+.meiri.mcal{padding:0;overflow:hidden}
+.mcal .mrow{display:flex;align-items:stretch;position:relative}
+.mcal .mcalb{flex:0 0 132px;display:flex;flex-direction:column;align-items:center;background:#F7F5EE;border-right:1px dashed rgba(35,80,63,.35);padding:0 0 14px;text-align:center}
+.mcal .mcalb p{margin:0}
+.mcal .cm{width:100%;background:#23503F;color:#F2F1EA;font-weight:700;font-size:17px;letter-spacing:.15em;padding:20px 0 8px;position:relative}
+.mcal .cm::before,.mcal .cm::after{content:"";position:absolute;top:5px;width:9px;height:9px;border-radius:50%;background:#F2F1EA;border:2px solid #23503F}
+.mcal .cm::before{left:30px}.mcal .cm::after{right:30px}
+.mcal .cd{font-size:66px;line-height:1.05;font-weight:900;color:#A23B2C;margin-top:8px!important;font-family:"Noto Serif SC",serif}
+.mcal .cw{font-size:15px;color:#23503F;font-weight:700}
+.mcal .cl{font-size:14px;color:#A23B2C;margin-top:4px!important;letter-spacing:.05em}
+.mcal .mtxt{flex:1;min-width:0;padding:22px 290px 18px 26px;position:relative;z-index:1}
+.mcal .mtag{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.mcal .mtag:empty{display:none}
+.mcal .mtag span{font-size:13px;padding:2px 10px;border-radius:12px;background:rgba(35,80,63,.09);color:#23503F}
+.mcal .mtag .fe{background:#A23B2C;color:#fff;font-weight:700}
+.mcal .mhalf{position:absolute;right:18px;bottom:0;width:250px;height:calc(100% - 8px);max-height:250px;object-fit:contain;object-position:50% 100%;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 58% 72% at 50% 34%,#000 70%,transparent 100%);mask-image:radial-gradient(ellipse 58% 72% at 50% 34%,#000 70%,transparent 100%)}
+.mcal .wk .md{font-size:13px;color:var(--mute)}
+.mcal .wk i{background:transparent}.mcal .wk i.on{background:#23503F;border-color:#23503F}
+.mcal .mhalf[hidden]{display:none}
+.mcal .wk{margin:0;padding:10px 26px 14px;border-top:1px dashed var(--line);position:relative;z-index:1;background:var(--paper)}
+.mcal .wk i.td{box-shadow:0 0 0 2px #F2F1EA,0 0 0 4px #A23B2C}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mcal .mcalb{background:rgba(242,241,234,.06)}:root:not([data-theme="light"]) .mcal .cm::before,:root:not([data-theme="light"]) .mcal .cm::after{background:var(--paper)}}
+@media (max-width:640px){.mcal .mcalb{flex-basis:96px}.mcal .cd{font-size:50px}.mcal .cm{font-size:15px}.mcal .cm::before{left:18px}.mcal .cm::after{right:18px}.mcal .mtxt{padding:16px 16px 14px}.mcal .mtxt{padding-bottom:150px}.mcal .mhalf{right:10px;width:170px;height:150px;max-height:none}.meiri.mcal blockquote{font-size:22px}.mcal .wk{padding:10px 16px 12px}}
