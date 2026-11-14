@@ -869,7 +869,7 @@ def analytics(L):
               + 'if(ST&&t.recent&&t.recent.length)lj(function(j){var A=j.a||j.c,rc=t.recent.filter(function(c){return A[c]});if(!rc.length)return;var nall=Math.max(t.rn||0,rc.length);rc=rc.slice(0,12);ST.textContent="";var lb=document.createElement("b");lb.textContent=X.steps.replace("{n}",n(nall));ST.appendChild(lb);var sc=document.createElement("span");sc.className="stc";rc.forEach(function(c){var a=document.createElement("a");a.href=j.p+A[c][1];a.textContent=A[c][0];sc.appendChild(a)});ST.appendChild(sc);ST.hidden=false});'
               + 'if(TJ&&t.top&&t.top.length)lj(function(j){var k=t.top[0][0].split("#"),c=k[0],si=parseInt(k[1].slice(1),10)-1;if(!j.c[c]||!j.c[c][2][si])return;TJ.querySelector("blockquote").textContent=j.c[c][2][si];var a=TJ.querySelector("a");a.href=j.p+j.c[c][1]+"#"+k[1];a.textContent=j.c[c][0];TJ.hidden=false})'
               + '}).catch(function(){});'
-              + 'if(GD&&GD.getAttribute("data-c"))fetch(EP("reads")+"?c="+encodeURIComponent(GD.getAttribute("data-c"))).then(function(r){return r.json()}).then(function(d){if(d&&d.today){var sp=document.createElement("span");sp.className="gdn";sp.textContent=" · "+X.gdn.replace("{d}",n(d.today));(GD.querySelector(".md")||GD).appendChild(sp)}}).catch(function(){});'
+              + 'function gdc(){if(!GD||!GD.getAttribute("data-c")||GD.querySelector(".gdn"))return;fetch(EP("reads")+"?c="+encodeURIComponent(GD.getAttribute("data-c"))).then(function(r){return r.json()}).then(function(d){if(d&&d.today&&!GD.querySelector(".gdn")){var sp=document.createElement("span");sp.className="gdn";sp.textContent=" · "+X.gdn.replace("{d}",n(d.today));(GD.querySelector(".md")||GD).appendChild(sp)}}).catch(function(){})}gdc();document.addEventListener("ykmeiri",gdc);'
               + '}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",RUN);else RUN()})();</script>')
     return a
 
@@ -1073,7 +1073,7 @@ FOLD_JS = """<script>(function(){function op(){var h=decodeURIComponent(location
 def cta_html(L, P):  # 上半末尾：免费读本、问一孔两张卡
     W = lang_tab(WEN, L.code)
     return (f'<div class="ctas"><a href="{P}duben.html"><b>{L.t("db_link")}</b><span>{L.t("cta_db_p")}</span></a>'
-            f'<a href="{P}wen.html"><b>{W["link"]}</b><span>{L.t("cta_wen_p")}</span></a></div>')
+            f'<a href="{P}about.html#wen"><b>{W["link"]}</b><span>{L.t("cta_wen_p")}</span></a></div>')
 
 def meta_desc(L, title, rend, yw):  # 外语章页摘要：先本语言（标题＋译文），原文放后，读者在搜索结果里先看到自己的语言
     if not rend: return f"{yw[:40]}… {L.t('book_lead')}"
@@ -1147,7 +1147,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>{'<span class="livep" id="livep" hidden></span>' if ANALYTICS.get("live") else ""}
 <nav><a href="{P}lunyu/" class="lynav">{lyui(L)["nav"]}</a><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}shuyuan/" class="gsnav">书院</a>' if gs else ""}
-<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}lunyu/guanxi/">关系图</a>' if rw else ""}<a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}wen.html">{lang_tab(WEN, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
+<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}lunyu/guanxi/">关系图</a>' if rw else ""}<a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary><span class="lfull">{L.name}</span><span class="lshort" aria-hidden="true">{LANG_SHORT.get(L.code, L.code[:2].upper())}</span></summary><div>{sw}</div></details></nav>
 </div></header>
 {note}
@@ -1157,7 +1157,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
 <p class="where">{where_html(L)}</p>
-<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a>{f'<a href="{P}lunyu/guanxi/">《论语》关系图</a>' if rw else ""}{f'<a href="{P}shuyuan/">书院</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
+<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a>{f'<a href="{P}lunyu/guanxi/">《论语》关系图</a>' if rw else ""}{f'<a href="{P}shuyuan/">书院</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}lunyu/banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
 <p class="freuse">{L.t("foot_reuse", p=P)}</p>
@@ -1190,8 +1190,8 @@ def yxl_block(L, D, P, full=False):
     vid = {c for c in D["pub"] if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now)}
     nb, zi, ne = yxl_counts(D)
     grid = (f'<div class="yxgrid"><a class="c" href="{P}shumu/"><b>{zi:,}<small>字</small></b><span>原文已讲 · 开讲 {nb} 部书 · 视频已公开 {ne} 集</span></a>'
-            f'<a class="c" href="{P}banben/"><b>{n_cites}<small>条</small></b><span>引文可核到底本原页</span></a>'
-            f'<a class="c" href="{P}banben/"><b>{fam}<small>家</small></b><span>注本上了原页图</span></a>'
+            f'<a class="c" href="{P}lunyu/banben/"><b>{n_cites}<small>条</small></b><span>引文可核到底本原页</span></a>'
+            f'<a class="c" href="{P}lunyu/banben/"><b>{fam}<small>家</small></b><span>注本上了原页图</span></a>'
             f'<a class="c" href="{P}kanwu.html"><b>{len(readers)}<small>条</small></b><span>读者来信 · 勘误共 {len(kw)} 条（均公开）</span></a></div>')
     rows = ""
     for pf in y.get("platforms", []):
@@ -1228,11 +1228,17 @@ def draft_sec(D):
             f'<table><thead><tr><th>集</th><th>段数</th><th>改动段</th><th>比例</th></tr></thead><tbody>{trs}</tbody></table>'
             f'<p><a href="/data/chugao-gaidong.json">chugao-gaidong.json</a>（逐集明细）</p>')
 
+def redirect_page(L, target, frag, title):
+    """旧网址跳新址：保留 #锚点；noindex＋canonical 指新址。"""
+    return (f'<!doctype html><meta charset="utf-8"><title>{esc(title)}｜一孔录</title><link rel="canonical" href="{DOMAIN}/{target}">'
+            f'<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/{target}{frag}">'
+            f'<script>location.replace("/{target}"+(location.hash||"{frag}"))</script><a href="/{target}{frag}">{esc(title)}</a>')
+
 def about_zh(L, D, P):
     """关于页（简繁）：一孔自述。主人 11-09 定：不露脸，把匿名当神秘感，信赖靠可查；照片栏放脸是空洞的头像，寓意一孔。主人删掉平台、数字和转载一节（转载说明在开放数据页）。"""
     kwn = len(D["kw"])
     cards = [
-        ("原", "每句有出处", "原文照底本逐字录入，注家原话标页码，附原书影像。", f"{P}banben/", "看底本"),
+        ("原", "每句有出处", "原文照底本逐字录入，注家原话标页码，附原书影像。", f"{P}lunyu/banben/", "看底本"),
         ("勘", "讲错公开记", "原来怎么说、改成什么、依据什么，按日期列着，旧的不删。", f"{P}kanwu.html", f"已记 {kwn} 处"),
         ("法", "做法写明白", "智器帮我起草、配音、出图；底本、读法、引文由我逐字核定。我的读法署“一孔按”，不冒充古人。", f"{P}fangfa.html", "看做法"),
         ("开", "数据公开", "原文、白话、读音、引文出处按篇下载，谁都能拿去核。", f"{P}kaifang.html", "下载"),
@@ -1855,13 +1861,13 @@ def build_lang(L, D, write):
             hmeta = L.t("zb_huang_meta", j=h["juan"]) if h.get("ed", "zbz") == "zbz" else L.t("zb_huang_meta2", j=h["juan"])
             blocks += (f'<div class="zb" id="zb-huangkan"><h3>{L.t("zb_huang")}<small>{esc(hmeta)}</small></h3>'
                        f'<p lang="zh-Hant">“{esc(h["text"])}”……</p><p class="zbsrc"><a class="pg" href="{hurl}" target="_blank" rel="noopener">{L.t("zb_scan", n=h["page"]) if h.get("ed", "zbz") == "zbz" else L.t("zb_scan2", ce=h["ce"], n=h["page"])}</a>'
-                       + cpbtn(L, f'“{h["text"]}”——皇侃《论语义疏》，{cite_src}', url + "#zb-huangkan") + f'<a class="bb" href="{P}banben/#huangkan">{L.t("bb_link")}</a></p></div>')
+                       + cpbtn(L, f'“{h["text"]}”——皇侃《论语义疏》，{cite_src}', url + "#zb-huangkan") + f'<a class="bb" href="{P}lunyu/banben/#huangkan">{L.t("bb_link")}</a></p></div>')
         for key, nk, mk in (("yang", "zb_yang", "zb_yang_meta"), ("qian", "zb_qian", "zb_qian_meta")):
             if key not in zb: continue
             z = zb[key]
             aid = {"yang": "yangbojun", "qian": "qianmu"}[key]; zh_n = {"yang": "杨伯峻《论语译注》", "qian": "钱穆《论语新解》"}[key]
             blocks += (f'<div class="zb" id="zb-{aid}"><h3>{L.t(nk)}<small>{L.t(mk)}</small></h3><p lang="zh-Hans">“{esc(z["text"])}”</p><p class="zbsrc">'
-                       + cpbtn(L, f'“{z["text"]}”——{zh_n}，转引自{cite_src}', url + f"#zb-{aid}") + f'<a class="bb" href="{P}banben/#{aid}">{L.t("bb_link")}</a></p></div>')
+                       + cpbtn(L, f'“{z["text"]}”——{zh_n}，转引自{cite_src}', url + f"#zb-{aid}") + f'<a class="bb" href="{P}lunyu/banben/#{aid}">{L.t("bb_link")}</a></p></div>')
             zs = L.ch(c).get("zb_say", {}).get(key)  # 外语版：“与朱注异同”说明的译文（关键字、引文仍中文）
             diffs.append((L.t(nk), {**z, "say": zs, "say_l": L.hreflang} if zs else z))
         order = {"k_diff": 0, "k_word": 1, "k_shade": 2, "k_add": 3, "k_same": 4}
@@ -1924,7 +1930,7 @@ def build_lang(L, D, write):
             return " ".join(f'<a class="pg" href="/yuanye/p{int(x):03d}.jpg" target="_blank">{L.t("pg", n=x)}</a>' if x in pages_avail else f'<span class="pg">{L.t("pg", n=x)}</span>' for x in nums)
         extra = ""
         if g["cites"]:
-            extra += (f'<section class="sec cites" id="zb-zhuxi"><h2><i>核</i>{L.t("cites")}</h2><p class="note">{L.t("cites_note")} <a class="bb" href="{P}banben/#zhuxi">{L.t("bb_link")}</a> {cpbtn(L, "", url + "#zb-zhuxi", link_only=True)}</p><table><thead><tr><th>{L.t("th_quote")}</th><th>{L.t("th_src")}</th><th>{L.t("th_page")}</th></tr></thead><tbody>'
+            extra += (f'<section class="sec cites" id="zb-zhuxi"><h2><i>核</i>{L.t("cites")}</h2><p class="note">{L.t("cites_note")} <a class="bb" href="{P}lunyu/banben/#zhuxi">{L.t("bb_link")}</a> {cpbtn(L, "", url + "#zb-zhuxi", link_only=True)}</p><table><thead><tr><th>{L.t("th_quote")}</th><th>{L.t("th_src")}</th><th>{L.t("th_page")}</th></tr></thead><tbody>'
                       + "".join(f'<tr><td lang="zh-Hans">{"<span class=para>" + L.t("para") + "</span>" + esc(x["text"]) if x["para"] else "“" + esc(x["text"]) + "”"}</td><td>{esc(L.src(x["src"]))}</td><td>{pg(x["pages"]) if x["pages"] else "<span class=oth>" + esc(x["other"] or L.t("other_ed")) + "</span>"}</td></tr>' for x in g["cites"]) + "</tbody></table></section>")
         if g["reads"]:
             extra += (f'<section class="sec reads"><h2><i>音</i>{L.t("reads")}</h2><table><thead><tr><th>{L.t("th_zi")}</th><th>{L.t("th_pos")}</th><th>{L.t("th_du")}</th></tr></thead><tbody>'
@@ -2121,7 +2127,7 @@ def build_lang(L, D, write):
                     def _pgl(x):
                         a = x.split("—")[0]
                         return f'<a class="pg" href="/yuanye/p{int(a):03d}.jpg" target="_blank">{L.t("pg", n=x)}</a>' if a and a in pages_avail else (L.t("pg", n=x) if x else "")
-                    wj_deep += (f'<section class="sec cites" id="zb-zhuxi"><h2><i>核</i>{"朱熹集注逐句原话" if zhL else L.t("wj_deep_zx")}</h2><p class="note">{"朱注里说到本章各句的原话，都对过底本原页；视频开讲时再补诸家说法。" if zhL else L.t("wj_deep_zx_p")} <a class="bb" href="{P}banben/#zhuxi">{L.t("bb_link")}</a></p>'
+                    wj_deep += (f'<section class="sec cites" id="zb-zhuxi"><h2><i>核</i>{"朱熹集注逐句原话" if zhL else L.t("wj_deep_zx")}</h2><p class="note">{"朱注里说到本章各句的原话，都对过底本原页；视频开讲时再补诸家说法。" if zhL else L.t("wj_deep_zx_p")} <a class="bb" href="{P}lunyu/banben/#zhuxi">{L.t("bb_link")}</a></p>'
                                 f'<table><thead><tr><th>{"句" if zhL else L.t("th_ju")}</th><th>{L.t("th_quote")}</th><th>{L.t("th_page")}</th></tr></thead><tbody>'
                                 + "".join(f'<tr><td>{f"<a href=#s{j}>{esc(sents[j-1][:8])}</a>" if j else ""}</td><td lang="zh-Hans">“{esc(t)}”</td><td>{_pgl(pg_)}</td></tr>' for j, t, pg_ in _zrows) + "</tbody></table></section>")
                 _hjr = [(int(j), r) for j, rs in hjd.items() if str(j).isdigit() for r in rs if not (_zrows and r[0] == L.t("hj_note"))]  # 朱注条上面表里已有
@@ -2192,7 +2198,7 @@ def build_lang(L, D, write):
         write(f"lunyu/{slug}/index.html", page(L, ttl, L.t("book_lead"), f"lunyu/{slug}/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/{slug}/")
         if p in by_pian: toc_all += f'<h2 class="ph"><a href="{P}lunyu/{slug}/">{L.book(p)}</a></h2>{toc(by_pian[p])}'
     body = f'''<div class="chhead bk"><div class="wrap">{mcv(P, "", True)}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p><h1><span class="no">{L.t("lunyu_sub")}</span>{L.t("lunyu")}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("by_chapter")}</p>{('<p class="cta lycta">' + (f'<a class="btn ghost" href="{P}nianli/">《论语》年历：一天一课，一年一轮 ›</a>' if D["lx"]["nl"] else "") + (f'<a class="btn ghost" href="{P}lunyu/guanxi/">关系图：498 章怎样连着，197 位人物各在哪几章 ›</a>' if GXD else "") + (f'<a class="btn ghost" href="{P}changhe/">场合用句：取名、开学、结婚、送别 ›</a>' if D["lx"]["ch"] else "") + f'<a class="btn ghost" href="{P}zhuanti/keben.html">语文课本里的《论语》：初中、高中课文各章 ›</a>' + (f'<a class="btn ghost" href="{P}daidu/">课本十二章带读：给老师和家长 ›</a>' if D["lx"]["dd"] else "") + '</p>') if L.code.startswith("zh") else ""}<div class="pcards">{"".join(pcard(p) for p in ALLP)}</div>{toc_all}</main>{BOOK_JS}'''
+<main class="wrap narrow"><p class="lead">{L.t("by_chapter")}</p>{('<p class="cta lycta">' + (f'<a class="btn ghost" href="{P}nianli/">《论语》年历：一天一课，一年一轮 ›</a>' if D["lx"]["nl"] else "") + (f'<a class="btn ghost" href="{P}lunyu/guanxi/">关系图：498 章怎样连着，197 位人物各在哪几章 ›</a>' if GXD else "") + (f'<a class="btn ghost" href="{P}lunyu/banben/">{"版本说明：五家注本用的哪个本子，原页从哪来 ›" if L.code == "zh-Hans" else L.t("bb_title") + " ›"}</a>') + (f'<a class="btn ghost" href="{P}changhe/">场合用句：取名、开学、结婚、送别 ›</a>' if D["lx"]["ch"] else "") + f'<a class="btn ghost" href="{P}zhuanti/keben.html">语文课本里的《论语》：初中、高中课文各章 ›</a>' + (f'<a class="btn ghost" href="{P}daidu/">课本十二章带读：给老师和家长 ›</a>' if D["lx"]["dd"] else "") + '</p>') if L.code.startswith("zh") else ""}<div class="pcards">{"".join(pcard(p) for p in ALLP)}</div>{toc_all}</main>{BOOK_JS}'''
     write("lunyu/index.html", page(L, ("《论语》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} | 一孔录 Yikonglu"), L.t("by_chapter"), "lunyu/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/")
 
     # 书目：各本书一张卡；开讲的链到该书目录，其余是坑位
@@ -2329,9 +2335,9 @@ def build_lang(L, D, write):
                     'fetch("/data/nianli-' + L.code + '.json").then(function(r){return r.json()}).then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
                     'if(!x){M.querySelector(".md").textContent=T("补读日");q.textContent=T("今天不排新课，前几天落下的课，今天补上。");b.textContent="";c.href="' + P + 'nianli/";kk.hidden=true;M.hidden=false;return}'
                     'M.querySelector(".md").textContent=T("年历第 "+x[0]+" 课 / 365 · 《论语》")+x[6];q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+T("今日加读 ")+x[5].map(function(a){return a[0]}).join(" "):"");'
-                    'c.href=x[2];kk.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false}).catch(function(){})})();</script>')
-    home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg" width="1080" height="886"><img src="/assets/hero-w.jpg" alt="一孔录原创角色同坐长桌读《论语》" width="1920" height="790"></picture>
-<div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div><p class="herosub">{L.t("tagline")}</p></section>
+                    'c.href=x[2];kk.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false;try{document.dispatchEvent(new Event("ykmeiri"))}catch(e){}}).catch(function(){})})();</script>')
+    home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg" width="1080" height="745"><img src="/assets/hero-w.jpg" alt="一孔录原创角色同坐长桌读《论语》" width="1920" height="790"></picture>
+<div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div></section>
 <main class="home">
 <section class="intro wrap narrow">
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
@@ -2350,7 +2356,7 @@ def build_lang(L, D, write):
 <div><i>注</i><b>{L.t("p2t")}</b><p>{L.t("p2")}</p></div>
 <div><i>勘</i><b>{L.t("p3t")}</b><p>{L.t("p3")}</p></div>
 </section>
-<section class="wrap"><div class="tools t3"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}banben/"><b>{L.t("bb_title")}</b><span>{L.t("t_bb")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
+<section class="wrap"><div class="tools t3 t2"><a href="{P}zhuanti/"><b>{L.t("zt_title")}</b><span>{L.t("t_zt")}</span></a><a href="{P}kaifang.html"><b>{L.t("dt_title")}</b><span>{L.t("t_dt")}</span></a></div>
 {yxl_line(L, D, P) if L.code.startswith("zh") else ""}
 <p class="cta"><a class="btn ghost" href="{P}kanwu.html">{L.t("btn_errata")}</a><a class="btn ghost" href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p></section>
 </main>'''
@@ -2364,6 +2370,11 @@ def build_lang(L, D, write):
 <h2>{L.t("about_h3")}</h2><p>{L.t("about_where")}</p>
 <h2 id="zhuanzai">{L.t("about_h4")}</h2><ul><li>{L.t("about_r1")}</li><li>{L.t("about_r2")}</li><li>{L.t("about_r3")}</li><li>{L.t("about_r4")}</li><li>{L.t("about_r5", p=P)}</li></ul><p class="mailp">{MAIL}</p><p class="outl"><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ YouTube</a> <a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">Bilibili</a></p></main>'''
     if L.code.startswith("zh"): about = about_zh(L, D, P)  # 11-09 主人：关于页并入“一孔是谁”，一孔自述；外文仍用旧版
+    W = lang_tab(WEN, L.code)  # 问一孔（并进关于页，11-14 主人）：按钮由脚本拼出邮箱，源码不露明文
+    wen_sec = (f'<section class="wen" id="wen"><h2>{W["title"]}</h2><p>{W["p"]}</p><p><a class="btn" id="wenbtn" href="#wen">{W["btn"]}</a></p><p class="note">{W["only"]}</p></section>'
+               '<script>(function(){var a=document.getElementById("wenbtn"),u=["yikonglu","99"].join(""),d=["gmail","com"].join(".");a.href="mai"+"lto:"+u+String.fromCharCode(64)+d+"?subject="+encodeURIComponent("\\u95ee\\u4e00\\u5b54\\uff1a");})();</script>')
+    i = about.rfind("</main>")
+    about = about[:i] + wen_sec + about[i:] if i >= 0 else about + wen_sec
     write("about.html", page(L, L.t("about_title"), L.t("about_p")[:120], "about.html", about)); urls.append(f"{DOMAIN}/{L.prefix}about.html")
     _, ys_t, ys_sub, ys_items, ys_q = PRIVACY.get(L.code, PRIVACY["en"])
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{ys_sub}</span>{ys_t}</h1></div></div>
@@ -2477,12 +2488,8 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <main class="wrap narrow prose"><p>{F["intro"]}</p><h2>{F["s1h"]}</h2>{ul(F["s1"])}<h2>{F["s2h"]}</h2><ol>{"".join(f"<li>{x.replace('{p}', P)}</li>" for x in F["s2"])}</ol>
 <h2>{F["s3h"]}</h2><p>{F["s3p"]}</p>{tbl}<p>{F["s3n"]}</p><h2>{F["s4h"]}</h2>{ul(F["s4"])}<h2>{F["s5h"]}</h2>{s5}<h2>{F["s6h"]}</h2><p>{F["s6"].replace("{p}", P)}</p><h3>{F["log"]}</h3><ul>{logs}</ul></main>'''
     write("fangfa.html", page(L, f'{F["title"]}｜一孔录', F["sub"], "fangfa.html", body)); urls.append(f"{DOMAIN}/{L.prefix}fangfa.html")
-    # 问一孔（/wen.html）：按钮由脚本拼出邮箱，源码不露明文
-    W = lang_tab(WEN, L.code)
-    body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{W["sub"]}</span>{W["title"]}</h1></div></div>
-<main class="wrap narrow prose"><p>{W["p"]}</p><p><a class="btn" id="wenbtn" href="{P}about.html">{W["btn"]}</a></p><p class="note">{W["nojs"].replace("{p}", P)}</p></main>
-<script>(function(){{var a=document.getElementById('wenbtn'),u=['yikonglu','99'].join(''),d=['gmail','com'].join('.');a.href='mai'+'lto:'+u+String.fromCharCode(64)+d+'?subject='+encodeURIComponent('\\u95ee\\u4e00\\u5b54\\uff1a');}})();</script>'''
-    write("wen.html", page(L, f'{W["title"]}｜一孔录', W["sub"], "wen.html", body)); urls.append(f"{DOMAIN}/{L.prefix}wen.html")
+    # 11-14 主人：问一孔并进关于页（about.html#wen），旧 /wen.html 跳过去（视频简介里写过“官网点问一孔”）
+    write("wen.html", redirect_page(L, f"{L.prefix}about.html", "#wen", lang_tab(WEN, L.code)["title"]))
     # 免费读本（PDF 放 tools/root/duben/，原样拷到站点 /duben/）
     # 主人 11-08：读本分两种（成人逐字读本／亲子讲读本），每种写明给谁、怎么用；书架式，封面图为主（cover-<f>[-hant].jpg，A5 竖比例）
     # 每本：(标题键或文字, 说明键或文字, 文件名, 有无繁体)
@@ -2515,9 +2522,10 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     cards = ""
     for aid, name, rows in BANBEN:
         cards += f'<section class="bbcard" id="{aid}"><h2>{esc(name)}</h2><dl lang="zh-Hans">' + "".join(f"<dt>{L.t(k)}</dt><dd>{v}</dd>" for k, v in rows) + "</dl></section>"
-    body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("bb_sub")}</span>{L.t("bb_title")}</h1></div></div>
+    body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a></p><h1><span class="no">{L.t("bb_sub")}</span>{L.t("bb_title")}</h1></div></div>
 <main class="wrap narrow prose"><p>{L.t("bb_p")}</p>{cards}</main>'''
-    write("banben/index.html", page(L, f'{L.t("bb_title")}｜一孔录', L.t("bb_sub"), "banben/", body)); urls.append(f"{DOMAIN}/{L.prefix}banben/")
+    write("lunyu/banben/index.html", page(L, f'《论语》{L.t("bb_title")}｜一孔录' if L.code.startswith("zh") else f'{L.t("bb_title")}｜一孔录', L.t("bb_sub"), "lunyu/banben/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/banben/")
+    write("banben/index.html", redirect_page(L, f"{L.prefix}lunyu/banben/", "", L.t("bb_title")))  # 11-14 主人：版本说明只讲《论语》，并进论语书里；旧网址跳转
     # 专题：一专题一页，页内按书分段（现在只有论语有章；其余书上网后自动长出一段）
     zlist = ""
     tx = lambda c: yw[c] if c in pubset else D["qw"][c]["text"]
@@ -2686,7 +2694,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
     rows = "".join(f'<tr><td>{L.book(p)}</td><td><a href="/data/lunyu-{PIAN[p][1]}.json">JSON</a> · <a href="/data/lunyu-{PIAN[p][1]}.csv">CSV</a></td><td>{len(by_pian[p])}</td></tr>' for p in sorted(by_pian, key=int))
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("dt_sub")}</span>{L.t("dt_title")}</h1></div></div>
 <main class="wrap narrow prose"><p>{L.t("dt_p")}</p><div class="tw"><table class="zitab"><thead><tr><th>{L.t("lunyu")}</th><th>{L.t("dt_file")}</th><th>{L.t("dt_rows")}</th></tr></thead><tbody>{rows}</tbody></table></div>
-<p class="note">{L.t("dt_lic")} · <a href="https://creativecommons.org/licenses/by/4.0/deed.zh-hans" rel="license noopener" target="_blank">CC BY 4.0</a> · <a href="{P}banben/">{L.t("bb_link")}</a></p>{kf_html(L)}</main>'''
+<p class="note">{L.t("dt_lic")} · <a href="https://creativecommons.org/licenses/by/4.0/deed.zh-hans" rel="license noopener" target="_blank">CC BY 4.0</a> · <a href="{P}lunyu/banben/">{L.t("bb_link")}</a></p>{kf_html(L)}</main>'''
     write("kaifang.html", page(L, f'{L.t("dt_title")}｜一孔录', L.t("dt_sub"), "kaifang.html", body)); urls.append(f"{DOMAIN}/{L.prefix}kaifang.html")
     # 读音索引页撤掉（11-13 主人：读者不会一个个字看下来）；旧地址转到检索页，不进站点地图。章页读音、难字字典不动
     write("zi.html", f'<!doctype html><meta charset="utf-8"><title>{L.t("search_title")}｜一孔录</title><link rel="canonical" href="{DOMAIN}/{L.prefix}search.html"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/{L.prefix}search.html"><a href="/{L.prefix}search.html">{L.t("search_title")}</a>')
