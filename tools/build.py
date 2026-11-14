@@ -1314,6 +1314,11 @@ def redirect_page(L, target, frag, title):
             f'<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/{target}{frag}">'
             f'<script>location.replace("/{target}"+(location.hash||"{frag}"))</script><a href="/{target}{frag}">{esc(title)}</a>')
 
+# 11-14 主人：首页“今日《论语》”不放“读这一章”“生成分享图”，点经句直接进章页（先读，分享留在章页）
+MEIRI_Q_JS = ('<script>(function(){var M=document.getElementById("meiri");if(!M)return;var q=M.querySelector("blockquote");if(!q)return;q.setAttribute("role","link");q.tabIndex=0;'
+              'function go(){var a=M.querySelector(".mc"),h=a&&a.getAttribute("href");if(h&&h!=="#")location.href=a.href}'
+              'q.addEventListener("click",go);q.addEventListener("keydown",function(e){if(e.key==="Enter")go()})})()</script>')
+
 def about_zh(L, D, P):
     """关于页（简繁）：一孔自述。主人 11-09 定：不露脸，把匿名当神秘感，信赖靠可查；照片栏放脸是空洞的头像，寓意一孔。主人删掉平台、数字和转载一节（转载说明在开放数据页）。"""
     kwn = len(D["kw"])
@@ -2455,7 +2460,7 @@ def build_lang(L, D, write):
 <main class="home">
 <section class="intro wrap narrow">
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
-{meiri_html}{meiri_js}
+{meiri_html}{meiri_js}{MEIRI_Q_JS if meiri_html else ""}
 <form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
 </section>
 <section class="wrap narrow"><h2 class="ph">{L.t("h_latest")}</h2>
@@ -2526,7 +2531,7 @@ def build_lang(L, D, write):
             t = ch2ep[c][1].get("public_at") or ""
             return f"{int(t[5:7])}-{int(t[8:10])}" if len(t) >= 10 else ""
         newl = "".join(f'<li><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(title_of(c))}</b><small>{_d(c)}</small></a></li>' for c in _new)
-        s_more = (f'<div class="smore">{meiri_html}<section class="snew"><h2>{SW("最近新讲的章")}<a href="{P}feed.xml">{SW("订阅更新")}</a></h2><ol>{newl}</ol></section>'
+        s_more = (f'<div class="smore">{meiri_html}{MEIRI_Q_JS if meiri_html else ""}<section class="snew"><h2>{SW("最近新讲的章")}<a href="{P}feed.xml">{SW("订阅更新")}</a></h2><ol>{newl}</ol></section>'
                   f'<p class="slast" id="slast" hidden></p></div>'
                   '<script>(function(){try{var L=((JSON.parse(localStorage.getItem("yk_xd")||"{}").b||{}).lunyu||{}).last}catch(e){return}if(!L||!L.p)return;var p=document.getElementById("slast");'
                   'p.innerHTML=' + json.dumps(SW("上次读到") + ("：" if zhS or L.code == "ja" else ": ")) + '+\'<a href="\'+L.p+\'">\'+(L.no||L.c).replace(/[<>&]/g,"")+(L.ti?" "+L.ti.replace(/[<>&]/g,""):"")+\' →</a>\';p.hidden=false})();'
