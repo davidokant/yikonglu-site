@@ -111,7 +111,7 @@ def _pages_of(c, D):
 
 
 def _thumbs(c, D, pname):
-    return "".join(f'<a class="ypg" href="/yuanye/p{int(x):03d}.jpg" target="_blank"><img loading="lazy" src="/yuanye/p{int(x):03d}.jpg" alt="《论语·{esc(pname)}》{c} 朱熹集注原页：四部备要本第 {x} 页"><span>原页 第 {x} 页</span></a>'
+    return "".join(f'<a class="ypg" href="/yuanye/p{int(x):03d}.jpg" target="_blank"><img loading="lazy" src="/yuanye/p{int(x):03d}.jpg" alt="论语 {c} 朱熹集注原页：四部备要本第 {x} 页"><span>原页 第 {x} 页</span></a>'
                    for x in _pages_of(c, D) if x in D["pages_avail"])
 
 
@@ -160,7 +160,7 @@ T.innerHTML='<p><b>今天 '+li.querySelector("em").textContent+(li.querySelector
                 full, bh = tx(c), D["baihua"].get(c) or ""
                 same = re.sub(r"[^㐀-鿿]", "", it["q"]) == re.sub(r"[^㐀-鿿]", "", full)
                 items += (f'<li class="chi{wj(c)}" id="c{c}"><p class="chq" lang="zh-Hans">{esc(it["q"])}</p>'
-                          f'<p class="chsrc"><a href="{href(c)}">《论语·{pn(c)}》{c}</a>{wjtag(c)}</p>'
+                          f'<p class="chsrc"><a href="{href(c)}">论语 {c} · {pn(c)}</a>{wjtag(c)}</p>'
                           f'<p class="chuse">{esc(it["use"])}</p>'
                           + (f'<p class="chcare"><b>小心</b>{esc(it["care"])}</p>' if it.get("care") else "")
                           + (f'<p class="chzhu"><b>诸家</b>{esc(it["zhu"])}</p>' if it.get("zhu") else "")

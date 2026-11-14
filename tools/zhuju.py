@@ -143,7 +143,7 @@ var N=F.querySelectorAll('.ju[data-n]').length,k=+s.dataset.n;C.querySelector('[
 try{history.replaceState(null,'','#'+s.id)}catch(e){}}
 function step(d){if(!cur)return;var s=F.querySelector('.ju[data-n="'+(+cur.dataset.n+d)+'"]');if(s){open(s);var r=s.getBoundingClientRect();if(r.top<60||r.bottom>innerHeight-40)s.scrollIntoView({block:'center',behavior:'smooth'})}}
 function close(){C.hidden=true;if(cur)cur.classList.remove('on');cur=null}
-function cite(t,s){return '\\u201c'+t+'\\u201d\\u2014\\u2014'+Q.dataset.src+Q.dataset.sep+Q.dataset.url+'#'+s.id}
+function cite(t,s){return '\\u201c'+t+'\\u201d\\u2014\\u2014'+Q.dataset.src+(Q.dataset.short?' '+Q.dataset.short:Q.dataset.sep+Q.dataset.url+'#'+s.id)}
 function put(t,b){var o=b.textContent,done=function(){b.textContent='@DONE@';setTimeout(function(){b.textContent=o},1200)};if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,function(){prompt('',t)});else prompt('',t)}
 Q.addEventListener('click',function(e){var s=e.target.closest('.ju');if(!s)return;var g=window.getSelection?String(getSelection()).trim():'';if(g&&s.contains(getSelection().anchorNode))open(s,g.replace(/\\s+/g,''));else open(s)});
 Q.addEventListener('keydown',function(e){if(e.key==='Enter'){var s=e.target.closest('.ju');if(s)open(s)}});
