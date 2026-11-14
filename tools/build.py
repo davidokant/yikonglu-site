@@ -2826,8 +2826,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
 <p>不为这个数改标题、改讲书顺序。数字难看也照登，每周原样更新，旧数不删。</p>
 <h2>下载</h2>
 <p><a href="/data/yingxiangli.json">yingxiangli.json</a>（每周的找到分、占比、各平台分）。逐周逐章的明细，发布满四周后放出。</p>
-{draft_sec(D)}
-</main>'''
+</main>'''  # 初稿改动比例 11-14 移出本页（核验方法页数字表已按书列；逐集明细见 /data/chugao-gaidong.json）
         write("yingxiangli.html", page(L, "一孔影响力：找到分怎么算、怎么测｜一孔录", "在平台上搜一句原文，能找到一孔录吗：每周公开测，分数叫找到分。", "yingxiangli.html", body, codes=["zh-Hans", "zh-Hant"])); urls.append(f"{DOMAIN}/{L.prefix}yingxiangli.html")
     # 开放数据（文件只在根目录 /data/，各语种只出说明页）
     rows = "".join(f'<tr><td>{L.book(p)}</td><td><a href="/data/lunyu-{PIAN[p][1]}.json">JSON</a> · <a href="/data/lunyu-{PIAN[p][1]}.csv">CSV</a></td><td>{len(by_pian[p])}</td></tr>' for p in sorted(by_pian, key=int))
