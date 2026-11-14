@@ -213,7 +213,7 @@ def section_f(G, c, P, href, short, L):
         li = "".join(f'<li{" class=on" if _c(it["c"]) == c else ""}><a href="{href(_c(it["c"]))}">{_c(it["c"])}</a> {esc((its[k].get("who") if k < len(its) else "") or pname(L.code, it["who"]))}: {esc((its[k].get("a") if k < len(its) else "") or it["a"])}</li>' for k, it in enumerate(w["items"]))
         row.append(("同问异答", f'<p>{esc(S["gx_wd_line"].replace("{q}", wt.get("q") or w["q"]).replace("{n}", str(len(w["items"]))))}</p><ol class="gxwd">{li}</ol><p class="gxmore"><a href="{P}lunyu/guanxi/#{g}">{esc(S["gx_in_map"])}</a></p>'))
     if K["互见"]:
-        row.append(("互见", "<ul>" + "".join(f'<li><a href="{href(_c(r["b"]))}">{esc(lbl)} {_c(r["b"])}</a> <span lang="zh-Hans">{esc(short(_c(r["b"])))}</span></li>' for r in K["互见"]) + "</ul>"))
+        row.append(("互见", "<ul>" + "".join(f'<li><a href="{href(_c(r["b"]))}">{esc(lbl)} {_c(r["b"])}</a> <span lang="zh-Hant">{esc(short(_c(r["b"])))}</span></li>' for r in K["互见"]) + "</ul>"))
     if K["书外互见"]:
         KD = {"出处": S["gx_kind_cc"], "注家引": S["gx_kind_zj"], "相通": S["gx_kind_xt"]}
         li = ""

@@ -2072,7 +2072,7 @@ def build_lang(L, D, write):
 {vid_html}
 <div class="chacts">{done_html(L, c) if c in D["pub"] else ""}{share_html(L, c, url, (f"论语 {c} · {pname}" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)), title_of(c), yw[c], field(c, "片里落点")[0], rend)}</div>
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") and c in D["pub"] else ""}
-{GX.section(GXD, c, P, href, gx_short) if L.code.startswith("zh") else (GX.section_f(GXD, c, P, href, gx_short, L) if GXD and GX.has_lang(L.code) else "")}
+{GX.section(GXD, c, P, href, gx_short) if L.code.startswith("zh") else (GX.section_f(GXD, c, P, href, lambda x: hant_plain(gx_short(x)), L) if GXD and GX.has_lang(L.code) else "")}
 {cta_html(L, P)}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
 {fold(secs + yiwen_html(c) + extra)}
@@ -2230,7 +2230,7 @@ def build_lang(L, D, write):
 {wj_vid}
 <div class="chacts">{done_html(L, c)}{share_html(L, c, url, f"论语 {c} · {pname}" if zhL else L.t("chapter_no", book=bname, n=cnum), ctitle(c), text, an.get("片里落点") or (D["zy"].get(c) or {}).get("text", ""), tr)}</div>
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
-{GX.section(GXD, c, P, href, gx_short) if zhL else (GX.section_f(GXD, c, P, href, gx_short, L) if GXD and GX.has_lang(L.code) else "")}
+{GX.section(GXD, c, P, href, gx_short) if zhL else (GX.section_f(GXD, c, P, href, lambda x: hant_plain(gx_short(x)), L) if GXD and GX.has_lang(L.code) else "")}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
 {fold(wj_deep + yiwen_html(c) + zb_section(c, url, cite_src))}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
@@ -2786,7 +2786,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
     if not L.code.startswith("zh") and GXD and GX.has_lang(L.code):  # 11-14 外文关系图与人物卡（智器译）
         GX.RWID = GX.rw_ids(GXD, D.get("renwu"))
         _gxc = ["zh-Hans", "zh-Hant"] + [k for k in GX.langs() if k in LANGS]
-        urls += GX.build_f(L, GXD, write, page, P, href, gx_short, PIAN, pubset, DOMAIN, _gxc)
+        urls += GX.build_f(L, GXD, write, page, P, href, lambda x: hant_plain(gx_short(x)), PIAN, pubset, DOMAIN, _gxc)  # 外文页经文用繁体（11-14 主人）
         if D.get("renwu"):
             RW.GXID = {v: k for k, v in GX.rw_ids(GXD, D["renwu"]).items()}
             urls += RW.build_f(L, D, D["renwu"], write, page, P, rel_of, ctitle, DOMAIN, GX.TR[L.code], _gxc)
