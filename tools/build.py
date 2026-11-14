@@ -872,10 +872,10 @@ def analytics(L):
               + '}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",RUN);else RUN()})();</script>')
     return a
 
-DONE_TXT = {"zh-Hans": {"b": "读完了", "ok": "已读完 ✓", "n": "今天 {d} 人读完 · 共 {t} 人", "h": "今日共读", "p": "全站今天一起读这一章，明天换一章。", "steps": "今天有人读了 {n} 章", "topju": "近 7 天被抄走最多的一句", "gd": "今日共读一章", "gdn": "今天 {d} 人共读", "hn": "近 7 天 {n} 人读过"}, "zh-Hant": {"b": "讀完了", "ok": "已讀完 ✓", "n": "今天 {d} 人讀完 · 共 {t} 人", "h": "今日共讀", "p": "全站今天一起讀這一章，明天換一章。", "steps": "今天有人讀了 {n} 章", "topju": "近 7 天被抄走最多的一句", "gd": "今日共讀一章", "gdn": "今天 {d} 人共讀", "hn": "近 7 天 {n} 人讀過"}, "en": {"b": "I’ve read it", "ok": "Read ✓", "n": "{d} finished today · {t} in all", "h": "Today’s shared reading", "p": "Everyone on the site reads this chapter today; a new one tomorrow.", "steps": "Read today · {n}", "topju": "Most-copied line, last 7 days", "gd": "Today’s shared chapter", "gdn": "{d} read it today", "hn": "{n} read in the last 7 days"}, "ja": {"b": "読み終えた", "ok": "読了 ✓", "n": "今日 {d} 人が読了 · 累計 {t} 人", "h": "今日の共読", "p": "今日はサイトのみんなでこの章を読みます。明日は別の章です。", "steps": "今日読まれた章 · {n}", "topju": "直近7日でいちばん写された一句", "gd": "今日の共読の章", "gdn": "今日 {d} 人が共読", "hn": "直近7日 {n} 人が読了"}, "ko": {"b": "다 읽었어요", "ok": "읽음 ✓", "n": "오늘 {d}명 완독 · 누적 {t}명", "h": "오늘 함께 읽기", "p": "오늘은 모두 이 장을 함께 읽습니다. 내일은 다른 장입니다.", "steps": "오늘 읽힌 장 · {n}", "topju": "최근 7일 가장 많이 옮겨 적은 구절", "gd": "오늘 함께 읽는 장", "gdn": "오늘 {d}명 함께 읽음", "hn": "최근 7일 {n}명 읽음"}, "fr": {"b": "Je l’ai lu", "ok": "Lu ✓", "n": "{d} l’ont lu aujourd’hui · {t} en tout", "h": "Lecture commune du jour", "p": "Aujourd’hui, tout le site lit ce chapitre ; demain, un autre.", "steps": "Lus aujourd’hui · {n}", "topju": "La phrase la plus copiée ces 7 derniers jours", "gd": "Le chapitre du jour, ensemble", "gdn": "{d} l’ont lu aujourd’hui", "hn": "{n} lectures ces 7 derniers jours"}, "es": {"b": "Lo he leído", "ok": "Leído ✓", "n": "{d} lo leyeron hoy · {t} en total", "h": "Lectura compartida de hoy", "p": "Hoy todo el sitio lee este capítulo; mañana, otro.", "steps": "Leídos hoy · {n}", "topju": "La frase más copiada en los últimos 7 días", "gd": "Capítulo compartido de hoy", "gdn": "{d} lo leyeron hoy", "hn": "{n} lecturas en los últimos 7 días"}, "de": {"b": "Gelesen", "ok": "Gelesen ✓", "n": "heute {d} gelesen · insgesamt {t}", "h": "Gemeinsame Lektüre heute", "p": "Heute liest die ganze Seite dieses Kapitel, morgen ein anderes.", "steps": "Heute gelesen · {n}", "topju": "Meistkopierter Satz der letzten 7 Tage", "gd": "Gemeinsames Kapitel heute", "gdn": "heute {d} gelesen", "hn": "{n} in den letzten 7 Tagen gelesen"}, "vi": {"b": "Đã đọc xong", "ok": "Đã đọc ✓", "n": "hôm nay {d} người đọc xong · tổng {t}", "h": "Cùng đọc hôm nay", "p": "Hôm nay cả trang cùng đọc chương này; mai đổi chương khác.", "steps": "Hôm nay có người đọc · {n}", "topju": "Câu được chép nhiều nhất 7 ngày qua", "gd": "Chương cùng đọc hôm nay", "gdn": "hôm nay {d} người cùng đọc", "hn": "{n} lượt đọc 7 ngày qua"}, "id": {"b": "Sudah selesai", "ok": "Selesai ✓", "n": "{d} selesai hari ini · total {t}", "h": "Baca bersama hari ini", "p": "Hari ini semua pembaca membaca bab ini; besok bab lain.", "steps": "Dibaca hari ini · {n}", "topju": "Kalimat paling banyak disalin 7 hari terakhir", "gd": "Bab baca bersama hari ini", "gdn": "{d} membaca hari ini", "hn": "{n} dibaca 7 hari terakhir"}, "ru": {"b": "Прочитано", "ok": "Прочитано ✓", "n": "сегодня прочитали: {d} · всего: {t}", "h": "Читаем вместе сегодня", "p": "Сегодня весь сайт читает эту главу, завтра — другую.", "steps": "Сегодня читали · {n}", "topju": "Самая переписываемая строка за 7 дней", "gd": "Глава дня — читаем вместе", "gdn": "сегодня читали: {d}", "hn": "прочитали за 7 дней: {n}"}}
+DONE_TXT = {"zh-Hans": {"b": "读完了", "ok": "已读完 ✓", "n": "今天 {d} 人读完 · 共 {t} 人", "h": "今日共读", "p": "全站今天一起读这一章，明天换一章。", "steps": "今天大家一共读了 {n} 章", "topju": "近 7 天被抄走最多的一句", "gd": "今日共读一章", "gdn": "今天 {d} 人共读", "hn": "近 7 天 {n} 人读过"}, "zh-Hant": {"b": "讀完了", "ok": "已讀完 ✓", "n": "今天 {d} 人讀完 · 共 {t} 人", "h": "今日共讀", "p": "全站今天一起讀這一章，明天換一章。", "steps": "今天大家一共讀了 {n} 章", "topju": "近 7 天被抄走最多的一句", "gd": "今日共讀一章", "gdn": "今天 {d} 人共讀", "hn": "近 7 天 {n} 人讀過"}, "en": {"b": "I’ve read it", "ok": "Read ✓", "n": "{d} finished today · {t} in all", "h": "Today’s shared reading", "p": "Everyone on the site reads this chapter today; a new one tomorrow.", "steps": "Read today · {n}", "topju": "Most-copied line, last 7 days", "gd": "Today’s shared chapter", "gdn": "{d} read it today", "hn": "{n} read in the last 7 days"}, "ja": {"b": "読み終えた", "ok": "読了 ✓", "n": "今日 {d} 人が読了 · 累計 {t} 人", "h": "今日の共読", "p": "今日はサイトのみんなでこの章を読みます。明日は別の章です。", "steps": "今日読まれた章 · {n}", "topju": "直近7日でいちばん写された一句", "gd": "今日の共読の章", "gdn": "今日 {d} 人が共読", "hn": "直近7日 {n} 人が読了"}, "ko": {"b": "다 읽었어요", "ok": "읽음 ✓", "n": "오늘 {d}명 완독 · 누적 {t}명", "h": "오늘 함께 읽기", "p": "오늘은 모두 이 장을 함께 읽습니다. 내일은 다른 장입니다.", "steps": "오늘 읽힌 장 · {n}", "topju": "최근 7일 가장 많이 옮겨 적은 구절", "gd": "오늘 함께 읽는 장", "gdn": "오늘 {d}명 함께 읽음", "hn": "최근 7일 {n}명 읽음"}, "fr": {"b": "Je l’ai lu", "ok": "Lu ✓", "n": "{d} l’ont lu aujourd’hui · {t} en tout", "h": "Lecture commune du jour", "p": "Aujourd’hui, tout le site lit ce chapitre ; demain, un autre.", "steps": "Lus aujourd’hui · {n}", "topju": "La phrase la plus copiée ces 7 derniers jours", "gd": "Le chapitre du jour, ensemble", "gdn": "{d} l’ont lu aujourd’hui", "hn": "{n} lectures ces 7 derniers jours"}, "es": {"b": "Lo he leído", "ok": "Leído ✓", "n": "{d} lo leyeron hoy · {t} en total", "h": "Lectura compartida de hoy", "p": "Hoy todo el sitio lee este capítulo; mañana, otro.", "steps": "Leídos hoy · {n}", "topju": "La frase más copiada en los últimos 7 días", "gd": "Capítulo compartido de hoy", "gdn": "{d} lo leyeron hoy", "hn": "{n} lecturas en los últimos 7 días"}, "de": {"b": "Gelesen", "ok": "Gelesen ✓", "n": "heute {d} gelesen · insgesamt {t}", "h": "Gemeinsame Lektüre heute", "p": "Heute liest die ganze Seite dieses Kapitel, morgen ein anderes.", "steps": "Heute gelesen · {n}", "topju": "Meistkopierter Satz der letzten 7 Tage", "gd": "Gemeinsames Kapitel heute", "gdn": "heute {d} gelesen", "hn": "{n} in den letzten 7 Tagen gelesen"}, "vi": {"b": "Đã đọc xong", "ok": "Đã đọc ✓", "n": "hôm nay {d} người đọc xong · tổng {t}", "h": "Cùng đọc hôm nay", "p": "Hôm nay cả trang cùng đọc chương này; mai đổi chương khác.", "steps": "Hôm nay có người đọc · {n}", "topju": "Câu được chép nhiều nhất 7 ngày qua", "gd": "Chương cùng đọc hôm nay", "gdn": "hôm nay {d} người cùng đọc", "hn": "{n} lượt đọc 7 ngày qua"}, "id": {"b": "Sudah selesai", "ok": "Selesai ✓", "n": "{d} selesai hari ini · total {t}", "h": "Baca bersama hari ini", "p": "Hari ini semua pembaca membaca bab ini; besok bab lain.", "steps": "Dibaca hari ini · {n}", "topju": "Kalimat paling banyak disalin 7 hari terakhir", "gd": "Bab baca bersama hari ini", "gdn": "{d} membaca hari ini", "hn": "{n} dibaca 7 hari terakhir"}, "ru": {"b": "Прочитано", "ok": "Прочитано ✓", "n": "сегодня прочитали: {d} · всего: {t}", "h": "Читаем вместе сегодня", "p": "Сегодня весь сайт читает эту главу, завтра — другую.", "steps": "Сегодня читали · {n}", "topju": "Самая переписываемая строка за 7 дней", "gd": "Глава дня — читаем вместе", "gdn": "сегодня читали: {d}", "hn": "прочитали за 7 дней: {n}"}}
 # 主人 11-08：计数单位一律“儒者”（同 LIVE_PILL）；外文写成“X：数”避开单复数
-for _k, _v in {"zh-Hans": ("今天 {d} 位儒者读完 · 共 {t} 位", "今天 {d} 位儒者共读", "近 7 天被读 {n} 次"),
-               "zh-Hant": ("今天 {d} 位儒者讀完 · 共 {t} 位", "今天 {d} 位儒者共讀", "近 7 天被讀 {n} 次"),
+for _k, _v in {"zh-Hans": ("今天 {d} 位儒者读完 · 累计 {t} 位", "今天 {d} 位儒者共读", "近 7 天被读 {n} 次"),
+               "zh-Hant": ("今天 {d} 位儒者讀完 · 累計 {t} 位", "今天 {d} 位儒者共讀", "近 7 天被讀 {n} 次"),
                "en": ("Confucians finished today: {d} · in all: {t}", "Confucians reading it today: {d}", "Read {n} times in the last 7 days"),
                "ja": ("今日 {d} 人の儒者が読了 · 累計 {t} 人", "今日 {d} 人の儒者が共読", "直近7日で {n} 回読まれた"),
                "ko": ("오늘 유학자 {d}명 완독 · 누적 {t}명", "오늘 유학자 {d}명이 함께 읽음", "최근 7일 {n}회 읽힘"),
@@ -1341,6 +1341,43 @@ def ddj_title(qw):  # 章题：取原文开头一句，撞名的往后接
         for c in dup: out[c] = wj_title(qw[c]["text"], n)
     return out
 
+def ddj_eps():
+    """道德经各集视频（11-14：每发一集，章页和书内路线页自动带上视频）。发布线程照论语的做法，在 数据/网站素材/_时间/章节起点.json 记一条：
+    键“道德经-NN-第X章”（或带 "chapters": ["12", "13"]），值 youtube / bvid / public_at / starts（{"12": 秒}）。没有这一条的章照旧显示“视频在做”。"""
+    f = os.path.join(GAO_DIR, "_时间", "章节起点.json"); out = {}
+    if not os.path.exists(f): return out
+    for k, e in json.load(open(f, encoding="utf-8")).items():
+        if not (k.startswith("道德经-") and isinstance(e, dict) and e.get("youtube")): continue
+        chs = [str(x) for x in e.get("chapters") or []]
+        if not chs:
+            m = re.search(r"第([〇零一二三四五六七八九十百]+|\d+)章", k)
+            if m:
+                t = m.group(1); n = int(t) if t.isdigit() else None
+                if n is None:
+                    D_ = {c: i for i, c in enumerate("零一二三四五六七八九")}; D_["〇"] = 0
+                    t2 = t.replace("百", "")
+                    if "十" in t2:
+                        a, _, b = t2.partition("十"); n = (D_.get(a, 1) if a else 1) * 10 + (D_.get(b, 0) if b else 0)
+                    else: n = D_.get(t2, 0)
+                chs = [str(n)]
+        for c in chs: out.setdefault(c, dict(e, name=k.split("-", 2)[-1]))
+    return out
+DDJ_EPS = ddj_eps()
+def ddj_vid_html(L, c, F):
+    """道德经章页视频块：有发布记录就嵌 YouTube（简体页另给哔哩哔哩链接），定时公开的到点由页内脚本显示。"""
+    ep = DDJ_EPS.get(str(c))
+    if not ep: return ""
+    yt = ep["youtube"]; st = (ep.get("starts") or {}).get(str(c)); pub = ep.get("public_at", "")
+    future = bool(pub) and datetime.datetime.fromisoformat(pub) > datetime.datetime.now(datetime.timezone.utc)
+    src = f'https://www.youtube-nocookie.com/embed/{yt}{f"?start={st}" if st else ""}'
+    bl = f'<a href="https://www.bilibili.com/video/{ep["bvid"]}{f"?t={st}" if st else ""}" target="_blank" rel="noopener">{"哔哩哔哩" if L.code.startswith("zh") else "Bilibili"}</a>' if ep.get("bvid") else ""
+    return (f'<section class="video"{f' hidden data-pub="{pub}"' if future else ""}><h2><i>{"▶" if F else "看"}</i>{L.t("video")}</h2>'
+            f'<div class="vid"><iframe loading="lazy" src="{src}" title="{esc(ep.get("name", ""))}" allowfullscreen></iframe></div>'
+            f'<p class="vlinks"><a href="https://www.youtube.com/watch?v={yt}{f"&amp;t={st}s" if st else ""}" target="_blank" rel="noopener">YouTube</a>{bl}</p></section>'
+            + ('<script>(function(){var s=document.querySelector("section.video[data-pub]");if(s&&Date.now()>=Date.parse(s.dataset.pub)){s.hidden=false;var o=document.querySelector("section.video.soon");if(o)o.remove()}})()</script>' if future else ""))
+def ddj_has_vid(c):
+    ep = DDJ_EPS.get(str(c))
+    return bool(ep) and (not ep.get("public_at") or datetime.datetime.fromisoformat(ep["public_at"]) <= datetime.datetime.now(datetime.timezone.utc))
 DDJ_RT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_routes.json")  # 道德经书内路线（11-14 主人定）：专题页一条路线一页，章页标本章在哪几条路线上
 DDJ_RT = json.load(open(DDJ_RT_FILE, encoding="utf-8"))["routes"] if os.path.exists(DDJ_RT_FILE) else []
 DDJ_RT_UI = {"zh": {"h": "本章在这几条路线上", "sec": "《道德经》书内路线", "p": "按一个问题读《道德经》：每条路线串起几章，跟着读完一条，这个问题就有了老子自己的回答。视频一集一章，发出后加进对应路线。", "n": "{n} 章", "stop": "第 {k} / {n} 站", "lead": "《道德经》书内路线 · {n} 章", "all": "《道德经》全部八十一章", "rd": "已读 {x} / {n} 章", "zt": "专题"},
@@ -1370,8 +1407,8 @@ def build_ddj(L, D, write, P, S_IDX=None):
         t = qw[c]["text"]
         if F:
             r = TRD.get(c, "")
-            return f'<li class="wj" data-c="{c}"><a href="{P}{rel_of(c)}"><em>{c}</em><b>{TL(tt[c])}</b><span><i class="wjtag">{L.t("toc_wj")}</i><span>{esc(r[:90] + ("…" if len(r) > 90 else ""))}</span></span></a></li>'
-        return f'<li class="wj" data-c="{c}"><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(Y(tt[c]))}</b><span><i class="wjtag">{L.t("toc_wj")}</i><span lang="zh-Hans">{esc(Y(t[:40]) + ("……" if len(t) > 40 else ""))}</span></span></a></li>'
+            return f'<li class="{"" if ddj_has_vid(c) else "wj"}" data-c="{c}"><a href="{P}{rel_of(c)}"><em>{c}</em><b>{TL(tt[c])}</b><span><i class="wjtag">{"▶" if ddj_has_vid(c) else L.t("toc_wj")}</i><span>{esc(r[:90] + ("…" if len(r) > 90 else ""))}</span></span></a></li>'
+        return f'<li class="{"" if ddj_has_vid(c) else "wj"}" data-c="{c}"><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(Y(tt[c]))}</b><span><i class="wjtag">{"▶ 视频" if ddj_has_vid(c) else L.t("toc_wj")}</i><span lang="zh-Hans">{esc(Y(t[:40]) + ("……" if len(t) > 40 else ""))}</span></span></a></li>'
     def side(c0):
         pt = part(c0)
         return "".join(f'<li class="{"cur" if c == c0 else ""} wj" data-c="{c}"><a href="{P}{rel_of(c)}"><em>{c}</em>{TL(tt[c])}</a></li>' for c in cs if part(c) == pt)
@@ -1439,21 +1476,22 @@ def build_ddj(L, D, write, P, S_IDX=None):
         bh_html = ((f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(bh)}</p>' + ("" if c in G["bh_ok"] else f'<p class="note">{esc(DU["bh_note"])}</p>') + "</section>") if F else
                    (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}：“{esc(Y(seo_q(text)))}”是什么意思</h2><p lang="zh-Hans">{esc(bh)}</p>'
                    + ("" if c in G["bh_ok"] else '<p class="note">白话为初稿，按底本直译；开讲时再核。</p>') + "</section>")) if bh else ""
-        vid = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
-               f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">{DU["bili"] if F else "哔哩哔哩"}</a></p></section>')
+        vid = ("" if ddj_has_vid(c) else f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
+               f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">{DU["bili"] if F else "哔哩哔哩"}</a></p></section>') + ddj_vid_html(L, c, F)
         prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
         pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{TL(tt[cc])}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
         LIVE_A.setdefault(L.code, {})["ddj." + c] = [f'{DU["book"] if F else "道德经"} · {tt[c] if F else Y(tt[c])}', rel_of(c)]
         TRI_TXT["ddj." + c] = {"h": f"《道德经》第 {c} 章 · Daodejing {c} · 道徳経 第{c}章", "y": text if (hant or F) else _t2s(text), "en": (DDJ_TR.get("en") or {}).get(c, ""), "ja": (DDJ_TR.get("ja") or {}).get(c, "")}  # 分享图（外王卡）；英日译文上了再填
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "daodejing", "道德经")}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}daodejing/">{DU["book"] if F else "道德经"}</a> › {pt}</p>
-<h1><span class="no">{DU["prog"].format(pt=pt, c=c) if F else f"{pt} · 第 {c} 章"} · <em class="wjtag">{L.t("wj_tag")}</em></span>{TL(tt[c])}</h1>
+<h1><span class="no">{DU["prog"].format(pt=pt, c=c) if F else f"{pt} · 第 {c} 章"}{"" if ddj_has_vid(c) else f' · <em class="wjtag">{L.t("wj_tag")}</em>'}</span>{TL(tt[c])}</h1>
 </div></div>
 <main class="wrap chapter">
 <article>
-<p class="wjlead">{L.t("wj_lead")}</p>
+{"" if ddj_has_vid(c) else f'<p class="wjlead">{L.t("wj_lead")}</p>'}
 {fig}
 {gist}
+{"" if F else lyhj_html([r for r in DDJ_LYHJ if str(r["ch"]) == str(c)], P, "ddj")}
 {bh_html}
 {rt_html(c)}
 {vid}
@@ -1564,10 +1602,13 @@ def wjprog(L, n, total): return WJ_PROG[L.code].format(n=n, total=total) if L.co
 SZJ_LYHJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "szj_lyhj.json")  # 三字经各讲《论语》互见（11-14 主人“全上”；表见 评审/2026-11-14-论语互见/）
 SZJ_LYHJ = json.load(open(SZJ_LYHJ_FILE, encoding="utf-8")) if os.path.exists(SZJ_LYHJ_FILE) else []
 LYHJ_SRC = [("wx-", "王相"), ("yinshu", "《三字经音疏》"), ("beiyao", "《三字经备要》"), ("zengzhu", "《增注三字经》"), ("jizhu", "渥美《三字经集注》")]
-def lyhj_html(rows, P):
+DDJ_LYHJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_lyhj.json")  # 道德经各章《论语》互见（11-14 主人“全上”，138 条；表见 评审/2026-11-14-论语互见/道德经-论语互见-v1.md）
+DDJ_LYHJ = json.load(open(DDJ_LYHJ_FILE, encoding="utf-8")) if os.path.exists(DDJ_LYHJ_FILE) else []
+def lyhj_html(rows, P, book="szj"):
     """其他书章页上的“《论语》互见”一栏（11-14 主人定：每本书都做一次）。rows：[{zu, szj, c, kind, q, src, note}]"""
     if not rows: return ""
     def who(r):
+        if r.get("who"): return r["who"]
         if r["kind"] == "出处": return "原句出自这一章"
         if r["kind"] == "相通": return "一孔录对读"
         ns = []
@@ -1576,8 +1617,8 @@ def lyhj_html(rows, P):
         return ("、".join(ns) + "注里引了这一章") if ns else "注家引了这一章"
     def link(c): return f"{P}lunyu/" if c == "book" else f"{P}lunyu/{PIAN[c.split('.')[0]][1]}/{c.split('.')[1]}.html"
     lis = "".join(f'<li><em>{esc(r["kind"])}</em><a href="{link(r["c"])}"><b>' + (f'《论语》全书' if r["c"] == "book" else f'《论语·{PIAN[r["c"].split(".")[0]][0]}》{esc(r["q"])}') + f'</b></a>'
-                  f'<p>{esc(r["note"])}<small>（{esc(r["szj"][:6])}…… · {who(r)}）</small></p></li>' for r in rows)
-    return f'<section class="lyhj" id="lyhj"><h2>《论语》互见</h2><ul>{lis}</ul><p class="note">出处＝三字经原句出自这一章；注家引＝旧注本里引了这一章；相通＝意思相通，一孔录对读。点进去是《论语》这一章的原文、原页和朱熹注。</p></section>'
+                  f'<p>{esc(r["note"])}<small>（{(esc(r["szj"][:6]) + "…… · ") if r.get("szj") else ""}{who(r)}）</small></p></li>' for r in rows)
+    return f'<section class="lyhj" id="lyhj"><h2>《论语》互见</h2><ul>{lis}</ul><p class="note">{"出处＝《论语》里直接说到老子这句话" if book == "ddj" else "出处＝三字经原句出自这一章"}；注家引＝旧注本里引了这一章；相通＝意思相通，一孔录对读。点进去是《论语》这一章的原文、原页和朱熹注。</p></section>'
 
 def build_szj(L, write, P, S_IDX=None):
     """三字经：书页（六卷三十九讲）＋各讲页。简繁（繁体页由整页转繁）＋英日（SZJ_TR，原文繁体、逐组译文、原页点组亮框）。每组十二字一“句”，点组看白话（中文小卡）或亮框（外文）。"""
