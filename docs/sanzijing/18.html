@@ -248,14 +248,15 @@ function yy(){var kn=keyIdx(),key=keyTxt(),G=cols(kn),g=G[0];
 // 二、人物卡：一孔录原创角色（出场表里本章的人；没有就按章轮到谁）
 function rw(){var who=(X4.who||[]).slice(0,1),key=keyTxt(),bh=keyBh(keyIdx());if(!who.length){yy();return}
   var names=who.map(function(p){return p[1]}).join(HT?'、':'、');
-  Promise.all([prep(key+bh+names+who.map(function(p){return p[2]}).join('')+'一孔录原创角色读到这一句')].concat(who.map(function(p){return img('https://img.yikonglu.com/gushi/img/'+p[0]+'-full.png')}))).then(function(a){var seal=a[0],ims=a.slice(1),cv=canvas(),c=cv.getContext('2d');
+  Promise.all([prep(key+bh+names+who.map(function(p){return p[2]+(p[3]||'')+(p[4]||'')}).join('')+'一孔录原创角色读到这一句“”——論語錄')].concat(who.map(function(p){return img('https://img.yikonglu.com/gushi/img/'+p[0]+'-full.png')}))).then(function(a){var seal=a[0],ims=a.slice(1),cv=canvas(),c=cv.getContext('2d');
     var bg=c.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#2C6A52');bg.addColorStop(.62,'#23503F');bg.addColorStop(1,'#1A3B2F');c.fillStyle=bg;c.fillRect(0,0,W,H);
     var gl=c.createRadialGradient(W*.72,H*.42,40,W*.72,H*.42,560);gl.addColorStop(0,'rgba(240,206,140,.42)');gl.addColorStop(1,'rgba(240,206,140,0)');c.fillStyle=gl;c.fillRect(0,0,W,H);
     var FB=H-212,fh=900;[1,0].forEach(function(i){var m=ims[i];if(!m)return;var s=(i===0?fh:fh*.86)/m.naturalHeight,w=m.naturalWidth*s,h=m.naturalHeight*s,x=i===0?W-w+60:W-w-110,yy2=FB-h;
       c.save();if(i>0)c.globalAlpha=.96;c.shadowColor='rgba(0,0,0,.35)';c.shadowBlur=30;c.drawImage(m,x,yy2,w,h);c.restore()});
     c.fillStyle='#F0CE8C';c.font='400 26px '+F;c.textBaseline='alphabetic';c.fillText('一孔录原创角色',84,104);
     c.fillStyle='#F2F1EA';c.font='700 46px '+F;c.fillText(names,84,170);
-    var y=200;c.font='400 21px '+F;who.forEach(function(p){var L=wrap(c,(who.length>1?p[1]+' · ':'')+p[2],400);if(L.length>2){L=L.slice(0,2);L[1]=L[1].slice(0,-1)+'…'}c.fillStyle='rgba(242,241,234,.72)';L.forEach(function(l){c.fillText(l,84,y+21);y+=32});y+=6});
+    var y=200;who.forEach(function(p){if(p[3]){c.font='700 30px '+F;var qt=p[3],L=wrap(c,qt,430);if(L.length>1){var bst=null;qt.replace(/，/g,function(m,i){var A=qt.slice(0,i+1),B=qt.slice(i+1),wa=c.measureText(A).width,wb=c.measureText(B).width;if(wa<=470&&wb<=470&&(!bst||Math.abs(wa-wb)<bst[0]))bst=[Math.abs(wa-wb),[A,B]]});if(bst)L=bst[1];else{var P=qt.match(/[^，]+，?/g)||[];if(P.length<=3&&P.every(function(x){return c.measureText(x).width<=470}))L=P}}c.fillStyle='#F0CE8C';c.fillRect(84,y+6,4,L.length*44-10);c.fillStyle='#FFFFFF';L.forEach(function(l){c.fillText(l,102,y+30);y+=44});if(p[4]){c.font='400 20px '+F;c.fillStyle='rgba(242,241,234,.6)';c.fillText((HT?'—— 一孔錄《論語》':'—— 一孔录《论语》')+p[4],84,y+22);y+=34}else y+=8}
+      else{c.font='400 21px '+F;var L=wrap(c,p[2],400);if(L.length>2){L=L.slice(0,2);L[1]=L[1].slice(0,-1)+'…'}c.fillStyle='rgba(242,241,234,.72)';L.forEach(function(l){c.fillText(l,84,y+21);y+=32});y+=6}});
     y+=50;c.fillStyle='#F0CE8C';c.fillRect(84,y,56,4);y+=40;c.fillStyle='#F0CE8C';c.font='400 24px '+F;c.fillText('读到这一句 · '+LBL(),84,y+24);y+=60;
     var ft=bfit(c,key,400,[72,64,58,52,46,40],FB-y-(bh?200:40),1.42,700);c.fillStyle='#FFFFFF';ft.L.forEach(function(l){c.fillText(l,84,y+ft.s);y+=ft.s*1.42});
     if(bh){y+=26;c.fillStyle='rgba(242,241,234,.78)';c.font='400 26px '+F;wrap(c,bh,370).slice(0,4).forEach(function(l){c.fillText(l,84,y+26);y+=44})}

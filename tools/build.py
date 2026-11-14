@@ -907,6 +907,14 @@ QISHIER_HOU = ("雁北乡 鹊始巢 雉始雊 鸡始乳 征鸟厉疾 水泽腹�
                "桐始华 田鼠化为鴽 虹始见 萍始生 鸣鸠拂其羽 戴胜降于桑 蝼蝈鸣 蚯蚓出 王瓜生 苦菜秀 靡草死 麦秋至 螳螂生 鵙始鸣 反舌无声 鹿角解 蜩始鸣 半夏生 "
                "温风至 蟋蟀居壁 鹰始挚 腐草为萤 土润溽暑 大雨时行 凉风至 白露降 寒蝉鸣 鹰乃祭鸟 天地始肃 禾乃登 鸿雁来 玄鸟归 群鸟养羞 雷始收声 蛰虫坯户 水始涸 "
                "鸿雁来宾 雀入大水为蛤 菊有黄华 豺乃祭兽 草木黄落 蛰虫咸俯 水始冰 地始冻 雉入大水为蜃 虹藏不见 天气上升地气下降 闭塞而成冬 鹖鴠不鸣 虎始交 荔挺出 蚯蚓结 麋角解 水泉动").split()
+RW_LINE = {  # 人物卡上的一句台词（11-14 改：不用身份介绍，用一句见性格、说的是《论语》这部书的话；[台词, 出自哪一集（新写的留空）]）
+    "youli": ["《论语》我读了三遍，每一遍都发现上一遍读错了。", ""],
+    "zhaojin": ["读《论语》像写生，一句一句看下去，那个人就站起来了。", ""],
+    "shouzhuo": ["一本《论语》，我装订过几百回，这回想翻开读读。", ""],
+    "luchuan": ["一本《论语》，两千五百年没降过价。", ""],
+    "liuqi": ["《论语》里的礼，我是用脚跳懂的。", ""],
+    "shahela": ["我从西边来，《论语》是我学的第一本中文书。", ""],
+}
 def share_x(D):
     """四种分享卡的每章数据（只《论语》）：七语译文（英日另在 TRI_TXT）、年历第几课与日期、出场的原创角色。"""
     tr = {}
@@ -923,7 +931,7 @@ def share_x(D):
         for c in r["cs"]: nl.setdefault(c, [r["n"], r["m"], r["d"], r["q"] if c == r["c"] else ""])
     G = os.path.join(GAO_DIR, "_故事"); who, ppl = {}, {}
     try:
-        for r in csv.DictReader(open(os.path.join(G, "人物.csv"), encoding="utf-8-sig")): ppl[r["名"]] = [r["id"], r["名"], r["一句关系"]]
+        for r in csv.DictReader(open(os.path.join(G, "人物.csv"), encoding="utf-8-sig")): ppl[r["名"]] = [r["id"], r["名"], r["一句关系"]] + RW_LINE.get(r["id"], [])
         for r in csv.DictReader(open(os.path.join(G, "出场.csv"), encoding="utf-8-sig")):
             ws = [ppl[n] for n in re.split(r"[、，,\s]+", r["人物"]) if n in ppl]
             if ws: who.setdefault(r["章号"], ws)
