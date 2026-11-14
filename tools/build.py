@@ -915,6 +915,11 @@ RW_LINE = {  # 人物卡上的一句台词（11-14 改：不用身份介绍，�
     "liuqi": ["《论语》里的礼，我是用脚跳懂的。", ""],
     "shahela": ["我从西边来，《论语》是我学的第一本中文书。", ""],
 }
+LEAD_WEEK = [["youli", "上官有理", ""], ["zhaojin", "孔照今", ""], ["shouzhuo", "林守拙", ""], ["luchuan", "陆川", ""], ["liuqi", "阮流绮", ""], ["shahela", "莎赫拉", ""],
+             ["lisa", "Lisa", "汪！——守拙家的柯基，戴青色头巾。人到齐了，它才肯睡。"]]  # 首页今日《论语》一周七位领读人，星期一到星期日（11-14 主人：六人＋一狗）
+def wk_js_only(h):  # wk_html 里“本周读了几天”的那段脚本
+    i = h.find("<script>")
+    return h[i:] if i >= 0 else ""
 def share_x(D):
     """四种分享卡的每章数据（只《论语》）：七语译文（英日另在 TRI_TXT）、年历第几课与日期、出场的原创角色。"""
     tr = {}
@@ -1627,9 +1632,9 @@ SZJ_UI = {
 # 11-14 主人定“给《论语》特殊地位”（图样 1—4 做）：导航第一项“论语”、首页今日《论语》放大＋本周读了几天、首页主经一格、书架页主书一格；口号暂不进首页横幅
 LY_UI = {
  "zh-Hans": {"nav": "论语", "h": "主经", "k": "一生一本《论语》：一天一章，一年一轮", "s": "二十篇 {n} 章原文全在站上 · 已讲 {d} 章 · 朱熹集注本原页可查", "go": "从学而篇读起", "toc": "全书目录", "kb": "语文课本里的《论语》", "db": "免费读本",
-             "more": "书架上还有：", "soon": "{n} 部筹备中 ›", "open": "打开《论语》", "strip": "今日《论语》", "read": "读这一章 →", "close": "今天不再显示", "wk": "本周你读了 {n} 天", "wk0": "本周还没读", "cal": "2027 年元旦起按《论语》年历，一年一轮", "shelf": "书架 · 能读的书"},
+             "more": "书架上还有：", "soon": "{n} 部筹备中 ›", "open": "打开《论语》", "strip": "今日《论语》", "read": "读这一章 →", "close": "今天不再显示", "wk": "本周你读了 {n} 天", "wk0": "本周还没读", "cal": "按《论语》年历，一年一轮", "shelf": "书架 · 能读的书"},
  "zh-Hant": {"nav": "論語", "h": "主經", "k": "一生一本《論語》：一天一章，一年一輪", "s": "二十篇 {n} 章原文全在站上 · 已講 {d} 章 · 朱熹集注本原頁可查", "go": "從學而篇讀起", "toc": "全書目錄", "kb": "語文課本裡的《論語》", "db": "免費讀本",
-             "more": "書架上還有：", "soon": "{n} 部籌備中 ›", "open": "打開《論語》", "strip": "今日《論語》", "read": "讀這一章 →", "close": "今天不再顯示", "wk": "本週你讀了 {n} 天", "wk0": "本週還沒讀", "cal": "2027 年元旦起按《論語》年曆，一年一輪", "shelf": "書架 · 能讀的書"},
+             "more": "書架上還有：", "soon": "{n} 部籌備中 ›", "open": "打開《論語》", "strip": "今日《論語》", "read": "讀這一章 →", "close": "今天不再顯示", "wk": "本週你讀了 {n} 天", "wk0": "本週還沒讀", "cal": "按《論語》年曆，一年一輪", "shelf": "書架 · 能讀的書"},
  "en": {"nav": "Analects", "h": "The main book", "k": "One chapter a day, the whole book every year", "s": "All {n} chapters online · {d} taught on video · Zhu Xi's commentary with page scans", "go": "Start with Book 1", "toc": "Contents", "kb": "", "db": "",
         "more": "Also on the shelf: ", "soon": "{n} more in preparation ›", "open": "Open the Analects", "strip": "Today's Analects", "read": "Read this chapter →", "close": "Hide for today", "wk": "Days you read this week: {n}", "wk0": "Not read yet this week", "cal": "", "shelf": "On the shelf"},
  "ja": {"nav": "論語", "h": "主たる一冊", "k": "一日一章、一年で一巡り", "s": "全 {n} 章の原文を掲載 · 動画で解説 {d} 章 · 朱熹『論語集注』の原本画像つき", "go": "学而篇から読む", "toc": "目次", "kb": "", "db": "",
@@ -2295,6 +2300,36 @@ def build_lang(L, D, write):
                      'if(!x){M.querySelector(".md").textContent=dt+" · 补读日";q.textContent="今天不排新课，前几天落下的课，今天补上。";b.textContent="";c.href="' + P + 'nianli/";k.hidden=true;M.hidden=false;return}'
                      'M.querySelector(".md").textContent=dt+" · 年历第 "+x[0]+" 课 · 《论语》"+x[6];q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+"今日加读 "+x[5].map(function(a){return a[0]}).join(" "):"");'
                      'c.href=x[2];k.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false}).catch(function(){})})();</script>')
+    if MY and L.code in LX.ZH and D["lx"]["nl"]:  # 11-14 主人：首页“今日《论语》”现在起按年历取当天一课，模块做成日历样子（有时间感）；一周七天七位领读人轮值（六位原创角色＋Lisa）
+        _ht = L.code == "zh-Hant"
+        _T = (lambda s: __import__("opencc").OpenCC("s2twp").convert(s)) if _ht else (lambda s: s)
+        _lead = [[k, _T(n), _T(RW_LINE[k][0]) if k in RW_LINE else _T(t)] for k, n, t in LEAD_WEEK]
+        _y0 = datetime.date.today().year
+        _cal = {"jt": {str(y): JIEQI_DAYS[str(y)] for y in range(_y0 - 1, _y0 + 2) if str(y) in JIEQI_DAYS}, "jn": [_T(x) for x in JIEQI_NAMES["zh"]], "hou": [_T(x) for x in QISHIER_HOU], "ld": _lead}
+        _wd = "一二三四五六日"
+        meiri_html = (f'<section class="meiri big mcal" id="meiri" hidden><div class="mrow"><div class="mcalb" aria-hidden="true"><p class="cm"></p><p class="cd"></p><p class="cw"></p><p class="cl"></p></div>'
+                      f'<div class="mtxt"><p class="mh"><b>{MY["h"]}</b></p><p class="mtag"></p><blockquote lang="zh-Hans"></blockquote><p class="mb"></p>'
+                      f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a></p></div><img class="mhalf" alt="" width="300" height="400" hidden></div>'
+                      f'<p class="wk" id="wkl"><span class="wt" data-t="{esc(LU["wk"])}" data-z="{esc(LU["wk0"])}">{esc(LU["wk0"])}</span><span class="dots">'
+                      + "<i></i>" * 7 + '</span><span class="wn md"></span></p>'
+                      + '</section>')
+        meiri_js = wk_js_only(wk_html) + ('<script>(function(){var K=' + json.dumps(_cal, ensure_ascii=False).replace("</", "<\\/") + ',HT=' + ("true" if _ht else "false") + ';'
+                    'function T(s){return HT?s.replace(/农历/g,"農曆").replace(/后第/g,"後第").replace(/腊/g,"臘").replace(/闰/g,"閏").replace(/节/g,"節").replace(/补读日/g,"補讀日").replace(/马/g,"馬").replace(/鸡/g,"雞").replace(/猪/g,"豬").replace(/龙/g,"龍").replace(/课/g,"課"):s}'
+                    'var n=Date.now(),bj=new Date(n+288e5),Y=bj.getUTCFullYear(),m=bj.getUTCMonth()+1,d=bj.getUTCDate(),wd=bj.getUTCDay(),M=document.getElementById("meiri");if(!M)return;'
+                    'var dt=new Date(Y,m-1,d),N="一二三四五六七八九十",lu="",fe=[],jq="";'
+                    'try{var o={};new Intl.DateTimeFormat("zh-CN-u-ca-chinese",{year:"numeric",month:"numeric",day:"numeric"}).formatToParts(dt).forEach(function(p){o[p.type]=p.value});var ms=(o.month||"").replace(/^闰|bis$/g,"").replace(/月$/,""),CM=["正","二","三","四","五","六","七","八","九","十","十一","十二"],lm=/^\\d+$/.test(ms)?parseInt(ms,10):CM.indexOf(ms)+1,ld=parseInt((o.day||"").replace(/\\D/g,""),10),lp=/闰|bis/.test(o.month||"");'
+                    'if(lm&&ld){lu="农历"+(lp?"闰":"")+["正","二","三","四","五","六","七","八","九","十","冬","腊"][lm-1]+"月"+(ld<=10?"初"+N[ld-1]:ld<20?"十"+N[ld-11]:ld===20?"二十":ld<30?"廿"+N[ld-21]:"三十");var LF={"1.1":"春节","1.15":"元宵节","5.5":"端午节","7.7":"七夕","8.15":"中秋节","9.9":"重阳节","12.8":"腊八节"};if(!lp&&LF[lm+"."+ld])fe.push(LF[lm+"."+ld])}}catch(e){}'
+                    'var GF=HT?{"1.1":"元旦","4.23":"世界讀書日","9.28":"教師節 · 孔子誕辰"}:{"1.1":"元旦","4.23":"世界读书日","5.1":"劳动节","5.4":"青年节","6.1":"儿童节","9.10":"教师节","9.28":"孔子诞辰","10.1":"国庆节"};if(GF[m+"."+d])fe.unshift(GF[m+"."+d]);'
+                    'try{var dd=function(y,i){var s=K.jt[y];return s?s.charCodeAt(i)-48:0},ix=-1,sy=Y,sm,sd;for(var i=23;i>=0;i--){var mo=1+(i>>1),dy=dd(Y,i);if(!dy)break;if(mo<m||(mo===m&&dy<=d)){ix=i;sm=mo;sd=dy;break}}if(ix<0&&dd(Y-1,23)){sy=Y-1;ix=23;sm=12;sd=dd(sy,23)}'
+                    'if(ix>=0){var k=Math.round((dt-new Date(sy,sm-1,sd))/864e5),h=Math.min(2,Math.floor(k/5));jq=(k===0?"今日"+K.jn[ix]:K.jn[ix]+"后第 "+k+" 天")+" · "+K.hou[ix*3+h]}}catch(e){}'
+                    'var MN=["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];M.querySelector(".cm").textContent=MN[m-1];M.querySelector(".cd").textContent=d;M.querySelector(".cw").textContent="星期"+"日一二三四五六"[wd];M.querySelector(".cl").textContent=T(lu.replace(/^农历/,""));'
+                    'var tg=M.querySelector(".mtag");fe.forEach(function(f){var s=document.createElement("span");s.className="fe";s.textContent=T(f);tg.appendChild(s)});if(jq){var s=document.createElement("span");s.textContent=T(jq);tg.appendChild(s)}'
+                    'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-half.webp";hf.alt=P[1];hf.hidden=false;'
+                    'var I=M.querySelectorAll(".dots i");if(I[li])I[li].classList.add("td");'
+                    'fetch("/data/nianli-' + L.code + '.json").then(function(r){return r.json()}).then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
+                    'if(!x){M.querySelector(".md").textContent=T("补读日");q.textContent=T("今天不排新课，前几天落下的课，今天补上。");b.textContent="";c.href="' + P + 'nianli/";kk.hidden=true;M.hidden=false;return}'
+                    'M.querySelector(".md").textContent=T("年历第 "+x[0]+" 课 / 365 · 《论语》")+x[6];q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+T("今日加读 ")+x[5].map(function(a){return a[0]}).join(" "):"");'
+                    'c.href=x[2];kk.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false}).catch(function(){})})();</script>')
     home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg" width="1080" height="886"><img src="/assets/hero-w.jpg" alt="一孔录原创角色同坐长桌读《论语》" width="1920" height="790"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div><p class="herosub">{L.t("tagline")}</p></section>
 <main class="home">

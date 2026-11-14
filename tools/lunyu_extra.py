@@ -12,7 +12,7 @@ import glob, html, json, os, re
 ROOT = "/mnt/project-files/一孔学-内-自媒体"
 LUODI = os.path.join(ROOT, "评审", "2026-11-14-终极目标落地")
 CH_DIR = os.path.join(ROOT, "数据", "网站素材", "_场合")
-NL0 = 20819  # 2027-01-01（北京日期）距 1970-01-01 的天数：这天起首页“今日《论语》”按年历取章
+NL0 = 20771  # 2026-11-14（北京日期）距 1970-01-01 的天数：这天起首页“今日《论语》”与全站细条按年历取章（原定 2027 元旦，11-14 主人改为现在起）
 ZH = ("zh-Hans", "zh-Hant")
 esc = lambda s: html.escape(s or "", quote=True)
 MONTH = "一二三四五六七八九十"
@@ -93,7 +93,7 @@ def nl_tag(L, P, X, c):
 
 
 def write_data(L, X, out_root, href, tx, baihua):
-    """data/nianli-<语种>.json：{"M-D": [课, 主章, 链接, 今日一句, 白话(短的才给), 加读[[章, 链接]]]}，首页卡与全站细条 2027 元旦起用。"""
+    """data/nianli-<语种>.json：{"M-D": [课, 主章, 链接, 今日一句, 白话(短的才给), 加读[[章, 链接]]]}，首页卡与全站细条用。"""
     if L.code not in ZH or not X["nl"] or not out_root: return
     os.makedirs(os.path.join(out_root, "data"), exist_ok=True)
     o = {}
@@ -137,7 +137,7 @@ def build(L, D, X, write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, zidia
         first, last = X["nl"][0], X["nl"][-1]
         body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">一年读完一遍 · 每天一课</span>《论语》年历</h1></div></div>
 <main class="wrap narrow nianli"><p class="lead">《论语》全书 498 章，排成 365 课。1 月 1 日读第 1 课“{esc(first["q"])}”，12 月 31 日读第 365 课“{esc(last["q"])}”。年年同一天读同一章，哪天开始都行：从那天那一课读起，读满一年正好一轮。</p>
-<p class="note">2027 年元旦起，首页的“今日《论语》”就按这张表每天一课。一课多是一章，短章两三章并成一课，只在同一篇里并。闰年 2 月 29 日不排新课，做补读日。教师节、孔子诞辰另有加读一章，不挪正课。</p>
+<p class="note">首页的“今日《论语》”每天按这张表读一课。一课多是一章，短章两三章并成一课，只在同一篇里并。闰年 2 月 29 日不排新课，做补读日。教师节、孔子诞辰另有加读一章，不挪正课。</p>
 <div class="nltoday" id="nltoday" hidden></div>
 <p class="nlchips">{chips}</p>{mon}
 <p class="note">标“未讲”的章视频还在做，网站先放原文、原页、白话和朱熹注。读过的课（这台设备上读过这一课所有的章）打勾，进度只存在你自己的设备上。</p></main>
