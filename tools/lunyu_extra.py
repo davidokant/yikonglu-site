@@ -23,7 +23,7 @@ def _latest(pat):
     return fs[-1] if fs else None
 
 
-LIVE = {"nl": False, "ch": False, "dd": False}  # 主人看过样张、说“上”之后逐样改 True；样张用 YK_LX=1 本地出
+LIVE = {"nl": True, "ch": True, "dd": True}  # 11-14 主人看过样张“可以。上。”  # 主人看过样张、说“上”之后逐样改 True；样张用 YK_LX=1 本地出
 
 
 def load():
