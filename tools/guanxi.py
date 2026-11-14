@@ -1,4 +1,4 @@
-"""《论语》智器重建本的关系（11-14 主人“过”，网站“全做”）：章页“这一章连着”一栏，和可点的关系图页 /guanxi/。
+"""《论语》智器重建本的关系（11-14 主人“过”，网站“全做”）：章页“这一章连着”一栏，和可点的关系图页 /lunyu/guanxi/（11-14 主人定挪到《论语》下，旧 /guanxi/ 与人物总页 /renwu/ 跳过来）。
 数据：tools/lunyu_guanxi.json（读本线程出的统一关系表，PDF 与网站同源；新版到了整份换掉）。先只简繁。
 一条关系 a 端是论语章，b 端可无；本书互见每条只记一次，两端都显示。"""
 import json, os, re, html, collections
@@ -38,7 +38,7 @@ def section(G, c, P, href, short):
     for g in dict.fromkeys(r["group"] for r in T["同问异答"]):
         w = G["wd"][g]
         li = "".join(f'<li{" class=on" if _c(it["c"]) == c else ""}><a href="{href(_c(it["c"]))}">{_c(it["c"])}</a> {esc(it["who"])}：{esc(it["a"])}</li>' for it in w["items"])
-        row.append(("同问异答", f'<p>{esc(w["q"])}，全书 {len(w["items"])} 次，问的人不同，答得不同：</p><ol class="gxwd">{li}</ol><p class="gxmore"><a href="{P}guanxi/#{g}">在关系图里看</a></p>'))
+        row.append(("同问异答", f'<p>{esc(w["q"])}，全书 {len(w["items"])} 次，问的人不同，答得不同：</p><ol class="gxwd">{li}</ol><p class="gxmore"><a href="{P}lunyu/guanxi/#{g}">在关系图里看</a></p>'))
     if T["互见"]:
         row.append(("互见", "<ul>" + "".join(f'<li><a href="{href(_c(r["b"]))}">论语 {_c(r["b"])}</a> {esc(short(_c(r["b"])))}</li>' for r in T["互见"]) + "</ul>"))
     if T["书外互见"]:
@@ -56,7 +56,7 @@ def section(G, c, P, href, short):
         for r in T["人物"]:
             p = G["rw"].get(r.get("group")); nm = (p or {}).get("common") or r["who"]
             n = len((p or {}).get("chs") or [])
-            ch.append(f'<a href="{P}guanxi/#p-{r.get("group")}">{esc(nm)}{f"<small>全书 {n} 章</small>" if n > 1 else ""}</a>')
+            ch.append(f'<a href="{P}lunyu/guanxi/#p-{r.get("group")}">{esc(nm)}{f"<small>全书 {n} 章</small>" if n > 1 else ""}</a>')
         row.append(("人物", '<p class="gxchips">' + "".join(ch) + "</p>"))
     if T["场合"]:
         row.append(("场合", "<ul>" + "".join(f'<li><span class="gxk">{CH_KIND.get(r.get("kind"), "")}</span><a href="{P}changhe/{r.get("group")}.html">{esc(r["note"].split("：")[0])}</a>：{esc(r.get("txt") or r["note"])}</li>' for r in T["场合"]) + "</ul>"))
@@ -69,7 +69,7 @@ def section(G, c, P, href, short):
     row.sort(key=lambda x: ORDER.index(x[0]))
     return (f'<section class="gx" id="lian"><h2>这一章连着<small>智器把全书 498 章两两比对找线，人逐条核到原页</small></h2><dl>'
             + "".join(f"<dt>{HEAD[k]}</dt><dd>{v}</dd>" for k, v in row)
-            + f'</dl><p class="gxmore"><a href="{P}guanxi/">全书关系图</a> · <a href="{P}duben.html">《论语》智器重建本 PDF</a></p></section>')
+            + f'</dl><p class="gxmore"><a href="{P}lunyu/guanxi/">全书关系图</a> · <a href="{P}duben.html">《论语》智器重建本 PDF</a></p></section>')
 
 
 GX_JS = r"""<script>
@@ -98,7 +98,7 @@ var P=document.getElementById('gxrw'),L=document.getElementById('gxrwlist'),Q=do
 function list(f){L.innerHTML=D.rw.filter(function(p){return !f||(p.name+p.common+p.alias).indexOf(f)>=0}).slice(0,f?60:40).map(function(p){return '<a href="#p-'+p.id+'">'+esc(p.common||p.name)+'<small>'+p.chs.length+'</small></a>'}).join('')}
 Q.addEventListener('input',function(){list(Q.value.trim())});list('');
 function person(id){var p=byp[id];if(!p)return;while(P.firstChild)P.removeChild(P.firstChild);var cx=380,cy=300,r1=150,r2=255,n=p.chs.length;
-document.getElementById('gxrwh').innerHTML='<b>'+esc(p.common||p.name)+'</b>'+(p.common&&p.common!==p.name?'（'+esc(p.name)+'）':'')+' · '+esc(p.role||'')+' · 全书 '+n+' 章';
+document.getElementById('gxrwh').innerHTML='<b>'+esc(p.common||p.name)+'</b>'+(p.common&&p.common!==p.name?'（'+esc(p.name)+'）':'')+' · '+esc(p.role||'')+' · 全书 '+n+' 章'+(p.card?' · <a href="'+p.card+'">人物卡：身份、出处、各章原文 ›</a>':'');
 var co={};p.chs.forEach(function(c){D.rw.forEach(function(q){if(q.id!==id&&q.chs.indexOf(c)>=0)co[q.id]=(co[q.id]||0)+1})});
 var top=Object.keys(co).sort(function(a,b){return co[b]-co[a]}).slice(0,12);
 top.forEach(function(q,i){var a=-Math.PI/2+2*Math.PI*(i+.5)/top.length,x=cx+r2*Math.cos(a),y=cy+r2*Math.sin(a);
@@ -120,7 +120,7 @@ def build(L, G, write, page, P, href, short, PIAN, pub, DOMAIN):
     ch = [[c, pk.index(c.split(".")[0]), href(c), 1 if c in pub else 0, short(c)] for c in order]
     hj = [[_c(r["a"]), _c(r["b"])] for r in d["rels"] if r["type"] == "互见"]
     wd = [{"id": g["id"], "q": g["q"], "items": [[_c(i["c"]), i["who"], i["a"]] for i in g["items"]]} for g in d["groups"]["wenda"]]
-    rw = sorted([{"id": g["id"], "name": g["name"], "common": g.get("common") or "", "alias": g.get("alias") or "", "role": g.get("role") or "", "chs": g["chs"]} for g in d["groups"]["renwu"]], key=lambda p: -len(p["chs"]))
+    rw = sorted([{"id": g["id"], "name": g["name"], "common": g.get("common") or "", "alias": g.get("alias") or "", "role": g.get("role") or "", "chs": g["chs"], "card": f"{P}renwu/{RWID[g['id']]}.html" if g["id"] in RWID else ""} for g in d["groups"]["renwu"]], key=lambda p: -len(p["chs"]))
     data = json.dumps({"ch": ch, "hj": hj, "wd": wd, "rw": rw, "pian": [PIAN[p][0].replace("第", "").rstrip("一二三四五六七八九十") for p in pk]}, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     st = d.get("stats", {})
     wdh = ""
@@ -136,7 +136,7 @@ def build(L, G, write, page, P, href, short, PIAN, pub, DOMAIN):
         sv += f'<circle cx="{cx}" cy="{cy}" r="40" class="gxme"/><text x="{cx}" y="{cy + 7}" text-anchor="middle" class="gxt b">{esc(g["q"])}</text></svg>'
         li = "".join(f'<li><a href="{href(_c(it["c"]))}">论语 {_c(it["c"])}</a> {esc(it["who"])}：{esc(it["a"])}{f"<small>{esc(it["note"])}</small>" if it.get("note") else ""}</li>' for it in g["items"])
         wdh += f'<section class="gxcard" id="{g["id"]}"><h3>{esc(g["q"])} · 全书 {n} 次</h3>{sv}<ol>{li}</ol></section>'
-    body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">全书 498 章</span>《论语》关系图</h1></div></div>
+    body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">全书 498 章 · 197 位人物</span>《论语》关系图</h1></div></div>
 <main class="wrap guanxi"><p class="lead">《论语》二十篇四百九十八章，看着一章一章是散的，其实处处连着：同一句话在两处出现，同一个问题孔子答不同的人，同一个弟子在几十章里出场。全书共 {sum(v for k, v in st.items() if k != "年历"):,} 条关系，都记在《论语》智器重建本里，<a href="{P}duben.html">PDF 免费下载</a>。</p>
 <div class="gxtab" role="tablist"><button type="button" data-v="all">全书一张网</button><button type="button" data-v="wd">同问异答</button><button type="button" data-v="rw">人物</button></div>
 <section class="gxview" id="v-all"><p class="note">圆周上一个点是一章，按二十篇排一圈，深色的点是已经讲过的章。绿线是同一句话在书里出现两次（本书互见 {st.get("互见", 0)} 条），赭线连着同一个问题的几问几答（同问异答 {len(wd)} 组）。点一章看它连着哪几章。</p>
@@ -146,5 +146,17 @@ def build(L, G, write, page, P, href, short, PIAN, pub, DOMAIN):
 <p><input id="gxq" type="search" placeholder="搜人名，如：子路、颜回、管仲" aria-label="搜人名"></p><p id="gxrwlist" class="gxchips"></p>
 <p id="gxrwh" class="gxinfo"></p><div class="gxwrap"><svg id="gxrw" viewBox="0 0 760 600" role="img" aria-label="人物与章的关系"></svg></div><p id="gxrwchs" class="gxchips s"></p></section>
 <script type="application/json" id="gxdata">{data}</script>{GX_JS}</main>'''
-    write("guanxi/index.html", page(L, "《论语》关系图：全书 498 章怎样连着｜一孔录", "同问异答、本书互见、人物与章：智器把全书 498 章两两比对找线，人逐条核到原页。", "guanxi/", body, codes=["zh-Hans", "zh-Hant"]))
-    return [f"{DOMAIN}/{L.prefix}guanxi/"]
+    write("lunyu/guanxi/index.html", page(L, "《论语》关系图与人物：全书 498 章怎样连着｜一孔录", "同问异答、本书互见、197 位人物各在哪几章：智器把全书 498 章两两比对找线，人逐条核到原页。", "lunyu/guanxi/", body, codes=["zh-Hans", "zh-Hant"]))
+    dst = f"/{L.prefix}lunyu/guanxi/"
+    for old, tab in (("guanxi/index.html", ""), ("renwu/index.html", "#rw")):  # 旧网址跳过来，带上 #
+        write(old, f'<!doctype html><meta charset="utf-8"><title>《论语》关系图｜一孔录</title><link rel="canonical" href="{DOMAIN}{dst}"><meta name="robots" content="noindex">'
+                   f'<script>location.replace("{dst}"+(location.hash||"{tab}"))</script><meta http-equiv="refresh" content="0;url={dst}{tab}"><a href="{dst}{tab}">《论语》关系图</a>')
+    return [f"{DOMAIN}{dst}"]
+
+def rw_ids(G, R):
+    """关系表人物 id → 人物卡 id（按本名对上）。"""
+    if not G or not R: return {}
+    by = {p["name"]: p["id"] for p in R}
+    return {g["id"]: by[g["name"]] for g in G["raw"]["groups"]["renwu"] if g["name"] in by}
+
+RWID = {}
