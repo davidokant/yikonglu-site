@@ -63,6 +63,16 @@ HANT_POST = [("通道不篤", "信道不篤"), ("相維闢公", "相維辟公"),
     ("亞飯幹", "亞飯干"), ("難與併為仁", "難與並為仁"), ("可以托六尺", "可以託六尺"), ("不捨晝夜", "不舍晝夜"), ("舊谷既沒", "舊穀既沒"),
     ("新谷既升", "新穀既升"), ("不至於谷", "不至於穀"), ("邦有道，谷", "邦有道，穀"), ("邦無道，谷", "邦無道，穀"), ("必覆命", "必復命"),
     ("寧媚於灶", "寧媚於竈"), ("媚於灶", "媚於竈"), ("冠不以吊", "冠不以弔"), ("不撤姜食", "不撤薑食"), ("李鬱", "李郁")]
+HANT_PROTECT = ["范祖禹", "范氏", "游酢", "游氏", "坐如尸", "尸", "咸", "丑", "干禄", "云：", "云，", "子云", "诗云", "余力", "余，", "余者", "托看"]
+_HANT_CC = []
+def hant_plain(text):  # 经文转繁（与繁体站同一套护字与改字），给分享卡用：卡上经文一律繁体（11-14 主人）
+    if not text: return text
+    if not _HANT_CC: _HANT_CC.append(__import__("opencc").OpenCC("s2twp"))
+    for i, w in enumerate(HANT_PROTECT): text = text.replace(w, f"\ue000{i}\ue001")
+    t = _HANT_CC[0].convert(text)
+    for i, w in enumerate(HANT_PROTECT): t = t.replace(f"\ue000{i}\ue001", HANT_FIX.get(w, w))
+    for a_, b_ in HANT_POST: t = t.replace(a_, b_)
+    return t
 LANGS = {  # code: (路径前缀, 自称, hreflang)
     "zh-Hans": ("", "简体中文", "zh-Hans"),
     "zh-Hant": ("zh-hant/", "繁體中文", "zh-Hant"),
@@ -958,13 +968,17 @@ SHARE_HOLD = {"zh-Hans": "这个浏览器存不了，请长按上面的图片，
 def share_html(L, c, url, head, title, yw_text, gist, rend, bk=None):  # bk：别的书（道德经等）{"bk": 书名, "tot": 章数, "src": 底本, "src2": 底本（括注式）, "pf": 读过记录前缀}
     t = dict(SHARE_TXT.get(L.code, SHARE_TXT["en"]), hold=SHARE_HOLD.get(L.code, SHARE_HOLD["en"]))
     plats = "".join(f'<button type="button" data-p="{k}">{esc(n)}</button>' for n, k in t["plats"])
-    d = json.dumps(dict({"c": c, "kn": SHARE_KEYS.get(c), "u": url, "h": head, "ti": title, "y": yw_text, "g": gist or "", "r": rend or "", "t": t, "tag": TAGLINE_L.get(L.code, "")}, **(bk or {})), ensure_ascii=False)
+    yt = hant_plain(yw_text) if L.code in HANT_CARD and (bk is None or L.code == "zh-Hans") else ""  # 分享卡上的经文用繁体（古书字），页面正文不动
+    d = json.dumps(dict({"c": c, "kn": SHARE_KEYS.get(c), "u": url, "h": head, "ti": title, "y": yw_text, "g": gist or "", "r": rend or "", "t": t, "tag": TAGLINE_L.get(L.code, "")}, **(dict(yt=yt) if yt and yt != yw_text else {}), **(bk or {})), ensure_ascii=False)
+    tri = dict(TRI_TXT.get(c, {}), rl=rili_data(), tr=SHARE_X.get(c, {}).get("tr", {}))
+    if yt: tri.update({k_: hant_plain(tri[k_]) for k_ in ("h", "y") if tri.get(k_)})
     return (f'<section class="sharebox"><button type="button" class="btn ghost shbtn"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6h14v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{t["sh"]}</button>'
             f'<div class="shpanel" hidden><button type="button" data-p="card" class="on">{t["card"]}</button><button type="button" data-p="sys" hidden>{SHARE_MORE.get(L.code, SHARE_MORE["en"])}</button><button type="button" data-p="copy">{t["cp"]}</button>{plats}</div>'
             f'<script type="application/json" class="shdata">{d.replace("</", "<\\/")}</script>'
-            f'<script type="application/json" class="shtri">{json.dumps(dict(TRI_TXT.get(c, {}), rl=rili_data(), tr=SHARE_X.get(c, {}).get("tr", {})))}</script>'
+            f'<script type="application/json" class="shtri">{json.dumps(tri)}</script>'
             f'<script type="application/json" class="shx">{json.dumps({k: v for k, v in SHARE_X.get(c, {}).items() if k != "tr"}, ensure_ascii=False).replace("</", "<\\/")}</script>{shi_tag(L)}</section>')
 SHI_CACHE = {}
+HANT_CARD = {"en", "ja", "ko", "fr", "es", "de", "vi", "id", "ru"}  # 11-14 主人：分享卡经文一律繁体；只改外文时去掉 zh-Hans
 def shi_tag(L):  # 11-14 外文页四种分享卡的本语种文字（智器译，fill-<语种>.json）
     if L.code.startswith("zh") or not (FILL.get(L.code) or {}).get("c"): return ""
     if L.code not in SHI_CACHE:

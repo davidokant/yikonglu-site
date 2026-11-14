@@ -57,7 +57,7 @@
   "lunar_leap": "leap ",
   "cal_after": "{t} + {k} days",
   "cal_today": "Today: {t}",
-  "cal_lesson": "Calendar lesson {n} / 365 · Analects {c}",
+  "cal_lesson": "Calendar lesson {n}/365 · Analects {c}",
   "cal_makeup_h": "Catch-up day",
   "cal_makeup_p": "No new lesson today. Catch up on any days you missed.",
   "cal_add": "Also today:",

@@ -147,7 +147,7 @@
   "lunar_leap": "윤",
   "cal_after": "{t} 후 {k}일째",
   "cal_today": "오늘은 {t}",
-  "cal_lesson": "연력 제{n}과 / 365 · 『논어』 {c}",
+  "cal_lesson": "연력 제{n}과/365 · 『논어』 {c}",
   "cal_makeup_h": "보충 읽기 날",
   "cal_makeup_p": "오늘은 새 과가 없습니다. 지난 며칠 동안 놓친 과를 오늘 채우세요.",
   "cal_add": "오늘 함께 읽기:",

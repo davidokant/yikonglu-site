@@ -135,8 +135,8 @@
   "strip": "Les Entretiens du jour",
   "read": "Lire ce chapitre →",
   "close": "Masquer pour aujourd'hui",
-  "wk": "Jours de lecture cette semaine : {n}",
-  "wk0": "Pas encore de lecture cette semaine",
+  "wk": "Jours lus cette semaine : {n}",
+  "wk0": "Pas encore lu cette semaine",
   "shelf": "Sur l'étagère"
  },
  "c": {
@@ -147,7 +147,7 @@
   "lunar_leap": "intercalaire – ",
   "cal_after": "{t} + {k} jours",
   "cal_today": "Aujourd'hui : {t}",
-  "cal_lesson": "Leçon {n} / 365 du calendrier · Entretiens {c}",
+  "cal_lesson": "Calendrier {n}/365 · Entretiens {c}",
   "cal_makeup_h": "Jour de rattrapage",
   "cal_makeup_p": "Pas de nouvelle leçon aujourd'hui : rattrapez les jours manqués.",
   "cal_add": "Aussi aujourd'hui :",

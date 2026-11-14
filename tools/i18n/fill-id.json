@@ -93,7 +93,7 @@
   "lunar_leap": "kabisat ",
   "cal_after": "{t} + {k} hari",
   "cal_today": "Hari ini: {t}",
-  "cal_lesson": "Pelajaran kalender {n} / 365 · Lunyu {c}",
+  "cal_lesson": "Pelajaran kalender {n}/365 · Lunyu {c}",
   "cal_makeup_h": "Hari menyusul",
   "cal_makeup_p": "Hari ini tidak ada pelajaran baru: susul pelajaran yang terlewat beberapa hari terakhir.",
   "cal_add": "Tambahan hari ini:",

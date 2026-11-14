@@ -135,7 +135,7 @@
   "strip": "Las Analectas de hoy",
   "read": "Leer este capítulo →",
   "close": "Ocultar por hoy",
-  "wk": "Días que has leído esta semana: {n}",
+  "wk": "Días leídos esta semana: {n}",
   "wk0": "Aún no has leído esta semana",
   "shelf": "En la estantería"
  },
@@ -147,7 +147,7 @@
   "lunar_leap": "intercalar · ",
   "cal_after": "{t} + {k} días",
   "cal_today": "Hoy: {t}",
-  "cal_lesson": "Lección {n} / 365 del calendario · Analectas {c}",
+  "cal_lesson": "Calendario {n}/365 · Analectas {c}",
   "cal_makeup_h": "Día para ponerse al día",
   "cal_makeup_p": "Hoy no hay lección nueva: recupera los días que te hayas saltado.",
   "cal_add": "Además, hoy:",

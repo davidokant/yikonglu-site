@@ -93,7 +93,7 @@
   "lunar_leap": "Schalt-",
   "cal_after": "{t} + {k} Tage",
   "cal_today": "Heute: {t}",
-  "cal_lesson": "Kalenderlektion {n} / 365 · Gespräche {c}",
+  "cal_lesson": "Kalenderlektion {n}/365 · Gespräche {c}",
   "cal_makeup_h": "Nachholtag",
   "cal_makeup_p": "Heute keine neue Lektion: Zeit, verpasste Tage nachzuholen.",
   "cal_add": "Heute außerdem:",
