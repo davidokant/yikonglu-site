@@ -899,3 +899,14 @@ h1{view-transition-name:ttl}
 .xt .card button.lk{background:none;border:0;padding:0;color:#A9E3CB;text-decoration:underline;font-size:inherit;font-family:inherit;cursor:pointer;text-align:left}
 .xt .legend{position:absolute;left:12px;bottom:10px;font-size:12px;color:#8FA59A;line-height:1.5;max-width:46%;margin:0}
 @media (max-width:640px){.xtsec{padding:0}.xt{border-radius:0}.xthead{padding:0 16px}.xt .card{position:static;width:auto;max-height:230px;border-radius:0;border-width:1px 0 0}.xt .legend{position:static;max-width:none;padding:6px 12px 10px}.xt canvas{height:420px}.xt .hud{left:8px;right:8px;top:8px;gap:5px}.xt .hud button,.xt .hud input{font-size:12px;padding:2px 8px}.xt .hud input{width:7.2em}}
+/* 11-15 接入智器页 */
+.jieru h3{font-size:17px;margin:18px 0 6px}
+.jrcode{position:relative;margin:8px 0 12px}
+.jrcode pre{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 64px 12px 14px;overflow-x:auto;font-size:13.5px;line-height:1.6;margin:0}
+.jrcode .jrcp{position:absolute;top:8px;right:8px;font-size:12.5px;padding:2px 10px;border:1px solid var(--line);border-radius:99px;background:var(--bg);color:var(--accent);cursor:pointer}
+.jrtab{width:100%;border-collapse:collapse;margin:8px 0 12px}
+.jrtab th,.jrtab td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top;text-align:left;font-size:15px;line-height:1.65}
+.jrtab th{white-space:nowrap;padding-right:14px}.jrtab th small{display:block;font-weight:400;font-size:12px;color:var(--mute);font-family:ui-monospace,monospace}
+.jrq{border-left:3px solid var(--accent);margin:8px 0;padding:6px 12px;background:var(--paper);overflow-wrap:anywhere}
+.jren{margin-top:26px;border-top:1px solid var(--line);padding-top:6px}
+.jieru code{overflow-wrap:anywhere}

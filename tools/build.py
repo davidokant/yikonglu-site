@@ -1153,6 +1153,34 @@ def meta_desc(L, title, rend, yw):  # 外语章页摘要：先本语言（标题
         d = d.rstrip(" ,.;:，。") + "…"
     return d
 
+MCP_URL = "https://yikonglu-mcp.yikonglu.workers.dev/mcp"
+def jieru_page(L, P):
+    """11-15 主人同意推广连接器：“接入智器”页 /jieru/（文案 评审/2026-11-15-连接器推广/接入页-文案-v1.md），只简繁。"""
+    cb = lambda t: f'<div class="jrcode"><pre><code>{esc(t)}</code></pre><button type="button" class="jrcp">复制</button></div>'
+    rows = [("按字句查", "lunyu_search", "给章号（如 1.1）或几个字（如“学而时习之”），找到对应的章，返回原文和网址。"),
+            ("取一章", "lunyu_chapter", "一章的原文、底本页码和原页图。已经讲读过的章，另有分句、白话、一孔按、难字读音、朱熹注引文。"),
+            ("这一章连着哪里", "lunyu_related", "书内互见、同问异答、人物、场合、和《三字经》《道德经》等书的对读、异文、读法之争。"),
+            ("今天读哪一章", "lunyu_today", "《论语》年历：一年读完全书，每天一课。不给日期就是今天。")]
+    tb = "".join(f'<tr><th scope="row">{a}<small>（{b}）</small></th><td>{c}</td></tr>' for a, b, c in rows)
+    js_cfg = '{\n  "mcpServers": {\n    "yikonglu": { "url": "' + MCP_URL + '" }\n  }\n}'
+    body = (f'<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">免费 · 不用注册 · 不用密钥</span>在智器里查《论语》</h1></div></div>'
+            f'<main class="wrap narrow jieru"><p class="lead">一孔录有一个公开的连接器。把它加进 Claude 等智器（AI 助手），问起《论语》，智器就能直接查一孔录：原文、白话、读音、朱熹《论语集注》的引文和原书页码，还有原页图，每次都附上本章网址，回来就能核对。</p>'
+            f'<h2 class="ph">连接器地址</h2>{cb(MCP_URL)}<p class="note">这是一个标准的 MCP 远程连接器（Streamable HTTP）。中国大陆部分网络可能连不上这个地址。</p>'
+            f'<h2 class="ph">能查什么</h2><table class="jrtab"><tbody>{tb}</tbody></table>'
+            '<p>底本是朱熹《论语集注》（《四部备要》本），全书 498 章，分章和章号与本站一致。</p>'
+            '<h2 class="ph">怎么加</h2><h3>Claude（网页版、桌面版）</h3><ol><li>打开“设置”里的“连接器”（Connectors）。</li><li>选“添加自定义连接器”，名称填“一孔录”，地址粘贴上面那一行。</li><li>回到对话，在工具菜单里打开“一孔录”，就可以问了。</li></ol>'
+            f'<h3>Claude Code</h3>{cb("claude mcp add --transport http yikonglu " + MCP_URL)}'
+            f'<h3>Cursor、VS Code 等支持 MCP 的工具</h3><p>在 MCP 配置里加一项，名称 <code>yikonglu</code>，类型选 HTTP，地址同上。例如：</p>{cb(js_cfg)}'
+            '<p class="note">VS Code 的 <code>.vscode/mcp.json</code> 写成 <code>"servers": { "yikonglu": { "type": "http", "url": "…" } }</code>。</p>'
+            '<h2 class="ph">试着这样问</h2><ul><li>今天该读《论语》哪一章？</li><li>“学而时习之，不亦说乎”的“说”怎么读？朱熹怎么注？</li><li>子路问过孔子哪些事？</li><li>“克己复礼”在朱熹《论语集注》原书第几页？给我看原页。</li></ul>'
+            '<h2 class="ph">引用请署名</h2><p>连接器里的内容按 CC BY 4.0 开放，智器转述、个人文章、视频引用都可以，请署“一孔录 yikonglu.com”，并附该章网址，例如：</p>'
+            '<blockquote class="jrq">出处：一孔录 yikonglu.com，https://yikonglu.com/lunyu/1.1</blockquote><p>连接器每次返回的结果里都带着这一行和本章网址，照着写即可。</p>'
+            f'<h2 class="ph">发现错了</h2><p>连接器和网站用的是同一份底子，网站改了，连接器跟着改。看到错字、错页码、错读音，请到<a href="{P}kanwu.html">勘误页</a>告诉我们，改过会公开记录。</p>'
+            f'<section lang="en" class="jren"><h2 class="ph">In English</h2><p>Yikonglu offers a free, public MCP connector for the <i>Analects</i> of Confucius (Zhu Xi’s <i>Lunyu jizhu</i>, 498 chapters). Add <code>{MCP_URL}</code> as a custom connector in Claude or any MCP client (Streamable HTTP, no sign-in). Tools: <code>lunyu_search, lunyu_chapter, lunyu_related, lunyu_today</code>. Content is CC BY 4.0: please credit “一孔录 yikonglu.com” and link the chapter URL.</p></section></main>'
+            "<script>document.querySelectorAll('.jrcp').forEach(function(b){b.onclick=function(){var t=b.previousElementSibling.textContent,o=b.textContent;if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){b.textContent='已复制';setTimeout(function(){b.textContent=o},1200)},function(){})}})</script>")
+    return page(L, "在智器里查《论语》｜一孔录", "把一孔录接进 Claude 等智器，问《论语》哪一章，直接查到原文、白话、读音、朱熹注页码和原页图，并附本章网址。免费，不用注册。", "jieru/", body, codes=["zh-Hans", "zh-Hant"])
+
+
 def _strip_js_notes(h):
     """11-15 主人“清理”：页面里内联脚本的注释带着内部备注（“11-09 主人”之类），出页前去掉这类整行注释，代码不动。"""
     return re.sub(r"<script\b[^>]*>.*?</script>", lambda m: re.sub(r"(?m)[ \t]*(?<![:'\"\\])//[^\n'\"]*(?:主人|小编|线程)[^\n'\"]*$", "", m.group(0)), h, flags=re.S)
@@ -1225,7 +1253,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>{'<span class="livep" id="livep" hidden></span>' if ANALYTICS.get("live") else ""}
 <nav><a href="{P}lunyu/" class="lynav">{lyui(L)["nav"]}</a><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}shuyuan/" class="gsnav">书院</a>' if gs else ""}
-<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}lunyu/guanxi/">关系图</a>' if rw else (f'<a href="{P}lunyu/guanxi/">{esc(GX.TR[L.code]["S"]["gx_h1"])}</a>' if not L.code.startswith("zh") and GXD and GX.has_lang(L.code) else "")}<a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
+<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}lunyu/guanxi/">关系图</a>' if rw else (f'<a href="{P}lunyu/guanxi/">{esc(GX.TR[L.code]["S"]["gx_h1"])}</a>' if not L.code.startswith("zh") and GXD and GX.has_lang(L.code) else "")}<a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a>{f'<a href="{P}jieru/">接入智器</a>' if L.code.startswith("zh") else ""}<a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary><span class="lfull">{L.name}</span><span class="lshort" aria-hidden="true">{LANG_SHORT.get(L.code, L.code[:2].upper())}</span></summary><div>{sw}</div></details></nav>
 </div></header>{'<script>(function(){var l=document.querySelector(".top nav>.lang:not(.more)"),w=document.querySelector(".top .wrap");if(l&&w&&innerWidth<=700)w.style.setProperty("--lw",(l.offsetWidth+10)+"px")})()</script>' if ANALYTICS.get("live") else ""}
 {note}
@@ -1235,7 +1263,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔录</b><span>{L.t("tagline")}</span></div></div>
 <p>{L.t("foot_src")}</p>
 <p class="where">{where_html(L)}</p>
-<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a>{f'<a href="{P}lunyu/guanxi/">《论语》关系图</a>' if rw else (f'<a href="{P}lunyu/guanxi/">{esc(GX.TR[L.code]["S"]["gx_h1"])}</a>' if not L.code.startswith("zh") and GXD and GX.has_lang(L.code) else "")}{f'<a href="{P}shuyuan/">书院</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}lunyu/banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a><a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
+<div class="fgrp"><p><b>{L.t("grp_read")}</b><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a>{f'<a href="{P}lunyu/guanxi/">《论语》关系图</a>' if rw else (f'<a href="{P}lunyu/guanxi/">{esc(GX.TR[L.code]["S"]["gx_h1"])}</a>' if not L.code.startswith("zh") and GXD and GX.has_lang(L.code) else "")}{f'<a href="{P}shuyuan/">书院</a>' if gs else ""}</p><p><b>{L.t("grp_check")}</b><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}lunyu/banben/">{L.t("bb_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p><p><b>{L.t("grp_use")}</b><a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a>{f'<a href="{P}jieru/">接入智器</a>' if L.code.startswith("zh") else ""}<a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}yinsi.html">{PRIVACY.get(L.code, PRIVACY["en"])[0]}</a><a href="{P}zhichi.html">{L.t("zc_link")}</a>{SY.link(L, P)}</p></div>
 <p class="langs">{sw}</p>
 <p class="fcopy">© 2026 {L.t("foot_org")}</p>
 <p class="freuse">{L.t("foot_reuse", p=P)}</p>
@@ -2854,6 +2882,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
         XT.write_data(write, XT.data(GXD, PIAN, pubset, href, ctitle, tx, D["lx"]))
         urls += LX.build(L, D, D["lx"], write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, json.load(open(ZD_FILE, encoding="utf-8"))["per"] if os.path.exists(ZD_FILE) else {})
         LX.write_data(L, D["lx"], globals().get("OUT_ROOT"), href, tx, D["baihua"])
+        write("jieru/index.html", jieru_page(L, P)); urls.append(f"{DOMAIN}/{L.prefix}jieru/")
         routes = (f'<h2 class="ph">课本</h2><p class="note">按语文课读：课文里的每一章，原文、翻译、读音、朱熹注。</p><p><a href="{P}zhuanti/keben.html"><b>语文课本里的《论语》</b></a>：七年级上册、高中必修下册、高中选择性必修上册，3 课 25 章</p>') + routes  # 主人 11-08：不放单字网格
         body = body_zt_index(zlist)
     write("zhuanti/index.html", page(L, f'{L.t("zt_title")}｜一孔录', L.t("zt_sub"), "zhuanti/", body)); urls.append(f"{DOMAIN}/{L.prefix}zhuanti/")
