@@ -883,7 +883,7 @@ def analytics(L):
         a += f'<script>var _hmt=_hmt||[];(function(){{var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?{ANALYTICS["baidu"]}";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)}})();</script>'
     if ANALYTICS.get("live"):  # 在线与累计读者：worker/ 部署的计数服务；首页有 #live 才显示，其他页只发心跳
         tpl = LIVE_TXT.get(L.code, LIVE_TXT["en"]); sp = LIVE_PILL.get(L.code, LIVE_PILL["en"])
-        a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",EP=function(x){return [U,x].join(String.fromCharCode(47))},T=" + json.dumps(tpl, ensure_ascii=False) + ",S=" + json.dumps(sp, ensure_ascii=False)
+        a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",EP=function(x){return [U,x].join(String.fromCharCode(47))},T=" + json.dumps(tpl, ensure_ascii=False) + ",S=" + json.dumps(sp, ensure_ascii=False) + (";if(matchMedia(\"(max-width:700px)\").matches)S=" + json.dumps(LIVE_PILL_S[L.code], ensure_ascii=False) if L.code in LIVE_PILL_S else "")
               + ';function RUN(){var DB=document.querySelector(".donebox"),RC=document.getElementById("rc"),CC=DB?DB.getAttribute("data-c"):(RC?RC.getAttribute("data-c"):"");var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
               + 'function n(x){try{return x.toLocaleString(document.documentElement.lang||undefined)}catch(e){return x}}'
               + 'var BOT=!!navigator.webdriver||/bot|spider|crawl|slurp|headless|lighthouse|bingpreview|bytespider|petalbot|yandex|facebookexternalhit|semrush|ahrefs|mediapartners|inspectiontool/i.test(navigator.userAgent||"");'  # 11-14：搜索引擎渲染页面、自动化测试也会跑脚本，不记心跳、新设备和阅读
@@ -1129,7 +1129,8 @@ TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语�
 TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
 MEIRI_TXT = {"zh-Hans": {"h": "今日《论语》", "read": "读这一章", "card": "生成分享图", "plan": "百日读完《论语》"}, "zh-Hant": {"h": "今日《論語》", "read": "讀這一章", "card": "生成分享圖", "plan": "百日讀完《論語》"}}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
-LIVE_PILL = {"zh-Hans": "{o} 儒者在读 · 累计 {t}", "zh-Hant": "{o} 儒者在讀 · 累計 {t}", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
+LIVE_PILL_S = {"zh-Hans": "{o} 儒者在读 · 今天 {d}", "zh-Hant": "{o} 儒者在讀 · 今天 {d}"}  # 11-15 手机上页头放不下三段，只留在读和今天（主人：前台要显得活跃）
+LIVE_PILL = {"zh-Hans": "{o} 儒者在读 · 今天 {d} · 累计 {t}", "zh-Hant": "{o} 儒者在讀 · 今天 {d} · 累計 {t}", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
              "es": "Letrados leyendo: {o} · {t} en total", "de": "Gelehrte lesen: {o} · {t} gesamt", "vi": "{o} nhà nho đang đọc · {t} lượt", "id": "Cendekiawan membaca: {o} · total {t}", "ru": "Книжники читают: {o} · всего {t}"}
 # 11-09 晚主人定：不再显示、也不再统计“来自几个国家和地区”
 # 主人 11-08：单位用“儒者”，来的都是儒者；外文取各语里读书人的说法（英文 Confucians、越南 nhà nho、法 lettrés），写成“X：数”免得单复数不合
