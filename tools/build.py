@@ -576,9 +576,11 @@ def parse_zhaji(path):
             continue
         m = re.match(r"^- ([^：]+)：(.*)$", line)
         if m and m.group(1) in {f[0] for f in FIELDS}:
-            v = clean(m.group(2))
+            v = NEIBU_ZHU.sub("", clean(m.group(2))).strip()  # 11-15 主人：札记里给做片看的备注（“（标题、封面问）”“（本集只上朱注）”）不上网站
             if v and not v.startswith("这里只取"): cur["fields"][m.group(1)] = v
     return out
+
+NEIBU_ZHU = re.compile(r"（[^（）]{0,16}(?:标题|封面|片头|片尾|短片|本集|本片|这集|下集|插科|字幕|镜头|主人|小编)[^（）]{0,16}）")
 
 def quotes(s):
     return re.sub(r"“([^”]+)”", r'<span class="q">“\1”</span>', esc(s).replace("&quot;", '"'))
@@ -1151,10 +1153,16 @@ def meta_desc(L, title, rend, yw):  # 外语章页摘要：先本语言（标题
         d = d.rstrip(" ,.;:，。") + "…"
     return d
 
+def _strip_js_notes(h):
+    """11-15 主人“清理”：页面里内联脚本的注释带着内部备注（“11-09 主人”之类），出页前去掉这类整行注释，代码不动。"""
+    return re.sub(r"<script\b[^>]*>.*?</script>", lambda m: re.sub(r"(?m)[ \t]*(?<![:'\"\\])//[^\n'\"]*(?:主人|小编|线程)[^\n'\"]*$", "", m.group(0)), h, flags=re.S)
+
+
 # 11-15 翻章预取：只用 prefetch（只取回 HTML，不跑统计脚本，日访不多记），不用 prerender
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
     if not L.code.startswith("zh"): body = hant_scripture(body)
+    body = _strip_js_notes(body)
     url = f"{DOMAIN}/{L.prefix}{rel}"
     fp = __import__("hashlib").sha1(f"yikonglu.com|{L.code}|{rel}".encode()).hexdigest()[:12]  # 每页固定出处编号，搬走的页也带着
     def _own(d):
@@ -2349,6 +2357,7 @@ def build_lang(L, D, write):
         ttl = f"《论语·{pname}》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} · {L.book(p)} | 一孔录 Yikonglu"
         write(f"lunyu/{slug}/index.html", page(L, ttl, L.t("book_lead"), f"lunyu/{slug}/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/{slug}/")
     body = f'''<div class="chhead bk"><div class="wrap">{mcv(P, "", True)}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p><h1><span class="no">{L.t("lunyu_sub")}</span>{L.t("lunyu")}</h1></div></div>
+{XT.xt_html(L, P, home=True) if L.code.startswith("zh") and GX.load() else ""}
 <main class="wrap narrow"><p class="lead">{L.t("by_chapter")}</p>{ly_links(L, D, P)}<div class="pcards lyp">{"".join(pcard(p) for p in ALLP)}</div></main>{BOOK_JS}'''
     write("lunyu/index.html", page(L, ("《论语》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} | 一孔录 Yikonglu"), L.t("by_chapter"), "lunyu/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/")
 
@@ -2525,7 +2534,6 @@ def build_lang(L, D, write):
     home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" type="image/webp" srcset="/assets/hero-m.webp?v={HERO_V}" width="1080" height="745"><source media="(max-width:700px)" srcset="/assets/hero-m.jpg?v={HERO_V}" width="1080" height="745"><source type="image/webp" srcset="/assets/hero-w.webp?v={HERO_V}" width="1920" height="790"><img src="/assets/hero-w.jpg?v={HERO_V}" alt="{"一孔录原创角色同坐长桌读《论语》" if L.code.startswith("zh") else esc(L.t("hero_alt"))}" width="1920" height="790" fetchpriority="high"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div></section>
 <main class="home">
-{XT.xt_html(L, P, home=True) if L.code.startswith("zh") and GX.load() else ""}
 <section class="intro wrap narrow">
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
 {meiri_html}{meiri_js}{MEIRI_Q_JS if meiri_html else ""}

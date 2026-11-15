@@ -191,3 +191,60 @@ function hl(n){F.querySelectorAll('.yyp .hl').forEach(function(r){r.classList.to
 if(r&&P&&P.scrollHeight>P.clientHeight+4){var a=r.getBoundingClientRect(),b=P.getBoundingClientRect();P.scrollTo({top:P.scrollTop+a.top-b.top-(b.height-a.height)/2,behavior:'smooth'})}}
 Q.addEventListener('click',function(e){var s=e.target.closest('.ju');if(!s)return;F.querySelectorAll('.ju.lit').forEach(function(x){x.classList.remove('lit')});s.classList.add('lit');hl(s.dataset.n)});
 var h=location.hash.slice(1);if(/^s\\d+$/.test(h)){var t=document.getElementById(h);if(t&&Q.contains(t))setTimeout(function(){hl(t.dataset.n)},300)}})();</script>"""
+
+
+# ---------- 11-15 原页开卷（跟镜头、取字、画红框）与听读同步（逐字亮、慢速、跟读） ----------
+# 逐字时间：数据/网站素材/_逐字时间/<章>.json（炫技演示线程出，朗读重配后用它的 align_all.py 重出），只用 conf＝“稳”的章
+TM_DIR = os.path.join(SRC, "_逐字时间")
+CJK = re.compile(r"[㐀-鿿豈-﫿\U00020000-\U0002ffff]")
+_SHIFT = {}
+
+
+def _shift(p, ydir, w):
+    """原页面板切过白边的页，句框坐标要平移（同 page_pane）；没切的页不平移。w＝句列表里这页的宽。"""
+    if p in _SHIFT: return _SHIFT[p]
+    s = (0, 0)
+    jp = os.path.join(ydir, p + ".jpg") if ydir else ""
+    if jp and os.path.exists(jp):
+        from PIL import Image
+        k = Image.open(jp).width / w
+        bx0, by0, _, _ = [v / k for v in WM.crop_box(jp, p)]
+        s = (bx0, by0)
+    _SHIFT[p] = s
+    return s
+
+
+def timing(c):
+    f = os.path.join(TM_DIR, c + ".json")
+    if not os.path.exists(f): return None
+    d = json.load(open(f, encoding="utf-8"))
+    return d if d.get("conf") == "稳" else None
+
+
+def kj_data(c, sents, Z, ydir):
+    """章页原页开卷与听读同步的数据：z＝每个字在原页面板上的框 [页, x, y, w, h]（按诵读顺序，与原文里的汉字一一对应）；
+    t＝每个字的起止秒（只稳的章）；k＝小句 [起字, 止字]。字数对不上就不给。"""
+    d = Z["jl"].get(c)
+    if not d: return None
+    from opencc import OpenCC
+    t2s = OpenCC("t2s").convert
+    text = "".join(sents); zs = CJK.findall(text)
+    chars = d.get("chars") or [ch for s in d.get("sentences", []) for ch in s.get("chars", [])]
+    if len(chars) < len(zs) or _vn(t2s("".join(x[0] for x in chars[:len(zs)]))) != _vn("".join(zs)): return None
+    z = []
+    for ch, p, col, x0, y0, x1, y1 in chars[:len(zs)]:
+        sx, sy = _shift(p, ydir, d["pages"][p]["w"])
+        z.append([p, round(x0 - sx, 1), round(y0 - sy, 1), round(x1 - x0, 1), round(y1 - y0, 1)])
+    out = {"z": z}
+    tm = timing(c)
+    if tm and len(tm["chars"]) == len(zs) and _vn(t2s("".join(x[0] for x in tm["chars"]))) == _vn("".join(zs)):
+        out["t"] = [[round(a, 3), round(b, 3)] for _, a, b in tm["chars"]]
+        k, i = [], 0
+        for txt, a, b in tm.get("clauses") or []:
+            n = len(CJK.findall(txt)); k.append([i, i + n]); i += n
+        if i == len(zs): out["k"] = k
+        out["d"] = tm.get("dur")
+    return out
+
+
+KJ_JS = open(os.path.join(HERE, "kaijuan.js"), encoding="utf-8").read() if os.path.exists(os.path.join(HERE, "kaijuan.js")) else ""
