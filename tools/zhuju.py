@@ -253,3 +253,48 @@ KJ_JS = ("<script>" + re.sub(r"/\*.*?\*/", "", open(os.path.join(HERE, "kaijuan.
 def kj_tag(c, sents, Z, ydir):
     d = kj_data(c, sents, Z, ydir)
     return f'<script type="application/json" class="zjkj">{json.dumps(d, ensure_ascii=False, separators=(",", ":"))}</script>' if d else ""
+
+
+# ---------- 11-15 注音答案卡（十一项之 5）：数据/网站素材/_注音/<章>.json（炫技演示线程出，zi＝[字, 拼音, 注音符号, 多音字1, 依据]）----------
+# 只上：没有“待核”的章；与本章网站读音表（reads）每处都一致的章。对不上的章不上，等人核。
+ZY_DIR = os.path.join(SRC, "_注音")
+ZY_SKIP = {}
+
+
+def zhuyin(c, sents, reads):
+    f = os.path.join(ZY_DIR, c + ".json")
+    if not os.path.exists(f): return None
+    zi = json.load(open(f, encoding="utf-8")).get("zi") or []
+    if any("待核" in str(x[-1]) for x in zi): ZY_SKIP[c] = "待核"; return None
+    from opencc import OpenCC
+    t2s = OpenCC("t2s").convert
+    zs = CJK.findall("".join(sents))
+    if len(zs) != len(zi) or _vn(t2s("".join(zs))) != _vn(t2s("".join(x[0] for x in zi))): ZY_SKIP[c] = "字对不上"; return None
+    for r in reads or []:
+        du = re.sub(r"（.*?）", "", r.get("du", "")).strip()
+        occ = [x[1] for x in zi if x[0] == r.get("zi")]
+        if not occ: continue
+        multi = any(s in du for s in (" ", "；", "/", "，"))
+        if (multi and not all(o in du for o in occ)) or (not multi and any(o != du for o in occ)):
+            ZY_SKIP[c] = f"与网站读音表不一致：{r.get('zi')} 网站 {r.get('du')}，注音 {'/'.join(occ)}"; return None
+    return [[x[1], x[2], 1 if len(x) > 4 and x[3] == 1 and x[4] else 0] for x in zi]  # 赭色只标有依据（朗读换字、难字字典）的多音字，常见字不标
+
+
+def zy_section(c, sents, zy, bh_rows, esc):
+    """静态的逐句拼音、注音、意思、上一句下一句（搜索引擎看得到）。"""
+    k, out = 0, []
+    for j, s in enumerate(sents):
+        py, bp = [], []
+        for ch in s:
+            if CJK.match(ch) and k < len(zy):
+                py.append(zy[k][0]); bp.append(zy[k][1]); k += 1
+            elif py and not ch.isspace():
+                py[-1] += ch; bp[-1] += ch
+        bh = (bh_rows[j].get("bh") if j < len(bh_rows) else "") or ""
+        nb = []
+        if j > 0: nb.append(f"上一句：{esc(sents[j-1])}")
+        if j + 1 < len(sents): nb.append(f"下一句：{esc(sents[j+1])}")
+        out.append(f'<div class="zyju"><h3 lang="zh-Hans">{esc(s)}</h3><p class="zypy">{esc(" ".join(py))}</p><p class="zybp">{esc(" ".join(bp))}</p>'
+                   + (f'<p><b>意思：</b>{esc(bh)}</p>' if bh else "") + (f'<p class="note">{"　".join(nb)}</p>' if nb else "") + "</div>")
+    return ('<section class="sec sec-音" id="zhuyin"><h2><i>音</i>逐句拼音、注音与意思</h2>'
+            '<p class="note">读音照朱熹注定，和朗读一致。原文上方按“注”，可以把拼音或注音符号标在每个字上。</p>' + "".join(out) + "</section>")

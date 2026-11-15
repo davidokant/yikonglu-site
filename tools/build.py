@@ -2148,6 +2148,7 @@ def build_lang(L, D, write):
         dz = c in ZJD["on"] and L.code.startswith("zh") and c in ZJD["jl"]
         if dz:
             sents = split_ju(yw[c]); zpages, zper = ZJ.spans_of(c, sents, ZJD); zs = ZJ.card_data(c, ZJD, len(sents)) or []
+            zy_ = ZJ.zhuyin(c, sents, g["reads"])
             zrows = []
             for j, x in enumerate(sents, 1):
                 d = {k: zs[j-1].get(k) for k in ("bh", "zhu", "jj", "yk") if zs[j-1].get(k)} if j <= len(zs) else {}
@@ -2157,7 +2158,7 @@ def build_lang(L, D, write):
             fig_html = (f'<figure class="yuanwen dz"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span><button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button>{langdu_btn(L.code, c)}</div>'
                         f'<div class="dzgrid"><div><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-short="{f'yikonglu.com/lunyu/{c}' if L.code.startswith('zh') else ''}" data-sep="，" data-reads="{esc(json.dumps([[x["zi"], x["pos"], x["du"]] for x in g["reads"]], ensure_ascii=False))}" data-rl="{esc(L.t("ju_reads"))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}</div>'
                         f'<div class="yypane">{ZJ.page_pane(c, zpages, zper, "原页", ZJ.YDIR, f"论语 {c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页")}</div></div>'
-                        f'<script type="application/json" class="zjdata">{json.dumps(zrows, ensure_ascii=False).replace("</", "<\\/")}</script>{ZJ.kj_tag(c, sents, ZJD, ZJ.YDIR)}</figure>')
+                        f'<script type="application/json" class="zjdata">{json.dumps(zrows, ensure_ascii=False).replace("</", "<\\/")}</script>{ZJ.kj_tag(c, sents, ZJD, ZJ.YDIR)}{f'<script type="application/json" class="zjzy">{json.dumps(zy_, separators=(",", ":"))}</script>' if zy_ else ""}</figure>')
         else:
             fig_html = None
             if not L.code.startswith("zh") and c in ZJD["jl"]:  # 外文页（11-13 主人：英日版也要原页）：原文旁同屏原页，点句亮列；小卡只在简繁页
@@ -2183,7 +2184,7 @@ def build_lang(L, D, write):
 {GX.section(GXD, c, P, href, gx_short) if L.code.startswith("zh") else (GX.section_f(GXD, c, P, href, lambda x: hant_plain(gx_short(x)), L) if GXD and GX.has_lang(L.code) else "")}
 {cta_html(L, P)}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
-{fold(secs + yiwen_html(c) + extra)}
+{fold((ZJ.zy_section(c, sents, zy_, zrows, esc) if dz and zy_ else "") + secs + yiwen_html(c) + extra)}
 {citeit}
 </div>
 <p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>{RW.chip_line(D.get("renwu"), c, P) if L.code.startswith("zh") else ""}{GS.footer_line(D.get("gushi"), c, P) if L.code.startswith("zh") else ""}

@@ -407,6 +407,18 @@ var h=location.hash.slice(1);if(/^s\d+$/.test(h)){var t=document.getElementById(
       t.parentNode.replaceChild(fr, t);
     });
   });
+  // —— 注音（十一項之 5）：“注”按鈕在 拼音 → 注音符號 → 不注 之間切；多音字赭色 ——
+  (function () {
+    var el = F.querySelector('.zjzy'), Y; if (!el) return; try { Y = JSON.parse(el.textContent); } catch (e) { return; }
+    if (Y.length !== Z.length) return;
+    Z.forEach(function (e, i) { e.dataset.py = Y[i][0]; e.dataset.bp = Y[i][1]; if (Y[i][2]) e.classList.add('zpoly'); });
+    var tools = F.querySelector('.dztools'), yb = F.querySelector('.yibtn'); if (!tools) return;
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'yibtn zybtn'; b.textContent = '注'; b.title = '在字上標拼音或注音符號'; b.setAttribute('aria-pressed', 'false');
+    tools.insertBefore(b, yb ? yb.nextSibling : tools.querySelector('.ldbtn'));
+    var M = ['', 'py', 'bp'], LB = ['注', '拼音', '注音'], k = 0; try { k = +(localStorage.getItem('yk_zy') || 0) % 3; } catch (e) { }
+    function set() { F.classList.remove('zy-py', 'zy-bp'); if (M[k]) F.classList.add('zy-' + M[k]); b.textContent = LB[k]; b.setAttribute('aria-pressed', k ? 'true' : 'false'); try { localStorage.setItem('yk_zy', k); } catch (e) { } }
+    b.addEventListener('click', function () { k = (k + 1) % 3; set(); }); set();
+  })();
   if (!PANE || Z.length !== J.z.length) return;
   var SV = {}; PANE.querySelectorAll('.yyp').forEach(function (a) { var s = a.querySelector('svg'); if (s) SV[a.dataset.p] = s; });
   var R = J.z.map(function (b, i) {
