@@ -1045,7 +1045,7 @@ def langdu_html(code, c, book="lunyu"):  # 没有“译”按钮的页（外文�
 ZD_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "zidian.json")  # 论语难字字典（11-11 主人要提前做）：点字看读音、朱注训诂、全书出处；读音与原文朗读同一张表
 ZD = json.load(open(ZD_FILE, encoding="utf-8")) if os.path.exists(ZD_FILE) else {"occ": {}, "per": {}}
 ZD_ON = os.environ.get("YK_ZIDIAN", "1") != "0"
-ZHAI = set(x for x in os.environ.get("YK_ZHAI", "").split(",") if x)  # 可摘段（十一项之 2）：样张先只开 1.1，主人“过”了再铺全部
+ZHAI_OFF = os.environ.get("YK_ZHAI") == "off"  # 可摘段（十一项之 2）：11-15 主人看过 1.1 样张说“过”，铺到全部已讲章；YK_ZHAI=off 可关
 def zx(code, c, j, x):  # 句里难字加点线，点了弹小卡（只在中文页）
     if not (ZD_ON and code.startswith("zh")): return esc(x)
     m = {o: k for jj, o, k, g, s in ZD["per"].get(c, []) if jj == j}
@@ -2145,7 +2145,7 @@ def build_lang(L, D, write):
         bh = D["baihua"].get(c)
         bh_h2 = f'{L.t("baihua")}：“{esc(seo_q(yw[c]))}”是什么意思' if L.code.startswith("zh") else L.t("baihua")  # 主人 11-07 定：标题带读者会问的话
         bh_html = f'<section class="sec sec-白"><h2><i>白</i>{bh_h2}</h2><p lang="zh-Hans">{esc(bh)}</p><p class="note">{L.t("baihua_note")}</p></section>' if bh else ""
-        if c in ZHAI and L.code.startswith("zh"):  # 11-15 十一项之 2 可摘段：每段单独复制出去也看得出书名、章号、原句、页码、网址；只用页面上已有的话拼（先 1.1 样张）
+        if not ZHAI_OFF and L.code.startswith("zh"):  # 11-15 十一项之 2 可摘段：每段单独复制出去也看得出书名、章号、原句、页码、网址；只用页面上已有的话拼
             _qp = sorted(set(g.get("qw_pages") or []), key=int)
             _pg = f'朱熹《论语集注》《四部备要》本第 {"—".join(dict.fromkeys([_qp[0], _qp[-1]])) if _qp else "?"} 页'
             _sig = f"一孔录 yikonglu.com/lunyu/{c}"; _hd = f"《论语》{c}“{title_of(c)}”"
@@ -2311,7 +2311,8 @@ def build_lang(L, D, write):
                 wj_gist, wj_faq = "", []
                 if an.get("片里落点") or c in D["zy"]:
                     an_lab, an_txt = (YKAN["zh"][0], D["zy"][c]["text"]) if c in D["zy"] else ykan("zh", an["片里落点"], an.get("常见读法"), an.get("字眼"))
-                    wj_gist = (f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p></section>' if zhL else
+                    _zh = (f'{esc(f"《论语》{c}“{title_of(c)}”")}，', f'<small class="zhai">（一孔录 yikonglu.com/lunyu/{c}）</small>') if zhL and not ZHAI_OFF else ("", "")  # 可摘段：未讲章的一孔按也自带出处
+                    wj_gist = (f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(an_lab)}</b>{_zh[0]}{quotes(an_txt)}{_zh[1]}</p></section>' if zhL else
                                f'<section class="gist ykan"><h2>{L.t("ch_gist")}</h2><p lang="zh-Hans"><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p><p class="note">{L.t("wj_an_note")}</p></section>')
                     wj_faq = [] if not zhL else ([{"@type": "Question", "name": f"论语 {c}（{pname}）这一章讲什么？", "acceptedAnswer": {"@type": "Answer", "text": an["片里落点"]}}] if an.get("片里落点") else []) + \
                              [{"@type": "Question", "name": "一孔录怎么读这一章？", "acceptedAnswer": {"@type": "Answer", "text": an_lab + an_txt}}]
