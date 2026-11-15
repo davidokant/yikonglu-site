@@ -66,7 +66,7 @@ def build(L, D, R, write, page, P, rel_of, title_of, DOMAIN):
     for c, q in qw.items(): yw.setdefault(c, q["text"])  # 未讲章也有原文（全书上网后各章都有页）
     U = lambda rel: f"{DOMAIN}/{L.prefix}{rel}"
     head = lambda h, sub, crumb="": f'<div class="chhead"><div class="wrap">{crumb}<h1><span class="no">{esc(sub)}</span>{esc(h)}</h1></div></div>'
-    crumb = f'<p class="crumb"><a href="{P}lunyu/">《论语》</a> › <a href="{P}lunyu/guanxi/#rw">关系图 · 人物</a></p>'
+    crumb = f'<p class="crumb"><a href="{P}lunyu/">《论语》</a> › <a href="{P}lunyu/guanxi/#rw">同问异答与人物</a></p>'
     cards = ""; card_of = {}
     for p in sorted(R, key=lambda p: -len(p["apps"])):
         n_pub = sum(1 for a in p["apps"] if a[0] in pub)
@@ -82,7 +82,7 @@ def build(L, D, R, write, page, P, rel_of, title_of, DOMAIN):
         rel = f"renwu/{p['id']}.html"
         bk = "、".join(f"《{b}》" for b in p["books"])
         body = head(p["name"], f"{bk}出场 {len(p['apps'])} 章，已讲 {n_pub} 章", crumb) + f'''
-<main class="wrap narrow"><dl class="rwmeta">{meta}</dl>{f'<p class="gxmore"><a href="{P}lunyu/guanxi/#p-{GXID[p["id"]]}">在关系图里看{esc(p["name"])}：出场各章与常同章的人 ›</a></p>' if p["id"] in GXID else ""}<h2 class="ph">{bk}出场各章</h2><ol class="ztl">{items}</ol>
+<main class="wrap narrow"><dl class="rwmeta">{meta}</dl>{f'<p class="gxmore"><a href="{P}lunyu/guanxi/#p-{GXID[p["id"]]}">看{esc(p["name"])}出场各章与常同章的人 ›</a></p>' if p["id"] in GXID else ""}<h2 class="ph">{bk}出场各章</h2><ol class="ztl">{items}</ol>
 <p class="note">按本站分章排列。已讲的章带读法与注家原页；标“未讲”的章只有原文与各家注。</p></main>'''
         ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "alternateName": [x for x in re.split(r"[、，,]", p["alias"]) if x] or None,
               "description": p["role"] or None, "url": U(rel), "subjectOf": {"@type": "Book", "name": "论语"}}

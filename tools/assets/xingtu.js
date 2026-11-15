@@ -9,7 +9,7 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   let started = false;
   const io = new IntersectionObserver(es => { if (started || !es.some(e => e.isIntersecting)) return; started = true; io.disconnect();
-    fetch(root.dataset.src).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(go).catch(() => { const c = $('.card', root); if (c) c.innerHTML = '<p>星图没取到，<a href="' + root.dataset.p + 'lunyu/guanxi/">去关系图页看</a>。</p>'; });
+    fetch(root.dataset.src).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(go).catch(() => { const c = $('.card', root); if (c) c.innerHTML = '<p>星图没取到，<a href="' + root.dataset.p + 'lunyu/guanxi/">去看同问异答与人物</a>。</p>'; });
   }, { rootMargin: '200px 0px' });
   io.observe(root);
   const whenVisible = (node, on, off, th) => { const o = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? on() : off && off()), { threshold: th }); o.observe(node); };

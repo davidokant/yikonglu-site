@@ -1,4 +1,4 @@
-"""《论语》星图（11-15 主人定：首页招牌，并替换 /lunyu/guanxi/ 的平面图）。
+"""《论语》星图（11-15 主人定：首页招牌，；11-15 晚主人：关系图页撤掉星图栏，改名“同问异答与人物”）。
 498 章排成一圈玉璧，人物、同一个问题、场合、别的书是圈里圈外的星。数据＝tools/lunyu_guanxi.json，做法照炫技演示 prep.py 的“星图”一段。
 页面：xt_html() 出画布和控件；脚本 /assets/xingtu.js 进入视口才取 <语种前缀>/data/xingtu.json、才开动画；减少动态效果时停成静态。只简繁。"""
 import json, os, math, hashlib, collections, html
@@ -127,7 +127,7 @@ def js_ver():
 
 def xt_html(L, P, home=False):
     """画布＋控件。home=True 时带标题行和“去关系图”链接。"""
-    hd = (f'<div class="xthead"><h2 class="ph"><a href="{P}lunyu/guanxi/">《论语》星图</a></h2><p>全书 498 章排成一圈，一颗星一章。同一句话出现两次、同一个问题问了几回、同一个人出场几十章，都连成线。点一颗星，看它连着谁。</p></div>' if home else "")
+    hd = (f'<div class="xthead"><h2 class="ph">《论语》星图</h2><p>全书 498 章排成一圈，一颗星一章。同一句话出现两次、同一个问题问了几回、同一个人出场几十章，都连成线。点一颗星，看它连着谁。同问异答和人物的对照表，见<a href="{P}lunyu/guanxi/">同问异答与人物</a>。</p></div>' if home else "")
     return (f'<section class="xtsec{" xthome" if home else ""}">{hd}<div class="xt" id="xt" data-src="{P}data/xingtu.json" data-p="{P}">'
             '<canvas aria-label="《论语》关系星图：可拖动旋转，点星看这一章连着哪几章"></canvas>'
             '<div class="hud"><input type="search" placeholder="章号、字句或人名" aria-label="在星图里找">'
@@ -136,5 +136,5 @@ def xt_html(L, P, home=False):
             '<button type="button" data-f="b" aria-pressed="false">别的书</button><button type="button" class="rand">随便点一章</button><button type="button" class="reset">复位</button></div>'
             '<p class="legend">一颗星一章，亮的讲过，大的连线多。拖动旋转；手机上左右划。再点一次选中的星，打开那一章。</p>'
             '<div class="card" aria-live="polite"><h4>《论语》星图</h4><p>滑到这里，星图就会亮起来。</p></div></div>'
-            f'<noscript><p class="note"><a href="{P}lunyu/guanxi/">看《论语》关系图</a></p></noscript></section>'
+            f'<noscript><p class="note"><a href="{P}lunyu/guanxi/">看《论语》同问异答与人物</a></p></noscript></section>'
             f'<script src="/assets/xingtu.js?v={js_ver()}" defer></script>')

@@ -40,7 +40,7 @@ def section(G, c, P, href, short):
     for g in dict.fromkeys(r["group"] for r in T["同问异答"]):
         w = G["wd"][g]
         li = "".join(f'<li{" class=on" if _c(it["c"]) == c else ""}><a href="{href(_c(it["c"]))}">{_c(it["c"])}</a> {esc(it["who"])}：{esc(it["a"])}</li>' for it in w["items"])
-        row.append(("同问异答", f'<p>{esc(w["q"])}，全书 {len(w["items"])} 次，问的人不同，答得不同：</p><ol class="gxwd">{li}</ol><p class="gxmore"><a href="{P}lunyu/guanxi/#{g}">在关系图里看</a></p>'))
+        row.append(("同问异答", f'<p>{esc(w["q"])}，全书 {len(w["items"])} 次，问的人不同，答得不同：</p><ol class="gxwd">{li}</ol><p class="gxmore"><a href="{P}lunyu/guanxi/#{g}">同问异答对照表</a></p>'))
     if T["互见"]:
         row.append(("互见", "<ul>" + "".join(f'<li><a href="{href(_c(r["b"]))}">论语 {_c(r["b"])}</a> {esc(short(_c(r["b"])))}</li>' for r in T["互见"]) + "</ul>"))
     if T["书外互见"]:
@@ -71,13 +71,13 @@ def section(G, c, P, href, short):
     row.sort(key=lambda x: ORDER.index(x[0]))
     return (f'<section class="gx" id="lian"><h2>这一章连着</h2><dl>'
             + "".join(f"<dt>{HEAD[k]}</dt><dd>{v}</dd>" for k, v in row)
-            + f'</dl><p class="gxmore"><a href="{P}lunyu/guanxi/">全书关系图</a> · <a href="{P}duben.html">《论语》智器重建本 PDF</a></p></section>')
+            + f'</dl><p class="gxmore"><a href="{P}lunyu/#xt">全书星图</a> · <a href="{P}lunyu/guanxi/">同问异答与人物</a> · <a href="{P}duben.html">《论语》智器重建本 PDF</a></p></section>')
 
 
 GX_JS = r"""<script>
 (function(){var D=JSON.parse(document.getElementById('gxdata').textContent),NS='http://www.w3.org/2000/svg';
 function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
-function tabs(){var h=location.hash.slice(1),v=/^p-/.test(h)?'rw':(D.wd.some(function(g){return g.id===h})?'wd':(h==='rw'||h==='wd'?h:'all'));
+function tabs(){var h=location.hash.slice(1),v=/^p-/.test(h)?'rw':(D.wd.some(function(g){return g.id===h})?'wd':(h==='rw'||h==='wd'?h:(document.getElementById('v-all')?'all':'wd')));
 document.querySelectorAll('.gxtab button').forEach(function(b){b.classList.toggle('on',b.dataset.v===v)});document.querySelectorAll('.gxview').forEach(function(s){s.hidden=s.id!=='v-'+v});
 if(v==='rw')person(/^p-/.test(h)?h.slice(2):D.rw[0].id);if(v==='wd'&&h&&h!=='wd'){var g=document.getElementById(h);if(g)g.scrollIntoView()}}
 document.querySelectorAll('.gxtab button').forEach(function(b){b.onclick=function(){location.hash=b.dataset.v}});
@@ -154,21 +154,19 @@ def build(L, G, write, page, P, href, short, PIAN, pub, DOMAIN):
         sv += f'<circle cx="{cx}" cy="{cy}" r="40" class="gxme"/><text x="{cx}" y="{cy + 7}" text-anchor="middle" class="gxt b">{esc(g["q"])}</text></svg>'
         li = "".join(f'<li><a href="{href(_c(it["c"]))}">论语 {_c(it["c"])}</a> {esc(it["who"])}：{esc(it["a"])}{f"<small>{esc(it["note"])}</small>" if it.get("note") else ""}</li>' for it in g["items"])
         wdh += f'<section class="gxcard" id="{g["id"]}"><h3>{esc(g["q"])} · 全书 {n} 次</h3>{sv}<ol>{li}</ol></section>'
-    body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">全书 498 章 · 197 位人物</span>《论语》关系图</h1></div></div>
-<main class="wrap guanxi"><p class="lead">《论语》二十篇四百九十八章，看着一章一章是散的，其实处处连着：同一句话在两处出现，同一个问题孔子答不同的人，同一个弟子在几十章里出场。全书共 {sum(v for k, v in st.items() if k != "年历"):,} 条关系，都记在《论语》智器重建本里，<a href="{P}duben.html">PDF 免费下载</a>。</p>
-<div class="gxtab" role="tablist"><button type="button" data-v="all">全书一张网</button><button type="button" data-v="wd">同问异答</button><button type="button" data-v="rw">人物</button></div>
-<section class="gxview" id="v-all"><p class="note">一颗星一章，按二十篇排成一圈，亮的是已经讲过的章。绿线是同一句话在书里出现两次（本书互见 {st.get("互见", 0)} 条），金色菱形是同一个问题的几问几答（同问异答 {len(wd)} 组）；上面的按钮还能打开人物、场合和别的书。点一颗星看它连着哪几章，再点一次打开那一章。</p>
-{XT.xt_html(L, P)}</section>
+    body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">全书 7 组同问 · 197 位人物</span>《论语》同问异答与人物</h1></div></div>
+<main class="wrap guanxi"><p class="lead">同一个问题，孔子对不同的人答得不一样；同一个弟子，在几十章里出场。这一页把这两条线单独拎出来：同问异答 {len(wd)} 组并排对照，{len(rw)} 位人物各在哪几章、常和谁同章。全书 498 章怎样连成一张网，看<a href="{P}lunyu/#xt">《论语》星图</a>；全书 {sum(v for k, v in st.items() if k != "年历"):,} 条关系都记在《论语》智器重建本里，<a href="{P}duben.html">PDF 免费下载</a>。</p>
+<div class="gxtab" role="tablist"><button type="button" data-v="wd">同问异答</button><button type="button" data-v="rw">人物</button></div>
 <section class="gxview" id="v-wd" hidden><p class="note">同一个问题，孔子对不同的人答得不一样。这是读《论语》最要紧的一条线：答案跟着人走。</p>{wdh}</section>
 <section class="gxview" id="v-rw" hidden><p class="note">《论语》里有名有姓的人共 {len(rw)} 位。点一个人，内圈是他出场的章，外圈是常和他同章出现的人，数字是同章几次。</p>
 <p><input id="gxq" type="search" placeholder="搜人名，如：子路、颜回、管仲" aria-label="搜人名"></p><p id="gxrwlist" class="gxchips"></p>
 <p id="gxrwh" class="gxinfo"></p><div class="gxwrap"><svg id="gxrw" viewBox="0 0 760 600" role="img" aria-label="人物与章的关系"></svg></div><p id="gxrwchs" class="gxchips s"></p></section>
 <script type="application/json" id="gxdata">{data}</script>{GX_JS}</main>'''
-    write("lunyu/guanxi/index.html", page(L, "《论语》关系图与人物：全书 498 章怎样连着｜一孔录", "同问异答、本书互见、197 位人物各在哪几章。", "lunyu/guanxi/", body, codes=["zh-Hans", "zh-Hant"]))
+    write("lunyu/guanxi/index.html", page(L, "《论语》同问异答与人物：孔子怎样因人作答，197 位人物各在哪几章｜一孔录", "同一个问题孔子对不同的人答得不一样：问仁、问孝、问政等 7 组并排对照；《论语》197 位人物各在哪几章出场、常和谁同章。", "lunyu/guanxi/", body, codes=["zh-Hans", "zh-Hant"]))
     dst = f"/{L.prefix}lunyu/guanxi/"
     for old, tab in (("guanxi/index.html", ""), ("renwu/index.html", "#rw")):  # 旧网址跳过来，带上 #
-        write(old, f'<!doctype html><meta charset="utf-8"><title>《论语》关系图｜一孔录</title><link rel="canonical" href="{DOMAIN}{dst}"><meta name="robots" content="noindex">'
-                   f'<script>location.replace("{dst}"+(location.hash||"{tab}"))</script><meta http-equiv="refresh" content="0;url={dst}{tab}"><a href="{dst}{tab}">《论语》关系图</a>')
+        write(old, f'<!doctype html><meta charset="utf-8"><title>《论语》同问异答与人物｜一孔录</title><link rel="canonical" href="{DOMAIN}{dst}"><meta name="robots" content="noindex">'
+                   f'<script>location.replace("{dst}"+(location.hash||"{tab}"))</script><meta http-equiv="refresh" content="0;url={dst}{tab}"><a href="{dst}{tab}">《论语》同问异答与人物</a>')
     return [f"{DOMAIN}{dst}"]
 
 def rw_ids(G, R):
