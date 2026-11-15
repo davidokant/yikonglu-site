@@ -1,5 +1,6 @@
 // 一孔录网站在线人数与累计读者数（Cloudflare Worker + 一个 Durable Object）
 // POST /hit  {id, first}  页面每 60 秒发一次心跳；first=true 表示这台设备第一次来，累计数加一
+// 11-15：/hit、/stats 另给 today＝今天（北京时间）来过的设备数，老读者回来也算（前台宽口径，主人：宁可偏多）
 // GET  /stats            返回 {online, total, k}；k＝来过的国家/地区数（只记 Cloudflare 给的两位国家码，不存 IP）
 // POST /hit 带 c（章号）时记一次阅读：按天计数（7 天滚动）＋最近读过的章
 // POST /copy {c, s}      某句被复制/分享一次（7 天滚动）
@@ -31,6 +32,11 @@ export default {
 export class Live {
   constructor(state) { this.state = state; this.seen = new Map(); this.total = null; }
   async getTotal() { if (this.total === null) this.total = (await this.state.storage.get("total")) || 0; return this.total; }
+  async markDay(id) { // 今天来过的设备：只记随机编号，过了北京时间零点就清
+    const d = this.day(); if (!this.dv || this.dv.d !== d) { const o = await this.state.storage.get("dv"); this.dv = o && o.d === d ? { d, ids: new Set(o.ids) } : { d, ids: new Set() }; }
+    if (this.dv.ids.has(id) || this.dv.ids.size >= 50000) return; this.dv.ids.add(id); await this.state.storage.put("dv", { d, ids: [...this.dv.ids] });
+  }
+  async todayN() { const d = this.day(); if (!this.dv || this.dv.d !== d) { const o = await this.state.storage.get("dv"); this.dv = o && o.d === d ? { d, ids: new Set(o.ids) } : { d, ids: new Set() }; } return this.dv.ids.size; }
   online() { const n = Date.now(); for (const [k, t] of this.seen) if (n - t > WINDOW) this.seen.delete(k); return this.seen.size; }
   day() { return new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 10); }
   async roll(key) { // 7 天滚动的 {day:{k:n}}
@@ -46,6 +52,7 @@ export class Live {
       let b = {}; try { b = await req.json(); } catch (e) {}
       const id = String(b.id || "").slice(0, 40);
       if (id) this.seen.set(id, Date.now());
+      if (id) await this.markDay(id);
       if (b.first === true) { this.total = (await this.getTotal()) + 1; await this.state.storage.put("total", this.total); }
       const c = String(b.c || "");
       if (OKC.test(c) || OKB.test(c)) { // 11-13：道德经 ddj.N、三字经 szj.N 也记
@@ -107,6 +114,6 @@ export class Live {
       if (req.method === "POST") { t++; d++; await this.state.storage.put({ [kt]: t, [kd]: d }); }
       return Response.json({ today: d, total: t });
     } else if (!(req.method === "GET" && url.pathname === "/stats")) return new Response("not found", { status: 404 });
-    return Response.json({ online: Math.max(1, this.online()), total: await this.getTotal() });
+    return Response.json({ online: Math.max(1, this.online()), total: await this.getTotal(), today: Math.max(1, await this.todayN()) });
   }
 }
