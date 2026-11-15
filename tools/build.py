@@ -1032,7 +1032,7 @@ LANGDU = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file_
 LANGDU_TXT = {"zh-Hans": "音", "zh-Hant": "音", "en": "Audio", "ja": "音", "ko": "음성", "fr": "Audio", "es": "Audio", "de": "Audio", "vi": "Nghe", "id": "Audio", "ru": "Аудио"}  # 11-11 主人：按钮跟“译”一样大小并排，一个译一个音，不写谁的声音
 LANGDU_TITLE = {"zh-Hans": "朗读原文", "zh-Hant": "朗讀原文"}
 LANGDU_JS = ('<script>(function(){var B=document.currentScript.previousElementSibling,A=null;function st(p){B.setAttribute("aria-pressed",p?"true":"false")}'
-             'B.addEventListener("click",function(){if(!A){A=new Audio(B.getAttribute("data-src"));A.addEventListener("ended",function(){st(false)});A.addEventListener("pause",function(){st(false)});A.addEventListener("play",function(){st(true)})}if(A.paused)A.play().catch(function(){});else A.pause()})})();</script>')
+             'B.addEventListener("click",function(){if(!A){A=new Audio(B.getAttribute("data-src"));B.ykA=A;B.dispatchEvent(new Event("ykaudio"));A.addEventListener("ended",function(){st(false)});A.addEventListener("pause",function(){st(false)});A.addEventListener("play",function(){st(true)})}if(A.paused)A.play().catch(function(){});else A.pause()})})();</script>')
 LANGDU_DDJ = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-ddj.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-ddj.json")) else set()  # 道德经原文朗读（11-13 主人要上），文件在 langdu/daodejing/<章>.mp3
 def langdu_btn(code, c, book="lunyu"):
     if c not in {"daodejing": LANGDU_DDJ, "sanzijing": globals().get("LANGDU_SZJ", set())}.get(book, LANGDU): return ""
@@ -2157,7 +2157,7 @@ def build_lang(L, D, write):
             fig_html = (f'<figure class="yuanwen dz"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span><button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button>{langdu_btn(L.code, c)}</div>'
                         f'<div class="dzgrid"><div><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-short="{f'yikonglu.com/lunyu/{c}' if L.code.startswith('zh') else ''}" data-sep="，" data-reads="{esc(json.dumps([[x["zi"], x["pos"], x["du"]] for x in g["reads"]], ensure_ascii=False))}" data-rl="{esc(L.t("ju_reads"))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}</div>'
                         f'<div class="yypane">{ZJ.page_pane(c, zpages, zper, "原页", ZJ.YDIR, f"论语 {c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页")}</div></div>'
-                        f'<script type="application/json" class="zjdata">{json.dumps(zrows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
+                        f'<script type="application/json" class="zjdata">{json.dumps(zrows, ensure_ascii=False).replace("</", "<\\/")}</script>{ZJ.kj_tag(c, sents, ZJD, ZJ.YDIR)}</figure>')
         else:
             fig_html = None
             if not L.code.startswith("zh") and c in ZJD["jl"]:  # 外文页（11-13 主人：英日版也要原页）：原文旁同屏原页，点句亮列；小卡只在简繁页
@@ -2225,7 +2225,7 @@ def build_lang(L, D, write):
             ("citation_publication_date", first.replace("-", "/")), ("citation_online_date", DATE_TOK_SL),
             ("citation_language", L.hreflang), ("citation_public_url", url),
             ("DC.title", name), ("DC.creator", "一孔录"), ("DC.date", first), ("DC.language", L.hreflang), ("DC.source", SOURCE)])
-        write(rel, page(L, ttl, desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@IMG@", "做成分享图").replace("@NONE@", "这一句没有收。") if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.HL_JS if "nocard" in fig_html else ""), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
+        write(rel, page(L, ttl, desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@IMG@", "做成分享图").replace("@NONE@", "这一句没有收。") if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.HL_JS if "nocard" in fig_html else "") + (ZJ.KJ_JS if 'class="zjkj"' in fig_html else ""), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
 
 
     # 未讲各章：出简繁和英日（WJ_FL）。原文（朱注分章底本）、白话初稿、本句互见、异文、各家注本；原页同屏、视频位（11-08）
@@ -2283,7 +2283,7 @@ def build_lang(L, D, write):
                     wj_fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span>{yib}{langdu_btn(L.code, c)}</div>'
                               f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>'
                               + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
-                              f'<script type="application/json" class="zjdata">{json.dumps(wj_rows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
+                              f'<script type="application/json" class="zjdata">{json.dumps(wj_rows, ensure_ascii=False).replace("</", "<\\/")}</script>{ZJ.kj_tag(c, sents, ZJD, ZJ.YDIR) if zpages else ""}</figure>')
                 elif pane:
                     wj_fig = (f'<figure class="yuanwen wjpg"><div class="dzgrid"><div>{bq}{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{cap}</figcaption>{rend_html}</div>'
                               f'<div class="yypane">{pane}</div></div></figure>')
@@ -2353,7 +2353,7 @@ def build_lang(L, D, write):
                       "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "论语"},
                       "isBasedOn": {"@type": "Book", "name": "论语集注", "author": {"@type": "Person", "name": "朱熹"}}}
                 if wj_faq: ld.pop("@context"); ld = {"@context": "https://schema.org", "@graph": [ld, {"@type": "FAQPage", "mainEntity": wj_faq}]}
-                write(rel, page(L, L.t("wj_title", book=pname, c=c, head=seo_head(text)) if zhL else f"{L.t('lunyu')} {c} {ctitle(c)} | 一孔录 Yikonglu", desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace('<button data-a="img">@IMG@</button>', "").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。") if wj_dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.HL_JS if "nocard" in wj_fig else ""), ld, "pg-chapter pg-wj", og_img=D["og"].get(c, {}).get("tri"), codes=WJ_CODES)); urls.append(url)
+                write(rel, page(L, L.t("wj_title", book=pname, c=c, head=seo_head(text)) if zhL else f"{L.t('lunyu')} {c} {ctitle(c)} | 一孔录 Yikonglu", desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace('<button data-a="img">@IMG@</button>', "").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。") if wj_dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.HL_JS if "nocard" in wj_fig else "") + (ZJ.KJ_JS if 'class="zjkj"' in wj_fig else ""), ld, "pg-chapter pg-wj", og_img=D["og"].get(c, {}).get("tri"), codes=WJ_CODES)); urls.append(url)
                 search_idx.append({"c": c, "t": ctitle(c), "u": P + rel, "y": text, "x": (tr + " " if tr else "") + (bh or "") + " " + " ".join(v["text"] for v in D["zhuben"].get(c, {}).values())})
 
     urls += build_ddj(L, D, write, P, search_idx if (L.code.startswith("zh") or L.code in DDJ_TR) else None)

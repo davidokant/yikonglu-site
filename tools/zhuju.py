@@ -247,4 +247,9 @@ def kj_data(c, sents, Z, ydir):
     return out
 
 
-KJ_JS = open(os.path.join(HERE, "kaijuan.js"), encoding="utf-8").read() if os.path.exists(os.path.join(HERE, "kaijuan.js")) else ""
+KJ_JS = ("<script>" + re.sub(r"/\*.*?\*/", "", open(os.path.join(HERE, "kaijuan.js"), encoding="utf-8").read(), flags=re.S) + "</script>") if os.path.exists(os.path.join(HERE, "kaijuan.js")) else ""
+
+
+def kj_tag(c, sents, Z, ydir):
+    d = kj_data(c, sents, Z, ydir)
+    return f'<script type="application/json" class="zjkj">{json.dumps(d, ensure_ascii=False, separators=(",", ":"))}</script>' if d else ""

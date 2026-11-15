@@ -910,3 +910,20 @@ h1{view-transition-name:ttl}
 .jrq{border-left:3px solid var(--accent);margin:8px 0;padding:6px 12px;background:var(--paper);overflow-wrap:anywhere}
 .jren{margin-top:26px;border-top:1px solid var(--line);padding-top:6px}
 .jieru code{overflow-wrap:anywhere}
+/* 11-15 原页开卷、听读同步 */
+.ju .zc{font-style:normal;transition:color .15s,opacity .2s}
+.ju .zc.kjw{opacity:.15}
+.kjplay .ju .zc{color:var(--mute)}
+.kjplay .ju .zc.kjd{color:var(--fg)}
+.kjplay .ju .zc.kjn{color:#B22222;text-shadow:0 0 .01em #B22222}
+.kjtile{position:fixed;z-index:60;pointer-events:none;background-repeat:no-repeat;transform-origin:50% 50%;box-shadow:0 2px 8px rgba(0,0,0,.25);border-radius:2px}
+.yyp .zcb{fill:rgba(178,34,34,.10);stroke:none;opacity:0}
+.yyp .zcb.on{opacity:1}
+.yyp .zcb.now{opacity:1;fill:rgba(178,34,34,.28);stroke:#B22222;stroke-width:3}
+.yyp .hl.kjdraw{opacity:1;fill:rgba(178,34,34,0);animation:kjdraw .8s cubic-bezier(.3,.1,.2,1) forwards}
+@keyframes kjdraw{70%{stroke-dashoffset:0;fill:rgba(178,34,34,0)}to{stroke-dashoffset:0;fill:rgba(178,34,34,.16)}}
+.kjhome{display:none;position:absolute;top:6px;right:6px;z-index:3;font-size:12px;padding:1px 9px;border:1px solid var(--line);border-radius:99px;background:var(--bg);color:var(--accent);cursor:pointer}
+.yypane.kjzoom .kjhome{display:block}
+.kjwait{min-height:0;margin:4px 0 0;color:#B22222;font-weight:700;font-size:15px}
+.kjwait:empty{display:none}
+@media (prefers-reduced-motion:reduce){.yyp .hl.kjdraw{animation:none;stroke-dashoffset:0!important;fill:rgba(178,34,34,.16)}.ju .zc.kjw{opacity:1}}
