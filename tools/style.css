@@ -406,7 +406,7 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .yypane:has(.yyp ~ .yyp){position:relative;top:0;max-height:none;overflow:visible}
 /* 手机（样板，待主人定）：原页收成小图贴在原文上方，点句红框照样亮；点小图页内放大，红框保留 */
 @media (max-width:700px){.yypane,.yypane:has(.yyp ~ .yyp){position:sticky;top:calc(var(--toph,0px) + 4px);z-index:5;max-height:none;overflow-x:auto;overflow-y:hidden;order:-1;display:flex;flex-direction:row-reverse;justify-content:flex-start;gap:10px;padding:6px 6px 2px;background:var(--bg);border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.06)}
-.yypane .yyp{width:auto;flex-shrink:0}.yypane .yyp:first-child{margin-right:auto}.yypane .yyp:last-child{margin-left:auto}.yypane .yyp svg{width:auto;height:min(40vw,150px);border:1px solid var(--line);background:#fff}.yypane .yyp span{font-size:11px;padding:2px 0 2px}.yypane .yyp .hl{stroke-width:14}}
+.yypane .yyp{width:auto;flex-shrink:0}.yypane .yyp:first-of-type{margin-right:auto}.yypane .yyp:last-of-type{margin-left:auto}.yypane .yyp svg{width:auto;height:min(40vw,150px);border:1px solid var(--line);background:#fff}.yypane .yyp span{font-size:11px;padding:2px 0 2px}.yypane .yyp .hl{stroke-width:14}}
 .yyzoom{position:fixed;inset:0;z-index:120;background:#1b1e1c;overflow:auto;-webkit-overflow-scrolling:touch}
 .yyzoom .yyzh{position:fixed;top:0;left:0;right:0;z-index:1;display:flex;align-items:center;gap:10px;height:44px;padding:0 10px;background:rgba(27,30,28,.92);color:#eee;font-size:14px}
 .yyzoom .yyzh b{font-weight:600;margin-right:auto}.yyzoom .yyzh button,.yyzoom .yyzh a{font:inherit;color:#eee;background:rgba(255,255,255,.12);border:0;border-radius:6px;padding:6px 12px;line-height:1;text-decoration:none}
@@ -924,8 +924,6 @@ h1{view-transition-name:ttl}
 @keyframes kjdraw{70%{stroke-dashoffset:0;fill:rgba(178,34,34,0)}to{stroke-dashoffset:0;fill:rgba(178,34,34,.16)}}
 .kjhome{display:none;position:absolute;top:6px;right:6px;z-index:3;font-size:12px;padding:1px 9px;border:1px solid var(--line);border-radius:99px;background:var(--bg);color:var(--accent);cursor:pointer}
 .yypane.kjzoom .kjhome{display:block}
-.kjwait{min-height:0;margin:4px 0 0;color:#B22222;font-weight:700;font-size:15px}
-.kjwait:empty{display:none}
 @media (prefers-reduced-motion:reduce){.yyp .hl.kjdraw{animation:none;stroke-dashoffset:0!important;fill:rgba(178,34,34,.16)}.ju .zc.kjw{opacity:1}}
 /* 11-15 注音答案卡 */
 .zy-py blockquote,.zy-bp blockquote{line-height:2.6}
@@ -938,3 +936,16 @@ h1{view-transition-name:ttl}
 .zyju h3{font-size:18px;margin:0 0 2px}
 .zyju .zypy{font-family:system-ui,sans-serif;color:var(--accent);margin:2px 0}
 .zyju .zybp{color:var(--mute);margin:2px 0;font-size:14px}
+/* 11-15 一字一页 */
+.zizhuan .zihead{display:flex;align-items:baseline;gap:14px;margin:6px 0 4px}
+.zizhuan .zihead b{font-size:64px;line-height:1.1;color:var(--accent)}
+.zizhuan .zihead span{font-size:26px;color:var(--accent2);font-family:system-ui,sans-serif}
+.zig{list-style:none;padding:0;margin:6px 0}.zig li{padding:8px 0;border-top:1px solid var(--line)}.zig q{font-size:17px;quotes:none}.zig small{display:block;color:var(--mute);margin-top:2px}
+.zio{padding-left:1.4em}.zio li{margin:8px 0;line-height:1.7}.zio em{font-style:normal;color:var(--accent2);margin-right:4px}.zio span{display:block;color:var(--mute)}.zio b{color:#B22222}
+.zichips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.zichips a{display:flex;flex-direction:column;align-items:center;min-width:64px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--paper);text-decoration:none;color:var(--fg)}
+.zichips b{font-size:24px}.zichips span{font-size:12.5px;color:var(--accent2)}.zichips small{font-size:11px;color:var(--mute)}
+.zipop .zil{display:inline-block;margin-top:6px;font-weight:700}
+.kjtip{margin:6px 0 2px;padding:6px 12px;border-left:3px solid #B22222;background:rgba(178,34,34,.06);color:var(--fg);font-size:14.5px;line-height:1.6;border-radius:0 6px 6px 0;animation:kjtip 2.4s ease-in-out 3}
+.kjtip b{color:#B22222}
+@keyframes kjtip{50%{background:rgba(178,34,34,.14)}}
+@media (prefers-reduced-motion:reduce){.kjtip{animation:none}}

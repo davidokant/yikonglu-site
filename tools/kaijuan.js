@@ -1,6 +1,6 @@
 /* 11-15 原页开卷与听读同步（主人定的十一项之 7、9）。
    开卷：点一句，原页小窗跟镜头推到那几列，红框一笔画出来，字一个个从原页取下来落进原文。
-   听读：按“音”朗读时，读到哪个字哪个字亮，原页小窗跟着走；可慢速，可跟读（读完一小句停下来等你读）。
+   听读：按“音”朗读时，读到哪个字哪个字亮，原页小窗跟着走；可慢速。（跟读 11-15 主人撤掉：中间停顿和网速叠在一起容易漏音）
    数据在 figure 里的 .zjkj（tools/zhuju.py kj_data 出）：z 每字原页框，t 每字起止秒（只有对得准的章才有），k 小句。
    减少动态效果时：不飞字、不推镜头动画，直接到位。 */
 (function () {
@@ -96,7 +96,12 @@
       a.onfinish = a.oncancel = function () { tl.remove(); e.classList.remove('kjw'); };
     });
   }
+  // 第一次来的人看不到“点句”这回事：原文下面放一行提示，点过一次就不再出（11-15 主人）
+  var TIP = 'yk_kjtip', tip = null, seenTip = false; try { seenTip = localStorage.getItem(TIP) === '1'; } catch (e) { }
+  if (!seenTip) { tip = document.createElement('p'); tip.className = 'kjtip'; tip.innerHTML = '<b>点任意一句试试</b>：原页上会框出它在哪几列，字一个个从原书里落下来。'; Q.parentNode.insertBefore(tip, Q.nextSibling); }
+  function tipDone() { if (tip) { tip.remove(); tip = null; } try { localStorage.setItem(TIP, '1'); } catch (e) { } }
   function open(n) {
+    tipDone();
     var ix = []; sentOf.forEach(function (s, i) { if (s === n) ix.push(i); }); if (!ix.length) return;
     var bb = bbox(ix); if (!bb) return;
     look(bb[0], bb[1], 520); draw(n);
@@ -110,13 +115,11 @@
   if (!B || !J.t) return;
   var T = J.t, K = J.k || [[0, T.length]], tools = B.parentNode;
   var mk = function (cls, txt, tip) { var b = document.createElement('button'); b.type = 'button'; b.className = 'ldbtn ' + cls; b.textContent = txt; b.title = tip; b.setAttribute('aria-pressed', 'false'); tools.insertBefore(b, B.nextSibling.nextSibling ? B.nextSibling : null); return b; };
-  var folB = mk('kjfol', '跟读', '读完一小句停下来，等你跟着读'), slowB = mk('kjslow', '慢', '慢一点读（0.8 倍）');
-  tools.insertBefore(slowB, B.nextSibling); tools.insertBefore(folB, slowB.nextSibling);
-  var hint = document.createElement('p'); hint.className = 'kjwait'; hint.setAttribute('aria-live', 'polite'); Q.parentNode.insertBefore(hint, Q.nextSibling);
-  var slow = false, follow = false, raf = 0, curK = -1, waited = -1, timer = 0, lastI = -2;
+  var slowB = mk('kjslow', '慢', '慢一点读（0.8 倍）');
+  tools.insertBefore(slowB, B.nextSibling);
+  var slow = false, raf = 0, curK = -1, lastI = -2;
   var kOf = []; K.forEach(function (k, j) { for (var i = k[0]; i < k[1]; i++) kOf[i] = j; });
   slowB.addEventListener('click', function () { slow = !slow; slowB.setAttribute('aria-pressed', slow); if (A) A.playbackRate = slow ? .8 : 1; });
-  folB.addEventListener('click', function () { follow = !follow; folB.setAttribute('aria-pressed', follow); if (!follow && timer) { clearTimeout(timer); timer = 0; hint.textContent = ''; if (A) A.play().catch(function () { }); } });
   function paint(done, now) {
     var key = done + '/' + now; if (key === lastI) return; lastI = key;
     Z.forEach(function (e, i) { e.classList.toggle('kjd', i < done); e.classList.toggle('kjn', i === now); if (R[i]) { R[i].classList.toggle('on', i < done); R[i].classList.toggle('now', i === now); } });
@@ -127,23 +130,12 @@
   function loop() {
     var t = A.currentTime, idx = -1; for (var i = 0; i < T.length; i++) if (t >= T[i][0]) idx = i; else break;
     var inC = idx >= 0 && t <= T[idx][1] + .12; paint(inC ? idx : idx + 1, inC ? idx : -1);
-    if (follow && idx >= 0) {
-      var k = kOf[idx], end = T[K[k][1] - 1][1];
-      if (idx === K[k][1] - 1 && t >= end + .04 && waited < k && k < K.length - 1) {
-        waited = k; A.pause(); var hold = (end - T[K[k][0]][0]) * 1.25 + .6, txt = '';
-        for (var j = K[k][0]; j < K[k][1]; j++) txt += Z[j].textContent;
-        hint.textContent = '该你读了：' + txt;
-        timer = setTimeout(function () { timer = 0; hint.textContent = ''; A.play().catch(function () { }); }, hold * 1000 / A.playbackRate);
-        return;
-      }
-    }
     if (!A.paused) raf = requestAnimationFrame(loop);
   }
   B.addEventListener('ykaudio', function () {
     A = B.ykA; A.playbackRate = slow ? .8 : 1;
-    A.addEventListener('play', function () { if (A.currentTime < .05) { clear(); waited = -1; } A.playbackRate = slow ? .8 : 1; F.classList.add('kjplay'); cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); });
-    A.addEventListener('pause', function () { cancelAnimationFrame(raf); if (!timer) hint.textContent = ''; });
+    A.addEventListener('play', function () { if (A.currentTime < .05) clear(); A.playbackRate = slow ? .8 : 1; F.classList.add('kjplay'); cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); });
+    A.addEventListener('pause', function () { cancelAnimationFrame(raf); });
     A.addEventListener('ended', function () { paint(T.length, -1); setTimeout(function () { clear(); home(600); }, 1600); });
   });
-  B.addEventListener('click', function () { if (timer) { clearTimeout(timer); timer = 0; hint.textContent = ''; } });
 })();

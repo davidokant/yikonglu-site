@@ -14,6 +14,7 @@ import renwu as RW
 import zhuju as ZJ
 import shuyuan as SY
 import lunyu_extra as LX  # 11-14 只为《论语》做的：年历、场合用句、课本带读
+import zizhuan as ZZ  # 11-15 一字一页 /zi/
 import xingtu as XT  # 11-15《论语》星图：首页招牌、关系图页
 import guanxi as GX  # 11-14 《论语》智器重建本的关系：章页“这一章连着”、关系图页 /guanxi/
 
@@ -1056,7 +1057,7 @@ function show(z){var it=D.i[z.dataset.o];if(!it)return;if(cur)cur.classList.remo
 P.querySelector('.zz').textContent=it[0];P.querySelector('.zp').textContent=it[1];
 var g=P.querySelector('.zg');g.textContent='';if(it[2]){g.appendChild(document.createTextNode(it[2]));var s=document.createElement('small');s.textContent='（'+it[3]+'）';g.appendChild(s)}g.hidden=!it[2];
 var o=P.querySelector('.zo'),L=D.o[it[0]+'|'+it[1]]||[];o.textContent='全书读 '+it[1]+' 的「'+it[0]+'」共 '+L.length+' 章：';
-L.forEach(function(x,i){if(i)o.appendChild(document.createTextNode(' '));var a=document.createElement(x[0]===D.c?'b':'a');a.textContent=x[0];if(x[0]!==D.c)a.href=x[1];o.appendChild(a)});
+L.forEach(function(x,i){if(i)o.appendChild(document.createTextNode(' '));var a=document.createElement(x[0]===D.c?'b':'a');a.textContent=x[0];if(x[0]!==D.c)a.href=x[1];o.appendChild(a)});var U=D.u&&D.u[it[0]+'|'+it[1]];if(U){var ua=document.createElement('a');ua.className='zil';ua.href=U;ua.textContent='这个字的专页 ›';o.appendChild(document.createElement('br'));o.appendChild(ua)}
 var r=z.getBoundingClientRect();P.hidden=false;P.style.top=(window.scrollY+r.bottom+6)+'px';P.style.left=Math.max(8,Math.min(window.scrollX+r.left-12,document.documentElement.clientWidth-P.offsetWidth-8))+'px';var pr=P.getBoundingClientRect();if(pr.bottom>innerHeight)window.scrollBy({top:pr.bottom-innerHeight+12,behavior:'smooth'})}
 document.addEventListener('click',function(e){var z=e.target.closest&&e.target.closest('.nz');if(z){e.stopPropagation();e.preventDefault();if(cur===z)off();else show(z);return}
 if(!P.hidden&&!P.contains(e.target))off();else if(e.target.closest&&e.target.closest('.zx'))off()},true);
@@ -1065,7 +1066,8 @@ def zi_tail(code, c, P):
     if not (ZD_ON and code.startswith("zh")) or c not in ZD["per"]: return ""
     items = {f"{j}.{o}": [k.split("|")[0], k.split("|")[1], g, s] for j, o, k, g, s in ZD["per"][c]}
     occ = {k: [[x, f"{P}lunyu/{PIAN[x.split('.')[0]][1]}/{x.split('.')[1]}.html"] for x in ZD["occ"].get(k, [])] for k in {r[2] for r in ZD["per"][c]}}
-    d = json.dumps({"i": items, "o": occ, "c": c}, ensure_ascii=False).replace("</", "<\\/")
+    zu = ZZ.urls_map(ZD, P); zu = {k: zu[k] for k in occ if k in zu}
+    d = json.dumps({"i": items, "o": occ, "c": c, "u": zu}, ensure_ascii=False).replace("</", "<\\/")
     return f'<script type="application/json" id="zidata">{d}</script>' + ZI_JS
 WJ_TR = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json")) else {}  # 未讲章原文英日译（分享图用）
 # 11-14 外文补译（智器译，见 tools/i18n/fill-<语种>.json）：界面漏译、首页日历与领读人、四种分享卡、关系图页框；nianli-tr.json 是年历 365 课“今日一句”九种外文
@@ -2884,6 +2886,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
         urls += LX.build(L, D, D["lx"], write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, json.load(open(ZD_FILE, encoding="utf-8"))["per"] if os.path.exists(ZD_FILE) else {})
         LX.write_data(L, D["lx"], globals().get("OUT_ROOT"), href, tx, D["baihua"])
         write("jieru/index.html", jieru_page(L, P)); urls.append(f"{DOMAIN}/{L.prefix}jieru/")
+        if ZD_ON: urls += ZZ.build(L, ZD, write, page, P, href, ctitle, tx, split_ju, DOMAIN)
         routes = (f'<h2 class="ph">课本</h2><p class="note">按语文课读：课文里的每一章，原文、翻译、读音、朱熹注。</p><p><a href="{P}zhuanti/keben.html"><b>语文课本里的《论语》</b></a>：七年级上册、高中必修下册、高中选择性必修上册，3 课 25 章</p>') + routes  # 主人 11-08：不放单字网格
         body = body_zt_index(zlist)
     write("zhuanti/index.html", page(L, f'{L.t("zt_title")}｜一孔录', L.t("zt_sub"), "zhuanti/", body)); urls.append(f"{DOMAIN}/{L.prefix}zhuanti/")

@@ -483,7 +483,12 @@ var h=location.hash.slice(1);if(/^s\d+$/.test(h)){var t=document.getElementById(
       a.onfinish = a.oncancel = function () { tl.remove(); e.classList.remove('kjw'); };
     });
   }
+
+  var TIP = 'yk_kjtip', tip = null, seenTip = false; try { seenTip = localStorage.getItem(TIP) === '1'; } catch (e) { }
+  if (!seenTip) { tip = document.createElement('p'); tip.className = 'kjtip'; tip.innerHTML = '<b>點任意一句試試</b>：原頁上會框出它在哪幾列，字一個個從原書裡落下來。'; Q.parentNode.insertBefore(tip, Q.nextSibling); }
+  function tipDone() { if (tip) { tip.remove(); tip = null; } try { localStorage.setItem(TIP, '1'); } catch (e) { } }
   function open(n) {
+    tipDone();
     var ix = []; sentOf.forEach(function (s, i) { if (s === n) ix.push(i); }); if (!ix.length) return;
     var bb = bbox(ix); if (!bb) return;
     look(bb[0], bb[1], 520); draw(n);
@@ -497,13 +502,11 @@ var h=location.hash.slice(1);if(/^s\d+$/.test(h)){var t=document.getElementById(
   if (!B || !J.t) return;
   var T = J.t, K = J.k || [[0, T.length]], tools = B.parentNode;
   var mk = function (cls, txt, tip) { var b = document.createElement('button'); b.type = 'button'; b.className = 'ldbtn ' + cls; b.textContent = txt; b.title = tip; b.setAttribute('aria-pressed', 'false'); tools.insertBefore(b, B.nextSibling.nextSibling ? B.nextSibling : null); return b; };
-  var folB = mk('kjfol', '跟讀', '讀完一小句停下來，等你跟著讀'), slowB = mk('kjslow', '慢', '慢一點讀（0.8 倍）');
-  tools.insertBefore(slowB, B.nextSibling); tools.insertBefore(folB, slowB.nextSibling);
-  var hint = document.createElement('p'); hint.className = 'kjwait'; hint.setAttribute('aria-live', 'polite'); Q.parentNode.insertBefore(hint, Q.nextSibling);
-  var slow = false, follow = false, raf = 0, curK = -1, waited = -1, timer = 0, lastI = -2;
+  var slowB = mk('kjslow', '慢', '慢一點讀（0.8 倍）');
+  tools.insertBefore(slowB, B.nextSibling);
+  var slow = false, raf = 0, curK = -1, lastI = -2;
   var kOf = []; K.forEach(function (k, j) { for (var i = k[0]; i < k[1]; i++) kOf[i] = j; });
   slowB.addEventListener('click', function () { slow = !slow; slowB.setAttribute('aria-pressed', slow); if (A) A.playbackRate = slow ? .8 : 1; });
-  folB.addEventListener('click', function () { follow = !follow; folB.setAttribute('aria-pressed', follow); if (!follow && timer) { clearTimeout(timer); timer = 0; hint.textContent = ''; if (A) A.play().catch(function () { }); } });
   function paint(done, now) {
     var key = done + '/' + now; if (key === lastI) return; lastI = key;
     Z.forEach(function (e, i) { e.classList.toggle('kjd', i < done); e.classList.toggle('kjn', i === now); if (R[i]) { R[i].classList.toggle('on', i < done); R[i].classList.toggle('now', i === now); } });
@@ -514,25 +517,14 @@ var h=location.hash.slice(1);if(/^s\d+$/.test(h)){var t=document.getElementById(
   function loop() {
     var t = A.currentTime, idx = -1; for (var i = 0; i < T.length; i++) if (t >= T[i][0]) idx = i; else break;
     var inC = idx >= 0 && t <= T[idx][1] + .12; paint(inC ? idx : idx + 1, inC ? idx : -1);
-    if (follow && idx >= 0) {
-      var k = kOf[idx], end = T[K[k][1] - 1][1];
-      if (idx === K[k][1] - 1 && t >= end + .04 && waited < k && k < K.length - 1) {
-        waited = k; A.pause(); var hold = (end - T[K[k][0]][0]) * 1.25 + .6, txt = '';
-        for (var j = K[k][0]; j < K[k][1]; j++) txt += Z[j].textContent;
-        hint.textContent = '該你讀了：' + txt;
-        timer = setTimeout(function () { timer = 0; hint.textContent = ''; A.play().catch(function () { }); }, hold * 1000 / A.playbackRate);
-        return;
-      }
-    }
     if (!A.paused) raf = requestAnimationFrame(loop);
   }
   B.addEventListener('ykaudio', function () {
     A = B.ykA; A.playbackRate = slow ? .8 : 1;
-    A.addEventListener('play', function () { if (A.currentTime < .05) { clear(); waited = -1; } A.playbackRate = slow ? .8 : 1; F.classList.add('kjplay'); cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); });
-    A.addEventListener('pause', function () { cancelAnimationFrame(raf); if (!timer) hint.textContent = ''; });
+    A.addEventListener('play', function () { if (A.currentTime < .05) clear(); A.playbackRate = slow ? .8 : 1; F.classList.add('kjplay'); cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); });
+    A.addEventListener('pause', function () { cancelAnimationFrame(raf); });
     A.addEventListener('ended', function () { paint(T.length, -1); setTimeout(function () { clear(); home(600); }, 1600); });
   });
-  B.addEventListener('click', function () { if (timer) { clearTimeout(timer); timer = 0; hint.textContent = ''; } });
 })();
 </script>
 <section class="follow"><div class="wrap"><h2>關注一孔錄，輕鬆讀經典</h2><div class="fl"><figure><img src="/assets/wechat-qr.jpg" alt="WeChat QR" width="129" height="129" loading="lazy"><figcaption>有問題想問一孔錄？關注公眾號「一孔錄」留言，每週選答，進片署你的網名。或在官網點「<a href="/zh-hant/wen.html">問一孔</a>」。</figcaption></figure><a class="btn yt" id="fyt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ 在 YouTube 訂閱</a></div></div></section><script>(function(){var z="";try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}if(!/^Asia\/(Shanghai|Chongqing|Chungking|Harbin|Urumqi|Kashgar)$|^PRC$/.test(z))return;var a=document.getElementById("fyt");if(!a)return;a.href="https://space.bilibili.com/18385461";a.className="btn bl";a.textContent="在嗶哩嗶哩關注"})();</script>
