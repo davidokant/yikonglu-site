@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-15",
+ "updated": "2026-11-16",
  "N": 20,
  "chapters": 139,
  "score": 4.1,
@@ -253,15 +253,15 @@
  ],
  "index": {
   "bing": {
-   "indexed": 2,
-   "total": 6440,
-   "date": "/Date(1794182400000)/"
+   "indexed": 3,
+   "total": 6644,
+   "date": "/Date(1794441600000)/"
   }
  },
  "draft_change": {
   "ratio": 19.7,
   "episodes": 44,
   "segments": 1338,
-  "updated": "2026-11-14"
+  "updated": "2026-11-15"
  }
 }
