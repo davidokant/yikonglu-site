@@ -115,6 +115,40 @@ def _thumbs(c, D, pname):
                    for x in _pages_of(c, D) if x in D["pages_avail"])
 
 
+def _ics_fold(line):
+    """iCalendar 每行不超过 75 字节，超了折行（续行以空格开头），不拆开多字节字。"""
+    out, cur = [], b""
+    for ch in line:
+        b = ch.encode("utf-8")
+        if len(cur) + len(b) > (75 if not out else 74): out.append(cur); cur = b""
+        cur += b
+    out.append(cur)
+    return "\r\n ".join(x.decode("utf-8") for x in out)
+
+
+def _ics_esc(t): return t.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
+
+
+def nl_ics(L, X, P, href, ctitle, tx, DOMAIN):
+    """11-15 年历订阅：2027-01-01 起每天一条全天事件，年年循环（RRULE YEARLY）；闰年 2 月 29 日是补读日，不出事件。"""
+    import datetime as _dt
+    hant = L.code == "zh-Hant"
+    name = "一孔錄《論語》年曆" if hant else "一孔录《论语》年历"
+    rows = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//yikonglu.com//nianli//ZH", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+            f"X-WR-CALNAME:{name}", "X-WR-TIMEZONE:Asia/Shanghai", "REFRESH-INTERVAL;VALUE=DURATION:P7D", "X-PUBLISHED-TTL:P7D",
+            f"X-WR-CALDESC:{_ics_esc(('一年 365 課，每天一課讀完《論語》。' if hant else '一年 365 课，每天一课读完《论语》。') + DOMAIN + P + 'nianli/')}"]
+    for r in X["nl"]:
+        d0 = _dt.date(2027, r["m"], r["d"]); d1 = d0 + _dt.timedelta(days=1)
+        cs = r["cs"]
+        summ = f"論語 {'、'.join(cs)} {ctitle(cs[0])}" if hant else f"论语 {'、'.join(cs)} {ctitle(cs[0])}"
+        desc = "\n\n".join(f"{'論語' if hant else '论语'} {c}：{tx(c)}\n{DOMAIN}{href(c)}" for c in cs)
+        rows += ["BEGIN:VEVENT", f"UID:nianli-{r['n']}-{L.code}@yikonglu.com", "DTSTAMP:20261115T000000Z",
+                 f"DTSTART;VALUE=DATE:{d0:%Y%m%d}", f"DTEND;VALUE=DATE:{d1:%Y%m%d}", "RRULE:FREQ=YEARLY",
+                 f"SUMMARY:{_ics_esc(summ)}", f"DESCRIPTION:{_ics_esc(desc)}", f"URL:{DOMAIN}{href(cs[0])}", "TRANSP:TRANSPARENT", "END:VEVENT"]
+    rows.append("END:VCALENDAR")
+    return "\r\n".join(_ics_fold(x) for x in rows) + "\r\n"
+
+
 def build(L, D, X, write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, zidian):
     if L.code not in ZH: return []
     urls, codes = [], list(ZH)
@@ -137,6 +171,8 @@ def build(L, D, X, write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, zidia
         first, last = X["nl"][0], X["nl"][-1]
         body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">一年读完一遍 · 每天一课</span>《论语》年历</h1></div></div>
 <main class="wrap narrow nianli"><p class="lead">《论语》全书 498 章，排成 365 课。1 月 1 日读第 1 课“{esc(first["q"])}”，12 月 31 日读第 365 课“{esc(last["q"])}”。年年同一天读同一章，哪天开始都行：从那天那一课读起，读满一年正好一轮。</p>
+<div class="nlsub"><p><a class="btn" href="webcal://yikonglu.com{P}nianli/lunyu.ics">订阅到手机日历</a> <a class="btn ghost" href="{P}nianli/lunyu.ics" download>下载日历文件</a></p>
+<p class="note">2027 年 1 月 1 日起，日历里每天一条：章号、题目、原句和章页链接，年年循环。苹果手机和 Mac：点“订阅到手机日历”，再点“订阅”。谷歌日历：在电脑上打开 calendar.google.com，左边“其他日历”点“＋”，选“通过网址添加”，粘贴 <code>https://yikonglu.com{P}nianli/lunyu.ics</code>；加好后，登录同一个谷歌账号的安卓手机也会出现。</p></div>
 <p class="note">首页的“今日《论语》”每天按这张表读一课。一课多是一章，短章两三章并成一课，只在同一篇里并。闰年 2 月 29 日不排新课，做补读日。教师节、孔子诞辰另有加读一章，不挪正课。</p>
 <div class="nltoday" id="nltoday" hidden></div>
 <div class="nlbday" id="nlbday"><p class="nlbh"><b>你生日那天读哪一句？</b>找找看，做成一张卡片，分享给朋友看看。</p>
@@ -155,6 +191,7 @@ function show(go){{var md=M.value+"-"+Dd.value,li=document.querySelector('.nll l
 document.querySelectorAll(".nll li.bd").forEach(function(x){{x.classList.remove("bd")}});li.classList.add("bd");var a=li.querySelector(".nlc a"),q=li.querySelector("q");
 O.innerHTML='<p><b>'+li.querySelector("em").textContent+(li.querySelector("b")?" · "+li.querySelector("b").textContent:"")+'</b></p>'+(q?'<blockquote lang="zh-Hans">'+q.textContent+'</blockquote>':'')+(a?'<p><a class="btn" href="'+a.getAttribute("href")+'?bd=1">做成我的生日卡 →</a> <a class="btn ghost" href="'+a.getAttribute("href")+'">读这一课</a> <a class="btn ghost" href="#'+li.id+'">在表里看</a></p>':'<p>'+li.querySelector(".nlc").textContent+'</p>');O.hidden=false}}
 F.onsubmit=function(e){{e.preventDefault();show()}};if(b0[0])show()}})();</script>'''
+        write("nianli/lunyu.ics", nl_ics(L, X, P, href, ctitle, tx, DOMAIN))
         write("nianli/index.html", page(L, "《论语》年历：一年 365 课，每天一课读完全书｜一孔录",
                                         "《论语》498 章排成 365 课，1 月 1 日“学而时习之”，12 月 31 日“不知命，无以为君子也”。年年同一天读同一章，从今天那一课读起，一年一轮。", "nianli/", body, codes=codes))
         urls.append(f"{DOMAIN}/{L.prefix}nianli/")

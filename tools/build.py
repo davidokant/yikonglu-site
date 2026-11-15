@@ -14,6 +14,7 @@ import renwu as RW
 import zhuju as ZJ
 import shuyuan as SY
 import lunyu_extra as LX  # 11-14 只为《论语》做的：年历、场合用句、课本带读
+import xingtu as XT  # 11-15《论语》星图：首页招牌、关系图页
 import guanxi as GX  # 11-14 《论语》智器重建本的关系：章页“这一章连着”、关系图页 /guanxi/
 
 DOMAIN = "https://yikonglu.com"
@@ -1150,6 +1151,7 @@ def meta_desc(L, title, rend, yw):  # 外语章页摘要：先本语言（标题
         d = d.rstrip(" ,.;:，。") + "…"
     return d
 
+# 11-15 翻章预取：只用 prefetch（只取回 HTML，不跑统计脚本，日访不多记），不用 prerender
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
     if not L.code.startswith("zh"): body = hant_scripture(body)
@@ -1207,6 +1209,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <meta name="twitter:card" content="summary_large_image">
 {head_fonts(L.code)}
 <link rel="stylesheet" href="/style.css">
+<script type="speculationrules">{{"prefetch":[{{"where":{{"or":[{{"href_matches":"/lunyu/*"}},{{"href_matches":"/*/lunyu/*"}}]}},"eagerness":"moderate"}}]}}</script>
 {ld}
 {analytics(L)}
 </head>
@@ -2522,6 +2525,7 @@ def build_lang(L, D, write):
     home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" type="image/webp" srcset="/assets/hero-m.webp?v={HERO_V}" width="1080" height="745"><source media="(max-width:700px)" srcset="/assets/hero-m.jpg?v={HERO_V}" width="1080" height="745"><source type="image/webp" srcset="/assets/hero-w.webp?v={HERO_V}" width="1920" height="790"><img src="/assets/hero-w.jpg?v={HERO_V}" alt="{"一孔录原创角色同坐长桌读《论语》" if L.code.startswith("zh") else esc(L.t("hero_alt"))}" width="1920" height="790" fetchpriority="high"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div></section>
 <main class="home">
+{XT.xt_html(L, P, home=True) if L.code.startswith("zh") and GX.load() else ""}
 <section class="intro wrap narrow">
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
 {meiri_html}{meiri_js}{MEIRI_Q_JS if meiri_html else ""}
@@ -2839,6 +2843,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
         urls.append(f"{DOMAIN}/{L.prefix}jihua/bairi.html")
         GX.RWID = GX.rw_ids(GXD, D.get("renwu"))  # 关系图人物 id → 人物卡 id
         urls += GX.build(L, GXD, write, page, P, href, gx_short, PIAN, pubset, DOMAIN)
+        XT.write_data(write, XT.data(GXD, PIAN, pubset, href, ctitle, tx, D["lx"]))
         urls += LX.build(L, D, D["lx"], write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, json.load(open(ZD_FILE, encoding="utf-8"))["per"] if os.path.exists(ZD_FILE) else {})
         LX.write_data(L, D["lx"], globals().get("OUT_ROOT"), href, tx, D["baihua"])
         routes = (f'<h2 class="ph">课本</h2><p class="note">按语文课读：课文里的每一章，原文、翻译、读音、朱熹注。</p><p><a href="{P}zhuanti/keben.html"><b>语文课本里的《论语》</b></a>：七年级上册、高中必修下册、高中选择性必修上册，3 课 25 章</p>') + routes  # 主人 11-08：不放单字网格

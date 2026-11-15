@@ -2,6 +2,7 @@
 数据：tools/lunyu_guanxi.json（读本线程出的统一关系表，PDF 与网站同源；新版到了整份换掉）。先只简繁。
 一条关系 a 端是论语章，b 端可无；本书互见每条只记一次，两端都显示。"""
 import json, os, re, html, collections
+import xingtu as XT
 
 FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lunyu_guanxi.json")
 esc = html.escape
@@ -81,7 +82,7 @@ document.querySelectorAll('.gxtab button').forEach(function(b){b.classList.toggl
 if(v==='rw')person(/^p-/.test(h)?h.slice(2):D.rw[0].id);if(v==='wd'&&h&&h!=='wd'){var g=document.getElementById(h);if(g)g.scrollIntoView()}}
 document.querySelectorAll('.gxtab button').forEach(function(b){b.onclick=function(){location.hash=b.dataset.v}});
 /* 全书一张网 */
-var S=document.getElementById('gxall'),W=760,R=330,C=380,N=D.ch.length,gap=0.035,tot=2*Math.PI-gap*20,pos={},info=document.getElementById('gxinfo');
+var S=document.getElementById('gxall'),W=760,R=330,C=380,N=D.ch.length,gap=0.035,tot=2*Math.PI-gap*20,pos={},info=document.getElementById('gxinfo')||document.createElement('p');if(!S){var _w=document.createElement('div');S=el('svg',{},_w.appendChild(document.createElement('div')))}/* 11-15 简繁页平面图换成星图，这段只剩给人物分页备数据 */
 var k=0,pi=-1;D.ch.forEach(function(x,i){if(x[1]!==pi){pi=x[1];k++}var a=-Math.PI/2+gap*(k-1)+tot*i/N+gap/2;pos[x[0]]=[C+R*Math.cos(a),C+R*Math.sin(a),a]});
 var gS=el('g',{},S),gE=el('g',{},S),gN=el('g',{},S);
 function arc(a,b,cls){var p=pos[a],q=pos[b];if(!p||!q)return;el('path',{d:'M'+p[0]+' '+p[1]+' Q'+C+' '+C+' '+q[0]+' '+q[1],'class':'gxe '+cls,'data-a':a,'data-b':b},gE)}
@@ -156,8 +157,8 @@ def build(L, G, write, page, P, href, short, PIAN, pub, DOMAIN):
     body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">全书 498 章 · 197 位人物</span>《论语》关系图</h1></div></div>
 <main class="wrap guanxi"><p class="lead">《论语》二十篇四百九十八章，看着一章一章是散的，其实处处连着：同一句话在两处出现，同一个问题孔子答不同的人，同一个弟子在几十章里出场。全书共 {sum(v for k, v in st.items() if k != "年历"):,} 条关系，都记在《论语》智器重建本里，<a href="{P}duben.html">PDF 免费下载</a>。</p>
 <div class="gxtab" role="tablist"><button type="button" data-v="all">全书一张网</button><button type="button" data-v="wd">同问异答</button><button type="button" data-v="rw">人物</button></div>
-<section class="gxview" id="v-all"><p class="note">圆周上一个点是一章，按二十篇排一圈，深色的点是已经讲过的章。绿线是同一句话在书里出现两次（本书互见 {st.get("互见", 0)} 条），赭线连着同一个问题的几问几答（同问异答 {len(wd)} 组）。点一章看它连着哪几章。</p>
-<div class="gxwrap"><svg id="gxall" viewBox="0 0 760 760" role="img" aria-label="《论语》全书 498 章关系图"></svg></div><p id="gxinfo" class="gxinfo">点圆周上任一处，或在上面先选篇、再选章。</p></section>
+<section class="gxview" id="v-all"><p class="note">一颗星一章，按二十篇排成一圈，亮的是已经讲过的章。绿线是同一句话在书里出现两次（本书互见 {st.get("互见", 0)} 条），金色菱形是同一个问题的几问几答（同问异答 {len(wd)} 组）；上面的按钮还能打开人物、场合和别的书。点一颗星看它连着哪几章，再点一次打开那一章。</p>
+{XT.xt_html(L, P)}</section>
 <section class="gxview" id="v-wd" hidden><p class="note">同一个问题，孔子对不同的人答得不一样。这是读《论语》最要紧的一条线：答案跟着人走。</p>{wdh}</section>
 <section class="gxview" id="v-rw" hidden><p class="note">《论语》里有名有姓的人共 {len(rw)} 位。点一个人，内圈是他出场的章，外圈是常和他同章出现的人，数字是同章几次。</p>
 <p><input id="gxq" type="search" placeholder="搜人名，如：子路、颜回、管仲" aria-label="搜人名"></p><p id="gxrwlist" class="gxchips"></p>
