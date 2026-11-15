@@ -678,7 +678,14 @@ def parse_kanwu(path):
                 rows.append(r)
     return rows
 
-HEAD_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Noto+Serif+JP:wght@400;600;900&family=Noto+Serif+KR:wght@400;600;900&family=Noto+Serif:wght@400;600;900&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">'
+_FAM = {"sc": "Noto+Serif+SC", "jp": "Noto+Serif+JP", "kr": "Noto+Serif+KR", "la": "Noto+Serif"}
+def head_fonts(code):
+    """11-15 主人“过”：各语种只拉自己用得上的字体（原先每页都拉中日韩西四族，中文页白拉日韩）。"""
+    fs = ["jp", "sc", "la"] if code == "ja" else ["kr", "sc", "la"] if code == "ko" else ["sc", "la"]
+    q = "&".join(f"family={_FAM[f]}:wght@400;600;900" for f in fs)
+    return ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+            f'<link href="https://fonts.googleapis.com/css2?{q}&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">')
+HEAD_FONTS = head_fonts("zh-Hans")
 MAIL = '<picture class="mail"><source srcset="/assets/mail-dark.png" media="(prefers-color-scheme:dark)"><img src="/assets/mail.png" alt="email (image)" width="211" height="26"></picture>'
 SAME_AS = ["https://www.youtube.com/@yikonglu", "https://x.com/yikonglu", "https://ko-fi.com/yikonglu"]  # 各平台账号另由 PLAT_LINKS 补进（见 main 里的首页 Organization）
 # 一孔按署名短答（智器引用，主人 11-08 定）：落点（片里落点）作首句结论，第二句说与通行读法差在哪；素材只取札记里已有的“片里落点”“常见读法”“字眼”，不另编。
@@ -1197,7 +1204,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <meta property="og:image" content="{DOMAIN}/{og_img or "assets/og.jpg"}">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">{head_extra}
 <meta name="twitter:card" content="summary_large_image">
-{HEAD_FONTS}
+{head_fonts(L.code)}
 <link rel="stylesheet" href="/style.css">
 {ld}
 {analytics(L)}
@@ -1287,6 +1294,17 @@ def draft_sec(D):
             f'<table><thead><tr><th>集</th><th>段数</th><th>改动段</th><th>比例</th></tr></thead><tbody>{trs}</tbody></table>'
             f'<p><a href="/data/chugao-gaidong.json">chugao-gaidong.json</a>（逐集明细）</p>')
 
+def hero_webp():
+    """横幅另备 webp（手机 170KB→约 96KB，11-15 主人“过”）；jpg 换了就重出。"""
+    A = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
+    for n in ("hero-m", "hero-w"):
+        j, w = os.path.join(A, n + ".jpg"), os.path.join(A, n + ".webp")
+        if not os.path.exists(w) or os.path.getmtime(w) < os.path.getmtime(j):
+            try:
+                from PIL import Image
+                Image.open(j).save(w, "WEBP", quality=80, method=6)
+            except Exception as e: print("hero webp:", e)
+hero_webp()
 HERO_V = __import__("hashlib").md5(b"".join(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", f), "rb").read() for f in ("hero-w.jpg", "hero-m.jpg"))).hexdigest()[:8]  # 横幅换图后换地址，免得手机上旧图配新比例（11-14 主人见柯基只剩头）
 
 LY_ICON = {  # 《论语》书页入口图标（11-14 主人：一行一条，配图标）：线描，跟随文字色
@@ -1323,6 +1341,20 @@ def redirect_page(L, target, frag, title):
     return (f'<!doctype html><meta charset="utf-8"><title>{esc(title)}｜一孔录</title><link rel="canonical" href="{DOMAIN}/{target}">'
             f'<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/{target}{frag}">'
             f'<script>location.replace("/{target}"+(location.hash||"{frag}"))</script><a href="/{target}{frag}">{esc(title)}</a>')
+
+def nl_inline(nl, row):
+    """首页“今日《论语》”卡：把建站日前 1 天到后 13 天的年历课直接写进页面，打开就有，不等 nianli-*.json（11-15 主人“过”：防页面跳动）。
+    没有的日子记 null（补读日）；超出这段日子才回头去取整年的 json。"""
+    by = {r["md"]: r for r in nl}
+    t0 = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=8)).date()
+    out = {}
+    for i in range(-1, 14):
+        dd = t0 + datetime.timedelta(days=i); k = f"{dd.month}-{dd.day}"
+        out[k] = row(by[k]) if k in by else None
+    return json.dumps(out, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+def nl_fetch(code, inl):
+    """先用页面里写好的那几天；不在其中才去取 /data/nianli-<语种>.json。"""
+    return '(function(I,k){return k in I?Promise.resolve(I):fetch("/data/nianli-' + code + '.json").then(function(r){return r.json()})})(' + inl + ',m+"-"+d)'
 
 # 11-14 主人：首页“今日《论语》”不放“读这一章”“生成分享图”，点经句直接进章页（先读，分享留在章页）
 MEIRI_Q_JS = ('<script>(function(){var M=document.getElementById("meiri");if(!M)return;var q=M.querySelector("blockquote");if(!q)return;q.setAttribute("role","link");q.tabIndex=0;'
@@ -2426,7 +2458,7 @@ def build_lang(L, D, write):
                     'var tg=M.querySelector(".mtag");fe.forEach(function(f){var s=document.createElement("span");s.className="fe";s.textContent=T(f);tg.appendChild(s)});if(jq){var s=document.createElement("span");s.textContent=T(jq);tg.appendChild(s)}'
                     'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-half.webp";hf.alt=P[1];hf.hidden=false;'
                     'var I=M.querySelectorAll(".dots i");if(I[li])I[li].classList.add("td");'
-                    'fetch("/data/nianli-' + L.code + '.json").then(function(r){return r.json()}).then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
+                    + nl_fetch(L.code, nl_inline(D["lx"]["nl"], lambda r: [r["n"], r["c"], href(r["c"]), r["q"], (lambda b: b if len(b) <= 60 else "")(D["baihua"].get(r["c"]) or ""), [[a, href(a)] for a in r["add"]], " ".join(r["cs"])])) + '.then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
                     'if(!x){M.querySelector(".md").textContent=T("补读日");q.textContent=T("今天不排新课，前几天落下的课，今天补上。");b.textContent="";c.href="' + P + 'nianli/";kk.hidden=true;M.hidden=false;return}'
                     'M.querySelector(".md").textContent=T("年历第 "+x[0]+" 课 / 365 · 《论语》")+x[6];q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+T("今日加读 ")+x[5].map(function(a){return a[0]}).join(" "):"");'
                     'c.href=x[2];kk.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false;try{document.dispatchEvent(new Event("ykmeiri"))}catch(e){}}).catch(function(){})})();</script>')
@@ -2461,11 +2493,11 @@ def build_lang(L, D, write):
                     'var tg=M.querySelector(".mtag");fe.forEach(function(f){var s=document.createElement("span");s.className="fe";s.textContent=f;tg.appendChild(s)});if(jq){var s=document.createElement("span");s.textContent=jq;tg.appendChild(s)}'
                     'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-half.webp";hf.alt=P[1];hf.hidden=false;'
                     'var I=M.querySelectorAll(".dots i");if(I[li])I[li].classList.add("td");'
-                    'fetch("/data/nianli-' + L.code + '.json").then(function(r){return r.json()}).then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
+                    + nl_fetch(L.code, nl_inline(D["lx"]["nl"], lambda r: [r["n"], r["c"], href(r["c"]), hant_plain(r["q"]), (NLTR.get(str(r["n"])) or {}).get(L.code, ""), [[a, href(a)] for a in r["add"]], " ".join(r["cs"])])) + '.then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
                     'if(!x){M.querySelector(".md").textContent=U.mkh;q.textContent=U.mkp;q.lang=LC;b.textContent="";c.href="/nianli/";kk.hidden=true;M.hidden=false;return}'
                     'M.querySelector(".md").textContent=U.lesson.replace("{n}",x[0]).replace("{c}",x[6]);q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+U.add+" "+x[5].map(function(a){return a[0]}).join(" "):"");'
                     'c.href=x[2];kk.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false;try{document.dispatchEvent(new Event("ykmeiri"))}catch(e){}}).catch(function(){})})();</script>')
-    home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" srcset="/assets/hero-m.jpg?v={HERO_V}" width="1080" height="745"><img src="/assets/hero-w.jpg?v={HERO_V}" alt="{"一孔录原创角色同坐长桌读《论语》" if L.code.startswith("zh") else esc(L.t("hero_alt"))}" width="1920" height="790"></picture>
+    home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" type="image/webp" srcset="/assets/hero-m.webp?v={HERO_V}" width="1080" height="745"><source media="(max-width:700px)" srcset="/assets/hero-m.jpg?v={HERO_V}" width="1080" height="745"><source type="image/webp" srcset="/assets/hero-w.webp?v={HERO_V}" width="1920" height="790"><img src="/assets/hero-w.jpg?v={HERO_V}" alt="{"一孔录原创角色同坐长桌读《论语》" if L.code.startswith("zh") else esc(L.t("hero_alt"))}" width="1920" height="790" fetchpriority="high"></picture>
 <div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div></section>
 <main class="home">
 <section class="intro wrap narrow">
