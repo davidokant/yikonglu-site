@@ -30,6 +30,7 @@ def load():
         c = os.path.basename(f)[:-5]
         if c.startswith("_"): continue
         zj[c] = json.load(open(f, encoding="utf-8"))
+    on |= set(jl) & set(zj)  # 11-15：句列、逐句都有的章自动开（原先靠手加名单，6.21—7.10 讲过了却漏开，原页不显示）
     return {"on": on, "jl": jl, "zj": zj}
 
 
