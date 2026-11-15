@@ -28,7 +28,7 @@
     var tools = F.querySelector('.dztools'), yb = F.querySelector('.yibtn'); if (!tools) return;
     var b = document.createElement('button'); b.type = 'button'; b.className = 'yibtn zybtn'; b.textContent = '注'; b.title = '在字上标拼音或注音符号'; b.setAttribute('aria-pressed', 'false');
     tools.insertBefore(b, yb ? yb.nextSibling : tools.querySelector('.ldbtn'));
-    var M = ['', 'py', 'bp'], LB = ['注', '拼音', '注音'], k = 0; try { k = +(localStorage.getItem('yk_zy') || 0) % 3; } catch (e) { }
+    var M = ['', 'py', 'bp'], LB = ['注', '拼', '注'], k = 0; try { k = +(localStorage.getItem('yk_zy') || 0) % 3; } catch (e) { }
     function set() { F.classList.remove('zy-py', 'zy-bp'); if (M[k]) F.classList.add('zy-' + M[k]); b.textContent = LB[k]; b.setAttribute('aria-pressed', k ? 'true' : 'false'); try { localStorage.setItem('yk_zy', k); } catch (e) { } }
     b.addEventListener('click', function () { k = (k + 1) % 3; set(); }); set();
   })();

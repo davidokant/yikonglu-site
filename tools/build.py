@@ -16,6 +16,7 @@ import shuyuan as SY
 import lunyu_extra as LX  # 11-14 只为《论语》做的：年历、场合用句、课本带读
 import zizhuan as ZZ  # 11-15 一字一页 /zi/
 import xingtu as XT  # 11-15《论语》星图：首页招牌、关系图页
+import gaoben as GB  # 11-15 视频逐字稿上章页（十一项之 6）
 import guanxi as GX  # 11-14 《论语》智器重建本的关系：章页“这一章连着”、关系图页 /guanxi/
 
 DOMAIN = "https://yikonglu.com"
@@ -2201,7 +2202,7 @@ def build_lang(L, D, write):
 {GX.section(GXD, c, P, href, gx_short) if L.code.startswith("zh") else (GX.section_f(GXD, c, P, href, lambda x: hant_plain(gx_short(x)), L) if GXD and GX.has_lang(L.code) else "")}
 {cta_html(L, P)}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
-{fold((ZJ.zy_section(c, sents, zy_, zrows, esc) if dz and zy_ else "") + secs + yiwen_html(c) + extra)}
+{fold((ZJ.zy_section(c, sents, zy_, zrows, esc) if dz and zy_ else "") + secs + yiwen_html(c) + extra + (GB.section(c, D["gb"].get(c), epname, yt, st, quotes) if L.code.startswith("zh") and yt and not future else ""))}
 {citeit}
 </div>
 <p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>{RW.chip_line(D.get("renwu"), c, P) if L.code.startswith("zh") else ""}{GS.footer_line(D.get("gushi"), c, P) if L.code.startswith("zh") else ""}
@@ -3288,7 +3289,7 @@ def main(zdir, outdir, kanwu=None):
     yxl = json.load(open(YXL_FILE, encoding="utf-8")) if os.path.exists(YXL_FILE) else {}
     yxl = yxl_merge(yxl, json.load(open(YXL_WEEK_FILE, encoding="utf-8")) if os.path.exists(YXL_WEEK_FILE) else {})
     draft = json.load(open(DRAFT_FILE, encoding="utf-8")) if os.path.exists(DRAFT_FILE) else {}
-    D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, pages_avail=pages_avail, today=today, zhuju=ZJD, wjan=wjan, ddj=load_ddj(), bh_ok=bh_ok, lx=LX.load(), zy=json.load(open(os.path.join(HERE, "zhengyi.json"), encoding="utf-8")) if os.path.exists(os.path.join(HERE, "zhengyi.json")) else {})
+    D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, gb=GB.load(GAO_DIR, eps), pages_avail=pages_avail, today=today, zhuju=ZJD, wjan=wjan, ddj=load_ddj(), bh_ok=bh_ok, lx=LX.load(), zy=json.load(open(os.path.join(HERE, "zhengyi.json"), encoding="utf-8")) if os.path.exists(os.path.join(HERE, "zhengyi.json")) else {})
 
     pdp = os.path.join(HERE, "pagedates.json")  # 每页 [内容指纹, 内容最后变动日]：没改的页不换日期
     pdates = json.load(open(pdp, encoding="utf-8")) if os.path.exists(pdp) else {}
