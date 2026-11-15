@@ -98,7 +98,7 @@
   }
   // 第一次来的人看不到“点句”这回事：原文下面放一行提示，点过一次就不再出（11-15 主人）
   var TIP = 'yk_kjtip', tip = null, seenTip = false; try { seenTip = localStorage.getItem(TIP) === '1'; } catch (e) { }
-  if (!seenTip) { tip = document.createElement('p'); tip.className = 'kjtip'; tip.innerHTML = '<b>点任意一句试试</b>：原页上会框出它在哪几列，字一个个从原书里落下来。'; Q.parentNode.insertBefore(tip, Q.nextSibling); }
+  if (!seenTip) { tip = document.createElement('p'); tip.className = 'kjtip'; tip.innerHTML = '<b>点任意一句试试</b>'; Q.parentNode.insertBefore(tip, Q.nextSibling); }
   function tipDone() { if (tip) { tip.remove(); tip = null; } try { localStorage.setItem(TIP, '1'); } catch (e) { } }
   function open(n) {
     tipDone();

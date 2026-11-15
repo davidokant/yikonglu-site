@@ -1045,6 +1045,7 @@ def langdu_html(code, c, book="lunyu"):  # 没有“译”按钮的页（外文�
 ZD_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "zidian.json")  # 论语难字字典（11-11 主人要提前做）：点字看读音、朱注训诂、全书出处；读音与原文朗读同一张表
 ZD = json.load(open(ZD_FILE, encoding="utf-8")) if os.path.exists(ZD_FILE) else {"occ": {}, "per": {}}
 ZD_ON = os.environ.get("YK_ZIDIAN", "1") != "0"
+ZHAI = set(x for x in os.environ.get("YK_ZHAI", "").split(",") if x)  # 可摘段（十一项之 2）：样张先只开 1.1，主人“过”了再铺全部
 def zx(code, c, j, x):  # 句里难字加点线，点了弹小卡（只在中文页）
     if not (ZD_ON and code.startswith("zh")): return esc(x)
     m = {o: k for jj, o, k, g, s in ZD["per"].get(c, []) if jj == j}
@@ -1065,7 +1066,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')off()})})();
 def zi_tail(code, c, P):
     if not (ZD_ON and code.startswith("zh")) or c not in ZD["per"]: return ""
     items = {f"{j}.{o}": [k.split("|")[0], k.split("|")[1], g, s] for j, o, k, g, s in ZD["per"][c]}
-    occ = {k: [[x, f"{P}lunyu/{PIAN[x.split('.')[0]][1]}/{x.split('.')[1]}.html"] for x in ZD["occ"].get(k, [])] for k in {r[2] for r in ZD["per"][c]}}
+    occ = {k: [[x, f"{P}lunyu/{PIAN[x.split('.')[0]][1]}/{x.split('.')[1]}.html"] for x in ZD["occ"].get(k, [])] for k in sorted({r[2] for r in ZD["per"][c]})}
     zu = ZZ.urls_map(ZD, P); zu = {k: zu[k] for k in occ if k in zu}
     d = json.dumps({"i": items, "o": occ, "c": c, "u": zu}, ensure_ascii=False).replace("</", "<\\/")
     return f'<script type="application/json" id="zidata">{d}</script>' + ZI_JS
@@ -2144,6 +2145,20 @@ def build_lang(L, D, write):
         bh = D["baihua"].get(c)
         bh_h2 = f'{L.t("baihua")}：“{esc(seo_q(yw[c]))}”是什么意思' if L.code.startswith("zh") else L.t("baihua")  # 主人 11-07 定：标题带读者会问的话
         bh_html = f'<section class="sec sec-白"><h2><i>白</i>{bh_h2}</h2><p lang="zh-Hans">{esc(bh)}</p><p class="note">{L.t("baihua_note")}</p></section>' if bh else ""
+        if c in ZHAI and L.code.startswith("zh"):  # 11-15 十一项之 2 可摘段：每段单独复制出去也看得出书名、章号、原句、页码、网址；只用页面上已有的话拼（先 1.1 样张）
+            _qp = sorted(set(g.get("qw_pages") or []), key=int)
+            _pg = f'朱熹《论语集注》《四部备要》本第 {"—".join(dict.fromkeys([_qp[0], _qp[-1]])) if _qp else "?"} 页'
+            _sig = f"一孔录 yikonglu.com/lunyu/{c}"; _hd = f"《论语》{c}“{title_of(c)}”"
+            _tail = lambda t: f'<small class="zhai">（{esc(t)}）</small>'
+            gist_html = re.sub(r'(<b class="anlab">[^<]*</b>)(.*?)</p>', lambda m: f'{m.group(1)}{esc(_hd)}，{m.group(2)}{_tail(_pg + "；" + _sig)}</p>', gist_html, count=1, flags=re.S)
+            if bh_html: bh_html = re.sub(r'(<p lang="zh-Hans">)(.*?)</p>', lambda m: f'{m.group(1)}《论语》{c} 全章“{esc(yw[c])}”的白话：{m.group(2)}{_tail("一孔录的读法；" + _sig)}</p>', bh_html, count=1, flags=re.S)
+            if g["reads"]:
+                _gl = {k.split("|")[0]: gg for _, _, k, gg, _ in ZD["per"].get(c, []) if gg}
+                _rd = "；".join(f'“{x["pos"]}”的“{x["zi"]}”读 {x["du"]}' + (f'，朱熹注“{_gl[x["zi"]].rstrip("。")}”' if x["zi"] in _gl else "") for x in g["reads"])
+                extra = extra.replace(f'<section class="sec reads"><h2><i>音</i>{L.t("reads")}</h2>', f'<section class="sec reads"><h2><i>音</i>{L.t("reads")}</h2><p class="zhaip">{esc(f"《论语》{c} 的读音：{_rd}。")}{_tail(_pg + "；" + _sig)}</p>', 1)
+            if g["cites"]:
+                _c5 = "；".join(f'“{x["text"]}”（{L.src(x["src"])}，原页 {"、".join(x["pages"])}）' for x in g["cites"] if not x["para"] and x["pages"])
+                extra = extra.replace('<table><thead><tr><th>' + L.t("th_quote"), f'<p class="zhaip">{esc(f"{_hd}一章，朱熹《论语集注》等注本的原话与页码：{_c5}。")}{_tail(_sig)}</p><table><thead><tr><th>' + L.t("th_quote"), 1)
         rend = L.ch(c).get("yw")
         rend_html = f'<p class="rend">{esc(rend)}</p><figcaption>{L.t("rendering")}</figcaption>' if rend else ""
         ZJD = D.get("zhuju") or {"on": set(), "jl": {}, "zj": {}}

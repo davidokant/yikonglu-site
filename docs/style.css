@@ -949,3 +949,7 @@ h1{view-transition-name:ttl}
 .kjtip b{color:#B22222}
 @keyframes kjtip{50%{background:rgba(178,34,34,.14)}}
 @media (prefers-reduced-motion:reduce){.kjtip{animation:none}}
+.zhai{font-size:.78em;color:var(--mute);margin-left:2px}
+.zhaip{font-size:15px;line-height:1.75;margin:6px 0 10px}
+.dztools .prog{flex-basis:100%;margin-right:0}
+.dztools .zybtn{min-width:4.2em;text-align:center}
