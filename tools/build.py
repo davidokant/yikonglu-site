@@ -2711,6 +2711,7 @@ def build_lang(L, D, write):
 <form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
 </section>
 <section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}lunyu/">{LU["h"]}</a></h2>{zhushu(True)}{shelfline}</section>
+{XT.xt_html(L, P, home=True) if L.code.startswith("zh") and GX.load() else ""}
 <section class="wrap narrow"><h2 class="ph">{L.t("h_latest")}</h2>
 <a class="latest" id="lcard" href="{P}{rel_of(lc)}">{_lcard(lc)}</a>{lc_js}</section>
 {f'<section class="wrap narrow topju" id="topju" hidden><h2 class="ph">{DONE_TXT.get(L.code, DONE_TXT["en"])["topju"]}</h2><blockquote lang="zh-Hans"></blockquote><p><a href="{P}"></a></p></section>' if ANALYTICS.get("live") else ""}

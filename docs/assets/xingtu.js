@@ -30,14 +30,14 @@
       g.fillStyle = gr; g.fillRect(0, 0, 64, 64); return c;
     };
     const spr = {}; Object.keys(COL).forEach(k => spr[k] = sprite(COL[k]));
-    const HOME = N.findIndex(n => n.id === '12.1'), RO = st.R * 1.42, P = {};
+    const TD = (() => { const d = new Date(Date.now() + 288e5); return (st.nl || {})[(d.getUTCMonth() + 1) + '-' + d.getUTCDate()]; })(), HI = N.findIndex(n => n.id === TD), HOME = HI >= 0 ? HI : N.findIndex(n => n.id === '12.1'), RO = st.R * 1.42, P = {};
     let W = 0, H = 0, DPR = 1, yaw = .5, yawHome = .5, swayT = 0, pitch = 1, zoom = 1, focus = -1, hover = -1, visible = false, running = false, drag = null, yawAnim = null, lastT = 0, clock = 0, intro = RM ? 1 : 0, touched = false, fset = null;
     const resize = () => { DPR = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR); };
     const defPitch = () => W < 640 ? .64 : .86;
     // 每一帧先定镜头：让最外圈的“别的书”转到哪儿都在画面里；宽屏给右边的卡片让出位置
     const setup = () => {
       const cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch), D = 1700;
-      const wide = W > 760, cardW = wide ? card.offsetWidth + 16 : 0, top = hud.offsetHeight + 24, bot = wide ? 34 : 14, availW = W - cardW;
+      const wide = getComputedStyle(card).position === 'absolute', cardW = wide ? card.offsetWidth + 16 : 0, top = hud.offsetHeight + 24, bot = wide ? 34 : 14, availW = W - cardW;
       const front = RO * cp * D / (D - RO * sp), back = RO * cp * D / (D + RO * sp);
       const base = Math.min(availW / 2 / (RO + (wide ? 44 : 26)), (H - top - bot) / (front + back)) * zoom;
       Object.assign(P, { cy, sy, cp, sp, D, base, cx: availW / 2, oy: top + (H - top - bot - (front + back) * base) / 2 + back * base });
