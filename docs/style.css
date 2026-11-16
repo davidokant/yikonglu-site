@@ -980,7 +980,7 @@ th .hm{margin-left:0}
 .fenqi{margin:22px 0;padding:14px 16px;border-left:3px solid #8A5A2C;background:#8A5A2C0d;border-radius:0 6px 6px 0}.fenqi h2{font-size:17px;margin:0 0 8px}
 .fenqi ul{list-style:none;padding:0;margin:0}.fenqi li{padding:6px 0;line-height:1.75}.fenqi li b{margin-right:6px}.fenqi li small{display:block;color:var(--mute);font-size:13.5px}
 .fenqi .sure{margin-right:6px}.fenqi .note{font-size:13px;margin:8px 0 0}
-/* 11-16 改动单五：核对分三种（一孔亲核最显眼） */
+/* 11-16 改动单五：核对分三种（一孔看片定版最显眼） */
 .hd3{display:grid;gap:6px;margin:4px 0 14px}.hd3 p{margin:0;display:flex;gap:10px;align-items:baseline;font-size:14.5px;line-height:1.6}
 .hd3 p b{flex:none;min-width:7.5em;font-size:13px;padding:1px 8px;border-radius:999px;border:1px solid var(--line);text-align:center;font-weight:600}
 .hd3 .hd3yk{background:color-mix(in srgb,var(--accent2) 10%,var(--paper));border:1px solid color-mix(in srgb,var(--accent2) 40%,var(--line));border-radius:8px;padding:10px 12px;font-size:15.5px}
