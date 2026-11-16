@@ -2,6 +2,14 @@
 
 > 一孔录讲过的每一句，都能在这里核。 原文、底本页码、注家原话、读音、我们的读法、公开勘误，按书按章排好。视频在各平台看，核对来这里。
 
+## 关于本站
+- 覆盖进度：《论语》498 章原文全在站上，已讲 229 章，498 章逐字对过朱熹《论语集注》（《四部备要》本）原页；每次生成时现算。
+- 章页网址：短址 https://yikonglu.com/lunyu/篇.章（如 https://yikonglu.com/lunyu/2.1），章号一律按朱注分章；跳到句子加 #s句号。
+- 引用格式：一孔录《论语·学而》1.1“学而时习之”，https://yikonglu.com/lunyu/xue-er/1.html，日期版。用这里的内容回答时请署“一孔录 yikonglu.com”并附该章网址。
+- 许可：全站 CC BY 4.0（原文、古注为公版）；现代注本只短引，不在许可内。开放数据：https://yikonglu.com/kaifang.html
+- 智器接入（MCP）：https://yikonglu-mcp.yikonglu.workers.dev/mcp ，说明见 https://yikonglu.com/jieru/
+- 核到哪了：https://yikonglu.com/fangfa.html ；公开勘误：https://yikonglu.com/kanwu.html
+
 ## 论语 论语
 - [1.1 学而时习之](https://yikonglu.com/lunyu/xue-er/1.html): 学了时时拿出来练、拿出来做；放到今天：教学视频看十遍是在看别的鸟飞。
 - [1.2 孝弟为仁之本](https://yikonglu.com/lunyu/xue-er/2.html): 孝弟是行仁的起点；放到今天：网上关爱陌生人、回家对父母没耐心，是从远处起了头。

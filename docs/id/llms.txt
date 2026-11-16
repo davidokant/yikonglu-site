@@ -2,6 +2,12 @@
 
 > Setiap baris yang dibacakan Yikonglu bisa diperiksa di sini. Teks asli, nomor halaman edisi dasar, kata-kata para komentator sendiri, pelafalan, tafsir kami, dan catatan ralat terbuka, disusun per kitab dan per bab. Tonton videonya di berbagai platform; periksa di sini.
 
+## About
+- Coverage: all 498 chapters of the Analects are on the site in the original; 229 chapters covered in depth; 498 chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.
+- Chapter URLs: short form https://yikonglu.com/lunyu/BOOK.CHAPTER (e.g. https://yikonglu.com/lunyu/2.1), numbered by Zhu Xi's chapter division.
+- Please credit “一孔录 Yikonglu yikonglu.com” with the chapter URL. License: CC BY 4.0 (original text and old commentaries are public domain).
+- MCP endpoint for AI assistants: https://yikonglu-mcp.yikonglu.workers.dev/mcp
+
 ## 论语 Lunyu (Analek)
 - [1.1 Belajar dan melatihnya pada waktunya](https://yikonglu.com/id/lunyu/xue-er/1.html): Yang sudah dipelajari, terus dikeluarkan untuk dilatih dan dikerjakan. Hari ini: menonton video tutorial sepuluh kali sama dengan menonton burung lain terbang.
 - [1.2 Bakti dan hormat sebagai akar ren](https://yikonglu.com/id/lunyu/xue-er/2.html): Bakti dan hormat adalah titik awal menjalankan ren. Hari ini: ramah kepada orang asing di internet, tetapi tidak sabar kepada orang tua di rumah — itu memulai dari ujung yang jauh.
