@@ -1597,7 +1597,12 @@ def load_ddj():
             if r.get("章号") and r.get("内容"):
                 hj.setdefault(r["章号"].strip(), {}).setdefault((r.get("句") or "1").strip().lstrip("s"), []).append([r.get("类别", "").strip(), r["内容"].strip(), (r.get("出处") or "").strip(), (r.get("链接") or "").strip()])
     pm = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_pages.json")  # 原页图尺寸 {"p001": [w, h]}，出图时写
-    return {"qw": qw, "bh": bh, "bh_ok": bh_ok, "zj": rd("_逐句"), "an": rd("_未讲"), "hj": hj, "src": cfg.get("src", ""), "img": cfg.get("img", ""), "zhu": cfg.get("zhu") or "注文",
+    jd = rd("_讲读")  # 讲读札记（11-16 主人：讲读不等视频先补齐；评审/2026-11-16-道德经三字经网页讲读/ 札记转出）：盖过 _未讲 的一孔之见、初稿白话
+    an = rd("_未讲")
+    for c_, d_ in jd.items():
+        if d_.get("片里落点"): an[c_] = {k_: re.sub(r"〔[^〕]*〕", "", d_[k_]) for k_ in ("片里落点", "常见读法", "字眼") if d_.get(k_)}
+        if d_.get("白话"): bh[c_] = d_["白话"]; bh_ok.add(c_)
+    return {"qw": qw, "bh": bh, "bh_ok": bh_ok, "zj": rd("_逐句"), "an": an, "jd": jd, "hj": hj, "src": cfg.get("src", ""), "img": cfg.get("img", ""), "zhu": cfg.get("zhu") or "注文",
             "pages": json.load(open(pm, encoding="utf-8")) if os.path.exists(pm) else {},
             "jl": json.load(open(jl, encoding="utf-8")) if os.path.exists(jl := os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_julie.json")) else {}}  # 逐句原页框（11-13 量列对字）
 
@@ -1689,6 +1694,23 @@ document.querySelectorAll("[data-ddj]").forEach(function(el){var C=JSON.parse(el
 if(x&&t)t.textContent=t.getAttribute("data-t").replace("{x}",x).replace("{n}",C.length);var b=el.querySelector(".bar i");if(b)b.style.width=(x/C.length*100).toFixed(1)+"%"});
 document.querySelectorAll(".rtl li[data-c]").forEach(function(li){if(s.indexOf(li.getAttribute("data-c"))>=0)li.classList.add("done")})})();</script>"""
 
+def ddj_jd_html(jd, Y=lambda x: x):
+    """道德经章页讲读四块（11-16）：注里的关键字、别本怎么写、诸家怎么读、一孔之见（含照今）。数据 _讲读/<章>.json，没有就不出。"""
+    if not jd: return ""
+    sec = lambda mark, h, inner: f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{h}</h2>{inner}</section>'
+    pg = lambda t: re.sub(r"〔(p\d{3}(?:—p\d{3})?)〕", lambda m: f'<small class="pgref">（四库本 {m.group(1)}）</small>', esc(t))
+    out = ""
+    if jd.get("字眼"): out += sec("注", "王弼注里的关键字", f"<p>{pg(jd['字眼'])}</p>")
+    if jd.get("别本"):
+        out += sec("本", "别本怎么写", '<p class="note">底本是四库全书本王弼注；对照河上公本与马王堆帛书、郭店楚简、北大汉简三种出土本。</p><table class="bbt"><tbody>'
+                   + "".join(f'<tr><th>{esc(b["处"])}</th><td>{esc(b["说"])}{f"<br><b>意思：</b>{esc(b[chr(21464)])}" if b.get("变") else ""}</td></tr>' for b in jd["别本"]) + "</tbody></table>")
+    if jd.get("诸家"):  # 一家一段：按“朝代＋人名：”切开
+        zj = [x for x in re.split(r"(?<=。)(?=(?:三国|旧题|西汉|东汉|汉代|战国|唐|北宋|南宋|宋代|元代|明代|清代|近人|民国)[^：。]{0,16}：)", jd["诸家"]) if x.strip()]
+        out += sec("说", "诸家怎么读", "".join(f'<p class="zj1">{quotes(x)}</p>' for x in zj))
+    if jd.get("一孔之见"):
+        out += sec("读", "一孔之见", f"<p>{quotes(jd['一孔之见'])}</p>" + (f'<p class="zhaojin"><b>放到今天：</b>{quotes(jd["照今"])}</p>' if jd.get("照今") else ""))
+    return re.sub(r"〔(p\d{3}[^〕]*)〕", lambda m: f'<small class="pgref">（四库本 {m.group(1)}）</small>', out)
+
 def build_ddj(L, D, write, P, S_IDX=None):
     """道德经：书页（道经、德经两组目录）＋各章页（只出简繁）。结构照论语未讲章：原文（可点句）、原页、一孔之见、白话、视频位。返回 URL 列表。"""
     G = D.get("ddj")
@@ -1750,6 +1772,8 @@ def build_ddj(L, D, write, P, S_IDX=None):
         if dz:
             for j, x in enumerate(sents, 1):
                 d = {k_: zs[j-1].get(k_) for k_ in ("bh", "zhu", "jj", "yk") if zs[j-1].get(k_)} if zs else {}
+                jz = ((G.get("jd") or {}).get(c) or {}).get("逐句注", {}).get(str(j))
+                if jz and not d.get("zhu"): d["zhu"] = [[Y(t_), f"四库本 {pg_}" if pg_ else ""] for t_, pg_ in jz]
                 d["hj"] = [[f"{h[0]}：{h[1]}", h[2], ""] for h in hjd.get(str(j), [])]
                 rows.append(d)
         ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(Y(x))}</span>' + (f'<span class="yi" hidden>{esc(rows[j-1]["bh"])}</span>' if rows and rows[j-1].get("bh") else "") for j, x in enumerate(sents, 1))
@@ -1791,6 +1815,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
 {"" if ddj_has_vid(c) else f'<p class="wjlead">{L.t("wj_lead")}</p>'}
 {fig}
 {gist}
+{"" if F else ddj_jd_html(G["jd"].get(c), Y)}
 {"" if F else lyhj_html([r for r in DDJ_LYHJ if str(r["ch"]) == str(c)], P, "ddj")}
 {bh_html}
 {rt_html(c)}
