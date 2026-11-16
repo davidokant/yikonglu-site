@@ -7,15 +7,20 @@ def esc(s): return html.escape(s or "", quote=True)
 
 LINK = {"zh": "一孔书院 · 题名", "en": "Yikonglu Academy"}
 
-AFDIAN = "https://afdian.com/item/d667fd6ae19d11f1a65c5254001e7c00"  # 11-16 主人在爱发电上架题名（一个商品两个型号）；Ko-fi 上架前不放按钮
+AFDIAN = "https://afdian.com/item/d667fd6ae19d11f1a65c5254001e7c00"  # 11-16 主人在爱发电上架题名（一个商品两个型号）
+KOFI = "https://ko-fi.com/yikonglu"  # 11-16 主人：Ko-fi 已开通
 
 # 11-16 主人点卡：书院先开“题名”，入院页整页换成题名（文案 评审/2026-11-16-书院题名开卖/入院页-题名-文案-v1.1.md）；旧权益表、书友圈、院落学籍撤下
 TM_ZH = dict(title="一孔书院 · 题名", sub="把名字题在《论语》年历的一天上", motto="免费的，管读懂；书院，管留名。",
              p1="一孔录的片子、原文、白话、读本、年历，永远免费，谁都能读，不会因为书院变薄。书院不卖内容，只做一件事：让愿意出一份力的书友，把名字题在《论语》年历的某一天上。",
              btn="我想题一天", done="已记下，谢谢。", cnt="已有 {n} 位书友想题一天")
-TM_EN = dict(title="Yikonglu Academy · Name a day", sub="Put your name on one day of the Analects calendar", motto="The free side helps you understand; the Academy keeps your name.",
-             p1="Everything on Yikonglu stays free. The Academy sells no content: it lets readers who want to support the work put their name, with a line of up to 20 characters, on one day of the 365-day Analects calendar that starts on 1 January 2027. The day's calendar entry and chapter page carry the name for a year. Naming is handled in Chinese for now; an overseas option (Ko-fi) is coming.",
+TM_EN = dict(title="Yikonglu Academy · Name a Day", sub="Put your name on one day of the 2027 Analects calendar", motto="The free side helps you understand; the Academy keeps your name.",
+             p1="Everything on Yikonglu stays free for everyone: the videos, the text, the plain renderings, the readers and the calendar. The Academy sells no content. It does one thing: readers who want to support the work can put their name on one day of the Analects calendar.",
              btn="I'd like to name a day", done="Noted, thank you.", cnt="{n} readers would like to name a day")
+
+
+PRICE_HANS = '<ul><li>题一日：199 元，题一年。前一百位是创始书友，以后每年按 199 元续题同一天；之后 365 元。</li><li>题一篇：2,000 元，题一年。《论语》二十篇，每篇只收一位，名字写在这一篇的篇页和 2027 年全本读本的牌记页上。</li><li>海外在 Ko-fi 用美元付：题一日 US$29，题一篇 US$299。创始一百位国内外合算。</li></ul>'
+PRICE_HANT = '<ul><li>题一日：US$29（在 Ko-fi 付款），题一年。前一百位是创始书友，以后每年按此价续题同一天。中国大陆的书友在爱发电付 199 元，创始一百位两边合算。</li><li>题一篇：US$299（爱发电 2,000 元），题一年。《论语》二十篇，每篇只收一位，名字写在这一篇的篇页和 2027 年全本读本的牌记页上。</li></ul>'
 
 
 def body(L, live):
@@ -27,13 +32,20 @@ def body(L, live):
 <h2>题哪一天</h2><ul><li>生日：你的，孩子的，父母的。先在<a href="{P}nianli/#nlbday">年历页</a>查一查，那天读哪一章。</li><li>想记住的日子：结婚、开学、退休、一件事做成的那天。</li><li>你最喜欢的那一章所在的那一天。</li></ul>
 <p>挑之前先看那天读什么。比如 3 月 14 日是第 73 课，读 5.9“朽木不可雕也”，不一定适合题给孩子。</p>
 <h2>你得到什么</h2><ul><li>这一天归你题名一年：年历页、章页、公众号当日文末署名，加一句不超过 20 字的题记。</li><li>一张题名帖，可以存，可以转给你想送的人。</li><li>名字写进“2027 首轮题名录”，名录满 20 位后公开。</li><li>你的问题，一孔必答：每月至多一问，答案公开，署你的网名。</li></ul>
-<h2>多少钱</h2><ul><li>题一日：199 元，题一年。前一百位是创始书友，以后每年按 199 元续题同一天；之后 365 元。</li><li>题一篇：2,000 元，题一年。《论语》二十篇，每篇只收一位，名字写在这一篇的篇页和 2027 年全本读本的牌记页上。</li></ul>
+<h2>多少钱</h2>{PRICE_HANT if L.code == "zh-Hant" else PRICE_HANS}
 <h2>规矩</h2><ul><li>一天只收一位，先到先得；续题的人优先。</li><li>题记写给人，或者写给自己，不超过 20 字。不收商号、网址、联系方式，不谈时政。不合规矩的，一孔会请你改。</li><li>题名不碰讲读。每一句读法照样句句可核，不因为谁题了名改一个字。</li><li>用网名就行。本页不收真名、电话。</li></ul>
 <h2>退款</h2><ul><li>付款七日内，不问理由全退。</li><li>年历在你的日子之前停更的，全退。</li><li>题记被请改而你不愿改的，全退。</li></ul>
-<h2 id="join">怎么题</h2><ol><li>在<a href="{P}nianli/">年历页</a>查好日子，看那天读哪一章，有没有人题过。</li><li>国内到爱发电下单，选“题一日”或“题一篇”，按提示填日期（或篇名）、网名、题记。海外到 Ko-fi（即将开通）。</li><li>三天内收到题名帖。名字和题记会出现在年历页的这一天上。</li></ol>
-<p class="cta"><a class="btn" href="{AFDIAN}" target="_blank" rel="noopener">国内 · 在爱发电题名</a></p>'''
+<h2 id="join">怎么题</h2><ol><li>在<a href="{P}nianli/">年历页</a>查好日子，看那天读哪一章，有没有人题过。</li><li>国内到爱发电下单；海外到 Ko-fi 下单（美元付款，题一日 US$29、题一篇 US$299）。都按提示填日期（或篇名）、网名、题记。</li><li>三天内收到题名帖。名字和题记会出现在年历页的这一天上。</li></ol>
+<p class="cta"><a class="btn" href="{AFDIAN}" target="_blank" rel="noopener">国内 · 在爱发电题名</a> <a class="btn ghost" href="{KOFI}" target="_blank" rel="noopener">海外 · 在 Ko-fi 题名</a></p>'''
     else:
-        main = f'''<p class="symotto">{T["motto"]}</p><p>{T["p1"]}</p><p><a href="/nianli/">The Analects calendar (Chinese)</a></p>'''
+        main = f'''<p class="symotto">{T["motto"]}</p><p>{T["p1"]}</p>
+<h2>What it is</h2><p>From 1 January 2027, Yikonglu reads one passage of the Analects of Confucius each day: 365 lessons a year, the same passage on the same date every year. Name a day, and your name with a dedication of up to 20 Chinese characters (or 60 Latin letters) appears on that day's calendar entry and on the passage's page at yikonglu.com, for one year.</p>
+<h2>What you receive</h2><ul><li>The day is yours for a year: your name and dedication on the calendar and the passage page.</li><li>A keepsake card you can keep or give.</li><li>A place in the 2027 First Round list, published once it reaches 20 names.</li><li>One question a month answered by Yikonglu, publicly, under your name.</li></ul>
+<h2>Price</h2><ul><li>Name a Day: US$29 for one year. The first hundred readers are founding members and can renew the same day at this price each year.</li><li>Name a Book: US$299 for one year. The Analects has twenty books; each can be named by one person only. Your name goes on that book's page and in the colophon of the 2027 complete reader.</li></ul>
+<h2>Rules</h2><ul><li>One person per day, first come first served; renewals come first.</li><li>Write your dedication to someone, or to yourself. No business names, links, contact details or politics; we may ask you to change it.</li><li>Naming never touches the readings: every line stays checkable, and nothing is changed for anyone.</li><li>A screen name is enough. We do not need your real name or phone number.</li></ul>
+<h2>Refunds</h2><ul><li>Full refund within 7 days of payment, no questions asked.</li><li>Full refund if the calendar stops before your day.</li><li>Full refund if we ask you to change your dedication and you prefer not to.</li></ul>
+<h2 id="join">How</h2><ol><li>Check the <a href="/nianli/">calendar</a> (Chinese) to see which passage your day reads and whether it is taken.</li><li>Order on Ko-fi and give the date (or book), the name to show and your dedication.</li><li>Your keepsake card arrives within three days, and your name appears on the calendar.</li></ol>
+<p class="cta"><a class="btn" href="{KOFI}" target="_blank" rel="noopener">Name a day on Ko-fi</a></p>'''
     out = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{T["sub"]}</span>{T["title"]}</h1></div></div>
 <main class="wrap narrow prose shuyuan">{main}
 <div class="syjoin"><button type="button" class="btn ghost" id="syb">{T["btn"]}</button><p class="sycnt" id="syn" hidden></p></div>
