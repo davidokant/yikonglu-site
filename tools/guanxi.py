@@ -72,7 +72,7 @@ def section(G, c, P, href, short):
     row.sort(key=lambda x: ORDER.index(x[0]))
     return (f'<section class="gx" id="lian"><h2>这一章连着</h2><dl>'
             + "".join(f"<dt>{HEAD[k]}</dt><dd>{v}</dd>" for k, v in row)
-            + f'</dl><p class="gxmore"><a href="{P}lunyu/#xt">全书星图</a> · <a href="{P}lunyu/guanxi/">同问异答与人物</a> · <a href="{P}duben.html">《论语》智器重建本 PDF</a></p></section>')
+            + f'</dl><p class="gxmore"><a href="{P}#xt">全书星图</a> · <a href="{P}lunyu/guanxi/">同问异答与人物</a> · <a href="{P}duben.html">《论语》智器重建本 PDF</a></p></section>')
 
 
 GX_JS = r"""<script>
@@ -156,7 +156,7 @@ def build(L, G, write, page, P, href, short, PIAN, pub, DOMAIN):
         li = "".join(f'<li><a href="{href(_c(it["c"]))}">论语 {_c(it["c"])}</a> {esc(it["who"])}：{esc(it["a"])}{f"<small>{esc(it["note"])}</small>" if it.get("note") else ""}</li>' for it in g["items"])
         wdh += f'<section class="gxcard" id="{g["id"]}"><h3>{esc(g["q"])} · 全书 {n} 次</h3>{sv}<ol>{li}</ol></section>'
     body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">全书 7 组同问 · 197 位人物</span>《论语》同问异答与人物</h1></div></div>
-<main class="wrap guanxi"><p class="lead">同一个问题，孔子对不同的人答得不一样；同一个弟子，在几十章里出场。这一页把这两条线单独拎出来：同问异答 {len(wd)} 组并排对照，{len(rw)} 位人物各在哪几章、常和谁同章。全书 498 章怎样连成一张网，看<a href="{P}lunyu/#xt">《论语》星图</a>；全书 {sum(v for k, v in st.items() if k != "年历"):,} 条关系都记在《论语》智器重建本里，<a href="{P}duben.html">PDF 免费下载</a>。</p>
+<main class="wrap guanxi"><p class="lead">同一个问题，孔子对不同的人答得不一样；同一个弟子，在几十章里出场。这一页把这两条线单独拎出来：同问异答 {len(wd)} 组并排对照，{len(rw)} 位人物各在哪几章、常和谁同章。全书 498 章怎样连成一张网，看<a href="{P}#xt">《论语》星图</a>；全书 {sum(v for k, v in st.items() if k != "年历"):,} 条关系都记在《论语》智器重建本里，<a href="{P}duben.html">PDF 免费下载</a>。</p>
 <div class="gxtab" role="tablist"><button type="button" data-v="wd">同问异答</button><button type="button" data-v="rw">人物</button></div>
 <section class="gxview" id="v-wd" hidden><p class="note">同一个问题，孔子对不同的人答得不一样。这是读《论语》最要紧的一条线：答案跟着人走。</p>{wdh}</section>
 <section class="gxview" id="v-rw" hidden><p class="note">《论语》里有名有姓的人共 {len(rw)} 位。点一个人，内圈是他出场的章，外圈是常和他同章出现的人，数字是同章几次。</p>
