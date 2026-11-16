@@ -6,10 +6,10 @@ bad = []
 css = open(os.path.join(out, "style.css"), encoding="utf-8").read()
 css_nc = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
 if css_nc.count("{") != css_nc.count("}"): bad.append(f"style.css 花括号不配对：{{ {css_nc.count('{')} 对 }} {css_nc.count('}')}")
-WORDS = ["Codex", "标题问", "封面问", "片头问", "短片问", "标题候选", "本集只上", "外参", "工坊", "定版稿", "插科", "特别期", "发布线程", "主人选定", "主人定", "主人看片", "主人在", "", "", ""]
+WORDS = ["Codex", "标题问", "封面问", "片头问", "短片问", "标题候选", "本集只上", "外参", "工坊", "定版稿", "插科", "特别期", "发布线程", "主人选定", "待主人", "主人選定", "主人定", "主人看片", "主人在", "", "", ""]
 n = 0
 for f in glob.glob(os.path.join(out, "**", "*.*"), recursive=True):
-    if not f.endswith((".html", ".json", ".xml")): continue
+    if not f.endswith((".html", ".json", ".xml", ".js", ".css", ".txt")): continue
     n += f.endswith(".html")
     t = open(f, encoding="utf-8").read()
     t = re.sub(r"[木铁石陶织绣]工坊", "", t)  # 讲稿今例里的“木工坊”等是普通词，不是内部说法

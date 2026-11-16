@@ -26,7 +26,7 @@
   function load() { try { return JSON.parse(localStorage.getItem(K) || "null") || { b: {} } } catch (e) { return null } }
   function save(s) { try { localStorage.setItem(K, JSON.stringify(s)); return true } catch (e) { return false } }
   function dstr(t) { return t.getFullYear() + "-" + ("0" + (t.getMonth() + 1)).slice(-2) + "-" + ("0" + t.getDate()).slice(-2) }
-  // 连读天数（11-09 主人定）：读过一章就算这天读了；断一天不归零（隔一天接着读，连读照算），连断两天才重新数
+  // 连读天数：读过一章就算这天读了；断一天不归零（隔一天接着读，连读照算），连断两天才重新数
   function streak(ds) {
     var set = {}; (ds || []).forEach(function (d) { set[d] = 1 });
     var t = new Date(), today = !!set[dstr(t)], n = 0, miss = 0;

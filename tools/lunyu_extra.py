@@ -40,7 +40,13 @@ def load():
                               "q": r.get("今日一句") or "", "add": re.findall(r"\d+\.\d+", r.get("加读") or ""), "addt": r.get("加读") or ""})
             for c in cs: out["nlc"].setdefault(c, (r["课"], r["日期"]))
     f = _latest(os.path.join(CH_DIR, "场合用句-v*.json"))
-    if f and on("ch"): out["ch"] = json.load(open(f, encoding="utf-8"))["pages"]
+    if f and on("ch"):
+        out["ch"] = json.load(open(f, encoding="utf-8"))["pages"]
+        for pg in out["ch"]:  # 去掉做稿时的内部批注（“待主人选，见文末。”之类），页面不出内部称呼
+            for it in pg["items"]:
+                for k in ("use", "care", "zhu"):
+                    if it.get(k): it[k] = re.sub(r"\s*待主人[选選定看核][^。；]*[。；]?", "", it[k]).strip() or ""
+                    if it.get(k) and not it[k].endswith(("。", "！", "？", "”")): it[k] += "。"
     f = _latest(os.path.join(LUODI, "带读包-课本十二章-v*.md"))
     if f and on("dd"): out["dd"] = parse_daidu(open(f, encoding="utf-8").read())
     return out

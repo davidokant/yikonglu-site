@@ -1,4 +1,4 @@
-/* 《论语》星图（11-15 主人定：首页招牌、关系图页）。498 章排成一圈玉璧，人物、同一个问题、场合、别的书是圈里圈外的星。
+/* 《论语》星图。498 章排成一圈玉璧，人物、同一个问题、场合、别的书是圈里圈外的星。
    数据 /data/xingtu-<语种>.json 由 tools/xingtu.py 出；进入视口才取数据、才开动画；减少动态效果时停成静态。不依赖外部库。 */
 (function () {
   const root = document.getElementById('xt'); if (!root || !window.IntersectionObserver || !HTMLCanvasElement.prototype.getContext) return;
