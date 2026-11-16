@@ -1709,7 +1709,7 @@ def ddj_jd_html(jd, Y=lambda x: x):
         out += sec("说", "诸家怎么读", "".join(f'<p class="zj1">{quotes(x)}</p>' for x in zj))
     if jd.get("一孔之见"):
         out += sec("读", "一孔之见", f"<p>{quotes(jd['一孔之见'])}</p>" + (f'<p class="zhaojin"><b>放到今天：</b>{quotes(jd["照今"])}</p>' if jd.get("照今") else ""))
-    return out
+    return re.sub(r"〔(p\d{3}[^〕]*)〕", lambda m: f'<small class="pgref">（四库本 {m.group(1)}）</small>', out)
 
 def build_ddj(L, D, write, P, S_IDX=None):
     """道德经：书页（道经、德经两组目录）＋各章页（只出简繁）。结构照论语未讲章：原文（可点句）、原页、一孔之见、白话、视频位。返回 URL 列表。"""
