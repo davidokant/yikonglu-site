@@ -113,7 +113,8 @@ def data(G, PIAN, pub, href, title_of, tx, X):
     st = gx.get("stats", {})
     return {"pian": [{"name": p["name"], "mid": p["mid"]} for p in pian], "R": R,
             "ch": [[c, *pos[i], deg[i], 1 if c in pub else 0, *row(c)] for i, c in enumerate(order)],
-            "flags": flags, "nodes": nodes, "edges": edges, "stats": st, "total": sum(v for k, v in st.items() if k != "年历")}
+            "flags": flags, "nodes": nodes, "edges": edges, "stats": st, "total": sum(v for k, v in st.items() if k != "年历"),
+            "nl": {r["md"]: r["c"] for r in (X or {}).get("nl") or []}}  # 11-16 默认点亮当天“今日《论语》”那一章（北京时间，按年历）
 
 
 def write_data(write, d):

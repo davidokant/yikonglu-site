@@ -874,19 +874,19 @@ h1{view-transition-name:ttl}
 ::view-transition-group(*){animation-duration:.42s;animation-timing-function:cubic-bezier(.3,.1,.2,1)}
 @media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}
 /* 11-15《论语》星图：首页招牌、关系图页。夜空配色明暗两种主题都一样 */
-.xtsec{margin:0 auto 28px;max-width:1180px;padding:0 16px}
+.xtsec{margin:0 auto 28px;max-width:780px;padding:0 16px}/* 11-16 与“主经”等模块同宽；详情栏放在星图下面、随内容长高，不再内滚 */
 .xthome{margin-top:22px}
-.xthead{max-width:760px;margin:0 auto 10px}
+.xthead{max-width:780px;margin:0 auto 10px}
 .xthead p{color:var(--mute);font-size:15px;line-height:1.7;margin:4px 0 0}
 .xt{background:#0C1310;border-radius:6px;position:relative;overflow:hidden;color:#DCE6DF}
-.xt canvas{display:block;width:100%;height:min(68vh,600px);min-height:380px;touch-action:pan-y;cursor:grab}
+.xt canvas{display:block;width:100%;height:min(62vh,520px);min-height:380px;touch-action:pan-y;cursor:grab}
 .xt .hud{position:absolute;left:12px;top:10px;right:12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;pointer-events:none}
 .xt .hud>*{pointer-events:auto}
 .xt .hud button,.xt .hud input{background:rgba(20,32,27,.82);border:1px solid #2F4A3F;color:#CFE0D7;border-radius:99px;padding:3px 11px;font-size:13px;font-family:inherit;line-height:1.5}
 .xt .hud input{width:9.5em}
 .xt .hud input::placeholder{color:#7F968B}
 .xt .hud button[aria-pressed="true"]{background:#2C6A54;border-color:#62B193;color:#fff}
-.xt .card{position:absolute;right:12px;bottom:12px;width:min(340px,calc(100% - 24px));max-height:62%;overflow:auto;background:rgba(14,22,18,.93);border:1px solid #2F4A3F;border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.65}
+.xt .card{position:static;width:auto;min-height:120px;background:rgba(14,22,18,.93);border-top:1px solid #2F4A3F;padding:14px 18px 16px;font-size:14px;line-height:1.7}
 .xt .card h4{margin:0;font-size:17px;font-weight:900;color:#F2F1EA}
 .xt .card h4 small{font-weight:400;font-size:12.5px;color:#9DB5AA;margin-left:6px}
 .xt .card p{color:#C5D2CA;margin:4px 0 0}
@@ -897,8 +897,8 @@ h1{view-transition-name:ttl}
 .xt .card a{color:#A9E3CB}
 .xt .card a.go{font-weight:700}
 .xt .card button.lk{background:none;border:0;padding:0;color:#A9E3CB;text-decoration:underline;font-size:inherit;font-family:inherit;cursor:pointer;text-align:left}
-.xt .legend{position:absolute;left:12px;bottom:10px;font-size:12px;color:#8FA59A;line-height:1.5;max-width:46%;margin:0}
-@media (max-width:640px){.xtsec{padding:0}.xt{border-radius:0}.xthead{padding:0 16px}.xt .card{position:static;width:auto;max-height:230px;border-radius:0;border-width:1px 0 0}.xt .legend{position:static;max-width:none;padding:6px 12px 10px}.xt canvas{height:420px}.xt .hud{left:8px;right:8px;top:8px;gap:5px}.xt .hud button,.xt .hud input{font-size:12px;padding:2px 8px}.xt .hud input{width:7.2em}}
+.xt .legend{position:static;font-size:12px;color:#8FA59A;line-height:1.5;margin:0;padding:6px 18px 8px}
+@media (max-width:640px){.xtsec{padding:0}.xt{border-radius:0}.xthead{padding:0 16px}.xt .card{padding:12px 14px 14px}.xt .legend{padding:6px 12px 10px}.xt canvas{height:420px}.xt .hud{left:8px;right:8px;top:8px;gap:5px}.xt .hud button,.xt .hud input{font-size:12px;padding:2px 8px}.xt .hud input{width:7.2em}}
 /* 11-15 接入智器页 */
 .jieru h3{font-size:17px;margin:18px 0 6px}
 .jrcode{position:relative;margin:8px 0 12px}
