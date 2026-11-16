@@ -952,3 +952,7 @@ h1{view-transition-name:ttl}
 .zhai{font-size:.78em;color:var(--mute);margin-left:2px}
 .zhaip{font-size:15px;line-height:1.75;margin:6px 0 10px}
 .dztools .prog{flex-basis:100%;margin-right:0}
+/* 11-16 诸家分歧 */
+.fenqi{margin:22px 0;padding:14px 16px;border-left:3px solid #8A5A2C;background:#8A5A2C0d;border-radius:0 6px 6px 0}.fenqi h2{font-size:17px;margin:0 0 8px}
+.fenqi ul{list-style:none;padding:0;margin:0}.fenqi li{padding:6px 0;line-height:1.75}.fenqi li b{margin-right:6px}.fenqi li small{display:block;color:var(--mute);font-size:13.5px}
+.fenqi .sure{margin-right:6px}.fenqi .note{font-size:13px;margin:8px 0 0}

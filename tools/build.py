@@ -1046,6 +1046,7 @@ def langdu_html(code, c, book="lunyu"):  # 没有“译”按钮的页（外文�
 ZD_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "zidian.json")  # 论语难字字典（11-11 主人要提前做）：点字看读音、朱注训诂、全书出处；读音与原文朗读同一张表
 ZD = json.load(open(ZD_FILE, encoding="utf-8")) if os.path.exists(ZD_FILE) else {"occ": {}, "per": {}}
 ZD_ON = os.environ.get("YK_ZIDIAN", "1") != "0"
+FQ_OFF = os.environ.get("YK_FQ") == "off"  # 11-16 改动单三：诸家分歧块
 ZHAI_OFF = os.environ.get("YK_ZHAI") == "off"  # 可摘段（十一项之 2）：11-15 主人看过 1.1 样张说“过”，铺到全部已讲章；YK_ZHAI=off 可关
 def zx(code, c, j, x):  # 句里难字加点线，点了弹小卡（只在中文页）
     if not (ZD_ON and code.startswith("zh")): return esc(x)
@@ -2190,6 +2191,18 @@ def build_lang(L, D, write):
                                 f'<div class="yypane">{ZJ.page_pane(c, zp_, zr_, L.t("pg", n="").strip(), ZJ.YDIR, L.t("pg", n="{n}"))}</div></div></figure>')
         if fig_html is None:
             fig_html = f"""<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-short="{f'yikonglu.com/lunyu/{c}' if L.code.startswith('zh') else ''}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{L.t("source_line")}</figcaption>{rend_html}</figure>"""
+        if L.code.startswith("zh") and not FQ_OFF:  # 11-16 改动单三：诸家分歧块。只用已核数据（注本 CSV 里“异读”且把握为定／较稳的行），不硬造；无分歧的章不出
+            _zb = D["zhuben"].get(c, {}); _fq = []
+            for _k, _nm in (("yang", "杨伯峻《论语译注》"), ("qian", "钱穆《论语新解》")):
+                _z = _zb.get(_k)
+                if _z and _z.get("kind") == "k_diff" and _z.get("sure") in ("s_ding", "s_wen"): _fq.append((_nm, _z))
+            if _fq:
+                _keys = list(dict.fromkeys(z["key"] for _, z in _fq if z.get("key")))
+                _fqh = f'诸家分歧：{"、".join("“" + k + "”" for k in _keys)}怎么讲' if _keys else "诸家分歧：这一章各家讲法不同"
+                gist_html += (f'<section class="fenqi" id="fenqi"><h2>{esc(_fqh)}</h2><ul>'
+                              f'<li><b>朱熹《论语集注》</b>一孔录主朱注，本页的白话和逐句注照朱注讲' + ("；这章是争议读法，一孔按里写明了取舍" if c in D["zy"] else "") + "。</li>"
+                              + "".join(f'<li><b>{_nm}</b><span class="sure {z["sure"]}">{L.t(z["sure"])}</span>“{esc(z["text"])}”<small>{esc(z["say"])}</small></li>' for _nm, z in _fq)
+                              + f'</ul><p class="note">“把握”是我们对这条异同判断的把握，“定”最稳。现代注本版权期内，只短引一句，页码核过正版书后再补；皇侃义疏等古注原页见 <a href="#zhuben">诸家注本</a>。</p></section>')
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
 <h1><span class="no">{f"论语 {c} · {pname}" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)}</span>{esc(title_of(c))}</h1>{LX.nl_tag(L, P, D["lx"], c)}{f'<p class="kwtag"><a href="#kw">{L.t("kw")} {len(mine)} 条</a> · <a href="{P}kanwu.html">全部勘误</a></p>' if mine and L.code.startswith("zh") else ""}
