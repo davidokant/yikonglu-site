@@ -1928,6 +1928,29 @@ def wjprog(L, n, total): return WJ_PROG[L.code].format(n=n, total=total) if L.co
 
 SZJ_LYHJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "szj_lyhj.json")  # 三字经各讲《论语》互见（11-14 主人“全上”；表见 评审/2026-11-14-论语互见/）
 SZJ_LYHJ = json.load(open(SZJ_LYHJ_FILE, encoding="utf-8")) if os.path.exists(SZJ_LYHJ_FILE) else []
+SZJ_JD_DIR = os.path.join(GAO_DIR, "_三字经", "_讲读")  # 11-16 主人点“过，批量做”：各讲讲读札记（常见读法、字眼、别本、诸家、一孔之见、照今、核定白话、逐组注）
+SZJ_JD = {int(os.path.basename(f_)[:-5]): json.load(open(f_, encoding="utf-8")) for f_ in glob.glob(os.path.join(SZJ_JD_DIR, "*.json")) if os.path.basename(f_)[:-5].isdigit()}
+
+def szj_jd_html(jd, hant=False):
+    """三字经讲页讲读四块（11-17，照道德经 ddj_jd_html）：注（王相训诂关键字）、本（别本怎么写）、说（诸家怎么读）、读（一孔之见＋放到今天）。"""
+    if not jd: return ""
+    _t2s = __import__("opencc").OpenCC("t2s").convert
+    # 王相等原话本来是繁体：繁体页上护住不再转（\ue010…\ue011），免得“爲”被改成“為”
+    K = (lambda t: re.sub(r"“([^”]+)”", lambda m: f"“\ue010{m.group(1)}\ue011”" if _t2s(m.group(1)) != m.group(1) else m.group(0), t)) if hant else (lambda t: t)
+    sec = lambda mark, h, inner: f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{h}</h2>{inner}</section>'
+    pg = lambda t: re.sub(r"〔(p\d{3}(?:—p\d{3})?)〕", lambda m: f'<small class="pgref">（王相本 {m.group(1)}）</small>', quotes(K(t)))
+    out = ""
+    if jd.get("字眼"): out += sec("注", "王相训诂里的关键字", f"<p>{pg(jd['字眼'])}</p>")
+    if isinstance(jd.get("别本"), list) and jd["别本"]:  # 只有用字差异的讲写一句“从略”，不出这块
+        out += sec("本", "别本怎么写", '<p class="note">底本是清王相《三字经训诂》（1831 年和刻本）；对照清代《三字经注解备要》《三字经集注音疏》、章太炎《重订三字经》与《三字经增注》、朝鲜与日本刻本。</p><table class="bbt"><tbody>'
+                   + "".join(f'<tr><th>{esc(b["处"])}</th><td>{quotes(K(b["说"]))}{f"<br><b>意思：</b>{quotes(K(b[chr(21464)]))}" if b.get("变") else ""}</td></tr>' for b in jd["别本"]) + "</tbody></table>")
+    if jd.get("诸家"):  # 一家一段：按“朝代＋书名或人名：”切开
+        zj = [x for x in re.split(r"(?<=。)(?=(?:清|明|元|宋|民国|近人|朝鲜|日本|章太炎)[^：。]{0,24}：)", jd["诸家"]) if x.strip()]
+        out += sec("说", "诸家怎么读", "".join(f'<p class="zj1">{pg(x)}</p>' for x in zj))
+    if jd.get("一孔之见"):
+        out += sec("读", "一孔之见", (f'<p class="note">常见的问法：{quotes(K(jd["常见读法"]))}</p>' if jd.get("常见读法") else "") + f"<p>{pg(jd['一孔之见'])}</p>"
+                   + (f'<p class="zhaojin"><b>放到今天：</b>{quotes(K(jd["照今"]))}</p>' if jd.get("照今") else ""))
+    return out
 LYHJ_SRC = [("wx-", "王相"), ("yinshu", "《三字经音疏》"), ("beiyao", "《三字经备要》"), ("zengzhu", "《增注三字经》"), ("jizhu", "渥美《三字经集注》")]
 DDJ_LYHJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_lyhj.json")  # 道德经各章《论语》互见（11-14 主人“全上”，138 条；表见 评审/2026-11-14-论语互见/道德经-论语互见-v1.md）
 DDJ_LYHJ = json.load(open(DDJ_LYHJ_FILE, encoding="utf-8")) if os.path.exists(DDJ_LYHJ_FILE) else []
@@ -2004,6 +2027,9 @@ def build_szj(L, write, P, S_IDX=None):
     SH = {"bk": "三字经", "tot": len(JS), "src": "一孔录《三字经》讲义本", "src2": "一孔录《三字经》讲义本", "pf": "szj."}
     for k, j in enumerate(JS):
         n = j["n"]; url = f"{DOMAIN}/{L.prefix}{rel_of(n)}"; gs = j["groups"]; text = "".join(g[1] for g in gs)
+        jd = {} if F else SZJ_JD.get(int(n), {})
+        if jd.get("白话"): gs = [(g[0], g[1], jd["白话"].get(str(g[0])) or g[2], *g[3:]) for g in gs]  # 核定白话盖过初稿
+        _zz = jd.get("逐组注") or {}
         jtag = SU["prog"].format(jt=juan_of(j), n=n, k=len(gs)) if F else f'三字经 {n} · {j["juan"]} {j["jt"]}'
         cite_src = (f"Three Character Classic, lecture {n}, 一孔录 Yikonglu" if L.code == "en" else f"『三字経』第{n}講、一孔録") if F else f"三字经 {n} · 一孔录"
         trs = [TR["g"].get(str(g[0]), "") for g in gs] if F else []
@@ -2024,7 +2050,7 @@ def build_szj(L, write, P, S_IDX=None):
         yw_html = "".join(f'<p><b>{esc(SU["grp_n"].format(g=g[0]) if F else f"第 {g[0]} 组")}　<span lang="{"zh-Hant" if F else "zh-Hans"}">{esc(Y(g[1]))}</span></b><br>{esc(ywd[str(g[0])])}</p>' for g in gs if str(g[0]) in ywd)
         yw_html = f'<section class="sec szjyw"><h2>{esc(SU["yw_h"] if F else "与王相本对照")}</h2>{yw_html}</section>' if yw_html else ""
         bq = f'<blockquote lang="{"zh-Hant" if F else "zh-Hans"}" data-src="{esc(cite_src)}" data-url="{url}" data-short="{"" if F else f"yikonglu.com/sanzijing/{n}"}" data-sep="{", " if F else "，"}" data-reads="[]" data-rl="" data-hj="{{}}">'
-        rows = [{"bh": g[2], "hj": []} for g in gs]
+        rows = [{"bh": g[2], "hj": [], "zhu": [[x[0], (f"王相本 {x[1]}" if re.fullmatch(r"p\d{3}(?:—p\d{3})?", x[1] or "") else x[1] or "")] for x in _zz.get(str(g[0]), [])]} for g in gs]
         NO_T = {"en": "Not in Wang Xiang's edition; taken from later popular editions", "ja": "王相本になく、通行本によって補った組"}.get(L.code, "王相本无此组，讲义据通行本补")
         if gs:
             ju_html = "".join(f'<span class="ju{" wxno" if g[0] in SZJ_WX_NO else ""}" id="s{i}" data-n="{i}" tabindex="0"{f" title={chr(34)}{NO_T}{chr(34)}" if g[0] in SZJ_WX_NO else ""}>{esc(Y(g[1]))}</span>' + ("" if F else f'<span class="yi" hidden>{esc(g[2])}</span>') for i, g in enumerate(gs, 1))
@@ -2039,7 +2065,7 @@ def build_szj(L, write, P, S_IDX=None):
                        f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
                        f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
                 bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}：“{esc(gs[0][1].split("，")[0] + "，" + gs[0][1].split("，")[1])}”是什么意思</h2>'
-                           + "".join(f'<p lang="zh-Hans"><b>{esc(g[1])}</b><br>{esc(g[2])}</p>' for g in gs) + '<p class="note">白话为初稿，开讲时再核。</p></section>')
+                           + "".join(f'<p lang="zh-Hans"><b>{esc(g[1])}</b><br>{esc(g[2])}</p>' for g in gs) + ('<p class="note">白话已核定；视频还在制作。</p></section>' if jd.get("白话") else '<p class="note">白话为初稿，开讲时再核。</p></section>'))
         else:
             fig = f'<p class="note">{esc(SU["none"]) if F else "这一讲不讲新原文。"}</p>'; bh_html = ""
         sm = TR["sum"].get(str(n), "") if F else j["sum"]
@@ -2064,11 +2090,13 @@ def build_szj(L, write, P, S_IDX=None):
 </div></div>
 <main class="wrap chapter">
 <article>
-<p class="wjlead">{esc(SU["vlead"]) if F else "这一讲的视频还在制作。网站先放原文、白话和朗读，视频上线后补全讲解。"}</p>
+<p class="wjlead">{esc(SU["vlead"]) if F else ("这一讲的视频还在制作。网站先放原文、核定白话、王相注和一孔录的读法，视频上线后补上。" if jd else "这一讲的视频还在制作。网站先放原文、白话和朗读，视频上线后补全讲解。")}</p>
 {fig}
 {bh_html if F else ""}
 {yw_html}
+{f'<section class="gist ykan"><h2>这一讲讲什么</h2><p>{quotes(jd["落点"])}</p></section>' if jd.get("落点") else ""}
 {jy}
+{szj_jd_html(jd, L.code == "zh-Hant")}
 {"" if F else lyhj_html([r for r in SZJ_LYHJ if r["jiang"] == n], P)}
 {"" if F else bh_html}
 {vid}
@@ -2082,7 +2110,7 @@ def build_szj(L, write, P, S_IDX=None):
               "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": bname}}
         if not F: ld["mentions"] = lyhj_ld([r for r in SZJ_LYHJ if r["jiang"] == n])
         if F: js = SHARE_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", "<ul></ul>").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + ZJ.HL_JS
-        else: js = SHARE_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"]], ensure_ascii=False)).replace("@NONE@", "这一组的白话还在整理。") if gs else "").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
+        else: js = SHARE_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "王相注"]], ensure_ascii=False)).replace("@NONE@", "这一组的白话还在整理。") if gs else "").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
         if S_IDX is not None and gs: S_IDX.append({"c": f'{bname} {n}' if F else f"三字经 {n}", "t": name_of(j), "u": P + rel_of(n), "y": Y(text) if F else text, "x": tr_all if F else " ".join(g[2] for g in gs)})
         if F: ttl, desc = f'{bname} · {head_t}: {name_of(j)} | 一孔录 Yikonglu', SU["md"].format(n=n, tr=tr_all[:110] + ("…" if len(tr_all) > 110 else "")) if gs else f'{bname} · {head_t}: {name_of(j)}. {sm[:100]}'
         else:

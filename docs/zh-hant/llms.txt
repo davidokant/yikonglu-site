@@ -460,10 +460,10 @@
 - [17.14 道聽而塗說](https://yikonglu.com/zh-hant/lunyu/yang-huo/14.html): 好話從耳朵進、從嘴裡出，沒變成自己的，等於自己把德扔了。今例：聽完存錢課，當晚給朋友講複利，月底工資照樣花光。
 - [17.15 鄙夫可與事君](https://yikonglu.com/zh-hant/lunyu/yang-huo/15.html): 沒得到怕得不到，得到了怕丟；怕丟的人，小到吮癰舐痔，大到弒君，什麼都做得出。今例：沒升職時搶同事的單，升了怕被頂，壓投訴、籤假合同，一路只有一個“怕丟”。
 - [17.16 古者民有三疾](https://yikonglu.com/zh-hant/lunyu/yang-huo/16.html): 同是狂、矜、愚，古人偏得有底線，今人連毛病也走了樣：肆變蕩，廉變忿戾，直變詐。今例：自稱“說話直”專罵人的賬號，半個月後接了廣告，誇得比誰都狠。
-- [17.17 巧言令色（重出）](https://yikonglu.com/zh-hant/lunyu/yang-huo/17.html): 朱注只兩個字“重出”，講法見學而 1.3。
-- [17.18 惡紫之奪朱](https://yikonglu.com/zh-hant/lunyu/yang-huo/18.html): 惡的不是紫色本身，是似是而非的壓過了正的；會說的人把是非賢愚顛倒過來。
-- [17.19 予欲無言](https://yikonglu.com/zh-hant/lunyu/yang-huo/19.html): 只從話裡找聖人，就只得到話；天不說話，四季照走，百物照長。
-- [17.20 孺悲欲見孔子](https://yikonglu.com/zh-hant/lunyu/yang-huo/20.html): 推病是不見，彈琴是讓他知道不是病；不屑於教，也是一種教。
+- [17.17 巧言令色（重出）](https://yikonglu.com/zh-hant/lunyu/yang-huo/17.html): 朱注只兩個字“重出”，講法見學而 1.3。今例：售樓處銷售一口一個“姐”，問到地旁邊要建什麼，就說回頭幫您問問。
+- [17.18 惡紫之奪朱](https://yikonglu.com/zh-hant/lunyu/yang-huo/18.html): 惡的不是紫色本身，是似是而非的壓過了正的；會說的人把是非賢愚顛倒過來。今例：老陳醋擺在最下層，瓶子像工藝品的勾兌醋擺在眼睛高度，賣得更好。
+- [17.19 予欲無言](https://yikonglu.com/zh-hant/lunyu/yang-huo/19.html): 只從話裡找聖人，就只得到話；天不說話，四季照走，百物照長。今例：媽媽不再答鹽放幾克，讓女兒在灶臺邊看一個月，女兒炒出來就是媽媽的味。
+- [17.20 孺悲欲見孔子](https://yikonglu.com/zh-hant/lunyu/yang-huo/20.html): 一孔之見：藉口給的是面子，那一曲瑟給的是機會：讓他自己回去想錯在哪兒。今例：被偷賣方子的糕點師傅說不在，卻讓門口的徒弟聽見她在教新學徒。
 - [17.21 宰我問三年之喪](https://yikonglu.com/zh-hant/lunyu/yang-huo/21.html): 孔子不跟他算年數，只問心安不安；三年不是報得完親恩，是聖人定的中線，賢者不敢過，也不該減。
 - [17.22 飽食終日](https://yikonglu.com/zh-hant/lunyu/yang-huo/22.html): 不是勸人下棋，是說吃飽了什麼心思都不用，連下棋的都不如。
 - [17.23 君子尚勇乎](https://yikonglu.com/zh-hant/lunyu/yang-huo/23.html): 義放在最上面，勇才大；在上位的有勇無義就作亂，在下的就做賊。
@@ -513,4 +513,4 @@
 ## 互見：從《論語》讀出去
 其他經典逐章標出和《論語》相通、相引的章，每條鏈回論語章頁。
 - [《道德經》八十一章](https://yikonglu.com/zh-hant/daodejing/)：互見《論語》277 條
-- [《三字經》三十九講](https://yikonglu.com/zh-hant/sanzijing/)：互見《論語》72 條
+- [《三字經》三十九講](https://yikonglu.com/zh-hant/sanzijing/)：互見《論語》135 條

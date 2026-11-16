@@ -458,10 +458,10 @@
 - [17.14 道听而涂说](https://yikonglu.com/vi/lunyu/yang-huo/14.html): 好话从耳朵进、从嘴里出，没变成自己的，等于自己把德扔了。今例：听完存钱课，当晚给朋友讲复利，月底工资照样花光。
 - [17.15 鄙夫可与事君](https://yikonglu.com/vi/lunyu/yang-huo/15.html): 没得到怕得不到，得到了怕丢；怕丢的人，小到吮痈舐痔，大到弑君，什么都做得出。今例：没升职时抢同事的单，升了怕被顶，压投诉、签假合同，一路只有一个“怕丢”。
 - [17.16 古者民有三疾](https://yikonglu.com/vi/lunyu/yang-huo/16.html): 同是狂、矜、愚，古人偏得有底线，今人连毛病也走了样：肆变荡，廉变忿戾，直变诈。今例：自称“说话直”专骂人的账号，半个月后接了广告，夸得比谁都狠。
-- [17.17 巧言令色（重出）](https://yikonglu.com/vi/lunyu/yang-huo/17.html): 朱注只两个字“重出”，讲法见学而 1.3。
-- [17.18 恶紫之夺朱](https://yikonglu.com/vi/lunyu/yang-huo/18.html): 恶的不是紫色本身，是似是而非的压过了正的；会说的人把是非贤愚颠倒过来。
-- [17.19 予欲无言](https://yikonglu.com/vi/lunyu/yang-huo/19.html): 只从话里找圣人，就只得到话；天不说话，四季照走，百物照长。
-- [17.20 孺悲欲见孔子](https://yikonglu.com/vi/lunyu/yang-huo/20.html): 推病是不见，弹琴是让他知道不是病；不屑于教，也是一种教。
+- [17.17 巧言令色（重出）](https://yikonglu.com/vi/lunyu/yang-huo/17.html): 朱注只两个字“重出”，讲法见学而 1.3。今例：售楼处销售一口一个“姐”，问到地旁边要建什么，就说回头帮您问问。
+- [17.18 恶紫之夺朱](https://yikonglu.com/vi/lunyu/yang-huo/18.html): 恶的不是紫色本身，是似是而非的压过了正的；会说的人把是非贤愚颠倒过来。今例：老陈醋摆在最下层，瓶子像工艺品的勾兑醋摆在眼睛高度，卖得更好。
+- [17.19 予欲无言](https://yikonglu.com/vi/lunyu/yang-huo/19.html): 只从话里找圣人，就只得到话；天不说话，四季照走，百物照长。今例：妈妈不再答盐放几克，让女儿在灶台边看一个月，女儿炒出来就是妈妈的味。
+- [17.20 孺悲欲见孔子](https://yikonglu.com/vi/lunyu/yang-huo/20.html): 一孔之见：借口给的是面子，那一曲瑟给的是机会：让他自己回去想错在哪儿。今例：被偷卖方子的糕点师傅说不在，却让门口的徒弟听见她在教新学徒。
 - [17.21 宰我问三年之丧](https://yikonglu.com/vi/lunyu/yang-huo/21.html): 孔子不跟他算年数，只问心安不安；三年不是报得完亲恩，是圣人定的中线，贤者不敢过，也不该减。
 - [17.22 饱食终日](https://yikonglu.com/vi/lunyu/yang-huo/22.html): 不是劝人下棋，是说吃饱了什么心思都不用，连下棋的都不如。
 - [17.23 君子尚勇乎](https://yikonglu.com/vi/lunyu/yang-huo/23.html): 义放在最上面，勇才大；在上位的有勇无义就作乱，在下的就做贼。
@@ -511,4 +511,4 @@
 ## Cross-references: from the Analects outward
 Other classics, each chapter linked back to the Analects chapters it echoes or quotes.
 - [Daodejing, 81 chapters](https://yikonglu.com/daodejing/): 277 cross-references to the Analects
-- [Three-Character Classic, 39 lessons](https://yikonglu.com/sanzijing/): 72 cross-references to the Analects
+- [Three-Character Classic, 39 lessons](https://yikonglu.com/sanzijing/): 135 cross-references to the Analects

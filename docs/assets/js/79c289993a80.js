@@ -1,9 +1,9 @@
 (function(){var F=document.querySelector('.yuanwen.dz');if(!F)return;var Q=F.querySelector('blockquote'),C=document.getElementById('zjcard'),S=[];try{S=JSON.parse(F.querySelector('.zjdata').textContent)}catch(e){}
-var TABS=[["bh", "白話"]],cur=null,sel='',tab='bh';
+var TABS=[["bh", "白话"], ["zhu", "王相注"]],cur=null,sel='',tab='bh';
 function hl(n){F.querySelectorAll('.yyp .hl').forEach(function(r){r.classList.toggle('on',r.dataset.s==n)});var r=F.querySelector('.yyp .hl[data-s="'+n+'"]'),P=F.querySelector('.yypane');if(r&&P&&P.scrollHeight>P.clientHeight+4){var a=r.getBoundingClientRect(),b=P.getBoundingClientRect();P.scrollTo({top:P.scrollTop+a.top-b.top-(b.height-a.height)/2,left:P.scrollLeft+a.left-b.left-(b.width-a.width)/2,behavior:'smooth'})}else if(r){var q=r.getBoundingClientRect();if(q.top<0||q.bottom>innerHeight)r.scrollIntoView({block:'nearest',behavior:'smooth'})}}
 function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML}
 function body(){var d=S[cur.dataset.n-1]||{},B=C.querySelector('.zb'),v=d[tab];C.querySelectorAll('.zt button').forEach(function(b){b.classList.toggle('on',b.dataset.t===tab)});
-if(!v||!v.length){B.innerHTML='<p><small>這一組的白話還在整理。</small></p>';return}
+if(!v||!v.length){B.innerHTML='<p><small>这一组的白话还在整理。</small></p>';return}
 if(typeof v==='string'){B.innerHTML='<p>'+esc(v)+'</p>';return}
 B.innerHTML=v.map(function(x){return '<p>'+esc(x[0])+(x[1]?'<small>'+esc(x[1])+'</small>':'')+(x[2]?'<small class="dai">'+esc(x[2])+'</small>':'')+'</p>'}).join('')}
 function open(s,txt){cur=s;sel=txt||'';F.querySelectorAll('.ju.on').forEach(function(x){x.classList.remove('on')});s.classList.add('on');hl(s.dataset.n);
@@ -18,7 +18,7 @@ try{history.replaceState(null,'','#'+s.id)}catch(e){}}
 function step(d){if(!cur)return;var s=F.querySelector('.ju[data-n="'+(+cur.dataset.n+d)+'"]');if(s){open(s);var r=s.getBoundingClientRect();if(r.top<60||r.bottom>innerHeight-40)s.scrollIntoView({block:'center',behavior:'smooth'})}}
 function close(){C.hidden=true;if(cur)cur.classList.remove('on');cur=null}
 function cite(t,s){return '\u201c'+t+'\u201d\u2014\u2014'+Q.dataset.src+(Q.dataset.short?' '+Q.dataset.short:Q.dataset.sep+Q.dataset.url+'#'+s.id)}
-function put(t,b){var o=b.textContent,done=function(){b.textContent='已複製';setTimeout(function(){b.textContent=o},1200)};if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,function(){prompt('',t)});else prompt('',t)}
+function put(t,b){var o=b.textContent,done=function(){b.textContent='已复制';setTimeout(function(){b.textContent=o},1200)};if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,function(){prompt('',t)});else prompt('',t)}
 Q.addEventListener('click',function(e){var s=e.target.closest('.ju');if(!s)return;var g=window.getSelection?String(getSelection()).trim():'';if(g&&s.contains(getSelection().anchorNode))open(s,g.replace(/\s+/g,''));else open(s)});
 Q.addEventListener('keydown',function(e){if(e.key==='Enter'){var s=e.target.closest('.ju');if(s)open(s)}});
 document.addEventListener('selectionchange',function(){var g=getSelection();if(!g.rangeCount||g.isCollapsed)return;var n=g.anchorNode&&(g.anchorNode.nodeType===1?g.anchorNode:g.anchorNode.parentNode),s=n&&n.closest&&n.closest('.ju');if(s&&Q.contains(s)){clearTimeout(window._zjt);window._zjt=setTimeout(function(){var t=String(getSelection()).trim().replace(/\s+/g,'');if(t)open(s,t)},450)}});
