@@ -976,3 +976,7 @@ th .hm{margin-left:0}
 :root[data-theme="dark"] .hm.ok{color:#8fc5ad;border-color:#8fc5ad66}:root[data-theme="dark"] .hm.mid{color:#d9a873;border-color:#d9a87366}
 .hedui .note{font-size:13.5px;margin:8px 0 0}
 .hdt tr.hdn td{font-size:13px;color:var(--mute);padding-top:0;border-top:0}.hdt th[scope=row]{white-space:nowrap}
+/* 11-16 诸家分歧 */
+.fenqi{margin:22px 0;padding:14px 16px;border-left:3px solid #8A5A2C;background:#8A5A2C0d;border-radius:0 6px 6px 0}.fenqi h2{font-size:17px;margin:0 0 8px}
+.fenqi ul{list-style:none;padding:0;margin:0}.fenqi li{padding:6px 0;line-height:1.75}.fenqi li b{margin-right:6px}.fenqi li small{display:block;color:var(--mute);font-size:13.5px}
+.fenqi .sure{margin-right:6px}.fenqi .note{font-size:13px;margin:8px 0 0}

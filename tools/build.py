@@ -1053,6 +1053,7 @@ ZHAI_OFF = os.environ.get("YK_ZHAI") == "off"
 HD_OFF = os.environ.get("YK_HD") == "off"  # 11-16 改动单二：核对标记
 HD_DAIHE = {}  # 章 → 待核未上的引文（parse_gao 里收）
 # 可摘段（十一项之 2）：11-15 主人看过 1.1 样张说“过”，铺到全部已讲章；YK_ZHAI=off 可关
+FQ_OFF = os.environ.get("YK_FQ") == "off"  # 11-16 改动单三：诸家分歧块
 def zx(code, c, j, x):  # 句里难字加点线，点了弹小卡（只在中文页）
     if not (ZD_ON and code.startswith("zh")): return esc(x)
     m = {o: k for jj, o, k, g, s in ZD["per"].get(c, []) if jj == j}
@@ -2202,7 +2203,7 @@ def build_lang(L, D, write):
             _gl0 = {k.split("|")[0] for _, _, k, gg, _ in ZD["per"].get(c, []) if gg}
             _rz = [x for x in g["reads"] if x["zi"] in _gl0]; _rn = len(g["reads"]) - len(_rz)
             _rp = (_pill("ok", f"对过朱注反切 {len(_rz)}") if _rz else "") + (_pill("mid", f"已核 {_rn}") if _rn else "")
-            _yk = "主人选定" if c in D["zy"] else "讲稿定版"
+            _yk = "一孔录选定" if c in D["zy"] else "讲稿定版"
             gist_html = gist_html.replace(f'<h2>{L.t("ch_gist")}</h2>', f'<h2>{L.t("ch_gist")}{_pill("mid", _yk)}</h2>', 1)
             bh_html = bh_html.replace(f'<h2><i>白</i>{bh_h2}</h2>', f'<h2><i>白</i>{bh_h2}{_pill("mid", "已核")}</h2>', 1)
             extra = extra.replace(f'<h2><i>核</i>{L.t("cites")}</h2>', f'<h2><i>核</i>{L.t("cites")}{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}</h2>', 1)
@@ -2210,13 +2211,25 @@ def build_lang(L, D, write):
             _qp = sorted(set(g.get("qw_pages") or []), key=int)
             _li = [f'<li><b>原文</b>{_pill("ok", "对过原页")}朱注本第 {"、".join(_qp) or "?"} 页' + ("，每个字框到原页的列上" if c in ZJD["on"] else "") + "</li>",
                    f'<li><b>白话</b>{_pill("mid", "已核")}随讲稿定版，和视频一致</li>',
-                   f'<li><b>一孔按</b>{_pill("mid", _yk)}一孔录自己的读法，不是古注；' + ("这章是争议读法，主人在几家里选定" if c in D["zy"] else "随视频讲稿定版") + "</li>"]
+                   f'<li><b>一孔按</b>{_pill("mid", _yk)}一孔录自己的读法，不是古注；' + ("这章各家读法不同，一孔录在几家里选定一种" if c in D["zy"] else "随视频讲稿定版") + "</li>"]
             if g["cites"]: _li.append(f'<li><b>引文</b>{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}共 {len(g["cites"])} 条，点页码看原页' + (f"；其中 {len(_pa)} 条是转述，不是原话" if _pa else "") + "</li>")
             if g["reads"]: _li.append(f'<li><b>读音</b>{_rp}共 {len(g["reads"])} 处；有朱注反切的照反切</li>')
             _dh = len(HD_DAIHE.get(c, ()))
             citeit = (f'<section class="hedui" id="hedui"><h2>本章核到哪了</h2><ul>{"".join(_li)}</ul>'
                       + (f'<p class="note">{_pill("todo", f"待核 {_dh}")}另有 {_dh} 条引文还在核，核完才上页面。</p>' if _dh else "")
                       + f'<p class="note"><a href="{P}fangfa.html#hedui">“对过原页”“已核”“待核”各指什么，全站核到哪了 →</a></p></section>') + citeit
+        if L.code.startswith("zh") and not FQ_OFF:  # 11-16 改动单三：诸家分歧块。只用已核数据（注本 CSV 里“异读”且把握为定／较稳的行），不硬造；无分歧的章不出
+            _zb = D["zhuben"].get(c, {}); _fq = []
+            for _k, _nm in (("yang", "杨伯峻《论语译注》"), ("qian", "钱穆《论语新解》")):
+                _z = _zb.get(_k)
+                if _z and _z.get("kind") == "k_diff" and _z.get("sure") in ("s_ding", "s_wen"): _fq.append((_nm, _z))
+            if _fq:
+                _keys = list(dict.fromkeys(z["key"] for _, z in _fq if z.get("key")))
+                _fqh = f'诸家分歧：{"、".join("“" + k + "”" for k in _keys)}怎么讲' if _keys else "诸家分歧：这一章各家讲法不同"
+                gist_html += (f'<section class="fenqi" id="fenqi"><h2>{esc(_fqh)}</h2><ul>'
+                              f'<li><b>朱熹《论语集注》</b>一孔录主朱注，本页的白话和逐句注照朱注讲' + ("；这章是争议读法，一孔按里写明了取舍" if c in D["zy"] else "") + "。</li>"
+                              + "".join(f'<li><b>{_nm}</b><span class="sure {z["sure"]}">{L.t(z["sure"])}</span>“{esc(z["text"])}”<small>{esc(z["say"])}</small></li>' for _nm, z in _fq)
+                              + f'</ul><p class="note">“把握”是我们对这条异同判断的把握，“定”最稳。现代注本版权期内，只短引一句，页码核过正版书后再补；皇侃义疏等古注原页见 <a href="#zhuben">诸家注本</a>。</p></section>')
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
 <h1><span class="no">{f"论语 {c} · {pname}" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)}</span>{esc(title_of(c))}</h1>{LX.nl_tag(L, P, D["lx"], c)}{f'<p class="kwtag"><a href="#kw">{L.t("kw")} {len(mine)} 条</a> · <a href="{P}kanwu.html">全部勘误</a></p>' if mine and L.code.startswith("zh") else ""}
@@ -2775,8 +2788,8 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
                + _tr("引文（朱注等）", f"{_cok} 条", f"{_coth} 条", f"{_cdh} 条", f"已讲 {len(pub)} 章视频里引到的话；{_cpa} 条标“转述”，是概括意思")
                + _tr("读音", f"{_rz} 处", f"{len(_rd) - _rz} 处", "—", "有朱注反切的照反切，和今天通行读法不同的另注“今多读”")
                + _tr("白话", "—", f"{len(pub) + _bok} 章", f"{_bdraft} 章", f"已讲 {len(pub)} 章随讲稿定版；未讲章是按底本直译的初稿，页上标明")
-               + _tr("一孔按", "—", f"{len(pub)} 章", "—", f"一孔录自己的读法，不是古注；其中 {_zy} 章是争议读法，主人在几家里选定")
-               + f'</tbody></table><p>做法：引文、读音的页码由智器对着原页图逐条找出，页上可点开核对；白话和一孔按随视频讲稿一起，由主人看片定版。错了公开改，记在<a href="{P}kanwu.html">勘误页</a>，现有 {_kw} 条。</p>')
+               + _tr("一孔按", "—", f"{len(pub)} 章", "—", f"一孔录自己的读法，不是古注；其中 {_zy} 章各家读法不同，一孔录在几家里选定一种")
+               + f'</tbody></table><p>做法：引文、读音的页码由智器对着原页图逐条找出，页上可点开核对；白话和一孔按随视频讲稿一起看片定版。错了公开改，记在<a href="{P}kanwu.html">勘误页</a>，现有 {_kw} 条。</p>')
     elif DC and DC.get("rows"):
         s5 += f'<p>{F["s5c"].format(n=DC["episodes"], s=DC["segments"], c=DC["changed"], r=DC["ratio"], d=DC["updated"])}</p>'
         def eplink(ep):
