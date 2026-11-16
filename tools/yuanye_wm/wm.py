@@ -62,6 +62,24 @@ def mark(im, seal, text):
     d.text((tx, ty), t, font=f, fill=(90, 86, 78, 235), stroke_width=hw, stroke_fill=halo)
     d.text((tx, ty), t1, font=f, fill=(35, 80, 63, 235), stroke_width=hw, stroke_fill=halo)
     return Image.alpha_composite(im.convert("RGBA"), lay).convert("RGB")
+def mark2(im, seal, text):
+    """11-16 防抄（压框）：印心对准版框最下横线与最右竖线的交点，压在版框右下角上；框内那一角有字就沿对角线往外挪（yakuang.seal_pos）。
+    找不到框角或挪到底仍压字，照旧用 mark()。页底一行小字右对齐，止于印左约 0.8% 页宽。返回 (图, 状态)，状态 corner／moved／fallback。"""
+    import numpy as np
+    from yakuang import seal_pos
+    im = im.convert("RGB"); W, H = im.size; S = round(W * 0.041)
+    r = seal_pos(np.array(im.convert("L")), S)
+    if r is None: return mark(im, seal, text), "fallback"
+    L, T, step, (x0, x1, y0, y1) = r
+    fs = round(W * 0.018); f = ImageFont.truetype(FONT, fs)
+    t1 = "一孔录 yikonglu.com"; t = t1 + " · " + text
+    lay = Image.new("RGBA", im.size, (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
+    sl = _seal(seal, S); lay.paste(sl, (L, T), sl)
+    tx = L - round(W * 0.008) - f.getlength(t); ty = (y1 + H) / 2
+    hw = max(2, fs // 8); halo = (246, 243, 234, 170)
+    d.text((tx, ty), t, font=f, fill=(90, 86, 78, 235), stroke_width=hw, stroke_fill=halo, anchor="lm")
+    d.text((tx, ty), t1, font=f, fill=(35, 80, 63, 235), stroke_width=hw, stroke_fill=halo, anchor="lm")
+    return Image.alpha_composite(im.convert("RGBA"), lay).convert("RGB"), ("moved" if step else "corner")
 def crop_box(path, p=None):
     """论语原页切框：yuanye_crop_lunyu.json 里有、且图尺寸对得上就用；否则（新页、换了校平图）现找版框。"""
     from PIL import Image as _I

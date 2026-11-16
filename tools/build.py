@@ -3299,6 +3299,9 @@ def img_sitemap(outdir):
     print(f"  图片站点地图：{len(rows)} 页、{sum(r.count('<image:image>') for r in rows)} 张")
 
 
+YK_STAT = {}
+
+
 def yuanye_wm_out(ydir, dst):
     """论语原页出图（11-14 主人“过”）：按版框切白边，底边一行“一孔录 yikonglu.com · 论语集注 朱熹 卷X 篇 · 第 N 页”＋镂空一孔印压进版框右下角。
     tools/yuanye/ 原图不动；印只用工坊 assets/一孔印.png 原件（tools/yuanye_wm/一孔印.png，先核 sha）。出图逐字节稳定，图片仓库只在真变了才重写。"""
@@ -3310,8 +3313,10 @@ def yuanye_wm_out(ydir, dst):
     for f in sorted(os.listdir(ydir)):
         if not f.endswith(".jpg"): continue
         p = f[:-4]; src = os.path.join(ydir, f)
-        im = ZJ.WM.mark(ZJ.WM.prep("lunyu", Image.open(src), p, src), seal, ZJ.WM.label("lunyu", p))
+        im, st = ZJ.WM.mark2(ZJ.WM.prep("lunyu", Image.open(src), p, src), seal, ZJ.WM.label("lunyu", p))  # 11-16 印压版框右下角
+        YK_STAT.setdefault(st, []).append(p)
         im.save(os.path.join(dst, f), quality=82, optimize=True, progressive=True)
+    print("  原页印：" + "；".join(f"{k} {len(v)}" + (f"（{' '.join(v)}）" if k != "corner" else "") for k, v in sorted(YK_STAT.items())))
 
 
 def stamp_chuchu(outdir, D):
