@@ -111,10 +111,14 @@ def data(G, PIAN, pub, href, title_of, tx, X):
         t = tx(c) or ""
         return [title_of(c), t if len(t) <= 86 else t[:86] + "……", href(c), (nlc.get(c) or [0])[0]]
     st = gx.get("stats", {})
-    return {"pian": [{"name": p["name"], "mid": p["mid"]} for p in pian], "R": R,
+    out = {"pian": [{"name": p["name"], "mid": p["mid"]} for p in pian], "R": R,
             "ch": [[c, *pos[i], deg[i], 1 if c in pub else 0, *row(c)] for i, c in enumerate(order)],
             "flags": flags, "nodes": nodes, "edges": edges, "stats": st, "total": sum(v for k, v in st.items() if k != "年历"),
-            "nl": {r["md"]: r["c"] for r in (X or {}).get("nl") or []}}  # 11-16 默认点亮当天“今日《论语》”那一章（北京时间，按年历）
+            "nl": {r["md"]: r["c"] for r in (X or {}).get("nl") or []}}
+    return out  # 11-16 默认点亮当天“今日《论语》”那一章（北京时间，按年历）
+
+
+DVER = __import__("time").strftime("%y%m%d%H%M")  # 数据版本＝建站时刻（主页先于 data() 写出，只能按建站算），页面 data-src 带 ?v=，免得旧缓存里的数据（如没有 nl）顶上来
 
 
 def write_data(write, d):
@@ -129,7 +133,7 @@ def js_ver():
 def xt_html(L, P, home=False):
     """画布＋控件。home=True 时带标题行和“去关系图”链接。"""
     hd = (f'<div class="xthead"><h2 class="ph">《论语》星图</h2></div>' if home else "")
-    return (f'<section class="xtsec{" xthome" if home else ""}">{hd}<div class="xt" id="xt" data-src="{P}data/xingtu.json" data-p="{P}">'
+    return (f'<section class="xtsec{" xthome" if home else ""}">{hd}<div class="xt" id="xt" data-src="{P}data/xingtu.json?v={DVER}" data-p="{P}">'
             '<canvas aria-label="《论语》关系星图：可拖动旋转，点星看这一章连着哪几章"></canvas>'
             '<div class="hud"><input type="search" placeholder="章号、字句或人名" aria-label="在星图里找">'
             '<button type="button" data-f="h" aria-pressed="true">本书互见</button><button type="button" data-f="q" aria-pressed="true">同问异答</button>'
