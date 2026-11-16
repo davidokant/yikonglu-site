@@ -2167,7 +2167,7 @@ def build_lang(L, D, write):
                 continue
             secs += f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{L.t(lab)}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}>{quotes(v)}</p></section>'
         if L.code == "zh-Hans" and c in D["zy"]:  # 争议读法主人选定的一孔之见（11-08，tools/zhengyi.json 出自 规范/争议读法-选定表.md；待核出处已去人名）盖过自动短答；繁体由简体整页转
-            gist_html = f'<section class="gist ykan" id="ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(YKAN["zh"][0])}</b>{quotes(D["zy"][c]["text"] if ep.get("youtube") else D["zy"][c]["text"].replace("片里", "讲稿里"))}</p>{YKCITE}</section>'
+            gist_html = f'<section class="gist ykan" id="ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(YKAN["zh"][0])}</b>{quotes(D["zy"][c]["text"])}</p>{YKCITE}</section>'
         prev_c = pub[i-1] if i > 0 else None; next_c = pub[i+1] if i+1 < len(pub) else None
         def card(cc, lab, cls):
             if not cc: return '<span></span>'
@@ -3577,6 +3577,8 @@ def main(zdir, outdir, kanwu=None):
     yxl = yxl_merge(yxl, json.load(open(YXL_WEEK_FILE, encoding="utf-8")) if os.path.exists(YXL_WEEK_FILE) else {})
     draft = json.load(open(DRAFT_FILE, encoding="utf-8")) if os.path.exists(DRAFT_FILE) else {}
     D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, gb=GB.load(GAO_DIR, eps), pages_avail=pages_avail, today=today, zhuju=ZJD, wjan=wjan, ddj=load_ddj(), bh_ok=bh_ok, lx=LX.load(), zy=json.load(open(os.path.join(HERE, "zhengyi.json"), encoding="utf-8")) if os.path.exists(os.path.join(HERE, "zhengyi.json")) else {})
+    for c_, v_ in D["zy"].items():  # 11-16：视频还没出的章，选定表里的“片里”改说“讲稿里”
+        if c_ in ch2ep and not ch2ep[c_][1].get("youtube") and "text" in v_: v_["text"] = v_["text"].replace("片里", "讲稿里")
 
     D["hd3"] = hd3_load(D, today)  # 11-16 改动单五
     pdp = os.path.join(HERE, "pagedates.json")  # 每页 [内容指纹, 内容最后变动日]：没改的页不换日期
