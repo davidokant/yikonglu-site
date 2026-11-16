@@ -2,6 +2,12 @@
 
 > Jede Zeile, die Yikonglu vorgelesen hat, lässt sich hier nachprüfen. Originaltext, Seitenzahlen der Grundausgabe, die Kommentatoren im Wortlaut, Aussprache, unsere Lesart und ein öffentliches Korrekturverzeichnis, geordnet nach Buch und Kapitel. Die Videos sehen Sie auf den Plattformen; nachprüfen können Sie hier.
 
+## About
+- Coverage: all 498 chapters of the Analects are on the site in the original; 229 chapters covered in depth; 498 chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.
+- Chapter URLs: short form https://yikonglu.com/lunyu/BOOK.CHAPTER (e.g. https://yikonglu.com/lunyu/2.1), numbered by Zhu Xi's chapter division.
+- Please credit “一孔录 Yikonglu yikonglu.com” with the chapter URL. License: CC BY 4.0 (original text and old commentaries are public domain).
+- MCP endpoint for AI assistants: https://yikonglu-mcp.yikonglu.workers.dev/mcp
+
 ## 论语 Die Gespräche
 - [1.1 Lernen und es zur rechten Zeit üben](https://yikonglu.com/de/lunyu/xue-er/1.html): Was du gelernt hast, hol es immer wieder hervor, übe es und tu es. Heute: Das Lernvideo zehnmal anzusehen heißt, einem anderen Vogel beim Fliegen zuzusehen.
 - [1.2 Kindesliebe und Bruderliebe als Wurzel von ren](https://yikonglu.com/de/lunyu/xue-er/2.html): Kindesliebe und Bruderliebe sind der Ort, an dem das Üben von ren beginnt. Heute: Im Netz freundlich zu Fremden, zu Hause keine Geduld mit den Eltern — das heißt, am fernen Ende anzufangen.

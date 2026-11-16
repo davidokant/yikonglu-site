@@ -2,6 +2,12 @@
 
 > 일공록이 읽은 모든 구절은 여기서 확인할 수 있습니다. 원문, 저본의 쪽수, 주석가의 말 그대로, 독음, 우리의 읽기, 공개 정오표를 책별·장별로 정리했습니다. 영상은 각 플랫폼에서, 확인은 여기서.
 
+## About
+- Coverage: all 498 chapters of the Analects are on the site in the original; 229 chapters covered in depth; 498 chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.
+- Chapter URLs: short form https://yikonglu.com/lunyu/BOOK.CHAPTER (e.g. https://yikonglu.com/lunyu/2.1), numbered by Zhu Xi's chapter division.
+- Please credit “一孔录 Yikonglu yikonglu.com” with the chapter URL. License: CC BY 4.0 (original text and old commentaries are public domain).
+- MCP endpoint for AI assistants: https://yikonglu-mcp.yikonglu.workers.dev/mcp
+
 ## 论语 논어
 - [1.1 배우고 때때로 익히다](https://yikonglu.com/ko/lunyu/xue-er/1.html): 배운 것을 늘 꺼내어 연습하고 실제로 해 본다. 오늘로 옮기면: 강의 영상을 열 번 보는 것은 남의 새가 나는 것을 구경하는 것이다.
 - [1.2 효제는 인의 근본](https://yikonglu.com/ko/lunyu/xue-er/2.html): 효제는 인을 행하는 출발점. 오늘로 옮기면: 인터넷에서는 낯선 이에게 친절하고 집에서는 부모에게 참을성이 없는 것은, 먼 데서부터 시작한 것이다.

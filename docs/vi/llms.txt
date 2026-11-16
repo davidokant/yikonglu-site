@@ -2,6 +2,12 @@
 
 > Mỗi câu Nhất Khổng Lục đã đọc đều kiểm lại được ở đây. Nguyên văn, số trang trong bản gốc, lời các nhà chú giải nguyên văn, âm đọc, cách đọc của chúng tôi và sổ đính chính công khai, xếp theo sách và theo chương. Xem video trên các nền tảng; muốn kiểm lại thì đến đây.
 
+## About
+- Coverage: all 498 chapters of the Analects are on the site in the original; 229 chapters covered in depth; 498 chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.
+- Chapter URLs: short form https://yikonglu.com/lunyu/BOOK.CHAPTER (e.g. https://yikonglu.com/lunyu/2.1), numbered by Zhu Xi's chapter division.
+- Please credit “一孔录 Yikonglu yikonglu.com” with the chapter URL. License: CC BY 4.0 (original text and old commentaries are public domain).
+- MCP endpoint for AI assistants: https://yikonglu-mcp.yikonglu.workers.dev/mcp
+
 ## 论语 Luận Ngữ
 - [1.1 Học mà thường ôn tập](https://yikonglu.com/vi/lunyu/xue-er/1.html): Điều đã học thì thường xuyên đem ra tập, đem ra làm. Ngày nay: xem video hướng dẫn mười lần là đang xem con chim khác bay.
 - [1.2 Hiếu đễ là gốc của nhân](https://yikonglu.com/vi/lunyu/xue-er/2.html): Hiếu đễ là chỗ bắt đầu thực hành nhân. Ngày nay: trên mạng thì tử tế với người lạ, về nhà lại không kiên nhẫn với cha mẹ — ấy là bắt đầu từ đầu xa.

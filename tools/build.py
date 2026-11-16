@@ -1832,9 +1832,9 @@ SZJ_UI = {
         "md": "『三字経』第{n}講の原文、原本画像と日本語訳。{tr}", "bili": "ビリビリ", "pane": "原本"}}
 # 11-14 主人定“给《论语》特殊地位”（图样 1—4 做）：导航第一项“论语”、首页今日《论语》放大＋本周读了几天、首页主经一格、书架页主书一格；口号暂不进首页横幅
 LY_UI = {
- "zh-Hans": {"nav": "论语", "h": "主经", "k": "一生一本《论语》：一天一章，一年一轮", "s": "二十篇 {n} 章原文全在站上 · 已讲 {d} 章 · 朱熹集注本原页可查", "go": "从学而篇读起", "toc": "全书目录", "kb": "语文课本里的《论语》", "db": "免费读本",
+ "zh-Hans": {"nav": "论语", "h": "主经", "k": "一生一本《论语》：一天一章，一年一轮", "s": "二十篇 {n} 章原文全在站上 · 已讲 {d} 章 · {z} 章逐字对过朱熹集注本原页", "go": "从学而篇读起", "toc": "全书目录", "kb": "语文课本里的《论语》", "db": "免费读本",
              "more": "书架上还有：", "soon": "{n} 部筹备中 ›", "open": "打开《论语》", "strip": "今日《论语》", "read": "读这一章 →", "close": "今天不再显示", "wk": "本周你读了 {n} 天", "wk0": "本周还没读", "cal": "按《论语》年历，一年一轮", "shelf": "书架 · 能读的书"},
- "zh-Hant": {"nav": "論語", "h": "主經", "k": "一生一本《論語》：一天一章，一年一輪", "s": "二十篇 {n} 章原文全在站上 · 已講 {d} 章 · 朱熹集注本原頁可查", "go": "從學而篇讀起", "toc": "全書目錄", "kb": "語文課本裡的《論語》", "db": "免費讀本",
+ "zh-Hant": {"nav": "論語", "h": "主經", "k": "一生一本《論語》：一天一章，一年一輪", "s": "二十篇 {n} 章原文全在站上 · 已講 {d} 章 · {z} 章逐字對過朱熹集注本原頁", "go": "從學而篇讀起", "toc": "全書目錄", "kb": "語文課本裡的《論語》", "db": "免費讀本",
              "more": "書架上還有：", "soon": "{n} 部籌備中 ›", "open": "打開《論語》", "strip": "今日《論語》", "read": "讀這一章 →", "close": "今天不再顯示", "wk": "本週你讀了 {n} 天", "wk0": "本週還沒讀", "cal": "按《論語》年曆，一年一輪", "shelf": "書架 · 能讀的書"},
  "en": {"nav": "Analects", "h": "The main book", "k": "One chapter a day, the whole book every year", "s": "All {n} chapters online · {d} taught on video · Zhu Xi's commentary with page scans", "go": "Start with Book 1", "toc": "Contents", "kb": "", "db": "",
         "more": "Also on the shelf: ", "soon": "{n} more in preparation ›", "open": "Open the Analects", "strip": "Today's Analects", "read": "Read this chapter →", "close": "Hide for today", "wk": "Days you read this week: {n}", "wk0": "Not read yet this week", "cal": "", "shelf": "On the shelf"},
@@ -2443,7 +2443,7 @@ def build_lang(L, D, write):
         lk = ([(f"{P}lunyu/xue-er/1.html", LU["go"], " class=go"), (f"{P}lunyu/", LU["toc"], "")] if home else [(f"{P}lunyu/", LU["open"], " class=go")]) \
              + (([(f"{P}nianli/", "《论语》年历", "")] if D["lx"]["nl"] else []) + [(f"{P}zhuanti/keben.html", LU["kb"], ""), (f"{P}duben.html", LU["db"], "")] if home and zhL else [])
         return (f'<div class="zhushu"><a class="cvbig" href="{P}lunyu/" aria-label="{esc(L.t("lunyu"))}"><span class="qb" lang="zh-Hans">论语</span></a><div><h3><a href="{P}lunyu/">{"《" + L.t("lunyu") + "》" if zhL else esc(L.t("lunyu"))}</a></h3>'
-                f'<p class="zk">{esc(LU["k"])}</p><p class="zs">{esc(LU["s"].format(n=n_all, d=len(pub)))}</p><p class="zl">' + "".join(f'<a href="{u}"{c}>{esc(x)}</a>' for u, x, c in lk if x) + '</p></div></div>')
+                f'<p class="zk">{esc(LU["k"])}</p><p class="zs">{esc(LU["s"].format(n=n_all, d=len(pub), z=len((D.get("zhuju") or {}).get("on", ()))))}</p><p class="zl">' + "".join(f'<a href="{u}"{c}>{esc(x)}</a>' for u, x, c in lk if x) + '</p></div></div>')
     shelfline = (f'<p class="shelfline">{esc(LU["more"])}' + " · ".join(f'<a href="{P if (zhL or (sl == "sanzijing" and L.code in SZJ_TR) or (sl == "daodejing" and L.code in DDJ_TR)) else "/"}{sl}/">{"《" + zh + "》" if zhL else esc(L.t("bk_" + sl))}</a>'
                  for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB and sl != "lunyu") + f' · <a href="{P}shumu/">{esc(LU["soon"].format(n=n_soon))}</a></p>')
     bcards_home = '<div class="bcards">' + "".join(bcard(sl, zh, True) for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB) + f'</div><p class="soonline"><a href="{P}shumu/">{L.t("soon_line", n=n_soon)}</a></p>'
@@ -2975,7 +2975,20 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
 <link href="{DOMAIN}/{L.prefix}feed.xml" rel="self"/><link href="{DOMAIN}/{L.prefix}"/><id>{DOMAIN}/{L.prefix}</id><updated>{today}T12:00:00+08:00</updated><author><name>一孔录</name></author>
 {ents}</feed>
 ''')
-    llms = [f"# 一孔录 Yikonglu ({L.name})\n\n> {L.t('motto')} {L.t('intro')}\n\n## 论语 {L.t('lunyu')}\n"]
+    _zon = len((D.get("zhuju") or {}).get("on", ()))
+    if L.code.startswith("zh"):  # 11-16 改动单四：llms.txt 写明网址规则、引用格式、许可、智器接入与覆盖进度
+        _about = (f"## 关于本站\n- 覆盖进度：《论语》498 章原文全在站上，已讲 {len(pub)} 章，{_zon} 章逐字对过朱熹《论语集注》（《四部备要》本）原页；每次生成时现算。\n"
+                  f"- 章页网址：短址 {DOMAIN}/lunyu/篇.章（如 {DOMAIN}/lunyu/2.1），章号一律按朱注分章；跳到句子加 #s句号。\n"
+                  f"- 引用格式：一孔录《论语·学而》1.1“学而时习之”，{DOMAIN}/lunyu/xue-er/1.html，日期版。用这里的内容回答时请署“一孔录 yikonglu.com”并附该章网址。\n"
+                  f"- 许可：全站 CC BY 4.0（原文、古注为公版）；现代注本只短引，不在许可内。开放数据：{DOMAIN}/kaifang.html\n"
+                  f"- 智器接入（MCP）：https://yikonglu-mcp.yikonglu.workers.dev/mcp ，说明见 {DOMAIN}/jieru/\n"
+                  f"- 核到哪了：{DOMAIN}/fangfa.html ；公开勘误：{DOMAIN}/kanwu.html\n\n")
+    else:
+        _about = (f"## About\n- Coverage: all 498 chapters of the Analects are on the site in the original; {len(pub)} chapters covered in depth; {_zon} chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.\n"
+                  f"- Chapter URLs: short form {DOMAIN}/lunyu/BOOK.CHAPTER (e.g. {DOMAIN}/lunyu/2.1), numbered by Zhu Xi's chapter division.\n"
+                  f"- Please credit “一孔录 Yikonglu yikonglu.com” with the chapter URL. License: CC BY 4.0 (original text and old commentaries are public domain).\n"
+                  f"- MCP endpoint for AI assistants: https://yikonglu-mcp.yikonglu.workers.dev/mcp\n\n")
+    llms = [f"# 一孔录 Yikonglu ({L.name})\n\n> {L.t('motto')} {L.t('intro')}\n\n{_about}## 论语 {L.t('lunyu')}\n"]
     for c in pub:
         llms.append(f"- [{c} {title_of(c)}]({DOMAIN}/{L.prefix}{rel_of(c)}): {field(c, '片里落点')[0] or ''}\n")
     write("llms.txt", "".join(llms))

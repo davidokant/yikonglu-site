@@ -2,6 +2,12 @@
 
 > Chaque phrase lue par Yikonglu peut être vérifiée ici. Le texte source, les pages de l'édition de référence, les mots mêmes des commentateurs, la prononciation, notre lecture et un registre public d'errata, classés par livre et par chapitre. Regardez les vidéos sur les plateformes ; venez ici pour vérifier.
 
+## About
+- Coverage: all 498 chapters of the Analects are on the site in the original; 229 chapters covered in depth; 498 chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.
+- Chapter URLs: short form https://yikonglu.com/lunyu/BOOK.CHAPTER (e.g. https://yikonglu.com/lunyu/2.1), numbered by Zhu Xi's chapter division.
+- Please credit “一孔录 Yikonglu yikonglu.com” with the chapter URL. License: CC BY 4.0 (original text and old commentaries are public domain).
+- MCP endpoint for AI assistants: https://yikonglu-mcp.yikonglu.workers.dev/mcp
+
 ## 论语 Les Entretiens de Confucius
 - [1.1 Apprendre et le pratiquer en son temps](https://yikonglu.com/fr/lunyu/xue-er/1.html): Ce qu'on a appris, on le ressort sans cesse pour l'exercer et le faire. Aujourd'hui : regarder dix fois le tutoriel, c'est regarder voler l'oiseau d'un autre.
 - [1.2 Piété filiale et fraternelle, racine du ren](https://yikonglu.com/fr/lunyu/xue-er/2.html): La piété filiale et fraternelle est le point de départ de la pratique du ren. Aujourd'hui : aimable avec les inconnus en ligne, sans patience pour ses parents à la maison, c'est commencer par le mauvais bout.

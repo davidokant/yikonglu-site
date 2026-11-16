@@ -2,6 +2,12 @@
 
 > Каждую строку, прочитанную Икунлу, можно проверить здесь. Оригинальный текст, страницы базового издания, слова комментаторов в оригинале, чтения, наше прочтение и открытый список исправлений — по книгам и параграфам. Видео смотрите на платформах; проверять — здесь.
 
+## About
+- Coverage: all 498 chapters of the Analects are on the site in the original; 229 chapters covered in depth; 498 chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.
+- Chapter URLs: short form https://yikonglu.com/lunyu/BOOK.CHAPTER (e.g. https://yikonglu.com/lunyu/2.1), numbered by Zhu Xi's chapter division.
+- Please credit “一孔录 Yikonglu yikonglu.com” with the chapter URL. License: CC BY 4.0 (original text and old commentaries are public domain).
+- MCP endpoint for AI assistants: https://yikonglu-mcp.yikonglu.workers.dev/mcp
+
 ## 论语 Лунь юй
 - [1.1 Учиться и вовремя упражняться](https://yikonglu.com/ru/lunyu/xue-er/1.html): То, что выучил, снова и снова доставай, упражняйся и делай. Сегодня: посмотреть обучающее видео десять раз — значит смотреть, как летает другая птица.
 - [1.2 Сыновняя почтительность и братская любовь — корень жэнь](https://yikonglu.com/ru/lunyu/xue-er/2.html): Сыновняя почтительность и братская любовь — то, с чего начинается жэнь. Сегодня: в сети добр к незнакомцам, а дома нет терпения на родителей — это начинать с дальнего конца.

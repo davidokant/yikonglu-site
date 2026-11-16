@@ -2,6 +2,12 @@
 
 > Cada frase que Yikonglu ha leído se puede comprobar aquí. El texto original, las páginas de la edición de base, las palabras exactas de los comentaristas, la pronunciación, nuestra lectura y un registro público de erratas, ordenados por libro y capítulo. Vea los vídeos en las plataformas; venga aquí a comprobar.
 
+## About
+- Coverage: all 498 chapters of the Analects are on the site in the original; 229 chapters covered in depth; 498 chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.
+- Chapter URLs: short form https://yikonglu.com/lunyu/BOOK.CHAPTER (e.g. https://yikonglu.com/lunyu/2.1), numbered by Zhu Xi's chapter division.
+- Please credit “一孔录 Yikonglu yikonglu.com” with the chapter URL. License: CC BY 4.0 (original text and old commentaries are public domain).
+- MCP endpoint for AI assistants: https://yikonglu-mcp.yikonglu.workers.dev/mcp
+
 ## 论语 Las Analectas de Confucio
 - [1.1 Aprender y practicarlo a su tiempo](https://yikonglu.com/es/lunyu/xue-er/1.html): Lo aprendido, sácalo una y otra vez para ejercerlo y hacerlo. Hoy: ver diez veces el tutorial es ver volar el pájaro de otro.
 - [1.2 La piedad filial y fraterna, raíz del ren](https://yikonglu.com/es/lunyu/xue-er/2.html): La piedad filial y fraterna es donde empieza la práctica del ren. Hoy: amable con desconocidos en internet, sin paciencia para los padres en casa, eso es empezar por el extremo equivocado.

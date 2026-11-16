@@ -2,6 +2,12 @@
 
 > 一孔録が読み上げた一句一句を、ここで確かめられます。 原文、底本の頁、注釈者の言葉そのもの、読み方、私たちの読み、公開の正誤表を、書ごと章ごとに並べています。動画は各プラットフォームで、確認はここで。
 
+## About
+- Coverage: all 498 chapters of the Analects are on the site in the original; 229 chapters covered in depth; 498 chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.
+- Chapter URLs: short form https://yikonglu.com/lunyu/BOOK.CHAPTER (e.g. https://yikonglu.com/lunyu/2.1), numbered by Zhu Xi's chapter division.
+- Please credit “一孔录 Yikonglu yikonglu.com” with the chapter URL. License: CC BY 4.0 (original text and old commentaries are public domain).
+- MCP endpoint for AI assistants: https://yikonglu-mcp.yikonglu.workers.dev/mcp
+
 ## 论语 論語
 - [1.1 学びて時にこれを習う](https://yikonglu.com/ja/lunyu/xue-er/1.html): 学んだことを、いつも取り出して練習し、実際にやってみる。今日に置けば：解説動画を十回見るのは、よその鳥が飛ぶのを見ているだけ。
 - [1.2 孝弟は仁の本](https://yikonglu.com/ja/lunyu/xue-er/2.html): 孝弟は仁を行う出発点。今日に置けば：ネットでは見知らぬ人に優しく、家では親に我慢がきかない——それは遠いほうから始めている。
