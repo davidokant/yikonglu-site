@@ -8,7 +8,7 @@ def esc(s): return html.escape(s or "", quote=True)
 LINK = {"zh": "一孔书院 · 题名", "en": "Yikonglu Academy"}
 
 AFDIAN = "https://afdian.com/item/d667fd6ae19d11f1a65c5254001e7c00"  # 11-16 主人在爱发电上架题名（一个商品两个型号）
-KOFI = "https://ko-fi.com/yikonglu"  # 11-16 主人：Ko-fi 已开通
+KOFI = "https://ko-fi.com/s/97c7197047"  # 11-16 Ko-fi 题名商品（主人上架）
 
 # 11-16 主人点卡：书院先开“题名”，入院页整页换成题名（文案 评审/2026-11-16-书院题名开卖/入院页-题名-文案-v1.1.md）；旧权益表、书友圈、院落学籍撤下
 TM_ZH = dict(title="一孔书院 · 题名", sub="把名字题在《论语》年历的一天上", motto="免费的，管读懂；书院，管留名。",
