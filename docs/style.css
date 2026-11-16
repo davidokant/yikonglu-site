@@ -996,3 +996,13 @@ th .hm{margin-left:0}
 .hd3big .yk{border:2px solid var(--accent2);background:color-mix(in srgb,var(--accent2) 8%,var(--paper))}.hd3big .yk b{color:var(--accent2);font-size:40px}
 @media (max-width:640px){.hd3big{grid-template-columns:1fr 1fr}.hd3big .yk{grid-column:1/-1}.hd3 p{flex-direction:column;gap:2px}}
 .yxline-s a.yk3{color:var(--accent2);text-decoration:none;font-weight:600;white-space:nowrap}.yxline-s a.yk3 b{font-size:14px}
+/* 11-16 诸家原页：书名切换、逐页翻 */
+.zjy{margin:6px 0 18px}.zjy h3 small{display:block;font-weight:400;font-size:13px;color:var(--mute);margin-top:2px}
+.zjt{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.zjt button{font:inherit;font-size:14.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:inherit;cursor:pointer}
+.zjt button[aria-expanded=true]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.zjp figure{margin:8px 0 0}.zjp img{display:block;max-width:100%;height:auto;margin:0 auto;border:1px solid var(--line);background:#fff}
+.zjp figcaption{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-top:8px;font-size:13.5px;color:var(--mute);line-height:1.6}
+.zjn{display:inline-flex;align-items:center;gap:8px;flex:none}.zjn b{color:var(--fg);font-weight:600}
+.zjn button{font:inherit;font-size:18px;line-height:1;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:inherit;cursor:pointer}
+.zjm b{color:inherit;margin-right:6px}

@@ -13,6 +13,7 @@ import gushi as GS
 import renwu as RW
 import zhuju as ZJ
 import shuyuan as SY
+import zjyuanye as ZJY  # 11-16 诸家原页
 import lunyu_extra as LX  # 11-14 只为《论语》做的：年历、场合用句、课本带读
 import zizhuan as ZZ  # 11-15 一字一页 /zi/
 import xingtu as XT  # 11-15《论语》星图：首页招牌、关系图页
@@ -2076,6 +2077,7 @@ def build_lang(L, D, write):
         return (v, True) if v else (notes[c]["fields"].get(k), False)
     _nqf = os.path.join(HERE, "nextq.json" if L.code.startswith("zh") else f"nextq-{L.code}.json")  # 英日问句译文（11-13 主人定做）：nextq-en/ja.json
     NEXTQ = json.load(open(_nqf, encoding="utf-8")) if os.path.exists(_nqf) else {}  # 11-13 主人要每章都有问句，逐章写在 nextq.json
+    ZJY_TW = __import__("opencc").OpenCC("s2tw") if L.code == "zh-Hant" else None
     NQ_TW = __import__("opencc").OpenCC("s2twp") if NEXTQ and L.code == "zh-Hant" else None
     def next_q(c):  # 章末“下一章”卡下的一句问话：先用 nextq.json；没有时常见读法本身是问句就用它，否则问原文首句什么意思
         if c in NEXTQ: return NQ_TW.convert(NEXTQ[c]) if L.code == "zh-Hant" else NEXTQ[c]
@@ -2112,8 +2114,9 @@ def build_lang(L, D, write):
                 + "".join(f'<tr><td class="zi">{esc(r["底本"])}</td><td>{esc(r["通行本"])}</td><td>{esc(r["说明"])}</td></tr>' for r in rs) + "</tbody></table></section>")
     def zb_section(c, url, cite_src):
         zb = D["zhuben"].get(c, {})
-        if not zb: return ""
-        blocks, diffs = "", []
+        zjy = ZJY.html_for(c, L.code, ZJY_TW.convert if L.code == "zh-Hant" else None)  # 11-16 诸家原页（集解·邢疏、皇疏、正义、郑注残卷、释文）
+        if not zb and not zjy: return ""
+        blocks, diffs = zjy, []
         if "huang" in zb:
             h = zb["huang"]
             hurl = HUANG_SCAN.format(n=h["page"]) if h.get("ed", "zbz") == "zbz" else HUANG_WK.format(ce=h["ce"], n=h["page"])
