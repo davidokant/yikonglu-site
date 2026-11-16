@@ -1288,7 +1288,7 @@ def yxl_counts(D):
     hz = lambda t: len(re.sub(r"[^\u4e00-\u9fff]", "", t or ""))
     dv = [c for c in range(1, 82) if ddj_has_vid(c)] if D.get("ddj") else []
     zi = sum(hz(D["yw"].get(c, "")) for c in D["pub"]) + sum(hz((D["ddj"]["qw"].get(str(c)) or {}).get("text", "")) for c in dv)
-    eps = {D["ch2ep"][c][0] for c in D["pub"] if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now)}
+    eps = {D["ch2ep"][c][0] for c in D["ch2ep"] if D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now)}
     eps = len(eps) + len({DDJ_EPS[str(c)].get("youtube") for c in dv})
     return books, zi, eps
 
@@ -2346,15 +2346,21 @@ def build_lang(L, D, write):
                     wj_deep += (f'<section class="sec hujian"><h2><i>见</i>{L.t("hj_h")}</h2><ul lang="zh-Hans">'
                                 + "".join(f'<li><a href="#s{j}">{esc(sents[j-1][:8]) if 0 < j <= len(sents) else ""}</a>　{esc(r[0])}：{esc(r[1])}（' + (f'<a href="{r[3]}">{esc(r[2])}</a>' if r[3] else esc(r[2])) + '）</li>' for j, r in sorted(_hjr, key=lambda x: x[0])) + '</ul></section>')
                 TRI_TXT.setdefault(c, {"h": f"《论语·{pname}》第 {cnum} 章 · Analects {c} · 論語 {c}", "y": text, "en": WJ_TR.get(c, {}).get("en", ""), "ja": WJ_TR.get(c, {}).get("ja", "")})  # 分享图：未讲章英日译文见 i18n/tri-weijiang.json（11-09 补）
-                wj_vid = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
+                _ep = D["ch2ep"].get(c); _yt = _ep[1].get("youtube") if _ep else ""; _pa = _ep[1].get("public_at") if _ep else ""
+                _von = bool(_yt) and (not _pa or datetime.datetime.fromisoformat(_pa) <= datetime.datetime.now(datetime.timezone.utc))  # 11-16：视频已公开、札记还没写的章，先把视频放上
+                _st = (_ep[1].get("starts", {}).get(c) or D["starts"].get(_yt, {}).get(c)) if _von else None
+                wj_vid = (f'<section class="video"><h2><i>看</i>{L.t("video")}</h2><div class="vid"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/{_yt}{f"?start={_st}" if _st else ""}" title="{esc(_ep[0])}" allowfullscreen></iframe></div>'
+                          f'<p class="vlinks">{L.t("video_in", ep=_ep[0])}<a href="https://www.youtube.com/watch?v={_yt}{f"&amp;t={_st}s" if _st else ""}">YouTube</a>'
+                          + (f'<a href="https://www.bilibili.com/video/{_ep[1]["bilibili"]}">{"哔哩哔哩" if zhL else "Bilibili"}</a>' if _ep[1].get("bilibili") else "") + '</p></section>') if _von else None
+                if wj_vid is None: wj_vid = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
                           f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">{"哔哩哔哩" if zhL else "Bilibili"}</a></p></section>')
                 body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
-<h1><span class="no">{f"论语 {c} · {pname}" if zhL else L.t("chapter_no", book=bname, n=cnum)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(ctitle(c))}</h1>{LX.nl_tag(L, P, D["lx"], c)}
+<h1><span class="no">{f"论语 {c} · {pname}" if zhL else L.t("chapter_no", book=bname, n=cnum)} · <em class="wjtag">{("视频已出" if zhL else L.t("video")) if _von else L.t("wj_tag")}</em></span>{esc(ctitle(c))}</h1>{LX.nl_tag(L, P, D["lx"], c)}
 </div></div>
 <main class="wrap chapter">
 <article>
-<p class="wjlead">{L.t("wj_lead")}</p>
+{(f'<p class="wjlead">这一章的视频已经上线，就在下面；网站上的逐句讲解还在补。</p>' if zhL else "") if _von else f'<p class="wjlead">{L.t("wj_lead")}</p>'}
 {wj_fig}{zi_tail(L.code, c, P)}
 {wj_gist}
 {bh_html}
