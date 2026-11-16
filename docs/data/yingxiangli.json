@@ -1,23 +1,31 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "N": 20,
- "chapters": 139,
- "score": 4.1,
- "share": 1.19,
+ "chapters": 257,
+ "score": 0.6,
+ "share": 0.68,
  "platforms": [
-  {
-   "key": "yt",
-   "name": "YouTube",
-   "score": 7.8,
-   "share": 1.19,
-   "measured": 139
-  },
   {
    "key": "gsc",
    "name": "谷歌",
-   "score": 0.4,
+   "score": 0.6,
    "share": null,
-   "measured": 3
+   "measured": 8
+  },
+  {
+   "key": "bing",
+   "name": "必应",
+   "score": 0.5,
+   "share": null,
+   "measured": 4
+  },
+  {
+   "key": "yt",
+   "name": "YouTube",
+   "score": 0.6,
+   "share": 0.68,
+   "measured": 45,
+   "partial": true
   }
  ],
  "history": [
@@ -30,27 +38,39 @@
    "week": "2026-11-09",
    "score": 4.1,
    "share": 1.19
+  },
+  {
+   "week": "2026-11-16",
+   "score": 0.6,
+   "share": 0.68
   }
  ],
  "books": [
   {
    "key": "lunyu",
    "name": "论语",
-   "chapters": 139,
-   "score": 4.1,
+   "chapters": 257,
+   "score": 0.6,
    "platforms": [
     {
      "key": "yt",
      "name": "YouTube",
-     "score": 7.8,
-     "measured": 139,
-     "partial": false
+     "score": 0.6,
+     "measured": 45,
+     "partial": true
     },
     {
      "key": "gsc",
      "name": "谷歌",
-     "score": 0.4,
-     "measured": 3,
+     "score": 0.6,
+     "measured": 8,
+     "partial": false
+    },
+    {
+     "key": "bing",
+     "name": "必应",
+     "score": 0.5,
+     "measured": 4,
      "partial": false
     }
    ],
@@ -68,169 +88,61 @@
      "yt": 14
     },
     {
-     "ch": "1.12",
-     "yt": 17
-    },
-    {
      "ch": "1.13",
      "yt": 18,
      "gsc": 16
     },
     {
      "ch": "1.15",
-     "yt": 4
+     "yt": 6
     },
     {
      "ch": "2.1",
-     "yt": 3
+     "yt": 7
     },
     {
      "ch": "2.16",
-     "yt": 4
+     "yt": 11
     },
     {
      "ch": "2.18",
      "yt": 7
     },
     {
-     "ch": "2.19",
-     "yt": 6
-    },
-    {
      "ch": "2.23",
-     "yt": 18
+     "yt": 16
     },
     {
-     "ch": "3.11",
-     "yt": 19
+     "ch": "3.5",
+     "yt": 11
     },
     {
-     "ch": "3.12",
-     "yt": 5
+     "ch": "3.26",
+     "bing": 10
     },
     {
-     "ch": "3.18",
-     "yt": 17
+     "ch": "4.17",
+     "gsc": 8
     },
     {
-     "ch": "3.22",
-     "yt": 4
+     "ch": "4.21",
+     "gsc": 10
     },
     {
-     "ch": "4.1",
-     "yt": 6
+     "ch": "4.25",
+     "gsc": 10
     },
     {
-     "ch": "4.6",
-     "yt": 15
+     "ch": "6.16",
+     "bing": 5
     },
     {
-     "ch": "4.8",
-     "yt": 4
+     "ch": "6.17",
+     "bing": 9
     },
     {
-     "ch": "4.13",
-     "yt": 19
-    },
-    {
-     "ch": "4.19",
-     "yt": 2
-    },
-    {
-     "ch": "4.22",
-     "yt": 4
-    },
-    {
-     "ch": "5.1",
-     "yt": 2
-    },
-    {
-     "ch": "5.6",
-     "yt": 1
-    },
-    {
-     "ch": "5.7",
-     "yt": 8
-    },
-    {
-     "ch": "5.10",
-     "yt": 18
-    },
-    {
-     "ch": "5.13",
-     "yt": 18
-    },
-    {
-     "ch": "5.16",
-     "yt": 19
-    },
-    {
-     "ch": "5.17",
-     "yt": 19
-    },
-    {
-     "ch": "5.19",
-     "yt": 3
-    },
-    {
-     "ch": "5.23",
-     "yt": 10
-    },
-    {
-     "ch": "5.27",
-     "yt": 2
-    },
-    {
-     "ch": "6.1",
-     "yt": 5
-    },
-    {
-     "ch": "6.2",
-     "yt": 10
-    },
-    {
-     "ch": "6.3",
-     "yt": 6
-    },
-    {
-     "ch": "6.4",
-     "yt": 9
-    },
-    {
-     "ch": "6.6",
-     "yt": 9
-    },
-    {
-     "ch": "6.7",
-     "yt": 13
-    },
-    {
-     "ch": "6.8",
-     "yt": 19
-    },
-    {
-     "ch": "6.9",
-     "yt": 4
-    },
-    {
-     "ch": "6.11",
-     "yt": 12
-    },
-    {
-     "ch": "6.12",
-     "yt": 8
-    },
-    {
-     "ch": "6.13",
-     "yt": 19
-    },
-    {
-     "ch": "6.15",
-     "yt": 15
-    },
-    {
-     "ch": "6.18",
-     "yt": 13
+     "ch": "6.19",
+     "bing": 5
     }
    ]
   },
@@ -254,14 +166,14 @@
  "index": {
   "bing": {
    "indexed": 3,
-   "total": 6644,
-   "date": "/Date(1794441600000)/"
+   "total": 9047,
+   "date": "/Date(1794614400000)/"
   }
  },
  "draft_change": {
-  "ratio": 19.7,
-  "episodes": 44,
-  "segments": 1338,
-  "updated": "2026-11-15"
+  "ratio": 16.3,
+  "episodes": 70,
+  "segments": 2094,
+  "updated": "2026-11-16"
  }
 }
