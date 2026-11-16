@@ -1761,6 +1761,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
         hj_static = "<ul></ul>"
         ld = {"@type": "Article", "headline": f'{DU["chn"].format(c=c)} {tt[c]}' if F else f"道德经 {c} {Y(tt[c])}", "inLanguage": L.hreflang, "url": url,
               "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "道德经"}}
+        if not F: ld["mentions"] = lyhj_ld([r for r in DDJ_LYHJ if str(r["ch"]) == str(c)])
         ld = {"@context": "https://schema.org", "@graph": [ld] + ([{"@type": "FAQPage", "mainEntity": faq}] if faq else [])}
         if F: js = SHARE_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", "<ul></ul>").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + ZJ.HL_JS
         else: js = SHARE_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", G["zhu"]], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。")
@@ -1840,9 +1841,9 @@ SZJ_UI = {
 # 11-14 主人定“给《论语》特殊地位”（图样 1—4 做）：导航第一项“论语”、首页今日《论语》放大＋本周读了几天、首页主经一格、书架页主书一格；口号暂不进首页横幅
 LY_UI = {
  "zh-Hans": {"nav": "论语", "h": "主经", "k": "一生一本《论语》：一天一章，一年一轮", "s": "二十篇 {n} 章原文全在站上 · 已讲 {d} 章 · {z} 章逐字对过朱熹集注本原页", "go": "从学而篇读起", "toc": "全书目录", "kb": "语文课本里的《论语》", "db": "免费读本",
-             "more": "书架上还有：", "soon": "{n} 部筹备中 ›", "open": "打开《论语》", "strip": "今日《论语》", "read": "读这一章 →", "close": "今天不再显示", "wk": "本周你读了 {n} 天", "wk0": "本周还没读", "cal": "按《论语》年历，一年一轮", "shelf": "书架 · 能读的书"},
+             "more": "从《论语》读出去：", "soon": "{n} 部筹备中 ›", "open": "打开《论语》", "strip": "今日《论语》", "read": "读这一章 →", "close": "今天不再显示", "wk": "本周你读了 {n} 天", "wk0": "本周还没读", "cal": "按《论语》年历，一年一轮", "shelf": "书架 · 能读的书"},
  "zh-Hant": {"nav": "論語", "h": "主經", "k": "一生一本《論語》：一天一章，一年一輪", "s": "二十篇 {n} 章原文全在站上 · 已講 {d} 章 · {z} 章逐字對過朱熹集注本原頁", "go": "從學而篇讀起", "toc": "全書目錄", "kb": "語文課本裡的《論語》", "db": "免費讀本",
-             "more": "書架上還有：", "soon": "{n} 部籌備中 ›", "open": "打開《論語》", "strip": "今日《論語》", "read": "讀這一章 →", "close": "今天不再顯示", "wk": "本週你讀了 {n} 天", "wk0": "本週還沒讀", "cal": "按《論語》年曆，一年一輪", "shelf": "書架 · 能讀的書"},
+             "more": "從《論語》讀出去：", "soon": "{n} 部籌備中 ›", "open": "打開《論語》", "strip": "今日《論語》", "read": "讀這一章 →", "close": "今天不再顯示", "wk": "本週你讀了 {n} 天", "wk0": "本週還沒讀", "cal": "按《論語》年曆，一年一輪", "shelf": "書架 · 能讀的書"},
  "en": {"nav": "Analects", "h": "The main book", "k": "One chapter a day, the whole book every year", "s": "All {n} chapters online · {d} taught on video · Zhu Xi's commentary with page scans", "go": "Start with Book 1", "toc": "Contents", "kb": "", "db": "",
         "more": "Also on the shelf: ", "soon": "{n} more in preparation ›", "open": "Open the Analects", "strip": "Today's Analects", "read": "Read this chapter →", "close": "Hide for today", "wk": "Days you read this week: {n}", "wk0": "Not read yet this week", "cal": "", "shelf": "On the shelf"},
  "ja": {"nav": "論語", "h": "主たる一冊", "k": "一日一章、一年で一巡り", "s": "全 {n} 章の原文を掲載 · 動画で解説 {d} 章 · 朱熹『論語集注』の原本画像つき", "go": "学而篇から読む", "toc": "目次", "kb": "", "db": "",
@@ -1861,6 +1862,27 @@ SZJ_LYHJ = json.load(open(SZJ_LYHJ_FILE, encoding="utf-8")) if os.path.exists(SZ
 LYHJ_SRC = [("wx-", "王相"), ("yinshu", "《三字经音疏》"), ("beiyao", "《三字经备要》"), ("zengzhu", "《增注三字经》"), ("jizhu", "渥美《三字经集注》")]
 DDJ_LYHJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_lyhj.json")  # 道德经各章《论语》互见（11-14 主人“全上”，138 条；表见 评审/2026-11-14-论语互见/道德经-论语互见-v1.md）
 DDJ_LYHJ = json.load(open(DDJ_LYHJ_FILE, encoding="utf-8")) if os.path.exists(DDJ_LYHJ_FILE) else []
+# 11-16 首页定位（主人：“以论语为主，牵出一整套经典系列”）：首页副标、标题、摘要
+HOMEPOS = {
+    "zh-Hans": ("从《论语》开始 · 逐字读经典原文", "一孔录｜从《论语》开始，逐字读经典原文", "《论语》498 章逐句对朱熹集注原页：原文、白话、读音、注家原话、公开勘误。再从《论语》读到《道德经》《三字经》，各章互见《论语》。"),
+    "zh-Hant": ("從《論語》開始 · 逐字讀經典原文", "一孔錄｜從《論語》開始，逐字讀經典原文", "《論語》498 章逐句對朱熹集注原頁：原文、白話、讀音、注家原話、公開勘誤。再從《論語》讀到《道德經》《三字經》，各章互見《論語》。"),
+    "en": ("Start with the Analects · read the classics word by word", None, "All 498 chapters of the Analects, line by line against the pages of Zhu Xi's commentary: original, plain Chinese, readings, the commentators' own words, public corrections. From the Analects on to the Daodejing and the Three-Character Classic, each chapter cross-referenced to the Analects."),
+    "ja": ("『論語』から読む · 古典の原文を一字ずつ", None, "『論語』498章を朱熹集注の原頁と一句ずつ照合：原文・現代語訳・読み・注釈家の原文・公開訂正。『論語』から『道徳経』『三字経』へ、各章を『論語』と照らし合わせて読みます。"),
+    "ko": ("『논어』에서 시작해 · 고전 원문을 한 글자씩", None, "『논어』 498장을 주희 집주 원본 쪽과 한 구절씩 대조: 원문, 현대어 풀이, 독음, 주석가의 원문, 공개 정오표. 『논어』에서 『도덕경』『삼자경』으로, 각 장을 『논어』와 맞대어 읽습니다."),
+    "fr": ("Commencer par les Entretiens · lire les classiques mot à mot", None, "Les 498 chapitres des Entretiens, phrase par phrase face aux pages du commentaire de Zhu Xi : texte, chinois moderne, prononciations, paroles des commentateurs, errata publics. Des Entretiens vers le Daodejing et le Classique des trois caractères, chaque chapitre renvoyant aux Entretiens."),
+    "es": ("Empezar por las Analectas · leer los clásicos palabra por palabra", None, "Los 498 capítulos de las Analectas, frase a frase frente a las páginas del comentario de Zhu Xi: texto, chino moderno, pronunciación, palabras de los comentaristas, erratas públicas. De las Analectas al Daodejing y al Clásico de los tres caracteres, cada capítulo remitido a las Analectas."),
+    "de": ("Mit den Gesprächen beginnen · die Klassiker Wort für Wort lesen", None, "Alle 498 Kapitel der Gespräche des Konfuzius, Satz für Satz an den Seiten von Zhu Xis Kommentar geprüft: Urtext, modernes Chinesisch, Lesungen, Kommentatoren im Wortlaut, öffentliche Korrekturen. Weiter zum Daodejing und zum Dreizeichenklassiker, jedes Kapitel mit Verweis auf die Gespräche."),
+    "vi": ("Bắt đầu từ Luận Ngữ · đọc kinh điển từng chữ", None, "498 chương Luận Ngữ, từng câu đối chiếu với trang gốc chú giải của Chu Hy: nguyên văn, bạch thoại, cách đọc, lời các nhà chú giải, đính chính công khai. Từ Luận Ngữ đọc sang Đạo Đức Kinh, Tam Tự Kinh, mỗi chương đối chiếu với Luận Ngữ."),
+    "id": ("Mulai dari Analek · membaca kitab klasik kata demi kata", None, "498 bab Analek, kalimat demi kalimat dicocokkan dengan halaman tafsir Zhu Xi: teks asli, bahasa Tionghoa modern, lafal, kata-kata para penafsir, ralat terbuka. Dari Analek berlanjut ke Daodejing dan Klasik Tiga Aksara, setiap bab dirujuk silang ke Analek."),
+    "ru": ("Начиная с «Лунь юя» · классика слово за словом", None, "Все 498 глав «Лунь юя», фраза за фразой сверенные со страницами комментария Чжу Си: оригинал, современный китайский, чтения, слова комментаторов, открытые исправления. Дальше — к «Дао дэ цзину» и «Троесловию», каждая глава со ссылками на «Лунь юй»."),
+}
+HOMEDEF = {"zh-Hans": "一孔录（Yikonglu）是以《论语》为主经、逐句对底本原页的经典讲读，其他经典各章互见《论语》。", "zh-Hant": "一孔錄（Yikonglu）是以《論語》為主經、逐句對底本原頁的經典講讀，其他經典各章互見《論語》。",
+           "en": "Yikonglu (一孔录) is a reading of the Chinese classics centred on the Analects and checked line by line against the pages of the base edition; every other classic is cross-referenced to the Analects chapter by chapter."}
+
+def lyhj_ld(rows):  # 11-16 首页定位二.3：他书章页结构化数据写上互见的论语章，和页上“《论语》互见”一致
+    seen = list(dict.fromkeys(r["c"] for r in rows if r["c"] != "book"))
+    return [{"@type": "CreativeWork", "name": f"论语 {c}", "url": f"{DOMAIN}/lunyu/{PIAN[c.split('.')[0]][1]}/{c.split('.')[1]}.html", "isPartOf": {"@type": "Book", "name": "论语"}} for c in seen]
+
 def lyhj_html(rows, P, book="szj"):
     """其他书章页上的“《论语》互见”一栏（11-14 主人定：每本书都做一次）。rows：[{zu, szj, c, kind, q, src, note}]"""
     if not rows: return ""
@@ -1989,6 +2011,7 @@ def build_szj(L, write, P, S_IDX=None):
 </main><i id="rc" data-c="szj.{n}" hidden></i><script type="application/json" class="xddata">{json.dumps({"c": str(n), "ti": name_of(j)}, ensure_ascii=False)}</script>"""
         ld = {"@context": "https://schema.org", "@type": "Article", "headline": f'{bname} {head_t} {name_of(j)}' if F else f"三字经 {n} {j['name']}", "inLanguage": L.hreflang, "url": url,
               "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": bname}}
+        if not F: ld["mentions"] = lyhj_ld([r for r in SZJ_LYHJ if r["jiang"] == n])
         if F: js = SHARE_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", "<ul></ul>").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + ZJ.HL_JS
         else: js = SHARE_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"]], ensure_ascii=False)).replace("@NONE@", "这一组的白话还在整理。") if gs else "").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
         if S_IDX is not None and gs: S_IDX.append({"c": f'{bname} {n}' if F else f"三字经 {n}", "t": name_of(j), "u": P + rel_of(n), "y": Y(text) if F else text, "x": tr_all if F else " ".join(g[2] for g in gs)})
@@ -2484,7 +2507,8 @@ def build_lang(L, D, write):
              + (([(f"{P}nianli/", "《论语》年历", "")] if D["lx"]["nl"] else []) + [(f"{P}zhuanti/keben.html", LU["kb"], ""), (f"{P}duben.html", LU["db"], "")] if home and zhL else [])
         return (f'<div class="zhushu"><a class="cvbig" href="{P}lunyu/" aria-label="{esc(L.t("lunyu"))}"><span class="qb" lang="zh-Hans">论语</span></a><div><h3><a href="{P}lunyu/">{"《" + L.t("lunyu") + "》" if zhL else esc(L.t("lunyu"))}</a></h3>'
                 f'<p class="zk">{esc(LU["k"])}</p><p class="zs">{esc(LU["s"].format(n=n_all, d=len(pub), z=len((D.get("zhuju") or {}).get("on", ()))))}</p><p class="zl">' + "".join(f'<a href="{u}"{c}>{esc(x)}</a>' for u, x, c in lk if x) + '</p></div></div>')
-    shelfline = (f'<p class="shelfline">{esc(LU["more"])}' + " · ".join(f'<a href="{P if (zhL or (sl == "sanzijing" and L.code in SZJ_TR) or (sl == "daodejing" and L.code in DDJ_TR)) else "/"}{sl}/">{"《" + zh + "》" if zhL else esc(L.t("bk_" + sl))}</a>'
+    _hjn = {"daodejing": len(DDJ_LYHJ), "sanzijing": len(SZJ_LYHJ)}
+    shelfline = (f'<p class="shelfline">{esc(LU["more"])}' + " · ".join(f'<a href="{P if (zhL or (sl == "sanzijing" and L.code in SZJ_TR) or (sl == "daodejing" and L.code in DDJ_TR)) else "/"}{sl}/">{"《" + zh + "》" if zhL else esc(L.t("bk_" + sl))}</a>' + (f'<small>（互见 {_hjn[sl]} 条）</small>' if zhL and _hjn.get(sl) else "")
                  for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB and sl != "lunyu") + f' · <a href="{P}shumu/">{esc(LU["soon"].format(n=n_soon))}</a></p>')
     bcards_home = '<div class="bcards">' + "".join(bcard(sl, zh, True) for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB) + f'</div><p class="soonline"><a href="{P}shumu/">{L.t("soon_line", n=n_soon)}</a></p>'
     # 书目页做成书架（11-13 主人：书目页用书架式，首页不动）：一格一类，线装书封面＋题签，亮着的能读，其余筹备中
@@ -2629,19 +2653,19 @@ def build_lang(L, D, write):
                     'M.querySelector(".md").textContent=U.lesson.replace("{n}",x[0]).replace("{c}",x[6]);q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+U.add+" "+x[5].map(function(a){return a[0]}).join(" "):"");'
                     'c.href=x[2];kk.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false;try{document.dispatchEvent(new Event("ykmeiri"))}catch(e){}}).catch(function(){})})();</script>')
     home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" type="image/webp" srcset="/assets/hero-m.webp?v={HERO_V}" width="1080" height="745"><source media="(max-width:700px)" srcset="/assets/hero-m.jpg?v={HERO_V}" width="1080" height="745"><source type="image/webp" srcset="/assets/hero-w.webp?v={HERO_V}" width="1920" height="790"><img src="/assets/hero-w.jpg?v={HERO_V}" alt="{"一孔录原创角色同坐长桌读《论语》" if L.code.startswith("zh") else esc(L.t("hero_alt"))}" width="1920" height="790" fetchpriority="high"></picture>
-<div class="herotext"><h1>一孔录<small>{L.t("tagline")}</small></h1></div></section>
+<div class="herotext"><h1>一孔录<small>{HOMEPOS.get(L.code, (L.t("tagline"),))[0]}</small></h1></div></section>
 <main class="home">
 <section class="intro wrap narrow">
-{'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
 {meiri_html}{meiri_js}{MEIRI_Q_JS if meiri_html else ""}
+{'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") else ""}
 <form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
 </section>
+<section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}lunyu/">{LU["h"]}</a></h2>{zhushu(True)}{shelfline}</section>
 <section class="wrap narrow"><h2 class="ph">{L.t("h_latest")}</h2>
 <a class="latest" id="lcard" href="{P}{rel_of(lc)}">{_lcard(lc)}</a>{lc_js}</section>
 {f'<section class="wrap narrow topju" id="topju" hidden><h2 class="ph">{DONE_TXT.get(L.code, DONE_TXT["en"])["topju"]}</h2><blockquote lang="zh-Hans"></blockquote><p><a href="{P}"></a></p></section>' if ANALYTICS.get("live") else ""}
 <section class="wrap narrow" id="remen"><h2 class="ph">{DONE_TXT.get(L.code, DONE_TXT["en"])["hot"]}</h2>{toc(recent[1:])}</section>
 <section class="wrap narrow">{cta_html(L, P)}</section>
-<section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}lunyu/">{LU["h"]}</a></h2>{zhushu(True)}{shelfline}</section>
 <section class="wrap narrow deephome"><h2 class="ph">{L.t("h_deep_h")}</h2><p class="motto2">{L.t("h_deep_p")}</p></section>
 <section class="pillars wrap">
 <div><i>原</i><b>{L.t("p1t")}</b><p>{L.t("p1")}</p></div>
@@ -2652,11 +2676,12 @@ def build_lang(L, D, write):
 {yxl_line(L, D, P) if L.code.startswith("zh") else ""}
 <p class="cta"><a class="btn ghost" href="{P}kanwu.html">{L.t("btn_errata")}</a><a class="btn ghost" href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a></p></section>
 </main>'''
-    write("index.html", page(L, (f"一孔录｜{TAGLINE}" if L.code == "zh-Hans" else f"一孔录 Yikonglu | {L.t('tagline')}"), L.t("intro"), "", home,
-          {"@context": "https://schema.org", "@type": "Organization", "name": "一孔录", "alternateName": "Yikonglu", "url": DOMAIN, "logo": f"{DOMAIN}/assets/seal-180.png", "sameAs": SAME_AS + [u for _, u in PLAT_LINKS if u not in SAME_AS]}, "pg-home"))
+    _hp = HOMEPOS.get(L.code) or (L.t("tagline"), None, L.t("intro"))
+    write("index.html", page(L, (_hp[1] or f"一孔录 Yikonglu | {_hp[0]}"), _hp[2], "", home,
+          {"@context": "https://schema.org", "@type": "Organization", "name": "一孔录", "alternateName": "Yikonglu", "url": DOMAIN, "description": HOMEDEF.get(L.code, HOMEDEF["en"]), "logo": f"{DOMAIN}/assets/seal-180.png", "sameAs": SAME_AS + [u for _, u in PLAT_LINKS if u not in SAME_AS]}, "pg-home"))
     urls.insert(0, f"{DOMAIN}/{L.prefix}")
     about = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("tagline")}</span>{L.t("about_title")}</h1></div></div>
-<main class="wrap narrow prose"><p class="about-def">{L.t("about_def")}</p><p>{L.t("about_p")}</p>
+<main class="wrap narrow prose"><p class="about-def">{(HOMEDEF[L.code] + L.t("about_def").split("。" if L.code.startswith("zh") else ". ", 1)[1]) if L.code in HOMEDEF else L.t("about_def")}</p><p>{L.t("about_p")}</p>
 <h2>{L.t("about_h1")}</h2><p>{L.t("about_site").replace('href="kanwu.html"', f'href="{P}kanwu.html"').replace('href="errata.html"', f'href="{P}kanwu.html"')}</p>
 <h2>{L.t("about_h2")}</h2><ul><li>{L.t("about_c1")}</li><li>{L.t("about_c2")}</li><li>{L.t("about_c3")}</li></ul>
 <h2>{L.t("about_h3")}</h2><p>{L.t("about_where")}</p>
@@ -3048,9 +3073,21 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
                   f"- Chapter URLs: short form {DOMAIN}/lunyu/BOOK.CHAPTER (e.g. {DOMAIN}/lunyu/2.1), numbered by Zhu Xi's chapter division.\n"
                   f"- Please credit “一孔录 Yikonglu yikonglu.com” with the chapter URL. License: CC BY 4.0 (original text and old commentaries are public domain).\n"
                   f"- MCP endpoint for AI assistants: https://yikonglu-mcp.yikonglu.workers.dev/mcp\n\n")
-    llms = [f"# 一孔录 Yikonglu ({L.name})\n\n> {L.t('motto')} {L.t('intro')}\n\n{_about}## 论语 {L.t('lunyu')}\n"]
+    # 11-16 首页定位二.2：第一段只讲《论语》，他书列在“互见”一节
+    _def = HOMEDEF["zh-Hans"] if L.code.startswith("zh") else HOMEDEF["en"]  # llms.txt 中文一律简体，和“关于本站”一致
+    _lead = (f"> {_def}《论语》498 章原文全在站上，逐句对朱熹《论语集注》原页。" if L.code.startswith("zh") else f"> {_def} All 498 chapters of the Analects are on the site.")
+    llms = [f"# 一孔录 Yikonglu ({L.name})\n\n{_lead}\n\n{_about}## {'《论语》已讲各章' if L.code.startswith('zh') else '论语 ' + L.t('lunyu')}\n"]
     for c in pub:
         llms.append(f"- [{c} {title_of(c)}]({DOMAIN}/{L.prefix}{rel_of(c)}): {field(c, '片里落点')[0] or ''}\n")
+    _pf = lambda codes: L.prefix if L.code in codes else ""
+    if L.code.startswith("zh"):
+        llms.append(f"\n## 互见：从《论语》读出去\n其他经典逐章标出和《论语》相通、相引的章，每条链回论语章页。\n"
+                    f"- [《道德经》八十一章]({DOMAIN}/{_pf(DDJ_CODES)}daodejing/)：互见《论语》{len(DDJ_LYHJ)} 条\n"
+                    f"- [《三字经》三十九讲]({DOMAIN}/{_pf(SZJ_CODES)}sanzijing/)：互见《论语》{len(SZJ_LYHJ)} 条\n")
+    else:
+        llms.append(f"\n## Cross-references: from the Analects outward\nOther classics, each chapter linked back to the Analects chapters it echoes or quotes.\n"
+                    f"- [Daodejing, 81 chapters]({DOMAIN}/{_pf(DDJ_CODES)}daodejing/): {len(DDJ_LYHJ)} cross-references to the Analects\n"
+                    f"- [Three-Character Classic, 39 lessons]({DOMAIN}/{_pf(SZJ_CODES)}sanzijing/): {len(SZJ_LYHJ)} cross-references to the Analects\n")
     write("llms.txt", "".join(llms))
     # PWA：每个语种一份 manifest（从哪个语种添加到主屏幕，就从哪个语种打开），离线页列出已存的章节
     write("manifest.webmanifest", json.dumps({"id": P, "name": "一孔录", "short_name": "一孔录", "description": L.t("tagline"), "lang": L.hreflang,

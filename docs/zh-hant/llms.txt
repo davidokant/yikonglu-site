@@ -1,6 +1,6 @@
 # 一孔錄 Yikonglu (繁體中文)
 
-> 一孔錄講過的每一句，都能在這裡核。 原文、底本頁碼、注家原話、讀音、我們的讀法、公開勘誤，按書按章排好。影片在各平臺看，核對來這裡。
+> 一孔錄（Yikonglu）是以《論語》為主經、逐句對底本原頁的經典講讀，其他經典各章互見《論語》。《論語》498 章原文全在站上，逐句對朱熹《論語集註》原頁。
 
 ## 關於本站
 - 覆蓋進度：《論語》498 章原文全在站上，已講 229 章，498 章逐字對過朱熹《論語集註》（《四部備要》本）原頁；每次生成時現算。
@@ -10,7 +10,7 @@
 - 智器接入（MCP）：https://yikonglu-mcp.yikonglu.workers.dev/mcp ，說明見 https://yikonglu.com/jieru/
 - 核到哪了：https://yikonglu.com/fangfa.html ；公開勘誤：https://yikonglu.com/kanwu.html
 
-## 論語 論語
+## 《論語》已講各章
 - [1.1 學而時習之](https://yikonglu.com/zh-hant/lunyu/xue-er/1.html): 學了時時拿出來練、拿出來做；放到今天：教學影片看十遍是在看別的鳥飛。
 - [1.2 孝弟為仁之本](https://yikonglu.com/zh-hant/lunyu/xue-er/2.html): 孝弟是行仁的起點；放到今天：網上關愛陌生人、回家對父母沒耐心，是從遠處起了頭。
 - [1.3 巧言令色](https://yikonglu.com/zh-hant/lunyu/xue-er/3.html): 看他這樣做是為把事做成，還是隻為讓人喜歡。
@@ -240,3 +240,8 @@
 - [9.22 後生可畏](https://yikonglu.com/zh-hant/lunyu/zi-han/22.html): 年輕人時間多、力氣足，能攢學問等將來，勢頭可畏；可不自勉，到四五十歲還沒名聲，就不足畏了，話是催人趁早用功。今例：年輕女工程師起身講方案，幾位老工程師放下茶杯認真記。
 - [9.23 法語之言](https://yikonglu.com/zh-hant/lunyu/zi-han/23.html): 嚴正的話人人當面聽從，貴在真改；委婉的話人人聽著高興，貴在想透用意；聽了不改、高興了不想，聖人也沒辦法。今例：醫生叮囑戒菸，中年男人連說一定，回家又點上一支。
 - [9.24 主忠信（重出）](https://yikonglu.com/zh-hant/lunyu/zi-han/24.html): 這一章是《學而》“君子不重則不威”章的後半，重出時丟了前半，意思照那一章讀：以忠信為主，不交不如己的朋友，有錯別怕改。
+
+## 互見：從《論語》讀出去
+其他經典逐章標出和《論語》相通、相引的章，每條鏈回論語章頁。
+- [《道德經》八十一章](https://yikonglu.com/zh-hant/daodejing/)：互見《論語》138 條
+- [《三字經》三十九講](https://yikonglu.com/zh-hant/sanzijing/)：互見《論語》72 條
