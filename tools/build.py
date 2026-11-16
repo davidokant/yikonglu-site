@@ -2115,8 +2115,8 @@ def build_lang(L, D, write):
     def zb_section(c, url, cite_src):
         zb = D["zhuben"].get(c, {})
         zjy = ZJY.html_for(c, L.code, ZJY_TW.convert if L.code == "zh-Hant" else None)  # 11-16 诸家原页（集解·邢疏、皇疏、正义、郑注残卷、释文）
-        if not zb and not zjy: return ""
-        blocks, diffs = zjy, []
+        if not zb and not zjy and not ZJY.dz_html(c, L.code): return ""
+        blocks, diffs = zjy + ZJY.dz_html(c, L.code, ZJY_TW.convert if L.code == "zh-Hant" else None), []  # 11-16 定州汉简异文
         if "huang" in zb:
             h = zb["huang"]
             hurl = HUANG_SCAN.format(n=h["page"]) if h.get("ed", "zbz") == "zbz" else HUANG_WK.format(ce=h["ce"], n=h["page"])

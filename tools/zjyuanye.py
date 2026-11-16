@@ -63,3 +63,25 @@ def html_for(c, lang_code, conv=None):
             '<script>(function(){var R=document.getElementById("zjy");if(!R)return;function show(P,i){var L=JSON.parse(P.dataset.i),n=L.length;i=(i+n)%n;P._i=i;var a=L[i].split("|"),im=P.querySelector("img");im.width=+a[1];im.height=+a[2];im.src=a[0];P.querySelector(".zjo").href=a[0];P.querySelector(".zjn b").textContent=(i+1)+" / "+n;P.querySelector(".pv").hidden=P.querySelector(".nx").hidden=n<2}'
             'R.querySelectorAll(".zjt button").forEach(function(b){b.onclick=function(){var on=b.getAttribute("aria-expanded")=="true";R.querySelectorAll(".zjt button").forEach(function(x){x.setAttribute("aria-expanded","false")});R.querySelectorAll(".zjp").forEach(function(p){p.hidden=true});if(on)return;b.setAttribute("aria-expanded","true");var P=R.querySelector(\'.zjp[data-k="\'+b.dataset.k+\'"]\');P.hidden=false;if(P._i==null)show(P,0)}});'
             'R.querySelectorAll(".zjp").forEach(function(P){P.querySelector(".pv").onclick=function(){show(P,P._i-1)};P.querySelector(".nx").onclick=function(){show(P,P._i+1)}})})();</script>')
+
+
+_DZ = None
+
+
+def dz_html(c, lang_code, conv=None):
+    """11-16 定州汉简《论语》异文：每条简本→今本、该书注释首句、书页。书在版权期，只上这份摘要，不上书影与整段释文；章号待核的不上。"""
+    global _DZ
+    if not lang_code.startswith("zh"): return ""
+    if _DZ is None:
+        try: _DZ = json.load(open(os.path.join(ZJ_DIR, "dingzhou.json"), encoding="utf-8")).get("异文", {})
+        except FileNotFoundError: _DZ = {}
+    rows = [r for r in _DZ.get(c, []) if r.get("状态") == "认"]
+    if not rows: return ""
+    T = conv or (lambda s: s)
+    e = lambda s: html.escape(T(s))
+    li = ""
+    for r in rows:
+        head = (f'<b lang="zh-Hant">{html.escape(r["简本"])}</b>' + (f'<span>{e("今本作")}</span><b lang="zh-Hant">{html.escape(r["今本"])}</b>' if r["今本"] else "")) if r["简本"] else ""
+        li += f'<li>{head}<q lang="zh-Hant">{html.escape(r["校记"])}</q><small>{e(f"第 {r['书页']} 页")}</small></li>'
+    return (f'<div class="zb dzy" id="dingzhou"><h3>{e("定州汉简异文")}<small>{e("西汉中期竹简本，1973 年河北定州出土；与今本字句不同处")}</small></h3>'
+            f'<ul>{li}</ul><p class="note">{e("据《定州汉墓竹简〈论语〉》（文物出版社，1997）的释文注释摘录，引的是该书注释的第一句，页码为该书页码。")}</p></div>')

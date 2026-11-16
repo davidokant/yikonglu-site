@@ -1006,3 +1006,7 @@ th .hm{margin-left:0}
 .zjn{display:inline-flex;align-items:center;gap:8px;flex:none}.zjn b{color:var(--fg);font-weight:600}
 .zjn button{font:inherit;font-size:18px;line-height:1;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:inherit;cursor:pointer}
 .zjm b{color:inherit;margin-right:6px}
+/* 11-16 定州汉简异文 */
+.dzy ul{list-style:none;padding:0;margin:6px 0}.dzy li{padding:6px 0;border-bottom:1px dashed var(--line);line-height:1.7;font-size:15px}
+.dzy li b{font-size:18px;margin-right:4px}.dzy li span{color:var(--mute);font-size:13px;margin:0 4px}.dzy li q{quotes:none;margin-left:8px}
+.dzy li small{color:var(--mute);margin-left:8px;font-size:12.5px}
