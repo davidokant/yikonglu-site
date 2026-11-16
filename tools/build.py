@@ -45,7 +45,7 @@ SOURCE = "朱熹《论语集注》（《四部备要》本）"
 KEBEN = [("chu7", "七年级上册《〈论语〉十二章》", "初中第一次读《论语》：学习、修身、志向。", ["1.1", "1.4", "2.4", "2.11", "2.15", "6.9", "6.18", "7.15", "7.21", "9.16", "9.25", "19.6"]),
          ("bixiu", "高中必修下册《子路、曾皙、冉有、公西华侍坐》", "孔子让四个学生各言其志，最后说“吾与点也”。课本按杨伯峻本是《先进》第 26 章，朱注本是第 25 章。", ["11.25"]),
          ("xuanbi", "高中选择性必修上册《〈论语〉十二章》", "从学而、八佾、里仁、雍也、泰伯、子罕、颜渊、卫灵公、阳货九篇选出，讲仁、礼、义与君子。", ["1.14", "3.3", "4.8", "4.16", "4.17", "6.16", "8.7", "9.18", "9.28", "12.1", "15.23", "17.9"])]
-TAGLINE = "逐字读经典原文"
+TAGLINE = "从《论语》开始 · 逐字读经典原文"  # 11-16 与首页定位句统一
 GAO_DIR = "/mnt/project-files/一孔学-内-自媒体/数据/网站素材"  # 各期稿只在共享盘读取，不进公开仓库
 GUSHI_DIR = os.environ.get("YK_GUSHI_DIR") or os.path.join(GAO_DIR, "_故事")  # “故事”栏资料；没有人物表就整栏不出
 GUSHI_ON = False
@@ -793,7 +793,7 @@ if(lm&&ld){var yn=(o.yearName||'').replace(/年$/,'')||(ry>0?'甲乙丙丁戊己
 return{big:m+'月'+d+'日',wk:y+'年 · 星期'+'日一二三四五六'[now.getDay()]+(lp?' · '+lp:''),jq:(k===0?'今日'+R.jn[idx]:R.jn[idx]+'后第'+k+'天')+' · '+R.hou[idx*3+h]}}catch(e){return null}}
 var X3=JSON.parse(B.querySelector('.shtri').textContent);
 var O0={y:X3.y,en:X3.en,ja:X3.ja,u:D.u};window.yklReset=function(){if(window.ykKn0!==undefined)D.kn=window.ykKn0;X3.y=O0.y;X3.en=O0.en;X3.ja=O0.ja;D.u=O0.u;X3.n=0};window.yklCard=function(o){if(o.y){X3.y=o.y;X3.en='';X3.ja=''}if(o.u)D.u=o.u;X3.n=o.n||0;card()};
-function card(){var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',RL=rili(),all=X3.h+X3.y+X3.en+X3.ja+'一孔录逐字读经典原文扫码读懂这一章'+(RL?RL.big+RL.wk+RL.jq:'');
+function card(){var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',RL=rili(),all=X3.h+X3.y+X3.en+X3.ja+'一孔录从《论语》开始 · 逐字读经典原文扫码读懂这一章'+(RL?RL.big+RL.wk+RL.jq:'');
 Promise.all(['900 72px '+F,'700 60px '+F,'400 30px '+F].map(function(f){return document.fonts?document.fonts.load(f,all).catch(function(){}):0})).then(function(){qr(draw)})
 var MAXH=1400,AR=888/1400;function segs(n){var R=[];document.querySelectorAll('.yuanwen.dz .yyp').forEach(function(a){var sv=a.querySelector('svg'),im=a.querySelector('image');if(!sv||!im)return;var rs=[].slice.call(a.querySelectorAll('rect.hl')).filter(function(r){return !n||r.dataset.s==n});if(!rs.length)return;
 var vb=sv._vb0||sv.getAttribute('viewBox').split(/\\s+/).map(Number),pw=+im.getAttribute('width'),x0=1e9,x1=0,cw=0;rs.forEach(function(r){var x=+r.getAttribute('x'),w=+r.getAttribute('width');x0=Math.min(x0,x);x1=Math.max(x1,x+w);cw=Math.max(cw,w)});
@@ -811,7 +811,7 @@ var yS=yT+36,H=Math.round((SG.length?yS+sh+64:yT)+330);
 var cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');
 c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);c.strokeStyle='#23503F';c.lineWidth=3;c.strokeRect(40,40,W-80,H-80);c.strokeStyle='rgba(35,80,63,.25)';c.lineWidth=1;c.strokeRect(52,52,W-104,H-104);if(window.ykTex)window.ykTex(c,W,H);
 var seal=new Image();seal.onload=function(){c.drawImage(seal,96,100,72,72);rest()};seal.onerror=rest;seal.src='/assets/seal-180.png';
-function rest(){c.textBaseline='middle';c.fillStyle='#1E2A25';c.font='900 44px '+F;c.fillText('一孔录',186,126);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText('逐字读经典原文',188,164);
+function rest(){c.textBaseline='middle';c.fillStyle='#1E2A25';c.font='900 44px '+F;c.fillText('一孔录',186,126);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText('从《论语》开始 · 逐字读经典原文',188,164);
 c.textBaseline='alphabetic';
 if(RL){c.textAlign='right';c.fillStyle='#23503F';c.font='900 76px '+F;c.fillText(RL.big,W-96,160);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(RL.wk,W-96,202);c.fillStyle='#8A5A2C';c.font='700 30px '+F;c.fillText(RL.jq,W-96,246);c.textAlign='left'}
 c.fillStyle='rgba(35,80,63,.3)';c.fillRect(96,top,W-192,1);
@@ -871,6 +871,7 @@ class Lang:
         self.ui = ui; self.tr = tr or {}
     def t(self, k, **kw):
         s = self.ui.get(k)
+        if k == "tagline" and self.code in HOMEPOS: s = HOMEPOS[self.code][0]  # 11-16 页尾、关于页、订阅源等标语与首页定位句统一
         if s is None and not self.code.startswith("zh"): s = EXTRA_UI["en"].get(k)
         if s is None: s = ZH_UI.get(k, k)
         return s.format(**kw) if kw else s
@@ -1167,7 +1168,7 @@ WJ_UI = {  # 外文未讲章与闯关、检索新功能的界面字（11-13 主�
  "ru": {"s_new": "Недавно разобранные главы", "s_feed": "Подписаться", "s_last": "Последнее прочитанное"},
 }
 TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
-TAGLINE_L = {"zh-Hans": "逐字读经典原文", "zh-Hant": "逐字讀經典原文"}
+TAGLINE_L = {"zh-Hans": "从《论语》开始 · 逐字读经典原文", "zh-Hant": "從《論語》開始 · 逐字讀經典原文"}
 MEIRI_TXT = {"zh-Hans": {"h": "今日《论语》", "read": "读这一章", "card": "生成分享图", "plan": "百日读完《论语》"}, "zh-Hant": {"h": "今日《論語》", "read": "讀這一章", "card": "生成分享圖", "plan": "百日讀完《論語》"}}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
 LIVE_PILL = {"zh-Hans": "{o} 儒者在读 · 累计 {t}", "zh-Hant": "{o} 儒者在讀 · 累計 {t}", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
@@ -2116,8 +2117,8 @@ def build_lang(L, D, write):
     def zb_section(c, url, cite_src):
         zb = D["zhuben"].get(c, {})
         zjy = ZJY.html_for(c, L.code, ZJY_TW.convert if L.code == "zh-Hant" else None)  # 11-16 诸家原页（集解·邢疏、皇疏、正义、郑注残卷、释文）
-        if not zb and not zjy: return ""
-        blocks, diffs = zjy, []
+        if not zb and not zjy and not ZJY.dz_html(c, L.code): return ""
+        blocks, diffs = zjy + ZJY.dz_html(c, L.code, ZJY_TW.convert if L.code == "zh-Hant" else None), []  # 11-16 定州汉简异文
         if "huang" in zb:
             h = zb["huang"]
             hurl = HUANG_SCAN.format(n=h["page"]) if h.get("ed", "zbz") == "zbz" else HUANG_WK.format(ce=h["ce"], n=h["page"])
@@ -3554,14 +3555,14 @@ def main(zdir, outdir, kanwu=None):
             pnum, cnum = c.split(".")
             head = f"《论语·{PIAN[pnum][0]}》第 {cnum} 章"
             D["og"][c] = {"hans": OG.make("hans", c, head, yw[c], TAGLINE)}
-            D["og"][c]["tri"] = OG.make3(c, f"{head} · Analects {c} · 論語 {c}", yw[c], _tr_en.get(c, {}).get("yw", ""), _tr_ja.get(c, {}).get("yw", ""), "逐字读经典原文 · Reading the classics word by word")
+            D["og"][c]["tri"] = OG.make3(c, f"{head} · Analects {c} · 論語 {c}", yw[c], _tr_en.get(c, {}).get("yw", ""), _tr_ja.get(c, {}).get("yw", ""), "从《论语》开始 · 逐字读经典原文")
     else:
         print("没有字体，分享图跳过：", OG.FONT)
     if OG.available():  # 未讲章也出三语分享图（11-09 主人定补齐）
         for c, q in D["qw"].items():
             if c in pub or c in D["og"] or not WJ_TR.get(c, {}).get("en"): continue
             pnum, cnum = c.split(".")
-            D["og"][c] = {"tri": OG.make3(c, f"《论语·{PIAN[pnum][0]}》第 {cnum} 章 · Analects {c} · 論語 {c}", q["text"], WJ_TR[c]["en"], WJ_TR[c].get("ja", ""), "逐字读经典原文 · Reading the classics word by word")}
+            D["og"][c] = {"tri": OG.make3(c, f"《论语·{PIAN[pnum][0]}》第 {cnum} 章 · Analects {c} · 論語 {c}", q["text"], WJ_TR[c]["en"], WJ_TR[c].get("ja", ""), "从《论语》开始 · 逐字读经典原文")}
     global OUT_ROOT; OUT_ROOT = outdir
     urls = build_lang(Lang("zh-Hans", ZH_UI), D, writer(""))
     write_data(D, outdir)

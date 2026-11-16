@@ -15,6 +15,7 @@ for f in glob.glob(os.path.join(out, "**", "*.*"), recursive=True):
     t = re.sub(r"[木铁石陶织绣]工坊", "", t)  # 讲稿今例里的“木工坊”等是普通词，不是内部说法
     for w in WORDS:
         if w in t: bad.append(f"{f} 含内部字样或占位符 {w!r}")
+    if re.search(r"(?<!开始 · )(?<!开始，)(?<!開始 · )(?<!開始，)逐字[读讀]經?经?典原文", t): bad.append(f"{f} 有旧标语“逐字读经典原文”，没带“从《论语》开始”")  # 11-16 标语统一
     if re.search(r"主人\s*\d{1,2}-\d{1,2}", t): bad.append(f"{f} 含内部定稿记录（主人+日期）")
     if f.endswith(".html") and (m := re.search(r">([a-z]{2,6}_[a-z0-9_]+)<", t)): bad.append(f"{f} 有没翻出的界面字键 {m.group(1)!r}")
     if f.endswith(".html") and t.count("<main") != t.count("</main>"): bad.append(f"{f} <main> 不配对")
