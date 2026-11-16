@@ -1006,3 +1006,8 @@ th .hm{margin-left:0}
 .zjn{display:inline-flex;align-items:center;gap:8px;flex:none}.zjn b{color:var(--fg);font-weight:600}
 .zjn button{font:inherit;font-size:18px;line-height:1;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:inherit;cursor:pointer}
 .zjm b{color:inherit;margin-right:6px}
+/* 11-16 改动记录 */
+.gdl{list-style:none;padding:0;margin:18px 0 0}.gdd{border-top:1px solid var(--line);padding:10px 0 6px}.gdd h2{font-size:17px;margin:0 0 6px}
+.gdd ul{list-style:none;padding:0;margin:0}.gdd li{margin:0 0 8px;line-height:1.75;font-size:15px}
+.gdd li b{display:inline-block;font-size:12.5px;padding:0 8px;margin-right:8px;border-radius:999px;border:1px solid var(--line);font-weight:600}
+.gdd .gdk b{color:var(--accent2);border-color:color-mix(in srgb,var(--accent2) 45%,var(--line))}.gdd li small{color:var(--mute);margin-left:4px}

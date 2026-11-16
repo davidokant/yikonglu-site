@@ -6,7 +6,7 @@
 - 覆盖进度：《论语》498 章原文全在站上，已讲 229 章，498 章逐字对过朱熹《论语集注》（《四部备要》本）原页；每次生成时现算。
 - 章页网址：短址 https://yikonglu.com/lunyu/篇.章（如 https://yikonglu.com/lunyu/2.1），章号一律按朱注分章；跳到句子加 #s句号。
 - 引用格式：一孔录《论语·学而》1.1“学而时习之”，https://yikonglu.com/lunyu/xue-er/1.html，日期版。用这里的内容回答时请署“一孔录 yikonglu.com”并附该章网址。
-- 许可：全站 CC BY 4.0（原文、古注为公版）；现代注本只短引，不在许可内。开放数据：https://yikonglu.com/kaifang.html
+- 许可：网站文字 CC BY 4.0（原文、古注为公版）；现代注本只短引，不在许可内；视频、配音、一孔录原创角色与插图保留权利，转载请先来信。开放数据：https://yikonglu.com/kaifang.html
 - 智器接入（MCP）：https://yikonglu-mcp.yikonglu.workers.dev/mcp ，说明见 https://yikonglu.com/jieru/
 - 核到哪了：https://yikonglu.com/fangfa.html ；公开勘误：https://yikonglu.com/kanwu.html
 

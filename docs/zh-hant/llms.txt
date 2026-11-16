@@ -6,7 +6,7 @@
 - 覆蓋進度：《論語》498 章原文全在站上，已講 229 章，498 章逐字對過朱熹《論語集註》（《四部備要》本）原頁；每次生成時現算。
 - 章頁網址：短址 https://yikonglu.com/lunyu/篇.章（如 https://yikonglu.com/lunyu/2.1），章號一律按朱注分章；跳到句子加 #s句號。
 - 引用格式：一孔錄《論語·學而》1.1“學而時習之”，https://yikonglu.com/lunyu/xue-er/1.html，日期版。用這裡的內容回答時請署“一孔錄 yikonglu.com”並附該章網址。
-- 許可：全站 CC BY 4.0（原文、古注為公版）；現代注本只短引，不在許可內。開放資料：https://yikonglu.com/kaifang.html
+- 許可：網站文字 CC BY 4.0（原文、古注為公版）；現代注本只短引，不在許可內；影片、配音、一孔錄原創角色與插圖保留權利，轉載請先來信。開放資料：https://yikonglu.com/kaifang.html
 - 智器接入（MCP）：https://yikonglu-mcp.yikonglu.workers.dev/mcp ，說明見 https://yikonglu.com/jieru/
 - 核到哪了：https://yikonglu.com/fangfa.html ；公開勘誤：https://yikonglu.com/kanwu.html
 

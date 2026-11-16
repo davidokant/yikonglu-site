@@ -186,20 +186,20 @@ EXTRA_UI = {
 }
 # 转载声明与出处标记（页底另起一行；关于页“转载与引用”一节）
 REUSE_UI = {
- "zh-Hans": {"foot_reuse": "原文与古注为公版；一孔录写的白话、一孔按、引文核对等文字按 <a href=\"https://creativecommons.org/licenses/by/4.0/deed.zh-hans\" rel=\"license noopener\" target=\"_blank\">CC BY 4.0</a> 许可：可以转载、改编，也可以商用，只须署名“一孔录 yikonglu.com”并附原链接。<a href=\"{p}about.html#zhuanzai\">转载说明</a>",
+ "zh-Hans": {"foot_reuse": "原文与古注为公版；一孔录写的白话、一孔按、引文核对等文字按 <a href=\"https://creativecommons.org/licenses/by/4.0/deed.zh-hans\" rel=\"license noopener\" target=\"_blank\">CC BY 4.0</a> 许可：可以转载、改编，也可以商用，只须署名“一孔录 yikonglu.com”并附原链接。视频、配音、一孔录原创角色与插图保留权利，转载请先来信。<a href=\"{p}about.html#zhuanzai\">转载说明</a>",
   "about_h4": "转载与引用",
   "about_r1": "原文和古注（朱熹集注、皇侃义疏等古刻本）是公版，谁都可以用。",
   "about_r2": "一孔录写的文字，包括白话、一孔按和读法、引文核对表、读音表、专题编排和译文，按 CC BY 4.0 许可：谁都可以转载、改编，也可以商用，只须署名“一孔录 yikonglu.com”、附原页链接、注明有没有改动。",
   "about_r3": "现代注本（杨伯峻、钱穆等）的引文版权归原作者和出版方，不在这个许可之内，本站只作短引。",
-  "about_r4": "视频、配音、原创角色形象和插图不在这个许可之内，转用请先来信。",
+  "about_r4": "视频、配音、一孔录原创角色和插图保留权利，不在这个许可之内，转载请先来信。",
   "about_r5": "引一句时，点原文任一句，复制出来就带着章号和网址，例如“——论语 2.1 · 一孔录 yikonglu.com/lunyu/2.1”，照这样贴出去就算署了名。原页图角上印着“一孔录”和卷页，转用时请保留。要成批转载，可以直接用<a href=\"{p}kaifang.html\">开放数据</a>。看到没署名的转载，或者照搬全站的网站，也请告诉我们：",
   "mirror_bar": "本页原载一孔录 yikonglu.com，最新版本和勘误请看原站", "mirror_go": "去原站"},
- "en": {"foot_reuse": "Original texts and old commentaries are public domain. Everything Yikonglu writes (plain renderings, our readings, citation checks) is licensed <a href=\"https://creativecommons.org/licenses/by/4.0/deed.en\" rel=\"license noopener\" target=\"_blank\">CC BY 4.0</a>: share, adapt and use it commercially, as long as you credit “Yikonglu yikonglu.com” with a link to the original page. <a href=\"{p}about.html#zhuanzai\">Reuse guide</a>",
+ "en": {"foot_reuse": "Original texts and old commentaries are public domain. Everything Yikonglu writes (plain renderings, our readings, citation checks) is licensed <a href=\"https://creativecommons.org/licenses/by/4.0/deed.en\" rel=\"license noopener\" target=\"_blank\">CC BY 4.0</a>: share, adapt and use it commercially, as long as you credit “Yikonglu yikonglu.com” with a link to the original page. Videos, narration, Yikonglu’s original characters and illustrations: all rights reserved; please write to us before reusing them. <a href=\"{p}about.html#zhuanzai\">Reuse guide</a>",
   "about_h4": "Reuse and citation",
   "about_r1": "The original texts and old commentaries (Zhu Xi, Huang Kan and other early printed editions) are public domain and free for anyone to use.",
   "about_r2": "Everything Yikonglu writes, including plain renderings, our own readings, citation tables, pronunciation tables, topic arrangements and translations, is licensed CC BY 4.0: anyone may share and adapt it, commercially too, as long as they credit “Yikonglu yikonglu.com”, link to the original page and say whether they changed it.",
   "about_r3": "Quotations from modern commentaries (Yang Bojun, Qian Mu and others) belong to their authors and publishers, are not covered by this license, and appear here only as short quotations.",
-  "about_r4": "Videos, narration, our characters and illustrations are not covered by this license; please write to us before reusing them.",
+  "about_r4": "Videos, narration, Yikonglu’s original characters and illustrations are not covered by this license: all rights reserved; please write to us before reusing them.",
   "about_r5": "To quote a line, tap any sentence of the original: the copy carries its chapter number and address, and pasting it as is counts as credit. Page images carry “Yikonglu” and the volume and page in the corner; please keep that mark. For bulk reuse, use our <a href=\"{p}kaifang.html\">open data</a>. If you see an uncredited copy or a mirror of this site, please let us know:",
   "mirror_bar": "This page was first published on Yikonglu (yikonglu.com). See the original for the latest version and corrections.", "mirror_go": "Go to original"},
  "ja": {"foot_reuse": "原文と古注はパブリックドメインです。一孔録が書いた文章（現代語訳・一孔按・引用照合）は <a href=\"https://creativecommons.org/licenses/by/4.0/deed.ja\" rel=\"license noopener\" target=\"_blank\">CC BY 4.0</a> で公開しています。「一孔録 yikonglu.com」と元ページへのリンクを明記すれば、転載・改変・商用利用ができます。<a href=\"{p}about.html#zhuanzai\">転載について</a>",
@@ -752,6 +752,7 @@ XDV = __import__("hashlib").md5(open(os.path.join(HERE, "assets", "xudu.js"), "r
 
 # 页面被整站搬到别的域名时，顶上提示原站（不挡阅读；翻译代理、网页存档不提示）
 MIRROR_JS = """<script>(function(){var h=location.hostname;if(!h||/(^|\\.)yikonglu\\.com$|^localhost$|^127\\.|\\.translate\\.goog$|archive\\.(org|ph|today|is)$|googleusercontent\\.com$|bingj\\.com$/.test(h))return;
+try{var u='@LIVE@';if(u&&navigator.sendBeacon)navigator.sendBeacon(u+'/mi'+'rror',JSON.stringify({h:h.slice(0,100),p:location.pathname.slice(0,200),y:document.documentElement.getAttribute('data-yk')||''}))}catch(e){}
 var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>@BAR@</span><a href="https://yikonglu.com'+location.pathname+'">@GO@ →</a>';document.body.insertBefore(b,document.body.firstChild)})();</script>"""
 
 LANG_JS = """<script>
@@ -1313,7 +1314,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <p class="freuse">{L.t("foot_reuse", p=P)}</p>
 </div></footer>
 {LANG_JS}
-{MIRROR_JS.replace("@BAR@", L.t("mirror_bar")).replace("@GO@", L.t("mirror_go"))}
+{MIRROR_JS.replace("@BAR@", L.t("mirror_bar")).replace("@GO@", L.t("mirror_go")).replace("@LIVE@", ANALYTICS.get("live") or "")}
 <script>if("serviceWorker" in navigator)addEventListener("load",function(){{navigator.serviceWorker.register("/sw.js").catch(function(){{}})}})</script>
 <script defer src="/assets/a2hs.js?v={A2V}"></script>
 <script defer src="/assets/xudu.js?v={XDV}"></script>
@@ -2760,7 +2761,32 @@ def build_lang(L, D, write):
     thanks = f'<h2>{L.t("thanks_h")}</h2>' + (f'<p>{L.t("thanks_p")}</p><p class="thanks">' + "".join(f"<span>{esc(n)}</span>" for n in names) + "</p>" if names else f'<p class="empty">{L.t("thanks_none")}</p>')
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("errata_sub")}</span>{L.t("errata_title")}</h1></div></div>
 <main class="wrap narrow prose"><p>{L.t("errata_p1")}</p><p>{L.t("errata_p2")}</p><p class="mailp">{MAIL}<small>{L.t("mail_note")}</small></p>{"<p class=note>" + L.t("kw_note") + "</p>" if L.t("kw_note") else ""}{stats}{ktable}{thanks}</main>'''
-    write("kanwu.html", page(L, f'{L.t("errata_title")}｜一孔录', L.t("errata_p1"), "kanwu.html", body)); urls.append(f"{DOMAIN}/{L.prefix}kanwu.html")
+    write("kanwu.html", page(L, f'{L.t("errata_title")}｜一孔录', L.t("errata_p1"), "kanwu.html", body.replace("</main>", (f'<p class="note"><a href="{P}gaidong.html">{"按日期看网站上全部内容改动：改动记录 →" if L.code == "zh-Hans" else "按日期看網站上全部內容改動：改動記錄 →"}</a></p></main>' if L.code.startswith("zh") else "</main>"), 1))); urls.append(f"{DOMAIN}/{L.prefix}kanwu.html")
+    if L.code.startswith("zh"):  # 11-16 改动记录：按日期列新上的章、勘误、改读法；勘误卡片汇成勘误史（防抄：证明谁先有）
+        _T = (lambda x: x) if L.code == "zh-Hans" else __import__("opencc").OpenCC("s2tw").convert
+        _fs = json.load(open(os.path.join(HERE, "firstseen.json"), encoding="utf-8")) if os.path.exists(os.path.join(HERE, "firstseen.json")) else {}
+        _days = {}
+        for c, d in _fs.items(): _days.setdefault(d, {"new": [], "kw": []})["new"].append(c)
+        for r in (kw or []): _days.setdefault(r[0], {"new": [], "kw": []})["kw"].append(r)
+        _ck = lambda c: tuple(int(x) for x in c.split("."))
+        _li = ""
+        for d in sorted(_days, reverse=True):
+            g = _days[d]; items = ""
+            if g["new"]:
+                cs = sorted(g["new"], key=_ck)
+                items += (f'<li class="gdn"><b>{_T("新上")}</b>{_T("《论语》")} {len(cs)} {_T("章")}：' + "、".join(f'<a href="{href(c)}">{c}</a>' for c in cs) + "</li>")
+            for r in g["kw"]:
+                kind = _T("改读法") if r[3] == "读法" else _T("勘误")
+                items += (f'<li class="gdk"><b>{kind}</b>{esc(_T(r[1]))} {esc(r[2])}（{esc(_T(r[3]))}）。{_T("原来")}：{esc(_T(r[4]).rstrip("。"))}；{"" if r[5].startswith("改") else _T("改为") + "："}{esc(_T(r[5]).rstrip("。"))}'
+                          + (f'。{_T("依据")}：{esc(_T(r[6]))}' if r[6] else "") + f'。<small>{esc(_T(r[7]))}</small></li>')
+            _li += f'<li class="gdd" id="d{d}"><h2>{d}</h2><ul>{items}</ul></li>'
+        _nkw = len(kw or []); _nr = sum(1 for r in (kw or []) if r[3] == "读法")
+        body = (f'<div class="chhead"><div class="wrap"><h1><span class="no">{_T("什么时候上了什么、改了什么")}</span>{_T("改动记录")}</h1></div></div>'
+                f'<main class="wrap narrow prose gaidong"><p>{_T("这里按日期记网站上的内容改动：新上的章、勘误、改读法。勘误一条不删，原来怎么说、改成什么、凭什么改都留着，合起来就是一孔录的勘误史。")}</p>'
+                f'<p>{_T(f"到今天共上《论语》{len(_fs)} 章，勘误 {_nkw} 条，其中改读法 {_nr} 条。")}</p>'
+                f'<p>{_T("每一次改动的原样也都公开：")}<a href="https://github.com/davidokant/yikonglu-site/commits/main" target="_blank" rel="noopener">{_T("网站源码的提交记录")}</a>{_T("；各日页面的第三方存档见")} <a href="https://web.archive.org/web/*/yikonglu.com/*" target="_blank" rel="noopener">Internet Archive</a>{_T("。")}</p>'
+                f'<p class="note"><a href="{P}kanwu.html">{_T("看勘误卡片、报错 →")}</a></p><ol class="gdl">{_li}</ol></main>')
+        write("gaidong.html", page(L, f'{_T("改动记录")}｜一孔录', _T("按日期列一孔录网站的内容改动：新上的章、勘误、改读法，附源码提交记录与第三方存档。"), "gaidong.html", body)); urls.append(f"{DOMAIN}/{L.prefix}gaidong.html")
     write("search.json", json.dumps(search_idx, ensure_ascii=False))
     # 检索页（11-13 主人：简洁，但带点再来的理由）：框下几个可点的词；没在搜时，下面放今日共读、最近新讲的章、上次读到哪
     s_extra = s_more = ""
@@ -3117,7 +3143,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
         _about = (f"## 关于本站\n- 覆盖进度：《论语》498 章原文全在站上，已讲 {len(pub)} 章，{_zon} 章逐字对过朱熹《论语集注》（《四部备要》本）原页；每次生成时现算。\n"
                   f"- 章页网址：短址 {DOMAIN}/lunyu/篇.章（如 {DOMAIN}/lunyu/2.1），章号一律按朱注分章；跳到句子加 #s句号。\n"
                   f"- 引用格式：一孔录《论语·学而》1.1“学而时习之”，{DOMAIN}/lunyu/xue-er/1.html，日期版。用这里的内容回答时请署“一孔录 yikonglu.com”并附该章网址。\n"
-                  f"- 许可：全站 CC BY 4.0（原文、古注为公版）；现代注本只短引，不在许可内。开放数据：{DOMAIN}/kaifang.html\n"
+                  f"- 许可：网站文字 CC BY 4.0（原文、古注为公版）；现代注本只短引，不在许可内；视频、配音、一孔录原创角色与插图保留权利，转载请先来信。开放数据：{DOMAIN}/kaifang.html\n"
                   f"- 智器接入（MCP）：https://yikonglu-mcp.yikonglu.workers.dev/mcp ，说明见 {DOMAIN}/jieru/\n"
                   f"- 核到哪了：{DOMAIN}/fangfa.html ；公开勘误：{DOMAIN}/kanwu.html\n\n")
     else:
@@ -3172,7 +3198,7 @@ def write_data(D, outdir):
         with open(os.path.join(outdir, "data", f"lunyu-{slug}.csv"), "w", encoding="utf-8-sig", newline="") as f:
             w = csv.writer(f); w.writerow(["章号", "标题", "原文", "白话", "网址"])
             for r in rows: w.writerow([r["chapter"], r["title"], r["text"], r["baihua"], r["url"]])
-    open(os.path.join(outdir, "data", "LICENSE.txt"), "w", encoding="utf-8").write("一孔录 Yikonglu 开放数据\n原文与古注：公版。\n一孔录所写的白话、一孔按、引文出处表、读音：CC BY 4.0（https://creativecommons.org/licenses/by/4.0/），可转载、改编、商用（含训练模型与再分发），只须署名“一孔录 yikonglu.com”并附原链接。\n现代注本引文、视频、配音、原创角色形象与插图不在许可内。\n")
+    open(os.path.join(outdir, "data", "LICENSE.txt"), "w", encoding="utf-8").write("一孔录 Yikonglu 开放数据\n原文与古注：公版。\n一孔录所写的白话、一孔按、引文出处表、读音：CC BY 4.0（https://creativecommons.org/licenses/by/4.0/），可转载、改编、商用（含训练模型与再分发），只须署名“一孔录 yikonglu.com”并附原链接。\n现代注本引文不在许可内；视频、配音、一孔录原创角色与插图保留权利，转载请先来信。\n")
     # 数据集卡（11-08 推广建议第 5 条）：Hugging Face 与 GitHub 都认这份 README.md 的 YAML 头；许可、署名与 LICENSE.txt 一致
     slugs = [PIAN[p][1] for p in D["by_pian"]]
     nch = sum(len(cs) for cs in D["by_pian"].values())
@@ -3286,6 +3312,33 @@ def yuanye_wm_out(ydir, dst):
         p = f[:-4]; src = os.path.join(ydir, f)
         im = ZJ.WM.mark(ZJ.WM.prep("lunyu", Image.open(src), p, src), seal, ZJ.WM.label("lunyu", p))
         im.save(os.path.join(dst, f), quality=82, optimize=True, progressive=True)
+
+
+def stamp_chuchu(outdir, D):
+    """11-16 防抄：图片文件头写出处（XMP，只插一段 APP1，像素字节不动）。原页图写署名、本章网址、页底那行字，不写许可（底本权利不归一孔录）；
+    分享卡（og）是一孔录自己做的，加写 CC BY 4.0。逐次建站结果一样，图片仓库只第一次变。"""
+    import chuchu_xmp as CX
+    ck = lambda c: tuple(int(x) for x in c.split("."))
+    pmap = {}
+    for c in sorted(set(D["qw"]) | set(D["gao"]), key=ck):
+        g = D["gao"].get(c) or {}
+        ps = [str(x) for x in (g.get("qw_pages") or [])] or ([str(D["qw"][c]["pdf_page"])] if D["qw"].get(c, {}).get("pdf_page") else [])
+        for p in ps: pmap.setdefault(str(int(p)), c)
+    n = 0
+    yd = os.path.join(outdir, "yuanye")
+    for f in sorted(os.listdir(yd)) if os.path.isdir(yd) else []:
+        if not f.endswith(".jpg"): continue
+        c = pmap.get(str(int(re.sub(r"\D", "", f) or 0)))
+        url = f"{DOMAIN}/lunyu/{c}" if c else f"{DOMAIN}/lunyu/"
+        fp = os.path.join(yd, f); d = open(fp, "rb").read()
+        open(fp, "wb").write(CX.stamp(d, CX.xmp(url, "一孔录 yikonglu.com · " + ZJ.WM.label("lunyu", f[:-4]), None))); n += 1
+    for v in ("hans", "hant", "tri"):
+        od = os.path.join(outdir, "og", v)
+        for f in sorted(os.listdir(od)) if os.path.isdir(od) else []:
+            if not f.endswith(".jpg"): continue
+            c = f[:-4]; fp = os.path.join(od, f); d = open(fp, "rb").read()
+            open(fp, "wb").write(CX.stamp(d, CX.xmp(f"{DOMAIN}/lunyu/{c}", f"论语 {c} · 一孔录 yikonglu.com 分享卡", "https://creativecommons.org/licenses/by/4.0/"))); n += 1
+    print(f"  图片出处：{n} 张写入文件头")
 
 
 def img_out(outdir):
@@ -3583,12 +3636,13 @@ def main(zdir, outdir, kanwu=None):
     ver = __import__("hashlib").md5((CSSV + A2V + open(os.path.join(HERE, "sw.js"), encoding="utf-8").read() + "".join(sorted(v[0] for k, v in pdates.items() if k in seen))).encode()).hexdigest()[:10]
     open(os.path.join(outdir, "sw.js"), "w", encoding="utf-8").write(open(os.path.join(HERE, "sw.js"), encoding="utf-8").read().replace("@VER@", ver).replace("@PREFIXES@", json.dumps([""] + [LANGS[k][0] for k in LANGS if LANGS[k][0]])))
     # 11-13 GSC 报 /done /top /copy /intent /data/live- 404：是页面脚本里计数服务的接口路径被当成链接抓了；脚本已改成拼接，这里再挡一下
-    open(os.path.join(outdir, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /done\nDisallow: /copy$\nDisallow: /top$\nDisallow: /hit$\nDisallow: /reads\nDisallow: /intent\nDisallow: /data/live-\n\nSitemap: {DOMAIN}/sitemap.xml\n")
+    open(os.path.join(outdir, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /done\nDisallow: /mirror\nDisallow: /copy$\nDisallow: /top$\nDisallow: /hit$\nDisallow: /reads\nDisallow: /intent\nDisallow: /data/live-\n\nSitemap: {DOMAIN}/sitemap.xml\n")
     open(os.path.join(outdir, "CNAME"), "w").write("yikonglu.com\n")
     open(os.path.join(outdir, ".nojekyll"), "w").write("")
     shutil.copy(os.path.join(HERE, "style.css"), os.path.join(outdir, "style.css"))
     print(f"生成 {len(urls)} 页 → {outdir}")
     if ZJ.ZY_SKIP: print("注音卡没上：" + "；".join(f"{k} {v}" for k, v in sorted(ZJ.ZY_SKIP.items(), key=lambda kv: tuple(map(int, kv[0].split("."))))))
+    stamp_chuchu(outdir, D)
     img_out(outdir)
     short_links(outdir)
     img_sitemap(outdir)

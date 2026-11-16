@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /done
+Disallow: /mirror
 Disallow: /copy$
 Disallow: /top$
 Disallow: /hit$

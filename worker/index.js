@@ -9,6 +9,8 @@
 // GET  /intent          {n}（满 20 才给数，否则 n:null）；GET /intent/stats {n, want, days} 全部计数（不含任何个人信息）
 // POST /wk {a:n} 或 {l:n}  匿名周读：这台设备本周（北京时间周一起）第 n 天读书（a 各书、l 只算《论语》），每周每个 n 只发一次；不带任何编号
 // GET  /wk               {周一日期: {a:{n:台数}, l:{n:台数}}}，留 12 周；北极星＝本周 a[4]（读满四天的台数）
+// POST /mirror {h, p, y}  11-16 防抄：页面在 yikonglu.com 以外的域名打开时（整站镜像）由页面发一次；只记域名、路径、页面出处编号，不记访客
+// GET  /mirror           {域名: {n, first, last, paths:[…最多 20]}}，最多留 200 个域名
 // POST /done  {c}         某章“读完了”加一（同一设备只点一次，由页面本地记）；GET /done?c=1.1 返回 {today, total}
 const ORIGINS = ["https://yikonglu.com", "https://www.yikonglu.com", "http://localhost:8767"];
 const WINDOW = 90 * 1000; // 90 秒内有心跳算在线
@@ -104,6 +106,19 @@ export class Live {
         return Response.json({ ok: true });
       }
       return Response.json(W);
+    } else if (url.pathname === "/mirror") {
+      if (req.method === "POST") {
+        let b = {}; try { b = JSON.parse(await req.text()); } catch (e) {}
+        const host = String(b.h || "").toLowerCase().slice(0, 100), p = String(b.p || "").slice(0, 200), y = String(b.y || "").slice(0, 40);
+        if (!host || /(^|\.)yikonglu\.com$/.test(host) || !/^[a-z0-9.-]+$/.test(host)) return Response.json({ ok: false });
+        const M = (await this.state.storage.get("mirror")) || {}, d = this.day();
+        if (!M[host] && Object.keys(M).length >= 200) return Response.json({ ok: false });
+        const m = M[host] || { n: 0, first: d, paths: [] }; m.n++; m.last = d;
+        const k = p + (y ? " " + y : ""); if (!m.paths.includes(k) && m.paths.length < 20) m.paths.push(k);
+        M[host] = m; await this.state.storage.put("mirror", M);
+        return Response.json({ ok: true });
+      }
+      return Response.json((await this.state.storage.get("mirror")) || {});
     } else if (url.pathname === "/done") {
       let c = url.searchParams.get("c") || "";
       if (req.method === "POST") { try { c = String((await req.json()).c || ""); } catch (e) {} }
