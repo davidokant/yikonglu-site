@@ -1864,8 +1864,8 @@ DDJ_LYHJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_ly
 DDJ_LYHJ = json.load(open(DDJ_LYHJ_FILE, encoding="utf-8")) if os.path.exists(DDJ_LYHJ_FILE) else []
 # 11-16 首页定位（主人：“以论语为主，牵出一整套经典系列”）：首页副标、标题、摘要
 HOMEPOS = {
-    "zh-Hans": ("从《论语》读起 · 逐字读经典原文", "一孔录｜从《论语》读起，逐字读经典原文", "《论语》498 章逐句对朱熹集注原页：原文、白话、读音、注家原话、公开勘误。再从《论语》读到《道德经》《三字经》，各章互见《论语》。"),
-    "zh-Hant": ("從《論語》讀起 · 逐字讀經典原文", "一孔錄｜從《論語》讀起，逐字讀經典原文", "《論語》498 章逐句對朱熹集注原頁：原文、白話、讀音、注家原話、公開勘誤。再從《論語》讀到《道德經》《三字經》，各章互見《論語》。"),
+    "zh-Hans": ("从《论语》开始 · 逐字读经典原文", "一孔录｜从《论语》开始，逐字读经典原文", "《论语》498 章逐句对朱熹集注原页：原文、白话、读音、注家原话、公开勘误。再从《论语》读到《道德经》《三字经》，各章互见《论语》。"),
+    "zh-Hant": ("從《論語》開始 · 逐字讀經典原文", "一孔錄｜從《論語》開始，逐字讀經典原文", "《論語》498 章逐句對朱熹集注原頁：原文、白話、讀音、注家原話、公開勘誤。再從《論語》讀到《道德經》《三字經》，各章互見《論語》。"),
     "en": ("Start with the Analects · read the classics word by word", None, "All 498 chapters of the Analects, line by line against the pages of Zhu Xi's commentary: original, plain Chinese, readings, the commentators' own words, public corrections. From the Analects on to the Daodejing and the Three-Character Classic, each chapter cross-referenced to the Analects."),
     "ja": ("『論語』から読む · 古典の原文を一字ずつ", None, "『論語』498章を朱熹集注の原頁と一句ずつ照合：原文・現代語訳・読み・注釈家の原文・公開訂正。『論語』から『道徳経』『三字経』へ、各章を『論語』と照らし合わせて読みます。"),
     "ko": ("『논어』에서 시작해 · 고전 원문을 한 글자씩", None, "『논어』 498장을 주희 집주 원본 쪽과 한 구절씩 대조: 원문, 현대어 풀이, 독음, 주석가의 원문, 공개 정오표. 『논어』에서 『도덕경』『삼자경』으로, 각 장을 『논어』와 맞대어 읽습니다."),
