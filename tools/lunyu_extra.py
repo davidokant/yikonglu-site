@@ -8,6 +8,7 @@
 原文、白话、原页按章号从网站现成数据取。
 """
 import glob, html, json, os, re
+import timing as TM
 
 ROOT = "/mnt/project-files/一孔学-内-自媒体"
 LUODI = os.path.join(ROOT, "评审", "2026-11-14-终极目标落地")
@@ -167,9 +168,9 @@ def build(L, D, X, write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, zidia
         for m in range(1, 13):
             rs = [r for r in X["nl"] if r["m"] == m]
             lis = "".join(
-                f'<li id="k{r["n"]}" data-md="{r["md"]}" data-cs="{esc(json.dumps(r["cs"]))}"><em>{r["date"]}</em><b>第 {r["n"]} 课</b>'
+                f'<li id="k{r["n"]}" data-md="{r["md"]}" data-cs="{esc(json.dumps(r["cs"]))}"{TM.nl_attr(r["md"])}><em>{r["date"]}</em><b>第 {r["n"]} 课</b>'
                 f'<span class="nlc">' + "".join(f'<a class="{wj(c).strip()}" href="{href(c)}">{pn(c)} {c}</a>' for c in r["cs"]) + "</span>"
-                f'<q lang="zh-Hans">{esc(r["q"])}</q>' + (f'<small class="nladd">' + re.sub(r"(\d+\.\d+)", lambda m_: f'<a href="{href(m_.group(1))}">{pn(m_.group(1))} {m_.group(1)}</a>', esc(r["addt"])) + "</small>" if r["add"] else "") + "</li>"
+                f'<q lang="zh-Hans">{esc(r["q"])}</q>' + (f'<small class="nladd">' + re.sub(r"(\d+\.\d+)", lambda m_: f'<a href="{href(m_.group(1))}">{pn(m_.group(1))} {m_.group(1)}</a>', esc(r["addt"])) + "</small>" if r["add"] else "") + TM.nl_line(r["md"]) + "</li>"
                 for r in rs)
             if m == 2: lis += '<li class="nlbu" data-md="2-29"><em>2月29日</em><b>补读日</b><span class="nlc">闰年才有这一天，不排新课，前几天落下的课今天补上。</span></li>'
             mon += f'<section class="nlm" id="m{m}"><h2 class="ph">{MONTH[m-1] if m <= 10 else "十" + MONTH[m-11]}月<small>{len(rs)} 课</small></h2><ol class="nll">{lis}</ol></section>'
@@ -195,7 +196,7 @@ function days(v){{var m=+M.value,k=v||+Dd.value||1;Dd.innerHTML="";for(var i=1;i
 var b0;try{{b0=(localStorage.getItem("yk_bd")||"").split("-")}}catch(e){{b0=[]}}M.value=b0[0]||"1";days(+b0[1]||1);M.onchange=function(){{days()}};
 function show(go){{var md=M.value+"-"+Dd.value,li=document.querySelector('.nll li[data-md="'+md+'"]');try{{localStorage.setItem("yk_bd",md)}}catch(e){{}}if(!li)return;
 document.querySelectorAll(".nll li.bd").forEach(function(x){{x.classList.remove("bd")}});li.classList.add("bd");var a=li.querySelector(".nlc a"),q=li.querySelector("q");
-O.innerHTML='<p><b>'+li.querySelector("em").textContent+(li.querySelector("b")?" · "+li.querySelector("b").textContent:"")+'</b></p>'+(q?'<blockquote lang="zh-Hans">'+q.textContent+'</blockquote>':'')+(a?'<p><a class="btn" href="'+a.getAttribute("href")+'?bd=1">做成我的生日卡 →</a> <a class="btn ghost" href="'+a.getAttribute("href")+'">读这一课</a> <a class="btn ghost" href="#'+li.id+'">在表里看</a></p>':'<p>'+li.querySelector(".nlc").textContent+'</p>');O.hidden=false}}
+O.innerHTML='<p><b>'+li.querySelector("em").textContent+(li.querySelector("b")?" · "+li.querySelector("b").textContent:"")+'</b></p>'+(q?'<blockquote lang="zh-Hans">'+q.textContent+'</blockquote>':'')+(a?'<p><a class="btn" href="'+a.getAttribute("href")+'?bd=1">做成我的生日卡 →</a> <a class="btn ghost" href="'+a.getAttribute("href")+'">读这一课</a> <a class="btn ghost" href="#'+li.id+'">在表里看</a></p>':'<p>'+li.querySelector(".nlc").textContent+'</p>')+(li.dataset.tm?'<p class="tmq">这一天已由'+li.dataset.tm.replace(/</g,"&lt;")+'题名</p>':'<p class="tmq"><a href="{P}shuyuan/ruyuan.html">这一天还可以题名 ›</a></p>');O.hidden=false}}
 F.onsubmit=function(e){{e.preventDefault();show()}};if(b0[0])show()}})();</script>'''
         write("nianli/lunyu.ics", nl_ics(L, X, P, href, ctitle, tx, DOMAIN))
         write("nianli/index.html", page(L, "《论语》年历：一年 365 课，每天一课读完全书｜一孔录",

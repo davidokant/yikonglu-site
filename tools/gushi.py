@@ -250,5 +250,5 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
     jb = hero("一孔录原创角色", "书院里的人") + f'<main class="wrap narrow gsmain"><p class="lead">书院里常驻的六个人，都是一孔录原创角色，由智器主持，读法以“一孔按”为准。点进去看各人的身份、本领，和在哪些章出场；想跟着一个人读，去<a href="{P}zhuanti/">专题</a>里的“跟着一个人读”。</p><div class="gscards">{cards}</div></main>'
     write("shuyuan/juese.html", page(L, "一孔录原创角色｜一孔书院", "一孔书院里常驻的六个原创角色：身份、本领与出场章句。", "shuyuan/juese.html", jb, ld("一孔录原创角色", U("shuyuan/juese.html"), "一孔录视频里的原创人物", [p["名"] for p in G["ppl"]]), "pg-gushi")); urls.append(U("shuyuan/juese.html"))
     body = SY.hub(P, f"/gushi/img/ditu/world-{v}.jpg" if T else mapimg, len(G["ppl"]), nowtxt)
-    write("shuyuan/index.html", page(L, "一孔书院：免费管读懂，书院管用上｜一孔录", "一孔书院（筹备中）：每周“这句话怎么用”、每月“书后面的事”、书友圈、问一孔必答。免费内容永远免费。", "shuyuan/", body, ld("一孔书院", U("shuyuan/"), "一孔录的会员书院（筹备中）与书友圈"), "pg-gushi", og_img=(f"gushi/img/ditu/world-{v}.jpg" if T else (mapimg or "").lstrip("/")) or None)); urls.append(U("shuyuan/"))
+    write("shuyuan/index.html", page(L, "一孔书院：免费的管读懂，书院管留名｜一孔录", "一孔书院只做一件事：2027 年元旦起，书友把名字和一句题记题在《论语》年历的某一天上。一孔录的内容永远免费。", "shuyuan/", body, ld("一孔书院", U("shuyuan/"), "一孔录书院：在《论语》年历上题名"), "pg-gushi", og_img=(f"gushi/img/ditu/world-{v}.jpg" if T else (mapimg or "").lstrip("/")) or None)); urls.append(U("shuyuan/"))
     return urls

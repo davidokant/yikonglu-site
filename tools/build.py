@@ -19,6 +19,7 @@ import zizhuan as ZZ  # 11-15 一字一页 /zi/
 import xingtu as XT  # 11-15《论语》星图：首页招牌、关系图页
 import gaoben as GB
 import keben as KB  # 11-15 视频逐字稿上章页（十一项之 6）
+import timing as TM  # 11-16 书院题名
 import guanxi as GX  # 11-14 《论语》智器重建本的关系：章页“这一章连着”、关系图页 /guanxi/
 
 DOMAIN = "https://yikonglu.com"
@@ -1513,7 +1514,7 @@ PRIVACY = {
    "不用注册，不设留言区，不收表单。",
    "访问统计用 Cloudflare Web Analytics：不设 cookie，不认人，只计页面访问量、来路和国家或地区。简体中文页另装百度统计，它会设 cookie，用来计访问量和来路；繁体和外文页不装。",
    "首页那行“此刻在读 / 读者来过”的人数，由我们自己在 Cloudflare 上的一个小程序计：你的浏览器本地存一个随机编号，每分钟告诉它一声“还在读”，它只记这个编号和时间，用来数人数，不存 IP，也不记别的。",
-   "“一孔书院”筹备页上的“我想第一批加入”和“最想要哪样”，只给计数加一，不收姓名、邮箱、电话；同一浏览器点过一次，本地记个标记，不再重复计。",
+   "“一孔书院”入院页上的“我想题一天”，只给计数加一，不收姓名、邮箱、电话；同一浏览器点过一次，本地记个标记，不再重复计。",
    "章节页里的视频：简体中文页在中国大陆时区的设备上嵌哔哩哔哩播放器（player.bilibili.com），它可能设 cookie，按哔哩哔哩的隐私政策处理；其他情况用 YouTube 的隐私增强模式（youtube-nocookie.com）嵌入，点播放之后才由 YouTube 按它的隐私政策处理。选哪个只看你设备的时区设置，不上传；你手动切换后，选择记在本地。",
    "字体从 Google Fonts 加载，你的浏览器会向谷歌请求字体文件。",
    "语言选择、是否已关掉“装到桌面”提示，记在你浏览器的本地存储里；看过的页面缓存在你的设备上，离线也能打开。这些都不上传。",
@@ -1523,7 +1524,7 @@ PRIVACY = {
    "No accounts, no comment section, no forms.",
    "Visits are counted with Cloudflare Web Analytics, which sets no cookies and does not identify you; it counts page views, referrers and country or region. Simplified-Chinese pages also carry Baidu Tongji, which does set cookies for counting visits and referrers; other language versions do not.",
    "The “reading now / readers so far” line on the home page is counted by a small program of ours on Cloudflare: your browser keeps a random ID in local storage and pings it once a minute while you read. It keeps only that ID and the time, to count heads; it does not store your IP address or anything else.",
-   "On the Yikonglu Academy page, “I'd like to join” and “what would you want most” only add one to a count; no name, email or phone is collected. Your browser keeps a local mark so you are counted once.",
+   "On the Yikonglu Academy page, “I'd like to name a day” only adds one to a count; no name, email or phone is collected. Your browser keeps a local mark so you are counted once.",
    "Videos on chapter pages are embedded in YouTube's privacy-enhanced mode (youtube-nocookie.com); once you press play, YouTube handles data under its own privacy policy.",
    "Fonts load from Google Fonts, so your browser requests font files from Google.",
    "Your language choice and whether you dismissed the “add to home screen” tip are kept in your browser's local storage; pages you have read are cached on your device for offline use. None of this is uploaded.",
@@ -2309,7 +2310,7 @@ def build_lang(L, D, write):
                               + f'</ul><p class="note">“把握”是我们对这条异同判断的把握，“定”最稳。现代注本版权期内，只短引一句，页码核过正版书后再补；皇侃义疏等古注原页见 <a href="#zhuben">诸家注本</a>。</p></section>')
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
-<h1><span class="no">{f"论语 {c} · {pname}" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)}</span>{esc(title_of(c))}</h1>{LX.nl_tag(L, P, D["lx"], c)}{f'<p class="kwtag"><a href="#kw">{L.t("kw")} {len(mine)} 条</a> · <a href="{P}kanwu.html">全部勘误</a></p>' if mine and L.code.startswith("zh") else ""}
+<h1><span class="no">{f"论语 {c} · {pname}" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)}</span>{esc(title_of(c))}</h1>{LX.nl_tag(L, P, D["lx"], c)}{TM.chapter_line(c, D["lx"]["nl"]) if L.code.startswith("zh") else ""}{f'<p class="kwtag"><a href="#kw">{L.t("kw")} {len(mine)} 条</a> · <a href="{P}kanwu.html">全部勘误</a></p>' if mine and L.code.startswith("zh") else ""}
 </div></div>
 <main class="wrap chapter">
 <article>
@@ -2478,7 +2479,7 @@ def build_lang(L, D, write):
                                '<script>(function(){var s=document.querySelector("section.video[data-pub]");if(s&&Date.now()>=Date.parse(s.dataset.pub)){s.hidden=false;var o=document.querySelector("section.video.soon");if(o)o.remove()}})()</script>')
                 body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
-<h1><span class="no">{f"论语 {c} · {pname}" if zhL else L.t("chapter_no", book=bname, n=cnum)} · <em class="wjtag">{("视频已出" if zhL else L.t("video")) if _von else L.t("wj_tag")}</em></span>{esc(ctitle(c))}</h1>{LX.nl_tag(L, P, D["lx"], c)}
+<h1><span class="no">{f"论语 {c} · {pname}" if zhL else L.t("chapter_no", book=bname, n=cnum)} · <em class="wjtag">{("视频已出" if zhL else L.t("video")) if _von else L.t("wj_tag")}</em></span>{esc(ctitle(c))}</h1>{LX.nl_tag(L, P, D["lx"], c)}{TM.chapter_line(c, D["lx"]["nl"]) if L.code.startswith("zh") else ""}
 </div></div>
 <main class="wrap chapter">
 <article>
@@ -2532,7 +2533,7 @@ def build_lang(L, D, write):
         pname, slug, pfull, total = PIAN[p]; cs = D["all_by_pian"].get(p) or by_pian[p]
         body = f'''<div class="chhead bk"><div class="wrap">{mcv(P, pfull if L.code.startswith("zh") else "", True)}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a></p>
 <h1><span class="no">{L.t("book_no", n=p, done=len(by_pian.get(p, [])), total=total)}</span>{L.book(p)}</h1></div></div>
-<main class="wrap narrow"><p class="lead">{L.t("book_lead")}</p><div class="mulu">{toc(cs)}</div></main>{BOOK_JS}'''
+<main class="wrap narrow">{TM.pian_line(p, pname) if L.code.startswith("zh") else ""}<p class="lead">{L.t("book_lead")}</p><div class="mulu">{toc(cs)}</div></main>{BOOK_JS}'''
         ttl = f"《论语·{pname}》逐章原文与读法｜一孔录" if L.code == "zh-Hans" else f"{L.t('lunyu')} · {L.book(p)} | 一孔录 Yikonglu"
         write(f"lunyu/{slug}/index.html", page(L, ttl, L.t("book_lead"), f"lunyu/{slug}/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/{slug}/")
     body = f'''<div class="chhead bk"><div class="wrap">{mcv(P, "", True)}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p><h1><span class="no">{L.t("lunyu_sub")}</span>{L.t("lunyu")}</h1></div></div>
@@ -2848,7 +2849,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     if u.get("address") and L.code != "zh-Hans":  # 加密货币只放外文和繁体页，不放面向大陆的简体页
         order.insert(1, f'<h2>{L.t("zc_usdt")}</h2><p class="usdt"><code>{esc(u["address"])}</code><button class="cp2" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent=\'{L.t("copied")}\'">{L.t("copy")}</button></p><p class="note">{esc(L.t("zc_usdt_net", n=u.get("network", "")))}</p>')
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zc_sub")}</span>{L.t("zc_title")}</h1></div></div>
-<main class="wrap narrow prose"><p>{L.t("zc_p")}</p>{"".join(order)}</main>'''
+<main class="wrap narrow prose"><p>{L.t("zc_p")}</p>{"".join(order)}{TM.lu_block() if L.code.startswith("zh") else ""}</main>'''
     write("zhichi.html", page(L, f'{L.t("zc_title")}｜一孔录', L.t("zc_sub"), "zhichi.html", body)); urls.append(f"{DOMAIN}/{L.prefix}zhichi.html")
     urls += SY.build(L, write, page, ANALYTICS.get("live"), DOMAIN)  # 一孔书院筹备页（11-09）
     # 核验方法页（/fangfa.html）
