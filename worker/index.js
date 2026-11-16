@@ -13,6 +13,7 @@
 // GET  /mirror           {域名: {n, first, last, paths:[…最多 20]}}，最多留 200 个域名
 // POST /ai {k, p}         11-16 智器来访：从智器回答里点进来（来路或 utm_source 是智器），k＝哪家，p＝落地页；GET /ai 返回 {days:{日:{k:n}}, pages:{页:n}}，留 120 天
 // POST /hj {f, c}         11-16 他书章页“《论语》互见”点击：f＝从哪章（ddj.N／szj.N），c＝点去的论语章；GET /hj 返回 {日:{"f>c":n}}，留 120 天
+// POST /bot {k}          11-16 硅基儒者：机器来读一次加一（页面里认出是机器在跑脚本时发 k＝哪家；连接器每回答一次发 k＝mcp）；累计在 /hit、/stats 的 bots；GET /bot 返回 {total, days:{日:{k:n}}}（留 120 天）
 // POST /done  {c}         某章“读完了”加一（同一设备只点一次，由页面本地记）；GET /done?c=1.1 返回 {today, total}
 const ORIGINS = ["https://yikonglu.com", "https://www.yikonglu.com", "http://localhost:8767"];
 const WINDOW = 90 * 1000; // 90 秒内有心跳算在线
@@ -35,6 +36,7 @@ export default {
 
 export class Live {
   constructor(state) { this.state = state; this.seen = new Map(); this.total = null; }
+  async getBots() { if (this.bots === undefined) this.bots = (await this.state.storage.get("bt")) || 0; return this.bots; }
   async getTotal() { if (this.total === null) this.total = (await this.state.storage.get("total")) || 0; return this.total; }
   async markDay(id) { // 今天来过的设备：只记随机编号，过了北京时间零点就清
     const d = this.day(); if (!this.dv || this.dv.d !== d) { const o = await this.state.storage.get("dv"); this.dv = o && o.d === d ? { d, ids: new Set(o.ids) } : { d, ids: new Set() }; }
@@ -108,6 +110,17 @@ export class Live {
         return Response.json({ ok: true });
       }
       return Response.json(W);
+    } else if (url.pathname === "/bot") {
+      const d = this.day(), cut = new Date(Date.now() + 8 * 3600e3 - 120 * 864e5).toISOString().slice(0, 10);
+      const O = (await this.state.storage.get("btd")) || {}; for (const x of Object.keys(O)) if (x < cut) delete O[x];
+      if (req.method === "POST") {
+        let b = {}; try { b = JSON.parse(await req.text()); } catch (e) {}
+        const k = String(b.k || ""); if (!/^[a-z0-9]{2,16}$/.test(k)) return Response.json({ ok: false });
+        O[d] = O[d] || {}; O[d][k] = (O[d][k] || 0) + 1; this.bots = (await this.getBots()) + 1;
+        await this.state.storage.put({ bt: this.bots, btd: O });
+        return Response.json({ ok: true });
+      }
+      return Response.json({ total: await this.getBots(), days: O });
     } else if (url.pathname === "/ai" || url.pathname === "/hj") {
       const key = url.pathname.slice(1), d = this.day();
       const keep = o => { const cut = new Date(Date.now() + 8 * 3600e3 - 120 * 864e5).toISOString().slice(0, 10); for (const x of Object.keys(o)) if (x < cut) delete o[x]; return o; };
@@ -147,6 +160,6 @@ export class Live {
       if (req.method === "POST") { t++; d++; await this.state.storage.put({ [kt]: t, [kd]: d }); }
       return Response.json({ today: d, total: t });
     } else if (!(req.method === "GET" && url.pathname === "/stats")) return new Response("not found", { status: 404 });
-    return Response.json({ online: Math.max(1, this.online()), total: await this.getTotal(), today: Math.max(1, await this.todayN()) });
+    return Response.json({ online: Math.max(1, this.online()), total: await this.getTotal(), bots: await this.getBots(), today: Math.max(1, await this.todayN()) });
   }
 }
