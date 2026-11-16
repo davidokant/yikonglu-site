@@ -1422,7 +1422,8 @@ def hero_webp():
 hero_webp()
 HERO_V = __import__("hashlib").md5(b"".join(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", f), "rb").read() for f in ("hero-w.jpg", "hero-m.jpg"))).hexdigest()[:8]  # 横幅换图后换地址，免得手机上旧图配新比例（11-14 主人见柯基只剩头）
 
-LY_ICON = {  # 《论语》书页入口图标（11-14 主人：一行一条，配图标）：线描，跟随文字色
+LY_ICON = {
+    "xs": '<path d="M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5z"/><path d="M12 6v13.5"/>',  # 《论语》书页入口图标（11-14 主人：一行一条，配图标）：线描，跟随文字色
  "nl": '<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M8 13h2M12 13h2M16 13h0.01M8 16.5h2M12 16.5h2"/>',
  "gx": '<circle cx="12" cy="5.5" r="2.3"/><circle cx="5" cy="18" r="2.3"/><circle cx="19" cy="18" r="2.3"/><circle cx="12" cy="13" r="1.6"/><path d="M12 7.8v3.6M10.7 14.1l-4 2.4M13.3 14.1l4 2.4M7.3 18h9.4"/>',
  "ch": '<path d="M4 5.5h16v10H10l-4.5 3.5v-3.5H4z"/><path d="M8 9.5h8M8 12.5h5"/>',
@@ -1442,6 +1443,7 @@ def ly_links(L, D, P):
         rows.append(("kb", f"{P}zhuanti/keben.html", "语文课本里的《论语》", "初中、高中课文选的各章"))
         if D["lx"]["dd"]: rows.append(("dd", f"{P}daidu/", "课本十二章带读", "给老师和家长：怎么带孩子读"))
         rows.append(("bb", f"{P}lunyu/banben/", "版本说明", "五家注本用的哪个本子，原页从哪来"))
+        rows.append(("xs", f"{P}lunyu/xuanshu.html", "想读纸本", "读哪个版本：朱注、杨伯峻、钱穆怎么选"))
         if L.code == "zh-Hant":
             T = __import__("opencc").OpenCC("s2twp").convert
             rows = [(k, h, T(a), T(b)) for k, h, a, b in rows]
@@ -2954,6 +2956,27 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a></p><h1><span class="no">{L.t("bb_sub")}</span>{L.t("bb_title")}</h1></div></div>
 <main class="wrap narrow prose"><p>{L.t("bb_p")}</p>{cards}</main>'''
     write("lunyu/banben/index.html", page(L, f'《论语》{L.t("bb_title")}｜一孔录' if L.code.startswith("zh") else f'{L.t("bb_title")}｜一孔录', L.t("bb_sub"), "lunyu/banben/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/banben/")
+    if L.code.startswith("zh"):  # 11-16 主人点卡“先上《论语》选书页”：只做《论语》、不挂购买链接，当收录页（内容稿 评审/2026-11-16-书院题名开卖/论语选书页-内容稿-v1.md）
+        body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}shumu/">书目</a> › <a href="{P}lunyu/">《论语》</a></p><h1><span class="no">想读纸本</span>读《论语》，选哪个本子</h1></div></div>
+<main class="wrap narrow prose"><p>一孔录讲《论语》，用的是朱熹《论语集注》，片子和网站上的原页出自《四部备要》本《四书集注》（见<a href="{P}lunyu/banben/">版本说明</a>）。《四部备要》本现在没有单行的零售本，下面第一本是同一注本的通行整理本。只看书好不好、和这里讲的对不对得上。</p>
+<h2>想对着一孔录读：朱熹《四书章句集注》，中华书局</h2><ul>
+<li>好在哪：一孔录引的朱注就在这本里。一本管《论语》《孟子》《大学》《中庸》四部，以后读《孟子》还能接着用。</li>
+<li>缺点：只有原文和朱注，没有白话翻译；繁体字，第一次读古书会吃力。建议先配着网站每章的白话读。</li>
+<li>常见两种：“新编诸子集成”本（1983 年初版，以后多次重印）；“中华国学文库”精装本（2011 年第 1 版，ISBN 9787101074604）。内容都是朱熹的集注，挑开本和装帧就行。</li></ul>
+<h2>想先读懂白话：杨伯峻《论语译注》，中华书局</h2><ul>
+<li>好在哪：现代最通行的《论语》译注，每章有注释、有白话译文。另有简体字本（2006 年起），去掉了繁体本书后的“论语词典”等研究部分，更轻。</li>
+<li>缺点：杨伯峻有些章的解法和朱熹不同。读到不一样的地方，对照一孔录的朱注和一孔按，正好看两家怎么分歧。</li></ul>
+<h2>想读得有味道：钱穆《论语新解》，生活·读书·新知三联书店</h2><ul>
+<li>好在哪：每章有白话试译，有钱穆自己的解说，文字平和耐读。三联“钱穆作品系列”本 2002 年出版。</li>
+<li>缺点：和杨伯峻一样，有些地方不从朱注，要自己分辨。</li></ul>
+<h2>读完还想深究</h2><p>程树德《论语集释》（中华书局“新编诸子集成”，程俊英、蒋见元点校），把历代各家注解按章汇在一起。书厚、价高，适合已经读过一遍、想看各家怎么争的人。</p>
+<h2>怎么辨别好本子</h2><ul>
+<li>看出版社：中华书局、上海古籍、三联这类专业出版社；不买只署“编委会”、不说底本的“国学经典大全”。</li>
+<li>看整理者：署了具体的点校者或译注者，前言写明用的什么底本。</li>
+<li>看是不是全本：标题写“精选”“青少年版”“图解”的，多半不全。</li>
+<li>到手翻十页对原文，错字多的就退。版权页要有出版社全称、版次、印次、书号、CIP 数据核字号、定价；缺一项就要多留心。</li></ul>
+<p class="note">一孔录全站内容免费，按 CC BY 4.0 共享。纸本只是为了想拿在手上读的人。</p></main>'''
+        write("lunyu/xuanshu.html", page(L, "读《论语》选哪个本子：朱熹集注、杨伯峻译注、钱穆新解怎么选｜一孔录", "想读纸本《论语》：对着一孔录读选朱熹《四书章句集注》，先读懂白话选杨伯峻《论语译注》，读得有味道选钱穆《论语新解》；附怎么辨别好本子。", "lunyu/xuanshu.html", body, codes=["zh-Hans", "zh-Hant"])); urls.append(f"{DOMAIN}/{L.prefix}lunyu/xuanshu.html")
     write("banben/index.html", redirect_page(L, f"{L.prefix}lunyu/banben/", "", L.t("bb_title")))  # 11-14 主人：版本说明只讲《论语》，并进论语书里；旧网址跳转
     # 专题：一专题一页，页内按书分段（现在只有论语有章；其余书上网后自动长出一段）
     zlist = ""
