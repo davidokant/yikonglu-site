@@ -1023,3 +1023,7 @@ th .hm{margin-left:0}
 .tmlu{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px 14px}.tmlu li b{margin-right:6px}.tmlu li span{color:var(--mute);font-size:13px}
 
 .shuyuan .tmt{margin:18px auto 8px;max-width:360px;text-align:center}.shuyuan .tmt img{width:100%;height:auto;border-radius:6px;box-shadow:0 2px 14px rgba(0,0,0,.18)}.shuyuan .tmt figcaption{font-size:.85em;opacity:.75;margin-top:8px}
+/* 11-16 全站淡原页底纹（丙档）：朱熹《论语集注》四部备要本卷一首页，去框线，墨绿 7.5% 淡进宣纸白；深色模式不加 */
+body{background:var(--bg) url(/assets/diwen-1116.webp) repeat;background-size:360px auto}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{background-image:none}}
+:root[data-theme="dark"] body{background-image:none}
