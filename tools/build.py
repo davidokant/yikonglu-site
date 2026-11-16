@@ -3188,6 +3188,8 @@ def main(zdir, outdir, kanwu=None):
     if os.path.exists(stp0):
         for k, e in json.load(open(stp0, encoding="utf-8")).items():
             name = k.split("-")[-1] if isinstance(e, dict) else ""
+            if name and name not in eps and re.fullmatch(r"论语-\d+-\S+", k) and e.get("youtube") and e.get("starts"):  # 11-16：发布线程每天写进新公开的集，章号取 starts 的键
+                eps[name] = {"chapters": sorted(e["starts"], key=lambda c: tuple(map(int, c.split("."))))}
             if name in eps:
                 for a, b in (("youtube", "youtube"), ("bvid", "bilibili"), ("public_at", "public_at")):
                     if e.get(a): eps[name][b] = e[a]
