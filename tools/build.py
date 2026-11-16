@@ -1284,10 +1284,13 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 def yxl_counts(D):
     """一孔影响力的跨书计数：开讲几部书、已讲原文多少字、视频已公开几集（章数各书单位不同，不作总数）。"""
     now = datetime.datetime.now(datetime.timezone.utc)
-    books = len(D.get("live_books") or ["论语"])
-    zi = sum(len(re.sub(r"[^\u4e00-\u9fff]", "", D["yw"].get(c, ""))) for c in D["pub"])
+    books = 1 + (1 if D.get("ddj") else 0) + (1 if SZJ else 0)  # 11-16 主人：已上网的书都算（论语、道德经、三字经），原来只数论语
+    hz = lambda t: len(re.sub(r"[^\u4e00-\u9fff]", "", t or ""))
+    dv = [c for c in range(1, 82) if ddj_has_vid(c)] if D.get("ddj") else []
+    zi = sum(hz(D["yw"].get(c, "")) for c in D["pub"]) + sum(hz((D["ddj"]["qw"].get(str(c)) or {}).get("text", "")) for c in dv)
     eps = {D["ch2ep"][c][0] for c in D["pub"] if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now)}
-    return books, zi, len(eps)
+    eps = len(eps) + len({DDJ_EPS[str(c)].get("youtube") for c in dv})
+    return books, zi, eps
 
 def yxl_books(books, P):
     """找到分按书分（主人 11-14）：每本书一行（书分＝该书各平台分的平均），点开看各平台分和前 20 条里找得到的章。还没开测的书只列书名。"""
@@ -1314,14 +1317,14 @@ def yxl_block(L, D, P, full=False):
     y = D.get("yxl") or {}
     n_all = sum(PIAN[p][3] for p in PIAN)
     n_cites = sum(1 for g in D["gao"].values() for x in g["cites"] if x["pages"])
-    fam = (1 if D["pages_avail"] else 0) + (1 if any("huang" in v for v in D["zhuben"].values()) else 0)
+    fam = (1 if D["pages_avail"] else 0) + (1 if any("huang" in v for v in D["zhuben"].values()) else 0) + (1 if D.get("ddj") and D["ddj"].get("img") else 0) + (1 if SZJ_JL["pages"] else 0)  # 朱熹集注、皇侃义疏、王弼注道德经、王相三字经训诂
     kw = D["kw"]; readers = [r for r in kw if r[7] != "一孔录自查"]
     now = datetime.datetime.now(datetime.timezone.utc)
     vid = {c for c in D["pub"] if c in D["ch2ep"] and D["ch2ep"][c][1].get("youtube") and (not D["ch2ep"][c][1].get("public_at") or datetime.datetime.fromisoformat(D["ch2ep"][c][1]["public_at"]) <= now)}
     nb, zi, ne = yxl_counts(D)
     grid = (f'<div class="yxgrid"><a class="c" href="{P}shumu/"><b>{zi:,}<small>字</small></b><span>原文已讲 · 开讲 {nb} 部书 · 视频已公开 {ne} 集</span></a>'
             f'<a class="c" href="{P}lunyu/banben/"><b>{n_cites}<small>条</small></b><span>引文可核到底本原页</span></a>'
-            f'<a class="c" href="{P}lunyu/banben/"><b>{fam}<small>家</small></b><span>注本上了原页图</span></a>'
+            f'<a class="c" href="{P}lunyu/banben/"><b>{fam}<small>部</small></b><span>底本、注本上了原页图</span></a>'
             f'<a class="c" href="{P}kanwu.html"><b>{len(readers)}<small>条</small></b><span>读者来信 · 勘误共 {len(kw)} 条（均公开）</span></a></div>')
     rows = ""
     for pf in y.get("platforms", []):
