@@ -2196,6 +2196,10 @@ def build_lang(L, D, write):
         vid_html = (f"""<section class="video"{f' hidden data-pub="{pub_at}"' if future else ""}><h2><i>看</i>{L.t("video")}</h2>
 <div class="vid">{frame}</div>
 <p class="vlinks">{L.t("video_in", ep=epname)}<a href="https://www.youtube.com/watch?v={yt}{f'&amp;t={st}s' if st else ''}">YouTube</a>{f'<a href="https://www.bilibili.com/video/{ep["bilibili"]}{f"?t={st}" if st else ""}">{"哔哩哔哩" if L.code.startswith("zh") else "Bilibili"}</a>' if ep.get("bilibili") else ""}{swap}</p></section>""" + (f'<script>(function(){{var s=document.querySelector("section.video[data-pub]");if(!s)return;function f(){{if(Date.now()>=Date.parse(s.dataset.pub)){{s.hidden=false;return true}}}}if(!f())var t=setInterval(function(){{if(f())clearInterval(t)}},60000)}})();</script>' if future else "")) if yt else ""  # 视频还没上传（只排了时间）就先不放视频块
+        if not yt:  # 有讲读、视频还没出：照未讲页写“正在制作”
+            vid_html = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
+                        f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">{"哔哩哔哩" if L.code.startswith("zh") else "Bilibili"}</a></p></section>')
+        vid_html = ("<!--yk:jiang-->" if not yt else "<!--yk:jiang--><!--yk:vid-->") + vid_html
         def pg(nums):
             return " ".join(f'<a class="pg" href="/yuanye/p{int(x):03d}.jpg" target="_blank">{L.t("pg", n=x)}</a>' if x in pages_avail else f'<span class="pg">{L.t("pg", n=x)}</span>' for x in nums)
         extra = ""
@@ -2271,15 +2275,16 @@ def build_lang(L, D, write):
             _gl0 = {k.split("|")[0] for _, _, k, gg, _ in ZD["per"].get(c, []) if gg}
             _rz = [x for x in g["reads"] if x["zi"] in _gl0]; _rn = len(g["reads"]) - len(_rz)
             _rp = (_pill("ok", f"对过朱注反切 {len(_rz)}") if _rz else "") + (_pill("mid", f"已核 {_rn}") if _rn else "")
-            _yk = "一孔录选定" if c in D["zy"] else "审片版讲稿"
+            _nv = not ch2ep[c][1].get("youtube")  # 视频还没出的章：讲稿未经审片定版
+            _yk = "一孔录选定" if c in D["zy"] else ("讲稿 · 视频制作中" if _nv else "审片版讲稿")
             gist_html = gist_html.replace(f'<h2>{L.t("ch_gist")}</h2>', f'<h2>{L.t("ch_gist")}{_pill("mid", _yk)}</h2>', 1)
             bh_html = bh_html.replace(f'<h2><i>白</i>{bh_h2}</h2>', f'<h2><i>白</i>{bh_h2}{_pill("mid", "已核")}</h2>', 1)
             extra = extra.replace(f'<h2><i>核</i>{L.t("cites")}</h2>', f'<h2><i>核</i>{L.t("cites")}{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}</h2>', 1)
             extra = extra.replace(f'<h2><i>音</i>{L.t("reads")}</h2>', f'<h2><i>音</i>{L.t("reads")}{_rp}</h2>', 1)
             _qp = sorted(set(g.get("qw_pages") or []), key=int)
             _li = [f'<li><b>原文</b>{_pill("ok", "对过原页")}朱注本第 {"、".join(_qp) or "?"} 页' + ("，每个字框到原页的列上" if c in ZJD["on"] else "") + "</li>",
-                   f'<li><b>白话</b>{_pill("mid", "已核")}取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成</li>',
-                   f'<li><b>一孔之见</b>{_pill("mid", _yk)}一孔录自己的读法，不是古注；' + ("这章各家读法不同，一孔录在几家里选定一种" if c in D["zy"] else "取自视频讲稿（讲稿经一孔审片定版）") + "</li>"]
+                   (f'<li><b>白话</b>{_pill("mid", "讲稿")}取自讲稿，视频还在制作、讲稿还没审片定版，网页整理由智器完成</li>' if _nv else f'<li><b>白话</b>{_pill("mid", "已核")}取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成</li>'),
+                   f'<li><b>一孔之见</b>{_pill("mid", _yk)}一孔录自己的读法，不是古注；' + ("这章各家读法不同，一孔录在几家里选定一种" if c in D["zy"] else ("取自讲稿，视频还在制作" if _nv else "取自视频讲稿（讲稿经一孔审片定版）")) + "</li>"]
             if g["cites"]: _li.append(f'<li><b>引文</b>{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}共 {len(g["cites"])} 条，点页码看原页' + (f"；其中 {len(_pa)} 条是转述，不是原话" if _pa else "") + "</li>")
             if g["reads"]: _li.append(f'<li><b>读音</b>{_rp}共 {len(g["reads"])} 处；有朱注反切的照反切</li>')
             _dh = len(HD_DAIHE.get(c, ()))
@@ -2894,6 +2899,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
         _h3 = D["hd3"]; _yks = [c for c in pub if c in _h3["yk"]]; _ykl = max((v[-1][0] for v in _h3["yk"].values()), default="")
         _zqs = [c for c in pub if c in _h3["zq"]]; _zqn = [c for c in _zqs if not _h3["zq"][c][1]]; _zql = max((_h3["zq"][c][0] for c in _zqn), default="")
         _rds = sum(len(v) for v in _h3["rd"].values()); _rdl = max((r[0] for v in _h3["rd"].values() for r in v), default="")
+        _nvn = sum(1 for c in pub if not D["ch2ep"][c][1].get("youtube"))  # 有讲读、视频还没出的章
         _big = (f'<div class="hd3big"><div class="yk"><b>{len(_yks)}<small>章</small></b><span>一孔审片版</span><p>讲到这些章的视频一孔都看过、定了版，以定版记录为准；网页上的文字不算在内' + (f'，最近一次 {_ykl}' if _ykl else '') + '</p></div>'
                 f'<div><b>{len(_zqs)}<small>章</small></b><span>智器核</span><p>智器对着原页图核过页码的已讲章；{len(_zqs) - len(_zqn)} 章核于 11-16 以前' + (f'，之后新核 {len(_zqn)} 章，最近 {_zql}' if _zqn else '') + '</p></div>'
                 f'<div><b>{_rds}<small>条</small></b><span>读者报错后改过</span><p>' + (f'最近一次 {_rdl}，' if _rdl else '') + f'每条链到<a href="{P}kanwu.html">勘误页</a>，署报错人网名（经本人同意）</p></div></div>'
@@ -2903,9 +2909,9 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
                + _tr("原文", f"{_all} 章", "—", "—", f"全书每章都标了朱注本页码；其中 {len(ZJD['on'])} 章每个字框到了原页的列上")
                + _tr("引文（朱注等）", f"{_cok} 条", f"{_coth} 条", f"{_cdh} 条", f"已讲 {len(pub)} 章视频里引到的话；{_cpa} 条标“转述”，是概括意思")
                + _tr("读音", f"{_rz} 处", f"{len(_rd) - _rz} 处", "—", "有朱注反切的照反切，和今天通行读法不同的另注“今多读”")
-               + _tr("白话", "—", f"{len(pub) + _bok} 章", f"{_bdraft} 章", f"已讲 {len(pub)} 章取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成；未讲章是按底本直译的初稿，页上标明")
+               + _tr("白话", "—", f"{len(pub) + _bok} 章", f"{_bdraft} 章", (f"已讲 {len(pub)} 章取自讲稿：已出视频的 {len(pub) - _nvn} 章讲稿经一孔审片定版，视频制作中的 {_nvn} 章先用讲稿、页上标明；网页整理由智器完成；未讲章是按底本直译的初稿，页上标明" if _nvn else f"已讲 {len(pub)} 章取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成；未讲章是按底本直译的初稿，页上标明"))
                + _tr("一孔之见", "—", f"{len(pub)} 章", "—", f"一孔录自己的读法，不是古注；其中 {_zy} 章各家读法不同，一孔录在几家里选定一种")
-               + f'</tbody></table><p>做法：引文、读音的页码由智器对着原页图逐条找出，页上可点开核对；白话和一孔之见取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成。错了公开改，记在<a href="{P}kanwu.html">勘误页</a>，现有 {_kw} 条。</p>')
+               + f'</tbody></table><p>做法：引文、读音的页码由智器对着原页图逐条找出，页上可点开核对；白话和一孔之见取自讲稿（已出视频的讲稿经一孔审片定版，视频还在制作的章页上另标“讲稿”），网页整理由智器完成。错了公开改，记在<a href="{P}kanwu.html">勘误页</a>，现有 {_kw} 条。</p>')
     elif DC and DC.get("rows"):
         s5 += f'<p>{F["s5c"].format(n=DC["episodes"], s=DC["segments"], c=DC["changed"], r=DC["ratio"], d=DC["updated"])}</p>'
         def eplink(ep):
@@ -3462,6 +3468,17 @@ def main(zdir, outdir, kanwu=None):
                 if r["zi"] == zi and (not pos or pos in r["pos"]): r["du"], r["jin"] = du, jin
     ch2ep = {c: (name, e) for name, e in eps.items() for c in e["chapters"]}
     key = lambda c: tuple(map(int, c.split(".")))
+    # 11-16 主人定：未出视频的章先补讲读（补齐论语网页讲读线程交札记与稿）。有札记、没进任何一集的章也出完整章页，视频位写“正在制作”；
+    # 原文先取 yuanwen.json，没有就取底本分章原文（_原文/论语原文-集注分章）。
+    _qita = set(parse_zhaji(os.path.join(zdir, "其他篇.md"))) if os.path.exists(os.path.join(zdir, "其他篇.md")) else set()  # 第 0 集先讲的章，等讲到该篇再出完整页
+    _qf = sorted(glob.glob(os.path.join(YW_DIR, "论语原文-集注分章-v*.json")))
+    _qw0 = json.load(open(_qf[-1], encoding="utf-8")) if _qf else {}
+    for c in notes:
+        if c in ch2ep or c in _qita or not re.fullmatch(r"\d+\.\d+", c): continue
+        if c not in yw and c in _qw0: yw[c] = _qw0[c]["text"]
+        if c in yw:
+            m_ = re.match(r"(论语-\d+-\S+?)（", notes[c]["fields"].get("本集", "")) if notes[c]["fields"].get("本集") else None
+            ch2ep[c] = ((m_.group(1).split("-")[-1] if m_ else ""), {"chapters": [c], "jiang_only": True})
     pub = [c for c in sorted(ch2ep, key=key) if c in notes and c in yw]
     for c in sorted(ch2ep, key=key):
         if c not in pub: print("跳过（缺札记或原文）", c)

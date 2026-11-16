@@ -2544,7 +2544,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270704
 DTEND;VALUE=DATE:20270705
 RRULE:FREQ=YEARLY
-SUMMARY:论语 11.7 颜渊死颜路请子之车以为之椁
+SUMMARY:论语 11.7 颜路请子之车
 DESCRIPTION:论语 11.7：颜渊死，颜路请子之车以为之椁。子
  曰：才不才，亦各言其子也。鲤也死，有棺而无椁。吾
  不徒行以为之椁。以吾从大夫之后，不可徒行也。\nhttps:
@@ -2558,7 +2558,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270705
 DTEND;VALUE=DATE:20270706
 RRULE:FREQ=YEARLY
-SUMMARY:论语 11.8、11.9 颜渊死子曰噫
+SUMMARY:论语 11.8、11.9 天丧予
 DESCRIPTION:论语 11.8：颜渊死。子曰：噫！天丧予！天丧予
  ！\nhttps://yikonglu.com/lunyu/xian-jin/8.html\n\n论语 11.9：颜渊死
  ，子哭之恸。从者曰：子恸矣。曰：有恸乎？非夫人之
@@ -2572,7 +2572,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270706
 DTEND;VALUE=DATE:20270707
 RRULE:FREQ=YEARLY
-SUMMARY:论语 11.10 颜渊死门人欲厚葬之
+SUMMARY:论语 11.10 门人厚葬
 DESCRIPTION:论语 11.10：颜渊死，门人欲厚葬之，子曰：不可
  。门人厚葬之。子曰：回也视予犹父也，予不得视犹子
  也。非我也，夫二三子也。\nhttps://yikonglu.com/lunyu/xian-jin/
@@ -2625,7 +2625,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270710
 DTEND;VALUE=DATE:20270711
 RRULE:FREQ=YEARLY
-SUMMARY:论语 11.14 由之瑟奚为于丘之门
+SUMMARY:论语 11.14 由之瑟
 DESCRIPTION:论语 11.14：子曰：由之瑟奚为于丘之门？门人不
  敬子路。子曰：由也升堂矣，未入于室也。\nhttps://yikongl
  u.com/lunyu/xian-jin/14.html
@@ -2638,7 +2638,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270711
 DTEND;VALUE=DATE:20270712
 RRULE:FREQ=YEARLY
-SUMMARY:论语 11.15 子贡问
+SUMMARY:论语 11.15 师与商孰贤
 DESCRIPTION:论语 11.15：子贡问：师与商也孰贤？子曰：师也
  过，商也不及。曰：然则师愈与？子曰：过犹不及。\nhtt
  ps://yikonglu.com/lunyu/xian-jin/15.html
@@ -2692,7 +2692,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270715
 DTEND;VALUE=DATE:20270716
 RRULE:FREQ=YEARLY
-SUMMARY:论语 11.21 子路问
+SUMMARY:论语 11.21 闻斯行诸
 DESCRIPTION:论语 11.21：子路问：闻斯行诸？子曰：有父兄在
  ，如之何其闻斯行之？冉有问：闻斯行诸？子曰：闻斯
  行之。公西华曰：由也问闻斯行诸，子曰有父兄在；求
@@ -2736,7 +2736,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270718
 DTEND;VALUE=DATE:20270719
 RRULE:FREQ=YEARLY
-SUMMARY:论语 11.24 子路使子羔为费宰
+SUMMARY:论语 11.24 子羔为费宰
 DESCRIPTION:论语 11.24：子路使子羔为费宰。子曰：贼夫人之
  子。子路曰：有民人焉，有社稷焉。何必读书，然后为
  学？子曰：是故恶夫佞者。\nhttps://yikonglu.com/lunyu/xian-jin/
@@ -2750,7 +2750,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270719
 DTEND;VALUE=DATE:20270720
 RRULE:FREQ=YEARLY
-SUMMARY:论语 11.25 子路、曾皙、冉有、公西华侍坐
+SUMMARY:论语 11.25 侍坐
 DESCRIPTION:论语 11.25：子路、曾皙、冉有、公西华侍坐。子
  曰：以吾一日长乎尔，毋吾以也。居则曰：不吾知也！
  如或知尔，则何以哉？子路率尔而对曰：千乘之国，摄
@@ -2778,7 +2778,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270720
 DTEND;VALUE=DATE:20270721
 RRULE:FREQ=YEARLY
-SUMMARY:论语 12.1 颜渊问仁
+SUMMARY:论语 12.1 克己复礼
 DESCRIPTION:论语 12.1：颜渊问仁。子曰：克己复礼为仁。一
  日克己复礼，天下归仁焉。为仁由己，而由人乎哉？颜
  渊曰：请问其目。子曰：非礼勿视，非礼勿听，非礼勿
@@ -2833,7 +2833,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270724
 DTEND;VALUE=DATE:20270725
 RRULE:FREQ=YEARLY
-SUMMARY:论语 12.5 人皆有兄弟
+SUMMARY:论语 12.5 我独亡
 DESCRIPTION:论语 12.5：司马牛忧曰：人皆有兄弟，我独亡。
  子夏曰：商闻之矣：死生有命，富贵在天。君子敬而无
  失，与人恭而有礼。四海之内，皆兄弟也。君子何患乎

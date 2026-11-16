@@ -3,7 +3,7 @@
 > Yikonglu (一孔录) is a reading of the Chinese classics centred on the Analects and checked line by line against the pages of the base edition; every other classic is cross-referenced to the Analects chapter by chapter. All 498 chapters of the Analects are on the site.
 
 ## About
-- Coverage: all 498 chapters of the Analects are on the site in the original; 257 chapters covered in depth; 498 chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.
+- Coverage: all 498 chapters of the Analects are on the site in the original; 284 chapters covered in depth; 498 chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.
 - Chapter URLs: short form https://yikonglu.com/lunyu/BOOK.CHAPTER (e.g. https://yikonglu.com/lunyu/2.1), numbered by Zhu Xi's chapter division.
 - Please credit “一孔录 Yikonglu yikonglu.com” with the chapter URL. License: CC BY 4.0 (original text and old commentaries are public domain).
 - MCP endpoint for AI assistants: https://yikonglu-mcp.yikonglu.workers.dev/mcp
@@ -266,6 +266,33 @@
 - [11.3 回也非助我者](https://yikonglu.com/fr/lunyu/xian-jin/3.html): “帮我”指学生发问让老师也长进，像子夏问诗；颜回一听就通、无可再问，所以孔子说他“不帮我”，话像遗憾，其实是夸，也带着自谦。今例：从不提问、作业每次全对的学生，老师嘴上说“你也不给我挑点毛病”，脸上是笑的。
 - [11.4 孝哉闵子骞](https://yikonglu.com/fr/lunyu/xian-jin/4.html): 自家人夸自家人，外人通常只听听；闵子骞家里人说他好，外人也挑不出一句不同的话，是因为孝友是真的，攒得厚了自然显出来。今例：他家里人说他好，楼上楼下没有一个人摇头。
 - [11.5 南容三复白圭](https://yikonglu.com/fr/lunyu/xian-jin/5.html): 南容一天几遍念“话说错了收不回”，可见他管得住嘴；管得住嘴的人做事也谨慎，国家好坏都能立身，孔子才放心把侄女嫁他。今例：电脑屏幕边贴着“说话前先想三秒”的便签，一贴好几年，纸都卷边了。
+- [11.6 季康子问](https://yikonglu.com/fr/lunyu/xian-jin/6.html): 同一问，对国君答尽，对季康子只说一句，要等他自己会追问才往下讲，这是教人的办法。今例：家长随口问老师班上谁最肯学，老师只说了一个名字；家长追问，才把这个学生的事慢慢讲出来。
+- [11.7 颜路请子之车](https://yikonglu.com/fr/lunyu/xian-jin/7.html): 葬可以没有椁，国君赐的车却不能拿去卖，亲儿子鲤也只有棺无椁；花钱看该不该，不只看有没有。今例：同事家办丧事，有人说把单位的车卖了添上，主任说：车是公家的不能卖，我那份一分不少。
+- [11.8 天丧予](https://yikonglu.com/fr/lunyu/xian-jin/8.html): 死的是学生，孔子痛的是道从此没人传下去，像天断了自己的路。今例：老木匠一辈子只带出一个真学成的徒弟，徒弟走了，老人在作坊里站了很久，只说：这手艺，断了。
+- [11.9 哭之恸](https://yikonglu.com/fr/lunyu/xian-jin/9.html): 哀伤过了分寸而自己不觉；为颜渊这样的人哭到这样，痛惜用在该用的人身上，正是性情之正。今例：一向不动声色的老教授在学生追思会上哭出了声，有人劝他节哀，他说：这个学生，值得。
+- [11.10 门人厚葬](https://yikonglu.com/fr/lunyu/xian-jin/10.html): 丧事用度要和家底相称，颜家贫而厚葬，不合理；孔子叹没能像葬鲤那样葬得恰当，话是责门人的。今例：清贫的年轻同事走了，大家办了一场很体面的告别式，散场后，账单寄到了他母亲手里。
+- [11.11 季路问事鬼神](https://yikonglu.com/fr/lunyu/xian-jin/11.html): 两问都切身，孔子不是回避：人鬼生死本是一个道理，只是学有先后，不能跳级。今例：年轻人问老中医怎样才能长寿，老中医说：先把今天的三顿饭吃好，觉睡够。
+- [11.12 闵子侍侧](https://yikonglu.com/fr/lunyu/xian-jin/12.html): 孔子乐的是得了好材料可教；对最刚强的子路，高兴时也借机提醒，后来子路果然死在卫国孔悝之难。今例：老师傅看着几个徒弟各有样子，心里高兴，转头对最拼命的那个说：慢一点，别把自己搭进去。
+- [11.13 鲁人为长府](https://yikonglu.com/fr/lunyu/xian-jin/13.html): 改建要劳民伤财，能不大动就照旧；闵子骞平时不开口，一开口就合理。今例：开会争了一个钟头要不要把整栋楼翻新，平时不吭声的老员工说：屋顶漏的那一块修好，就够了。
+- [11.14 由之瑟](https://yikonglu.com/fr/lunyu/xian-jin/14.html): 瑟声刚猛是子路的气质，不够中和；门人因此轻看他，孔子赶紧说明他已登堂，只差入室。今例：教练当众说老队员“你这脚太硬”，新人就不拿他当回事；教练补一句：他是主力，只差最后一点细。
+- [11.15 师与商孰贤](https://yikonglu.com/fr/lunyu/xian-jin/15.html): 聪明人做过头，看着比做不到强，离了中却是一样；孔子教人，过的往回拉，不及的往前引。今例：两个新厨子，一个盐放多了，一个盐放少了，客人尝了，都说不好吃。
+- [11.16 季氏富于周公](https://yikonglu.com/fr/lunyu/xian-jin/16.html): 才干用来替东家刮百姓，孔子不认这个学生；自己断了，还让同学去纠正他，严里有爱。今例：会计帮老板做假账逃税，老同学当面说：这样我不认你；你肯改，我陪你去补。
+- [11.17 柴也愚](https://yikonglu.com/fr/lunyu/xian-jin/17.html): 四个字点的都是天性偏处，说出来是要他们自己用力；钝的曾参反倒传了道，学问贵在诚实。今例：毕业前，老班主任给每个学生写一句评语，写的不是夸，是每人最该改的那一样。
+- [11.18 回也其庶乎](https://yikonglu.com/fr/lunyu/xian-jin/18.html): 孔子没骂做买卖，也认子贡眼光准；只是颜回穷了不动心，离道更近。会赚钱和安得住，是两样本事。今例：两个老同学，一个守着清贫的研究，一个做生意一看一个准；老师只问前一个：还读得进去吗？
+- [11.19 子张问善人之道](https://yikonglu.com/fr/lunyu/xian-jin/19.html): 天资好的人不照成法也不做坏事，可不学，就进不了更深处。好心是本钱，手艺还得学。今例：手巧的人自己琢磨修好了邻居的旧钟，要他修更精密的表，就停在那儿了：没跟师傅学过。
+- [11.20 论笃是与](https://yikonglu.com/fr/lunyu/xian-jin/20.html): 话说得实在、脸上庄重，都还不能定一个人，要看他做出来的。今例：面试时说得最诚恳的那位，未必干活最实在；有经验的主管说：先试用三个月。
+- [11.21 闻斯行诸](https://yikonglu.com/fr/lunyu/xian-jin/21.html): 同一问看人答：冉求往后缩，推一把；子路一人顶两个，拉一下。都是收回到正中。今例：同一句“这个项目我能先干起来吗”，老师对胆小的学生说：干吧；对冒失的学生说：先跟家里商量。
+- [11.22 子畏于匡](https://yikonglu.com/fr/lunyu/xian-jin/22.html): 颜回不是怕死：先生若遇难，他必舍命；先生还在，就不该白白拿命去冲刀锋。命该用在该用处。今例：地震后老师清点学生，最后一个满身是土跑回来，说：您还在这儿等，我怎么能不回来。
+- [11.23 季子然问](https://yikonglu.com/fr/lunyu/xian-jin/23.html): 大臣行不通就走，两人留在季氏家里不能正它，只算凑数；可杀君杀父他们不会跟，这句也是敲打季氏。今例：老板问老师两个学生算不算栋梁，老师说：算称职的员工；要他们做违法的事，他们不会干。
+- [11.24 子羔为费宰](https://yikonglu.com/fr/lunyu/xian-jin/24.html): 没学成就上岗，吃亏的是百姓，也是他自己；子路理亏了还拿嘴顶，孔子恶的是这张巧嘴。今例：刚毕业的实习生被直接派去管分店，老店长摇头：学会了再上岗，不然吃亏的是顾客，也是他自己。
+- [11.25 侍坐](https://yikonglu.com/fr/lunyu/xian-jin/25.html): 子路被笑是话说得不让，不是志向错；曾点说的是安于眼前、乐在日常。浴沂一句有两说：暮春河边洗浴乘凉唱歌回家，或是一场求雨的雩祭，一孔录两说并存。
+- [12.1 克己复礼](https://yikonglu.com/fr/lunyu/yan-yuan/1.html): 克己是管住自己的一举一动，合乎礼；下文“为仁由己”的“己”就是自己。朱熹讲成战胜私欲，一孔录取马融“约身”一说。今例：戒手机不靠“少看”，靠四条：饭桌、床上、走路、别人说话时不拿。
+- [12.2 仲弓问仁](https://yikonglu.com/fr/lunyu/yan-yuan/2.html): 对自己用敬，对别人用恕，私心就没处放；里外没人怨，是拿来自己对账的。今例：老主管教新主管带人：派活当成请人帮忙；你讨厌半夜被叫起来改东西，就别半夜叫人。
+- [12.3 司马牛问仁](https://yikonglu.com/fr/lunyu/yan-yuan/3.html): 话少不是硬闭嘴，是知道做起来难，话就不敢轻出口；对话多性急的人，先治最要紧的病。今例：师傅对嘴快的徒弟不讲火候，只说一句：先少说，多尝。
+- [12.4 司马牛问君子](https://yikonglu.com/fr/lunyu/yan-yuan/4.html): 不忧不惧不是硬压下去，是平日做事不亏心，往里一查没毛病。今例：审计上门那天，最镇定的是那个从没动过一分公款的会计；不是胆大，是账本翻到哪页都不心虚。
+- [12.5 我独亡](https://yikonglu.com/fr/lunyu/yan-yuan/5.html): 命不由己，守住自己那份：做事敬、待人恭，别人就肯拿你当兄弟。子夏这话是宽人心，别按字面坐实。今例：独生子在外地上大学，中秋回不了家，室友把他拉回自己家吃了顿饭。
+- [12.6 子张问明](https://yikonglu.com/fr/lunyu/yan-yuan/6.html): 慢慢泡进来的坏话不觉其入，急吼吼的喊冤来不及细查，这两样都看得穿才叫明。今例：有人半年来隔几天就在你耳边说一句“小张好像又迟到了”，提拔那天你发现自己早信了。
+- [12.7 子贡问政](https://yikonglu.com/fr/lunyu/yan-yuan/7.html): 兵和粮都能补，信一丢就站不住；做生意、管一方都一样。今例：开了二十年的小店，货断了能补，钱紧了能借，客人一旦觉得你骗过他一次，门就关了。
 
 ## Cross-references: from the Analects outward
 Other classics, each chapter linked back to the Analects chapters it echoes or quotes.
