@@ -11,6 +11,8 @@
 // GET  /wk               {周一日期: {a:{n:台数}, l:{n:台数}}}，留 12 周；北极星＝本周 a[4]（读满四天的台数）
 // POST /mirror {h, p, y}  11-16 防抄：页面在 yikonglu.com 以外的域名打开时（整站镜像）由页面发一次；只记域名、路径、页面出处编号，不记访客
 // GET  /mirror           {域名: {n, first, last, paths:[…最多 20]}}，最多留 200 个域名
+// POST /ai {k, p}         11-16 智器来访：从智器回答里点进来（来路或 utm_source 是智器），k＝哪家，p＝落地页；GET /ai 返回 {days:{日:{k:n}}, pages:{页:n}}，留 120 天
+// POST /hj {f, c}         11-16 他书章页“《论语》互见”点击：f＝从哪章（ddj.N／szj.N），c＝点去的论语章；GET /hj 返回 {日:{"f>c":n}}，留 120 天
 // POST /done  {c}         某章“读完了”加一（同一设备只点一次，由页面本地记）；GET /done?c=1.1 返回 {today, total}
 const ORIGINS = ["https://yikonglu.com", "https://www.yikonglu.com", "http://localhost:8767"];
 const WINDOW = 90 * 1000; // 90 秒内有心跳算在线
@@ -106,6 +108,22 @@ export class Live {
         return Response.json({ ok: true });
       }
       return Response.json(W);
+    } else if (url.pathname === "/ai" || url.pathname === "/hj") {
+      const key = url.pathname.slice(1), d = this.day();
+      const keep = o => { const cut = new Date(Date.now() + 8 * 3600e3 - 120 * 864e5).toISOString().slice(0, 10); for (const x of Object.keys(o)) if (x < cut) delete o[x]; return o; };
+      if (req.method === "POST") {
+        let b = {}; try { b = JSON.parse(await req.text()); } catch (e) {}
+        let k = "";
+        if (key === "ai") { k = String(b.k || ""); if (!/^[a-z]{2,12}$/.test(k)) return Response.json({ ok: false }); }
+        else { const f = String(b.f || ""), c = String(b.c || ""); if (!/^(ddj|szj)\.[0-9]{1,2}$/.test(f) || !/^([0-9]{1,2}\.[0-9]{1,2}|book)$/.test(c)) return Response.json({ ok: false }); k = f + ">" + c; }
+        const O = keep((await this.state.storage.get(key)) || {}); O[d] = O[d] || {}; O[d][k] = (O[d][k] || 0) + 1;
+        const put = { [key]: O };
+        if (key === "ai") { const p = String(b.p || "").slice(0, 120); if (/^\/[a-z0-9\/._-]*$/i.test(p)) { const P = (await this.state.storage.get("aip")) || {}; if (P[p] || Object.keys(P).length < 2000) { P[p] = (P[p] || 0) + 1; put.aip = P; } } }
+        await this.state.storage.put(put);
+        return Response.json({ ok: true });
+      }
+      const O = keep((await this.state.storage.get(key)) || {});
+      return Response.json(key === "ai" ? { days: O, pages: (await this.state.storage.get("aip")) || {} } : O);
     } else if (url.pathname === "/mirror") {
       if (req.method === "POST") {
         let b = {}; try { b = JSON.parse(await req.text()); } catch (e) {}
