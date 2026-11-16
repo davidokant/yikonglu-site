@@ -648,6 +648,8 @@ def parse_gao(path, yw):
         if len(row) < 4: continue
         k, text, src, page = row[:4]
         km = re.match(r"\s*(K\d+)", k); cs = sec2ch.get(kmap.get(km.group(1) if km else k))
+        if cs and ("待核" in page or "待核" in text):
+            HD_DAIHE.setdefault(pick(cs, text), set()).add(INTERNAL.sub("", text).strip("；; "))
         if not cs or "待核" in page or "待核" in text: continue
         if src == "经文":
             for c in cs: out.setdefault(c, {"cites": [], "reads": []}).setdefault("qw_pages", []).extend(pdf_pages(page))
@@ -1047,7 +1049,10 @@ def langdu_html(code, c, book="lunyu"):  # 没有“译”按钮的页（外文�
 ZD_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "zidian.json")  # 论语难字字典（11-11 主人要提前做）：点字看读音、朱注训诂、全书出处；读音与原文朗读同一张表
 ZD = json.load(open(ZD_FILE, encoding="utf-8")) if os.path.exists(ZD_FILE) else {"occ": {}, "per": {}}
 ZD_ON = os.environ.get("YK_ZIDIAN", "1") != "0"
-ZHAI_OFF = os.environ.get("YK_ZHAI") == "off"  # 可摘段（十一项之 2）：11-15 主人看过 1.1 样张说“过”，铺到全部已讲章；YK_ZHAI=off 可关
+ZHAI_OFF = os.environ.get("YK_ZHAI") == "off"
+HD_OFF = os.environ.get("YK_HD") == "off"  # 11-16 改动单二：核对标记
+HD_DAIHE = {}  # 章 → 待核未上的引文（parse_gao 里收）
+# 可摘段（十一项之 2）：11-15 主人看过 1.1 样张说“过”，铺到全部已讲章；YK_ZHAI=off 可关
 def zx(code, c, j, x):  # 句里难字加点线，点了弹小卡（只在中文页）
     if not (ZD_ON and code.startswith("zh")): return esc(x)
     m = {o: k for jj, o, k, g, s in ZD["per"].get(c, []) if jj == j}
@@ -2191,6 +2196,27 @@ def build_lang(L, D, write):
                                 f'<div class="yypane">{ZJ.page_pane(c, zp_, zr_, L.t("pg", n="").strip(), ZJ.YDIR, L.t("pg", n="{n}"))}</div></div></figure>')
         if fig_html is None:
             fig_html = f"""<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-short="{f'yikonglu.com/lunyu/{c}' if L.code.startswith('zh') else ''}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{L.t("source_line")}</figcaption>{rend_html}</figure>"""
+        if L.code.startswith("zh") and not HD_OFF:  # 11-16 改动单二：核对标记。状态全从已有数据落，不改内容；各标记的意思见 /fangfa.html#hedui
+            _pill = lambda cls, t: f'<a class="hm {cls}" href="{P}fangfa.html#hedui">{t}</a>'
+            _ok = [x for x in g["cites"] if x["pages"]]; _oth = [x for x in g["cites"] if not x["pages"]]; _pa = [x for x in _ok if x["para"]]
+            _gl0 = {k.split("|")[0] for _, _, k, gg, _ in ZD["per"].get(c, []) if gg}
+            _rz = [x for x in g["reads"] if x["zi"] in _gl0]; _rn = len(g["reads"]) - len(_rz)
+            _rp = (_pill("ok", f"对过朱注反切 {len(_rz)}") if _rz else "") + (_pill("mid", f"已核 {_rn}") if _rn else "")
+            _yk = "主人选定" if c in D["zy"] else "讲稿定版"
+            gist_html = gist_html.replace(f'<h2>{L.t("ch_gist")}</h2>', f'<h2>{L.t("ch_gist")}{_pill("mid", _yk)}</h2>', 1)
+            bh_html = bh_html.replace(f'<h2><i>白</i>{bh_h2}</h2>', f'<h2><i>白</i>{bh_h2}{_pill("mid", "已核")}</h2>', 1)
+            extra = extra.replace(f'<h2><i>核</i>{L.t("cites")}</h2>', f'<h2><i>核</i>{L.t("cites")}{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}</h2>', 1)
+            extra = extra.replace(f'<h2><i>音</i>{L.t("reads")}</h2>', f'<h2><i>音</i>{L.t("reads")}{_rp}</h2>', 1)
+            _qp = sorted(set(g.get("qw_pages") or []), key=int)
+            _li = [f'<li><b>原文</b>{_pill("ok", "对过原页")}朱注本第 {"、".join(_qp) or "?"} 页' + ("，每个字框到原页的列上" if c in ZJD["on"] else "") + "</li>",
+                   f'<li><b>白话</b>{_pill("mid", "已核")}随讲稿定版，和视频一致</li>',
+                   f'<li><b>一孔按</b>{_pill("mid", _yk)}一孔录自己的读法，不是古注；' + ("这章是争议读法，主人在几家里选定" if c in D["zy"] else "随视频讲稿定版") + "</li>"]
+            if g["cites"]: _li.append(f'<li><b>引文</b>{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}共 {len(g["cites"])} 条，点页码看原页' + (f"；其中 {len(_pa)} 条是转述，不是原话" if _pa else "") + "</li>")
+            if g["reads"]: _li.append(f'<li><b>读音</b>{_rp}共 {len(g["reads"])} 处；有朱注反切的照反切</li>')
+            _dh = len(HD_DAIHE.get(c, ()))
+            citeit = (f'<section class="hedui" id="hedui"><h2>本章核到哪了</h2><ul>{"".join(_li)}</ul>'
+                      + (f'<p class="note">{_pill("todo", f"待核 {_dh}")}另有 {_dh} 条引文还在核，核完才上页面。</p>' if _dh else "")
+                      + f'<p class="note"><a href="{P}fangfa.html#hedui">“对过原页”“已核”“待核”各指什么，全站核到哪了 →</a></p></section>') + citeit
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
 <h1><span class="no">{f"论语 {c} · {pname}" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)}</span>{esc(title_of(c))}</h1>{LX.nl_tag(L, P, D["lx"], c)}{f'<p class="kwtag"><a href="#kw">{L.t("kw")} {len(mine)} 条</a> · <a href="{P}kanwu.html">全部勘误</a></p>' if mine and L.code.startswith("zh") else ""}
@@ -2732,6 +2758,25 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
                + "".join(f'<tr><th scope="row">{h}</th>' + "".join(f"<td>{v}</td>" for v in r) + "</tr>" for h, r in zip(F["bth"], _rows))
                + "</tbody></table>")
         if DC: s5 += f'<p><small>{F["s5c"].format(d=DC.get("updated", ""))}</small></p>'
+    if L.code.startswith("zh") and not HD_OFF:  # 11-16 改动单二：公开核对账本（《论语》），数字全从页面数据现算
+        _all = sum(PIAN[p][3] for p in PIAN); _wj = [c for c in D["qw"] if c not in pubset]
+        _ct = [x for c in pub for x in gao.get(c, {}).get("cites", [])]
+        _cok = sum(1 for x in _ct if x["pages"]); _coth = len(_ct) - _cok; _cpa = sum(1 for x in _ct if x["pages"] and x["para"])
+        _cdh = sum(len(HD_DAIHE.get(c, ())) for c in pub)
+        _rd = [(c, x) for c in pub for x in gao.get(c, {}).get("reads", [])]
+        _rz = sum(1 for c, x in _rd if x["zi"] in {k.split("|")[0] for _, _, k, gg, _ in ZD["per"].get(c, []) if gg})
+        _bok = sum(1 for c in _wj if c in D.get("bh_ok", ()) and D["baihua"].get(c)); _bdraft = sum(1 for c in _wj if c not in D.get("bh_ok", ()) and D["baihua"].get(c))
+        _zy = sum(1 for c in pub if c in D["zy"]); _kw = len(D["kw"])
+        _pill = lambda cls, t: f'<span class="hm {cls}">{t}</span>'
+        _tr = lambda a, b, c_, d, e: f'<tr><th scope=row>{a}</th><td>{b}</td><td>{c_}</td><td>{d}</td></tr><tr class="hdn"><td colspan="4">{e}</td></tr>'
+        s5 += (f'<h3 id="hedui">核到哪了：《论语》核对账本</h3><p>章页上每一类内容都带一个小标记：{_pill("ok", "对过原页")}是对着底本原页图核过，页码可以点开看；{_pill("mid", "已核")}是核过、但没有可点的原页：白话、一孔按随视频讲稿定版，个别引文核到的是别的版本；{_pill("todo", "待核")}是还没核完的，核完之前不上页面。下面的数字由网站每次生成时现算。</p>'
+               f'<table class="num hdt"><thead><tr><th></th><th>{_pill("ok", "对过原页")}</th><th>{_pill("mid", "已核")}</th><th>{_pill("todo", "待核／初稿")}</th></tr></thead><tbody>'
+               + _tr("原文", f"{_all} 章", "—", "—", f"全书每章都标了朱注本页码；其中 {len(ZJD['on'])} 章每个字框到了原页的列上")
+               + _tr("引文（朱注等）", f"{_cok} 条", f"{_coth} 条", f"{_cdh} 条", f"已讲 {len(pub)} 章视频里引到的话；{_cpa} 条标“转述”，是概括意思")
+               + _tr("读音", f"{_rz} 处", f"{len(_rd) - _rz} 处", "—", "有朱注反切的照反切，和今天通行读法不同的另注“今多读”")
+               + _tr("白话", "—", f"{len(pub) + _bok} 章", f"{_bdraft} 章", f"已讲 {len(pub)} 章随讲稿定版；未讲章是按底本直译的初稿，页上标明")
+               + _tr("一孔按", "—", f"{len(pub)} 章", "—", f"一孔录自己的读法，不是古注；其中 {_zy} 章是争议读法，主人在几家里选定")
+               + f'</tbody></table><p>做法：引文、读音的页码由智器对着原页图逐条找出，页上可点开核对；白话和一孔按随视频讲稿一起，由主人看片定版。错了公开改，记在<a href="{P}kanwu.html">勘误页</a>，现有 {_kw} 条。</p>')
     elif DC and DC.get("rows"):
         s5 += f'<p>{F["s5c"].format(n=DC["episodes"], s=DC["segments"], c=DC["changed"], r=DC["ratio"], d=DC["updated"])}</p>'
         def eplink(ep):

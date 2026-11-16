@@ -952,17 +952,13 @@ h1{view-transition-name:ttl}
 .zhai{font-size:.78em;color:var(--mute);margin-left:2px}
 .zhaip{font-size:15px;line-height:1.75;margin:6px 0 10px}
 .dztools .prog{flex-basis:100%;margin-right:0}
-/* 11-16 课本着陆页、成语、名句 */
-.keben .kbqw p{font-size:18px;line-height:1.9;margin:0 0 6px}
-.kbl,.cyl,.mjl{list-style:none;padding:0;margin:0}
-.kbl li,.cyl li,.mjl li{border-bottom:1px solid var(--line);padding:14px 0}
-.kbl h3{font-size:16px;margin:0 0 6px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}.kbl h3 em{font-style:normal;color:var(--accent)}
-.kbl .zy{font-size:19px;line-height:1.8;margin:0}
-.kbl .kbdu,.keben .zd{margin:6px 0 0;font-size:14.5px;color:var(--mute)}.kbl .kbdu b{color:var(--fg);font-weight:500}
-.kbl .kbdu span,.keben .zd span{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:3px;padding:0 4px;margin-right:6px;color:var(--accent)}
-.kblk{margin:8px 0 0;font-size:14px}.kblk .kbv{margin-left:12px}
-.cyl li{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:baseline}
-.cyl .cy{font-size:19px}.cyk{font-size:13px;color:var(--mute)}
-.cyl q,.cyl small{grid-column:1/-1}.cyl q,.mjl q{quotes:none;font-size:16px;line-height:1.8}
-.cyl small{color:var(--mute);font-size:13.5px}
-.mjl q{display:block;font-size:18px}.mjl .cyk{display:block;margin-top:2px}
+/* 11-16 核对标记 */
+.hm{display:inline-block;font:500 11.5px/1.6 var(--sans,system-ui);border-radius:9px;padding:0 7px;margin-left:8px;vertical-align:middle;border:1px solid;text-decoration:none;white-space:nowrap}
+.hm.ok{color:#23503F;border-color:#23503F66;background:#23503F12}.hm.mid{color:#8A5A2C;border-color:#8A5A2C66;background:#8A5A2C10}.hm.todo{color:#9a3b2e;border-color:#9a3b2e66;background:#9a3b2e10}
+th .hm{margin-left:0}
+.hedui{margin:28px 0;padding:14px 16px;border:1px solid var(--line);border-radius:6px}.hedui h2{font-size:17px;margin:0 0 8px}
+.hedui ul{list-style:none;padding:0;margin:0}.hedui li{padding:4px 0;font-size:14.5px}.hedui li b{display:inline-block;min-width:3.5em}.hedui li .hm{margin:0 8px 0 0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hm.ok{color:#8fc5ad;border-color:#8fc5ad66}:root:not([data-theme="light"]) .hm.mid{color:#d9a873;border-color:#d9a87366}}
+:root[data-theme="dark"] .hm.ok{color:#8fc5ad;border-color:#8fc5ad66}:root[data-theme="dark"] .hm.mid{color:#d9a873;border-color:#d9a87366}
+.hedui .note{font-size:13.5px;margin:8px 0 0}
+.hdt tr.hdn td{font-size:13px;color:var(--mute);padding-top:0;border-top:0}.hdt th[scope=row]{white-space:nowrap}
