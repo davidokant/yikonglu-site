@@ -1175,13 +1175,13 @@ TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语�
 TAGLINE_L = {"zh-Hans": "从《论语》开始 · 逐字读经典原文", "zh-Hant": "從《論語》開始 · 逐字讀經典原文"}
 MEIRI_TXT = {"zh-Hans": {"h": "今日《论语》", "read": "读这一章", "card": "生成分享图", "plan": "百日读完《论语》"}, "zh-Hant": {"h": "今日《論語》", "read": "讀這一章", "card": "生成分享圖", "plan": "百日讀完《論語》"}}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
-LIVE_PILL = {"zh-Hans": "{o} 儒者在读 · 累计 {t} 碳基儒者 {b} 硅基儒者", "zh-Hant": "{o} 儒者在讀 · 累計 {t} 碳基儒者 {b} 矽基儒者", "en": "Reading now: {o} · total {t} carbon-based, {b} silicon-based", "ja": "{o} 人が読書中 · 累計 炭素系 {t}・ケイ素系 {b}", "ko": "{o}명 읽는 중 · 누적 탄소 기반 {t} · 규소 기반 {b}", "fr": "En lecture : {o} · en tout {t} carbonés, {b} siliciés",
+LIVE_PILL = {"zh-Hans": "{o} 儒者在读 · 累计 {t} 碳基 {b} 硅基", "zh-Hant": "{o} 儒者在讀 · 累計 {t} 碳基 {b} 矽基", "en": "Reading now: {o} · total {t} carbon-based, {b} silicon-based", "ja": "{o} 人が読書中 · 累計 炭素系 {t}・ケイ素系 {b}", "ko": "{o}명 읽는 중 · 누적 탄소 기반 {t} · 규소 기반 {b}", "fr": "En lecture : {o} · en tout {t} carbonés, {b} siliciés",
              "es": "Leyendo: {o} · en total {t} de carbono, {b} de silicio", "de": "Lesen gerade: {o} · gesamt {t} kohlenstoffbasiert, {b} siliziumbasiert", "vi": "{o} đang đọc · tổng {t} gốc carbon, {b} gốc silicon", "id": "Membaca: {o} · total {t} berbasis karbon, {b} berbasis silikon", "ru": "Читают: {o} · всего {t} углеродных, {b} кремниевых"}
 # 11-16 主人：累计分碳基儒者（人，按设备数）和硅基儒者（机器，按来读次数：页面里跑脚本的抓取与渲染、连接器每回答一次）
 # 11-09 晚主人定：不再显示、也不再统计“来自几个国家和地区”
 # 主人 11-08：单位用“儒者”，来的都是儒者；外文取各语里读书人的说法（英文 Confucians、越南 nhà nho、法 lettrés），写成“X：数”免得单复数不合
-LIVE_TXT = {"zh-Hans": "此刻 {o} 位儒者在读 · 累计 {t} 位碳基儒者、{b} 次硅基儒者来读", "zh-Hant": "此刻 {o} 位儒者在讀 · 累計 {t} 位碳基儒者、{b} 次矽基儒者來讀",
-            "en": "Confucians reading now: {o} · so far {t} carbon-based readers and {b} silicon-based reads", "ja": "いま {o} 人の儒者が読書中 · これまで炭素系の儒者 {t} 人、ケイ素系の儒者 {b} 回", "ko": "지금 유학자 {o}명이 읽는 중 · 지금까지 탄소 기반 유학자 {t}명, 규소 기반 유학자 {b}회",
+LIVE_TXT = {"zh-Hans": "此刻 {o} 位儒者在读 · 累计 {t} 碳基 · {b} 硅基", "zh-Hant": "此刻 {o} 位儒者在讀 · 累計 {t} 碳基 · {b} 矽基",
+            "en": "Confucians reading now: {o} · so far {t} carbon-based readers and {b} silicon-based reads", "ja": "いま {o} 人の儒者が読書中 · 累計 炭素系 {t}・ケイ素系 {b}", "ko": "지금 유학자 {o}명이 읽는 중 · 누적 탄소 기반 {t} · 규소 기반 {b}",
             "fr": "Lettrés en lecture : {o} · jusqu’ici {t} lettrés carbonés et {b} lectures siliciées", "es": "Letrados leyendo ahora: {o} · hasta hoy {t} letrados de carbono y {b} lecturas de silicio", "de": "Gelehrte lesen gerade: {o} · bisher {t} kohlenstoffbasierte Gelehrte und {b} siliziumbasierte Lesungen",
             "vi": "{o} nhà nho đang đọc · {t} nhà nho gốc carbon đã ghé, {b} lượt đọc gốc silicon", "id": "Cendekiawan sedang membaca: {o} · sejauh ini {t} cendekiawan berbasis karbon dan {b} bacaan berbasis silikon", "ru": "Сейчас читают книжники: {o} · всего {t} углеродных книжников и {b} кремниевых прочтений"}
 

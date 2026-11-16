@@ -128,7 +128,7 @@ def js_ver():
 
 def xt_html(L, P, home=False):
     """画布＋控件。home=True 时带标题行和“去关系图”链接。"""
-    hd = (f'<div class="xthead"><h2 class="ph">《论语》星图</h2><p>全书 498 章排成一圈，一颗星一章。同一句话出现两次、同一个问题问了几回、同一个人出场几十章，都连成线。点一颗星，看它连着谁。同问异答和人物的对照表，见<a href="{P}lunyu/guanxi/">同问异答与人物</a>。</p></div>' if home else "")
+    hd = (f'<div class="xthead"><h2 class="ph">《论语》星图</h2></div>' if home else "")
     return (f'<section class="xtsec{" xthome" if home else ""}">{hd}<div class="xt" id="xt" data-src="{P}data/xingtu.json" data-p="{P}">'
             '<canvas aria-label="《论语》关系星图：可拖动旋转，点星看这一章连着哪几章"></canvas>'
             '<div class="hud"><input type="search" placeholder="章号、字句或人名" aria-label="在星图里找">'
