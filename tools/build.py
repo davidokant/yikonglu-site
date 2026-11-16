@@ -2167,7 +2167,7 @@ def build_lang(L, D, write):
                 continue
             secs += f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{L.t(lab)}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}>{quotes(v)}</p></section>'
         if L.code == "zh-Hans" and c in D["zy"]:  # 争议读法主人选定的一孔之见（11-08，tools/zhengyi.json 出自 规范/争议读法-选定表.md；待核出处已去人名）盖过自动短答；繁体由简体整页转
-            gist_html = f'<section class="gist ykan" id="ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(YKAN["zh"][0])}</b>{quotes(D["zy"][c]["text"])}</p>{YKCITE}</section>'
+            gist_html = f'<section class="gist ykan" id="ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(YKAN["zh"][0])}</b>{quotes(D["zy"][c]["text"] if ep.get("youtube") else D["zy"][c]["text"].replace("片里", "讲稿里"))}</p>{YKCITE}</section>'
         prev_c = pub[i-1] if i > 0 else None; next_c = pub[i+1] if i+1 < len(pub) else None
         def card(cc, lab, cls):
             if not cc: return '<span></span>'
@@ -2227,7 +2227,7 @@ def build_lang(L, D, write):
         extra = zb_section(c, url, cite_src) + extra
         bh = D["baihua"].get(c)
         bh_h2 = f'{L.t("baihua")}：“{esc(seo_q(yw[c]))}”是什么意思' if L.code.startswith("zh") else L.t("baihua")  # 主人 11-07 定：标题带读者会问的话
-        bh_html = f'<section class="sec sec-白"><h2><i>白</i>{bh_h2}</h2><p lang="zh-Hans">{esc(bh)}</p><p class="note">{L.t("baihua_note")}</p></section>' if bh else ""
+        bh_html = f'<section class="sec sec-白"><h2><i>白</i>{bh_h2}</h2><p lang="zh-Hans">{esc(bh)}</p><p class="note">{("按一孔录的读法直译，取自讲稿；视频还在制作。别家读法见下。" if L.code.startswith("zh") else L.t("baihua_note")) if not ch2ep[c][1].get("youtube") else L.t("baihua_note")}</p></section>' if bh else ""
         if not ZHAI_OFF and L.code.startswith("zh"):  # 11-15 十一项之 2 可摘段：每段单独复制出去也看得出书名、章号、原句、页码、网址；只用页面上已有的话拼
             _qp = sorted(set(g.get("qw_pages") or []), key=int)
             _pg = f'朱熹《论语集注》《四部备要》本第 {"—".join(dict.fromkeys([_qp[0], _qp[-1]])) if _qp else "?"} 页'
@@ -2278,7 +2278,7 @@ def build_lang(L, D, write):
             _nv = not ch2ep[c][1].get("youtube")  # 视频还没出的章：讲稿未经审片定版
             _yk = "一孔录选定" if c in D["zy"] else ("讲稿 · 视频制作中" if _nv else "审片版讲稿")
             gist_html = gist_html.replace(f'<h2>{L.t("ch_gist")}</h2>', f'<h2>{L.t("ch_gist")}{_pill("mid", _yk)}</h2>', 1)
-            bh_html = bh_html.replace(f'<h2><i>白</i>{bh_h2}</h2>', f'<h2><i>白</i>{bh_h2}{_pill("mid", "已核")}</h2>', 1)
+            bh_html = bh_html.replace(f'<h2><i>白</i>{bh_h2}</h2>', f'<h2><i>白</i>{bh_h2}{_pill("mid", "讲稿" if _nv else "已核")}</h2>', 1)
             extra = extra.replace(f'<h2><i>核</i>{L.t("cites")}</h2>', f'<h2><i>核</i>{L.t("cites")}{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}</h2>', 1)
             extra = extra.replace(f'<h2><i>音</i>{L.t("reads")}</h2>', f'<h2><i>音</i>{L.t("reads")}{_rp}</h2>', 1)
             _qp = sorted(set(g.get("qw_pages") or []), key=int)
