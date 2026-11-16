@@ -582,7 +582,7 @@ def parse_zhaji(path):
         if line.startswith("- 讲稿：未写稿"): cur["nogao"] = True  # 11-17 阳货 17.13 起、微子、子张、尧曰：还没写讲稿，据原页写
         m = re.match(r"^- ([^：]+)：(.*)$", line)
         if m and m.group(1) in {f[0] for f in FIELDS}:
-            v = NEIBU_ZHU.sub("", clean(m.group(2))).strip()  # 11-15 主人：札记里给做片看的备注（“（标题、封面问）”“（本集只上朱注）”）不上网站
+            v = re.sub(r"[，；]?(?:主人|小编)(?:选|定)前(?:先)?照朱注", "", NEIBU_ZHU.sub("", clean(m.group(2)))).strip()  # 11-17 札记里“主人定前照朱注”这类编辑话不上网站  # 11-15 主人：札记里给做片看的备注（“（标题、封面问）”“（本集只上朱注）”）不上网站
             if v and not v.startswith("这里只取"): cur["fields"][m.group(1)] = v
     return out
 
