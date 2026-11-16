@@ -1,6 +1,6 @@
 # 一孔录 Yikonglu (日本語)
 
-> 一孔録が読み上げた一句一句を、ここで確かめられます。 原文、底本の頁、注釈者の言葉そのもの、読み方、私たちの読み、公開の正誤表を、書ごと章ごとに並べています。動画は各プラットフォームで、確認はここで。
+> Yikonglu (一孔录) is a reading of the Chinese classics centred on the Analects and checked line by line against the pages of the base edition; every other classic is cross-referenced to the Analects chapter by chapter. All 498 chapters of the Analects are on the site.
 
 ## About
 - Coverage: all 498 chapters of the Analects are on the site in the original; 229 chapters covered in depth; 498 chapters aligned character by character to pages of Zhu Xi's Collected Commentaries (Sibu Beiyao edition). Counted at each build.
@@ -238,3 +238,8 @@
 - [9.22 后生可畏](https://yikonglu.com/ja/lunyu/zi-han/22.html): 年轻人时间多、力气足，能攒学问等将来，势头可畏；可不自勉，到四五十岁还没名声，就不足畏了，话是催人趁早用功。今例：年轻女工程师起身讲方案，几位老工程师放下茶杯认真记。
 - [9.23 法语之言](https://yikonglu.com/ja/lunyu/zi-han/23.html): 严正的话人人当面听从，贵在真改；委婉的话人人听着高兴，贵在想透用意；听了不改、高兴了不想，圣人也没办法。今例：医生叮嘱戒烟，中年男人连说一定，回家又点上一支。
 - [9.24 主忠信（重出）](https://yikonglu.com/ja/lunyu/zi-han/24.html): 这一章是《学而》“君子不重则不威”章的后半，重出时丢了前半，意思照那一章读：以忠信为主，不交不如己的朋友，有错别怕改。
+
+## Cross-references: from the Analects outward
+Other classics, each chapter linked back to the Analects chapters it echoes or quotes.
+- [Daodejing, 81 chapters](https://yikonglu.com/ja/daodejing/): 138 cross-references to the Analects
+- [Three-Character Classic, 39 lessons](https://yikonglu.com/ja/sanzijing/): 72 cross-references to the Analects
