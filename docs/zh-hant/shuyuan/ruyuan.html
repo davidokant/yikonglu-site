@@ -48,16 +48,7 @@
 <h2>退款</h2><ul><li>付款七日內，不問理由全退。</li><li>年曆在你的日子之前停更的，全退。</li><li>題記被請改而你不願改的，全退。</li></ul>
 <h2 id="join">怎麼題</h2><ol><li>在<a href="/zh-hant/nianli/">年曆頁</a>查好日子，看那天讀哪一章，有沒有人題過。</li><li>國內到愛發電下單；海外到 Ko-fi 下單（美元付款，題一日 US$29、題一篇 US$299）。都按提示填日期（或篇名）、網名、題記。</li><li>三天內收到題名帖。名字和題記會出現在年曆頁的這一天上。</li></ol>
 <p class="cta"><a class="btn" href="https://afdian.com/item/d667fd6ae19d11f1a65c5254001e7c00" target="_blank" rel="noopener">國內 · 在愛發電題名</a> <a class="btn ghost" href="https://ko-fi.com/s/97c7197047" target="_blank" rel="noopener">海外 · 在 Ko-fi 題名</a></p>
-<div class="syjoin"><button type="button" class="btn ghost" id="syb">我想題一天</button><p class="sycnt" id="syn" hidden></p></div>
-<p class="note">本頁只記人數，不收姓名、郵箱、電話。點“我想題一天”不代表付款，也不代表訂下了哪一天。</p></main><script>(function(){var U="https://yikonglu-live.yikonglu.workers.dev",T={"done": "已記下，謝謝。", "cnt": "已有 {n} 位書友想題一天"};
-var b=document.getElementById('syb'),n=document.getElementById('syn');
-function g(k){try{return localStorage.getItem(k)}catch(e){return null}}function s(k){try{localStorage.setItem(k,'1')}catch(e){}}
-function show(x){if(x&&x.n){n.textContent=T.cnt.replace('{n}',x.n);n.hidden=false}}
-fetch(U+'/intent').then(function(r){return r.json()}).then(show).catch(function(){});
-if(g('yk_sy')){b.disabled=true;b.textContent=T.done}
-b.onclick=function(){if(g('yk_sy'))return;s('yk_sy');b.disabled=true;b.textContent=T.done;
-fetch(U+'/intent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({join:true})}).then(function(r){return r.json()}).then(show).catch(function(){})};
-})();</script>
+</main>
 <section class="follow"><div class="wrap"><h2>關注一孔錄，輕鬆讀經典</h2><div class="fl"><figure><img src="/assets/wechat-qr.jpg" alt="WeChat QR" width="129" height="129" loading="lazy"><figcaption>有問題想問一孔錄？關注公眾號「一孔錄」留言，每週選答，進片署你的網名。或在官網點「<a href="/zh-hant/wen.html">問一孔</a>」。</figcaption></figure><a class="btn yt" id="fyt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ 在 YouTube 訂閱</a></div></div></section><script>(function(){var z="";try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}if(!/^Asia\/(Shanghai|Chongqing|Chungking|Harbin|Urumqi|Kashgar)$|^PRC$/.test(z))return;var a=document.getElementById("fyt");if(!a)return;a.href="https://space.bilibili.com/18385461";a.className="btn bl";a.textContent="在嗶哩嗶哩關注"})();</script>
 <footer><div class="wrap">
 <div class="fbrand"><img src="/assets/seal-180.png" alt="" width="36" height="36"><div><b>一孔錄</b><span>從《論語》開始 · 逐字讀經典原文</span></div></div>

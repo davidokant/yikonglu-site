@@ -1,5 +1,5 @@
 """一孔书院入院页 /shuyuan/ruyuan.html：11-16 起只讲“题名”（旧会员权益、书友圈、院落学籍已撤）。
-简体全文，繁体由简体转；外文页一律出英文摘要。意愿只计数：yikonglu-live 的 /intent（满 20 才显示人数）、/intent/stats。
+简体全文，繁体由简体转；外文页一律出英文摘要。11-16 主人：“我想题一天”意向按钮去掉（付款按钮已上）。
 文案源：评审/2026-11-16-书院题名开卖/入院页-题名-文案-v1.1.md。"""
 import html, json
 
@@ -48,18 +48,7 @@ def body(L, live):
 <p class="cta"><a class="btn" href="{KOFI}" target="_blank" rel="noopener">Name a day on Ko-fi</a></p>'''
     out = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{T["sub"]}</span>{T["title"]}</h1></div></div>
 <main class="wrap narrow prose shuyuan">{main}
-<div class="syjoin"><button type="button" class="btn ghost" id="syb">{T["btn"]}</button><p class="sycnt" id="syn" hidden></p></div>
-<p class="note">{"本页只记人数，不收姓名、邮箱、电话。点“我想题一天”不代表付款，也不代表订下了哪一天。" if zh else "This page counts clicks only; no personal data is collected."}</p></main>'''
-    if live:  # 意愿计数照旧走 /intent（join），满 20 才显示人数
-        out += ("<script>(function(){var U=" + json.dumps(live.rstrip("/")) + ",T=" + json.dumps({k: T[k] for k in ("done", "cnt")}, ensure_ascii=False) + r""";
-var b=document.getElementById('syb'),n=document.getElementById('syn');
-function g(k){try{return localStorage.getItem(k)}catch(e){return null}}function s(k){try{localStorage.setItem(k,'1')}catch(e){}}
-function show(x){if(x&&x.n){n.textContent=T.cnt.replace('{n}',x.n);n.hidden=false}}
-fetch(U+'/intent').then(function(r){return r.json()}).then(show).catch(function(){});
-if(g('yk_sy')){b.disabled=true;b.textContent=T.done}
-b.onclick=function(){if(g('yk_sy'))return;s('yk_sy');b.disabled=true;b.textContent=T.done;
-fetch(U+'/intent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({join:true})}).then(function(r){return r.json()}).then(show).catch(function(){})};
-})();</script>""")
+</main>'''
     return out, T
 
 def redirect(to):  # 搬走的旧网址：只留一张转跳页，不进站点地图
