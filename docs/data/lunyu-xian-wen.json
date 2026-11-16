@@ -1,0 +1,1339 @@
+{
+ "license": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); 原文与古注为公版",
+ "attribution": "一孔录 Yikonglu, https://yikonglu.com",
+ "book": "论语",
+ "pian": "宪问",
+ "chapters": [
+  {
+   "chapter": "14.1",
+   "title": "宪问耻",
+   "url": "https://yikonglu.com/lunyu/xian-wen/1.html",
+   "text": "宪问耻。子曰：邦有道，谷；邦无道，谷，耻也。",
+   "sentences": [
+    "宪问耻。",
+    "子曰：邦有道，谷；邦无道，谷，耻也。"
+   ],
+   "baihua": "原宪问什么可耻，孔子说，国家有道、无道，都只知道领俸禄而不尽该尽的道，就是可耻。",
+   "citations": [
+    {
+     "text": "宪问第十四；胡氏曰此篇疑原宪所记凡四十七章",
+     "source": "篇题、朱注引胡氏",
+     "pages": [
+      "186"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "宪原思名……故夫子因其问而并言之",
+     "source": "朱注",
+     "pages": [
+      "186"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "克好胜……不行不足以言之也；程子曰人而无克伐怨欲……惜乎宪之不能再问也",
+     "source": "朱注、程子",
+     "pages": [
+      "186",
+      "187"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "克去己私以复乎礼……岂克己求仁之谓哉",
+     "source": "朱注（或问）",
+     "pages": [
+      "187"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云憲問恥者，弟子原憲問孔子可恥事也。",
+    "scan_page": "20"
+   }
+  },
+  {
+   "chapter": "14.2",
+   "title": "克伐怨欲",
+   "url": "https://yikonglu.com/lunyu/xian-wen/2.html",
+   "text": "克、伐、怨、欲不行焉，可以为仁矣？子曰：可以为难矣，仁则吾不知也。",
+   "sentences": [
+    "克、伐、怨、欲不行焉，可以为仁矣？",
+    "子曰：可以为难矣，仁则吾不知也。"
+   ],
+   "baihua": "原宪问，好胜、自夸、怨恨、贪欲都控制住，不表现出来，可以算仁了吗；孔子说，可以算难能，至于仁，我还不敢说。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云克伐怨欲者，克，勝也。",
+    "scan_page": "21"
+   }
+  },
+  {
+   "chapter": "14.3",
+   "title": "士而怀居",
+   "url": "https://yikonglu.com/lunyu/xian-wen/3.html",
+   "text": "子曰：士而怀居，不足以为士矣。",
+   "sentences": [
+    "子曰：士而怀居，不足以为士矣。"
+   ],
+   "baihua": "孔子说，士若只想安居享受，就不足以算士。",
+   "citations": [
+    {
+     "text": "居谓意所便安处也；危高峻也孙卑顺也；尹氏曰君子之持身不可变也……岂不殆哉",
+     "source": "朱注、尹氏",
+     "pages": [
+      "187"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "懷居猶居求安也。",
+    "scan_page": "21"
+   }
+  },
+  {
+   "chapter": "14.4",
+   "title": "危言危行",
+   "url": "https://yikonglu.com/lunyu/xian-wen/4.html",
+   "text": "子曰：邦有道，危言危行；邦无道，危行言孙。",
+   "sentences": [
+    "子曰：邦有道，危言危行；邦无道，危行言孙。"
+   ],
+   "baihua": "孔子说，国家有道，言语、行为都要正直严肃；国家无道，行为仍正直，言语则谦顺些。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子曰云云者，危，厲也。",
+    "scan_page": "21"
+   }
+  },
+  {
+   "chapter": "14.5",
+   "title": "有德者必有言",
+   "url": "https://yikonglu.com/lunyu/xian-wen/5.html",
+   "text": "子曰：有德者必有言，有言者不必有德；仁者必有勇，勇者不必有仁。",
+   "sentences": [
+    "子曰：有德者必有言，有言者不必有德；仁者必有勇，勇者不必有仁。"
+   ],
+   "baihua": "孔子说，有德的人必有值得听的言语，能说话的人却未必有德；仁者必有勇气，勇敢的人却未必仁。",
+   "citations": [
+    {
+     "text": "有德者和顺积中……血气之强而已；尹氏曰有德者必有言……未必有仁也",
+     "source": "朱注、尹氏",
+     "pages": [
+      "187"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子曰云云者，既有德則其言語多及中，故必有言也。",
+    "scan_page": "21"
+   }
+  },
+  {
+   "chapter": "14.6",
+   "title": "南宫适问羿奡禹稷",
+   "url": "https://yikonglu.com/lunyu/xian-wen/6.html",
+   "text": "南宫适问于孔子曰：羿善射，奡荡舟，俱不得其死然；禹稷躬稼，而有天下。夫子不答，南宫适出。子曰：君子哉若人！尚德哉若人！",
+   "sentences": [
+    "南宫适问于孔子曰：羿善射，奡荡舟，俱不得其死然；禹稷躬稼，而有天下。",
+    "夫子不答，南宫适出。",
+    "子曰：君子哉若人！",
+    "尚德哉若人！"
+   ],
+   "baihua": "南宫适说，羿善射、奡力能推舟，却都不得善终，禹、稷亲自种庄稼，自己或后代却有了天下；孔子当时不答，等他出去后说，这个人真是君子，真尊重德行。",
+   "citations": [
+    {
+     "text": "南宫适即南容也……亦有天下",
+     "source": "朱注",
+     "pages": [
+      "188"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "适之意……故俟其出而赞美之",
+     "source": "朱注",
+     "pages": [
+      "188"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云南宮适者，姓南宮，名适，字敬叔。",
+    "scan_page": "23"
+   }
+  },
+  {
+   "chapter": "14.7",
+   "title": "君子而不仁者有矣夫",
+   "url": "https://yikonglu.com/lunyu/xian-wen/7.html",
+   "text": "子曰：君子而不仁者有矣夫，未有小人而仁者也。",
+   "sentences": [
+    "子曰：君子而不仁者有矣夫，未有小人而仁者也。"
+   ],
+   "baihua": "孔子说，君子有时也会有不仁的过失，却没有成为仁者的小人。",
+   "citations": [
+    {
+     "text": "谢氏曰君子志于仁矣……；苏氏曰爱而勿劳……其为忠也大矣",
+     "source": "朱注引谢氏、苏氏",
+     "pages": [
+      "188"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子曰云云者，此謂賢人以下。",
+    "scan_page": "24"
+   }
+  },
+  {
+   "chapter": "14.8",
+   "title": "爱之能勿劳乎",
+   "url": "https://yikonglu.com/lunyu/xian-wen/8.html",
+   "text": "子曰：爱之，能勿劳乎？忠焉，能勿诲乎？",
+   "sentences": [
+    "子曰：爱之，能勿劳乎？",
+    "忠焉，能勿诲乎？"
+   ],
+   "baihua": "孔子说，爱一个人，能不让他勤劳吗；对一个人尽忠，能不教诲他吗？",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云愛之能勿勞乎者，愛慕此人學問之心，有所愛必欲勞來之。",
+    "scan_page": "24"
+   }
+  },
+  {
+   "chapter": "14.9",
+   "title": "为命",
+   "url": "https://yikonglu.com/lunyu/xian-wen/9.html",
+   "text": "子曰：为命：裨谌草创之，世叔讨论之，行人子羽修饰之，东里子产润色之。",
+   "sentences": [
+    "子曰：为命：裨谌草创之，世叔讨论之，行人子羽修饰之，东里子产润色之。"
+   ],
+   "baihua": "孔子说，郑国拟定外交辞令，由裨谌起草，世叔讨论，行人子羽修饰，东里子产润色。",
+   "citations": [
+    {
+     "text": "裨谌以下四人……盖善之也",
+     "source": "朱注",
+     "pages": [
+      "189"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "子产之政……举其重而言也；子西楚公子申……外之之辞",
+     "source": "朱注",
+     "pages": [
+      "189"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "人也犹言此人也……即此事也；管仲之德不胜其才……槩乎其未有闻也",
+     "source": "朱注",
+     "pages": [
+      "189",
+      "190"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云為命者，為作盟會之詔書也。",
+    "scan_page": "25"
+   }
+  },
+  {
+   "chapter": "14.10",
+   "title": "或问子产",
+   "url": "https://yikonglu.com/lunyu/xian-wen/10.html",
+   "text": "或问子产。子曰：惠人也。问子西。曰：彼哉！彼哉！问管仲。曰：人也。夺伯氏骈邑三百，饭疏食，没齿无怨言。",
+   "sentences": [
+    "或问子产。",
+    "子曰：惠人也。",
+    "问子西。",
+    "曰：彼哉！",
+    "彼哉！",
+    "问管仲。",
+    "曰：人也。",
+    "夺伯氏骈邑三百，饭疏食，没齿无怨言。"
+   ],
+   "baihua": "有人问子产，孔子说，他是惠爱人的人，问子西，孔子说，那个人啊，那个人啊。问管仲，孔子说，他夺去伯氏骈邑三百户，伯氏只能吃粗饭，却终身没有怨言。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云或問子產者，或人問於孔子，鄭之子產德行於民何如也。",
+    "scan_page": "25"
+   }
+  },
+  {
+   "chapter": "14.11",
+   "title": "贫而无怨难",
+   "url": "https://yikonglu.com/lunyu/xian-wen/11.html",
+   "text": "子曰：贫而无怨难，富而无骄易。",
+   "sentences": [
+    "子曰：贫而无怨难，富而无骄易。"
+   ],
+   "baihua": "孔子说，贫穷而没有怨恨难，富有而不骄傲容易些。",
+   "citations": [
+    {
+     "text": "处贫难处富易……不可忽其易也；公绰鲁大夫……短于才者也",
+     "source": "朱注",
+     "pages": [
+      "190"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "杨氏曰知之弗豫……孔子之用人可知矣",
+     "source": "朱注引杨氏",
+     "pages": [
+      "190"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云貧而無怨難者，貧賤因於飢寒，所以有怨。",
+    "scan_page": "26"
+   }
+  },
+  {
+   "chapter": "14.12",
+   "title": "孟公绰",
+   "url": "https://yikonglu.com/lunyu/xian-wen/12.html",
+   "text": "子曰：孟公绰为赵魏老则优，不可以为滕薛大夫。",
+   "sentences": [
+    "子曰：孟公绰为赵魏老则优，不可以为滕薛大夫。"
+   ],
+   "baihua": "孔子说，孟公绰做赵氏、魏氏的家臣长还有余力，却不能做滕国、薛国主持国政的大夫。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "明人生性分各有所能。",
+    "scan_page": "26"
+   }
+  },
+  {
+   "chapter": "14.13",
+   "title": "子路问成人",
+   "url": "https://yikonglu.com/lunyu/xian-wen/13.html",
+   "text": "子路问成人。子曰：若臧武仲之知，公绰之不欲，卞庄子之勇，冉求之艺，文之以礼乐，亦可以为成人矣。曰：今之成人者何必然？见利思义，见危授命，久要不忘平生之言，亦可以为成人矣。",
+   "sentences": [
+    "子路问成人。",
+    "子曰：若臧武仲之知，公绰之不欲，卞庄子之勇，冉求之艺，文之以礼乐，亦可以为成人矣。",
+    "曰：今之成人者何必然？",
+    "见利思义，见危授命，久要不忘平生之言，亦可以为成人矣。"
+   ],
+   "baihua": "子路问怎样算完备的人，孔子说，有臧武仲的智慧、公绰的少欲、卞庄子的勇气、冉求的才艺，再用礼乐修饰，也就可以算了。孔子又说，如今所说的完人何必全都如此，见利益想到义，遇危难肯献身，旧日约定不忘，也可以算了。",
+   "citations": [
+    {
+     "text": "成人犹言全人……浑然不见一善成名之迹",
+     "source": "朱注",
+     "pages": [
+      "190",
+      "191"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "复加曰字者……成人之次也；程子“若今之成人……又其次者也”；胡氏一说、未详是否",
+     "source": "朱注、程子、胡氏",
+     "pages": [
+      "191",
+      "192"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "语成人之名……方可以称成人之名",
+     "source": "程子",
+     "pages": [
+      "191"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子路問成人者，問人何所行德可為成人者。",
+    "scan_page": "27"
+   }
+  },
+  {
+   "chapter": "14.14",
+   "title": "公叔文子",
+   "url": "https://yikonglu.com/lunyu/xian-wen/14.html",
+   "text": "子问公叔文子于公明贾曰：信乎，夫子不言、不笑、不取乎？公明贾对曰：以告者过也。夫子时然后言，人不厌其言；乐然后笑，人不厌其笑；义然后取，人不厌其取。子曰：其然，岂其然乎？",
+   "sentences": [
+    "子问公叔文子于公明贾曰：信乎，夫子不言、不笑、不取乎？",
+    "公明贾对曰：以告者过也。",
+    "夫子时然后言，人不厌其言；乐然后笑，人不厌其笑；义然后取，人不厌其取。",
+    "子曰：其然，岂其然乎？"
+   ],
+   "baihua": "孔子问公明贾，公叔文子果真不说话、不笑、不取财吗，公明贾说，传话的人说过了，他该说才说、心乐才笑、合义才取，所以人不厌烦；孔子说，真是这样吗，难道真能这样吗？",
+   "citations": [
+    {
+     "text": "公叔文子卫大夫公孙拔也……盖疑之也",
+     "source": "朱注",
+     "pages": [
+      "192"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "防地名……是要君也；范氏曰……不好学也；杨氏曰……诛意之法也",
+     "source": "朱注、范氏、杨氏",
+     "pages": [
+      "192",
+      "193"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子問云云者，孔子見公明賈，相訪而問公叔文子之事。",
+    "scan_page": "28"
+   }
+  },
+  {
+   "chapter": "14.15",
+   "title": "臧武仲以防求为后",
+   "url": "https://yikonglu.com/lunyu/xian-wen/15.html",
+   "text": "子曰：臧武仲以防求为后于鲁，虽曰不要君，吾不信也。",
+   "sentences": [
+    "子曰：臧武仲以防求为后于鲁，虽曰不要君，吾不信也。"
+   ],
+   "baihua": "孔子说，臧武仲据着防邑，请求鲁国为臧氏立后，即使说自己不是要挟国君，我也不信。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子曰云云者，姓，臧，名，紇，武，諡也。",
+    "scan_page": "29"
+   }
+  },
+  {
+   "chapter": "14.16",
+   "title": "谲而不正",
+   "url": "https://yikonglu.com/lunyu/xian-wen/16.html",
+   "text": "子曰：晋文公谲而不正，齐桓公正而不谲。",
+   "sentences": [
+    "子曰：晋文公谲而不正，齐桓公正而不谲。"
+   ],
+   "baihua": "孔子说，晋文公行事诡谲而不正，齐桓公行事正当而不诡谲。",
+   "citations": [
+    {
+     "text": "晋文公名重耳……故夫子言此以发其隐",
+     "source": "朱注",
+     "pages": [
+      "193"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子曰云云者，晉文公，子重耳也。",
+    "scan_page": "31"
+   }
+  },
+  {
+   "chapter": "14.17",
+   "title": "子路疑管仲未仁",
+   "url": "https://yikonglu.com/lunyu/xian-wen/17.html",
+   "text": "子路曰：桓公杀公子纠，召忽死之，管仲不死。曰：未仁乎？子曰：桓公九合诸侯，不以兵车，管仲之力也。如其仁！如其仁！",
+   "sentences": [
+    "子路曰：桓公杀公子纠，召忽死之，管仲不死。",
+    "曰：未仁乎？",
+    "子曰：桓公九合诸侯，不以兵车，管仲之力也。",
+    "如其仁！",
+    "如其仁！"
+   ],
+   "baihua": "子路说，桓公杀公子纠，召忽为他而死，管仲却不死，这算不上仁吧；孔子说，桓公召集诸侯，不靠武力，这是管仲的力量，谁能比得上他的仁德，谁能比得上呢！",
+   "citations": [
+    {
+     "text": "按春秋传齐襄公无道……不得为仁也",
+     "source": "朱注",
+     "pages": [
+      "193"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "九春秋传作纠……则有仁之功矣",
+     "source": "朱注",
+     "pages": [
+      "193",
+      "194"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子路曰云云者，桓公是齊桓公，名小白也。",
+    "scan_page": "33"
+   }
+  },
+  {
+   "chapter": "14.18",
+   "title": "子贡疑管仲非仁",
+   "url": "https://yikonglu.com/lunyu/xian-wen/18.html",
+   "text": "子贡曰：管仲非仁者与？桓公杀公子纠，不能死，又相之。子曰：管仲相桓公，霸诸侯，一匡天下，民到于今受其赐。微管仲，吾其被发左衽矣。岂若匹夫匹妇之为谅也，自经于沟渎而莫之知也。",
+   "sentences": [
+    "子贡曰：管仲非仁者与？",
+    "桓公杀公子纠，不能死，又相之。",
+    "子曰：管仲相桓公，霸诸侯，一匡天下，民到于今受其赐。",
+    "微管仲，吾其被发左衽矣。",
+    "岂若匹夫匹妇之为谅也，自经于沟渎而莫之知也。"
+   ],
+   "baihua": "子贡怀疑管仲不为公子纠死、又辅佐桓公不仁，孔子说，管仲辅佐桓公称霸诸侯，使天下归正，百姓到今天还受他的恩惠；没有管仲，我们恐怕已披发左衽了。哪里能像普通男女只守小信，自缢在沟渠里而没有人知道。",
+   "citations": [
+    {
+     "text": "子贡意不死犹可……；霸与伯同……夷狄之俗也；谅小信也……人不知也",
+     "source": "朱注",
+     "pages": [
+      "194"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "程子曰桓公兄也……启万世反覆不忠之乱乎",
+     "source": "朱注引程子",
+     "pages": [
+      "194",
+      "195"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "如唐之王珪魏徵……何足赎哉；愚谓管仲有功而无罪……则不以相掩可也",
+     "source": "程子、朱熹按",
+     "pages": [
+      "195"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子貢曰云云者，此亦是為子糾故，並舉管仲非仁之迹言也。",
+    "scan_page": "35"
+   }
+  },
+  {
+   "chapter": "14.19",
+   "title": "同升诸公",
+   "url": "https://yikonglu.com/lunyu/xian-wen/19.html",
+   "text": "公叔文子之臣大夫僎，与文子同升诸公。子闻之曰：可以为文矣。",
+   "sentences": [
+    "公叔文子之臣大夫僎，与文子同升诸公。",
+    "子闻之曰：可以为文矣。"
+   ],
+   "baihua": "公叔文子把家臣大夫僎荐举到公朝，使他和自己同列；孔子听说后说，这就可以称为文了。",
+   "citations": [
+    {
+     "text": "臣家臣公公朝……；文者顺理而成章之谓……；洪氏曰……事君三也",
+     "source": "朱注、洪氏",
+     "pages": [
+      "195"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "仲叔圉即孔文子也……；尹氏曰……四方其训之",
+     "source": "朱注、尹氏",
+     "pages": [
+      "195",
+      "196"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云公叔文子之臣大夫僎者，僎，卽前孔子所問公明賈之文子有臣名僎，亦為大夫也。",
+    "scan_page": "36"
+   }
+  },
+  {
+   "chapter": "14.20",
+   "title": "卫灵公无道而不丧",
+   "url": "https://yikonglu.com/lunyu/xian-wen/20.html",
+   "text": "子言卫灵公之无道也，康子曰：夫如是，奚而不丧？孔子曰：仲叔圉治宾客，祝𬶍治宗庙，王孙贾治军旅。夫如是，奚其丧？",
+   "sentences": [
+    "子言卫灵公之无道也，康子曰：夫如是，奚而不丧？",
+    "孔子曰：仲叔圉治宾客，祝𬶍治宗庙，王孙贾治军旅。",
+    "夫如是，奚其丧？"
+   ],
+   "baihua": "孔子说卫灵公无道，季康子问，那他为什么不失位，孔子说，仲叔圉主持宾客，祝鮀主持宗庙，王孙贾主持军旅，有这样的人任事，怎么会失位呢？",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子曰云云者，孔子歎衞君無道行，意致其亡國乎。",
+    "scan_page": "36"
+   }
+  },
+  {
+   "chapter": "14.21",
+   "title": "其言之不怍",
+   "url": "https://yikonglu.com/lunyu/xian-wen/21.html",
+   "text": "子曰：其言之不怍，则为之也难。",
+   "sentences": [
+    "子曰：其言之不怍，则为之也难。"
+   ],
+   "baihua": "孔子说，大话说得毫不惭愧，真正做起来就难了。",
+   "citations": [
+    {
+     "text": "大言不惭……岂不难哉",
+     "source": "朱注",
+     "pages": [
+      "196"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "成子齐大夫……哀公十四年；是时孔子致仕居鲁……而犹请哀公讨之",
+     "source": "朱注",
+     "pages": [
+      "196"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "三子三家也……；孔子出而自言如此……；以君命往告……警之者深矣",
+     "source": "朱注",
+     "pages": [
+      "196",
+      "197"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "程子曰左氏记孔子之言曰……众寡哉；胡氏曰春秋之法……先发后闻可也",
+     "source": "程子、胡氏",
+     "pages": [
+      "197"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "犯谓犯颜谏争；范氏曰……先勿欺而后犯也",
+     "source": "朱注、范氏",
+     "pages": [
+      "197"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "積其實者，為之難也。",
+    "scan_page": "37"
+   }
+  },
+  {
+   "chapter": "14.22",
+   "title": "陈成子弑简公",
+   "url": "https://yikonglu.com/lunyu/xian-wen/22.html",
+   "text": "陈成子弑简公。孔子沐浴而朝，告于哀公曰：陈恒弑其君，请讨之。公曰：告夫三子！孔子曰：以吾从大夫之后，不敢不告也。君曰告夫三子者。之三子告，不可。孔子曰：以吾从大夫之后，不敢不告也。",
+   "sentences": [
+    "陈成子弑简公。",
+    "孔子沐浴而朝，告于哀公曰：陈恒弑其君，请讨之。",
+    "公曰：告夫三子！",
+    "孔子曰：以吾从大夫之后，不敢不告也。",
+    "君曰告夫三子者。",
+    "之三子告，不可。",
+    "孔子曰：以吾从大夫之后，不敢不告也。"
+   ],
+   "baihua": "陈成子杀了齐简公，孔子沐浴后朝见鲁哀公，请讨陈恒，哀公却让他去告诉三桓；孔子去告而三家不许。孔子前后都说，我曾列于大夫之后，不敢不告。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云陳成子殺簡公者，陳成子，陳恒也。",
+    "scan_page": "37"
+   }
+  },
+  {
+   "chapter": "14.23",
+   "title": "勿欺也而犯之",
+   "url": "https://yikonglu.com/lunyu/xian-wen/23.html",
+   "text": "子路问事君。子曰：勿欺也，而犯之。",
+   "sentences": [
+    "子路问事君。",
+    "子曰：勿欺也，而犯之。"
+   ],
+   "baihua": "子路问怎样事君，孔子说，不要欺骗他，但要敢当面劝谏。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子路問事君者，問孔子求事君之法。",
+    "scan_page": "38"
+   }
+  },
+  {
+   "chapter": "14.24",
+   "title": "上达下达",
+   "url": "https://yikonglu.com/lunyu/xian-wen/24.html",
+   "text": "子曰：君子上达，小人下达。",
+   "sentences": [
+    "子曰：君子上达，小人下达。"
+   ],
+   "baihua": "孔子说，君子向高明处进，小人向卑下处进。",
+   "citations": [
+    {
+     "text": "君子循天理……故日究乎污下",
+     "source": "朱注",
+     "pages": [
+      "197"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "程子曰为己……；程子曰古之学者为己……丧己；愚按……不昧于所从矣",
+     "source": "程子、朱熹按",
+     "pages": [
+      "197",
+      "198"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子曰云云者，識其履道而行之也。",
+    "scan_page": "38"
+   }
+  },
+  {
+   "chapter": "14.25",
+   "title": "为己为人",
+   "url": "https://yikonglu.com/lunyu/xian-wen/25.html",
+   "text": "子曰：古之学者为己，今之学者为人。",
+   "sentences": [
+    "子曰：古之学者为己，今之学者为人。"
+   ],
+   "baihua": "孔子说，古人学习为了使自己真正有所得，如今的人学习却为了让别人知道自己。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "明今古有異也。",
+    "scan_page": "38"
+   }
+  },
+  {
+   "chapter": "14.26",
+   "title": "蘧伯玉使人",
+   "url": "https://yikonglu.com/lunyu/xian-wen/26.html",
+   "text": "蘧伯玉使人于孔子。孔子与之坐而问焉，曰：夫子何为？对曰：夫子欲寡其过而未能也。使者出。子曰：使乎！使乎！",
+   "sentences": [
+    "蘧伯玉使人于孔子。",
+    "孔子与之坐而问焉，曰：夫子何为？",
+    "对曰：夫子欲寡其过而未能也。",
+    "使者出。",
+    "子曰：使乎！",
+    "使乎！"
+   ],
+   "baihua": "蘧伯玉派人问候孔子，孔子让使者坐下，问他主人做什么，使者说，主人想减少自己的过失，还没做到；使者出去后，孔子连声称赞，这真是使者，这真是使者。",
+   "citations": [
+    {
+     "text": "蘧伯玉卫大夫名瑗……故夫子再言使乎以重美之",
+     "source": "朱注",
+     "pages": [
+      "198"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "按庄周称伯玉……而夫子亦信之也",
+     "source": "朱注",
+     "pages": [
+      "198"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云蘧伯玉使人於孔子者，使人往孔子處。",
+    "scan_page": "39"
+   }
+  },
+  {
+   "chapter": "14.27",
+   "title": "不在其位",
+   "url": "https://yikonglu.com/lunyu/xian-wen/27.html",
+   "text": "子曰：不在其位，不谋其政。",
+   "sentences": [
+    "子曰：不在其位，不谋其政。"
+   ],
+   "baihua": "孔子说，不居于那个职位，就不谋划那个职位的政事。",
+   "citations": [
+    {
+     "text": "重出；此艮卦之象辞也……类记之也；范氏曰……皆得其职也；耻者不敢尽之意过者欲有余之辞",
+     "source": "朱注、范氏",
+     "pages": [
+      "198",
+      "199"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子曰云云者，各專己職，不得濫謀圖他人之事。",
+    "scan_page": "39"
+   }
+  },
+  {
+   "chapter": "14.28",
+   "title": "思不出其位",
+   "url": "https://yikonglu.com/lunyu/xian-wen/28.html",
+   "text": "曾子曰：君子思不出其位。",
+   "sentences": [
+    "曾子曰：君子思不出其位。"
+   ],
+   "baihua": "曾子说，君子思虑不越出自己的职分。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云曾子曰云云者，君子思慮當己分內，不得出己之外，而思他人事也。",
+    "scan_page": "39"
+   }
+  },
+  {
+   "chapter": "14.29",
+   "title": "耻其言而过其行",
+   "url": "https://yikonglu.com/lunyu/xian-wen/29.html",
+   "text": "子曰：君子耻其言而过其行。",
+   "sentences": [
+    "子曰：君子耻其言而过其行。"
+   ],
+   "baihua": "孔子说，君子说话不敢说尽，做事却希望超过所说的。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "君子之人，顧言愼行。",
+    "scan_page": "39"
+   }
+  },
+  {
+   "chapter": "14.30",
+   "title": "君子道者三",
+   "url": "https://yikonglu.com/lunyu/xian-wen/30.html",
+   "text": "子曰：君子道者三，我无能焉：仁者不忧，知者不惑，勇者不惧。子贡曰：夫子自道也。",
+   "sentences": [
+    "子曰：君子道者三，我无能焉：仁者不忧，知者不惑，勇者不惧。",
+    "子贡曰：夫子自道也。"
+   ],
+   "baihua": "孔子说，君子的道有三项，我还没能做到，仁者不忧，智者不惑，勇者不惧；子贡说，这是老师谦逊地说自己啊。",
+   "citations": [
+    {
+     "text": "自责以勉人也；道言也……；尹氏曰成德以仁为先……以此",
+     "source": "朱注、尹氏",
+     "pages": [
+      "199"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子曰云云者，言君子所行之道有三，夫子自謙我不能行其一也。",
+    "scan_page": "39"
+   }
+  },
+  {
+   "chapter": "14.31",
+   "title": "子贡方人",
+   "url": "https://yikonglu.com/lunyu/xian-wen/31.html",
+   "text": "子贡方人。子曰：赐也贤乎哉？夫我则不暇。",
+   "sentences": [
+    "子贡方人。",
+    "子曰：赐也贤乎哉？",
+    "夫我则不暇。"
+   ],
+   "baihua": "子贡比较人物的长短，孔子说，端木赐已经很贤了吗，我却没有这样闲暇。",
+   "citations": [
+    {
+     "text": "方比也……以深抑之；谢氏曰……如此；凡章指同……亦可见矣",
+     "source": "朱注、谢氏",
+     "pages": [
+      "199"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子貢方人者，比方人也。",
+    "scan_page": "40"
+   }
+  },
+  {
+   "chapter": "14.32",
+   "title": "不患人之不己知",
+   "url": "https://yikonglu.com/lunyu/xian-wen/32.html",
+   "text": "子曰：不患人之不己知，患其不能也。",
+   "sentences": [
+    "子曰：不患人之不己知，患其不能也。"
+   ],
+   "baihua": "孔子说，不必忧虑别人不了解自己，应忧虑自己没有本领。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "言不患人之不知我之有才能也，正患無才能耳。",
+    "scan_page": "40"
+   }
+  },
+  {
+   "chapter": "14.33",
+   "title": "不逆诈不亿不信",
+   "url": "https://yikonglu.com/lunyu/xian-wen/33.html",
+   "text": "子曰：不逆诈，不亿不信。抑亦先觉者，是贤乎！",
+   "sentences": [
+    "子曰：不逆诈，不亿不信。",
+    "抑亦先觉者，是贤乎！"
+   ],
+   "baihua": "孔子说，不预先猜别人欺诈，也不凭空料想别人怀疑自己，却能及早察觉实情，这样才贤啊。",
+   "citations": [
+    {
+     "text": "逆未至而迎之也……乃为贤也；杨氏曰……斯亦不足观也已",
+     "source": "朱注、杨氏",
+     "pages": [
+      "199",
+      "200"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云不逆詐者，逆者，迎也。",
+    "scan_page": "40"
+   }
+  },
+  {
+   "chapter": "14.34",
+   "title": "微生亩",
+   "url": "https://yikonglu.com/lunyu/xian-wen/34.html",
+   "text": "微生亩谓孔子曰：丘，何为是栖栖者与？无乃为佞乎？孔子曰：非敢为佞也，疾固也。",
+   "sentences": [
+    "微生亩谓孔子曰：丘，何为是栖栖者与？",
+    "无乃为佞乎？",
+    "孔子曰：非敢为佞也，疾固也。"
+   ],
+   "baihua": "微生亩问孔子，孔丘，你为什么这样奔忙不安，莫非要靠口才取悦人；孔子说，不敢以口才取悦人，只是厌恶固执不通。",
+   "citations": [
+    {
+     "text": "微生姓亩名也……以悦人也；疾恶也……其警之亦深矣；骥善马之名……；尹氏曰……奚足尚哉",
+     "source": "朱注、尹氏",
+     "pages": [
+      "200"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云微生畝云云者，微生，姓也，畝，名也。",
+    "scan_page": "41"
+   }
+  },
+  {
+   "chapter": "14.35",
+   "title": "骥不称其力",
+   "url": "https://yikonglu.com/lunyu/xian-wen/35.html",
+   "text": "子曰：骥不称其力，称其德也。",
+   "sentences": [
+    "子曰：骥不称其力，称其德也。"
+   ],
+   "baihua": "孔子说，千里马受称赞，不只因它有力气，而因它性情驯良。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "稱德重力也。",
+    "scan_page": "41"
+   }
+  },
+  {
+   "chapter": "14.36",
+   "title": "以德报怨何如",
+   "url": "https://yikonglu.com/lunyu/xian-wen/36.html",
+   "text": "或曰：以德报怨，何如？子曰：何以报德？以直报怨，以德报德。",
+   "sentences": [
+    "或曰：以德报怨，何如？",
+    "子曰：何以报德？",
+    "以直报怨，以德报德。"
+   ],
+   "baihua": "有人问，用恩惠回报怨恨怎样，孔子说，那拿什么回报恩惠；应以公正回报怨恨，用恩惠回报恩惠。",
+   "citations": [
+    {
+     "text": "或人所称今见老子书德谓恩惠也",
+     "source": "朱注",
+     "pages": [
+      "200"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "言于其所怨……又将何以报之乎",
+     "source": "朱注",
+     "pages": [
+      "200"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "于其所怨者……不可忘也；或人之言可谓厚矣……则又未尝不厚也",
+     "source": "朱注",
+     "pages": [
+      "200",
+      "201"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云或曰者，或人問孔子曰，彼與世有怨，而此人欲行德以報彼怨，其事理何如也。",
+    "scan_page": "41"
+   }
+  },
+  {
+   "chapter": "14.37",
+   "title": "莫我知也夫",
+   "url": "https://yikonglu.com/lunyu/xian-wen/37.html",
+   "text": "子曰：莫我知也夫！子贡曰：何为其莫知子也？子曰：不怨天，不尤人。下学而上达。知我者其天乎！",
+   "sentences": [
+    "子曰：莫我知也夫！",
+    "子贡曰：何为其莫知子也？",
+    "子曰：不怨天，不尤人。",
+    "下学而上达。",
+    "知我者其天乎！"
+   ],
+   "baihua": "孔子叹没有人了解自己，子贡问为什么这样说；孔子说，我不怨天，不责人，从平常人事学起而上达天理，了解我的，大概只有天吧。",
+   "citations": [
+    {
+     "text": "夫子自叹……惜乎其犹有所未达也",
+     "source": "朱注",
+     "pages": [
+      "201"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "程子曰不怨天不尤人……则亦不能以上达矣",
+     "source": "程子",
+     "pages": [
+      "201"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "莫，無也。",
+    "scan_page": "42"
+   }
+  },
+  {
+   "chapter": "14.38",
+   "title": "公伯寮愬子路",
+   "url": "https://yikonglu.com/lunyu/xian-wen/38.html",
+   "text": "公伯寮愬子路于季孙。子服景伯以告，曰：夫子固有惑志于公伯寮，吾力犹能肆诸市朝。子曰：道之将行也与？命也。道之将废也与？命也。公伯寮其如命何！",
+   "sentences": [
+    "公伯寮愬子路于季孙。",
+    "子服景伯以告，曰：夫子固有惑志于公伯寮，吾力犹能肆诸市朝。",
+    "子曰：道之将行也与？",
+    "命也。",
+    "道之将废也与？",
+    "命也。",
+    "公伯寮其如命何！"
+   ],
+   "baihua": "公伯寮在季孙面前谗毁子路，子服景伯告诉孔子，季孙已受公伯寮的话迷惑，我还有力量杀他、陈尸示众；孔子说，道要推行或被废弃，都有命，公伯寮能把命怎么样？",
+   "citations": [
+    {
+     "text": "公伯寮鲁人……言欲诛寮；谢氏曰……；愚谓……而后泰然也",
+     "source": "朱注、谢氏、朱熹按",
+     "pages": [
+      "202"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云公伯寮云云者，公伯寮季氏，令信讒子路也。",
+    "scan_page": "43"
+   }
+  },
+  {
+   "chapter": "14.39",
+   "title": "贤者辟世",
+   "url": "https://yikonglu.com/lunyu/xian-wen/39.html",
+   "text": "子曰：贤者辟世，其次辟地，其次辟色，其次辟言。",
+   "sentences": [
+    "子曰：贤者辟世，其次辟地，其次辟色，其次辟言。"
+   ],
+   "baihua": "孔子说，贤者有避开乱世隐居的，其次是离乱国往治国，再其次是见君上变了脸色便离开，再其次是听到不合的话才离开。",
+   "citations": [
+    {
+     "text": "天下无道而隐……；去乱国适治邦；礼貌衰而去；有违言而后去也；程子曰……；李氏曰……则凿矣",
+     "source": "朱注、程子、李氏",
+     "pages": [
+      "202"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子曰賢者避世者，聖賢者去就順時，若天地閉塞，則賢人使隱高蹈塵外也。",
+    "scan_page": "43"
+   }
+  },
+  {
+   "chapter": "14.40",
+   "title": "作者七人",
+   "url": "https://yikonglu.com/lunyu/xian-wen/40.html",
+   "text": "子曰：作者七人矣。",
+   "sentences": [
+    "子曰：作者七人矣。"
+   ],
+   "baihua": "孔子说，起身退隐的，已有七个人了。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "言此謂避世，已下自古已來作者唯七人而已矣。",
+    "scan_page": "44"
+   }
+  },
+  {
+   "chapter": "14.41",
+   "title": "石门晨门",
+   "url": "https://yikonglu.com/lunyu/xian-wen/41.html",
+   "text": "子路宿于石门。晨门曰：奚自？子路曰：自孔氏。曰：是知其不可而为之者与？",
+   "sentences": [
+    "子路宿于石门。",
+    "晨门曰：奚自？",
+    "子路曰：自孔氏。",
+    "曰：是知其不可而为之者与？"
+   ],
+   "baihua": "子路在石门过夜，守门人问他从哪里来，他说从孔氏来；守门人说，就是那个知道做不成还坚持去做的人吗？",
+   "citations": [
+    {
+     "text": "石门地名……何所从来也；胡氏曰……无不可为之时也",
+     "source": "朱注、胡氏",
+     "pages": [
+      "202",
+      "203"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "磬乐器……亦非常人矣；硁硁石声……不能适浅深之宜",
+     "source": "朱注",
+     "pages": [
+      "203"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "果哉叹其果于忘世也……则亦无所难矣",
+     "source": "朱注",
+     "pages": [
+      "203"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子路宿於石門者，名門，地名也。",
+    "scan_page": "44"
+   }
+  },
+  {
+   "chapter": "14.42",
+   "title": "击磬荷蒉",
+   "url": "https://yikonglu.com/lunyu/xian-wen/42.html",
+   "text": "子击磬于卫。有荷蒉而过孔氏之门者，曰：有心哉！击磬乎！既而曰：鄙哉！硁硁乎！莫己知也，斯已而已矣。深则厉，浅则揭。子曰：果哉！末之难矣。",
+   "sentences": [
+    "子击磬于卫。",
+    "有荷蒉而过孔氏之门者，曰：有心哉！",
+    "击磬乎！",
+    "既而曰：鄙哉！",
+    "硁硁乎！",
+    "莫己知也，斯已而已矣。",
+    "深则厉，浅则揭。",
+    "子曰：果哉！",
+    "末之难矣。"
+   ],
+   "baihua": "孔子在卫国击磬，一个挑草筐的人经过，说这磬声真有心事，随后又说，太固执了，没人了解就算了，水深连衣涉过，水浅提衣走过；孔子说，真能果断地离开世事，这样便没有什么难处了。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子擊磬於衞者，孔子難時在衞而自以槌擊磬而為聲也。",
+    "scan_page": "45"
+   }
+  },
+  {
+   "chapter": "14.43",
+   "title": "高宗谅阴",
+   "url": "https://yikonglu.com/lunyu/xian-wen/43.html",
+   "text": "子张曰：书云：高宗谅阴，三年不言。何谓也？子曰：何必高宗，古之人皆然。君薨，百官总己以听于冢宰三年。",
+   "sentences": [
+    "子张曰：书云：高宗谅阴，三年不言。",
+    "何谓也？",
+    "子曰：何必高宗，古之人皆然。",
+    "君薨，百官总己以听于冢宰三年。"
+   ],
+   "baihua": "子张问，书上说高宗居丧三年不言，是什么意思，孔子说，何止高宗，古人都这样，国君死后，百官各守自己的职务，听命于冢宰三年。",
+   "citations": [
+    {
+     "text": "高宗商王武丁也……未详其义；言君薨……三年不言也；胡氏曰……非所忧矣；谢氏曰礼达而分定故民易使",
+     "source": "朱注、胡氏、谢氏",
+     "pages": [
+      "203",
+      "204"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子張曰云云者，高宗，殷中興王也，名武丁。",
+    "scan_page": "46"
+   }
+  },
+  {
+   "chapter": "14.44",
+   "title": "上好礼则民易使",
+   "url": "https://yikonglu.com/lunyu/xian-wen/44.html",
+   "text": "子曰：上好礼，则民易使也。",
+   "sentences": [
+    "子曰：上好礼，则民易使也。"
+   ],
+   "baihua": "孔子说，在上者喜好礼，百姓就容易役使。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "則民莫敢不敬，故易使也。",
+    "scan_page": "47"
+   }
+  },
+  {
+   "chapter": "14.45",
+   "title": "子路问君子",
+   "url": "https://yikonglu.com/lunyu/xian-wen/45.html",
+   "text": "子路问君子。子曰：修己以敬。曰：如斯而已乎？曰：修己以安人。曰：如斯而已乎？曰：修己以安百姓。修己以安百姓，尧舜其犹病诸！",
+   "sentences": [
+    "子路问君子。",
+    "子曰：修己以敬。",
+    "曰：如斯而已乎？",
+    "曰：修己以安人。",
+    "曰：如斯而已乎？",
+    "曰：修己以安百姓。",
+    "修己以安百姓，尧舜其犹病诸！"
+   ],
+   "baihua": "子路问君子，孔子说，以敬慎修养自己，子路问仅此而已吗，孔子说，修养自己而使别人安定；子路再问，孔子说，修养自己而使所有百姓安定，做到这一层，尧舜尚且担心不足。",
+   "citations": [
+    {
+     "text": "修己以敬夫子之言至矣尽矣……则非所以为圣人矣",
+     "source": "朱注",
+     "pages": [
+      "204",
+      "205"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "程子曰君子修己以安百姓……以此事天飨帝",
+     "source": "程子",
+     "pages": [
+      "205"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云子路問君子者，問為君子之法也。",
+    "scan_page": "47"
+   }
+  },
+  {
+   "chapter": "14.46",
+   "title": "原壤夷俟",
+   "url": "https://yikonglu.com/lunyu/xian-wen/46.html",
+   "text": "原壤夷俟。子曰：幼而不孙弟，长而无述焉，老而不死，是为贼！以杖叩其胫。",
+   "sentences": [
+    "原壤夷俟。",
+    "子曰：幼而不孙弟，长而无述焉，老而不死，是为贼！",
+    "以杖叩其胫。"
+   ],
+   "baihua": "原壤蹲踞着等孔子，孔子说，小时不谦逊敬长，长大没什么可称道，老而不死，真是害人；便用手杖轻敲他的小腿。",
+   "citations": [
+    {
+     "text": "原壤孔子之故人……若使勿蹲踞然",
+     "source": "朱注",
+     "pages": [
+      "205"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "阙党党名……以宠异之也；礼童子当隅坐随行……非宠而异之也",
+     "source": "朱注",
+     "pages": [
+      "205",
+      "206"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云原壤夷俟者，原壤者，方外之聖人，孔子之朋友，夷，踞也，俟，待也。",
+    "scan_page": "48"
+   }
+  },
+  {
+   "chapter": "14.47",
+   "title": "阙党童子",
+   "url": "https://yikonglu.com/lunyu/xian-wen/47.html",
+   "text": "阙党童子将命。或问之曰：益者与？子曰：吾见其居于位也，见其与先生并行也。非求益者也，欲速成者也。",
+   "sentences": [
+    "阙党童子将命。",
+    "或问之曰：益者与？",
+    "子曰：吾见其居于位也，见其与先生并行也。",
+    "非求益者也，欲速成者也。"
+   ],
+   "baihua": "阙党的童子传达宾主的话，有人问他是否很有长进；孔子说，我见他占着成人的座位，又与长者并行，他不是循序求进，而是急着装成大人。",
+   "citations": [],
+   "readings": [],
+   "huangkan_first_line": {
+    "text": "云闕黨童子將命者，五百家為黨，此黨名闕，故云闕黨也。",
+    "scan_page": "48"
+   }
+  }
+ ]
+}

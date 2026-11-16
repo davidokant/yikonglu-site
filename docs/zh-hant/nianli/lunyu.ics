@@ -2905,7 +2905,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270727
 DTEND;VALUE=DATE:20270728
 RRULE:FREQ=YEARLY
-SUMMARY:論語 12.8 君子質而已矣
+SUMMARY:論語 12.8 棘子成
 DESCRIPTION:論語 12.8：棘子成曰：君子質而已矣，何以文為
  ？子貢曰：惜乎！夫子之說，君子也。駟不及舌。文猶
  質也，質猶文也。虎豹之鞟猶犬羊之鞟。\nhttps://yikonglu.c
@@ -2919,7 +2919,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270728
 DTEND;VALUE=DATE:20270729
 RRULE:FREQ=YEARLY
-SUMMARY:論語 12.9 年飢
+SUMMARY:論語 12.9 哀公問年飢
 DESCRIPTION:論語 12.9：哀公問於有若曰：年飢，用不足，如
  之何？有若對曰：盍徹乎？曰：二，吾猶不足，如之何
  其徹也？對曰：百姓足，君孰與不足？百姓不足，君孰
@@ -2933,7 +2933,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270729
 DTEND;VALUE=DATE:20270730
 RRULE:FREQ=YEARLY
-SUMMARY:論語 12.10 子張問崇德、辨惑
+SUMMARY:論語 12.10 子張問崇德辨惑
 DESCRIPTION:論語 12.10：子張問崇德、辨惑。子曰：主忠信，
  徙義，崇德也。愛之欲其生，惡之欲其死。既欲其生，
  又欲其死，是惑也。誠不以富，亦祗以異。\nhttps://yikongl
@@ -2947,7 +2947,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270730
 DTEND;VALUE=DATE:20270731
 RRULE:FREQ=YEARLY
-SUMMARY:論語 12.11 齊景公問政於孔子
+SUMMARY:論語 12.11 齊景公問政
 DESCRIPTION:論語 12.11：齊景公問政於孔子。孔子對曰：君君
  ，臣臣，父父，子子。公曰：善哉！信如君不君，臣不
  臣，父不父，子不子，雖有粟，吾得而食諸？\nhttps://yiko
@@ -2961,7 +2961,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270731
 DTEND;VALUE=DATE:20270801
 RRULE:FREQ=YEARLY
-SUMMARY:論語 12.12、12.13 片言可以折獄者
+SUMMARY:論語 12.12、12.13 片言折獄
 DESCRIPTION:論語 12.12：子曰：片言可以折獄者，其由也與？
  子路無宿諾。\nhttps://yikonglu.com/zh-hant/lunyu/yan-yuan/12.html\n\
  n論語 12.13：子曰：聽訟，吾猶人也，必也使無訟乎！\nht
@@ -2989,7 +2989,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270802
 DTEND;VALUE=DATE:20270803
 RRULE:FREQ=YEARLY
-SUMMARY:論語 12.16 君子成人之美
+SUMMARY:論語 12.16 成人之美
 DESCRIPTION:論語 12.16：子曰：君子成人之美，不成人之惡。
  小人反是。\nhttps://yikonglu.com/zh-hant/lunyu/yan-yuan/16.html
 URL:https://yikonglu.com/zh-hant/lunyu/yan-yuan/16.html
@@ -3001,7 +3001,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270803
 DTEND;VALUE=DATE:20270804
 RRULE:FREQ=YEARLY
-SUMMARY:論語 12.17、12.18 季康子問政於孔子
+SUMMARY:論語 12.17、12.18 政者正也
 DESCRIPTION:論語 12.17：季康子問政於孔子。孔子對曰：政者
  ，正也。子帥以正，孰敢不正？\nhttps://yikonglu.com/zh-hant/l
  unyu/yan-yuan/17.html\n\n論語 12.18：季康子患盜，問於孔子。
@@ -3016,7 +3016,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270804
 DTEND;VALUE=DATE:20270805
 RRULE:FREQ=YEARLY
-SUMMARY:論語 12.19 如殺無道
+SUMMARY:論語 12.19 君子之德風
 DESCRIPTION:論語 12.19：季康子問政於孔子曰：如殺無道，以
  就有道，何如？孔子對曰：子為政，焉用殺？子欲善，
  而民善矣。君子之德風，小人之德草。草上之風，必偃
@@ -3030,7 +3030,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270805
 DTEND;VALUE=DATE:20270806
 RRULE:FREQ=YEARLY
-SUMMARY:論語 12.20 子張問
+SUMMARY:論語 12.20 子張問達
 DESCRIPTION:論語 12.20：子張問：士何如斯可謂之達矣？子曰
  ：何哉，爾所謂達者？子張對曰：在邦必聞，在家必聞
  。子曰：是聞也，非達也。夫達也者，質直而好義，察
@@ -3046,7 +3046,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270806
 DTEND;VALUE=DATE:20270807
 RRULE:FREQ=YEARLY
-SUMMARY:論語 12.21 樊遲從遊於舞雩之下
+SUMMARY:論語 12.21 樊遲從遊舞雩之下
 DESCRIPTION:論語 12.21：樊遲從遊於舞雩之下，曰：敢問崇德
  、修慝、辨惑。子曰：善哉問！先事後得，非崇德與？
  攻其惡，無攻人之惡，非修慝與？一朝之忿，忘其身，
@@ -3061,7 +3061,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270807
 DTEND;VALUE=DATE:20270808
 RRULE:FREQ=YEARLY
-SUMMARY:論語 12.22 樊遲問仁
+SUMMARY:論語 12.22 樊遲問仁問知
 DESCRIPTION:論語 12.22：樊遲問仁。子曰：愛人。問知。子曰
  ：知人。樊遲未達。子曰：舉直錯諸枉，能使枉者直。
  樊遲退，見子夏。曰：鄉也，吾見於夫子而問知，子曰
@@ -3107,7 +3107,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270810
 DTEND;VALUE=DATE:20270811
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.3 衛君待子而為政
+SUMMARY:論語 13.3 必也正名
 DESCRIPTION:論語 13.3：子路曰：衛君待子而為政，子將奚先
  ？子曰：必也，正名乎？子路曰：有是哉，子之迂也。
  奚其正？子曰：野哉由也！君子於其所不知，蓋闕如也
@@ -3170,7 +3170,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270814
 DTEND;VALUE=DATE:20270815
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.9 子適衛
+SUMMARY:論語 13.9 庶富教
 DESCRIPTION:論語 13.9：子適衛，冉有僕。子曰：庶矣哉！冉
  有曰：既庶矣，又何加焉？曰：富之。曰：既富矣，又
  何加焉？曰：教之。\nhttps://yikonglu.com/zh-hant/lunyu/zi-lu/9.ht
@@ -3198,7 +3198,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270816
 DTEND;VALUE=DATE:20270817
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.12、13.13 如有王者
+SUMMARY:論語 13.12、13.13 必世而後仁
 DESCRIPTION:論語 13.12：子曰：如有王者，必世而後仁。\nhttp
  s://yikonglu.com/zh-hant/lunyu/zi-lu/12.html\n\n論語 13.13：子曰：
  苟正其身矣，於從政乎何有？不能正其身，如正人何？\n
@@ -3225,7 +3225,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270818
 DTEND;VALUE=DATE:20270819
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.15 定公問
+SUMMARY:論語 13.15 定公問一言興邦
 DESCRIPTION:論語 13.15：定公問：一言而可以興邦，有諸？孔
  子對曰：言不可以若是其幾也。人之言曰：為君難，為
  臣不易。如知為君之難也，不幾乎一言而興邦乎？曰：
@@ -3257,7 +3257,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270820
 DTEND;VALUE=DATE:20270821
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.18 吾黨有直躬者
+SUMMARY:論語 13.18 直躬攘羊
 DESCRIPTION:論語 13.18：葉公語孔子曰：吾黨有直躬者，其父
  攘羊，而子證之。孔子曰：吾黨之直者異於是。父為子
  隱，子為父隱，直在其中矣。\nhttps://yikonglu.com/zh-hant/luny
@@ -3284,7 +3284,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270822
 DTEND;VALUE=DATE:20270823
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.20 何如斯可謂之士矣子曰行己有恥
+SUMMARY:論語 13.20 子貢問士
 DESCRIPTION:論語 13.20：子貢問曰：何如斯可謂之士矣？子曰
  ：行己有恥，使於四方，不辱君命，可謂士矣。曰：敢
  問其次。曰：宗族稱孝焉，鄉黨稱弟焉。曰：敢問其次
@@ -3300,7 +3300,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270823
 DTEND;VALUE=DATE:20270824
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.21 不得中行而與之
+SUMMARY:論語 13.21 狂狷
 DESCRIPTION:論語 13.21：子曰：不得中行而與之，必也狂狷乎
  ！狂者進取，狷者有所不為也。\nhttps://yikonglu.com/zh-hant/l
  unyu/zi-lu/21.html
@@ -3313,7 +3313,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270824
 DTEND;VALUE=DATE:20270825
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.22 人而無恆
+SUMMARY:論語 13.22 南人有言
 DESCRIPTION:論語 13.22：子曰：南人有言曰：人而無恆，不可
  以作巫醫。善夫！不恆其德，或承之羞。子曰：不佔而
  已矣。\nhttps://yikonglu.com/zh-hant/lunyu/zi-lu/22.html
@@ -3326,7 +3326,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270825
 DTEND;VALUE=DATE:20270826
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.23 君子和而不同
+SUMMARY:論語 13.23 和而不同
 DESCRIPTION:論語 13.23：子曰：君子和而不同，小人同而不和
  。\nhttps://yikonglu.com/zh-hant/lunyu/zi-lu/23.html
 URL:https://yikonglu.com/zh-hant/lunyu/zi-lu/23.html
@@ -3352,7 +3352,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270827
 DTEND;VALUE=DATE:20270828
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.25 君子易事而難說也
+SUMMARY:論語 13.25 易事難說
 DESCRIPTION:論語 13.25：子曰：君子易事而難說也：說之不以
  道，不說也；及其使人也，器之。小人難事而易說也：
  說之雖不以道，說也；及其使人也，求備焉。\nhttps://yiko
@@ -3366,7 +3366,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270828
 DTEND;VALUE=DATE:20270829
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.26、13.27 君子泰而不驕
+SUMMARY:論語 13.26、13.27 泰而不驕
 DESCRIPTION:論語 13.26：子曰：君子泰而不驕，小人驕而不泰
  。\nhttps://yikonglu.com/zh-hant/lunyu/zi-lu/26.html\n\n論語 13.27：
  子曰：剛毅、木訥，近仁。\nhttps://yikonglu.com/zh-hant/lunyu/z
@@ -3380,7 +3380,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270829
 DTEND;VALUE=DATE:20270830
 RRULE:FREQ=YEARLY
-SUMMARY:論語 13.28 何如斯可謂之士矣子曰切切、偲
+SUMMARY:論語 13.28 子路問士
 DESCRIPTION:論語 13.28：子路問曰：何如斯可謂之士矣？子曰
  ：切切、偲偲、怡怡如也，可謂士矣。朋友切切、偲偲
  ，兄弟怡怡。\nhttps://yikonglu.com/zh-hant/lunyu/zi-lu/28.html
@@ -3449,7 +3449,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270903
 DTEND;VALUE=DATE:20270904
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.6 羿善射
+SUMMARY:論語 14.6 南宮适問羿奡禹稷
 DESCRIPTION:論語 14.6：南宮适問於孔子曰：羿善射，奡盪舟
  ，俱不得其死然；禹稷躬稼，而有天下。夫子不答，南
  宮適出。子曰：君子哉若人！尚德哉若人！\nhttps://yikongl
@@ -3533,7 +3533,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270909
 DTEND;VALUE=DATE:20270910
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.14 信乎
+SUMMARY:論語 14.14 公叔文子
 DESCRIPTION:論語 14.14：子問公叔文子於公明賈曰：信乎，夫
  子不言、不笑、不取乎？公明賈對曰：以告者過也。夫
  子時然後言，人不厭其言；樂然後笑，人不厭其笑；義
@@ -3548,7 +3548,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270910
 DTEND;VALUE=DATE:20270911
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.15、14.16 臧武仲以防求為後於魯
+SUMMARY:論語 14.15、14.16 臧武仲以防求為後
 DESCRIPTION:論語 14.15：子曰：臧武仲以防求為後於魯，雖曰
  不要君，吾不信也。\nhttps://yikonglu.com/zh-hant/lunyu/xian-wen/1
  5.html\n\n論語 14.16：子曰：晉文公譎而不正，齊桓公正而
@@ -3562,7 +3562,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270911
 DTEND;VALUE=DATE:20270912
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.17 桓公殺公子糾
+SUMMARY:論語 14.17 子路疑管仲未仁
 DESCRIPTION:論語 14.17：子路曰：桓公殺公子糾，召忽死之，
  管仲不死。曰：未仁乎？子曰：桓公九合諸侯，不以兵
  車，管仲之力也。如其仁！如其仁！\nhttps://yikonglu.com/zh-
@@ -3576,7 +3576,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270912
 DTEND;VALUE=DATE:20270913
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.18 管仲非仁者與
+SUMMARY:論語 14.18 子貢疑管仲非仁
 DESCRIPTION:論語 14.18：子貢曰：管仲非仁者與？桓公殺公子
  糾，不能死，又相之。子曰：管仲相桓公，霸諸侯，一
  匡天下，民到於今受其賜。微管仲，吾其被髮左衽矣。
@@ -3591,7 +3591,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270913
 DTEND;VALUE=DATE:20270914
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.19 公叔文子之臣大夫僎
+SUMMARY:論語 14.19 同升諸公
 DESCRIPTION:論語 14.19：公叔文子之臣大夫僎，與文子同升諸
  公。子聞之曰：可以為文矣。\nhttps://yikonglu.com/zh-hant/luny
  u/xian-wen/19.html
@@ -3604,7 +3604,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270914
 DTEND;VALUE=DATE:20270915
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.20、14.21 子言衛靈公之無道也
+SUMMARY:論語 14.20、14.21 衛靈公無道而不喪
 DESCRIPTION:論語 14.20：子言衛靈公之無道也，康子曰：夫如
  是，奚而不喪？孔子曰：仲叔圉治賓客，祝鮀治宗廟，
  王孫賈治軍旅。夫如是，奚其喪？\nhttps://yikonglu.com/zh-han
@@ -3634,7 +3634,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270916
 DTEND;VALUE=DATE:20270917
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.23、14.24、14.25 子路問事君
+SUMMARY:論語 14.23、14.24、14.25 勿欺也而犯之
 DESCRIPTION:論語 14.23：子路問事君。子曰：勿欺也，而犯之
  。\nhttps://yikonglu.com/zh-hant/lunyu/xian-wen/23.html\n\n論語 14.24
  ：子曰：君子上達，小人下達。\nhttps://yikonglu.com/zh-hant/l
@@ -3649,7 +3649,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270917
 DTEND;VALUE=DATE:20270918
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.26 蘧伯玉使人於孔子
+SUMMARY:論語 14.26 蘧伯玉使人
 DESCRIPTION:論語 14.26：蘧伯玉使人於孔子。孔子與之坐而問
  焉，曰：夫子何為？對曰：夫子欲寡其過而未能也。使
  者出。子曰：使乎！使乎！\nhttps://yikonglu.com/zh-hant/lunyu/x
@@ -3707,7 +3707,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270921
 DTEND;VALUE=DATE:20270922
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.34 丘何為是棲棲者與
+SUMMARY:論語 14.34 微生畝
 DESCRIPTION:論語 14.34：微生畝謂孔子曰：丘，何為是棲棲者
  與？無乃為佞乎？孔子曰：非敢為佞也，疾固也。\nhttps:
  //yikonglu.com/zh-hant/lunyu/xian-wen/34.html
@@ -3747,7 +3747,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270924
 DTEND;VALUE=DATE:20270925
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.38 公伯寮愬子路於季孫
+SUMMARY:論語 14.38 公伯寮愬子路
 DESCRIPTION:論語 14.38：公伯寮愬子路於季孫。子服景伯以告
  ，曰：夫子固有惑志於公伯寮，吾力猶能肆諸市朝。子
  曰：道之將行也與？命也。道之將廢也與？命也。公伯
@@ -3775,7 +3775,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270926
 DTEND;VALUE=DATE:20270927
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.41 子路宿於石門
+SUMMARY:論語 14.41 石門晨門
 DESCRIPTION:論語 14.41：子路宿於石門。晨門曰：奚自？子路
  曰：自孔氏。曰：是知其不可而為之者與？\nhttps://yikongl
  u.com/zh-hant/lunyu/xian-wen/41.html
@@ -3788,7 +3788,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270927
 DTEND;VALUE=DATE:20270928
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.42 子擊磬於衛
+SUMMARY:論語 14.42 擊磬荷蕢
 DESCRIPTION:論語 14.42：子擊磬於衛。有荷蕢而過孔氏之門者
  ，曰：有心哉！擊磬乎！既而曰：鄙哉！硜硜乎！莫己
  知也，斯已而已矣。深則厲，淺則揭。子曰：果哉！末
@@ -3802,7 +3802,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270928
 DTEND;VALUE=DATE:20270929
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.43、14.44 書云
+SUMMARY:論語 14.43、14.44 高宗諒陰
 DESCRIPTION:論語 14.43：子張曰：書云：高宗諒陰，三年不言
  。何謂也？子曰：何必高宗，古之人皆然。君薨，百官
  總己以聽於冢宰三年。\nhttps://yikonglu.com/zh-hant/lunyu/xian-we
@@ -3844,7 +3844,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271001
 DTEND;VALUE=DATE:20271002
 RRULE:FREQ=YEARLY
-SUMMARY:論語 14.47 闕黨童子將命
+SUMMARY:論語 14.47 闕黨童子
 DESCRIPTION:論語 14.47：闕黨童子將命。或問之曰：益者與？
  子曰：吾見其居於位也，見其與先生並行也。非求益者
  也，欲速成者也。\nhttps://yikonglu.com/zh-hant/lunyu/xian-wen/47.h
@@ -3858,7 +3858,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271002
 DTEND;VALUE=DATE:20271003
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.1 衛靈公問陳於孔子
+SUMMARY:論語 15.1 君子固窮
 DESCRIPTION:論語 15.1：衛靈公問陳於孔子。孔子對曰：俎豆
  之事，則嘗聞之矣；軍旅之事，未之學也。明日遂行。
  在陳絕糧，從者病，莫能興。子路慍見曰：君子亦有窮
@@ -3873,7 +3873,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271003
 DTEND;VALUE=DATE:20271004
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.2 賜也
+SUMMARY:論語 15.2 予一以貫之
 DESCRIPTION:論語 15.2：子曰：賜也，女以予為多學而識之者
  與？對曰：然，非與？曰：非也，予一以貫之。\nhttps://y
  ikonglu.com/zh-hant/lunyu/wei-ling-gong/2.html
@@ -3886,7 +3886,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271004
 DTEND;VALUE=DATE:20271005
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.3、15.4 由知德者鮮矣
+SUMMARY:論語 15.3、15.4 知德者鮮
 DESCRIPTION:論語 15.3：子曰：由！知德者鮮矣。\nhttps://yikong
  lu.com/zh-hant/lunyu/wei-ling-gong/3.html\n\n論語 15.4：子曰：無為
  而治者，其舜也與？夫何為哉？恭己正南面而已矣。\nhtt
@@ -3915,7 +3915,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271006
 DTEND;VALUE=DATE:20271007
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.6 直哉史魚
+SUMMARY:論語 15.6 史魚與蘧伯玉
 DESCRIPTION:論語 15.6：子曰：直哉史魚！邦有道，如矢；邦
  無道，如矢。君子哉蘧伯玉！邦有道，則仕；邦無道，
  則可卷而懷之。\nhttps://yikonglu.com/zh-hant/lunyu/wei-ling-gong/6.
@@ -3929,7 +3929,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271007
 DTEND;VALUE=DATE:20271008
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.7、15.8 可與言而不與之言
+SUMMARY:論語 15.7、15.8 不失人亦不失言
 DESCRIPTION:論語 15.7：子曰：可與言而不與之言，失人；不
  可與言而與之言，失言。知者不失人，亦不失言。\nhttps:
  //yikonglu.com/zh-hant/lunyu/wei-ling-gong/7.html\n\n論語 15.8：子曰
@@ -3944,7 +3944,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271008
 DTEND;VALUE=DATE:20271009
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.9 子貢問為仁
+SUMMARY:論語 15.9 工欲善其事
 DESCRIPTION:論語 15.9：子貢問為仁。子曰：工欲善其事，必
  先利其器。居是邦也，事其大夫之賢者，友其士之仁者
  。\nhttps://yikonglu.com/zh-hant/lunyu/wei-ling-gong/9.html
@@ -3982,7 +3982,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271011
 DTEND;VALUE=DATE:20271012
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.12、15.13 已矣乎
+SUMMARY:論語 15.12、15.13 好德如好色
 DESCRIPTION:論語 15.12：子曰：已矣乎！吾未見好德如好色者
  也。\nhttps://yikonglu.com/zh-hant/lunyu/wei-ling-gong/12.html\n\n論語
   15.13：子曰：臧文仲其竊位者與？知柳下惠之賢，而不
@@ -4025,7 +4025,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271014
 DTEND;VALUE=DATE:20271015
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.18、15.19 君子病無能焉
+SUMMARY:論語 15.18、15.19 病無能
 DESCRIPTION:論語 15.18：子曰：君子病無能焉，不病人之不己
  知也。\nhttps://yikonglu.com/zh-hant/lunyu/wei-ling-gong/18.html\n\n論
  語 15.19：子曰：君子疾沒世而名不稱焉。\nhttps://yikonglu.c
@@ -4055,7 +4055,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271016
 DTEND;VALUE=DATE:20271017
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.23 有一言而可以終身行之者乎
+SUMMARY:論語 15.23 其恕乎
 DESCRIPTION:論語 15.23：子貢問曰：有一言而可以終身行之者
  乎？子曰：其恕乎！己所不欲，勿施於人。\nhttps://yikongl
  u.com/zh-hant/lunyu/wei-ling-gong/23.html
@@ -4068,7 +4068,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271017
 DTEND;VALUE=DATE:20271018
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.24 吾之於人也
+SUMMARY:論語 15.24 誰毀誰譽
 DESCRIPTION:論語 15.24：子曰：吾之於人也，誰毀誰譽？如有
  所譽者，其有所試矣。斯民也，三代之所以直道而行也
  。\nhttps://yikonglu.com/zh-hant/lunyu/wei-ling-gong/24.html
@@ -4081,7 +4081,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271018
 DTEND;VALUE=DATE:20271019
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.25、15.26 吾猶及史之闕文也
+SUMMARY:論語 15.25、15.26 史之闕文
 DESCRIPTION:論語 15.25：子曰：吾猶及史之闕文也，有馬者借
  人乘之。今亡矣夫！\nhttps://yikonglu.com/zh-hant/lunyu/wei-ling-g
  ong/25.html\n\n論語 15.26：子曰：巧言亂德，小不忍則亂大
@@ -4095,7 +4095,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271019
 DTEND;VALUE=DATE:20271020
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.27、15.28 眾惡之
+SUMMARY:論語 15.27、15.28 眾惡必察
 DESCRIPTION:論語 15.27：子曰：眾惡之，必察焉；眾好之，必
  察焉。\nhttps://yikonglu.com/zh-hant/lunyu/wei-ling-gong/27.html\n\n論
  語 15.28：子曰：人能弘道，非道弘人。\nhttps://yikonglu.com/
@@ -4121,7 +4121,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271021
 DTEND;VALUE=DATE:20271022
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.30、15.31 吾嘗終日不食
+SUMMARY:論語 15.30、15.31 思不如學
 DESCRIPTION:論語 15.30：子曰：吾嘗終日不食，終夜不寢，以
  思，無益，不如學也。\nhttps://yikonglu.com/zh-hant/lunyu/wei-lin
  g-gong/30.html\n\n論語 15.31：子曰：君子謀道不謀食。耕也
@@ -4150,7 +4150,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271023
 DTEND;VALUE=DATE:20271024
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.33 君子不可小知
+SUMMARY:論語 15.33 小知大受
 DESCRIPTION:論語 15.33：子曰：君子不可小知，而可大受也；
  小人不可大受，而可小知也。\nhttps://yikonglu.com/zh-hant/luny
  u/wei-ling-gong/33.html
@@ -4163,7 +4163,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271024
 DTEND;VALUE=DATE:20271025
 RRULE:FREQ=YEARLY
-SUMMARY:論語 15.34 民之於仁也
+SUMMARY:論語 15.34 民之於仁甚於水火
 DESCRIPTION:論語 15.34：子曰：民之於仁也，甚於水火。水火
  ，吾見蹈而死者矣，未見蹈仁而死者也。\nhttps://yikonglu.c
  om/zh-hant/lunyu/wei-ling-gong/34.html
@@ -4260,7 +4260,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271030
 DTEND;VALUE=DATE:20271031
 RRULE:FREQ=YEARLY
-SUMMARY:論語 16.3 祿之去公室
+SUMMARY:論語 16.3 三桓之子孫微矣
 DESCRIPTION:論語 16.3：孔子曰：祿之去公室，五世矣；政逮
  於大夫，四世矣；故夫三桓之子孫，微矣。\nhttps://yikongl
  u.com/zh-hant/lunyu/ji-shi/3.html
@@ -4339,7 +4339,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271105
 DTEND;VALUE=DATE:20271106
 RRULE:FREQ=YEARLY
-SUMMARY:論語 16.9 生而知之者
+SUMMARY:論語 16.9 生而知之者上也
 DESCRIPTION:論語 16.9：孔子曰：生而知之者，上也；學而知
  之者，次也；困而學之，又其次也；困而不學，民斯為
  下矣。\nhttps://yikonglu.com/zh-hant/lunyu/ji-shi/9.html
@@ -4392,7 +4392,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271109
 DTEND;VALUE=DATE:20271110
 RRULE:FREQ=YEARLY
-SUMMARY:論語 16.13 子亦有異聞乎
+SUMMARY:論語 16.13 陳亢問於伯魚
 DESCRIPTION:論語 16.13：陳亢問於伯魚曰：子亦有異聞乎？對
  曰：未也。嘗獨立，鯉趨而過庭。曰：學詩乎？對曰：
  未也。不學詩，無以言。鯉退而學詩。他日又獨立，鯉
@@ -4439,7 +4439,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271112
 DTEND;VALUE=DATE:20271113
 RRULE:FREQ=YEARLY
-SUMMARY:論語 17.2、17.3 性相近也
+SUMMARY:論語 17.2、17.3 性相近習相遠
 DESCRIPTION:論語 17.2：子曰：性相近也，習相遠也。\nhttps://
  yikonglu.com/zh-hant/lunyu/yang-huo/2.html\n\n論語 17.3：子曰：唯
  上知與下愚不移。\nhttps://yikonglu.com/zh-hant/lunyu/yang-huo/3.ht
@@ -4482,7 +4482,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271115
 DTEND;VALUE=DATE:20271116
 RRULE:FREQ=YEARLY
-SUMMARY:論語 17.6 子張問仁於孔子
+SUMMARY:論語 17.6 子張問仁
 DESCRIPTION:論語 17.6：子張問仁於孔子。孔子曰：能行五者
  於天下，為仁矣。請問之。曰：恭、寬、信、敏、惠。
  恭則不侮，寬則得眾，信則人任焉，敏則有功，惠則足
@@ -4512,7 +4512,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271117
 DTEND;VALUE=DATE:20271118
 RRULE:FREQ=YEARLY
-SUMMARY:論語 17.8 由也
+SUMMARY:論語 17.8 六言六蔽
 DESCRIPTION:論語 17.8：子曰：由也，女聞六言六蔽矣乎？對
  曰：未也。居！吾語女。好仁不好學，其蔽也愚；好知
  不好學，其蔽也蕩；好信不好學，其蔽也賊；好直不好
@@ -4527,7 +4527,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271118
 DTEND;VALUE=DATE:20271119
 RRULE:FREQ=YEARLY
-SUMMARY:論語 17.9 小子
+SUMMARY:論語 17.9 小子何莫學夫詩
 DESCRIPTION:論語 17.9：子曰：小子！何莫學夫詩？詩，可以
  興，可以觀，可以群，可以怨。邇之事父，遠之事君。
  多識於鳥獸草木之名。\nhttps://yikonglu.com/zh-hant/lunyu/yang-hu
@@ -4541,7 +4541,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271119
 DTEND;VALUE=DATE:20271120
 RRULE:FREQ=YEARLY
-SUMMARY:論語 17.10 女為周南召南矣乎
+SUMMARY:論語 17.10 子謂伯魚
 DESCRIPTION:論語 17.10：子謂伯魚曰：女為周南召南矣乎？人
  而不為周南召南，其猶正牆面而立也與？\nhttps://yikonglu.c
  om/zh-hant/lunyu/yang-huo/10.html
@@ -4582,7 +4582,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271122
 DTEND;VALUE=DATE:20271123
 RRULE:FREQ=YEARLY
-SUMMARY:論語 17.15 鄙夫可與事君也與哉
+SUMMARY:論語 17.15 鄙夫可與事君
 DESCRIPTION:論語 17.15：子曰：鄙夫可與事君也與哉？其未得
  之也，患得之；既得之，患失之。苟患失之，無所不至
  矣。\nhttps://yikonglu.com/zh-hant/lunyu/yang-huo/15.html
@@ -4609,7 +4609,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271124
 DTEND;VALUE=DATE:20271125
 RRULE:FREQ=YEARLY
-SUMMARY:論語 17.17、17.18 巧言令色
+SUMMARY:論語 17.17、17.18 巧言令色（重出）
 DESCRIPTION:論語 17.17：子曰：巧言令色，鮮矣仁。\nhttps://yi
  konglu.com/zh-hant/lunyu/yang-huo/17.html\n\n論語 17.18：子曰：惡
  紫之奪朱也，惡鄭聲之亂雅樂也，惡利口之覆邦家者。\n
@@ -4649,7 +4649,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271127
 DTEND;VALUE=DATE:20271128
 RRULE:FREQ=YEARLY
-SUMMARY:論語 17.21 宰我問
+SUMMARY:論語 17.21 宰我問三年之喪
 DESCRIPTION:論語 17.21：宰我問：三年之喪，期已久矣。君子
  三年不為禮，禮必壞；三年不為樂，樂必崩。舊穀既沒
  ，新穀既升，鑽燧改火，期可已矣。子曰：食夫稻，衣
@@ -4723,7 +4723,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271202
 DTEND;VALUE=DATE:20271203
 RRULE:FREQ=YEARLY
-SUMMARY:論語 18.1 微子去之
+SUMMARY:論語 18.1 殷有三仁
 DESCRIPTION:論語 18.1：微子去之，箕子為之奴，比干諫而死
  。孔子曰：殷有三仁焉。\nhttps://yikonglu.com/zh-hant/lunyu/wei-
  zi/1.html
@@ -4765,7 +4765,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271205
 DTEND;VALUE=DATE:20271206
 RRULE:FREQ=YEARLY
-SUMMARY:論語 18.5 鳳兮
+SUMMARY:論語 18.5 楚狂接輿
 DESCRIPTION:論語 18.5：楚狂接輿歌而過孔子曰：鳳兮！鳳兮
  ！何德之衰？往者不可諫，來者猶可追。已而，已而！
  今之從政者殆而！孔子下，欲與之言。趨而辟之，不得
@@ -4779,7 +4779,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271206
 DTEND;VALUE=DATE:20271207
 RRULE:FREQ=YEARLY
-SUMMARY:論語 18.6 長沮、桀溺耦而耕
+SUMMARY:論語 18.6 長沮桀溺耦而耕
 DESCRIPTION:論語 18.6：長沮、桀溺耦而耕，孔子過之，使子
  路問津焉。長沮曰：夫執輿者為誰？子路曰：為孔丘。
  曰：是魯孔丘與？曰：是也。曰：是知津矣。問於桀溺
@@ -4798,7 +4798,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271207
 DTEND;VALUE=DATE:20271208
 RRULE:FREQ=YEARLY
-SUMMARY:論語 18.7 子路從而後
+SUMMARY:論語 18.7 子路遇荷蓧丈人
 DESCRIPTION:論語 18.7：子路從而後，遇丈人，以杖荷蓧。子
  路問曰：子見夫子乎？丈人曰：四體不勤，五穀不分。
  孰為夫子？植其杖而芸。子路拱而立。止子路宿，殺雞
@@ -4846,7 +4846,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271210
 DTEND;VALUE=DATE:20271211
 RRULE:FREQ=YEARLY
-SUMMARY:論語 18.10 君子不施其親
+SUMMARY:論語 18.10 周公謂魯公
 DESCRIPTION:論語 18.10：周公謂魯公曰：君子不施其親。不使
  大臣怨乎不以。故舊無大故，則不棄也。無求備於一人
  。\nhttps://yikonglu.com/zh-hant/lunyu/wei-zi/10.html
@@ -4903,7 +4903,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271214
 DTEND;VALUE=DATE:20271215
 RRULE:FREQ=YEARLY
-SUMMARY:論語 19.4、19.5 雖小道
+SUMMARY:論語 19.4、19.5 雖小道必有可觀者焉
 DESCRIPTION:論語 19.4：子夏曰：雖小道，必有可觀者焉；致
  遠恐泥，是以君子不為也。\nhttps://yikonglu.com/zh-hant/lunyu/z
  i-zhang/4.html\n\n論語 19.5：子夏曰：日知其所亡，月無忘其
@@ -4930,7 +4930,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271216
 DTEND;VALUE=DATE:20271217
 RRULE:FREQ=YEARLY
-SUMMARY:論語 19.7、19.8、19.9 百工居肆以成其事
+SUMMARY:論語 19.7、19.8、19.9 百工居肆
 DESCRIPTION:論語 19.7：子夏曰：百工居肆以成其事，君子學
  以致其道。\nhttps://yikonglu.com/zh-hant/lunyu/zi-zhang/7.html\n\n論
  語 19.8：子夏曰：小人之過也必文。\nhttps://yikonglu.com/zh-h
@@ -4946,7 +4946,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271217
 DTEND;VALUE=DATE:20271218
 RRULE:FREQ=YEARLY
-SUMMARY:論語 19.10、19.11 君子信而後勞其民
+SUMMARY:論語 19.10、19.11 信而後勞其民
 DESCRIPTION:論語 19.10：子夏曰：君子信而後勞其民，未信則
  以為厲己也；信而後諫，未信則以為謗己也。\nhttps://yiko
  nglu.com/zh-hant/lunyu/zi-zhang/10.html\n\n論語 19.11：子夏曰：大
@@ -4977,7 +4977,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271219
 DTEND;VALUE=DATE:20271220
 RRULE:FREQ=YEARLY
-SUMMARY:論語 19.13、19.14、19.15 仕而優則學
+SUMMARY:論語 19.13、19.14、19.15 學而優則仕
 DESCRIPTION:論語 19.13：子夏曰：仕而優則學，學而優則仕。
  \nhttps://yikonglu.com/zh-hant/lunyu/zi-zhang/13.html\n\n論語 19.14：
  子游曰：喪致乎哀而止。\nhttps://yikonglu.com/zh-hant/lunyu/zi-z
@@ -5006,7 +5006,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271221
 DTEND;VALUE=DATE:20271222
 RRULE:FREQ=YEARLY
-SUMMARY:論語 19.18 吾聞諸夫子孟莊子之孝也
+SUMMARY:論語 19.18 孟莊子之孝
 DESCRIPTION:論語 19.18：曾子曰：吾聞諸夫子：孟莊子之孝也
  ，其他可能也；其不改父之臣，與父之政，是難能也。\n
  https://yikonglu.com/zh-hant/lunyu/zi-zhang/18.html
@@ -5032,7 +5032,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271223
 DTEND;VALUE=DATE:20271224
 RRULE:FREQ=YEARLY
-SUMMARY:論語 19.20 紂之不善
+SUMMARY:論語 19.20 紂之不善不如是之甚也
 DESCRIPTION:論語 19.20：子貢曰：紂之不善，不如是之甚也。
  是以君子惡居下流，天下之惡皆歸焉。\nhttps://yikonglu.com/
  zh-hant/lunyu/zi-zhang/20.html
@@ -5045,7 +5045,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271224
 DTEND;VALUE=DATE:20271225
 RRULE:FREQ=YEARLY
-SUMMARY:論語 19.21 君子之過也
+SUMMARY:論語 19.21 君子之過也如日月之食
 DESCRIPTION:論語 19.21：子貢曰：君子之過也，如日月之食焉
  ：過也，人皆見之；更也，人皆仰之。\nhttps://yikonglu.com/
  zh-hant/lunyu/zi-zhang/21.html
@@ -5072,7 +5072,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271226
 DTEND;VALUE=DATE:20271227
 RRULE:FREQ=YEARLY
-SUMMARY:論語 19.23 叔孫武叔語大夫於朝
+SUMMARY:論語 19.23 子貢賢於仲尼
 DESCRIPTION:論語 19.23：叔孫武叔語大夫於朝，曰：子貢賢於
  仲尼。子服景伯以告子貢。子貢曰：譬之宮牆，賜之牆
  也及肩，窺見室家之好。夫子之牆數仞，不得其門而入
@@ -5087,7 +5087,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271227
 DTEND;VALUE=DATE:20271228
 RRULE:FREQ=YEARLY
-SUMMARY:論語 19.24 叔孫武叔毀仲尼
+SUMMARY:論語 19.24 仲尼不可毀也
 DESCRIPTION:論語 19.24：叔孫武叔毀仲尼。子貢曰：無以為也
  ，仲尼不可毀也。他人之賢者，丘陵也，猶可逾也；仲
  尼，日月也，無得而逾焉。人雖欲自絕，其何傷於日月
@@ -5118,7 +5118,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271229
 DTEND;VALUE=DATE:20271230
 RRULE:FREQ=YEARLY
-SUMMARY:論語 20.1 諮爾舜
+SUMMARY:論語 20.1 堯曰諮爾舜
 DESCRIPTION:論語 20.1：堯曰：諮！爾舜！天之歷數在爾躬。
  允執其中。四海困窮，天祿永終。舜亦以命禹。曰：予
  小子履，敢用玄牡，敢昭告於皇皇后帝：有罪不敢赦。
@@ -5138,7 +5138,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271230
 DTEND;VALUE=DATE:20271231
 RRULE:FREQ=YEARLY
-SUMMARY:論語 20.2 何如斯可以從政矣
+SUMMARY:論語 20.2 子張問從政
 DESCRIPTION:論語 20.2：子張問於孔子曰：何如斯可以從政矣
  ？子曰：尊五美，屏四惡，斯可以從政矣。子張曰：何
  謂五美？子曰：君子惠而不費，勞而不怨，欲而不貪，
@@ -5159,7 +5159,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20271231
 DTEND;VALUE=DATE:20280101
 RRULE:FREQ=YEARLY
-SUMMARY:論語 20.3 不知命
+SUMMARY:論語 20.3 不知命無以為君子
 DESCRIPTION:論語 20.3：子曰：不知命，無以為君子也。不知
  禮，無以立也。不知言，無以知人也。\nhttps://yikonglu.com/
  zh-hant/lunyu/yao-yue/3.html

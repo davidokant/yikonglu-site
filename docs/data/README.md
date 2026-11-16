@@ -39,13 +39,29 @@ configs:
   data_files: lunyu-xian-jin.csv
 - config_name: yan-yuan
   data_files: lunyu-yan-yuan.csv
+- config_name: zi-lu
+  data_files: lunyu-zi-lu.csv
+- config_name: xian-wen
+  data_files: lunyu-xian-wen.csv
+- config_name: wei-ling-gong
+  data_files: lunyu-wei-ling-gong.csv
+- config_name: ji-shi
+  data_files: lunyu-ji-shi.csv
+- config_name: yang-huo
+  data_files: lunyu-yang-huo.csv
+- config_name: wei-zi
+  data_files: lunyu-wei-zi.csv
+- config_name: zi-zhang
+  data_files: lunyu-zi-zhang.csv
+- config_name: yao-yue
+  data_files: lunyu-yao-yue.csv
 ---
 
 # 一孔录《论语》逐章开放数据
 
 **来源与署名：一孔录 Yikonglu，<https://yikonglu.com>**（转用请署“一孔录 yikonglu.com”并附原章网址）
 
-一孔录逐字读《论语》，以朱熹《论语集注》（《四部备要》本）为底本，每章对照底本原页。本数据集是网站上已讲各章的核对底子，按篇各一份 CSV 与 JSON，随网站更新。现收 12 篇 284 章，开讲一篇加一篇。
+一孔录逐字读《论语》，以朱熹《论语集注》（《四部备要》本）为底本，每章对照底本原页。本数据集是网站上已讲各章的核对底子，按篇各一份 CSV 与 JSON，随网站更新。现收 20 篇 498 章，开讲一篇加一篇。
 
 ## 文件
 
@@ -54,7 +70,7 @@ configs:
 | `lunyu-<篇>.csv` | 章号、标题、原文、白话、网址 |
 | `lunyu-<篇>.json` | 以上各项，加分句、视频引到的注文原话及底本页码（citations）、读音（readings）、皇侃《论语义疏》首句及扫描页（huangkan_first_line） |
 
-篇：学而、为政、八佾、里仁、公冶长、雍也、述而、泰伯、子罕、乡党、先进、颜渊。章号按朱注分章（与杨伯峻《论语译注》分章偶有一两号之差）。
+篇：学而、为政、八佾、里仁、公冶长、雍也、述而、泰伯、子罕、乡党、先进、颜渊、子路、宪问、卫灵公、季氏、阳货、微子、子张、尧曰。章号按朱注分章（与杨伯峻《论语译注》分章偶有一两号之差）。
 
 ## 许可
 
