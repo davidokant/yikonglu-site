@@ -1477,7 +1477,7 @@ def about_zh(L, D, P):
     cards = [
         ("原", "每句有出处", "原文照底本逐字录入，注家原话标页码，附原书影像。", f"{P}lunyu/banben/", "看底本"),
         ("勘", "讲错公开记", "原来怎么说、改成什么、依据什么，按日期列着，旧的不删。", f"{P}kanwu.html", f"已记 {kwn} 处"),
-        ("法", "做法写明白", "智器帮我起草、配音、出图；底本、读法、引文由我逐字核定。我的读法署“一孔按”，不冒充古人。", f"{P}fangfa.html", "看做法"),
+        ("法", "做法写明白", "智器帮我起草讲稿、配音、出图，片子由我审片定版；引文和读音的底本页码由智器对着原页图核，页上可点开原页自己对。我的读法署“一孔按”，不冒充古人。", f"{P}fangfa.html", "看做法"),
         ("开", "数据公开", "原文、白话、读音、引文出处按篇下载，谁都能拿去核。", f"{P}kaifang.html", "下载"),
     ]
     grid = "".join(f'<a href="{h}"><i>{i}</i><b>{t}</b><p>{x}</p><span class="n">{n} →</span></a>' for i, t, x, h, n in cards)
@@ -3257,7 +3257,7 @@ configs:
 def kf_html(L):  # 开放数据页的分界说明
     K = lang_tab(KAIFANG, L.code)
     li = lambda xs: "<ul>" + "".join(f"<li>{x}</li>" for x in xs) + "</ul>"
-    return (f'<h2 id="fenjie">{K["h"]}</h2><p>{K["p"]}</p><h3>{K["oh"]}</h3>{li(K["o"])}<h3>{K["ch"]}</h3>{li(K["c"])}'
+    return (f'<h2 id="fenjie">{K["h"]}</h2><p>{K["p"]}</p><h3>{K["oh"]}</h3>{li(K["o"])}<h3>{K["ch"]}</h3>{li(K["c"])}<p>{K.get("pd") or ("" if L.code.startswith("zh") else KAIFANG["en"]["pd"])}</p>'
             f'<p>{K["biz"]}</p><p class="mailp">{MAIL}</p><p>{K["rule"]}</p><h3>{K["log"]}</h3>' + li([f"{a} {b}" for a, b in K["logs"]]))
 
 # 页底平台行：有网页主页的直接外链，微信系只能搜
