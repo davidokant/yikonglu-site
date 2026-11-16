@@ -1600,7 +1600,7 @@ def load_ddj():
     jd = rd("_讲读")  # 讲读札记（11-16 主人：讲读不等视频先补齐；评审/2026-11-16-道德经三字经网页讲读/ 札记转出）：盖过 _未讲 的一孔之见、初稿白话
     an = rd("_未讲")
     for c_, d_ in jd.items():
-        if d_.get("片里落点"): an[c_] = {k_: d_[k_] for k_ in ("片里落点", "常见读法", "字眼") if d_.get(k_)}
+        if d_.get("片里落点"): an[c_] = {k_: re.sub(r"〔[^〕]*〕", "", d_[k_]) for k_ in ("片里落点", "常见读法", "字眼") if d_.get(k_)}
         if d_.get("白话"): bh[c_] = d_["白话"]; bh_ok.add(c_)
     return {"qw": qw, "bh": bh, "bh_ok": bh_ok, "zj": rd("_逐句"), "an": an, "jd": jd, "hj": hj, "src": cfg.get("src", ""), "img": cfg.get("img", ""), "zhu": cfg.get("zhu") or "注文",
             "pages": json.load(open(pm, encoding="utf-8")) if os.path.exists(pm) else {},
