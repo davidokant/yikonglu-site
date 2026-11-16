@@ -1,0 +1,245 @@
+{
+ "license": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); 原文与古注为公版",
+ "attribution": "一孔录 Yikonglu, https://yikonglu.com",
+ "book": "论语",
+ "pian": "先进",
+ "chapters": [
+  {
+   "chapter": "11.1",
+   "title": "先进于礼乐",
+   "url": "https://yikonglu.com/lunyu/xian-jin/1.html",
+   "text": "子曰：先进于礼乐，野人也；后进于礼乐，君子也。如用之，则吾从先进。",
+   "sentences": [
+    "子曰：先进于礼乐，野人也；后进于礼乐，君子也。",
+    "如用之，则吾从先进。"
+   ],
+   "baihua": "孔子说，前辈学习礼乐，被人看作乡野之人；后辈学习礼乐，被人看作有文采的君子。如果要采用礼乐，我选择前辈的做法。",
+   "citations": [
+    {
+     "text": "先进后进，犹言前辈后辈……谓贤士大夫也",
+     "source": "朱注",
+     "pages": [
+      "141"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "程子曰：先进于礼乐……不自知其过于文也",
+     "source": "朱注引程子",
+     "pages": [
+      "141"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "用之，谓用礼乐……盖欲损过以就中也",
+     "source": "朱注",
+     "pages": [
+      "141"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "先进",
+     "pos": "先进第十一、先进于礼乐",
+     "du": "xiān jìn"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "先進者，先進受業者也。",
+    "scan_page": "40"
+   }
+  },
+  {
+   "chapter": "11.2",
+   "title": "从我于陈蔡",
+   "url": "https://yikonglu.com/lunyu/xian-jin/2.html",
+   "text": "子曰：从我于陈、蔡者，皆不及门也。德行：颜渊，闵子骞，冉伯牛，仲弓。言语：宰我，子贡。政事：冉有，季路。文学：子游，子夏。",
+   "sentences": [
+    "子曰：从我于陈、蔡者，皆不及门也。",
+    "德行：颜渊，闵子骞，冉伯牛，仲弓。",
+    "言语：宰我，子贡。",
+    "政事：冉有，季路。",
+    "文学：子游，子夏。"
+   ],
+   "baihua": "孔子说，曾跟随我在陈国、蔡国受困的弟子，如今都不在我门下了。德行出众的是颜渊、闵子骞、冉伯牛、仲弓，善言辞的是宰我、子贡，善政事的是冉有、季路，长于文献学问的是子游、子夏。",
+   "citations": [
+    {
+     "text": "孔子尝厄于陈、蔡之间……相从于患难之中也",
+     "source": "朱注",
+     "pages": [
+      "141"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "弟子因孔子之言……于此可见；程子曰……故知十哲世俗论也",
+     "source": "朱注、朱注引程子",
+     "pages": [
+      "142"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "闵子骞",
+     "pos": "闵子骞、闵子",
+     "du": "mǐn zǐ qiān"
+    },
+    {
+     "zi": "行",
+     "pos": "德行、言行、谨于行",
+     "du": "xíng"
+    },
+    {
+     "zi": "宰",
+     "pos": "宰我",
+     "du": "zǎi"
+    },
+    {
+     "zi": "冉",
+     "pos": "冉伯牛、冉有",
+     "du": "rǎn"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "孔子言時世亂離，道不行。",
+    "scan_page": "41"
+   }
+  },
+  {
+   "chapter": "11.3",
+   "title": "回也非助我者",
+   "url": "https://yikonglu.com/lunyu/xian-jin/3.html",
+   "text": "子曰：回也非助我者也，于吾言无所不说。",
+   "sentences": [
+    "子曰：回也非助我者也，于吾言无所不说。"
+   ],
+   "baihua": "孔子说，颜回不是能帮助我提出新见解的人，他对我说的话，没有不领会喜悦的。",
+   "citations": [
+    {
+     "text": "助我，若子夏之起予……其实乃深喜之",
+     "source": "朱注",
+     "pages": [
+      "142"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "胡氏曰：夫子之于回……又以深赞颜子云尔",
+     "source": "朱注引胡氏",
+     "pages": [
+      "142"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "说",
+     "pos": "无所不说",
+     "du": "yuè"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "聖人為教，須賢啟發。",
+    "scan_page": "42"
+   }
+  },
+  {
+   "chapter": "11.4",
+   "title": "孝哉闵子骞",
+   "url": "https://yikonglu.com/lunyu/xian-jin/4.html",
+   "text": "子曰：孝哉闵子骞！人不间于其父母昆弟之言。",
+   "sentences": [
+    "子曰：孝哉闵子骞！",
+    "人不间于其父母昆弟之言。"
+   ],
+   "baihua": "孔子说，闵子骞真孝顺啊，人们对他父母兄弟称赞他的话，没有异议。",
+   "citations": [
+    {
+     "text": "胡氏曰：父母兄弟称其孝友……故夫子叹而美之",
+     "source": "朱注引胡氏",
+     "pages": [
+      "142"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "闵子骞",
+     "pos": "闵子骞、闵子",
+     "du": "mǐn zǐ qiān"
+    },
+    {
+     "zi": "间",
+     "pos": "人不间于",
+     "du": "jiàn"
+    },
+    {
+     "zi": "昆",
+     "pos": "昆弟",
+     "du": "kūn"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "間，猶非也。昆，兄也。",
+    "scan_page": "42"
+   }
+  },
+  {
+   "chapter": "11.5",
+   "title": "南容三复白圭",
+   "url": "https://yikonglu.com/lunyu/xian-jin/5.html",
+   "text": "南容三复白圭，孔子以其兄之子妻之。",
+   "sentences": [
+    "南容三复白圭，孔子以其兄之子妻之。"
+   ],
+   "baihua": "南容反复诵读白玉之瑕尚可磨去、言语之失却不可挽回的诗句，孔子把哥哥的女儿嫁给了他。",
+   "citations": [
+    {
+     "text": "诗大雅抑之篇曰……故孔子以兄子妻之",
+     "source": "朱注",
+     "pages": [
+      "142",
+      "143"
+     ],
+     "paraphrase": false
+    },
+    {
+     "text": "范氏曰：言者行之表……则必能谨其行矣",
+     "source": "朱注引范氏",
+     "pages": [
+      "143"
+     ],
+     "paraphrase": false
+    }
+   ],
+   "readings": [
+    {
+     "zi": "三复",
+     "pos": "三复白圭",
+     "du": "sān fù"
+    },
+    {
+     "zi": "妻",
+     "pos": "以其兄之子妻之",
+     "du": "qì"
+    },
+    {
+     "zi": "圭",
+     "pos": "白圭",
+     "du": "guī"
+    }
+   ],
+   "huangkan_first_line": {
+    "text": "云南容三復白圭者，復，猶反也。",
+    "scan_page": "43"
+   }
+  }
+ ]
+}

@@ -2263,9 +2263,9 @@ DTEND;VALUE=DATE:20270613
 RRULE:FREQ=YEARLY
 SUMMARY:論語 9.26 衣敝縕袍
 DESCRIPTION:論語 9.26：子曰：衣敝縕袍，與衣狐貉者立，而
- 不恥者，其由也與？不忮不求，何用不臧？子路終身誦
- 之。子曰：是道也，何足以臧？\nhttps://yikonglu.com/zh-hant/l
- unyu/zi-han/26.html
+ 不恥者，其由也與！“不忮不求，何用不臧？”子路終
+ 身誦之。子曰：是道也，何足以臧？\nhttps://yikonglu.com/zh-
+ hant/lunyu/zi-han/26.html
 URL:https://yikonglu.com/zh-hant/lunyu/zi-han/26.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -2315,7 +2315,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270616
 DTEND;VALUE=DATE:20270617
 RRULE:FREQ=YEARLY
-SUMMARY:論語 10.1 孔子於鄉黨
+SUMMARY:論語 10.1 恂恂如也
 DESCRIPTION:論語 10.1：孔子於鄉黨，恂恂如也，似不能言者
  。其在宗廟朝廷，便便言，唯謹爾。\nhttps://yikonglu.com/zh-
  hant/lunyu/xiang-dang/1.html
@@ -2328,9 +2328,9 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270617
 DTEND;VALUE=DATE:20270618
 RRULE:FREQ=YEARLY
-SUMMARY:論語 10.2 朝與下大夫言
+SUMMARY:論語 10.2 侃侃誾誾
 DESCRIPTION:論語 10.2：朝，與下大夫言，侃侃如也；與上大
- 夫言，誾誾如也。君在，踧踖如也。與與如也。\nhttps://y
+ 夫言，誾誾如也。君在，踧踖如也，與與如也。\nhttps://y
  ikonglu.com/zh-hant/lunyu/xiang-dang/2.html
 URL:https://yikonglu.com/zh-hant/lunyu/xiang-dang/2.html
 TRANSP:TRANSPARENT
@@ -2359,7 +2359,7 @@ SUMMARY:論語 10.4 入公門
 DESCRIPTION:論語 10.4：入公門，鞠躬如也，如不容。立不中
  門，行不履閾。過位，色勃如也，足躩如也，其言似不
  足者。攝齊升堂，鞠躬如也，屏氣似不息者。出，降一
- 等，逞顏色，怡怡如也。沒階趨，翼如也。復其位，踧
+ 等，逞顏色，怡怡如也。沒階，趨翼如也。復其位，踧
  踖如也。\nhttps://yikonglu.com/zh-hant/lunyu/xiang-dang/4.html
 URL:https://yikonglu.com/zh-hant/lunyu/xiang-dang/4.html
 TRANSP:TRANSPARENT
@@ -2372,9 +2372,9 @@ DTEND;VALUE=DATE:20270621
 RRULE:FREQ=YEARLY
 SUMMARY:論語 10.5 執圭
 DESCRIPTION:論語 10.5：執圭，鞠躬如也，如不勝。上如揖，
- 下如授。勃如戰色，足蹜蹜，如有循。享禮，有容色。
- 私覿，愉愉如也。\nhttps://yikonglu.com/zh-hant/lunyu/xiang-dang/5.
- html
+ 下如授。勃如戰色，足蹜蹜如有循。享禮，有容色。私
+ 覿，愉愉如也。\nhttps://yikonglu.com/zh-hant/lunyu/xiang-dang/5.htm
+ l
 URL:https://yikonglu.com/zh-hant/lunyu/xiang-dang/5.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -2384,10 +2384,10 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270621
 DTEND;VALUE=DATE:20270622
 RRULE:FREQ=YEARLY
-SUMMARY:論語 10.6 君子不以紺緅飾
+SUMMARY:論語 10.6 衣服之制
 DESCRIPTION:論語 10.6：君子不以紺緅飾。紅紫不以為褻服。
  當暑，袗絺綌，必表而出之。緇衣羔裘，素衣麑裘，黃
- 衣狐裘。褻裘長。短右袂。必有寢衣，長一身有半。狐
+ 衣狐裘。褻裘長，短右袂。必有寢衣，長一身有半。狐
  貉之厚以居。去喪，無所不佩。非帷裳，必殺之。羔裘
  玄冠不以弔。吉月，必朝服而朝。\nhttps://yikonglu.com/zh-han
  t/lunyu/xiang-dang/6.html
@@ -2400,9 +2400,9 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270622
 DTEND;VALUE=DATE:20270623
 RRULE:FREQ=YEARLY
-SUMMARY:論語 10.7 齊必有明衣
-DESCRIPTION:論語 10.7：齊，必有明衣，布。齊，必變食，居
- 必遷坐。\nhttps://yikonglu.com/zh-hant/lunyu/xiang-dang/7.html
+SUMMARY:論語 10.7 齊必變食
+DESCRIPTION:論語 10.7：齊，必有明衣，布。齊必變食，居必
+ 遷坐。\nhttps://yikonglu.com/zh-hant/lunyu/xiang-dang/7.html
 URL:https://yikonglu.com/zh-hant/lunyu/xiang-dang/7.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -2417,8 +2417,8 @@ DESCRIPTION:論語 10.8：食不厭精，膾不厭細。食饐而餲，魚
  餒而肉敗，不食。色惡，不食。臭惡，不食。失飪，不
  食。不時，不食。割不正，不食。不得其醬，不食。肉
  雖多，不使勝食氣。惟酒無量，不及亂。沽酒市脯不食
- 。不撤薑食。不多食。祭於公，不宿肉。祭肉不出三日
- 。出三日，不食之矣。食不語，寢不言。雖疏食菜羹，
+ 。不撤薑食，不多食。祭於公，不宿肉。祭肉不出三日
+ ，出三日，不食之矣。食不語，寢不言。雖疏食菜羹，
  瓜祭，必齊如也。\nhttps://yikonglu.com/zh-hant/lunyu/xiang-dang/8.
  html
 URL:https://yikonglu.com/zh-hant/lunyu/xiang-dang/8.html
@@ -2430,7 +2430,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270624
 DTEND;VALUE=DATE:20270625
 RRULE:FREQ=YEARLY
-SUMMARY:論語 10.9、10.10 席不正
+SUMMARY:論語 10.9、10.10 席不正不坐
 DESCRIPTION:論語 10.9：席不正，不坐。\nhttps://yikonglu.com/zh-ha
  nt/lunyu/xiang-dang/9.html\n\n論語 10.10：鄉人飲酒，杖者出，
  斯出矣。鄉人儺，朝服而立於阼階。\nhttps://yikonglu.com/zh-
@@ -2444,7 +2444,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270625
 DTEND;VALUE=DATE:20270626
 RRULE:FREQ=YEARLY
-SUMMARY:論語 10.11、10.12 問人於他邦
+SUMMARY:論語 10.11、10.12 康子饋藥
 DESCRIPTION:論語 10.11：問人於他邦，再拜而送之。康子饋藥
  ，拜而受之。曰：丘未達，不敢嘗。\nhttps://yikonglu.com/zh-
  hant/lunyu/xiang-dang/11.html\n\n論語 10.12：廄焚。子退朝，曰
@@ -2459,9 +2459,9 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270626
 DTEND;VALUE=DATE:20270627
 RRULE:FREQ=YEARLY
-SUMMARY:論語 10.13 君賜食
-DESCRIPTION:論語 10.13：君賜食，必正席先嘗之；君賜腥，必
- 熟而薦之；君賜生，必畜之。侍食於君，君祭，先飯。
+SUMMARY:論語 10.13 事君
+DESCRIPTION:論語 10.13：君賜食，必正席先嘗之。君賜腥，必
+ 熟而薦之。君賜生，必畜之。侍食於君，君祭，先飯。
  疾，君視之，東首，加朝服，拖紳。君命召，不俟駕行
  矣。入太廟，每事問。\nhttps://yikonglu.com/zh-hant/lunyu/xiang-d
  ang/13.html
@@ -2474,8 +2474,8 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270627
 DTEND;VALUE=DATE:20270628
 RRULE:FREQ=YEARLY
-SUMMARY:論語 10.14 朋友死
-DESCRIPTION:論語 10.14：朋友死，無所歸。曰：於我殯。朋友
+SUMMARY:論語 10.14 朋友死無所歸
+DESCRIPTION:論語 10.14：朋友死，無所歸，曰：於我殯。朋友
  之饋，雖車馬，非祭肉，不拜。\nhttps://yikonglu.com/zh-hant/l
  unyu/xiang-dang/14.html
 URL:https://yikonglu.com/zh-hant/lunyu/xiang-dang/14.html
@@ -2488,10 +2488,10 @@ DTSTART;VALUE=DATE:20270628
 DTEND;VALUE=DATE:20270629
 RRULE:FREQ=YEARLY
 SUMMARY:論語 10.15 寢不尸
-DESCRIPTION:論語 10.15：寢不尸，居不容。見齊衰者，雖狎，
- 必變。見冕者與瞽者，雖褻，必以貌。凶服者式之。式
- 負版者。有盛饌，必變色而作。迅雷風烈，必變。\nhttps:
- //yikonglu.com/zh-hant/lunyu/xiang-dang/15.html
+DESCRIPTION:論語 10.15：寢不尸，居不容。見齊衰者，雖狎必
+ 變。見冕者與瞽者，雖褻必以貌。凶服者式之。式負版
+ 者。有盛饌，必變色而作。迅雷風烈必變。\nhttps://yikongl
+ u.com/zh-hant/lunyu/xiang-dang/15.html
 URL:https://yikonglu.com/zh-hant/lunyu/xiang-dang/15.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -2505,8 +2505,8 @@ SUMMARY:論語 10.16、10.17 升車
 DESCRIPTION:論語 10.16：升車，必正立執綏。車中，不內顧，
  不疾言，不親指。\nhttps://yikonglu.com/zh-hant/lunyu/xiang-dang/16
  .html\n\n論語 10.17：色斯舉矣，翔而後集。曰：山梁雌雉
- ，時哉！時哉！子路共之，三嗅而作。\nhttps://yikonglu.com/
- zh-hant/lunyu/xiang-dang/17.html
+ ，時哉時哉！子路共之，三嗅而作。\nhttps://yikonglu.com/zh-
+ hant/lunyu/xiang-dang/17.html
 URL:https://yikonglu.com/zh-hant/lunyu/xiang-dang/16.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -2529,7 +2529,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270701
 DTEND;VALUE=DATE:20270702
 RRULE:FREQ=YEARLY
-SUMMARY:論語 11.2 從我於陳、蔡者
+SUMMARY:論語 11.2 從我於陳蔡
 DESCRIPTION:論語 11.2：子曰：從我於陳、蔡者，皆不及門也
  。德行：顏淵，閔子騫，冉伯牛，仲弓。言語：宰我，
  子貢。政事：冉有，季路。文學：子游，子夏。\nhttps://y
@@ -2543,7 +2543,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270702
 DTEND;VALUE=DATE:20270703
 RRULE:FREQ=YEARLY
-SUMMARY:論語 11.3、11.4 回也非助我者也
+SUMMARY:論語 11.3、11.4 回也非助我者
 DESCRIPTION:論語 11.3：子曰：回也非助我者也，於吾言無所
  不說。\nhttps://yikonglu.com/zh-hant/lunyu/xian-jin/3.html\n\n論語 11
  .4：子曰：孝哉閔子騫！人不間於其父母昆弟之言。\nhttp

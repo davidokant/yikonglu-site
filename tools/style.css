@@ -1021,3 +1021,5 @@ th .hm{margin-left:0}
 .tmline{margin:4px 0 0;font-size:13px;color:var(--mute)}
 .tmeg{border-left:3px solid var(--accent2);padding:6px 14px;margin:12px 0;color:var(--fg)}.tmeg p{margin:2px 0}
 .tmlu{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px 14px}.tmlu li b{margin-right:6px}.tmlu li span{color:var(--mute);font-size:13px}
+
+.shuyuan .tmt{margin:18px auto 8px;max-width:360px;text-align:center}.shuyuan .tmt img{width:100%;height:auto;border-radius:6px;box-shadow:0 2px 14px rgba(0,0,0,.18)}.shuyuan .tmt figcaption{font-size:.85em;opacity:.75;margin-top:8px}

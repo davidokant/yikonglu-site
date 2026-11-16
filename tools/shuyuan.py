@@ -8,6 +8,7 @@ def esc(s): return html.escape(s or "", quote=True)
 LINK = {"zh": "一孔书院 · 题名", "en": "Yikonglu Academy"}
 
 AFDIAN = "https://afdian.com/item/d667fd6ae19d11f1a65c5254001e7c00"  # 11-16 主人在爱发电上架题名（一个商品两个型号）
+TMT_IMG = "https://img.yikonglu.com/shuyuan/timingtie-yangzhang.webp"  # 11-16 题名帖样张（主人“过”的那张，模拟登记）
 KOFI = "https://ko-fi.com/s/97c7197047"  # 11-16 Ko-fi 题名商品（主人上架）
 
 # 11-16 主人点卡：书院先开“题名”，入院页整页换成题名（文案 评审/2026-11-16-书院题名开卖/入院页-题名-文案-v1.1.md）；旧权益表、书友圈、院落学籍撤下
@@ -32,6 +33,7 @@ def body(L, live):
 <h2>题哪一天</h2><ul><li>生日：你的，孩子的，父母的。先在<a href="{P}nianli/#nlbday">年历页</a>查一查，那天读哪一章。</li><li>想记住的日子：结婚、开学、退休、一件事做成的那天。</li><li>你最喜欢的那一章所在的那一天。</li></ul>
 <p>挑之前先看那天读什么。比如 3 月 14 日是第 73 课，读 5.9“朽木不可雕也”，不一定适合题给孩子。</p>
 <h2>你得到什么</h2><ul><li>这一天归你题名一年：年历页、章页、公众号当日文末署名，加一句不超过 20 字的题记。</li><li>一张题名帖，可以存，可以转给你想送的人。</li><li>名字写进“2027 首轮题名录”，名录满 20 位后公开。</li><li>你的问题，一孔必答：每月至多一问，答案公开，署你的网名。</li></ul>
+<figure class="tmt"><img src="{TMT_IMG}" width="720" height="900" loading="lazy" alt="题名帖样张：2027 年 1 月 1 日，青山题“给十八岁的女儿，愿你一生有书可读。”，创始书友第 1 位，这一天读论语 1.1"><figcaption>{"題名帖樣張（模擬）：名字、題記、創始書友序號和這一天讀的那一章" if L.code == "zh-Hant" else "题名帖样张（模拟）：名字、题记、创始书友序号和这一天读的那一章"}</figcaption></figure>
 <h2>多少钱</h2>{PRICE_HANT if L.code == "zh-Hant" else PRICE_HANS}
 <h2>规矩</h2><ul><li>一天只收一位，先到先得；续题的人优先。</li><li>题记写给人，或者写给自己，不超过 20 字。不收商号、网址、联系方式，不谈时政。不合规矩的，一孔会请你改。</li><li>题名不碰讲读。每一句读法照样句句可核，不因为谁题了名改一个字。</li><li>用网名就行。本页不收真名、电话。</li></ul>
 <h2>退款</h2><ul><li>付款七日内，不问理由全退。</li><li>年历在你的日子之前停更的，全退。</li><li>题记被请改而你不愿改的，全退。</li></ul>
@@ -41,6 +43,7 @@ def body(L, live):
         main = f'''<p class="symotto">{T["motto"]}</p><p>{T["p1"]}</p>
 <h2>What it is</h2><p>From 1 January 2027, Yikonglu reads one passage of the Analects of Confucius each day: 365 lessons a year, the same passage on the same date every year. Name a day, and your name with a dedication of up to 20 Chinese characters (or 60 Latin letters) appears on that day's calendar entry and on the passage's page at yikonglu.com, for one year.</p>
 <h2>What you receive</h2><ul><li>The day is yours for a year: your name and dedication on the calendar and the passage page.</li><li>A keepsake card you can keep or give.</li><li>A place in the 2027 First Round list, published once it reaches 20 names.</li><li>One question a month answered by Yikonglu, publicly, under your name.</li></ul>
+<figure class="tmt"><img src="{TMT_IMG}" width="720" height="900" loading="lazy" alt="Sample keepsake card for 1 January 2027, named by a reader with a short dedication, reading Analects 1.1"><figcaption>Sample keepsake card (mock-up, in Chinese): your name, your dedication, your founding-member number and the passage read that day.</figcaption></figure>
 <h2>Price</h2><ul><li>Name a Day: US$29 for one year. The first hundred readers are founding members and can renew the same day at this price each year.</li><li>Name a Book: US$299 for one year. The Analects has twenty books; each can be named by one person only. Your name goes on that book's page and in the colophon of the 2027 complete reader.</li></ul>
 <h2>Rules</h2><ul><li>One person per day, first come first served; renewals come first.</li><li>Write your dedication to someone, or to yourself. No business names, links, contact details or politics; we may ask you to change it.</li><li>Naming never touches the readings: every line stays checkable, and nothing is changed for anyone.</li><li>A screen name is enough. We do not need your real name or phone number.</li></ul>
 <h2>Refunds</h2><ul><li>Full refund within 7 days of payment, no questions asked.</li><li>Full refund if the calendar stops before your day.</li><li>Full refund if we ask you to change your dedication and you prefer not to.</li></ul>

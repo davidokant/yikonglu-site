@@ -633,14 +633,14 @@ def parse_gao(path, yw):
     L = NEIBU_DING.sub("", open(path, encoding="utf-8").read().replace("\r", "")).split("\n")
     kmap, cur = {}, None
     for l in L:
-        m = re.match(r"^### (?:篇题；)?第(.+?)章", l)
+        m = re.match(r"^### (?:篇题；)?第([〇一二三四五六七八九十百至、]+)[章节]", l)  # 11-16：《乡党》稿按“第N节”分（朱熹十七节）
         if m: cur = m.group(0)
         if re.match(r"^### (开场|片尾)", l): cur = None
         k = re.match(r"^\*\*(K\d+)", l)
         if k and cur and "引子" not in l: kmap[k.group(1)] = cur  # 下篇引子不算本章
     pnum = next((v for k2, v in PIAN_NUM.items() if k2 in os.path.basename(path)), None)
     out = {}
-    sec2ch = {sec: [f"{pnum}.{n}" for n in cn_chs(re.match(r'^### (?:篇题；)?第(.+?)章', sec).group(1))] for sec in set(kmap.values())} if pnum else {}
+    sec2ch = {sec: [f"{pnum}.{n}" for n in cn_chs(re.match(r'^### (?:篇题；)?第([〇一二三四五六七八九十百至、]+)[章节]', sec).group(1))] for sec in set(kmap.values())} if pnum else {}
     HAN = lambda t: set(re.sub(r"[^\u3400-\u9fff]", "", t)) - set("之也者而其不以为于曰子乎矣焉则所")
     def pick(cs, text):  # 合讲一节：引文挂到字面最贴的那一章（数相同字），并列取前一章
         if len(cs) == 1: return cs[0]
