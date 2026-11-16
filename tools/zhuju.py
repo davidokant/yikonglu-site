@@ -213,6 +213,9 @@ def timing(c):
     return d if d.get("conf") == "稳" else None
 
 
+KJ_RECUT = set()
+
+
 def kj_data(c, sents, Z, ydir):
     """章页原页开卷与听读同步的数据：z＝每个字在原页面板上的框 [页, x, y, w, h]（按诵读顺序，与原文里的汉字一一对应）；
     t＝每个字的起止秒（只稳的章）；k＝小句 [起字, 止字]。字数对不上就不给。"""
@@ -234,6 +237,17 @@ def kj_data(c, sents, Z, ydir):
         k, i = [], 0
         for txt, a, b in tm.get("clauses") or []:
             n = len(CJK.findall(txt)); k.append([i, i + n]); i += n
+        # 小句按现在的原文标点：逐字时间的 clauses 若是按旧标点切的（边界落在没有标点的地方），就照现在的原文重切
+        cut, j = set(), 0
+        for ch in text:
+            if CJK.match(ch): j += 1
+            elif ch in "，。；：？！、" and j: cut.add(j)
+        cut.add(len(zs))
+        if i != len(zs) or any(b not in cut for _, b in k):
+            k, a = [], 0
+            for b in sorted(x for x in cut if x > 0):
+                if b > a: k.append([a, b]); a = b
+            i = a; KJ_RECUT.add(c)
         if i == len(zs): out["k"] = k
         out["d"] = tm.get("dur")
     return out
@@ -263,9 +277,18 @@ def zhuyin(c, sents, reads):
     zs = CJK.findall("".join(sents))
     if len(zs) != len(zi) or _vn(t2s("".join(zs))) != _vn(t2s("".join(x[0] for x in zi))): ZY_SKIP[c] = "字对不上"; return None
     for r in reads or []:
-        du = re.sub(r"（.*?）", "", r.get("du", "")).strip()
+        # 同一字在读音表里分几行（如 6.21 乐水的乐 yào、知者乐的乐 lè）：注音里的每个读法只要落在这几行之一就算对上
+        du = " ".join(re.sub(r"（.*?）", "", x.get("du", "")).strip() for x in reads if x.get("zi") == r.get("zi"))
         occ = [x[1] for x in zi if x[0] == r.get("zi")]
         if not occ: continue
+        # 读音表“位置”能在原文里找到的，只核那几处（同一章里同一字别处另读，如 2.18 行 xíng／xìng）
+        hz = "".join(x[0] for x in zi); at = []
+        for part in (r.get("pos") or "").split("、"):
+            pt = "".join(CJK.findall(part)); o = pt.find(r.get("zi") or "\0")
+            if len(pt) < 2 or o < 0: continue
+            i = hz.find(pt)
+            while i >= 0: at.append(i + o); i = hz.find(pt, i + 1)
+        if at: occ = [zi[i][1] for i in sorted(set(at))]
         multi = any(s in du for s in (" ", "；", "/", "，"))
         if (multi and not all(o in du for o in occ)) or (not multi and any(o != du for o in occ)):
             ZY_SKIP[c] = f"与网站读音表不一致：{r.get('zi')} 网站 {r.get('du')}，注音 {'/'.join(occ)}"; return None

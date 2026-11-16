@@ -2129,7 +2129,7 @@ def build_lang(L, D, write):
                       + "".join(f'<tr><td lang="zh-Hans">{"<span class=para>" + L.t("para") + "</span>" + esc(x["text"]) if x["para"] else "“" + esc(x["text"]) + "”"}</td><td>{esc(L.src(x["src"]))}</td><td>{pg(x["pages"]) if x["pages"] else "<span class=oth>" + esc(x["other"] or L.t("other_ed")) + "</span>"}</td></tr>' for x in g["cites"]) + "</tbody></table></section>")
         if g["reads"]:
             extra += (f'<section class="sec reads"><h2><i>音</i>{L.t("reads")}</h2><table><thead><tr><th>{L.t("th_zi")}</th><th>{L.t("th_pos")}</th><th>{L.t("th_du")}</th></tr></thead><tbody>'
-                      + "".join(f'<tr><td class="zi">{esc(x["zi"])}</td><td>{esc(x["pos"])}</td><td>{esc(x["du"])}</td></tr>' for x in g["reads"]) + "</tbody></table></section>")
+                      + "".join(f'<tr><td class="zi">{esc(x["zi"])}</td><td>{esc(x["pos"])}</td><td>{esc(x["du"])}{f'<small class="jin">（朱注音，今多读 {esc(x["jin"])}）</small>' if x.get("jin") and L.code.startswith("zh") else ""}</td></tr>' for x in g["reads"]) + "</tbody></table></section>")
         allpages = sorted({x for r in g["cites"] for x in r["pages"]} | set(g.get("qw_pages", [])), key=int)
         imgs = "".join(f'<a href="/yuanye/p{int(x):03d}.jpg" target="_blank"><img loading="lazy" src="/yuanye/p{int(x):03d}.jpg" alt="{f"论语 {c} 朱熹集注原页：四部备要本第 {x} 页" if L.code.startswith("zh") else L.t("pg", n=x)}"><span>{L.t("pg", n=x)}</span></a>' for x in allpages if x in pages_avail)
         if imgs: extra += f'<section class="sec shots"><h2><i>页</i>{L.t("shots")}</h2><div class="pages">{imgs}</div></section>'
@@ -2158,7 +2158,7 @@ def build_lang(L, D, write):
             if bh_html: bh_html = re.sub(r'(<p lang="zh-Hans">)(.*?)</p>', lambda m: f'{m.group(1)}《论语》{c} 全章“{esc(yw[c])}”的白话：{m.group(2)}{_tail("一孔录的读法；" + _sig)}</p>', bh_html, count=1, flags=re.S)
             if g["reads"]:
                 _gl = {k.split("|")[0]: gg for _, _, k, gg, _ in ZD["per"].get(c, []) if gg}
-                _rd = "；".join(f'“{x["pos"]}”的“{x["zi"]}”读 {x["du"]}' + (f'，朱熹注“{_gl[x["zi"]].rstrip("。")}”' if x["zi"] in _gl else "") for x in g["reads"])
+                _rd = "；".join(f'“{x["pos"]}”的“{x["zi"]}”读 {x["du"]}' + (f'（今多读 {x["jin"]}）' if x.get("jin") else "") + (f'，朱熹注“{_gl[x["zi"]].rstrip("。")}”' if x["zi"] in _gl else "") for x in g["reads"])
                 extra = extra.replace(f'<section class="sec reads"><h2><i>音</i>{L.t("reads")}</h2>', f'<section class="sec reads"><h2><i>音</i>{L.t("reads")}</h2><p class="zhaip">{esc(f"《论语》{c} 的读音：{_rd}。")}{_tail(_pg + "；" + _sig)}</p>', 1)
             if g["cites"]:
                 _c5 = "；".join(f'“{x["text"]}”（{L.src(x["src"])}，原页 {"、".join(x["pages"])}）' for x in g["cites"] if not x["para"] and x["pages"])
@@ -2177,7 +2177,7 @@ def build_lang(L, D, write):
                 zrows.append(d)
             ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{zx(L.code, c, j, x)}</span><span class="yi" hidden>{esc(zrows[j-1].get("bh", ""))}</span>' for j, x in enumerate(sents, 1))
             fig_html = (f'<figure class="yuanwen dz"><div class="dztools"><span class="prog">{pfull} · 本篇第 {cnum}/{PIAN[pnum][3]} 章</span><button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button>{langdu_btn(L.code, c)}</div>'
-                        f'<div class="dzgrid"><div><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-short="{f'yikonglu.com/lunyu/{c}' if L.code.startswith('zh') else ''}" data-sep="，" data-reads="{esc(json.dumps([[x["zi"], x["pos"], x["du"]] for x in g["reads"]], ensure_ascii=False))}" data-rl="{esc(L.t("ju_reads"))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}</div>'
+                        f'<div class="dzgrid"><div><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-short="{f'yikonglu.com/lunyu/{c}' if L.code.startswith('zh') else ''}" data-sep="，" data-reads="{esc(json.dumps([[x["zi"], x["pos"], x["du"] + (f"（朱注音，今多读 {x['jin']}）" if x.get("jin") else "")] for x in g["reads"]], ensure_ascii=False))}" data-rl="{esc(L.t("ju_reads"))}">{ju_html}</blockquote><figcaption>{L.t("source_line")}</figcaption>{rend_html}</div>'
                         f'<div class="yypane">{ZJ.page_pane(c, zpages, zper, "原页", ZJ.YDIR, f"论语 {c} 原文原页：朱熹《论语集注》四部备要本第 {{n}} 页")}</div></div>'
                         f'<script type="application/json" class="zjdata">{json.dumps(zrows, ensure_ascii=False).replace("</", "<\\/")}</script>{ZJ.kj_tag(c, sents, ZJD, ZJ.YDIR)}{f'<script type="application/json" class="zjzy">{json.dumps(zy_, separators=(",", ":"))}</script>' if zy_ else ""}</figure>')
         else:
@@ -3201,6 +3201,11 @@ def main(zdir, outdir, kanwu=None):
     for f in sorted(glob.glob(os.path.join(GAO_DIR, "*", "*稿*.md"))):
         for c, v in parse_gao(f, yw).items():
             gao.setdefault(c, {"cites": [], "reads": []}); gao[c]["cites"] += v["cites"]; gao[c]["reads"] += v["reads"]; gao[c].setdefault("qw_pages", []).extend(v.get("qw_pages", []))
+    for c, rows in json.load(open(os.path.join(HERE, "duyin_ding.json"), encoding="utf-8")).items():  # 11-16 主人定：照朱注音，另注今读
+        if c.startswith("_") or c not in gao: continue
+        for zi, pos, du, jin in rows:
+            for r in gao[c]["reads"]:
+                if r["zi"] == zi and (not pos or pos in r["pos"]): r["du"], r["jin"] = du, jin
     ch2ep = {c: (name, e) for name, e in eps.items() for c in e["chapters"]}
     key = lambda c: tuple(map(int, c.split(".")))
     pub = [c for c in sorted(ch2ep, key=key) if c in notes and c in yw]
@@ -3420,6 +3425,7 @@ def main(zdir, outdir, kanwu=None):
     open(os.path.join(outdir, ".nojekyll"), "w").write("")
     shutil.copy(os.path.join(HERE, "style.css"), os.path.join(outdir, "style.css"))
     print(f"生成 {len(urls)} 页 → {outdir}")
+    if ZJ.ZY_SKIP: print("注音卡没上：" + "；".join(f"{k} {v}" for k, v in sorted(ZJ.ZY_SKIP.items(), key=lambda kv: tuple(map(int, kv[0].split("."))))))
     img_out(outdir)
     short_links(outdir)
     img_sitemap(outdir)
