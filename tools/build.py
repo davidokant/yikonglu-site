@@ -2260,15 +2260,15 @@ def build_lang(L, D, write):
             _gl0 = {k.split("|")[0] for _, _, k, gg, _ in ZD["per"].get(c, []) if gg}
             _rz = [x for x in g["reads"] if x["zi"] in _gl0]; _rn = len(g["reads"]) - len(_rz)
             _rp = (_pill("ok", f"对过朱注反切 {len(_rz)}") if _rz else "") + (_pill("mid", f"已核 {_rn}") if _rn else "")
-            _yk = "一孔录选定" if c in D["zy"] else "讲稿定版"
+            _yk = "一孔录选定" if c in D["zy"] else "审片版讲稿"
             gist_html = gist_html.replace(f'<h2>{L.t("ch_gist")}</h2>', f'<h2>{L.t("ch_gist")}{_pill("mid", _yk)}</h2>', 1)
             bh_html = bh_html.replace(f'<h2><i>白</i>{bh_h2}</h2>', f'<h2><i>白</i>{bh_h2}{_pill("mid", "已核")}</h2>', 1)
             extra = extra.replace(f'<h2><i>核</i>{L.t("cites")}</h2>', f'<h2><i>核</i>{L.t("cites")}{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}</h2>', 1)
             extra = extra.replace(f'<h2><i>音</i>{L.t("reads")}</h2>', f'<h2><i>音</i>{L.t("reads")}{_rp}</h2>', 1)
             _qp = sorted(set(g.get("qw_pages") or []), key=int)
             _li = [f'<li><b>原文</b>{_pill("ok", "对过原页")}朱注本第 {"、".join(_qp) or "?"} 页' + ("，每个字框到原页的列上" if c in ZJD["on"] else "") + "</li>",
-                   f'<li><b>白话</b>{_pill("mid", "已核")}随讲稿定版，和视频一致</li>',
-                   f'<li><b>一孔按</b>{_pill("mid", _yk)}一孔录自己的读法，不是古注；' + ("这章各家读法不同，一孔录在几家里选定一种" if c in D["zy"] else "随视频讲稿定版") + "</li>"]
+                   f'<li><b>白话</b>{_pill("mid", "已核")}取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成</li>',
+                   f'<li><b>一孔按</b>{_pill("mid", _yk)}一孔录自己的读法，不是古注；' + ("这章各家读法不同，一孔录在几家里选定一种" if c in D["zy"] else "取自视频讲稿（讲稿经一孔审片定版）") + "</li>"]
             if g["cites"]: _li.append(f'<li><b>引文</b>{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}共 {len(g["cites"])} 条，点页码看原页' + (f"；其中 {len(_pa)} 条是转述，不是原话" if _pa else "") + "</li>")
             if g["reads"]: _li.append(f'<li><b>读音</b>{_rp}共 {len(g["reads"])} 处；有朱注反切的照反切</li>')
             _dh = len(HD_DAIHE.get(c, ()))
@@ -2856,14 +2856,14 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
                 f'<div><b>{len(_zqs)}<small>章</small></b><span>智器核</span><p>智器对着原页图核过页码的已讲章；{len(_zqs) - len(_zqn)} 章核于 11-16 以前' + (f'，之后新核 {len(_zqn)} 章，最近 {_zql}' if _zqn else '') + '</p></div>'
                 f'<div><b>{_rds}<small>条</small></b><span>读者报错后改过</span><p>' + (f'最近一次 {_rdl}，' if _rdl else '') + f'每条链到<a href="{P}kanwu.html">勘误页</a>，署报错人网名（经本人同意）</p></div></div>'
                 f'<p>三种分开计，日期从开始记录那天起算，之前的不补。</p>')
-        s5 += (f'<h3 id="hedui">核到哪了：《论语》核对账本</h3>{_big}<p>章页上每一类内容都带一个小标记：{_pill("ok", "对过原页")}是对着底本原页图核过，页码可以点开看；{_pill("mid", "已核")}是核过、但没有可点的原页：白话、一孔按随视频讲稿定版，个别引文核到的是别的版本；{_pill("todo", "待核")}是还没核完的，核完之前不上页面。下面的数字由网站每次生成时现算。</p>'
+        s5 += (f'<h3 id="hedui">核到哪了：《论语》核对账本</h3>{_big}<p>章页上每一类内容都带一个小标记：{_pill("ok", "对过原页")}是对着底本原页图核过，页码可以点开看；{_pill("mid", "已核")}是核过、但没有可点的原页：白话、一孔按取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成，个别引文核到的是别的版本；{_pill("todo", "待核")}是还没核完的，核完之前不上页面。下面的数字由网站每次生成时现算。</p>'
                f'<table class="num hdt"><thead><tr><th></th><th>{_pill("ok", "对过原页")}</th><th>{_pill("mid", "已核")}</th><th>{_pill("todo", "待核／初稿")}</th></tr></thead><tbody>'
                + _tr("原文", f"{_all} 章", "—", "—", f"全书每章都标了朱注本页码；其中 {len(ZJD['on'])} 章每个字框到了原页的列上")
                + _tr("引文（朱注等）", f"{_cok} 条", f"{_coth} 条", f"{_cdh} 条", f"已讲 {len(pub)} 章视频里引到的话；{_cpa} 条标“转述”，是概括意思")
                + _tr("读音", f"{_rz} 处", f"{len(_rd) - _rz} 处", "—", "有朱注反切的照反切，和今天通行读法不同的另注“今多读”")
-               + _tr("白话", "—", f"{len(pub) + _bok} 章", f"{_bdraft} 章", f"已讲 {len(pub)} 章随讲稿定版；未讲章是按底本直译的初稿，页上标明")
+               + _tr("白话", "—", f"{len(pub) + _bok} 章", f"{_bdraft} 章", f"已讲 {len(pub)} 章取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成；未讲章是按底本直译的初稿，页上标明")
                + _tr("一孔按", "—", f"{len(pub)} 章", "—", f"一孔录自己的读法，不是古注；其中 {_zy} 章各家读法不同，一孔录在几家里选定一种")
-               + f'</tbody></table><p>做法：引文、读音的页码由智器对着原页图逐条找出，页上可点开核对；白话和一孔按随视频讲稿一起看片定版。错了公开改，记在<a href="{P}kanwu.html">勘误页</a>，现有 {_kw} 条。</p>')
+               + f'</tbody></table><p>做法：引文、读音的页码由智器对着原页图逐条找出，页上可点开核对；白话和一孔按取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成。错了公开改，记在<a href="{P}kanwu.html">勘误页</a>，现有 {_kw} 条。</p>')
     elif DC and DC.get("rows"):
         s5 += f'<p>{F["s5c"].format(n=DC["episodes"], s=DC["segments"], c=DC["changed"], r=DC["ratio"], d=DC["updated"])}</p>'
         def eplink(ep):
