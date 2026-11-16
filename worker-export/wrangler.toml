@@ -1,0 +1,12 @@
+name = "yikonglu-export"
+main = "index.js"
+compatibility_date = "2025-09-01"
+workers_dev = false
+[[services]]
+binding = "LIVE"
+service = "yikonglu-live"
+[[kv_namespaces]]
+binding = "KV"
+id = "2034d650f91b4e9a98a4a70f4e20f009"
+[triggers]
+crons = ["7 * * * *"]
