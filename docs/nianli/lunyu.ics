@@ -1535,7 +1535,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270422
 DTEND;VALUE=DATE:20270423
 RRULE:FREQ=YEARLY
-SUMMARY:论语 7.11 富而可求也
+SUMMARY:论语 7.11 富而可求
 DESCRIPTION:论语 7.11：子曰：富而可求也，虽执鞭之士，吾
  亦为之。如不可求，从吾所好。\nhttps://yikonglu.com/lunyu/shu
  -er/11.html
@@ -1549,9 +1549,9 @@ DTSTART;VALUE=DATE:20270423
 DTEND;VALUE=DATE:20270424
 RRULE:FREQ=YEARLY
 SUMMARY:论语 7.12、7.13 子之所慎
-DESCRIPTION:论语 7.12：子之所慎：齐、战、疾。\nhttps://yikong
+DESCRIPTION:论语 7.12：子之所慎：齐，战，疾。\nhttps://yikong
  lu.com/lunyu/shu-er/12.html\n\n论语 7.13：子在齐闻韶，三月不
- 知肉味。曰：不图为乐之至于斯也！\nhttps://yikonglu.com/lun
+ 知肉味。曰：不图为乐之至于斯也。\nhttps://yikonglu.com/lun
  yu/shu-er/13.html
 URL:https://yikonglu.com/lunyu/shu-er/12.html
 TRANSP:TRANSPARENT
@@ -1564,8 +1564,8 @@ DTEND;VALUE=DATE:20270425
 RRULE:FREQ=YEARLY
 SUMMARY:论语 7.14 夫子为卫君乎
 DESCRIPTION:论语 7.14：冉有曰：夫子为卫君乎？子贡曰：诺
- 。吾将问之。入，曰：伯夷、叔齐何人也？曰：古之贤
- 人也。曰：怨乎？曰：求仁而得仁，又何怨。出，曰：
+ ，吾将问之。入，曰：伯夷、叔齐何人也？曰：古之贤
+ 人也。曰：怨乎？曰：求仁而得仁，又何怨？出，曰：
  夫子不为也。\nhttps://yikonglu.com/lunyu/shu-er/14.html
 URL:https://yikonglu.com/lunyu/shu-er/14.html
 TRANSP:TRANSPARENT
@@ -1589,10 +1589,10 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270426
 DTEND;VALUE=DATE:20270427
 RRULE:FREQ=YEARLY
-SUMMARY:论语 7.16、7.17 加我数年
+SUMMARY:论语 7.16、7.17 五十以学易
 DESCRIPTION:论语 7.16：子曰：加我数年，五十以学易，可以
  无大过矣。\nhttps://yikonglu.com/lunyu/shu-er/16.html\n\n论语 7.17
- ：子所雅言：诗、书、执礼，皆雅言也。\nhttps://yikonglu.c
+ ：子所雅言，诗、书、执礼，皆雅言也。\nhttps://yikonglu.c
  om/lunyu/shu-er/17.html
 URL:https://yikonglu.com/lunyu/shu-er/16.html
 TRANSP:TRANSPARENT
@@ -1619,8 +1619,8 @@ RRULE:FREQ=YEARLY
 SUMMARY:论语 7.19、7.20 我非生而知之者
 DESCRIPTION:论语 7.19：子曰：我非生而知之者，好古，敏以
  求之者也。\nhttps://yikonglu.com/lunyu/shu-er/19.html\n\n论语 7.20
- ：子不语：怪、力、乱、神。\nhttps://yikonglu.com/lunyu/shu-er
- /20.html
+ ：子不语怪、力、乱、神。\nhttps://yikonglu.com/lunyu/shu-er/20
+ .html
 URL:https://yikonglu.com/lunyu/shu-er/19.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -1648,7 +1648,7 @@ DESCRIPTION:论语 7.22：子曰：天生德于予，桓魋其如予何？\
  nhttps://yikonglu.com/lunyu/shu-er/22.html\n\n论语 7.23：子曰：二
  三子以我为隐乎？吾无隐乎尔。吾无行而不与二三子者
  ，是丘也。\nhttps://yikonglu.com/lunyu/shu-er/23.html\n\n论语 7.24
- ：子以四教：文、行、忠、信。\nhttps://yikonglu.com/lunyu/shu
+ ：子以四教：文，行，忠，信。\nhttps://yikonglu.com/lunyu/shu
  -er/24.html
 URL:https://yikonglu.com/lunyu/shu-er/22.html
 TRANSP:TRANSPARENT
@@ -1659,7 +1659,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270501
 DTEND;VALUE=DATE:20270502
 RRULE:FREQ=YEARLY
-SUMMARY:论语 7.25 圣人
+SUMMARY:论语 7.25 圣人吾不得而见之（得见有恒者）
 DESCRIPTION:论语 7.25：子曰：圣人，吾不得而见之矣；得见
  君子者，斯可矣。子曰：善人，吾不得而见之矣；得见
  有恒者，斯可矣。亡而为有，虚而为盈，约而为泰，难
@@ -1673,11 +1673,11 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270502
 DTEND;VALUE=DATE:20270503
 RRULE:FREQ=YEARLY
-SUMMARY:论语 7.26、7.27 子钓而不纲
+SUMMARY:论语 7.26、7.27 钓而不纲
 DESCRIPTION:论语 7.26：子钓而不纲，弋不射宿。\nhttps://yikong
  lu.com/lunyu/shu-er/26.html\n\n论语 7.27：子曰：盖有不知而作
- 之者，我无是也。多闻择其善者而从之，多见而识之，
- 知之次也。\nhttps://yikonglu.com/lunyu/shu-er/27.html
+ 之者，我无是也。多闻，择其善者而从之；多见而识之
+ ；知之次也。\nhttps://yikonglu.com/lunyu/shu-er/27.html
 URL:https://yikonglu.com/lunyu/shu-er/26.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -1689,7 +1689,7 @@ DTEND;VALUE=DATE:20270504
 RRULE:FREQ=YEARLY
 SUMMARY:论语 7.28、7.29 互乡难与言
 DESCRIPTION:论语 7.28：互乡难与言，童子见，门人惑。子曰
- ：与其进也，不与其退也，唯何甚！人洁己以进，与其
+ ：与其进也，不与其退也，唯何甚？人洁己以进，与其
  洁也，不保其往也。\nhttps://yikonglu.com/lunyu/shu-er/28.html\n\n
  论语 7.29：子曰：仁远乎哉？我欲仁，斯仁至矣。\nhttps:/
  /yikonglu.com/lunyu/shu-er/29.html
@@ -1702,10 +1702,10 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270504
 DTEND;VALUE=DATE:20270505
 RRULE:FREQ=YEARLY
-SUMMARY:论语 7.30 陈司败问
-DESCRIPTION:论语 7.30：陈司败问：昭公知礼乎？孔子曰：知
- 礼。孔子退，揖巫马期而进之，曰：吾闻君子不党，君
- 子亦党乎？君取于吴为同姓，谓之吴孟子。君而知礼，
+SUMMARY:论语 7.30 陈司败问昭公知礼乎
+DESCRIPTION:论语 7.30：陈司败问昭公知礼乎？孔子曰：知礼
+ 。孔子退，揖巫马期而进之，曰：吾闻君子不党，君子
+ 亦党乎？君取于吴，为同姓，谓之吴孟子。君而知礼，
  孰不知礼？巫马期以告。子曰：丘也幸，苟有过，人必
  知之。\nhttps://yikonglu.com/lunyu/shu-er/30.html
 URL:https://yikonglu.com/lunyu/shu-er/30.html
@@ -1731,7 +1731,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270506
 DTEND;VALUE=DATE:20270507
 RRULE:FREQ=YEARLY
-SUMMARY:论语 7.33 若圣与仁
+SUMMARY:论语 7.33 若圣与仁，则吾岂敢
 DESCRIPTION:论语 7.33：子曰：若圣与仁，则吾岂敢？抑为之
  不厌，诲人不倦，则可谓云尔已矣。公西华曰：正唯弟
  子不能学也。\nhttps://yikonglu.com/lunyu/shu-er/33.html
@@ -1744,7 +1744,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270507
 DTEND;VALUE=DATE:20270508
 RRULE:FREQ=YEARLY
-SUMMARY:论语 7.34、7.35 子疾病
+SUMMARY:论语 7.34、7.35 子疾病，子路请祷
 DESCRIPTION:论语 7.34：子疾病，子路请祷。子曰：有诸？子
  路对曰：有之。诔曰：祷尔于上下神祇。子曰：丘之祷
  久矣。\nhttps://yikonglu.com/lunyu/shu-er/34.html\n\n论语 7.35：子
@@ -1783,8 +1783,8 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270510
 DTEND;VALUE=DATE:20270511
 RRULE:FREQ=YEARLY
-SUMMARY:论语 8.1 泰伯
-DESCRIPTION:论语 8.1：子曰：泰伯，其可谓至德也已矣！三
+SUMMARY:论语 8.1 泰伯其可谓至德
+DESCRIPTION:论语 8.1：子曰：泰伯，其可谓至德也已矣。三
  以天下让，民无得而称焉。\nhttps://yikonglu.com/lunyu/tai-bo/1.
  html
 URL:https://yikonglu.com/lunyu/tai-bo/1.html
@@ -1810,10 +1810,11 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270512
 DTEND;VALUE=DATE:20270513
 RRULE:FREQ=YEARLY
-SUMMARY:论语 8.3 曾子有疾召门弟子曰启予足
+SUMMARY:论语 8.3 曾子有疾，启予足
 DESCRIPTION:论语 8.3：曾子有疾，召门弟子曰：启予足！启
- 予手！诗云战战兢兢，如临深渊，如履薄冰。而今而后
- ，吾知免夫！小子！\nhttps://yikonglu.com/lunyu/tai-bo/3.html
+ 予手！诗云：“战战兢兢，如临深渊，如履薄冰。”而
+ 今而后，吾知免夫！小子！\nhttps://yikonglu.com/lunyu/tai-bo/3.
+ html
 URL:https://yikonglu.com/lunyu/tai-bo/3.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -1823,7 +1824,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270513
 DTEND;VALUE=DATE:20270514
 RRULE:FREQ=YEARLY
-SUMMARY:论语 8.4 曾子有疾孟敬子问之
+SUMMARY:论语 8.4 曾子有疾，孟敬子问之
 DESCRIPTION:论语 8.4：曾子有疾，孟敬子问之。曾子言曰：
  鸟之将死，其鸣也哀；人之将死，其言也善。君子所贵
  乎道者三：动容貌，斯远暴慢矣；正颜色，斯近信矣；
@@ -1840,7 +1841,7 @@ DTEND;VALUE=DATE:20270515
 RRULE:FREQ=YEARLY
 SUMMARY:论语 8.5 以能问于不能
 DESCRIPTION:论语 8.5：曾子曰：以能问于不能，以多问于寡
- ；有若无，实若虚；犯而不校。昔者吾友尝从事于斯矣
+ ；有若无，实若虚，犯而不校。昔者吾友尝从事于斯矣
  。\nhttps://yikonglu.com/lunyu/tai-bo/5.html
 URL:https://yikonglu.com/lunyu/tai-bo/5.html
 TRANSP:TRANSPARENT
@@ -1877,8 +1878,8 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270517
 DTEND;VALUE=DATE:20270518
 RRULE:FREQ=YEARLY
-SUMMARY:论语 8.8、8.9、8.10 兴于诗
-DESCRIPTION:论语 8.8：子曰：兴于诗，立于礼。成于乐。\nhtt
+SUMMARY:论语 8.8、8.9、8.10 兴于诗，立于礼，成于乐
+DESCRIPTION:论语 8.8：子曰：兴于诗，立于礼，成于乐。\nhtt
  ps://yikonglu.com/lunyu/tai-bo/8.html\n\n论语 8.9：子曰：民可使
  由之，不可使知之。\nhttps://yikonglu.com/lunyu/tai-bo/9.html\n\n
  论语 8.10：子曰：好勇疾贫，乱也。人而不仁，疾之已甚
@@ -1895,7 +1896,7 @@ RRULE:FREQ=YEARLY
 SUMMARY:论语 8.11、8.12 如有周公之才之美
 DESCRIPTION:论语 8.11：子曰：如有周公之才之美，使骄且吝
  ，其余不足观也已。\nhttps://yikonglu.com/lunyu/tai-bo/11.html\n\n
- 论语 8.12：子曰：三年学，不至于谷，不易得也。\nhttps:/
+ 论语 8.12：子曰：三年学，不至于穀，不易得也。\nhttps:/
  /yikonglu.com/lunyu/tai-bo/12.html
 URL:https://yikonglu.com/lunyu/tai-bo/11.html
 TRANSP:TRANSPARENT
@@ -1906,7 +1907,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270519
 DTEND;VALUE=DATE:20270520
 RRULE:FREQ=YEARLY
-SUMMARY:论语 8.13 笃信好学
+SUMMARY:论语 8.13 笃信好学，守死善道
 DESCRIPTION:论语 8.13：子曰：笃信好学，守死善道。危邦不
  入，乱邦不居。天下有道则见，无道则隐。邦有道，贫
  且贱焉，耻也；邦无道，富且贵焉，耻也。\nhttps://yikongl
@@ -1920,12 +1921,12 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270520
 DTEND;VALUE=DATE:20270521
 RRULE:FREQ=YEARLY
-SUMMARY:论语 8.14、8.15、8.16 不在其位
+SUMMARY:论语 8.14、8.15、8.16 不在其位，不谋其政
 DESCRIPTION:论语 8.14：子曰：不在其位，不谋其政。\nhttps://
  yikonglu.com/lunyu/tai-bo/14.html\n\n论语 8.15：子曰：师挚之始
- ，关雎之乱，洋洋乎！盈耳哉。\nhttps://yikonglu.com/lunyu/tai
- -bo/15.html\n\n论语 8.16：子曰：狂而不直，侗而不愿，悾悾
- 而不信，吾不知之矣。\nhttps://yikonglu.com/lunyu/tai-bo/16.html
+ ，关雎之乱，洋洋乎盈耳哉！\nhttps://yikonglu.com/lunyu/tai-bo
+ /15.html\n\n论语 8.16：子曰：狂而不直，侗而不愿，悾悾而
+ 不信，吾不知之矣。\nhttps://yikonglu.com/lunyu/tai-bo/16.html
 URL:https://yikonglu.com/lunyu/tai-bo/14.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -1935,7 +1936,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270521
 DTEND;VALUE=DATE:20270522
 RRULE:FREQ=YEARLY
-SUMMARY:论语 8.17、8.18 学如不及
+SUMMARY:论语 8.17、8.18 学如不及，犹恐失之
 DESCRIPTION:论语 8.17：子曰：学如不及，犹恐失之。\nhttps://
  yikonglu.com/lunyu/tai-bo/17.html\n\n论语 8.18：子曰：巍巍乎！
  舜禹之有天下也，而不与焉。\nhttps://yikonglu.com/lunyu/tai-bo
@@ -1949,11 +1950,11 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270522
 DTEND;VALUE=DATE:20270523
 RRULE:FREQ=YEARLY
-SUMMARY:论语 8.19 大哉
-DESCRIPTION:论语 8.19：子曰：大哉！尧之为君也。巍巍乎！
- 唯天为大，唯尧则之。荡荡乎！民无能名焉。巍巍乎！
- 其有成功也。焕乎！其有文章。\nhttps://yikonglu.com/lunyu/tai
- -bo/19.html
+SUMMARY:论语 8.19 大哉尧之为君也
+DESCRIPTION:论语 8.19：子曰：大哉尧之为君也！巍巍乎！唯
+ 天为大，唯尧则之。荡荡乎！民无能名焉。巍巍乎！其
+ 有成功也；焕乎！其有文章！\nhttps://yikonglu.com/lunyu/tai-bo
+ /19.html
 URL:https://yikonglu.com/lunyu/tai-bo/19.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -1963,12 +1964,12 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270523
 DTEND;VALUE=DATE:20270524
 RRULE:FREQ=YEARLY
-SUMMARY:论语 8.20 舜有臣五人而天下治
+SUMMARY:论语 8.20 舜有臣五人
 DESCRIPTION:论语 8.20：舜有臣五人而天下治。武王曰：予有
- 乱臣十人。孔子曰：才难，不其然乎？唐、虞之际，于
- 斯为盛。有妇人焉，九人而已。三分天下有其二，以服
- 事殷。周之德，其可谓至德也已矣。\nhttps://yikonglu.com/lun
- yu/tai-bo/20.html
+ 乱臣十人。孔子曰：才难，不其然乎？唐虞之际，于斯
+ 为盛。有妇人焉，九人而已。三分天下有其二，以服事
+ 殷。周之德，其可谓至德也已矣。\nhttps://yikonglu.com/lunyu/
+ tai-bo/20.html
 URL:https://yikonglu.com/lunyu/tai-bo/20.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -1978,11 +1979,10 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270524
 DTEND;VALUE=DATE:20270525
 RRULE:FREQ=YEARLY
-SUMMARY:论语 8.21 禹吾无间然矣
-DESCRIPTION:论语 8.21：子曰：禹，吾无间然矣。菲饮食，而
- 致孝乎鬼神；恶衣服，而致美乎黻冕；卑宫室，而尽力
- 乎沟洫。禹，吾无间然矣。\nhttps://yikonglu.com/lunyu/tai-bo/21
- .html
+SUMMARY:论语 8.21 禹，吾无间然矣
+DESCRIPTION:论语 8.21：子曰：禹，吾无间然矣。菲饮食而致
+ 孝乎鬼神，恶衣服而致美乎黻冕，卑宫室而尽力乎沟洫
+ 。禹，吾无间然矣。\nhttps://yikonglu.com/lunyu/tai-bo/21.html
 URL:https://yikonglu.com/lunyu/tai-bo/21.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -2006,8 +2006,8 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270526
 DTEND;VALUE=DATE:20270527
 RRULE:FREQ=YEARLY
-SUMMARY:论语 9.3、9.4 麻冕
-DESCRIPTION:论语 9.3：子曰：麻冕，礼也；今也纯，俭。吾
+SUMMARY:论语 9.3、9.4 麻冕，礼也
+DESCRIPTION:论语 9.3：子曰：麻冕，礼也；今也纯，俭，吾
  从众。拜下，礼也；今拜乎上，泰也。虽违众，吾从下
  。\nhttps://yikonglu.com/lunyu/zi-han/3.html\n\n论语 9.4：子绝四：
  毋意，毋必，毋固，毋我。\nhttps://yikonglu.com/lunyu/zi-han/4.
@@ -2035,11 +2035,11 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270528
 DTEND;VALUE=DATE:20270529
 RRULE:FREQ=YEARLY
-SUMMARY:论语 9.6 夫子圣者与
+SUMMARY:论语 9.6 大宰问于子贡（含牢曰）
 DESCRIPTION:论语 9.6：大宰问于子贡曰：夫子圣者与？何其
  多能也？子贡曰：固天纵之将圣，又多能也。子闻之，
- 曰：大宰知我乎？吾少也贱，故多能鄙事。君子多乎哉
- ？不多也。牢曰：子云，吾不试，故艺。\nhttps://yikonglu.c
+ 曰：大宰知我乎！吾少也贱，故多能鄙事。君子多乎哉
+ ？不多也。牢曰：子云：吾不试，故艺。\nhttps://yikonglu.c
  om/lunyu/zi-han/6.html
 URL:https://yikonglu.com/lunyu/zi-han/6.html
 TRANSP:TRANSPARENT
@@ -2052,7 +2052,7 @@ DTEND;VALUE=DATE:20270530
 RRULE:FREQ=YEARLY
 SUMMARY:论语 9.7 吾有知乎哉
 DESCRIPTION:论语 9.7：子曰：吾有知乎哉？无知也。有鄙夫
- 问于我，空空如也，我叩其两端而竭焉。\nhttps://yikonglu.c
+ 问于我，空空如也。我叩其两端而竭焉。\nhttps://yikonglu.c
  om/lunyu/zi-han/7.html
 URL:https://yikonglu.com/lunyu/zi-han/7.html
 TRANSP:TRANSPARENT
@@ -2077,7 +2077,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270531
 DTEND;VALUE=DATE:20270601
 RRULE:FREQ=YEARLY
-SUMMARY:论语 9.10 仰之弥高
+SUMMARY:论语 9.10 颜渊喟然叹
 DESCRIPTION:论语 9.10：颜渊喟然叹曰：仰之弥高，钻之弥坚
  ；瞻之在前，忽焉在后。夫子循循然善诱人，博我以文
  ，约我以礼。欲罢不能，既竭吾才，如有所立卓尔。虽
@@ -2091,10 +2091,10 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270601
 DTEND;VALUE=DATE:20270602
 RRULE:FREQ=YEARLY
-SUMMARY:论语 9.11 子疾病
+SUMMARY:论语 9.11 子疾病，子路使门人为臣
 DESCRIPTION:论语 9.11：子疾病，子路使门人为臣。病间，曰
- ：久矣哉！由之行诈也，无臣而为有臣。吾谁欺？欺天
- 乎？且予与其死于臣之手也，无宁死于二三子之手乎？
+ ：久矣哉，由之行诈也！无臣而为有臣。吾谁欺？欺天
+ 乎？且予与其死于臣之手也，无宁死于二三子之手乎！
  且予纵不得大葬，予死于道路乎？\nhttps://yikonglu.com/lunyu/
  zi-han/11.html
 URL:https://yikonglu.com/lunyu/zi-han/11.html
@@ -2107,7 +2107,7 @@ DTSTART;VALUE=DATE:20270602
 DTEND;VALUE=DATE:20270603
 RRULE:FREQ=YEARLY
 SUMMARY:论语 9.12 有美玉于斯
-DESCRIPTION:论语 9.12：子贡曰：有美玉于斯，韫匵而藏诸？
+DESCRIPTION:论语 9.12：子贡曰：有美玉于斯，韫椟而藏诸？
  求善贾而沽诸？子曰：沽之哉！沽之哉！我待贾者也。\n
  https://yikonglu.com/lunyu/zi-han/12.html
 URL:https://yikonglu.com/lunyu/zi-han/12.html
@@ -2120,7 +2120,7 @@ DTSTART;VALUE=DATE:20270603
 DTEND;VALUE=DATE:20270604
 RRULE:FREQ=YEARLY
 SUMMARY:论语 9.13、9.14 子欲居九夷
-DESCRIPTION:论语 9.13：子欲居九夷。或曰：陋，如之何！子
+DESCRIPTION:论语 9.13：子欲居九夷。或曰：陋，如之何？子
  曰：君子居之，何陋之有？\nhttps://yikonglu.com/lunyu/zi-han/13
  .html\n\n论语 9.14：子曰：吾自卫反鲁，然后乐正，雅颂各
  得其所。\nhttps://yikonglu.com/lunyu/zi-han/14.html
@@ -2147,8 +2147,8 @@ DTSTART;VALUE=DATE:20270605
 DTEND;VALUE=DATE:20270606
 RRULE:FREQ=YEARLY
 SUMMARY:论语 9.16 子在川上
-DESCRIPTION:论语 9.16：子在川上，曰：逝者如斯夫！不舍昼
- 夜。\nhttps://yikonglu.com/lunyu/zi-han/16.html
+DESCRIPTION:论语 9.16：子在川上曰：逝者如斯夫！不舍昼夜
+ 。\nhttps://yikonglu.com/lunyu/zi-han/16.html
 URL:https://yikonglu.com/lunyu/zi-han/16.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -2158,10 +2158,10 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270606
 DTEND;VALUE=DATE:20270607
 RRULE:FREQ=YEARLY
-SUMMARY:论语 9.17、9.18 吾未见好德如好色者也
+SUMMARY:论语 9.17、9.18 吾未见好德如好色者
 DESCRIPTION:论语 9.17：子曰：吾未见好德如好色者也。\nhttps
  ://yikonglu.com/lunyu/zi-han/17.html\n\n论语 9.18：子曰：譬如为
- 山，未成一篑，止，吾止也；譬如平地，虽覆一篑，进
+ 山，未成一篑，止，吾止也。譬如平地，虽覆一篑，进
  ，吾往也。\nhttps://yikonglu.com/lunyu/zi-han/18.html
 URL:https://yikonglu.com/lunyu/zi-han/17.html
 TRANSP:TRANSPARENT
@@ -2174,10 +2174,10 @@ DTEND;VALUE=DATE:20270608
 RRULE:FREQ=YEARLY
 SUMMARY:论语 9.19、9.20、9.21 语之而不惰者
 DESCRIPTION:论语 9.19：子曰：语之而不惰者，其回也与！\nht
- tps://yikonglu.com/lunyu/zi-han/19.html\n\n论语 9.20：子谓颜渊，
- 曰：惜乎！吾见其进也，未见其止也。\nhttps://yikonglu.com/
- lunyu/zi-han/20.html\n\n论语 9.21：子曰：苗而不秀者有矣夫！
- 秀而不实者有矣夫！\nhttps://yikonglu.com/lunyu/zi-han/21.html
+ tps://yikonglu.com/lunyu/zi-han/19.html\n\n论语 9.20：子谓颜渊曰
+ ：惜乎！吾见其进也，未见其止也。\nhttps://yikonglu.com/lun
+ yu/zi-han/20.html\n\n论语 9.21：子曰：苗而不秀者有矣夫！秀
+ 而不实者有矣夫！\nhttps://yikonglu.com/lunyu/zi-han/21.html
 URL:https://yikonglu.com/lunyu/zi-han/19.html
 TRANSP:TRANSPARENT
 END:VEVENT
@@ -2214,7 +2214,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270610
 DTEND;VALUE=DATE:20270611
 RRULE:FREQ=YEARLY
-SUMMARY:论语 9.24 主忠信
+SUMMARY:论语 9.24 主忠信（重出）
 DESCRIPTION:论语 9.24：子曰：主忠信，毋友不如己者，过则
  勿惮改。\nhttps://yikonglu.com/lunyu/zi-han/24.html
 URL:https://yikonglu.com/lunyu/zi-han/24.html

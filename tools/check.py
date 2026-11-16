@@ -12,6 +12,7 @@ for f in glob.glob(os.path.join(out, "**", "*.*"), recursive=True):
     if not f.endswith((".html", ".json", ".xml")): continue
     n += f.endswith(".html")
     t = open(f, encoding="utf-8").read()
+    t = re.sub(r"[木铁石陶织绣]工坊", "", t)  # 讲稿今例里的“木工坊”等是普通词，不是内部说法
     for w in WORDS:
         if w in t: bad.append(f"{f} 含内部字样或占位符 {w!r}")
     if re.search(r"主人\s*\d{1,2}-\d{1,2}", t): bad.append(f"{f} 含内部定稿记录（主人+日期）")
