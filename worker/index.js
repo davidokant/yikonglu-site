@@ -13,10 +13,13 @@
 // GET  /mirror           {域名: {n, first, last, paths:[…最多 20]}}，最多留 200 个域名
 // POST /ai {k, p}         11-16 智器来访：从智器回答里点进来（来路或 utm_source 是智器），k＝哪家，p＝落地页；GET /ai 返回 {days:{日:{k:n}}, pages:{页:n}}，留 120 天
 // POST /hj {f, c}         11-16 他书章页“《论语》互见”点击：f＝从哪章（ddj.N／szj.N），c＝点去的论语章；GET /hj 返回 {日:{"f>c":n}}，留 120 天
-// POST /bot {k}          11-16 硅基儒者：机器来读一次加一（页面里认出是机器在跑脚本时发 k＝哪家；连接器每回答一次发 k＝mcp）；累计在 /hit、/stats 的 bots；GET /bot 返回 {total, days:{日:{k:n}}}（留 120 天）
+// POST /bot {k}          11-16 硅基儒者：机器来读一次加一（页面里认出是机器在跑脚本时发 k＝哪家；连接器每回答一次发 k＝mcp）；/hit、/stats 的 bots＝有用的硅基（USEFUL）；GET /bot 返回 {useful, all, days:{日:{k:n}}}（留 120 天）
 // POST /done  {c}         某章“读完了”加一（同一设备只点一次，由页面本地记）；GET /done?c=1.1 返回 {today, total}
 const ORIGINS = ["https://yikonglu.com", "https://www.yikonglu.com", "http://localhost:8767"];
-const WINDOW = 90 * 1000; // 90 秒内有心跳算在线
+const WINDOW = 90 * 1000;
+// 11-16 主人定：累计 N＝碳基＋有用的硅基。有用＝搜索引擎爬虫、智器爬虫与连接器；SEO 工具、采集器、扫漏洞的、认不出名字的不算（后台照记）
+const USEFUL = new Set(["googlebot","googleext","googleother","bingbot","baiduspider","yandex","applebot","duckduckbot","sogou","so360","yisou","petalbot",
+  "gptbot","chatgpt","oaisearch","claudebot","claude","claudesearch","anthropic","perplexity","bytespider","amazonbot","meta","ccbot","cohere","youbot","mistral","deepseek","kimi","mcp"]); // 90 秒内有心跳算在线
 
 function cors(req) {
   const o = req.headers.get("Origin") || "";
@@ -36,7 +39,9 @@ export default {
 
 export class Live {
   constructor(state) { this.state = state; this.seen = new Map(); this.total = null; }
-  async getBots() { if (this.bots === undefined) this.bots = (await this.state.storage.get("bt")) || 0; return this.bots; }
+  async getBots() { // 前台只算“有用的硅基”（搜索引擎、智器爬虫、连接器）；全部机器另记在 bt 与 btd
+    if (this.bots === undefined) { let u = await this.state.storage.get("btu"); if (u === undefined) { u = 0; const O = (await this.state.storage.get("btd")) || {}; for (const d of Object.values(O)) for (const [k, n] of Object.entries(d)) if (USEFUL.has(k)) u += n; await this.state.storage.put("btu", u); } this.bots = u; }
+    return this.bots; }
   async getTotal() { if (this.total === null) this.total = (await this.state.storage.get("total")) || 0; return this.total; }
   async markDay(id) { // 今天来过的设备：只记随机编号，过了北京时间零点就清
     const d = this.day(); if (!this.dv || this.dv.d !== d) { const o = await this.state.storage.get("dv"); this.dv = o && o.d === d ? { d, ids: new Set(o.ids) } : { d, ids: new Set() }; }
@@ -116,11 +121,13 @@ export class Live {
       if (req.method === "POST") {
         let b = {}; try { b = JSON.parse(await req.text()); } catch (e) {}
         const k = String(b.k || ""); if (!/^[a-z0-9]{2,16}$/.test(k)) return Response.json({ ok: false });
-        O[d] = O[d] || {}; O[d][k] = (O[d][k] || 0) + 1; this.bots = (await this.getBots()) + 1;
-        await this.state.storage.put({ bt: this.bots, btd: O });
+        const u = await this.getBots(); O[d] = O[d] || {}; O[d][k] = (O[d][k] || 0) + 1;
+        const all = ((await this.state.storage.get("bt")) || 0) + 1, put = { bt: all, btd: O };
+        if (USEFUL.has(k)) { this.bots = u + 1; put.btu = this.bots; }
+        await this.state.storage.put(put);
         return Response.json({ ok: true });
       }
-      return Response.json({ total: await this.getBots(), days: O });
+      return Response.json({ useful: await this.getBots(), all: (await this.state.storage.get("bt")) || 0, days: O });
     } else if (url.pathname === "/ai" || url.pathname === "/hj") {
       const key = url.pathname.slice(1), d = this.day();
       const keep = o => { const cut = new Date(Date.now() + 8 * 3600e3 - 120 * 864e5).toISOString().slice(0, 10); for (const x of Object.keys(o)) if (x < cut) delete o[x]; return o; };
