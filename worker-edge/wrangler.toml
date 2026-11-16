@@ -1,0 +1,13 @@
+# 一孔录前置 Worker：yikonglu.com、www 走 Cloudflare 代理后，按 User-Agent 数机器来读（硅基），页面原样放行
+name = "yikonglu-edge"
+main = "index.js"
+compatibility_date = "2025-09-01"
+workers_dev = false
+routes = [
+  { pattern = "yikonglu.com/*", zone_name = "yikonglu.com" },
+  { pattern = "www.yikonglu.com/*", zone_name = "yikonglu.com" }
+]
+
+[[services]]
+binding = "LIVE"
+service = "yikonglu-live"
