@@ -16,7 +16,8 @@ import shuyuan as SY
 import lunyu_extra as LX  # 11-14 只为《论语》做的：年历、场合用句、课本带读
 import zizhuan as ZZ  # 11-15 一字一页 /zi/
 import xingtu as XT  # 11-15《论语》星图：首页招牌、关系图页
-import gaoben as GB  # 11-15 视频逐字稿上章页（十一项之 6）
+import gaoben as GB
+import keben as KB  # 11-15 视频逐字稿上章页（十一项之 6）
 import guanxi as GX  # 11-14 《论语》智器重建本的关系：章页“这一章连着”、关系图页 /guanxi/
 
 DOMAIN = "https://yikonglu.com"
@@ -2862,14 +2863,15 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
                 bh_ = D["baihua"].get(c) or ""
                 lis += (f'<li{"" if c in pubset else " class=wj"}><a href="{href(c)}"><em>{c}</em><b>{esc(ctitle(c))}</b>{"" if c in pubset else "<i class=wjtag>" + L.t("toc_wj") + "</i>"}</a>'
                         f'<p class="zy" lang="zh-Hans">{esc(tx(c))}</p>' + (f'<p class="zd">白话：{esc(bh_)}</p>' if bh_ else "") + "</li>")
-            kb_items += (f'<section class="ztbook" id="{kid}"><h2 class="ph">{esc(kname)}<small>{len(kcs)} 章</small></h2><p class="lead">{esc(knote)}</p><ol class="ztl">{lis}</ol></section>')
-        kb_toc = "".join(f'<a class="ztcard" href="#{kid}"><b>{esc(kname)}</b><small>{len(kcs)} 章</small></a>' for kid, kname, _, kcs in KEBEN)
+            kb_items += (f'<section class="ztbook" id="{kid}"><h2 class="ph">{esc(kname)}<small>{len(kcs)} 章 · <a href="{P}zhuanti/{KB.LESSON[kid][0]}.html">单独一页（含读音）</a></small></h2><p class="lead">{esc(knote)}</p><ol class="ztl">{lis}</ol></section>')
+        kb_toc = "".join(f'<a class="ztcard" href="{P}zhuanti/{KB.LESSON[kid][0]}.html"><b>{esc(kname)}</b><small>{len(kcs)} 章 · 原文、读音、翻译</small></a>' for kid, kname, _, kcs in KEBEN) + f'<a class="ztcard" href="{P}zhuanti/lunyu-chengyu.html"><b>论语中的成语</b><small>逐条注出处章号</small></a><a class="ztcard" href="{P}zhuanti/lunyu-mingju.html"><b>论语名句</b><small>原文、出处、白话</small></a>'
         body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}zhuanti/">{L.t("zt_title")}</a></p><h1><span class="no">初中 · 高中 语文课</span>语文课本里的《论语》</h1></div></div>
 <main class="wrap narrow"><p class="lead">统编语文教材选了这几课《论语》：七年级上册《〈论语〉十二章》、高中必修下册《子路、曾皙、冉有、公西华侍坐》、高中选择性必修上册《〈论语〉十二章》。下面按课列出每一章的原文和白话，点进去是这一章的原页、逐句朱熹注、读音和各家注本。</p>
 <div class="ztcards">{kb_toc}</div>{kb_items}
 <p class="note">原文照朱熹《论语集注》（《四部备要》本），标点、个别用字可能和课本不同；章号按朱注分章，课本注释多用杨伯峻本，章号有时差一两号。标“未讲”的章视频还在做，网站先放原文、白话和注。发现错处请写信：{MAIL}</p></main>'''
         write("zhuanti/keben.html", page(L, "论语十二章原文及翻译、读音、朱熹注｜语文课本里的《论语》｜一孔录", "统编语文七年级上册、高中选择性必修上册《论语》十二章，高中必修下册《侍坐》：每章原文、白话翻译、读音、朱熹注与宋以来各家注本，逐章链到原页。", "zhuanti/keben.html", body))
         urls.append(f"{DOMAIN}/{L.prefix}zhuanti/keben.html")
+        urls += KB.build(L, D, KEBEN, write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, MAIL)  # 11-16 改动单一：分课着陆页、成语、名句
         # 百日读完《论语》（11-09 主人定）：全书 498 章按字数切成 100 份，每天一份；进度看本机读过的章，不按日历催
         allc = sorted(D["qw"], key=lambda c: tuple(map(int, c.split("."))))
         ln = [len(re.sub(r"[^\u3400-\u9fff]", "", D["qw"][c]["text"])) + 40 for c in allc]  # 每章另加 40 字的“开页”分量，免得一天塞太多短章
