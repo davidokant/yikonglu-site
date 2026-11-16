@@ -1052,6 +1052,38 @@ ZD_ON = os.environ.get("YK_ZIDIAN", "1") != "0"
 ZHAI_OFF = os.environ.get("YK_ZHAI") == "off"
 HD_OFF = os.environ.get("YK_HD") == "off"  # 11-16 改动单二：核对标记
 HD_DAIHE = {}  # 章 → 待核未上的引文（parse_gao 里收）
+# 11-16 改动单五（主人 12:45 定）：核对分三种、各自计数、都带日期、不往前补造。对外叫“一孔审片版”“智器核”“读者报错后改过”（看片定版只指视频，不说网页文字是人核的）。
+HD3_DB = "/mnt/project-files/一孔学-内-自媒体/数据/网站素材/_定版记录/dingban.json"  # 定版线程从看片台 log.jsonl 与发布单状态注导出：[{ep, ver, at, src}]
+HD3_ZQ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "hedui_zq.json")  # 智器核：每章核对状态指纹与日期
+HD3_BASE = "2026-11-16"  # 这天之前已核过的，日期一律写“11-16 以前”，不补具体哪天
+
+def hd3_load(D, today):
+    """返回 {"yk": {章: [(日期, 版本), …]}, "zq": {章: (日期, 是否首轮)}, "rd": {章: [勘误行, …]}}。"""
+    ep2c = {}
+    for c, (name, _) in D["ch2ep"].items(): ep2c.setdefault(name, []).append(c)
+    yk = {}
+    if os.path.exists(HD3_DB):
+        for r in json.load(open(HD3_DB, encoding="utf-8")):
+            if not r.get("at") or not r.get("ep") or r.get("book", "论语") != "论语": continue  # 没记时刻的不收；章页标记现只有《论语》
+            name = str(r["ep"]).split("-")[-1]
+            for c in ep2c.get(name, ()): yk.setdefault(c, []).append((r["at"][:10], str(r.get("ver") or "")))
+    for c in yk: yk[c] = sorted(set(yk[c]))
+    zq = json.load(open(HD3_ZQ, encoding="utf-8")) if os.path.exists(HD3_ZQ) else {}
+    on = (D.get("zhuju") or {}).get("on", set())
+    for c in D["pub"]:
+        g = D["gao"].get(c, {"cites": [], "reads": []})
+        gl0 = {k.split("|")[0] for _, _, k, gg, _ in ZD["per"].get(c, []) if gg}
+        sig = f'{int(c in on)}|{sum(1 for x in g["cites"] if x["pages"])}|{sum(1 for x in g["reads"] if x["zi"] in gl0)}|{",".join(sorted(set(g.get("qw_pages") or [])))}'
+        old = zq.get(c)
+        if not old: zq[c] = [sig, today, today <= HD3_BASE]
+        elif old[0] != sig: zq[c] = [sig, today, False]
+    json.dump(zq, open(HD3_ZQ, "w", encoding="utf-8"), ensure_ascii=False, indent=0, sort_keys=True)
+    rd = {}
+    for r in D["kw"]:
+        if r[7] != "一孔录自查" and re.fullmatch(r"\d+\.\d+", r[2] or ""): rd.setdefault(r[2], []).append(r)
+    return {"yk": yk, "zq": {c: (v[1], v[2]) for c, v in zq.items()}, "rd": rd}
+
+def hd3_date(d, base): return "11-16 以前" if base else d
 # 可摘段（十一项之 2）：11-15 主人看过 1.1 样张说“过”，铺到全部已讲章；YK_ZHAI=off 可关
 FQ_OFF = os.environ.get("YK_FQ") == "off"  # 11-16 改动单三：诸家分歧块
 def zx(code, c, j, x):  # 句里难字加点线，点了弹小卡（只在中文页）
@@ -1461,6 +1493,8 @@ def yxl_line(L, D, P):
     """首页搜索框下一行小字（简繁）。主人 11-07 定：只留原文已讲字数、视频集数、公开勘误数，找到分等都放方法页。"""
     nb, zi, ne = yxl_counts(D)
     parts = [f"原文已讲 {zi:,} 字", f"视频 {ne} 集", f"公开勘误 {len(D['kw'])} 条"]
+    if D.get("hd3"):  # 11-16 改动单五：一孔审片版放最前、最显眼
+        parts.insert(0, f'<a class="yk3" href="{P}fangfa.html#hedui">一孔审片版 <b>{sum(1 for c in D["pub"] if c in D["hd3"]["yk"])}</b> 章</a>')
     return f'<p class="yxline-s"><a href="{P}yingxiangli.html">一孔影响力</a> · ' + " · ".join(f"<span>{x}</span>" for x in parts) + "</p>"
 
 # 隐私说明页（/yinsi.html）：七语各一份，繁体由简体转
@@ -2238,7 +2272,15 @@ def build_lang(L, D, write):
             if g["cites"]: _li.append(f'<li><b>引文</b>{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}共 {len(g["cites"])} 条，点页码看原页' + (f"；其中 {len(_pa)} 条是转述，不是原话" if _pa else "") + "</li>")
             if g["reads"]: _li.append(f'<li><b>读音</b>{_rp}共 {len(g["reads"])} 处；有朱注反切的照反切</li>')
             _dh = len(HD_DAIHE.get(c, ()))
-            citeit = (f'<section class="hedui" id="hedui"><h2>本章核到哪了</h2><ul>{"".join(_li)}</ul>'
+            _h3 = D["hd3"]; _yk3 = _h3["yk"].get(c); _zq3 = _h3["zq"].get(c); _rd3 = _h3["rd"].get(c, [])
+            _three = ('<div class="hd3">'
+                      + (f'<p class="hd3yk"><b>一孔审片版</b><span>{_yk3[-1][0]} 一孔看过本章视频、定版' + (f'（视频' + (f'第 {esc(_yk3[-1][1])} 版' if _yk3[-1][1] else "") + '）' if _yk3[-1][1] else '') + (f'；此前另有 {len(_yk3) - 1} 次定版' if len(_yk3) > 1 else "") + '</span></p>' if _yk3
+                         else '<p class="hd3yk no"><b>一孔审片版</b><span>还没有定版记录，有了再标，不往前补日期</span></p>')
+                      + (f'<p><b>智器核</b><span>{hd3_date(*_zq3)}：智器对着原页图找出原文、引文、读音的页码，见下</span></p>' if _zq3 else "")
+                      + (f'<p><b>读者报错后改过</b><span>' + "；".join(f'{esc(r[0])} {esc(r[7])}报“{esc(r[4])}”，改为“{esc(r[5])}”' for r in _rd3) + f'，<a href="{P}kanwu.html">见勘误页</a></span></p>' if _rd3
+                         else f'<p class="no"><b>读者报错后改过</b><span>暂无。看到错处请写信，改过会署您的网名（经您同意）</span></p>')
+                      + '</div>')
+            citeit = (f'<section class="hedui" id="hedui"><h2>本章核到哪了</h2>{_three}<ul>{"".join(_li)}</ul>'
                       + (f'<p class="note">{_pill("todo", f"待核 {_dh}")}另有 {_dh} 条引文还在核，核完才上页面。</p>' if _dh else "")
                       + f'<p class="note"><a href="{P}fangfa.html#hedui">“对过原页”“已核”“待核”各指什么，全站核到哪了 →</a></p></section>') + citeit
         if L.code.startswith("zh") and not FQ_OFF:  # 11-16 改动单三：诸家分歧块。只用已核数据（注本 CSV 里“异读”且把握为定／较稳的行），不硬造；无分歧的章不出
@@ -2807,7 +2849,14 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
         _zy = sum(1 for c in pub if c in D["zy"]); _kw = len(D["kw"])
         _pill = lambda cls, t: f'<span class="hm {cls}">{t}</span>'
         _tr = lambda a, b, c_, d, e: f'<tr><th scope=row>{a}</th><td>{b}</td><td>{c_}</td><td>{d}</td></tr><tr class="hdn"><td colspan="4">{e}</td></tr>'
-        s5 += (f'<h3 id="hedui">核到哪了：《论语》核对账本</h3><p>章页上每一类内容都带一个小标记：{_pill("ok", "对过原页")}是对着底本原页图核过，页码可以点开看；{_pill("mid", "已核")}是核过、但没有可点的原页：白话、一孔按随视频讲稿定版，个别引文核到的是别的版本；{_pill("todo", "待核")}是还没核完的，核完之前不上页面。下面的数字由网站每次生成时现算。</p>'
+        _h3 = D["hd3"]; _yks = [c for c in pub if c in _h3["yk"]]; _ykl = max((v[-1][0] for v in _h3["yk"].values()), default="")
+        _zqs = [c for c in pub if c in _h3["zq"]]; _zqn = [c for c in _zqs if not _h3["zq"][c][1]]; _zql = max((_h3["zq"][c][0] for c in _zqn), default="")
+        _rds = sum(len(v) for v in _h3["rd"].values()); _rdl = max((r[0] for v in _h3["rd"].values() for r in v), default="")
+        _big = (f'<div class="hd3big"><div class="yk"><b>{len(_yks)}<small>章</small></b><span>一孔审片版</span><p>讲到这些章的视频一孔都看过、定了版，以定版记录为准；网页上的文字不算在内' + (f'，最近一次 {_ykl}' if _ykl else '') + '</p></div>'
+                f'<div><b>{len(_zqs)}<small>章</small></b><span>智器核</span><p>智器对着原页图核过页码的已讲章；{len(_zqs) - len(_zqn)} 章核于 11-16 以前' + (f'，之后新核 {len(_zqn)} 章，最近 {_zql}' if _zqn else '') + '</p></div>'
+                f'<div><b>{_rds}<small>条</small></b><span>读者报错后改过</span><p>' + (f'最近一次 {_rdl}，' if _rdl else '') + f'每条链到<a href="{P}kanwu.html">勘误页</a>，署报错人网名（经本人同意）</p></div></div>'
+                f'<p>三种分开计，日期从开始记录那天起算，之前的不补。</p>')
+        s5 += (f'<h3 id="hedui">核到哪了：《论语》核对账本</h3>{_big}<p>章页上每一类内容都带一个小标记：{_pill("ok", "对过原页")}是对着底本原页图核过，页码可以点开看；{_pill("mid", "已核")}是核过、但没有可点的原页：白话、一孔按随视频讲稿定版，个别引文核到的是别的版本；{_pill("todo", "待核")}是还没核完的，核完之前不上页面。下面的数字由网站每次生成时现算。</p>'
                f'<table class="num hdt"><thead><tr><th></th><th>{_pill("ok", "对过原页")}</th><th>{_pill("mid", "已核")}</th><th>{_pill("todo", "待核／初稿")}</th></tr></thead><tbody>'
                + _tr("原文", f"{_all} 章", "—", "—", f"全书每章都标了朱注本页码；其中 {len(ZJD['on'])} 章每个字框到了原页的列上")
                + _tr("引文（朱注等）", f"{_cok} 条", f"{_coth} 条", f"{_cdh} 条", f"已讲 {len(pub)} 章视频里引到的话；{_cpa} 条标“转述”，是概括意思")
@@ -3417,6 +3466,7 @@ def main(zdir, outdir, kanwu=None):
     draft = json.load(open(DRAFT_FILE, encoding="utf-8")) if os.path.exists(DRAFT_FILE) else {}
     D = dict(draft=draft, book_slugs={zh: sl for _, bs in BOOK_GROUPS for sl, zh in bs}, live_books=LIVE_BOOKS, yxl=yxl, zhuanti=load_zhuanti(), qw=QW, fz=fz, yiwen=yiwen, all_by_pian=all_by_pian, renwu=RWD, gushi=G, hujian=hujian, starts=starts, first=first, baihua=baihua, zhuben=zhuben, notes=notes, yw=yw, gao=gao, kw=parse_kanwu(kanwu or KANWU_DEFAULT), pub=pub, by_pian=by_pian, ch2ep=ch2ep, gb=GB.load(GAO_DIR, eps), pages_avail=pages_avail, today=today, zhuju=ZJD, wjan=wjan, ddj=load_ddj(), bh_ok=bh_ok, lx=LX.load(), zy=json.load(open(os.path.join(HERE, "zhengyi.json"), encoding="utf-8")) if os.path.exists(os.path.join(HERE, "zhengyi.json")) else {})
 
+    D["hd3"] = hd3_load(D, today)  # 11-16 改动单五
     pdp = os.path.join(HERE, "pagedates.json")  # 每页 [内容指纹, 内容最后变动日]：没改的页不换日期
     pdates = json.load(open(pdp, encoding="utf-8")) if os.path.exists(pdp) else {}
     seen = set()

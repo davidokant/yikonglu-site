@@ -983,3 +983,16 @@ th .hm{margin-left:0}
 .myl{list-style:none;padding:0;margin:0}.myl li{border-bottom:1px solid var(--line);padding:14px 0}
 .myl .cy{font-size:18px}.myl .hm{margin-left:10px}.myl .zy{font-size:16.5px;line-height:1.8;margin:6px 0 0}.myl .zy .cyk{margin-left:8px;font-size:13px}
 .myl small{display:block;color:var(--mute);font-size:13.5px;margin-top:4px}
+/* 11-16 改动单五：核对分三种（一孔审片版最显眼） */
+.hd3{display:grid;gap:6px;margin:4px 0 14px}.hd3 p{margin:0;display:flex;gap:10px;align-items:baseline;font-size:14.5px;line-height:1.6}
+.hd3 p b{flex:none;min-width:7.5em;font-size:13px;padding:1px 8px;border-radius:999px;border:1px solid var(--line);text-align:center;font-weight:600}
+.hd3 .hd3yk{background:color-mix(in srgb,var(--accent2) 10%,var(--paper));border:1px solid color-mix(in srgb,var(--accent2) 40%,var(--line));border-radius:8px;padding:10px 12px;font-size:15.5px}
+.hd3 .hd3yk b{background:var(--accent2);border-color:var(--accent2);color:#fff;font-size:14px}
+.hd3 .no{color:var(--mute)}.hd3 .hd3yk.no b{background:transparent;color:var(--accent2)}
+.hd3big{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px;margin:14px 0}
+.hd3big>div{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.hd3big b{display:block;font-size:30px;line-height:1.1;color:var(--accent)}.hd3big b small{font-size:14px;margin-left:2px}
+.hd3big span{display:block;font-weight:600;margin:2px 0 4px}.hd3big p{margin:0;font-size:13px;color:var(--mute);line-height:1.55}
+.hd3big .yk{border:2px solid var(--accent2);background:color-mix(in srgb,var(--accent2) 8%,var(--paper))}.hd3big .yk b{color:var(--accent2);font-size:40px}
+@media (max-width:640px){.hd3big{grid-template-columns:1fr 1fr}.hd3big .yk{grid-column:1/-1}.hd3 p{flex-direction:column;gap:2px}}
+.yxline-s a.yk3{color:var(--accent2);text-decoration:none;font-weight:600;white-space:nowrap}.yxline-s a.yk3 b{font-size:14px}

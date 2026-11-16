@@ -379,7 +379,7 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 @media (prefers-reduced-motion:reduce){.livep:before,.herotext .live:before{animation:none;opacity:1;transform:none}}
 @media (max-width:700px){.livep{margin-left:8px;font-size:11.5px;gap:5px;padding:2px 8px 2px 7px;height:24px}.top .brand{gap:7px}}
 .lang .lshort{display:none}
-/* 11-14：手机上语言按钮也写全称；在读人数胶囊右边让出按钮宽度，放不下就自己换到下一行 */
+/* 11-14 主人：手机上语言按钮也写全称；在读人数胶囊右边让出按钮宽度，放不下就自己换到下一行 */
 @media (max-width:700px){.livep{margin-right:var(--lw,0)}}
 .donebox{margin:18px 0 6px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}.donebox .btn{padding:7px 18px;font-size:15px}.donebox .btn.on{background:var(--accent);color:#fff;border-color:var(--accent);opacity:.9}.donebox .donecnt{margin:0;font-size:14px;color:var(--mute)}
 #rcta .gdn{opacity:.85;font-size:.92em}
@@ -402,9 +402,9 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .video.soon .vlinks{margin:0}
 .yuanwen.dz.nopane .dzgrid{grid-template-columns:1fr}
 .yypane{position:sticky;top:12px;max-height:min(78vh,700px);overflow:auto;border:1px solid var(--line);border-radius:6px;background:#efe9da;overscroll-behavior:contain}
-/* 11-07：两页拼的不要小窗滚动，整页直接显示，面板跟着页面走 */
+/* 主人 11-07：两页拼的不要小窗滚动，整页直接显示，面板跟着页面走 */
 .yypane:has(.yyp ~ .yyp){position:relative;top:0;max-height:none;overflow:visible}
-/* 手机：原页收成小图贴在原文上方，点句红框照样亮；点小图页内放大，红框保留 */
+/* 手机（样板，待主人定）：原页收成小图贴在原文上方，点句红框照样亮；点小图页内放大，红框保留 */
 @media (max-width:700px){.yypane,.yypane:has(.yyp ~ .yyp){position:sticky;top:calc(var(--toph,0px) + 4px);z-index:5;max-height:none;overflow-x:auto;overflow-y:hidden;order:-1;display:flex;flex-direction:row-reverse;justify-content:flex-start;gap:10px;padding:6px 6px 2px;background:var(--bg);border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.06)}
 .yypane .yyp{width:auto;flex-shrink:0}.yypane .yyp:first-of-type{margin-right:auto}.yypane .yyp:last-of-type{margin-left:auto}.yypane .yyp svg{width:auto;height:min(40vw,150px);border:1px solid var(--line);background:#fff}.yypane .yyp span{font-size:11px;padding:2px 0 2px}.yypane .yyp .hl{stroke-width:14}}
 .yyzoom{position:fixed;inset:0;z-index:120;background:#1b1e1c;overflow:auto;-webkit-overflow-scrolling:touch}
@@ -524,7 +524,7 @@ html[lang=de] body,html[lang=vi] body,html[lang=id] body,html[lang=ru] body{font
 .bairi .brl li.done a{background:rgba(35,80,63,.08);border-color:rgba(35,80,63,.3)}
 .bairi .brl li.done em::after{content:" ✓";color:var(--accent)}
 .bairi .brl li.now a{border:2px solid #8A5A2C}
-/* 简繁首页头图没有按钮了：标题移到人群头上，下面裁到柯基脚下（11-09） */
+/* 简繁首页头图没有按钮了：标题移到人群头上，下面裁到柯基脚下（11-09 主人） */
 .hero.slim img{aspect-ratio:1920/790;height:auto;object-fit:cover;object-position:50% 0}
 .hero.slim picture:before{content:"";position:absolute;left:0;right:0;top:0;height:34%;z-index:1;background:linear-gradient(to bottom,rgba(28,18,10,.72),rgba(28,18,10,0))}
 .hero.slim picture:after{height:10%}
@@ -861,7 +861,7 @@ html:not([lang^="zh"]) .mcal .cl{font-size:12px;white-space:pre-line}
 :root[data-theme="dark"] .lylinks.g2{background:none}:root[data-theme="dark"] .lylinks.g2 li{background:rgba(242,241,234,.04)}
 @media (max-width:640px){.lylinks.g2{gap:10px}.lylinks.g2 a{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px;padding:14px}.lylinks.g2 .lyi{flex:none;width:40px;height:40px}.lylinks.g2 .lyt{flex:none}.lylinks.g2 .lya{display:none}.lylinks.g2 .lyt b{font-size:15px}.lylinks.g2 .lyt small{font-size:12.5px;line-height:1.5}}
 
-/* 11-14：“今日《论语》”点经句进章页，不放按钮 */
+/* 11-14 主人：“今日《论语》”点经句进章页，不放按钮 */
 .meiri .ma{display:none}
 .meiri blockquote{cursor:pointer;transition:color .15s;-webkit-tap-highlight-color:transparent}
 .meiri blockquote::after{content:"\00a0›";font-weight:400;color:var(--accent2);opacity:.75}
@@ -980,6 +980,16 @@ th .hm{margin-left:0}
 .fenqi{margin:22px 0;padding:14px 16px;border-left:3px solid #8A5A2C;background:#8A5A2C0d;border-radius:0 6px 6px 0}.fenqi h2{font-size:17px;margin:0 0 8px}
 .fenqi ul{list-style:none;padding:0;margin:0}.fenqi li{padding:6px 0;line-height:1.75}.fenqi li b{margin-right:6px}.fenqi li small{display:block;color:var(--mute);font-size:13.5px}
 .fenqi .sure{margin-right:6px}.fenqi .note{font-size:13px;margin:8px 0 0}
-.myl{list-style:none;padding:0;margin:0}.myl li{border-bottom:1px solid var(--line);padding:14px 0}
-.myl .cy{font-size:18px}.myl .hm{margin-left:10px}.myl .zy{font-size:16.5px;line-height:1.8;margin:6px 0 0}.myl .zy .cyk{margin-left:8px;font-size:13px}
-.myl small{display:block;color:var(--mute);font-size:13.5px;margin-top:4px}
+/* 11-16 改动单五：核对分三种（一孔审片版最显眼） */
+.hd3{display:grid;gap:6px;margin:4px 0 14px}.hd3 p{margin:0;display:flex;gap:10px;align-items:baseline;font-size:14.5px;line-height:1.6}
+.hd3 p b{flex:none;min-width:7.5em;font-size:13px;padding:1px 8px;border-radius:999px;border:1px solid var(--line);text-align:center;font-weight:600}
+.hd3 .hd3yk{background:color-mix(in srgb,var(--accent2) 10%,var(--paper));border:1px solid color-mix(in srgb,var(--accent2) 40%,var(--line));border-radius:8px;padding:10px 12px;font-size:15.5px}
+.hd3 .hd3yk b{background:var(--accent2);border-color:var(--accent2);color:#fff;font-size:14px}
+.hd3 .no{color:var(--mute)}.hd3 .hd3yk.no b{background:transparent;color:var(--accent2)}
+.hd3big{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px;margin:14px 0}
+.hd3big>div{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.hd3big b{display:block;font-size:30px;line-height:1.1;color:var(--accent)}.hd3big b small{font-size:14px;margin-left:2px}
+.hd3big span{display:block;font-weight:600;margin:2px 0 4px}.hd3big p{margin:0;font-size:13px;color:var(--mute);line-height:1.55}
+.hd3big .yk{border:2px solid var(--accent2);background:color-mix(in srgb,var(--accent2) 8%,var(--paper))}.hd3big .yk b{color:var(--accent2);font-size:40px}
+@media (max-width:640px){.hd3big{grid-template-columns:1fr 1fr}.hd3big .yk{grid-column:1/-1}.hd3 p{flex-direction:column;gap:2px}}
+.yxline-s a.yk3{color:var(--accent2);text-decoration:none;font-weight:600;white-space:nowrap}.yxline-s a.yk3 b{font-size:14px}
