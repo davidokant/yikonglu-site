@@ -1712,6 +1712,12 @@ def ddj_jd_html(jd, Y=lambda x: x):
         out += sec("读", "一孔之见", f"<p>{quotes(jd['一孔之见'])}</p>" + (f'<p class="zhaojin"><b>放到今天：</b>{quotes(jd["照今"])}</p>' if jd.get("照今") else ""))
     return re.sub(r"〔(p\d{3}[^〕]*)〕", lambda m: f'<small class="pgref">（四库本 {m.group(1)}）</small>', out)
 
+def du_up(jd_html, h2="这一章讲什么"):  # 11-17 主人定：道德经、三字经的“一孔之见”跟论语一样放上层“这一章讲什么”处；查证区不再重复
+    m = re.search(r'<section class="sec sec-读"><h2>.*?</h2>(.*?)</section>', jd_html, re.S)
+    if not m: return "", jd_html
+    inner = re.sub(r"^(<p class=\"note\">.*?</p>)?<p>", lambda x: (x.group(1) or "") + '<p><b class="anlab">一孔之见：</b>', m.group(1), count=1)
+    return f'<section class="gist ykan" id="ykan"><h2>{h2}</h2>{inner}</section>', jd_html[:m.start()] + jd_html[m.end():]
+
 def build_ddj(L, D, write, P, S_IDX=None):
     """道德经：书页（道经、德经两组目录）＋各章页（只出简繁）。结构照论语未讲章：原文（可点句）、原页、一孔之见、白话、视频位。返回 URL 列表。"""
     G = D.get("ddj")
@@ -1807,6 +1813,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
         pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{TL(tt[cc])}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
         LIVE_A.setdefault(L.code, {})["ddj." + c] = [f'{DU["book"] if F else "道德经"} · {tt[c] if F else Y(tt[c])}', rel_of(c)]
         TRI_TXT["ddj." + c] = {"h": f"《道德经》第 {c} 章 · Daodejing {c} · 道徳経 第{c}章", "y": text if (hant or F) else _t2s(text), "en": (DDJ_TR.get("en") or {}).get(c, ""), "ja": (DDJ_TR.get("ja") or {}).get(c, "")}  # 分享图（外王卡）；英日译文上了再填
+        _du, _jdr = ("", "") if F else du_up(ddj_jd_html(G["jd"].get(c), Y))
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "daodejing", "道德经")}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}daodejing/">{DU["book"] if F else "道德经"}</a> › {pt}</p>
 <h1><span class="no">{DU["prog"].format(pt=pt, c=c) if F else f"道德经 {c} · {pt}"}{"" if ddj_has_vid(c) else f' · <em class="wjtag">{L.t("wj_tag")}</em>'}</span>{TL(tt[c])}</h1>
@@ -1816,13 +1823,13 @@ def build_ddj(L, D, write, P, S_IDX=None):
 {"" if ddj_has_vid(c) else f'<p class="wjlead">{L.t("wj_lead")}</p>'}
 {fig}
 {gist if F else bh_html}
-{bh_html if F else gist}
+{bh_html if F else (_du or gist)}
 {vid}
 <div class="chacts">{share_html(L, "ddj." + c, url, DU["chn"].format(c=c) if F else f"道德经 {c}", tt[c] if F else Y(tt[c]), Y(text), "" if F else an.get("片里落点") or "", tr if F else "", DDJ_SH)}</div>
 {"" if F or not next_c else f'<a class="nextread" href="{P}{rel_of(next_c)}">接着读下一章：第 {next_c} 章　{TL(tt[next_c])} ›</a>'}
 {rt_html(c)}
 {"" if F else lyhj_html([r for r in DDJ_LYHJ if str(r["ch"]) == str(c)], P, "ddj")}
-{"" if F or not G["jd"].get(c) else f'<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>' + fold(ddj_jd_html(G["jd"].get(c), Y)) + "</div>"}
+{"" if F or not _jdr else f'<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>' + fold(_jdr) + "</div>"}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
 <nav class="pn">{pn}</nav>
 </article>
@@ -2085,6 +2092,7 @@ def build_szj(L, write, P, S_IDX=None):
         head_t = SU["lec"].format(n=n) if F else f"三字经 {n}"
         share = share_html(L, f"szj.{n}", url, f'{bname} · {head_t}' if F else head_t, name_of(j), Y(text) if F else text, "" if F else j["sum"][:60], tr_all if F else "", SH) if gs else ""
         crumb_j = juan_of(j)
+        _du, _jdr = ("", "") if F else du_up(szj_jd_html(jd, L.code == "zh-Hant"), "这一讲讲什么")
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "sanzijing", "三字经")}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}sanzijing/">{esc(bname)}</a> › {esc(crumb_j)}</p>
 <h1><span class="no">{esc(jtag)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(name_of(j))}</h1>
@@ -2094,13 +2102,13 @@ def build_szj(L, write, P, S_IDX=None):
 <p class="wjlead">{esc(SU["vlead"]) if F else ("这一讲的视频还在制作。网站先放原文、核定白话、王相注和一孔录的读法，视频上线后补上。" if jd else "这一讲的视频还在制作。网站先放原文、白话和朗读，视频上线后补全讲解。")}</p>
 {fig}
 {bh_html}
-{f'<section class="gist ykan"><h2>这一讲讲什么</h2><p>{quotes(jd["落点"])}</p></section>' if jd.get("落点") else ""}
+{_du or (f'<section class="gist ykan"><h2>这一讲讲什么</h2><p>{quotes(jd["落点"])}</p></section>' if jd.get("落点") else "")}
 {jy}
 {vid}
 <div class="chacts">{share}</div>
 {"" if F or not next_j else f'<a class="nextread" href="{P}{rel_of(next_j["n"])}">接着读下一讲：{lec_of(next_j["n"])}　{esc(name_of(next_j))} ›</a>'}
 {"" if F else lyhj_html([r for r in SZJ_LYHJ if r["jiang"] == n], P)}
-{yw_html if F else ((f'<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>' + fold(yw_html + szj_jd_html(jd, L.code == "zh-Hant")) + "</div>") if (yw_html or jd) else "")}
+{yw_html if F else ((f'<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>' + fold(yw_html + _jdr) + "</div>") if (yw_html or _jdr) else "")}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
 <nav class="pn">{pn}</nav>
 </article>
