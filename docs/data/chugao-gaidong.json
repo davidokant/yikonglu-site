@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-15",
- "episodes": 44,
- "segments": 1338,
- "changed": 263,
- "ratio": 19.7,
+ "updated": "2026-11-16",
+ "episodes": 70,
+ "segments": 2094,
+ "changed": 341,
+ "ratio": 16.3,
  "rows": [
   {
    "ep": "学而一",
@@ -224,6 +224,136 @@
    "ep": "述而三",
    "segments": 26,
    "changed": 4
+  },
+  {
+   "ep": "述而四",
+   "segments": 24,
+   "changed": 1
+  },
+  {
+   "ep": "述而五",
+   "segments": 27,
+   "changed": 3
+  },
+  {
+   "ep": "述而六",
+   "segments": 31,
+   "changed": 3
+  },
+  {
+   "ep": "述而七",
+   "segments": 28,
+   "changed": 2
+  },
+  {
+   "ep": "述而八",
+   "segments": 31,
+   "changed": 1
+  },
+  {
+   "ep": "述而九",
+   "segments": 31,
+   "changed": 3
+  },
+  {
+   "ep": "述而十",
+   "segments": 34,
+   "changed": 3
+  },
+  {
+   "ep": "泰伯一",
+   "segments": 25,
+   "changed": 3
+  },
+  {
+   "ep": "泰伯二",
+   "segments": 25,
+   "changed": 2
+  },
+  {
+   "ep": "泰伯三",
+   "segments": 26,
+   "changed": 3
+  },
+  {
+   "ep": "泰伯四",
+   "segments": 28,
+   "changed": 4
+  },
+  {
+   "ep": "泰伯五",
+   "segments": 26,
+   "changed": 3
+  },
+  {
+   "ep": "泰伯六",
+   "segments": 31,
+   "changed": 3
+  },
+  {
+   "ep": "子罕二",
+   "segments": 29,
+   "changed": 4
+  },
+  {
+   "ep": "子罕三",
+   "segments": 25,
+   "changed": 4
+  },
+  {
+   "ep": "子罕四",
+   "segments": 21,
+   "changed": 3
+  },
+  {
+   "ep": "子罕五",
+   "segments": 27,
+   "changed": 3
+  },
+  {
+   "ep": "子罕六",
+   "segments": 28,
+   "changed": 3
+  },
+  {
+   "ep": "子罕七",
+   "segments": 31,
+   "changed": 3
+  },
+  {
+   "ep": "子罕八",
+   "segments": 23,
+   "changed": 5
+  },
+  {
+   "ep": "子罕九",
+   "segments": 23,
+   "changed": 2
+  },
+  {
+   "ep": "乡党一",
+   "segments": 42,
+   "changed": 4
+  },
+  {
+   "ep": "乡党二",
+   "segments": 37,
+   "changed": 5
+  },
+  {
+   "ep": "乡党三",
+   "segments": 32,
+   "changed": 3
+  },
+  {
+   "ep": "乡党四",
+   "segments": 34,
+   "changed": 3
+  },
+  {
+   "ep": "先进一",
+   "segments": 37,
+   "changed": 2
   }
  ]
 }

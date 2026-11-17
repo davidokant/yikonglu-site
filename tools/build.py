@@ -3506,6 +3506,13 @@ def main(zdir, outdir, kanwu=None):
             name = k.split("-")[-1] if isinstance(e, dict) else ""
             if name and name not in eps and re.fullmatch(r"论语-\d+-\S+", k) and e.get("youtube") and e.get("starts"):  # 11-16：发布线程每天写进新公开的集，章号取 starts 的键
                 eps[name] = {"chapters": sorted(e["starts"], key=lambda c: tuple(map(int, c.split("."))))}
+            elif name and name not in eps and re.fullmatch(r"论语-\d+-\S+", k) and e.get("youtube"):  # 11-17：只有 youtube＋public_at、没写 starts 的集，章号取该集最新稿；不跳秒
+                _gf = sorted(glob.glob(os.path.join(GAO_DIR, k, "*稿*.md")), key=lambda f_: [int(x) for x in re.findall(r"\d+", os.path.basename(f_).split("稿")[-1])] or [0])
+                _cs = sorted(parse_gao(_gf[-1], yw), key=lambda c: tuple(map(int, c.split(".")))) if _gf else []
+                if _gf and not _cs:  # 一章分几段讲的集（如 11.25 侍坐）：章号取稿子首行
+                    _h = open(_gf[-1], encoding="utf-8").readline()
+                    _cs = re.findall(r"\d+\.\d+", _h)[:1]
+                if _cs: eps[name] = {"chapters": _cs}
             if name in eps:
                 for a, b in (("youtube", "youtube"), ("bvid", "bilibili"), ("public_at", "public_at")):
                     if e.get(a): eps[name][b] = e[a]
@@ -3531,8 +3538,8 @@ def main(zdir, outdir, kanwu=None):
     _qf = sorted(glob.glob(os.path.join(YW_DIR, "论语原文-集注分章-v*.json")))
     _qw0 = json.load(open(_qf[-1], encoding="utf-8")) if _qf else {}
     for c in notes:
+        if c not in yw and c in _qw0 and c not in _qita and re.fullmatch(r"\d+\.\d+", c): yw[c] = _qw0[c]["text"]  # 11-17 新挂视频的集（只在章节起点.json）原文也从底本补
         if c in ch2ep or c in _qita or not re.fullmatch(r"\d+\.\d+", c): continue
-        if c not in yw and c in _qw0: yw[c] = _qw0[c]["text"]
         if c in yw:
             m_ = re.match(r"(论语-\d+-\S+?)（", notes[c]["fields"].get("本集", "")) if notes[c]["fields"].get("本集") else None
             ch2ep[c] = ((m_.group(1).split("-")[-1] if m_ else ""), {"chapters": [c], "jiang_only": True, "nogao": bool(notes[c].get("nogao"))})
