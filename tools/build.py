@@ -3511,7 +3511,7 @@ def main(zdir, outdir, kanwu=None):
                 _cs = sorted(parse_gao(_gf[-1], yw), key=lambda c: tuple(map(int, c.split(".")))) if _gf else []
                 if _gf and not _cs:  # 一章分几段讲的集（如 11.25 侍坐）：章号取稿子首行
                     _h = open(_gf[-1], encoding="utf-8").readline()
-                    _cs = re.findall(r"\d+\.\d+", _h)[:1]
+                    _cs = re.findall(r"(?<![v\d.])\d+\.\d+", _h)[:1]
                 if _cs: eps[name] = {"chapters": _cs}
             if name in eps:
                 for a, b in (("youtube", "youtube"), ("bvid", "bilibili"), ("public_at", "public_at")):
