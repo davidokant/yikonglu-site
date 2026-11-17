@@ -1806,9 +1806,9 @@ def build_ddj(L, D, write, P, S_IDX=None):
             faq = [] if F else [{"@type": "Question", "name": f"《道德经》第 {c} 章讲什么？", "acceptedAnswer": {"@type": "Answer", "text": an["片里落点"]}},
                    {"@type": "Question", "name": "一孔录怎么读这一章？", "acceptedAnswer": {"@type": "Answer", "text": a_lab + a_txt}}]
         bh = G["bh"].get(c)
-        bh_html = ((f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(bh)}</p>' + ("" if c in G["bh_ok"] else f'<p class="note">{esc(DU["bh_note"])}</p>') + "</section>") if F else
+        bh_html = ((f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(bh)}</p>' + "</section>") if F else
                    (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}：“{esc(Y(seo_q(text)))}”是什么意思</h2><p lang="zh-Hans">{esc(bh)}</p>'
-                   + ("" if c in G["bh_ok"] else '<p class="note">白话为初稿，按底本直译；开讲时再核。</p>') + "</section>")) if bh else ""
+                   + "</section>")) if bh else ""
         vid = ("" if ddj_has_vid(c) else f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
                f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">{DU["bili"] if F else "哔哩哔哩"}</a></p></section>') + ddj_vid_html(L, c, F)
         prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
@@ -2075,7 +2075,7 @@ def build_szj(L, write, P, S_IDX=None):
                        f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
                        f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script></figure>')
                 bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}：“{esc(gs[0][1].split("，")[0] + "，" + gs[0][1].split("，")[1])}”是什么意思</h2>'
-                           + "".join(f'<p lang="zh-Hans"><b>{esc(g[1])}</b><br>{esc(g[2])}</p>' for g in gs) + ('<p class="note">白话已核定；视频还在制作。</p></section>' if jd.get("白话") else '<p class="note">白话为初稿，开讲时再核。</p></section>'))
+                           + "".join(f'<p lang="zh-Hans"><b>{esc(g[1])}</b><br>{esc(g[2])}</p>' for g in gs) + '</section>')
         else:
             fig = f'<p class="note">{esc(SU["none"]) if F else "这一讲不讲新原文。"}</p>'; bh_html = ""
         sm = TR["sum"].get(str(n), "") if F else j["sum"]
@@ -2292,7 +2292,7 @@ def build_lang(L, D, write):
         extra = zb_section(c, url, cite_src) + extra
         bh = D["baihua"].get(c); fenqi_html = ""
         bh_h2 = f'{L.t("baihua")}：“{esc(seo_q(yw[c]))}”是什么意思' if L.code.startswith("zh") else L.t("baihua")  # 主人 11-07 定：标题带读者会问的话
-        bh_html = f'<section class="sec sec-白"><h2><i>白</i>{bh_h2}</h2><p lang="zh-Hans">{esc(bh)}</p><p class="note">{(("按底本原页直译；这章还没写讲稿，视频还在制作。别家读法见下。" if ch2ep[c][1].get("nogao") else "按一孔录的读法直译，取自讲稿；视频还在制作。别家读法见下。") if L.code.startswith("zh") else L.t("baihua_note")) if not ch2ep[c][1].get("youtube") else L.t("baihua_note")}</p></section>' if bh else ""
+        bh_html = f'<section class="sec sec-白"><h2><i>白</i>{bh_h2}</h2><p lang="zh-Hans">{esc(bh)}</p></section>' if bh else ""  # 11-17 主人：白话下不加提示行
         if not ZHAI_OFF and L.code.startswith("zh"):  # 11-15 十一项之 2 可摘段：每段单独复制出去也看得出书名、章号、原句、页码、网址；只用页面上已有的话拼
             _qp = sorted(set(g.get("qw_pages") or []), key=int)
             _pg = f'朱熹《论语集注》《四部备要》本第 {"—".join(dict.fromkeys([_qp[0], _qp[-1]])) if _qp else "?"} 页'
@@ -2458,7 +2458,7 @@ def build_lang(L, D, write):
                 y = D["fz"].get(c)
                 if y and y != c: cap += " " + L.t("wj_yang", y=y)
                 bh = D["baihua"].get(c)
-                bh_note = "" if c in D.get("bh_ok", ()) else f'<p class="note">{L.t("wj_bh_note")}</p>'
+                bh_note = ""
                 bh_html = f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(bh)}</p>{bh_note}</section>' if bh else ""
                 prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
                 pn = "".join(f'<a class="pncard {cl}" href="{href(cc)}"><small>{L.t(lab)}</small><b>{cc}　{esc(ctitle(cc))}</b></a>' if cc else "<span></span>" for cc, lab, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
