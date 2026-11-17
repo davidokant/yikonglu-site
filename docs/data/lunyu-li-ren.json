@@ -24,23 +24,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "处",
-     "pos": "择不处仁、久处约、长处乐",
-     "du": "chǔ"
-    },
-    {
-     "zi": "焉",
-     "pos": "焉得知",
-     "du": "yān"
-    },
-    {
-     "zi": "知",
-     "pos": "焉得知、知者利仁、不得为知",
-     "du": "zhì"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云里仁為美者，里者，民之所居處也。",
     "scan_page": "141"
@@ -82,23 +65,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "处",
-     "pos": "择不处仁、久处约、长处乐",
-     "du": "chǔ"
-    },
-    {
-     "zi": "知",
-     "pos": "焉得知、知者利仁、不得为知",
-     "du": "zhì"
-    },
-    {
-     "zi": "乐",
-     "pos": "长处乐、久乐必淫",
-     "du": "lè"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此明不仁之人居世無宜也。",
     "scan_page": "143"
@@ -132,18 +98,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "好",
-     "pos": "能好人、好恶、好善、深知笃好",
-     "du": "hào"
-    },
-    {
-     "zi": "恶",
-     "pos": "能恶人、好恶",
-     "du": "wù"
-    }
-   ],
    "huangkan_first_line": {
     "text": "夫仁人不佞，故能言人之好惡，是能好人能惡人也。",
     "scan_page": "143"
@@ -174,13 +128,6 @@
       "52"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "恶",
-     "pos": "无恶也、为恶",
-     "du": "è"
     }
    ],
    "huangkan_first_line": {
@@ -234,33 +181,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "恶",
-     "pos": "人之所恶、恶不仁者、好仁恶不仁",
-     "du": "wù"
-    },
-    {
-     "zi": "恶",
-     "pos": "恶乎成名",
-     "du": "wū"
-    },
-    {
-     "zi": "处",
-     "pos": "不处也",
-     "du": "chǔ"
-    },
-    {
-     "zi": "造",
-     "pos": "造次",
-     "du": "zào"
-    },
-    {
-     "zi": "沛",
-     "pos": "颠沛",
-     "du": "pèi"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云富與貴是人之所欲也者，富者財多，貴者位高。",
     "scan_page": "145"
@@ -306,23 +226,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "恶",
-     "pos": "人之所恶、恶不仁者、好仁恶不仁",
-     "du": "wù"
-    },
-    {
-     "zi": "好",
-     "pos": "好仁者、好仁恶不仁",
-     "du": "hào"
-    },
-    {
-     "zi": "尚",
-     "pos": "无以尚之",
-     "du": "shàng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云我未見好仁也者，歎世衰道喪，仁道絕也。",
     "scan_page": "148"
@@ -364,13 +267,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "党",
-     "pos": "各于其党",
-     "du": "dǎng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云民之過也各於其黨者，過，失也。",
     "scan_page": "150"
@@ -401,13 +297,6 @@
       "54"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "朝",
-     "pos": "朝闻道、朝夕",
-     "du": "zhāo"
     }
    ],
    "huangkan_first_line": {
@@ -442,18 +331,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "恶",
-     "pos": "恶衣恶食",
-     "du": "è"
-    },
-    {
-     "zi": "与",
-     "pos": "未足与议、何足与议",
-     "du": "yǔ"
-    }
-   ],
    "huangkan_first_line": {
     "text": "若欲志於道而恥惡衣惡食者，此則是無志之人，故不足與共謀議於道也。",
     "scan_page": "151"
@@ -484,23 +361,6 @@
       "55"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "适",
-     "pos": "无适也、吾谁适从、适可也",
-     "du": "dí"
-    },
-    {
-     "zi": "莫",
-     "pos": "无莫也",
-     "du": "mò"
-    },
-    {
-     "zi": "比",
-     "pos": "义之与比、比从也",
-     "du": "bì"
     }
    ],
    "huangkan_first_line": {
@@ -535,7 +395,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云君子懷德者，懷，安也。",
     "scan_page": "152"
@@ -566,13 +425,6 @@
       "55"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "放",
-     "pos": "放于利、放依也",
-     "du": "fǎng"
     }
    ],
    "huangkan_first_line": {
@@ -609,13 +461,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "为",
-     "pos": "为国、中心为忠、如心为恕",
-     "du": "wéi"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云能以禮讓為國乎何有者，為，猶治也。",
     "scan_page": "154"
@@ -649,7 +494,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云不患無位患所以立者，時多患無爵位，故孔子抑之也。",
     "scan_page": "154"
@@ -710,13 +554,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "参",
-     "pos": "参乎",
-     "du": "shēn"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云參乎者，呼曾子名欲語之，參，曾子名也。",
     "scan_page": "155"
@@ -757,13 +594,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "喻",
-     "pos": "喻于义、深喻",
-     "du": "yù"
-    }
-   ],
    "huangkan_first_line": {
     "text": "喻，曉也。",
     "scan_page": "156"
@@ -794,13 +624,6 @@
       "57"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "省",
-     "pos": "内自省、定省",
-     "du": "xǐng"
     }
    ],
    "huangkan_first_line": {
@@ -843,13 +666,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "几",
-     "pos": "几谏",
-     "du": "jī"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此并下四章皆明孝也。",
     "scan_page": "157"
@@ -890,7 +706,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "方，常也。",
     "scan_page": "159"
@@ -923,7 +738,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": null
   },
   {
@@ -946,7 +760,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云父母之年不可不知也者，人子有父母者，必宜知父母之年多少也。",
     "scan_page": "160"
@@ -978,13 +791,6 @@
       "59"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "逮",
-     "pos": "耻躬之不逮、逮及也",
-     "du": "dài"
     }
    ],
    "huangkan_first_line": {
@@ -1019,18 +825,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "鲜",
-     "pos": "失之者鲜、鲜失",
-     "du": "xiǎn"
-    },
-    {
-     "zi": "约",
-     "pos": "以约、俭约",
-     "du": "yuē"
-    }
-   ],
    "huangkan_first_line": {
     "text": "鮮，少也。",
     "scan_page": "162"
@@ -1063,18 +857,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "讷",
-     "pos": "讷于言",
-     "du": "nè"
-    },
-    {
-     "zi": "行",
-     "pos": "敏于行",
-     "du": "xìng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "敏，疾速也。",
     "scan_page": "162"
@@ -1099,7 +881,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "言人有德者，此人非孤然，而必有善鄰里故也。",
     "scan_page": "162"
@@ -1138,13 +919,6 @@
       "59"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "数",
-     "pos": "事君数、朋友数、烦数",
-     "du": "shuò"
     }
    ],
    "huangkan_first_line": {

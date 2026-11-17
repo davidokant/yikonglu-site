@@ -52,33 +52,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "妻",
-     "pos": "可妻、以其子妻之、妻长、妻容",
-     "du": "qì"
-    },
-    {
-     "zi": "长",
-     "pos": "公冶长",
-     "du": "cháng"
-    },
-    {
-     "zi": "缧",
-     "pos": "缧绁",
-     "du": "léi"
-    },
-    {
-     "zi": "绁",
-     "pos": "缧绁",
-     "du": "xiè"
-    },
-    {
-     "zi": "戮",
-     "pos": "刑戮",
-     "du": "lù"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子謂公冶長可妻也者，公冶長，弟子也。",
     "scan_page": "3"
@@ -110,13 +83,6 @@
       "62"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "焉",
-     "pos": "斯焉取斯、焉用佞",
-     "du": "yān"
     }
    ],
    "huangkan_first_line": {
@@ -152,18 +118,6 @@
       "62"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "瑚",
-     "pos": "瑚琏",
-     "du": "hú"
-    },
-    {
-     "zi": "琏",
-     "pos": "瑚琏",
-     "du": "liǎn"
     }
    ],
    "huangkan_first_line": {
@@ -210,28 +164,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "焉",
-     "pos": "斯焉取斯、焉用佞",
-     "du": "yān"
-    },
-    {
-     "zi": "佞",
-     "pos": "不佞、用佞",
-     "du": "nìng"
-    },
-    {
-     "zi": "给",
-     "pos": "口给",
-     "du": "jǐ"
-    },
-    {
-     "zi": "憎",
-     "pos": "屡憎、憎恶",
-     "du": "zēng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云或曰雍也仁而不佞者，或人云弟子雍甚有仁德而不能佞媚求會時也。",
     "scan_page": "5"
@@ -267,18 +199,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "说",
-     "pos": "子说、说其笃志、说之",
-     "du": "yuè"
-    },
-    {
-     "zi": "漆雕",
-     "pos": "漆雕开",
-     "du": "qī diāo"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子使漆彫開仕者，孔子使此弟子出仕官也。",
     "scan_page": "6"
@@ -312,38 +232,6 @@
       "64"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "桴",
-     "pos": "乘桴",
-     "du": "fú"
-    },
-    {
-     "zi": "乘",
-     "pos": "乘桴",
-     "du": "chéng"
-    },
-    {
-     "zi": "从",
-     "pos": "从我者",
-     "du": "cóng"
-    },
-    {
-     "zi": "好",
-     "pos": "好勇",
-     "du": "hào"
-    },
-    {
-     "zi": "与",
-     "pos": "其由与",
-     "du": "yú"
-    },
-    {
-     "zi": "材",
-     "pos": "无所取材",
-     "du": "cái"
     }
    ],
    "huangkan_first_line": {
@@ -386,23 +274,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "乘",
-     "pos": "千乘、百乘",
-     "du": "shèng"
-    },
-    {
-     "zi": "赋",
-     "pos": "治其赋",
-     "du": "fù"
-    },
-    {
-     "zi": "朝",
-     "pos": "立于朝、治朝",
-     "du": "cháo"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云孟武伯問子路仁乎者，武伯問孔子云：弟子中有子路，是仁人不乎？",
     "scan_page": "8"
@@ -437,18 +308,6 @@
       "65"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "女",
-     "pos": "女与回、吾与女",
-     "du": "rǔ"
-    },
-    {
-     "zi": "与",
-     "pos": "吾与女弗如也",
-     "du": "yǔ"
     }
    ],
    "huangkan_first_line": {
@@ -511,33 +370,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "朽",
-     "pos": "朽木、朽腐也",
-     "du": "xiǔ"
-    },
-    {
-     "zi": "杇",
-     "pos": "不可杇也、杇镘也",
-     "du": "wū"
-    },
-    {
-     "zi": "与",
-     "pos": "于予与何诛、于予与改是",
-     "du": "yú"
-    },
-    {
-     "zi": "诛",
-     "pos": "何诛",
-     "du": "zhū"
-    },
-    {
-     "zi": "行",
-     "pos": "信其行、观其行、行不逮",
-     "du": "xìng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云宰予晝寢者，寢，眠也。",
     "scan_page": "10"
@@ -573,18 +405,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "枨",
-     "pos": "申枨",
-     "du": "chéng"
-    },
-    {
-     "zi": "焉",
-     "pos": "焉得刚",
-     "du": "yān"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云吾未見剛者者，剛謂性無慾者也。",
     "scan_page": "11"
@@ -618,7 +438,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云子貢曰云云者，子貢自願無世人以非理加陵於我也。",
     "scan_page": "11"
@@ -660,7 +479,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云子貢曰云云者，子貢此歎顔氏之鑽仰也。",
     "scan_page": "12"
@@ -693,7 +511,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "子路禀性果决，言無宿諾，故前有所聞於孔子，即欲修行。",
     "scan_page": "13"
@@ -735,13 +552,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "好",
-     "pos": "敏而好学、不好学、勤学好问",
-     "du": "hào"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子貢問云云者，衛大夫孔叔圉以文為諡，子貢疑其大高故問於孔子也。",
     "scan_page": "13"
@@ -775,13 +585,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "行",
-     "pos": "其行己也恭",
-     "du": "xíng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子謂子產有君子之道四焉者，言子產有四德，並是君子之道也。",
     "scan_page": "13"
@@ -804,13 +607,6 @@
       "69"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "晏",
-     "pos": "晏平仲",
-     "du": "yàn"
     }
    ],
    "huangkan_first_line": {
@@ -851,18 +647,6 @@
       "69"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "臧",
-     "pos": "臧文仲、臧孙氏",
-     "du": "zāng"
-    },
-    {
-     "zi": "知",
-     "pos": "何如其知也、以文仲为知、安得为知、同归于不知",
-     "du": "zhì"
     }
    ],
    "huangkan_first_line": {
@@ -928,38 +712,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "尹",
-     "pos": "令尹",
-     "du": "yǐn"
-    },
-    {
-     "zi": "已",
-     "pos": "三已之",
-     "du": "yǐ"
-    },
-    {
-     "zi": "愠",
-     "pos": "无愠色",
-     "du": "yùn"
-    },
-    {
-     "zi": "焉",
-     "pos": "焉得仁",
-     "du": "yān"
-    },
-    {
-     "zi": "弑",
-     "pos": "崔子弑齐君",
-     "du": "shì"
-    },
-    {
-     "zi": "乘",
-     "pos": "十乘",
-     "du": "shèng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子張問曰令尹子文者，令尹，楚官名也。",
     "scan_page": "15"
@@ -999,13 +751,6 @@
       "71"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "三",
-     "pos": "三思而后行、每事必三思",
-     "du": "sàn"
     }
    ],
    "huangkan_first_line": {
@@ -1050,13 +795,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "知",
-     "pos": "邦有道则知、其知可及、知之可及、知巧之士",
-     "du": "zhì"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此章美武子德也。",
     "scan_page": "17"
@@ -1091,18 +829,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "与",
-     "pos": "归与",
-     "du": "yú"
-    },
-    {
-     "zi": "斐",
-     "pos": "斐然",
-     "du": "fěi"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子在陳曰歸與歸與者，孔子周流諸國，在陳最久，將欲反魯，故發此辭。",
     "scan_page": "18"
@@ -1133,13 +859,6 @@
       "72"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "恶",
-     "pos": "旧恶、恶人",
-     "du": "è"
     }
    ],
    "huangkan_first_line": {
@@ -1175,18 +894,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "醯",
-     "pos": "乞醯、醯醋也",
-     "du": "xī"
-    },
-    {
-     "zi": "乞",
-     "pos": "乞醯、乞诸其邻",
-     "du": "qǐ"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云孰謂微生高直者，于時世人多云微生高用性清直，而孔子譏之，故云孰謂微生高直也。",
     "scan_page": "19"
@@ -1218,18 +925,6 @@
       "73"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "足",
-     "pos": "足恭、足过也",
-     "du": "jù"
-    },
-    {
-     "zi": "匿",
-     "pos": "匿怨",
-     "du": "nì"
     }
    ],
    "huangkan_first_line": {
@@ -1295,43 +990,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "盍",
-     "pos": "盍各言尔志、盍何不也",
-     "du": "hé"
-    },
-    {
-     "zi": "衣",
-     "pos": "衣轻裘、衣服之也",
-     "du": "yì"
-    },
-    {
-     "zi": "裘",
-     "pos": "轻裘",
-     "du": "qiú"
-    },
-    {
-     "zi": "敝",
-     "pos": "敝之",
-     "du": "bì"
-    },
-    {
-     "zi": "憾",
-     "pos": "无憾",
-     "du": "hàn"
-    },
-    {
-     "zi": "施",
-     "pos": "无施劳、施之于人",
-     "du": "shī"
-    },
-    {
-     "zi": "少",
-     "pos": "少者怀之",
-     "du": "shào"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云顔淵季路侍者，季路即子路也。",
     "scan_page": "20"
@@ -1366,18 +1024,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "已",
-     "pos": "已矣乎",
-     "du": "yǐ"
-    },
-    {
-     "zi": "讼",
-     "pos": "内自讼",
-     "du": "sòng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "已，止也。",
     "scan_page": "21"
@@ -1408,23 +1054,6 @@
       "75"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "焉",
-     "pos": "如丘者焉",
-     "du": "yān"
-    },
-    {
-     "zi": "好",
-     "pos": "好学",
-     "du": "hào"
-    },
-    {
-     "zi": "邑",
-     "pos": "十室之邑、小邑",
-     "du": "yì"
     }
    ],
    "huangkan_first_line": {

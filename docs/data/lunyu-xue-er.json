@@ -97,23 +97,6 @@
      "paraphrase": true
     }
    ],
-   "readings": [
-    {
-     "zi": "说",
-     "pos": "不亦说乎",
-     "du": "yuè"
-    },
-    {
-     "zi": "乐",
-     "pos": "不亦乐乎",
-     "du": "lè"
-    },
-    {
-     "zi": "愠",
-     "pos": "不愠",
-     "du": "yùn"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子曰者，子者指於孔子也。",
     "scan_page": "30"
@@ -188,23 +171,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "弟",
-     "pos": "孝弟",
-     "du": "tì"
-    },
-    {
-     "zi": "好",
-     "pos": "好犯上、好作乱",
-     "du": "hào"
-    },
-    {
-     "zi": "与",
-     "pos": "为仁之本与",
-     "du": "yú"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云有子曰其為人也孝悌者，其，其孝悌者也。",
     "scan_page": "35"
@@ -251,13 +217,6 @@
       "15"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "令",
-     "pos": "令色",
-     "du": "lìng"
     }
    ],
    "huangkan_first_line": {
@@ -355,28 +314,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "省",
-     "pos": "三省",
-     "du": "xǐng"
-    },
-    {
-     "zi": "为",
-     "pos": "为人谋",
-     "du": "wèi"
-    },
-    {
-     "zi": "传",
-     "pos": "传不习乎",
-     "du": "chuán"
-    },
-    {
-     "zi": "曾、参",
-     "pos": "曾子、曾参",
-     "du": "zēng、shēn"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云吾日三省吾身者，省，視也。",
     "scan_page": "38"
@@ -439,18 +376,6 @@
       "16"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "道",
-     "pos": "道千乘之国",
-     "du": "dào"
-    },
-    {
-     "zi": "乘",
-     "pos": "千乘",
-     "du": "shèng"
     }
    ],
    "huangkan_first_line": {
@@ -516,23 +441,6 @@
       "17"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "弟",
-     "pos": "出则弟",
-     "du": "tì"
-    },
-    {
-     "zi": "弟",
-     "pos": "弟子",
-     "du": "dì"
-    },
-    {
-     "zi": "汎",
-     "pos": "汎爱众",
-     "du": "fàn"
     }
    ],
    "huangkan_first_line": {
@@ -604,13 +512,6 @@
       "18"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "易",
-     "pos": "贤贤易色",
-     "du": "yì"
     }
    ],
    "huangkan_first_line": {
@@ -688,23 +589,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "重",
-     "pos": "不重则不威",
-     "du": "zhòng"
-    },
-    {
-     "zi": "无",
-     "pos": "无友不如己者",
-     "du": "wú"
-    },
-    {
-     "zi": "惮",
-     "pos": "勿惮改",
-     "du": "dàn"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云君子不重則不威者，重為輕根，靜為躁本。",
     "scan_page": "47"
@@ -737,7 +621,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "明人君德也。",
     "scan_page": "49"
@@ -789,18 +672,6 @@
      "paraphrase": true
     }
    ],
-   "readings": [
-    {
-     "zi": "与",
-     "pos": "求之与、抑与之与、异乎人之求之与",
-     "du": "句末 yú；“抑与之”的与 yǔ"
-    },
-    {
-     "zi": "夫",
-     "pos": "夫子",
-     "du": "fū"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子禽問云云者，是此也。",
     "scan_page": "51"
@@ -847,18 +718,6 @@
       "20"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "行",
-     "pos": "观其行",
-     "du": "xìng"
-    },
-    {
-     "zi": "没",
-     "pos": "父没",
-     "du": "mò"
     }
    ],
    "huangkan_first_line": {
@@ -927,7 +786,6 @@
      "paraphrase": true
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云禮之用和為貴者，此以下明人君行化必禮樂相須。",
     "scan_page": "54"
@@ -966,18 +824,6 @@
       "21"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "近",
-     "pos": "信近于义、恭近于礼",
-     "du": "jìn"
-    },
-    {
-     "zi": "复",
-     "pos": "言可复也",
-     "du": "fù"
     }
    ],
    "huangkan_first_line": {
@@ -1034,13 +880,6 @@
       "22"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "好",
-     "pos": "好学、好礼",
-     "du": "hào"
     }
    ],
    "huangkan_first_line": {
@@ -1112,38 +951,6 @@
      "paraphrase": true
     }
    ],
-   "readings": [
-    {
-     "zi": "好",
-     "pos": "好学、好礼",
-     "du": "hào"
-    },
-    {
-     "zi": "谄",
-     "pos": "无谄",
-     "du": "chǎn"
-    },
-    {
-     "zi": "乐",
-     "pos": "贫而乐",
-     "du": "lè"
-    },
-    {
-     "zi": "磋",
-     "pos": "如切如磋",
-     "du": "cuō"
-    },
-    {
-     "zi": "琢",
-     "pos": "如琢如磨",
-     "du": "zhuó"
-    },
-    {
-     "zi": "与",
-     "pos": "其斯之谓与",
-     "du": "yú"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云貧而無諂者，乏財曰貧。",
     "scan_page": "59"
@@ -1166,13 +973,6 @@
       "23"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "己",
-     "pos": "不己知",
-     "du": "jǐ"
     }
    ],
    "huangkan_first_line": {

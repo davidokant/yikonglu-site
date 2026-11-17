@@ -40,13 +40,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "先进",
-     "pos": "先进第十一、先进于礼乐",
-     "du": "xiān jìn"
-    }
-   ],
    "huangkan_first_line": {
     "text": "先進者，先進受業者也。",
     "scan_page": "40"
@@ -83,28 +76,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "闵子骞",
-     "pos": "闵子骞、闵子",
-     "du": "mǐn zǐ qiān"
-    },
-    {
-     "zi": "行",
-     "pos": "德行、言行、谨于行",
-     "du": "xíng"
-    },
-    {
-     "zi": "宰",
-     "pos": "宰我",
-     "du": "zǎi"
-    },
-    {
-     "zi": "冉",
-     "pos": "冉伯牛、冉有",
-     "du": "rǎn"
-    }
-   ],
    "huangkan_first_line": {
     "text": "孔子言時世亂離，道不行。",
     "scan_page": "41"
@@ -137,13 +108,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "说",
-     "pos": "无所不说",
-     "du": "yuè"
-    }
-   ],
    "huangkan_first_line": {
     "text": "聖人為教，須賢啟發。",
     "scan_page": "42"
@@ -167,23 +131,6 @@
       "142"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "闵子骞",
-     "pos": "闵子骞、闵子",
-     "du": "mǐn zǐ qiān"
-    },
-    {
-     "zi": "间",
-     "pos": "人不间于",
-     "du": "jiàn"
-    },
-    {
-     "zi": "昆",
-     "pos": "昆弟",
-     "du": "kūn"
     }
    ],
    "huangkan_first_line": {
@@ -219,23 +166,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "三复",
-     "pos": "三复白圭",
-     "du": "sān fù"
-    },
-    {
-     "zi": "妻",
-     "pos": "以其兄之子妻之",
-     "du": "qì"
-    },
-    {
-     "zi": "圭",
-     "pos": "白圭",
-     "du": "guī"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云南容三復白圭者，復，猶反也。",
     "scan_page": "43"
@@ -262,7 +192,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "康子之問此，與哀公問同，而答異者，舊有二通。",
     "scan_page": "43"
@@ -308,7 +237,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "顏淵家貧，死無槨，故其父顏路請孔子車，欲賣以營槨也。",
     "scan_page": "44"
@@ -336,7 +264,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云顏淵死子曰噫者，噫，痛憤之聲也。",
     "scan_page": "44"
@@ -372,7 +299,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "顏淵死，孔子往顏家哭之，亦慟。",
     "scan_page": "45"
@@ -408,7 +334,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云顏淵死門人欲厚葬者，顏淵之死，門人欲厚葬，明其友也。",
     "scan_page": "45"
@@ -452,7 +377,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "發明三世之義。",
     "scan_page": "46"
@@ -487,7 +411,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "侍側云云者，陪在尊者之側曰侍也。",
     "scan_page": "46"
@@ -531,7 +454,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云魯人為長府者，長府，藏名也。",
     "scan_page": "47"
@@ -566,7 +488,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云子曰云云者，子路性剛，其鼓琴瑟亦有壯氣。",
     "scan_page": "47"
@@ -602,7 +523,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "子貢問孔子，欲辨師商誰為賢勝也。",
     "scan_page": "48"
@@ -645,7 +565,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云季氏富於周公者，季氏，魯大夫。",
     "scan_page": "49"
@@ -695,7 +614,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云柴也愚者，柴，弟子也。其累在於愚也。",
     "scan_page": "50"
@@ -729,7 +647,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "記者引孔子更舉顏子上列四子病重於先，自此以下解此義者凡有二通。",
     "scan_page": "50"
@@ -756,7 +673,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云子張問善人之道者，此問善人，非聖人也。",
     "scan_page": "52"
@@ -782,7 +698,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云論篤是與者，論篤者，是言語辨善，故優無惡可擇也。",
     "scan_page": "52"
@@ -830,7 +745,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "斯，此也。",
     "scan_page": "53"
@@ -865,7 +779,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "猶是前被匡人誤圍時，顏淵與孔子俱為匡人所圍。",
     "scan_page": "54"
@@ -911,7 +824,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "季子然，季氏家之子弟也。",
     "scan_page": "55"
@@ -957,7 +869,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云子路使子羔為費宰者，費，季氏采邑也。",
     "scan_page": "56"
@@ -1005,7 +916,6 @@
    ],
    "baihua": "子路、曾皙、冉有、公西华陪孔子坐着，孔子说，不要因为我比你们年长就不敢说话，你们平常说没人了解自己，假如有人了解，会怎样做；子路抢先说，夹在大国之间、受战争和饥荒困扰的千乘之国，交给我三年，可使人勇敢而知所当行，孔子微笑，冉有说，方圆六七十或五六十里的小国，给我三年可使百姓富足，礼乐留待君子，公西华说，我不敢说已经能做，只愿学习，在宗庙祭祀或诸侯会同之时，穿礼服戴礼帽，做个赞礼的小助手，曾皙停瑟起身说，我的志向不同，暮春时节穿好春衣，同五六位成年人、六七个少年，在沂水沐浴、舞雩迎风，唱着歌回来，孔子叹道，我赞同曾点。三人出去后曾皙留下，问孔子怎样看他们、为什么笑子路，孔子说，他们只是各言其志，治国须讲礼，子路说话不谦让，所以笑他，冉求所说的小地方也是国家，公西华所说的宗庙会同也是诸侯之事，他若只做小助手，还有谁能做大助手呢？",
    "citations": [],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云子路云云者，此四弟子侍孔子坐也。",
     "scan_page": "58"

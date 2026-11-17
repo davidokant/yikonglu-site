@@ -47,18 +47,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "佾",
-     "pos": "八佾",
-     "du": "yì"
-    },
-    {
-     "zi": "孰",
-     "pos": "孰不可忍",
-     "du": "shú"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云孔子謂季氏者，謂者，評論之辭也。",
     "scan_page": "96"
@@ -99,33 +87,6 @@
       "38"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "雍",
-     "pos": "以雍彻",
-     "du": "yōng"
-    },
-    {
-     "zi": "彻",
-     "pos": "以雍彻",
-     "du": "chè"
-    },
-    {
-     "zi": "相",
-     "pos": "相维辟公",
-     "du": "xiàng"
-    },
-    {
-     "zi": "辟",
-     "pos": "辟公",
-     "du": "bì"
-    },
-    {
-     "zi": "奚",
-     "pos": "奚取",
-     "du": "xī"
     }
    ],
    "huangkan_first_line": {
@@ -169,7 +130,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "此章亦為季氏出也。",
     "scan_page": "100"
@@ -229,13 +189,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "戚",
-     "pos": "宁戚",
-     "du": "qī"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云林放問禮之本者，問孔子求知禮之本也。",
     "scan_page": "101"
@@ -274,13 +227,6 @@
       "39"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "亡",
-     "pos": "诸夏之亡也",
-     "du": "wú"
     }
    ],
    "huangkan_first_line": {
@@ -335,28 +281,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "旅",
-     "pos": "旅于泰山",
-     "du": "lǚ"
-    },
-    {
-     "zi": "女",
-     "pos": "女弗能救与",
-     "du": "rǔ"
-    },
-    {
-     "zi": "与",
-     "pos": "女弗能救与",
-     "du": "yú"
-    },
-    {
-     "zi": "曾",
-     "pos": "曾谓泰山",
-     "du": "zēng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云季氏旅於泰山者，又譏季氏僭也。",
     "scan_page": "103"
@@ -389,18 +313,6 @@
       "40"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "揖",
-     "pos": "揖让",
-     "du": "yī"
-    },
-    {
-     "zi": "饮",
-     "pos": "下而饮",
-     "du": "yìn"
     }
    ],
    "huangkan_first_line": {
@@ -473,28 +385,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "倩",
-     "pos": "巧笑倩兮",
-     "du": "qiàn"
-    },
-    {
-     "zi": "盼",
-     "pos": "美目盼兮",
-     "du": "pàn"
-    },
-    {
-     "zi": "绚",
-     "pos": "素以为绚",
-     "du": "xuàn"
-    },
-    {
-     "zi": "绘",
-     "pos": "绘事后素",
-     "du": "huì"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子夏問云云者，此是衛風碩人閔莊姜之詩也。",
     "scan_page": "109"
@@ -528,23 +418,6 @@
       "42"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "杞",
-     "pos": "杞不足征也",
-     "du": "qǐ"
-    },
-    {
-     "zi": "征",
-     "pos": "不足征也",
-     "du": "zhēng"
-    },
-    {
-     "zi": "献",
-     "pos": "文献",
-     "du": "xiàn"
     }
    ],
    "huangkan_first_line": {
@@ -595,18 +468,6 @@
      "paraphrase": true
     }
    ],
-   "readings": [
-    {
-     "zi": "禘",
-     "pos": "禘自既灌",
-     "du": "dì"
-    },
-    {
-     "zi": "灌",
-     "pos": "既灌",
-     "du": "guàn"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此章明魯祭失禮也。",
     "scan_page": "112"
@@ -648,13 +509,6 @@
       "43"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "示",
-     "pos": "其如示诸斯乎",
-     "du": "shì"
     }
    ],
    "huangkan_first_line": {
@@ -704,13 +558,6 @@
       "43"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "与",
-     "pos": "吾不与祭",
-     "du": "yù"
     }
    ],
    "huangkan_first_line": {
@@ -764,23 +611,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "奥",
-     "pos": "媚于奥",
-     "du": "ào"
-    },
-    {
-     "zi": "媚",
-     "pos": "媚于灶",
-     "du": "mèi"
-    },
-    {
-     "zi": "祷",
-     "pos": "无所祷也",
-     "du": "dǎo"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云王孫賈問云云者，此世俗舊語也。",
     "scan_page": "118"
@@ -812,18 +642,6 @@
       "44"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "监",
-     "pos": "周监于二代",
-     "du": "jiàn"
-    },
-    {
-     "zi": "郁",
-     "pos": "郁郁乎文哉",
-     "du": "yù"
     }
    ],
    "huangkan_first_line": {
@@ -877,18 +695,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "大",
-     "pos": "大庙",
-     "du": "tài"
-    },
-    {
-     "zi": "鄹",
-     "pos": "鄹人之子",
-     "du": "zōu"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子入大廟者，大廟，周公廟也。",
     "scan_page": "120"
@@ -937,13 +743,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "为",
-     "pos": "为力不同科",
-     "du": "wèi"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云射不主皮者，射者男子所有事也。",
     "scan_page": "121"
@@ -985,30 +784,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "去",
-     "pos": "欲去告朔之饩羊",
-     "du": "qǔ",
-     "jin": "qù"
-    },
-    {
-     "zi": "告",
-     "pos": "告朔",
-     "du": "gù",
-     "jin": "gào"
-    },
-    {
-     "zi": "朔",
-     "pos": "告朔",
-     "du": "shuò"
-    },
-    {
-     "zi": "饩",
-     "pos": "饩羊",
-     "du": "xì"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子貢欲去告朔之餼羊者，告朔者，人君每月旦於廟告此月朔之至也。",
     "scan_page": "124"
@@ -1039,18 +814,6 @@
       "46"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "谄",
-     "pos": "人以为谄",
-     "du": "chǎn"
-    },
-    {
-     "zi": "尽",
-     "pos": "事君尽礼",
-     "du": "jìn"
     }
    ],
    "huangkan_first_line": {
@@ -1094,7 +857,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云定公問云云者，定公，哀公父也。",
     "scan_page": "126"
@@ -1133,18 +895,6 @@
       "46"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "乐",
-     "pos": "关雎乐而不淫、乐之过、其乐虽盛",
-     "du": "lè"
-    },
-    {
-     "zi": "雎",
-     "pos": "关雎",
-     "du": "jū"
     }
    ],
    "huangkan_first_line": {
@@ -1195,28 +945,6 @@
       "47"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "栗",
-     "pos": "周人以栗、战栗",
-     "du": "lì"
-    },
-    {
-     "zi": "说",
-     "pos": "成事不说",
-     "du": "shuō"
-    },
-    {
-     "zi": "谏",
-     "pos": "遂事不谏",
-     "du": "jiàn"
-    },
-    {
-     "zi": "咎",
-     "pos": "既往不咎",
-     "du": "jiù"
     }
    ],
    "huangkan_first_line": {
@@ -1296,33 +1024,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "焉",
-     "pos": "焉得俭",
-     "du": "yān"
-    },
-    {
-     "zi": "摄",
-     "pos": "官事不摄",
-     "du": "shè"
-    },
-    {
-     "zi": "塞",
-     "pos": "树塞门",
-     "du": "sè"
-    },
-    {
-     "zi": "好",
-     "pos": "两君之好",
-     "du": "hào"
-    },
-    {
-     "zi": "坫",
-     "pos": "反坫",
-     "du": "diàn"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云管仲之器小哉者，管仲者，齊桓公之相管夷吾也。",
     "scan_page": "132"
@@ -1353,44 +1054,6 @@
       "49"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "语",
-     "pos": "子语鲁大师乐",
-     "du": "yù"
-    },
-    {
-     "zi": "大",
-     "pos": "大师",
-     "du": "tài"
-    },
-    {
-     "zi": "乐",
-     "pos": "大师乐、乐其可知也、为乐、成乐",
-     "du": "yuè"
-    },
-    {
-     "zi": "从",
-     "pos": "从之、从，放也",
-     "du": "zòng",
-     "jin": "cóng"
-    },
-    {
-     "zi": "翕",
-     "pos": "翕如",
-     "du": "xī"
-    },
-    {
-     "zi": "皦",
-     "pos": "皦如",
-     "du": "jiǎo"
-    },
-    {
-     "zi": "绎",
-     "pos": "绎如",
-     "du": "yì"
     }
    ],
    "huangkan_first_line": {
@@ -1446,38 +1109,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "见",
-     "pos": "请见、从者见之",
-     "du": "xiàn"
-    },
-    {
-     "zi": "见",
-     "pos": "吾未尝不得见也",
-     "du": "jiàn"
-    },
-    {
-     "zi": "从",
-     "pos": "从者",
-     "du": "cóng"
-    },
-    {
-     "zi": "丧",
-     "pos": "何患于丧乎",
-     "du": "sàng"
-    },
-    {
-     "zi": "铎",
-     "pos": "木铎",
-     "du": "duó"
-    },
-    {
-     "zi": "封",
-     "pos": "仪封人",
-     "du": "fēng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云儀封人請見者，儀，衛邑名也。",
     "scan_page": "137"
@@ -1519,13 +1150,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "韶",
-     "pos": "子谓韶",
-     "du": "sháo"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子謂韶盡美矣又盡善也者，此詳虞周二代樂之勝否也。",
     "scan_page": "139"
@@ -1556,18 +1180,6 @@
       "50"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "丧",
-     "pos": "临丧不哀",
-     "du": "sāng"
-    },
-    {
-     "zi": "为",
-     "pos": "为礼不敬",
-     "du": "wéi"
     }
    ],
    "huangkan_first_line": {

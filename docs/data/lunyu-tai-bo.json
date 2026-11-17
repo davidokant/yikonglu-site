@@ -33,13 +33,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "称",
-     "pos": "无得而称",
-     "du": "chēng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云泰伯其可謂至德也已矣者，泰伯，周太王之長子也。",
     "scan_page": "63"
@@ -79,28 +72,6 @@
       "107"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "葸",
-     "pos": "慎而无礼则葸",
-     "du": "xǐ"
-    },
-    {
-     "zi": "绞",
-     "pos": "直而无礼则绞",
-     "du": "jiǎo"
-    },
-    {
-     "zi": "笃",
-     "pos": "笃于亲",
-     "du": "dǔ"
-    },
-    {
-     "zi": "偷",
-     "pos": "不偷",
-     "du": "tōu"
     }
    ],
    "huangkan_first_line": {
@@ -145,38 +116,6 @@
       "108"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "曾",
-     "pos": "曾子",
-     "du": "zēng"
-    },
-    {
-     "zi": "启",
-     "pos": "启予足",
-     "du": "qǐ"
-    },
-    {
-     "zi": "予",
-     "pos": "启予足、启予手",
-     "du": "yú"
-    },
-    {
-     "zi": "夫",
-     "pos": "吾知免夫",
-     "du": "fú"
-    },
-    {
-     "zi": "兢",
-     "pos": "战战兢兢",
-     "du": "jīng"
-    },
-    {
-     "zi": "履",
-     "pos": "履薄冰",
-     "du": "lǚ"
     }
    ],
    "huangkan_first_line": {
@@ -230,48 +169,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "曾",
-     "pos": "曾子",
-     "du": "zēng"
-    },
-    {
-     "zi": "孟敬子",
-     "pos": "孟敬子",
-     "du": "mèng jìng zǐ"
-    },
-    {
-     "zi": "鸟",
-     "pos": "鸟之将死",
-     "du": "niǎo"
-    },
-    {
-     "zi": "远",
-     "pos": "斯远暴慢、斯远鄙倍",
-     "du": "yuàn"
-    },
-    {
-     "zi": "近",
-     "pos": "斯近信",
-     "du": "jìn"
-    },
-    {
-     "zi": "暴",
-     "pos": "暴慢",
-     "du": "bào"
-    },
-    {
-     "zi": "倍",
-     "pos": "鄙倍",
-     "du": "bèi"
-    },
-    {
-     "zi": "笾",
-     "pos": "笾豆",
-     "du": "biān"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云曾子有疾孟敬子問疾者，孟敬子，魯大夫仲孫捷也。",
     "scan_page": "66"
@@ -311,23 +208,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "曾",
-     "pos": "曾子",
-     "du": "zēng"
-    },
-    {
-     "zi": "寡",
-     "pos": "问于寡",
-     "du": "guǎ"
-    },
-    {
-     "zi": "校",
-     "pos": "犯而不校、计校",
-     "du": "jiào"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此明顏淵謙德也。",
     "scan_page": "68"
@@ -362,33 +242,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "曾",
-     "pos": "曾子",
-     "du": "zēng"
-    },
-    {
-     "zi": "托",
-     "pos": "托六尺之孤",
-     "du": "tuō"
-    },
-    {
-     "zi": "寄",
-     "pos": "寄百里之命",
-     "du": "jì"
-    },
-    {
-     "zi": "夺",
-     "pos": "不可夺",
-     "du": "duó"
-    },
-    {
-     "zi": "与",
-     "pos": "君子人与",
-     "du": "yú"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云曾子曰可以託六尺之孤，謂童子無父而為國君者也。",
     "scan_page": "68"
@@ -421,28 +274,6 @@
       "110"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "曾",
-     "pos": "曾子",
-     "du": "zēng"
-    },
-    {
-     "zi": "弘",
-     "pos": "弘毅",
-     "du": "hóng"
-    },
-    {
-     "zi": "毅",
-     "pos": "弘毅",
-     "du": "yì"
-    },
-    {
-     "zi": "任",
-     "pos": "任重、己任",
-     "du": "rèn"
     }
    ],
    "huangkan_first_line": {
@@ -494,13 +325,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "乐",
-     "pos": "成于乐、乐有五声、学乐",
-     "du": "yuè"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此章明人學須次第也。",
     "scan_page": "70"
@@ -534,7 +358,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "此明天道深遠，非人道所知也。",
     "scan_page": "70"
@@ -558,23 +381,6 @@
       "112"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "好",
-     "pos": "好勇、好学",
-     "du": "hào"
-    },
-    {
-     "zi": "疾",
-     "pos": "疾贫、疾之",
-     "du": "jí"
-    },
-    {
-     "zi": "已",
-     "pos": "已甚",
-     "du": "yǐ"
     }
    ],
    "huangkan_first_line": {
@@ -609,18 +415,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "骄",
-     "pos": "骄且吝",
-     "du": "jiāo"
-    },
-    {
-     "zi": "吝",
-     "pos": "骄且吝",
-     "du": "lìn"
-    }
-   ],
    "huangkan_first_line": {
     "text": "周公者，周公旦也。",
     "scan_page": "71"
@@ -643,18 +437,6 @@
       "112"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "穀",
-     "pos": "不至于穀",
-     "du": "gǔ"
-    },
-    {
-     "zi": "易",
-     "pos": "不易得",
-     "du": "yì"
     }
    ],
    "huangkan_first_line": {
@@ -701,23 +483,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "好",
-     "pos": "好勇、好学",
-     "du": "hào"
-    },
-    {
-     "zi": "笃",
-     "pos": "笃信",
-     "du": "dǔ"
-    },
-    {
-     "zi": "见",
-     "pos": "有道则见、不见",
-     "du": "xiàn"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此章教人立身法也。",
     "scan_page": "72"
@@ -742,13 +507,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "谋",
-     "pos": "不谋其政",
-     "du": "móu"
-    }
-   ],
    "huangkan_first_line": null
   },
   {
@@ -768,28 +526,6 @@
       "113"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "挚",
-     "pos": "师挚",
-     "du": "zhì"
-    },
-    {
-     "zi": "雎",
-     "pos": "关雎",
-     "du": "jū"
-    },
-    {
-     "zi": "乱",
-     "pos": "关雎之乱",
-     "du": "luàn"
-    },
-    {
-     "zi": "盈",
-     "pos": "盈耳",
-     "du": "yíng"
     }
    ],
    "huangkan_first_line": {
@@ -824,23 +560,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "侗",
-     "pos": "侗而不愿",
-     "du": "tōng"
-    },
-    {
-     "zi": "愿",
-     "pos": "不愿",
-     "du": "yuàn"
-    },
-    {
-     "zi": "悾",
-     "pos": "悾悾",
-     "du": "kōng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此章歎時世與古反也。",
     "scan_page": "73"
@@ -865,7 +584,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "言學之為法，急務取得，恒如追前人欲取必及，故云如不及也。",
     "scan_page": "73"
@@ -889,18 +607,6 @@
       "114"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "巍",
-     "pos": "巍巍",
-     "du": "wēi"
-    },
-    {
-     "zi": "与",
-     "pos": "不与焉",
-     "du": "yù"
     }
    ],
    "huangkan_first_line": {
@@ -941,33 +647,6 @@
       "115"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "巍",
-     "pos": "巍巍",
-     "du": "wēi"
-    },
-    {
-     "zi": "唯",
-     "pos": "唯天为大、唯尧则之",
-     "du": "wéi"
-    },
-    {
-     "zi": "则",
-     "pos": "则之、犹准也",
-     "du": "zé"
-    },
-    {
-     "zi": "荡",
-     "pos": "荡荡",
-     "du": "dàng"
-    },
-    {
-     "zi": "焕",
-     "pos": "焕乎",
-     "du": "huàn"
     }
    ],
    "huangkan_first_line": {
@@ -1045,23 +724,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "治",
-     "pos": "天下治、以治天下",
-     "du": "zhì"
-    },
-    {
-     "zi": "乱",
-     "pos": "乱臣、乱，治也",
-     "du": "luàn"
-    },
-    {
-     "zi": "际",
-     "pos": "唐虞之际",
-     "du": "jì"
-    }
-   ],
    "huangkan_first_line": {
     "text": "記者又美舜德也。",
     "scan_page": "75"
@@ -1094,33 +756,6 @@
       "116"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "间",
-     "pos": "无间然、间",
-     "du": "jiàn"
-    },
-    {
-     "zi": "菲",
-     "pos": "菲饮食",
-     "du": "fěi"
-    },
-    {
-     "zi": "黻",
-     "pos": "黻冕",
-     "du": "fú"
-    },
-    {
-     "zi": "冕",
-     "pos": "黻冕",
-     "du": "miǎn"
-    },
-    {
-     "zi": "洫",
-     "pos": "沟洫",
-     "du": "xù"
     }
    ],
    "huangkan_first_line": {

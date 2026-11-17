@@ -64,13 +64,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "共",
-     "pos": "众星共之",
-     "du": "gǒng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云為政以德者，此明人君為政教之法也。",
     "scan_page": "62"
@@ -127,13 +120,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "蔽",
-     "pos": "一言以蔽之",
-     "du": "bì"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此章舉詩證為政以德之事也。",
     "scan_page": "62"
@@ -181,18 +167,6 @@
       "25"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "道",
-     "pos": "道之以政、道之以德",
-     "du": "dǎo"
-    },
-    {
-     "zi": "齐",
-     "pos": "齐之以刑",
-     "du": "qí"
     }
    ],
    "huangkan_first_line": {
@@ -257,13 +231,6 @@
       "26"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "有",
-     "pos": "十有五",
-     "du": "yòu"
     }
    ],
    "huangkan_first_line": {
@@ -334,18 +301,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "御",
-     "pos": "樊迟御",
-     "du": "yù"
-    },
-    {
-     "zi": "迟",
-     "pos": "樊迟",
-     "du": "chí"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云孟懿子問孝者，孟懿子魯大夫也。",
     "scan_page": "68"
@@ -380,7 +335,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云孟武伯問孝者，孟武伯懿子之子也。",
     "scan_page": "69"
@@ -419,18 +373,6 @@
       "28"
      ],
      "paraphrase": true
-    }
-   ],
-   "readings": [
-    {
-     "zi": "养",
-     "pos": "是谓能养、皆能有养",
-     "du": "yàng"
-    },
-    {
-     "zi": "别",
-     "pos": "何以别乎",
-     "du": "bié"
     }
    ],
    "huangkan_first_line": {
@@ -484,23 +426,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "食",
-     "pos": "有酒食",
-     "du": "sì"
-    },
-    {
-     "zi": "馔",
-     "pos": "先生馔",
-     "du": "zhuàn"
-    },
-    {
-     "zi": "曾",
-     "pos": "曾是以为孝乎",
-     "du": "céng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子夏問孝者，亦問行孝法也。",
     "scan_page": "72"
@@ -538,13 +463,6 @@
       "29"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "省",
-     "pos": "退而省其私",
-     "du": "xǐng"
     }
    ],
    "huangkan_first_line": {
@@ -605,18 +523,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "焉",
-     "pos": "人焉廋哉",
-     "du": "yān"
-    },
-    {
-     "zi": "廋",
-     "pos": "人焉廋哉",
-     "du": "sōu"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此章明觀知於人之法。",
     "scan_page": "75"
@@ -663,7 +569,6 @@
      "paraphrase": true
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "此章明為師之難也。",
     "scan_page": "76"
@@ -696,7 +601,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "此章明君子之人不係守一業也。",
     "scan_page": "77"
@@ -730,7 +634,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云子貢問君子者，問施何德行而可謂為君子乎？",
     "scan_page": "77"
@@ -771,13 +674,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "比",
-     "pos": "周而不比、比而不周、周比",
-     "du": "bǐ"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此章明君子行與小人異也。",
     "scan_page": "78"
@@ -809,18 +705,6 @@
       "31"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "罔",
-     "pos": "学而不思则罔",
-     "du": "wǎng"
-    },
-    {
-     "zi": "殆",
-     "pos": "思而不学则殆",
-     "du": "dài"
     }
    ],
    "huangkan_first_line": {
@@ -871,7 +755,6 @@
      "paraphrase": true
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "此章禁人雜學諸子百家之書也。",
     "scan_page": "80"
@@ -912,13 +795,6 @@
       "31"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "女",
-     "pos": "诲女、教女",
-     "du": "rǔ"
     }
    ],
    "huangkan_first_line": {
@@ -996,23 +872,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "干",
-     "pos": "学干禄",
-     "du": "gān"
-    },
-    {
-     "zi": "阙",
-     "pos": "阙疑、阙殆",
-     "du": "quē"
-    },
-    {
-     "zi": "行",
-     "pos": "行寡悔",
-     "du": "xìng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子張學干祿者，干，求也；祿，祿位也。",
     "scan_page": "82"
@@ -1062,13 +921,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "错",
-     "pos": "举直错诸枉",
-     "du": "cuò"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云哀公問曰何為則民服者，哀公失德，民不服從而公患之，故問孔子求民服之法也。",
     "scan_page": "84"
@@ -1103,7 +955,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云季康子問云云者，季康子魯臣也。",
     "scan_page": "85"
@@ -1155,13 +1006,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "奚",
-     "pos": "子奚不为政、奚其为为政",
-     "du": "xī"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云或謂云云者，或者或有一人不記其姓名也。",
     "scan_page": "86"
@@ -1201,18 +1045,6 @@
       "33"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "輗",
-     "pos": "大车无輗",
-     "du": "ní"
-    },
-    {
-     "zi": "軏",
-     "pos": "小车无軏",
-     "du": "yuè"
     }
    ],
    "huangkan_first_line": {
@@ -1291,7 +1123,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [],
    "huangkan_first_line": {
     "text": "云子張問十世可知也者，十世謂十代也。",
     "scan_page": "90"
@@ -1323,13 +1154,6 @@
       "35"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "谄",
-     "pos": "谄也",
-     "du": "chǎn"
     }
    ],
    "huangkan_first_line": {

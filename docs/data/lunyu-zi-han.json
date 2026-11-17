@@ -23,18 +23,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "罕",
-     "pos": "子罕、罕言",
-     "du": "hǎn"
-    },
-    {
-     "zi": "与",
-     "pos": "利与命与仁",
-     "du": "yǔ"
-    }
-   ],
    "huangkan_first_line": {
     "text": "子，孔子也。罕者，希也。",
     "scan_page": "2"
@@ -80,33 +68,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "巷",
-     "pos": "达巷",
-     "du": "xiàng"
-    },
-    {
-     "zi": "党",
-     "pos": "达巷党",
-     "du": "dǎng"
-    },
-    {
-     "zi": "执",
-     "pos": "吾何执、专执",
-     "du": "zhí"
-    },
-    {
-     "zi": "御",
-     "pos": "执御",
-     "du": "yù"
-    },
-    {
-     "zi": "射",
-     "pos": "执射",
-     "du": "shè"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云達巷云云者，五百家為黨，黨各有名，此黨名達巷。",
     "scan_page": "3"
@@ -140,23 +101,6 @@
       "118"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "冕",
-     "pos": "麻冕",
-     "du": "miǎn"
-    },
-    {
-     "zi": "纯",
-     "pos": "今也纯",
-     "du": "chún"
-    },
-    {
-     "zi": "泰",
-     "pos": "泰也",
-     "du": "tài"
     }
    ],
    "huangkan_first_line": {
@@ -197,18 +141,6 @@
       "118"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "毋",
-     "pos": "毋意、毋字",
-     "du": "wú"
-    },
-    {
-     "zi": "意",
-     "pos": "毋意、私意",
-     "du": "yì"
     }
    ],
    "huangkan_first_line": {
@@ -259,43 +191,6 @@
       "5"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "畏",
-     "pos": "子畏于匡",
-     "du": "wèi"
-    },
-    {
-     "zi": "匡",
-     "pos": "匡人",
-     "du": "kuāng"
-    },
-    {
-     "zi": "没",
-     "pos": "文王既没",
-     "du": "mò"
-    },
-    {
-     "zi": "兹",
-     "pos": "文不在兹",
-     "du": "zī"
-    },
-    {
-     "zi": "丧",
-     "pos": "将丧斯文、未丧",
-     "du": "sàng"
-    },
-    {
-     "zi": "与",
-     "pos": "不得与于斯文、得与于此文",
-     "du": "yù"
-    },
-    {
-     "zi": "予",
-     "pos": "匡人其如予何",
-     "du": "yú"
     }
    ],
    "huangkan_first_line": {
@@ -362,58 +257,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "大",
-     "pos": "大宰",
-     "du": "tài"
-    },
-    {
-     "zi": "宰",
-     "pos": "大宰",
-     "du": "zǎi"
-    },
-    {
-     "zi": "与",
-     "pos": "夫子圣者与",
-     "du": "yú"
-    },
-    {
-     "zi": "纵",
-     "pos": "天纵之、纵",
-     "du": "zòng"
-    },
-    {
-     "zi": "将",
-     "pos": "将圣、将，殆也",
-     "du": "jiāng"
-    },
-    {
-     "zi": "少",
-     "pos": "吾少也贱、少贱",
-     "du": "shào"
-    },
-    {
-     "zi": "鄙",
-     "pos": "鄙事",
-     "du": "bǐ"
-    },
-    {
-     "zi": "牢",
-     "pos": "牢曰、子牢",
-     "du": "láo"
-    },
-    {
-     "zi": "试",
-     "pos": "吾不试",
-     "du": "shì"
-    },
-    {
-     "zi": "艺",
-     "pos": "故艺",
-     "du": "yì"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云大宰問於子貢云云者，大宰，大夫官名也。",
     "scan_page": "7"
@@ -457,28 +300,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "鄙",
-     "pos": "鄙夫",
-     "du": "bǐ"
-    },
-    {
-     "zi": "空",
-     "pos": "空空如也",
-     "du": "kōng"
-    },
-    {
-     "zi": "叩",
-     "pos": "我叩其两端、叩，发动也",
-     "du": "kòu"
-    },
-    {
-     "zi": "竭",
-     "pos": "竭焉、竭尽",
-     "du": "jié"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云吾有知者，知謂有私意於其間之知也。",
     "scan_page": "9"
@@ -511,18 +332,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "夫",
-     "pos": "若夫、吾已矣夫",
-     "du": "fú"
-    },
-    {
-     "zi": "凤",
-     "pos": "凤鸟",
-     "du": "fèng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "夫時人皆願孔子有大主之事。",
     "scan_page": "9"
@@ -553,48 +362,6 @@
       "121"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "齐",
-     "pos": "齐衰",
-     "du": "zī"
-    },
-    {
-     "zi": "衰",
-     "pos": "齐衰",
-     "du": "cuī"
-    },
-    {
-     "zi": "少",
-     "pos": "虽少必作",
-     "du": "shào"
-    },
-    {
-     "zi": "冕",
-     "pos": "冕衣裳",
-     "du": "miǎn"
-    },
-    {
-     "zi": "裳",
-     "pos": "衣裳、下服",
-     "du": "cháng"
-    },
-    {
-     "zi": "瞽",
-     "pos": "瞽者",
-     "du": "gǔ"
-    },
-    {
-     "zi": "作",
-     "pos": "必作",
-     "du": "zuò"
-    },
-    {
-     "zi": "趋",
-     "pos": "必趋",
-     "du": "qū"
     }
    ],
    "huangkan_first_line": {
@@ -657,63 +424,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "喟",
-     "pos": "喟然",
-     "du": "kuì"
-    },
-    {
-     "zi": "钻",
-     "pos": "钻之弥坚",
-     "du": "zuān"
-    },
-    {
-     "zi": "弥",
-     "pos": "弥高、弥坚",
-     "du": "mí"
-    },
-    {
-     "zi": "瞻",
-     "pos": "瞻之在前",
-     "du": "zhān"
-    },
-    {
-     "zi": "循",
-     "pos": "循循然",
-     "du": "xún"
-    },
-    {
-     "zi": "诱",
-     "pos": "善诱",
-     "du": "yòu"
-    },
-    {
-     "zi": "约",
-     "pos": "约我以礼",
-     "du": "yuē"
-    },
-    {
-     "zi": "罢",
-     "pos": "欲罢不能",
-     "du": "bà"
-    },
-    {
-     "zi": "竭",
-     "pos": "既竭吾才",
-     "du": "jié"
-    },
-    {
-     "zi": "卓",
-     "pos": "卓尔、卓然",
-     "du": "zhuó"
-    },
-    {
-     "zi": "末",
-     "pos": "末由也已",
-     "du": "mò"
-    }
-   ],
    "huangkan_first_line": {
     "text": "顏淵上賢，賢聖道絕，故顏致歎也。",
     "scan_page": "11"
@@ -769,43 +479,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "疾",
-     "pos": "子疾病",
-     "du": "jí"
-    },
-    {
-     "zi": "间",
-     "pos": "病间",
-     "du": "jiàn"
-    },
-    {
-     "zi": "诈",
-     "pos": "行诈",
-     "du": "zhà"
-    },
-    {
-     "zi": "予",
-     "pos": "且予",
-     "du": "yú"
-    },
-    {
-     "zi": "宁",
-     "pos": "无宁、宁也",
-     "du": "nìng"
-    },
-    {
-     "zi": "纵",
-     "pos": "纵不得大葬",
-     "du": "zòng"
-    },
-    {
-     "zi": "葬",
-     "pos": "大葬",
-     "du": "zàng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子疾病者，孔子疾甚也。",
     "scan_page": "12"
@@ -851,28 +524,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "韫",
-     "pos": "韫椟",
-     "du": "yùn"
-    },
-    {
-     "zi": "贾",
-     "pos": "善贾、待贾",
-     "du": "jià"
-    },
-    {
-     "zi": "沽",
-     "pos": "沽诸、沽之哉",
-     "du": "gū"
-    },
-    {
-     "zi": "诸",
-     "pos": "藏诸、沽诸",
-     "du": "zhū"
-    }
-   ],
    "huangkan_first_line": {
     "text": "云子貢曰有美玉於斯者，子貢欲觀孔子聖德藏用，故託事於斯者也。",
     "scan_page": "13"
@@ -899,18 +550,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "夷",
-     "pos": "九夷",
-     "du": "yí"
-    },
-    {
-     "zi": "陋",
-     "pos": "何陋之有",
-     "du": "lòu"
-    }
-   ],
    "huangkan_first_line": {
     "text": "孔子有聖道不行於中國，故記欲東往居於九夷也。",
     "scan_page": "13"
@@ -935,28 +574,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "反",
-     "pos": "自卫反鲁",
-     "du": "fǎn"
-    },
-    {
-     "zi": "乐",
-     "pos": "乐正、诗乐",
-     "du": "yuè"
-    },
-    {
-     "zi": "雅",
-     "pos": "雅颂",
-     "du": "yǎ"
-    },
-    {
-     "zi": "颂",
-     "pos": "雅颂",
-     "du": "sòng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "孔子去魯後，而魯禮樂崩壞，子來還乃正之也。",
     "scan_page": "14"
@@ -979,33 +596,6 @@
       "124"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "卿",
-     "pos": "公卿",
-     "du": "qīng"
-    },
-    {
-     "zi": "丧",
-     "pos": "丧事",
-     "du": "sāng"
-    },
-    {
-     "zi": "勉",
-     "pos": "不敢不勉",
-     "du": "miǎn"
-    },
-    {
-     "zi": "困",
-     "pos": "不为酒困",
-     "du": "kùn"
-    },
-    {
-     "zi": "为",
-     "pos": "不为酒困",
-     "du": "wéi"
     }
    ],
    "huangkan_first_line": {
@@ -1050,23 +640,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "逝",
-     "pos": "逝者",
-     "du": "shì"
-    },
-    {
-     "zi": "夫",
-     "pos": "如斯夫",
-     "du": "fú"
-    },
-    {
-     "zi": "舍",
-     "pos": "不舍昼夜",
-     "du": "shě"
-    }
-   ],
    "huangkan_first_line": {
     "text": "孔子在於川水之上，見川流迅邁，未嘗停止。",
     "scan_page": "15"
@@ -1099,13 +672,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "好",
-     "pos": "好德、好色、好好色",
-     "du": "hào"
-    }
-   ],
    "huangkan_first_line": {
     "text": "時人多好色而無好德者也。",
     "scan_page": "15"
@@ -1131,18 +697,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "篑",
-     "pos": "一篑",
-     "du": "kuì"
-    },
-    {
-     "zi": "覆",
-     "pos": "虽覆一篑",
-     "du": "fù"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此戒人為善垂成而止者也。",
     "scan_page": "16"
@@ -1165,23 +719,6 @@
       "125"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "语",
-     "pos": "语之",
-     "du": "yù"
-    },
-    {
-     "zi": "与",
-     "pos": "其回也与",
-     "du": "yú"
-    },
-    {
-     "zi": "惰",
-     "pos": "不惰",
-     "du": "duò"
     }
    ],
    "huangkan_first_line": {
@@ -1209,13 +746,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "惜",
-     "pos": "惜乎、惜之",
-     "du": "xī"
-    }
-   ],
    "huangkan_first_line": {
     "text": "顏淵死後，孔子有此歎也。",
     "scan_page": "16"
@@ -1239,18 +769,6 @@
       "126"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "夫",
-     "pos": "有矣夫",
-     "du": "fú"
-    },
-    {
-     "zi": "秀",
-     "pos": "不秀、曰秀",
-     "du": "xiù"
     }
    ],
    "huangkan_first_line": {
@@ -1284,23 +802,6 @@
       "126"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "焉",
-     "pos": "焉知",
-     "du": "yān"
-    },
-    {
-     "zi": "畏",
-     "pos": "可畏、不足畏",
-     "du": "wèi"
-    },
-    {
-     "zi": "闻",
-     "pos": "无闻、以善闻",
-     "du": "wén"
     }
    ],
    "huangkan_first_line": {
@@ -1339,28 +840,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "巽",
-     "pos": "巽与之言、巽言",
-     "du": "xùn"
-    },
-    {
-     "zi": "与",
-     "pos": "巽与之言",
-     "du": "yǔ"
-    },
-    {
-     "zi": "说",
-     "pos": "能无说乎、说而不绎、必说",
-     "du": "yuè"
-    },
-    {
-     "zi": "绎",
-     "pos": "绎之为贵",
-     "du": "yì"
-    }
-   ],
    "huangkan_first_line": {
     "text": "彼人有過失，若我以法則語之，人聞法當時無不口從而云止當不敢復為者也。",
     "scan_page": "17"
@@ -1385,23 +864,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "惮",
-     "pos": "敬惮、勿惮改",
-     "du": "dàn"
-    },
-    {
-     "zi": "毋",
-     "pos": "毋友",
-     "du": "wú"
-    },
-    {
-     "zi": "友",
-     "pos": "毋友不如己者",
-     "du": "yǒu"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此事再出也。",
     "scan_page": "18"
@@ -1424,18 +886,6 @@
       "127"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "帅",
-     "pos": "夺帅、帅可夺",
-     "du": "shuài"
-    },
-    {
-     "zi": "匹",
-     "pos": "匹夫",
-     "du": "pǐ"
     }
    ],
    "huangkan_first_line": {
@@ -1482,53 +932,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "衣",
-     "pos": "衣敝缊袍、与衣狐貉者",
-     "du": "yì"
-    },
-    {
-     "zi": "敝",
-     "pos": "衣敝",
-     "du": "bì"
-    },
-    {
-     "zi": "缊",
-     "pos": "缊袍",
-     "du": "yùn"
-    },
-    {
-     "zi": "袍",
-     "pos": "缊袍",
-     "du": "páo"
-    },
-    {
-     "zi": "貉",
-     "pos": "狐貉",
-     "du": "hé"
-    },
-    {
-     "zi": "与",
-     "pos": "其由也与",
-     "du": "yú"
-    },
-    {
-     "zi": "忮",
-     "pos": "不忮",
-     "du": "zhì"
-    },
-    {
-     "zi": "臧",
-     "pos": "不臧、何足以臧",
-     "du": "zāng"
-    },
-    {
-     "zi": "诵",
-     "pos": "终身诵之",
-     "du": "sòng"
-    }
-   ],
    "huangkan_first_line": {
     "text": "衣，猶著也。弊，敗也。",
     "scan_page": "18"
@@ -1561,13 +964,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "彫",
-     "pos": "后彫",
-     "du": "diāo"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此欲明君子德性與小人異也。",
     "scan_page": "19"
@@ -1590,18 +986,6 @@
       "128"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "知",
-     "pos": "知者不惑",
-     "du": "zhì"
-    },
-    {
-     "zi": "惧",
-     "pos": "不惧",
-     "du": "jù"
     }
    ],
    "huangkan_first_line": {
@@ -1645,23 +1029,6 @@
      "paraphrase": false
     }
    ],
-   "readings": [
-    {
-     "zi": "与",
-     "pos": "可与共学、可与权",
-     "du": "yǔ"
-    },
-    {
-     "zi": "适",
-     "pos": "适道",
-     "du": "shì"
-    },
-    {
-     "zi": "权",
-     "pos": "可与权、权变",
-     "du": "quán"
-    }
-   ],
    "huangkan_first_line": {
     "text": "此章明權道之難也。",
     "scan_page": "20"
@@ -1696,28 +1063,6 @@
       "130"
      ],
      "paraphrase": false
-    }
-   ],
-   "readings": [
-    {
-     "zi": "棣",
-     "pos": "唐棣",
-     "du": "dì"
-    },
-    {
-     "zi": "华",
-     "pos": "唐棣之华",
-     "du": "huā"
-    },
-    {
-     "zi": "偏",
-     "pos": "偏其反而",
-     "du": "piān"
-    },
-    {
-     "zi": "夫",
-     "pos": "夫何远之有",
-     "du": "fú"
     }
    ],
    "huangkan_first_line": {
