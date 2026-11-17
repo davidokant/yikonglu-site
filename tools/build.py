@@ -47,6 +47,8 @@ KEBEN = [("chu7", "七年级上册《〈论语〉十二章》", "初中第一次
          ("bixiu", "高中必修下册《子路、曾皙、冉有、公西华侍坐》", "孔子让四个学生各言其志，最后说“吾与点也”。课本按杨伯峻本是《先进》第 26 章，朱注本是第 25 章。", ["11.25"]),
          ("xuanbi", "高中选择性必修上册《〈论语〉十二章》", "从学而、八佾、里仁、雍也、泰伯、子罕、颜渊、卫灵公、阳货九篇选出，讲仁、礼、义与君子。", ["1.14", "3.3", "4.8", "4.16", "4.17", "6.16", "8.7", "9.18", "9.28", "12.1", "15.23", "17.9"])]
 TAGLINE = "从《论语》开始 · 逐字读经典原文"  # 11-16 与首页定位句统一
+# 11-17 主人定现在申请 Google AdSense：审核阶段只放验证用 meta 和 ads.txt，不载广告脚本、不放广告位；过审后再定位置（只页脚、目录页，章节正文不放，关自动广告）
+ADSENSE_PUB = "ca-pub-7119069841468291"  # 形如 ca-pub-1234567890123456；空就什么都不加
 GAO_DIR = "/mnt/project-files/一孔学-内-自媒体/数据/网站素材"  # 各期稿只在共享盘读取，不进公开仓库
 GUSHI_DIR = os.environ.get("YK_GUSHI_DIR") or os.path.join(GAO_DIR, "_故事")  # “故事”栏资料；没有人物表就整栏不出
 GUSHI_ON = False
@@ -1277,7 +1279,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <head>
 <meta charset="utf-8">
 <!-- 一孔录 yikonglu.com · {fp} · 原载 {url} -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">{f'<meta name="google-adsense-account" content="{ADSENSE_PUB}">' if ADSENSE_PUB else ""}
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <meta name="author" content="一孔录"><meta name="copyright" content="一孔录 yikonglu.com"><link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
@@ -3767,6 +3769,7 @@ def main(zdir, outdir, kanwu=None):
     # 11-13 GSC 报 /done /top /copy /intent /data/live- 404：是页面脚本里计数服务的接口路径被当成链接抓了；脚本已改成拼接，这里再挡一下
     open(os.path.join(outdir, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /done\nDisallow: /mirror\nDisallow: /ai\nDisallow: /hj\nDisallow: /copy$\nDisallow: /top$\nDisallow: /hit$\nDisallow: /reads\nDisallow: /intent\nDisallow: /data/live-\n\nSitemap: {DOMAIN}/sitemap.xml\n")
     open(os.path.join(outdir, "CNAME"), "w").write("yikonglu.com\n")
+    if ADSENSE_PUB: open(os.path.join(outdir, "ads.txt"), "w").write(f"google.com, {ADSENSE_PUB.replace('ca-', '')}, DIRECT, f08c47fec0942fa0\n")  # 11-17 AdSense 授权卖家声明
     open(os.path.join(outdir, ".nojekyll"), "w").write("")
     shutil.copy(os.path.join(HERE, "style.css"), os.path.join(outdir, "style.css"))
     print(f"生成 {len(urls)} 页 → {outdir}")
