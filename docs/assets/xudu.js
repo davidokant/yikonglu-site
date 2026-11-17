@@ -141,11 +141,11 @@
     var seen = S.b[book].seen || [];
     [].forEach.call(document.querySelectorAll('main a[href*="/' + book + '/"]'), function (a) {
       if (a.closest(".xdbar")) return;
-      if (book === "daodejing" || book === "sanzijing") { var md = a.getAttribute("href").match(/\/(?:daodejing|sanzijing)\/(\d+)\.html$/); if (md && seen.indexOf(md[1]) >= 0) a.classList.add("xdseen"); return }
+      if (book === "daodejing" || book === "sanzijing") { var md = a.getAttribute("href").match(/\/(?:daodejing|sanzijing)\/(\d+)\.html$/); return }  // 11-17：只有点过“读完了”才打勾，道德经、三字经没有这个按钮
       var mm = a.getAttribute("href").match(new RegExp("/" + book + "/([a-z-]+)/(\\d+)\\.html$"));
       if (!mm) return;
       var pianIdx = PIAN.indexOf(mm[1]); if (pianIdx < 0) return;
-      if (seen.indexOf((pianIdx + 1) + "." + mm[2]) >= 0) a.classList.add("xdseen");
+      var dn = 0; try { dn = localStorage.getItem("ykl_done_" + (pianIdx + 1) + "." + mm[2]) } catch (e) { } if (dn) a.classList.add("xdseen");
     });
   }
 })();

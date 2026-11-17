@@ -437,9 +437,9 @@ YKCITE = '<p class="ykcite"><button type="button" onclick="var s=this.closest(\'
 # 书页观感（11-13 主人：从书架点进去，章页跟着书的逻辑）：书目录、篇目录、章页头部放一册小书封；本篇章节读过的打勾；篇卡显示“你读过几章”
 def mcv(P, qian="", big=False, book="lunyu", name="论语"):
     return f'<a class="mcv{" big" if big else ""}" href="{P}{book}/" aria-label="{name}"><span class="qian{" l5" if len(qian) >= 5 else ""}">{qian or name}</span></a>'
-BOOK_JS = """<script>(function(){var s=[];try{s=((JSON.parse(localStorage.getItem("yk_xd")||"{}").b||{}).lunyu||{}).seen||[]}catch(e){return}if(!s.length)return;
+BOOK_JS = """<script>(function(){document.querySelectorAll("aside li[data-c]").forEach(function(li){try{if(localStorage.getItem("ykl_done_"+li.getAttribute("data-c")))li.classList.add("rd")}catch(e){}});
+var s=[];try{s=((JSON.parse(localStorage.getItem("yk_xd")||"{}").b||{}).lunyu||{}).seen||[]}catch(e){return}if(!s.length)return;
 var S={},P={};s.forEach(function(c){S[c]=1;var p=String(c).split(".")[0];P[p]=(P[p]||0)+1});
-document.querySelectorAll("aside li[data-c]").forEach(function(li){if(S[li.getAttribute("data-c")])li.classList.add("rd")});
 var H=/Hant/.test(document.documentElement.lang),Z=/^zh/.test(document.documentElement.lang);
 document.querySelectorAll(".pcard[data-p]").forEach(function(a){var n=P[a.getAttribute("data-p")];if(!n)return;a.classList.add("rd");if(!Z)return;var e=document.createElement("em");e.className="mine";e.textContent=(H?"你讀過 ":"你读过 ")+n+" 章";a.appendChild(e)})})();</script>"""
 FROM_JS = """<script>(function(){var q=new URLSearchParams(location.search),f=(q.get('from')||'').toLowerCase();if(!f)return;
@@ -910,7 +910,7 @@ def analytics(L):
               + 'window.yklDone=cnt;'
               + 'document.querySelectorAll(".donebox").forEach(function(bx){var c=bx.getAttribute("data-c"),b=bx.querySelector("button"),p=bx.querySelector(".donecnt"),k="ykl_done_"+c,was=false;try{was=!!localStorage.getItem(k)}catch(e){}'
               + 'function mark(){b.textContent=X.ok;b.disabled=true;b.classList.add("on")}if(was)mark();bx.hidden=false;cnt(c,p);'
-              + 'b.addEventListener("click",function(){if(b.disabled)return;mark();if(window.ykBing)setTimeout(window.ykBing,300);try{localStorage.setItem(k,"1")}catch(e){}fetch(EP("done"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:c})}).then(function(r){return r.json()}).then(function(d){p.textContent=X.n.replace("{d}",n(d.today)).replace("{t}",n(d.total));p.hidden=false}).catch(function(){})})});'
+              + 'b.addEventListener("click",function(){if(b.disabled)return;mark();if(window.ykBing)setTimeout(window.ykBing,300);try{localStorage.setItem(k,"1")}catch(e){}var al=document.querySelector("aside li[data-c=\\""+c+"\\"]");if(al)al.classList.add("rd");fetch(EP("done"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:c})}).then(function(r){return r.json()}).then(function(d){p.textContent=X.n.replace("{d}",n(d.today)).replace("{t}",n(d.total));p.hidden=false}).catch(function(){})})});'
               + 'window.yklCopy=function(sid){if(!CC||!DB)return;fetch(EP("copy"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:CC,s:sid})}).catch(function(){})};'
               + 'var LJ=null;function lj(cb){if(LJ){cb(LJ);return}fetch(["","data","live"].join("/")+"-"+document.documentElement.lang+".json").then(function(r){return r.json()}).then(function(j){LJ=j;cb(j)}).catch(function(){})}'
               + 'var RM=document.getElementById("remen"),ST=document.getElementById("steps"),TJ=document.getElementById("topju"),HL=document.querySelectorAll(".toc li[data-c]"),GD=document.getElementById("rcta")||document.getElementById("meiri");'
