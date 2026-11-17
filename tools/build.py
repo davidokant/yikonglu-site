@@ -1399,7 +1399,7 @@ def yxl_block(L, D, P, full=False):
             f'<p>做法：取已发各章首句，不登录搜索，看一孔录讲读是否在前 20 条，折成 0—100 的平台分；平台搜索因人因地而异，你搜到的可能不同。<a class="more" href="{P}yingxiangli.html">方法与原始数据 ›</a></p></div>')
     ix = y.get("index") or {}
     ixp = [f"{nm} {ix[k]['indexed']} / {ix[k]['total']} 页" for k, nm in (("google", "谷歌"), ("bing", "必应")) if isinstance(ix.get(k), dict) and ix[k].get("indexed") is not None and ix[k].get("total")]
-    if ixp: find += f'<p class="yxindex">收录：{" · ".join(ixp)}</p>'
+    # 11-17 主人定：“收录：必应 N / M 页”这行不再显示（数据仍记在 yingxiangli.json）
     sub = f'每天更新 · 最近一次 {esc(y.get("updated") or D["today"])} · 每个数都可点开核对'
     return f'<section class="wrap narrow yxl"><h2 class="ph">一孔影响力</h2><p class="sub">{sub}</p>{grid}{find}</section>'
 
@@ -3213,7 +3213,6 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
 <p>占比 = 各章搜索结果前 20 条中本站条数之和 ÷ 前 20 条总数。只在能看到全部结果的平台计算（现只 YouTube），不点名其他频道。</p>
 <p>按书分：每本书单算一行，书分 = 该书各平台分的平均，各平台分只用这本书已发各章算；点开一本书，可看各平台分和前 20 条里找得到的章。道德经、三字经有视频的章自动计入。</p>
 <p>找到分 = 各平台平台分的平均。YouTube 取台湾繁体、美国简体两种设定的平均，合成一个平台分；哔哩哔哩、谷歌、必应各一个平台分。本周还没测完的平台也照列，注明已测几章，测完后换成整周数。</p>
-<p>收录＝搜索引擎已编入索引的本站页数 ÷ 网站地图页数；谷歌按逐页检查接口每周轮查一遍，必应取 Webmaster 报告的索引页数；百度未接。</p>
 <h2>怎么测</h2>
 <p>词表：已发各章的第一句原文，简体、繁体各一条。每周滚动测，未测到的章暂不计分，跑完后换成整周数；更新日期为最近一次计算日。</p>
 <p>搜索用不登录的新会话；YouTube 走数据接口按地区和语言设定搜，和网页搜索结果可能有出入。搜索平台会按人、按地、按时调整结果，你在自己设备上搜到的名次未必一样。</p>
