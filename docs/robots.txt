@@ -11,5 +11,8 @@ Disallow: /reads
 Disallow: /intent
 Disallow: /data/live-
 
+User-agent: MJ12bot
+Disallow: /
+
 Sitemap: https://yikonglu.com/sitemap.xml
 Sitemap: https://yikonglu.com/sitemap-images.xml

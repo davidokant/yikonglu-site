@@ -3776,7 +3776,8 @@ def main(zdir, outdir, kanwu=None):
     ver = __import__("hashlib").md5((CSSV + A2V + open(os.path.join(HERE, "sw.js"), encoding="utf-8").read() + "".join(sorted(v[0] for k, v in pdates.items() if k in seen))).encode()).hexdigest()[:10]
     open(os.path.join(outdir, "sw.js"), "w", encoding="utf-8").write(open(os.path.join(HERE, "sw.js"), encoding="utf-8").read().replace("@VER@", ver).replace("@PREFIXES@", json.dumps([""] + [LANGS[k][0] for k in LANGS if LANGS[k][0]])))
     # 11-13 GSC 报 /done /top /copy /intent /data/live- 404：是页面脚本里计数服务的接口路径被当成链接抓了；脚本已改成拼接，这里再挡一下
-    open(os.path.join(outdir, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /done\nDisallow: /mirror\nDisallow: /ai\nDisallow: /hj\nDisallow: /copy$\nDisallow: /top$\nDisallow: /hit$\nDisallow: /reads\nDisallow: /intent\nDisallow: /data/live-\n\nSitemap: {DOMAIN}/sitemap.xml\n")
+    # 11-17 主人点卡：拦 MJ12bot（SEO 外链爬虫，不带读者，只耗入口计数额度）
+    open(os.path.join(outdir, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /done\nDisallow: /mirror\nDisallow: /ai\nDisallow: /hj\nDisallow: /copy$\nDisallow: /top$\nDisallow: /hit$\nDisallow: /reads\nDisallow: /intent\nDisallow: /data/live-\n\nUser-agent: MJ12bot\nDisallow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
     open(os.path.join(outdir, "CNAME"), "w").write("yikonglu.com\n")
     if ADSENSE_PUB: open(os.path.join(outdir, "ads.txt"), "w").write(f"google.com, {ADSENSE_PUB.replace('ca-', '')}, DIRECT, f08c47fec0942fa0\n")  # 11-17 AdSense 授权卖家声明
     open(os.path.join(outdir, ".nojekyll"), "w").write("")
