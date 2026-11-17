@@ -73,6 +73,14 @@ HANT_POST = [("通道不篤", "信道不篤"), ("相維闢公", "相維辟公"),
     ("寧媚於灶", "寧媚於竈"), ("媚於灶", "媚於竈"), ("冠不以吊", "冠不以弔"), ("不撤姜食", "不撤薑食"), ("李鬱", "李郁")]
 HANT_PROTECT = ["范祖禹", "范氏", "游酢", "游氏", "坐如尸", "尸", "咸", "丑", "干禄", "云：", "云，", "子云", "诗云", "余力", "余，", "余者", "托看"]
 _HANT_CC = []
+# 11-17 主人同意：已发视频有内容错，在章页视频下公开一行勘误（只中文页；全部勘误仍记在 数据/网站勘误.md、勘误页）
+VID_KW = {
+ "9.5": "勘误：本片 4:55 起“言天若欲丧此文……言必不能违天害己也”一段，仍是朱熹《论语集注》所引马融（马氏）的话，不是朱熹自己说的；见《四部备要》本第 119 页“马氏曰”。",
+}
+def vid_kw(L, c):
+    t = VID_KW.get(c)
+    if not t or not L.code.startswith("zh"): return ""
+    return f'<p class="vkw">{esc(hant_plain(t) if L.code == "zh-Hant" else t)}</p>'
 def hant_plain(text):  # 经文转繁（与繁体站同一套护字与改字），给分享卡用：卡上经文一律繁体（11-14 主人）
     if not text: return text
     if not _HANT_CC: _HANT_CC.append(__import__("opencc").OpenCC("s2twp"))
@@ -2259,7 +2267,7 @@ def build_lang(L, D, write):
             swap = ""
         vid_html = (f"""<section class="video"{f' hidden data-pub="{pub_at}"' if future else ""}><h2><i>看</i>{L.t("video")}</h2>
 <div class="vid">{frame}</div>
-<p class="vlinks">{L.t("video_in", ep=epname)}<a href="https://www.youtube.com/watch?v={yt}{f'&amp;t={st}s' if st else ''}">YouTube</a>{f'<a href="https://www.bilibili.com/video/{ep["bilibili"]}{f"?t={st}" if st else ""}">{"哔哩哔哩" if L.code.startswith("zh") else "Bilibili"}</a>' if ep.get("bilibili") else ""}{swap}</p></section>""" + (f'<script>(function(){{var s=document.querySelector("section.video[data-pub]");if(!s)return;function f(){{if(Date.now()>=Date.parse(s.dataset.pub)){{s.hidden=false;return true}}}}if(!f())var t=setInterval(function(){{if(f())clearInterval(t)}},60000)}})();</script>' if future else "")) if yt else ""  # 视频还没上传（只排了时间）就先不放视频块
+<p class="vlinks">{L.t("video_in", ep=epname)}<a href="https://www.youtube.com/watch?v={yt}{f'&amp;t={st}s' if st else ''}">YouTube</a>{f'<a href="https://www.bilibili.com/video/{ep["bilibili"]}{f"?t={st}" if st else ""}">{"哔哩哔哩" if L.code.startswith("zh") else "Bilibili"}</a>' if ep.get("bilibili") else ""}{swap}</p>{vid_kw(L, c)}</section>""" + (f'<script>(function(){{var s=document.querySelector("section.video[data-pub]");if(!s)return;function f(){{if(Date.now()>=Date.parse(s.dataset.pub)){{s.hidden=false;return true}}}}if(!f())var t=setInterval(function(){{if(f())clearInterval(t)}},60000)}})();</script>' if future else "")) if yt else ""  # 视频还没上传（只排了时间）就先不放视频块
         if not yt:  # 有讲读、视频还没出：照未讲页写“正在制作”
             vid_html = (f'<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}'
                         f'<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">{"哔哩哔哩" if L.code.startswith("zh") else "Bilibili"}</a></p></section>')

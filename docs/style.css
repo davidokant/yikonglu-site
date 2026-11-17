@@ -1041,3 +1041,4 @@ body{background:var(--bg) url(/assets/diwen-1116.webp) repeat;background-size:36
 .nextread{display:block;margin:14px 0 6px;padding:13px 16px;border-radius:999px;background:var(--accent,#23503F);color:#F2F1EA!important;text-align:center;text-decoration:none;font-size:1.02rem}
 .hedui-d{margin:14px 0}.hedui-d>summary{cursor:pointer;padding:10px 0;font-weight:600;color:var(--ink2,#555)}
 @media (max-width:700px){.pg-chapter .chhead .crumb,.pg-chapter .chhead .mcv,.pg-chapter .dztools .prog{display:none}.pg-chapter .chhead h1{font-size:2rem}}
+.vkw{margin:8px 0 0;padding:8px 12px;border-left:3px solid var(--accent2);background:rgba(138,90,44,.08);font-size:14px;line-height:1.7;color:var(--fg)}  /* 11-17 视频下勘误行 */
