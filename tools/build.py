@@ -2275,7 +2275,8 @@ def build_lang(L, D, write):
                       + "".join(f'<tr><td class="zi">{esc(x["zi"])}</td><td>{esc(x["pos"])}</td><td>{esc(x["du"])}{f'<small class="jin">（朱注音，今多读 {esc(x["jin"])}）</small>' if x.get("jin") and L.code.startswith("zh") else ""}</td></tr>' for x in g["reads"]) + "</tbody></table></section>")
         allpages = sorted({x for r in g["cites"] for x in r["pages"]} | set(g.get("qw_pages", [])), key=int)
         imgs = "".join(f'<a href="/yuanye/p{int(x):03d}.jpg" target="_blank"><img loading="lazy" src="/yuanye/p{int(x):03d}.jpg" alt="{f"论语 {c} 朱熹集注原页：四部备要本第 {x} 页" if L.code.startswith("zh") else L.t("pg", n=x)}"><span>{L.t("pg", n=x)}</span></a>' for x in allpages if x in pages_avail)
-        if imgs: extra += f'<section class="sec shots"><h2><i>页</i>{L.t("shots")}</h2><div class="pages">{imgs}</div></section>'
+        # 11-17 主人：上层已有原页小窗，查证区“底本原页”一栏去掉；本章涉及的全部原页（含朱注接续页）改列在原文下的出处行里，可点开大图
+        pg_line = ("　" + L.t("shots") + "：" + " ".join(f'<a class="pg" href="/yuanye/p{int(x):03d}.jpg" target="_blank">{L.t("pg", n=x)}</a>' for x in allpages if x in pages_avail)) if imgs else ""
         mine = [r for r in kw if r[2] == c]
         if mine:
             extra += (f'<section class="sec kw" id="kw"><h2><i>勘</i>{L.t("kw")}</h2>{"<p class=note>" + L.t("kw_note") + "</p>" if L.t("kw_note") else ""}<ul lang="zh-Hans">' + "".join(
@@ -2333,6 +2334,7 @@ def build_lang(L, D, write):
                                 f'<div class="yypane">{ZJ.page_pane(c, zp_, zr_, L.t("pg", n="").strip(), ZJ.YDIR, L.t("pg", n="{n}"))}</div></div></figure>')
         if fig_html is None:
             fig_html = f"""<figure class="yuanwen"><blockquote lang="zh-Hans" data-src="{esc(cite_src)}" data-url="{url}" data-short="{f'yikonglu.com/lunyu/{c}' if L.code.startswith('zh') else ''}" data-sep="{'，' if L.code.startswith('zh') else ', '}" data-reads="{esc(json.dumps([[x['zi'], x['pos'], x['du']] for x in g['reads']], ensure_ascii=False))}" data-rl="{esc(L.t('ju_reads'))}" data-hj="{esc(json.dumps(hj_data, ensure_ascii=False))}">{ju_html}</blockquote>{langdu_html(L.code, c)}<figcaption>{L.t("source_line")}</figcaption>{rend_html}</figure>"""
+        if pg_line and fig_html: fig_html = fig_html.replace(f'<figcaption>{L.t("source_line")}</figcaption>', f'<figcaption>{L.t("source_line")}{pg_line}</figcaption>', 1)
         if L.code.startswith("zh") and not HD_OFF:  # 11-16 改动单二：核对标记。状态全从已有数据落，不改内容；各标记的意思见 /fangfa.html#hedui
             _pill = lambda cls, t: f'<a class="hm {cls}" href="{P}fangfa.html#hedui">{t}</a>'
             _ok = [x for x in g["cites"] if x["pages"]]; _oth = [x for x in g["cites"] if not x["pages"]]; _pa = [x for x in _ok if x["para"]]
