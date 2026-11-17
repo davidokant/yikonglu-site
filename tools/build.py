@@ -1213,13 +1213,13 @@ def jieru_page(L, P):
     """11-15 主人同意推广连接器：“接入智器”页 /jieru/（文案 评审/2026-11-15-连接器推广/接入页-文案-v1.md），只简繁。"""
     cb = lambda t: f'<div class="jrcode"><pre><code>{esc(t)}</code></pre><button type="button" class="jrcp">复制</button></div>'
     rows = [("按字句查", "lunyu_search", "给章号（如 1.1）或几个字（如“学而时习之”），找到对应的章，返回原文和网址。"),
-            ("取一章", "lunyu_chapter", "一章的原文、底本页码和原页图。已经讲读过的章，另有分句、白话、一孔之见、难字读音、朱熹注引文。"),
+            ("取一章", "lunyu_chapter", "一章的原文、底本页码和原页图。已经讲读过的章，另有分句、白话、一孔之见、朱熹注引文。"),
             ("这一章连着哪里", "lunyu_related", "书内互见、同问异答、人物、场合、和《三字经》《道德经》等书的对读、异文、读法之争。"),
             ("今天读哪一章", "lunyu_today", "《论语》年历：一年读完全书，每天一课。不给日期就是今天。")]
     tb = "".join(f'<tr><th scope="row">{a}<small>（{b}）</small></th><td>{c}</td></tr>' for a, b, c in rows)
     js_cfg = '{\n  "mcpServers": {\n    "yikonglu": { "url": "' + MCP_URL + '" }\n  }\n}'
     body = (f'<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}lunyu/">《论语》</a></p><h1><span class="no">免费 · 不用注册 · 不用密钥</span>在智器里查《论语》</h1></div></div>'
-            f'<main class="wrap narrow jieru"><p class="lead">一孔录有一个公开的连接器。把它加进 Claude 等智器（AI 助手），问起《论语》，智器就能直接查一孔录：原文、白话、读音、朱熹《论语集注》的引文和原书页码，还有原页图，每次都附上本章网址，回来就能核对。</p>'
+            f'<main class="wrap narrow jieru"><p class="lead">一孔录有一个公开的连接器。把它加进 Claude 等智器（AI 助手），问起《论语》，智器就能直接查一孔录：原文、白话、朱熹《论语集注》的引文和原书页码，还有原页图，每次都附上本章网址，回来就能核对。</p>'
             f'<h2 class="ph">连接器地址</h2>{cb(MCP_URL)}<p class="note">这是一个标准的 MCP 远程连接器（Streamable HTTP）。中国大陆部分网络可能连不上这个地址。</p>'
             f'<h2 class="ph">能查什么</h2><table class="jrtab"><tbody>{tb}</tbody></table>'
             '<p>底本是朱熹《论语集注》（《四部备要》本），全书 498 章，分章和章号与本站一致。</p>'
@@ -1230,10 +1230,10 @@ def jieru_page(L, P):
             '<h2 class="ph">试着这样问</h2><ul><li>今天该读《论语》哪一章？</li><li>“学而时习之，不亦说乎”的“说”怎么读？朱熹怎么注？</li><li>子路问过孔子哪些事？</li><li>“克己复礼”在朱熹《论语集注》原书第几页？给我看原页。</li></ul>'
             '<h2 class="ph">引用请署名</h2><p>连接器里的内容按 CC BY 4.0 开放，智器转述、个人文章、视频引用都可以，请署“一孔录 yikonglu.com”，并附该章网址，例如：</p>'
             '<blockquote class="jrq">出处：一孔录 yikonglu.com，https://yikonglu.com/lunyu/1.1</blockquote><p>连接器每次返回的结果里都带着这一行和本章网址，照着写即可。</p>'
-            f'<h2 class="ph">发现错了</h2><p>连接器和网站用的是同一份底子，网站改了，连接器跟着改。看到错字、错页码、错读音，请到<a href="{P}kanwu.html">勘误页</a>告诉我们，改过会公开记录。</p>'
+            f'<h2 class="ph">发现错了</h2><p>连接器和网站用的是同一份底子，网站改了，连接器跟着改。看到错字、错页码，请到<a href="{P}kanwu.html">勘误页</a>告诉我们，改过会公开记录。</p>'
             f'<section lang="en" class="jren"><h2 class="ph">In English</h2><p>Yikonglu offers a free, public MCP connector for the <i>Analects</i> of Confucius (Zhu Xi’s <i>Lunyu jizhu</i>, 498 chapters). Add <code>{MCP_URL}</code> as a custom connector in Claude or any MCP client (Streamable HTTP, no sign-in). Tools: <code>lunyu_search, lunyu_chapter, lunyu_related, lunyu_today</code>. Content is CC BY 4.0: please credit “一孔录 yikonglu.com” and link the chapter URL.</p></section></main>'
             "<script>document.querySelectorAll('.jrcp').forEach(function(b){b.onclick=function(){var t=b.previousElementSibling.textContent,o=b.textContent;if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){b.textContent='已复制';setTimeout(function(){b.textContent=o},1200)},function(){})}})</script>")
-    return page(L, "在智器里查《论语》｜一孔录", "把一孔录接进 Claude 等智器，问《论语》哪一章，直接查到原文、白话、读音、朱熹注页码和原页图，并附本章网址。免费，不用注册。", "jieru/", body, codes=["zh-Hans", "zh-Hant"])
+    return page(L, "在智器里查《论语》｜一孔录", "把一孔录接进 Claude 等智器，问《论语》哪一章，直接查到原文、白话、朱熹注页码和原页图，并附本章网址。免费，不用注册。", "jieru/", body, codes=["zh-Hans", "zh-Hant"])
 
 
 def _strip_js_notes(h):
@@ -1489,7 +1489,7 @@ def about_zh(L, D, P):
         ("原", "每句有出处", "原文照底本逐字录入，注家原话标页码，附原书影像。", f"{P}lunyu/banben/", "看底本"),
         ("勘", "讲错公开记", "原来怎么说、改成什么、依据什么，按日期列着，旧的不删。", f"{P}kanwu.html", f"已记 {kwn} 处"),
         ("法", "做法写明白", "智器帮我起草讲稿、配音、出图，片子由我审片定版；引文和读音的底本页码由智器对着原页图核，页上可点开原页自己对。我的读法署“一孔之见”，不冒充古人。", f"{P}fangfa.html", "看做法"),
-        ("开", "数据公开", "原文、白话、读音、引文出处按篇下载，谁都能拿去核。", f"{P}kaifang.html", "下载"),
+        ("开", "数据公开", "原文、白话、引文出处按篇下载，谁都能拿去核。", f"{P}kaifang.html", "下载"),
     ]
     grid = "".join(f'<a href="{h}"><i>{i}</i><b>{t}</b><p>{x}</p><span class="n">{n} →</span></a>' for i, t, x, h, n in cards)
     return f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("tagline")}</span>关于一孔</h1></div></div>
