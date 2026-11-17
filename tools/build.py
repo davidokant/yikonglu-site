@@ -2366,7 +2366,7 @@ def build_lang(L, D, write):
                               + f'</ul><p class="note">“把握”是我们对这条异同判断的把握，“定”最稳。现代注本版权期内，只短引一句，页码核过正版书后再补；皇侃义疏等古注原页见 <a href="#zhuben">诸家注本</a>。</p></section>')
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
-<h1><span class="no">{f"论语 {c} · {pname}" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)}</span>{esc(title_of(c))}</h1>{LX.nl_tag(L, P, D["lx"], c)}{TM.chapter_line(c, D["lx"]["nl"]) if L.code.startswith("zh") else ""}{f'<p class="kwtag"><a href="#kw">{L.t("kw")} {len(mine)} 条</a> · <a href="{P}kanwu.html">全部勘误</a></p>' if mine and L.code.startswith("zh") else ""}
+<h1><span class="no">{f"论语 {c} · {pname}" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)}</span>{esc(title_of(c))}</h1>{TM.chapter_line(c, D["lx"]["nl"]) if L.code.startswith("zh") else ""}{f'<p class="kwtag"><a href="#kw">{L.t("kw")} {len(mine)} 条</a> · <a href="{P}kanwu.html">全部勘误</a></p>' if mine and L.code.startswith("zh") else ""}
 </div></div>
 <main class="wrap chapter">
 <article>
@@ -2536,7 +2536,7 @@ def build_lang(L, D, write):
                                '<script>(function(){var s=document.querySelector("section.video[data-pub]");if(s&&Date.now()>=Date.parse(s.dataset.pub)){s.hidden=false;var o=document.querySelector("section.video.soon");if(o)o.remove()}})()</script>')
                 body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
-<h1><span class="no">{f"论语 {c} · {pname}" if zhL else L.t("chapter_no", book=bname, n=cnum)} · <em class="wjtag">{("视频已出" if zhL else L.t("video")) if _von else L.t("wj_tag")}</em></span>{esc(ctitle(c))}</h1>{LX.nl_tag(L, P, D["lx"], c)}{TM.chapter_line(c, D["lx"]["nl"]) if L.code.startswith("zh") else ""}
+<h1><span class="no">{f"论语 {c} · {pname}" if zhL else L.t("chapter_no", book=bname, n=cnum)} · <em class="wjtag">{("视频已出" if zhL else L.t("video")) if _von else L.t("wj_tag")}</em></span>{esc(ctitle(c))}</h1>{TM.chapter_line(c, D["lx"]["nl"]) if L.code.startswith("zh") else ""}
 </div></div>
 <main class="wrap chapter">
 <article>
