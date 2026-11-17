@@ -6,10 +6,10 @@ import xingtu as XT
 
 FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lunyu_guanxi.json")
 esc = html.escape
-KIND = {"出处": "出处", "注家引": "注家引", "相通": "一孔录对读"}
-CH_KIND = {"可用": "可以用", "别用": "别用错", "小心": "用时小心"}
+KIND = {"出处": "出处", "注家引": "古人引过", "相通": "意思相通"}  # 11-17 主人过“两层”样张：标签换人话
+CH_KIND = {"可用": "用得上", "别用": "别用错", "小心": "用时留意"}
 ORDER = ["同问异答", "互见", "书外互见", "人物", "场合", "争议", "异文", "年历"]
-HEAD = {"同问异答": "同问异答", "互见": "本书互见", "书外互见": "别的书", "人物": "人物", "场合": "场合", "争议": "读法之争", "异文": "异文", "年历": "年历"}
+HEAD = {"同问异答": "同问异答", "互见": "本书互见", "书外互见": "别的书", "人物": "人物", "场合": "场合", "争议": "各家读法不同", "异文": "异文", "年历": "年历"}
 
 
 def load():
@@ -51,7 +51,7 @@ def section(G, c, P, href, short):
             elif b.startswith("szj:"): where = f'<a href="{P}sanzijing/{_c(b)}.html">三字经 {_c(b)}</a>'
             elif r.get("url"): where = f'<a href="{esc(r["url"])}" target="_blank" rel="noopener">《{esc(bk)}》</a>'
             else: where = f"《{esc(bk)}》"
-            li += f'<li><span class="gxk">{KIND.get(r.get("kind"), esc(r.get("kind", "")))}</span>{where}：{esc(r["note"])}</li>'
+            li += f'<li><span class="gxk"{' title="一孔录对读，不是古人原话"' if r.get("kind") == "相通" else ""}>{KIND.get(r.get("kind"), esc(r.get("kind", "")))}</span>{where}：{esc(r["note"])}</li>'
         row.append(("书外互见", f"<ul>{li}</ul>"))
     if T["人物"]:
         ch = []

@@ -238,7 +238,7 @@ REUSE_UI = {
 }
 for _c, _d in REUSE_UI.items(): EXTRA_UI.setdefault(_c, {}).update(_d)
 LC_UI = {  # 一页两层：上半给普通读者，下半给细读核对的读者
- "zh-Hans": {"ch_gist": "这一章讲什么", "ch_deep": "细读与核对", "ch_deep_note": "给想细读、要核对的读者：注里的关键字、诸家说法、异文、各家注本原话与底本原页、读音和勘误。点标题展开。", "ch_open_all": "全部展开", "ch_close_all": "全部收起",
+ "zh-Hans": {"ch_gist": "这一章讲什么", "ch_deep": "想深究？查证区", "ch_deep_note": "注家原话、不同版本、古书原页、读音和勘误都在这里，一条没删，点开才显示。", "ch_open_all": "全部展开", "ch_close_all": "全部收起",
    "cta_db_p": "新出《论语》智器重建本：498 章连成一张网，条条对得上原页。PDF，手机能看，也能打印。", "cta_wen_p": "读到不懂的地方？写信问一孔录，每周选答，进片署你的网名。",
    "h_motto": "一章一章，把经典原文读明白。", "h_intro": "每章先给原文、白话和一句话读懂，配一段视频；想细读的，往下有注家原话、底本原页和公开勘误，句句可核。",
    "h_start": "今日共读一章", "h_latest": "最新一章", "h_read": "读这一章", "h_recent": "最近讲的", "h_deep_h": "给细读的人", "h_deep_p": "一孔录讲过的每一句，都能在这里核。"},
@@ -2217,11 +2217,11 @@ def build_lang(L, D, write):
             if k == "片里落点":  # 一页两层：落点放上半，当“这一章讲什么”
                 _cm, _ct = field(c, "常见读法"); _ky, _ = field(c, "字眼")
                 an_lab, an_txt = ykan(L.code if translated else "zh", v, _cm if (_ct == translated) else None, _ky)
-                gist_html = f'<section class="gist ykan" id="ykan"><h2>{L.t("ch_gist")}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p>{YKCITE if L.code.startswith("zh") else ""}</section>'
+                gist_html = f'<section class="gist ykan" id="ykan"><h2>{L.t("ch_gist")}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}><b class="anlab">{esc(an_lab)}</b>{quotes(an_txt)}</p>{"" if L.code.startswith("zh") else YKCITE if L.code.startswith("zh") else ""}</section>'
                 continue
             secs += f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{L.t(lab)}</h2><p{"" if translated or L.code=="zh-Hans" else " lang=zh-Hans"}>{quotes(v)}</p></section>'
         if L.code == "zh-Hans" and c in D["zy"]:  # 争议读法主人选定的一孔之见（11-08，tools/zhengyi.json 出自 规范/争议读法-选定表.md；待核出处已去人名）盖过自动短答；繁体由简体整页转
-            gist_html = f'<section class="gist ykan" id="ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(YKAN["zh"][0])}</b>{quotes(D["zy"][c]["text"])}</p>{YKCITE}</section>'
+            gist_html = f'<section class="gist ykan" id="ykan"><h2>{L.t("ch_gist")}</h2><p><b class="anlab">{esc(YKAN["zh"][0])}</b>{quotes(D["zy"][c]["text"])}</p>{"" if L.code.startswith("zh") else YKCITE}</section>'
         prev_c = pub[i-1] if i > 0 else None; next_c = pub[i+1] if i+1 < len(pub) else None
         def card(cc, lab, cls):
             if not cc: return '<span></span>'
@@ -2279,7 +2279,7 @@ def build_lang(L, D, write):
         cite_src = (f"论语 {c} · 一孔录" if L.code.startswith("zh") else f"{L.t('lunyu')} {c}, 一孔录 Yikonglu")
         zb = D["zhuben"].get(c, {}); hj_data = hj_of(c)
         extra = zb_section(c, url, cite_src) + extra
-        bh = D["baihua"].get(c)
+        bh = D["baihua"].get(c); fenqi_html = ""
         bh_h2 = f'{L.t("baihua")}：“{esc(seo_q(yw[c]))}”是什么意思' if L.code.startswith("zh") else L.t("baihua")  # 主人 11-07 定：标题带读者会问的话
         bh_html = f'<section class="sec sec-白"><h2><i>白</i>{bh_h2}</h2><p lang="zh-Hans">{esc(bh)}</p><p class="note">{(("按底本原页直译；这章还没写讲稿，视频还在制作。别家读法见下。" if ch2ep[c][1].get("nogao") else "按一孔录的读法直译，取自讲稿；视频还在制作。别家读法见下。") if L.code.startswith("zh") else L.t("baihua_note")) if not ch2ep[c][1].get("youtube") else L.t("baihua_note")}</p></section>' if bh else ""
         if not ZHAI_OFF and L.code.startswith("zh"):  # 11-15 十一项之 2 可摘段：每段单独复制出去也看得出书名、章号、原句、页码、网址；只用页面上已有的话拼
@@ -2287,8 +2287,8 @@ def build_lang(L, D, write):
             _pg = f'朱熹《论语集注》《四部备要》本第 {"—".join(dict.fromkeys([_qp[0], _qp[-1]])) if _qp else "?"} 页'
             _sig = f"一孔录 yikonglu.com/lunyu/{c}"; _hd = f"《论语》{c}“{title_of(c)}”"
             _tail = lambda t: f'<small class="zhai">（{esc(t)}）</small>'
-            gist_html = re.sub(r'(<b class="anlab">[^<]*</b>)(.*?)</p>', lambda m: f'{m.group(1)}{esc(_hd)}，{m.group(2)}{_tail(_pg + "；" + _sig)}</p>', gist_html, count=1, flags=re.S)
-            if bh_html: bh_html = re.sub(r'(<p lang="zh-Hans">)(.*?)</p>', lambda m: f'{m.group(1)}《论语》{c} 全章“{esc(yw[c])}”的白话：{m.group(2)}{_tail("一孔录的读法；" + _sig)}</p>', bh_html, count=1, flags=re.S)
+            gist_html = re.sub(r'(<b class="anlab">[^<]*</b>)(.*?)</p>', lambda m: f'{m.group(1)}<span class="zhai">{esc(_hd)}，</span>{m.group(2)}{_tail(_pg + "；" + _sig)}</p>', gist_html, count=1, flags=re.S)
+            if bh_html: bh_html = re.sub(r'(<p lang="zh-Hans">)(.*?)</p>', lambda m: f'{m.group(1)}<span class="zhai">《论语》{c} 全章“{esc(yw[c])}”的白话：</span>{m.group(2)}{_tail("一孔录的读法；" + _sig)}</p>', bh_html, count=1, flags=re.S)
             if g["reads"]:
                 _gl = {k.split("|")[0]: gg for _, _, k, gg, _ in ZD["per"].get(c, []) if gg}
                 _rd = "；".join(f'“{x["pos"]}”的“{x["zi"]}”读 {x["du"]}' + (f'（今多读 {x["jin"]}）' if x.get("jin") else "") + (f'，朱熹注“{_gl[x["zi"]].rstrip("。")}”' if x["zi"] in _gl else "") for x in g["reads"])
@@ -2332,8 +2332,6 @@ def build_lang(L, D, write):
             _nv = not ch2ep[c][1].get("youtube")  # 视频还没出的章：讲稿未经审片定版
             _ng = bool(ch2ep[c][1].get("nogao"))  # 还没写讲稿、据原页整理的章
             _yk = "一孔录选定" if c in D["zy"] else ("据原页 · 视频制作中" if _ng else "讲稿 · 视频制作中" if _nv else "审片版讲稿")
-            gist_html = gist_html.replace(f'<h2>{L.t("ch_gist")}</h2>', f'<h2>{L.t("ch_gist")}{_pill("mid", _yk)}</h2>', 1)
-            bh_html = bh_html.replace(f'<h2><i>白</i>{bh_h2}</h2>', f'<h2><i>白</i>{bh_h2}{_pill("mid", "据原页" if _ng else "讲稿" if _nv else "已核")}</h2>', 1)
             extra = extra.replace(f'<h2><i>核</i>{L.t("cites")}</h2>', f'<h2><i>核</i>{L.t("cites")}{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}</h2>', 1)
             extra = extra.replace(f'<h2><i>音</i>{L.t("reads")}</h2>', f'<h2><i>音</i>{L.t("reads")}{_rp}</h2>', 1)
             _qp = sorted(set(g.get("qw_pages") or []), key=int)
@@ -2351,9 +2349,9 @@ def build_lang(L, D, write):
                       + (f'<p><b>读者报错后改过</b><span>' + "；".join(f'{esc(r[0])} {esc(r[7])}报“{esc(r[4])}”，改为“{esc(r[5])}”' for r in _rd3) + f'，<a href="{P}kanwu.html">见勘误页</a></span></p>' if _rd3
                          else f'<p class="no"><b>读者报错后改过</b><span>暂无。看到错处请写信，改过会署您的网名（经您同意）</span></p>')
                       + '</div>')
-            citeit = (f'<section class="hedui" id="hedui"><h2>本章核到哪了</h2>{_three}<ul>{"".join(_li)}</ul>'
+            citeit = (f'<details class="hedui-d"><summary>这一页的内容从哪来、核到哪了</summary><section class="hedui" id="hedui"><h2>本章核到哪了</h2>{_three}<ul>{"".join(_li)}</ul>'
                       + (f'<p class="note">{_pill("todo", f"待核 {_dh}")}另有 {_dh} 条引文还在核，核完才上页面。</p>' if _dh else "")
-                      + f'<p class="note"><a href="{P}fangfa.html#hedui">“对过原页”“已核”“待核”各指什么，全站核到哪了 →</a></p></section>') + citeit
+                      + f'<p class="note"><a href="{P}fangfa.html#hedui">“对过原页”“已核”“待核”各指什么，全站核到哪了 →</a></p></section></details>') + citeit
         if L.code.startswith("zh") and not FQ_OFF:  # 11-16 改动单三：诸家分歧块。只用已核数据（注本 CSV 里“异读”且把握为定／较稳的行），不硬造；无分歧的章不出
             _zb = D["zhuben"].get(c, {}); _fq = []
             for _k, _nm in (("yang", "杨伯峻《论语译注》"), ("qian", "钱穆《论语新解》")):
@@ -2362,7 +2360,7 @@ def build_lang(L, D, write):
             if _fq:
                 _keys = list(dict.fromkeys(z["key"] for _, z in _fq if z.get("key")))
                 _fqh = f'诸家分歧：{"、".join("“" + k + "”" for k in _keys)}怎么讲' if _keys else "诸家分歧：这一章各家讲法不同"
-                gist_html += (f'<section class="fenqi" id="fenqi"><h2>{esc(_fqh)}</h2><ul>'
+                fenqi_html = (f'<section class="fenqi" id="fenqi"><h2>{esc(_fqh)}</h2><ul>'
                               f'<li><b>朱熹《论语集注》</b>一孔录主朱注，本页的白话和逐句注照朱注讲' + ("；这章是争议读法，一孔之见里写明了取舍" if c in D["zy"] else "") + "。</li>"
                               + "".join(f'<li><b>{_nm}</b><span class="sure {z["sure"]}">{L.t(z["sure"])}</span>“{esc(z["text"])}”<small>{esc(z["say"])}</small></li>' for _nm, z in _fq)
                               + f'</ul><p class="note">“把握”是我们对这条异同判断的把握，“定”最稳。现代注本版权期内，只短引一句，页码核过正版书后再补；皇侃义疏等古注原页见 <a href="#zhuben">诸家注本</a>。</p></section>')
@@ -2373,15 +2371,16 @@ def build_lang(L, D, write):
 <main class="wrap chapter">
 <article>
 {fig_html}{zi_tail(L.code, c, P)}
-{gist_html}
-{bh_html}
+{bh_html if L.code.startswith("zh") else gist_html}
+{gist_html if L.code.startswith("zh") else bh_html}
 {vid_html}
 <div class="chacts">{done_html(L, c) if c in D["pub"] else ""}{share_html(L, c, url, (f"论语 {c} · {pname}" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)), title_of(c), yw[c], field(c, "片里落点")[0], rend)}</div>
+{f'<a class="nextread" href="{href(next_c)}">接着读下一章：{next_c}　{esc(title_of(next_c))} ›</a>' if L.code.startswith("zh") and next_c else ""}
 {'<p class="steps" id="steps" hidden></p>' if ANALYTICS.get("live") and c in D["pub"] else ""}
 {GX.section(GXD, c, P, href, gx_short) if L.code.startswith("zh") else (GX.section_f(GXD, c, P, href, lambda x: hant_plain(gx_short(x)), L) if GXD and GX.has_lang(L.code) else "")}
 {cta_html(L, P)}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
-{fold((ZJ.zy_section(c, sents, zy_, zrows, esc) if dz and zy_ else "") + secs + yiwen_html(c) + extra + (GB.section(c, D["gb"].get(c), epname, yt, st, quotes) if L.code.startswith("zh") and yt and not future else ""))}
+{fenqi_html}{fold((ZJ.zy_section(c, sents, zy_, zrows, esc) if dz and zy_ else "") + secs + yiwen_html(c) + extra + (GB.section(c, D["gb"].get(c), epname, yt, st, quotes) if L.code.startswith("zh") and yt and not future else ""))}
 {citeit}
 </div>
 <p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>{RW.chip_line(D.get("renwu"), c, P) if L.code.startswith("zh") else ""}{GS.footer_line(D.get("gushi"), c, P) if L.code.startswith("zh") else ""}

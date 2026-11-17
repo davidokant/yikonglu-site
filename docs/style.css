@@ -1035,3 +1035,9 @@ body{background:var(--bg) url(/assets/diwen-1116.webp) repeat;background-size:36
 .sec-读 p.zhaojin{margin-top:10px;background:transparent;border-left:3px dashed var(--accent)}
 @media (max-width:600px){.sec table.bbt th{white-space:normal;width:5.5em}}
 .sec-说 p.zj1+p.zj1{margin-top:6px}
+/* 11-17 章页两层（主人过样张）：可摘段前缀、出处尾巴屏上不显示、复制时仍带上；接着读按钮；核对记录折叠；手机抬头精简 */
+.chapter .ykan .zhai,.chapter .sec-白 .zhai{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.chapter .ykan,.chapter .sec-白{position:relative}
+.nextread{display:block;margin:14px 0 6px;padding:13px 16px;border-radius:999px;background:var(--accent,#23503F);color:#F2F1EA!important;text-align:center;text-decoration:none;font-size:1.02rem}
+.hedui-d{margin:14px 0}.hedui-d>summary{cursor:pointer;padding:10px 0;font-weight:600;color:var(--ink2,#555)}
+@media (max-width:700px){.pg-chapter .chhead .crumb,.pg-chapter .chhead .mcv,.pg-chapter .dztools .prog{display:none}.pg-chapter .chhead h1{font-size:2rem}}
