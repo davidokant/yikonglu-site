@@ -1815,13 +1815,14 @@ def build_ddj(L, D, write, P, S_IDX=None):
 <article>
 {"" if ddj_has_vid(c) else f'<p class="wjlead">{L.t("wj_lead")}</p>'}
 {fig}
-{gist}
-{"" if F else ddj_jd_html(G["jd"].get(c), Y)}
-{"" if F else lyhj_html([r for r in DDJ_LYHJ if str(r["ch"]) == str(c)], P, "ddj")}
-{bh_html}
-{rt_html(c)}
+{gist if F else bh_html}
+{bh_html if F else gist}
 {vid}
 <div class="chacts">{share_html(L, "ddj." + c, url, DU["chn"].format(c=c) if F else f"道德经 {c}", tt[c] if F else Y(tt[c]), Y(text), "" if F else an.get("片里落点") or "", tr if F else "", DDJ_SH)}</div>
+{"" if F or not next_c else f'<a class="nextread" href="{P}{rel_of(next_c)}">接着读下一章：第 {next_c} 章　{TL(tt[next_c])} ›</a>'}
+{rt_html(c)}
+{"" if F else lyhj_html([r for r in DDJ_LYHJ if str(r["ch"]) == str(c)], P, "ddj")}
+{"" if F or not G["jd"].get(c) else f'<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>' + fold(ddj_jd_html(G["jd"].get(c), Y)) + "</div>"}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
 <nav class="pn">{pn}</nav>
 </article>
@@ -1833,7 +1834,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
         if not F: ld["mentions"] = lyhj_ld([r for r in DDJ_LYHJ if str(r["ch"]) == str(c)])
         ld = {"@context": "https://schema.org", "@graph": [ld] + ([{"@type": "FAQPage", "mainEntity": faq}] if faq else [])}
         if F: js = SHARE_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", "<ul></ul>").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + ZJ.HL_JS
-        else: js = SHARE_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", G["zhu"]], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。")
+        else: js = SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", G["zhu"]], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。")
               if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
         if S_IDX is not None: S_IDX.append({"c": f'{DU["book"] if F else "道德经"} {c}', "t": tt[c] if F else Y(tt[c]), "u": P + rel_of(c), "y": Y(text), "x": tr if F else (bh or "") + " " + (an.get("片里落点") or "")})
         if F: ttl, desc = f'{DU["chn"].format(c=c)} {tt[c]} | 一孔录 Yikonglu', DU["md"].format(c=c, tr=tr[:110] + ("…" if len(tr) > 110 else ""))
@@ -2092,15 +2093,14 @@ def build_szj(L, write, P, S_IDX=None):
 <article>
 <p class="wjlead">{esc(SU["vlead"]) if F else ("这一讲的视频还在制作。网站先放原文、核定白话、王相注和一孔录的读法，视频上线后补上。" if jd else "这一讲的视频还在制作。网站先放原文、白话和朗读，视频上线后补全讲解。")}</p>
 {fig}
-{bh_html if F else ""}
-{yw_html}
+{bh_html}
 {f'<section class="gist ykan"><h2>这一讲讲什么</h2><p>{quotes(jd["落点"])}</p></section>' if jd.get("落点") else ""}
 {jy}
-{szj_jd_html(jd, L.code == "zh-Hant")}
-{"" if F else lyhj_html([r for r in SZJ_LYHJ if r["jiang"] == n], P)}
-{"" if F else bh_html}
 {vid}
 <div class="chacts">{share}</div>
+{"" if F or not next_j else f'<a class="nextread" href="{P}{rel_of(next_j["n"])}">接着读下一讲：{lec_of(next_j["n"])}　{esc(name_of(next_j))} ›</a>'}
+{"" if F else lyhj_html([r for r in SZJ_LYHJ if r["jiang"] == n], P)}
+{yw_html if F else ((f'<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>' + fold(yw_html + szj_jd_html(jd, L.code == "zh-Hant")) + "</div>") if (yw_html or jd) else "")}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
 <nav class="pn">{pn}</nav>
 </article>
@@ -2110,7 +2110,7 @@ def build_szj(L, write, P, S_IDX=None):
               "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": bname}}
         if not F: ld["mentions"] = lyhj_ld([r for r in SZJ_LYHJ if r["jiang"] == n])
         if F: js = SHARE_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", "<ul></ul>").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + ZJ.HL_JS
-        else: js = SHARE_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "王相注"]], ensure_ascii=False)).replace("@NONE@", "这一组的白话还在整理。") if gs else "").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
+        else: js = SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "王相注"]], ensure_ascii=False)).replace("@NONE@", "这一组的白话还在整理。") if gs else "").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
         if S_IDX is not None and gs: S_IDX.append({"c": f'{bname} {n}' if F else f"三字经 {n}", "t": name_of(j), "u": P + rel_of(n), "y": Y(text) if F else text, "x": tr_all if F else " ".join(g[2] for g in gs)})
         if F: ttl, desc = f'{bname} · {head_t}: {name_of(j)} | 一孔录 Yikonglu', SU["md"].format(n=n, tr=tr_all[:110] + ("…" if len(tr_all) > 110 else "")) if gs else f'{bname} · {head_t}: {name_of(j)}. {sm[:100]}'
         else:
