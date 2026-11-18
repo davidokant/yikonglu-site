@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-18",
+ "updated": "2026-11-19",
  "N": 20,
  "chapters": 257,
- "score": 0.9,
- "share": 0.86,
+ "score": 1.5,
+ "share": 1.08,
  "platforms": [
   {
    "key": "gsc",
@@ -22,9 +22,9 @@
   {
    "key": "yt",
    "name": "YouTube",
-   "score": 1.7,
-   "share": 0.86,
-   "measured": 89,
+   "score": 3.3,
+   "share": 1.08,
+   "measured": 131,
    "partial": true
   }
  ],
@@ -41,8 +41,8 @@
   },
   {
    "week": "2026-11-16",
-   "score": 0.9,
-   "share": 0.86
+   "score": 1.5,
+   "share": 1.08
   }
  ],
  "books": [
@@ -50,13 +50,13 @@
    "key": "lunyu",
    "name": "论语",
    "chapters": 257,
-   "score": 0.9,
+   "score": 1.5,
    "platforms": [
     {
      "key": "yt",
      "name": "YouTube",
-     "score": 1.7,
-     "measured": 89,
+     "score": 3.3,
+     "measured": 131,
      "partial": true
     },
     {
@@ -174,6 +174,74 @@
      "gsc": 10
     },
     {
+     "ch": "5.1",
+     "yt": 4
+    },
+    {
+     "ch": "5.6",
+     "yt": 1
+    },
+    {
+     "ch": "5.7",
+     "yt": 20
+    },
+    {
+     "ch": "5.9",
+     "yt": 19
+    },
+    {
+     "ch": "5.17",
+     "yt": 17
+    },
+    {
+     "ch": "5.19",
+     "yt": 8
+    },
+    {
+     "ch": "5.23",
+     "yt": 15
+    },
+    {
+     "ch": "5.27",
+     "yt": 2
+    },
+    {
+     "ch": "6.1",
+     "yt": 20
+    },
+    {
+     "ch": "6.2",
+     "yt": 10
+    },
+    {
+     "ch": "6.3",
+     "yt": 10
+    },
+    {
+     "ch": "6.4",
+     "yt": 13
+    },
+    {
+     "ch": "6.6",
+     "yt": 10
+    },
+    {
+     "ch": "6.7",
+     "yt": 17
+    },
+    {
+     "ch": "6.9",
+     "yt": 13
+    },
+    {
+     "ch": "6.11",
+     "yt": 14
+    },
+    {
+     "ch": "6.12",
+     "yt": 9
+    },
+    {
      "ch": "6.16",
      "bing": 5
     },
@@ -207,14 +275,14 @@
  "index": {
   "bing": {
    "indexed": 3,
-   "total": 9047,
-   "date": "/Date(1794700800000)/"
+   "total": 10,
+   "date": "/Date(1794873600000)/"
   }
  },
  "draft_change": {
   "ratio": 16.3,
   "episodes": 70,
   "segments": 2094,
-  "updated": "2026-11-17"
+  "updated": "2026-11-18"
  }
 }
