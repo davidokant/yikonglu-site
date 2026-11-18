@@ -1250,12 +1250,19 @@ def _strip_js_notes(h):
 
 
 # 11-15 翻章预取：只用 prefetch（只取回 HTML，不跑统计脚本，日访不多记），不用 prerender
-# 11-18 必应报“简介太短”：中文页简介不足 60 字的补一句全站说明；论语章页改成原文＋白话（80 到 110 字）
-DESC_TAIL = "一孔录：《论语》498 章逐句对照朱熹《论语集注》原页，有原文、白话、注家原话和公开勘误。"
-def pad_desc(L, d):
-    if not L.code.startswith("zh") or len(d or "") >= 60: return d
-    t = DESC_TAIL if L.code == "zh-Hans" else hant_plain(DESC_TAIL)
-    return (d.rstrip() + " " + t) if d else t
+# 11-18 必应报“简介太短”：论语章页改成原文＋白话（80 到 110 字）
+# 不足 60 字的从本页正文接一段（每页各不相同，不用全站同一句，免得简介大量重复）
+def pad_desc(L, d, body=""):
+    d = d or ""
+    if not L.code.startswith("zh") or len(d) >= 60: return d
+    m = re.search(r"<main[^>]*>(.*?)</main>", body, re.S)
+    t = html.unescape(re.sub(r"<script.*?</script>|<style.*?</style>|<[^>]+>", " ", m.group(1) if m else "", flags=re.S))
+    t = re.sub(r"\s+", " ", t).strip()
+    if d and t.startswith(d.strip()): t = t[len(d.strip()):].strip()
+    room = 110 - len(d) - 1
+    if room < 20 or not t: return d
+    if len(t) > room: t = t[:room - 2].rstrip("，。；：、 ") + "……"
+    return (d.rstrip() + " " + t).strip()
 def zh_ch_desc(L, yw, bh):
     head = yw if len(yw) <= 60 else yw[:58] + "……"
     tail = "朱熹注原页、诸家说法与一孔录的读法。"
@@ -1266,7 +1273,7 @@ def zh_ch_desc(L, yw, bh):
     return d if L.code == "zh-Hans" else hant_plain(d)
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
-    desc = pad_desc(L, desc)
+    desc = pad_desc(L, desc, body)
     if not L.code.startswith("zh"): body = hant_scripture(body)
     body = _strip_js_notes(body)
     url = f"{DOMAIN}/{L.prefix}{rel}"
