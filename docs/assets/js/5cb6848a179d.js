@@ -1,6 +1,6 @@
 (function () {
   var F = document.querySelector('.yuanwen.dz'); if (!F) return;
-  var J; try { J = JSON.parse(F.querySelector('.zjkj').textContent); } catch (e) { return; }
+  var J = null; try { J = JSON.parse(F.querySelector('.zjkj').textContent); } catch (e) { }  // 道德經、三字經只有注音、沒有開卷資料
   var Q = F.querySelector('blockquote'), PANE = F.querySelector('.yypane'), NS = 'http://www.w3.org/2000/svg';
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var RE = /([㐀-鿿豈-﫿]|[\ud840-\ud87f][\udc00-\udfff])/;
@@ -27,7 +27,7 @@
     function set() { F.classList.remove('zy-py', 'zy-bp'); if (M[k]) F.classList.add('zy-' + M[k]); b.textContent = LB[k]; b.setAttribute('aria-pressed', k ? 'true' : 'false'); try { localStorage.setItem('yk_zy', k); } catch (e) { } }
     b.addEventListener('click', function () { k = (k + 1) % 3; set(); }); set();
   })();
-  if (!PANE || Z.length !== J.z.length) return;
+  if (!J || !PANE || Z.length !== J.z.length) return;
   var SV = {}; PANE.querySelectorAll('.yyp').forEach(function (a) { var s = a.querySelector('svg'); if (s) SV[a.dataset.p] = s; });
   var R = J.z.map(function (b, i) {
     var s = SV[b[0]]; if (!s) return null;

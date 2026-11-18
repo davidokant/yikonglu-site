@@ -295,7 +295,20 @@ def zhuyin(c, sents, reads):
     return [[x[1], x[2], 1 if len(x) > 4 and x[3] == 1 and x[4] else 0] for x in zi]  # 赭色只标有依据（朗读换字、难字字典）的多音字，常见字不标
 
 
-def zy_section(c, sents, zy, bh_rows, esc):
+def zhuyin_book(book, c, sents):
+    """11-18 道德经、三字经注音卡：数据/网站素材/_<书>/_注音/<章或讲>.json，格式同论语。有“待核”或字对不上就不上。"""
+    f = os.path.join(SRC, "_" + book, "_注音", str(c) + ".json")
+    if not os.path.exists(f): return None
+    zi = json.load(open(f, encoding="utf-8")).get("zi") or []
+    if any("待核" in str(x[-1]) for x in zi): ZY_SKIP[f"{book}{c}"] = "待核"; return None
+    from opencc import OpenCC
+    t2s = OpenCC("t2s").convert
+    zs = CJK.findall("".join(sents))
+    if len(zs) != len(zi) or _vn(t2s("".join(zs))) != _vn(t2s("".join(x[0] for x in zi))): ZY_SKIP[f"{book}{c}"] = "字对不上"; return None
+    return [[x[1], x[2], 1 if len(x) > 4 and x[3] == 1 and x[4] else 0] for x in zi]
+
+
+def zy_section(c, sents, zy, bh_rows, esc, note=None):
     """静态的逐句拼音、注音、意思、上一句下一句（搜索引擎看得到）。"""
     k, out = 0, []
     for j, s in enumerate(sents):
@@ -312,4 +325,4 @@ def zy_section(c, sents, zy, bh_rows, esc):
         out.append(f'<div class="zyju"><h3 lang="zh-Hans">{esc(s)}</h3><p class="zypy">{esc(" ".join(py))}</p><p class="zybp">{esc(" ".join(bp))}</p>'
                    + (f'<p><b>意思：</b>{esc(bh)}</p>' if bh else "") + (f'<p class="note">{"　".join(nb)}</p>' if nb else "") + "</div>")
     return ('<section class="sec sec-音" id="zhuyin"><h2><i>音</i>逐句拼音、注音与意思</h2>'
-            '<p class="note">读音照朱熹注定，和朗读一致。原文上方按“注”，可以把拼音或注音符号标在每个字上。</p>' + "".join(out) + "</section>")
+            '<p class="note">' + (note or "读音照朱熹注定，和朗读一致。") + '原文上方按“注”，可以把拼音或注音符号标在每个字上。</p>' + "".join(out) + "</section>")
