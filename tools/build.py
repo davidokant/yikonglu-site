@@ -1271,6 +1271,8 @@ def zh_ch_desc(L, yw, bh):
     if len(d) > room: d = d[:room - 2].rstrip("，。；：、 ") + "……"
     d = d + " " + tail
     return d if L.code == "zh-Hans" else hant_plain(d)
+# 11-18 主人：免费读本提到顶部菜单、勘误收进“更多”；外文菜单字短一点，免得手机上一行放不下
+NAV_DB = {"en": "Free PDF", "ja": "無料PDF", "ko": "무료 PDF", "fr": "PDF gratuit", "es": "PDF gratis", "de": "Gratis-PDF", "vi": "PDF miễn phí", "id": "PDF gratis", "ru": "PDF бесплатно"}
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
     desc = pad_desc(L, desc, body)
@@ -1337,8 +1339,8 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <body class="{cls}">
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>{'<span class="livep" id="livep" hidden></span>' if ANALYTICS.get("live") else ""}
-<nav><a href="{P}lunyu/" class="lynav">{lyui(L)["nav"]}</a><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}kanwu.html">{L.t("nav_errata")}</a>{f'<a href="{P}shuyuan/" class="gsnav">书院</a>' if gs else ""}
-<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{f'<a href="{P}#xt">星图</a>' if rw else (f'<a href="{P}lunyu/guanxi/">{esc(GX.TR[L.code]["S"]["gx_h1"])}</a>' if not L.code.startswith("zh") and GXD and GX.has_lang(L.code) else "")}<a href="{P}duben.html">{L.t("db_link")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a>{f'<a href="{P}jieru/">接入智器</a>' if L.code.startswith("zh") else ""}<a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
+<nav><a href="{P}lunyu/" class="lynav">{lyui(L)["nav"]}</a><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}duben.html">{NAV_DB.get(L.code, L.t("db_link"))}</a>{f'<a href="{P}shuyuan/" class="gsnav">书院</a>' if gs else ""}
+<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{"" if rw else (f'<a href="{P}lunyu/guanxi/">{esc(GX.TR[L.code]["S"]["gx_h1"])}</a>' if not L.code.startswith("zh") and GXD and GX.has_lang(L.code) else "")}<a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a>{f'<a href="{P}jieru/">接入智器</a>' if L.code.startswith("zh") else ""}<a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary><span class="lfull">{L.name}</span><span class="lshort" aria-hidden="true">{LANG_SHORT.get(L.code, L.code[:2].upper())}</span></summary><div>{sw}</div></details></nav>
 </div></header>{'<script>(function(){var l=document.querySelector(".top nav>.lang:not(.more)"),w=document.querySelector(".top .wrap");if(l&&w&&innerWidth<=700)w.style.setProperty("--lw",(l.offsetWidth+10)+"px")})()</script>' if ANALYTICS.get("live") else ""}
 {note}
