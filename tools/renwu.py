@@ -65,6 +65,8 @@ def build(L, D, R, write, page, P, rel_of, title_of, DOMAIN):
     urls = []; pub = set(D["pub"]); yw = dict(D["yw"]); qw = D.get("qw") or {}
     for c, q in qw.items(): yw.setdefault(c, q["text"])  # 未讲章也有原文（全书上网后各章都有页）
     U = lambda rel: f"{DOMAIN}/{L.prefix}{rel}"
+    bh_of = lambda c: (D.get("baihua") or {}).get(c) or ""  # 11-18 人物卡补每章白话与底本页码（谷歌判人物卡偏薄）
+    pg_of = lambda c: "、".join(sorted({str(x) for x in ((D.get("gao") or {}).get(c) or {}).get("qw_pages") or []}, key=int))
     head = lambda h, sub, crumb="": f'<div class="chhead"><div class="wrap">{crumb}<h1><span class="no">{esc(sub)}</span>{esc(h)}</h1></div></div>'
     crumb = f'<p class="crumb"><a href="{P}lunyu/">《论语》</a> › <a href="{P}lunyu/guanxi/#rw">同问异答与人物</a></p>'
     cards = ""; card_of = {}
@@ -75,7 +77,7 @@ def build(L, D, R, write, page, P, rel_of, title_of, DOMAIN):
             if say and c in yw and HAN(say) == HAN(yw[c]): say = ""  # “该章所述”就是本章经文时不重复
             if c in pub or c in qw:
                 tag = "" if c in pub else '<i class="wjtag">未讲</i>'
-                items += f'<li><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(title_of(c))}</b>{tag}</a>' + (f'<p class="zy" lang="zh-Hans">{esc(yw[c])}</p>' if c in yw else "") + (f'<p class="zd">{esc(say)}</p>' if say else "") + "</li>"
+                items += f'<li><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(title_of(c))}</b>{tag}</a>' + (f'<p class="zy" lang="zh-Hans">{esc(yw[c])}</p>' if c in yw else "") + (f'<p class="zb">白话：{esc(bh_of(c))}</p>' if bh_of(c) else "") + (f'<p class="zd">{esc(say)}</p>' if say else "") + (f'<p class="zp">底本：《四部备要》本《论语集注》第 {pg_of(c)} 页</p>' if pg_of(c) else "") + "</li>"
             else:
                 items += f'<li><span class="gsnot"><em>{c}</em><b>未讲</b></span>' + (f'<p class="zd">{esc(say)}</p>' if say else "") + "</li>"
         meta = "".join(f"<dt>{k}</dt><dd>{esc(v)}</dd>" for k, v in (("字、别称", p["alias"]), ("身份", p["role"]), ("与孔子", p["rel"]), ("出处", p["src"])) if v)
@@ -83,11 +85,13 @@ def build(L, D, R, write, page, P, rel_of, title_of, DOMAIN):
         bk = "、".join(f"《{b}》" for b in p["books"])
         body = head(p["name"], f"{bk}出场 {len(p['apps'])} 章，已讲 {n_pub} 章", crumb) + f'''
 <main class="wrap narrow"><dl class="rwmeta">{meta}</dl>{f'<p class="gxmore"><a href="{P}lunyu/guanxi/#p-{GXID[p["id"]]}">看{esc(p["name"])}出场各章与常同章的人 ›</a></p>' if p["id"] in GXID else ""}<h2 class="ph">{bk}出场各章</h2><ol class="ztl">{items}</ol>
-<p class="note">按本站分章排列。已讲的章带读法与注家原页；标“未讲”的章只有原文与各家注。</p></main>'''
+<p class="note">按本站分章排列。点章号进章节页，看读法、注家原话与原页。</p></main>'''
         ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "alternateName": [x for x in re.split(r"[、，,]", p["alias"]) if x] or None,
               "description": p["role"] or None, "url": U(rel), "subjectOf": {"@type": "Book", "name": "论语"}}
         ld = {k: v for k, v in ld.items() if v}
-        write(rel, page(L, f"{p['name']}：《论语》里的出场各章｜一孔录", f"{p['name']}（{p['alias']}）{p['role']}，《论语》出场 {len(p['apps'])} 章。"[:110], rel, body, ld)); urls.append(U(rel))
+        thin = len(p["apps"]) <= 1  # 11-18 只出场一章的人物卡与章页几乎同文：不进索引、不进站点地图，页面照开
+        write(rel, page(L, f"{p['name']}：《论语》里的出场各章｜一孔录", f"{p['name']}（{p['alias']}）{p['role']}，《论语》出场 {len(p['apps'])} 章。"[:110], rel, body, ld, head_extra=('<meta name="robots" content="noindex,follow">' if thin else "")))
+        if not thin: urls.append(U(rel))
         card_of[p["id"]] = f'<a class="rwcard" href="{P}{rel}"><b>{esc(p["name"])}</b><small>{esc(p["alias"])}</small><span>{len(p["apps"])} 章</span></a>'
     def grp(p):
         rel, role, n = p["rel"], p["role"], p["name"]
@@ -133,5 +137,6 @@ def build_f(L, D, R, write, page, P, rel_of, title_of, DOMAIN, TRL, codes):
 <p class="note">{esc(S["rw_note"])}</p></main>'''
         ld = {"@context": "https://schema.org", "@type": "Person", "name": nm, "alternateName": [p["name"]] + [x for x in re.split(r"[、，,；;]", al) if x.strip()], "description": role or None, "url": U(rel)}
         ld = {k: v for k, v in ld.items() if v}
-        write(rel, page(L, S["rw_title"].replace("{name}", nm), S["rw_desc"].replace("{name}", nm).replace("{alias}", al).replace("{role}", role).replace("{n}", str(len(p["apps"])))[:150], rel, body, ld, codes=codes)); urls.append(U(rel))
+        write(rel, page(L, S["rw_title"].replace("{name}", nm), S["rw_desc"].replace("{name}", nm).replace("{alias}", al).replace("{role}", role).replace("{n}", str(len(p["apps"])))[:150], rel, body, ld, codes=codes, head_extra=('<meta name="robots" content="noindex,follow">' if len(p["apps"]) <= 1 else "")))
+        if len(p["apps"]) > 1: urls.append(U(rel))
     return urls
