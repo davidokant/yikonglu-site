@@ -244,7 +244,7 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
                 f'<main class="wrap gsmain"><p class="lead narrow">{lead}</p><div class="gsmap dmap"><img src="/gushi/img/ditu/{nid}-{v}.jpg" alt="{esc(n["title"])}地图" width="{W}" height="{H}">{spots}</div>'
                 f'<div class="dchips">{items}</div></main>')
         rel = "shuyuan/ditu/" if nid == "world" else f"shuyuan/ditu/{nid}.html"
-        write(rel + ("index.html" if nid == "world" else ""), page(L, f'{n["title"]}｜一孔录·地图', f'一孔录片中的虚构地图：{n["title"]}。', rel, body, ld(n["title"], U(rel), "一孔录片中的虚构地图"), "pg-gushi", og_img=f"gushi/img/ditu/{nid}-{v}.jpg")); urls.append(U(rel))
+        write(rel + ("index.html" if nid == "world" else ""), page(L, f'{n["title"]}｜一孔录·地图', f'一孔录片中的虚构地图：{n["title"]}。', rel, body, ld(n["title"], U(rel), "一孔录片中的虚构地图"), "pg-gushi", og_img=f"gushi/img/ditu/{nid}-{v}.jpg", head_extra='<meta name="robots" content="noindex,follow">'));  # 11-18 谷歌把简繁地图页判为重复（多是“书区图筹备中”）：不进索引、不进站点地图，链接照跟
     # 栏目首页
     nowtxt = f"，现在讲到《{esc(now_zone['书名'])}》" if now_zone else ""
     jb = hero("一孔录原创角色", "书院里的人") + f'<main class="wrap narrow gsmain"><p class="lead">书院里常驻的六个人，都是一孔录原创角色，由智器主持，读法以“一孔之见”为准。点进去看各人的身份、本领，和在哪些章出场；想跟着一个人读，去<a href="{P}zhuanti/">专题</a>里的“跟着一个人读”。</p><div class="gscards">{cards}</div></main>'

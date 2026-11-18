@@ -1250,8 +1250,23 @@ def _strip_js_notes(h):
 
 
 # 11-15 翻章预取：只用 prefetch（只取回 HTML，不跑统计脚本，日访不多记），不用 prerender
+# 11-18 必应报“简介太短”：中文页简介不足 60 字的补一句全站说明；论语章页改成原文＋白话（80 到 110 字）
+DESC_TAIL = "一孔录：《论语》498 章逐句对照朱熹《论语集注》原页，有原文、白话、注家原话和公开勘误。"
+def pad_desc(L, d):
+    if not L.code.startswith("zh") or len(d or "") >= 60: return d
+    t = DESC_TAIL if L.code == "zh-Hans" else hant_plain(DESC_TAIL)
+    return (d.rstrip() + " " + t) if d else t
+def zh_ch_desc(L, yw, bh):
+    head = yw if len(yw) <= 60 else yw[:58] + "……"
+    tail = "朱熹注原页、诸家说法与一孔录的读法。"
+    d = head + (" 白话：" + bh if bh else "")
+    room = 110 - len(tail) - 1
+    if len(d) > room: d = d[:room - 2].rstrip("，。；：、 ") + "……"
+    d = d + " " + tail
+    return d if L.code == "zh-Hans" else hant_plain(d)
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
+    desc = pad_desc(L, desc)
     if not L.code.startswith("zh"): body = hant_scripture(body)
     body = _strip_js_notes(body)
     url = f"{DOMAIN}/{L.prefix}{rel}"
@@ -2227,7 +2242,7 @@ def build_lang(L, D, write):
         og_img = D["og"].get(c, {}).get("tri") or D["og"].get(c, {}).get("hans")  # 三语图（原文＋英＋日），各语种共用
         bname = L.book(pnum)
         name = f"论语 {c} · {pname} {n['title']}" if L.code == "zh-Hans" else f"{L.t('lunyu')} {c} {title_of(c)}"
-        desc = f"{yw[c][:60]}……原文、白话、朱熹注的关键字、诸家说法与一孔录的读法。" if L.code == "zh-Hans" else meta_desc(L, title_of(c), L.ch(c).get("yw"), yw[c])
+        desc = zh_ch_desc(L, yw[c], D["baihua"].get(c)) if L.code.startswith("zh") else meta_desc(L, title_of(c), L.ch(c).get("yw"), yw[c])
         secs = ""; gist_html = ""
         for k, lab, mark in FIELDS:
             v, translated = field(c, k)
@@ -3769,9 +3784,22 @@ def main(zdir, outdir, kanwu=None):
     def lastmod(u):
         k = u[len(DOMAIN) + 1:]
         return pdates.get(k + "index.html" if k.endswith("/") or not k else k, [None, today])[1]
+    # 11-18 必应只认出 3.2K：站点地图拆卷。sitemap.xml 改为总目录；简繁合一卷 sitemap-core.xml（先交必应），外文各一卷
+    vols = {}
+    for u in urls:
+        hl = split_lang(u)[0]
+        v = "core" if hl in (LANGS["zh-Hans"][2], LANGS["zh-Hant"][2]) else next(k for k in LANGS if LANGS[k][2] == hl).lower()
+        vols.setdefault(v, []).append(u)
+    for f in glob.glob(os.path.join(outdir, "sitemap-*.xml")):
+        if not f.endswith("sitemap-images.xml"): os.remove(f)
+    for v, us in vols.items():
+        open(os.path.join(outdir, f"sitemap-{v}.xml"), "w", encoding="utf-8").write(
+            '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
+            "".join(f"<url><loc>{u}</loc><lastmod>{lastmod(u)}</lastmod>{sm_alts(u)}</url>\n" for u in us) + "</urlset>\n")
+    vorder = ["core"] + sorted(v for v in vols if v != "core")
     open(os.path.join(outdir, "sitemap.xml"), "w", encoding="utf-8").write(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
-        "".join(f"<url><loc>{u}</loc><lastmod>{lastmod(u)}</lastmod>{sm_alts(u)}</url>\n" for u in urls) + "</urlset>\n")
+        '<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+        "".join(f"<sitemap><loc>{DOMAIN}/sitemap-{v}.xml</loc><lastmod>{max(lastmod(u) for u in vols[v])}</lastmod></sitemap>\n" for v in vorder) + "</sitemapindex>\n")
     json.dump({k: v for k, v in pdates.items() if k in seen}, open(pdp, "w", encoding="utf-8"), ensure_ascii=False, indent=0, sort_keys=True)
     ver = __import__("hashlib").md5((CSSV + A2V + open(os.path.join(HERE, "sw.js"), encoding="utf-8").read() + "".join(sorted(v[0] for k, v in pdates.items() if k in seen))).encode()).hexdigest()[:10]
     open(os.path.join(outdir, "sw.js"), "w", encoding="utf-8").write(open(os.path.join(HERE, "sw.js"), encoding="utf-8").read().replace("@VER@", ver).replace("@PREFIXES@", json.dumps([""] + [LANGS[k][0] for k in LANGS if LANGS[k][0]])))

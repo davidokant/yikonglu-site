@@ -20,8 +20,12 @@ for f in glob.glob(os.path.join(out, "**", "*.*"), recursive=True):
     if f.endswith(".html") and (m := re.search(r">([a-z]{2,6}_[a-z0-9_]+)<", t)): bad.append(f"{f} 有没翻出的界面字键 {m.group(1)!r}")
     if f.endswith(".html") and t.count("<main") != t.count("</main>"): bad.append(f"{f} <main> 不配对")
 try:
-    old = subprocess.run(["git", "show", "HEAD:" + os.path.join(out, "sitemap.xml")], capture_output=True, text=True).stdout.count("<url>")
-    new = open(os.path.join(out, "sitemap.xml"), encoding="utf-8").read().count("<url>")
+    def _sm_old():  # 11-18 起站点地图分卷：总目录 sitemap.xml＋sitemap-*.xml；旧版是单个 sitemap.xml
+        ls = subprocess.run(["git", "ls-tree", "--name-only", "HEAD", out + "/"], capture_output=True, text=True).stdout.split()
+        fs = [x for x in ls if re.fullmatch(r".*/sitemap(-[a-z-]+)?\.xml", x) and not x.endswith("sitemap-images.xml")]
+        return sum(subprocess.run(["git", "show", "HEAD:" + x], capture_output=True, text=True).stdout.count("<url>") for x in fs)
+    old = _sm_old()
+    new = sum(open(f, encoding="utf-8").read().count("<url>") for f in glob.glob(os.path.join(out, "sitemap*.xml")) if not f.endswith("sitemap-images.xml"))
     if old and new < old * 0.97: bad.append(f"sitemap 页数从 {old} 掉到 {new}（构建依赖缺了？）")
 except Exception as e:
     pass

@@ -26,7 +26,8 @@ def post(url, data, ctype):
 
 def main(args):
     if args == ["--all"]:
-        urls = re.findall(r"<loc>([^<]+)</loc>", open(os.path.join(ROOT, "docs", "sitemap.xml"), encoding="utf-8").read())
+        urls = [u for f in sorted(glob.glob(os.path.join(ROOT, "docs", "sitemap-*.xml"))) if not f.endswith("sitemap-images.xml")
+                for u in re.findall(r"<loc>([^<]+)</loc>", open(f, encoding="utf-8").read())]  # 11-18 起站点地图分卷
     elif args and args[0] == "--added":  # 11-18：只推新加的页；改版式、改脚本会让几千页一起变，那种不推
         urls = [u for u in (to_url(a) for a in args[1:]) if u]
     else:
