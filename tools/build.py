@@ -1134,6 +1134,12 @@ def zi_tail(code, c, P):
     zu = ZZ.urls_map(ZD, P); zu = {k: zu[k] for k in occ if k in zu}
     d = json.dumps({"i": items, "o": occ, "c": c, "u": zu}, ensure_ascii=False).replace("</", "<\\/")
     return f'<script type="application/json" id="zidata">{d}</script>' + ZI_JS
+LEGGE = (json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "legge-en.json"), encoding="utf-8")).get("chapters") or {}) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "legge-en.json")) else {}  # 11-19 主人定：英文页自译为主，加 Legge 1861 公版译文对照（Standard Ebooks 本；乡党 Legge 第 14 章并入朱注 10.13）
+_sq = lambda t: t.translate({0x2018: "'", 0x2019: "'", 0x201c: '"', 0x201d: '"'})  # 中文字体下弯引号占全角，英文段落用直引号
+def legge_html(code, c):
+    if code != "en" or c not in LEGGE: return ""
+    return ('<details class="legge"><summary>Compare: James Legge&#39;s translation (1861)</summary>' + "".join(f"<p>{esc(_sq(x))}</p>" for x in LEGGE[c])
+            + '<p class="note">James Legge, <i>Confucian Analects</i>, in <i>The Chinese Classics</i>, vol. I (1861). Public domain; text from the Standard Ebooks edition. Legge mostly follows Zhu Xi; where his wording and ours differ, the Chinese text and Zhu Xi&#39;s commentary decide.</p></details>')
 WJ_TR = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "tri-weijiang.json")) else {}  # 未讲章原文英日译（分享图用）
 # 11-14 外文补译（智器译，见 tools/i18n/fill-<语种>.json）：界面漏译、首页日历与领读人、四种分享卡、关系图页框；nianli-tr.json 是年历 365 课“今日一句”九种外文
 FILL = {}
@@ -2349,8 +2355,8 @@ def build_lang(L, D, write):
             if g["cites"]:
                 _c5 = "；".join(f'“{x["text"]}”（{L.src(x["src"])}，原页 {"、".join(x["pages"])}）' for x in g["cites"] if not x["para"] and x["pages"])
                 extra = extra.replace('<table><thead><tr><th>' + L.t("th_quote"), f'<p class="zhaip">{esc(f"{_hd}一章，朱熹《论语集注》等注本的原话与页码：{_c5}。")}{_tail(_sig)}</p><table><thead><tr><th>' + L.t("th_quote"), 1)
-        rend = L.ch(c).get("yw")
-        rend_html = f'<p class="rend">{esc(rend)}</p><figcaption>{L.t("rendering")}</figcaption>' if rend else ""
+        rend = L.ch(c).get("yw") or ("" if L.code.startswith("zh") else WJ_TR.get(c, {}).get(L.code, ""))  # 11-19：讲过但外文讲读还没译的章，原文译文用未讲章那份（以前这些章外文页没有译文）
+        rend_html = (f'<p class="rend">{esc(rend)}</p><figcaption>{L.t("rendering")}</figcaption>' if rend else "") + legge_html(L.code, c)
         ZJD = D.get("zhuju") or {"on": set(), "jl": {}, "zj": {}}
         dz = c in ZJD["on"] and L.code.startswith("zh") and c in ZJD["jl"]
         if dz:
@@ -2492,7 +2498,7 @@ def build_lang(L, D, write):
                 rel = rel_of(c); url = f"{DOMAIN}/{L.prefix}{rel}"; bname = L.book(pnum)
                 cite_src = f"论语 {c} · 一孔录" if zhL else f"{L.t('lunyu')} {c}, 一孔录 Yikonglu"
                 tr = "" if zhL else WJ_TR.get(c, {}).get(L.code, "")
-                rend_html = f'<p class="rend">{esc(tr)}</p><figcaption>{L.t("rendering")}</figcaption>' if tr else ""
+                rend_html = (f'<p class="rend">{esc(tr)}</p><figcaption>{L.t("rendering")}</figcaption>' if tr else "") + legge_html(L.code, c)
                 ju_html = "".join(f'<span class="ju" id="s{j}" tabindex="0">{zx(L.code, c, j, x)}</span>' for j, x in enumerate(split_ju(text), 1))
                 pgn = str(q.get("pdf_page", ""))
                 pgl = (f'<a class="pg" href="/yuanye/p{int(pgn):03d}.jpg" target="_blank">{pgn}</a>' if pgn in pages_avail else pgn) if pgn else ""
