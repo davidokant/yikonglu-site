@@ -22,4 +22,9 @@ jobs:
           BAIDU_TOKEN: ${{ secrets.BAIDU_TOKEN }}
         run: |
           if [ "${{ inputs.all }}" = "true" ]; then python3 tools/push_index.py --all
-          else python3 tools/push_index.py $(git diff --name-only HEAD~1 HEAD -- docs); fi
+          else
+            ADDED=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- docs)
+            CHANGED=$(git diff --name-only --diff-filter=M HEAD~1 HEAD -- docs)
+            python3 tools/push_index.py --added $ADDED
+            python3 tools/push_index.py $CHANGED
+          fi

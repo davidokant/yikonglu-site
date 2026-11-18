@@ -6,6 +6,7 @@
 import json, os, re, sys, glob, urllib.request
 
 DOMAIN = "https://yikonglu.com"
+CAP = int(os.environ.get("INDEX_CAP", "200"))  # 一次最多推多少页
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
@@ -26,8 +27,12 @@ def post(url, data, ctype):
 def main(args):
     if args == ["--all"]:
         urls = re.findall(r"<loc>([^<]+)</loc>", open(os.path.join(ROOT, "docs", "sitemap.xml"), encoding="utf-8").read())
+    elif args and args[0] == "--added":  # 11-18：只推新加的页；改版式、改脚本会让几千页一起变，那种不推
+        urls = [u for u in (to_url(a) for a in args[1:]) if u]
     else:
         urls = [u for u in (to_url(a) for a in args) if u]
+        if len(urls) > CAP:  # 一次改动超过 CAP 页，多半是全站模板、版本戳变了，内容没变：不推（必应会把反复整站重推当滥用）
+            print(f"改动 {len(urls)} 页超过 {CAP}，视为全站模板改动，不推"); urls = []
     urls = list(dict.fromkeys(urls))
     print(f"要推 {len(urls)} 个地址")
     if not urls: return
