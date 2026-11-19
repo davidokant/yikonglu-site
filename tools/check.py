@@ -26,7 +26,7 @@ try:
         return sum(subprocess.run(["git", "show", "HEAD:" + x], capture_output=True, text=True).stdout.count("<url>") for x in fs)
     old = _sm_old()
     new = sum(open(f, encoding="utf-8").read().count("<url>") for f in glob.glob(os.path.join(out, "sitemap*.xml")) if not f.endswith("sitemap-images.xml"))
-    if old and new < old * 0.97: bad.append(f"sitemap 页数从 {old} 掉到 {new}（构建依赖缺了？）")
+    if old and new < old * 0.97 and not os.environ.get("YK_SM_SHRINK"): bad.append(f"sitemap 页数从 {old} 掉到 {new}（构建依赖缺了？）")
 except Exception as e:
     pass
 for b in bad[:50]: print("✗", b)

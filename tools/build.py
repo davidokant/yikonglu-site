@@ -1301,6 +1301,10 @@ def zh_ch_desc(L, yw, bh):
     return d if L.code == "zh-Hans" else hant_plain(d)
 # 11-18 主人：免费读本提到顶部菜单、勘误收进“更多”；外文菜单字短一点，免得手机上一行放不下
 NAV_DB = {"en": "Free PDF", "ja": "無料PDF", "ko": "무료 PDF", "fr": "PDF gratuit", "es": "PDF gratis", "de": "Gratis-PDF", "vi": "PDF miễn phí", "id": "PDF gratis", "ru": "PDF бесплатно"}
+# 11-19 主人点卡“七种全部章页撤”：韩法西德越印俄七种的论语章页 noindex、出站点地图，页面照开（简繁英日不动）
+FL_NOIDX_L = ("ko", "fr", "es", "de", "vi", "id", "ru")
+FL_NOIDX = '<meta name="robots" content="noindex,follow">'
+
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
     desc = pad_desc(L, desc, body)
@@ -1318,6 +1322,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
     codes = codes or list(LANGS)  # 只有部分语种的页（如“故事”栏只出简繁）
     if rel.startswith("renwu/"): codes = ["zh-Hans", "zh-Hant"] + [k for k in GX.langs() if k in LANGS]  # 人物卡：简繁＋已译的外文（11-14）
     elif rel.startswith(("gushi/", "zhuanti/lu-")) or (rel.startswith("shuyuan/") and rel != "shuyuan/ruyuan.html") or rel in ("zhuanti/keben.html", "jihua/bairi.html"): codes = ["zh-Hans", "zh-Hant"]  # 课本专题只有简繁（11-09 谷歌报外文版 404）
+    if re.fullmatch(r"lunyu/[a-z-]+/\d+\.html", rel): codes = [k for k in codes if k not in FL_NOIDX_L]  # 11-19 七小语种章页 noindex，互指里也去掉
     if rel == "404.html": codes = ["zh-Hans"]  # 404 页只有一份，不指向不存在的外文 404
     alt_links = "".join(f'<link rel="alternate" hreflang="{LANGS[k][2]}" href="{DOMAIN}/{LANGS[k][0]}{rel}">' for k in codes)
     alt_links += f'<link rel="alternate" hreflang="x-default" href="{DOMAIN}/{rel}">'
@@ -2745,7 +2750,7 @@ def build_lang(L, D, write):
             ("citation_publication_date", first.replace("-", "/")), ("citation_online_date", DATE_TOK_SL),
             ("citation_language", L.hreflang), ("citation_public_url", url),
             ("DC.title", name), ("DC.creator", "一孔录"), ("DC.date", first), ("DC.language", L.hreflang), ("DC.source", SOURCE)])
-        write(rel, page(L, ttl, desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@IMG@", "做成分享图").replace("@NONE@", "这一句没有收。") if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.HL_JS if "nocard" in fig_html else "") + (ZJ.KJ_JS if 'class="zjkj"' in fig_html else ""), ld, "pg-chapter", og_img=og_img, head_extra=cit)); urls.append(url)
+        write(rel, page(L, ttl, desc, rel, body + SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "朱注"], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@IMG@", "做成分享图").replace("@NONE@", "这一句没有收。") if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.HL_JS if "nocard" in fig_html else "") + (ZJ.KJ_JS if 'class="zjkj"' in fig_html else ""), ld, "pg-chapter", og_img=og_img, head_extra=cit + (FL_NOIDX if L.code in FL_NOIDX_L else ""))); (L.code in FL_NOIDX_L) or urls.append(url)
 
 
     # 未讲各章：出简繁和英日（WJ_FL）。原文（朱注分章底本）、白话初稿、本句互见、异文、各家注本；原页同屏、视频位（11-08）
