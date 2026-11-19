@@ -30,7 +30,7 @@
   if (!J || !PANE || Z.length !== J.z.length) return;
   var SV = {}; PANE.querySelectorAll('.yyp').forEach(function (a) { var s = a.querySelector('svg'); if (s) SV[a.dataset.p] = s; });
   var R = J.z.map(function (b, i) {
-    var s = SV[b[0]]; if (!s) return null;
+    var s = b && SV[b[0]]; if (!s) return null;
     var r = document.createElementNS(NS, 'rect'); r.setAttribute('class', 'zcb'); r.setAttribute('x', b[1]); r.setAttribute('y', b[2]); r.setAttribute('width', b[3]); r.setAttribute('height', b[4]); r.setAttribute('rx', 4);
     s.appendChild(r); return r;
   });
@@ -59,7 +59,7 @@
     (function step(now) { var u = ease(Math.min(1, (now - t0) / dur)); setVB(s, cur.map(function (a, i) { return a + (t[i] - a) * u; })); if (u < 1) cam[p] = requestAnimationFrame(step); else { cam[p] = 0; if (!box) s.style.height = ''; } })(t0);
   }
   function bbox(ix) {  // 一組字在各頁的外框，取字最多的那頁
-    var by = {}; ix.forEach(function (i) { var b = J.z[i]; (by[b[0]] = by[b[0]] || []).push(b); });
+    var by = {}; ix.forEach(function (i) { var b = J.z[i]; if (!b) return; (by[b[0]] = by[b[0]] || []).push(b); });
     var p = Object.keys(by).sort(function (a, b) { return by[b].length - by[a].length; })[0]; if (!p) return null;
     var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; by[p].forEach(function (b) { x0 = Math.min(x0, b[1]); y0 = Math.min(y0, b[2]); x1 = Math.max(x1, b[1] + b[3]); y1 = Math.max(y1, b[2] + b[4]); });
     return [p, [x0, y0, x1 - x0, y1 - y0]];

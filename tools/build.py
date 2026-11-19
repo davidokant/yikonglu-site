@@ -1949,6 +1949,28 @@ SZJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "szj.json") 
 SZJ = json.load(open(SZJ_FILE, encoding="utf-8")) if os.path.exists(SZJ_FILE) else []
 SZJ_JL_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "szj_julie.json")  # 王相《三字经训诂》1831 年和刻本原页（图片仓库 sanzijing/pNNN.jpg，拆单页、校平）与逐组框 {pages, jl:{讲:{组:[[页,x0,y0,x1,y1],…]}}}
 SZJ_JL = json.load(open(SZJ_JL_FILE, encoding="utf-8")) if os.path.exists(SZJ_JL_FILE) else {"pages": {}, "jl": {}}
+SZJ_JZ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "szj_julie-zhuzi.json")  # 11-19 逐字原页框 {讲:{字:[[原页字,页,列,x0,y0,x1,y1(,讲义字)]…], 组:{组:[起,止)}}}，坐标同图床原页
+SZJ_JZ = json.load(open(SZJ_JZ_FILE, encoding="utf-8"))["讲"] if os.path.exists(SZJ_JZ_FILE) else {}
+SZJ_KJ_BAD = []
+def szj_kj(n, gs, Y):
+    """三字经开卷：每字原页框 z（没有框的组给 null，那组不飞字）；外加按逐字框并起来的组框 {组:[[页,x0,y0,x1,y1]…]}（按页、列并）。字对不上就整讲不给。"""
+    d = SZJ_JZ.get(str(n))
+    if not d or not d.get("组"): return None, None
+    t2s = _MZT2S; z, box = [], {}
+    for g in gs:
+        zs = ZJ.CJK.findall(Y(g[1])); r = d["组"].get(str(g[0]))
+        if not r: z += [None] * len(zs); continue
+        ch = d["字"][r[0]:r[1]]
+        if len(ch) != len(zs) or any(ZJ._vn(t2s(a[7] if len(a) > 7 else a[0])) != ZJ._vn(t2s(b)) for a, b in zip(ch, zs)):
+            SZJ_KJ_BAD.append(f"{n}.{g[0]}"); return None, None
+        cols = {}
+        for a in ch:
+            k = (a[1], a[2]); b = cols.get(k)
+            cols[k] = [min(b[0], a[3]), min(b[1], a[4]), max(b[2], a[5]), max(b[3], a[6])] if b else a[3:7]
+        box[str(g[0])] = [[p, *v] for (p, _), v in cols.items()]
+        z += [[a[1], a[3], a[4], a[5] - a[3], a[6] - a[4]] for a in ch]
+    if not any(z): return None, None
+    return '<script type="application/json" class="zjkj">' + json.dumps({"z": z}, ensure_ascii=False, separators=(",", ":")) + "</script>", box
 SZJ_IMG = "https://img.yikonglu.com/sanzijing/"
 SZJ_WX_NO = {22, 23, 24, 26, 69, 70, 71, 72, 73, 74, 75}  # 王相本没有的组（讲义据后出通行本补）
 SZJ_YW = {  # 讲义与王相本对照（11-13 逐句核对）：组号 → 说明
@@ -2387,6 +2409,8 @@ def build_szj(L, write, P, S_IDX=None):
         trs = [TR["g"].get(str(g[0]), "") for g in gs] if F else []
         tr_all = " ".join(x for x in trs if x)
         jl = SZJ_JL["jl"].get(str(n), {})
+        kj_, jbox = szj_kj(n, gs, Y) if (gs and not F) else (None, None)
+        if jbox: jl = {**jl, **jbox}  # 11-19 组框改用逐字框并出的框（旧组框有 17 列横偏）
         rect = lambda pg: "".join(f'<rect class="hl" data-s="{i}" x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="6"/>' for i, g in enumerate(gs, 1) for (p_, x0, y0, x1, y1) in jl.get(str(g[0]), []) if p_ == pg)
         pgs = sorted({b[0] for v in jl.values() for b in v if b[0] in SZJ_JL["pages"]})
         plab = SU["pane"] if F else "原页"
@@ -2417,7 +2441,7 @@ def build_szj(L, write, P, S_IDX=None):
                 ld_btn = langdu_btn(L.code, str(n), "sanzijing") if str(n) in LANGDU_SZJ else ""
                 fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{jtag} · {len(gs)} 组</span><button type="button" class="yibtn" aria-pressed="false" title="每组下面显示白话">译</button>{ld_btn}</div>'
                        f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
-                       f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script>{zy_tag(zy_)}</figure>')
+                       f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script>{zy_tag(zy_)}{kj_ or ""}</figure>')
                 bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}：“{esc(gs[0][1].split("，")[0] + "，" + gs[0][1].split("，")[1])}”是什么意思</h2>'
                            + "".join(f'<p lang="zh-Hans"><b>{esc(g[1])}</b><br>{esc(g[2])}</p>' for g in gs) + '</section>')
         else:
@@ -2465,7 +2489,7 @@ def build_szj(L, write, P, S_IDX=None):
               "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": bname}}
         if not F: ld["mentions"] = lyhj_ld([r for r in SZJ_LYHJ if r["jiang"] == n])
         if F: js = SHARE_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", "<ul></ul>").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + ZJ.HL_JS
-        else: js = SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "王相注"]], ensure_ascii=False)).replace("@NONE@", "这一组的白话还在整理。") if gs else "").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.KJ_JS if zy_ else "")
+        else: js = SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", "王相注"]], ensure_ascii=False)).replace("@NONE@", "这一组的白话还在整理。") if gs else "").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.KJ_JS if (zy_ or 'class="zjkj"' in fig) else "")
         if S_IDX is not None and gs: S_IDX.append({"c": f'{bname} {n}' if F else f"三字经 {n}", "t": name_of(j), "u": P + rel_of(n), "y": Y(text) if F else text, "x": tr_all if F else " ".join(g[2] for g in gs)})
         if F: ttl, desc = f'{bname} · {head_t}: {name_of(j)} | 一孔录 Yikonglu', SU["md"].format(n=n, tr=tr_all[:110] + ("…" if len(tr_all) > 110 else "")) if gs else f'{bname} · {head_t}: {name_of(j)}. {sm[:100]}'
         else:
