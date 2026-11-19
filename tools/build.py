@@ -2052,6 +2052,7 @@ MZ_DIR = os.path.join(GAO_DIR, "_孟子")
 MZ_CFG = os.path.join(HERE, "mengzi.json")  # {"open": false, "img": 原页图根地址}；open 为 true 才进站点地图、去 noindex
 MZ_PAGES = os.path.join(HERE, "mz_pages.json")  # 原页图尺寸 {"p014": [w, h]}，出图时写
 MZ_CN = "〇一二三四五六七八九十"
+MZ_PROG = {"zh-Hans": "{n} 章 · 朱熹集注原页对读", "zh-Hant": "{n} 章 · 朱熹集注原頁對讀", "en": "{n} chapters · in Chinese"}
 def load_mz():
     f = os.path.join(MZ_DIR, "_原文", "孟子原文-v1.json")
     if not os.path.exists(f): return None
@@ -2063,7 +2064,8 @@ def load_mz():
     cfg = json.load(open(MZ_CFG, encoding="utf-8")) if os.path.exists(MZ_CFG) else {}
     yf = os.path.join(MZ_DIR, "异文.json")
     ptf = os.path.join(MZ_DIR, "_原文", "篇题注.json")
-    return {"pt": {k: v for k, v in json.load(open(ptf, encoding="utf-8")).items() if isinstance(v, list)} if os.path.exists(ptf) else {}, "yw": {k: v for k, v in json.load(open(yf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(yf) else {}, "qw": qw, "bh": bh, "zj": zj, "pm": json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8")), "cfg": cfg,
+    zyf = os.path.join(MZ_DIR, "争议.json")
+    return {"zy": {k: v for k, v in json.load(open(zyf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(zyf) else {}, "pt": {k: v for k, v in json.load(open(ptf, encoding="utf-8")).items() if isinstance(v, list)} if os.path.exists(ptf) else {}, "yw": {k: v for k, v in json.load(open(yf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(yf) else {}, "qw": qw, "bh": bh, "zj": zj, "pm": json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8")), "cfg": cfg,
             "pages": json.load(open(MZ_PAGES, encoding="utf-8")) if os.path.exists(MZ_PAGES) else {}}
 MZ = load_mz()
 
@@ -2072,6 +2074,7 @@ def build_mengzi(L, write, P):
     hant = L.code == "zh-Hant"; _t2s = __import__("opencc").OpenCC("t2s").convert
     Y = (lambda s_: f"{s_}" if s_ else s_) if hant else _t2s
     qw, cfg, urls = MZ["qw"], MZ["cfg"], []
+    ZY = __import__("opencc").OpenCC("s2t").convert if hant else _t2s  # 争议读法栏：简体撰写夹繁体引文，繁体页整栏 s2t
     is_open = bool(cfg.get("open")); img = cfg.get("img", "")
     NOIDX = "" if is_open else '<meta name="robots" content="noindex,follow">'
     key = lambda c: tuple(map(int, c.split(".")))
@@ -2109,7 +2112,7 @@ def build_mengzi(L, write, P):
         for c in cs if pian_of[c] == k) + "</ol>" for k, v in pians)
     body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "mengzi", "孟子")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
 <h1><span class="no">《孟子》 · 朱熹《孟子集注》分章 {len(cs)} 章 · 搭建中</span>孟子</h1></div></div>
-<main class="wrap narrow"><p class="lead">《孟子》七篇十四卷，按朱熹《孟子集注》分 {len(cs)} 章。逐章原文、底本原页、朱注与白话。这一部还在整理：原文标点、白话都还没有最后核定。</p>{groups}</main>"""
+<main class="wrap narrow"><p class="lead">《孟子》七篇十四卷，按朱熹《孟子集注》分 {len(cs)} 章。逐章原文、底本原页、朱注与白话，注家分歧处列出争议读法。视频还在制作。</p>{groups}</main>"""
     write("mengzi/index.html", page(L, "《孟子》原文、朱注与白话｜一孔录", f"《孟子》按朱熹《孟子集注》分 {len(cs)} 章，逐章原文、底本原页、朱注与白话。", "mengzi/", body, None, "pg-book", head_extra=NOIDX, codes=["zh-Hans", "zh-Hant"]))
     if is_open: urls.append(f"{DOMAIN}/{L.prefix}mengzi/")
     for k, c in enumerate(cs):
@@ -2128,9 +2131,9 @@ def build_mengzi(L, write, P):
                f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{esc(cap)}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
                f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script>{zy_tag(zy_)}</figure>')
         b = (MZ["bh"].get(c) or {}).get("text", "")
-        bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}（初稿）</h2><p lang="zh-Hans">{esc(b)}</p><p class="note">这是初稿，按朱注读，还没有逐句核定。</p></section>') if b else ""
+        bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(b)}</p><p class="note">按朱熹《孟子集注》的读法直译；注家有分歧的地方，见下面的争议读法。</p></section>') if b else ""
         zhu_all = "".join(f'<p><span lang="zh-Hant">{esc(Y(z[0]))}</span> <small>（{esc(z[1])}）</small></p>' for x in ss for z in x["zhu"])
-        zhu_html = f'<section class="sec sec-注"><h2><i>注</i>朱熹集注（全章）</h2>{zhu_all}<p class="note">注文照底本录出，未加标点，上线前逐章对原页。</p></section>' if zhu_all else ""
+        zhu_html = f'<section class="sec sec-注"><h2><i>注</i>朱熹集注（全章）</h2>{zhu_all}<p class="note">注文照底本录出，未加标点；有疑处请对照原页。</p></section>' if zhu_all else ""
         deep = ((ZJ.zy_section(c, [Y(x) for x in sents], zy_, [{} for _ in sents], esc, ZY_NOTE) if zy_ else "") + zhu_html)
         prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
         pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{esc(Y(ttl_of(cc)))}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
@@ -2140,10 +2143,11 @@ def build_mengzi(L, write, P):
 </div></div>
 <main class="wrap chapter">
 <article>
-<p class="wjlead">《孟子》还在整理：原文标点、白话都还没有最后核定，视频也还没做。</p>
+<p class="wjlead">这一章的视频还在制作。网站先放原文、原页、朱注和白话。</p>
 {fig}
 {bh_html}
 {"" if not MZ["yw"].get(c) else '<section class="sec"><h2><i>异</i>异文</h2>' + "".join(f"<p>{esc(Y(x))}</p>" for x in MZ["yw"][c]) + "</section>"}
+{"" if not MZ["zy"].get(c) else '<section class="sec mzzy"><h2><i>议</i>争议读法</h2>' + "".join(f'<h3>{esc(ZY(z["t"]))}</h3><ul>' + "".join(f'<li><b>{esc(ZY(x["k"]))} · {esc(ZY(x["who"]))}</b> {esc(ZY(x["t"]))}</li>' for x in z["r"]) + "</ul>" + (f'<p>{esc(ZY("分别：" + z["fb"]))}</p>' if z.get("fb") else "") + f'<p class="note">{esc(ZY(z["v"]))}</p>' for z in MZ["zy"][c]) + '<p class="note">甲乙丙只是排列次序。赵注据《孟子注疏》，朱注据《四部备要》本《孟子集注》。</p></section>'}
 {"" if not next_c else f'<a class="nextread" href="{P}{rel_of(next_c)}">接着读下一章：{next_c}　{esc(Y(ttl_of(next_c)))} ›</a>'}
 {f'<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>' + fold(deep) + "</div>" if deep else ""}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
@@ -2318,7 +2322,7 @@ def build_lang(L, D, write):
         return f"“{seo_q(yw[c])}”是什么意思？" if yw.get(c) else ""
     search_idx = []
     pubset = set(pub)
-    LB = LIVE_BOOKS | ({"daodejing"} if D.get("ddj") else set()) | ({"sanzijing"} if SZJ else set())  # 书目、首页亮着的书：论语＋已上原文的书
+    LB = LIVE_BOOKS | ({"daodejing"} if D.get("ddj") else set()) | ({"sanzijing"} if SZJ else set()) | ({"mengzi"} if MZ and MZ["cfg"].get("open") else set())  # 书目、首页亮着的书：论语＋已上原文的书
     def href(c):  # 已讲章各语种都有页；未讲章出简繁和英日（WJ_FL），其余外文页链到简体
         return (P if c in pubset or L.code.startswith("zh") or WJF else "/") + rel_of(c)
     def ctitle(c): return title_of(c) if c in pubset else ((WJF and wj_tr_title(L.code, c)) or wj_titles(D["qw"])[c])
@@ -2774,6 +2778,8 @@ def build_lang(L, D, write):
     def bcard(slug, zh, live):
         name = L.t("bk_" + slug); sub = L.t("bk_sub_" + slug)
         zhname = f"《{zh}》" if L.code.startswith("zh") else f"《{zh}》 {name}"
+        if live and slug == "mengzi":
+            return f'<a class="bcard" href="{P if L.code.startswith("zh") else "/"}mengzi/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:100%"></i></span><em>{MZ_PROG.get(L.code, MZ_PROG["en"]).format(n=len(MZ["qw"]))}</em></a>'
         if live and slug == "sanzijing":
             return f'<a class="bcard" href="{P if (L.code.startswith("zh") or L.code in SZJ_TR) else "/"}sanzijing/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:100%"></i></span><em>{SZJ_PROG.get(L.code, SZJ_PROG["en"]).format(n=len(SZJ))}</em></a>'
         if live and slug == "daodejing":
@@ -2806,6 +2812,9 @@ def build_lang(L, D, write):
         kids = "、".join((f"《{z}》" if zhL else L.t("bk_" + sl2)) for sl2, z in BOOK_SUB.get(slug, []))
         cv = f'<span class="cv"><span class="qian{" l6" if len(zh) >= 6 else (" l5" if len(zh) == 5 else "")}" lang="zh-Hans">{esc(zh)}</span></span>'
         if live:
+            if slug == "mengzi":
+                return (f'<a class="tome on" href="{P if zhL else "/"}mengzi/" data-bk="{slug}" data-t="{len(MZ["qw"])}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
+                        f'<span class="bar"><i style="width:100%"></i></span><em>{MZ_PROG.get(L.code, MZ_PROG["en"]).format(n=len(MZ["qw"]))}</em><em class="mine" hidden></em></span></a>')
             if slug == "sanzijing":
                 return (f'<a class="tome on" href="{P if (zhL or L.code in SZJ_TR) else "/"}sanzijing/" data-bk="{slug}" data-t="{len(SZJ)}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
                         f'<span class="bar"><i style="width:100%"></i></span><em>{SZJ_PROG.get(L.code, SZJ_PROG["en"]).format(n=len(SZJ))}</em><em class="mine" hidden></em></span></a>')
