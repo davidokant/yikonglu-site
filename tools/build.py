@@ -2065,7 +2065,7 @@ def lyhj_html(rows, P, book="szj"):
     def link(c): return f"{P}lunyu/" if c == "book" else f"{P}lunyu/{PIAN[c.split('.')[0]][1]}/{c.split('.')[1]}.html"
     lis = "".join(f'<li><em>{esc(r["kind"])}</em><a href="{link(r["c"])}" data-hj="{esc(str(r["c"]))}"><b>' + (f'《论语》全书' if r["c"] == "book" else f'论语 {r["c"]} {esc(r["q"])}') + f'</b></a>'
                   f'<p>{esc(r["note"])}<small>（{(esc(r["szj"][:6]) + "…… · ") if r.get("szj") else ""}{who(r)}）</small></p></li>' for r in rows)
-    return f'<section class="lyhj" id="lyhj"><h2>《论语》互见</h2><ul>{lis}</ul><p class="note">{"出处＝《论语》里直接说到老子这句话" if book == "ddj" else "出处＝三字经原句出自这一章"}；注家引＝旧注本里引了这一章；相通＝意思相通，一孔录对读。点进去是《论语》这一章的原文、原页和朱熹注。</p></section>'
+    return f'<section class="lyhj" id="lyhj"><h2>《论语》互见</h2><ul>{lis}</ul><p class="note">{"出处＝《论语》里直接说到老子这句话" if book == "ddj" else ("出处＝孟子这句话出自《论语》" if book == "mz" else "出处＝三字经原句出自这一章")}；注家引＝旧注本里引了这一章；相通＝意思相通，一孔录对读。点进去是《论语》这一章的原文、原页和朱熹注。</p></section>'
 
 # ---------- 11-19 《孟子》章页（主人：“章页版式仿照论语”）：先搭好、不对外（noindex、不进站点地图、站内不挂入口），标点重标、白话核定后再开 ----------
 MZ_DIR = os.path.join(GAO_DIR, "_孟子")
@@ -2088,10 +2088,30 @@ def load_mz():
     cfg = json.load(open(MZ_CFG, encoding="utf-8")) if os.path.exists(MZ_CFG) else {}
     yf = os.path.join(MZ_DIR, "异文.json")
     ptf = os.path.join(MZ_DIR, "_原文", "篇题注.json")
+    jdd = {os.path.basename(x)[:-5]: json.load(open(x, encoding="utf-8")) for x in glob.glob(os.path.join(MZ_DIR, "_讲读", "*.json")) if re.fullmatch(r"\d+\.\d+", os.path.basename(x)[:-5])}
+    hjf = os.path.join(MZ_DIR, "论语互见.json"); hj = json.load(open(hjf, encoding="utf-8")) if os.path.exists(hjf) else {}
     zyf = os.path.join(MZ_DIR, "争议.json")
-    return {"zy": {k: v for k, v in json.load(open(zyf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(zyf) else {}, "pt": {k: v for k, v in json.load(open(ptf, encoding="utf-8")).items() if isinstance(v, list)} if os.path.exists(ptf) else {}, "yw": {k: v for k, v in json.load(open(yf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(yf) else {}, "qw": qw, "bh": bh, "zj": zj, "pm": json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8")), "cfg": cfg,
+    jlf = os.path.join(MZ_DIR, "mz_julie.json")
+    return {"jl": json.load(open(jlf, encoding="utf-8")) if os.path.exists(jlf) else {}, "jd": jdd, "lyhj": hj.get("条", []) if isinstance(hj, dict) else hj, "zy": {k: v for k, v in json.load(open(zyf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(zyf) else {}, "pt": {k: v for k, v in json.load(open(ptf, encoding="utf-8")).items() if isinstance(v, list)} if os.path.exists(ptf) else {}, "yw": {k: v for k, v in json.load(open(yf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(yf) else {}, "qw": qw, "bh": bh, "zj": zj, "pm": json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8")), "cfg": cfg,
             "pages": json.load(open(MZ_PAGES, encoding="utf-8")) if os.path.exists(MZ_PAGES) else {}}
 MZ = load_mz()
+
+def mz_jd_html(jd, T):
+    """孟子章页讲读四块（11-19 向论语看齐）：朱注里的关键字、别本怎么写、诸家怎么说、一孔之见。数据 _孟子/_讲读/<章>.json，没有就不出。T：简繁转换。"""
+    if not jd: return ""
+    sec = lambda mark, h, inner: f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{h}</h2>{inner}</section>'
+    out = ""
+    if jd.get("字眼"): out += sec("注", "朱注里的关键字", f"<p>{esc(T(jd['字眼']))}</p>")
+    if jd.get("别本"):
+        out += sec("本", "别本怎么写", '<p class="note">底本是《四部备要》本朱熹《孟子集注》；对照赵岐注《孟子注疏》等通行本。</p><table class="bbt"><tbody>'
+                   + "".join(f'<tr><th>{esc(T(b["处"]))}</th><td>{esc(T(b["说"]))}{f"<br><b>意思：</b>{esc(T(b[chr(21464)]))}" if b.get("变") else ""}</td></tr>' for b in jd["别本"]) + "</tbody></table>")
+    if jd.get("诸家"):
+        zj = [x for x in re.split(r"(?<=。)(?=(?:旧题|东汉|西汉|北宋|南宋|宋代|元代|明代|清代|近人|民国)[^：。]{0,16}：)", jd["诸家"]) if x.strip()]
+        out += sec("说", "诸家怎么说", "".join(f'<p class="zj1">{quotes(T(x))}</p>' for x in zj))
+    if jd.get("一孔之见"):
+        out += sec("读", "一孔之见", f"<p>{quotes(T(jd['一孔之见']))}</p>" + (f'<p class="zhaojin"><b>放到今天：</b>{quotes(T(jd["照今"]))}</p>' if jd.get("照今") else ""))
+    out = re.sub(r"〔p0*(\d+)(?:—p0*(\d+))?〕", lambda m: f'<small class="pgref">（朱注原页 {m.group(1)}{"—" + m.group(2) if m.group(2) else ""}）</small>', out)
+    return re.sub(r"〔注疏([^〕]*)〕", lambda m: f'<small class="pgref">（《孟子注疏》{m.group(1)}）</small>', out)
 
 def build_mengzi(L, write, P, S_IDX=None):
     if not MZ or not L.code.startswith("zh"): return []
@@ -2146,14 +2166,19 @@ def build_mengzi(L, write, P, S_IDX=None):
         q = qw[c]; text = q["text"]; pt = pian_of[c]; url = f"{DOMAIN}/{L.prefix}{rel_of(c)}"
         ss = sents_of(c); sents = [x["yw"] for x in ss]
         pgs = [int(x) for x in (q.get("pages") or [])]
-        pane = "".join(f'<a class="yyp" href="{img}p{x:03d}.jpg" target="_blank" data-p="p{x:03d}"><svg viewBox="0 0 {MZ["pages"][f"p{x:03d}"][0]} {MZ["pages"][f"p{x:03d}"][1]}" role="img" aria-label="原页 {x}"><image href="{img}p{x:03d}.jpg" width="{MZ["pages"][f"p{x:03d}"][0]}" height="{MZ["pages"][f"p{x:03d}"][1]}"/></svg><span>原页 {x}</span></a>'
+        jl = MZ["jl"].get(c) if len(MZ["jl"].get(c) or []) == len(sents) else []  # 11-19 点句红框（量列对字，_孟子/mz_julie.json）
+        if MZ["jl"].get(c) and not jl: print(f"  孟子红框句数不符 {c}：网站 {len(sents)} 句，框 {len(MZ['jl'][c])} 组")
+        hlr = lambda pp: "".join(f'<rect class="hl" data-s="{i}" x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="6"/>' for i, bx in enumerate(jl, 1) for (p_, x0, y0, x1, y1) in bx if p_ == pp)
+        pane = "".join(f'<a class="yyp" href="{img}p{x:03d}.jpg" target="_blank" data-p="p{x:03d}"><svg viewBox="0 0 {MZ["pages"][f"p{x:03d}"][0]} {MZ["pages"][f"p{x:03d}"][1]}" role="img" aria-label="原页 {x}"><image href="{img}p{x:03d}.jpg" width="{MZ["pages"][f"p{x:03d}"][0]}" height="{MZ["pages"][f"p{x:03d}"][1]}"/>{hlr(f"p{x:03d}")}</svg><span>原页 {x}</span></a>'
                        for x in pgs if img and f"p{x:03d}" in MZ["pages"])
-        rows = [{"zhu": [[Y(z[0]), z[1]] for z in x["zhu"]], "hj": []} for x in ss]
+        jd = MZ["jd"].get(c) or {}; jz = jd.get("逐句注") or {}
+        rows = [{"zhu": ([[ZY(t_), ZY(s_)] for t_, s_ in jz[str(j)]] if jz.get(str(j)) else [[Y(z[0]), z[1]] for z in x["zhu"]]), "hj": []} for j, x in enumerate(ss, 1)]
+        _jd = mz_jd_html(jd, ZY); _du, _jdr = du_up(_jd, "这一章讲什么") if _jd else ("", "")
         zy_ = ZJ.zhuyin_book("孟子", c, sents)
         cite_src = f"孟子 {c} · 一孔录"
         bq = f'<blockquote lang="{"zh-Hant" if hant else "zh-Hans"}" data-src="{esc(cite_src)}" data-url="{url}" data-short="" data-sep="，" data-reads="[]" data-rl="" data-hj="{{}}">'
         ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(Y(x))}</span>' for j, x in enumerate(sents, 1))
-        cap = f'原文据《四部备要》本朱熹《孟子集注》' + (f'，底本第 {"、".join(str(x) for x in pgs)} 页' if pgs else "") + "。点一句，看这一句下面的朱注。"
+        cap = f'原文据《四部备要》本朱熹《孟子集注》' + (f'，底本第 {"、".join(str(x) for x in pgs)} 页' if pgs else "") + "。点一句，原页上框出这一句，下面看朱注。"
         fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{esc(Y(pt))} · 第 {c} 章</span></div>'
                f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{esc(cap)}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
                f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script>{zy_tag(zy_)}</figure>')
@@ -2161,7 +2186,7 @@ def build_mengzi(L, write, P, S_IDX=None):
         bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}</h2><p lang="zh-Hans">{esc(b)}</p><p class="note">按朱熹《孟子集注》的读法直译；注家有分歧的地方，见下面的争议读法。</p></section>') if b else ""
         zhu_all = "".join(f'<p><span lang="zh-Hant">{esc(Y(z[0]))}</span> <small>（{esc(z[1])}）</small></p>' for x in ss for z in x["zhu"])
         zhu_html = f'<section class="sec sec-注"><h2><i>注</i>朱熹集注（全章）</h2>{zhu_all}<p class="note">注文照底本录出，未加标点；有疑处请对照原页。</p></section>' if zhu_all else ""
-        deep = ((ZJ.zy_section(c, [Y(x) for x in sents], zy_, [{} for _ in sents], esc, ZY_NOTE) if zy_ else "") + zhu_html)
+        deep = ((ZJ.zy_section(c, [Y(x) for x in sents], zy_, rows, esc, ZY_NOTE) if zy_ else "") + (_jdr if jd else zhu_html))
         prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
         pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{esc(Y(ttl_of(cc)))}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "mengzi", "孟子")}
@@ -2173,11 +2198,13 @@ def build_mengzi(L, write, P, S_IDX=None):
 <p class="wjlead">这一章的视频还在制作。网站先放原文、原页、朱注和白话。</p>
 {fig}
 {bh_html}
+{_du}
 <section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>
 <div class="chacts">{done_html(L, "mz." + c)}{share_html(L, "mz." + c, url, f"孟子 {c}", Y(ttl_of(c)), Y(text), "", "", MZ_SH)}</div>
-{"" if not MZ["yw"].get(c) else '<section class="sec"><h2><i>异</i>异文</h2>' + "".join(f"<p>{esc(Y(x))}</p>" for x in MZ["yw"][c]) + "</section>"}
+{"" if (jd or not MZ["yw"].get(c)) else '<section class="sec"><h2><i>异</i>异文</h2>' + "".join(f"<p>{esc(Y(x))}</p>" for x in MZ["yw"][c]) + "</section>"}
 {"" if not MZ["zy"].get(c) else '<section class="sec mzzy"><h2><i>议</i>争议读法</h2>' + "".join(f'<h3>{esc(ZY(z["t"]))}</h3><ul>' + "".join(f'<li><b>{esc(ZY(x["k"]))} · {esc(ZY(x["who"]))}</b> {esc(ZY(x["t"]))}</li>' for x in z["r"]) + "</ul>" + (f'<p>{esc(ZY("分别：" + z["fb"]))}</p>' if z.get("fb") else "") + f'<p class="note">{esc(ZY(z["v"]))}</p>' for z in MZ["zy"][c]) + '<p class="note">甲乙丙只是排列次序。赵注据《孟子注疏》，朱注据《四部备要》本《孟子集注》。</p></section>'}
 {"" if not next_c else f'<a class="nextread" href="{P}{rel_of(next_c)}">接着读下一章：{next_c}　{esc(Y(ttl_of(next_c)))} ›</a>'}
+{lyhj_html([dict(r, note=ZY(r.get("note", "")), q=ZY(r.get("q", ""))) for r in MZ["lyhj"] if str(r.get("zhang")) == c], P, "mz")}
 {f'<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>' + fold(deep) + "</div>" if deep else ""}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
 <nav class="pn">{pn}</nav>
