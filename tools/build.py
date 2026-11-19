@@ -1681,7 +1681,8 @@ def load_ddj():
         if d_.get("白话"): bh[c_] = d_["白话"]; bh_ok.add(c_)
     return {"qw": qw, "bh": bh, "bh_ok": bh_ok, "zj": rd("_逐句"), "an": an, "jd": jd, "hj": hj, "src": cfg.get("src", ""), "img": cfg.get("img", ""), "zhu": cfg.get("zhu") or "注文",
             "pages": json.load(open(pm, encoding="utf-8")) if os.path.exists(pm) else {},
-            "jl": json.load(open(jl, encoding="utf-8")) if os.path.exists(jl := os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_julie.json")) else {}}  # 逐句原页框（11-13 量列对字）
+            "jl": json.load(open(jl, encoding="utf-8")) if os.path.exists(jl := os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_julie.json")) else {},
+            "jz": json.load(open(jz, encoding="utf-8")) if os.path.exists(jz := os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_julie-zhuzi.json")) else {}}  # 逐句原页框（11-19 第三棒重量）；jz 逐字框（开卷飞字）
 
 DDJ_FL = ("en", "ja")  # 道德经外文页（11-13 主人：英日版 81 章新译也做；译文初稿 tools/i18n/ddj-<语种>.json）
 DDJ_TR = {x: json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", f"ddj-{x}.json"), encoding="utf-8")) for x in DDJ_FL if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", f"ddj-{x}.json"))}
@@ -1874,7 +1875,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
             yib = '<button type="button" class="yibtn" aria-pressed="false" title="每句下面显示白话">译</button>' if any(r.get("bh") for r in rows) else ""
             fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{pt} · 第 {c}/81 章</span>{yib}{langdu_btn(L.code, c, "daodejing")}</div>'
                    f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
-                   f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script>{zy_tag(zy_)}</figure>')
+                   f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script>{zy_tag(zy_)}{mz_kj_tag(G['jz'].get(c), sents) if pane else ''}</figure>')
         else:
             fig = f'<figure class="yuanwen">{bq}{ju_html}</blockquote><figcaption>{cap}</figcaption></figure>'
         an = G["an"].get(c) or {}; gist = ""; faq = []
@@ -1924,7 +1925,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
         ld = {"@context": "https://schema.org", "@graph": [ld] + ([{"@type": "FAQPage", "mainEntity": faq}] if faq else [])}
         if F: js = SHARE_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", "<ul></ul>").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + ZJ.HL_JS
         else: js = SHARE_JS + FOLD_JS + (ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["bh", "白话"], ["zhu", G["zhu"]], ["jj", "集解"], ["yk", "一孔读法"], ["hj", "本句互见"]], ensure_ascii=False)).replace("@NONE@", "这一句的逐句白话和注还在整理，整章白话见下文。")
-              if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.KJ_JS if zy_ else "")
+              if dz else JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", hj_static)).replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.KJ_JS if (zy_ or 'class="zjkj"' in fig) else "")
         if S_IDX is not None: S_IDX.append({"c": f'{DU["book"] if F else "道德经"} {c}', "t": tt[c] if F else Y(tt[c]), "u": P + rel_of(c), "y": Y(text), "x": tr if F else (bh or "") + " " + (an.get("片里落点") or "")})
         if F: ttl, desc = f'{DU["chn"].format(c=c)} {tt[c]} | 一孔录 Yikonglu', DU["md"].format(c=c, tr=tr[:110] + ("…" if len(tr) > 110 else ""))
         else: ttl, desc = f"{Y(seo_head(text))}｜原文与白话｜道德经 {c}｜一孔录", f"{Y(text[:70])}……《道德经》第 {c} 章原文与白话直译。"
