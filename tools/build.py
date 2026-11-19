@@ -2072,11 +2072,21 @@ MZ_DIR = os.path.join(GAO_DIR, "_孟子")
 MZ_CFG = os.path.join(HERE, "mengzi.json")  # {"open": false, "img": 原页图根地址}；open 为 true 才进站点地图、去 noindex
 MZ_PAGES = os.path.join(HERE, "mz_pages.json")  # 原页图尺寸 {"p014": [w, h]}，出图时写
 MZ_CN = "〇一二三四五六七八九十"
+MZ_FL = ("en", "ja")
+MZ_CODES = lambda: ["zh-Hans", "zh-Hant"] + ([x for x in MZ_FL] if MZ and MZ.get("tri") else [])  # 11-19 主人：论语以外的书外文只做英日
+MZ_FU = {"en": {"book": "Mencius", "pt": {"梁惠王上": "King Hui of Liang I", "梁惠王下": "King Hui of Liang II", "公孫丑上": "Gongsun Chou I", "公孫丑下": "Gongsun Chou II", "滕文公上": "Duke Wen of Teng I", "滕文公下": "Duke Wen of Teng II", "離婁上": "Li Lou I", "離婁下": "Li Lou II", "萬章上": "Wan Zhang I", "萬章下": "Wan Zhang II", "告子上": "Gaozi I", "告子下": "Gaozi II", "盡心上": "Jin Xin I", "盡心下": "Jin Xin II"},
+              "juan": "Scroll {n} · {m} chapters", "ch": "Mencius {c}", "lead": "The Mencius in seven books (fourteen scrolls), divided into {n} chapters as in Zhu Xi's Collected Commentaries on the Mencius. Each chapter gives the original text beside the page of the base edition (Sibu Beiyao), with Yikonglu's own English translation following Zhu Xi's reading. Tap a sentence to see it framed on the page.",
+              "bt": "Mencius: original text with English translation | Yikonglu", "bd": "The Mencius chapter by chapter: the original Chinese beside the base-edition page, with Yikonglu's English translation following Zhu Xi.",
+              "cap": "Original text from Zhu Xi's Collected Commentaries on the Mencius (Sibu Beiyao edition), base-edition page {p}. Tap a sentence to frame it on the page.", "tr": "Translated by Yikonglu, following Zhu Xi's reading.", "trh": "English translation", "no": "Mencius · {n} chapters"},
+         "ja": {"book": "孟子", "pt": {"梁惠王上": "梁恵王上", "梁惠王下": "梁恵王下", "公孫丑上": "公孫丑上", "公孫丑下": "公孫丑下", "滕文公上": "滕文公上", "滕文公下": "滕文公下", "離婁上": "離婁上", "離婁下": "離婁下", "萬章上": "万章上", "萬章下": "万章下", "告子上": "告子上", "告子下": "告子下", "盡心上": "尽心上", "盡心下": "尽心下"},
+              "juan": "巻{n}・{m} 章", "ch": "孟子 {c}", "lead": "『孟子』七篇十四巻を、朱熹『孟子集注』の分章に従い {n} 章に分けて掲載します。各章、原文と底本（四部備要本）の原頁を並べ、朱熹の読みに沿った一孔録の日本語訳を付けます。原文の一句をタップすると、原頁のその句が枠で示されます。",
+              "bt": "『孟子』原文と日本語訳｜一孔録", "bd": "『孟子』を一章ずつ：原文と底本の原頁を並べ、朱熹の読みに沿った一孔録の日本語訳を付す。",
+              "cap": "原文は四部備要本朱熹『孟子集注』に拠る。底本 {p} 頁。一句をタップすると原頁に枠が出ます。", "tr": "一孔録訳。朱熹の読みに従う。", "trh": "日本語訳", "no": "『孟子』・全 {n} 章"}}
 MZ_SH = {"bk": "孟子", "tot": 260, "src": "朱熹《孟子集注》四部备要本", "src2": "朱熹《孟子集注》（四部备要本）", "pf": "mz."}
 MZ_SLUG = {"梁惠王上": "liang-hui-wang-shang", "梁惠王下": "liang-hui-wang-xia", "公孫丑上": "gong-sun-chou-shang", "公孫丑下": "gong-sun-chou-xia", "滕文公上": "teng-wen-gong-shang", "滕文公下": "teng-wen-gong-xia",
            "離婁上": "li-lou-shang", "離婁下": "li-lou-xia", "萬章上": "wan-zhang-shang", "萬章下": "wan-zhang-xia", "告子上": "gao-zi-shang", "告子下": "gao-zi-xia", "盡心上": "jin-xin-shang", "盡心下": "jin-xin-xia"}
 MZ_JUAN = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四"]
-MZ_PROG = {"zh-Hans": "{n} 章 · 朱熹集注原页对读", "zh-Hant": "{n} 章 · 朱熹集注原頁對讀", "en": "{n} chapters · in Chinese"}
+MZ_PROG = {"zh-Hans": "{n} 章 · 朱熹集注原页对读", "zh-Hant": "{n} 章 · 朱熹集注原頁對讀", "en": "{n} chapters · with English translation", "ja": "全 {n} 章・日本語訳つき"}
 def load_mz():
     f = os.path.join(MZ_DIR, "_原文", "孟子原文-v1.json")
     if not os.path.exists(f): return None
@@ -2091,8 +2101,10 @@ def load_mz():
     jdd = {os.path.basename(x)[:-5]: json.load(open(x, encoding="utf-8")) for x in glob.glob(os.path.join(MZ_DIR, "_讲读", "*.json")) if re.fullmatch(r"\d+\.\d+", os.path.basename(x)[:-5])}
     hjf = os.path.join(MZ_DIR, "论语互见.json"); hj = json.load(open(hjf, encoding="utf-8")) if os.path.exists(hjf) else {}
     zyf = os.path.join(MZ_DIR, "争议.json")
+    trf = os.path.join(MZ_DIR, "_外文", "mz-tri.json")
     jlf = os.path.join(MZ_DIR, "mz_julie.json")
-    return {"jl": json.load(open(jlf, encoding="utf-8")) if os.path.exists(jlf) else {}, "jd": jdd, "lyhj": hj.get("条", []) if isinstance(hj, dict) else hj, "zy": {k: v for k, v in json.load(open(zyf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(zyf) else {}, "pt": {k: v for k, v in json.load(open(ptf, encoding="utf-8")).items() if isinstance(v, list)} if os.path.exists(ptf) else {}, "yw": {k: v for k, v in json.load(open(yf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(yf) else {}, "qw": qw, "bh": bh, "zj": zj, "pm": json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8")), "cfg": cfg,
+    lgf = os.path.join(MZ_DIR, "_外文", "legge-en.json")
+    return {"legge": (json.load(open(lgf, encoding="utf-8")).get("chapters") or {}) if os.path.exists(lgf) else {}, "tri": json.load(open(trf, encoding="utf-8")) if os.path.exists(trf) else {}, "jl": json.load(open(jlf, encoding="utf-8")) if os.path.exists(jlf) else {}, "jd": jdd, "lyhj": hj.get("条", []) if isinstance(hj, dict) else hj, "zy": {k: v for k, v in json.load(open(zyf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(zyf) else {}, "pt": {k: v for k, v in json.load(open(ptf, encoding="utf-8")).items() if isinstance(v, list)} if os.path.exists(ptf) else {}, "yw": {k: v for k, v in json.load(open(yf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(yf) else {}, "qw": qw, "bh": bh, "zj": zj, "pm": json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8")), "cfg": cfg,
             "pages": json.load(open(MZ_PAGES, encoding="utf-8")) if os.path.exists(MZ_PAGES) else {}}
 MZ = load_mz()
 
@@ -2114,7 +2126,8 @@ def mz_jd_html(jd, T):
     return re.sub(r"〔注疏([^〕]*)〕", lambda m: f'<small class="pgref">（《孟子注疏》{m.group(1)}）</small>', out)
 
 def build_mengzi(L, write, P, S_IDX=None):
-    if not MZ or not L.code.startswith("zh"): return []
+    if not MZ or not (L.code.startswith("zh") or (L.code in MZ_FL and MZ["tri"])): return []
+    if not L.code.startswith("zh"): return build_mengzi_fl(L, write, P)
     hant = L.code == "zh-Hant"; _t2s = __import__("opencc").OpenCC("t2s").convert
     Y = (lambda s_: f"{s_}" if s_ else s_) if hant else _t2s
     qw, cfg, urls = MZ["qw"], MZ["cfg"], []
@@ -2152,7 +2165,7 @@ def build_mengzi(L, write, P, S_IDX=None):
         pg = f'（朱注篇题注，<a href="{img}p{x:03d}.jpg" target="_blank">底本原页 {x}</a>）' if x and img else "（朱注篇题注）"
         return f'<p class="note">{esc(Y(t[0]))}{pg}</p>'
     def mz_page(sl, nm, body):
-        write(f"mengzi/{sl}/index.html", page(L, f"《孟子》{Y(nm)}｜原文、朱注与白话｜一孔录", f"《孟子》{Y(nm)}逐章原文、底本原页、朱注与白话。", f"mengzi/{sl}/", body, None, "pg-book", head_extra=NOIDX, codes=["zh-Hans", "zh-Hant"]))
+        write(f"mengzi/{sl}/index.html", page(L, f"《孟子》{Y(nm)}｜原文、朱注与白话｜一孔录", f"《孟子》{Y(nm)}逐章原文、底本原页、朱注与白话。", f"mengzi/{sl}/", body, None, "pg-book", head_extra=NOIDX, codes=MZ_CODES()))
         if is_open: urls.append(f"{DOMAIN}/{L.prefix}mengzi/{sl}/")
     groups = pian_layer(L, P, write, urls, "mengzi", "孟子", [(MZ_SLUG[k], Y(k), f"卷{MZ_JUAN[i]} · {v['章数']} 章", '<ol class="toc">' + "".join(
         f'<li class="wj" data-c="mz.{c}"><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(Y(ttl_of(c)))}</b><span><span lang="zh-Hans">{esc(Y(qw[c]["text"][:40]) + ("……" if len(qw[c]["text"]) > 40 else ""))}</span></span></a></li>'
@@ -2160,7 +2173,7 @@ def build_mengzi(L, write, P, S_IDX=None):
     body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "mengzi", "孟子")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
 <h1><span class="no">《孟子》 · 朱熹《孟子集注》分章 {len(cs)} 章</span>孟子</h1></div></div>
 <main class="wrap narrow"><p class="lead">《孟子》七篇十四卷，按朱熹《孟子集注》分 {len(cs)} 章。逐章原文、底本原页、朱注与白话，注家分歧处列出争议读法。视频还在制作。</p>{groups}</main>"""
-    write("mengzi/index.html", page(L, "《孟子》原文、朱注与白话｜一孔录", f"《孟子》按朱熹《孟子集注》分 {len(cs)} 章，逐章原文、底本原页、朱注与白话。", "mengzi/", body, None, "pg-book", head_extra=NOIDX, codes=["zh-Hans", "zh-Hant"]))
+    write("mengzi/index.html", page(L, "《孟子》原文、朱注与白话｜一孔录", f"《孟子》按朱熹《孟子集注》分 {len(cs)} 章，逐章原文、底本原页、朱注与白话。", "mengzi/", body, None, "pg-book", head_extra=NOIDX, codes=MZ_CODES()))
     if is_open: urls.append(f"{DOMAIN}/{L.prefix}mengzi/")
     for k, c in enumerate(cs):
         q = qw[c]; text = q["text"]; pt = pian_of[c]; url = f"{DOMAIN}/{L.prefix}{rel_of(c)}"
@@ -2213,9 +2226,83 @@ def build_mengzi(L, write, P, S_IDX=None):
 </main><i id="rc" data-c="mz.{c}" hidden></i>"""
         js = SHARE_JS + FOLD_JS + ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["zhu", "朱注"]], ensure_ascii=False)).replace("@NONE@", "这一句下面朱熹没有出注。").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.KJ_JS if zy_ else "")
         ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"孟子 {c} {Y(ttl_of(c))}", "inLanguage": L.hreflang, "url": url, "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "孟子"}}
-        write(rel_of(c), page(L, f"{Y(seo_head(text))}｜原文与朱注｜孟子 {c}｜一孔录", f"{Y(text[:70])}……《孟子》{c} 原文、朱熹集注与白话。", rel_of(c), body + js, ld, "pg-chapter pg-wj", og_img=OG.make3("mz." + c, f"《孟子·{_t2s(pt)}》{c} · Mencius {c} · 孟子 {c}", _t2s(text), "", "", "逐字读经典原文"), head_extra=NOIDX, codes=["zh-Hans", "zh-Hant"]))
+        write(rel_of(c), page(L, f"{Y(seo_head(text))}｜原文与朱注｜孟子 {c}｜一孔录", f"{Y(text[:70])}……《孟子》{c} 原文、朱熹集注与白话。", rel_of(c), body + js, ld, "pg-chapter pg-wj", og_img=OG.make3("mz." + c, f"《孟子·{_t2s(pt)}》{c} · Mencius {c} · 孟子 {c}", _t2s(text), (MZ["tri"].get(c) or {}).get("en", ""), (MZ["tri"].get(c) or {}).get("ja", ""), "逐字读经典原文"), head_extra=NOIDX, codes=MZ_CODES()))
         if is_open: urls.append(url)
         if is_open and S_IDX is not None: S_IDX.append({"c": f"孟子 {c}", "t": Y(ttl_of(c)), "u": P + rel_of(c), "y": Y(text), "x": b})
+    return urls
+
+def build_mengzi_fl(L, write, P):
+    """11-19 孟子英日版（主人：外文只做英日）：书页篇卡、篇页、章页（原文＋原页点句红框＋一孔录译文），照道德经外文页。"""
+    U = MZ_FU[L.code]; qw, cfg, urls, tri = MZ["qw"], MZ["cfg"], [], MZ["tri"]
+    _t2s = __import__("opencc").OpenCC("t2s").convert
+    is_open = bool(cfg.get("open")); img = cfg.get("img", "")
+    NOIDX = "" if is_open else '<meta name="robots" content="noindex,follow">'
+    key = lambda c: tuple(map(int, c.split("."))); cs = sorted(qw, key=key)
+    pians = [(k, v) for k, v in MZ["pm"].items() if not k.startswith("_")]
+    pian_of = {c: k for k, v in pians for c in cs if key(v["起"]) <= key(c) <= key(v["止"])}
+    rel_of = lambda c: f"mengzi/{c}.html"
+    tr_of = lambda c: (tri.get(c) or {}).get(L.code, "")
+    def ttl_of(c):
+        t = tr_of(c); m = re.match(r"(.{8,60}?[.?!:;。？！：；])", t)
+        return (m.group(1) if m else t[:60]).rstrip(".:;。：；") or f"{U['ch'].format(c=c)}"
+    def sents_of(c):
+        rows = (MZ["zj"].get(c) or {}).get("句") or []; out = []
+        for r in rows:
+            if out and not out[-1]["zhu"] and not re.search(r"[。！？”’：；]$", out[-1]["yw"]): out[-1] = {"yw": out[-1]["yw"] + r["yw"], "zhu": list(r.get("zhu") or [])}
+            else: out.append({"yw": r["yw"], "zhu": list(r.get("zhu") or [])})
+        return out if "".join(x["yw"] for x in out) == qw[c]["text"] else [{"yw": qw[c]["text"], "zhu": []}]
+    PN = lambda k: U["pt"].get(k, k)
+    def li(c):
+        t = tr_of(c)
+        return f'<li class="wj" data-c="mz.{c}"><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(ttl_of(c))}</b><span><span>{esc(t[:90] + ("…" if len(t) > 90 else ""))}</span></span></a></li>'
+    def mz_page(sl, nm, body):
+        write(f"mengzi/{sl}/index.html", page(L, f"{U['book']} · {nm} | 一孔录 Yikonglu", U["bd"], f"mengzi/{sl}/", body, None, "pg-book", head_extra=NOIDX, codes=MZ_CODES()))
+        if is_open: urls.append(f"{DOMAIN}/{L.prefix}mengzi/{sl}/")
+    groups = pian_layer(L, P, write, urls, "mengzi", U["book"], [(MZ_SLUG[k], PN(k), U["juan"].format(n=i + 1, m=v["章数"]), '<ol class="toc">' + "".join(li(c) for c in cs if pian_of[c] == k) + "</ol>", "") for i, (k, v) in enumerate(pians)],
+                        f"{P}{rel_of(cs[0])}", mz_page, mcv(P, "", True, "mengzi", "孟子"))
+    body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "mengzi", "孟子")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
+<h1><span class="no">{esc(U["no"].format(n=len(cs)))}</span>{esc(U["book"])}</h1></div></div>
+<main class="wrap narrow"><p class="lead">{esc(U["lead"].format(n=len(cs)))}</p>{groups}</main>"""
+    write("mengzi/index.html", page(L, U["bt"], U["bd"], "mengzi/", body, {"@context": "https://schema.org", "@type": "Book", "name": U["book"], "url": f"{DOMAIN}/{L.prefix}mengzi/", "inLanguage": L.hreflang}, "pg-book", head_extra=NOIDX, codes=MZ_CODES()))
+    if is_open: urls.append(f"{DOMAIN}/{L.prefix}mengzi/")
+    for k, c in enumerate(cs):
+        q = qw[c]; text = q["text"]; pt = pian_of[c]; url = f"{DOMAIN}/{L.prefix}{rel_of(c)}"
+        sents = [x["yw"] for x in sents_of(c)]; pgs = [int(x) for x in (q.get("pages") or [])]
+        jl = MZ["jl"].get(c) if len(MZ["jl"].get(c) or []) == len(sents) else []
+        hlr = lambda pp: "".join(f'<rect class="hl" data-s="{i}" x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="6"/>' for i, bx in enumerate(jl, 1) for (p_, x0, y0, x1, y1) in bx if p_ == pp)
+        pane = "".join(f'<a class="yyp" href="{img}p{x:03d}.jpg" target="_blank" data-p="p{x:03d}"><svg viewBox="0 0 {MZ["pages"][f"p{x:03d}"][0]} {MZ["pages"][f"p{x:03d}"][1]}" role="img" aria-label="p. {x}"><image href="{img}p{x:03d}.jpg" width="{MZ["pages"][f"p{x:03d}"][0]}" height="{MZ["pages"][f"p{x:03d}"][1]}"/>{hlr(f"p{x:03d}")}</svg><span>p. {x}</span></a>'
+                       for x in pgs if img and f"p{x:03d}" in MZ["pages"])
+        bq = f'<blockquote lang="zh-Hant" data-src="{esc(U["ch"].format(c=c))} · 一孔录 Yikonglu" data-url="{url}" data-short="" data-sep=", " data-reads="[]" data-rl="" data-hj="{{}}">'
+        ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x)}</span>' for j, x in enumerate(sents, 1))
+        tr = tr_of(c)
+        rend = f'<p class="rend">{esc(tr)}</p><figcaption>{esc(U["tr"])}</figcaption>' if tr else ""
+        if L.code == "en" and MZ["legge"].get(c):  # 11-19 照论语英文页：Legge 1861 对照，默认收起
+            rend += ('<details class="legge"><summary>Compare: James Legge&#39;s translation (1861)</summary>' + "".join(f"<p>{esc(_sq(x))}</p>" for x in MZ["legge"][c])
+                     + '<p class="note">James Legge, <i>The Works of Mencius</i>, in <i>The Chinese Classics</i>, vol. II (1861). Public domain; text collated from scans and proofread. Legge mostly follows Zhu Xi; where his wording and ours differ, the Chinese text and the base-edition page decide.</p></details>')
+        cap = U["cap"].format(p=", ".join(str(x) for x in pgs))
+        fig = (f'<figure class="yuanwen dz nocard{"" if pane else " nopane"}"><div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{esc(cap)}</figcaption>{rend}</div>'
+               + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div></figure>')
+        prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
+        pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{esc(ttl_of(cc))}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
+        side = "".join(f'<li class="{"cur" if x == c else ""} wj" data-c="mz.{x}"><a href="{P}{rel_of(x)}"><em>{x}</em>{esc(ttl_of(x))}</a></li>' for x in cs if pian_of[x] == pt)
+        body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "mengzi", "孟子")}
+<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}mengzi/">{esc(U["book"])}</a> › <a href="{P}mengzi/{MZ_SLUG.get(pt, "")}/">{esc(PN(pt))}</a></p>
+<h1><span class="no">{esc(U["ch"].format(c=c))} · {esc(PN(pt))}</span>{esc(ttl_of(c))}</h1>
+</div></div>
+<main class="wrap chapter">
+<article>
+{fig}
+<div class="chacts">{done_html(L, "mz." + c)}{share_html(L, "mz." + c, url, U["ch"].format(c=c), ttl_of(c), text, "", tr, MZ_SH)}</div>
+<section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
+<nav class="pn">{pn}</nav>
+</article>
+<aside><h3>{esc(PN(pt))}</h3><ol>{side}</ol></aside>
+</main><i id="rc" data-c="mz.{c}" hidden></i>"""
+        js = SHARE_JS + JU_JS.replace("@HJH@", L.t("hj_h")).replace("@HJ@", "<ul></ul>").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + ZJ.HL_JS
+        ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"{U['ch'].format(c=c)} {ttl_of(c)}", "inLanguage": L.hreflang, "url": url, "author": {"@type": "Organization", "name": "一孔录 Yikonglu", "url": DOMAIN}}
+        write(rel_of(c), page(L, f"{U['ch'].format(c=c)} · {ttl_of(c)} | 一孔录 Yikonglu", (tr[:150] + "…") if len(tr) > 150 else tr, rel_of(c), body + js, ld, "pg-chapter pg-wj",
+                              og_img=OG.make3("mz." + c, f"《孟子·{_t2s(pt)}》{c} · Mencius {c} · 孟子 {c}", _t2s(text), (tri.get(c) or {}).get("en", ""), (tri.get(c) or {}).get("ja", ""), "逐字读经典原文"), head_extra=NOIDX, codes=MZ_CODES()))
+        if is_open: urls.append(url)
     return urls
 
 def build_szj(L, write, P, S_IDX=None):
@@ -2841,7 +2928,7 @@ def build_lang(L, D, write):
         name = L.t("bk_" + slug); sub = L.t("bk_sub_" + slug)
         zhname = f"《{zh}》" if L.code.startswith("zh") else f"《{zh}》 {name}"
         if live and slug == "mengzi":
-            return f'<a class="bcard" href="{P if L.code.startswith("zh") else "/"}mengzi/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:100%"></i></span><em>{MZ_PROG.get(L.code, MZ_PROG["en"]).format(n=len(MZ["qw"]))}</em></a>'
+            return f'<a class="bcard" href="{P if (L.code.startswith("zh") or L.code in MZ_FL) else "/"}mengzi/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:100%"></i></span><em>{MZ_PROG.get(L.code, MZ_PROG["en"]).format(n=len(MZ["qw"]))}</em></a>'
         if live and slug == "sanzijing":
             return f'<a class="bcard" href="{P if (L.code.startswith("zh") or L.code in SZJ_TR) else "/"}sanzijing/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:100%"></i></span><em>{SZJ_PROG.get(L.code, SZJ_PROG["en"]).format(n=len(SZJ))}</em></a>'
         if live and slug == "daodejing":
@@ -2875,7 +2962,7 @@ def build_lang(L, D, write):
         cv = f'<span class="cv"><span class="qian{" l6" if len(zh) >= 6 else (" l5" if len(zh) == 5 else "")}" lang="zh-Hans">{esc(zh)}</span></span>'
         if live:
             if slug == "mengzi":
-                return (f'<a class="tome on" href="{P if zhL else "/"}mengzi/" data-bk="{slug}" data-t="{len(MZ["qw"])}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
+                return (f'<a class="tome on" href="{P if (zhL or L.code in MZ_FL) else "/"}mengzi/" data-bk="{slug}" data-t="{len(MZ["qw"])}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
                         f'<span class="bar"><i style="width:100%"></i></span><em>{MZ_PROG.get(L.code, MZ_PROG["en"]).format(n=len(MZ["qw"]))}</em><em class="mine" hidden></em></span></a>')
             if slug == "sanzijing":
                 return (f'<a class="tome on" href="{P if (zhL or L.code in SZJ_TR) else "/"}sanzijing/" data-bk="{slug}" data-t="{len(SZJ)}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
