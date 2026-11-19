@@ -443,6 +443,21 @@ def seo_head(text, n=22):
 
 YKCITE = '<p class="ykcite"><button type="button" onclick="var s=this.closest(\'.ykan\'),t=s.querySelector(\'p\').textContent,u=location.origin+location.pathname+\'#ykan\',b=this,d=function(){b.textContent=\'已复制\';setTimeout(function(){b.textContent=\'引用这段一孔之见\'},1200)};var q=document.querySelector(\'blockquote[data-short]\');t=q&&q.dataset.short?t+\'——\'+q.dataset.src+\' \'+q.dataset.short:t+\'——\'+document.querySelector(\'h1\').textContent+\'，一孔录 \'+u;navigator.clipboard?navigator.clipboard.writeText(t).then(d):prompt(\'\',t)">引用这段一孔之见</button></p>'
 # 书页观感（11-13 主人：从书架点进去，章页跟着书的逻辑）：书目录、篇目录、章页头部放一册小书封；本篇章节读过的打勾；篇卡显示“你读过几章”
+PIAN_UI = {"zh-Hans": ("从第一章读起", "上一篇", "下一篇", "全书目录"), "zh-Hant": ("从第一章读起", "上一篇", "下一篇", "全书目录"),
+           "en": ("Start from the beginning", "Previous", "Next", "All parts"), "ja": ("最初から読む", "前へ", "次へ", "全体の目次")}
+def pian_layer(L, P, write, urls, base, bkname, items, first_url, mk_page, cover=""):
+    """11-19 主人定：书页只放篇卡，各篇一页列章（照论语）。items：[(slug, 篇名, 小字, 章目录 html, 篇前说明 html)]；返回书页上的篇卡 html。"""
+    U = PIAN_UI.get(L.code, PIAN_UI["en"])
+    for i, (sl, nm, sub, ol, note) in enumerate(items):
+        pv = items[i - 1] if i else None; nx = items[i + 1] if i + 1 < len(items) else None
+        nav = '<p class="pnav">' + (f'<a href="{P}{base}/{pv[0]}/">‹ {U[1]} · {esc(pv[1])}</a>' if pv else "") + f'<a href="{P}{base}/">{U[3]}</a>' + (f'<a href="{P}{base}/{nx[0]}/">{U[2]} · {esc(nx[1])} ›</a>' if nx else "") + "</p>"
+        body = f'''<div class="chhead bk"><div class="wrap">{cover}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}{base}/">{esc(bkname)}</a></p>
+<h1><span class="no">{esc(sub)}</span>{esc(nm)}</h1></div></div>
+<main class="wrap narrow">{note}{ol}{nav}</main>'''
+        mk_page(sl, nm, body)
+    cards = '<div class="pcards lyp">' + "".join(f'<a class="pcard" href="{P}{base}/{sl}/"><b>{esc(nm)}</b><em>{esc(sub)}</em></a>' for sl, nm, sub, ol, note in items) + "</div>"
+    return f'<p class="pgo"><a class="go" href="{first_url}">{U[0]} ›</a></p>' + cards
+
 def mcv(P, qian="", big=False, book="lunyu", name="论语"):
     return f'<a class="mcv{" big" if big else ""}" href="{P}{book}/" aria-label="{name}"><span class="qian{" l5" if len(qian) >= 5 else ""}">{qian or name}</span></a>'
 BOOK_JS = """<script>(function(){document.querySelectorAll("aside li[data-c]").forEach(function(li){try{if(localStorage.getItem("ykl_done_"+li.getAttribute("data-c")))li.classList.add("rd")}catch(e){}});
@@ -1789,7 +1804,11 @@ def build_ddj(L, D, write, P, S_IDX=None):
         pt = part(c0)
         return "".join(f'<li class="{"cur" if c == c0 else ""} wj" data-c="{c}"><a href="{P}{rel_of(c)}"><em>{c}</em>{TL(tt[c])}</a></li>' for c in cs if part(c) == pt)
     # 书页
-    groups = "".join(f'<h2 class="ph">{DU["grp"].format(pt=pt, a=a, b=b) if F else f"{pt}（第 {a}—{b} 章）"}</h2><ol class="toc">{"".join(li(c) for c in cs if a <= int(c) <= b)}</ol>' for pt, a, b in ((part("1"), 1, 37), (part("38"), 38, 81)) if any(a <= int(c) <= b for c in cs))
+    def ddj_page(sl, nm, body):
+        write(f"daodejing/{sl}/index.html", page(L, (f"{DU['book']} · {nm} | 一孔录 Yikonglu" if F else f"《道德经》{nm}｜原文、白话与注｜一孔录"), (DU["bd"] if F else f"《道德经》{nm}逐章原文与白话直译，附底本原页。"), f"daodejing/{sl}/", body, None, "pg-book", codes=DDJ_CODES))
+        urls.append(f"{DOMAIN}/{L.prefix}daodejing/{sl}/")
+    groups = pian_layer(L, P, write, urls, "daodejing", DU["book"] if F else "道德经", [(sl, pt, DU["grp"].format(pt="", a=a, b=b).strip() if F else f"第 {a}—{b} 章", f'<ol class="toc">{"".join(li(c) for c in cs if a <= int(c) <= b)}</ol>', "")
+        for sl, pt, a, b in (("dao", part("1"), 1, 37), ("de", part("38"), 38, 81)) if any(a <= int(c) <= b for c in cs)], f"{P}{rel_of(cs[0])}", ddj_page, mcv(P, "", True, "daodejing", "道德经"))
     body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "daodejing", "道德经")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
 <h1><span class="no">{DU["done"].format(n=len(cs)) if F else f"《道德经》 · 已上 {len(cs)} / 81 章"}</span>{DU["book"] if F else "道德经"}</h1></div></div>
 <main class="wrap narrow"><p class="lead">{DU["lead"] if F else L.t("ddj_lead")}</p>{groups}</main>"""
@@ -1863,7 +1882,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
         TRI_TXT["ddj." + c] = {"h": f"《道德经》第 {c} 章 · Daodejing {c} · 道徳経 第{c}章", "y": text if (hant or F) else _t2s(text), "en": (DDJ_TR.get("en") or {}).get(c, ""), "ja": (DDJ_TR.get("ja") or {}).get(c, "")}  # 分享图（外王卡）；英日译文上了再填
         _du, _jdr = ("", "") if F else du_up(ddj_jd_html(G["jd"].get(c), Y))
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "daodejing", "道德经")}
-<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}daodejing/">{DU["book"] if F else "道德经"}</a> › {pt}</p>
+<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}daodejing/">{DU["book"] if F else "道德经"}</a> › <a href="{P}daodejing/{"dao" if int(c) <= 37 else "de"}/">{pt}</a></p>
 <h1><span class="no">{DU["prog"].format(pt=pt, c=c) if F else f"道德经 {c} · {pt}"}{"" if ddj_has_vid(c) else f' · <em class="wjtag">{L.t("wj_tag")}</em>'}</span>{TL(tt[c])}</h1>
 </div></div>
 <main class="wrap chapter">
@@ -2052,6 +2071,9 @@ MZ_DIR = os.path.join(GAO_DIR, "_孟子")
 MZ_CFG = os.path.join(HERE, "mengzi.json")  # {"open": false, "img": 原页图根地址}；open 为 true 才进站点地图、去 noindex
 MZ_PAGES = os.path.join(HERE, "mz_pages.json")  # 原页图尺寸 {"p014": [w, h]}，出图时写
 MZ_CN = "〇一二三四五六七八九十"
+MZ_SLUG = {"梁惠王上": "liang-hui-wang-shang", "梁惠王下": "liang-hui-wang-xia", "公孫丑上": "gong-sun-chou-shang", "公孫丑下": "gong-sun-chou-xia", "滕文公上": "teng-wen-gong-shang", "滕文公下": "teng-wen-gong-xia",
+           "離婁上": "li-lou-shang", "離婁下": "li-lou-xia", "萬章上": "wan-zhang-shang", "萬章下": "wan-zhang-xia", "告子上": "gao-zi-shang", "告子下": "gao-zi-xia", "盡心上": "jin-xin-shang", "盡心下": "jin-xin-xia"}
+MZ_JUAN = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四"]
 MZ_PROG = {"zh-Hans": "{n} 章 · 朱熹集注原页对读", "zh-Hant": "{n} 章 · 朱熹集注原頁對讀", "en": "{n} chapters · in Chinese"}
 def load_mz():
     f = os.path.join(MZ_DIR, "_原文", "孟子原文-v1.json")
@@ -2107,11 +2129,14 @@ def build_mengzi(L, write, P):
         x = t[1] if len(t) > 1 else None
         pg = f'（朱注篇题注，<a href="{img}p{x:03d}.jpg" target="_blank">底本原页 {x}</a>）' if x and img else "（朱注篇题注）"
         return f'<p class="note">{esc(Y(t[0]))}{pg}</p>'
-    groups = "".join(f'<h2 class="ph">{esc(Y(k))}（{v["章数"]} 章）</h2>{pt_html(k)}<ol class="toc">' + "".join(
+    def mz_page(sl, nm, body):
+        write(f"mengzi/{sl}/index.html", page(L, f"《孟子》{Y(nm)}｜原文、朱注与白话｜一孔录", f"《孟子》{Y(nm)}逐章原文、底本原页、朱注与白话。", f"mengzi/{sl}/", body, None, "pg-book", head_extra=NOIDX, codes=["zh-Hans", "zh-Hant"]))
+        if is_open: urls.append(f"{DOMAIN}/{L.prefix}mengzi/{sl}/")
+    groups = pian_layer(L, P, write, urls, "mengzi", "孟子", [(MZ_SLUG[k], Y(k), f"卷{MZ_JUAN[i]} · {v['章数']} 章", '<ol class="toc">' + "".join(
         f'<li class="wj" data-c="mz.{c}"><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(Y(ttl_of(c)))}</b><span><span lang="zh-Hans">{esc(Y(qw[c]["text"][:40]) + ("……" if len(qw[c]["text"]) > 40 else ""))}</span></span></a></li>'
-        for c in cs if pian_of[c] == k) + "</ol>" for k, v in pians)
+        for c in cs if pian_of[c] == k) + "</ol>", pt_html(k)) for i, (k, v) in enumerate(pians)], f"{P}{rel_of(cs[0])}", mz_page, mcv(P, "", True, "mengzi", "孟子"))
     body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "mengzi", "孟子")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
-<h1><span class="no">《孟子》 · 朱熹《孟子集注》分章 {len(cs)} 章 · 搭建中</span>孟子</h1></div></div>
+<h1><span class="no">《孟子》 · 朱熹《孟子集注》分章 {len(cs)} 章</span>孟子</h1></div></div>
 <main class="wrap narrow"><p class="lead">《孟子》七篇十四卷，按朱熹《孟子集注》分 {len(cs)} 章。逐章原文、底本原页、朱注与白话，注家分歧处列出争议读法。视频还在制作。</p>{groups}</main>"""
     write("mengzi/index.html", page(L, "《孟子》原文、朱注与白话｜一孔录", f"《孟子》按朱熹《孟子集注》分 {len(cs)} 章，逐章原文、底本原页、朱注与白话。", "mengzi/", body, None, "pg-book", head_extra=NOIDX, codes=["zh-Hans", "zh-Hant"]))
     if is_open: urls.append(f"{DOMAIN}/{L.prefix}mengzi/")
@@ -2138,7 +2163,7 @@ def build_mengzi(L, write, P):
         prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
         pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{esc(Y(ttl_of(cc)))}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "mengzi", "孟子")}
-<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}mengzi/">孟子</a> › {esc(Y(pt))}</p>
+<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}mengzi/">孟子</a> › <a href="{P}mengzi/{MZ_SLUG.get(pt, "")}/">{esc(Y(pt))}</a></p>
 <h1><span class="no">孟子 {c} · {esc(Y(pt))} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(Y(ttl_of(c)))}</h1>
 </div></div>
 <main class="wrap chapter">
@@ -2184,7 +2209,11 @@ def build_szj(L, write, P, S_IDX=None):
     for j in JS:
         if not juans or juans[-1][0] != j["juan"]: juans.append((j["juan"], j["jt"], []))
         juans[-1][2].append(j)
-    groups = "".join(f'<h2 class="ph">{SU["grp"].format(j=(CNUM(SZJ_JUAN[jn]) if L.code == "ja" and jn in SZJ_JUAN else SZJ_JUAN.get(jn, jn)), jt=jt_of(js[0]), a=js[0]["n"], b=js[-1]["n"]) if F else f"{jn} · {jt}（第 {js[0]["n"]}—{js[-1]["n"]} 讲）"}</h2><ol class="toc">{"".join(li(j) for j in js)}</ol>' for jn, jt, js in juans)
+    def szj_page(sl, nm, body):
+        write(f"sanzijing/{sl}/index.html", page(L, (f"{SU['book']} · {nm} | 一孔录 Yikonglu" if F else f"《三字经》{nm}｜全文、白话与朗读｜一孔录"), (SU["bd"] if F else f"《三字经》{nm}各讲原文、逐组白话与朗读，附王相训诂本原页。"), f"sanzijing/{sl}/", body, None, "pg-book", codes=SZJ_CODES))
+        urls.append(f"{DOMAIN}/{L.prefix}sanzijing/{sl}/")
+    groups = pian_layer(L, P, write, urls, "sanzijing", SU["book"] if F else "三字经", [(f"juan-{SZJ_JUAN[jn]}", (SU["juan"].format(j=(CNUM(SZJ_JUAN[jn]) if L.code == "ja" else SZJ_JUAN[jn])) + " · " + jt_of(js[0])) if F else f"{jn} · {jt}",
+        (SU["lec"].format(n=js[0]["n"]) + (f" – {js[-1]['n']}" if len(js) > 1 else "")) if F else (f"第 {js[0]['n']}—{js[-1]['n']} 讲" if len(js) > 1 else f"第 {js[0]['n']} 讲"), f'<ol class="toc">{"".join(li(j) for j in js)}</ol>', "") for jn, jt, js in juans], f"{P}{rel_of(JS[0]['n'])}", szj_page, mcv(P, "", True, "sanzijing", "三字经"))
     pdf = os.path.exists(os.path.join(HERE, "root", "duben", "sanzijing-fuqin.pdf"))
     lead = SU["lead"] if F else ("《三字经》一千二百字，一百零一组，按一孔录《三字经·父亲讲义》分六卷三十九讲，每周一讲，一年读完。每讲有原文、逐组白话（初稿）和朗读。"
             "原文据讲义本，已与底本清王相《三字经训诂》（1831 年和刻本）逐句核对，每讲附王相本原页，点一组就在原页上框出来。讲义比王相本多出十一组（五色、五味、五臭、四声，以及辽金元明清到民国七组），是后出通行本补的，页内都标了“补”。" + (f'讲义全本可在<a href="{P}duben/">免费读本</a>下载。' if pdf else ""))
@@ -2258,7 +2287,7 @@ def build_szj(L, write, P, S_IDX=None):
         crumb_j = juan_of(j)
         _du, _jdr = ("", "") if F else du_up(szj_jd_html(jd, L.code == "zh-Hant"), "这一讲讲什么")
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "sanzijing", "三字经")}
-<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}sanzijing/">{esc(bname)}</a> › {esc(crumb_j)}</p>
+<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}sanzijing/">{esc(bname)}</a> › <a href="{P}sanzijing/juan-{SZJ_JUAN.get(j["juan"], 1)}/">{esc(crumb_j)}</a></p>
 <h1><span class="no">{esc(jtag)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(name_of(j))}</h1>
 </div></div>
 <main class="wrap chapter">

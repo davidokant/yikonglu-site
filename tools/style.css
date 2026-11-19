@@ -1047,3 +1047,7 @@ details.legge{margin:.8em 0 0;padding:.5em .8em;border-left:3px solid var(--line
 details.legge summary{cursor:pointer;color:var(--accent2,#8A5A2C);font-size:.92em}
 details.legge p{margin:.5em 0;font-style:italic}
 details.legge p.note{font-style:normal;font-size:.82em;color:var(--mute,#666)}
+/* 11-19 书页篇卡、篇页上下篇 */
+.pgo{margin:6px 0 16px}.pgo .go{display:inline-block;padding:8px 16px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700}.pgo .go:hover{text-decoration:none;opacity:.9}
+.pcards.lyp .pcard em{display:block;margin-top:4px}
+.pnav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin:22px 0 8px;font-size:15px}
