@@ -160,11 +160,17 @@ function monF(m){try{return new Date(Date.UTC(2026,m-1,15)).toLocaleDateString(I
 function mdF(m,d){try{return new Date(Date.UTC(2026,m-1,d)).toLocaleDateString(I.lg,{month:'long',day:'numeric',timeZone:'UTC'})}catch(e){return m+'/'+d}}
 function nlYear(m,d){var t=new Date(),y=t.getFullYear(),td=new Date(y,t.getMonth(),t.getDate());if(y<2027)return 2027;return new Date(y,m-1,d)>=td?y:y+1}
 function vtext(c,t,x,y,s){t.split('').forEach(function(ch,i){c.fillText(ch,x,y+i*s*1.18)})}
-function nl(){var N=X4.nl;if(!N){yy();return}var R0=RD();if(CN&&!R0.some(function(r){return r.c===CN&&r.d===today()})){R0.push({d:today(),c:CN,n:D.y.replace(/[，。；：？！、“”‘’「」\s]/g,'').length});WR(R0)}var n=N[0],m=N[1],d=N[2],q=(window.ykKn0!==undefined&&D.kn!==window.ykKn0?keyTxt():hz(N[3])||keyTxt()),bh=ZH?keyBh(keyIdx()):myTr(),days=streak(),Y=nlYear(m,d),K=ZH?cal(Y,m,d):calF(Y,m,d),EV=ZH?'':I.nl_every.replace('{date}',mdF(m,d));
+function nl(){var N=X4.nl;if(!N){yy();return}
+  // 11-19 别的书（孟子、道德经、三字经）没有年历课表：出“读经日历卡”，日期＝读的当天，右上写第几章/全书几章
+  var OB=BK!=='论语',LG=(document.documentElement.lang||'').slice(0,2),BX={'孟子':['Mencius','孟子','孟子'],'道德经':['Daodejing','道徳経','道德經'],'三字经':['Three Character Classic','三字経','三字經']}[BK]||[BK,BK,BK],UN=BK==='三字经'?(HT?'講':'讲'):'章';
+  if(OB&&!N[1]){var _t=new Date();N=[N[0],_t.getMonth()+1,_t.getDate(),N[3]]}
+  var BKZ=HT?BX[2]:BK,OBH=ZH?(HT?'《'+BKZ+'》讀經日曆':'《'+BKZ+'》读经日历'):(LG==='ja'?'『'+BX[1]+'』読書カレンダー':BX[0]+' · Reading calendar'),
+      OBN=ZH?'第 '+N[0]+' '+UN+' / '+TOTAL:(LG==='ja'?'第'+N[0]+(BK==='三字经'?'講':'章')+' / '+TOTAL:(BK==='三字经'?'Lesson ':'Ch. ')+N[0]+' / '+TOTAL),
+      OBE=ZH?(HT?'今天讀《'+BKZ+'》第 '+N[0]+' '+UN+' · 全書 '+TOTAL+' '+UN:'今天读《'+BKZ+'》第 '+N[0]+' '+UN+' · 全书 '+TOTAL+' '+UN):(LG==='ja'?'今日は『'+BX[1]+'』第'+N[0]+(BK==='三字经'?'講':'章')+'（全'+TOTAL+'）':'Today: '+BX[0]+' '+N[0]+' of '+TOTAL);var R0=RD();if(CN&&!R0.some(function(r){return r.c===CN&&r.d===today()})){R0.push({d:today(),c:CN,n:D.y.replace(/[，。；：？！、“”‘’「」\s]/g,'').length});WR(R0)}var n=N[0],m=N[1],d=N[2],q=(window.ykKn0!==undefined&&D.kn!==window.ykKn0?keyTxt():hz(N[3])||keyTxt()),bh=ZH?keyBh(keyIdx()):myTr(),days=streak(),Y=OB?new Date().getFullYear():nlYear(m,d),K=ZH?cal(Y,m,d):calF(Y,m,d),EV=OB?OBE:(ZH?'':I.nl_every.replace('{date}',mdF(m,d)));
   var T2=function(s){return HT?s.replace(/农历/g,'農曆').replace(/后第/g,'後第').replace(/腊/g,'臘').replace(/闰/g,'閏').replace(/节/g,'節').replace(/马/g,'馬').replace(/鸡/g,'雞').replace(/猪/g,'豬').replace(/龙/g,'龍').replace(/乡/g,'鄉').replace(/动/g,'動').replace(/华/g,'華').replace(/鸟/g,'鳥'):s};
-  prep(q+bh+MON[m-1]+'年历第课一年课读完论语每年月日读这一章我读经第天的生这都它0123456789星期日一二三四五六农历'+K.lu+K.yn+K.jq+K.fe.join('')+T2(K.lu+K.yn+K.jq+K.fe.join(''))+(ZH?'':monF(m)+K.dl+EV+I.nl_h+I.nl_n+I.lunar+I.streak)).then(function(seal){var cv=canvas(),c=cv.getContext('2d');c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);
+  prep(q+bh+MON[m-1]+(OB?OBH+OBN+OBE:'')+'年历第课一年课读完论语每年月日读这一章我读经第天的生这都它0123456789星期日一二三四五六农历'+K.lu+K.yn+K.jq+K.fe.join('')+T2(K.lu+K.yn+K.jq+K.fe.join(''))+(ZH?'':monF(m)+K.dl+EV+I.nl_h+I.nl_n+I.lunar+I.streak)).then(function(seal){var cv=canvas(),c=cv.getContext('2d');c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);
     c.fillStyle='#23503F';c.fillRect(0,0,W,250);c.fillStyle='rgba(242,241,234,.85)';[W/2-170,W/2+170].forEach(function(x){c.beginPath();c.arc(x,58,18,0,Math.PI*2);c.fill()});
-    c.fillStyle='#F2F1EA';c.textBaseline='alphabetic';c.font='400 26px '+F;c.fillText(ZH?(BD?(HT?'我的生日《論語》':'我的生日《论语》'):(HT?'《論語》年曆':'《论语》年历')):I.nl_h,84,150);c.textAlign='right';c.fillText(ZH?'第 '+n+' 课 / 365':I.nl_n.replace('{n}',n),W-84,150);c.textAlign='center';c.font='900 64px '+F;c.fillText(ZH?MON[m-1]:monF(m),W/2,212);
+    c.fillStyle='#F2F1EA';c.textBaseline='alphabetic';c.font='400 26px '+F;c.fillText(OB?OBH:(ZH?(BD?(HT?'我的生日《論語》':'我的生日《论语》'):(HT?'《論語》年曆':'《论语》年历')):I.nl_h),84,150);c.textAlign='right';c.fillText(OB?OBN:(ZH?'第 '+n+' 课 / 365':I.nl_n.replace('{n}',n)),W-84,150);c.textAlign='center';c.font='900 64px '+F;c.fillText(ZH?MON[m-1]:monF(m),W/2,212);
     c.strokeStyle='rgba(35,80,63,.35)';c.setLineDash([10,10]);c.lineWidth=2;c.beginPath();c.moveTo(60,262);c.lineTo(W-60,262);c.stroke();c.setLineDash([]);
     c.font='700 64px '+F;var QL=bfit(c,q,W-200,[60,54,48,44,40],230,1.4,700);c.font='400 26px '+F;var BL=bh?(ZH?wrap(c,bh,W-220).slice(0,2):wrapL(c,bh,W-220).slice(0,3)):[],EL=ZH?[]:wrapL(c,EV,W-200);
     var NB=330,hgt=NB+56+(K.fe.length||K.jq?64:0)+50+40+30+QL.L.length*QL.s*1.4+(BL.length?12+BL.length*42:0)+(days>=2?56:0)+(EL.length>1?(EL.length-1)*38:0),y0=262+Math.max(24,((H-212)-262-hgt)/2);
@@ -179,13 +185,13 @@ function nl(){var N=X4.nl;if(!N){yy();return}var R0=RD();if(CN&&!R0.some(functio
     // 节日、节气做成小签
     var tags=K.fe.map(function(f){return [T2(f),1]}).concat(K.jq?[[T2(K.jq),0]]:[]);if(tags.length){y+=26;c.font='400 25px '+F;var tw=tags.map(function(t){return c.measureText(t[0]).width+44}),sum=tw.reduce(function(a,b){return a+b},0)+(tags.length-1)*16,tx=W/2-sum/2;
       tags.forEach(function(t,i){c.fillStyle=t[1]?'#A23B2C':'rgba(35,80,63,.1)';rr(c,tx,y,tw[i],44,22);c.fill();c.fillStyle=t[1]?'#FFFFFF':'#23503F';c.font=(t[1]?'700':'400')+' 25px '+F;c.fillText(t[0],tx+tw[i]/2,y+31);tx+=tw[i]+16});y+=44}
-    y+=50;c.fillStyle='#8A5A2C';c.font='400 26px '+F;if(ZH)c.fillText(T2(BD?'我生日这天读这一章 · 年年 '+m+' 月 '+d+' 日都读它':'每年 '+m+' 月 '+d+' 日读这一章 · 一年 365 课读完《论语》'),W/2,y);else EL.forEach(function(l,i){if(i)y+=38;c.fillText(l,W/2,y)});
+    y+=50;c.fillStyle='#8A5A2C';c.font='400 26px '+F;if(OB)c.fillText(OBE,W/2,y);else if(ZH)c.fillText(T2(BD?'我生日这天读这一章 · 年年 '+m+' 月 '+d+' 日都读它':'每年 '+m+' 月 '+d+' 日读这一章 · 一年 365 课读完《论语》'),W/2,y);else EL.forEach(function(l,i){if(i)y+=38;c.fillText(l,W/2,y)});
     y+=30;c.fillStyle='#23503F';c.fillRect(W/2-32,y,64,4);y+=30;c.fillStyle='#1a1a1a';c.font='700 '+QL.s+'px '+F;
     QL.L.forEach(function(l){c.fillText(l,W/2,y+QL.s);y+=QL.s*1.4});
     if(BL.length){y+=12;c.fillStyle='#666';c.font='400 26px '+F;BL.forEach(function(l){c.fillText(l,W/2,y+26);y+=42})}
     if(days>=2){c.fillStyle='#23503F';c.font='700 26px '+F;c.fillText(ZH?'我读经第 '+days+' 天':I.streak.replace('{n}',days),W/2,y+44)}c.textAlign='left';
     foot4(c,seal,false,'nl');show(cv)})}
-TABS=[['yy','原页卡'],['rw','人物卡'],['dy','多语卡'],['nl','年历卡']].map(function(t,i){return ZH||!I.tabs?t:[t[0],I.tabs[i]]}).filter(function(t){return (t[0]!=='rw'||(X4.who||[]).length)&&(t[0]!=='nl'||X4.nl)});
+TABS=[['yy','原页卡'],['rw','人物卡'],['dy','多语卡'],['nl',BK==='论语'?'年历卡':(HT?'日曆卡':'日历卡')]].map(function(t,i){return ZH||!I.tabs?t:[t[0],I.tabs[i]]}).filter(function(t){return (t[0]!=='rw'||(X4.who||[]).length)&&(t[0]!=='nl'||X4.nl)});
 var show0=show;show=function(cv){show0(cv);var M=document.querySelectorAll('.shmodal'),m=M[M.length-1];if(!m)return;var box=m.querySelector('.shm'),bar=document.createElement('div');bar.className='shtabs';
   TABS.forEach(function(t){var b=document.createElement('button');b.type='button';b.textContent=t[1];if(t[0]===KIND)b.className='on';b.onclick=function(){m.remove();pick(t[0])};bar.appendChild(b)});box.insertBefore(bar,box.firstChild);
   if(KIND==='nl'){var nt=document.createElement('p');nt.className='note shrec';nt.textContent=ZH?'读过的章记在这台设备上。换手机或电脑时，先导出一串记录码，到新设备上粘进去恢复。':I.rec_note;var bx=document.createElement('div');bx.className='shmb';
