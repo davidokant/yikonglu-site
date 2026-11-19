@@ -1892,7 +1892,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
 {gist if F else bh_html}
 {bh_html if F else (_du or gist)}
 {vid}
-<div class="chacts">{share_html(L, "ddj." + c, url, DU["chn"].format(c=c) if F else f"道德经 {c}", tt[c] if F else Y(tt[c]), Y(text), "" if F else an.get("片里落点") or "", tr if F else "", DDJ_SH)}</div>
+<div class="chacts">{done_html(L, "ddj." + c)}{share_html(L, "ddj." + c, url, DU["chn"].format(c=c) if F else f"道德经 {c}", tt[c] if F else Y(tt[c]), Y(text), "" if F else an.get("片里落点") or "", tr if F else "", DDJ_SH)}</div>
 {"" if F or not next_c else f'<a class="nextread" href="{P}{rel_of(next_c)}">接着读下一章：第 {next_c} 章　{TL(tt[next_c])} ›</a>'}
 {rt_html(c)}
 {"" if F else lyhj_html([r for r in DDJ_LYHJ if str(r["ch"]) == str(c)], P, "ddj")}
@@ -2071,6 +2071,7 @@ MZ_DIR = os.path.join(GAO_DIR, "_孟子")
 MZ_CFG = os.path.join(HERE, "mengzi.json")  # {"open": false, "img": 原页图根地址}；open 为 true 才进站点地图、去 noindex
 MZ_PAGES = os.path.join(HERE, "mz_pages.json")  # 原页图尺寸 {"p014": [w, h]}，出图时写
 MZ_CN = "〇一二三四五六七八九十"
+MZ_SH = {"bk": "孟子", "tot": 260, "src": "朱熹《孟子集注》四部备要本", "src2": "朱熹《孟子集注》（四部备要本）", "pf": "mz."}
 MZ_SLUG = {"梁惠王上": "liang-hui-wang-shang", "梁惠王下": "liang-hui-wang-xia", "公孫丑上": "gong-sun-chou-shang", "公孫丑下": "gong-sun-chou-xia", "滕文公上": "teng-wen-gong-shang", "滕文公下": "teng-wen-gong-xia",
            "離婁上": "li-lou-shang", "離婁下": "li-lou-xia", "萬章上": "wan-zhang-shang", "萬章下": "wan-zhang-xia", "告子上": "gao-zi-shang", "告子下": "gao-zi-xia", "盡心上": "jin-xin-shang", "盡心下": "jin-xin-xia"}
 MZ_JUAN = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四"]
@@ -2091,7 +2092,7 @@ def load_mz():
             "pages": json.load(open(MZ_PAGES, encoding="utf-8")) if os.path.exists(MZ_PAGES) else {}}
 MZ = load_mz()
 
-def build_mengzi(L, write, P):
+def build_mengzi(L, write, P, S_IDX=None):
     if not MZ or not L.code.startswith("zh"): return []
     hant = L.code == "zh-Hant"; _t2s = __import__("opencc").OpenCC("t2s").convert
     Y = (lambda s_: f"{s_}" if s_ else s_) if hant else _t2s
@@ -2171,6 +2172,8 @@ def build_mengzi(L, write, P):
 <p class="wjlead">这一章的视频还在制作。网站先放原文、原页、朱注和白话。</p>
 {fig}
 {bh_html}
+<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>
+<div class="chacts">{done_html(L, "mz." + c)}{share_html(L, "mz." + c, url, f"孟子 {c}", Y(ttl_of(c)), Y(text), "", "", MZ_SH)}</div>
 {"" if not MZ["yw"].get(c) else '<section class="sec"><h2><i>异</i>异文</h2>' + "".join(f"<p>{esc(Y(x))}</p>" for x in MZ["yw"][c]) + "</section>"}
 {"" if not MZ["zy"].get(c) else '<section class="sec mzzy"><h2><i>议</i>争议读法</h2>' + "".join(f'<h3>{esc(ZY(z["t"]))}</h3><ul>' + "".join(f'<li><b>{esc(ZY(x["k"]))} · {esc(ZY(x["who"]))}</b> {esc(ZY(x["t"]))}</li>' for x in z["r"]) + "</ul>" + (f'<p>{esc(ZY("分别：" + z["fb"]))}</p>' if z.get("fb") else "") + f'<p class="note">{esc(ZY(z["v"]))}</p>' for z in MZ["zy"][c]) + '<p class="note">甲乙丙只是排列次序。赵注据《孟子注疏》，朱注据《四部备要》本《孟子集注》。</p></section>'}
 {"" if not next_c else f'<a class="nextread" href="{P}{rel_of(next_c)}">接着读下一章：{next_c}　{esc(Y(ttl_of(next_c)))} ›</a>'}
@@ -2184,6 +2187,7 @@ def build_mengzi(L, write, P):
         ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"孟子 {c} {Y(ttl_of(c))}", "inLanguage": L.hreflang, "url": url, "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "孟子"}}
         write(rel_of(c), page(L, f"{Y(seo_head(text))}｜原文与朱注｜孟子 {c}｜一孔录", f"{Y(text[:70])}……《孟子》{c} 原文、朱熹集注与白话。", rel_of(c), body + js, ld, "pg-chapter pg-wj", head_extra=NOIDX, codes=["zh-Hans", "zh-Hant"]))
         if is_open: urls.append(url)
+        if is_open and S_IDX is not None: S_IDX.append({"c": f"孟子 {c}", "t": Y(ttl_of(c)), "u": P + rel_of(c), "y": Y(text), "x": b})
     return urls
 
 def build_szj(L, write, P, S_IDX=None):
@@ -2298,7 +2302,7 @@ def build_szj(L, write, P, S_IDX=None):
 {_du or (f'<section class="gist ykan"><h2>这一讲讲什么</h2><p>{quotes(jd["落点"])}</p></section>' if jd.get("落点") else "")}
 {jy}
 {vid}
-<div class="chacts">{share}</div>
+<div class="chacts">{done_html(L, f"szj.{n}")}{share}</div>
 {"" if F or not next_j else f'<a class="nextread" href="{P}{rel_of(next_j["n"])}">接着读下一讲：{lec_of(next_j["n"])}　{esc(name_of(next_j))} ›</a>'}
 {"" if F else lyhj_html([r for r in SZJ_LYHJ if r["jiang"] == n], P)}
 {yw_html if F else ((f'<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>' + fold((ZJ.zy_section(n, [Y(g[1]) for g in gs], zy_, rows, esc, ZY_NOTE) if zy_ else "") + yw_html + _jdr) + "</div>") if (yw_html or _jdr or zy_) else "")}
@@ -2770,7 +2774,7 @@ def build_lang(L, D, write):
 
     urls += build_ddj(L, D, write, P, search_idx if (L.code.startswith("zh") or L.code in DDJ_TR) else None)
     urls += build_szj(L, write, P, search_idx if (L.code.startswith("zh") or L.code in SZJ_TR) else None)
-    urls += build_mengzi(L, write, P)  # 孟子（只简繁；先不对外）  # 三字经（只简繁）  # 道德经（只简繁；没开就是空）
+    urls += build_mengzi(L, write, P, search_idx if L.code.startswith("zh") else None)  # 孟子（只简繁；先不对外）  # 三字经（只简繁）  # 道德经（只简繁；没开就是空）
     if ANALYTICS.get("live") and "OUT_ROOT" in globals() and os.path.exists(_lf := os.path.join(OUT_ROOT, "data", f"live-{L.code}.json")):  # 道德经、三字经也进“今天有人读了”；本语种没有的书链简体页
         _up = "../" * L.prefix.count("/"); _ex = {k: [v[0], _up + v[1]] for k, v in LIVE_A.get("zh-Hans", {}).items()} if L.code != "zh-Hans" else {}
         _ex.update(LIVE_A.get(L.code, {})); _J = json.load(open(_lf, encoding="utf-8")); _J.setdefault("a", {}).update(_ex)
