@@ -2062,7 +2062,8 @@ def load_mz():
     zj = {os.path.basename(x)[:-5]: json.load(open(x, encoding="utf-8")) for x in glob.glob(os.path.join(MZ_DIR, "_逐句", "*.json")) if re.fullmatch(r"\d+\.\d+", os.path.basename(x)[:-5])}
     cfg = json.load(open(MZ_CFG, encoding="utf-8")) if os.path.exists(MZ_CFG) else {}
     yf = os.path.join(MZ_DIR, "异文.json")
-    return {"yw": {k: v for k, v in json.load(open(yf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(yf) else {}, "qw": qw, "bh": bh, "zj": zj, "pm": json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8")), "cfg": cfg,
+    ptf = os.path.join(MZ_DIR, "_原文", "篇题注.json")
+    return {"pt": {k: v for k, v in json.load(open(ptf, encoding="utf-8")).items() if isinstance(v, list)} if os.path.exists(ptf) else {}, "yw": {k: v for k, v in json.load(open(yf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(yf) else {}, "qw": qw, "bh": bh, "zj": zj, "pm": json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8")), "cfg": cfg,
             "pages": json.load(open(MZ_PAGES, encoding="utf-8")) if os.path.exists(MZ_PAGES) else {}}
 MZ = load_mz()
 
@@ -2097,7 +2098,13 @@ def build_mengzi(L, write, P):
         p0 = pian_of[c0]
         return "".join(f'<li class="{"cur" if c == c0 else ""} wj" data-c="mz.{c}"><a href="{P}{rel_of(c)}"><em>{c}</em>{esc(Y(ttl_of(c)))}</a></li>' for c in cs if pian_of[c] == p0)
     # 书页
-    groups = "".join(f'<h2 class="ph">{esc(Y(k))}（{v["章数"]} 章）</h2><ol class="toc">' + "".join(
+    def pt_html(k):  # 朱注篇题下小字题注（篇題注.json：[文字, 底本页]）
+        t = MZ["pt"].get(k)
+        if not t: return ""
+        x = t[1] if len(t) > 1 else None
+        pg = f'（朱注篇题注，<a href="{img}p{x:03d}.jpg" target="_blank">底本原页 {x}</a>）' if x and img else "（朱注篇题注）"
+        return f'<p class="note">{esc(Y(t[0]))}{pg}</p>'
+    groups = "".join(f'<h2 class="ph">{esc(Y(k))}（{v["章数"]} 章）</h2>{pt_html(k)}<ol class="toc">' + "".join(
         f'<li class="wj" data-c="mz.{c}"><a href="{P}{rel_of(c)}"><em>{c}</em><b>{esc(Y(ttl_of(c)))}</b><span><span lang="zh-Hans">{esc(Y(qw[c]["text"][:40]) + ("……" if len(qw[c]["text"]) > 40 else ""))}</span></span></a></li>'
         for c in cs if pian_of[c] == k) + "</ol>" for k, v in pians)
     body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "mengzi", "孟子")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
