@@ -1081,13 +1081,14 @@ LANGDU_TITLE = {"zh-Hans": "朗读原文", "zh-Hant": "朗讀原文"}
 LANGDU_JS = ('<script>(function(){var B=document.currentScript.previousElementSibling,A=null;function st(p){B.setAttribute("aria-pressed",p?"true":"false")}'
              'B.addEventListener("click",function(){if(!A){A=new Audio(B.getAttribute("data-src"));B.ykA=A;B.dispatchEvent(new Event("ykaudio"));A.addEventListener("ended",function(){st(false)});A.addEventListener("pause",function(){st(false)});A.addEventListener("play",function(){st(true)})}if(A.paused)A.play().catch(function(){});else A.pause()})})();</script>')
 LANGDU_DDJ = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-ddj.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-ddj.json")) else set()  # 道德经原文朗读（11-13 主人要上），文件在 langdu/daodejing/<章>.mp3
+LANGDU_MZ = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-mz.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-mz.json")) else set()  # 11-19 孟子原文朗读（主人定做），文件在 langdu/mengzi/<章>.mp3
 ZY_NOTE = "读音逐字核过，多音字按文义定。"
 def zy_tag(zy):  # 注音卡数据（tools/kaijuan.js 读）
     return f'<script type="application/json" class="zjzy">{json.dumps(zy, separators=(",", ":"))}</script>' if zy else ""
 
 
 def langdu_btn(code, c, book="lunyu"):
-    if c not in {"daodejing": LANGDU_DDJ, "sanzijing": globals().get("LANGDU_SZJ", set())}.get(book, LANGDU): return ""
+    if c not in {"daodejing": LANGDU_DDJ, "sanzijing": globals().get("LANGDU_SZJ", set()), "mengzi": LANGDU_MZ}.get(book, LANGDU): return ""
     t = LANGDU_TITLE.get(code, LANGDU_TXT.get(code, "Audio"))
     return f'<button type="button" class="ldbtn" data-src="https://img.yikonglu.com/langdu/{book}/{c}.mp3" aria-pressed="false" title="{esc(t)}">{esc(LANGDU_TXT.get(code, "Audio"))}</button>' + LANGDU_JS
 def langdu_html(code, c, book="lunyu"):  # 没有“译”按钮的页（外文章页）：单独一行放同样的小按钮
@@ -2243,7 +2244,7 @@ def build_mengzi(L, write, P, S_IDX=None):
         bq = f'<blockquote lang="{"zh-Hant" if hant else "zh-Hans"}" data-src="{esc(cite_src)}" data-url="{url}" data-short="" data-sep="，" data-reads="[]" data-rl="" data-hj="{{}}">'
         ju_html = "".join(f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(Y(x))}</span>' for j, x in enumerate(sents, 1))
         cap = f'原文据《四部备要》本朱熹《孟子集注》' + (f'，底本第 {"、".join(str(x) for x in pgs)} 页' if pgs else "") + "。点一句，原页上框出这一句，下面看朱注。"
-        fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{esc(Y(pt))} · 第 {c} 章</span></div>'
+        fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{esc(Y(pt))} · 第 {c} 章</span>{langdu_btn(L.code, c, "mengzi")}</div>'
                f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{esc(cap)}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
                f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script>{zy_tag(zy_)}{mz_kj_tag(MZ["jz"].get(c), sents) if pane else ""}</figure>')
         b = (MZ["bh"].get(c) or {}).get("text", "")
@@ -2333,7 +2334,7 @@ def build_mengzi_fl(L, write, P):
             rend += ('<details class="legge"><summary>Compare: James Legge&#39;s translation (1861)</summary>' + "".join(f"<p>{esc(_sq(x))}</p>" for x in MZ["legge"][c])
                      + '<p class="note">James Legge, <i>The Works of Mencius</i>, in <i>The Chinese Classics</i>, vol. II (1861). Public domain; text collated from scans and proofread. Legge mostly follows Zhu Xi; where his wording and ours differ, the Chinese text and the base-edition page decide.</p></details>')
         cap = U["cap"].format(p=", ".join(str(x) for x in pgs))
-        fig = (f'<figure class="yuanwen dz nocard{"" if pane else " nopane"}"><div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{esc(cap)}</figcaption>{rend}</div>'
+        fig = (f'<figure class="yuanwen dz nocard{"" if pane else " nopane"}"><div class="dzgrid"><div>{bq}{ju_html}</blockquote>{langdu_html(L.code, c, "mengzi")}<figcaption>{esc(cap)}</figcaption>{rend}</div>'
                + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div></figure>')
         prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
         pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{esc(ttl_of(cc))}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
