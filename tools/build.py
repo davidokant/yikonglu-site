@@ -1913,7 +1913,8 @@ def build_ddj(L, D, write, P, S_IDX=None):
         if S_IDX is not None: S_IDX.append({"c": f'{DU["book"] if F else "道德经"} {c}', "t": tt[c] if F else Y(tt[c]), "u": P + rel_of(c), "y": Y(text), "x": tr if F else (bh or "") + " " + (an.get("片里落点") or "")})
         if F: ttl, desc = f'{DU["chn"].format(c=c)} {tt[c]} | 一孔录 Yikonglu', DU["md"].format(c=c, tr=tr[:110] + ("…" if len(tr) > 110 else ""))
         else: ttl, desc = f"{Y(seo_head(text))}｜原文与白话｜道德经 {c}｜一孔录", f"{Y(text[:70])}……《道德经》第 {c} 章原文与白话直译。"
-        write(rel_of(c), page(L, ttl, desc, rel_of(c), body + js, ld, "pg-chapter pg-wj", codes=DDJ_CODES)); urls.append(url)
+        _tt = TRI_TXT["ddj." + c]; _og = OG.make3("ddj." + c, _tt["h"], _t2s(text), _tt["en"], _tt["ja"], "逐字读经典原文")  # 11-19 每章分享图（向论语看齐）
+        write(rel_of(c), page(L, ttl, desc, rel_of(c), body + js, ld, "pg-chapter pg-wj", og_img=_og, codes=DDJ_CODES)); urls.append(url)
     cards = ""
     for r in DDJ_RT:
         rc = [str(x) for x in r["cs"] if str(x) in qw]
@@ -2185,7 +2186,7 @@ def build_mengzi(L, write, P, S_IDX=None):
 </main><i id="rc" data-c="mz.{c}" hidden></i>"""
         js = SHARE_JS + FOLD_JS + ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["zhu", "朱注"]], ensure_ascii=False)).replace("@NONE@", "这一句下面朱熹没有出注。").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied")) + (ZJ.KJ_JS if zy_ else "")
         ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"孟子 {c} {Y(ttl_of(c))}", "inLanguage": L.hreflang, "url": url, "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "孟子"}}
-        write(rel_of(c), page(L, f"{Y(seo_head(text))}｜原文与朱注｜孟子 {c}｜一孔录", f"{Y(text[:70])}……《孟子》{c} 原文、朱熹集注与白话。", rel_of(c), body + js, ld, "pg-chapter pg-wj", head_extra=NOIDX, codes=["zh-Hans", "zh-Hant"]))
+        write(rel_of(c), page(L, f"{Y(seo_head(text))}｜原文与朱注｜孟子 {c}｜一孔录", f"{Y(text[:70])}……《孟子》{c} 原文、朱熹集注与白话。", rel_of(c), body + js, ld, "pg-chapter pg-wj", og_img=OG.make3("mz." + c, f"《孟子·{_t2s(pt)}》{c} · Mencius {c} · 孟子 {c}", _t2s(text), "", "", "逐字读经典原文"), head_extra=NOIDX, codes=["zh-Hans", "zh-Hant"]))
         if is_open: urls.append(url)
         if is_open and S_IDX is not None: S_IDX.append({"c": f"孟子 {c}", "t": Y(ttl_of(c)), "u": P + rel_of(c), "y": Y(text), "x": b})
     return urls
@@ -2322,7 +2323,8 @@ def build_szj(L, write, P, S_IDX=None):
             head = (gs[0][1][:12] if gs else j["name"])
             ttl = f"{head}｜原文与白话｜三字经 {n} {j['name']}｜一孔录"
             desc = f"{text[:60]}……《三字经》第{CNUM(n)}讲“{j['name']}”原文、逐组白话与朗读。" if gs else f"《三字经》第{CNUM(n)}讲“{j['name']}”。{j['sum'][:60]}"
-        write(rel_of(n), page(L, ttl, desc, rel_of(n), body + js, ld, "pg-chapter pg-wj", codes=SZJ_CODES)); urls.append(url)
+        _tt = TRI_TXT.get(f"szj.{n}"); _og = OG.make3(f"szj.{n}", _tt["h"], _tt["y"], _tt["en"], _tt["ja"], "逐字读经典原文") if _tt else None  # 11-19 每章分享图
+        write(rel_of(n), page(L, ttl, desc, rel_of(n), body + js, ld, "pg-chapter pg-wj", og_img=_og, codes=SZJ_CODES)); urls.append(url)
     return urls
 
 def build_lang(L, D, write):
