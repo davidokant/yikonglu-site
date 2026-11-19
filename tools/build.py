@@ -2061,7 +2061,8 @@ def load_mz():
     for x in bhf: bh.update(json.load(open(x, encoding="utf-8")))
     zj = {os.path.basename(x)[:-5]: json.load(open(x, encoding="utf-8")) for x in glob.glob(os.path.join(MZ_DIR, "_逐句", "*.json")) if re.fullmatch(r"\d+\.\d+", os.path.basename(x)[:-5])}
     cfg = json.load(open(MZ_CFG, encoding="utf-8")) if os.path.exists(MZ_CFG) else {}
-    return {"qw": qw, "bh": bh, "zj": zj, "pm": json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8")), "cfg": cfg,
+    yf = os.path.join(MZ_DIR, "异文.json")
+    return {"yw": {k: v for k, v in json.load(open(yf, encoding="utf-8")).items() if re.fullmatch(r"\d+\.\d+", k)} if os.path.exists(yf) else {}, "qw": qw, "bh": bh, "zj": zj, "pm": json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8")), "cfg": cfg,
             "pages": json.load(open(MZ_PAGES, encoding="utf-8")) if os.path.exists(MZ_PAGES) else {}}
 MZ = load_mz()
 
@@ -2135,6 +2136,7 @@ def build_mengzi(L, write, P):
 <p class="wjlead">《孟子》还在整理：原文标点、白话都还没有最后核定，视频也还没做。</p>
 {fig}
 {bh_html}
+{"" if not MZ["yw"].get(c) else '<section class="sec"><h2><i>异</i>异文</h2>' + "".join(f"<p>{esc(Y(x))}</p>" for x in MZ["yw"][c]) + "</section>"}
 {"" if not next_c else f'<a class="nextread" href="{P}{rel_of(next_c)}">接着读下一章：{next_c}　{esc(Y(ttl_of(next_c)))} ›</a>'}
 {f'<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>' + fold(deep) + "</div>" if deep else ""}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
