@@ -58,7 +58,8 @@ export class Live {
   }
   async fetch(req) {
     const url = new URL(req.url);
-    const OKC = /^[0-9]{1,2}\.[0-9]{1,2}$/, OKB = /^(ddj|szj)\.[0-9]{1,2}$/;
+    const OKC = /^[0-9]{1,2}\.[0-9]{1,2}$/, OKB = /^(ddj|szj)\.[0-9]{1,2}$/, OKM = /^mz\.[0-9]{1,2}\.[0-9]{1,2}$/;
+    const SRC = new Set(["yt", "bili", "dy", "ks", "sph", "xhs", "pod", "gzh", "zhihu", "bjh", "tt"]);
     if (req.method === "POST" && url.pathname === "/hit") {
       let b = {}; try { b = await req.json(); } catch (e) {}
       const id = String(b.id || "").slice(0, 40);
@@ -70,6 +71,15 @@ export class Live {
         const d = this.day(), R = await this.roll("reads"); R[d] = R[d] || {}; R[d][c] = (R[d][c] || 0) + 1;
         let rc = (await this.state.storage.get("recent")) || []; rc = [{ c, d }].concat(rc.filter(x => x.c !== c)).slice(0, 200); // 11-12 主人：多记一些，原来只留 8 条
         await this.state.storage.put({ reads: R, recent: rc });
+      }
+      // 11-19 按来源记数（盘点线程改法单 v1）：只认 11 个平台标记；只有页面打开时的第一次上报带 from，心跳不带
+      const f = String(b.from || "");
+      if (SRC.has(f)) {
+        const k = "src:" + this.day(), D = (await this.state.storage.get(k)) || {};
+        const e = D[f] = D[f] || { n: 0, u: 0, c: {} };
+        e.n++; if (b.first === true) e.u++;
+        if ((OKC.test(c) || OKB.test(c) || OKM.test(c)) && (c in e.c || Object.keys(e.c).length < 300)) e.c[c] = (e.c[c] || 0) + 1;
+        await this.state.storage.put(k, D);
       }
     } else if (req.method === "POST" && url.pathname === "/copy") {
       let b = {}; try { b = await req.json(); } catch (e) {}
@@ -144,6 +154,11 @@ export class Live {
       }
       const O = keep((await this.state.storage.get(key)) || {});
       return Response.json(key === "ai" ? { days: O, pages: (await this.state.storage.get("aip")) || {} } : O);
+    } else if (req.method === "GET" && url.pathname === "/src") { // 11-19 各来源进站：{days:{日:{来源:{n,u,c}}}}，留 120 天
+      const M = await this.state.storage.list({ prefix: "src:" }), out = {};
+      const cut = "src:" + new Date(Date.now() + 8 * 3600e3 - 120 * 864e5).toISOString().slice(0, 10);
+      for (const [k, v] of M) { if (k < cut) await this.state.storage.delete(k); else out[k.slice(4)] = v; }
+      return Response.json({ days: out });
     } else if (url.pathname === "/mirror") {
       if (req.method === "POST") {
         let b = {}; try { b = JSON.parse(await req.text()); } catch (e) {}
