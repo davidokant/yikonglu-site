@@ -1,4 +1,4 @@
-(function(){var q=new URLSearchParams(location.search),f=(q.get('from')||'').toLowerCase();if(!f)return;
+(function(){var q=new URLSearchParams(location.search),f=(q.get('from')||'').toLowerCase();if(!f)return;window.ykFrom=f;
 var V={yt:'YouTube',bili:'嗶哩嗶哩',dy:'抖音',ks:'快手',sph:'影片號'},T={xhs:'小紅書',pod:'播客',gzh:'公眾號',zhihu:'知乎',bjh:'百家號',tt:'頭條'},nm=V[f]||T[f];
 try{q.delete('from');history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash)}catch(e){}
 if(!nm)return;try{if(sessionStorage.getItem('yk_from'))return;sessionStorage.setItem('yk_from',f)}catch(e){}

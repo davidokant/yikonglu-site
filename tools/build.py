@@ -465,7 +465,7 @@ var s=[];try{s=((JSON.parse(localStorage.getItem("yk_xd")||"{}").b||{}).lunyu||{
 var S={},P={};s.forEach(function(c){S[c]=1;var p=String(c).split(".")[0];P[p]=(P[p]||0)+1});
 var H=/Hant/.test(document.documentElement.lang),Z=/^zh/.test(document.documentElement.lang);
 document.querySelectorAll(".pcard[data-p]").forEach(function(a){var n=P[a.getAttribute("data-p")];if(!n)return;a.classList.add("rd");if(!Z)return;var e=document.createElement("em");e.className="mine";e.textContent=(H?"你讀過 ":"你读过 ")+n+" 章";a.appendChild(e)})})();</script>"""
-FROM_JS = """<script>(function(){var q=new URLSearchParams(location.search),f=(q.get('from')||'').toLowerCase();if(!f)return;
+FROM_JS = """<script>(function(){var q=new URLSearchParams(location.search),f=(q.get('from')||'').toLowerCase();if(!f)return;window.ykFrom=f;
 var V={yt:'YouTube',bili:'哔哩哔哩',dy:'抖音',ks:'快手',sph:'视频号'},T={xhs:'小红书',pod:'播客',gzh:'公众号',zhihu:'知乎',bjh:'百家号',tt:'头条'},nm=V[f]||T[f];
 try{q.delete('from');history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash)}catch(e){}
 if(!nm)return;try{if(sessionStorage.getItem('yk_from'))return;sessionStorage.setItem('yk_from',f)}catch(e){}
@@ -917,7 +917,7 @@ def analytics(L):
     if ANALYTICS.get("live"):  # 在线与累计读者：worker/ 部署的计数服务；首页有 #live 才显示，其他页只发心跳
         tpl = LIVE_TXT.get(L.code, LIVE_TXT["en"]); sp = LIVE_PILL.get(L.code, LIVE_PILL["en"])
         a += ("<script>(function(){var U=" + json.dumps(ANALYTICS["live"].rstrip("/")) + ",EP=function(x){return [U,x].join(String.fromCharCode(47))},T=" + json.dumps(tpl, ensure_ascii=False) + ",S=" + json.dumps(sp, ensure_ascii=False) + ",NT=" + json.dumps(LIVE_NOTE.get(L.code, LIVE_NOTE["en"]), ensure_ascii=False)
-              + ';function RUN(){var DB=document.querySelector(".donebox"),RC=document.getElementById("rc"),CC=DB?DB.getAttribute("data-c"):(RC?RC.getAttribute("data-c"):""),FR=(function(){try{var v=new URLSearchParams(location.search).get("from")||"";return /^(yt|bili|dy|ks|sph|xhs|pod|gzh|zhihu|bjh|tt)$/.test(v)?v:""}catch(e){return ""}})();var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
+              + ';function RUN(){var DB=document.querySelector(".donebox"),RC=document.getElementById("rc"),CC=DB?DB.getAttribute("data-c"):(RC?RC.getAttribute("data-c"):""),FR=(function(){try{var v=window.ykFrom||new URLSearchParams(location.search).get("from")||"";return /^(yt|bili|dy|ks|sph|xhs|pod|gzh|zhihu|bjh|tt)$/.test(v)?v:""}catch(e){return ""}})();var id,f=false;try{id=localStorage.getItem("ykl_id");if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem("ykl_id",id);f=true}}catch(e){id="x"+Math.random().toString(36).slice(2)}'
               + 'function n(x){try{return x.toLocaleString(document.documentElement.lang||undefined)}catch(e){return x}}'
               + 'var BOT=!!navigator.webdriver||/bot|spider|crawl|slurp|headless|lighthouse|bingpreview|bytespider|petalbot|yandex|facebookexternalhit|semrush|ahrefs|mediapartners|inspectiontool/i.test(navigator.userAgent||"");'  # 11-14：搜索引擎渲染页面、自动化测试也会跑脚本，不记心跳、新设备和阅读
               + 'function BK(){var u=(navigator.userAgent||"").toLowerCase(),M=["googlebot","google-inspectiontool","bingbot","applebot","baiduspider","yandex","bytespider","petalbot","gptbot","chatgpt","oai-searchbot","claude","perplexity","duckduckbot","sogou","360spider","facebookexternalhit","semrush","ahrefs","lighthouse"];for(var i=0;i<M.length;i++)if(u.indexOf(M[i])>=0)return M[i].replace(/[^a-z0-9]/g,"").slice(0,16);if(navigator.webdriver)return "agent";if(u.indexOf("headless")>=0)return "headless";return "bot"}if(BOT){var bk=BK();if(bk==="agent"||bk==="headless"||bk==="lighthouse")try{navigator.sendBeacon(EP("bot"),JSON.stringify({k:bk}))}catch(e){}}'  # 11-16 硅基：有名有姓的爬虫由前置 Worker（worker-edge）按 UA 数；页面里只补数认不出名字的自动浏览器，免得重算
@@ -1534,8 +1534,8 @@ def ly_links(L, D, P):
 def redirect_page(L, target, frag, title):
     """旧网址跳新址：保留 #锚点；noindex＋canonical 指新址。"""
     return (f'<!doctype html><meta charset="utf-8"><title>{esc(title)}｜一孔录</title><link rel="canonical" href="{DOMAIN}/{target}">'
-            f'<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/{target}{frag}">'
-            f'<script>location.replace("/{target}"+(location.hash||"{frag}"))</script><a href="/{target}{frag}">{esc(title)}</a>')
+            f'<meta name="robots" content="noindex"><noscript><meta http-equiv="refresh" content="0;url=/{target}{frag}"></noscript>'
+            f'<script>location.replace("/{target}"+location.search+(location.hash||"{frag}"))</script><a href="/{target}{frag}">{esc(title)}</a>')
 
 def nl_inline(nl, row):
     """首页“今日《论语》”卡：把建站日前 1 天到后 13 天的年历课直接写进页面，打开就有，不等 nianli-*.json（11-15 主人“过”：防页面跳动）。
@@ -3880,10 +3880,10 @@ def short_links(outdir):
         d = os.path.join(outdir, lp, "lunyu", c); os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(
             f'<!doctype html><meta charset="utf-8"><title>论语 {c}｜一孔录</title><link rel="canonical" href="{DOMAIN}{dst}">'
-            f'<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url={dst}">'
-            f'<script>location.replace("{dst}"+location.hash)</script><a href="{dst}">论语 {c}</a>')
+            f'<meta name="robots" content="noindex"><noscript><meta http-equiv="refresh" content="0;url={dst}"></noscript>'
+            f'<script>location.replace("{dst}"+location.search+location.hash)</script><a href="{dst}">论语 {c}</a>')
 
-SHORT_404_JS = "<script>(function(){var x=location.pathname.match(/^\\/duben\\/lunyu-xueer(-hant)?\\.pdf$/);if(x){location.replace('/duben/lunyu-chongjian'+(x[1]||'')+'.pdf');return}var m=location.pathname.match(/^\\/(zh-hant\\/|en\\/|ja\\/)?lunyu\\/(\\d+)\\.(\\d+)\\/?$/),S=" + json.dumps({k: v[1] for k, v in PIAN.items()}) + ";if(m&&S[m[2]])location.replace('/'+(m[1]||'')+'lunyu/'+S[m[2]]+'/'+m[3]+'.html'+location.hash)})()</script>"
+SHORT_404_JS = "<script>(function(){var x=location.pathname.match(/^\\/duben\\/lunyu-xueer(-hant)?\\.pdf$/);if(x){location.replace('/duben/lunyu-chongjian'+(x[1]||'')+'.pdf');return}var m=location.pathname.match(/^\\/(zh-hant\\/|en\\/|ja\\/)?lunyu\\/(\\d+)\\.(\\d+)\\/?$/),S=" + json.dumps({k: v[1] for k, v in PIAN.items()}) + ";if(m&&S[m[2]])location.replace('/'+(m[1]||'')+'lunyu/'+S[m[2]]+'/'+m[3]+'.html'+location.search+location.hash)})()</script>"
 
 def main(zdir, outdir, kanwu=None):
     yw = json.load(open(os.path.join(HERE, "yuanwen.json"), encoding="utf-8"))
