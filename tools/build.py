@@ -2706,7 +2706,7 @@ def build_lang(L, D, write):
         bh_h2 = f'{L.t("baihua")}：“{esc(seo_q(yw[c]))}”是什么意思' if L.code.startswith("zh") else L.t("baihua")  # 主人 11-07 定：标题带读者会问的话
         bh_html = f'<section class="sec sec-白"><h2><i>白</i>{bh_h2}</h2><p lang="zh-Hans">{esc(bh)}</p></section>' if bh else ""  # 11-17 主人：白话下不加提示行
         if not ZHAI_OFF and L.code.startswith("zh"):  # 11-15 十一项之 2 可摘段：每段单独复制出去也看得出书名、章号、原句、页码、网址；只用页面上已有的话拼
-            _qp = sorted(set(g.get("qw_pages") or []), key=int)
+            _qp = sorted(set(g.get("qw_pages") or ([str(D["qw"][c]["pdf_page"])] if D["qw"].get(c, {}).get("pdf_page") else [])), key=int)  # 讲稿未写经文页的章，退到原页表
             _pg = f'朱熹《论语集注》《四部备要》本第 {"—".join(dict.fromkeys([_qp[0], _qp[-1]])) if _qp else "?"} 页'
             _sig = f"一孔录 yikonglu.com/lunyu/{c}"; _hd = f"《论语》{c}“{title_of(c)}”"
             _tail = lambda t: f'<small class="zhai">（{esc(t)}）</small>'
@@ -2758,7 +2758,7 @@ def build_lang(L, D, write):
             _yk = "一孔录选定" if c in D["zy"] else ("据原页 · 视频制作中" if _ng else "讲稿 · 视频制作中" if _nv else "审片版讲稿")
             extra = extra.replace(f'<h2><i>核</i>{L.t("cites")}</h2>', f'<h2><i>核</i>{L.t("cites")}{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}</h2>', 1)
             extra = extra.replace(f'<h2><i>音</i>{L.t("reads")}</h2>', f'<h2><i>音</i>{L.t("reads")}{_rp}</h2>', 1)
-            _qp = sorted(set(g.get("qw_pages") or []), key=int)
+            _qp = sorted(set(g.get("qw_pages") or ([str(D["qw"][c]["pdf_page"])] if D["qw"].get(c, {}).get("pdf_page") else [])), key=int)  # 讲稿未写经文页的章，退到原页表
             _li = [f'<li><b>原文</b>{_pill("ok", "对过原页")}朱注本第 {"、".join(_qp) or "?"} 页' + ("，每个字框到原页的列上" if c in ZJD["on"] else "") + "</li>",
                    (f'<li><b>白话</b>{_pill("mid", "据原页")}按底本原页直译，这章还没写讲稿、视频还在制作，网页整理由智器完成</li>' if _ng else f'<li><b>白话</b>{_pill("mid", "讲稿")}取自讲稿，视频还在制作、讲稿还没审片定版，网页整理由智器完成</li>' if _nv else f'<li><b>白话</b>{_pill("mid", "已核")}取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成</li>'),
                    f'<li><b>一孔之见</b>{_pill("mid", _yk)}一孔录自己的读法，不是古注；' + ("这章各家读法不同，一孔录在几家里选定一种" if c in D["zy"] else ("据原页整理，还没写讲稿，视频还在制作" if _ng else "取自讲稿，视频还在制作" if _nv else "取自视频讲稿（讲稿经一孔审片定版）")) + "</li>"]
