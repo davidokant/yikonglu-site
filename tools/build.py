@@ -1361,6 +1361,7 @@ NAV_DB = {"en": "Free PDF", "ja": "無料PDF", "ko": "무료 PDF", "fr": "PDF gr
 FL_NOIDX_L = ("ko", "fr", "es", "de", "vi", "id", "ru")
 FL_NOIDX = '<meta name="robots" content="noindex,follow">'
 # 11-20 收录查因“乙”：外文杂页（关于、隐私、支持、开放数据、勘误、方法、读本、书院入院）noindex,follow、出站点地图；各语种 search.html 也 noindex。简繁这几页照旧收
+GD_LANMU = [("2026-11-20", "问易", "/wenyi/", "照朱熹《周易本义·筮仪》起一卦，读经文、白话、朱熹注和宋本原页。试运营。")]  # 改动记录里的新栏目
 MISC_NOIDX = ("about.html", "yinsi.html", "zhichi.html", "kaifang.html", "kanwu.html", "fangfa.html", "duben.html", "shuyuan/ruyuan.html", "gaidong.html")
 def misc_noidx(code, rel): return rel == "search.html" or (not code.startswith("zh") and rel in MISC_NOIDX)
 
@@ -3297,6 +3298,7 @@ def build_lang(L, D, write):
         _days = {}
         for c, d in _fs.items(): _days.setdefault(d, {"new": [], "kw": []})["new"].append(c)
         for r in (kw or []): _days.setdefault(r[0], {"new": [], "kw": []})["kw"].append(r)
+        for d0, nm0, u0, t0 in GD_LANMU: _days.setdefault(d0, {"new": [], "kw": []}).setdefault("lm", []).append((nm0, u0, t0))  # 新栏目（11-20 问易）
         _ck = lambda c: tuple(int(x) for x in c.split("."))
         _li = ""
         for d in sorted(_days, reverse=True):
@@ -3304,6 +3306,8 @@ def build_lang(L, D, write):
             if g["new"]:
                 cs = sorted(g["new"], key=_ck)
                 items += (f'<li class="gdn"><b>{_T("新上")}</b>{_T("《论语》")} {len(cs)} {_T("章")}：' + "、".join(f'<a href="{href(c)}">{c}</a>' for c in cs) + "</li>")
+            for nm0, u0, t0 in g.get("lm", []):
+                items += f'<li class="gdn"><b>{_T("新栏目")}</b><a href="{u0}">{_T(nm0)}</a>：{_T(t0)}</li>'
             for r in g["kw"]:
                 kind = _T("改读法") if r[3] == "读法" else _T("勘误")
                 items += (f'<li class="gdk"><b>{kind}</b>{esc(_T(r[1]))} {esc(r[2])}（{esc(_T(r[3]))}）。{_T("原来")}：{esc(_T(r[4]).rstrip("。"))}；{"" if r[5].startswith("改") else _T("改为") + "："}{esc(_T(r[5]).rstrip("。"))}'
