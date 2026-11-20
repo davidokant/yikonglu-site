@@ -4,7 +4,7 @@ try{q.delete('from');history.replaceState(null,'',location.pathname+(q.toString(
 if(!nm)return;try{if(sessionStorage.getItem('yk_from'))return;sessionStorage.setItem('yk_from',f)}catch(e){}
 var H=document.querySelector('.chhead .wrap');if(!H)return;var d=document.createElement('p');d.className='fromtip';var m,go=null;
 if(V[f]){m='從'+nm+'過來的？片裡講的原文都在下面，點任何一句，原頁上那幾列就框出來；朱注和各家說法在“細讀與核對”。'}
-else if(f==='xhs'){m='從小紅書過來的？這一章可以一鍵做成帶原文底紋的分享圖，存下來就能發。';go=['生成分享圖',function(){var p=document.querySelector('.shpanel');if(!p)return;if(p.hidden)p.previousElementSibling.click();var b=p.querySelector('[data-p=card]');if(b)b.click()}]}
+else if(f==='xhs'){m='從小紅書過來的？這一章可以一鍵做成帶原文底紋的分享圖，存下來就能發。';go=['生成卡片',function(){var p=document.querySelector('.shpanel');if(!p)return;if(p.hidden)p.previousElementSibling.click();var b=p.querySelector('[data-p=card]');if(b)b.click()}]}
 else if(f==='pod'){m='從播客過來的？按原文上方的“音”，可以邊聽原文朗讀邊看原頁。';go=['聽原文',function(){var b=document.querySelector('.ldbtn');if(b){b.scrollIntoView({block:'center',behavior:'smooth'});b.click()}}]}
 else{m='從'+nm+'過來的？這裡有原文、原頁和一孔之見，每條引文都標了底本頁碼，點句就能核。'}
 d.textContent=m;if(go){var a=document.createElement('button');a.type='button';a.textContent=go[0];a.onclick=go[1];d.appendChild(a)}
