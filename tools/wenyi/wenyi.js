@@ -216,7 +216,7 @@ function renderResult(vals){
     el.innerHTML="<span class='tag'></span><p class='jing'></p><p class='py'></p><p class='bh'></p><details><summary>朱熹《周易本义》怎么说</summary><p class='yin'></p><p class='zhu'></p><p class='src'></p></details>";
     const yk=YB[ref.n+"-"+ref.pos];
     if(yk){ el.insertAdjacentHTML("beforeend","<details class='yb'><summary>看宋本原页</summary><div class='ybs'></div><span class='src'></span></details>"); const dd=el.lastElementChild;
-      dd.querySelector(".src").textContent="宋咸淳吳革本《周易本義》"+yk.map(x=>ybName(x[0])).join("、")+"。红框里是这一条：大字经文连同朱熹的小字注，按原书从右往左、从上往下读"+(yk.length>1?"，跨了 "+yk.length+" 个半叶":"")+"。原页偶有一两个字和上面的录文不同，正在逐字核对。";
+      dd.querySelector(".src").textContent="宋咸淳吳革本《周易本義》"+yk.map(x=>ybName(x[0])).join("、")+"。红框里是这一条：大字经文连同朱熹的小字注，按原书从右往左、从上往下读"+(yk.length>1?"，跨了 "+yk.length+" 个半叶":"")+"。原页个别字和上面的录文不同：宋本避讳，把“貞”刻作“正”、“恆”刻作“常”，录文回改为原字；其余异文已经逐字对过宋本。";
       dd.addEventListener("toggle",()=>{ const w=dd.querySelector(".ybs"); if(!dd.open||w.childElementCount) return;
         yk.forEach(([h,pls])=>{ const [W,H]=YBG[h]; const d=document.createElement("div"); d.className="ybw";
           const im=document.createElement("img"); im.alt="宋本《周易本義》"+ybName(h); im.src="/wenyi/yb/"+h+".webp"; im.width=W; im.height=H; d.appendChild(im);

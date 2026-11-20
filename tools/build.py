@@ -1361,7 +1361,7 @@ NAV_DB = {"en": "Free PDF", "ja": "無料PDF", "ko": "무료 PDF", "fr": "PDF gr
 FL_NOIDX_L = ("ko", "fr", "es", "de", "vi", "id", "ru")
 FL_NOIDX = '<meta name="robots" content="noindex,follow">'
 # 11-20 收录查因“乙”：外文杂页（关于、隐私、支持、开放数据、勘误、方法、读本、书院入院）noindex,follow、出站点地图；各语种 search.html 也 noindex。简繁这几页照旧收
-GD_LANMU = [("2026-11-20", "问易", "/wenyi/", "照朱熹《周易本义·筮仪》起一卦，读经文、白话、朱熹注和宋本原页。试运营。")]  # 改动记录里的新栏目
+GD_LANMU = [("2026-11-20", "问易", "/wenyi/", "照朱熹《周易本义·筮仪》起一卦，读经文、白话、朱熹注和宋本原页。试运营。朱注录文已逐字对过宋本；宋本避讳把“貞”刻作“正”、“恆”刻作“常”，录文回改为原字。")]  # 改动记录里的新栏目
 MISC_NOIDX = ("about.html", "yinsi.html", "zhichi.html", "kaifang.html", "kanwu.html", "fangfa.html", "duben.html", "shuyuan/ruyuan.html", "gaidong.html")
 def misc_noidx(code, rel): return rel == "search.html" or (not code.startswith("zh") and rel in MISC_NOIDX)
 
