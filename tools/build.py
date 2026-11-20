@@ -1012,7 +1012,7 @@ def daiyan(rel, text):  # 11-20 主人：卡片并进页头（标题栏或题名
     if not d: return text
     tag, rid, nm, say, who = d
     nmh = f'<a href="/shuyuan/{rid}.html">{nm}</a>' if rid != "lisa" else nm
-    txt = f'<div class="dyt"><b class="dyn">{nmh}</b><p class="dysay">{say}</p><span class="dywho">一孔录原创角色。{who}</span></div>'
+    txt = f'<div class="dyt"><b class="dyn">{nmh}</b><p class="dysay">{say}</p><span class="dywho">{who}</span></div>'
     img = f'<img class="dyimg" src="/assets/lead/{rid}-ban.webp" alt="{nm}，一孔录原创角色" width="300" height="440" decoding="async">'
     for head in ('<div class="chhead"><div class="wrap">', '<div class="syhero">'):
         a = text.find(head)
