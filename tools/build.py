@@ -13,6 +13,7 @@ import gushi as GS
 import renwu as RW
 import zhuju as ZJ
 import shuyuan as SY
+import wenyi as WY  # 11-20 问易试运营
 import zjyuanye as ZJY  # 11-16 诸家原页
 import lunyu_extra as LX  # 11-14 只为《论语》做的：年历、场合用句、课本带读
 import zizhuan as ZZ  # 11-15 一字一页 /zi/
@@ -1005,6 +1006,7 @@ DAIYAN = {  # 11-20 主人：五个栏目首页各请一位原创角色代言（
     "shumu/index.html": ["书架", "zhaojin", "孔照今", "一格一本书，像一排还没画完的画。先从《论语》这一格画起。", "十三经岛长大的姑娘，梦想做画家。"],
     "zhuanti/index.html": ["专题", "shouzhuo", "林守拙", "装书是把散页一根线穿起来。专题也一样：拿一个字，把散在各章的话穿成一本。", "林家书坊的手艺人，大家手里的书多半经过他的手。"],
     "search.html": ["检索", "lisa", "Lisa", "汪！记得一两个字就行，剩下的交给我的鼻子。", "守拙家的柯基，戴青色头巾。人到齐了，它才肯睡。"],
+    "wenyi/index.html": ["问易", "luchuan", "陆川", "问什么事，写下来。卦起出来是什么，我原样给你，不添一个字。", "跑货的行商，规矩是“价可以喊，货不能编”。"],
     "duben.html": ["读本", "liuqi", "阮流绮", "读本不收钱。印出来放床头，一天一章，像每天练一段基本功。", "舞者，常被请去各家演出，看人看事很准。"],
 }
 def daiyan(rel, text):  # 11-20 主人：卡片并进页头（标题栏或题名页大图），不另起一块，免得上下脱节
@@ -1430,7 +1432,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <body class="{cls}">
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>{'<span class="livep" id="livep" hidden></span>' if ANALYTICS.get("live") else ""}
-<nav><a href="{P}lunyu/" class="lynav">{lyui(L)["nav"]}</a><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}duben.html">{NAV_DB.get(L.code, L.t("db_link"))}</a>{f'<a href="{P}shuyuan/" class="gsnav">题名</a>' if gs else ""}
+<nav><a href="{P}lunyu/" class="lynav">{lyui(L)["nav"]}</a><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}duben.html">{NAV_DB.get(L.code, L.t("db_link"))}</a>{f'<a href="{P}shuyuan/" class="gsnav">题名</a><a href="/wenyi/" class="gsnav">问易</a>' if gs else ""}
 <details class="lang more"><summary>{L.t("nav_more")}</summary><div>{"" if rw else (f'<a href="{P}lunyu/guanxi/">{esc(GX.TR[L.code]["S"]["gx_h1"])}</a>' if not L.code.startswith("zh") and GXD and GX.has_lang(L.code) else "")}<a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a>{f'<a href="{P}jieru/">接入智器</a>' if L.code.startswith("zh") else ""}<a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary><span class="lfull">{L.name}</span><span class="lshort" aria-hidden="true">{LANG_SHORT.get(L.code, L.code[:2].upper())}</span></summary><div>{sw}</div></details></nav>
 </div></header>{'<script>(function(){var l=document.querySelector(".top nav>.lang:not(.more)"),w=document.querySelector(".top .wrap");if(l&&w&&innerWidth<=700)w.style.setProperty("--lw",(l.offsetWidth+10)+"px")})()</script>' if ANALYTICS.get("live") else ""}
@@ -3364,6 +3366,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
 <main class="wrap narrow prose"><p>{L.t("zc_p")}</p>{"".join(order)}{TM.lu_block() if L.code.startswith("zh") else ""}</main>'''
     write("zhichi.html", page(L, f'{L.t("zc_title")}｜一孔录', L.t("zc_sub"), "zhichi.html", body)); urls.append(f"{DOMAIN}/{L.prefix}zhichi.html")
     urls += SY.build(L, write, page, ANALYTICS.get("live"), DOMAIN)  # 一孔书院筹备页（11-09）
+    urls += WY.build(L, write, page, DOMAIN)  # 问易（11-20 主人准上线试运营，只出简体）
     # 核验方法页（/fangfa.html）
     def zj_sec(L):
         t = ZJ_FF.get(L.code) or ZJ_FF.get("zh-Hans" if L.code.startswith("zh") else "en")
