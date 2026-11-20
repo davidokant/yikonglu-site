@@ -88,10 +88,18 @@
     try {
       var D = JSON.parse(dataEl.textContent), h1 = document.querySelector("h1 .no");
       var bs = S.b[book] || { seen: [] };
-      if (bs.seen.indexOf(D.c) < 0) bs.seen.push(D.c);
       var y0 = location.hash === "#xd-y" && bs.last && bs.last.c === D.c ? bs._y : 0;
-      bs.last = { p: location.pathname, c: D.c, ti: D.ti || "", no: h1 ? h1.textContent.split(" · ").slice(0, 2).join(" · ") : D.c, ts: Date.now() }; bs._y = y0 || 0;
-      S.b[book] = bs; var td = dstr(new Date()); S.d = S.d || []; if (S.d.indexOf(td) < 0) { S.d.push(td); if (S.d.length > 800) S.d = S.d.slice(-800) } save(S);
+      // 11-20 主人：从首页“生成分享图”进来只为分享，不记“上次读到”、不算读过、不算阅读天；往下读过三成再记
+      var rec = function () {
+        S = load() || S; S.b = S.b || {}; bs = S.b[book] || { seen: [] };
+        if (bs.seen.indexOf(D.c) < 0) bs.seen.push(D.c);
+        bs.last = { p: location.pathname, c: D.c, ti: D.ti || "", no: h1 ? h1.textContent.split(" · ").slice(0, 2).join(" · ") : D.c, ts: Date.now() }; bs._y = y0 || 0;
+        S.b[book] = bs; var td = dstr(new Date()); S.d = S.d || []; if (S.d.indexOf(td) < 0) { S.d.push(td); if (S.d.length > 800) S.d = S.d.slice(-800) } save(S);
+      };
+      if (location.hash === "#ka" || window.ykShareOnly) {
+        var rf = function () { if (scrollY / Math.max(1, document.documentElement.scrollHeight) > 0.3) { removeEventListener("scroll", rf); rec() } };
+        addEventListener("scroll", rf, { passive: true });
+      } else rec();
       if (y0) { history.replaceState(null, "", location.pathname); addEventListener("load", function () { scrollTo(0, y0 * document.documentElement.scrollHeight) }) }
       var tick = 0;
       addEventListener("scroll", function () {

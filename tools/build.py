@@ -865,7 +865,7 @@ if(cs){sb.hidden=false;sb.onclick=function(){navigator.share({files:[f],text:txt
 a.onclick=function(e){if(inapp||(ios&&!cs)){e.preventDefault();nt.textContent=T.hold;nt.classList.add('hl');return}if(ios&&cs){e.preventDefault();navigator.share({files:[f]}).catch(function(){})}}});
 M.addEventListener('click',function(e){if(e.target===M||e.target.closest('.cls'))M.remove()});document.body.appendChild(M)}
 @CARDS@
-if(location.hash==='#ka'){history.replaceState(null,'',location.pathname+location.search);setTimeout(function(){if(window.ykPick)window.ykPick('yy');else card()},400)}
+if(location.hash==='#ka'){window.ykShareOnly=1;history.replaceState(null,'',location.pathname+location.search);setTimeout(function(){if(window.ykPick)window.ykPick('yy');else card()},400)}
 })();
 </script>"""
 SHARE_JS = SHARE_JS.replace("@CARDS@", open(os.path.join(HERE, "share_cards.js"), encoding="utf-8").read() if os.environ.get("YK_CARDS", "1") != "0" else "")  # 新分享卡（11-08 主人“过”）；回退设 YK_CARDS=0
@@ -1554,7 +1554,12 @@ def nl_fetch(code, inl):
 # 11-14 主人：首页“今日《论语》”不放“读这一章”“生成分享图”，点经句直接进章页（先读，分享留在章页）
 MEIRI_Q_JS = ('<script>(function(){var M=document.getElementById("meiri");if(!M)return;var q=M.querySelector("blockquote");if(!q)return;q.setAttribute("role","link");q.tabIndex=0;'
               'function go(){var a=M.querySelector(".mc"),h=a&&a.getAttribute("href");if(h&&h!=="#")location.href=a.href}'
-              'q.addEventListener("click",go);q.addEventListener("keydown",function(e){if(e.key==="Enter")go()})})()</script>')
+              'q.addEventListener("click",go);q.addEventListener("keydown",function(e){if(e.key==="Enter")go()});'
+              # 11-20 主人：首页直接分享，不用点进章页。手机走系统分享面板，电脑复制“经句＋网址”
+              'var s=M.querySelector(".ms");if(s)s.addEventListener("click",function(){var a=M.querySelector(".mc"),u=a&&a.getAttribute("href")!=="#"?a.href:location.href,x=(q.textContent||"").trim(),b=s.textContent;'
+              'function ok(){s.textContent=s.getAttribute("data-ok");setTimeout(function(){s.textContent=b},1800)}'
+              'if(navigator.share&&/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)){navigator.share({text:x,url:u}).catch(function(){});return}'
+              'try{navigator.clipboard.writeText(x+" "+u).then(ok,function(){prompt("",x+" "+u)})}catch(e){prompt("",x+" "+u)}})})()</script>')
 
 def about_zh(L, D, P):
     """关于页（简繁）：一孔自述。主人 11-09 定：不露脸，把匿名当神秘感，信赖靠可查；照片栏放脸是空洞的头像，寓意一孔。主人删掉平台、数字和转载一节（转载说明在开放数据页）。"""
@@ -3081,7 +3086,7 @@ def build_lang(L, D, write):
                '<script>(function(){try{var o=JSON.parse(localStorage.getItem("ykl_wk")||"{}"),d=new Date(Date.now()+288e5),m=new Date(d-((d.getUTCDay()+6)%7)*864e5).toISOString().slice(0,10);if(o.m!==m||!o.a||!o.a.length)return;'
                'var I=document.querySelectorAll("#wkl .dots i");o.a.forEach(function(x){var k=Math.round((Date.parse(x)-Date.parse(m))/864e5);if(I[k])I[k].className="on"});var s=document.querySelector("#wkl .wt");s.textContent=s.getAttribute("data-t").replace("{n}",o.a.length)}catch(e){}})();</script>')  # 本周读了几天：只在读者本机记（章页停满一分钟算一天），不上传
     meiri_html = (f'<section class="meiri big" id="meiri" hidden><p class="mh"><b>{MY["h"]}</b><span class="md"></span></p><blockquote lang="zh-Hans"></blockquote><p class="mb"></p>'
-                  f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a></p>{wk_html}</section>') if MY else ""
+                  f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a><button type="button" class="ms" data-ok="{SHARE_TXT.get(L.code, SHARE_TXT["en"])["ok"]}">{SHARE_TXT.get(L.code, SHARE_TXT["en"])["sh"]}</button></p>{wk_html}</section>') if MY else ""
     if "OUT_ROOT" in globals():  # 全站“今日《论语》”细条用：各页按同一算法挑同一章
         os.makedirs(os.path.join(OUT_ROOT, "data"), exist_ok=True)
         json.dump([[x["c"], x["h"], x["t"], x["y"]] for x in _rc], open(os.path.join(OUT_ROOT, "data", f"meiri-{L.code}.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
@@ -3103,7 +3108,7 @@ def build_lang(L, D, write):
         _wd = "一二三四五六日"
         meiri_html = (f'<section class="meiri big mcal" id="meiri" hidden><div class="mrow"><div class="mcalb" aria-hidden="true"><p class="cm"></p><p class="cd"></p><p class="cw"></p><p class="cl"></p></div>'
                       f'<div class="mtxt"><p class="mh"><b>{MY["h"]}</b></p><p class="mtag"></p><blockquote lang="zh-Hans"></blockquote><p class="mb"></p>'
-                      f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a></p></div><img class="mhalf" alt="" width="300" height="400" hidden></div>'
+                      f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a><button type="button" class="ms" data-ok="{SHARE_TXT.get(L.code, SHARE_TXT["en"])["ok"]}">{SHARE_TXT.get(L.code, SHARE_TXT["en"])["sh"]}</button></p></div><img class="mhalf" alt="" width="300" height="400" hidden></div>'
                       f'<p class="wk" id="wkl"><span class="wt" data-t="{esc(LU["wk"])}" data-z="{esc(LU["wk0"])}">{esc(LU["wk0"])}</span><span class="dots">'
                       + "<i></i>" * 7 + '</span><span class="wn md"></span></p>'
                       + '</section>')
@@ -3139,7 +3144,7 @@ def build_lang(L, D, write):
         _cal = {"jt": {str(y): JIEQI_DAYS[str(y)] for y in range(_y0 - 1, _y0 + 2) if str(y) in JIEQI_DAYS}, "jn": _jn, "hou": FL_.get("hou") or [], "ld": [[k, (LD_.get(k) or {}).get("name") or n] for k, n, t in LEAD_WEEK], "u": _u}
         meiri_html = (f'<section class="meiri big mcal" id="meiri" hidden><div class="mrow"><div class="mcalb" aria-hidden="true"><p class="cm"></p><p class="cd"></p><p class="cw"></p><p class="cl"></p></div>'
                       f'<div class="mtxt"><p class="mh"><b>{esc(L.t("cal_h"))}</b></p><p class="mtag"></p><blockquote lang="zh-Hans"></blockquote><p class="mb"></p>'
-                      f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a></p></div><img class="mhalf" alt="" width="300" height="400" hidden></div>'
+                      f'<p class="ma"><a class="mc" href="#">{MY["read"]} →</a><a class="mk" href="#">{MY["card"]}</a><button type="button" class="ms" data-ok="{SHARE_TXT.get(L.code, SHARE_TXT["en"])["ok"]}">{SHARE_TXT.get(L.code, SHARE_TXT["en"])["sh"]}</button></p></div><img class="mhalf" alt="" width="300" height="400" hidden></div>'
                       f'<p class="wk" id="wkl"><span class="wt" data-t="{esc(LU["wk"])}" data-z="{esc(LU["wk0"])}">{esc(LU["wk0"])}</span><span class="dots">'
                       + "<i></i>" * 7 + '</span><span class="wn md"></span></p></section>')
         meiri_js = wk_js_only(wk_html) + ('<script>(function(){var K=' + json.dumps(_cal, ensure_ascii=False).replace("</", "<\\/") + ',U=K.u,LC=' + json.dumps(L.code) + ';'
