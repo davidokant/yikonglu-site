@@ -1013,7 +1013,8 @@ def daiyan(rel, text):  # 11-20 主人：卡片并进页头（标题栏或题名
     tag, rid, nm, say, who = d
     nmh = f'<a href="/shuyuan/{rid}.html">{nm}</a>' if rid != "lisa" else nm
     txt = f'<div class="dyt"><b class="dyn">{nmh}</b><p class="dysay">{say}</p><span class="dywho">{who}</span></div>'
-    img = f'<img class="dyimg" src="/assets/lead/{rid}-ban.webp" alt="{nm}，一孔录原创角色" width="300" height="440" decoding="async">'
+    _w, _h = __import__("PIL.Image", fromlist=["x"]).open(os.path.join(HERE, "assets", "lead", f"{rid}-ban.webp")).size  # 宽高照原图，免得样式没到时被拉变形
+    img = f'<img class="dyimg" src="/assets/lead/{rid}-ban.webp" alt="{nm}，一孔录原创角色" width="{_w}" height="{_h}" decoding="async">'
     for head in ('<div class="chhead"><div class="wrap">', '<div class="syhero">'):
         a = text.find(head)
         if a < 0: continue
@@ -1421,7 +1422,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">{head_extra}
 <meta name="twitter:card" content="summary_large_image">
 {head_fonts(L.code)}
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v={CSSV}">
 <script type="speculationrules">{{"prefetch":[{{"where":{{"or":[{{"href_matches":"/lunyu/*"}},{{"href_matches":"/*/lunyu/*"}}]}},"eagerness":"moderate"}}]}}</script>
 {ld}
 {analytics(L)}

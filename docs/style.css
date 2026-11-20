@@ -1068,4 +1068,4 @@ details.legge p.note{font-style:normal;font-size:.82em;color:var(--mute,#666)}
 .dywho{font-size:14px;color:var(--mute);line-height:1.6}
 .syhero.dyh .wrap>.dyimg{margin-bottom:-30px;height:340px}
 .syhero.dyh .dyt{margin:18px 0 6px}.syhero.dyh .dysay{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.7)}.syhero.dyh .dywho{color:#cfe3d6}.syhero.dyh .dyn{color:#e2c77e}
-@media (max-width:640px){.dyh .wrap{column-gap:10px}.dyh .wrap>.dyimg{height:200px}.syhero.dyh .wrap>.dyimg{height:220px}.dyn{font-size:20px}.dysay{font-size:16px}.dywho{font-size:13px}.dyt{padding-left:12px}}
+@media (max-width:640px){.dyh .wrap{column-gap:10px}.dyh .wrap>.dyimg{height:180px;max-width:34vw;object-fit:contain;object-position:50% 100%}.syhero.dyh .wrap>.dyimg{height:200px}.dyn{font-size:20px}.dysay{font-size:16px}.dywho{font-size:13px}.dyt{padding-left:12px}}
