@@ -1243,13 +1243,19 @@ def he_yin(h):  # 11-20 主人：折叠目录两个“音”合一。有逐句�
     blk = f'<div class="reads" id="duyin"><h3>本章多音字怎么读{m.group(2)}</h3>{m.group(3)}</div>'
     i = h.find('id="zhuyin"'); j = h.find('</p>', i)
     return h[:j + 4] + blk + h[j + 4:]
-def he_zhujia(h, fq):  # 11-20 主人：“诸家分歧”框并进“诸家怎么说”。有分歧的章在标题上标“有分歧”；没有“说”块的章单起一块
-    if not fq: return h
-    tag = '<span class="fqtag">有分歧</span>'
+ZB_RE = re.compile(r'<section class="sec zhuben" id="zhuben"><h2><i>家</i>(.*?)</h2>(.*?)</section>', re.S)
+def he_zhujia(h, fq, lab="诸家怎么说"):  # 11-20 主人：“诸家分歧”框、“各家注本”都并进“诸家怎么说”一块。顺序：古人说法 → 讲法不同处 → 各家注本原文与原页；有分歧的章标题标“有分歧”
+    zb = ""
+    m = ZB_RE.search(h)
+    if m:
+        h = h[:m.start()] + h[m.end():]
+        zb = f'<div class="zhuben" id="zhuben"><h3>{m.group(1)}</h3>{m.group(2)}</div>'
+    if not fq and not zb: return h
+    tag = '<span class="fqtag">有分歧</span>' if fq else ""
     m = re.search(r'<section class="sec sec-说"><h2>(.*?)</h2>(.*?)</section>', h, re.S)
-    if m: return h[:m.start()] + f'<section class="sec sec-说"><h2>{m.group(1)}{tag}</h2>{m.group(2)}{fq}</section>' + h[m.end():]
-    k = h.find('<section class="sec zhuben"'); k = k if k >= 0 else len(h)
-    return h[:k] + f'<section class="sec sec-说"><h2><i>说</i>诸家怎么说{tag}</h2>{fq}</section>' + h[k:]
+    if m: return h[:m.start()] + f'<section class="sec sec-说"><h2>{m.group(1)}{tag}</h2>{m.group(2)}{fq}{zb}</section>' + h[m.end():]
+    k = h.find('<section class="sec cites"'); k = k if k >= 0 else len(h)  # 没有“说”块的章：单起一块“说”，装分歧和各家注本
+    return h[:k] + f'<section class="sec sec-说"><h2><i>说</i>{lab}{tag}</h2>{fq}{zb}</section>' + h[k:]
 def fold(h):  # 下半各节收成可点开的 <details>；锚点跳进来时由 FOLD_JS 自动展开
     return FOLD_RE.sub(lambda m: f'<details class="sec fold {m.group(1)}"{m.group(2)}><summary><h2>{m.group(3)}</h2></summary>{m.group(4)}</details>', h)
 FOLD_JS = """<script>(function(){function op(){var h=decodeURIComponent(location.hash.slice(1));if(!h)return;var e=document.getElementById(h);if(!e)return;var d=e.closest("details");while(d){d.open=true;d=d.parentElement&&d.parentElement.closest("details")}setTimeout(function(){e.scrollIntoView()},0)}addEventListener("hashchange",op);op();document.addEventListener("click",function(ev){var a=ev.target.closest&&ev.target.closest('a[href^="#"]');if(a&&a.getAttribute("href")==location.hash)op()});var b=document.querySelector(".foldall");if(b)b.onclick=function(){var ds=document.querySelectorAll(".deep details.fold"),o=[].some.call(ds,function(d){return!d.open});[].forEach.call(ds,function(d){d.open=o});b.textContent=o?b.dataset.c:b.dataset.o}})();</script>"""
@@ -2784,7 +2790,7 @@ def build_lang(L, D, write):
 {GX.section(GXD, c, P, href, gx_short) if L.code.startswith("zh") else (GX.section_f(GXD, c, P, href, lambda x: hant_plain(gx_short(x)), L) if GXD and GX.has_lang(L.code) else "")}
 {cta_html(L, P)}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
-{fold(he_zhujia(he_yin((ZJ.zy_section(c, sents, zy_, zrows, esc) if dz and zy_ else "") + secs + yiwen_html(c) + extra + (GB.section(c, D["gb"].get(c), epname, yt, st, quotes) if L.code.startswith("zh") and yt and not future else "")), fenqi_html))}
+{fold(he_zhujia(he_yin((ZJ.zy_section(c, sents, zy_, zrows, esc) if dz and zy_ else "") + secs + yiwen_html(c) + extra + (GB.section(c, D["gb"].get(c), epname, yt, st, quotes) if L.code.startswith("zh") and yt and not future else "")), fenqi_html, L.t("f_others")))}
 {citeit}
 </div>
 <p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>{RW.chip_line(D.get("renwu"), c, P) if L.code.startswith("zh") else ""}{GS.footer_line(D.get("gushi"), c, P) if L.code.startswith("zh") else ""}
