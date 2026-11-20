@@ -2766,13 +2766,13 @@ def build_lang(L, D, write):
             _zb = D["zhuben"].get(c, {}); _fq = []
             for _k, _nm in (("yang", "杨伯峻《论语译注》"), ("qian", "钱穆《论语新解》")):
                 _z = _zb.get(_k)
-                if _z and _z.get("kind") == "k_diff" and _z.get("sure") in ("s_ding", "s_wen"): _fq.append((_nm, _z))
+                if _z and _z.get("kind") == "k_diff" and _z.get("sure") in ("s_ding", "s_wen"): _fq.append((_nm, {**_z, "_k0": _k}))
             if _fq:
                 _keys = list(dict.fromkeys(z["key"] for _, z in _fq if z.get("key")))
                 _fqh = f'诸家分歧：{"、".join("“" + k + "”" for k in _keys)}怎么讲' if _keys else "诸家分歧：这一章各家讲法不同"
                 fenqi_html = (f'<div class="fenqi" id="fenqi"><h3>{esc(_fqh)}</h3><ul>'
                               f'<li><b>朱熹《论语集注》</b>一孔录主朱注，本页的白话和逐句注照朱注讲' + ("；这章是争议读法，一孔之见里写明了取舍" if c in D["zy"] else "") + "。</li>"
-                              + "".join(f'<li><b>{_nm}</b><span class="sure {z["sure"]}">{L.t(z["sure"])}</span>“{esc(z["text"])}”<small>{esc(z["say"])}</small></li>' for _nm, z in _fq)
+                              + "".join(f'<li><b>{_nm}</b><span class="sure {z["sure"]}">{L.t(z["sure"])}</span>{esc(z["say"])}<a class="fqyin" href="#zb-{ {"yang": "yangbojun", "qian": "qianmu"}[_k0]}">看原句</a></li>' for _nm, z in _fq for _k0 in [z["_k0"]])
                               + f'</ul><p class="note">“把握”是我们对这条异同判断的把握，“定”最稳。现代注本版权期内，只短引一句，页码核过正版书后再补；皇侃义疏等古注原页见 <a href="#zhuben">各家注本</a>。</p></div>')
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>

@@ -1055,3 +1055,4 @@ details.legge p.note{font-style:normal;font-size:.82em;color:var(--mute,#666)}
 .pgo{margin:6px 0 16px}.pgo .go{display:inline-block;padding:8px 16px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700}.pgo .go:hover{text-decoration:none;opacity:.9}
 .pcards.lyp .pcard em{display:block;margin-top:4px}
 .pnav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin:22px 0 8px;font-size:15px}
+.fenqi .fqyin{margin-left:8px;font-size:13px;white-space:nowrap}
