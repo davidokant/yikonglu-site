@@ -1057,12 +1057,15 @@ details.legge p.note{font-style:normal;font-size:.82em;color:var(--mute,#666)}
 .pnav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin:22px 0 8px;font-size:15px}
 .fenqi .fqyin{margin-left:8px;font-size:13px;white-space:nowrap}
 
-/* 栏目代言人（11-20）：左字右立绘，切口贴金线 */
-.dy{position:relative;display:grid;grid-template-columns:1fr 38%;align-items:end;min-height:240px;margin:8px 0 24px;border-bottom:1px solid var(--gold);background:linear-gradient(0deg,color-mix(in srgb,var(--gold) 12%,var(--bg)),var(--bg) 75%)}
-.dy img{grid-column:2;grid-row:1;width:100%;height:auto;max-height:300px;object-fit:contain;object-position:50% 100%;display:block;align-self:end}
-.dyt{grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:6px;padding:24px 12px 24px 32px;min-width:0}
-.dytag{font-size:13px;letter-spacing:.12em;color:var(--mute)}
-.dyn{font-weight:900;font-size:28px;color:var(--gold);letter-spacing:.18em;line-height:1.2}.dyn a{color:inherit}
+/* 栏目代言人（11-20）：并进页头，立绘站在页头底线上 */
+.dyh .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;align-items:end}
+.dyh .wrap>*{grid-column:1}
+.dyh .wrap>.dyimg{grid-column:2;grid-row:1/span 9;align-self:end;height:300px;width:auto;max-width:none;display:block;margin-bottom:-26px}
+.chhead.dyh{padding-bottom:26px;overflow:hidden}
+.dyt{display:flex;flex-direction:column;gap:4px;margin-top:18px;padding-left:16px;border-left:3px solid var(--gold);max-width:560px}
+.dyn{font-weight:900;font-size:24px;color:var(--gold);letter-spacing:.18em;line-height:1.3}.dyn a{color:inherit}
 .dysay{font-size:18px;line-height:1.8;margin:0}
 .dywho{font-size:14px;color:var(--mute);line-height:1.6}
-@media (max-width:640px){.dy{grid-template-columns:1fr 42%;min-height:200px}.dyt{padding:18px 8px 18px 18px}.dyn{font-size:24px}.dysay{font-size:16px}.dywho{font-size:13px}}
+.syhero.dyh .wrap>.dyimg{margin-bottom:-30px;height:340px}
+.syhero.dyh .dyt{margin:18px 0 6px}.syhero.dyh .dysay{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.7)}.syhero.dyh .dywho{color:#cfe3d6}.syhero.dyh .dyn{color:#e2c77e}
+@media (max-width:640px){.dyh .wrap{column-gap:10px}.dyh .wrap>.dyimg{height:200px}.syhero.dyh .wrap>.dyimg{height:220px}.dyn{font-size:20px}.dysay{font-size:16px}.dywho{font-size:13px}.dyt{padding-left:12px}}

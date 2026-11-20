@@ -1007,15 +1007,22 @@ DAIYAN = {  # 11-20 主人：五个栏目首页各请一位原创角色代言（
     "search.html": ["检索", "lisa", "Lisa", "汪！记得一两个字就行，剩下的交给我的鼻子。", "守拙家的柯基，戴青色头巾。人到齐了，它才肯睡。"],
     "duben.html": ["读本", "liuqi", "阮流绮", "读本不收钱。印出来放床头，一天一章，像每天练一段基本功。", "舞者，常被请去各家演出，看人看事很准。"],
 }
-def daiyan(rel, text):
+def daiyan(rel, text):  # 11-20 主人：卡片并进页头（标题栏或题名页大图），不另起一块，免得上下脱节
     d = DAIYAN.get(rel)
-    m = re.search(r"<main[^>]*>", text) if d else None
-    if not m: return text
+    if not d: return text
     tag, rid, nm, say, who = d
     nmh = f'<a href="/shuyuan/{rid}.html">{nm}</a>' if rid != "lisa" else nm
-    card = (f'<div class="dy"><img src="/assets/lead/{rid}-ban.webp" alt="{nm}，一孔录原创角色" width="300" height="440" loading="lazy" decoding="async">'
-            f'<div class="dyt"><b class="dyn">{nmh}</b><p class="dysay">{say}</p><span class="dywho">一孔录原创角色。{who}</span></div></div>')
-    return text[:m.end()] + card + text[m.end():]
+    txt = f'<div class="dyt"><b class="dyn">{nmh}</b><p class="dysay">{say}</p><span class="dywho">一孔录原创角色。{who}</span></div>'
+    img = f'<img class="dyimg" src="/assets/lead/{rid}-ban.webp" alt="{nm}，一孔录原创角色" width="300" height="440" decoding="async">'
+    for head in ('<div class="chhead"><div class="wrap">', '<div class="syhero">'):
+        a = text.find(head)
+        if a < 0: continue
+        b = text.find("</h1>", a) if head.startswith('<div class="chhead"') else text.find('<p class="syhbtn">', a)
+        b = b + 5 if head.startswith('<div class="chhead"') else text.find("</p>", b) + 4
+        cls = "chhead dyh" if head.startswith('<div class="chhead"') else "syhero dyh"
+        out = text[:b] + txt + img + text[b:]
+        return out[:a] + out[a:].replace(head, head.replace(head.split('"')[1], cls, 1), 1)
+    return text
 LEAD_WEEK = [["youli", "上官有理", ""], ["zhaojin", "孔照今", ""], ["shouzhuo", "林守拙", ""], ["luchuan", "陆川", ""], ["liuqi", "阮流绮", ""], ["shahela", "莎赫拉", ""],
              ["lisa", "Lisa", "汪！——守拙家的柯基，戴青色头巾。人到齐了，它才肯睡。"]]  # 首页今日《论语》一周七位领读人，星期一到星期日（11-14 主人：六人＋一狗）
 def wk_js_only(h):  # wk_html 里“本周读了几天”的那段脚本
