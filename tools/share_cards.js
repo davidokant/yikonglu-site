@@ -203,8 +203,8 @@ var show0=show;show=function(cv){show0(cv);var M=document.querySelectorAll('.shm
 function pick(k){KIND=k;if(k==='rw')rw();else if(k==='dy')dy();else if(k==='nl')nl();else{KIND='yy';yy()}}
 window.ykPick=pick;
 if(BD&&ZH&&X4.nl){var bdgo=function(){setTimeout(function(){pick('nl')},200)};if(document.readyState==='complete')bdgo();else window.addEventListener('load',bdgo)}
-// 读完了：从四种新卡里随机出一种（各语种同）
+// 读完了：只记一笔阅读；ykBing(false) 不出卡（11-20 主人：点读完了不弹分享卡）；分享按钮另有入口
 // 点句子出的分享图（11-15 主人：也改成新版随机）：这一句当主句，四种新卡随机一种；分享按钮再点时由 yklReset 换回本章主句
 window.ykKn0=D.kn;window.ykPickSent=function(n){D.kn=n;var K=TABS.map(function(t){return t[0]}).filter(function(k){return k!=='nl'||X4.nl});pick(K.length?K[Math.floor(Math.random()*K.length)]:'yy')};
-window.ykBing=function(){var R=RD(),td=today();if(CN&&!R.some(function(r){return r.c===CN})){R.push({d:td,c:CN,n:D.y.replace(/[，。；：？！、“”‘’「」\s]/g,'').length});WR(R)}var K=TABS.map(function(t){return t[0]});pick(K.length?K[Math.floor(Math.random()*K.length)]:'yy')};
+window.ykBing=function(open){var R=RD(),td=today();if(CN&&!R.some(function(r){return r.c===CN})){R.push({d:td,c:CN,n:D.y.replace(/[，。；：？！、“”‘’「」\s]/g,'').length});WR(R)}if(open===false)return;var K=TABS.map(function(t){return t[0]});pick(K.length?K[Math.floor(Math.random()*K.length)]:'yy')};
 })()}

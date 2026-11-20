@@ -11,6 +11,21 @@ Disallow: /reads
 Disallow: /intent
 Disallow: /data/live-
 
+User-agent: Googlebot
+User-agent: Bingbot
+Allow: /
+Disallow: /done
+Disallow: /mirror
+Disallow: /ai
+Disallow: /hj
+Disallow: /copy$
+Disallow: /top$
+Disallow: /hit$
+Disallow: /reads
+Disallow: /intent
+Disallow: /data/live-
+Disallow: /data/
+
 User-agent: MJ12bot
 Disallow: /
 

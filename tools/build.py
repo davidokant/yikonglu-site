@@ -933,7 +933,7 @@ def analytics(L):
               + 'window.yklDone=cnt;'
               + 'document.querySelectorAll(".donebox").forEach(function(bx){var c=bx.getAttribute("data-c"),b=bx.querySelector("button"),p=bx.querySelector(".donecnt"),k="ykl_done_"+c,was=false;try{was=!!localStorage.getItem(k)}catch(e){}'
               + 'function mark(){b.textContent=X.ok;b.disabled=true;b.classList.add("on")}if(was)mark();bx.hidden=false;cnt(c,p);'
-              + 'b.addEventListener("click",function(){if(b.disabled)return;mark();if(window.ykBing)setTimeout(window.ykBing,300);try{localStorage.setItem(k,"1")}catch(e){}var al=document.querySelector("aside li[data-c=\\""+c+"\\"]");if(al)al.classList.add("rd");fetch(EP("done"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:c})}).then(function(r){return r.json()}).then(function(d){p.textContent=X.n.replace("{d}",n(d.today)).replace("{t}",n(d.total));p.hidden=false}).catch(function(){})})});'
+              + 'b.addEventListener("click",function(){if(b.disabled)return;mark();if(window.ykBing)window.ykBing(false);/* 11-20 主人：点读完了不弹分享卡，只记一笔阅读；分享用章页上原有的分享按钮 */try{localStorage.setItem(k,"1")}catch(e){}var al=document.querySelector("aside li[data-c=\\""+c+"\\"]");if(al)al.classList.add("rd");fetch(EP("done"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:c})}).then(function(r){return r.json()}).then(function(d){p.textContent=X.n.replace("{d}",n(d.today)).replace("{t}",n(d.total));p.hidden=false}).catch(function(){})})});'
               + 'window.yklCopy=function(sid){if(!CC||!DB)return;fetch(EP("copy"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({c:CC,s:sid})}).catch(function(){})};'
               + 'var LJ=null;function lj(cb){if(LJ){cb(LJ);return}fetch(["","data","live"].join("/")+"-"+document.documentElement.lang+".json").then(function(r){return r.json()}).then(function(j){LJ=j;cb(j)}).catch(function(){})}'
               + 'var RM=document.getElementById("remen"),ST=document.getElementById("steps"),TJ=document.getElementById("topju"),HL=document.querySelectorAll(".toc li[data-c]"),GD=document.getElementById("rcta")||document.getElementById("meiri");'
@@ -1334,9 +1334,13 @@ NAV_DB = {"en": "Free PDF", "ja": "無料PDF", "ko": "무료 PDF", "fr": "PDF gr
 # 11-19 主人点卡“七种全部章页撤”：韩法西德越印俄七种的论语章页 noindex、出站点地图，页面照开（简繁英日不动）
 FL_NOIDX_L = ("ko", "fr", "es", "de", "vi", "id", "ru")
 FL_NOIDX = '<meta name="robots" content="noindex,follow">'
+# 11-20 收录查因“乙”：外文杂页（关于、隐私、支持、开放数据、勘误、方法、读本、书院入院）noindex,follow、出站点地图；各语种 search.html 也 noindex。简繁这几页照旧收
+MISC_NOIDX = ("about.html", "yinsi.html", "zhichi.html", "kaifang.html", "kanwu.html", "fangfa.html", "duben.html", "shuyuan/ruyuan.html", "gaidong.html")
+def misc_noidx(code, rel): return rel == "search.html" or (not code.startswith("zh") and rel in MISC_NOIDX)
 
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
+    if misc_noidx(L.code, rel) and 'name="robots"' not in head_extra: head_extra = FL_NOIDX + head_extra
     desc = pad_desc(L, desc, body)
     if not L.code.startswith("zh"): body = hant_scripture(body)
     body = _strip_js_notes(body)
@@ -1675,6 +1679,16 @@ PRIVACY = {
 PRIVACY["zh-Hant"] = PRIVACY["zh-Hans"]
 
 DATE_TOK, DATE_TOK_SL = "\ue0f0DATE\ue0f1", "\ue0f0DATESL\ue0f1"
+def content_fp(text):
+    """11-20（谷歌收录查因“甲”）：页面“内容指纹”只算 <main> 里看得见的文字。改模板、改版式、换脚本、调样式、合并折叠块都不算正文变动，
+    站点地图 lastmod 不跟着换；正文字句真改了才换日期。日期字样（页面上的“最后核对”日）也剔掉，免得日期自己牵动指纹。"""
+    m = re.search(r"<main\b.*?</main>", text, re.S); t = m.group(0) if m else text
+    t = re.sub(r"<(script|style|template|summary|button|nav|aside|h[2-6])\b.*?</\1>", "\x00", t, flags=re.S)  # 小标题、折叠条、按钮、侧栏是版式，不算正文
+    t = t.replace(DATE_TOK, " ").replace(DATE_TOK_SL, " ")
+    t = __import__("html").unescape(re.sub(r"<[^>]+>", "\x00", t))
+    t = re.sub(r"\d{4}[-/年]\d{1,2}[-/月]\d{1,2}日?", " ", t)
+    seg = sorted(x for x in (re.sub(r"\s+", " ", y).strip() for y in t.split("\x00")) if x)  # 文字块排序后再算：只挪位置、换块不换字，不算改动
+    return "t:" + __import__("hashlib").md5("\n".join(seg).encode()).hexdigest()[:16]
 
 DDJ_DIR = os.environ.get("YK_DDJ_DIR") or os.path.join(GAO_DIR, "_道德经")  # 道德经网站素材（内容线程交，结构同论语）
 DDJ_CFG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj.json")  # {"live": false, "src": 底本名, "img": 原页图根地址}
@@ -4067,8 +4081,10 @@ def main(zdir, outdir, kanwu=None):
             p = os.path.join(outdir, prefix, rel); os.makedirs(os.path.dirname(p) or outdir, exist_ok=True)
             text = post(text) if post else text
             key = (prefix + "/" if prefix else "") + rel
-            h = __import__("hashlib").md5(re.sub(r"<script(?![^>]*application/)[^>]*>.*?</script>", "", text, flags=re.S).encode()).hexdigest()[:16]  # 11-19 只改脚本（分享卡、开卷）不算内容变动，不换修改日期
-            if pdates.get(key, [None])[0] != h: pdates[key] = [h, today]
+            h = content_fp(text)  # 11-20 收录：只认 <main> 里的正文文字，模板、样式、脚本、版式改动都不换修改日期
+            _o = pdates.get(key, [None, today])
+            if _o[0] and not _o[0].startswith("t:"): pdates[key] = [h, _o[1]]  # 旧指纹一次性换新指纹，日期照旧
+            elif _o[0] != h: pdates[key] = [h, today]
             seen.add(key)
             open(p, "w", encoding="utf-8").write(text.replace(DATE_TOK, pdates[key][1]).replace(DATE_TOK_SL, pdates[key][1].replace("-", "/")))
         return write
@@ -4165,6 +4181,13 @@ def main(zdir, outdir, kanwu=None):
     def lastmod(u):
         k = u[len(DOMAIN) + 1:]
         return pdates.get(k + "index.html" if k.endswith("/") or not k else k, [None, today])[1]
+    def _code_rel(u):
+        k = u[len(DOMAIN) + 1:]
+        for code, v in sorted(LANGS.items(), key=lambda kv: -len(kv[1][0])):
+            if v[0] and k.startswith(v[0]): return code, k[len(v[0]):]
+        return "zh-Hans", k
+    _n0 = len(urls); urls = [u for u in urls if not misc_noidx(*_code_rel(u))]
+    print(f"  站点地图：外文杂页 noindex 移出 {_n0 - len(urls)} 条")
     # 11-18 必应只认出 3.2K：站点地图拆卷。sitemap.xml 改为总目录；简繁合一卷 sitemap-core.xml（先交必应），外文各一卷
     vols = {}
     for u in urls:
@@ -4186,7 +4209,9 @@ def main(zdir, outdir, kanwu=None):
     open(os.path.join(outdir, "sw.js"), "w", encoding="utf-8").write(open(os.path.join(HERE, "sw.js"), encoding="utf-8").read().replace("@VER@", ver).replace("@PREFIXES@", json.dumps([""] + [LANGS[k][0] for k in LANGS if LANGS[k][0]])))
     # 11-13 GSC 报 /done /top /copy /intent /data/live- 404：是页面脚本里计数服务的接口路径被当成链接抓了；脚本已改成拼接，这里再挡一下
     # 11-17 主人点卡：拦 MJ12bot（SEO 外链爬虫，不带读者，只耗入口计数额度）
-    open(os.path.join(outdir, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /done\nDisallow: /mirror\nDisallow: /ai\nDisallow: /hj\nDisallow: /copy$\nDisallow: /top$\nDisallow: /hit$\nDisallow: /reads\nDisallow: /intent\nDisallow: /data/live-\n\nUser-agent: MJ12bot\nDisallow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
+    _rb = "Allow: /\nDisallow: /done\nDisallow: /mirror\nDisallow: /ai\nDisallow: /hj\nDisallow: /copy$\nDisallow: /top$\nDisallow: /hit$\nDisallow: /reads\nDisallow: /intent\nDisallow: /data/live-\n"
+    # 11-20 收录查因“乙”：/data/ 下的 json、csv 是给人和程序下载的开放数据，谷歌、必应在抓，白占抓取额度；只对这两家挡，别的程序（智器、开放数据用户）照旧能取
+    open(os.path.join(outdir, "robots.txt"), "w").write(f"User-agent: *\n{_rb}\nUser-agent: Googlebot\nUser-agent: Bingbot\n{_rb}Disallow: /data/\n\nUser-agent: MJ12bot\nDisallow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
     open(os.path.join(outdir, "CNAME"), "w").write("yikonglu.com\n")
     if ADSENSE_PUB: open(os.path.join(outdir, "ads.txt"), "w").write(f"google.com, {ADSENSE_PUB.replace('ca-', '')}, DIRECT, f08c47fec0942fa0\n")  # 11-17 AdSense 授权卖家声明
     open(os.path.join(outdir, ".nojekyll"), "w").write("")
