@@ -1014,7 +1014,7 @@ def daiyan(rel, text):
     tag, rid, nm, say, who = d
     nmh = f'<a href="/shuyuan/{rid}.html">{nm}</a>' if rid != "lisa" else nm
     card = (f'<div class="dy"><img src="/assets/lead/{rid}-ban.webp" alt="{nm}，一孔录原创角色" width="300" height="440" loading="lazy" decoding="async">'
-            f'<div class="dyt"><span class="dytag">{tag} · 代言</span><b class="dyn">{nmh}</b><p class="dysay">{say}</p><span class="dywho">一孔录原创角色。{who}</span></div></div>')
+            f'<div class="dyt"><b class="dyn">{nmh}</b><p class="dysay">{say}</p><span class="dywho">一孔录原创角色。{who}</span></div></div>')
     return text[:m.end()] + card + text[m.end():]
 LEAD_WEEK = [["youli", "上官有理", ""], ["zhaojin", "孔照今", ""], ["shouzhuo", "林守拙", ""], ["luchuan", "陆川", ""], ["liuqi", "阮流绮", ""], ["shahela", "莎赫拉", ""],
              ["lisa", "Lisa", "汪！——守拙家的柯基，戴青色头巾。人到齐了，它才肯睡。"]]  # 首页今日《论语》一周七位领读人，星期一到星期日（11-14 主人：六人＋一狗）

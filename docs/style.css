@@ -1060,9 +1060,9 @@ details.legge p.note{font-style:normal;font-size:.82em;color:var(--mute,#666)}
 /* 栏目代言人（11-20）：左字右立绘，切口贴金线 */
 .dy{position:relative;display:grid;grid-template-columns:1fr 38%;align-items:end;min-height:240px;margin:8px 0 24px;border-bottom:1px solid var(--gold);background:linear-gradient(0deg,color-mix(in srgb,var(--gold) 12%,var(--bg)),var(--bg) 75%)}
 .dy img{grid-column:2;grid-row:1;width:100%;height:auto;max-height:300px;object-fit:contain;object-position:50% 100%;display:block;align-self:end}
-.dyt{grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:6px;padding:0 8px 18px 0;min-width:0}
+.dyt{grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:6px;padding:24px 12px 24px 32px;min-width:0}
 .dytag{font-size:13px;letter-spacing:.12em;color:var(--mute)}
 .dyn{font-weight:900;font-size:28px;color:var(--gold);letter-spacing:.18em;line-height:1.2}.dyn a{color:inherit}
 .dysay{font-size:18px;line-height:1.8;margin:0}
 .dywho{font-size:14px;color:var(--mute);line-height:1.6}
-@media (max-width:640px){.dy{grid-template-columns:1fr 42%;min-height:200px}.dyn{font-size:24px}.dysay{font-size:16px}.dywho{font-size:13px}}
+@media (max-width:640px){.dy{grid-template-columns:1fr 42%;min-height:200px}.dyt{padding:18px 8px 18px 18px}.dyn{font-size:24px}.dysay{font-size:16px}.dywho{font-size:13px}}
