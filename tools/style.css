@@ -822,14 +822,15 @@ table.bybook small{display:block;font-size:.78em;line-height:1.4;color:var(--mut
 .mcal .mtag:empty{display:none}
 .mcal .mtag span{font-size:13px;padding:2px 10px;border-radius:12px;background:rgba(35,80,63,.09);color:#23503F}
 .mcal .mtag .fe{background:#A23B2C;color:#fff;font-weight:700}
-.mcal .mhalf{position:absolute;right:18px;bottom:0;width:250px;height:calc(100% - 8px);max-height:250px;object-fit:contain;object-position:50% 100%;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 58% 72% at 50% 34%,#000 70%,transparent 100%);mask-image:radial-gradient(ellipse 58% 72% at 50% 34%,#000 70%,transparent 100%)}
+/* 11-20 主人：领读人完整展示，不虚化、不平切（全身透明图，等比放入、底对齐） */
+.mcal .mhalf{position:absolute;right:24px;bottom:6px;width:250px;height:calc(100% - 20px);max-height:320px;object-fit:contain;object-position:50% 100%;pointer-events:none}
 .mcal .wk .md{font-size:13px;color:var(--mute)}
 .mcal .wk i{background:transparent}.mcal .wk i.on{background:#23503F;border-color:#23503F}
 .mcal .mhalf[hidden]{display:none}
 .mcal .wk{margin:0;padding:10px 26px 14px;border-top:1px dashed var(--line);position:relative;z-index:1;background:var(--paper)}
 .mcal .wk i.td{box-shadow:0 0 0 2px #F2F1EA,0 0 0 4px #A23B2C}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mcal .mcalb{background:rgba(242,241,234,.06)}:root:not([data-theme="light"]) .mcal .cm::before,:root:not([data-theme="light"]) .mcal .cm::after{background:var(--paper)}}
-@media (max-width:640px){.mcal .mcalb{flex-basis:96px}.mcal .cd{font-size:50px}.mcal .cm{font-size:15px}.mcal .cm::before{left:18px}.mcal .cm::after{right:18px}.mcal .mtxt{padding:16px 16px 14px}.mcal .mtxt{padding-bottom:150px}.mcal .mhalf{right:10px;width:170px;height:150px;max-height:none}.meiri.mcal blockquote{font-size:22px}.mcal .wk{padding:10px 16px 12px}}
+@media (max-width:640px){.mcal .mcalb{flex-basis:96px}.mcal .cd{font-size:50px}.mcal .cm{font-size:15px}.mcal .cm::before{left:18px}.mcal .cm::after{right:18px}.mcal .mtxt{padding:16px 16px 14px}.mcal .mtxt{padding-bottom:220px}.mcal .mhalf{right:12px;bottom:6px;width:180px;height:208px;max-height:none}.meiri.mcal blockquote{font-size:22px}.mcal .wk{padding:10px 16px 12px}}
 
 /* 11-14 外文首页日历：月名、星期、农历是外文，字距收紧、可折行 */
 html:not([lang^="zh"]) .mcal .cm{letter-spacing:.02em;font-size:15px;padding-left:4px;padding-right:4px}

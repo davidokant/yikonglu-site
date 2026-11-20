@@ -158,7 +158,7 @@ function calF(Y,m,d){var dt=new Date(Y,m-1,d),L=lunar(dt),R=X3.rl||{},FE=I.fe||{
   return out}
 function monF(m){try{return new Date(Date.UTC(2026,m-1,15)).toLocaleDateString(I.lg,{month:'long',timeZone:'UTC'})}catch(e){return String(m)}}
 function mdF(m,d){try{return new Date(Date.UTC(2026,m-1,d)).toLocaleDateString(I.lg,{month:'long',day:'numeric',timeZone:'UTC'})}catch(e){return m+'/'+d}}
-function nlYear(m,d){var t=new Date(),y=t.getFullYear(),td=new Date(y,t.getMonth(),t.getDate());if(y<2027)return 2027;return new Date(y,m-1,d)>=td?y:y+1}
+function nlYear(m,d){var t=new Date(),y=t.getFullYear(),td=new Date(y,t.getMonth(),t.getDate());return new Date(y,m-1,d)>=td?y:y+1}
 function vtext(c,t,x,y,s){t.split('').forEach(function(ch,i){c.fillText(ch,x,y+i*s*1.18)})}
 function nl(){var N=X4.nl;if(!N){yy();return}
   // 11-19 别的书（孟子、道德经、三字经）没有年历课表：出“读经日历卡”，日期＝读的当天，右上写第几章/全书几章

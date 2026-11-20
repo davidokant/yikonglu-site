@@ -23,6 +23,15 @@
   })[lang.slice(0, 2)] || {
     go: "Continue reading", last: "Last read", prog: "{n} of {t} chapters read", priv: "No sign-in, no personal data, no interruptions.", move: "Move progress", mvh: "This makes a private link. Open it in a browser on your other phone or computer and your progress comes along. No sign-in.", cpy: "Copy link", snd: "Send to myself…", cls2: "Close", clear: "Clear", copied: "Link copied. Open it on your other device to bring your progress along.", imported: "Reading progress imported.", ago: ["just now", "{n} min ago", "{n} h ago", "{n} d ago"], sure: "Clear reading progress on this device?", stk: "{n}-day reading streak", std: "read a chapter today to keep it going"
   });
+  // 11-20 主人：“上次读到”一栏显示累计读了多少分钟（只算页面在前台、一分钟内有翻动或操作的时间；只存本机）
+  T.min = ({ "zh-Hant": "在這台裝置上，你已讀《{b}》{m}", zh: "在这台设备上，你已读《{b}》{m}", ja: "この端末で『{b}』を{m}読みました", ko: "이 기기에서 《{b}》을(를) {m} 읽었습니다", fr: "Sur cet appareil : {m} de lecture", es: "En este dispositivo: {m} de lectura", de: "Auf diesem Gerät: {m} gelesen", vi: "Trên thiết bị này, bạn đã đọc {m}", id: "Di perangkat ini, Anda sudah membaca {m}", ru: "На этом устройстве: {m} чтения" })[HANT ? "zh-Hant" : ZH ? "zh" : lang.slice(0, 2)] || "On this device: {m} of reading";
+  function mins(sec) {
+    var m = Math.floor(sec / 60), h = Math.floor(m / 60), r = m % 60;
+    if (ZH) return h ? " <b>" + h + "</b> " + (HANT ? "小時" : "小时") + (r ? " <b>" + r + "</b> " + (HANT ? "分鐘" : "分钟") : "") : " <b>" + m + "</b> " + (HANT ? "分鐘" : "分钟");
+    if (/^ja/.test(lang)) return h ? "<b>" + h + "</b>時間" + (r ? "<b>" + r + "</b>分" : "") : "<b>" + m + "</b>分";
+    if (/^ko/.test(lang)) return h ? "<b>" + h + "</b>시간" + (r ? " <b>" + r + "</b>분" : "") : "<b>" + m + "</b>분";
+    return h ? "<b>" + h + "</b> h " + (r ? "<b>" + r + "</b> min" : "") : "<b>" + m + "</b> min";
+  }
   function load() { try { return JSON.parse(localStorage.getItem(K) || "null") || { b: {} } } catch (e) { return null } }
   function save(s) { try { localStorage.setItem(K, JSON.stringify(s)); return true } catch (e) { return false } }
   function dstr(t) { return t.getFullYear() + "-" + ("0" + (t.getMonth() + 1)).slice(-2) + "-" + ("0" + t.getDate()).slice(-2) }
@@ -46,6 +55,7 @@
     + ".xdbar .xdmeta{color:var(--mute,#69716b);font-size:13px;margin-top:6px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}.xdbar .xdmeta button{background:none;border:0;padding:0;color:#23503f;font:inherit;cursor:pointer;text-decoration:underline}"
     + ".xdmvp{margin-top:10px;padding:10px 12px;background:var(--bg,#f2f1ea);border-radius:8px;font-size:14px}.xdmvp p{margin:0 0 8px}.xdmvp button{margin:0 8px 0 0;padding:5px 14px;border-radius:99px;border:1px solid #23503f;background:#23503f;color:#fff;font:inherit;cursor:pointer}.xdmvp .xdb2,.xdmvp .xdb3{background:transparent;color:#23503f}"
     + ".xdstk{margin-top:8px;font-size:14px;color:#23503f}.xdstk span{color:var(--mute,#777)}.xdplan{display:block;margin-top:6px;font-size:14px;color:#8a5a2c;text-decoration:none}.xdplan[hidden]{display:none}.xdprog{height:6px;background:var(--line,#dcded2);border-radius:99px;overflow:hidden;margin-top:8px}.xdprog i{display:block;height:100%;background:#8a5a2c}"
+    + ".xdmin{margin-top:8px;font-size:14px;color:#8a5a2c}.xdmin b{font-size:18px;color:#23503f}@media (prefers-color-scheme:dark){.xdmin b{color:#83bba0}}"
     + ".xdseen::after{content:'✓';margin-left:6px;color:#8a5a2c;font-weight:700}.xdtoast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1f2421;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;z-index:99;max-width:90vw}"
     + "@media (prefers-color-scheme:dark){.xdbar .xdgo b{color:#83bba0}.xdbar .xdgo .xdarr{background:#2d6a53}}";
   function style() { if (document.getElementById("xdcss")) return; var st = document.createElement("style"); st.id = "xdcss"; st.textContent = css; document.head.appendChild(st) }
@@ -59,6 +69,7 @@
         var a = S.b[bk] || { seen: [] }, x = j.b[bk];
         a.seen = (a.seen || []).concat((x.seen || []).filter(function (c) { return (a.seen || []).indexOf(c) < 0 }));
         if (x.last && (!a.last || x.last.ts > a.last.ts)) a.last = x.last;
+        if ((x.sec || 0) > (a.sec || 0)) a.sec = x.sec;
         S.b[bk] = a;
       }
       (j.d || []).forEach(function (d) { S.d = S.d || []; if (S.d.indexOf(d) < 0) S.d.push(d) }); if (j.plan && !S.plan) S.plan = j.plan; if (S.d) S.d.sort();
@@ -96,10 +107,18 @@
         bs.last = { p: location.pathname, c: D.c, ti: D.ti || "", no: h1 ? h1.textContent.split(" · ").slice(0, 2).join(" · ") : D.c, ts: Date.now() }; bs._y = y0 || 0;
         S.b[book] = bs; var td = dstr(new Date()); S.d = S.d || []; if (S.d.indexOf(td) < 0) { S.d.push(td); if (S.d.length > 800) S.d = S.d.slice(-800) } save(S);
       };
-      if (location.hash === "#ka" || window.ykShareOnly) {
+      if (location.hash === "#ka" || location.hash === "#kn" || window.ykShareOnly) {
         var rf = function () { if (scrollY / Math.max(1, document.documentElement.scrollHeight) > 0.3) { removeEventListener("scroll", rf); rec() } };
         addEventListener("scroll", rf, { passive: true });
       } else rec();
+      // 计时：每 5 秒看一次，页面在前台、60 秒内有翻动或操作才加；从分享入口进来的，开始记阅读后才计
+      var act = Date.now(), poke = function () { act = Date.now() };
+      ["scroll", "keydown", "pointerdown", "pointermove", "touchstart", "wheel"].forEach(function (e) { addEventListener(e, poke, { passive: true }) });
+      setInterval(function () {
+        if (document.hidden || Date.now() - act > 6e4) return;
+        var s3 = load(); if (!s3 || !s3.b || !s3.b[book] || !s3.b[book].last || s3.b[book].last.c !== D.c) return;
+        s3.b[book].sec = (s3.b[book].sec || 0) + 5; save(s3);
+      }, 5000);
       if (y0) { history.replaceState(null, "", location.pathname); addEventListener("load", function () { scrollTo(0, y0 * document.documentElement.scrollHeight) }) }
       var tick = 0;
       addEventListener("scroll", function () {
@@ -121,6 +140,7 @@
     d.innerHTML = '<a class="xdgo" href="' + L.p + (bs._y > 0.05 ? "#xd-y" : "") + '"><span>' + T.last + "：" + name + " · " + esc(L.no) + "<br><b>" + esc(L.ti) + '</b></span><span class="xdarr">' + T.go + " →</span></a>"
       + (t ? '<div class="xdprog" title="' + fmt(T.prog, { n: n, t: t }) + '"><i style="width:' + Math.min(100, n / t * 100).toFixed(1) + '%"></i></div>' : "")
       + (function () { var k = streak(S.d); return k.n >= 2 ? '<div class="xdstk"><b>' + fmt(T.stk, { n: k.n }) + "</b>" + (k.today ? "" : "<span> · " + T.std + "</span>") + "</div>" : "" })()
+      + ((bs.sec || 0) >= 60 ? '<div class="xdmin">' + fmt(T.min, { b: name, m: mins(bs.sec) }) + "</div>" : "")
       + '<a class="xdplan" hidden></a>'
       + '<div class="xdmeta"><span>' + ago(L.ts) + (t ? " · " + fmt(T.prog, { n: n, t: t }) : "") + '</span><button type="button" class="xdmv">' + T.move + '</button><button type="button" class="xdcl">' + T.clear + "</button><span>" + T.priv + "</span></div>";
     d.querySelector(".xdmv").onclick = function () { movePanel(d) };

@@ -865,7 +865,7 @@ if(cs){sb.hidden=false;sb.onclick=function(){navigator.share({files:[f],text:txt
 a.onclick=function(e){if(inapp||(ios&&!cs)){e.preventDefault();nt.textContent=T.hold;nt.classList.add('hl');return}if(ios&&cs){e.preventDefault();navigator.share({files:[f]}).catch(function(){})}}});
 M.addEventListener('click',function(e){if(e.target===M||e.target.closest('.cls'))M.remove()});document.body.appendChild(M)}
 @CARDS@
-if(location.hash==='#ka'){window.ykShareOnly=1;history.replaceState(null,'',location.pathname+location.search);setTimeout(function(){if(window.ykPick)window.ykPick('yy');else card()},400)}
+if(location.hash==='#ka'||location.hash==='#kn'){var _kk=location.hash==='#kn'?'nl':'yy';window.ykShareOnly=1;history.replaceState(null,'',location.pathname+location.search);setTimeout(function(){if(window.ykPick)window.ykPick(_kk);else card()},400)}
 })();
 </script>"""
 SHARE_JS = SHARE_JS.replace("@CARDS@", open(os.path.join(HERE, "share_cards.js"), encoding="utf-8").read() if os.environ.get("YK_CARDS", "1") != "0" else "")  # 新分享卡（11-08 主人“过”）；回退设 YK_CARDS=0
@@ -3098,7 +3098,7 @@ def build_lang(L, D, write):
                      'fetch("/data/nianli-' + L.code + '.json").then(function(r){return r.json()}).then(function(N){var M=document.getElementById("meiri"),x=N[md];if(!M)return;var q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),k=M.querySelector(".mk");'
                      'if(!x){M.querySelector(".md").textContent=dt+" · 补读日";q.textContent="今天不排新课，前几天落下的课，今天补上。";b.textContent="";c.href="' + P + 'nianli/";k.hidden=true;M.hidden=false;return}'
                      'M.querySelector(".md").textContent=dt+" · 年历第 "+x[0]+" 课 · 《论语》"+x[6];q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+"今日加读 "+x[5].map(function(a){return a[0]}).join(" "):"");'
-                     'c.href=x[2];k.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false}).catch(function(){})})();</script>')
+                     'c.href=x[2];k.href=x[2]+"#kn";M.setAttribute("data-c",x[1]);M.hidden=false}).catch(function(){})})();</script>')
     if MY and L.code in LX.ZH and D["lx"]["nl"]:  # 11-14 主人：首页“今日《论语》”现在起按年历取当天一课，模块做成日历样子（有时间感）；一周七天七位领读人轮值（六位原创角色＋Lisa）
         _ht = L.code == "zh-Hant"
         _T = (lambda s: __import__("opencc").OpenCC("s2twp").convert(s)) if _ht else (lambda s: s)
@@ -3123,12 +3123,12 @@ def build_lang(L, D, write):
                     'if(ix>=0){var k=Math.round((dt-new Date(sy,sm-1,sd))/864e5),h=Math.min(2,Math.floor(k/5));jq=(k===0?"今日"+K.jn[ix]:K.jn[ix]+"后第 "+k+" 天")+" · "+K.hou[ix*3+h]}}catch(e){}'
                     'var MN=["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];M.querySelector(".cm").textContent=MN[m-1];M.querySelector(".cd").textContent=d;M.querySelector(".cw").textContent="星期"+"日一二三四五六"[wd];M.querySelector(".cl").textContent=T(lu.replace(/^农历/,""));'
                     'var tg=M.querySelector(".mtag");fe.forEach(function(f){var s=document.createElement("span");s.className="fe";s.textContent=T(f);tg.appendChild(s)});if(jq){var s=document.createElement("span");s.textContent=T(jq);tg.appendChild(s)}'
-                    'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-half.webp";hf.alt=P[1];hf.hidden=false;'
+                    'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-full.webp";hf.alt=P[1];hf.hidden=false;'
                     'var I=M.querySelectorAll(".dots i");if(I[li])I[li].classList.add("td");'
                     + nl_fetch(L.code, nl_inline(D["lx"]["nl"], lambda r: [r["n"], r["c"], href(r["c"]), r["q"], (lambda b: b if len(b) <= 60 else "")(D["baihua"].get(r["c"]) or ""), [[a, href(a)] for a in r["add"]], " ".join(r["cs"])])) + '.then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
                     'if(!x){M.querySelector(".md").textContent=T("补读日");q.textContent=T("今天不排新课，前几天落下的课，今天补上。");b.textContent="";c.href="' + P + 'nianli/";kk.hidden=true;M.hidden=false;return}'
                     'M.querySelector(".md").textContent=T("年历第 "+x[0]+" 课 / 365 · 《论语》")+x[6];q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+T("今日加读 ")+x[5].map(function(a){return a[0]}).join(" "):"");'
-                    'c.href=x[2];kk.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false;try{document.dispatchEvent(new Event("ykmeiri"))}catch(e){}}).catch(function(){})})();</script>')
+                    'c.href=x[2];kk.href=x[2]+"#kn";M.setAttribute("data-c",x[1]);M.hidden=false;try{document.dispatchEvent(new Event("ykmeiri"))}catch(e){}}).catch(function(){})})();</script>')
     FU = (FILL.get(L.code) or {}).get("c") or {}
     if MY and D["lx"]["nl"] and L.code not in LX.ZH and FU and NLTR:  # 11-14 外文首页同步：今日《论语》按年历取课、日历样、七位领读人；今日一句用本语种译文
         if "OUT_ROOT" in globals():
@@ -3158,12 +3158,12 @@ def build_lang(L, D, write):
                     'var mn="",wn="";try{mn=new Date(Date.UTC(2026,m-1,15)).toLocaleDateString(LC,{month:"long",timeZone:"UTC"});wn=dt.toLocaleDateString(LC,{weekday:"long"})}catch(e){}'
                     'M.querySelector(".cm").textContent=mn;M.querySelector(".cd").textContent=d;M.querySelector(".cw").textContent=wn;M.querySelector(".cl").textContent=lu?U.lu+"\\n"+lu:"";'
                     'var tg=M.querySelector(".mtag");fe.forEach(function(f){var s=document.createElement("span");s.className="fe";s.textContent=f;tg.appendChild(s)});if(jq){var s=document.createElement("span");s.textContent=jq;tg.appendChild(s)}'
-                    'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-half.webp";hf.alt=P[1];hf.hidden=false;'
+                    'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-full.webp";hf.alt=P[1];hf.hidden=false;'
                     'var I=M.querySelectorAll(".dots i");if(I[li])I[li].classList.add("td");'
                     + nl_fetch(L.code, nl_inline(D["lx"]["nl"], lambda r: [r["n"], r["c"], href(r["c"]), hant_plain(r["q"]), (NLTR.get(str(r["n"])) or {}).get(L.code, ""), [[a, href(a)] for a in r["add"]], " ".join(r["cs"])])) + '.then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
                     'if(!x){M.querySelector(".md").textContent=U.mkh;q.textContent=U.mkp;q.lang=LC;b.textContent="";c.href="/nianli/";kk.hidden=true;M.hidden=false;return}'
                     'M.querySelector(".md").textContent=U.lesson.replace("{n}",x[0]).replace("{c}",x[6]);q.textContent=x[3];b.textContent=x[4]+(x[5].length?(x[4]?" · ":"")+U.add+" "+x[5].map(function(a){return a[0]}).join(" "):"");'
-                    'c.href=x[2];kk.href=x[2]+"#ka";M.setAttribute("data-c",x[1]);M.hidden=false;try{document.dispatchEvent(new Event("ykmeiri"))}catch(e){}}).catch(function(){})})();</script>')
+                    'c.href=x[2];kk.href=x[2]+"#kn";M.setAttribute("data-c",x[1]);M.hidden=false;try{document.dispatchEvent(new Event("ykmeiri"))}catch(e){}}).catch(function(){})})();</script>')
     home = f'''<section class="hero slim"><picture><source media="(max-width:700px)" type="image/webp" srcset="/assets/hero-m.webp?v={HERO_V}" width="1080" height="745"><source media="(max-width:700px)" srcset="/assets/hero-m.jpg?v={HERO_V}" width="1080" height="745"><source type="image/webp" srcset="/assets/hero-w.webp?v={HERO_V}" width="1920" height="790"><img src="/assets/hero-w.jpg?v={HERO_V}" alt="{"一孔录原创角色同坐长桌读《论语》" if L.code.startswith("zh") else esc(L.t("hero_alt"))}" width="1920" height="790" fetchpriority="high"></picture>
 <div class="herotext"><h1>一孔录<small>{HOMEPOS.get(L.code, (L.t("tagline"),))[0]}</small></h1></div></section>
 <main class="home">
