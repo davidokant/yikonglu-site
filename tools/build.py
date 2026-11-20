@@ -1235,6 +1235,21 @@ LIVE_TXT = {"zh-Hans": "此刻 {o} 位儒者在读 · 已有 {t} 位儒者来过
             "vi": "{o} nhà nho đang đọc · {t} nhà nho đã ghé", "id": "Cendekiawan sedang membaca: {o} · cendekiawan sejauh ini: {t}", "ru": "Сейчас читают книжники: {o} · всего книжников: {t}"}
 
 FOLD_RE = re.compile(r'<section class="sec ([^"]*)"((?: id="[^"]*")?)><h2>(.*?)</h2>(.*?)</section>', re.S)
+READS_RE = re.compile(r'<section class="sec reads"><h2><i>音</i>([^<]*)(.*?)</h2>(.*?)</section>', re.S)
+def he_yin(h):  # 11-20 主人：折叠目录两个“音”合一。有逐句拼音块时，读音表并进去当小节（外文页没有逐句块，读音表照旧单列）
+    m = READS_RE.search(h)
+    if not m or 'id="zhuyin"' not in h: return h
+    h = h[:m.start()] + h[m.end():]
+    blk = f'<div class="reads" id="duyin"><h3>本章多音字怎么读{m.group(2)}</h3>{m.group(3)}</div>'
+    i = h.find('id="zhuyin"'); j = h.find('</p>', i)
+    return h[:j + 4] + blk + h[j + 4:]
+def he_zhujia(h, fq):  # 11-20 主人：“诸家分歧”框并进“诸家怎么说”。有分歧的章在标题上标“有分歧”；没有“说”块的章单起一块
+    if not fq: return h
+    tag = '<span class="fqtag">有分歧</span>'
+    m = re.search(r'<section class="sec sec-说"><h2>(.*?)</h2>(.*?)</section>', h, re.S)
+    if m: return h[:m.start()] + f'<section class="sec sec-说"><h2>{m.group(1)}{tag}</h2>{m.group(2)}{fq}</section>' + h[m.end():]
+    k = h.find('<section class="sec zhuben"'); k = k if k >= 0 else len(h)
+    return h[:k] + f'<section class="sec sec-说"><h2><i>说</i>诸家怎么说{tag}</h2>{fq}</section>' + h[k:]
 def fold(h):  # 下半各节收成可点开的 <details>；锚点跳进来时由 FOLD_JS 自动展开
     return FOLD_RE.sub(lambda m: f'<details class="sec fold {m.group(1)}"{m.group(2)}><summary><h2>{m.group(3)}</h2></summary>{m.group(4)}</details>', h)
 FOLD_JS = """<script>(function(){function op(){var h=decodeURIComponent(location.hash.slice(1));if(!h)return;var e=document.getElementById(h);if(!e)return;var d=e.closest("details");while(d){d.open=true;d=d.parentElement&&d.parentElement.closest("details")}setTimeout(function(){e.scrollIntoView()},0)}addEventListener("hashchange",op);op();document.addEventListener("click",function(ev){var a=ev.target.closest&&ev.target.closest('a[href^="#"]');if(a&&a.getAttribute("href")==location.hash)op()});var b=document.querySelector(".foldall");if(b)b.onclick=function(){var ds=document.querySelectorAll(".deep details.fold"),o=[].some.call(ds,function(d){return!d.open});[].forEach.call(ds,function(d){d.open=o});b.textContent=o?b.dataset.c:b.dataset.o}})();</script>"""
@@ -1778,7 +1793,7 @@ if(x&&t)t.textContent=t.getAttribute("data-t").replace("{x}",x).replace("{n}",C.
 document.querySelectorAll(".rtl li[data-c]").forEach(function(li){if(s.indexOf(li.getAttribute("data-c"))>=0)li.classList.add("done")})})();</script>"""
 
 def ddj_jd_html(jd, Y=lambda x: x):
-    """道德经章页讲读四块（11-16）：注里的关键字、别本怎么写、诸家怎么读、一孔之见（含照今）。数据 _讲读/<章>.json，没有就不出。"""
+    """道德经章页讲读四块（11-16）：注里的关键字、别本怎么写、诸家怎么说、一孔之见（含照今）。数据 _讲读/<章>.json，没有就不出。"""
     if not jd: return ""
     sec = lambda mark, h, inner: f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{h}</h2>{inner}</section>'
     pg = lambda t: re.sub(r"〔(p\d{3}(?:—p\d{3})?)〕", lambda m: f'<small class="pgref">（四库本 {m.group(1)}）</small>', esc(t))
@@ -1789,7 +1804,7 @@ def ddj_jd_html(jd, Y=lambda x: x):
                    + "".join(f'<tr><th>{esc(b["处"])}</th><td>{esc(b["说"])}{f"<br><b>意思：</b>{esc(b[chr(21464)])}" if b.get("变") else ""}</td></tr>' for b in jd["别本"]) + "</tbody></table>")
     if jd.get("诸家"):  # 一家一段：按“朝代＋人名：”切开
         zj = [x for x in re.split(r"(?<=。)(?=(?:三国|旧题|西汉|东汉|汉代|战国|唐|北宋|南宋|宋代|元代|明代|清代|近人|民国)[^：。]{0,16}：)", jd["诸家"]) if x.strip()]
-        out += sec("说", "诸家怎么读", "".join(f'<p class="zj1">{quotes(x)}</p>' for x in zj))
+        out += sec("说", "诸家怎么说", "".join(f'<p class="zj1">{quotes(x)}</p>' for x in zj))
     if jd.get("一孔之见"):
         out += sec("读", "一孔之见", f"<p>{quotes(jd['一孔之见'])}</p>" + (f'<p class="zhaojin"><b>放到今天：</b>{quotes(jd["照今"])}</p>' if jd.get("照今") else ""))
     return re.sub(r"〔(p\d{3}[^〕]*)〕", lambda m: f'<small class="pgref">（四库本 {m.group(1)}）</small>', out)
@@ -2051,7 +2066,7 @@ SZJ_JD_DIR = os.path.join(GAO_DIR, "_三字经", "_讲读")  # 11-16 主人点�
 SZJ_JD = {int(os.path.basename(f_)[:-5]): json.load(open(f_, encoding="utf-8")) for f_ in glob.glob(os.path.join(SZJ_JD_DIR, "*.json")) if os.path.basename(f_)[:-5].isdigit()}
 
 def szj_jd_html(jd, hant=False):
-    """三字经讲页讲读四块（11-17，照道德经 ddj_jd_html）：注（王相训诂关键字）、本（别本怎么写）、说（诸家怎么读）、读（一孔之见＋放到今天）。"""
+    """三字经讲页讲读四块（11-17，照道德经 ddj_jd_html）：注（王相训诂关键字）、本（别本怎么写）、说（诸家怎么说）、读（一孔之见＋放到今天）。"""
     if not jd: return ""
     _t2s = __import__("opencc").OpenCC("t2s").convert
     # 王相等原话本来是繁体：繁体页上护住不再转（\ue010…\ue011），免得“爲”被改成“為”
@@ -2065,7 +2080,7 @@ def szj_jd_html(jd, hant=False):
                    + "".join(f'<tr><th>{esc(b["处"])}</th><td>{quotes(K(b["说"]))}{f"<br><b>意思：</b>{quotes(K(b[chr(21464)]))}" if b.get("变") else ""}</td></tr>' for b in jd["别本"]) + "</tbody></table>")
     if jd.get("诸家"):  # 一家一段：按“朝代＋书名或人名：”切开
         zj = [x for x in re.split(r"(?<=。)(?=(?:清|明|元|宋|民国|近人|朝鲜|日本|章太炎)[^：。]{0,24}：)", jd["诸家"]) if x.strip()]
-        out += sec("说", "诸家怎么读", "".join(f'<p class="zj1">{pg(x)}</p>' for x in zj))
+        out += sec("说", "诸家怎么说", "".join(f'<p class="zj1">{pg(x)}</p>' for x in zj))
     if jd.get("一孔之见"):
         out += sec("读", "一孔之见", (f'<p class="note">常见的问法：{quotes(K(jd["常见读法"]))}</p>' if jd.get("常见读法") else "") + f"<p>{pg(jd['一孔之见'])}</p>"
                    + (f'<p class="zhaojin"><b>放到今天：</b>{quotes(K(jd["照今"]))}</p>' if jd.get("照今") else ""))
@@ -2749,10 +2764,10 @@ def build_lang(L, D, write):
             if _fq:
                 _keys = list(dict.fromkeys(z["key"] for _, z in _fq if z.get("key")))
                 _fqh = f'诸家分歧：{"、".join("“" + k + "”" for k in _keys)}怎么讲' if _keys else "诸家分歧：这一章各家讲法不同"
-                fenqi_html = (f'<section class="fenqi" id="fenqi"><h2>{esc(_fqh)}</h2><ul>'
+                fenqi_html = (f'<div class="fenqi" id="fenqi"><h3>{esc(_fqh)}</h3><ul>'
                               f'<li><b>朱熹《论语集注》</b>一孔录主朱注，本页的白话和逐句注照朱注讲' + ("；这章是争议读法，一孔之见里写明了取舍" if c in D["zy"] else "") + "。</li>"
                               + "".join(f'<li><b>{_nm}</b><span class="sure {z["sure"]}">{L.t(z["sure"])}</span>“{esc(z["text"])}”<small>{esc(z["say"])}</small></li>' for _nm, z in _fq)
-                              + f'</ul><p class="note">“把握”是我们对这条异同判断的把握，“定”最稳。现代注本版权期内，只短引一句，页码核过正版书后再补；皇侃义疏等古注原页见 <a href="#zhuben">诸家注本</a>。</p></section>')
+                              + f'</ul><p class="note">“把握”是我们对这条异同判断的把握，“定”最稳。现代注本版权期内，只短引一句，页码核过正版书后再补；皇侃义疏等古注原页见 <a href="#zhuben">各家注本</a>。</p></div>')
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
 <p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a> › <a href="{P}lunyu/{slug}/">{bname}</a></p>
 <h1><span class="no">{f"论语 {c} · {pname}" if L.code.startswith("zh") else L.t("chapter_no", book=bname, n=cnum)}</span>{esc(title_of(c))}</h1>{TM.chapter_line(c, D["lx"]["nl"]) if L.code.startswith("zh") else ""}{f'<p class="kwtag"><a href="#kw">{L.t("kw")} {len(mine)} 条</a> · <a href="{P}kanwu.html">全部勘误</a></p>' if mine and L.code.startswith("zh") else ""}
@@ -2769,7 +2784,7 @@ def build_lang(L, D, write):
 {GX.section(GXD, c, P, href, gx_short) if L.code.startswith("zh") else (GX.section_f(GXD, c, P, href, lambda x: hant_plain(gx_short(x)), L) if GXD and GX.has_lang(L.code) else "")}
 {cta_html(L, P)}
 <div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>
-{fenqi_html}{fold((ZJ.zy_section(c, sents, zy_, zrows, esc) if dz and zy_ else "") + secs + yiwen_html(c) + extra + (GB.section(c, D["gb"].get(c), epname, yt, st, quotes) if L.code.startswith("zh") and yt and not future else ""))}
+{fold(he_zhujia(he_yin((ZJ.zy_section(c, sents, zy_, zrows, esc) if dz and zy_ else "") + secs + yiwen_html(c) + extra + (GB.section(c, D["gb"].get(c), epname, yt, st, quotes) if L.code.startswith("zh") and yt and not future else "")), fenqi_html))}
 {citeit}
 </div>
 <p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>{RW.chip_line(D.get("renwu"), c, P) if L.code.startswith("zh") else ""}{GS.footer_line(D.get("gushi"), c, P) if L.code.startswith("zh") else ""}
@@ -3123,7 +3138,7 @@ def build_lang(L, D, write):
                     'if(ix>=0){var k=Math.round((dt-new Date(sy,sm-1,sd))/864e5),h=Math.min(2,Math.floor(k/5));jq=(k===0?"今日"+K.jn[ix]:K.jn[ix]+"后第 "+k+" 天")+" · "+K.hou[ix*3+h]}}catch(e){}'
                     'var MN=["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];M.querySelector(".cm").textContent=MN[m-1];M.querySelector(".cd").textContent=d;M.querySelector(".cw").textContent="星期"+"日一二三四五六"[wd];M.querySelector(".cl").textContent=T(lu.replace(/^农历/,""));'
                     'var tg=M.querySelector(".mtag");fe.forEach(function(f){var s=document.createElement("span");s.className="fe";s.textContent=T(f);tg.appendChild(s)});if(jq){var s=document.createElement("span");s.textContent=T(jq);tg.appendChild(s)}'
-                    'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-full.webp";hf.alt=P[1];hf.hidden=false;'
+                    'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-ban.webp";hf.alt=P[1];hf.hidden=false;'
                     'var I=M.querySelectorAll(".dots i");if(I[li])I[li].classList.add("td");'
                     + nl_fetch(L.code, nl_inline(D["lx"]["nl"], lambda r: [r["n"], r["c"], href(r["c"]), r["q"], (lambda b: b if len(b) <= 60 else "")(D["baihua"].get(r["c"]) or ""), [[a, href(a)] for a in r["add"]], " ".join(r["cs"])])) + '.then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
                     'if(!x){M.querySelector(".md").textContent=T("补读日");q.textContent=T("今天不排新课，前几天落下的课，今天补上。");b.textContent="";c.href="' + P + 'nianli/";kk.hidden=true;M.hidden=false;return}'
@@ -3158,7 +3173,7 @@ def build_lang(L, D, write):
                     'var mn="",wn="";try{mn=new Date(Date.UTC(2026,m-1,15)).toLocaleDateString(LC,{month:"long",timeZone:"UTC"});wn=dt.toLocaleDateString(LC,{weekday:"long"})}catch(e){}'
                     'M.querySelector(".cm").textContent=mn;M.querySelector(".cd").textContent=d;M.querySelector(".cw").textContent=wn;M.querySelector(".cl").textContent=lu?U.lu+"\\n"+lu:"";'
                     'var tg=M.querySelector(".mtag");fe.forEach(function(f){var s=document.createElement("span");s.className="fe";s.textContent=f;tg.appendChild(s)});if(jq){var s=document.createElement("span");s.textContent=jq;tg.appendChild(s)}'
-                    'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-full.webp";hf.alt=P[1];hf.hidden=false;'
+                    'var li=(wd+6)%7,P=K.ld[li],hf=M.querySelector(".mhalf");hf.src="/assets/lead/"+P[0]+"-ban.webp";hf.alt=P[1];hf.hidden=false;'
                     'var I=M.querySelectorAll(".dots i");if(I[li])I[li].classList.add("td");'
                     + nl_fetch(L.code, nl_inline(D["lx"]["nl"], lambda r: [r["n"], r["c"], href(r["c"]), hant_plain(r["q"]), (NLTR.get(str(r["n"])) or {}).get(L.code, ""), [[a, href(a)] for a in r["add"]], " ".join(r["cs"])])) + '.then(function(R){var x=R[m+"-"+d],q=M.querySelector("blockquote"),b=M.querySelector(".mb"),c=M.querySelector(".mc"),kk=M.querySelector(".mk");'
                     'if(!x){M.querySelector(".md").textContent=U.mkh;q.textContent=U.mkp;q.lang=LC;b.textContent="";c.href="/nianli/";kk.hidden=true;M.hidden=false;return}'

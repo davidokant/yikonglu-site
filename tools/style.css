@@ -822,15 +822,16 @@ table.bybook small{display:block;font-size:.78em;line-height:1.4;color:var(--mut
 .mcal .mtag:empty{display:none}
 .mcal .mtag span{font-size:13px;padding:2px 10px;border-radius:12px;background:rgba(35,80,63,.09);color:#23503F}
 .mcal .mtag .fe{background:#A23B2C;color:#fff;font-weight:700}
-/* 11-20 主人：领读人完整展示，不虚化、不平切（全身透明图，等比放入、底对齐） */
-.mcal .mhalf{position:absolute;right:24px;bottom:6px;width:250px;height:calc(100% - 20px);max-height:320px;object-fit:contain;object-position:50% 100%;pointer-events:none}
+/* 11-20 主人：领读人改膝盖以上大半身，切口贴“本周”分隔线（上半格的框底），两侧上方都完整；按高度等比放，不再裁、不虚化 */
+.mcal .mhalf{position:absolute;right:28px;bottom:0;height:calc(100% - 12px);width:auto;max-width:260px;max-height:none;object-fit:contain;object-position:50% 100%;pointer-events:none}
+@media (min-width:641px){.mcal .mtxt{padding-right:300px}}
 .mcal .wk .md{font-size:13px;color:var(--mute)}
 .mcal .wk i{background:transparent}.mcal .wk i.on{background:#23503F;border-color:#23503F}
 .mcal .mhalf[hidden]{display:none}
 .mcal .wk{margin:0;padding:10px 26px 14px;border-top:1px dashed var(--line);position:relative;z-index:1;background:var(--paper)}
 .mcal .wk i.td{box-shadow:0 0 0 2px #F2F1EA,0 0 0 4px #A23B2C}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mcal .mcalb{background:rgba(242,241,234,.06)}:root:not([data-theme="light"]) .mcal .cm::before,:root:not([data-theme="light"]) .mcal .cm::after{background:var(--paper)}}
-@media (max-width:640px){.mcal .mcalb{flex-basis:96px}.mcal .cd{font-size:50px}.mcal .cm{font-size:15px}.mcal .cm::before{left:18px}.mcal .cm::after{right:18px}.mcal .mtxt{padding:16px 16px 14px}.mcal .mtxt{padding-bottom:220px}.mcal .mhalf{right:12px;bottom:6px;width:180px;height:208px;max-height:none}.meiri.mcal blockquote{font-size:22px}.mcal .wk{padding:10px 16px 12px}}
+@media (max-width:640px){.mcal .mcalb{flex-basis:96px}.mcal .cd{font-size:50px}.mcal .cm{font-size:15px}.mcal .cm::before{left:18px}.mcal .cm::after{right:18px}.mcal .mtxt{padding:16px 16px 14px}.mcal .mtxt{padding-bottom:214px}.mcal .mhalf{right:14px;height:206px;max-width:170px}.meiri.mcal blockquote{font-size:22px}.mcal .wk{padding:10px 16px 12px}}
 
 /* 11-14 外文首页日历：月名、星期、农历是外文，字距收紧、可折行 */
 html:not([lang^="zh"]) .mcal .cm{letter-spacing:.02em;font-size:15px;padding-left:4px;padding-right:4px}
@@ -980,9 +981,9 @@ th .hm{margin-left:0}
 .hedui .note{font-size:13.5px;margin:8px 0 0}
 .hdt tr.hdn td{font-size:13px;color:var(--mute);padding-top:0;border-top:0}.hdt th[scope=row]{white-space:nowrap}
 /* 11-16 诸家分歧 */
-.fenqi{margin:22px 0;padding:14px 16px;border-left:3px solid #8A5A2C;background:#8A5A2C0d;border-radius:0 6px 6px 0}.fenqi h2{font-size:17px;margin:0 0 8px}
+.fenqi{margin:14px 0 4px;padding:14px 16px;border-left:3px solid #8A5A2C;background:#8A5A2C0d;border-radius:0 6px 6px 0}.fenqi h3{font-size:16px;margin:0 0 8px}
 .fenqi ul{list-style:none;padding:0;margin:0}.fenqi li{padding:6px 0;line-height:1.75}.fenqi li b{margin-right:6px}.fenqi li small{display:block;color:var(--mute);font-size:13.5px}
-.fenqi .sure{margin-right:6px}.fenqi .note{font-size:13px;margin:8px 0 0}
+.fenqi .sure{margin-right:6px}.fqtag{display:inline-block;margin-left:8px;padding:1px 7px;font-size:12px;font-weight:500;color:#8A5A2C;border:1px solid #8A5A2C66;border-radius:9px;vertical-align:2px}.sec-音 .reads{margin:4px 0 18px;padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:6px}.sec-音 .reads h3{font-size:16px;margin:0 0 6px}.fenqi .note{font-size:13px;margin:8px 0 0}
 .myl{list-style:none;padding:0;margin:0}.myl li{border-bottom:1px solid var(--line);padding:14px 0}
 .myl .cy{font-size:18px}.myl .hm{margin-left:10px}.myl .zy{font-size:16.5px;line-height:1.8;margin:6px 0 0}.myl .zy .cyk{margin-left:8px;font-size:13px}
 .myl small{display:block;color:var(--mute);font-size:13.5px;margin-top:4px}
