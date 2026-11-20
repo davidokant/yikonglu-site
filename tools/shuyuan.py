@@ -5,18 +5,18 @@ import html, json
 
 def esc(s): return html.escape(s or "", quote=True)
 
-LINK = {"zh": "一孔书院 · 题名", "en": "Yikonglu Academy"}
+LINK = {"zh": "题名", "en": "Name a Day"}  # 11-20 主人点卡：书院改名“题名”（只卖题名，叫书院名不副实）；网址 /shuyuan/ 不动
 
 AFDIAN = "https://afdian.com/item/d667fd6ae19d11f1a65c5254001e7c00"  # 11-16 主人在爱发电上架题名（一个商品两个型号）
 TMT_IMG = "https://img.yikonglu.com/shuyuan/timingtie-yangzhang.webp"  # 11-16 题名帖样张（主人“过”的那张，模拟登记）
 KOFI = "https://ko-fi.com/s/97c7197047"  # 11-16 Ko-fi 题名商品（主人上架）
 
 # 11-16 主人点卡：书院先开“题名”，入院页整页换成题名（文案 评审/2026-11-16-书院题名开卖/入院页-题名-文案-v1.1.md）；旧权益表、书友圈、院落学籍撤下
-TM_ZH = dict(title="一孔书院 · 题名", sub="把名字题在《论语》年历的一天上", motto="免费的，管读懂；书院，管留名。",
-             p1="一孔录的片子、原文、白话、读本、年历，永远免费，谁都能读，不会因为书院变薄。书院不卖内容，只做一件事：让愿意出一份力的书友，把名字题在《论语》年历的某一天上。",
+TM_ZH = dict(title="题名", sub="把名字题在《论语》年历的一天上", motto="免费的，管读懂；题名，管留名。",
+             p1="一孔录的片子、原文、白话、读本、年历，永远免费，谁都能读，不会因为收费变薄。题名不卖内容，只做一件事：让愿意出一份力的书友，把名字题在《论语》年历的某一天上。",
              btn="我想题一天", done="已记下，谢谢。", cnt="已有 {n} 位书友想题一天")
-TM_EN = dict(title="Yikonglu Academy · Name a Day", sub="Put your name on one day of the 2027 Analects calendar", motto="The free side helps you understand; the Academy keeps your name.",
-             p1="Everything on Yikonglu stays free for everyone: the videos, the text, the plain renderings, the readers and the calendar. The Academy sells no content. It does one thing: readers who want to support the work can put their name on one day of the Analects calendar.",
+TM_EN = dict(title="Name a Day", sub="Put your name on one day of the 2027 Analects calendar", motto="The free side helps you understand; naming a day keeps your name.",
+             p1="Everything on Yikonglu stays free for everyone: the videos, the text, the plain renderings, the readers and the calendar. Naming a day sells no content. It does one thing: readers who want to support the work can put their name on one day of the Analects calendar.",
              btn="I'd like to name a day", done="Noted, thank you.", cnt="{n} readers would like to name a day")
 
 
@@ -55,27 +55,27 @@ def body(L, live):
     return out, T
 
 def redirect(to):  # 搬走的旧网址：只留一张转跳页，不进站点地图
-    return (f'<!doctype html><html><head><meta charset="utf-8"><title>一孔书院</title><link rel="canonical" href="https://yikonglu.com{to}">'
+    return (f'<!doctype html><html><head><meta charset="utf-8"><title>题名</title><link rel="canonical" href="https://yikonglu.com{to}">'
             f'<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={to}"><script>location.replace({json.dumps(to)}+location.hash)</script></head>'
             f'<body><main><p>已搬到 <a href="{to}">{to}</a></p></main></body></html>')
 
 def build(L, write, page, live, DOMAIN):
     b, T = body(L, live)
-    if L.code.startswith("zh"): b = b.replace('<div class="chhead"><div class="wrap"><h1>', f'<div class="chhead"><div class="wrap"><p class="crumb"><a href="/{L.prefix}shuyuan/">一孔书院</a></p><h1>', 1)
+    if L.code.startswith("zh"): b = b.replace('<div class="chhead"><div class="wrap"><h1>', f'<div class="chhead"><div class="wrap"><p class="crumb"><a href="/{L.prefix}shuyuan/">题名</a></p><h1>', 1)
     write("shuyuan/ruyuan.html", page(L, f'{T["title"]}｜一孔录', T["p1"][:120], "shuyuan/ruyuan.html", b))
     write("shuyuan.html", redirect(f"/{L.prefix}shuyuan/ruyuan.html"))
     return [f"{DOMAIN}/{L.prefix}shuyuan/ruyuan.html"]
 
 def link(L, P):
-    return f'<a href="{P}shuyuan/ruyuan.html" class="sylink">{LINK["zh"] if L.code.startswith("zh") else L.ui.get("academy") or LINK["en"]}</a>'
+    return f'<a href="{P}shuyuan/ruyuan.html" class="sylink">{LINK["zh"] if L.code.startswith("zh") else LINK["en"]}</a>'
 
 def hub(P, mapimg, n_ppl, nowtxt):
     """11-16 主人点卡：书院先开题名；首页页首句与入院页一致，介绍压成一段指向入院页；院落、学籍、书友圈雏形撤下（书友圈留到每周读满四天过 300 人）。"""
     T = TM_ZH
-    return f'''<div class="syhero"><img src="{mapimg}" alt="" width="2000" height="1150"><div class="wrap"><span class="ov">一孔书院</span><h1>一孔书院</h1>
+    return f'''<div class="syhero"><img src="{mapimg}" alt="" width="2000" height="1150"><div class="wrap"><span class="ov">一孔录</span><h1>题名</h1>
 <p class="symotto">{T["motto"]}</p><p class="syhbtn"><a class="btn" href="{P}shuyuan/ruyuan.html">在年历上题一天 ›</a><a class="btn ghost" href="{P}nianli/">看《论语》年历</a></p></div></div>
 <main class="wrap narrow gsmain shuyuan">
-<p class="lead">一孔录的片子、原文、白话、读本、年历永远免费。书院不卖内容，只做一件事：2027 年元旦起，一孔录按年历每天读一章《论语》，愿意出一份力的书友，可以把名字和一句不超过 20 字的题记，题在年历的某一天上，那一天的年历页、章页和公众号文末都会写上。<a href="{P}shuyuan/ruyuan.html">看题名怎么题 ›</a></p>
-<h2 class="ph">书院里的人和地方</h2>
-<div class="sydeep"><a href="{P}shuyuan/juese.html"><b>一孔录原创角色</b><span>{n_ppl} 位常驻书院的人：身份、本领、在哪些章出场 ›</span></a><a href="{P}shuyuan/ditu/"><b>经典世界地图</b><span>片里的世界，一层层点到书区{nowtxt} ›</span></a></div>
+<p class="lead">一孔录的片子、原文、白话、读本、年历永远免费。题名不卖内容，只做一件事：2027 年元旦起，一孔录按年历每天读一章《论语》，愿意出一份力的书友，可以把名字和一句不超过 20 字的题记，题在年历的某一天上，那一天的年历页、章页和公众号文末都会写上。<a href="{P}shuyuan/ruyuan.html">看题名怎么题 ›</a></p>
+<h2 class="ph">片里的人和地方</h2>
+<div class="sydeep"><a href="{P}shuyuan/juese.html"><b>一孔录原创角色</b><span>{n_ppl} 位片里常驻书院的人：身份、本领、在哪些章出场 ›</span></a><a href="{P}shuyuan/ditu/"><b>经典世界地图</b><span>片里的世界，一层层点到书区{nowtxt} ›</span></a></div>
 </main>'''
