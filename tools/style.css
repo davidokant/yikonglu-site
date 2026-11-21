@@ -1112,3 +1112,10 @@ details.legge p.note{font-style:normal;font-size:.82em;color:var(--mute,#666)}
 .ava{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:50% 4%;border:1px solid var(--gold);flex:none;background:var(--paper)}
 @media (prefers-reduced-motion:reduce){.st,#field,#yi{transition:none}.yao.new i{animation:none}}
 .wy [hidden]{display:none!important}
+/* 11-21 主人：书架封面按学派分色（儒家墨绿不变）；筹备中的书染该家淡色 */
+.tome[data-jia]{--jc:#23503f}
+.tome[data-jia=dao]{--jc:#263f5a}.tome[data-jia=fo]{--jc:#6b4a2b}.tome[data-jia=shi]{--jc:#5e2d3b}.tome[data-jia=zi]{--jc:#3d4449}
+.tome.on[data-jia] .cv{background-color:var(--jc)}
+.tome[data-jia]:not(.on) .cv{background-color:#cfc8b6;background-color:color-mix(in srgb,var(--jc) 32%,#e9e4d6)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tome[data-jia]:not(.on) .cv{background-color:color-mix(in srgb,var(--jc) 40%,#3a3f3a)}:root:not([data-theme="light"]) .tome.on[data-jia]:not([data-jia=ru]) .cv{background-color:color-mix(in srgb,var(--jc) 82%,#ffffff)}}
+:root[data-theme="dark"] .tome[data-jia]:not(.on) .cv{background-color:color-mix(in srgb,var(--jc) 40%,#3a3f3a)}:root[data-theme="dark"] .tome.on[data-jia]:not([data-jia=ru]) .cv{background-color:color-mix(in srgb,var(--jc) 82%,#ffffff)}

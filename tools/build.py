@@ -326,6 +326,9 @@ BOOK_GROUPS = [
  ("gzi", [("xunzi", "荀子"), ("jinsilu", "近思录"), ("chuanxilu", "传习录"), ("sunzi", "孙子兵法"), ("hanfeizi", "韩非子"), ("mozi", "墨子"), ("lvshi", "吕氏春秋"), ("yanshi", "颜氏家训"), ("shishuo", "世说新语"), ("caigentan", "菜根谭")]),
  ("gmeng", [("sanzijing", "三字经")]),  # 11-08 主人定《三字经》进一期（论语之后、道德经之前，约 30 集）；底本副本 数据/网站素材/_三字经/  # 子部：不好归类的书先收这里，按四库子部次序 儒家→兵家
 ]
+# 11-21 主人：书架封面按学派分色，儒家仍墨绿；子部里儒家的书归儒，其余合成“诸子”一色；周易归儒（十三经之首）
+BOOK_JIA = {**{sl: "dao" for sl, _ in BOOK_GROUPS[1][1]}, **{sl: "fo" for sl, _ in BOOK_GROUPS[2][1]}, **{sl: "shi" for sl, _ in BOOK_GROUPS[3][1]},
+            **{sl: "zi" for sl in ("sunzi", "hanfeizi", "mozi", "lvshi", "shishuo", "caigentan")}}
 BOOK_SUB = {"liji": [("daxue", "大学"), ("zhongyong", "中庸")]}  # 挂在某书底下的篇
 LIVE_BOOKS = {"lunyu"}
 # 专题闯关的页面脚本（关卡图、专题页进度条、跟着一个人读的进度）；读本机 yk_xd 里读过的章
@@ -3088,19 +3091,20 @@ def build_lang(L, D, write):
         name = L.t("bk_" + slug); sub = L.t("bk_sub_" + slug); zhL = L.code.startswith("zh")
         cap = f"《{zh}》" if zhL else name
         kids = "、".join((f"《{z}》" if zhL else L.t("bk_" + sl2)) for sl2, z in BOOK_SUB.get(slug, []))
+        jia = f' data-jia="{BOOK_JIA.get(slug, "ru")}"'
         cv = f'<span class="cv"><span class="qian{" l6" if len(zh) >= 6 else (" l5" if len(zh) == 5 else "")}" lang="zh-Hans">{esc(zh)}</span></span>'
         if live:
             if slug == "mengzi":
-                return (f'<a class="tome on" href="{P if (zhL or L.code in MZ_FL) else "/"}mengzi/" data-bk="{slug}" data-t="{len(MZ["qw"])}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
+                return (f'<a class="tome on"{jia} href="{P if (zhL or L.code in MZ_FL) else "/"}mengzi/" data-bk="{slug}" data-t="{len(MZ["qw"])}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
                         f'<span class="bar"><i style="width:100%"></i></span><em>{MZ_PROG.get(L.code, MZ_PROG["en"]).format(n=len(MZ["qw"]))}</em><em class="mine" hidden></em></span></a>')
             if slug == "sanzijing":
-                return (f'<a class="tome on" href="{P if (zhL or L.code in SZJ_TR) else "/"}sanzijing/" data-bk="{slug}" data-t="{len(SZJ)}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
+                return (f'<a class="tome on"{jia} href="{P if (zhL or L.code in SZJ_TR) else "/"}sanzijing/" data-bk="{slug}" data-t="{len(SZJ)}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
                         f'<span class="bar"><i style="width:100%"></i></span><em>{SZJ_PROG.get(L.code, SZJ_PROG["en"]).format(n=len(SZJ))}</em><em class="mine" hidden></em></span></a>')
             if slug == "daodejing": nd, tt, u, key = len(D["ddj"]["qw"]), 81, f'{P if (zhL or L.code in DDJ_TR) else "/"}daodejing/', "bk_prog_wj"
             else: nd, tt, u, key = len(pub), n_all, f"{P}lunyu/", "bk_prog"
-            return (f'<a class="tome on" href="{u}" data-bk="{slug}" data-t="{tt}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
+            return (f'<a class="tome on"{jia} href="{u}" data-bk="{slug}" data-t="{tt}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
                     f'<span class="bar"><i style="width:{round(nd * 100 / tt)}%"></i></span><em>{wjprog(L, nd, tt) if key == "bk_prog_wj" else L.t(key, done=nd, n=nd, total=tt)}</em><em class="mine" hidden></em></span></a>')
-        return (f'<span class="tome" aria-disabled="true">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}{"<br>" + esc(kids) if kids else ""}</small>'
+        return (f'<span class="tome"{jia} aria-disabled="true">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}{"<br>" + esc(kids) if kids else ""}</small>'
                 f'<em class="soon">{L.t("soon")}</em></span></span>')
     shelves = "".join(f'<section class="shelf"><h2 class="ph">{L.t(gk)}</h2><div class="shrow">' + "".join(tome(sl, zh, sl in LB) for sl, zh in bs if sl != "lunyu") + "</div></section>" for gk, bs in BOOK_GROUPS if any(sl != "lunyu" for sl, _ in bs))
     CANREAD = {"zh-Hans": "古籍原页逐句对读", "zh-Hant": "古籍原頁逐句對讀", "en": "Read against the original pages, line by line", "ja": "古籍の原頁と一句ずつ照らして読む", "ko": "고서 원본 쪽과 한 구절씩 대조해 읽기", "fr": "Lu phrase à phrase sur les pages originales", "es": "Leído frase a frase sobre las páginas originales", "de": "Satz für Satz mit den Originalseiten gelesen", "vi": "Đối chiếu từng câu với trang sách cổ gốc", "id": "Dibaca kalimat demi kalimat dengan halaman asli", "ru": "Фраза за фразой по подлинным страницам"}

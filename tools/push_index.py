@@ -2,7 +2,8 @@
 """新页推给搜索引擎（GitHub Actions 里跑，见 .github/workflows/push-index.yml）。
 - IndexNow：必应、Yandex、Naver、Seznam 等共用，密钥文件在站点根目录（tools/root/<key>.txt）。
 - 百度普通收录 API：仓库 Secret BAIDU_TOKEN 有值才推；新站每天额度很少，只推中文章节页，最多 BAIDU_MAX 条。
-用法：push_index.py <改动的 docs/ 文件…>，或 push_index.py --all（推 sitemap 全部）。"""
+用法：push_index.py --dates <旧 pagedates.json> <新 pagedates.json>（只推正文真改过或新加的页，11-21 起 Actions 用这个），
+      push_index.py <改动的 docs/ 文件…>，或 push_index.py --all（推 sitemap 全部，只在接入时推一次）。"""
 import json, os, re, sys, glob, urllib.request
 
 DOMAIN = "https://yikonglu.com"
@@ -25,9 +26,18 @@ def post(url, data, ctype):
     except Exception as e: return 0, str(e)
 
 def main(args):
-    if args == ["--all"]:
-        urls = [u for f in sorted(glob.glob(os.path.join(ROOT, "docs", "sitemap-*.xml"))) if not f.endswith("sitemap-images.xml")
-                for u in re.findall(r"<loc>([^<]+)</loc>", open(f, encoding="utf-8").read())]  # 11-18 起站点地图分卷
+    def sitemap_urls():
+        return [u for f in sorted(glob.glob(os.path.join(ROOT, "docs", "sitemap-*.xml"))) if not f.endswith("sitemap-images.xml")
+                for u in re.findall(r"<loc>([^<]+)</loc>", open(f, encoding="utf-8").read())]
+    if args and args[0] == "--dates":  # 11-21：每次重建几千个文件跟着脚本版本号变，按文件推等于不推；改看正文指纹日期变没变
+        try: old = json.load(open(args[1], encoding="utf-8"))
+        except Exception: old = {}
+        new = json.load(open(args[2], encoding="utf-8"))
+        inmap = set(sitemap_urls())  # 只推进站点地图的页（noindex 的外文杂页、跳转页不推）
+        urls = [u for u in (to_url("docs/" + k) for k in new if old.get(k, [None, None])[1] != new[k][1]) if u and u in inmap]
+        if len(urls) > 2000: print(f"正文改动 {len(urls)} 页，太多，像是指纹算法变了，不推"); urls = []
+    elif args == ["--all"]:
+        urls = sitemap_urls()  # 11-18 起站点地图分卷
     elif args and args[0] == "--added":  # 11-18：只推新加的页；改版式、改脚本会让几千页一起变，那种不推
         urls = [u for u in (to_url(a) for a in args[1:]) if u]
     else:
@@ -37,7 +47,8 @@ def main(args):
     urls = list(dict.fromkeys(urls))
     print(f"要推 {len(urls)} 个地址")
     if not urls: return
-    keys = [os.path.basename(f)[:-4] for f in glob.glob(os.path.join(HERE, "root", "*.txt")) if re.fullmatch(r"[0-9a-f]{32}", os.path.basename(f)[:-4])]
+    keys = [k for k in (os.path.basename(f)[:-4] for f in sorted(glob.glob(os.path.join(HERE, "root", "*.txt"))))  # 文件内容等于文件名的才是 IndexNow 密钥（根目录还有别家的验证文件）
+            if re.fullmatch(r"[0-9a-f]{32}", k) and open(os.path.join(HERE, "root", k + ".txt"), encoding="utf-8").read().strip() == k]
     if keys:
         body = {"host": "yikonglu.com", "key": keys[0], "keyLocation": f"{DOMAIN}/{keys[0]}.txt", "urlList": urls[:10000]}
         print("IndexNow:", *post("https://api.indexnow.org/indexnow", json.dumps(body).encode(), "application/json; charset=utf-8"))

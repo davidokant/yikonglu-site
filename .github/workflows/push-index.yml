@@ -2,7 +2,7 @@ name: 推送新页给搜索引擎
 on:
   push:
     branches: [main]
-    paths: ["docs/**"]
+    paths: ["docs/**", "tools/pagedates.json"]
   workflow_dispatch:
     inputs:
       all:
@@ -23,8 +23,6 @@ jobs:
         run: |
           if [ "${{ inputs.all }}" = "true" ]; then python3 tools/push_index.py --all
           else
-            ADDED=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- docs)
-            CHANGED=$(git diff --name-only --diff-filter=M HEAD~1 HEAD -- docs)
-            python3 tools/push_index.py --added $ADDED
-            python3 tools/push_index.py $CHANGED
+            git show HEAD~1:tools/pagedates.json > /tmp/pd_old.json 2>/dev/null || echo '{}' > /tmp/pd_old.json
+            python3 tools/push_index.py --dates /tmp/pd_old.json tools/pagedates.json
           fi
