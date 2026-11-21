@@ -47,7 +47,7 @@ SOURCE = "朱熹《论语集注》（《四部备要》本）"
 KEBEN = [("chu7", "七年级上册《〈论语〉十二章》", "初中第一次读《论语》：学习、修身、志向。", ["1.1", "1.4", "2.4", "2.11", "2.15", "6.9", "6.18", "7.15", "7.21", "9.16", "9.25", "19.6"]),
          ("bixiu", "高中必修下册《子路、曾皙、冉有、公西华侍坐》", "孔子让四个学生各言其志，最后说“吾与点也”。课本按杨伯峻本是《先进》第 26 章，朱注本是第 25 章。", ["11.25"]),
          ("xuanbi", "高中选择性必修上册《〈论语〉十二章》", "从学而、八佾、里仁、雍也、泰伯、子罕、颜渊、卫灵公、阳货九篇选出，讲仁、礼、义与君子。", ["1.14", "3.3", "4.8", "4.16", "4.17", "6.16", "8.7", "9.18", "9.28", "12.1", "15.23", "17.9"])]
-TAGLINE = "从《论语》开始 · 逐字读经典原文"  # 11-16 与首页定位句统一
+TAGLINE = "从《论语》开始 · 对着原页读经典"  # 11-16 与首页定位句统一
 # 11-17 主人定现在申请 Google AdSense：审核阶段只放验证用 meta 和 ads.txt，不载广告脚本、不放广告位；过审后再定位置（只页脚、目录页，章节正文不放，关自动广告）
 ADSENSE_PUB = "ca-pub-7119069841468291"  # 形如 ca-pub-1234567890123456；空就什么都不加
 GAO_DIR = "/mnt/project-files/一孔学-内-自媒体/数据/网站素材"  # 各期稿只在共享盘读取，不进公开仓库
@@ -66,7 +66,7 @@ INTERNAL = re.compile(r"（[^（）]*(只|转述|不上屏|不念|常识|核不�
 
 HANT_FIX = {"余力": "餘力", "余，": "餘，", "余者": "餘者", "托看": "託看", "诗云": "詩云", "子云": "子云", "干禄": "干祿"}  # 护住后手工给的繁体
 # 繁体转换后再改的经文与人名（OpenCC 按今语词转错的），左为转出的错形，右为底本字形
-HANT_POST = [("通道不篤", "信道不篤"), ("相維闢公", "相維辟公"), ("師也闢", "師也辟"), ("趨而闢之", "趨而辟之"), ("甯戚", "寧戚"),
+HANT_POST = [("中國曆代度量衡", "中國歷代度量衡"), ("通道不篤", "信道不篤"), ("相維闢公", "相維辟公"), ("師也闢", "師也辟"), ("趨而闢之", "趨而辟之"), ("甯戚", "寧戚"),
     ("鬱郁", "郁郁"), ("愛之慾其生", "愛之欲其生"), ("惡之慾其死", "惡之欲其死"), ("門人慾厚葬", "門人欲厚葬"), ("無慾速", "無欲速"),
     ("禮雲禮", "禮云禮"), ("禮云禮雲", "禮云禮云"), ("樂雲樂", "樂云樂"), ("禮雲禮雲", "禮云禮云"), ("樂雲樂雲", "樂云樂云"), ("書雲", "書云"), ("不佔而已", "不占而已"), ("先嚐之", "先嘗之"), ("寢不屍", "寢不尸"),
     ("亞飯幹", "亞飯干"), ("難與併為仁", "難與並為仁"), ("可以托六尺", "可以託六尺"), ("不捨晝夜", "不舍晝夜"), ("舊谷既沒", "舊穀既沒"),
@@ -131,15 +131,15 @@ ZH_UI = {
  "p3t": "勘误公开", "p3": "讲错的地方改了就记：哪集哪句、原来怎么说、改成什么、依据是什么。",
  "books": "书架", "recent": "最近收录", "lunyu": "论语", "lunyu_sub": "二十篇 · 持续更新",
  "by_chapter": f"按篇按章排。底本：{SOURCE}。",
- "book_lead": "每章有原文、注里的关键字、诸家说法和一孔录的读法，附视频。", "covered": "已讲 {done} / {total} 章",
+ "book_lead": "每章有原文、注里的关键字、诸家说法和一孔录的读法，附视频。", "covered": "{total} 章",
  "f_common": "常见的理解", "f_keys": "注里的关键字", "f_others": "诸家怎么说", "f_ours": "一孔录这样读",
  "cites": "本章引文逐条核对", "cites_note": "视频里引到的每一句注：原话、出自谁、在底本哪一页。标“转述”的是我们概括的意思，不是原话。",
  "th_quote": "引文原话", "th_src": "出自", "th_page": "底本页", "para": "转述", "pg": "原页 {n}", "other_ed": "另本",
  "reads": "读音", "th_zi": "字", "th_pos": "位置", "th_du": "读", "shots": "底本原页",
  "kw": "本章勘误", "kw_note": "", "cite": "引用本页", "copy": "复制", "copied": "已复制",
  "checked": "本页最后核对：{d}。改动记在", "errata_page": "勘误页",
- "video": "看这一章的视频", "wj_vid": "这一章的视频正在制作，上线后就放在这里。先关注一孔录，出片第一时间看到：", "ddj_lead": "王弼本八十一章：道经第 1—37 章，德经第 38—81 章。视频还在制作，网站先放原文、原页、白话和注，开讲后逐章补全。", "bk_prog_wj": "原文全 · 视频制作中", "wj_pane": "原页", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点哔哩哔哩）",
- "prev": "上一章", "next": "下一章", "chapter_no": "{book} · 第 {n} 章", "book_no": "《论语》第 {n} 篇 · 已讲 {done} / {total} 章",
+ "video": "看这一章的视频", "wj_vid": "这一章的视频正在制作，上线后就放在这里。先关注一孔录，出片第一时间看到：", "ddj_lead": "王弼本八十一章：道经第 1—37 章，德经第 38—81 章。每章原文、白话、注与底本原页。", "bk_prog_wj": "原文全 · 视频制作中", "wj_pane": "原页", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点哔哩哔哩）",
+ "prev": "上一章", "next": "下一章", "chapter_no": "{book} · 第 {n} 章", "book_no": "《论语》第 {n} 篇 · {total} 章",
  "source_line": f"原文与注据{SOURCE}", "rendering": "",
  "errata_title": "公开勘误", "errata_sub": "原文·引文·出处·读音·读法",
  "errata_p1": "一孔录讲错或说满的地方，改了就记在这里，按时间倒排，旧记录不删。画面上的小问题不记，只记内容。",
@@ -300,13 +300,11 @@ BANBEN = [
  ("yangbojun", "杨伯峻《论语译注》", [
    ("bb_base", "中华书局。"),
    ("bb_img", "不放书影。"),
-   ("bb_page", "页码待核后补上。"),
    ("bb_lic", "在版权期。本站每章只短引一句译文，作“通行读法”对照，属适当引用；不收进开放数据。"),
    ("bb_use", "“各家注本”里的一句译文和“与朱注异同”表；异同说明是一孔录写的，不是原书文字。")]),
  ("qianmu", "钱穆《论语新解》", [
-   ("bb_base", "通行本（版本信息待核后补）。"),
+   ("bb_base", "通行本。"),
    ("bb_img", "不放书影。"),
-   ("bb_page", "页码待按正版核过后补上。"),
    ("bb_lic", "在版权期。本站每章只短引一句，作通行读法对照，属适当引用；不收进开放数据。"),
    ("bb_use", "同上。")]),
  ("yikonglu", "一孔录自己的内容", [
@@ -824,7 +822,7 @@ if(lm&&ld){var yn=(o.yearName||'').replace(/年$/,'')||(ry>0?'甲乙丙丁戊己
 return{big:m+'月'+d+'日',wk:y+'年 · 星期'+'日一二三四五六'[now.getDay()]+(lp?' · '+lp:''),jq:(k===0?'今日'+R.jn[idx]:R.jn[idx]+'后第'+k+'天')+' · '+R.hou[idx*3+h]}}catch(e){return null}}
 var X3=JSON.parse(B.querySelector('.shtri').textContent);
 var O0={y:X3.y,en:X3.en,ja:X3.ja,u:D.u};window.yklReset=function(){if(window.ykKn0!==undefined)D.kn=window.ykKn0;X3.y=O0.y;X3.en=O0.en;X3.ja=O0.ja;D.u=O0.u;X3.n=0};window.yklCard=function(o){if(o.y){X3.y=o.y;X3.en='';X3.ja=''}if(o.u)D.u=o.u;X3.n=o.n||0;card()};
-function card(){var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',RL=rili(),all=X3.h+X3.y+X3.en+X3.ja+'一孔录从《论语》开始 · 逐字读经典原文扫码读懂这一章'+(RL?RL.big+RL.wk+RL.jq:'');
+function card(){var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',RL=rili(),all=X3.h+X3.y+X3.en+X3.ja+'一孔录从《论语》开始 · 对着原页读经典扫码读懂这一章'+(RL?RL.big+RL.wk+RL.jq:'');
 Promise.all(['900 72px '+F,'700 60px '+F,'400 30px '+F].map(function(f){return document.fonts?document.fonts.load(f,all).catch(function(){}):0})).then(function(){qr(draw)})
 var MAXH=1400,AR=888/1400;function segs(n){var R=[];document.querySelectorAll('.yuanwen.dz .yyp').forEach(function(a){var sv=a.querySelector('svg'),im=a.querySelector('image');if(!sv||!im)return;var rs=[].slice.call(a.querySelectorAll('rect.hl')).filter(function(r){return !n||r.dataset.s==n});if(!rs.length)return;
 var vb=sv._vb0||sv.getAttribute('viewBox').split(/\\s+/).map(Number),pw=+im.getAttribute('width'),x0=1e9,x1=0,cw=0;rs.forEach(function(r){var x=+r.getAttribute('x'),w=+r.getAttribute('width');x0=Math.min(x0,x);x1=Math.max(x1,x+w);cw=Math.max(cw,w)});
@@ -842,7 +840,7 @@ var yS=yT+36,H=Math.round((SG.length?yS+sh+64:yT)+330);
 var cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');
 c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);c.strokeStyle='#23503F';c.lineWidth=3;c.strokeRect(40,40,W-80,H-80);c.strokeStyle='rgba(35,80,63,.25)';c.lineWidth=1;c.strokeRect(52,52,W-104,H-104);if(window.ykTex)window.ykTex(c,W,H);
 var seal=new Image();seal.onload=function(){c.drawImage(seal,96,100,72,72);rest()};seal.onerror=rest;seal.src='/assets/seal-180.png';
-function rest(){c.textBaseline='middle';c.fillStyle='#1E2A25';c.font='900 44px '+F;c.fillText('一孔录',186,126);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText('从《论语》开始 · 逐字读经典原文',188,164);
+function rest(){c.textBaseline='middle';c.fillStyle='#1E2A25';c.font='900 44px '+F;c.fillText('一孔录',186,126);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText('从《论语》开始 · 对着原页读经典',188,164);
 c.textBaseline='alphabetic';
 if(RL){c.textAlign='right';c.fillStyle='#23503F';c.font='900 76px '+F;c.fillText(RL.big,W-96,160);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(RL.wk,W-96,202);c.fillStyle='#8A5A2C';c.font='700 30px '+F;c.fillText(RL.jq,W-96,246);c.textAlign='left'}
 c.fillStyle='rgba(35,80,63,.3)';c.fillRect(96,top,W-192,1);
@@ -946,7 +944,7 @@ def analytics(L):
               + 'if(HL.length){var mx=0;HL.forEach(function(li){mx=Math.max(mx,t.heat[li.getAttribute("data-c")]||0)});if(mx)HL.forEach(function(li){var v=t.heat[li.getAttribute("data-c")]||0,i=li.querySelector("i.heat");if(i&&v){i.querySelector("s").style.width=Math.max(8,Math.round(v*140/mx))+"px";i.querySelector("small").textContent=X.hn.replace("{n}",n(v));i.hidden=false}})}'
               + 'if(RM&&t.heat)lj(function(j){var hs=Object.keys(t.heat).filter(function(c){return j.c[c]}).sort(function(a,b){return t.heat[b]-t.heat[a]}).slice(0,5);if(!hs.length)return;var ol=RM.querySelector("ol.toc");if(!ol)return;var old=[].slice.call(ol.querySelectorAll("li[data-c]")).map(function(li){return li.getAttribute("data-c")}).filter(function(c){return j.c[c]&&hs.indexOf(c)<0}),cs=hs.concat(old).slice(0,5),mx=t.heat[hs[0]];ol.textContent="";'
               + 'cs.forEach(function(c){var v=t.heat[c]||0,li=document.createElement("li"),a=document.createElement("a"),e=function(tg,tx){var x=document.createElement(tg);if(tx!=null)x.textContent=tx;return x};li.setAttribute("data-c",c);a.href=j.p+j.c[c][1];a.appendChild(e("em",c));a.appendChild(e("b",j.c[c][0]));var sp=e("span",(j.c[c][2]||[])[0]||"");sp.lang="zh-Hans";a.appendChild(sp);if(v){var i=e("i");i.className="heat";var sb=e("s");sb.style.width=Math.max(8,Math.round(v*140/mx))+"px";i.appendChild(sb);i.appendChild(e("small",X.hn.replace("{n}",n(v))));a.appendChild(i)}li.appendChild(a);ol.appendChild(li)})});'
-              + 'if(ST&&t.recent&&t.recent.length)lj(function(j){var A=j.a||j.c,rc=t.recent.filter(function(c){return A[c]});if(!rc.length)return;var nall=Math.max(t.rn||0,rc.length);rc=rc.slice(0,12);ST.textContent="";var lb=document.createElement("b");lb.textContent=X.steps.replace("{n}",n(nall));if(X.zj){var ZA={lunyu:32,ddj:65.2,szj:31.6},av=rc.reduce(function(s,c){return s+(ZA[c.split(".")[0]]||ZA.lunyu)},0)/rc.length,sl=nall*av/20,kg=sl*0.8/1000,sn=sl<100?Math.round(sl):Math.round(sl/10)*10,kw=kg<10?Math.round(kg*10)/10:Math.round(kg),za=document.createElement("span");za.className="zj";za.textContent=X.zj.replace("{s}",n(sn)).replace("{w}",n(kw));lb.appendChild(za)}ST.appendChild(lb);var sc=document.createElement("span");sc.className="stc";rc.forEach(function(c){var a=document.createElement("a");a.href=j.p+A[c][1];a.textContent=A[c][0];sc.appendChild(a)});ST.appendChild(sc);ST.hidden=false});'
+              + 'if(ST&&t.recent&&t.recent.length)lj(function(j){var A=j.a||j.c,rc=t.recent.filter(function(c){return A[c]});if(!rc.length)return;var nall=Math.max(t.rn||0,rc.length);rc=rc.slice(0,12);ST.textContent="";var lb=document.createElement("b");lb.textContent=X.steps.replace("{n}",n(nall));if(X.zj){var ZA={lunyu:32,ddj:65.2,szj:31.6},av=rc.reduce(function(s,c){return s+(ZA[c.split(".")[0]]||ZA.lunyu)},0)/rc.length,sl=nall*av/20,g=sl*0.8,U=X.zu,sn=sl<100?Math.round(sl):Math.round(sl/10)*10,q=function(a,ua,b,ub){return n(a)+"\u00a0"+ua+(b?" "+n(b)+"\u00a0"+ub:"")},kw=g<15.625?q(Math.max(1,Math.round(g/0.651)),U[3]):g<250?(Math.round(g/15.625)<16?q(Math.round(g/15.625),U[2]):q(1,U[1])):g<30000?(g<2500?(function(){var a=Math.floor(g/250),r=Math.round((g-a*250)/15.625);if(r==16){a++;r=0}return q(a,U[1],r,U[2])})():q(Math.round(g/250),U[1])):(function(){var a=Math.floor(g/30000),r=Math.round((g-a*30000)/250);if(r==120){a++;r=0}return q(a,U[0],r,U[1])})(),za=document.createElement("span");za.className="zj";za.textContent=X.zj.replace("{s}",n(sn)).replace("{w}",kw);lb.appendChild(za)}ST.appendChild(lb);var sc=document.createElement("span");sc.className="stc";rc.forEach(function(c){var a=document.createElement("a");a.href=j.p+A[c][1];a.textContent=A[c][0];sc.appendChild(a)});ST.appendChild(sc);ST.hidden=false});'
               + 'if(TJ&&t.top&&t.top.length)lj(function(j){var k=t.top[0][0].split("#"),c=k[0],si=parseInt(k[1].slice(1),10)-1;if(!j.c[c]||!j.c[c][2][si])return;TJ.querySelector("blockquote").textContent=j.c[c][2][si];var a=TJ.querySelector("a");a.href=j.p+j.c[c][1]+"#"+k[1];a.textContent=j.c[c][0];TJ.hidden=false})'
               + '}).catch(function(){});'
               + 'function gdc(){if(!GD||!GD.getAttribute("data-c")||GD.querySelector(".gdn"))return;fetch(EP("reads")+"?c="+encodeURIComponent(GD.getAttribute("data-c"))).then(function(r){return r.json()}).then(function(d){if(d&&d.today&&!GD.querySelector(".gdn")){var sp=document.createElement("span");sp.className="gdn";sp.textContent=" · "+X.gdn.replace("{d}",n(d.today));(GD.querySelector(".md")||GD).appendChild(sp)}}).catch(function(){})}gdc();document.addEventListener("ykmeiri",gdc);'
@@ -956,13 +954,17 @@ def analytics(L):
 DONE_TXT = {"zh-Hans": {"b": "读完了", "ok": "已读完 ✓", "n": "今天 {d} 人读完 · 共 {t} 人", "h": "今日共读", "p": "全站今天一起读这一章，明天换一章。", "steps": "今天大家一共读了 {n} 章", "topju": "近 7 天被抄走最多的一句", "gd": "今日共读一章", "gdn": "今天 {d} 人共读", "hn": "近 7 天 {n} 人读过"}, "zh-Hant": {"b": "讀完了", "ok": "已讀完 ✓", "n": "今天 {d} 人讀完 · 共 {t} 人", "h": "今日共讀", "p": "全站今天一起讀這一章，明天換一章。", "steps": "今天大家一共讀了 {n} 章", "topju": "近 7 天被抄走最多的一句", "gd": "今日共讀一章", "gdn": "今天 {d} 人共讀", "hn": "近 7 天 {n} 人讀過"}, "en": {"b": "I’ve read it", "ok": "Read ✓", "n": "{d} finished today · {t} in all", "h": "Today’s shared reading", "p": "Everyone on the site reads this chapter today; a new one tomorrow.", "steps": "Read today · {n}", "topju": "Most-copied line, last 7 days", "gd": "Today’s shared chapter", "gdn": "{d} read it today", "hn": "{n} read in the last 7 days"}, "ja": {"b": "読み終えた", "ok": "読了 ✓", "n": "今日 {d} 人が読了 · 累計 {t} 人", "h": "今日の共読", "p": "今日はサイトのみんなでこの章を読みます。明日は別の章です。", "steps": "今日読まれた章 · {n}", "topju": "直近7日でいちばん写された一句", "gd": "今日の共読の章", "gdn": "今日 {d} 人が共読", "hn": "直近7日 {n} 人が読了"}, "ko": {"b": "다 읽었어요", "ok": "읽음 ✓", "n": "오늘 {d}명 완독 · 누적 {t}명", "h": "오늘 함께 읽기", "p": "오늘은 모두 이 장을 함께 읽습니다. 내일은 다른 장입니다.", "steps": "오늘 읽힌 장 · {n}", "topju": "최근 7일 가장 많이 옮겨 적은 구절", "gd": "오늘 함께 읽는 장", "gdn": "오늘 {d}명 함께 읽음", "hn": "최근 7일 {n}명 읽음"}, "fr": {"b": "Je l’ai lu", "ok": "Lu ✓", "n": "{d} l’ont lu aujourd’hui · {t} en tout", "h": "Lecture commune du jour", "p": "Aujourd’hui, tout le site lit ce chapitre ; demain, un autre.", "steps": "Lus aujourd’hui · {n}", "topju": "La phrase la plus copiée ces 7 derniers jours", "gd": "Le chapitre du jour, ensemble", "gdn": "{d} l’ont lu aujourd’hui", "hn": "{n} lectures ces 7 derniers jours"}, "es": {"b": "Lo he leído", "ok": "Leído ✓", "n": "{d} lo leyeron hoy · {t} en total", "h": "Lectura compartida de hoy", "p": "Hoy todo el sitio lee este capítulo; mañana, otro.", "steps": "Leídos hoy · {n}", "topju": "La frase más copiada en los últimos 7 días", "gd": "Capítulo compartido de hoy", "gdn": "{d} lo leyeron hoy", "hn": "{n} lecturas en los últimos 7 días"}, "de": {"b": "Gelesen", "ok": "Gelesen ✓", "n": "heute {d} gelesen · insgesamt {t}", "h": "Gemeinsame Lektüre heute", "p": "Heute liest die ganze Seite dieses Kapitel, morgen ein anderes.", "steps": "Heute gelesen · {n}", "topju": "Meistkopierter Satz der letzten 7 Tage", "gd": "Gemeinsames Kapitel heute", "gdn": "heute {d} gelesen", "hn": "{n} in den letzten 7 Tagen gelesen"}, "vi": {"b": "Đã đọc xong", "ok": "Đã đọc ✓", "n": "hôm nay {d} người đọc xong · tổng {t}", "h": "Cùng đọc hôm nay", "p": "Hôm nay cả trang cùng đọc chương này; mai đổi chương khác.", "steps": "Hôm nay có người đọc · {n}", "topju": "Câu được chép nhiều nhất 7 ngày qua", "gd": "Chương cùng đọc hôm nay", "gdn": "hôm nay {d} người cùng đọc", "hn": "{n} lượt đọc 7 ngày qua"}, "id": {"b": "Sudah selesai", "ok": "Selesai ✓", "n": "{d} selesai hari ini · total {t}", "h": "Baca bersama hari ini", "p": "Hari ini semua pembaca membaca bab ini; besok bab lain.", "steps": "Dibaca hari ini · {n}", "topju": "Kalimat paling banyak disalin 7 hari terakhir", "gd": "Bab baca bersama hari ini", "gdn": "{d} membaca hari ini", "hn": "{n} dibaca 7 hari terakhir"}, "ru": {"b": "Прочитано", "ok": "Прочитано ✓", "n": "сегодня прочитали: {d} · всего: {t}", "h": "Читаем вместе сегодня", "p": "Сегодня весь сайт читает эту главу, завтра — другую.", "steps": "Сегодня читали · {n}", "topju": "Самая переписываемая строка за 7 дней", "gd": "Глава дня — читаем вместе", "gdn": "сегодня читали: {d}", "hn": "прочитали за 7 дней: {n}"}}
 
 # 11-14 主人：“今天大家一共读了 N 章”后加竹简枚数与估重（丙：两个都写）；算法见核验方法页 #zhujian
-ZJ_TXT = {"zh-Hans": "，约合 {s} 枚竹简，估重 {w} 公斤", "zh-Hant": "，約合 {s} 枚竹簡，估重 {w} 公斤", "en": " · ≈ {s} bamboo slips, est. {w} kg",
-          "ja": "（竹簡にして約 {s} 本、推定 {w} kg）", "ko": " · 죽간 약 {s}매, 추정 {w}kg", "fr": " · ≈ {s} lattes de bambou, env. {w} kg",
-          "es": " · ≈ {s} tablillas de bambú, unos {w} kg", "de": " · ≈ {s} Bambusstreifen, etwa {w} kg", "vi": " · ≈ {s} thẻ tre, ước {w} kg",
-          "id": " · ≈ {s} bilah bambu, kira-kira {w} kg", "ru": " · ≈ {s} бамбуковых планок, около {w} кг"}
-ZJ_FF = {'zh-Hans': ('首页上的竹简是怎么算的', '首页“今天大家一共读了 N 章”后面的竹简数，是拿章数乘平均每章字数，再除以每简 20 字算出来的。平均每章字数按本站底本原文实数：《论语》498 章共 15,914 字，每章约 32 字；《道德经》81 章共 5,279 字，每章约 65 字；《三字经》每讲约 32 字。每简 20 字取定州汉墓出土的竹简《论语》：简长约 16.2 厘米，宽约 0.7 厘米，每简约 19 至 21 字（河北省文物研究所定州汉墓竹简整理小组《定州汉墓竹简论语》，文物出版社，1997 年）。重量是估算：发掘报告一般不记竹简重量，我们按定州简的长宽、简厚约 0.1 厘米、竹材气干密度约每立方厘米 0.7 克来估，一枚约 0.8 克，所以写“估重”。'), 'en': ('How the bamboo slips on the home page are counted', 'The number of bamboo slips after “Read today” on the home page is the number of chapters read, times the average characters per chapter, divided by 20 characters per slip. Averages come from the base texts on this site: the Analects has 15,914 characters in 498 chapters, about 32 per chapter; the Daodejing has 5,279 in 81 chapters, about 65; the Three Character Classic about 32 per lesson. Twenty characters per slip follows the Analects on bamboo slips excavated from the Han tomb at Dingzhou: slips about 16.2 cm long and 0.7 cm wide, 19 to 21 characters each (Hebei Provincial Institute of Cultural Relics, Dingzhou Han Tomb Bamboo Slips: Lunyu, Cultural Relics Press, 1997). The weight is an estimate. Excavation reports rarely give the weight of slips, so we take the Dingzhou size, a thickness of about 0.1 cm and air-dry bamboo at about 0.7 g per cubic centimetre: about 0.8 g a slip. That is why it says “est.”'), 'ja': ('トップページの竹簡の数え方', 'トップページ「今日読まれた章」のあとの竹簡の本数は、章の数に一章あたりの平均字数をかけ、一簡20字で割ったものです。平均字数は当サイトの底本の実数によります。『論語』は498章で15,914字、一章約32字。『道徳経』は81章で5,279字、一章約65字。『三字経』は一講約32字。一簡20字は定州漢墓出土の竹簡『論語』によります。簡の長さ約16.2センチ、幅約0.7センチ、一簡19〜21字です（河北省文物研究所定州漢墓竹簡整理小組『定州漢墓竹簡論語』文物出版社、1997年）。重さは推定です。発掘報告はふつう竹簡の重さを記さないため、定州簡の長さと幅、厚さ約0.1センチ、竹材の気乾密度約0.7グラム毎立方センチで見積もり、一本約0.8グラムとしました。'), 'ko': ('첫 화면의 죽간은 이렇게 셉니다', '첫 화면 ‘오늘 읽힌 장’ 뒤의 죽간 수는 읽은 장 수에 장당 평균 글자 수를 곱하고, 죽간 한 매에 20자로 나눈 것입니다. 평균 글자 수는 이 사이트 저본의 실제 수입니다. 《논어》 498장 15,914자, 장당 약 32자. 《도덕경》 81장 5,279자, 장당 약 65자. 《삼자경》 한 강에 약 32자. 한 매 20자는 정주 한묘에서 나온 죽간 《논어》를 따랐습니다. 길이 약 16.2cm, 너비 약 0.7cm, 한 매에 19~21자입니다(河北省文物研究所定州漢墓竹簡整理小組, 『定州漢墓竹簡論語』, 文物出版社, 1997). 무게는 추정입니다. 발굴 보고서는 대개 죽간 무게를 적지 않아서, 정주 죽간의 길이·너비, 두께 약 0.1cm, 대나무 기건 밀도 약 0.7g/cm³로 어림해 한 매 약 0.8g으로 잡았습니다.'), 'fr': ('Comment sont comptées les lattes de bambou de l’accueil', 'Le nombre de lattes après « Lus aujourd’hui » est le nombre de chapitres lus, multiplié par le nombre moyen de caractères par chapitre, divisé par 20 caractères par latte. Les moyennes viennent des textes de base du site : les Entretiens comptent 15 914 caractères en 498 chapitres, environ 32 par chapitre ; le Daodejing 5 279 en 81 chapitres, environ 65 ; le Classique des trois caractères environ 32 par leçon. Vingt caractères par latte : les Entretiens sur lattes de bambou de la tombe Han de Dingzhou, lattes d’environ 16,2 cm sur 0,7 cm, 19 à 21 caractères chacune (Institut des reliques culturelles du Hebei, Dingzhou Han mu zhujian Lunyu, Wenwu, 1997). Le poids est une estimation : les rapports de fouille ne donnent guère le poids des lattes ; nous prenons la taille de Dingzhou, une épaisseur d’environ 0,1 cm et un bambou sec à l’air d’environ 0,7 g/cm³, soit environ 0,8 g par latte.'), 'es': ('Cómo se cuentan las tablillas de bambú de la portada', 'El número de tablillas tras «Leídos hoy» es el número de capítulos leídos por el promedio de caracteres por capítulo, dividido entre 20 caracteres por tablilla. Los promedios salen de los textos base del sitio: las Analectas tienen 15 914 caracteres en 498 capítulos, unos 32 por capítulo; el Daodejing 5279 en 81, unos 65; el Clásico de tres caracteres unos 32 por lección. Veinte caracteres por tablilla siguen las Analectas en tablillas de bambú de la tumba Han de Dingzhou: unos 16,2 cm de largo y 0,7 cm de ancho, de 19 a 21 caracteres cada una (Instituto de Reliquias Culturales de Hebei, Dingzhou Han mu zhujian Lunyu, Wenwu, 1997). El peso es una estimación: los informes de excavación casi nunca dan el peso de las tablillas; tomamos el tamaño de Dingzhou, un grosor de unos 0,1 cm y bambú seco al aire de unos 0,7 g/cm³, unos 0,8 g por tablilla.'), 'de': ('Wie die Bambusstreifen auf der Startseite gezählt werden', 'Die Zahl der Bambusstreifen nach „Heute gelesen“ ist die Zahl der gelesenen Kapitel mal die durchschnittliche Zeichenzahl pro Kapitel, geteilt durch 20 Zeichen pro Streifen. Die Durchschnitte stammen aus den Grundtexten dieser Seite: die Gespräche haben 15.914 Zeichen in 498 Kapiteln, etwa 32 pro Kapitel; das Daodejing 5.279 in 81 Kapiteln, etwa 65; der Drei-Zeichen-Klassiker etwa 32 pro Lektion. Zwanzig Zeichen pro Streifen folgen den Gesprächen auf Bambus aus dem Han-Grab von Dingzhou: Streifen etwa 16,2 cm lang und 0,7 cm breit, je 19 bis 21 Zeichen (Kulturgutinstitut Hebei, Dingzhou Han mu zhujian Lunyu, Wenwu, 1997). Das Gewicht ist geschätzt: Grabungsberichte nennen das Gewicht der Streifen kaum; wir nehmen die Dingzhou-Maße, eine Dicke von etwa 0,1 cm und lufttrockenen Bambus mit etwa 0,7 g/cm³, also rund 0,8 g pro Streifen.'), 'vi': ('Số thẻ tre ở trang chủ được tính thế nào', 'Số thẻ tre sau dòng “Hôm nay có người đọc” bằng số chương đã đọc nhân số chữ trung bình mỗi chương, chia cho 20 chữ mỗi thẻ. Số chữ trung bình lấy từ bản gốc trên trang: Luận ngữ 498 chương, 15.914 chữ, khoảng 32 chữ một chương; Đạo đức kinh 81 chương, 5.279 chữ, khoảng 65; Tam tự kinh khoảng 32 chữ một bài. Hai mươi chữ mỗi thẻ theo Luận ngữ trên thẻ tre ở mộ Hán Định Châu: thẻ dài khoảng 16,2 cm, rộng khoảng 0,7 cm, mỗi thẻ 19 đến 21 chữ (Viện Di vật văn hóa Hà Bắc, Định Châu Hán mộ trúc giản Luận ngữ, NXB Văn Vật, 1997). Trọng lượng là ước tính: báo cáo khai quật thường không ghi trọng lượng thẻ; chúng tôi lấy kích thước thẻ Định Châu, độ dày khoảng 0,1 cm và tre khô gió khoảng 0,7 g/cm³, mỗi thẻ khoảng 0,8 g.'), 'id': ('Cara menghitung bilah bambu di beranda', 'Jumlah bilah bambu setelah “Dibaca hari ini” adalah jumlah bab yang dibaca dikali rata-rata aksara per bab, dibagi 20 aksara per bilah. Rata-ratanya diambil dari teks dasar situs ini: Analek 15.914 aksara dalam 498 bab, sekitar 32 per bab; Daodejing 5.279 dalam 81 bab, sekitar 65; Kitab Tiga Aksara sekitar 32 per pelajaran. Dua puluh aksara per bilah mengikuti Analek pada bilah bambu dari makam Han di Dingzhou: panjang sekitar 16,2 cm, lebar sekitar 0,7 cm, 19 sampai 21 aksara per bilah (Institut Peninggalan Budaya Hebei, Dingzhou Han mu zhujian Lunyu, Wenwu, 1997). Beratnya perkiraan: laporan ekskavasi jarang mencatat berat bilah; kami memakai ukuran Dingzhou, tebal sekitar 0,1 cm, dan bambu kering udara sekitar 0,7 g/cm³, kira-kira 0,8 g per bilah.'), 'ru': ('Как считаются бамбуковые планки на главной', 'Число бамбуковых планок после «Сегодня читали» — это число прочитанных глав, умноженное на среднее число знаков в главе и делённое на 20 знаков на планку. Средние взяты из базовых текстов сайта: в «Лунь юе» 15 914 знаков в 498 главах, около 32 на главу; в «Даодэцзине» 5279 знаков в 81 главе, около 65; в «Троесловии» около 32 на урок. Двадцать знаков на планку — по «Лунь юю» на бамбуковых планках из ханьской гробницы в Динчжоу: длина около 16,2 см, ширина около 0,7 см, по 19–21 знаку (Институт культурного наследия провинции Хэбэй, «Динчжоу Хань му чжуцзянь Луньюй», Вэньу, 1997). Вес — оценка: в отчётах о раскопках вес планок обычно не указывают; мы берём размеры динчжоуских планок, толщину около 0,1 см и воздушно-сухой бамбук около 0,7 г/см³, то есть около 0,8 г на планку.')}
+ZJ_TXT = {"zh-Hans": "，约合 {s} 枚竹简，按汉秤估重 {w}", "zh-Hant": "，約合 {s} 枚竹簡，按漢秤估重 {w}", "en": " · ≈ {s} bamboo slips, est. {w} by Han weights",
+          "ja": "（竹簡にして約 {s} 本、漢代の秤で推定 {w}）", "ko": " · 죽간 약 {s}매, 한대 저울로 추정 {w}", "fr": " · ≈ {s} lattes de bambou, env. {w} en poids Han",
+          "es": " · ≈ {s} tablillas de bambú, unos {w} en pesos Han", "de": " · ≈ {s} Bambusstreifen, etwa {w} nach Han-Gewicht", "vi": " · ≈ {s} thẻ tre, ước {w} theo cân thời Hán",
+          "id": " · ≈ {s} bilah bambu, kira-kira {w} menurut timbangan Han", "ru": " · ≈ {s} бамбуковых планок, около {w} по ханьской мере веса"}
+# 11-21 主人：估重换古代计量单位 → 汉秤：石、斤、两、铢（1 石＝120 斤，1 斤＝16 两，1 两＝24 铢；汉一斤约合今 250 克）
+ZJ_UNIT = {"zh-Hans": ["石", "斤", "两", "铢"], "zh-Hant": ["石", "斤", "兩", "銖"], "ja": ["石", "斤", "両", "銖"], "ko": ["석", "근", "냥", "수"],
+           "vi": ["thạch", "cân", "lạng", "thù"]}
+ZJ_FF = {'zh-Hans': ('首页上的竹简是怎么算的', '首页“今天大家一共读了 N 章”后面的竹简数，是拿章数乘平均每章字数，再除以每简 20 字算出来的。平均每章字数按本站底本原文实数：《论语》498 章共 15,914 字，每章约 32 字；《道德经》81 章共 5,279 字，每章约 65 字；《三字经》每讲约 32 字。每简 20 字取定州汉墓出土的竹简《论语》：简长约 16.2 厘米，宽约 0.7 厘米，每简约 19 至 21 字（河北省文物研究所定州汉墓竹简整理小组《定州汉墓竹简论语》，文物出版社，1997 年）。重量是估算：发掘报告一般不记竹简重量，我们按定州简的长宽、简厚约 0.1 厘米、竹材气干密度约每立方厘米 0.7 克来估，一枚约 0.8 克，所以写“估重”。估出的克数再折成汉代的秤：秦汉一斤约合今 250 克，一斤十六两，一两二十四铢，一百二十斤为一石。用汉秤，是因为秦始皇当年“以衡石量书”，每天批阅的竹简论石来称（《史记·秦始皇本纪》）。'), 'en': ('How the bamboo slips on the home page are counted', 'The number of bamboo slips after “Read today” on the home page is the number of chapters read, times the average characters per chapter, divided by 20 characters per slip. Averages come from the base texts on this site: the Analects has 15,914 characters in 498 chapters, about 32 per chapter; the Daodejing has 5,279 in 81 chapters, about 65; the Three Character Classic about 32 per lesson. Twenty characters per slip follows the Analects on bamboo slips excavated from the Han tomb at Dingzhou: slips about 16.2 cm long and 0.7 cm wide, 19 to 21 characters each (Hebei Provincial Institute of Cultural Relics, Dingzhou Han Tomb Bamboo Slips: Lunyu, Cultural Relics Press, 1997). The weight is an estimate. Excavation reports rarely give the weight of slips, so we take the Dingzhou size, a thickness of about 0.1 cm and air-dry bamboo at about 0.7 g per cubic centimetre: about 0.8 g a slip. That is why it says “est.” The grams are then put into Han-dynasty weights: a Qin–Han jin was about 250 g today, 16 liang to the jin, 24 zhu to the liang, 120 jin to the dan. Han weights, because the First Emperor of Qin is said to have weighed his bamboo documents by the dan each day (Shiji, Basic Annals of Qin Shi Huang).'), 'ja': ('トップページの竹簡の数え方', 'トップページ「今日読まれた章」のあとの竹簡の本数は、章の数に一章あたりの平均字数をかけ、一簡20字で割ったものです。平均字数は当サイトの底本の実数によります。『論語』は498章で15,914字、一章約32字。『道徳経』は81章で5,279字、一章約65字。『三字経』は一講約32字。一簡20字は定州漢墓出土の竹簡『論語』によります。簡の長さ約16.2センチ、幅約0.7センチ、一簡19〜21字です（河北省文物研究所定州漢墓竹簡整理小組『定州漢墓竹簡論語』文物出版社、1997年）。重さは推定です。発掘報告はふつう竹簡の重さを記さないため、定州簡の長さと幅、厚さ約0.1センチ、竹材の気乾密度約0.7グラム毎立方センチで見積もり、一本約0.8グラムとしました。グラムはさらに漢代の秤に直します。秦漢の一斤は今の約250グラム、一斤は十六両、一両は二十四銖、百二十斤が一石です。漢の秤を使うのは、秦の始皇帝が毎日読む竹簡を石で量ったと伝えられるからです（『史記』秦始皇本紀）。'), 'ko': ('첫 화면의 죽간은 이렇게 셉니다', '첫 화면 ‘오늘 읽힌 장’ 뒤의 죽간 수는 읽은 장 수에 장당 평균 글자 수를 곱하고, 죽간 한 매에 20자로 나눈 것입니다. 평균 글자 수는 이 사이트 저본의 실제 수입니다. 《논어》 498장 15,914자, 장당 약 32자. 《도덕경》 81장 5,279자, 장당 약 65자. 《삼자경》 한 강에 약 32자. 한 매 20자는 정주 한묘에서 나온 죽간 《논어》를 따랐습니다. 길이 약 16.2cm, 너비 약 0.7cm, 한 매에 19~21자입니다(河北省文物研究所定州漢墓竹簡整理小組, 『定州漢墓竹簡論語』, 文物出版社, 1997). 무게는 추정입니다. 발굴 보고서는 대개 죽간 무게를 적지 않아서, 정주 죽간의 길이·너비, 두께 약 0.1cm, 대나무 기건 밀도 약 0.7g/cm³로 어림해 한 매 약 0.8g으로 잡았습니다. 그램은 다시 한대 저울로 바꿉니다. 진한의 1근은 지금의 약 250g, 1근은 16냥, 1냥은 24수, 120근이 1석입니다. 한대 저울을 쓰는 것은 진시황이 날마다 읽을 죽간을 석으로 달았다고 전하기 때문입니다(『사기』 진시황본기).'), 'fr': ('Comment sont comptées les lattes de bambou de l’accueil', 'Le nombre de lattes après « Lus aujourd’hui » est le nombre de chapitres lus, multiplié par le nombre moyen de caractères par chapitre, divisé par 20 caractères par latte. Les moyennes viennent des textes de base du site : les Entretiens comptent 15 914 caractères en 498 chapitres, environ 32 par chapitre ; le Daodejing 5 279 en 81 chapitres, environ 65 ; le Classique des trois caractères environ 32 par leçon. Vingt caractères par latte : les Entretiens sur lattes de bambou de la tombe Han de Dingzhou, lattes d’environ 16,2 cm sur 0,7 cm, 19 à 21 caractères chacune (Institut des reliques culturelles du Hebei, Dingzhou Han mu zhujian Lunyu, Wenwu, 1997). Le poids est une estimation : les rapports de fouille ne donnent guère le poids des lattes ; nous prenons la taille de Dingzhou, une épaisseur d’environ 0,1 cm et un bambou sec à l’air d’environ 0,7 g/cm³, soit environ 0,8 g par latte. Les grammes sont ensuite convertis en poids Han : un jin des Qin et des Han valait environ 250 g, 16 liang au jin, 24 zhu au liang, 120 jin au dan. Poids Han, parce que le Premier Empereur des Qin, dit-on, pesait chaque jour ses documents sur bambou au dan (Shiji, annales de Qin Shi Huang).'), 'es': ('Cómo se cuentan las tablillas de bambú de la portada', 'El número de tablillas tras «Leídos hoy» es el número de capítulos leídos por el promedio de caracteres por capítulo, dividido entre 20 caracteres por tablilla. Los promedios salen de los textos base del sitio: las Analectas tienen 15 914 caracteres en 498 capítulos, unos 32 por capítulo; el Daodejing 5279 en 81, unos 65; el Clásico de tres caracteres unos 32 por lección. Veinte caracteres por tablilla siguen las Analectas en tablillas de bambú de la tumba Han de Dingzhou: unos 16,2 cm de largo y 0,7 cm de ancho, de 19 a 21 caracteres cada una (Instituto de Reliquias Culturales de Hebei, Dingzhou Han mu zhujian Lunyu, Wenwu, 1997). El peso es una estimación: los informes de excavación casi nunca dan el peso de las tablillas; tomamos el tamaño de Dingzhou, un grosor de unos 0,1 cm y bambú seco al aire de unos 0,7 g/cm³, unos 0,8 g por tablilla. Los gramos se pasan luego a pesos Han: un jin de los Qin y los Han equivalía a unos 250 g, 16 liang por jin, 24 zhu por liang, 120 jin por dan. Pesos Han, porque se cuenta que el Primer Emperador de Qin pesaba cada día sus documentos en bambú por dan (Shiji, anales de Qin Shi Huang).'), 'de': ('Wie die Bambusstreifen auf der Startseite gezählt werden', 'Die Zahl der Bambusstreifen nach „Heute gelesen“ ist die Zahl der gelesenen Kapitel mal die durchschnittliche Zeichenzahl pro Kapitel, geteilt durch 20 Zeichen pro Streifen. Die Durchschnitte stammen aus den Grundtexten dieser Seite: die Gespräche haben 15.914 Zeichen in 498 Kapiteln, etwa 32 pro Kapitel; das Daodejing 5.279 in 81 Kapiteln, etwa 65; der Drei-Zeichen-Klassiker etwa 32 pro Lektion. Zwanzig Zeichen pro Streifen folgen den Gesprächen auf Bambus aus dem Han-Grab von Dingzhou: Streifen etwa 16,2 cm lang und 0,7 cm breit, je 19 bis 21 Zeichen (Kulturgutinstitut Hebei, Dingzhou Han mu zhujian Lunyu, Wenwu, 1997). Das Gewicht ist geschätzt: Grabungsberichte nennen das Gewicht der Streifen kaum; wir nehmen die Dingzhou-Maße, eine Dicke von etwa 0,1 cm und lufttrockenen Bambus mit etwa 0,7 g/cm³, also rund 0,8 g pro Streifen. Die Gramm werden dann in Han-Gewichte umgerechnet: ein Jin der Qin und Han entsprach etwa 250 g, 16 Liang auf das Jin, 24 Zhu auf das Liang, 120 Jin auf das Dan. Han-Gewichte, weil der Erste Kaiser von Qin seine Bambusakten täglich nach dem Dan gewogen haben soll (Shiji, Annalen des Qin Shi Huang).'), 'vi': ('Số thẻ tre ở trang chủ được tính thế nào', 'Số thẻ tre sau dòng “Hôm nay có người đọc” bằng số chương đã đọc nhân số chữ trung bình mỗi chương, chia cho 20 chữ mỗi thẻ. Số chữ trung bình lấy từ bản gốc trên trang: Luận ngữ 498 chương, 15.914 chữ, khoảng 32 chữ một chương; Đạo đức kinh 81 chương, 5.279 chữ, khoảng 65; Tam tự kinh khoảng 32 chữ một bài. Hai mươi chữ mỗi thẻ theo Luận ngữ trên thẻ tre ở mộ Hán Định Châu: thẻ dài khoảng 16,2 cm, rộng khoảng 0,7 cm, mỗi thẻ 19 đến 21 chữ (Viện Di vật văn hóa Hà Bắc, Định Châu Hán mộ trúc giản Luận ngữ, NXB Văn Vật, 1997). Trọng lượng là ước tính: báo cáo khai quật thường không ghi trọng lượng thẻ; chúng tôi lấy kích thước thẻ Định Châu, độ dày khoảng 0,1 cm và tre khô gió khoảng 0,7 g/cm³, mỗi thẻ khoảng 0,8 g. Số gam sau đó đổi sang cân thời Hán: một cân thời Tần Hán khoảng 250 g ngày nay, một cân 16 lạng, một lạng 24 thù, 120 cân là một thạch. Dùng cân Hán vì tương truyền Tần Thủy Hoàng mỗi ngày cân thẻ tre tấu chương theo thạch (Sử ký, Tần Thủy Hoàng bản kỷ).'), 'id': ('Cara menghitung bilah bambu di beranda', 'Jumlah bilah bambu setelah “Dibaca hari ini” adalah jumlah bab yang dibaca dikali rata-rata aksara per bab, dibagi 20 aksara per bilah. Rata-ratanya diambil dari teks dasar situs ini: Analek 15.914 aksara dalam 498 bab, sekitar 32 per bab; Daodejing 5.279 dalam 81 bab, sekitar 65; Kitab Tiga Aksara sekitar 32 per pelajaran. Dua puluh aksara per bilah mengikuti Analek pada bilah bambu dari makam Han di Dingzhou: panjang sekitar 16,2 cm, lebar sekitar 0,7 cm, 19 sampai 21 aksara per bilah (Institut Peninggalan Budaya Hebei, Dingzhou Han mu zhujian Lunyu, Wenwu, 1997). Beratnya perkiraan: laporan ekskavasi jarang mencatat berat bilah; kami memakai ukuran Dingzhou, tebal sekitar 0,1 cm, dan bambu kering udara sekitar 0,7 g/cm³, kira-kira 0,8 g per bilah. Gramnya lalu diubah ke timbangan Han: satu jin zaman Qin–Han kira-kira 250 g sekarang, 16 liang per jin, 24 zhu per liang, 120 jin per dan. Timbangan Han, karena Kaisar Pertama Qin konon menimbang dokumen bambunya per dan setiap hari (Shiji, Riwayat Qin Shi Huang).'), 'ru': ('Как считаются бамбуковые планки на главной', 'Число бамбуковых планок после «Сегодня читали» — это число прочитанных глав, умноженное на среднее число знаков в главе и делённое на 20 знаков на планку. Средние взяты из базовых текстов сайта: в «Лунь юе» 15 914 знаков в 498 главах, около 32 на главу; в «Даодэцзине» 5279 знаков в 81 главе, около 65; в «Троесловии» около 32 на урок. Двадцать знаков на планку — по «Лунь юю» на бамбуковых планках из ханьской гробницы в Динчжоу: длина около 16,2 см, ширина около 0,7 см, по 19–21 знаку (Институт культурного наследия провинции Хэбэй, «Динчжоу Хань му чжуцзянь Луньюй», Вэньу, 1997). Вес — оценка: в отчётах о раскопках вес планок обычно не указывают; мы берём размеры динчжоуских планок, толщину около 0,1 см и воздушно-сухой бамбук около 0,7 г/см³, то есть около 0,8 г на планку. Граммы затем переводятся в ханьские меры веса: цинь-ханьский цзинь — около 250 г, 16 лян в цзине, 24 чжу в ляне, 120 цзиней в дане. Ханьские меры — потому что Первый император Цинь, по преданию, каждый день взвешивал свои бамбуковые доклады данями («Ши цзи», Основные записи о Цинь Ши-хуане).')}
 for _k, _v in ZJ_TXT.items():
-    if _k in DONE_TXT: DONE_TXT[_k]["zj"] = re.sub(r' (\{[sw]\})', '\u00a0\\1', _v).replace('} ', '}\u00a0')  # 11-14：数字和单位不拆到两行
+    if _k in DONE_TXT: DONE_TXT[_k]["zj"] = re.sub(r' (\{s\})', '\u00a0\\1', _v).replace('{s} ', '{s}\u00a0')  # 11-14：数字和单位不拆到两行
+    if _k in DONE_TXT: DONE_TXT[_k]["zu"] = ZJ_UNIT.get(_k, ["dan", "jin", "liang", "zhu"])
 # 主人 11-08：计数单位一律“儒者”（同 LIVE_PILL）；外文写成“X：数”避开单复数
 for _k, _v in {"zh-Hans": ("今天 {d} 位儒者读完 · 累计 {t} 位", "今天 {d} 位儒者共读", "近 7 天被读 {n} 次"),
                "zh-Hant": ("今天 {d} 位儒者讀完 · 累計 {t} 位", "今天 {d} 位儒者共讀", "近 7 天被讀 {n} 次"),
@@ -1248,7 +1250,7 @@ WJ_UI = {  # 外文未讲章与闯关、检索新功能的界面字（11-13 主�
  "ru": {"s_new": "Недавно разобранные главы", "s_feed": "Подписаться", "s_last": "Последнее прочитанное"},
 }
 TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
-TAGLINE_L = {"zh-Hans": "从《论语》开始 · 逐字读经典原文", "zh-Hant": "從《論語》開始 · 逐字讀經典原文"}
+TAGLINE_L = {"zh-Hans": "从《论语》开始 · 对着原页读经典", "zh-Hant": "從《論語》開始 · 對著原頁讀經典"}
 MEIRI_TXT = {"zh-Hans": {"h": "今日《论语》", "read": "读这一章", "card": "生成卡片", "plan": "百日读完《论语》"}, "zh-Hant": {"h": "今日《論語》", "read": "讀這一章", "card": "生成卡片", "plan": "百日讀完《論語》"}}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
 LIVE_PILL = {"zh-Hans": "{o} 儒者在读 · 累计 {t}", "zh-Hant": "{o} 儒者在讀 · 累計 {t}", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
@@ -1339,6 +1341,39 @@ def _strip_js_notes(h):
 # 11-15 翻章预取：只用 prefetch（只取回 HTML，不跑统计脚本，日访不多记），不用 prerender
 # 11-18 必应报“简介太短”：论语章页改成原文＋白话（80 到 110 字）
 # 不足 60 字的从本页正文接一段（每页各不相同，不用全站同一句，免得简介大量重复）
+DESC_ZH = {
+"shumu/": "一孔录书架：主经《论语》498 章逐章对朱熹集注原页，另有《孟子》《道德经》《三字经》；十三经、道家、佛典、史部、诸子按类排开，开讲一本亮一本。",
+"zhuanti/": "按一个字读各书：仁、孝、礼、学、君子、天命等专题，把各书里说到这个字的章按书列出，附一孔录的读法；另有跟着一个人读的路线和逐关点亮的闯关。",
+"search.html": "检索一孔录各书原文、白话、朱熹注与诸家注原话：输入一句或几个字，就能找到出自哪一章，点进去看底本原页、读音和一孔录的读法。",
+"duben.html": "一孔录读本：《论语》智器重建本（498 章连成一张网，有中、英、日文版）、按篇的成人逐字读本、《三字经》父亲讲义等 PDF，手机能看，也能打印。",
+"shuyuan/": "题名：2027 年元旦起，书友可以把自己的名字和一句题记，题在《论语》年历的某一天上。一孔录的片子、原文、白话和读本照旧全部免费。",
+"kanwu.html": "一孔录勘误表：讲错、说满的地方，改了就公开记在这里，写明原来怎么说、改成什么、依据是什么、是谁指出的，按时间倒排，旧记录不删。",
+"lunyu/": "《论语》二十篇 498 章，按朱熹《论语集注》（《四部备要》本）分章：每章原文、白话、读音、朱熹注与诸家说法，句句对得上底本原页，附讲读视频。",
+"daodejing/": "《道德经》八十一章，王弼本，道经第 1—37 章、德经第 38—81 章：逐章原文、白话直译和底本原页，注家说法与一孔录的读法随章附上，另附《论语》互见。",
+"sanzijing/": "《三字经》一千二百字、一百零一组，按一孔录《父亲讲义》分六卷三十九讲，一周一讲、一年读完：每讲原文、逐组白话、原文朗读，附王相训诂本原页。",
+"mengzi/": "《孟子》七篇十四卷，按朱熹《孟子集注》分 260 章：逐章原文、底本原页、朱注与白话，注家有分歧的地方列出争议读法，附《论语》互见。",
+"jihua/bairi.html": "百日读完《论语》：498 章分成一百天，每天约五章、十分钟。不用登录，进度存在自己的设备上；哪天没读，第二天接着读，讲过的章附一孔录的片子。",
+"zhichi.html": "支持一孔录：原文、注、读法、勘误和开放数据永远免费，不会因为赞助多少锁住任何一页。如果这里帮到了你，可以自愿赞助，钱用在底本、扫描和配音上。",
+"kaifang.html": "一孔录开放数据：《论语》按篇下载 JSON 和 CSV，含原文、白话与引文出处，随网站更新；一孔录写的文字按 CC BY 4.0 许可，可转载、改编、商用，署名即可。",
+"fangfa.html": "一孔录的做法：讲读视频里哪一步用智器（也就是 AI），哪一步必须由人核对，出了错怎么改，一项一项写明，供读者核对，也供做同类内容的同行参照。",
+"gaidong.html": "一孔录网站改动记录：按日期列新上的章、勘误和改读法，原来怎么说、改成什么、凭什么改都留着不删，附源码提交记录和第三方存档。",
+"yingxiangli.html": "一孔录找到分：每周在各平台搜一句《论语》原文，看一孔录的讲读排在第几名，按公式算出分数并公开，用来检验读者在网上能不能找到一孔录。",
+"changhe/": "十二个人生场合用《论语》里的哪句话：取名、开学、成年、毕业、入职、结婚、祝寿、送别、探病、悼念等，每章写明怎么用、哪里容易用反，附原文、白话与朱熹注原页。"
+}
+def fl_desc(L, title, d, rel=""):  # 11-21 必应嫌描述太短：外文页描述是中文原样（专题导语）或不足 50 字的，换成本语言标题＋站点简介，截到 160 字以内
+    d = d or ""
+    if L.code.startswith("zh") or re.search(r"/\d+(?:\.\d+)?\.html$", rel or ""): return d  # 章页冻结期不动
+    if re.search(r"[\u4e00-\u9fff]", d) and not re.search(r"[A-Za-z\u3040-\u30ff\uac00-\ud7af\u0400-\u04ff]", d):
+        d = re.split(r"\s*[|｜]\s*", title)[0]
+    if len(d) >= 50: return d
+    intro = L.t("h_intro") or ""
+    if not intro: return d
+    sep = "。" if L.code in ("ja",) else ". "
+    d = (d.rstrip(" .。") + sep if d else "") + intro
+    if len(d) > 160:
+        cut = max(d.rfind(x, 0, 158) for x in (". ", "。", "? "))
+        d = d[:cut + 1] if cut > 60 else d[:157].rstrip() + "…"
+    return d.strip()
 def pad_desc(L, d, body=""):
     d = d or ""
     if not L.code.startswith("zh") or len(d) >= 60: return d
@@ -1364,14 +1399,16 @@ NAV_DB = {"en": "Free PDF", "ja": "無料PDF", "ko": "무료 PDF", "fr": "PDF gr
 FL_NOIDX_L = ("ko", "fr", "es", "de", "vi", "id", "ru")
 FL_NOIDX = '<meta name="robots" content="noindex,follow">'
 # 11-20 收录查因“乙”：外文杂页（关于、隐私、支持、开放数据、勘误、方法、读本、书院入院）noindex,follow、出站点地图；各语种 search.html 也 noindex。简繁这几页照旧收
-GD_LANMU = [("2026-11-20", "问易", "/wenyi/", "照朱熹《周易本义·筮仪》起一卦，读经文、白话、朱熹注和宋本原页。试运营。朱注录文已逐字对过宋本；宋本避讳把“貞”刻作“正”、“恆”刻作“常”，录文回改为原字。")]  # 改动记录里的新栏目
+GD_LANMU = [("2026-11-20", "问易", "/wenyi/", "照朱熹《周易本义·筮仪》起一卦，读经文、白话、朱熹注和宋本原页。朱注录文已逐字对过宋本；宋本避讳把“貞”刻作“正”、“恆”刻作“常”，录文回改为原字。")]  # 改动记录里的新栏目
 MISC_NOIDX = ("about.html", "yinsi.html", "zhichi.html", "kaifang.html", "kanwu.html", "fangfa.html", "duben.html", "shuyuan/ruyuan.html", "gaidong.html")
 def misc_noidx(code, rel): return rel == "search.html" or (not code.startswith("zh") and rel in MISC_NOIDX)
 
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
     if misc_noidx(L.code, rel) and 'name="robots"' not in head_extra: head_extra = FL_NOIDX + head_extra
+    if L.code.startswith("zh") and rel in DESC_ZH: desc = DESC_ZH[rel]  # 11-21 主人：栏目、书页写各自的描述，不再拿正文开头凑长
     desc = pad_desc(L, desc, body)
+    desc = fl_desc(L, title, desc, rel)
     if not L.code.startswith("zh"): body = hant_scripture(body)
     body = _strip_js_notes(body)
     url = f"{DOMAIN}/{L.prefix}{rel}"
@@ -1472,6 +1509,54 @@ def yxl_counts(D):
     eps = len(eps) + len({DDJ_EPS[str(c)].get("youtube") for c in dv})
     return books, zi, eps
 
+YXL_DAY_FILE = os.environ.get("YK_YXL_DAY_FILE") or "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/找到分-每日.json"  # 每天一条（score.py 写）
+
+def yxl_hist_line(hist):
+    """旧画法：每周一点（没有每日数据时退回用）。"""
+    if len(hist) >= 2:
+        W, H = 320, 60; mx = max(max(h["score"] for h in hist), 1)
+        pts = " ".join(f"{10 + i * (W - 20) / (len(hist) - 1):.1f},{H - 8 - h['score'] / mx * (H - 16):.1f}" for i, h in enumerate(hist))
+        svg = f'<svg class="yxline" viewBox="0 0 {W} {H}" width="{W}" height="{H}" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="2" points="{pts}"/>' + "".join(f'<circle cx="{pt.split(",")[0]}" cy="{pt.split(",")[1]}" r="3" fill="currentColor"/>' for pt in pts.split()) + "</svg>"
+        return svg + f'<small>{hist[0]["week"]} 起，每周一点</small>'
+    if hist:
+        return f'<svg class="yxline" viewBox="0 0 320 60" width="320" height="60" aria-hidden="true"><circle cx="20" cy="30" r="4" fill="currentColor"/></svg><small>{hist[0]["week"][:7]} 从 {hist[0]["score"]} 分起步</small>'
+    return ""
+
+def yxl_week_line(y):
+    """主人 11-21 定：找到分折线画最近七天、每天一点，画“已测章平均”（没测完的平台只按已测章求平均，跨天可比）。
+    缺采的日子不补数：空心点放底线、标“未采”，线在那里断开；数据换周处画虚线（按每日记录里的 week，不按日历周一）。"""
+    import datetime as _dt
+    try: D = json.load(open(YXL_DAY_FILE, encoding="utf-8"))
+    except Exception: return ""
+    end = y.get("updated") or (max(D) if D else None)
+    if not end: return ""
+    e = _dt.date.fromisoformat(end); days = [(e - _dt.timedelta(days=6 - i)).isoformat() for i in range(7)]
+    vals = [(D.get(d) or {}).get("adj") for d in days]
+    if sum(v is not None for v in vals) < 2: return ""
+    W, H, L, R, T, B = 320, 96, 18, 18, 16, 22
+    mx = max(max(v for v in vals if v is not None), 1); x = lambda i: L + i * (W - L - R) / 6; yy = lambda v: H - B - v / mx * (H - T - B)
+    g = ""; seg = []
+    def flush():
+        nonlocal g
+        if len(seg) >= 2: g += f'<polyline fill="none" stroke="currentColor" stroke-width="2" points="{" ".join(seg)}"/>'
+        seg.clear()
+    for i, (d, v) in enumerate(zip(days, vals)):
+        wk = (D.get(d) or {}).get("week"); pw = next(((D.get(q) or {}).get("week") for q in reversed(days[:i]) if D.get(q)), None)
+        if i and wk and pw and wk != pw:
+            xb = (x(i - 1) + x(i)) / 2; g += f'<line x1="{xb:.1f}" y1="{T}" x2="{xb:.1f}" y2="{H - B}" stroke="currentColor" stroke-opacity=".35" stroke-dasharray="3 3"/><text x="{xb + 3:.1f}" y="{H - B - 2}" font-size="9" fill="currentColor" fill-opacity=".6">新一周</text>'
+        if v is None: flush(); continue
+        seg.append(f"{x(i):.1f},{yy(v):.1f}")
+    flush()
+    for i, (d, v) in enumerate(zip(days, vals)):
+        lab = f'<text x="{x(i):.1f}" y="{H - 6}" font-size="9" text-anchor="middle" fill="currentColor" fill-opacity=".6">{d[5:]}</text>'
+        if v is None:
+            g += f'<circle cx="{x(i):.1f}" cy="{H - B:.1f}" r="3" fill="none" stroke="currentColor" stroke-opacity=".5"/><text x="{x(i):.1f}" y="{H - B - 6:.1f}" font-size="9" text-anchor="middle" fill="currentColor" fill-opacity=".6">未采</text>' + lab
+        else:
+            g += f'<circle cx="{x(i):.1f}" cy="{yy(v):.1f}" r="3" fill="currentColor"/><text x="{x(i):.1f}" y="{yy(v) - 6:.1f}" font-size="9" text-anchor="middle" fill="currentColor">{v:.1f}</text>' + lab
+    last = D.get(days[-1]) or {}; ms = (last.get("measured") or {}).get("yt")
+    note = "最近七天，每天一点，按已测章平均画" + (f"（YouTube 本周已测 {ms}/{last.get('chapters')} 章）" if ms else "") + "；大字找到分按全部章算，未测章计 0"
+    return f'<svg class="yxline" viewBox="0 0 {W} {H}" width="{W}" height="{H}" aria-hidden="true">{g}</svg><small>{note}</small>'
+
 def yxl_books(books, P):
     """找到分按书分（主人 11-14）：每本书一行（书分＝该书各平台分的平均），点开看各平台分和前 20 条里找得到的章。还没开测的书只列书名。"""
     def bar(sc): return f'<div class="bar"><i style="width:{min(max(float(sc), 0), 100):g}%"></i></div>'
@@ -1514,14 +1599,7 @@ def yxl_block(L, D, P, full=False):
         ms = pf.get("measured"); mtx = f'<small>本周已测 {ms}/{y.get("chapters")} 章</small>' if pf.get("partial") and ms is not None and y.get("chapters") else ""
         rows += f'<div class="row"><span>{esc(pf["name"])}{mtx}</span><div class="bar"><i style="width:{min(max(float(sc), 0), 100):g}%"></i></div><em>{sc}{shs}</em></div>'
     hist = [h for h in y.get("history", []) if h.get("score") is not None]; score = y.get("score")
-    if len(hist) >= 2:
-        W, H = 320, 60; mx = max(max(h["score"] for h in hist), 1)
-        pts = " ".join(f"{10 + i * (W - 20) / (len(hist) - 1):.1f},{H - 8 - h['score'] / mx * (H - 16):.1f}" for i, h in enumerate(hist))
-        svg = f'<svg class="yxline" viewBox="0 0 {W} {H}" width="{W}" height="{H}" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="2" points="{pts}"/>' + "".join(f'<circle cx="{pt.split(",")[0]}" cy="{pt.split(",")[1]}" r="3" fill="currentColor"/>' for pt in pts.split()) + "</svg>"
-        trend = svg + f'<small>{hist[0]["week"]} 起，每周一点</small>'
-    elif hist:
-        trend = f'<svg class="yxline" viewBox="0 0 320 60" width="320" height="60" aria-hidden="true"><circle cx="20" cy="30" r="4" fill="currentColor"/></svg><small>{hist[0]["week"][:7]} 从 {hist[0]["score"]} 分起步</small>'
-    else: trend = ""
+    trend = yxl_week_line(y) or yxl_hist_line(hist)
     if y.get("books"): rows = yxl_books(y["books"], P)
     find = "" if score is None else (f'<div class="yxfind"><h3>在平台上搜一句原文，能找到一孔录吗</h3>{rows}'
             f'<div class="yxscore"><b>找到分 <strong>{score}</strong></b>' + (f'<b>占比 <strong>{y["share"]}%</strong></b>' if y.get("share") is not None else "") + f'{trend}</div>'
@@ -2141,17 +2219,17 @@ DDJ_LYHJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_ly
 DDJ_LYHJ = json.load(open(DDJ_LYHJ_FILE, encoding="utf-8")) if os.path.exists(DDJ_LYHJ_FILE) else []
 # 11-16 首页定位（主人：“以论语为主，牵出一整套经典系列”）：首页副标、标题、摘要
 HOMEPOS = {
-    "zh-Hans": ("从《论语》开始 · 逐字读经典原文", "一孔录｜从《论语》开始，逐字读经典原文", "《论语》498 章逐句对朱熹集注原页：原文、白话、读音、注家原话、公开勘误。再从《论语》读到《道德经》《三字经》，各章互见《论语》。"),
-    "zh-Hant": ("從《論語》開始 · 逐字讀經典原文", "一孔錄｜從《論語》開始，逐字讀經典原文", "《論語》498 章逐句對朱熹集注原頁：原文、白話、讀音、注家原話、公開勘誤。再從《論語》讀到《道德經》《三字經》，各章互見《論語》。"),
-    "en": ("Start with the Analects · read the classics word by word", None, "All 498 chapters of the Analects, line by line against the pages of Zhu Xi's commentary: original, plain Chinese, readings, the commentators' own words, public corrections. From the Analects on to the Daodejing and the Three-Character Classic, each chapter cross-referenced to the Analects."),
-    "ja": ("『論語』から読む · 古典の原文を一字ずつ", None, "『論語』498章を朱熹集注の原頁と一句ずつ照合：原文・現代語訳・読み・注釈家の原文・公開訂正。『論語』から『道徳経』『三字経』へ、各章を『論語』と照らし合わせて読みます。"),
-    "ko": ("『논어』에서 시작해 · 고전 원문을 한 글자씩", None, "『논어』 498장을 주희 집주 원본 쪽과 한 구절씩 대조: 원문, 현대어 풀이, 독음, 주석가의 원문, 공개 정오표. 『논어』에서 『도덕경』『삼자경』으로, 각 장을 『논어』와 맞대어 읽습니다."),
-    "fr": ("Commencer par les Entretiens · lire les classiques mot à mot", None, "Les 498 chapitres des Entretiens, phrase par phrase face aux pages du commentaire de Zhu Xi : texte, chinois moderne, prononciations, paroles des commentateurs, errata publics. Des Entretiens vers le Daodejing et le Classique des trois caractères, chaque chapitre renvoyant aux Entretiens."),
-    "es": ("Empezar por las Analectas · leer los clásicos palabra por palabra", None, "Los 498 capítulos de las Analectas, frase a frase frente a las páginas del comentario de Zhu Xi: texto, chino moderno, pronunciación, palabras de los comentaristas, erratas públicas. De las Analectas al Daodejing y al Clásico de los tres caracteres, cada capítulo remitido a las Analectas."),
-    "de": ("Mit den Gesprächen beginnen · die Klassiker Wort für Wort lesen", None, "Alle 498 Kapitel der Gespräche des Konfuzius, Satz für Satz an den Seiten von Zhu Xis Kommentar geprüft: Urtext, modernes Chinesisch, Lesungen, Kommentatoren im Wortlaut, öffentliche Korrekturen. Weiter zum Daodejing und zum Dreizeichenklassiker, jedes Kapitel mit Verweis auf die Gespräche."),
-    "vi": ("Bắt đầu từ Luận Ngữ · đọc kinh điển từng chữ", None, "498 chương Luận Ngữ, từng câu đối chiếu với trang gốc chú giải của Chu Hy: nguyên văn, bạch thoại, cách đọc, lời các nhà chú giải, đính chính công khai. Từ Luận Ngữ đọc sang Đạo Đức Kinh, Tam Tự Kinh, mỗi chương đối chiếu với Luận Ngữ."),
-    "id": ("Mulai dari Analek · membaca kitab klasik kata demi kata", None, "498 bab Analek, kalimat demi kalimat dicocokkan dengan halaman tafsir Zhu Xi: teks asli, bahasa Tionghoa modern, lafal, kata-kata para penafsir, ralat terbuka. Dari Analek berlanjut ke Daodejing dan Klasik Tiga Aksara, setiap bab dirujuk silang ke Analek."),
-    "ru": ("Начиная с «Лунь юя» · классика слово за словом", None, "Все 498 глав «Лунь юя», фраза за фразой сверенные со страницами комментария Чжу Си: оригинал, современный китайский, чтения, слова комментаторов, открытые исправления. Дальше — к «Дао дэ цзину» и «Троесловию», каждая глава со ссылками на «Лунь юй»."),
+    "zh-Hans": ("从《论语》开始 · 对着原页读经典", "一孔录｜从《论语》开始，对着原页读经典", "《论语》498 章逐句对朱熹集注原页：原文、白话、读音、注家原话、公开勘误。再从《论语》读到《道德经》《三字经》，各章互见《论语》。"),
+    "zh-Hant": ("從《論語》開始 · 對著原頁讀經典", "一孔錄｜從《論語》開始，對著原頁讀經典", "《論語》498 章逐句對朱熹集注原頁：原文、白話、讀音、注家原話、公開勘誤。再從《論語》讀到《道德經》《三字經》，各章互見《論語》。"),
+    "en": ("Start with the Analects · read the classics against their original pages", None, "All 498 chapters of the Analects, line by line against the pages of Zhu Xi's commentary: original, plain Chinese, readings, the commentators' own words, public corrections. From the Analects on to the Daodejing and the Three-Character Classic, each chapter cross-referenced to the Analects."),
+    "ja": ("『論語』から読む · 原本の頁と照らして古典を読む", None, "『論語』498章を朱熹集注の原頁と一句ずつ照合：原文・現代語訳・読み・注釈家の原文・公開訂正。『論語』から『道徳経』『三字経』へ、各章を『論語』と照らし合わせて読みます。"),
+    "ko": ("『논어』에서 시작해 · 원본 쪽과 맞대어 고전을 읽기", None, "『논어』 498장을 주희 집주 원본 쪽과 한 구절씩 대조: 원문, 현대어 풀이, 독음, 주석가의 원문, 공개 정오표. 『논어』에서 『도덕경』『삼자경』으로, 각 장을 『논어』와 맞대어 읽습니다."),
+    "fr": ("Commencer par les Entretiens · lire les classiques face à leurs pages d’origine", None, "Les 498 chapitres des Entretiens, phrase par phrase face aux pages du commentaire de Zhu Xi : texte, chinois moderne, prononciations, paroles des commentateurs, errata publics. Des Entretiens vers le Daodejing et le Classique des trois caractères, chaque chapitre renvoyant aux Entretiens."),
+    "es": ("Empezar por las Analectas · leer los clásicos frente a sus páginas originales", None, "Los 498 capítulos de las Analectas, frase a frase frente a las páginas del comentario de Zhu Xi: texto, chino moderno, pronunciación, palabras de los comentaristas, erratas públicas. De las Analectas al Daodejing y al Clásico de los tres caracteres, cada capítulo remitido a las Analectas."),
+    "de": ("Mit den Gesprächen beginnen · die Klassiker an ihren Originalseiten lesen", None, "Alle 498 Kapitel der Gespräche des Konfuzius, Satz für Satz an den Seiten von Zhu Xis Kommentar geprüft: Urtext, modernes Chinesisch, Lesungen, Kommentatoren im Wortlaut, öffentliche Korrekturen. Weiter zum Daodejing und zum Dreizeichenklassiker, jedes Kapitel mit Verweis auf die Gespräche."),
+    "vi": ("Bắt đầu từ Luận Ngữ · đọc kinh điển đối chiếu trang gốc", None, "498 chương Luận Ngữ, từng câu đối chiếu với trang gốc chú giải của Chu Hy: nguyên văn, bạch thoại, cách đọc, lời các nhà chú giải, đính chính công khai. Từ Luận Ngữ đọc sang Đạo Đức Kinh, Tam Tự Kinh, mỗi chương đối chiếu với Luận Ngữ."),
+    "id": ("Mulai dari Analek · membaca kitab klasik berdampingan dengan halaman aslinya", None, "498 bab Analek, kalimat demi kalimat dicocokkan dengan halaman tafsir Zhu Xi: teks asli, bahasa Tionghoa modern, lafal, kata-kata para penafsir, ralat terbuka. Dari Analek berlanjut ke Daodejing dan Klasik Tiga Aksara, setiap bab dirujuk silang ke Analek."),
+    "ru": ("Начиная с «Лунь юя» · классика рядом с подлинными страницами", None, "Все 498 глав «Лунь юя», фраза за фразой сверенные со страницами комментария Чжу Си: оригинал, современный китайский, чтения, слова комментаторов, открытые исправления. Дальше — к «Дао дэ цзину» и «Троесловию», каждая глава со ссылками на «Лунь юй»."),
 }
 HOMEDEF = {"zh-Hans": "一孔录（Yikonglu）是以《论语》为主经、逐句对底本原页的经典讲读，其他经典各章互见《论语》。", "zh-Hant": "一孔錄（Yikonglu）是以《論語》為主經、逐句對底本原頁的經典講讀，其他經典各章互見《論語》。",
            "en": "Yikonglu (一孔录) is a reading of the Chinese classics centred on the Analects and checked line by line against the pages of the base edition; every other classic is cross-referenced to the Analects chapter by chapter."}
@@ -2294,7 +2372,7 @@ def build_mengzi(L, write, P, S_IDX=None):
         for c in cs if pian_of[c] == k) + "</ol>", pt_html(k)) for i, (k, v) in enumerate(pians)], f"{P}{rel_of(cs[0])}", mz_page, mcv(P, "", True, "mengzi", "孟子"))
     body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "mengzi", "孟子")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
 <h1><span class="no">《孟子》 · 朱熹《孟子集注》分章 {len(cs)} 章</span>孟子</h1></div></div>
-<main class="wrap narrow"><p class="lead">《孟子》七篇十四卷，按朱熹《孟子集注》分 {len(cs)} 章。逐章原文、底本原页、朱注与白话，注家分歧处列出争议读法。视频还在制作。</p>{groups}</main>"""
+<main class="wrap narrow"><p class="lead">《孟子》七篇十四卷，按朱熹《孟子集注》分 {len(cs)} 章。逐章原文、底本原页、朱注与白话，注家分歧处列出争议读法。</p>{groups}</main>"""
     write("mengzi/index.html", page(L, "《孟子》原文、朱注与白话｜一孔录", f"《孟子》按朱熹《孟子集注》分 {len(cs)} 章，逐章原文、底本原页、朱注与白话。", "mengzi/", body, None, "pg-book", head_extra=NOIDX, codes=MZ_CODES()))
     if is_open: urls.append(f"{DOMAIN}/{L.prefix}mengzi/")
     for k, c in enumerate(cs):
@@ -2645,7 +2723,7 @@ def build_szj(L, write, P, S_IDX=None):
     groups = pian_layer(L, P, write, urls, "sanzijing", SU["book"] if F else "三字经", [(f"juan-{SZJ_JUAN[jn]}", (SU["juan"].format(j=(CNUM(SZJ_JUAN[jn]) if L.code == "ja" else SZJ_JUAN[jn])) + " · " + jt_of(js[0])) if F else f"{jn} · {jt}",
         (SU["lec"].format(n=js[0]["n"]) + (f" – {js[-1]['n']}" if len(js) > 1 else "")) if F else (f"第 {js[0]['n']}—{js[-1]['n']} 讲" if len(js) > 1 else f"第 {js[0]['n']} 讲"), f'<ol class="toc">{"".join(li(j) for j in js)}</ol>', "") for jn, jt, js in juans], f"{P}{rel_of(JS[0]['n'])}", szj_page, mcv(P, "", True, "sanzijing", "三字经"))
     pdf = os.path.exists(os.path.join(HERE, "root", "duben", "sanzijing-fuqin.pdf"))
-    lead = SU["lead"] if F else ("《三字经》一千二百字，一百零一组，按一孔录《三字经·父亲讲义》分六卷三十九讲，每周一讲，一年读完。每讲有原文、逐组白话（初稿）和朗读。"
+    lead = SU["lead"] if F else ("《三字经》一千二百字，一百零一组，按一孔录《三字经·父亲讲义》分六卷三十九讲，每周一讲，一年读完。每讲有原文、逐组白话和朗读。"
             "原文据讲义本，已与底本清王相《三字经训诂》（1831 年和刻本）逐句核对，每讲附王相本原页，点一组就在原页上框出来。讲义比王相本多出十一组（五色、五味、五臭、四声，以及辽金元明清到民国七组），是后出通行本补的，页内都标了“补”。" + (f'讲义全本可在<a href="{P}duben/">读本</a>下载。' if pdf else ""))
     bname = SU["book"] if F else "三字经"
     body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "sanzijing", "三字经")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
@@ -3260,11 +3338,11 @@ def build_lang(L, D, write):
     # 首页（主人 11-07 定）：只放开讲的书，其余收成一行“《道德经》等 N 部筹备中”，完整书目在书目页
     n_soon = sum(1 for _, bs in BOOK_GROUPS for sl, _ in bs if sl not in LB)
     LU = lyui(L); zhL = L.code.startswith("zh")
-    def zhushu(home):  # 《论语》主经一格（首页、书架页）
+    def zhushu(home):  # 《论语》主经一格（首页、书架页）；11-21 主人：首页、书架页都去掉“二十篇 498 章原文全在站上……”那行（嫌啰嗦、像内部描述）
         lk = ([(f"{P}lunyu/xue-er/1.html", LU["go"], " class=go"), (f"{P}lunyu/", LU["toc"], "")] if home else [(f"{P}lunyu/", LU["open"], " class=go")]) \
              + (([(f"{P}nianli/", "《论语》年历", "")] if D["lx"]["nl"] else []) + [(f"{P}zhuanti/keben.html", LU["kb"], ""), (f"{P}duben.html", LU["db"], "")] if home and zhL else [])
         return (f'<div class="zhushu"><a class="cvbig" href="{P}lunyu/" aria-label="{esc(L.t("lunyu"))}"><span class="qb" lang="zh-Hans">论语</span></a><div><h3><a href="{P}lunyu/">{"《" + L.t("lunyu") + "》" if zhL else esc(L.t("lunyu"))}</a></h3>'
-                f'<p class="zk">{esc(LU["k"])}</p><p class="zs">{esc(LU["s"].format(n=n_all, d=len(pub), z=len((D.get("zhuju") or {}).get("on", ()))))}</p><p class="zl">' + "".join(f'<a href="{u}"{c}>{esc(x)}</a>' for u, x, c in lk if x) + '</p></div></div>')
+                f'<p class="zk">{esc(LU["k"])}</p>' + "" + '<p class="zl">' + "".join(f'<a href="{u}"{c}>{esc(x)}</a>' for u, x, c in lk if x) + '</p></div></div>')
     _hjn = {"daodejing": len(DDJ_LYHJ), "sanzijing": len(SZJ_LYHJ)}
     shelfline = (f'<p class="shelfline">{esc(LU["more"])}' + " · ".join(f'<a href="{P if (zhL or (sl == "sanzijing" and L.code in SZJ_TR) or (sl == "daodejing" and L.code in DDJ_TR)) else "/"}{sl}/">{"《" + zh + "》" if zhL else esc(L.t("bk_" + sl))}</a>' + (f'<small>（互见 {_hjn[sl]} 条）</small>' if zhL and _hjn.get(sl) else "")
                  for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB and sl != "lunyu") + f' · <a href="{P}shumu/">{esc(LU["soon"].format(n=n_soon))}</a></p>')
@@ -3423,7 +3501,7 @@ def build_lang(L, D, write):
 <form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
 </section>
 <section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}lunyu/">{LU["h"]}</a></h2>{zhushu(True)}{shelfline}</section>
-{XT.xt_html(L, P, home=True) if L.code.startswith("zh") and GX.load() else ""}
+{XT.xt_html(L, P, home=True) if (L.code.startswith("zh") or L.code in XT.langs()) and GX.load() else ""}
 <section class="wrap narrow"><h2 class="ph">{L.t("h_latest")}</h2>
 <a class="latest" id="lcard" href="{P}{rel_of(lc)}">{_lcard(lc)}</a>{lc_js}</section>
 {f'<section class="wrap narrow topju" id="topju" hidden><h2 class="ph">{DONE_TXT.get(L.code, DONE_TXT["en"])["topju"]}</h2><blockquote lang="zh-Hans"></blockquote><p><a href="{P}"></a></p></section>' if ANALYTICS.get("live") else ""}
@@ -3773,7 +3851,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
         body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}zhuanti/">{L.t("zt_title")}</a></p><h1><span class="no">初中 · 高中 语文课</span>语文课本里的《论语》</h1></div></div>
 <main class="wrap narrow"><p class="lead">统编语文教材选了这几课《论语》：七年级上册《〈论语〉十二章》、高中必修下册《子路、曾皙、冉有、公西华侍坐》、高中选择性必修上册《〈论语〉十二章》。下面按课列出每一章的原文和白话，点进去是这一章的原页、逐句朱熹注、读音和各家注本。</p>
 <div class="ztcards">{kb_toc}</div>{kb_items}
-<p class="note">原文照朱熹《论语集注》（《四部备要》本），标点、个别用字可能和课本不同；章号按朱注分章，课本注释多用杨伯峻本，章号有时差一两号。标“未讲”的章视频还在做，网站先放原文、白话和注。发现错处请写信：{MAIL}</p></main>'''
+<p class="note">原文照朱熹《论语集注》（《四部备要》本），标点、个别用字可能和课本不同；章号按朱注分章，课本注释多用杨伯峻本，章号有时差一两号。发现错处请写信：{MAIL}</p></main>'''
         write("zhuanti/keben.html", page(L, "论语十二章原文及翻译、读音、朱熹注｜语文课本里的《论语》｜一孔录", "统编语文七年级上册、高中选择性必修上册《论语》十二章，高中必修下册《侍坐》：每章原文、白话翻译、读音、朱熹注与宋以来各家注本，逐章链到原页。", "zhuanti/keben.html", body))
         urls.append(f"{DOMAIN}/{L.prefix}zhuanti/keben.html")
         urls += KB.build(L, D, KEBEN, write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, MAIL)  # 11-16 改动单一：分课着陆页、成语、名句
@@ -3841,6 +3919,11 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
         if D.get("renwu"):
             RW.GXID = {v: k for k, v in GX.rw_ids(GXD, D["renwu"]).items()}
             urls += RW.build_f(L, D, D["renwu"], write, page, P, rel_of, ctitle, DOMAIN, GX.TR[L.code], _gxc)
+    if L.code in XT.langs() and GXD and GX.has_lang(L.code):  # 11-21 主人点卡“全翻”：首页星图英日版
+        _ztx = lambda c: yw.get(c) or (D["qw"].get(c) or {}).get("text", "")
+        _ftx = lambda c: (L.ch(c).get("yw") if hasattr(L, "ch") else "") or (WJ_TR.get(c) or {}).get(L.code, "") or _ztx(c)
+        _ftt = lambda c: L.ch(c).get("title") or wj_tr_title(L.code, c) or ctitle(c)
+        XT.write_data(write, XT.data(GXD, PIAN, pubset, href, _ftt, _ftx, D["lx"], L.code, GX.TR[L.code], _ztx))
     # 一孔影响力方法页（先只简繁；外文页由语种切换链到简体）
     if L.code.startswith("zh"):
         body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">找到分怎么算、怎么测</span>一孔影响力</h1></div></div>

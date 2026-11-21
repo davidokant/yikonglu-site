@@ -12,10 +12,19 @@ R = 300.0
 def _h01(s, salt=""): return int(hashlib.md5((s + salt).encode()).hexdigest()[:8], 16) / 0xffffffff
 
 
-def data(G, PIAN, pub, href, title_of, tx, X):
-    """G＝guanxi.load()；PIAN＝{"1": ("学而第一", ...)}；pub＝讲过的章；X＝lunyu_extra.load()（年历课号、场合名）。"""
+XI = {l: json.load(open(os.path.join(HERE, "i18n", f"xt-{l}.json"), encoding="utf-8")) for l in ("en", "ja") if os.path.exists(os.path.join(HERE, "i18n", f"xt-{l}.json"))}
+
+
+def langs(): return list(XI)
+
+
+def data(G, PIAN, pub, href, title_of, tx, X, code=None, gxtr=None, ztx=None):
+    """G＝guanxi.load()；PIAN＝{"1": ("学而第一", ...)}；pub＝讲过的章；X＝lunyu_extra.load()（年历课号、场合名）。
+    11-21 英日版：code＝en/ja，gxtr＝guanxi.TR[code]（人名、同问异答、关系注），XI[code]（界面、场合）；ztx(c)＝中文原文（供中文检索）。"""
     if not G: return None
     gx = G["raw"]
+    F = XI.get(code) if code else None; T = gxtr or {}; TX = T.get("X") or {}; TP = T.get("p") or {}; TW = {w["id"]: w for w in T.get("W") or []}
+    def xo(r, k="note"): return ((TX.get(str(r.get("_i"))) or {}).get(k)) or ""
     cc = lambda s: s.split(":", 1)[1]
     rels = [r for r in gx["rels"] if ":" in r["a"]]
     pk = sorted(PIAN, key=int)
@@ -60,14 +69,17 @@ def data(G, PIAN, pub, href, title_of, tx, X):
         if a not in idx: continue
         if r["type"] == "互见" and r.get("b", "").startswith("lunyu:") and cc(r["b"]) in idx:
             b = cc(r["b"]); edges.append([idx[a], idx[b], "h", r.get("note", "")]); deg[idx[a]] += 1; deg[idx[b]] += 1
-        elif r["type"] == "异文": flags[a].append(["y", r.get("note", "")])
-        elif r["type"] == "争议": flags[a].append(["z", r.get("pick", "") or r.get("note", "")])
+        elif r["type"] == "异文": flags[a].append(["y", (xo(r) if F else "") or r.get("note", "")])
+        elif r["type"] == "争议": flags[a].append(["z", ((xo(r, "pick") or xo(r)) if F else "") or r.get("pick", "") or r.get("note", "")])
     ring_big, ring_mid = [], []
     for p in gx["groups"]["renwu"]:
         cids = [cc(c) for c in p["chs"] if cc(c) in idx]
         if not cids: continue
         name = p.get("common") or p["name"]
         ni = len(nodes); nd = {"k": "p", "n": name, "full": p["name"], "role": p.get("role", ""), "x": 0, "y": 0, "z": 0, "d": len(cids)}
+        if F:
+            tp = TP.get(p["name"]) or {}
+            nd.update(n=tp.get("common") or tp.get("name") or name, full=tp.get("name") or p["name"], role=tp.get("role", ""), o=name)
         if len(cids) == 1:
             px, py, _ = pos[idx[cids[0]]]; nd.update(x=round(px * 0.87, 1), y=round(py * 0.87, 1), z=round((_h01(name) - 0.5) * 40, 1))
         else:
@@ -80,10 +92,12 @@ def data(G, PIAN, pub, href, title_of, tx, X):
     qs = []
     for g in gx["groups"]["wenda"]:
         cids = [cc(i["c"]) for i in g["items"] if cc(i["c"]) in idx]
-        ni = len(nodes); nodes.append({"k": "q", "n": g["q"], "x": 0, "y": 0, "z": 105, "d": len(cids)}); qs.append([cang(cids, g["q"]), ni])
-        for it in g["items"]:
-            c = cc(it["c"])
-            if c in idx: edges.append([idx[c], tot + ni, "q", f"{it['who']}问，答：{it['a']}"]); deg[idx[c]] += 1
+        tw = TW.get(g.get("id")) or {}; tits = tw.get("items") or []
+        ni = len(nodes); nodes.append({"k": "q", "n": (tw.get("q") if F else "") or g["q"], "x": 0, "y": 0, "z": 105, "d": len(cids), **({"o": g["q"]} if F else {})}); qs.append([cang(cids, g["q"]), ni])
+        for k_, it in enumerate(g["items"]):
+            c = cc(it["c"]); ti = tits[k_] if k_ < len(tits) else {}
+            nt = F["wd"].replace("{who}", ti.get("who") or it["who"]).replace("{a}", ti.get("a") or it["a"]) if F else f"{it['who']}问，答：{it['a']}"
+            if c in idx: edges.append([idx[c], tot + ni, "q", nt]); deg[idx[c]] += 1
     for ang, ni in spread(qs, lambda ni: 0.8): nodes[ni].update(x=round(66 * math.cos(ang), 1), y=round(66 * math.sin(ang), 1))
     oname = {p["slug"]: p["name"] for p in (X or {}).get("ch") or []}
     og = collections.defaultdict(list)
@@ -92,8 +106,12 @@ def data(G, PIAN, pub, href, title_of, tx, X):
     os_ = []
     for gk, rs in og.items():
         cids = [cc(r["a"]) for r in rs]
-        ni = len(nodes); nodes.append({"k": "o", "n": oname.get(gk, gk), "u": f"/changhe/{gk}.html" if gk in oname else "", "x": 0, "y": 0, "z": -100, "d": len(cids)}); os_.append([cang(cids, gk), ni])
-        for r in rs: edges.append([idx[cc(r["a"])], tot + ni, "o", f"{r.get('kind', '')}：{r.get('txt') or r.get('note', '')}"]); deg[idx[cc(r["a"])]] += 1
+        if F: nodes.append({"k": "o", "n": F["occ"].get(gk, gk), "u": "", "x": 0, "y": 0, "z": -100, "d": len(cids), "o": oname.get(gk, gk)})
+        else: nodes.append({"k": "o", "n": oname.get(gk, gk), "u": f"/changhe/{gk}.html" if gk in oname else "", "x": 0, "y": 0, "z": -100, "d": len(cids)})
+        ni = len(nodes) - 1; os_.append([cang(cids, gk), ni])
+        for r in rs:
+            nt = f"{F['kind'].get(r.get('kind', ''), r.get('kind', ''))}{F.get('colon', ': ')}{F['ch'].get(str(r.get('_i')), '')}" if F else f"{r.get('kind', '')}：{r.get('txt') or r.get('note', '')}"
+            edges.append([idx[cc(r["a"])], tot + ni, "o", nt]); deg[idx[cc(r["a"])]] += 1
     for ang, ni in spread(os_, lambda ni: 0.5): nodes[ni].update(x=round(112 * math.cos(ang), 1), y=round(112 * math.sin(ang), 1))
     bg = collections.defaultdict(list)
     for r in rels:
@@ -102,19 +120,27 @@ def data(G, PIAN, pub, href, title_of, tx, X):
         rs = bg[bk]; cids = [cc(r["a"]) for r in rs]
         x, y = centroid(cids); ang = math.atan2(y, x) if (x or y) else bi
         if len(rs) > 40: ang = [2.2, 0.6][bi % 2]  # 两本大书（道德经、三字经）放在环外固定位置
-        ni = len(nodes); nodes.append({"k": "b", "n": bk, "x": round(1.42 * R * math.cos(ang), 1), "y": round(1.42 * R * math.sin(ang), 1), "z": round((_h01(bk) - 0.5) * 80, 1), "d": len(rs)})
+        bn = (next((xo(r, "book") for r in rs if xo(r, "book")), "") if F else "") or bk
+        ni = len(nodes); nodes.append({"k": "b", "n": bn, "x": round(1.42 * R * math.cos(ang), 1), "y": round(1.42 * R * math.sin(ang), 1), "z": round((_h01(bk) - 0.5) * 80, 1), "d": len(rs), **({"o": bk} if F else {})})
         for r in rs:
-            kd = {"相通": "一孔录对读"}.get(r.get("kind"), r.get("kind", ""))
-            edges.append([idx[cc(r["a"])], tot + ni, "b", f"{kd}：{r.get('txt') or r.get('note', '')}"]); deg[idx[cc(r["a"])]] += 1
+            if F: nt = f"{F['bk'].get(r.get('kind'), r.get('kind', ''))}{F.get('colon', ': ')}{xo(r) or r.get('txt') or r.get('note', '')}"
+            else: nt = f"{ {'相通': '一孔录对读'}.get(r.get('kind'), r.get('kind', ''))}：{r.get('txt') or r.get('note', '')}"
+            edges.append([idx[cc(r["a"])], tot + ni, "b", nt]); deg[idx[cc(r["a"])]] += 1
     nlc = (X or {}).get("nlc") or {}
     def row(c):
         t = tx(c) or ""
-        return [title_of(c), t if len(t) <= 86 else t[:86] + "……", href(c), (nlc.get(c) or [0])[0]]
+        lim = 240 if F else 86
+        return [title_of(c), t if len(t) <= lim else t[:lim].rstrip() + ("…" if F else "……"), href(c), (nlc.get(c) or [0])[0]] + ([ztx(c) if ztx else ""] if F else [])
     st = gx.get("stats", {})
+    if F:
+        if code == "en": pn = [f"Book {i + 1}" for i in range(len(pian))]
+        else: _cv = __import__("opencc").OpenCC("s2t").convert; _jp = __import__("opencc").OpenCC("t2jp").convert; pn = [_jp(_cv(p["name"])) for p in pian]
+        for p, n_ in zip(pian, pn): p["name"] = n_
     out = {"pian": [{"name": p["name"], "mid": p["mid"]} for p in pian], "R": R,
             "ch": [[c, *pos[i], deg[i], 1 if c in pub else 0, *row(c)] for i, c in enumerate(order)],
             "flags": flags, "nodes": nodes, "edges": edges, "stats": st, "total": sum(v for k, v in st.items() if k != "年历"),
             "nl": {r["md"]: r["c"] for r in (X or {}).get("nl") or []}}
+    if F: out["ui"] = F["ui"]
     return out  # 11-16 默认点亮当天“今日《论语》”那一章（北京时间，按年历）
 
 
@@ -131,7 +157,9 @@ def js_ver():
 
 
 def xt_html(L, P, home=False):
-    """画布＋控件。home=True 时带标题行和“去关系图”链接。"""
+    """画布＋控件。home=True 时带标题行和“去关系图”链接。11-21 英日版文字取 XI[code]["page"]。"""
+    F = (XI.get(L.code) or {}).get("page")
+    if F: return xt_html_f(F, P, home)
     hd = (f'<div class="xthead"><h2 class="ph">《论语》星图</h2></div>' if home else "")
     return (f'<section class="xtsec{" xthome" if home else ""}">{hd}<div class="xt" id="xt" data-src="{P}data/xingtu.json?v={DVER}" data-p="{P}">'
             '<canvas aria-label="《论语》关系星图：可拖动旋转，点星看这一章连着哪几章"></canvas>'
@@ -139,7 +167,20 @@ def xt_html(L, P, home=False):
             '<button type="button" data-f="h" aria-pressed="true">本书互见</button><button type="button" data-f="q" aria-pressed="true">同问异答</button>'
             '<button type="button" data-f="p" aria-pressed="false">人物</button><button type="button" data-f="o" aria-pressed="false">场合</button>'
             '<button type="button" data-f="b" aria-pressed="false">别的书</button><button type="button" class="rand">随便点一章</button><button type="button" class="reset">复位</button></div>'
-            '<p class="legend">一颗星一章，亮的讲过，大的连线多。拖动旋转；手机上左右划。再点一次选中的星，打开那一章。</p>'
+            '<p class="legend">拖动旋转；手机上左右划。再点一次选中的星，打开那一章。</p>'
             '<div class="card" aria-live="polite"><h4>《论语》星图</h4><p>滑到这里，星图就会亮起来。</p></div></div>'
             f'<noscript><p class="note"><a href="{P}lunyu/guanxi/">看《论语》同问异答与人物</a></p></noscript></section>'
+            f'<script src="/assets/xingtu.js?v={js_ver()}" defer></script>')
+
+
+def xt_html_f(F, P, home):
+    hd = (f'<div class="xthead"><h2 class="ph">{esc(F["h2"])}</h2></div>' if home else "")
+    b = lambda f, k, on: f'<button type="button" data-f="{f}" aria-pressed="{"true" if on else "false"}">{esc(F[k])}</button>'
+    return (f'<section class="xtsec{" xthome" if home else ""}">{hd}<div class="xt" id="xt" data-src="{P}data/xingtu.json?v={DVER}" data-p="{P}" data-err="{esc(F["err"])}">'
+            f'<canvas aria-label="{esc(F["aria"])}"></canvas>'
+            f'<div class="hud"><input type="search" placeholder="{esc(F["ph"])}" aria-label="{esc(F["pharia"])}">'
+            + b("h", "f_h", 1) + b("q", "f_q", 1) + b("p", "f_p", 0) + b("o", "f_o", 0) + b("b", "f_b", 0)
+            + f'<button type="button" class="rand">{esc(F["rand"])}</button><button type="button" class="reset">{esc(F["reset"])}</button></div>'
+            f'<p class="legend">{esc(F["legend"])}</p>'
+            f'<div class="card" aria-live="polite"><h4>{esc(F["c_h"])}</h4><p>{esc(F["c_p"])}</p></div></div></section>'
             f'<script src="/assets/xingtu.js?v={js_ver()}" defer></script>')
