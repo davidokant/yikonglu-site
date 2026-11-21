@@ -1358,6 +1358,20 @@ DESC_ZH = {
 "yingxiangli.html": "一孔录找到分：每周在各平台搜一句《论语》原文，看一孔录的讲读排在第几名，按公式算出分数并公开，用来检验读者在网上能不能找到一孔录。",
 "changhe/": "十二个人生场合用《论语》里的哪句话：取名、开学、成年、毕业、入职、结婚、祝寿、送别、探病、悼念等，每章写明怎么用、哪里容易用反，附原文、白话与朱熹注原页。"
 }
+def fl_desc(L, title, d, rel=""):  # 11-21 必应嫌描述太短：外文页描述是中文原样（专题导语）或不足 50 字的，换成本语言标题＋站点简介，截到 160 字以内
+    d = d or ""
+    if L.code.startswith("zh") or re.search(r"/\d+(?:\.\d+)?\.html$", rel or ""): return d  # 章页冻结期不动
+    if re.search(r"[\u4e00-\u9fff]", d) and not re.search(r"[A-Za-z\u3040-\u30ff\uac00-\ud7af\u0400-\u04ff]", d):
+        d = re.split(r"\s*[|｜]\s*", title)[0]
+    if len(d) >= 50: return d
+    intro = L.t("h_intro") or ""
+    if not intro: return d
+    sep = "。" if L.code in ("ja",) else ". "
+    d = (d.rstrip(" .。") + sep if d else "") + intro
+    if len(d) > 160:
+        cut = max(d.rfind(x, 0, 158) for x in (". ", "。", "? "))
+        d = d[:cut + 1] if cut > 60 else d[:157].rstrip() + "…"
+    return d.strip()
 def pad_desc(L, d, body=""):
     d = d or ""
     if not L.code.startswith("zh") or len(d) >= 60: return d
@@ -1392,6 +1406,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
     if misc_noidx(L.code, rel) and 'name="robots"' not in head_extra: head_extra = FL_NOIDX + head_extra
     if L.code.startswith("zh") and rel in DESC_ZH: desc = DESC_ZH[rel]  # 11-21 主人：栏目、书页写各自的描述，不再拿正文开头凑长
     desc = pad_desc(L, desc, body)
+    desc = fl_desc(L, title, desc, rel)
     if not L.code.startswith("zh"): body = hant_scripture(body)
     body = _strip_js_notes(body)
     url = f"{DOMAIN}/{L.prefix}{rel}"
