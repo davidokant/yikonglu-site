@@ -2174,7 +2174,7 @@ def lyhj_html(rows, P, book="szj"):
     def link(c): return f"{P}lunyu/" if c == "book" else f"{P}lunyu/{PIAN[c.split('.')[0]][1]}/{c.split('.')[1]}.html"
     lis = "".join(f'<li><em>{esc(r["kind"])}</em><a href="{link(r["c"])}" data-hj="{esc(str(r["c"]))}"><b>' + (f'《论语》全书' if r["c"] == "book" else f'论语 {r["c"]} {esc(r["q"])}') + f'</b></a>'
                   f'<p>{esc(r["note"])}<small>（{(esc(r["szj"][:6]) + "…… · ") if r.get("szj") else ""}{who(r)}）</small></p></li>' for r in rows)
-    return f'<section class="lyhj" id="lyhj"><h2>《论语》互见</h2><ul>{lis}</ul><p class="note">{"出处＝《论语》里直接说到老子这句话" if book == "ddj" else ("出处＝孟子这句话出自《论语》" if book == "mz" else ("出处＝《论语》里直接引了这一卦的话" if book == "zy" else "出处＝三字经原句出自这一章"))}；注家引＝旧注本里引了这一章；相通＝意思相通，一孔录对读。点进去是《论语》这一章的原文、原页和朱熹注。</p></section>'
+    return f'<section class="lyhj" id="lyhj"><h2>《论语》互见</h2><ul>{lis}</ul><p class="note">{"出处＝《论语》里直接说到老子这句话" if book == "ddj" else ("出处＝孟子这句话出自《论语》" if book == "mz" else ("出处＝《论语》里直接引了这一卦的话" if book == "zy" else "出处＝《论语》里直接引了这一章的话" if book == "zyz" else "出处＝三字经原句出自这一章"))}；注家引＝旧注本里引了这一章；相通＝意思相通，一孔录对读。点进去是《论语》这一章的原文、原页和朱熹注。</p></section>'
 
 # ---------- 11-19 《孟子》章页（主人：“章页版式仿照论语”）：先搭好、不对外（noindex、不进站点地图、站内不挂入口），标点重标、白话核定后再开 ----------
 MZ_DIR = os.path.join(GAO_DIR, "_孟子")
@@ -2507,7 +2507,7 @@ def _zhouyi_zhuan(L, write, P, c, zs, QW, zj, jd, bh, jl, hb, zyq, ywl, hj):
     lz_html = ('<section class="sec"><h2><i>连</i>连着读</h2><ul>' + _lk("上一章", lz.get("上一章")) + _lk("下一章", lz.get("下一章")) + "</ul>"
                + (f'<p><a href="{lz["问易"]}">到问易起一卦 ›</a></p>' if lz.get("问易") else "") + "</section>") if lz else ""
     zid = {x["id"]: x["yw"] for x in zj}
-    lyhj = lyhj_html([dict(r, note=r.get("q", ""), szj=zid.get(r.get("ju"), "")) for r in hj], P, "zy")
+    lyhj = lyhj_html([dict(r, note=r.get("q", ""), szj=zid.get(r.get("ju"), "")) for r in hj], P, "zyz")
     zhu_all = "".join(f'<p><span lang="zh-Hant">{esc(z[0])}</span> <small>（{esc(z[1])}）</small></p>' for x in main_ for z in (x.get("zhu") or [])) + "".join(f'<p><span lang="zh-Hant">○{esc(x["yw"])}</span> <small>（朱熹章旨）</small></p>' for x in zj if x["kind"] == "章旨")
     zhu_html = f'<section class="sec sec-注"><h2><i>注</i>朱熹本义（全章）</h2>{zhu_all}</section>' if zhu_all else ""
     deep = (ZJ.zy_section(c, sents, zy_, [{"bh": x.get("bh", "")} for x in main_], esc, ZY_NOTE) if zy_ else "") + _jdr + zhu_html
