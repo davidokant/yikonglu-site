@@ -19,7 +19,7 @@ if(lm&&ld){var yn=(o.yearName||'').replace(/年$/,'')||(ry>0?'甲乙丙丁戊己
 return{big:m+'月'+d+'日',wk:y+'年 · 星期'+'日一二三四五六'[now.getDay()]+(lp?' · '+lp:''),jq:(k===0?'今日'+R.jn[idx]:R.jn[idx]+'後第'+k+'天')+' · '+R.hou[idx*3+h]}}catch(e){return null}}
 var X3=JSON.parse(B.querySelector('.shtri').textContent);
 var O0={y:X3.y,en:X3.en,ja:X3.ja,u:D.u};window.yklReset=function(){if(window.ykKn0!==undefined)D.kn=window.ykKn0;X3.y=O0.y;X3.en=O0.en;X3.ja=O0.ja;D.u=O0.u;X3.n=0};window.yklCard=function(o){if(o.y){X3.y=o.y;X3.en='';X3.ja=''}if(o.u)D.u=o.u;X3.n=o.n||0;card()};
-function card(){var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',RL=rili(),all=X3.h+X3.y+X3.en+X3.ja+'一孔錄從《論語》開始 · 逐字讀經典原文掃碼讀懂這一章'+(RL?RL.big+RL.wk+RL.jq:'');
+function card(){var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',RL=rili(),all=X3.h+X3.y+X3.en+X3.ja+'一孔錄從《論語》開始 · 閱讀經典原頁掃碼讀懂這一章'+(RL?RL.big+RL.wk+RL.jq:'');
 Promise.all(['900 72px '+F,'700 60px '+F,'400 30px '+F].map(function(f){return document.fonts?document.fonts.load(f,all).catch(function(){}):0})).then(function(){qr(draw)})
 var MAXH=1400,AR=888/1400;function segs(n){var R=[];document.querySelectorAll('.yuanwen.dz .yyp').forEach(function(a){var sv=a.querySelector('svg'),im=a.querySelector('image');if(!sv||!im)return;var rs=[].slice.call(a.querySelectorAll('rect.hl')).filter(function(r){return !n||r.dataset.s==n});if(!rs.length)return;
 var vb=sv._vb0||sv.getAttribute('viewBox').split(/\s+/).map(Number),pw=+im.getAttribute('width'),x0=1e9,x1=0,cw=0;rs.forEach(function(r){var x=+r.getAttribute('x'),w=+r.getAttribute('width');x0=Math.min(x0,x);x1=Math.max(x1,x+w);cw=Math.max(cw,w)});
@@ -37,7 +37,7 @@ var yS=yT+36,H=Math.round((SG.length?yS+sh+64:yT)+330);
 var cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');
 c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);c.strokeStyle='#23503F';c.lineWidth=3;c.strokeRect(40,40,W-80,H-80);c.strokeStyle='rgba(35,80,63,.25)';c.lineWidth=1;c.strokeRect(52,52,W-104,H-104);if(window.ykTex)window.ykTex(c,W,H);
 var seal=new Image();seal.onload=function(){c.drawImage(seal,96,100,72,72);rest()};seal.onerror=rest;seal.src='/assets/seal-180.png';
-function rest(){c.textBaseline='middle';c.fillStyle='#1E2A25';c.font='900 44px '+F;c.fillText('一孔錄',186,126);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText('從《論語》開始 · 逐字讀經典原文',188,164);
+function rest(){c.textBaseline='middle';c.fillStyle='#1E2A25';c.font='900 44px '+F;c.fillText('一孔錄',186,126);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText('從《論語》開始 · 閱讀經典原頁',188,164);
 c.textBaseline='alphabetic';
 if(RL){c.textAlign='right';c.fillStyle='#23503F';c.font='900 76px '+F;c.fillText(RL.big,W-96,160);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(RL.wk,W-96,202);c.fillStyle='#8A5A2C';c.font='700 30px '+F;c.fillText(RL.jq,W-96,246);c.textAlign='left'}
 c.fillStyle='rgba(35,80,63,.3)';c.fillRect(96,top,W-192,1);
@@ -82,7 +82,7 @@ function bhAll(){var p=document.querySelector('.sec-白 p');return p?p.textConte
 function keyBh(kn){var R=rows(),b=(R[kn-1]||{}).bh||'',S=sents();if(b)return b;var a=bhAll();if(S.length===1||a.length<=48)return a;return ''}
 function fit(c,t,w,sizes,maxH,lh,weight){for(var i=0;i<sizes.length;i++){c.font=(weight||700)+' '+sizes[i]+'px '+F;var L=wrap(c,t,w);if(L.length*sizes[i]*lh<=maxH)return{s:sizes[i],L:L}}c.font=(weight||700)+' '+sizes[sizes.length-1]+'px '+F;return{s:sizes[sizes.length-1],L:wrap(c,t,w)}}
 function frame(c){c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);c.strokeStyle='#23503F';c.lineWidth=2;c.strokeRect(29,29,W-58,H-58)}
-function foot(c,seal,label,url){var y=H-76;if(seal)c.drawImage(seal,84,y-64,64,64);c.textBaseline='alphabetic';c.fillStyle='#23503F';c.font='700 34px '+F;c.fillText('一孔錄',164,y-30);c.fillStyle='#8A5A2C';c.font='400 22px '+F;c.fillText('從《論語》開始 · 逐字讀經典原文',164,y);
+function foot(c,seal,label,url){var y=H-76;if(seal)c.drawImage(seal,84,y-64,64,64);c.textBaseline='alphabetic';c.fillStyle='#23503F';c.font='700 34px '+F;c.fillText('一孔錄',164,y-30);c.fillStyle='#8A5A2C';c.font='400 22px '+F;c.fillText('從《論語》開始 · 閱讀經典原頁',164,y);
   var q=qrcode(0,'M');q.addData(url);q.make();var n=q.getModuleCount(),cs=Math.max(2,Math.floor(150/n)),qs=cs*n,qx=W-84-qs,qy=y-qs;c.fillStyle='#fff';c.fillRect(qx-8,qy-8,qs+16,qs+16);c.strokeStyle='#ccc';c.lineWidth=1;c.strokeRect(qx-8.5,qy-8.5,qs+17,qs+17);c.fillStyle='#1E2A25';
   for(var r=0;r<n;r++)for(var k=0;k<n;k++)if(q.isDark(r,k))c.fillRect(qx+k*cs,qy+r*cs,cs,cs);
   c.textAlign='right';c.fillStyle='#23503F';c.font='700 26px '+F;c.fillText(label,qx-30,y-46);c.fillStyle='#999';c.font='400 21px '+F;c.fillText(D.u.replace(/^https:\/\//,'').replace(/\.html$/,''),qx-30,y-12);c.textAlign='left'}
@@ -114,12 +114,12 @@ function rr(c,x,y,w,h,r){c.beginPath();if(c.roundRect)c.roundRect(x,y,w,h,r);els
 function foot4(c,seal,dark,f){var y0=H-208,ink=dark?'#F2F1EA':'#23503F',sub=dark?'rgba(242,241,234,.62)':'#8A5A2C',gr=dark?'rgba(242,241,234,.45)':'#999';
   c.fillStyle=dark?'rgba(242,241,234,.22)':'rgba(35,80,63,.25)';c.fillRect(84,y0,W-168,2);
   var y=y0+48;if(seal)c.drawImage(seal,84,y,84,84);c.textBaseline='alphabetic';c.textAlign='left';
-  c.fillStyle=ink;c.font='700 34px '+F;c.fillText('一孔錄',186,y+36);c.fillStyle=sub;c.font='400 22px '+F;c.fillText(ZH?'從《論語》開始 · 逐字讀經典原文':I.tag,186,y+70);
+  c.fillStyle=ink;c.font='700 34px '+F;c.fillText('一孔錄',186,y+36);c.fillStyle=sub;c.font='400 22px '+F;c.fillText(ZH?'從《論語》開始 · 閱讀經典原頁':I.tag,186,y+70);
   c.fillStyle=gr;c.font='400 19px '+F;c.fillText(ZH?'CC BY 4.0 · 署名“一孔錄”即可轉載、商用':I.cc,84,H-52);
   var q=qrcode(0,'M');q.addData(D.u+'?f='+f);q.make();var n=q.getModuleCount(),cs=Math.max(2,Math.floor(132/n)),qs=cs*n,qx=W-84-qs,qy=y0+28;
   c.fillStyle='#fff';c.fillRect(qx-8,qy-8,qs+16,qs+16);c.fillStyle='#1E2A25';for(var r=0;r<n;r++)for(var k=0;k<n;k++)if(q.isDark(r,k))c.fillRect(qx+k*cs,qy+r*cs,cs,cs);
   c.textAlign='right';c.fillStyle=ink;c.font='700 36px '+F;c.fillText(LBL(),qx-30,qy+48);c.fillStyle=gr;c.font='400 21px '+F;c.fillText(SHU(),qx-30,qy+84);c.fillStyle=sub;c.font='400 20px '+F;c.fillText(ZH?'掃碼讀這一章':I.scan,qx-30,qy+118);c.textAlign='left'}
-function prep(extra){return Promise.all([fonts(D.h+LBL()+extra+'一孔錄從《論語》開始 · 逐字讀經典原文掃碼讀這一章署名即可轉載商用'+(ZH?'':I.tag+I.cc+I.scan)),new Promise(function(ok){qr(ok)}),new Promise(function(ok){loadSeal(ok)})]).then(function(a){return a[2]})}
+function prep(extra){return Promise.all([fonts(D.h+LBL()+extra+'一孔錄從《論語》開始 · 閱讀經典原頁掃碼讀這一章署名即可轉載商用'+(ZH?'':I.tag+I.cc+I.scan)),new Promise(function(ok){qr(ok)}),new Promise(function(ok){loadSeal(ok)})]).then(function(a){return a[2]})}
 function bfit(c,t,w,sizes,maxH,lh,weight){var r=fit(c,t,w,sizes,maxH,lh,weight);if(r.L.length>1){c.font=(weight||700)+' '+r.s+'px '+F;var n=r.L.length,tw=c.measureText(QQ(t)).width,w2=Math.min(w,tw/n*1.04);for(var i=0;i<12;i++){var L=wrap(c,t,w2);if(L.length<=n){r.L=L;break}w2+=r.s*0.5;if(w2>w)break}}return r}
 function canvas(){var cv=document.createElement('canvas');cv.width=W;cv.height=H;return cv}
 

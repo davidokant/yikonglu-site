@@ -428,8 +428,8 @@
 "2026-11-21"
 ],
 "de/feed.xml": [
-"t:117d16700210dfdf",
-"2026-11-16"
+"t:70cb4163105c14a3",
+"2026-11-21"
 ],
 "de/index.html": [
 "t:e415033dc1cee077",
@@ -2532,8 +2532,8 @@
 "2026-11-17"
 ],
 "de/manifest.webmanifest": [
-"t:6cdc4a738feb8771",
-"2026-11-16"
+"t:a20cac73eb24e6d3",
+"2026-11-21"
 ],
 "de/offline.html": [
 "t:a4176b33193df6eb",
@@ -3796,8 +3796,8 @@
 "2026-11-21"
 ],
 "en/feed.xml": [
-"t:a0c0e5f1e3af48fa",
-"2026-11-16"
+"t:bf79fc03629ceba8",
+"2026-11-21"
 ],
 "en/index.html": [
 "t:7c09cef3f6d34a0d",
@@ -5900,8 +5900,8 @@
 "2026-11-17"
 ],
 "en/manifest.webmanifest": [
-"t:38f190f263ae94ee",
-"2026-11-16"
+"t:42bf6b7ea64c7d4a",
+"2026-11-21"
 ],
 "en/mengzi/1.1.html": [
 "t:3064010d6cb1f2fb",
@@ -8148,8 +8148,8 @@
 "2026-11-21"
 ],
 "es/feed.xml": [
-"t:d824d0d15098db59",
-"2026-11-16"
+"t:a6a88cf695853fd2",
+"2026-11-21"
 ],
 "es/index.html": [
 "t:bb57a5e87b4e97e4",
@@ -10252,8 +10252,8 @@
 "2026-11-17"
 ],
 "es/manifest.webmanifest": [
-"t:8342a1ca678fad80",
-"2026-11-16"
+"t:fd5474251086e798",
+"2026-11-21"
 ],
 "es/offline.html": [
 "t:622b359e9497247c",
@@ -11152,12 +11152,12 @@
 "2026-11-13"
 ],
 "fangfa.html": [
-"t:6083d9d123dd2ccf",
+"t:8ac7d462d424cc73",
 "2026-11-21"
 ],
 "feed.xml": [
-"t:74014d79cb39ac8e",
-"2026-11-16"
+"t:ca65343bb69cbb8b",
+"2026-11-21"
 ],
 "fr/about.html": [
 "t:73ea9cf330283901",
@@ -11180,8 +11180,8 @@
 "2026-11-21"
 ],
 "fr/feed.xml": [
-"t:b4876af5d834ed09",
-"2026-11-16"
+"t:b1d0eecf0d121c60",
+"2026-11-21"
 ],
 "fr/index.html": [
 "t:4e09e65139159743",
@@ -13284,8 +13284,8 @@
 "2026-11-17"
 ],
 "fr/manifest.webmanifest": [
-"t:30276dd6cbbd1974",
-"2026-11-16"
+"t:a76a798e8d953605",
+"2026-11-21"
 ],
 "fr/offline.html": [
 "t:8b57e946b963b581",
@@ -14268,8 +14268,8 @@
 "2026-11-21"
 ],
 "id/feed.xml": [
-"t:13fcce184a46aace",
-"2026-11-16"
+"t:363273acb74985d5",
+"2026-11-21"
 ],
 "id/index.html": [
 "t:e6ca4765942625f0",
@@ -16372,8 +16372,8 @@
 "2026-11-17"
 ],
 "id/manifest.webmanifest": [
-"t:17812e271268a017",
-"2026-11-16"
+"t:7ce0be8ada5a5da9",
+"2026-11-21"
 ],
 "id/offline.html": [
 "t:be169a8da2b99aa9",
@@ -17272,7 +17272,7 @@
 "2026-11-13"
 ],
 "index.html": [
-"t:94a4133df59b41ac",
+"t:006c955ac05e9938",
 "2026-11-21"
 ],
 "ja/about.html": [
@@ -17632,8 +17632,8 @@
 "2026-11-21"
 ],
 "ja/feed.xml": [
-"t:c27e6b214e9abba6",
-"2026-11-16"
+"t:e7c3dbe59780322e",
+"2026-11-21"
 ],
 "ja/index.html": [
 "t:8405ebf7bfd6ddc1",
@@ -19736,8 +19736,8 @@
 "2026-11-17"
 ],
 "ja/manifest.webmanifest": [
-"t:921b3100e4d20503",
-"2026-11-16"
+"t:c4f02c2eac119727",
+"2026-11-21"
 ],
 "ja/mengzi/1.1.html": [
 "t:eba594f61b8f63e7",
@@ -22000,8 +22000,8 @@
 "2026-11-21"
 ],
 "ko/feed.xml": [
-"t:6dab6430f955dfc1",
-"2026-11-16"
+"t:dd140b63ebc651a8",
+"2026-11-21"
 ],
 "ko/index.html": [
 "t:5707b6cd944bb0c1",
@@ -24104,8 +24104,8 @@
 "2026-11-17"
 ],
 "ko/manifest.webmanifest": [
-"t:2db6845a3939c48d",
-"2026-11-16"
+"t:9ab248a74f57a5f6",
+"2026-11-21"
 ],
 "ko/offline.html": [
 "t:cee600b1f676d726",
@@ -26408,12 +26408,12 @@
 "2026-11-20"
 ],
 "lunyu/yan-yuan/10.html": [
-"t:1126f6a1dd8881af",
-"2026-11-20"
+"t:2991710c3eeb3667",
+"2026-11-21"
 ],
 "lunyu/yan-yuan/11.html": [
-"t:e900a2409c206b5b",
-"2026-11-17"
+"t:a63d171d462374ce",
+"2026-11-21"
 ],
 "lunyu/yan-yuan/12.html": [
 "t:63beaff42d1ad163",
@@ -26492,12 +26492,12 @@
 "2026-11-20"
 ],
 "lunyu/yan-yuan/8.html": [
-"t:dbb892b48f3bc07d",
-"2026-11-17"
+"t:d0de1e9402224b15",
+"2026-11-21"
 ],
 "lunyu/yan-yuan/9.html": [
-"t:e7fe9eadc7d24cec",
-"2026-11-17"
+"t:93ab2da7852c1743",
+"2026-11-21"
 ],
 "lunyu/yan-yuan/index.html": [
 "t:2900be1975ba0121",
@@ -27096,8 +27096,8 @@
 "2026-11-17"
 ],
 "manifest.webmanifest": [
-"t:045e8452d768eb8c",
-"2026-11-16"
+"t:e9888ddbb63be8b2",
+"2026-11-21"
 ],
 "mengzi/1.1.html": [
 "t:23340a7f0763df22",
@@ -29028,8 +29028,8 @@
 "2026-11-21"
 ],
 "ru/feed.xml": [
-"t:b1bc05c5339cc7d9",
-"2026-11-16"
+"t:e8467f2ea8bb02f2",
+"2026-11-21"
 ],
 "ru/index.html": [
 "t:5e0905c4177c2dbe",
@@ -31132,8 +31132,8 @@
 "2026-11-17"
 ],
 "ru/manifest.webmanifest": [
-"t:e236aee383abe2af",
-"2026-11-16"
+"t:bf002c9d8f066ffd",
+"2026-11-21"
 ],
 "ru/offline.html": [
 "t:067aeb917f818f86",
@@ -32216,8 +32216,8 @@
 "2026-11-19"
 ],
 "search.html": [
-"t:ffdad7c2a1aa0f68",
-"2026-11-20"
+"t:7b1df7566f0aaf7a",
+"2026-11-21"
 ],
 "search.json": [
 "t:be6efdc7e7f609cc",
@@ -32384,8 +32384,8 @@
 "2026-11-21"
 ],
 "vi/feed.xml": [
-"t:0fdbab215aa6039e",
-"2026-11-16"
+"t:28f31b3ba4529388",
+"2026-11-21"
 ],
 "vi/index.html": [
 "t:a0297480e48c93c5",
@@ -34488,8 +34488,8 @@
 "2026-11-17"
 ],
 "vi/manifest.webmanifest": [
-"t:75435337768a706f",
-"2026-11-16"
+"t:1a4409a70681339c",
+"2026-11-21"
 ],
 "vi/offline.html": [
 "t:290aa2f01be18f7e",
@@ -36076,8 +36076,8 @@
 "2026-11-21"
 ],
 "zh-hant/feed.xml": [
-"t:cdf3abe26fa9307b",
-"2026-11-16"
+"t:182cc9e8d5e68144",
+"2026-11-21"
 ],
 "zh-hant/gaidong.html": [
 "t:aadf8eefe4f03ae7",
@@ -37568,12 +37568,12 @@
 "2026-11-20"
 ],
 "zh-hant/lunyu/yan-yuan/10.html": [
-"t:8367ac472fd31c13",
-"2026-11-20"
+"t:1aefe23ae4e8791a",
+"2026-11-21"
 ],
 "zh-hant/lunyu/yan-yuan/11.html": [
-"t:b6936b3d5e3cd999",
-"2026-11-17"
+"t:027fb2a07d3628b6",
+"2026-11-21"
 ],
 "zh-hant/lunyu/yan-yuan/12.html": [
 "t:ed200bfe7633800c",
@@ -37652,12 +37652,12 @@
 "2026-11-20"
 ],
 "zh-hant/lunyu/yan-yuan/8.html": [
-"t:2a3a70e3a76567eb",
-"2026-11-17"
+"t:5a09d87d8e3bcd73",
+"2026-11-21"
 ],
 "zh-hant/lunyu/yan-yuan/9.html": [
-"t:0430761c8b546048",
-"2026-11-17"
+"t:cd8f40ef1f2e6bec",
+"2026-11-21"
 ],
 "zh-hant/lunyu/yan-yuan/index.html": [
 "t:d0b45126d18f3541",
@@ -38256,8 +38256,8 @@
 "2026-11-17"
 ],
 "zh-hant/manifest.webmanifest": [
-"t:e84d984f9f71d55f",
-"2026-11-16"
+"t:bae434cd0c44e2c3",
+"2026-11-21"
 ],
 "zh-hant/mengzi/1.1.html": [
 "t:fa589d730eea4641",

@@ -47,7 +47,7 @@ SOURCE = "朱熹《论语集注》（《四部备要》本）"
 KEBEN = [("chu7", "七年级上册《〈论语〉十二章》", "初中第一次读《论语》：学习、修身、志向。", ["1.1", "1.4", "2.4", "2.11", "2.15", "6.9", "6.18", "7.15", "7.21", "9.16", "9.25", "19.6"]),
          ("bixiu", "高中必修下册《子路、曾皙、冉有、公西华侍坐》", "孔子让四个学生各言其志，最后说“吾与点也”。课本按杨伯峻本是《先进》第 26 章，朱注本是第 25 章。", ["11.25"]),
          ("xuanbi", "高中选择性必修上册《〈论语〉十二章》", "从学而、八佾、里仁、雍也、泰伯、子罕、颜渊、卫灵公、阳货九篇选出，讲仁、礼、义与君子。", ["1.14", "3.3", "4.8", "4.16", "4.17", "6.16", "8.7", "9.18", "9.28", "12.1", "15.23", "17.9"])]
-TAGLINE = "从《论语》开始 · 逐字读经典原文"  # 11-16 与首页定位句统一
+TAGLINE = "从《论语》开始 · 阅读经典原页"  # 11-16 与首页定位句统一
 # 11-17 主人定现在申请 Google AdSense：审核阶段只放验证用 meta 和 ads.txt，不载广告脚本、不放广告位；过审后再定位置（只页脚、目录页，章节正文不放，关自动广告）
 ADSENSE_PUB = "ca-pub-7119069841468291"  # 形如 ca-pub-1234567890123456；空就什么都不加
 GAO_DIR = "/mnt/project-files/一孔学-内-自媒体/数据/网站素材"  # 各期稿只在共享盘读取，不进公开仓库
@@ -822,7 +822,7 @@ if(lm&&ld){var yn=(o.yearName||'').replace(/年$/,'')||(ry>0?'甲乙丙丁戊己
 return{big:m+'月'+d+'日',wk:y+'年 · 星期'+'日一二三四五六'[now.getDay()]+(lp?' · '+lp:''),jq:(k===0?'今日'+R.jn[idx]:R.jn[idx]+'后第'+k+'天')+' · '+R.hou[idx*3+h]}}catch(e){return null}}
 var X3=JSON.parse(B.querySelector('.shtri').textContent);
 var O0={y:X3.y,en:X3.en,ja:X3.ja,u:D.u};window.yklReset=function(){if(window.ykKn0!==undefined)D.kn=window.ykKn0;X3.y=O0.y;X3.en=O0.en;X3.ja=O0.ja;D.u=O0.u;X3.n=0};window.yklCard=function(o){if(o.y){X3.y=o.y;X3.en='';X3.ja=''}if(o.u)D.u=o.u;X3.n=o.n||0;card()};
-function card(){var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',RL=rili(),all=X3.h+X3.y+X3.en+X3.ja+'一孔录从《论语》开始 · 逐字读经典原文扫码读懂这一章'+(RL?RL.big+RL.wk+RL.jq:'');
+function card(){var F='"Noto Serif SC","Noto Serif JP","Noto Serif",serif',RL=rili(),all=X3.h+X3.y+X3.en+X3.ja+'一孔录从《论语》开始 · 阅读经典原页扫码读懂这一章'+(RL?RL.big+RL.wk+RL.jq:'');
 Promise.all(['900 72px '+F,'700 60px '+F,'400 30px '+F].map(function(f){return document.fonts?document.fonts.load(f,all).catch(function(){}):0})).then(function(){qr(draw)})
 var MAXH=1400,AR=888/1400;function segs(n){var R=[];document.querySelectorAll('.yuanwen.dz .yyp').forEach(function(a){var sv=a.querySelector('svg'),im=a.querySelector('image');if(!sv||!im)return;var rs=[].slice.call(a.querySelectorAll('rect.hl')).filter(function(r){return !n||r.dataset.s==n});if(!rs.length)return;
 var vb=sv._vb0||sv.getAttribute('viewBox').split(/\\s+/).map(Number),pw=+im.getAttribute('width'),x0=1e9,x1=0,cw=0;rs.forEach(function(r){var x=+r.getAttribute('x'),w=+r.getAttribute('width');x0=Math.min(x0,x);x1=Math.max(x1,x+w);cw=Math.max(cw,w)});
@@ -840,7 +840,7 @@ var yS=yT+36,H=Math.round((SG.length?yS+sh+64:yT)+330);
 var cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');
 c.fillStyle='#F2F1EA';c.fillRect(0,0,W,H);c.strokeStyle='#23503F';c.lineWidth=3;c.strokeRect(40,40,W-80,H-80);c.strokeStyle='rgba(35,80,63,.25)';c.lineWidth=1;c.strokeRect(52,52,W-104,H-104);if(window.ykTex)window.ykTex(c,W,H);
 var seal=new Image();seal.onload=function(){c.drawImage(seal,96,100,72,72);rest()};seal.onerror=rest;seal.src='/assets/seal-180.png';
-function rest(){c.textBaseline='middle';c.fillStyle='#1E2A25';c.font='900 44px '+F;c.fillText('一孔录',186,126);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText('从《论语》开始 · 逐字读经典原文',188,164);
+function rest(){c.textBaseline='middle';c.fillStyle='#1E2A25';c.font='900 44px '+F;c.fillText('一孔录',186,126);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText('从《论语》开始 · 阅读经典原页',188,164);
 c.textBaseline='alphabetic';
 if(RL){c.textAlign='right';c.fillStyle='#23503F';c.font='900 76px '+F;c.fillText(RL.big,W-96,160);c.fillStyle='#6E6A60';c.font='400 24px '+F;c.fillText(RL.wk,W-96,202);c.fillStyle='#8A5A2C';c.font='700 30px '+F;c.fillText(RL.jq,W-96,246);c.textAlign='left'}
 c.fillStyle='rgba(35,80,63,.3)';c.fillRect(96,top,W-192,1);
@@ -1250,7 +1250,7 @@ WJ_UI = {  # 外文未讲章与闯关、检索新功能的界面字（11-13 主�
  "ru": {"s_new": "Недавно разобранные главы", "s_feed": "Подписаться", "s_last": "Последнее прочитанное"},
 }
 TRI_TXT = {}  # 章 → 分享图三语（简体原文、英、日），各语种同一张；ascii 转义，繁体整页转换时不动
-TAGLINE_L = {"zh-Hans": "从《论语》开始 · 逐字读经典原文", "zh-Hant": "從《論語》開始 · 逐字讀經典原文"}
+TAGLINE_L = {"zh-Hans": "从《论语》开始 · 阅读经典原页", "zh-Hant": "從《論語》開始 · 閱讀經典原頁"}
 MEIRI_TXT = {"zh-Hans": {"h": "今日《论语》", "read": "读这一章", "card": "生成卡片", "plan": "百日读完《论语》"}, "zh-Hant": {"h": "今日《論語》", "read": "讀這一章", "card": "生成卡片", "plan": "百日讀完《論語》"}}
 LANG_SHORT = {"zh-Hans": "简", "zh-Hant": "繁", "en": "EN", "ja": "日", "ko": "한", "fr": "FR", "es": "ES", "de": "DE", "vi": "VI", "id": "ID", "ru": "RU"}
 LIVE_PILL = {"zh-Hans": "{o} 儒者在读 · 累计 {t}", "zh-Hant": "{o} 儒者在讀 · 累計 {t}", "en": "Confucians reading: {o} · total {t}", "ja": "{o} 人の儒者が読書中 · 累計 {t}", "ko": "유학자 {o}명 읽는 중 · 누적 {t}", "fr": "Lettrés en lecture : {o} · {t} en tout",
@@ -2219,17 +2219,17 @@ DDJ_LYHJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_ly
 DDJ_LYHJ = json.load(open(DDJ_LYHJ_FILE, encoding="utf-8")) if os.path.exists(DDJ_LYHJ_FILE) else []
 # 11-16 首页定位（主人：“以论语为主，牵出一整套经典系列”）：首页副标、标题、摘要
 HOMEPOS = {
-    "zh-Hans": ("从《论语》开始 · 逐字读经典原文", "一孔录｜从《论语》开始，逐字读经典原文", "《论语》498 章逐句对朱熹集注原页：原文、白话、读音、注家原话、公开勘误。再从《论语》读到《道德经》《三字经》，各章互见《论语》。"),
-    "zh-Hant": ("從《論語》開始 · 逐字讀經典原文", "一孔錄｜從《論語》開始，逐字讀經典原文", "《論語》498 章逐句對朱熹集注原頁：原文、白話、讀音、注家原話、公開勘誤。再從《論語》讀到《道德經》《三字經》，各章互見《論語》。"),
-    "en": ("Start with the Analects · read the classics word by word", None, "All 498 chapters of the Analects, line by line against the pages of Zhu Xi's commentary: original, plain Chinese, readings, the commentators' own words, public corrections. From the Analects on to the Daodejing and the Three-Character Classic, each chapter cross-referenced to the Analects."),
-    "ja": ("『論語』から読む · 古典の原文を一字ずつ", None, "『論語』498章を朱熹集注の原頁と一句ずつ照合：原文・現代語訳・読み・注釈家の原文・公開訂正。『論語』から『道徳経』『三字経』へ、各章を『論語』と照らし合わせて読みます。"),
-    "ko": ("『논어』에서 시작해 · 고전 원문을 한 글자씩", None, "『논어』 498장을 주희 집주 원본 쪽과 한 구절씩 대조: 원문, 현대어 풀이, 독음, 주석가의 원문, 공개 정오표. 『논어』에서 『도덕경』『삼자경』으로, 각 장을 『논어』와 맞대어 읽습니다."),
-    "fr": ("Commencer par les Entretiens · lire les classiques mot à mot", None, "Les 498 chapitres des Entretiens, phrase par phrase face aux pages du commentaire de Zhu Xi : texte, chinois moderne, prononciations, paroles des commentateurs, errata publics. Des Entretiens vers le Daodejing et le Classique des trois caractères, chaque chapitre renvoyant aux Entretiens."),
-    "es": ("Empezar por las Analectas · leer los clásicos palabra por palabra", None, "Los 498 capítulos de las Analectas, frase a frase frente a las páginas del comentario de Zhu Xi: texto, chino moderno, pronunciación, palabras de los comentaristas, erratas públicas. De las Analectas al Daodejing y al Clásico de los tres caracteres, cada capítulo remitido a las Analectas."),
-    "de": ("Mit den Gesprächen beginnen · die Klassiker Wort für Wort lesen", None, "Alle 498 Kapitel der Gespräche des Konfuzius, Satz für Satz an den Seiten von Zhu Xis Kommentar geprüft: Urtext, modernes Chinesisch, Lesungen, Kommentatoren im Wortlaut, öffentliche Korrekturen. Weiter zum Daodejing und zum Dreizeichenklassiker, jedes Kapitel mit Verweis auf die Gespräche."),
-    "vi": ("Bắt đầu từ Luận Ngữ · đọc kinh điển từng chữ", None, "498 chương Luận Ngữ, từng câu đối chiếu với trang gốc chú giải của Chu Hy: nguyên văn, bạch thoại, cách đọc, lời các nhà chú giải, đính chính công khai. Từ Luận Ngữ đọc sang Đạo Đức Kinh, Tam Tự Kinh, mỗi chương đối chiếu với Luận Ngữ."),
-    "id": ("Mulai dari Analek · membaca kitab klasik kata demi kata", None, "498 bab Analek, kalimat demi kalimat dicocokkan dengan halaman tafsir Zhu Xi: teks asli, bahasa Tionghoa modern, lafal, kata-kata para penafsir, ralat terbuka. Dari Analek berlanjut ke Daodejing dan Klasik Tiga Aksara, setiap bab dirujuk silang ke Analek."),
-    "ru": ("Начиная с «Лунь юя» · классика слово за словом", None, "Все 498 глав «Лунь юя», фраза за фразой сверенные со страницами комментария Чжу Си: оригинал, современный китайский, чтения, слова комментаторов, открытые исправления. Дальше — к «Дао дэ цзину» и «Троесловию», каждая глава со ссылками на «Лунь юй»."),
+    "zh-Hans": ("从《论语》开始 · 阅读经典原页", "一孔录｜从《论语》开始，阅读经典原页", "《论语》498 章逐句对朱熹集注原页：原文、白话、读音、注家原话、公开勘误。再从《论语》读到《道德经》《三字经》，各章互见《论语》。"),
+    "zh-Hant": ("從《論語》開始 · 閱讀經典原頁", "一孔錄｜從《論語》開始，閱讀經典原頁", "《論語》498 章逐句對朱熹集注原頁：原文、白話、讀音、注家原話、公開勘誤。再從《論語》讀到《道德經》《三字經》，各章互見《論語》。"),
+    "en": ("Start with the Analects · read the classics on their original pages", None, "All 498 chapters of the Analects, line by line against the pages of Zhu Xi's commentary: original, plain Chinese, readings, the commentators' own words, public corrections. From the Analects on to the Daodejing and the Three-Character Classic, each chapter cross-referenced to the Analects."),
+    "ja": ("『論語』から読む · 古典を原本の頁で", None, "『論語』498章を朱熹集注の原頁と一句ずつ照合：原文・現代語訳・読み・注釈家の原文・公開訂正。『論語』から『道徳経』『三字経』へ、各章を『論語』と照らし合わせて読みます。"),
+    "ko": ("『논어』에서 시작해 · 고전을 원본 쪽 그대로", None, "『논어』 498장을 주희 집주 원본 쪽과 한 구절씩 대조: 원문, 현대어 풀이, 독음, 주석가의 원문, 공개 정오표. 『논어』에서 『도덕경』『삼자경』으로, 각 장을 『논어』와 맞대어 읽습니다."),
+    "fr": ("Commencer par les Entretiens · lire les classiques sur leurs pages d’origine", None, "Les 498 chapitres des Entretiens, phrase par phrase face aux pages du commentaire de Zhu Xi : texte, chinois moderne, prononciations, paroles des commentateurs, errata publics. Des Entretiens vers le Daodejing et le Classique des trois caractères, chaque chapitre renvoyant aux Entretiens."),
+    "es": ("Empezar por las Analectas · leer los clásicos en sus páginas originales", None, "Los 498 capítulos de las Analectas, frase a frase frente a las páginas del comentario de Zhu Xi: texto, chino moderno, pronunciación, palabras de los comentaristas, erratas públicas. De las Analectas al Daodejing y al Clásico de los tres caracteres, cada capítulo remitido a las Analectas."),
+    "de": ("Mit den Gesprächen beginnen · die Klassiker auf ihren Originalseiten lesen", None, "Alle 498 Kapitel der Gespräche des Konfuzius, Satz für Satz an den Seiten von Zhu Xis Kommentar geprüft: Urtext, modernes Chinesisch, Lesungen, Kommentatoren im Wortlaut, öffentliche Korrekturen. Weiter zum Daodejing und zum Dreizeichenklassiker, jedes Kapitel mit Verweis auf die Gespräche."),
+    "vi": ("Bắt đầu từ Luận Ngữ · đọc kinh điển trên trang gốc", None, "498 chương Luận Ngữ, từng câu đối chiếu với trang gốc chú giải của Chu Hy: nguyên văn, bạch thoại, cách đọc, lời các nhà chú giải, đính chính công khai. Từ Luận Ngữ đọc sang Đạo Đức Kinh, Tam Tự Kinh, mỗi chương đối chiếu với Luận Ngữ."),
+    "id": ("Mulai dari Analek · membaca kitab klasik dari halaman aslinya", None, "498 bab Analek, kalimat demi kalimat dicocokkan dengan halaman tafsir Zhu Xi: teks asli, bahasa Tionghoa modern, lafal, kata-kata para penafsir, ralat terbuka. Dari Analek berlanjut ke Daodejing dan Klasik Tiga Aksara, setiap bab dirujuk silang ke Analek."),
+    "ru": ("Начиная с «Лунь юя» · классика по подлинным страницам", None, "Все 498 глав «Лунь юя», фраза за фразой сверенные со страницами комментария Чжу Си: оригинал, современный китайский, чтения, слова комментаторов, открытые исправления. Дальше — к «Дао дэ цзину» и «Троесловию», каждая глава со ссылками на «Лунь юй»."),
 }
 HOMEDEF = {"zh-Hans": "一孔录（Yikonglu）是以《论语》为主经、逐句对底本原页的经典讲读，其他经典各章互见《论语》。", "zh-Hant": "一孔錄（Yikonglu）是以《論語》為主經、逐句對底本原頁的經典講讀，其他經典各章互見《論語》。",
            "en": "Yikonglu (一孔录) is a reading of the Chinese classics centred on the Analects and checked line by line against the pages of the base edition; every other classic is cross-referenced to the Analects chapter by chapter."}
