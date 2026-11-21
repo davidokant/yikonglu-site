@@ -192,7 +192,7 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
             cls = "spot" + (" now" if z.get("状态") == "在讲" else ""); dn = ' data-now="现在讲到"' if z.get("状态") == "在讲" else ""
             st = f'left:{esc(z["x"])}%;top:{esc(z["y"])}%'; k = bmap(z)
             if k: return f'<a class="{cls}"{dn} style="{st}" href="{P}shuyuan/ditu/{k}.html" title="{esc(z["书名"])}" aria-label="{esc(z["书名"])}">{esc(short(z))}</a>'
-            return f'<span class="{cls} soon"{dn} style="{st}" title="{esc(z["书名"])} · 书区图筹备中">{esc(short(z))}</span>'
+            return f'<span class="{cls} soon"{dn} style="{st}" title="{esc(z["书名"])} · 书区图暂未开放">{esc(short(z))}</span>'
         spots = "".join(zspot(z, i) for i, z in enumerate(G["zones"]) if z.get("x") and z.get("y"))
         mp = f'<div class="gsmap"><img src="{mapimg}" alt="十三经岛地图" width="2000" height="1547">{spots}</div>' if mapimg else ""
         zc = ""
@@ -233,7 +233,7 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
                 spots += f'<a class="spot go" style="{st}" href="{href}" title="{esc(tip)}" aria-label="{esc(sp["name"])}">{esc(sp["name"])}</a>'
                 items += f'<a class="dchip go" href="{href}"><b>{esc(sp["name"])}</b>{f"<small>{esc(sub)}</small>" if sub else ""}<em>{"进入 ›" if (to in T or to == "@dao") else "去读 ›"}</em></a>'
             else:
-                soon = "尚未开放" if n["kind"] == "world" else ("书区图筹备中" if n["kind"] == "region" else "还没讲到")
+                soon = "尚未开放" if n["kind"] == "world" else ("书区图暂未开放" if n["kind"] == "region" else "还没讲到")
                 spots += f'<span class="spot" style="{st}" title="{esc(tip)} · {soon}">{esc(sp["name"])}</span>'
                 items += f'<span class="dchip"><b>{esc(sp["name"])}</b>{f"<small>{esc(sub)}</small>" if sub else ""}<em>{soon}</em></span>'
         W, H = n["size"]
@@ -244,7 +244,7 @@ def build(L, D, G, write, page, P, rel_of, title_of, split_ju, DOMAIN):
                 f'<main class="wrap gsmain"><p class="lead narrow">{lead}</p><div class="gsmap dmap"><img src="/gushi/img/ditu/{nid}-{v}.jpg" alt="{esc(n["title"])}地图" width="{W}" height="{H}">{spots}</div>'
                 f'<div class="dchips">{items}</div></main>')
         rel = "shuyuan/ditu/" if nid == "world" else f"shuyuan/ditu/{nid}.html"
-        write(rel + ("index.html" if nid == "world" else ""), page(L, f'{n["title"]}｜一孔录·地图', f'一孔录片中的虚构地图：{n["title"]}。', rel, body, ld(n["title"], U(rel), "一孔录片中的虚构地图"), "pg-gushi", og_img=f"gushi/img/ditu/{nid}-{v}.jpg", head_extra='<meta name="robots" content="noindex,follow">'));  # 11-18 谷歌把简繁地图页判为重复（多是“书区图筹备中”）：不进索引、不进站点地图，链接照跟
+        write(rel + ("index.html" if nid == "world" else ""), page(L, f'{n["title"]}｜一孔录·地图', f'一孔录片中的虚构地图：{n["title"]}。', rel, body, ld(n["title"], U(rel), "一孔录片中的虚构地图"), "pg-gushi", og_img=f"gushi/img/ditu/{nid}-{v}.jpg", head_extra='<meta name="robots" content="noindex,follow">'));  # 11-18 谷歌把简繁地图页判为重复（多是“书区图暂未开放”）：不进索引、不进站点地图，链接照跟
     # 栏目首页
     nowtxt = f"，现在讲到《{esc(now_zone['书名'])}》" if now_zone else ""
     jb = hero("一孔录原创角色", "书院里的人") + f'<main class="wrap narrow gsmain"><p class="lead">书院里常驻的六个人，都是一孔录原创角色，由智器主持，读法以“一孔之见”为准。点进去看各人的身份、本领，和在哪些章出场；想跟着一个人读，去<a href="{P}zhuanti/">专题</a>里的“跟着一个人读”。</p><div class="gscards">{cards}</div></main>'

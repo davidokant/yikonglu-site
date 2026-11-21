@@ -185,7 +185,7 @@ def build(L, D, X, write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, zidia
 <div class="nlbday" id="nlbday"><p class="nlbh"><b>你生日那天读哪一句？</b>找找看，做成一张卡片，分享给朋友看看。</p>
 <form id="nlbf"><select id="nlbm" aria-label="月">{"".join(f'<option value="{m}">{m} 月</option>' for m in range(1, 13))}</select><select id="nlbd" aria-label="日"></select><button class="btn" type="submit">找一找</button></form><div id="nlbo" hidden></div></div>
 <p class="nlchips">{chips}</p>{mon}
-<p class="note">标“未讲”的章视频还在做，网站先放原文、原页、白话和朱熹注。读过的课（这台设备上读过这一课所有的章）打勾，进度只存在你自己的设备上。</p></main>
+<p class="note">读过的课（这台设备上读过这一课所有的章）打勾，进度只存在你自己的设备上。</p></main>
 <script>(function(){{var n=Date.now(),bj=new Date(n+288e5),md=(bj.getUTCMonth()+1)+"-"+bj.getUTCDate(),li=document.querySelector('.nll li[data-md="'+md+'"]'),T=document.getElementById("nltoday");
 var S;try{{S=JSON.parse(localStorage.getItem("yk_xd")||"{{}}")}}catch(e){{S={{}}}}var seen=((S.b||{{}}).lunyu||{{}}).seen||[];
 document.querySelectorAll(".nll li[data-cs]").forEach(function(x){{if(JSON.parse(x.getAttribute("data-cs")).every(function(c){{return seen.indexOf(c)>=0}}))x.classList.add("done")}});

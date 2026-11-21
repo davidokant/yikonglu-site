@@ -57,7 +57,7 @@ def build(L, D, KEBEN, write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, M
 <main class="wrap narrow keben"><p class="lead">{esc(knote)}共 {len(kcs)} 章。下面先是全文，再逐章给原文、读音、白话，点章名看这一章的原页、逐句朱熹注和各家注本。</p>
 <section class="kbqw"><h2 class="ph">全文</h2>{beisong}</section>
 <section><h2 class="ph">逐章：原文、读音、白话</h2><ol class="kbl">{items}</ol></section>
-<p class="note">原文照朱熹《论语集注》（《四部备要》本），标点、个别用字可能和课本不同；章号按朱注分章，课本注释多用杨伯峻本，章号有时差一两号。读音照朱注反切，和今天通行读法不同的另注“今多读”。标“未讲”的章视频还在做，网站先放原文、白话和注。发现错处请写信：{MAIL}</p>
+<p class="note">原文照朱熹《论语集注》（《四部备要》本），标点、个别用字可能和课本不同；章号按朱注分章，课本注释多用杨伯峻本，章号有时差一两号。读音照朱注反切，和今天通行读法不同的另注“今多读”。发现错处请写信：{MAIL}</p>
 <div class="ztcards">{others}<a class="ztcard" href="{P}zhuanti/lunyu-chengyu.html"><b>论语中的成语</b><small>{len(X["chengyu"])} 条</small></a><a class="ztcard" href="{P}zhuanti/lunyu-mingju.html"><b>论语名句</b><small>{len(X["mingju"])} 句</small></a></div></main>'''
         desc = f"统编语文{grade}{lname}：全文、逐章原文、读音、白话翻译，每章链到朱熹《论语集注》原页、逐句注和讲解视频。"
         write(f"zhuanti/{slug}.html", page(L, f"{ttl}｜一孔录", desc, f"zhuanti/{slug}.html", body, codes=list(ZH)))

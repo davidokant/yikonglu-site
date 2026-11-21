@@ -131,15 +131,15 @@ ZH_UI = {
  "p3t": "勘误公开", "p3": "讲错的地方改了就记：哪集哪句、原来怎么说、改成什么、依据是什么。",
  "books": "书架", "recent": "最近收录", "lunyu": "论语", "lunyu_sub": "二十篇 · 持续更新",
  "by_chapter": f"按篇按章排。底本：{SOURCE}。",
- "book_lead": "每章有原文、注里的关键字、诸家说法和一孔录的读法，附视频。", "covered": "已讲 {done} / {total} 章",
+ "book_lead": "每章有原文、注里的关键字、诸家说法和一孔录的读法，附视频。", "covered": "{total} 章",
  "f_common": "常见的理解", "f_keys": "注里的关键字", "f_others": "诸家怎么说", "f_ours": "一孔录这样读",
  "cites": "本章引文逐条核对", "cites_note": "视频里引到的每一句注：原话、出自谁、在底本哪一页。标“转述”的是我们概括的意思，不是原话。",
  "th_quote": "引文原话", "th_src": "出自", "th_page": "底本页", "para": "转述", "pg": "原页 {n}", "other_ed": "另本",
  "reads": "读音", "th_zi": "字", "th_pos": "位置", "th_du": "读", "shots": "底本原页",
  "kw": "本章勘误", "kw_note": "", "cite": "引用本页", "copy": "复制", "copied": "已复制",
  "checked": "本页最后核对：{d}。改动记在", "errata_page": "勘误页",
- "video": "看这一章的视频", "wj_vid": "这一章的视频正在制作，上线后就放在这里。先关注一孔录，出片第一时间看到：", "ddj_lead": "王弼本八十一章：道经第 1—37 章，德经第 38—81 章。视频还在制作，网站先放原文、原页、白话和注，开讲后逐章补全。", "bk_prog_wj": "原文全 · 视频制作中", "wj_pane": "原页", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点哔哩哔哩）",
- "prev": "上一章", "next": "下一章", "chapter_no": "{book} · 第 {n} 章", "book_no": "《论语》第 {n} 篇 · 已讲 {done} / {total} 章",
+ "video": "看这一章的视频", "wj_vid": "这一章的视频正在制作，上线后就放在这里。先关注一孔录，出片第一时间看到：", "ddj_lead": "王弼本八十一章：道经第 1—37 章，德经第 38—81 章。每章原文、白话、注与底本原页。", "bk_prog_wj": "原文全 · 视频制作中", "wj_pane": "原页", "video_in": "这一章在一孔录《{ep}》里讲：", "cn_note": "（大陆请点哔哩哔哩）",
+ "prev": "上一章", "next": "下一章", "chapter_no": "{book} · 第 {n} 章", "book_no": "《论语》第 {n} 篇 · {total} 章",
  "source_line": f"原文与注据{SOURCE}", "rendering": "",
  "errata_title": "公开勘误", "errata_sub": "原文·引文·出处·读音·读法",
  "errata_p1": "一孔录讲错或说满的地方，改了就记在这里，按时间倒排，旧记录不删。画面上的小问题不记，只记内容。",
@@ -300,13 +300,11 @@ BANBEN = [
  ("yangbojun", "杨伯峻《论语译注》", [
    ("bb_base", "中华书局。"),
    ("bb_img", "不放书影。"),
-   ("bb_page", "页码待核后补上。"),
    ("bb_lic", "在版权期。本站每章只短引一句译文，作“通行读法”对照，属适当引用；不收进开放数据。"),
    ("bb_use", "“各家注本”里的一句译文和“与朱注异同”表；异同说明是一孔录写的，不是原书文字。")]),
  ("qianmu", "钱穆《论语新解》", [
-   ("bb_base", "通行本（版本信息待核后补）。"),
+   ("bb_base", "通行本。"),
    ("bb_img", "不放书影。"),
-   ("bb_page", "页码待按正版核过后补上。"),
    ("bb_lic", "在版权期。本站每章只短引一句，作通行读法对照，属适当引用；不收进开放数据。"),
    ("bb_use", "同上。")]),
  ("yikonglu", "一孔录自己的内容", [
@@ -1347,7 +1345,7 @@ DESC_ZH = {
 "shuyuan/": "题名：2027 年元旦起，书友可以把自己的名字和一句题记，题在《论语》年历的某一天上。一孔录的片子、原文、白话和读本照旧全部免费。",
 "kanwu.html": "一孔录勘误表：讲错、说满的地方，改了就公开记在这里，写明原来怎么说、改成什么、依据是什么、是谁指出的，按时间倒排，旧记录不删。",
 "lunyu/": "《论语》二十篇 498 章，按朱熹《论语集注》（《四部备要》本）分章：每章原文、白话、读音、朱熹注与诸家说法，句句对得上底本原页，附讲读视频。",
-"daodejing/": "《道德经》八十一章，王弼本，道经第 1—37 章、德经第 38—81 章：逐章原文、白话直译和底本原页，附《论语》互见。视频还在制作，开讲后逐章补全。",
+"daodejing/": "《道德经》八十一章，王弼本，道经第 1—37 章、德经第 38—81 章：逐章原文、白话直译和底本原页，注家说法与一孔录的读法随章附上，另附《论语》互见。",
 "sanzijing/": "《三字经》一千二百字、一百零一组，按一孔录《父亲讲义》分六卷三十九讲，一周一讲、一年读完：每讲原文、逐组白话、原文朗读，附王相训诂本原页。",
 "mengzi/": "《孟子》七篇十四卷，按朱熹《孟子集注》分 260 章：逐章原文、底本原页、朱注与白话，注家有分歧的地方列出争议读法，附《论语》互见。",
 "jihua/bairi.html": "百日读完《论语》：498 章分成一百天，每天约五章、十分钟。不用登录，进度存在自己的设备上；哪天没读，第二天接着读，讲过的章附一孔录的片子。",
@@ -1397,7 +1395,7 @@ NAV_DB = {"en": "Free PDF", "ja": "無料PDF", "ko": "무료 PDF", "fr": "PDF gr
 FL_NOIDX_L = ("ko", "fr", "es", "de", "vi", "id", "ru")
 FL_NOIDX = '<meta name="robots" content="noindex,follow">'
 # 11-20 收录查因“乙”：外文杂页（关于、隐私、支持、开放数据、勘误、方法、读本、书院入院）noindex,follow、出站点地图；各语种 search.html 也 noindex。简繁这几页照旧收
-GD_LANMU = [("2026-11-20", "问易", "/wenyi/", "照朱熹《周易本义·筮仪》起一卦，读经文、白话、朱熹注和宋本原页。试运营。朱注录文已逐字对过宋本；宋本避讳把“貞”刻作“正”、“恆”刻作“常”，录文回改为原字。")]  # 改动记录里的新栏目
+GD_LANMU = [("2026-11-20", "问易", "/wenyi/", "照朱熹《周易本义·筮仪》起一卦，读经文、白话、朱熹注和宋本原页。朱注录文已逐字对过宋本；宋本避讳把“貞”刻作“正”、“恆”刻作“常”，录文回改为原字。")]  # 改动记录里的新栏目
 MISC_NOIDX = ("about.html", "yinsi.html", "zhichi.html", "kaifang.html", "kanwu.html", "fangfa.html", "duben.html", "shuyuan/ruyuan.html", "gaidong.html")
 def misc_noidx(code, rel): return rel == "search.html" or (not code.startswith("zh") and rel in MISC_NOIDX)
 
@@ -2329,7 +2327,7 @@ def build_mengzi(L, write, P, S_IDX=None):
         for c in cs if pian_of[c] == k) + "</ol>", pt_html(k)) for i, (k, v) in enumerate(pians)], f"{P}{rel_of(cs[0])}", mz_page, mcv(P, "", True, "mengzi", "孟子"))
     body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "mengzi", "孟子")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
 <h1><span class="no">《孟子》 · 朱熹《孟子集注》分章 {len(cs)} 章</span>孟子</h1></div></div>
-<main class="wrap narrow"><p class="lead">《孟子》七篇十四卷，按朱熹《孟子集注》分 {len(cs)} 章。逐章原文、底本原页、朱注与白话，注家分歧处列出争议读法。视频还在制作。</p>{groups}</main>"""
+<main class="wrap narrow"><p class="lead">《孟子》七篇十四卷，按朱熹《孟子集注》分 {len(cs)} 章。逐章原文、底本原页、朱注与白话，注家分歧处列出争议读法。</p>{groups}</main>"""
     write("mengzi/index.html", page(L, "《孟子》原文、朱注与白话｜一孔录", f"《孟子》按朱熹《孟子集注》分 {len(cs)} 章，逐章原文、底本原页、朱注与白话。", "mengzi/", body, None, "pg-book", head_extra=NOIDX, codes=MZ_CODES()))
     if is_open: urls.append(f"{DOMAIN}/{L.prefix}mengzi/")
     for k, c in enumerate(cs):
@@ -2498,7 +2496,7 @@ def build_szj(L, write, P, S_IDX=None):
     groups = pian_layer(L, P, write, urls, "sanzijing", SU["book"] if F else "三字经", [(f"juan-{SZJ_JUAN[jn]}", (SU["juan"].format(j=(CNUM(SZJ_JUAN[jn]) if L.code == "ja" else SZJ_JUAN[jn])) + " · " + jt_of(js[0])) if F else f"{jn} · {jt}",
         (SU["lec"].format(n=js[0]["n"]) + (f" – {js[-1]['n']}" if len(js) > 1 else "")) if F else (f"第 {js[0]['n']}—{js[-1]['n']} 讲" if len(js) > 1 else f"第 {js[0]['n']} 讲"), f'<ol class="toc">{"".join(li(j) for j in js)}</ol>', "") for jn, jt, js in juans], f"{P}{rel_of(JS[0]['n'])}", szj_page, mcv(P, "", True, "sanzijing", "三字经"))
     pdf = os.path.exists(os.path.join(HERE, "root", "duben", "sanzijing-fuqin.pdf"))
-    lead = SU["lead"] if F else ("《三字经》一千二百字，一百零一组，按一孔录《三字经·父亲讲义》分六卷三十九讲，每周一讲，一年读完。每讲有原文、逐组白话（初稿）和朗读。"
+    lead = SU["lead"] if F else ("《三字经》一千二百字，一百零一组，按一孔录《三字经·父亲讲义》分六卷三十九讲，每周一讲，一年读完。每讲有原文、逐组白话和朗读。"
             "原文据讲义本，已与底本清王相《三字经训诂》（1831 年和刻本）逐句核对，每讲附王相本原页，点一组就在原页上框出来。讲义比王相本多出十一组（五色、五味、五臭、四声，以及辽金元明清到民国七组），是后出通行本补的，页内都标了“补”。" + (f'讲义全本可在<a href="{P}duben/">读本</a>下载。' if pdf else ""))
     bname = SU["book"] if F else "三字经"
     body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", True, "sanzijing", "三字经")}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
@@ -3112,11 +3110,11 @@ def build_lang(L, D, write):
     # 首页（主人 11-07 定）：只放开讲的书，其余收成一行“《道德经》等 N 部筹备中”，完整书目在书目页
     n_soon = sum(1 for _, bs in BOOK_GROUPS for sl, _ in bs if sl not in LB)
     LU = lyui(L); zhL = L.code.startswith("zh")
-    def zhushu(home):  # 《论语》主经一格（首页、书架页）；11-21 主人：首页去掉“二十篇 498 章原文全在站上……”那行，嫌啰嗦
+    def zhushu(home):  # 《论语》主经一格（首页、书架页）；11-21 主人：首页、书架页都去掉“二十篇 498 章原文全在站上……”那行（嫌啰嗦、像内部描述）
         lk = ([(f"{P}lunyu/xue-er/1.html", LU["go"], " class=go"), (f"{P}lunyu/", LU["toc"], "")] if home else [(f"{P}lunyu/", LU["open"], " class=go")]) \
              + (([(f"{P}nianli/", "《论语》年历", "")] if D["lx"]["nl"] else []) + [(f"{P}zhuanti/keben.html", LU["kb"], ""), (f"{P}duben.html", LU["db"], "")] if home and zhL else [])
         return (f'<div class="zhushu"><a class="cvbig" href="{P}lunyu/" aria-label="{esc(L.t("lunyu"))}"><span class="qb" lang="zh-Hans">论语</span></a><div><h3><a href="{P}lunyu/">{"《" + L.t("lunyu") + "》" if zhL else esc(L.t("lunyu"))}</a></h3>'
-                f'<p class="zk">{esc(LU["k"])}</p>' + ("" if home else f'<p class="zs">{esc(LU["s"].format(n=n_all, d=len(pub), z=len((D.get("zhuju") or {}).get("on", ()))))}</p>') + '<p class="zl">' + "".join(f'<a href="{u}"{c}>{esc(x)}</a>' for u, x, c in lk if x) + '</p></div></div>')
+                f'<p class="zk">{esc(LU["k"])}</p>' + "" + '<p class="zl">' + "".join(f'<a href="{u}"{c}>{esc(x)}</a>' for u, x, c in lk if x) + '</p></div></div>')
     _hjn = {"daodejing": len(DDJ_LYHJ), "sanzijing": len(SZJ_LYHJ)}
     shelfline = (f'<p class="shelfline">{esc(LU["more"])}' + " · ".join(f'<a href="{P if (zhL or (sl == "sanzijing" and L.code in SZJ_TR) or (sl == "daodejing" and L.code in DDJ_TR)) else "/"}{sl}/">{"《" + zh + "》" if zhL else esc(L.t("bk_" + sl))}</a>' + (f'<small>（互见 {_hjn[sl]} 条）</small>' if zhL and _hjn.get(sl) else "")
                  for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB and sl != "lunyu") + f' · <a href="{P}shumu/">{esc(LU["soon"].format(n=n_soon))}</a></p>')
@@ -3625,7 +3623,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
         body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}zhuanti/">{L.t("zt_title")}</a></p><h1><span class="no">初中 · 高中 语文课</span>语文课本里的《论语》</h1></div></div>
 <main class="wrap narrow"><p class="lead">统编语文教材选了这几课《论语》：七年级上册《〈论语〉十二章》、高中必修下册《子路、曾皙、冉有、公西华侍坐》、高中选择性必修上册《〈论语〉十二章》。下面按课列出每一章的原文和白话，点进去是这一章的原页、逐句朱熹注、读音和各家注本。</p>
 <div class="ztcards">{kb_toc}</div>{kb_items}
-<p class="note">原文照朱熹《论语集注》（《四部备要》本），标点、个别用字可能和课本不同；章号按朱注分章，课本注释多用杨伯峻本，章号有时差一两号。标“未讲”的章视频还在做，网站先放原文、白话和注。发现错处请写信：{MAIL}</p></main>'''
+<p class="note">原文照朱熹《论语集注》（《四部备要》本），标点、个别用字可能和课本不同；章号按朱注分章，课本注释多用杨伯峻本，章号有时差一两号。发现错处请写信：{MAIL}</p></main>'''
         write("zhuanti/keben.html", page(L, "论语十二章原文及翻译、读音、朱熹注｜语文课本里的《论语》｜一孔录", "统编语文七年级上册、高中选择性必修上册《论语》十二章，高中必修下册《侍坐》：每章原文、白话翻译、读音、朱熹注与宋以来各家注本，逐章链到原页。", "zhuanti/keben.html", body))
         urls.append(f"{DOMAIN}/{L.prefix}zhuanti/keben.html")
         urls += KB.build(L, D, KEBEN, write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, MAIL)  # 11-16 改动单一：分课着陆页、成语、名句
