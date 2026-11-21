@@ -2174,7 +2174,7 @@ def lyhj_html(rows, P, book="szj"):
     def link(c): return f"{P}lunyu/" if c == "book" else f"{P}lunyu/{PIAN[c.split('.')[0]][1]}/{c.split('.')[1]}.html"
     lis = "".join(f'<li><em>{esc(r["kind"])}</em><a href="{link(r["c"])}" data-hj="{esc(str(r["c"]))}"><b>' + (f'《论语》全书' if r["c"] == "book" else f'论语 {r["c"]} {esc(r["q"])}') + f'</b></a>'
                   f'<p>{esc(r["note"])}<small>（{(esc(r["szj"][:6]) + "…… · ") if r.get("szj") else ""}{who(r)}）</small></p></li>' for r in rows)
-    return f'<section class="lyhj" id="lyhj"><h2>《论语》互见</h2><ul>{lis}</ul><p class="note">{"出处＝《论语》里直接说到老子这句话" if book == "ddj" else ("出处＝孟子这句话出自《论语》" if book == "mz" else "出处＝三字经原句出自这一章")}；注家引＝旧注本里引了这一章；相通＝意思相通，一孔录对读。点进去是《论语》这一章的原文、原页和朱熹注。</p></section>'
+    return f'<section class="lyhj" id="lyhj"><h2>《论语》互见</h2><ul>{lis}</ul><p class="note">{"出处＝《论语》里直接说到老子这句话" if book == "ddj" else ("出处＝孟子这句话出自《论语》" if book == "mz" else ("出处＝《论语》里直接引了这一卦的话" if book == "zy" else "出处＝三字经原句出自这一章"))}；注家引＝旧注本里引了这一章；相通＝意思相通，一孔录对读。点进去是《论语》这一章的原文、原页和朱熹注。</p></section>'
 
 # ---------- 11-19 《孟子》章页（主人：“章页版式仿照论语”）：先搭好、不对外（noindex、不进站点地图、站内不挂入口），标点重标、白话核定后再开 ----------
 MZ_DIR = os.path.join(GAO_DIR, "_孟子")
