@@ -11,7 +11,7 @@
   var RE = /([㐀-鿿豈-﫿]|[\ud840-\ud87f][\udc00-\udfff])/;
   // 原文里的汉字逐个包起来，好逐字亮、逐字落
   var Z = [];
-  Q.querySelectorAll('.ju').forEach(function (s) {
+  Q.querySelectorAll('.ju:not(.zz)').forEach(function (s) {  // 周易章旨（朱熹分章小注）不逐字包、不注音
     var w = document.createTreeWalker(s, 4), ns = []; while (w.nextNode()) ns.push(w.currentNode);
     ns.forEach(function (t) {
       var parts = t.nodeValue.split(RE); if (parts.length < 2) return;
