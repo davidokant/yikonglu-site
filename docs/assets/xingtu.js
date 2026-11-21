@@ -9,20 +9,22 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   let started = false;
   const io = new IntersectionObserver(es => { if (started || !es.some(e => e.isIntersecting)) return; started = true; io.disconnect();
-    fetch(root.dataset.src).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(go).catch(() => { const c = $('.card', root); if (c) c.innerHTML = '<p>星图没取到，<a href="' + root.dataset.p + 'lunyu/guanxi/">去看同问异答与人物</a>。</p>'; });
+    fetch(root.dataset.src).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(go).catch(() => { const c = $('.card', root); if (c) c.innerHTML = root.dataset.err ? '<p>' + root.dataset.err + '</p>' : '<p>星图没取到，<a href="' + root.dataset.p + 'lunyu/guanxi/">去看同问异答与人物</a>。</p>'; });
   }, { rootMargin: '200px 0px' });
   io.observe(root);
   const whenVisible = (node, on, off, th) => { const o = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? on() : off && off()), { threshold: th }); o.observe(node); };
   function go(st) {
     const cv = $('canvas', root), ctx = cv.getContext('2d'), card = $('.card', root), hud = $('.hud', root);
     const NC = st.ch.length;
-    const N = st.ch.map((c, i) => ({ k: 'c', i, id: c[0], x: c[1], y: c[2], z: c[3], d: c[4], tk: c[5], row: { t: c[6], x: c[7], u: c[8], n: c[9] } }));
+    const N = st.ch.map((c, i) => ({ k: 'c', i, id: c[0], x: c[1], y: c[2], z: c[3], d: c[4], tk: c[5], row: { t: c[6], x: c[7], u: c[8], n: c[9], o: c[10] } }));
     st.nodes.forEach((n, j) => N.push(Object.assign({ i: NC + j, id: n.n }, n)));
     const adj = N.map(() => []);
     st.edges.forEach(([a, b, t, note]) => { adj[a].push({ j: b, t, note }); adj[b].push({ j: a, t, note }); });
     // c 讲过的章，u 没讲的章，h 本书互见，q 同问异答，p 人物，o 场合，b 别的书
     const COL = { c: '170,235,208', u: '120,164,148', h: '150,232,198', q: '236,190,120', p: '214,178,112', o: '240,160,148', b: '160,184,244' };
-    const NAME = { h: '本书互见', q: '同问异答', p: '人物', o: '场合', b: '别的书' };
+    // 11-21 英日版：界面文字随数据 st.ui 来，没有就用中文
+    const U = Object.assign({ lun: '论语 ', links: '连着 {n} 处', pick: '点一颗星', stat: '全书 {total} 条关系：本书互见 {h}，同问异答 {q}，人物 {p}，场合 {o}，别的书 {b}，异文 {y}，读法之争 {z}。', done: '已讲', todo: '未讲', nl: ' · 年历第 {n} 课', y: '异文', z: '读法之争', only: '这一章在关系表里只有年历一条。', open: '打开这一章 →', occ: '看这个场合的用句 →', more: '……共 {n} 处，这里列前 60。', nf: '没找到', nfh: '试试章号（如 12.1）、原文里的几个字（如 克己复礼），或人名（如 子路）。', K: { p: '人物', q: '同一个问题', o: '场合', b: '别的书' }, NAME: { h: '本书互见', q: '同问异答', p: '人物', o: '场合', b: '别的书' }, lang: 'zh-Hans', sep: '　', tk: 1 }, st.ui || {});
+    const NAME = U.NAME, lc = s => String(s || '').toLowerCase();
     const show = { h: true, q: true, p: false, o: false, b: false };
     const sprite = rgb => {
       const c = document.createElement('canvas'); c.width = c.height = 64; const g = c.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
@@ -117,11 +119,11 @@
       if (focus >= 0) {
         const n = N[focus], rr = (n.r || 4) + 6 + (RM ? 0 : 1.6 * Math.sin(clock / 320));
         ctx.strokeStyle = 'rgba(242,241,234,.95)'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(n.sx, n.sy, rr, 0, 6.2832); ctx.stroke();
-        if (n.k === 'c') pill('论语 ' + n.id + '　' + (n.row.t || ''), n.sx, n.sy - rr - 4);
+        if (n.k === 'c') pill(U.lun + n.id + U.sep + (n.row.t || ''), n.sx, n.sy - rr - 4);
       }
       if (hover >= 0 && hover !== focus) {
         const n = N[hover]; ctx.strokeStyle = 'rgba(242,241,234,.8)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(n.sx, n.sy, (n.r || 4) + 5, 0, 6.2832); ctx.stroke();
-        pill(n.k === 'c' ? '论语 ' + n.id + '　' + (n.row.t || '') : n.n + '　连着 ' + adj[hover].length + ' 处', n.sx, n.sy - (n.r || 4) - 8, n.k === 'c' ? '#F2F1EA' : `rgb(${COL[n.k]})`);
+        pill(n.k === 'c' ? U.lun + n.id + U.sep + (n.row.t || '') : n.n + U.sep + U.links.replace('{n}', adj[hover].length), n.sx, n.sy - (n.r || 4) - 8, n.k === 'c' ? '#F2F1EA' : `rgb(${COL[n.k]})`);
       }
     };
     const frame = ts => {
@@ -135,28 +137,28 @@
     const kick = () => { if (visible && !running) { running = true; lastT = 0; requestAnimationFrame(frame); } };
     const pick = (x, y, rad) => { let best = -1, bd = rad * rad; for (const n of N) { if (!vis(n)) continue; const dx = n.sx - x, dy = n.sy - y, dd = dx * dx + dy * dy - (n.k === 'c' ? 0 : 30); if (dd < bd) { bd = dd; best = n.i; } } return best; };
     const turnTo = n => { const target = Math.PI / 2 - Math.atan2(n.y, n.x); let dlt = (target - yaw) % 6.2832; if (dlt > Math.PI) dlt -= 6.2832; if (dlt < -Math.PI) dlt += 6.2832; yawAnim = { a: yaw, d: dlt, t: 0 }; };
-    const chLink = n => el('button', { class: 'lk', type: 'button', text: '论语 ' + n.id + ' ' + (n.row.t || ''), onclick: () => setFocus(n.i, true) });
+    const chLink = n => el('button', { class: 'lk', type: 'button', text: U.lun + n.id + ' ' + (n.row.t || ''), onclick: () => setFocus(n.i, true) });
     const cut = (s, n) => s.length > n ? s.slice(0, n) + '…' : s;
     const setFocus = (i, turn) => {
       focus = i; fset = i >= 0 ? new Set(adj[i].map(e => e.j).concat(i)) : null; card.textContent = '';
-      if (i < 0) { card.append(el('h4', { text: '点一颗星' }), el('p', { text: `全书 ${st.total} 条关系：本书互见 ${st.stats['互见']}，同问异答 ${st.stats['同问异答']}，人物 ${st.stats['人物']}，场合 ${st.stats['场合']}，别的书 ${st.stats['书外互见']}，异文 ${st.stats['异文']}，读法之争 ${st.stats['争议']}。` })); yawHome = yaw; return; }
+      if (i < 0) { card.append(el('h4', { text: U.pick }), el('p', { text: U.stat.replace('{total}', st.total).replace('{h}', st.stats['互见']).replace('{q}', st.stats['同问异答']).replace('{p}', st.stats['人物']).replace('{o}', st.stats['场合']).replace('{b}', st.stats['书外互见']).replace('{y}', st.stats['异文']).replace('{z}', st.stats['争议']) })); yawHome = yaw; return; }
       const n = N[i]; if (turn && (n.x || n.y)) turnTo(n); else { yawHome = yaw; swayT = 0; }
       if (n.k === 'c') {
         const r = n.row, fl = st.flags[n.id] || [];
-        card.append(el('h4', { html: `论语 ${esc(n.id)} · ${esc(r.t || '')}<small>${n.tk ? '已讲' : '未讲'}${r.n ? ` · 年历第 ${r.n} 课` : ''}</small>` }));
-        card.append(el('p', { lang: 'zh-Hans', text: r.x.length > 86 ? r.x.slice(0, 86) + '……' : r.x }));
+        card.append(el('h4', { html: `${esc(U.lun)}${esc(n.id)} · ${esc(r.t || '')}<small>${U.tk ? (n.tk ? U.done : U.todo) : ''}${r.n ? U.nl.replace('{n}', r.n) : ''}</small>` }));
+        card.append(el('p', { lang: U.lang, text: r.x.length > (U.xn || 86) ? r.x.slice(0, U.xn || 86) + '……' : r.x }));
         const ul = el('ul');
-        adj[i].forEach(e => { const m = N[e.j], li = el('li'); li.append(el('i', { class: e.t, text: NAME[e.t] })); li.append(m.k === 'c' ? chLink(m) : el('button', { class: 'lk', type: 'button', text: m.n, onclick: () => setFocus(m.i, true) })); if (e.note && e.t !== 'h') li.append('　' + cut(e.note, 60)); ul.append(li); });
-        fl.forEach(([k, note]) => { const li = el('li'); li.append(el('i', { text: k === 'y' ? '异文' : '读法之争' }), cut(note, 64)); ul.append(li); });
-        if (!ul.children.length) ul.append(el('li', { text: '这一章在关系表里只有年历一条。' }));
+        adj[i].forEach(e => { const m = N[e.j], li = el('li'); li.append(el('i', { class: e.t, text: NAME[e.t] })); li.append(m.k === 'c' ? chLink(m) : el('button', { class: 'lk', type: 'button', text: m.n, onclick: () => setFocus(m.i, true) })); if (e.note && e.t !== 'h') li.append('　' + cut(e.note, U.cn || 60)); ul.append(li); });
+        fl.forEach(([k, note]) => { const li = el('li'); li.append(el('i', { text: k === 'y' ? U.y : U.z }), cut(note, U.cn || 64)); ul.append(li); });
+        if (!ul.children.length) ul.append(el('li', { text: U.only }));
         card.append(ul);
-        if (r.u) card.append(el('p', {}, el('a', { class: 'go', href: r.u, text: '打开这一章 →' })));
+        if (r.u) card.append(el('p', {}, el('a', { class: 'go', href: r.u, text: U.open })));
       } else {
-        const kind = { p: '人物', q: '同一个问题', o: '场合', b: '别的书' }[n.k];
-        card.append(el('h4', { html: `${esc(n.n)}<small>${kind}${n.role ? ' · ' + esc(n.role) : ''} · 连着 ${adj[i].length} 处</small>` }));
-        if (n.u) card.append(el('p', {}, el('a', { class: 'go', href: root.dataset.p.replace(/\/$/, '') + n.u, text: '看这个场合的用句 →' })));
-        const ul = el('ul'); adj[i].slice(0, 60).forEach(e => { const li = el('li'); li.append(chLink(N[e.j])); if (e.note) li.append('　' + cut(e.note, 48)); ul.append(li); });
-        if (adj[i].length > 60) ul.append(el('li', { text: `……共 ${adj[i].length} 处，这里列前 60。` }));
+        const kind = U.K[n.k];
+        card.append(el('h4', { html: `${esc(n.n)}<small>${kind}${n.role ? ' · ' + esc(n.role) : ''} · ${U.links.replace('{n}', adj[i].length)}</small>` }));
+        if (n.u) card.append(el('p', {}, el('a', { class: 'go', href: root.dataset.p.replace(/\/$/, '') + n.u, text: U.occ })));
+        const ul = el('ul'); adj[i].slice(0, 60).forEach(e => { const li = el('li'); li.append(chLink(N[e.j])); if (e.note) li.append('　' + cut(e.note, U.cn2 || 48)); ul.append(li); });
+        if (adj[i].length > 60) ul.append(el('li', { text: U.more.replace('{n}', adj[i].length) }));
         card.append(ul);
       }
       card.scrollTop = 0;
@@ -179,8 +181,8 @@
     const q = $('input', hud);
     const find = () => {
       const v = q.value.trim(); if (!v) return; touched = true; intro = 1;
-      const hit = N.find(n => n.k === 'c' && n.id === v) || N.find(n => n.k !== 'c' && (n.n === v || n.full === v)) || N.find(n => n.k === 'c' && n.row.x.includes(v)) || N.find(n => n.k !== 'c' && n.n.includes(v)) || N.find(n => n.k === 'c' && (n.row.t || '').includes(v));
-      if (hit) setFocus(hit.i, true); else { setFocus(-1); card.textContent = ''; card.append(el('h4', { text: '没找到' }), el('p', { text: '试试章号（如 12.1）、原文里的几个字（如 克己复礼），或人名（如 子路）。' })); }
+      const w = lc(v), hit = N.find(n => n.k === 'c' && n.id === v) || N.find(n => n.k !== 'c' && (lc(n.n) === w || lc(n.full) === w)) || N.find(n => n.k === 'c' && (lc(n.row.x).includes(w) || (n.row.o || '').includes(v))) || N.find(n => n.k !== 'c' && (lc(n.n).includes(w) || (n.o || '').includes(v))) || N.find(n => n.k === 'c' && lc(n.row.t).includes(w));
+      if (hit) setFocus(hit.i, true); else { setFocus(-1); card.textContent = ''; card.append(el('h4', { text: U.nf }), el('p', { text: U.nfh })); }
     };
     q.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); find(); } });
     resize(); pitch = defPitch(); setFocus(RM ? HOME : -1, false);

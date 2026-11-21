@@ -3318,7 +3318,7 @@ def build_lang(L, D, write):
 <form class="sbox" action="{P}search.html"><input name="q" placeholder="{esc(L.t("search_ph"))}"><button>{L.t("nav_search")}</button></form>
 </section>
 <section class="wrap narrow shumu-home"><h2 class="ph"><a href="{P}lunyu/">{LU["h"]}</a></h2>{zhushu(True)}{shelfline}</section>
-{XT.xt_html(L, P, home=True) if L.code.startswith("zh") and GX.load() else ""}
+{XT.xt_html(L, P, home=True) if (L.code.startswith("zh") or L.code in XT.langs()) and GX.load() else ""}
 <section class="wrap narrow"><h2 class="ph">{L.t("h_latest")}</h2>
 <a class="latest" id="lcard" href="{P}{rel_of(lc)}">{_lcard(lc)}</a>{lc_js}</section>
 {f'<section class="wrap narrow topju" id="topju" hidden><h2 class="ph">{DONE_TXT.get(L.code, DONE_TXT["en"])["topju"]}</h2><blockquote lang="zh-Hans"></blockquote><p><a href="{P}"></a></p></section>' if ANALYTICS.get("live") else ""}
@@ -3736,6 +3736,11 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
         if D.get("renwu"):
             RW.GXID = {v: k for k, v in GX.rw_ids(GXD, D["renwu"]).items()}
             urls += RW.build_f(L, D, D["renwu"], write, page, P, rel_of, ctitle, DOMAIN, GX.TR[L.code], _gxc)
+    if L.code in XT.langs() and GXD and GX.has_lang(L.code):  # 11-21 主人点卡“全翻”：首页星图英日版
+        _ztx = lambda c: yw.get(c) or (D["qw"].get(c) or {}).get("text", "")
+        _ftx = lambda c: (L.ch(c).get("yw") if hasattr(L, "ch") else "") or (WJ_TR.get(c) or {}).get(L.code, "") or _ztx(c)
+        _ftt = lambda c: L.ch(c).get("title") or wj_tr_title(L.code, c) or ctitle(c)
+        XT.write_data(write, XT.data(GXD, PIAN, pubset, href, _ftt, _ftx, D["lx"], L.code, GX.TR[L.code], _ztx))
     # 一孔影响力方法页（先只简繁；外文页由语种切换链到简体）
     if L.code.startswith("zh"):
         body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">找到分怎么算、怎么测</span>一孔影响力</h1></div></div>
