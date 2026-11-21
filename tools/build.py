@@ -2355,6 +2355,103 @@ def build_mengzi(L, write, P, S_IDX=None):
         if is_open and S_IDX is not None: S_IDX.append({"c": f"孟子 {c}", "t": Y(ttl_of(c)), "u": P + rel_of(c), "y": Y(text), "x": b})
     return urls
 
+
+# ---------- 11-21 《周易》章页预览（主人点卡“交数据，网站用模板出预览”）：照孟子章页接法；只在 YK_ZY_PV=1 时出 zhouyi/1.html，不进站点地图、不对外 ----------
+ZY_DIR = os.path.join(GAO_DIR, "_周易")
+ZY_KIND = {"卦辞": "经 · 卦辞", "彖": "彖传", "大象": "大象传", "爻辞": "经 · 爻辞", "小象": "小象传", "文言": "文言传"}
+ZY_GUA = {"111111": "䷀", "000000": "䷁"}
+
+def build_zhouyi_pv(L, write, P):
+    if not (os.environ.get("YK_ZY_PV") and L.code == "zh-Hans" and os.path.isdir(ZY_DIR)): return []
+    J = lambda p: json.load(open(os.path.join(ZY_DIR, p), encoding="utf-8"))
+    JO = lambda p: J(p) if os.path.exists(os.path.join(ZY_DIR, p)) else {}
+    QW = J("_原文/周易原文-v1.json"); BH = J("_白话/白话-初稿-周易-v1.json"); JL = J("zy_julie.json"); hb = J("_原页/半叶.json")
+    ZYQ = J("争议.json"); YWL = J("异文.json"); HJ = J("论语互见.json")["条"]
+    gs = sorted((k for k in QW if k.isdigit()), key=int)
+    TRI = {"乾": "111", "坤": "000", "震": "100", "坎": "010", "艮": "001", "巽": "011", "離": "101", "离": "101", "兌": "110", "兑": "110"}
+    for gi, gua in enumerate(gs):
+        qw = QW[gua]; zj = J(f"_逐句/{gua}.json")["句"]; jd = JO(f"_讲读/{gua}.json")
+        bh = BH.get(gua) or {}; jl = JL.get(gua) or []; zyq = ZYQ.get(gua) or []; ywl = YWL.get(gua) or []
+        hj = [r for r in HJ if str(r.get("zhang")) == gua]
+        m_ = re.fullmatch(r"(.)下(.)上", qw.get("上下", ""))
+        if not m_ or TRI.get(m_.group(1), "?") + TRI.get(m_.group(2), "?") != qw["卦画"]: print(f"  周易卦画对不上：{gua} {qw['卦']} {qw.get('上下')} {qw['卦画']}")
+        bad = [x["id"] for x, bx in zip(zj, jl) if not bx]
+        if len(jl) != len(zj) or bad: print(f"  周易红框：{gua} {qw['卦']} 句 {len(zj)} 框 {len(jl)} 空框 {bad}")
+        _zhouyi_one(L, write, P, gua, gs, QW, qw, zj, jd, bh, jl, hb, zyq, ywl, hj)
+    print(f"周易预览：{len(gs)} 卦")
+    return []
+
+def _zhouyi_one(L, write, P, gua, gs, QW, qw, zj, jd, bh, jl, hb, zyq, ywl, hj):
+    c, name, pt = gua, qw["卦"], qw["篇"]
+    sents = [x["yw"] for x in zj]; url = f"{DOMAIN}/zhouyi/{c}.html"; ttl = f'{chr(0x4DC0 + int(c) - 1)} {name}卦'
+    # 原文：按经、彖、大象、爻辞＋小象、文言分组，组头小字（模板已有的 .ju 句，组头用 em）
+    ju_html, last = "", None
+    for j, x in enumerate(zj, 1):
+        k = ZY_KIND.get(x["kind"], x["kind"])
+        if x["kind"] == "爻辞": k = "经 · " + x["tag"]
+        if x["kind"] == "文言" and x.get("节名"): k = "文言传 · " + x["节名"].replace("文言", "")  # 11-21 主人：文言传拆六节
+        if k != last and not (x["kind"] == "小象"): ju_html += ("<br>" if j > 1 else "") + f'<em class="zyk"{f" title={chr(34)}{esc(x[chr(33410)+chr(35828)])}{chr(34)}" if x.get(chr(33410)+chr(35828)) else ""}>{esc(k)}</em>'
+        last = k
+        ju_html += f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x["yw"])}</span>'
+    # 原页：宋本半叶，红框是多边形
+    used = list(dict.fromkeys(h for bx in jl for h, _ in bx))
+    def hl(h): return "".join(f'<polygon class="hl" data-s="{i}" points="{" ".join(f"{a},{b}" for a, b in poly)}"/>' for i, bx in enumerate(jl, 1) for h_, polys in bx if h_ == h for poly in polys)
+    pane = "".join(f'<a class="yyp" href="/zhouyi/yb/{h}.webp" target="_blank" data-p="{h}"><svg viewBox="0 0 {hb[h]["W"]} {hb[h]["H"]}" role="img" aria-label="{esc(hb[h]["name"])}"><image href="/zhouyi/yb/{h}.webp" width="{hb[h]["W"]}" height="{hb[h]["H"]}"/>{hl(h)}</svg><span>{esc(hb[h]["name"])}</span></a>' for h in used if h in hb) if len(jl) == len(sents) else ""
+    rows = [{"zhu": [[z[0], z[1]] for z in (x.get("zhu") or [])], "hj": []} for x in zj]
+    zy_ = ZJ.zhuyin_book("周易", c, sents)
+    cap = "原文据宋咸淳元年吴革刻本朱熹《周易本义》（中华再造善本）。点一句，原页上框出这一句，下面看本义注。"
+    bq = f'<blockquote lang="zh-Hant" data-src="周易 · {esc(name)}卦 · 一孔录" data-url="{url}" data-short="" data-sep="，" data-reads="[]" data-rl="" data-hj="{{}}">'
+    fig = (f'<figure class="yuanwen dz{"" if pane else " nopane"}"><div class="dztools"><span class="prog">{esc(pt)} · 第 {c} 卦 · {esc(qw["上下"])}</span></div>'
+           f'<div class="dzgrid"><div>{bq}{ju_html}</blockquote><figcaption>{esc(cap)}</figcaption></div>' + (f'<div class="yypane">{pane}</div>' if pane else "") + '</div>'
+           f'<script type="application/json" class="zjdata">{json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")}</script>{zy_tag(zy_)}</figure>')
+    b = bh.get("text", "")
+    bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}：{esc(name)}卦是什么意思</h2><p lang="zh-Hans">{esc(b)}</p><p class="note">按朱熹《周易本义》的读法讲；彖、象、文言的逐句白话点原文看，也见下面“逐句拼音、注音与意思”。注家有分歧的地方，见争议读法。</p></section>') if b else ""
+    # 讲读：一孔之见上提“这一卦讲什么”，别本、诸家进查证区
+    sec = lambda mark, h, inner: f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{h}</h2>{inner}</section>'
+    jd_h = ""
+    if ywl: jd_h += sec("本", "别本怎么写", '<p class="note">底本是宋咸淳吴革刻本朱熹《周易本义》；对照王弼注本、程颐《伊川易传》。</p>' + "".join(f"<p>{quotes(esc(x))}</p>" for x in ywl))
+    if jd.get("诸家"):
+        jd_h += sec("说", "诸家怎么说", "".join(f'<h3>{esc(g["t"])}</h3>' + "".join(f'<p class="zj1"><b>{esc(w)}：</b>{quotes(esc(t))}<small class="pgref">（{esc(s)}）</small></p>' for w, t, s in g["r"]) + (f'<p class="note">{esc(g["note"])}</p>' if g.get("note") else "") for g in jd["诸家"]))
+    if jd.get("一孔之见"): jd_h += sec("读", "一孔之见", "".join(f"<p>{quotes(esc(p_))}</p>" for p_ in jd["一孔之见"].split("\n") if p_.strip()))
+    _du, _jdr = du_up(jd_h, "这一卦讲什么")
+    lz = jd.get("连着") or {}
+    lz_html = ('<section class="sec"><h2><i>连</i>连着读</h2><ul>' + "".join(f"<li><b>{k}：</b>{esc(str(v[1]) if isinstance(v, list) else v)}</li>" for k, v in lz.items() if k in ("错卦", "综卦", "互卦"))
+               + (f'<li><b>序卦传：</b>“{esc(lz["序卦传"])}”</li>' if lz.get("序卦传") else "") + "</ul>" + (f'<p><a href="{lz["问易"]}">到问易起一卦 ›</a></p>' if lz.get("问易") else "") + "</section>") if lz else ""
+    zy_sec = ('<section class="sec mzzy"><h2><i>议</i>争议读法</h2>' + "".join(f'<h3>{esc(z["t"])}</h3><ul>' + "".join(f'<li><b>{esc(x["k"])} · {esc(x["who"])}</b> {esc(x["t"])}</li>' for x in z["r"]) + "</ul>" for z in zyq)
+              + '<p class="note">甲乙只是排列次序。</p></section>') if zyq else ""
+    zid = {x["id"]: x["yw"] for x in zj}
+    lyhj = lyhj_html([dict(r, note=r.get("q", ""), szj=zid.get(r.get("ju"), "")) for r in hj], P, "zy")
+    zhu_all = "".join(f'<p><span lang="zh-Hant">{esc(z[0])}</span> <small>（{esc(z[1])}）</small></p>' for x in zj for z in (x.get("zhu") or []))
+    zhu_html = f'<section class="sec sec-注"><h2><i>注</i>朱熹本义（全卦）</h2>{zhu_all}</section>' if zhu_all else ""
+    bhrows = [{"bh": x.get("bh", "")} for x in zj]
+    deep = (ZJ.zy_section(c, sents, zy_, bhrows, esc, ZY_NOTE) if zy_ else "") + _jdr + zhu_html
+    k_ = gs.index(c); pv, nx = (gs[k_ - 1] if k_ else None), (gs[k_ + 1] if k_ + 1 < len(gs) else None)
+    _pn = '<nav class="pn">' + "".join(f'<a class="pncard {cl}" href="{P}zhouyi/{g}.html"><small>{L.t(lb)}</small><b>{g}　{esc(QW[g]["卦"])}卦</b></a>' if g else "<span></span>" for g, lb, cl in ((pv, "prev", "prev"), (nx, "next", "next"))) + "</nav>"
+    body = f"""<div class="chhead bk"><div class="wrap">
+<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}zhouyi/">周易</a> › <a href="{P}zhouyi/">{esc(pt)}</a></p>
+<h1><span class="no">周易 第 {c} 卦 · {esc(pt)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(ttl)}</h1>
+</div></div>
+<main class="wrap chapter">
+<article>
+<p class="wjlead">这一卦的视频还在制作。网站先放原文、原页、本义注和白话。</p>
+{fig}
+{bh_html}
+{_du}
+<section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>
+{zy_sec}
+{lz_html}
+{lyhj}
+{f'<div class="deep"><div class="deephead"><h2>{L.t("ch_deep")}</h2><button type="button" class="foldall" data-o="{L.t("ch_open_all")}" data-c="{L.t("ch_close_all")}">{L.t("ch_open_all")}</button></div><p class="note">{L.t("ch_deep_note")}</p>' + fold(deep) + "</div>" if deep else ""}
+{_pn}
+<section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
+</article>
+<aside><h3>{esc(pt)}</h3><ol>{"".join(f'<li class="{"cur " if g == c else ""}wj"><a href="{P}zhouyi/{g}.html"><em>{g}</em>{esc(QW[g]["卦"])}</a></li>' for g in gs if QW[g]["篇"] == pt)}</ol></aside>
+</main>
+<style>.zyk{{display:inline-block;margin:.9em .5em .2em 0;font-style:normal;font-size:13px;letter-spacing:.08em;color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:0 8px;line-height:1.7}}.yuanwen blockquote .zyk:first-child{{margin-top:0}}@media (min-width:900px){{.yuanwen .yypane:has(.yyp ~ .yyp){{max-height:82vh;overflow-y:auto;position:sticky;top:12px}}}}</style>"""
+    js = FOLD_JS + ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["zhu", "本义"]], ensure_ascii=False)).replace("@NONE@", "这一句下面朱熹没有出注。").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
+    write(f"zhouyi/{c}.html", page(L, f"周易 {name}卦｜原文、本义与白话｜一孔录（预览）", f"《周易》{name}卦原文、宋本原页、朱熹本义与白话。", f"zhouyi/{c}.html", body + js, None, "pg-chapter pg-wj", head_extra='<meta name="robots" content="noindex,nofollow">', codes=["zh-Hans"]))
+    if not zy_: print(f"  周易注音没上：{c} {ZJ.ZY_SKIP.get('周易' + c)}")
+
 def build_mengzi_fl(L, write, P):
     """11-19 孟子英日版（主人：外文只做英日）：书页篇卡、篇页、章页（原文＋原页点句红框＋一孔录译文），照道德经外文页。"""
     U = MZ_FU[L.code]; qw, cfg, urls, tri = MZ["qw"], MZ["cfg"], [], MZ["tri"]
@@ -3022,6 +3119,7 @@ def build_lang(L, D, write):
 
     urls += build_ddj(L, D, write, P, search_idx if (L.code.startswith("zh") or L.code in DDJ_TR) else None)
     urls += build_szj(L, write, P, search_idx if (L.code.startswith("zh") or L.code in SZJ_TR) else None)
+    build_zhouyi_pv(L, write, P)
     urls += build_mengzi(L, write, P, search_idx if L.code.startswith("zh") else None)  # 孟子（只简繁；先不对外）  # 三字经（只简繁）  # 道德经（只简繁；没开就是空）
     if ANALYTICS.get("live") and "OUT_ROOT" in globals() and os.path.exists(_lf := os.path.join(OUT_ROOT, "data", f"live-{L.code}.json")):  # 道德经、三字经也进“今天有人读了”；本语种没有的书链简体页
         _up = "../" * L.prefix.count("/"); _ex = {k: [v[0], _up + v[1]] for k, v in LIVE_A.get("zh-Hans", {}).items()} if L.code != "zh-Hans" else {}
