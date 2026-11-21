@@ -428,7 +428,7 @@
 "2026-11-21"
 ],
 "de/feed.xml": [
-"t:70cb4163105c14a3",
+"t:3c16fac4456efdbe",
 "2026-11-21"
 ],
 "de/index.html": [
@@ -2532,7 +2532,7 @@
 "2026-11-17"
 ],
 "de/manifest.webmanifest": [
-"t:a20cac73eb24e6d3",
+"t:f85eb42b0c7f45bf",
 "2026-11-21"
 ],
 "de/offline.html": [
@@ -3796,7 +3796,7 @@
 "2026-11-21"
 ],
 "en/feed.xml": [
-"t:bf79fc03629ceba8",
+"t:b7e2b5a960bc48dd",
 "2026-11-21"
 ],
 "en/index.html": [
@@ -5900,7 +5900,7 @@
 "2026-11-17"
 ],
 "en/manifest.webmanifest": [
-"t:42bf6b7ea64c7d4a",
+"t:efc4a1cbb650cc17",
 "2026-11-21"
 ],
 "en/mengzi/1.1.html": [
@@ -8148,7 +8148,7 @@
 "2026-11-21"
 ],
 "es/feed.xml": [
-"t:a6a88cf695853fd2",
+"t:026af7911bda1312",
 "2026-11-21"
 ],
 "es/index.html": [
@@ -10252,7 +10252,7 @@
 "2026-11-17"
 ],
 "es/manifest.webmanifest": [
-"t:fd5474251086e798",
+"t:0caed0f96ea908a0",
 "2026-11-21"
 ],
 "es/offline.html": [
@@ -11156,7 +11156,7 @@
 "2026-11-21"
 ],
 "feed.xml": [
-"t:ca65343bb69cbb8b",
+"t:b5c700a8e970dc13",
 "2026-11-21"
 ],
 "fr/about.html": [
@@ -11180,7 +11180,7 @@
 "2026-11-21"
 ],
 "fr/feed.xml": [
-"t:b1d0eecf0d121c60",
+"t:26ad94af149d6664",
 "2026-11-21"
 ],
 "fr/index.html": [
@@ -13284,7 +13284,7 @@
 "2026-11-17"
 ],
 "fr/manifest.webmanifest": [
-"t:a76a798e8d953605",
+"t:e17dee0791cab1a9",
 "2026-11-21"
 ],
 "fr/offline.html": [
@@ -14268,7 +14268,7 @@
 "2026-11-21"
 ],
 "id/feed.xml": [
-"t:363273acb74985d5",
+"t:05fc187de9d2be3e",
 "2026-11-21"
 ],
 "id/index.html": [
@@ -16372,7 +16372,7 @@
 "2026-11-17"
 ],
 "id/manifest.webmanifest": [
-"t:7ce0be8ada5a5da9",
+"t:e7ca3916294331dd",
 "2026-11-21"
 ],
 "id/offline.html": [
@@ -17632,7 +17632,7 @@
 "2026-11-21"
 ],
 "ja/feed.xml": [
-"t:e7c3dbe59780322e",
+"t:f1ed40ae422eedb3",
 "2026-11-21"
 ],
 "ja/index.html": [
@@ -19736,7 +19736,7 @@
 "2026-11-17"
 ],
 "ja/manifest.webmanifest": [
-"t:c4f02c2eac119727",
+"t:72403a35e9ab381a",
 "2026-11-21"
 ],
 "ja/mengzi/1.1.html": [
@@ -22000,7 +22000,7 @@
 "2026-11-21"
 ],
 "ko/feed.xml": [
-"t:dd140b63ebc651a8",
+"t:a843afd622e98fe2",
 "2026-11-21"
 ],
 "ko/index.html": [
@@ -24104,7 +24104,7 @@
 "2026-11-17"
 ],
 "ko/manifest.webmanifest": [
-"t:9ab248a74f57a5f6",
+"t:35ba6d2f74242e94",
 "2026-11-21"
 ],
 "ko/offline.html": [
@@ -27096,7 +27096,7 @@
 "2026-11-17"
 ],
 "manifest.webmanifest": [
-"t:e9888ddbb63be8b2",
+"t:f31acbde4ad96220",
 "2026-11-21"
 ],
 "mengzi/1.1.html": [
@@ -29028,7 +29028,7 @@
 "2026-11-21"
 ],
 "ru/feed.xml": [
-"t:e8467f2ea8bb02f2",
+"t:462c357f6f23c080",
 "2026-11-21"
 ],
 "ru/index.html": [
@@ -31132,7 +31132,7 @@
 "2026-11-17"
 ],
 "ru/manifest.webmanifest": [
-"t:bf002c9d8f066ffd",
+"t:1ecc2b005130224e",
 "2026-11-21"
 ],
 "ru/offline.html": [
@@ -32384,7 +32384,7 @@
 "2026-11-21"
 ],
 "vi/feed.xml": [
-"t:28f31b3ba4529388",
+"t:bdae7958c4dca108",
 "2026-11-21"
 ],
 "vi/index.html": [
@@ -34488,7 +34488,7 @@
 "2026-11-17"
 ],
 "vi/manifest.webmanifest": [
-"t:1a4409a70681339c",
+"t:896a8f00ab77b8c0",
 "2026-11-21"
 ],
 "vi/offline.html": [
@@ -36076,7 +36076,7 @@
 "2026-11-21"
 ],
 "zh-hant/feed.xml": [
-"t:182cc9e8d5e68144",
+"t:2e1d736293c488e5",
 "2026-11-21"
 ],
 "zh-hant/gaidong.html": [
@@ -38256,7 +38256,7 @@
 "2026-11-17"
 ],
 "zh-hant/manifest.webmanifest": [
-"t:bae434cd0c44e2c3",
+"t:219455564371c645",
 "2026-11-21"
 ],
 "zh-hant/mengzi/1.1.html": [
