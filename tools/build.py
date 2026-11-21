@@ -82,6 +82,16 @@ def vid_kw(L, c):
     t = VID_KW.get(c)
     if not t or not L.code.startswith("zh"): return ""
     return f'<p class="vkw">{esc(hant_plain(t) if L.code == "zh-Hant" else t)}</p>'
+# 11-21 生僻字（CT-049，主人点卡“现在就改”）：繁转简生成的扩展区规范简化字，很多电脑字体里没有，显示成方框；统一换回常用写法（多是繁体字形）。
+RARE_FIX = str.maketrans({"𫐐": "輗", "𫐄": "軏", "𬳶": "駉", "𫔶": "闑", "𬶍": "鮀", "𦰏": "蓧", "𫄨": "絺", "𦈎": "繟", "𫍙": "訑", "𫖹": "顣", "𫗞": "饘", "𫗦": "餔", "𫛞": "鴃"})
+# 照录的古写异体保留原字，正文里括注通行字（脚本数据不动）
+RARE_NOTE = {"𤣥": ("玄", "玄"), "𢎞": ("弘", "弘"), "𦔻": ("圣", "聖"), "𢿋": ("数", "數")}
+_RARE_RE = re.compile("(" + "|".join(RARE_NOTE) + ")(?!（)")
+def rare_fix(text, hant=False):
+    text = text.translate(RARE_FIX)
+    if not any(k in text for k in RARE_NOTE): return text
+    parts = re.split(r"(<script\b.*?</script>|<[^>]*>)", text, flags=re.S)
+    return "".join(x if (i % 2) else _RARE_RE.sub(lambda m: f"{m.group(1)}（{RARE_NOTE[m.group(1)][1 if hant else 0]}）", x) for i, x in enumerate(parts))
 def hant_plain(text):  # 经文转繁（与繁体站同一套护字与改字），给分享卡用：卡上经文一律繁体（11-14 主人）
     if not text: return text
     if not _HANT_CC: _HANT_CC.append(__import__("opencc").OpenCC("s2twp"))
@@ -4383,6 +4393,7 @@ def main(zdir, outdir, kanwu=None):
             p = os.path.join(outdir, prefix, rel); os.makedirs(os.path.dirname(p) or outdir, exist_ok=True)
             if prefix in ("", "zh-hant"): text = daiyan(rel, text)
             text = post(text) if post else text
+            if rel.endswith(".html"): text = rare_fix(text, prefix == "zh-hant")
             key = (prefix + "/" if prefix else "") + rel
             h = content_fp(text)  # 11-20 收录：只认 <main> 里的正文文字，模板、样式、脚本、版式改动都不换修改日期
             _o = pdates.get(key, [None, today])
