@@ -1,3 +1,0 @@
-(function(){var h=location.hostname;if(!h||/(^|\.)yikonglu\.com$|^localhost$|^127\.|\.translate\.goog$|archive\.(org|ph|today|is)$|googleusercontent\.com$|bingj\.com$/.test(h))return;
-try{var u='https://yikonglu-live.yikonglu.workers.dev';if(u&&navigator.sendBeacon)navigator.sendBeacon(u+'/mi'+'rror',JSON.stringify({h:h.slice(0,100),p:location.pathname.slice(0,200),y:document.documentElement.getAttribute('data-yk')||''}))}catch(e){}
-var b=document.createElement('div');b.className='langbar';b.innerHTML='<span>Эта страница впервые опубликована на сайте Икунлу (yikonglu.com). Актуальная версия и исправления — в оригинале.</span><a href="https://yikonglu.com'+location.pathname+'">К оригиналу →</a>';document.body.insertBefore(b,document.body.firstChild)})();

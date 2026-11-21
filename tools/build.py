@@ -2417,8 +2417,15 @@ def _zhouyi_one(L, write, P, gua, gs, QW, qw, zj, jd, bh, jl, hb, zyq, ywl, hj):
     lz = jd.get("连着") or {}
     lz_html = ('<section class="sec"><h2><i>连</i>连着读</h2><ul>' + "".join(f"<li><b>{k}：</b>{esc(str(v[1]) if isinstance(v, list) else v)}</li>" for k, v in lz.items() if k in ("错卦", "综卦", "互卦"))
                + (f'<li><b>序卦传：</b>“{esc(lz["序卦传"])}”</li>' if lz.get("序卦传") else "") + "</ul>" + (f'<p><a href="{lz["问易"]}">到问易起一卦 ›</a></p>' if lz.get("问易") else "") + "</section>") if lz else ""
-    zy_sec = ('<section class="sec mzzy"><h2><i>议</i>争议读法</h2>' + "".join(f'<h3>{esc(z["t"])}</h3><ul>' + "".join(f'<li><b>{esc(x["k"])} · {esc(x["who"])}</b> {esc(x["t"])}</li>' for x in z["r"]) + "</ul>" for z in zyq)
-              + '<p class="note">甲乙只是排列次序。</p></section>') if zyq else ""
+    def _zyq1(z):  # 11-21 周易线程：争议.json 有“定”就标已定、定的那家在前；没有就甲乙并列。“定于”是内部记录，不上页
+        rs = z["r"]; d = z.get("定")
+        if not d or not any(x["k"] == d for x in rs):
+            return f'<h3>{esc(z["t"])}</h3><ul>' + "".join(f'<li><b>{esc(x["k"])} · {esc(x["who"])}</b> {esc(x["t"])}</li>' for x in rs) + "</ul>"
+        ch = next(x for x in rs if x["k"] == d); who = re.split(r"[《、（(]", ch["who"])[0].strip()
+        return (f'<h3>{esc(z["t"])} <small class="zyding">已定 · 从{esc(who)}</small></h3><ul><li><b>{esc(ch["who"])}</b> {esc(ch["t"])}</li>'
+                + "".join(f'<li><b>另一读 · {esc(x["who"])}</b> {esc(x["t"])}</li>' for x in rs if x is not ch) + "</ul>")
+    zy_sec = ('<section class="sec mzzy"><h2><i>议</i>争议读法</h2>' + "".join(_zyq1(z) for z in zyq)
+              + ('<p class="note">甲乙只是排列次序。</p>' if any(not z.get("定") for z in zyq) else "") + '</section>') if zyq else ""
     zid = {x["id"]: x["yw"] for x in zj}
     lyhj = lyhj_html([dict(r, note=r.get("q", ""), szj=zid.get(r.get("ju"), "")) for r in hj], P, "zy")
     zhu_all = "".join(f'<p><span lang="zh-Hant">{esc(z[0])}</span> <small>（{esc(z[1])}）</small></p>' for x in zj for z in (x.get("zhu") or []))
@@ -2447,7 +2454,7 @@ def _zhouyi_one(L, write, P, gua, gs, QW, qw, zj, jd, bh, jl, hb, zyq, ywl, hj):
 </article>
 <aside><h3>{esc(pt)}</h3><ol>{"".join(f'<li class="{"cur " if g == c else ""}wj"><a href="{P}zhouyi/{g}.html"><em>{g}</em>{esc(QW[g]["卦"])}</a></li>' for g in gs if QW[g]["篇"] == pt)}</ol></aside>
 </main>
-<style>.zyk{{display:inline-block;margin:.9em .5em .2em 0;font-style:normal;font-size:13px;letter-spacing:.08em;color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:0 8px;line-height:1.7}}.yuanwen blockquote .zyk:first-child{{margin-top:0}}@media (min-width:900px){{.yuanwen .yypane:has(.yyp ~ .yyp){{max-height:82vh;overflow-y:auto;position:sticky;top:12px}}}}</style>"""
+<style>.zyk{{display:inline-block;margin:.9em .5em .2em 0;font-style:normal;font-size:13px;letter-spacing:.08em;color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:0 8px;line-height:1.7}}.yuanwen blockquote .zyk:first-child{{margin-top:0}}.zyding{{font-size:13px;font-weight:normal;color:var(--accent2);margin-left:.4em;letter-spacing:.05em}}@media (min-width:900px){{.yuanwen .yypane:has(.yyp ~ .yyp){{max-height:82vh;overflow-y:auto;position:sticky;top:12px}}}}</style>"""
     js = FOLD_JS + ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["zhu", "本义"]], ensure_ascii=False)).replace("@NONE@", "这一句下面朱熹没有出注。").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
     write(f"zhouyi/{c}.html", page(L, f"周易 {name}卦｜原文、本义与白话｜一孔录（预览）", f"《周易》{name}卦原文、宋本原页、朱熹本义与白话。", f"zhouyi/{c}.html", body + js, None, "pg-chapter pg-wj", head_extra='<meta name="robots" content="noindex,nofollow">', codes=["zh-Hans"]))
     if not zy_: print(f"  周易注音没上：{c} {ZJ.ZY_SKIP.get('周易' + c)}")
