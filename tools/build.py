@@ -3112,11 +3112,11 @@ def build_lang(L, D, write):
     # 首页（主人 11-07 定）：只放开讲的书，其余收成一行“《道德经》等 N 部筹备中”，完整书目在书目页
     n_soon = sum(1 for _, bs in BOOK_GROUPS for sl, _ in bs if sl not in LB)
     LU = lyui(L); zhL = L.code.startswith("zh")
-    def zhushu(home):  # 《论语》主经一格（首页、书架页）
+    def zhushu(home):  # 《论语》主经一格（首页、书架页）；11-21 主人：首页去掉“二十篇 498 章原文全在站上……”那行，嫌啰嗦
         lk = ([(f"{P}lunyu/xue-er/1.html", LU["go"], " class=go"), (f"{P}lunyu/", LU["toc"], "")] if home else [(f"{P}lunyu/", LU["open"], " class=go")]) \
              + (([(f"{P}nianli/", "《论语》年历", "")] if D["lx"]["nl"] else []) + [(f"{P}zhuanti/keben.html", LU["kb"], ""), (f"{P}duben.html", LU["db"], "")] if home and zhL else [])
         return (f'<div class="zhushu"><a class="cvbig" href="{P}lunyu/" aria-label="{esc(L.t("lunyu"))}"><span class="qb" lang="zh-Hans">论语</span></a><div><h3><a href="{P}lunyu/">{"《" + L.t("lunyu") + "》" if zhL else esc(L.t("lunyu"))}</a></h3>'
-                f'<p class="zk">{esc(LU["k"])}</p><p class="zs">{esc(LU["s"].format(n=n_all, d=len(pub), z=len((D.get("zhuju") or {}).get("on", ()))))}</p><p class="zl">' + "".join(f'<a href="{u}"{c}>{esc(x)}</a>' for u, x, c in lk if x) + '</p></div></div>')
+                f'<p class="zk">{esc(LU["k"])}</p>' + ("" if home else f'<p class="zs">{esc(LU["s"].format(n=n_all, d=len(pub), z=len((D.get("zhuju") or {}).get("on", ()))))}</p>') + '<p class="zl">' + "".join(f'<a href="{u}"{c}>{esc(x)}</a>' for u, x, c in lk if x) + '</p></div></div>')
     _hjn = {"daodejing": len(DDJ_LYHJ), "sanzijing": len(SZJ_LYHJ)}
     shelfline = (f'<p class="shelfline">{esc(LU["more"])}' + " · ".join(f'<a href="{P if (zhL or (sl == "sanzijing" and L.code in SZJ_TR) or (sl == "daodejing" and L.code in DDJ_TR)) else "/"}{sl}/">{"《" + zh + "》" if zhL else esc(L.t("bk_" + sl))}</a>' + (f'<small>（互见 {_hjn[sl]} 条）</small>' if zhL and _hjn.get(sl) else "")
                  for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB and sl != "lunyu") + f' · <a href="{P}shumu/">{esc(LU["soon"].format(n=n_soon))}</a></p>')
