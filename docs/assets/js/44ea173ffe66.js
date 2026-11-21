@@ -1,12 +1,12 @@
 (function () {
   var F = document.querySelector('.yuanwen.dz'); if (!F) return;
-  var J = null; try { J = JSON.parse(F.querySelector('.zjkj').textContent); } catch (e) { }  // 道德經、三字經只有注音、沒有開卷資料
+  var J = null; try { J = JSON.parse(F.querySelector('.zjkj').textContent); } catch (e) { }  // 道德经、三字经只有注音、没有开卷数据
   var Q = F.querySelector('blockquote'), PANE = F.querySelector('.yypane'), NS = 'http://www.w3.org/2000/svg';
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var RE = /([㐀-鿿豈-﫿]|[\ud840-\ud87f][\udc00-\udfff])/;
-  // 原文裡的漢字逐個包起來，好逐字亮、逐字落
+  var RE = /([㐀-鿿豈-﫿]|[\ud840-\ud87f][\udc00-\udfff])/;
+  // 原文里的汉字逐个包起来，好逐字亮、逐字落
   var Z = [];
-  Q.querySelectorAll('.ju').forEach(function (s) {
+  Q.querySelectorAll('.ju:not(.zz)').forEach(function (s) {  // 周易章旨（朱熹分章小注）不逐字包、不注音
     var w = document.createTreeWalker(s, 4), ns = []; while (w.nextNode()) ns.push(w.currentNode);
     ns.forEach(function (t) {
       var parts = t.nodeValue.split(RE); if (parts.length < 2) return;
@@ -15,13 +15,13 @@
       t.parentNode.replaceChild(fr, t);
     });
   });
-  // —— 注音（十一項之 5）：“注”按鈕在 拼音 → 注音符號 → 不注 之間切；多音字赭色 ——
+  // —— 注音（十一项之 5）：“注”按钮在 拼音 → 注音符号 → 不注 之间切；多音字赭色 ——
   (function () {
     var el = F.querySelector('.zjzy'), Y; if (!el) return; try { Y = JSON.parse(el.textContent); } catch (e) { return; }
     if (Y.length !== Z.length) return;
     Z.forEach(function (e, i) { e.dataset.py = Y[i][0]; e.dataset.bp = Y[i][1]; if (Y[i][2]) e.classList.add('zpoly'); });
     var tools = F.querySelector('.dztools'), yb = F.querySelector('.yibtn'); if (!tools) return;
-    var b = document.createElement('button'); b.type = 'button'; b.className = 'yibtn zybtn'; b.textContent = '注'; b.title = '在字上標拼音或注音符號'; b.setAttribute('aria-pressed', 'false');
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'yibtn zybtn'; b.textContent = '注'; b.title = '在字上标拼音或注音符号'; b.setAttribute('aria-pressed', 'false');
     tools.insertBefore(b, yb ? yb.nextSibling : tools.querySelector('.ldbtn'));
     var M = ['', 'py', 'bp'], LB = ['注', '拼', '注'], k = 0; try { k = +(localStorage.getItem('yk_zy') || 0) % 3; } catch (e) { }
     function set() { F.classList.remove('zy-py', 'zy-bp'); if (M[k]) F.classList.add('zy-' + M[k]); b.textContent = LB[k]; b.setAttribute('aria-pressed', k ? 'true' : 'false'); try { localStorage.setItem('yk_zy', k); } catch (e) { } }
@@ -36,7 +36,7 @@
   });
   var sentOf = Z.map(function (e) { return +e.closest('.ju').dataset.n; });
   var ease = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
-  // —— 鏡頭：改 svg 的 viewBox；先把 svg 的高定住，推近拉遠版面不跳 ——
+  // —— 镜头：改 svg 的 viewBox；先把 svg 的高定住，推近拉远版面不跳 ——
   var cam = {};
   function vb(s) { if (!s._vb0) s._vb0 = s.getAttribute('viewBox').split(/\s+/).map(Number); return s._vb0; }
   function setVB(s, v) { s.setAttribute('viewBox', v.map(function (x) { return x.toFixed(1); }).join(' ')); }
@@ -58,16 +58,16 @@
     var t0 = performance.now();
     (function step(now) { var u = ease(Math.min(1, (now - t0) / dur)); setVB(s, cur.map(function (a, i) { return a + (t[i] - a) * u; })); if (u < 1) cam[p] = requestAnimationFrame(step); else { cam[p] = 0; if (!box) s.style.height = ''; } })(t0);
   }
-  function bbox(ix) {  // 一組字在各頁的外框，取字最多的那頁
+  function bbox(ix) {  // 一组字在各页的外框，取字最多的那页
     var by = {}; ix.forEach(function (i) { var b = J.z[i]; if (!b) return; (by[b[0]] = by[b[0]] || []).push(b); });
     var p = Object.keys(by).sort(function (a, b) { return by[b].length - by[a].length; })[0]; if (!p) return null;
     var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; by[p].forEach(function (b) { x0 = Math.min(x0, b[1]); y0 = Math.min(y0, b[2]); x1 = Math.max(x1, b[1] + b[3]); y1 = Math.max(y1, b[2] + b[4]); });
     return [p, [x0, y0, x1 - x0, y1 - y0]];
   }
   function home(dur) { Object.keys(SV).forEach(function (p) { if (SV[p]._z) look(p, null, dur); }); PANE.classList.remove('kjzoom'); }
-  var hb = document.createElement('button'); hb.type = 'button'; hb.className = 'kjhome'; hb.textContent = '整頁'; hb.setAttribute('aria-label', '原頁回到整頁');
+  var hb = document.createElement('button'); hb.type = 'button'; hb.className = 'kjhome'; hb.textContent = '整页'; hb.setAttribute('aria-label', '原页回到整页');
   hb.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); home(450); }); PANE.appendChild(hb);
-  // —— 開卷：點一句 → 鏡頭推近 → 紅框畫出 → 字落進原文 ——
+  // —— 开卷：点一句 → 镜头推近 → 红框画出 → 字落进原文 ——
   var flown = {};
   function draw(n) {
     F.querySelectorAll('.yyp .hl[data-s="' + n + '"]').forEach(function (r) {
@@ -93,7 +93,7 @@
   }
 
   var TIP = 'yk_kjtip', tip = null, seenTip = false; try { seenTip = localStorage.getItem(TIP) === '1'; } catch (e) { }
-  if (!seenTip) { tip = document.createElement('p'); tip.className = 'kjtip'; tip.innerHTML = '<b>點任意一句試試</b>'; Q.parentNode.insertBefore(tip, Q.nextSibling); }
+  if (!seenTip) { tip = document.createElement('p'); tip.className = 'kjtip'; tip.innerHTML = '<b>点任意一句试试</b>'; Q.parentNode.insertBefore(tip, Q.nextSibling); }
   function tipDone() { if (tip) { tip.remove(); tip = null; } try { localStorage.setItem(TIP, '1'); } catch (e) { } }
   function open(n) {
     tipDone();
@@ -104,13 +104,13 @@
   }
   Q.addEventListener('click', function (e) { var s = e.target.closest('.ju'); if (s && !String(getSelection ? getSelection() : '').trim()) open(+s.dataset.n); });
   Q.addEventListener('keydown', function (e) { if (e.key === 'Enter') { var s = e.target.closest('.ju'); if (s) open(+s.dataset.n); } });
-  // —— 聽讀同步 ——
+  // —— 听读同步 ——
   var B = F.querySelector('.ldbtn'), A = null;
   function playing() { return A && !A.paused; }
   if (!B || !J.t) return;
   var T = J.t, K = J.k || [[0, T.length]], tools = B.parentNode;
   var mk = function (cls, txt, tip) { var b = document.createElement('button'); b.type = 'button'; b.className = 'ldbtn ' + cls; b.textContent = txt; b.title = tip; b.setAttribute('aria-pressed', 'false'); tools.insertBefore(b, B.nextSibling.nextSibling ? B.nextSibling : null); return b; };
-  var slowB = mk('kjslow', '慢', '慢一點讀（0.8 倍）');
+  var slowB = mk('kjslow', '慢', '慢一点读（0.8 倍）');
   tools.insertBefore(slowB, B.nextSibling);
   var slow = false, raf = 0, curK = -1, lastI = -2;
   var kOf = []; K.forEach(function (k, j) { for (var i = k[0]; i < k[1]; i++) kOf[i] = j; });

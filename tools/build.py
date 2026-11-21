@@ -2444,18 +2444,80 @@ def build_mengzi(L, write, P, S_IDX=None):
     return urls
 
 
-# ---------- 11-21 《周易》章页预览（主人点卡“交数据，网站用模板出预览”）：照孟子章页接法；只在 YK_ZY_PV=1 时出 zhouyi/1.html，不进站点地图、不对外 ----------
+# ---------- 11-21 《周易》章页（主人点卡“交数据，网站用模板出预览”，后点“先上简繁”）：照孟子章页接法；tools/zhouyi.json open 才对外，否则只在 YK_ZY_PV=1 出简体预览 ----------
 ZY_DIR = os.path.join(GAO_DIR, "_周易")
 ZY_KIND = {"卦辞": "经 · 卦辞", "彖": "彖传", "大象": "大象传", "爻辞": "经 · 爻辞", "小象": "小象传", "文言": "文言传"}
-ZY_GUA = {"111111": "䷀", "000000": "䷁"}
+ZY_CFG = os.path.join(HERE, "zhouyi.json")  # 11-21 主人点卡“生僻字改好，101 页一起上”“先上简繁，英日明天跟上”：{"open": true, "img": 原页图根地址}
+ZYC = json.load(open(ZY_CFG, encoding="utf-8")) if os.path.exists(ZY_CFG) else {}
+ZY_OPEN = bool(ZYC.get("open")) and os.path.isdir(ZY_DIR)
+ZY_CODES = ["zh-Hans", "zh-Hant"]
+ZY_SLUG = {"上经": "shang-jing", "下经": "xia-jing", "系辞上传": "xici-shang", "系辞下传": "xici-xia", "说卦传": "shuogua", "序卦传": "xugua", "杂卦传": "zagua"}
+ZY_PROG = {"zh-Hans": "64 卦 · 系辞以下 37 章 · 宋本原页对读", "zh-Hant": "64 卦 · 繫辭以下 37 章 · 宋本原頁對讀", "en": "64 hexagrams · 37 chapters of commentary", "ja": "六十四卦・繋辞以下 37 章"}
+ZY_SH = {"bk": "周易", "tot": 101, "src": "朱熹《周易本义》宋咸淳吴革刻本", "src2": "朱熹《周易本义》（宋咸淳吴革刻本）", "pf": "zy."}
+ZY_HANT_MARK = '<i id="zyhant" hidden></i>'
+ZY_HANT_POST = [("佔", "占"), ("兇", "凶"), ("徵凶", "征凶"), ("出徵", "出征"), ("迴圈", "循環"), ("儘性", "盡性"), ("頭髮展", "頭發展"), ("生髮", "生發"), ("幹寶", "干寶"), ("水就幹", "水就乾"),
+                ("見鬥", "見斗"), ("大瞭然後", "大了然後"), ("訊息", "消息"), ("臘肉", "腊肉")]
+ZYX = {}  # 本语种出页时的开关：open、img、noidx、codes、urls、S、hant、P
+ZY_N = {}  # 书架用：{"gua": 64, "zhuan": 37, "hj": 互见条数}
+if ZY_OPEN:
+    try:
+        _q = json.load(open(os.path.join(ZY_DIR, "_原文", "周易原文-v1.json"), encoding="utf-8"))
+        ZY_N = {"gua": sum(1 for k in _q if k.isdigit()), "zhuan": sum(1 for k in _q if not k.isdigit() and k.split("-")[0] in ("xs", "xx", "sg", "xg", "zg")),
+                "hj": len(json.load(open(os.path.join(ZY_DIR, "论语互见.json"), encoding="utf-8"))["条"])}
+    except Exception as e: print("周易书架计数读不到：", e)
 
-def build_zhouyi_pv(L, write, P):
-    if not (os.environ.get("YK_ZY_PV") and L.code == "zh-Hans" and os.path.isdir(ZY_DIR)): return []
+def zy_gname(name): return name if name.endswith("卦") else name + "卦"
+
+def build_zhouyi(L, write, P, S_IDX=None):
+    """11-21 《周易》简繁上线：书页（七张篇卡）、篇页、64 卦页、系辞以下 37 章页。没开（zhouyi.json open 为 false）时只在 YK_ZY_PV=1 出简体预览（noindex，不进站点地图）。"""
+    pv = bool(os.environ.get("YK_ZY_PV"))
+    if not os.path.isdir(ZY_DIR) or L.code not in (ZY_CODES if ZY_OPEN else (["zh-Hans"] if pv else [])): return []
+    hant = L.code == "zh-Hant"
     J = lambda p: json.load(open(os.path.join(ZY_DIR, p), encoding="utf-8"))
     JO = lambda p: J(p) if os.path.exists(os.path.join(ZY_DIR, p)) else {}
     QW = J("_原文/周易原文-v1.json"); BH = J("_白话/白话-初稿-周易-v1.json"); JL = J("zy_julie.json"); hb = J("_原页/半叶.json")
-    ZYQ = J("争议.json"); YWL = J("异文.json"); HJ = J("论语互见.json")["条"]
+    ZYQ = J("争议.json"); YWL = J("异文.json"); HJ = J("论语互见.json")["条"]; PM = {k: v for k, v in J("篇目.json").items() if isinstance(v, dict)}
     gs = sorted((k for k in QW if k.isdigit()), key=int)
+    ZYX.clear(); ZYX.update(open=ZY_OPEN, img=(ZYC.get("img") or "/zhouyi/yb/") if ZY_OPEN else "/zhouyi/yb/", noidx="" if ZY_OPEN else '<meta name="robots" content="noindex,nofollow">',
+                            codes=ZY_CODES if ZY_OPEN else ["zh-Hans"], urls=[], S=S_IDX if ZY_OPEN else None, hant=hant, pvt="" if ZY_OPEN else "（预览）",
+                            wenyi=f"{DOMAIN}/wenyi/" if hant else "/wenyi/")  # 问易只有简体页：繁体页写绝对地址，免得被改成 /zh-hant/wenyi/
+    if hant:  # 繁体页由简体页整页 s2twp 转出：底本经文、本义注、题注、半叶名原样保留（不护会把“占”转“佔”、“凶”转“兇”、“循環”转“迴圈”）
+        prot = {v["篇题注"] for v in QW.values() if isinstance(v, dict) and v.get("篇题注")} | {v["name"] for v in hb.values()}
+        for f_ in glob.glob(os.path.join(ZY_DIR, "_逐句", "*.json")):
+            for x in json.load(open(f_, encoding="utf-8"))["句"]:
+                prot.add(x["yw"]); prot.update(z[0] for z in (x.get("zhu") or []))
+        prot = {y_ for x in prot if len(x) >= 2 for y_ in (x, esc(x))}
+        _pat = re.compile("|".join(re.escape(x) for x in sorted(prot, key=len, reverse=True)))
+        _w0 = write
+        def write(rel, text): _w0(rel, _pat.sub(lambda m: "\ue010" + m.group(0) + "\ue011", text).replace("</main>", ZY_HANT_MARK + "</main>", 1))
+    # 书页与篇页（11-19 主人定：书页只放篇卡，篇页列章）
+    zs_all = sorted((k for k in QW if not k.isdigit() and k.split("-")[0] in ZY_ZHUAN), key=lambda k: (list(ZY_ZHUAN).index(k.split("-")[0]), int(k.split("-")[1]) if "-" in k else 1))
+    def first_yw(k):
+        zj_ = J(f"_逐句/{k}.json")["句"]; t_ = next((x["yw"] for x in zj_ if x["kind"] != "章旨"), "")
+        return t_[:40] + ("……" if len(t_) > 40 else "")
+    def li_g(g): return f'<li class="wj" data-c="zy.{g}"><a href="{P}zhouyi/{g}.html"><em>{g}</em><b>{chr(0x4DC0 + int(g) - 1)} {esc(zy_gname(QW[g]["卦"]))}</b><span><span lang="zh-Hant">{esc(first_yw(g))}</span></span></a></li>'
+    def li_z(k): return f'<li class="wj" data-c="zy.{k}"><a href="{P}{zy_zrel(k)}"><em>{esc(k.split("-")[-1] if "-" in k else "1")}</em><b>{esc(QW[k].get("章名", ""))}</b><span><span lang="zh-Hant">{esc(first_yw(k))}</span></span></a></li>'
+    items = []
+    for pt, v in PM.items():
+        if pt in ("上经", "下经"):
+            ks = [g for g in gs if QW[g]["篇"] == pt]; sub = f"第 {ks[0]}—{ks[-1]} 卦 · {len(ks)} 卦"; ol = "".join(li_g(g) for g in ks)
+        else:
+            ks = [k for k in zs_all if QW[k]["篇"] == pt]; sub = f"{len(ks)} 章"; ol = "".join(li_z(k) for k in ks)
+        if not ks: continue
+        note = f'<p class="note"><b>朱熹题注：</b><span lang="zh-Hant">{esc(v["篇题注"])}</span></p>' if v.get("篇题注") else ""
+        items.append((ZY_SLUG[pt], pt, sub, f'<ol class="toc">{ol}</ol>', note))
+    def zy_page(sl, nm, body):
+        write(f"zhouyi/{sl}/index.html", page(L, f"《周易》{nm}｜原文、本义与白话｜一孔录{ZYX['pvt']}", f"《周易》{nm}逐章原文、宋本原页、朱熹本义与白话。", f"zhouyi/{sl}/", body, None, "pg-book", head_extra=ZYX["noidx"], codes=ZYX["codes"]))
+        if ZY_OPEN: ZYX["urls"].append(f"{DOMAIN}/{L.prefix}zhouyi/{sl}/")
+    cover = mcv(P, "", True, "zhouyi", "周易")
+    groups = pian_layer(L, P, write, ZYX["urls"], "zhouyi", "周易", items, f"{P}zhouyi/1.html", zy_page, cover)
+    body = f"""<div class="chhead bk"><div class="wrap">{cover}<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a></p>
+<h1><span class="no">《周易》 · 朱熹《周易本义》 · {len(gs)} 卦与系辞以下 {len(zs_all)} 章</span>周易</h1></div></div>
+<main class="wrap narrow"><p class="lead">《周易》经文分上下两篇，共 {len(gs)} 卦；彖传、象传、文言传随卦附在本卦页里，照通行本次序。系辞上下传、说卦传、序卦传、杂卦传另立篇卡，照朱熹《周易本义》分 {len(zs_all)} 章。每页有原文、宋本原页、朱熹本义与白话，注家分歧处列出争议读法。</p>{groups}<p class="note">想用《周易》起一卦，看占到的卦怎么说，到<a href="{ZYX["wenyi"]}">问易</a>。</p></main>"""
+    _og = OG.make3("zy.book", "《周易》 · 朱熹本义 · 宋本原页对读", "天行健，君子以自強不息。", "", "", "从《论语》开始 · 对着原页读经典") if OG.available() else None
+    write("zhouyi/index.html", page(L, f"《周易》原文、本义与白话｜一孔录{ZYX['pvt']}", f"《周易》{len(gs)} 卦与系辞以下 {len(zs_all)} 章：逐章原文、宋本原页、朱熹本义与白话。", "zhouyi/", body,
+                                    {"@context": "https://schema.org", "@type": "Book", "name": "周易", "url": f"{DOMAIN}/{L.prefix}zhouyi/", "inLanguage": L.hreflang}, "pg-book", og_img=_og, head_extra=ZYX["noidx"], codes=ZYX["codes"]))
+    if ZY_OPEN: ZYX["urls"].append(f"{DOMAIN}/{L.prefix}zhouyi/")
     TRI = {"乾": "111", "坤": "000", "震": "100", "坎": "010", "艮": "001", "巽": "011", "離": "101", "离": "101", "兌": "110", "兑": "110"}
     for gi, gua in enumerate(gs):
         qw = QW[gua]; zj = J(f"_逐句/{gua}.json")["句"]; jd = JO(f"_讲读/{gua}.json")
@@ -2466,7 +2528,7 @@ def build_zhouyi_pv(L, write, P):
         bad = [x["id"] for x, bx in zip(zj, jl) if not bx]
         if len(jl) != len(zj) or bad: print(f"  周易红框：{gua} {qw['卦']} 句 {len(zj)} 框 {len(jl)} 空框 {bad}")
         _zhouyi_one(L, write, P, gua, gs, QW, qw, zj, jd, bh, jl, hb, zyq, ywl, hj)
-    print(f"周易预览：{len(gs)} 卦")
+    print(f"周易{'' if ZY_OPEN else '预览'}（{L.code}）：{len(gs)} 卦")
     # 11-21 系辞以下（键 xs-1… → /zhouyi/xici-shang/1.html 等，和论语孟子章页同一网址格式）
     zs = sorted((k for k in QW if not k.isdigit() and k.split("-")[0] in ZY_ZHUAN), key=lambda k: (list(ZY_ZHUAN).index(k.split("-")[0]), int(k.split("-")[1]) if "-" in k else 1))
     for k in zs:
@@ -2474,12 +2536,12 @@ def build_zhouyi_pv(L, write, P):
         bad = [x["id"] for x, bx in zip(zj, jl) if not bx]
         if len(jl) != len(zj) or bad: print(f"  周易红框：{k} 句 {len(zj)} 框 {len(jl)} 空框 {bad}")
         _zhouyi_zhuan(L, write, P, k, zs, QW, zj, JO(f"_讲读/{k}.json"), BH.get(k) or {}, jl, hb, ZYQ.get(k) or [], YWL.get(k) or [], [r for r in HJ if str(r.get("zhang")) == k])
-    if zs: print(f"周易预览：传 {len(zs)} 章（{'、'.join(zs)}）")
-    return []
+    if zs: print(f"周易{'' if ZY_OPEN else '预览'}（{L.code}）：传 {len(zs)} 章")
+    return ZYX["urls"]
 
 def _zhouyi_one(L, write, P, gua, gs, QW, qw, zj, jd, bh, jl, hb, zyq, ywl, hj):
     c, name, pt = gua, qw["卦"], qw["篇"]
-    sents = [x["yw"] for x in zj]; url = f"{DOMAIN}/zhouyi/{c}.html"; ttl = f'{chr(0x4DC0 + int(c) - 1)} {name}卦'
+    sents = [x["yw"] for x in zj]; url = f"{DOMAIN}/{L.prefix}zhouyi/{c}.html"; ttl = f'{chr(0x4DC0 + int(c) - 1)} {zy_gname(name)}'
     # 原文：按经、彖、大象、爻辞＋小象、文言分组，组头小字（模板已有的 .ju 句，组头用 em）
     ju_html, last = "", None
     for j, x in enumerate(zj, 1):
@@ -2492,7 +2554,7 @@ def _zhouyi_one(L, write, P, gua, gs, QW, qw, zj, jd, bh, jl, hb, zyq, ywl, hj):
     # 原页：宋本半叶，红框是多边形
     used = list(dict.fromkeys(h for bx in jl for h, _ in bx))
     def hl(h): return "".join(f'<polygon class="hl" data-s="{i}" points="{" ".join(f"{a},{b}" for a, b in poly)}"/>' for i, bx in enumerate(jl, 1) for h_, polys in bx if h_ == h for poly in polys)
-    pane = "".join(f'<a class="yyp" href="/zhouyi/yb/{h}.webp" target="_blank" data-p="{h}"><svg viewBox="0 0 {hb[h]["W"]} {hb[h]["H"]}" role="img" aria-label="{esc(hb[h]["name"])}"><image href="/zhouyi/yb/{h}.webp" width="{hb[h]["W"]}" height="{hb[h]["H"]}"/>{hl(h)}</svg><span>{esc(hb[h]["name"])}</span></a>' for h in used if h in hb) if len(jl) == len(sents) else ""
+    pane = "".join(f'<a class="yyp" href="{ZYX['img']}{h}.webp" target="_blank" data-p="{h}"><svg viewBox="0 0 {hb[h]["W"]} {hb[h]["H"]}" role="img" aria-label="{esc(hb[h]["name"])}"><image href="{ZYX['img']}{h}.webp" width="{hb[h]["W"]}" height="{hb[h]["H"]}"/>{hl(h)}</svg><span>{esc(hb[h]["name"])}</span></a>' for h in used if h in hb) if len(jl) == len(sents) else ""
     rows = [{"zhu": [[z[0], z[1]] for z in (x.get("zhu") or [])], "hj": []} for x in zj]
     zy_ = ZJ.zhuyin_book("周易", c, sents)
     cap = "原文据宋咸淳元年吴革刻本朱熹《周易本义》（中华再造善本）。点一句，原页上框出这一句，下面看本义注。"
@@ -2512,7 +2574,7 @@ def _zhouyi_one(L, write, P, gua, gs, QW, qw, zj, jd, bh, jl, hb, zyq, ywl, hj):
     _du, _jdr = du_up(jd_h, "这一卦讲什么")
     lz = jd.get("连着") or {}
     lz_html = ('<section class="sec"><h2><i>连</i>连着读</h2><ul>' + "".join(f"<li><b>{k}：</b>{esc(str(v[1]) if isinstance(v, list) else v)}</li>" for k, v in lz.items() if k in ("错卦", "综卦", "互卦"))
-               + (f'<li><b>序卦传：</b>“{esc(lz["序卦传"])}”</li>' if lz.get("序卦传") else "") + "</ul>" + (f'<p><a href="{lz["问易"]}">到问易起一卦 ›</a></p>' if lz.get("问易") else "") + "</section>") if lz else ""
+               + (f'<li><b>序卦传：</b>“{esc(lz["序卦传"])}”</li>' if lz.get("序卦传") else "") + "</ul>" + (f'<p><a href="{ZYX["wenyi"]}">到问易起一卦 ›</a></p>' if lz.get("问易") else "") + "</section>") if lz else ""
     def _zyq1(z):  # 11-21 周易线程：争议.json 有“定”就标已定、定的那家在前；没有就甲乙并列。“定于”是内部记录，不上页
         rs = z["r"]; d = z.get("定")
         if not d or not any(x["k"] == d for x in rs):
@@ -2531,15 +2593,16 @@ def _zhouyi_one(L, write, P, gua, gs, QW, qw, zj, jd, bh, jl, hb, zyq, ywl, hj):
     k_ = gs.index(c); pv, nx = (gs[k_ - 1] if k_ else None), (gs[k_ + 1] if k_ + 1 < len(gs) else None)
     _pn = '<nav class="pn">' + "".join(f'<a class="pncard {cl}" href="{P}zhouyi/{g}.html"><small>{L.t(lb)}</small><b>{g}　{esc(QW[g]["卦"])}卦</b></a>' if g else "<span></span>" for g, lb, cl in ((pv, "prev", "prev"), (nx, "next", "next"))) + "</nav>"
     body = f"""<div class="chhead bk"><div class="wrap">
-<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}zhouyi/">周易</a> › <a href="{P}zhouyi/">{esc(pt)}</a></p>
+{mcv(P, "", False, "zhouyi", "周易")}
+<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}zhouyi/">周易</a> › <a href="{P}zhouyi/{ZY_SLUG.get(pt, "")}/">{esc(pt)}</a></p>
 <h1><span class="no">周易 第 {c} 卦 · {esc(pt)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(ttl)}</h1>
 </div></div>
 <main class="wrap chapter">
 <article>
-<p class="wjlead">这一卦的视频还在制作。网站先放原文、原页、本义注和白话。</p>
 {fig}
 {bh_html}
 {_du}
+<div class="chacts">{done_html(L, "zy." + c)}{share_html(L, "zy." + c, url, f"周易 第 {c} 卦", zy_gname(name), sents[0] if sents else "", "", "", ZY_SH)}</div>
 <section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>
 {zy_sec}
 {lz_html}
@@ -2548,20 +2611,36 @@ def _zhouyi_one(L, write, P, gua, gs, QW, qw, zj, jd, bh, jl, hb, zyq, ywl, hj):
 {_pn}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
 </article>
-<aside><h3>{esc(pt)}</h3><ol>{"".join(f'<li class="{"cur " if g == c else ""}wj"><a href="{P}zhouyi/{g}.html"><em>{g}</em>{esc(QW[g]["卦"])}</a></li>' for g in gs if QW[g]["篇"] == pt)}</ol></aside>
-</main>
+<aside><h3>{esc(pt)}</h3><ol>{"".join(f'<li class="{"cur " if g == c else ""}wj" data-c="zy.{g}"><a href="{P}zhouyi/{g}.html"><em>{g}</em>{esc(QW[g]["卦"])}</a></li>' for g in gs if QW[g]["篇"] == pt)}</ol></aside>
+</main><i id="rc" data-c="zy.{c}" hidden></i>
 <style>.zyk{{display:inline-block;margin:.9em .5em .2em 0;font-style:normal;font-size:13px;letter-spacing:.08em;color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:0 8px;line-height:1.7}}.yuanwen blockquote .zyk:first-child{{margin-top:0}}.zyding{{font-size:13px;font-weight:normal;color:var(--accent2);margin-left:.4em;letter-spacing:.05em}}@media (min-width:900px){{.yuanwen .yypane:has(.yyp ~ .yyp){{max-height:82vh;overflow-y:auto;position:sticky;top:12px}}}}</style>"""
-    js = FOLD_JS + ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["zhu", "本义"]], ensure_ascii=False)).replace("@NONE@", "这一句下面朱熹没有出注。").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
-    write(f"zhouyi/{c}.html", page(L, f"周易 {name}卦｜原文、本义与白话｜一孔录（预览）", f"《周易》{name}卦原文、宋本原页、朱熹本义与白话。", f"zhouyi/{c}.html", body + js, None, "pg-chapter pg-wj", head_extra='<meta name="robots" content="noindex,nofollow">', codes=["zh-Hans"]))
+    js = SHARE_JS + FOLD_JS + ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["zhu", "本义"]], ensure_ascii=False)).replace("@NONE@", "这一句下面朱熹没有出注。").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
+    zy_reg(L, P, "zy." + c, gs.index(c) + 1, f"周易 第 {c} 卦 · {zy_gname(name)}", zy_gname(name), f"zhouyi/{c}.html", url, sents, b, f"《周易·{pt}》第 {c} 卦 · {zy_gname(name)}")
+    ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"周易 {zy_gname(name)}", "inLanguage": L.hreflang, "url": url, "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "周易"},
+          "isBasedOn": {"@type": "Book", "name": "周易本义", "author": {"@type": "Person", "name": "朱熹"}}}
+    write(f"zhouyi/{c}.html", page(L, f"周易 {zy_gname(name)}｜原文、本义与白话｜一孔录{ZYX['pvt']}", f"《周易》{zy_gname(name)}原文、宋本原页、朱熹本义与白话。" + (b[:60] + "……" if b else ""), f"zhouyi/{c}.html", body + js, ld, "pg-chapter pg-wj", og_img=ZYX.get("og"), head_extra=ZYX["noidx"], codes=ZYX["codes"]))
     if not zy_: print(f"  周易注音没上：{c} {ZJ.ZY_SKIP.get('周易' + c)}")
 
 ZY_ZHUAN = {"xs": "xici-shang", "xx": "xici-xia", "sg": "shuogua", "xg": "xugua", "zg": "zagua"}
+_ZYT2S = None
+def zy_reg(L, P, key, k, head, title, rel, url, sents, bh, oghead):
+    """11-21 周易每页：人物卡与读经日历卡、三语分享卡数据、每页分享图（底本经文照录繁体，不转简：t2s 会把“乾”转“干”）、站内搜索、站点地图。"""
+    global _ZYT2S
+    if _ZYT2S is None: _ZYT2S = __import__("opencc").OpenCC("t2s").convert
+    y0 = sents[0] if sents else ""
+    bk_share_x(key, k, 0, k)
+    TRI_TXT[key] = {"h": oghead, "y": y0, "en": "", "ja": ""}
+    ZYX["og"] = OG.make3(key, oghead, y0, "", "", "从《论语》开始 · 逐字读经典原文") if (ZYX["open"] and OG.available()) else None
+    if ZYX["open"]: ZYX["urls"].append(url)
+    if ZYX.get("S") is not None:
+        t_ = "".join(sents)
+        ZYX["S"].append({"c": head, "t": title, "u": P + rel, "y": t_, "x": (bh or "") + " " + _ZYT2S(t_)})
 def zy_zrel(k): a, _, n = k.partition("-"); return f"zhouyi/{ZY_ZHUAN[a]}/{n or 1}.html"
 
 def _zhouyi_zhuan(L, write, P, c, zs, QW, zj, jd, bh, jl, hb, zyq, ywl, hj):
     """11-21 周易系辞以下章页（预览）：照卦页模板；无卦画上下错综，章旨（朱熹分章小注）排章末、像注、不进注音。"""
     qw = QW[c]; pt, zh, zm = qw["篇"], qw.get("章", ""), qw.get("章名", "")
-    rel = zy_zrel(c); url = f"{DOMAIN}/{rel}"
+    rel = zy_zrel(c); url = f"{DOMAIN}/{L.prefix}{rel}"
     main_ = [x for x in zj if x["kind"] != "章旨"]; sents = [x["yw"] for x in main_]
     ju_html = ""
     for j, x in enumerate(zj, 1):
@@ -2569,7 +2648,7 @@ def _zhouyi_zhuan(L, write, P, c, zs, QW, zj, jd, bh, jl, hb, zyq, ywl, hj):
         else: ju_html += f'<span class="ju" id="s{j}" data-n="{j}" tabindex="0">{esc(x["yw"])}</span>'
     used = list(dict.fromkeys(h for bx in jl for h, _ in bx))
     def hl(h): return "".join(f'<polygon class="hl" data-s="{i}" points="{" ".join(f"{a},{b}" for a, b in poly)}"/>' for i, bx in enumerate(jl, 1) for h_, polys in bx if h_ == h for poly in polys)
-    pane = "".join(f'<a class="yyp" href="/zhouyi/yb/{h}.webp" target="_blank" data-p="{h}"><svg viewBox="0 0 {hb[h]["W"]} {hb[h]["H"]}" role="img" aria-label="{esc(hb[h]["name"])}"><image href="/zhouyi/yb/{h}.webp" width="{hb[h]["W"]}" height="{hb[h]["H"]}"/>{hl(h)}</svg><span>{esc(hb[h]["name"])}</span></a>' for h in used if h in hb) if len(jl) == len(zj) else ""
+    pane = "".join(f'<a class="yyp" href="{ZYX['img']}{h}.webp" target="_blank" data-p="{h}"><svg viewBox="0 0 {hb[h]["W"]} {hb[h]["H"]}" role="img" aria-label="{esc(hb[h]["name"])}"><image href="{ZYX['img']}{h}.webp" width="{hb[h]["W"]}" height="{hb[h]["H"]}"/>{hl(h)}</svg><span>{esc(hb[h]["name"])}</span></a>' for h in used if h in hb) if len(jl) == len(zj) else ""
     rows = [{"zhu": [[z[0], z[1]] for z in (x.get("zhu") or [])] or ([[x["yw"], "朱熹章旨"]] if x["kind"] == "章旨" else []), "hj": []} for x in zj]
     zy_ = ZJ.zhuyin_book("周易", c, sents)
     cap = "原文据宋咸淳元年吴革刻本朱熹《周易本义》（中华再造善本）。点一句，原页上框出这一句，下面看本义注。"
@@ -2593,7 +2672,7 @@ def _zhouyi_zhuan(L, write, P, c, zs, QW, zj, jd, bh, jl, hb, zyq, ywl, hj):
         k_, nm = (v[0], v[1]) if isinstance(v, list) else (v, v)
         return f'<li><b>{lb}：</b>' + (f'<a href="{P}{zy_zrel(k_)}">{esc(nm)}</a>' if k_ in QW else f'<span class="muted">{esc(nm)}（待出）</span>') + "</li>"
     lz_html = ('<section class="sec"><h2><i>连</i>连着读</h2><ul>' + _lk("上一章", lz.get("上一章")) + _lk("下一章", lz.get("下一章")) + "</ul>"
-               + (f'<p><a href="{lz["问易"]}">到问易起一卦 ›</a></p>' if lz.get("问易") else "") + "</section>") if lz else ""
+               + (f'<p><a href="{ZYX["wenyi"]}">到问易起一卦 ›</a></p>' if lz.get("问易") else "") + "</section>") if lz else ""
     zid = {x["id"]: x["yw"] for x in zj}
     lyhj = lyhj_html([dict(r, note=r.get("q", ""), szj=zid.get(r.get("ju"), "")) for r in hj], P, "zyz")
     zhu_all = "".join(f'<p><span lang="zh-Hant">{esc(z[0])}</span> <small>（{esc(z[1])}）</small></p>' for x in main_ for z in (x.get("zhu") or [])) + "".join(f'<p><span lang="zh-Hant">○{esc(x["yw"])}</span> <small>（朱熹章旨）</small></p>' for x in zj if x["kind"] == "章旨")
@@ -2603,7 +2682,8 @@ def _zhouyi_zhuan(L, write, P, c, zs, QW, zj, jd, bh, jl, hb, zyq, ywl, hj):
     pv, nx = (same[i_ - 1] if i_ else None), (same[i_ + 1] if i_ + 1 < len(same) else None)
     _pn = '<nav class="pn">' + "".join(f'<a class="pncard {cl}" href="{P}{zy_zrel(g)}"><small>{L.t(lb)}</small><b>{esc(QW[g].get("章", ""))}　{esc(QW[g].get("章名", ""))}</b></a>' if g else "<span></span>" for g, lb, cl in ((pv, "prev", "prev"), (nx, "next", "next"))) + "</nav>"
     body = f"""<div class="chhead bk"><div class="wrap">
-<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}zhouyi/">周易</a> › <a href="{P}zhouyi/">{esc(pt)}</a></p>
+{mcv(P, "", False, "zhouyi", "周易")}
+<p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}zhouyi/">周易</a> › <a href="{P}zhouyi/{ZY_SLUG.get(pt, "")}/">{esc(pt)}</a></p>
 <h1><span class="no">周易 · {esc(pt)} · {esc(zh)} · <em class="wjtag">{L.t("wj_tag")}</em></span>{esc(zm)}</h1>
 </div></div>
 <main class="wrap chapter">
@@ -2611,6 +2691,7 @@ def _zhouyi_zhuan(L, write, P, c, zs, QW, zj, jd, bh, jl, hb, zyq, ywl, hj):
 {fig}
 {bh_html}
 {_du}
+<div class="chacts">{done_html(L, "zy." + c)}{share_html(L, "zy." + c, url, f"周易 · {pt}{zh}", zm, sents[0] if sents else "", "", "", ZY_SH)}</div>
 <section class="video soon"><h2><i>看</i>{L.t("video")}</h2><p class="vlinks">{L.t("wj_vid")}<a href="https://www.youtube.com/@yikonglu" target="_blank" rel="noopener">YouTube</a><a href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">哔哩哔哩</a></p></section>
 {lz_html}
 {lyhj}
@@ -2618,11 +2699,14 @@ def _zhouyi_zhuan(L, write, P, c, zs, QW, zj, jd, bh, jl, hb, zyq, ywl, hj):
 {_pn}
 <section class="citeit"><p class="mailp">{L.t("report")} {MAIL}</p></section>
 </article>
-<aside><h3>{esc(pt)}</h3><ol>{"".join(f'<li class="{"cur " if g == c else ""}wj"><a href="{P}{zy_zrel(g)}"><em>{esc(g.split("-")[-1])}</em>{esc(QW[g].get("章名", ""))}</a></li>' for g in same)}</ol></aside>
-</main>
+<aside><h3>{esc(pt)}</h3><ol>{"".join(f'<li class="{"cur " if g == c else ""}wj" data-c="zy.{g}"><a href="{P}{zy_zrel(g)}"><em>{esc(g.split("-")[-1] if "-" in g else "1")}</em>{esc(QW[g].get("章名", ""))}</a></li>' for g in same)}</ol></aside>
+</main><i id="rc" data-c="zy.{c}" hidden></i>
 <style>.zyk{{display:inline-block;margin:.9em .5em .2em 0;font-style:normal;font-size:13px;letter-spacing:.08em;color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:0 8px;line-height:1.7}}.yuanwen blockquote .ju.zz{{font-size:.82em;color:var(--muted,#6e6a60)}}.zytz{{font-size:14px;color:var(--muted,#6e6a60);margin:0 0 .8em;line-height:1.8}}.zytz b{{font-weight:normal;color:var(--accent2);margin-right:.6em}}.muted{{color:var(--muted,#6e6a60)}}@media (min-width:900px){{.yuanwen .yypane:has(.yyp ~ .yyp){{max-height:82vh;overflow-y:auto;position:sticky;top:12px}}}}</style>"""
-    js = FOLD_JS + ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["zhu", "本义"]], ensure_ascii=False)).replace("@NONE@", "这一句下面朱熹没有出注。").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
-    write(rel, page(L, f"周易 {pt}{zh}（{zm}）｜原文、本义与白话｜一孔录（预览）", f"《周易·{pt}》{zh}“{zm}”原文、宋本原页、朱熹本义与白话。", rel, body + js, None, "pg-chapter pg-wj", head_extra='<meta name="robots" content="noindex,nofollow">', codes=["zh-Hans"]))
+    js = SHARE_JS + FOLD_JS + ZJ.ZJ_JS.replace("@IMG@", "做成分享图").replace("@TABS@", json.dumps([["zhu", "本义"]], ensure_ascii=False)).replace("@NONE@", "这一句下面朱熹没有出注。").replace("@COPY@", L.t("ju_copy")).replace("@LINK@", L.t("ju_link")).replace("@DONE@", L.t("copied"))
+    zy_reg(L, P, "zy." + c, 64 + zs.index(c) + 1, f"周易 · {pt}{zh}", zm, rel, url, sents, b, f"《周易·{pt}》{zh} · {zm}")
+    ld = {"@context": "https://schema.org", "@type": "Article", "headline": f"周易 {pt}{zh} {zm}", "inLanguage": L.hreflang, "url": url, "author": {"@type": "Organization", "name": "一孔录", "url": DOMAIN}, "about": {"@type": "Book", "name": "周易"},
+          "isBasedOn": {"@type": "Book", "name": "周易本义", "author": {"@type": "Person", "name": "朱熹"}}}
+    write(rel, page(L, f"周易 {pt}{zh}（{zm}）｜原文、本义与白话｜一孔录{ZYX['pvt']}", f"《周易·{pt}》{zh}“{zm}”原文、宋本原页、朱熹本义与白话。", rel, body + js, ld, "pg-chapter pg-wj", og_img=ZYX.get("og"), head_extra=ZYX["noidx"], codes=ZYX["codes"]))
     if not zy_: print(f"  周易注音没上：{c} {ZJ.ZY_SKIP.get('周易' + c)}")
 
 def build_mengzi_fl(L, write, P):
@@ -2873,7 +2957,7 @@ def build_lang(L, D, write):
         return f"“{seo_q(yw[c])}”是什么意思？" if yw.get(c) else ""
     search_idx = []
     pubset = set(pub)
-    LB = LIVE_BOOKS | ({"daodejing"} if D.get("ddj") else set()) | ({"sanzijing"} if SZJ else set()) | ({"mengzi"} if MZ and MZ["cfg"].get("open") else set())  # 书目、首页亮着的书：论语＋已上原文的书
+    LB = LIVE_BOOKS | ({"daodejing"} if D.get("ddj") else set()) | ({"sanzijing"} if SZJ else set()) | ({"mengzi"} if MZ and MZ["cfg"].get("open") else set()) | ({"zhouyi"} if ZY_OPEN and ZY_N else set())  # 书目、首页亮着的书：论语＋已上原文的书
     def href(c):  # 已讲章各语种都有页；未讲章出简繁和英日（WJ_FL），其余外文页链到简体
         return (P if c in pubset or L.code.startswith("zh") or WJF else "/") + rel_of(c)
     def ctitle(c): return title_of(c) if c in pubset else ((WJF and wj_tr_title(L.code, c)) or wj_titles(D["qw"])[c])
@@ -3292,7 +3376,7 @@ def build_lang(L, D, write):
 
     urls += build_ddj(L, D, write, P, search_idx if (L.code.startswith("zh") or L.code in DDJ_TR) else None)
     urls += build_szj(L, write, P, search_idx if (L.code.startswith("zh") or L.code in SZJ_TR) else None)
-    build_zhouyi_pv(L, write, P)
+    urls += build_zhouyi(L, write, P, search_idx if L.code.startswith("zh") else None)  # 11-21 周易（简繁）
     urls += build_mengzi(L, write, P, search_idx if L.code.startswith("zh") else None)  # 孟子（只简繁；先不对外）  # 三字经（只简繁）  # 道德经（只简繁；没开就是空）
     if ANALYTICS.get("live") and "OUT_ROOT" in globals() and os.path.exists(_lf := os.path.join(OUT_ROOT, "data", f"live-{L.code}.json")):  # 道德经、三字经也进“今天有人读了”；本语种没有的书链简体页
         _up = "../" * L.prefix.count("/"); _ex = {k: [v[0], _up + v[1]] for k, v in LIVE_A.get("zh-Hans", {}).items()} if L.code != "zh-Hans" else {}
@@ -3330,6 +3414,8 @@ def build_lang(L, D, write):
     def bcard(slug, zh, live):
         name = L.t("bk_" + slug); sub = L.t("bk_sub_" + slug)
         zhname = f"《{zh}》" if L.code.startswith("zh") else f"《{zh}》 {name}"
+        if live and slug == "zhouyi":
+            return f'<a class="bcard" href="{P if L.code.startswith("zh") else "/"}zhouyi/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:100%"></i></span><em>{ZY_PROG.get(L.code, ZY_PROG["en"])}</em></a>'
         if live and slug == "mengzi":
             return f'<a class="bcard" href="{P if (L.code.startswith("zh") or L.code in MZ_FL) else "/"}mengzi/"><b>{zhname}</b><small>{sub}</small><span class="bar"><i style="width:100%"></i></span><em>{MZ_PROG.get(L.code, MZ_PROG["en"]).format(n=len(MZ["qw"]))}</em></a>'
         if live and slug == "sanzijing":
@@ -3353,7 +3439,7 @@ def build_lang(L, D, write):
              + (([(f"{P}nianli/", "《论语》年历", "")] if D["lx"]["nl"] else []) + [(f"{P}zhuanti/keben.html", LU["kb"], ""), (f"{P}duben.html", LU["db"], "")] if home and zhL else [])
         return (f'<div class="zhushu"><a class="cvbig" href="{P}lunyu/" aria-label="{esc(L.t("lunyu"))}"><span class="qb" lang="zh-Hans">论语</span></a><div><h3><a href="{P}lunyu/">{"《" + L.t("lunyu") + "》" if zhL else esc(L.t("lunyu"))}</a></h3>'
                 f'<p class="zk">{esc(LU["k"])}</p>' + "" + '<p class="zl">' + "".join(f'<a href="{u}"{c}>{esc(x)}</a>' for u, x, c in lk if x) + '</p></div></div>')
-    _hjn = {"daodejing": len(DDJ_LYHJ), "sanzijing": len(SZJ_LYHJ)}
+    _hjn = {"daodejing": len(DDJ_LYHJ), "sanzijing": len(SZJ_LYHJ), "zhouyi": ZY_N.get("hj", 0)}
     shelfline = (f'<p class="shelfline">{esc(LU["more"])}' + " · ".join(f'<a href="{P if (zhL or (sl == "sanzijing" and L.code in SZJ_TR) or (sl == "daodejing" and L.code in DDJ_TR)) else "/"}{sl}/">{"《" + zh + "》" if zhL else esc(L.t("bk_" + sl))}</a>' + (f'<small>（互见 {_hjn[sl]} 条）</small>' if zhL and _hjn.get(sl) else "")
                  for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB and sl != "lunyu") + f' · <a href="{P}shumu/">{esc(LU["soon"].format(n=n_soon))}</a></p>')
     bcards_home = '<div class="bcards">' + "".join(bcard(sl, zh, True) for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB) + f'</div><p class="soonline"><a href="{P}shumu/">{L.t("soon_line", n=n_soon)}</a></p>'
@@ -3365,6 +3451,9 @@ def build_lang(L, D, write):
         jia = f' data-jia="{BOOK_JIA.get(slug, "ru")}"'
         cv = f'<span class="cv"><span class="qian{" l6" if len(zh) >= 6 else (" l5" if len(zh) == 5 else "")}" lang="zh-Hans">{esc(zh)}</span></span>'
         if live:
+            if slug == "zhouyi":
+                return (f'<a class="tome on"{jia} href="{P if zhL else "/"}zhouyi/" data-bk="{slug}" data-t="{ZY_N["gua"] + ZY_N["zhuan"]}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
+                        f'<span class="bar"><i style="width:100%"></i></span><em>{ZY_PROG.get(L.code, ZY_PROG["en"])}</em><em class="mine" hidden></em></span></a>')
             if slug == "mengzi":
                 return (f'<a class="tome on"{jia} href="{P if (zhL or L.code in MZ_FL) else "/"}mengzi/" data-bk="{slug}" data-t="{len(MZ["qw"])}">{cv}<span class="cap"><b>{esc(cap)}</b><small>{esc(sub)}</small>'
                         f'<span class="bar"><i style="width:100%"></i></span><em>{MZ_PROG.get(L.code, MZ_PROG["en"]).format(n=len(MZ["qw"]))}</em><em class="mine" hidden></em></span></a>')
@@ -4447,6 +4536,9 @@ def main(zdir, outdir, kanwu=None):
         t = cc.convert(text)
         for i, w in enumerate(PROTECT): t = t.replace(f"\ue000{i}\ue001", HANT_FIX.get(w, w))
         for a_, b_ in HANT_POST: t = t.replace(a_, b_)
+        if ZY_HANT_MARK in t:  # 11-21 周易繁体页：s2twp 把白话里的“占（占卜）”“凶”“征凶”“消息（消长）”等转错，只在周易页回正
+            for a_, b_ in ZY_HANT_POST: t = t.replace(a_, b_)
+            t = t.replace(ZY_HANT_MARK, "")
         for i, w in enumerate(KEEP): t = t.replace(f"\ue002{i}\ue003", w)
         t = re.sub("\ue012(\\d+)\ue013", lambda m: DK[int(m.group(1))], t)
         t = re.sub(r'(href|action|src)="/(?!zh-hant/)([^"]*)"', lambda m: m.group(0) if m.group(2).startswith(("assets/", "yuanye/", "style.css", "data/", "og/", "gushi/img/", "duben/")) else f'{m.group(1)}="/zh-hant/{m.group(2)}"', t)
