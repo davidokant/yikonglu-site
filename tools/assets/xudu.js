@@ -24,7 +24,8 @@
     go: "Continue reading", last: "Last read", prog: "{n} of {t} chapters read", priv: "No sign-in, no personal data, no interruptions.", move: "Move progress", mvh: "This makes a private link. Open it in a browser on your other phone or computer and your progress comes along. No sign-in.", cpy: "Copy link", snd: "Send to myself…", cls2: "Close", clear: "Clear", copied: "Link copied. Open it on your other device to bring your progress along.", imported: "Reading progress imported.", ago: ["just now", "{n} min ago", "{n} h ago", "{n} d ago"], sure: "Clear reading progress on this device?", stk: "{n}-day reading streak", std: "read a chapter today to keep it going"
   });
   // 11-20 主人：“上次读到”一栏显示累计读了多少分钟（只算页面在前台、一分钟内有翻动或操作的时间；只存本机）
-  T.min = ({ "zh-Hant": "在這台裝置上，你已讀《{b}》{m}", zh: "在这台设备上，你已读《{b}》{m}", ja: "この端末で『{b}』を{m}読みました", ko: "이 기기에서 《{b}》을(를) {m} 읽었습니다", fr: "Sur cet appareil : {m} de lecture", es: "En este dispositivo: {m} de lectura", de: "Auf diesem Gerät: {m} gelesen", vi: "Trên thiết bị này, bạn đã đọc {m}", id: "Di perangkat ini, Anda sudah membaca {m}", ru: "На этом устройстве: {m} чтения" })[HANT ? "zh-Hant" : ZH ? "zh" : lang.slice(0, 2)] || "On this device: {m} of reading";
+  // 11-21 主人：读别的书也算进去，所以不说读《论语》几分钟，只说读古籍几分钟（各书时间合计）
+  T.min = ({ "zh-Hant": "在這台裝置上，你已讀古籍{m}", zh: "在这台设备上，你已读古籍{m}", ja: "この端末で古典を{m}読みました", ko: "이 기기에서 고전을 {m} 읽었습니다", fr: "Sur cet appareil : {m} de lecture des classiques", es: "En este dispositivo: {m} leyendo clásicos", de: "Auf diesem Gerät: {m} Klassiker gelesen", vi: "Trên thiết bị này, bạn đã đọc kinh điển {m}", id: "Di perangkat ini, Anda sudah membaca kitab klasik {m}", ru: "На этом устройстве: {m} чтения классики" })[HANT ? "zh-Hant" : ZH ? "zh" : lang.slice(0, 2)] || "On this device: {m} reading the classics";
   function mins(sec) {
     var m = Math.floor(sec / 60), h = Math.floor(m / 60), r = m % 60;
     if (ZH) return h ? " <b>" + h + "</b> " + (HANT ? "小時" : "小时") + (r ? " <b>" + r + "</b> " + (HANT ? "分鐘" : "分钟") : "") : " <b>" + m + "</b> " + (HANT ? "分鐘" : "分钟");
@@ -140,7 +141,7 @@
     d.innerHTML = '<a class="xdgo" href="' + L.p + (bs._y > 0.05 ? "#xd-y" : "") + '"><span>' + T.last + "：" + name + " · " + esc(L.no) + "<br><b>" + esc(L.ti) + '</b></span><span class="xdarr">' + T.go + " →</span></a>"
       + (t ? '<div class="xdprog" title="' + fmt(T.prog, { n: n, t: t }) + '"><i style="width:' + Math.min(100, n / t * 100).toFixed(1) + '%"></i></div>' : "")
       + (function () { var k = streak(S.d); return k.n >= 2 ? '<div class="xdstk"><b>' + fmt(T.stk, { n: k.n }) + "</b>" + (k.today ? "" : "<span> · " + T.std + "</span>") + "</div>" : "" })()
-      + ((bs.sec || 0) >= 60 ? '<div class="xdmin">' + fmt(T.min, { b: name, m: mins(bs.sec) }) + "</div>" : "")
+      + (function () { var all = 0; for (var k in S.b) all += S.b[k].sec || 0; return all >= 60 ? '<div class="xdmin">' + fmt(T.min, { m: mins(all) }) + "</div>" : "" })()
       + '<a class="xdplan" hidden></a>'
       + '<div class="xdmeta"><span>' + ago(L.ts) + (t ? " · " + fmt(T.prog, { n: n, t: t }) : "") + '</span><button type="button" class="xdmv">' + T.move + '</button><button type="button" class="xdcl">' + T.clear + "</button><span>" + T.priv + "</span></div>";
     d.querySelector(".xdmv").onclick = function () { movePanel(d) };
