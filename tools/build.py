@@ -1507,6 +1507,54 @@ def yxl_counts(D):
     eps = len(eps) + len({DDJ_EPS[str(c)].get("youtube") for c in dv})
     return books, zi, eps
 
+YXL_DAY_FILE = os.environ.get("YK_YXL_DAY_FILE") or "/mnt/project-files/一孔学-内-自媒体/数据/搜索位次/找到分-每日.json"  # 每天一条（score.py 写）
+
+def yxl_hist_line(hist):
+    """旧画法：每周一点（没有每日数据时退回用）。"""
+    if len(hist) >= 2:
+        W, H = 320, 60; mx = max(max(h["score"] for h in hist), 1)
+        pts = " ".join(f"{10 + i * (W - 20) / (len(hist) - 1):.1f},{H - 8 - h['score'] / mx * (H - 16):.1f}" for i, h in enumerate(hist))
+        svg = f'<svg class="yxline" viewBox="0 0 {W} {H}" width="{W}" height="{H}" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="2" points="{pts}"/>' + "".join(f'<circle cx="{pt.split(",")[0]}" cy="{pt.split(",")[1]}" r="3" fill="currentColor"/>' for pt in pts.split()) + "</svg>"
+        return svg + f'<small>{hist[0]["week"]} 起，每周一点</small>'
+    if hist:
+        return f'<svg class="yxline" viewBox="0 0 320 60" width="320" height="60" aria-hidden="true"><circle cx="20" cy="30" r="4" fill="currentColor"/></svg><small>{hist[0]["week"][:7]} 从 {hist[0]["score"]} 分起步</small>'
+    return ""
+
+def yxl_week_line(y):
+    """主人 11-21 定：找到分折线画最近七天、每天一点，画“已测章平均”（没测完的平台只按已测章求平均，跨天可比）。
+    缺采的日子不补数：空心点放底线、标“未采”，线在那里断开；数据换周处画虚线（按每日记录里的 week，不按日历周一）。"""
+    import datetime as _dt
+    try: D = json.load(open(YXL_DAY_FILE, encoding="utf-8"))
+    except Exception: return ""
+    end = y.get("updated") or (max(D) if D else None)
+    if not end: return ""
+    e = _dt.date.fromisoformat(end); days = [(e - _dt.timedelta(days=6 - i)).isoformat() for i in range(7)]
+    vals = [(D.get(d) or {}).get("adj") for d in days]
+    if sum(v is not None for v in vals) < 2: return ""
+    W, H, L, R, T, B = 320, 96, 18, 18, 16, 22
+    mx = max(max(v for v in vals if v is not None), 1); x = lambda i: L + i * (W - L - R) / 6; yy = lambda v: H - B - v / mx * (H - T - B)
+    g = ""; seg = []
+    def flush():
+        nonlocal g
+        if len(seg) >= 2: g += f'<polyline fill="none" stroke="currentColor" stroke-width="2" points="{" ".join(seg)}"/>'
+        seg.clear()
+    for i, (d, v) in enumerate(zip(days, vals)):
+        wk = (D.get(d) or {}).get("week"); pw = next(((D.get(q) or {}).get("week") for q in reversed(days[:i]) if D.get(q)), None)
+        if i and wk and pw and wk != pw:
+            xb = (x(i - 1) + x(i)) / 2; g += f'<line x1="{xb:.1f}" y1="{T}" x2="{xb:.1f}" y2="{H - B}" stroke="currentColor" stroke-opacity=".35" stroke-dasharray="3 3"/><text x="{xb + 3:.1f}" y="{H - B - 2}" font-size="9" fill="currentColor" fill-opacity=".6">新一周</text>'
+        if v is None: flush(); continue
+        seg.append(f"{x(i):.1f},{yy(v):.1f}")
+    flush()
+    for i, (d, v) in enumerate(zip(days, vals)):
+        lab = f'<text x="{x(i):.1f}" y="{H - 6}" font-size="9" text-anchor="middle" fill="currentColor" fill-opacity=".6">{d[5:]}</text>'
+        if v is None:
+            g += f'<circle cx="{x(i):.1f}" cy="{H - B:.1f}" r="3" fill="none" stroke="currentColor" stroke-opacity=".5"/><text x="{x(i):.1f}" y="{H - B - 6:.1f}" font-size="9" text-anchor="middle" fill="currentColor" fill-opacity=".6">未采</text>' + lab
+        else:
+            g += f'<circle cx="{x(i):.1f}" cy="{yy(v):.1f}" r="3" fill="currentColor"/><text x="{x(i):.1f}" y="{yy(v) - 6:.1f}" font-size="9" text-anchor="middle" fill="currentColor">{v:.1f}</text>' + lab
+    last = D.get(days[-1]) or {}; ms = (last.get("measured") or {}).get("yt")
+    note = "最近七天，每天一点，按已测章平均画" + (f"（YouTube 本周已测 {ms}/{last.get('chapters')} 章）" if ms else "") + "；大字找到分按全部章算，未测章计 0"
+    return f'<svg class="yxline" viewBox="0 0 {W} {H}" width="{W}" height="{H}" aria-hidden="true">{g}</svg><small>{note}</small>'
+
 def yxl_books(books, P):
     """找到分按书分（主人 11-14）：每本书一行（书分＝该书各平台分的平均），点开看各平台分和前 20 条里找得到的章。还没开测的书只列书名。"""
     def bar(sc): return f'<div class="bar"><i style="width:{min(max(float(sc), 0), 100):g}%"></i></div>'
@@ -1549,14 +1597,7 @@ def yxl_block(L, D, P, full=False):
         ms = pf.get("measured"); mtx = f'<small>本周已测 {ms}/{y.get("chapters")} 章</small>' if pf.get("partial") and ms is not None and y.get("chapters") else ""
         rows += f'<div class="row"><span>{esc(pf["name"])}{mtx}</span><div class="bar"><i style="width:{min(max(float(sc), 0), 100):g}%"></i></div><em>{sc}{shs}</em></div>'
     hist = [h for h in y.get("history", []) if h.get("score") is not None]; score = y.get("score")
-    if len(hist) >= 2:
-        W, H = 320, 60; mx = max(max(h["score"] for h in hist), 1)
-        pts = " ".join(f"{10 + i * (W - 20) / (len(hist) - 1):.1f},{H - 8 - h['score'] / mx * (H - 16):.1f}" for i, h in enumerate(hist))
-        svg = f'<svg class="yxline" viewBox="0 0 {W} {H}" width="{W}" height="{H}" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="2" points="{pts}"/>' + "".join(f'<circle cx="{pt.split(",")[0]}" cy="{pt.split(",")[1]}" r="3" fill="currentColor"/>' for pt in pts.split()) + "</svg>"
-        trend = svg + f'<small>{hist[0]["week"]} 起，每周一点</small>'
-    elif hist:
-        trend = f'<svg class="yxline" viewBox="0 0 320 60" width="320" height="60" aria-hidden="true"><circle cx="20" cy="30" r="4" fill="currentColor"/></svg><small>{hist[0]["week"][:7]} 从 {hist[0]["score"]} 分起步</small>'
-    else: trend = ""
+    trend = yxl_week_line(y) or yxl_hist_line(hist)
     if y.get("books"): rows = yxl_books(y["books"], P)
     find = "" if score is None else (f'<div class="yxfind"><h3>在平台上搜一句原文，能找到一孔录吗</h3>{rows}'
             f'<div class="yxscore"><b>找到分 <strong>{score}</strong></b>' + (f'<b>占比 <strong>{y["share"]}%</strong></b>' if y.get("share") is not None else "") + f'{trend}</div>'
