@@ -248,7 +248,7 @@
   "ch_open_all": "Mở tất cả",
   "ch_close_all": "Thu gọn tất cả",
   "cta_db_p": "Mới: trọn bộ Luận Ngữ thành một cuốn sách liên kết, 498 chương và 931 mối liên hệ đã kiểm. PDF tiếng Trung, Anh hoặc Nhật.",
-  "cta_wen_p": "Có chỗ chưa hiểu? Hãy viết thư hỏi chúng tôi; mỗi tuần chọn trả lời một, hai câu và ghi tên bạn.",
+  "cta_wen_p": "Thấy chỗ sai? Hãy viết thư cho chúng tôi; mọi đính chính đều công khai. Hãy cho biết bạn muốn đọc cuốn sách nào tiếp theo.",
   "h_motto": "Đọc kinh điển, từng chương một.",
   "h_intro": "Mỗi chương mở đầu bằng nguyên văn, bản dịch và một câu tóm ý, kèm một đoạn video ngắn. Bên dưới, cho người đọc kỹ: lời các nhà chú giải nguyên văn, trang chụp bản gốc và sổ đính chính công khai.",
   "h_start": "Chương cùng đọc hôm nay",
@@ -555,14 +555,17 @@
   ]
  },
  "wen": {
-  "link": "Hỏi chúng tôi",
-  "title": "Hỏi Nhất Khổng Lục",
-  "sub": "Hoan nghênh câu hỏi qua thư",
-  "p": "Có câu hỏi cho Nhất Khổng Lục? Hãy gửi thư với 问一孔 trong tiêu đề. Mỗi tuần chúng tôi chọn một, hai câu để trả lời ở cuối tập sau hoặc trong thư Chủ nhật, ghi theo tên bạn ký.",
-  "only": "Chúng tôi chỉ nhận câu hỏi từ hai nơi: thư gửi từ trang này và tin nhắn tới tài khoản WeChat “一孔录”. Bình luận trên Bilibili, YouTube hay nền tảng khác không nằm trong phần chọn.",
-  "btn": "Viết thư hỏi",
-  "nojs": "Nếu nút không mở được ứng dụng thư, địa chỉ của chúng tôi có ở trang <a href=\"{p}about.html\">Giới thiệu</a>; nhớ ghi 问一孔 trong tiêu đề.",
-  "foot": "Hoặc <a href=\"{p}wen.html\">hỏi chúng tôi qua thư</a>"
+  "link": "Viết thư",
+  "title": "Đính chính và đề xuất sách",
+  "sub": "Báo lỗi, đề xuất sách",
+  "p": "Bạn thấy Nhất Khổng Lục có chỗ sai? Hãy viết thư cho chúng tôi. Sau khi kiểm tra, chúng tôi sẽ sửa và ghi công khai ở trang đính chính, theo tên bạn ký. Bạn muốn Nhất Khổng Lục đọc cuốn sách nào tiếp theo? Cũng hãy viết cho chúng tôi.",
+  "only": "Tin nhắn gửi tài khoản WeChat “一孔录” của chúng tôi cũng được nhận.",
+  "btn": "Báo lỗi",
+  "btn2": "Đề xuất sách tiếp theo",
+  "s1": "勘误 Correction: ",
+  "s2": "下一本 Next book: ",
+  "nojs": "Nếu nút không mở được ứng dụng thư, địa chỉ của chúng tôi có ở trang <a href=\"{p}about.html\">Giới thiệu</a>; ghi “勘误 Correction” hoặc “下一本 Next book” trong tiêu đề.",
+  "foot": "Hoặc <a href=\"{p}about.html#wen\">viết thư cho chúng tôi</a>"
  },
  "privacy": [
   "Quyền riêng tư",

@@ -248,7 +248,7 @@
   "ch_open_all": "Buka semua",
   "ch_close_all": "Tutup semua",
   "cta_db_p": "Baru: seluruh Lunyu sebagai satu buku yang terhubung, 498 bab dan 931 tautan yang diperiksa. PDF dalam bahasa Tionghoa, Inggris, atau Jepang.",
-  "cta_wen_p": "Ada yang belum jelas? Surati kami; tiap minggu kami menjawab satu dua pertanyaan dan mencantumkan nama Anda.",
+  "cta_wen_p": "Menemukan kesalahan? Surati kami; setiap ralat kami umumkan. Beri tahu juga buku apa yang ingin Anda baca berikutnya.",
   "h_motto": "Membaca kitab klasik, bab demi bab.",
   "h_intro": "Setiap bab dimulai dengan teks asli, terjemahan, dan ringkasan satu kalimat, disertai video pendek. Di bawahnya, bagi pembaca cermat: kata-kata para komentator sendiri, halaman faksimile, dan catatan ralat terbuka.",
   "h_start": "Bab baca bersama hari ini",
@@ -555,14 +555,17 @@
   ]
  },
  "wen": {
-  "link": "Tanya kami",
-  "title": "Tanya Yikonglu",
-  "sub": "Pertanyaan diterima lewat surel",
-  "p": "Punya pertanyaan untuk Yikonglu? Surati kami dengan 问一孔 di subjek. Tiap minggu kami memilih satu dua untuk dijawab di akhir episode berikutnya atau dalam surat Minggu kami, atas nama yang Anda tandatangani.",
-  "only": "Kami hanya menerima pertanyaan dari dua tempat: surel dari halaman ini dan pesan ke akun WeChat kami “一孔录”. Komentar di Bilibili, YouTube, atau platform lain tidak ikut dipilih.",
-  "btn": "Tulis pertanyaan",
-  "nojs": "Jika tombol tidak membuka aplikasi surel Anda, alamat kami ada di halaman <a href=\"{p}about.html\">Tentang</a>; tulis 问一孔 di subjek.",
-  "foot": "Atau <a href=\"{p}wen.html\">tanya kami lewat surel</a>"
+  "link": "Surati kami",
+  "title": "Ralat dan usul buku",
+  "sub": "Laporkan kesalahan, usulkan buku",
+  "p": "Menemukan kesalahan di Yikonglu? Surati kami. Setelah kami periksa, kami membetulkannya dan mencatatnya secara terbuka di halaman ralat, atas nama yang Anda tandatangani. Buku apa yang ingin Anda baca bersama Yikonglu berikutnya? Beri tahu kami juga.",
+  "only": "Pesan ke akun WeChat kami “一孔录” juga kami terima.",
+  "btn": "Laporkan kesalahan",
+  "btn2": "Usulkan buku berikutnya",
+  "s1": "勘误 Correction: ",
+  "s2": "下一本 Next book: ",
+  "nojs": "Jika tombol tidak membuka aplikasi surel Anda, alamat kami ada di halaman <a href=\"{p}about.html\">Tentang</a>; tulis “勘误 Correction” atau “下一本 Next book” di subjek.",
+  "foot": "Atau <a href=\"{p}about.html#wen\">surati kami</a>"
  },
  "privacy": [
   "Privasi",

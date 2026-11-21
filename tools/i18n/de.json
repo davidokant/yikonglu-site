@@ -248,7 +248,7 @@
   "ch_open_all": "Alle öffnen",
   "ch_close_all": "Alle schließen",
   "cta_db_p": "Neu: die ganzen Gespräche als ein zusammenhängendes Buch, 498 Kapitel und 931 geprüfte Verbindungen. PDF auf Chinesisch, Englisch oder Japanisch.",
-  "cta_wen_p": "Etwas unklar? Schreiben Sie uns; jede Woche beantworten wir ein, zwei Fragen und nennen Ihren Namen.",
+  "cta_wen_p": "Einen Fehler gefunden? Schreiben Sie uns; jede Korrektur wird öffentlich vermerkt. Sagen Sie uns auch, welches Buch wir als Nächstes lesen sollen.",
   "h_motto": "Die Klassiker lesen, Kapitel für Kapitel.",
   "h_intro": "Jedes Kapitel beginnt mit dem Original, einer Übersetzung und einer Zusammenfassung in einem Satz, dazu ein kurzes Video. Weiter unten, für genaue Leser: die Kommentatoren im Wortlaut, Faksimileseiten und ein öffentliches Korrekturverzeichnis.",
   "h_start": "Gemeinsames Kapitel heute",
@@ -555,14 +555,17 @@
   ]
  },
  "wen": {
-  "link": "Fragen Sie uns",
-  "title": "Yikonglu fragen",
-  "sub": "Fragen willkommen, per E-Mail",
-  "p": "Haben Sie eine Frage an Yikonglu? Schreiben Sie uns mit 问一孔 im Betreff. Jede Woche wählen wir ein, zwei Fragen aus und beantworten sie am Ende der nächsten Folge oder in unserem Sonntagsbrief, unter dem Namen, mit dem Sie unterschreiben.",
-  "only": "Wir nehmen Fragen nur auf zwei Wegen an: per E-Mail über diese Seite und als Nachricht an unser WeChat-Konto „一孔录“. Kommentare auf Bilibili, YouTube oder anderen Plattformen fließen nicht in die Auswahl ein.",
-  "btn": "Frage schreiben",
-  "nojs": "Wenn sich Ihr Mailprogramm nicht öffnet: Unsere Adresse steht auf der Seite <a href=\"{p}about.html\">Über uns</a>; schreiben Sie 问一孔 in den Betreff.",
-  "foot": "Oder <a href=\"{p}wen.html\">fragen Sie uns per E-Mail</a>"
+  "link": "Schreiben Sie uns",
+  "title": "Korrekturen und Buchwünsche",
+  "sub": "Fehler melden, Buch vorschlagen",
+  "p": "Sie haben auf Yikonglu einen Fehler entdeckt? Schreiben Sie uns. Nach Prüfung korrigieren wir ihn und vermerken ihn öffentlich auf der Errata-Seite, unter dem Namen, mit dem Sie unterschreiben. Welches Buch soll Yikonglu als Nächstes lesen? Schreiben Sie uns auch das.",
+  "only": "Nachrichten an unser WeChat-Konto „一孔录“ sind ebenfalls willkommen.",
+  "btn": "Fehler melden",
+  "btn2": "Nächstes Buch vorschlagen",
+  "s1": "勘误 Correction: ",
+  "s2": "下一本 Next book: ",
+  "nojs": "Wenn sich Ihr Mailprogramm nicht öffnet: Unsere Adresse steht auf der Seite <a href=\"{p}about.html\">Über uns</a>; schreiben Sie „勘误 Correction“ oder „下一本 Next book“ in den Betreff.",
+  "foot": "Oder <a href=\"{p}about.html#wen\">schreiben Sie uns</a>"
  },
  "privacy": [
   "Datenschutz",

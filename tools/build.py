@@ -150,7 +150,7 @@ ZH_UI = {
  "about_h1": "这个网站做什么", "about_site": "平台上的视频面向大众，这里面向想核对的人：一孔录讲过的每一句，原文、底本页码、注家原话、读音、我们的读法，都能在这里查到，讲错的地方在<a href=\"kanwu.html\">勘误页</a>公开记录。",
  "about_h2": "我们的承诺", "about_c1": "原文和注家的话都据各家底本原页，页面写明底本。", "about_c2": "先讲注家怎么说，再讲我们怎么读；我们自己的看法明说是一孔录的读法，不冒充古人。", "about_c3": "核不到出处的话不放。发现错误请告诉我们，勘误公开。",
  "about_h3": "在哪里看", "about_where": "YouTube、哔哩哔哩、视频号「一孔录」，播客「一孔录」（Spotify、Apple 播客、小宇宙、喜马拉雅），公众号「一孔录」。",
- "follow_h": "关注一孔录，轻松读经典", "follow_wx": "有问题想问一孔录？关注公众号「一孔录」留言，每周选答，进片署你的网名。", "follow_yt": "在 YouTube 订阅", "foot_src": "引文据各家底本原页，各页注明底本。发现错误请告诉我们，勘误公开。", "foot_where": "YouTube · 哔哩哔哩 · 视频号 · 公众号 · 播客：搜「一孔录」",
+ "follow_h": "关注一孔录，轻松读经典", "follow_wx": "关注公众号「一孔录」。发现错处、想看哪本书，都可以留言告诉我们。", "follow_yt": "在 YouTube 订阅", "foot_src": "引文据各家底本原页，各页注明底本。发现错误请告诉我们，勘误公开。", "foot_where": "YouTube · 哔哩哔哩 · 视频号 · 公众号 · 播客：搜「一孔录」",
  "lang_bar": "", "lang_go": "", "lang_close": "", "translated_note": "",
  "cite_fmt": "一孔录《论语·{book}》{c}“{title}”，{url}，{d} 版。",
  "hant_note": "繁體頁面由簡體自動轉換，用字按台灣習慣；原文以底本原頁為準。",
@@ -250,27 +250,27 @@ REUSE_UI = {
 for _c, _d in REUSE_UI.items(): EXTRA_UI.setdefault(_c, {}).update(_d)
 LC_UI = {  # 一页两层：上半给普通读者，下半给细读核对的读者
  "zh-Hans": {"ch_gist": "这一章讲什么", "ch_deep": "想深究？查证区", "ch_deep_note": "注家原话、不同版本、古书原页、读音和勘误都在这里，一条没删，点开才显示。", "ch_open_all": "全部展开", "ch_close_all": "全部收起",
-   "cta_db_p": "新出《论语》智器重建本：498 章连成一张网，条条对得上原页。PDF，手机能看，也能打印。", "cta_wen_p": "读到不懂的地方？写信问一孔录，每周选答，进片署你的网名。",
+   "cta_db_p": "新出《论语》智器重建本：498 章连成一张网，条条对得上原页。PDF，手机能看，也能打印。", "cta_wen_p": "发现错处，写信告诉我们，勘误公开；想看下一本读什么书，也来信说。",
    "h_motto": "一章一章，把经典原文读明白。", "h_intro": "每章先给原文、白话和一句话读懂，配一段视频；想细读的，往下有注家原话、底本原页和公开勘误，句句可核。",
    "h_start": "今日共读一章", "h_latest": "最新一章", "h_read": "读这一章", "h_recent": "最近讲的", "h_deep_h": "给细读的人", "h_deep_p": "一孔录讲过的每一句，都能在这里核。"},
  "en": {"ch_gist": "What this chapter says", "ch_deep": "Close reading and checking", "ch_deep_note": "For readers who want to go deeper or check our work: key words in the commentary, what other commentators say, textual variants, the commentaries in their own words with facsimile pages, pronunciation and corrections. Tap a heading to open it.", "ch_open_all": "Open all", "ch_close_all": "Close all",
-   "cta_db_p": "New: the whole Analects as one connected book, 498 chapters and 931 checked links. PDF in English, Japanese or Chinese.", "cta_wen_p": "Something you don't understand? Write to us; each week we answer a question or two and credit you by name.",
+   "cta_db_p": "New: the whole Analects as one connected book, 498 chapters and 931 checked links. PDF in English, Japanese or Chinese.", "cta_wen_p": "Found a mistake? Write to us and we correct it in public. Tell us which book you would like us to read next, too.",
    "h_motto": "Reading the classics, one chapter at a time.", "h_intro": "Each chapter starts with the original, a plain rendering and a one-line summary, with a short video. Further down, for close readers: the commentators' own words, facsimile pages and a public errata log.",
    "h_start": "Today’s shared chapter", "h_latest": "Latest chapter", "h_read": "Read this chapter", "h_recent": "Recently read", "h_deep_h": "For close readers", "h_deep_p": "Every line Yikonglu has read aloud can be checked here."},
  "ja": {"ch_gist": "この章の要点", "ch_deep": "精読と確認", "ch_deep_note": "じっくり読みたい方、確かめたい方へ：注の要となる語、諸家の説、異文、各注釈の原文と底本の頁、読み方、正誤。見出しを押すと開きます。", "ch_open_all": "すべて開く", "ch_close_all": "すべて閉じる",
-   "cta_db_p": "新刊『論語』AI再構築版：全498章を一つの網につなぎ、一つずつ原本の頁で確かめました。日本語版 PDF。", "cta_wen_p": "分からないところは？一孔録に質問を。毎週いくつか選んでお答えし、お名前（ハンドル）を記します。",
+   "cta_db_p": "新刊『論語』AI再構築版：全498章を一つの網につなぎ、一つずつ原本の頁で確かめました。日本語版 PDF。", "cta_wen_p": "誤りを見つけたらメールでお知らせください。訂正はすべて公開します。次に読んでほしい本のご希望もどうぞ。",
    "h_motto": "一章ずつ、古典の原文を読み解く。", "h_intro": "各章はまず原文、現代語訳、一行の要点と短い動画から。その下に、精読する方のための注釈者の原文、底本の頁、公開の正誤表があります。",
    "h_start": "今日の共読の章", "h_latest": "最新の章", "h_read": "この章を読む", "h_recent": "最近読んだ章", "h_deep_h": "精読する方へ", "h_deep_p": "一孔録が読み上げた一句一句を、ここで確かめられます。"},
  "ko": {"ch_gist": "이 장의 요지", "ch_deep": "깊이 읽기와 확인", "ch_deep_note": "더 깊이 읽거나 확인하려는 분께: 주석의 핵심어, 여러 주석가의 설, 이문, 각 주석의 원문과 저본 쪽, 독음, 정오. 제목을 누르면 펼쳐집니다.", "ch_open_all": "모두 펼치기", "ch_close_all": "모두 접기",
-   "cta_db_p": "새로 나온 《논어》 AI 재구성판: 498장을 하나의 그물로 잇고 하나하나 원본 쪽과 대조했습니다. PDF(중국어·영어·일본어).", "cta_wen_p": "모르는 대목이 있나요? 일공록에 질문하세요. 매주 한두 개를 골라 답하고 닉네임을 밝힙니다.",
+   "cta_db_p": "새로 나온 《논어》 AI 재구성판: 498장을 하나의 그물로 잇고 하나하나 원본 쪽과 대조했습니다. PDF(중국어·영어·일본어).", "cta_wen_p": "틀린 곳을 찾으면 메일로 알려 주세요. 정정은 모두 공개합니다. 다음에 읽었으면 하는 책도 알려 주세요.",
    "h_motto": "한 장씩, 고전 원문을 읽어 냅니다.", "h_intro": "각 장은 원문, 풀이, 한 줄 요지와 짧은 영상으로 시작합니다. 그 아래에는 깊이 읽는 분을 위한 주석가의 원문, 저본 쪽, 공개 정오표가 있습니다.",
    "h_start": "오늘 함께 읽는 장", "h_latest": "최신 장", "h_read": "이 장 읽기", "h_recent": "최근 읽은 장", "h_deep_h": "깊이 읽는 분께", "h_deep_p": "일공록이 읽은 모든 구절은 여기서 확인할 수 있습니다."},
  "fr": {"ch_gist": "Ce que dit ce chapitre", "ch_deep": "Lecture approfondie et vérification", "ch_deep_note": "Pour qui veut lire de près ou vérifier : mots clés du commentaire, avis des autres commentateurs, variantes, commentaires dans leurs propres mots avec les pages de l'édition, prononciation et errata. Touchez un titre pour l'ouvrir.", "ch_open_all": "Tout ouvrir", "ch_close_all": "Tout fermer",
-   "cta_db_p": "Nouveau : les Entretiens entiers comme un seul livre relié, 498 chapitres et 931 liens vérifiés. PDF en chinois, anglais ou japonais.", "cta_wen_p": "Un passage obscur ? Écrivez-nous ; chaque semaine nous répondons à une ou deux questions en citant votre pseudo.",
+   "cta_db_p": "Nouveau : les Entretiens entiers comme un seul livre relié, 498 chapitres et 931 liens vérifiés. PDF en chinois, anglais ou japonais.", "cta_wen_p": "Une erreur ? Écrivez-nous : chaque correction est publiée. Dites-nous aussi quel livre lire ensuite.",
    "h_motto": "Lire les classiques, un chapitre à la fois.", "h_intro": "Chaque chapitre commence par l'original, une traduction et un résumé en une ligne, avec une courte vidéo. Plus bas, pour les lecteurs attentifs : les mots mêmes des commentateurs, les pages de l'édition et un registre public d'errata.",
    "h_start": "Le chapitre du jour, ensemble", "h_latest": "Dernier chapitre", "h_read": "Lire ce chapitre", "h_recent": "Lus récemment", "h_deep_h": "Pour les lecteurs attentifs", "h_deep_p": "Chaque phrase lue par Yikonglu peut être vérifiée ici."},
  "es": {"ch_gist": "Qué dice este capítulo", "ch_deep": "Lectura detenida y comprobación", "ch_deep_note": "Para quien quiera leer a fondo o comprobar: palabras clave del comentario, otros comentaristas, variantes, los comentarios con sus propias palabras y las páginas de la edición, pronunciación y erratas. Toque un título para abrirlo.", "ch_open_all": "Abrir todo", "ch_close_all": "Cerrar todo",
-   "cta_db_p": "Nuevo: las Analectas completas como un solo libro conectado, 498 capítulos y 931 vínculos verificados. PDF en chino, inglés o japonés.", "cta_wen_p": "¿Algo que no entiende? Escríbanos; cada semana respondemos una o dos preguntas y citamos su nombre.",
+   "cta_db_p": "Nuevo: las Analectas completas como un solo libro conectado, 498 capítulos y 931 vínculos verificados. PDF en chino, inglés o japonés.", "cta_wen_p": "¿Ha visto un error? Escríbanos: cada corrección se publica. Díganos también qué libro leer después.",
    "h_motto": "Leer los clásicos, capítulo a capítulo.", "h_intro": "Cada capítulo empieza con el original, una traducción y un resumen de una línea, con un vídeo breve. Más abajo, para lectores atentos: las palabras exactas de los comentaristas, las páginas de la edición y un registro público de erratas.",
    "h_start": "Capítulo compartido de hoy", "h_latest": "Último capítulo", "h_read": "Leer este capítulo", "h_recent": "Leídos recientemente", "h_deep_h": "Para lectores atentos", "h_deep_p": "Cada frase que Yikonglu ha leído se puede comprobar aquí."},
 }
@@ -1706,7 +1706,7 @@ PRIVACY = {
 PRIVACY["zh-Hant"] = PRIVACY["zh-Hans"]
 
 DATE_TOK, DATE_TOK_SL = "\ue0f0DATE\ue0f1", "\ue0f0DATESL\ue0f1"
-FP_ALIAS = {"读本": "免费读本", "讀本": "免費讀本"}  # 11-20 主人：“免费读本”改名“读本”；章页里的读本卡只是换名，不算正文变动，指纹照旧名算
+FP_ALIAS = {"读本": "免费读本", "讀本": "免費讀本", **{_k: _v for _v, _k in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fp_alias.json"), encoding="utf-8"))}}  # 11-21 问一孔改“来信”：章页卡片换字不算正文变动  # 11-20 主人：“免费读本”改名“读本”；章页里的读本卡只是换名，不算正文变动，指纹照旧名算
 def content_fp(text):
     """11-20（谷歌收录查因“甲”）：页面“内容指纹”只算 <main> 里看得见的文字。改模板、改版式、换脚本、调样式、合并折叠块都不算正文变动，
     站点地图 lastmod 不跟着换；正文字句真改了才换日期。日期字样（页面上的“最后核对”日）也剔掉，免得日期自己牵动指纹。"""
@@ -3264,8 +3264,8 @@ def build_lang(L, D, write):
 <h2 id="zhuanzai">{L.t("about_h4")}</h2><ul><li>{L.t("about_r1")}</li><li>{L.t("about_r2")}</li><li>{L.t("about_r3")}</li><li>{L.t("about_r4")}</li><li>{L.t("about_r5", p=P)}</li></ul><p class="mailp">{MAIL}</p><p class="outl"><a class="btn yt" href="https://www.youtube.com/@yikonglu?sub_confirmation=1" target="_blank" rel="noopener">▶ YouTube</a> <a class="btn ghost" href="https://space.bilibili.com/18385461" target="_blank" rel="noopener">Bilibili</a></p></main>'''
     if L.code.startswith("zh"): about = about_zh(L, D, P)  # 11-09 主人：关于页并入“一孔是谁”，一孔自述；外文仍用旧版
     W = lang_tab(WEN, L.code)  # 问一孔（并进关于页，11-14 主人）：按钮由脚本拼出邮箱，源码不露明文
-    wen_sec = (f'<section class="wen" id="wen"><h2>{W["title"]}</h2><p>{W["p"]}</p><p><a class="btn" id="wenbtn" href="#wen">{W["btn"]}</a></p><p class="note">{W["only"]}</p></section>'
-               '<script>(function(){var a=document.getElementById("wenbtn"),u=["yikonglu","99"].join(""),d=["gmail","com"].join(".");a.href="mai"+"lto:"+u+String.fromCharCode(64)+d+"?subject="+encodeURIComponent("\\u95ee\\u4e00\\u5b54\\uff1a");})();</script>')
+    wen_sec = (f'<section class="wen" id="wen"><h2>{W["title"]}</h2><p>{W["p"]}</p><p><a class="btn" id="wenbtn" href="#wen" data-s="{esc(W["s1"])}">{W["btn"]}</a> <a class="btn ghost" id="wenbtn2" href="#wen" data-s="{esc(W["s2"])}">{W["btn2"]}</a></p><p class="note">{W["only"]}</p></section>'
+               '<script>(function(){var u=["yikonglu","99"].join(""),d=["gmail","com"].join(".");["wenbtn","wenbtn2"].forEach(function(i){var a=document.getElementById(i);a.href="mai"+"lto:"+u+String.fromCharCode(64)+d+"?subject="+encodeURIComponent(a.dataset.s);});})();</script>')
     i = about.rfind("</main>")
     about = about[:i] + wen_sec + about[i:] if i >= 0 else about + wen_sec
     write("about.html", page(L, L.t("about_title"), L.t("about_p")[:120], "about.html", about)); urls.append(f"{DOMAIN}/{L.prefix}about.html")
