@@ -1,10 +1,17 @@
 {
- "updated": "2026-11-22",
+ "updated": "2026-11-23",
  "N": 20,
  "chapters": 257,
  "score": 2.9,
- "share": 1.23,
+ "share": 1.24,
  "platforms": [
+  {
+   "key": "yt",
+   "name": "YouTube",
+   "score": 7.5,
+   "share": 1.24,
+   "measured": 257
+  },
   {
    "key": "gsc",
    "name": "谷歌",
@@ -18,14 +25,6 @@
    "score": 0.5,
    "share": null,
    "measured": 4
-  },
-  {
-   "key": "yt",
-   "name": "YouTube",
-   "score": 7.5,
-   "share": 1.23,
-   "measured": 257,
-   "partial": true
   }
  ],
  "history": [
@@ -42,7 +41,7 @@
   {
    "week": "2026-11-16",
    "score": 2.9,
-   "share": 1.23
+   "share": 1.24
   }
  ],
  "books": [
@@ -57,7 +56,7 @@
      "name": "YouTube",
      "score": 7.5,
      "measured": 257,
-     "partial": true
+     "partial": false
     },
     {
      "key": "gsc",
@@ -427,7 +426,7 @@
     },
     {
      "ch": "11.5",
-     "yt": 12
+     "yt": 7
     }
    ]
   },
@@ -450,15 +449,15 @@
  ],
  "index": {
   "bing": {
-   "indexed": 3,
+   "indexed": 4,
    "total": 10,
-   "date": "/Date(1795132800000)/"
+   "date": "/Date(1795219200000)/"
   }
  },
  "draft_change": {
   "ratio": 16.3,
   "episodes": 70,
   "segments": 2094,
-  "updated": "2026-11-21"
+  "updated": "2026-11-22"
  }
 }
