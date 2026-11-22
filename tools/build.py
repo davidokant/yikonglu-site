@@ -327,11 +327,11 @@ BANBEN = [
 # 书目：按传统类目分组、各类目内按传统次序排，不按我们开讲的顺序；已开讲的 live=True，其余暗着
 BOOK_GROUPS = [
  ("g13", [("zhouyi", "周易"), ("shangshu", "尚书"), ("shijing", "诗经"), ("zhouli", "周礼"), ("yili", "仪礼"), ("liji", "礼记"), ("zuozhuan", "春秋左传"),
-          ("gongyang", "春秋公羊传"), ("guliang", "春秋谷梁传"), ("lunyu", "论语"), ("xiaojing", "孝经"), ("erya", "尔雅"), ("mengzi", "孟子"), ("daxue", "大学"), ("zhongyong", "中庸")]),  # 11-23 主人：《大学》《中庸》朱子章句本单列，与论语、孟子并列；这一行改叫“儒家”
+          ("gongyang", "春秋公羊传"), ("guliang", "春秋谷梁传"), ("lunyu", "论语"), ("xiaojing", "孝经"), ("erya", "尔雅"), ("mengzi", "孟子"), ("daxue", "大学"), ("zhongyong", "中庸"), ("xunzi", "荀子"), ("jinsilu", "近思录"), ("chuanxilu", "传习录")]),  # 11-23 主人点卡：荀子、近思录、传习录从子部挪进儒家  # 11-23 主人：《大学》《中庸》朱子章句本单列，与论语、孟子并列；这一行改叫“儒家”
  ("gdao", [("daodejing", "道德经"), ("zhuangzi", "庄子"), ("liezi", "列子"), ("huainanzi", "淮南子"), ("yinfujing", "黄帝阴符经"), ("qingjingjing", "清静经"), ("baopuzi", "抱朴子"), ("ganyingpian", "太上感应篇")]),  # 11-13 主人定佛道两格补全
  ("gfo", [("xinjing", "心经"), ("jingang", "金刚经"), ("tanjing", "六祖坛经"), ("sishierzhang", "四十二章经"), ("baiyu", "百喻经"), ("weimojie", "维摩诘经"), ("fahua", "法华经"), ("amituo", "阿弥陀经"), ("dizang", "地藏经"), ("lengyan", "楞严经")]),
  ("gshi", [("guoyu", "国语"), ("zhanguoce", "战国策"), ("shiji", "史记"), ("hanshu", "汉书"), ("houhanshu", "后汉书"), ("sanguozhi", "三国志"), ("zizhi", "资治通鉴"), ("zhenguan", "贞观政要")]),  # 11-13 主人定史部、子部补全
- ("gzi", [("xunzi", "荀子"), ("jinsilu", "近思录"), ("chuanxilu", "传习录"), ("sunzi", "孙子兵法"), ("hanfeizi", "韩非子"), ("mozi", "墨子"), ("lvshi", "吕氏春秋"), ("yanshi", "颜氏家训"), ("shishuo", "世说新语"), ("caigentan", "菜根谭")]),
+ ("gzi", [("sunzi", "孙子兵法"), ("hanfeizi", "韩非子"), ("mozi", "墨子"), ("lvshi", "吕氏春秋"), ("yanshi", "颜氏家训"), ("shishuo", "世说新语"), ("caigentan", "菜根谭")]),
  ("gmeng", [("sanzijing", "三字经")]),  # 11-08 主人定《三字经》进一期（论语之后、道德经之前，约 30 集）；底本副本 数据/网站素材/_三字经/  # 子部：不好归类的书先收这里，按四库子部次序 儒家→兵家
 ]
 # 11-21 主人：书架封面按学派分色，儒家仍墨绿；子部里儒家的书归儒，其余合成“诸子”一色；周易归儒（十三经之首）
