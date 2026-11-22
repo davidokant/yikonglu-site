@@ -62,8 +62,8 @@
       // 玉璧的环带
       const ring = r => { for (let k = 0; k <= 96; k++) { const a = k / 96 * 6.2832, q = pp(r * Math.cos(a), r * Math.sin(a), 0); k ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); } ctx.closePath(); };
       const bandA = clamp(intro / .35);
-      ctx.beginPath(); ring(st.R + 46); ring(st.R - 46); ctx.fillStyle = `rgba(120,205,172,${.055 * bandA})`; ctx.fill('evenodd');
-      ctx.lineWidth = 1; ctx.strokeStyle = `rgba(150,225,195,${.13 * bandA})`; ctx.beginPath(); ring(st.R + 46); ctx.stroke(); ctx.beginPath(); ring(st.R - 46); ctx.stroke();
+      for (const w of [58, 44, 32, 20, 10]) { ctx.beginPath(); ring(st.R + w); ring(st.R - w); ctx.fillStyle = `rgba(120,205,172,${.016 * bandA})`; ctx.fill('evenodd'); } // 11-22 光带边缘渐淡
+      // 11-22 主人：去掉两圈轨道线，只留淡光带，像银河
       const eA = clamp((intro - .7) / .3), hA = clamp((intro - .55) / .3), sk = clamp(P.base / .72, .6, 1.15), small = W < 640;
       // 连线
       const ctrl = (a, b) => [P.cx + ((a.sx + b.sx) / 2 - P.cx) * .25, P.oy + ((a.sy + b.sy) / 2 - P.oy) * .25];
