@@ -2749,6 +2749,23 @@ def mz_xt_gx(gx):
     st = dict(raw.get("stats", {})); st["书外互见"] = st.get("书外互见", 0) - len(old) + len(add)
     return dict(gx, raw=dict(raw, rels=[r for r in raw["rels"] if r not in old] + add, stats=st))
 
+def dxzy_xt_gx(gx):
+    """11-23 主人“大学中庸也在星图上建好连接”：两书论语互见-v0.json 里明引（出处、注家引）作“书外互见 · 大学／中庸”进中文星图；一孔录对读“相通”不画（同孟子口径）。"""
+    if not DXZY_LIVE or not gx or "raw" not in gx: return gx
+    _s = __import__("opencc").OpenCC("t2s").convert; rank = {"出处": 0, "注家引": 1}; add = []
+    for sl in sorted(DXZY_LIVE):
+        B = DXZY[sl]; bk = DXZY_META[sl]["zh"]; best = {}
+        for r in B["lyhj"]:
+            if r.get("kind") not in rank: continue
+            k = (str(r["zhang"]), str(r["c"]))
+            if k not in best or rank[r["kind"]] < rank[best[k]["kind"]]: best[k] = r
+        for (z, c), r in best.items():
+            zm = _s((B["qw"].get(z) or {}).get("章名", "")).replace("\u3000", " ")
+            add.append({"a": f"lunyu:{c}", "b": f"{DXZY_META[sl]['pf'].rstrip('.')}:{z}", "type": "书外互见", "kind": r["kind"], "book": bk, "quote": r.get("q", ""),
+                        "txt": f"《{bk}》{zm}｜《论语》“{r.get('q', '')}”", "src": r.get("src", ""), "from": "dxzy_lyhj"})
+    raw = gx["raw"]; st = dict(raw.get("stats", {})); st["书外互见"] = st.get("书外互见", 0) + len(add)
+    return dict(gx, raw=dict(raw, rels=list(raw["rels"]) + add, stats=st))
+
 _ZYXT = {}
 def zy_xt_gx_fl(gx, code, gxtr):
     """11-22 英日星图加周易：中文那份 304 条（zy_xt_gx）各给一个序号 zy<n>，书名、关系注的英日文放进 gxtr["X"]（xingtu.xo() 按 _i 查）。"""
@@ -4488,7 +4505,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
         urls.append(f"{DOMAIN}/{L.prefix}jihua/bairi.html")
         GX.RWID = GX.rw_ids(GXD, D.get("renwu"))  # 关系图人物 id → 人物卡 id
         urls += GX.build(L, GXD, write, page, P, href, gx_short, PIAN, pubset, DOMAIN)
-        XT.write_data(write, XT.data(mz_xt_gx(zy_xt_gx(GXD)), PIAN, pubset, href, ctitle, tx, D["lx"]))  # 11-21 主人：星图加上周易关系（只进星图，不动论语章页）
+        XT.write_data(write, XT.data(dxzy_xt_gx(mz_xt_gx(zy_xt_gx(GXD))), PIAN, pubset, href, ctitle, tx, D["lx"]))  # 11-21 主人：星图加上周易关系（只进星图，不动论语章页）
         urls += LX.build(L, D, D["lx"], write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, json.load(open(ZD_FILE, encoding="utf-8"))["per"] if os.path.exists(ZD_FILE) else {})
         LX.write_data(L, D["lx"], globals().get("OUT_ROOT"), href, tx, D["baihua"])
         write("jieru/index.html", jieru_page(L, P)); urls.append(f"{DOMAIN}/{L.prefix}jieru/")
@@ -4601,6 +4618,9 @@ if(!ks.length){{N.hidden=false;return}}return Promise.all(ks.map(function(r){{re
 a.sort(function(x,y){{return x[0]<y[0]?-1:1}});a.forEach(function(x){{var li=document.createElement("li"),e=document.createElement("a");e.href=x[0];e.textContent=x[1];li.appendChild(e);O.appendChild(li)}})}})}})}}).catch(function(){{N.hidden=false}})}})();</script>'''
     write("offline.html", page(L, f'{L.t("off_h")}｜一孔录', L.t("off_p"), "offline.html", body, head_extra='<meta name="robots" content="noindex">'))
     return urls
+
+# 11-23 主人点卡“只改网站，稿子交论语线程”：讲稿引文取处里朱注字形与底本原页不一的，网站页面照原页回正（稿子由论语线程恢复出片时改）
+DIZI_FIX = {"lunyu/zi-lu/10.html": [(x + y, x.replace("期", "朞") + y) for x, y in (("期月", "谓周一岁"), ("期月，", "谓周一岁"), ("期月", "謂周一歲"), ("期月，", "謂周一歲"))] + [("期月謂週一歲", "朞月謂周一歲"), ("期月，謂週一歲", "朞月，謂周一歲")]}
 
 def write_data(D, outdir):
     """开放数据：每篇一份 JSON 和 CSV（核对用的底子：原文、白话、引文出处、皇疏首句；11-17 主人定撤读音，免得成批拿去做配音；不含一孔录读法与现代注本引文）。"""
@@ -4978,6 +4998,7 @@ def main(zdir, outdir, kanwu=None):
             p = os.path.join(outdir, prefix, rel); os.makedirs(os.path.dirname(p) or outdir, exist_ok=True)
             if prefix in ("", "zh-hant"): text = daiyan(rel, text)
             text = post(text) if post else text
+            for a_, b_ in DIZI_FIX.get(rel, []): text = text.replace(a_, b_)
             if rel.endswith(".html"): text = rare_fix(text, prefix == "zh-hant")
             key = (prefix + "/" if prefix else "") + rel
             h = content_fp(text)  # 11-20 收录：只认 <main> 里的正文文字，模板、样式、脚本、版式改动都不换修改日期
