@@ -99,6 +99,10 @@
    [
     "2026-11-14",
     "按近来的做法改写：先做诸家底册再开讲、三本书的底本、原页角标与章号、复制带出处、《论语》互见；公开的数字改为按书算；许可改为 CC BY 4.0。"
+   ],
+   [
+    "2026-11-23",
+    "加错误记录与自动检查两项数字。"
    ]
   ],
   "bth": [
@@ -116,7 +120,9 @@
   "lyhj": "{n} 条",
   "chg": "{r}%<br><small>{e} 集 {s} 段，改 {c} 段</small>",
   "chg0": "还没出片",
-  "u_ji": " 集"
+  "u_ji": " 集",
+  "ect": "错误记录：{n} 条。每查出一个错，就记下现象、原因、新加的检查，并把四本书和短片里同类的地方回扫一遍。",
+  "chk": "自动检查：{n} 项。能写成程序的错，都写成出片前的自动检查，一项不过，片子不上台。"
  },
  "en": {
   "link": "How we verify",
@@ -218,6 +224,10 @@
    [
     "2026-11-14",
     "Rewritten to match current practice: a commentators' workbook before each book begins, base editions for all three books, page-image marks and chapter numbers, sources on copy, cross-references to the Analects; published numbers now kept per book; license changed to CC BY 4.0."
+   ],
+   [
+    "2026-11-23",
+    "Added two numbers: the error log and the automatic checks."
    ]
   ],
   "bn": [
@@ -240,7 +250,9 @@
   "lyhj_main": "Main classic",
   "lyhj": "{n} entries",
   "chg": "{r}%<br><small>{e} episodes, {s} segments, {c} changed</small>",
-  "chg0": "No videos yet"
+  "chg0": "No videos yet",
+  "ect": "Error log: {n} entries. Each time we find a mistake, we record what went wrong, why, and the new check we added, then sweep the four books and the short videos for the same kind of mistake.",
+  "chk": "Automatic checks: {n}. Every mistake that can be caught by a program becomes an automatic check run before a video is released; if any check fails, the video does not go out."
  },
  "ja": {
   "link": "検証の方法",
@@ -342,6 +354,10 @@
    [
     "2026-11-14",
     "現在のやり方に合わせて改稿：講読前に諸家の台帳を作ること、三冊の底本、原頁の表示と章番号、コピー時の出典、『論語』互見。公開する数字を書ごとに改め、ライセンスを CC BY 4.0 に変更。"
+   ],
+   [
+    "2026-11-23",
+    "誤りの記録と自動点検の二つの数字を追加。"
    ]
   ],
   "bn": [
@@ -364,7 +380,9 @@
   "lyhj_main": "主経",
   "lyhj": "{n} 件",
   "chg": "{r}%<br><small>{e} 回 {s} 段中 {c} 段</small>",
-  "chg0": "動画未公開"
+  "chg0": "動画未公開",
+  "ect": "誤りの記録：{n} 件。誤りを一つ見つけるたびに、現象、原因、新たに加えた点検を書き留め、四冊の書と短編動画の同類の箇所を見直します。",
+  "chk": "自動点検：{n} 項目。プログラムで見つけられる誤りは、すべて公開前の自動点検にしました。一つでも通らなければ、その動画は公開しません。"
  },
  "ko": {
   "link": "검증 방법",
@@ -466,6 +484,10 @@
    [
     "2026-11-14",
     "현재 방식에 맞춰 고쳐 씀: 강독 전 제가 대장 작성, 세 책의 저본, 원문 쪽 표시와 장 번호, 복사 시 출처, 『논어』 호견. 공개 숫자를 책별로 바꾸고 라이선스를 CC BY 4.0으로 변경."
+   ],
+   [
+    "2026-11-23",
+    "오류 기록과 자동 점검 두 가지 숫자 추가."
    ]
   ],
   "bn": [
@@ -488,7 +510,9 @@
   "lyhj_main": "주경",
   "lyhj": "{n}건",
   "chg": "{r}%<br><small>{e}회 {s}단락 중 {c}단락</small>",
-  "chg0": "영상 없음"
+  "chg0": "영상 없음",
+  "ect": "오류 기록: {n}건. 오류를 하나 찾을 때마다 현상, 원인, 새로 추가한 점검을 기록하고, 네 책과 짧은 영상에서 같은 유형의 부분을 다시 살핍니다.",
+  "chk": "자동 점검: {n}항목. 프로그램으로 잡을 수 있는 오류는 모두 공개 전 자동 점검으로 만들었습니다. 하나라도 통과하지 못하면 영상을 공개하지 않습니다."
  },
  "fr": {
   "link": "Notre méthode",
@@ -590,6 +614,10 @@
    [
     "2026-11-14",
     "Réécrit selon nos pratiques actuelles : cahier des commentateurs avant chaque livre, éditions de base des trois livres, marques sur les pages et numéros de chapitre, source à la copie, renvois aux Entretiens ; chiffres publiés désormais par livre ; licence passée à CC BY 4.0."
+   ],
+   [
+    "2026-11-23",
+    "Ajout de deux chiffres : le journal des erreurs et les vérifications automatiques."
    ]
   ],
   "bn": [
@@ -612,7 +640,9 @@
   "lyhj_main": "Classique principal",
   "lyhj": "{n} renvois",
   "chg": "{r} %<br><small>{e} épisodes, {s} segments, {c} modifiés</small>",
-  "chg0": "Pas encore de vidéo"
+  "chg0": "Pas encore de vidéo",
+  "ect": "Journal des erreurs : {n} entrées. À chaque erreur trouvée, nous notons ce qui s'est passé, pourquoi, et la vérification ajoutée, puis nous repassons les quatre livres et les vidéos courtes pour le même type d'erreur.",
+  "chk": "Vérifications automatiques : {n}. Toute erreur qu'un programme peut détecter devient une vérification automatique avant la mise en ligne ; si une seule échoue, la vidéo ne sort pas."
  },
  "es": {
   "link": "Cómo verificamos",
@@ -714,6 +744,10 @@
    [
     "2026-11-14",
     "Reescrita según la práctica actual: cuaderno de comentaristas antes de cada libro, ediciones base de los tres libros, marcas en las páginas y números de capítulo, fuente al copiar, referencias a las Analectas; cifras publicadas ahora por libro; licencia cambiada a CC BY 4.0."
+   ],
+   [
+    "2026-11-23",
+    "Se añaden dos cifras: el registro de errores y las comprobaciones automáticas."
    ]
   ],
   "bn": [
@@ -736,6 +770,8 @@
   "lyhj_main": "Clásico principal",
   "lyhj": "{n} entradas",
   "chg": "{r} %<br><small>{e} episodios, {s} segmentos, {c} cambiados</small>",
-  "chg0": "Aún sin vídeos"
+  "chg0": "Aún sin vídeos",
+  "ect": "Registro de errores: {n} entradas. Cada vez que encontramos un error, anotamos qué pasó, por qué y la nueva comprobación añadida, y revisamos los cuatro libros y los vídeos cortos en busca del mismo tipo de error.",
+  "chk": "Comprobaciones automáticas: {n}. Todo error que un programa puede detectar se convierte en una comprobación automática antes de publicar; si una sola falla, el vídeo no se publica."
  }
 }

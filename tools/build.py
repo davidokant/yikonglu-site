@@ -421,6 +421,16 @@ def yxl_merge(y, w):
     except OSError: pass
     return y
 FANGFA = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fangfa.json"), encoding="utf-8"))  # 核验方法页七语文字
+def _ct_num():  # 错误记录＝错题本里“### CT-”标题数；自动检查＝zicha.py 的 CHECKS 项数。读不到就不显示
+    d = "/mnt/project-files/一孔学-内-自媒体/规范/错题本"
+    try:
+        import ast
+        n1 = sum(1 for ln in open(os.path.join(d, "错题本.md"), encoding="utf-8") if ln.startswith("### CT-"))
+        n2 = next(len(x.value.elts) for x in ast.walk(ast.parse(open(os.path.join(d, "zicha.py"), encoding="utf-8").read())) if isinstance(x, ast.Assign) and any(getattr(t, "id", "") == "CHECKS" for t in x.targets))
+        return (n1, n2)
+    except Exception as e:
+        print("错误记录、自动检查数读不到：", e); return (0, 0)
+CT_NUM = _ct_num()
 KAIFANG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "kaifang.json"), encoding="utf-8"))  # 开放数据页：开放与不开放的分界（七语）
 WEN = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "wen.json"), encoding="utf-8"))  # 问一孔页（七语）
 EPIS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "episodes.json"), encoding="utf-8"))
@@ -1410,6 +1420,15 @@ FL_NOIDX_L = ("ko", "fr", "es", "de", "vi", "id", "ru")
 FL_NOIDX = '<meta name="robots" content="noindex,follow">'
 # 11-20 收录查因“乙”：外文杂页（关于、隐私、支持、开放数据、勘误、方法、读本、书院入院）noindex,follow、出站点地图；各语种 search.html 也 noindex。简繁这几页照旧收
 GD_LANMU = [("2026-11-20", "问易", "/wenyi/", "照朱熹《周易本义·筮仪》起一卦，读经文、白话、朱熹注和宋本原页。朱注录文已逐字对过宋本；宋本避讳把“貞”刻作“正”、“恆”刻作“常”，录文回改为原字。")]  # 改动记录里的新栏目
+def _zhanghao():  # 11-23 章号对照（朱注 ↔ 杨伯峻），数据 数据/网站素材/_原文/分章对照表.csv
+    f = os.path.join(GAO_DIR, "_原文", "分章对照表.csv")
+    if not os.path.exists(f): return []
+    import csv
+    return list(csv.DictReader(open(f, encoding="utf-8-sig")))
+ZHANGHAO = _zhanghao()
+ZC_FREE = {"zh": ("不花钱的支持", "不花钱也能帮一孔录。如果哪一章帮你把一句话查明白了，请在你的博客、网站、豆瓣、知乎回答或公众号文章里放一条那一章的链接。新站外面的链接少，搜索引擎就很难找到它；你放的一条链接，就是下一个想查这句话的人找到这里的路。章页上复制原文会自动带出章号和网址，直接贴出去就行。"),
+           "en": ("Support that costs nothing", "You can help Yikonglu without spending anything. If a chapter here helped you make sense of a line, please link to that chapter from your blog, website, forum answer or article. A new site has few links pointing to it, so search engines have a hard time finding it; the link you post is how the next person looking up that line finds their way here. When you copy text from a chapter page, the chapter number and address come with it, so you can paste it straight in."),
+           "ja": ("お金のかからない支援", "お金をかけずに一孔録を助けることもできます。どこかの章で一句の意味がはっきりしたら、ブログやウェブサイト、Q&A サイトの回答、記事などにその章へのリンクを一つ貼ってください。新しいサイトは外からのリンクが少なく、検索エンジンに見つけてもらいにくいのです。あなたの貼るリンク一つが、次にその一句を調べる人がここへたどり着く道になります。章のページで原文をコピーすると、章番号とアドレスが自動で付くので、そのまま貼れます。")}
 MISC_NOIDX = ("about.html", "yinsi.html", "zhichi.html", "kaifang.html", "kanwu.html", "fangfa.html", "duben.html", "shuyuan/ruyuan.html", "gaidong.html")
 def misc_noidx(code, rel): return rel == "search.html" or (not code.startswith("zh") and rel in MISC_NOIDX)
 
@@ -3986,8 +4005,10 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     u = SUPPORT.get("usdt") or {}
     if u.get("address") and L.code != "zh-Hans":  # 加密货币只放外文和繁体页，不放面向大陆的简体页
         order.insert(1, f'<h2>{L.t("zc_usdt")}</h2><p class="usdt"><code>{esc(u["address"])}</code><button class="cp2" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent=\'{L.t("copied")}\'">{L.t("copy")}</button></p><p class="note">{esc(L.t("zc_usdt_net", n=u.get("network", "")))}</p>')
+    _zf = ZC_FREE.get("zh" if L.code.startswith("zh") else L.code)  # 11-23 主人放行（对手调研三改之一）：不花钱的支持＝贴章页链接；只做中英日
+    zc_free = f'<h2>{_zf[0]}</h2><p>{_zf[1]}</p>' if _zf else ""
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("zc_sub")}</span>{L.t("zc_title")}</h1></div></div>
-<main class="wrap narrow prose"><p>{L.t("zc_p")}</p>{"".join(order)}{TM.lu_block() if L.code.startswith("zh") else ""}</main>'''
+<main class="wrap narrow prose"><p>{L.t("zc_p")}</p>{zc_free}{"".join(order)}{TM.lu_block() if L.code.startswith("zh") else ""}</main>'''
     write("zhichi.html", page(L, f'{L.t("zc_title")}｜一孔录', L.t("zc_sub"), "zhichi.html", body)); urls.append(f"{DOMAIN}/{L.prefix}zhichi.html")
     urls += SY.build(L, write, page, ANALYTICS.get("live"), DOMAIN)  # 一孔书院筹备页（11-09）
     urls += WY.build(L, write, page, DOMAIN)  # 问易（11-20 主人准上线试运营，只出简体）
@@ -4021,6 +4042,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
                + "".join(f'<tr><th scope="row">{h}</th>' + "".join(f"<td>{v}</td>" for v in r) + "</tr>" for h, r in zip(F["bth"], _rows))
                + "</tbody></table>")
         if DC: s5 += f'<p><small>{F["s5c"].format(d=DC.get("updated", ""))}</small></p>'
+        if "ect" in F and CT_NUM[0]: s5 += f'<p>{F["ect"].format(n=CT_NUM[0])}</p><p>{F["chk"].format(n=CT_NUM[1])}</p>'  # 11-23 主人放行（对手调研三改之三）：错误记录条数、自动检查项数，生成时现算
     if L.code.startswith("zh") and not HD_OFF:  # 11-16 改动单二：公开核对账本（《论语》），数字全从页面数据现算
         _all = sum(PIAN[p][3] for p in PIAN); _wj = [c for c in D["qw"] if c not in pubset]
         _ct = [x for c in pub for x in gao.get(c, {}).get("cites", [])]
@@ -4096,8 +4118,29 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     for aid, name, rows in BANBEN:
         cards += f'<section class="bbcard" id="{aid}"><h2>{esc(name)}</h2><dl lang="zh-Hans">' + "".join(f"<dt>{L.t(k)}</dt><dd>{v}</dd>" for k, v in rows) + "</dl></section>"
     body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a></p><h1><span class="no">{L.t("bb_sub")}</span>{L.t("bb_title")}</h1></div></div>
-<main class="wrap narrow prose"><p>{L.t("bb_p")}</p>{cards}</main>'''
+<main class="wrap narrow prose"><p>{L.t("bb_p")}</p>{cards}{f'<p><a href="{P}lunyu/zhanghao/">《论语》章号对照：朱熹集注本 498 章与杨伯峻译注本 512 章 →</a></p>' if L.code.startswith("zh") and ZHANGHAO else ""}</main>'''
     write("lunyu/banben/index.html", page(L, f'《论语》{L.t("bb_title")}｜一孔录' if L.code.startswith("zh") else f'{L.t("bb_title")}｜一孔录', L.t("bb_sub"), "lunyu/banben/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/banben/")
+    if L.code.startswith("zh") and ZHANGHAO:  # 11-23 主人放行（对手调研三改之二）：章号对照页，朱注 498 ↔ 杨伯峻 512；只放章号与拆合，不放杨本文字页码
+        _pn = lambda c: PIAN[c.split(".")[0]][0].split("第")[0]
+        def _zrow(r, hl):
+            c, y, k = r["朱注章号"], r["杨伯峻章号"].split("|"), r["同章或拆合"]
+            if k.startswith("朱注一章"): note = f"朱注一章，杨本分作 {'、'.join(y)} 共 {len(y)} 章"
+            elif k.startswith("朱注多章"):
+                sib = [x["朱注章号"] for x in ZHANGHAO if x["杨伯峻章号"] == r["杨伯峻章号"]]
+                note = f"杨本 {y[0]} 一章，朱注分作 {'、'.join(sib)} 共 {len(sib)} 章"
+            else: note = ""
+            return (f'<tr{" class=hl" if hl and note else ""}><td>{_pn(c)}</td><td><a href="{href(c)}">{c}</a></td><td>{"、".join(f"<span>{x}</span>" for x in y)}</td><td>{note}</td></tr>')
+        _th = "<thead><tr><th>篇</th><th>朱注章号</th><th>杨伯峻章号</th><th>拆合</th></tr></thead>"
+        _diff = [r for r in ZHANGHAO if r["同章或拆合"] != "同章"]
+        _n_split = sum(1 for r in _diff if r["同章或拆合"].startswith("朱注一章")); _n_merge = len({r["杨伯峻章号"] for r in _diff if r["同章或拆合"].startswith("朱注多章")})
+        _yang = len({y for r in ZHANGHAO for y in r["杨伯峻章号"].split("|")})
+        body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}shumu/">书目</a> › <a href="{P}lunyu/">《论语》</a> › <a href="{P}lunyu/banben/">版本说明</a></p><h1><span class="no">朱注本 {len(ZHANGHAO)} 章 · 杨本 {_yang} 章</span>《论语》章号对照</h1></div></div>
+<style>.zhtb{{width:100%;border-collapse:collapse;font-size:.95em}}.zhtb th,.zhtb td{{padding:.3em .5em;border-bottom:1px solid rgba(35,80,63,.15);text-align:left}}.zhtb tr.hl td{{background:rgba(138,90,44,.09)}}.zhtb td:nth-child(-n+2),.zhtb th,.zhtb td span{{white-space:nowrap}}@media(max-width:600px){{.zhtb{{font-size:.85em}}.zhtb th,.zhtb td{{padding:.3em .25em}}}}</style>
+<main class="wrap narrow prose"><p>一孔录的《论语》章号依朱熹《论语集注》（《四部备要》本），共 {len(ZHANGHAO)} 章。今天很多书和网站按杨伯峻《论语译注》编号，共 {_yang} 章。两本经文相同，只是分章拆合不同：{_n_split} 处朱注的一章，杨本拆成两到四章；{_n_merge} 处杨本的一章，朱注分成两章。所以从《公冶长》起，两边的编号会错开。下表列出每一章的两种编号，点朱注章号进入章页。</p>
+<h2>拆合不同的地方</h2><table class="zhtb">{_th}<tbody>{"".join(_zrow(r, False) for r in _diff)}</tbody></table>
+<h2>全部 {len(ZHANGHAO)} 章</h2><p class="note">底色标出的是拆合不同的章。</p><table class="zhtb">{_th}<tbody>{"".join(_zrow(r, True) for r in ZHANGHAO)}</tbody></table>
+<p class="note">对照依两本经文逐句比对而得。杨伯峻《论语译注》仍在版权期，这里只列章号，不录杨本文字。</p></main>'''
+        write("lunyu/zhanghao/index.html", page(L, "《论语》章号对照：朱熹集注本与杨伯峻译注本｜一孔录", f"朱注 {len(ZHANGHAO)} 章与杨伯峻 {_yang} 章逐章对照，标出拆合不同的地方", "lunyu/zhanghao/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/zhanghao/")
     if L.code.startswith("zh"):  # 11-16 主人点卡“先上《论语》选书页”：只做《论语》、不挂购买链接，当收录页（内容稿 评审/2026-11-16-书院题名开卖/论语选书页-内容稿-v1.md）
         body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}shumu/">书目</a> › <a href="{P}lunyu/">《论语》</a></p><h1><span class="no">想读纸本</span>读《论语》，选哪个本子</h1></div></div>
 <main class="wrap narrow prose"><p>一孔录讲《论语》，用的是朱熹《论语集注》，片子和网站上的原页出自《四部备要》本《四书集注》（见<a href="{P}lunyu/banben/">版本说明</a>）。《四部备要》本现在没有单行的零售本，下面第一本是同一注本的通行整理本。只看书好不好、和这里讲的对不对得上。</p>
