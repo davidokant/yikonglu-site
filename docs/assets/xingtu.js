@@ -25,7 +25,7 @@
     // 11-21 英日版：界面文字随数据 st.ui 来，没有就用中文
     const U = Object.assign({ lun: '论语 ', links: '连着 {n} 处', pick: '点一颗星', stat: '全书 {total} 条关系：本书互见 {h}，同问异答 {q}，人物 {p}，场合 {o}，别的书 {b}，异文 {y}，读法之争 {z}。', done: '已讲', todo: '未讲', nl: ' · 年历第 {n} 课', y: '异文', z: '读法之争', only: '这一章在关系表里只有年历一条。', open: '打开这一章 →', occ: '看这个场合的用句 →', more: '……共 {n} 处，这里列前 60。', nf: '没找到', nfh: '试试章号（如 12.1）、原文里的几个字（如 克己复礼），或人名（如 子路）。', K: { p: '人物', q: '同一个问题', o: '场合', b: '别的书' }, NAME: { h: '本书互见', q: '同问异答', p: '人物', o: '场合', b: '别的书' }, lang: 'zh-Hans', sep: '　', tk: 1 }, st.ui || {});
     const NAME = U.NAME, lc = s => String(s || '').toLowerCase();
-    const show = { h: true, q: true, p: false, o: false, b: false };
+    const show = { h: false, q: false, p: false, o: false, b: false }; // 11-22 主人：按钮都不默认点亮
     const sprite = rgb => {
       const c = document.createElement('canvas'); c.width = c.height = 64; const g = c.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
       gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.14, `rgba(${rgb},.95)`); gr.addColorStop(.34, `rgba(${rgb},.3)`); gr.addColorStop(1, `rgba(${rgb},0)`);

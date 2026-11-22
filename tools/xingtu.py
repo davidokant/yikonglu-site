@@ -163,10 +163,10 @@ def xt_html(L, P, home=False):
     hd = (f'<div class="xthead"><h2 class="ph">《论语》星图</h2></div>' if home else "")
     return (f'<section class="xtsec{" xthome" if home else ""}">{hd}<div class="xt" id="xt" data-src="{P}data/xingtu.json?v={DVER}" data-p="{P}">'
             '<canvas aria-label="《论语》关系星图：可拖动旋转，点星看这一章连着哪几章"></canvas>'
-            '<div class="hud"><input type="search" placeholder="章号、字句或人名" aria-label="在星图里找">'
-            '<button type="button" data-f="h" aria-pressed="true">本书互见</button><button type="button" data-f="q" aria-pressed="true">同问异答</button>'
+            '<div class="hud"><button type="button" class="rand">试试手气</button><input type="search" placeholder="章号、字句或人名" aria-label="在星图里找">'  # 11-22 主人：改名“试试手气”放最前，其余按钮不默认点亮
+            '<button type="button" data-f="h" aria-pressed="false">本书互见</button><button type="button" data-f="q" aria-pressed="false">同问异答</button>'
             '<button type="button" data-f="p" aria-pressed="false">人物</button><button type="button" data-f="o" aria-pressed="false">场合</button>'
-            '<button type="button" data-f="b" aria-pressed="false">别的书</button><button type="button" class="rand">随便点一章</button><button type="button" class="reset">复位</button></div>'
+            '<button type="button" data-f="b" aria-pressed="false">别的书</button><button type="button" class="reset">复位</button></div>'
             '<p class="legend">拖动旋转；手机上左右划。再点一次选中的星，打开那一章。</p>'
             '<div class="card" aria-live="polite"><h4>《论语》星图</h4><p>滑到这里，星图就会亮起来。</p></div></div>'
             f'<noscript><p class="note"><a href="{P}lunyu/guanxi/">看《论语》同问异答与人物</a></p></noscript></section>'
@@ -178,9 +178,9 @@ def xt_html_f(F, P, home):
     b = lambda f, k, on: f'<button type="button" data-f="{f}" aria-pressed="{"true" if on else "false"}">{esc(F[k])}</button>'
     return (f'<section class="xtsec{" xthome" if home else ""}">{hd}<div class="xt" id="xt" data-src="{P}data/xingtu.json?v={DVER}" data-p="{P}" data-err="{esc(F["err"])}">'
             f'<canvas aria-label="{esc(F["aria"])}"></canvas>'
-            f'<div class="hud"><input type="search" placeholder="{esc(F["ph"])}" aria-label="{esc(F["pharia"])}">'
-            + b("h", "f_h", 1) + b("q", "f_q", 1) + b("p", "f_p", 0) + b("o", "f_o", 0) + b("b", "f_b", 0)
-            + f'<button type="button" class="rand">{esc(F["rand"])}</button><button type="button" class="reset">{esc(F["reset"])}</button></div>'
+            f'<div class="hud"><button type="button" class="rand">{esc(F["rand"])}</button><input type="search" placeholder="{esc(F["ph"])}" aria-label="{esc(F["pharia"])}">'
+            + b("h", "f_h", 0) + b("q", "f_q", 0) + b("p", "f_p", 0) + b("o", "f_o", 0) + b("b", "f_b", 0)
+            + f'<button type="button" class="reset">{esc(F["reset"])}</button></div>'
             f'<p class="legend">{esc(F["legend"])}</p>'
             f'<div class="card" aria-live="polite"><h4>{esc(F["c_h"])}</h4><p>{esc(F["c_p"])}</p></div></div></section>'
             f'<script src="/assets/xingtu.js?v={js_ver()}" defer></script>')
