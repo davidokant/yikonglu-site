@@ -39,15 +39,16 @@ def data(G, PIAN, pub, href, title_of, tx, X, code=None, gxtr=None, ztx=None):
         slot = span / n
         for j in range(n):
             # 11-22 主人：星点别排太齐，像星云银河。固定种子（按章号哈希），每次加载位置一样；
-            # 角向只在本篇弧段内抖（篇序、篇间空隙照旧），径向近似正态散开，再叠一道低频起伏像星河的旋臂。
+            # 角向只在本篇弧段内抖（篇序、篇间空隙照旧），径向近似正态散开（主人点“再散一些”后 σ 由 22 加到 34，约一成星放得更远当散星），再叠一道低频起伏像星河的旋臂。
             c = order[len(pos)]
             u1, u2, u3, u4 = (_h01(c, k) for k in ("ra", "rb", "ta", "za"))
             g1 = math.sqrt(-2 * math.log(max(u1, 1e-6))) * math.cos(2 * math.pi * u2)
             g2 = math.sqrt(-2 * math.log(max(u1, 1e-6))) * math.sin(2 * math.pi * u2)
-            th = acc + slot * (j + 0.5 + (u3 - 0.5) * 1.8)
+            th = acc + slot * (j + 0.5 + (u3 - 0.5) * 3.2)
             th = min(max(th, acc + slot * 0.3), acc + span - slot * 0.3) - math.pi / 2
-            rr = max(-58, min(58, 22 * g1 + 13 * math.sin(3 * th + 0.7) + 7 * math.sin(7 * th + 2.1)))
-            z = max(-42, min(42, 16 * g2 + (u4 - 0.5) * 10))
+            rr = 34 * g1 * (1.6 if _h01(c, "tail") > 0.88 else 1) + 16 * math.sin(3 * th + 0.7) + 9 * math.sin(7 * th + 2.1)
+            rr = max(-70, min(95, rr))  # 内不碰人物圈（222），外不到别的书（426）
+            z = max(-60, min(60, 24 * g2 + (u4 - 0.5) * 14))
             r = R + rr
             pos.append([r * math.cos(th), r * math.sin(th), z])
         p["mid"] = round(acc + span / 2 - math.pi / 2, 4); acc += span + GAP

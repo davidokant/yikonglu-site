@@ -62,7 +62,7 @@
       // 玉璧的环带
       const ring = r => { for (let k = 0; k <= 96; k++) { const a = k / 96 * 6.2832, q = pp(r * Math.cos(a), r * Math.sin(a), 0); k ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); } ctx.closePath(); };
       const bandA = clamp(intro / .35);
-      for (const w of [58, 44, 32, 20, 10]) { ctx.beginPath(); ring(st.R + w); ring(st.R - w); ctx.fillStyle = `rgba(120,205,172,${.016 * bandA})`; ctx.fill('evenodd'); } // 11-22 光带边缘渐淡
+      for (const w of [84, 64, 46, 30, 14]) { ctx.beginPath(); ring(st.R + w); ring(st.R - w); ctx.fillStyle = `rgba(120,205,172,${.016 * bandA})`; ctx.fill('evenodd'); } // 11-22 光带边缘渐淡
       // 11-22 主人：去掉两圈轨道线，只留淡光带，像银河
       const eA = clamp((intro - .7) / .3), hA = clamp((intro - .55) / .3), sk = clamp(P.base / .72, .6, 1.15), small = W < 640;
       // 连线
@@ -112,7 +112,7 @@
       ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.textAlign = 'center';
       // 篇名绕在环外
       ctx.font = `${W < 640 ? 11 : 12.5}px ${FONT}`;
-      st.pian.forEach(p => { const q = pp((st.R + 72) * Math.cos(p.mid), (st.R + 72) * Math.sin(p.mid), 0); ctx.fillStyle = `rgba(200,218,208,${(.3 + .6 * clamp((q[3] + 330) / 660)) * bandA})`; ctx.fillText(p.name, q[0], q[1] + 4); });
+      st.pian.forEach(p => { const q = pp((st.R + 108) * Math.cos(p.mid), (st.R + 108) * Math.sin(p.mid), 0); ctx.fillStyle = `rgba(200,218,208,${(.3 + .6 * clamp((q[3] + 330) / 660)) * bandA})`; ctx.fillText(p.name, q[0], q[1] + 4); });
       for (const [t, x, y, col, size] of labels) { ctx.font = `${size}px ${FONT}`; ctx.fillStyle = col; ctx.fillText(t, x, y); }
       // 焦点连着的章，标上章号
       if (focus >= 0 && adj[focus].length <= 48) { ctx.font = `11px ${FONT}`; ctx.fillStyle = 'rgba(190,240,220,.92)'; const f = N[focus]; for (const e of adj[focus]) { const m = N[e.j]; if (m.k === 'c' && Math.hypot(m.sx - f.sx, m.sy - f.sy) > 36) ctx.fillText(m.id, m.sx, m.sy - m.r - 5); } }
