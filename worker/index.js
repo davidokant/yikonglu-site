@@ -14,6 +14,7 @@
 // POST /ai {k, p}         11-16 智器来访：从智器回答里点进来（来路或 utm_source 是智器），k＝哪家，p＝落地页；GET /ai 返回 {days:{日:{k:n}}, pages:{页:n}}，留 120 天
 // POST /hj {f, c}         11-16 他书章页“《论语》互见”点击：f＝从哪章（ddj.N／szj.N），c＝点去的论语章；GET /hj 返回 {日:{"f>c":n}}，留 120 天
 // POST /bot {k}          11-16 硅基儒者：机器来读一次加一（页面里认出是机器在跑脚本时发 k＝哪家；连接器每回答一次发 k＝mcp）；/hit、/stats 的 bots＝有用的硅基（USEFUL）；GET /bot 返回 {useful, all, days:{日:{k:n}}}（留 120 天）
+// POST /use {k, first}   11-22 问易计数：完成一次起卦发一次，first＝这个浏览器第一次用（页面本地记）；GET /use 返回 {wenyi:{u 独立用户, n 起卦次数, days:{日:{u, n}}}}，留 120 天，不带任何编号
 // POST /done  {c}         某章“读完了”加一（同一设备只点一次，由页面本地记）；GET /done?c=1.1 返回 {today, total}
 const ORIGINS = ["https://yikonglu.com", "https://www.yikonglu.com", "http://localhost:8767"];
 const WINDOW = 90 * 1000;
@@ -102,6 +103,18 @@ export class Live {
       const rc0 = ((await this.state.storage.get("recent")) || []).filter(x => x.d === d0 && today[x.c]).map(x => x.c);
       const recent = rc0.concat(Object.keys(today).filter(c => !rc0.includes(c)).sort((a, b) => today[b] - today[a])).slice(0, 40);
       return Response.json({ recent, rn, heat, top });
+    } else if (url.pathname === "/use") { // 11-22 主人：问易装计数，后台看有多少独立用户用过（页面不显示）
+      const K = new Set(["wenyi"]); let U = (await this.state.storage.get("use")) || {};
+      if (req.method === "POST") {
+        let b = {}; try { b = await req.json(); } catch (e) {}
+        const k = String(b.k || ""); if (!K.has(k)) return Response.json({ ok: false });
+        const d = this.day(), e = U[k] = U[k] || { u: 0, n: 0, days: {} }, dd = e.days[d] = e.days[d] || { u: 0, n: 0 };
+        e.n++; dd.n++; if (b.first === true) { e.u++; dd.u++; }
+        const cut = new Date(Date.now() + 8 * 3600e3 - 120 * 864e5).toISOString().slice(0, 10);
+        for (const x of Object.keys(e.days)) if (x < cut) delete e.days[x];
+        await this.state.storage.put("use", U); return Response.json({ ok: true });
+      }
+      return Response.json(U);
     } else if (url.pathname === "/intent" || url.pathname === "/intent/stats") {
       const WANT = ["shiyong", "shuhou", "shuyou", "gongdu", "wenda", "gongju", "zhencang"];
       let I = (await this.state.storage.get("intent")) || { n: 0, want: {}, days: {} };

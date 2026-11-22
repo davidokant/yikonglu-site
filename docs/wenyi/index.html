@@ -31,8 +31,8 @@
 <body class="">
 <header class="top"><div class="wrap">
 <a href="/" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a><span class="livep" id="livep" hidden></span>
-<nav><a href="/lunyu/" class="lynav">论语</a><a href="/shumu/">书架</a><a href="/zhuanti/">专题</a><a href="/search.html">检索</a><a href="/duben.html">读本</a><a href="/shuyuan/" class="gsnav">题名</a><a href="/wenyi/" class="gsnav">问易</a>
-<details class="lang more"><summary>更多</summary><div><a href="/kanwu.html">勘误</a><a href="/fangfa.html">核验方法</a><a href="/kaifang.html">开放数据</a><a href="/jieru/">接入智器</a><a href="/feed.xml">订阅更新（RSS）</a><a href="/about.html">关于</a><a href="/zhichi.html" class="zc">支持一孔录</a></div></details>
+<nav><a href="/lunyu/" class="lynav">论语</a><a href="/shumu/">书架</a><a href="/zhuanti/">专题</a><a href="/search.html">检索</a><a href="/duben.html">读本</a><a href="/wenyi/" class="gsnav">问易</a>
+<details class="lang more"><summary>更多</summary><div><a href="/shuyuan/">题名</a><a href="/kanwu.html">勘误</a><a href="/fangfa.html">核验方法</a><a href="/kaifang.html">开放数据</a><a href="/jieru/">接入智器</a><a href="/feed.xml">订阅更新（RSS）</a><a href="/about.html">关于</a><a href="/zhichi.html" class="zc">支持一孔录</a></div></details>
 <details class="lang"><summary><span class="lfull">简体中文</span><span class="lshort" aria-hidden="true">简</span></summary><div><a href="https://yikonglu.com/wenyi/" data-lang="zh-Hans" class=cur>简体中文</a><a href="https://yikonglu.com/zh-hant/wenyi/" data-lang="zh-Hant">繁體中文</a><a href="https://yikonglu.com/en/wenyi/" data-lang="en">English</a><a href="https://yikonglu.com/ja/wenyi/" data-lang="ja">日本語</a><a href="https://yikonglu.com/ko/wenyi/" data-lang="ko">한국어</a><a href="https://yikonglu.com/fr/wenyi/" data-lang="fr">Français</a><a href="https://yikonglu.com/es/wenyi/" data-lang="es">Español</a><a href="https://yikonglu.com/de/wenyi/" data-lang="de">Deutsch</a><a href="https://yikonglu.com/vi/wenyi/" data-lang="vi">Tiếng Việt</a><a href="https://yikonglu.com/id/wenyi/" data-lang="id">Bahasa Indonesia</a><a href="https://yikonglu.com/ru/wenyi/" data-lang="ru">Русский</a></div></details></nav>
 </div></header><script>(function(){var l=document.querySelector(".top nav>.lang:not(.more)"),w=document.querySelector(".top .wrap");if(l&&w&&innerWidth<=700)w.style.setProperty("--lw",(l.offsetWidth+10)+"px")})()</script>
 <div class="lystrip" id="lyst" hidden><div class="wrap"><b></b><span lang="zh-Hans"></span><a href="#">读这一章 →</a><button type="button" title="今天不再显示" aria-label="今天不再显示">×</button></div></div><script src="/assets/js/4ef36a215c36.js"></script>
@@ -281,7 +281,8 @@ function ybName(h){ const p=parseInt(h),up=p<=53,ye=up?p-2:p-53; const cn=n=>{co
 function pageName(p){ if(!p) return ""; const m=p.match(/^(\d+)-(\d+)([ab])$/); if(!m) return p; return "卷"+(m[1]==="001"?"一":"二")+"第"+(+m[2])+"葉"+(m[3]==="a"?"前":"後")+"半"; }
 
 let last=null;
-async function finish(vals){ const s=load(); s.used++; s.day=today(); store(s); const r=rule(vals); await Promise.all([loadHex(r.B.n),loadHex(r.Z.n)]); renderResult(vals); show("s-result"); }
+function useBeat(){ const U="https://yikonglu-live.yikonglu.workers.dev"; if(!U) return; let f=false; try{ f=!localStorage.getItem("ykl_use_wenyi"); localStorage.setItem("ykl_use_wenyi","1"); }catch(e){} try{ fetch(U+"/use",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({k:"wenyi",first:f}),keepalive:true}).catch(()=>{}); }catch(e){} }
+async function finish(vals){ const s=load(); s.used++; s.day=today(); store(s); useBeat(); const r=rule(vals); await Promise.all([loadHex(r.B.n),loadHex(r.Z.n)]); renderResult(vals); show("s-result"); }
 function renderResult(vals){
   const r=rule(vals); last={vals,r};
   const d=new Date(); $("r-date").textContent=d.getFullYear()+" 年 "+(d.getMonth()+1)+" 月 "+d.getDate()+" 日 · 得卦";

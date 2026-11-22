@@ -62,6 +62,9 @@ def build(L, write, page, DOMAIN):
         g = {h: yb["YBG"][h] for v in ybn.values() for h, _ in v if h in yb["YBG"]}
         write(f"wenyi/d/{n}.json", json.dumps({"r": rs, "yb": ybn, "g": g}, ensure_ascii=False, separators=(",", ":")))
     js = open(os.path.join(HERE, "wenyi", "wenyi.js"), encoding="utf-8").read()
+    try: _live = (json.load(open(os.path.join(HERE, "analytics.json"), encoding="utf-8")).get("live") or "").rstrip("/")
+    except Exception: _live = ""
+    js = js.replace("@LIVE@", _live)  # 11-22 问易计数（只计数，不显示、不带编号）
     head = '<div class="chhead"><div class="wrap"><h1><span class="no">照朱熹《筮仪》起一卦 · 试运营</span>问易</h1></div></div>'
     write("wenyi/index.html", page(L, "问易：照朱熹《筮仪》起一卦，读《周易》原文与朱注｜一孔录",
                                    "照朱熹《周易本义·筮仪》十八变起一卦，按《易学启蒙》取辞，读经文、白话、朱熹注和宋本原页。一天一卦，问的话只存在你自己的设备上。",

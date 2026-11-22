@@ -203,7 +203,8 @@ function ybName(h){ const p=parseInt(h),up=p<=53,ye=up?p-2:p-53; const cn=n=>{co
 function pageName(p){ if(!p) return ""; const m=p.match(/^(\d+)-(\d+)([ab])$/); if(!m) return p; return "卷"+(m[1]==="001"?"一":"二")+"第"+(+m[2])+"葉"+(m[3]==="a"?"前":"後")+"半"; }
 
 let last=null;
-async function finish(vals){ const s=load(); s.used++; s.day=today(); store(s); const r=rule(vals); await Promise.all([loadHex(r.B.n),loadHex(r.Z.n)]); renderResult(vals); show("s-result"); }
+function useBeat(){ const U="@LIVE@"; if(!U) return; let f=false; try{ f=!localStorage.getItem("ykl_use_wenyi"); localStorage.setItem("ykl_use_wenyi","1"); }catch(e){} try{ fetch(U+"/use",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({k:"wenyi",first:f}),keepalive:true}).catch(()=>{}); }catch(e){} }
+async function finish(vals){ const s=load(); s.used++; s.day=today(); store(s); useBeat(); const r=rule(vals); await Promise.all([loadHex(r.B.n),loadHex(r.Z.n)]); renderResult(vals); show("s-result"); }
 function renderResult(vals){
   const r=rule(vals); last={vals,r};
   const d=new Date(); $("r-date").textContent=d.getFullYear()+" 年 "+(d.getMonth()+1)+" 月 "+d.getDate()+" 日 · 得卦";
