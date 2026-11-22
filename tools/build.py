@@ -2522,6 +2522,27 @@ def zy_xt_gx(gx):
     raw = gx["raw"]; st = dict(raw.get("stats", {})); st["书外互见"] = st.get("书外互见", 0) + len(add)
     return dict(gx, raw=dict(raw, rels=list(raw["rels"]) + add, stats=st))
 
+def mz_xt_gx(gx):
+    """11-22 主人点卡“只画明引的 81 条”：孟子论语互见.json 里 出处、注家引 两类（不含一孔录对读“相通”）作“书外互见 · 孟子”进中文星图，换掉旧 6 条（全在 81 条里）；论语章页不动（冻结到 12-03）。"""
+    if not (MZ and MZ.get("open")) or not gx or "raw" not in gx: return gx
+    try:
+        HJ = json.load(open(os.path.join(MZ_DIR, "论语互见.json"), encoding="utf-8"))["条"]
+        PM = json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8"))
+    except Exception as e:
+        print("孟子星图关系读不到：", e); return gx
+    _s = __import__("opencc").OpenCC("t2s").convert
+    pn = {str(v["起"]).split(".")[0]: _s(k) for k, v in PM.items() if isinstance(v, dict)}
+    rank = {"出处": 0, "注家引": 1}; best = {}
+    for r in HJ:
+        if r.get("kind") not in rank: continue
+        k = (str(r["zhang"]), str(r["c"]))
+        if k not in best or rank[r["kind"]] < rank[best[k]["kind"]]: best[k] = r
+    add = [{"a": f"lunyu:{c}", "b": f"mz:{z}", "type": "书外互见", "kind": r["kind"], "book": "孟子", "quote": r.get("q", ""),
+            "txt": f"《孟子》{pn.get(z.split('.')[0], '')} {z}｜《论语》“{r.get('q', '')}”", "src": r.get("src", ""), "from": "mz_lyhj"} for (z, c), r in best.items()]
+    raw = gx["raw"]; old = [r for r in raw["rels"] if r.get("type") == "书外互见" and r.get("book") == "孟子"]
+    st = dict(raw.get("stats", {})); st["书外互见"] = st.get("书外互见", 0) - len(old) + len(add)
+    return dict(gx, raw=dict(raw, rels=[r for r in raw["rels"] if r not in old] + add, stats=st))
+
 _ZYXT = {}
 def zy_xt_gx_fl(gx, code, gxtr):
     """11-22 英日星图加周易：中文那份 304 条（zy_xt_gx）各给一个序号 zy<n>，书名、关系注的英日文放进 gxtr["X"]（xingtu.xo() 按 _i 查）。"""
@@ -4227,7 +4248,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
         urls.append(f"{DOMAIN}/{L.prefix}jihua/bairi.html")
         GX.RWID = GX.rw_ids(GXD, D.get("renwu"))  # 关系图人物 id → 人物卡 id
         urls += GX.build(L, GXD, write, page, P, href, gx_short, PIAN, pubset, DOMAIN)
-        XT.write_data(write, XT.data(zy_xt_gx(GXD), PIAN, pubset, href, ctitle, tx, D["lx"]))  # 11-21 主人：星图加上周易关系（只进星图，不动论语章页）
+        XT.write_data(write, XT.data(mz_xt_gx(zy_xt_gx(GXD)), PIAN, pubset, href, ctitle, tx, D["lx"]))  # 11-21 主人：星图加上周易关系（只进星图，不动论语章页）
         urls += LX.build(L, D, D["lx"], write, page, P, href, ctitle, tx, pubset, PIAN, DOMAIN, json.load(open(ZD_FILE, encoding="utf-8"))["per"] if os.path.exists(ZD_FILE) else {})
         LX.write_data(L, D["lx"], globals().get("OUT_ROOT"), href, tx, D["baihua"])
         write("jieru/index.html", jieru_page(L, P)); urls.append(f"{DOMAIN}/{L.prefix}jieru/")
