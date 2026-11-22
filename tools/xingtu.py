@@ -140,7 +140,7 @@ def data(G, PIAN, pub, href, title_of, tx, X, code=None, gxtr=None, ztx=None):
     for bi, bk in enumerate(sorted(bg, key=lambda k: -len(bg[k]))):
         rs = bg[bk]; cids = [cc(r["a"]) for r in rs]
         x, y = centroid(cids); ang = math.atan2(y, x) if (x or y) else bi
-        if len(rs) > 40: ang = {"道德经": 2.2, "三字经": 0.6, "周易": -1.6, "孟子": -2.9}.get(bk, [2.2, 0.6][bi % 2])  # 大书放在环外固定位置（11-21 加周易，11-22 加孟子，道德经、三字经位置照旧）
+        if len(rs) > 40: ang = {"道德经": 2.2, "三字经": 0.65, "周易": -1.36, "孟子": 3.06}.get(bk, [2.2, 0.6][bi % 2])  # 大书放在环外固定位置（11-21 加周易，11-22 加孟子；篇名标签外移后各书挪到两篇标签的空隙正中，免得字叠在一起）
         bn = (next((xo(r, "book") for r in rs if xo(r, "book")), "") if F else "") or bk
         ni = len(nodes); nodes.append({"k": "b", "n": bn, "x": round(1.42 * R * math.cos(ang), 1), "y": round(1.42 * R * math.sin(ang), 1), "z": round((_h01(bk) - 0.5) * 80, 1), "d": len(rs), **({"o": bk} if F else {})})
         for r in rs:

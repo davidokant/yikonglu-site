@@ -2524,7 +2524,7 @@ def zy_xt_gx(gx):
 
 def mz_xt_gx(gx):
     """11-22 主人点卡“只画明引的 81 条”：孟子论语互见.json 里 出处、注家引 两类（不含一孔录对读“相通”）作“书外互见 · 孟子”进中文星图，换掉旧 6 条（全在 81 条里）；论语章页不动（冻结到 12-03）。"""
-    if not (MZ and MZ.get("open")) or not gx or "raw" not in gx: return gx
+    if not (MZ and MZ["cfg"].get("open")) or not gx or "raw" not in gx: return gx
     try:
         HJ = json.load(open(os.path.join(MZ_DIR, "论语互见.json"), encoding="utf-8"))["条"]
         PM = json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8"))
