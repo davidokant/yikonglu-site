@@ -36,12 +36,32 @@ def data(G, PIAN, pub, href, title_of, tx, X, code=None, gxtr=None, ztx=None):
     pos = []
     for p in pian:
         n = p["n"]; span = span_total * n / tot
+        slot = span / n
         for j in range(n):
-            th = acc + span * (j + 0.5) / n - math.pi / 2
-            ph = j * GA; rr = 30 * math.sqrt(((j * 7) % 11 + 1) / 11)
-            r = R + rr * math.cos(ph); z = rr * math.sin(ph)
-            pos.append([round(r * math.cos(th), 1), round(r * math.sin(th), 1), round(z, 1)])
+            # 11-22 主人：星点别排太齐，像星云银河。固定种子（按章号哈希），每次加载位置一样；
+            # 角向只在本篇弧段内抖（篇序、篇间空隙照旧），径向近似正态散开，再叠一道低频起伏像星河的旋臂。
+            c = order[len(pos)]
+            u1, u2, u3, u4 = (_h01(c, k) for k in ("ra", "rb", "ta", "za"))
+            g1 = math.sqrt(-2 * math.log(max(u1, 1e-6))) * math.cos(2 * math.pi * u2)
+            g2 = math.sqrt(-2 * math.log(max(u1, 1e-6))) * math.sin(2 * math.pi * u2)
+            th = acc + slot * (j + 0.5 + (u3 - 0.5) * 1.8)
+            th = min(max(th, acc + slot * 0.3), acc + span - slot * 0.3) - math.pi / 2
+            rr = max(-58, min(58, 22 * g1 + 13 * math.sin(3 * th + 0.7) + 7 * math.sin(7 * th + 2.1)))
+            z = max(-42, min(42, 16 * g2 + (u4 - 0.5) * 10))
+            r = R + rr
+            pos.append([r * math.cos(th), r * math.sin(th), z])
         p["mid"] = round(acc + span / 2 - math.pi / 2, 4); acc += span + GAP
+    for _ in range(60):  # 散开后挤在一起的推开，保证每颗星都点得到（平面上至少隔 MIN）
+        MIN = 6.5; moved = False
+        for a in range(tot):
+            ax, ay = pos[a][0], pos[a][1]
+            for b in range(a + 1, min(tot, a + 40)):
+                dx, dy = pos[b][0] - ax, pos[b][1] - ay; d = math.hypot(dx, dy)
+                if d < MIN:
+                    if d < 1e-6: dx, dy, d = 1.0, 0.0, 1.0
+                    k = (MIN - d) / 2 / d; pos[a][0] -= dx * k; pos[a][1] -= dy * k; pos[b][0] += dx * k; pos[b][1] += dy * k; moved = True
+        if not moved: break
+    pos = [[round(x, 1), round(y, 1), round(z, 1)] for x, y, z in pos]
 
     def centroid(cids):
         xs = [pos[idx[c]][0] for c in cids if c in idx]; ys = [pos[idx[c]][1] for c in cids if c in idx]
