@@ -262,27 +262,27 @@ LC_UI = {  # 一页两层：上半给普通读者，下半给细读核对的读�
  "zh-Hans": {"ch_gist": "这一章讲什么", "ch_deep": "想深究？查证区", "ch_deep_note": "注家原话、不同版本、古书原页、读音和勘误都在这里，一条没删，点开才显示。", "ch_open_all": "全部展开", "ch_close_all": "全部收起",
    "cta_db_p": "新出《论语》智器重建本：498 章连成一张网，条条对得上原页。PDF，手机能看，也能打印。", "cta_wen_p": "发现错处，写信告诉我们，勘误公开；想看下一本读什么书，也来信说。",
    "h_motto": "一章一章，把经典原文读明白。", "h_intro": "每章先给原文、白话和一句话读懂，配一段视频；想细读的，往下有注家原话、底本原页和公开勘误，句句可核。",
-   "h_start": "今日共读一章", "h_latest": "最新一章", "h_read": "读这一章", "h_recent": "最近讲的", "h_deep_h": "给细读的人", "h_deep_p": "一孔录讲过的每一句，都能在这里核。"},
+   "h_start": "今日共读一章", "h_latest": "最新一章", "h_read": "读这一章", "h_recent": "最近讲的", "h_deep_h": "给研究者", "h_deep_p": "一孔录讲过的每一句，都能在这里核。"},
  "en": {"ch_gist": "What this chapter says", "ch_deep": "Close reading and checking", "ch_deep_note": "For readers who want to go deeper or check our work: key words in the commentary, what other commentators say, textual variants, the commentaries in their own words with facsimile pages, pronunciation and corrections. Tap a heading to open it.", "ch_open_all": "Open all", "ch_close_all": "Close all",
    "cta_db_p": "New: the whole Analects as one connected book, 498 chapters and 931 checked links. PDF in English, Japanese or Chinese.", "cta_wen_p": "Found a mistake? Write to us and we correct it in public. Tell us which book you would like us to read next, too.",
    "h_motto": "Reading the classics, one chapter at a time.", "h_intro": "Each chapter starts with the original, a plain rendering and a one-line summary, with a short video. Further down, for close readers: the commentators' own words, facsimile pages and a public errata log.",
-   "h_start": "Today’s shared chapter", "h_latest": "Latest chapter", "h_read": "Read this chapter", "h_recent": "Recently read", "h_deep_h": "For close readers", "h_deep_p": "Every line Yikonglu has read aloud can be checked here."},
+   "h_start": "Today’s shared chapter", "h_latest": "Latest chapter", "h_read": "Read this chapter", "h_recent": "Recently read", "h_deep_h": "For researchers", "h_deep_p": "Every line Yikonglu has read aloud can be checked here."},
  "ja": {"ch_gist": "この章の要点", "ch_deep": "精読と確認", "ch_deep_note": "じっくり読みたい方、確かめたい方へ：注の要となる語、諸家の説、異文、各注釈の原文と底本の頁、読み方、正誤。見出しを押すと開きます。", "ch_open_all": "すべて開く", "ch_close_all": "すべて閉じる",
    "cta_db_p": "新刊『論語』AI再構築版：全498章を一つの網につなぎ、一つずつ原本の頁で確かめました。日本語版 PDF。", "cta_wen_p": "誤りを見つけたらメールでお知らせください。訂正はすべて公開します。次に読んでほしい本のご希望もどうぞ。",
    "h_motto": "一章ずつ、古典の原文を読み解く。", "h_intro": "各章はまず原文、現代語訳、一行の要点と短い動画から。その下に、精読する方のための注釈者の原文、底本の頁、公開の正誤表があります。",
-   "h_start": "今日の共読の章", "h_latest": "最新の章", "h_read": "この章を読む", "h_recent": "最近読んだ章", "h_deep_h": "精読する方へ", "h_deep_p": "一孔録が読み上げた一句一句を、ここで確かめられます。"},
+   "h_start": "今日の共読の章", "h_latest": "最新の章", "h_read": "この章を読む", "h_recent": "最近読んだ章", "h_deep_h": "研究者の方へ", "h_deep_p": "一孔録が読み上げた一句一句を、ここで確かめられます。"},
  "ko": {"ch_gist": "이 장의 요지", "ch_deep": "깊이 읽기와 확인", "ch_deep_note": "더 깊이 읽거나 확인하려는 분께: 주석의 핵심어, 여러 주석가의 설, 이문, 각 주석의 원문과 저본 쪽, 독음, 정오. 제목을 누르면 펼쳐집니다.", "ch_open_all": "모두 펼치기", "ch_close_all": "모두 접기",
    "cta_db_p": "새로 나온 《논어》 AI 재구성판: 498장을 하나의 그물로 잇고 하나하나 원본 쪽과 대조했습니다. PDF(중국어·영어·일본어).", "cta_wen_p": "틀린 곳을 찾으면 메일로 알려 주세요. 정정은 모두 공개합니다. 다음에 읽었으면 하는 책도 알려 주세요.",
    "h_motto": "한 장씩, 고전 원문을 읽어 냅니다.", "h_intro": "각 장은 원문, 풀이, 한 줄 요지와 짧은 영상으로 시작합니다. 그 아래에는 깊이 읽는 분을 위한 주석가의 원문, 저본 쪽, 공개 정오표가 있습니다.",
-   "h_start": "오늘 함께 읽는 장", "h_latest": "최신 장", "h_read": "이 장 읽기", "h_recent": "최근 읽은 장", "h_deep_h": "깊이 읽는 분께", "h_deep_p": "일공록이 읽은 모든 구절은 여기서 확인할 수 있습니다."},
+   "h_start": "오늘 함께 읽는 장", "h_latest": "최신 장", "h_read": "이 장 읽기", "h_recent": "최근 읽은 장", "h_deep_h": "연구자께", "h_deep_p": "일공록이 읽은 모든 구절은 여기서 확인할 수 있습니다."},
  "fr": {"ch_gist": "Ce que dit ce chapitre", "ch_deep": "Lecture approfondie et vérification", "ch_deep_note": "Pour qui veut lire de près ou vérifier : mots clés du commentaire, avis des autres commentateurs, variantes, commentaires dans leurs propres mots avec les pages de l'édition, prononciation et errata. Touchez un titre pour l'ouvrir.", "ch_open_all": "Tout ouvrir", "ch_close_all": "Tout fermer",
    "cta_db_p": "Nouveau : les Entretiens entiers comme un seul livre relié, 498 chapitres et 931 liens vérifiés. PDF en chinois, anglais ou japonais.", "cta_wen_p": "Une erreur ? Écrivez-nous : chaque correction est publiée. Dites-nous aussi quel livre lire ensuite.",
    "h_motto": "Lire les classiques, un chapitre à la fois.", "h_intro": "Chaque chapitre commence par l'original, une traduction et un résumé en une ligne, avec une courte vidéo. Plus bas, pour les lecteurs attentifs : les mots mêmes des commentateurs, les pages de l'édition et un registre public d'errata.",
-   "h_start": "Le chapitre du jour, ensemble", "h_latest": "Dernier chapitre", "h_read": "Lire ce chapitre", "h_recent": "Lus récemment", "h_deep_h": "Pour les lecteurs attentifs", "h_deep_p": "Chaque phrase lue par Yikonglu peut être vérifiée ici."},
+   "h_start": "Le chapitre du jour, ensemble", "h_latest": "Dernier chapitre", "h_read": "Lire ce chapitre", "h_recent": "Lus récemment", "h_deep_h": "Pour les chercheurs", "h_deep_p": "Chaque phrase lue par Yikonglu peut être vérifiée ici."},
  "es": {"ch_gist": "Qué dice este capítulo", "ch_deep": "Lectura detenida y comprobación", "ch_deep_note": "Para quien quiera leer a fondo o comprobar: palabras clave del comentario, otros comentaristas, variantes, los comentarios con sus propias palabras y las páginas de la edición, pronunciación y erratas. Toque un título para abrirlo.", "ch_open_all": "Abrir todo", "ch_close_all": "Cerrar todo",
    "cta_db_p": "Nuevo: las Analectas completas como un solo libro conectado, 498 capítulos y 931 vínculos verificados. PDF en chino, inglés o japonés.", "cta_wen_p": "¿Ha visto un error? Escríbanos: cada corrección se publica. Díganos también qué libro leer después.",
    "h_motto": "Leer los clásicos, capítulo a capítulo.", "h_intro": "Cada capítulo empieza con el original, una traducción y un resumen de una línea, con un vídeo breve. Más abajo, para lectores atentos: las palabras exactas de los comentaristas, las páginas de la edición y un registro público de erratas.",
-   "h_start": "Capítulo compartido de hoy", "h_latest": "Último capítulo", "h_read": "Leer este capítulo", "h_recent": "Leídos recientemente", "h_deep_h": "Para lectores atentos", "h_deep_p": "Cada frase que Yikonglu ha leído se puede comprobar aquí."},
+   "h_start": "Capítulo compartido de hoy", "h_latest": "Último capítulo", "h_read": "Leer este capítulo", "h_recent": "Leídos recientemente", "h_deep_h": "Para investigadores", "h_deep_p": "Cada frase que Yikonglu ha leído se puede comprobar aquí."},
 }
 for _c, _d in LC_UI.items(): EXTRA_UI.setdefault(_c, {}).update(_d)
 ZH_UI.update(EXTRA_UI["zh-Hans"])
@@ -769,12 +769,13 @@ def ykan(code, ours, common, keys, basis=None):
     zh = k == "zh"; cjk = k in ("zh", "ja")
     lo, hi = YKAN_LEN.get(k, (150, 330))
     sp = "" if cjk else " "
-    o = (ours or "").strip()
+    o = re.sub(r"^(一孔之见|一孔之見)\s*[：:]\s*", "", (ours or "").strip())  # 11-23 札记落点自带“一孔之见：”，署名会重复
     if zh and len(o) > 90:  # 太长截到 90 字内最后一个句读
         cut = max(o.rfind(x, 0, 90) for x in "。；")
         if cut > 30: o = o[:cut]
     if o and o[-1] not in "。！？.!?": o += "。" if cjk else "."
     c = (common or "").strip(); second = ""
+    if re.match(r"(无|無)(明显|明顯)?(误读|誤讀)?([；;，,。]|$)", c): c = ""  # 11-23 常见读法写“无明显误读”是编辑备注，不出补句
     if c:
         isq = c[-1] in "？?"
         c = c.rstrip("。.？?！!；; ")
