@@ -3222,7 +3222,7 @@ DTSTAMP:20261115T000000Z
 DTSTART;VALUE=DATE:20270820
 DTEND;VALUE=DATE:20270821
 RRULE:FREQ=YEARLY
-SUMMARY:论语 13.18 直躬攘羊
+SUMMARY:论语 13.18 直躬证父
 DESCRIPTION:论语 13.18：叶公语孔子曰：吾党有直躬者，其父
  攘羊，而子证之。孔子曰：吾党之直者异于是。父为子
  隐，子为父隐，直在其中矣。\nhttps://yikonglu.com/lunyu/zi-lu/
@@ -4707,7 +4707,7 @@ DTEND;VALUE=DATE:20271205
 RRULE:FREQ=YEARLY
 SUMMARY:论语 18.3、18.4 齐景公待孔子
 DESCRIPTION:论语 18.3：齐景公待孔子，曰：若季氏则吾不能
- ，以季、孟之闲待之。曰：吾老矣，不能用也。孔子行
+ ，以季、孟之间待之。曰：吾老矣，不能用也。孔子行
  。\nhttps://yikonglu.com/lunyu/wei-zi/3.html\n\n论语 18.4：齐人归
  女乐，季桓子受之。三日不朝，孔子行。\nhttps://yikonglu.c
  om/lunyu/wei-zi/4.html

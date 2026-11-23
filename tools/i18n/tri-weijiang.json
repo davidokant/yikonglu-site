@@ -530,10 +530,10 @@
  "9.1": {
   "en": "The Master seldom spoke of profit, but he endorsed fate and endorsed humaneness.",
   "ja": "先生は利についてはまれにしか語らなかったが、命を認め、仁を認めた。",
-  "ko": "공자께서는 이익과 천명과 인에 대해서는 드물게 말씀하셨다.",
-  "fr": "Le Maître parlait rarement du profit, du destin et du sens de l'humain.",
-  "es": "El Maestro rara vez hablaba del provecho, del destino y de la humanidad.",
-  "ru": "Учитель редко говорил о выгоде, о судьбе и о человечности."
+  "ko": "공자께서는 이익에 대해서는 드물게 말씀하셨지만, 천명을 인정하고 인을 인정하셨다.",
+  "fr": "Le Maître parlait rarement du profit, mais il approuvait le destin et approuvait le sens de l'humain.",
+  "es": "El Maestro rara vez hablaba del provecho, pero aprobaba el destino y aprobaba la humanidad.",
+  "ru": "Учитель редко говорил о выгоде, но одобрял судьбу и одобрял человечность."
  },
  "9.2": {
   "en": "A man of Daxiang village said: Great indeed is Confucius! He has learned so broadly, yet made no name in any one thing. Hearing this, the Master said to his disciples: What should I take up? Charioteering? Archery? I will take up charioteering.",
@@ -2088,7 +2088,7 @@
   "ru": "Учитель сказал: Благородный муж не выдвигает человека за его слова и не отвергает слова из-за человека."
  },
  "15.23": {
-  "en": "Zigong asked: Is there one word that one can practice all one's life? The Master said: Is it not reciprocity? What you do not want for yourself, do not do to others.",
+  "en": "Zigong asked: Is there one saying that one can practice all one's life? The Master said: Is it not reciprocity? What you do not want for yourself, do not do to others.",
   "ja": "子貢が問うた。「一言で生涯行うべきものがありますか。」先生「それは恕であろう。己の欲せざる所は人に施すことなかれ。」",
   "ko": "자공이 물었다. 평생토록 행할 만한 한 마디 말이 있습니까? 공자께서 말씀하셨다. 그것은 서(恕)일 것이다! 자기가 원하지 않는 것을 남에게 베풀지 말라.",
   "fr": "Zigong demanda : Y a-t-il un mot que l'on puisse pratiquer toute sa vie ? Le Maître dit : N'est-ce pas la réciprocité ? Ce que tu ne veux pas pour toi-même, ne l'inflige pas aux autres.",

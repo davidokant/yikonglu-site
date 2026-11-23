@@ -312,12 +312,14 @@ def zy_section(c, sents, zy, bh_rows, esc, note=None):
     """静态的逐句拼音、注音、意思、上一句下一句（搜索引擎看得到）。"""
     k, out = 0, []
     for j, s in enumerate(sents):
-        py, bp = [], []
+        py, bp, lead = [], [], ""
         for ch in s:
             if CJK.match(ch) and k < len(zy):
-                py.append(zy[k][0]); bp.append(zy[k][1]); k += 1
+                py.append(lead + zy[k][0]); bp.append(lead + zy[k][1]); k += 1; lead = ""
             elif py and not ch.isspace():
                 py[-1] += ch; bp[-1] += ch
+            elif not ch.isspace():
+                lead += ch  # 11-23 挑错 C21：句首的前引号也照抄到拼音行
         bh = (bh_rows[j].get("bh") if j < len(bh_rows) else "") or ""
         nb = []
         if j > 0: nb.append(f"上一句：{esc(sents[j-1])}")

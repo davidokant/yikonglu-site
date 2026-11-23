@@ -601,8 +601,8 @@ def cpbtn(L, text, link, link_only=False):
     return b + f'<button class="cp" data-t="{esc(link)}">{L.t("cp_link")}</button>'
 
 def clean(text):
-    text = re.sub(r"[^。；]*【[^】]*待核[^】]*】[。；]?", "", text)  # 整句带【待核】的不上
-    text = re.sub(r"（[^（）]*(待核|书里)[^（）]*）", "", text)
+    text = re.sub(r"（[^（）]*(待核|书里)[^（）]*）", "", text)  # 11-23 挑错 C04：先去整个带待核的括号，免得剩一个“）”
+    text = re.sub(r"[^。；]*【[^】]*待核[^】]*】[。；，]?", "", text).lstrip("，；")  # 整句带【待核】的不上（C01：不留开头的逗号）
     parts = [p for p in re.split(r"(?<=[，；])", text) if "待核" not in p]
     text = "".join(parts).strip()
     text = re.sub(r"^（标题问）", "", text)
@@ -677,31 +677,55 @@ def pdf_pages(page):  # “PDF084—085”这类跨页范围展开成各页
         out += [str(n) for n in range(a, b + 1)] if a <= b <= a + 3 else [str(a)]
     return out
 
+_ZJC = {}
+_zj_norm = lambda t: re.sub(r"[，。？！：；、“”‘’《》〈〉（）()\s「」『』·…—\-]", "", t)
+def _zj_corpus(c):
+    """某章 _逐句 里全部朱注原话（去标点），给引文认章用。"""
+    if c not in _ZJC:
+        try: _ZJC[c] = _zj_norm("".join(z[0] for x in json.load(open(os.path.join(GAO_DIR, "_逐句", c + ".json"), encoding="utf-8")).get("句", []) for z in (x.get("zhu") or [])))
+        except Exception: _ZJC[c] = ""
+    return _ZJC[c]
+_QWA = {}
+def _qw_all():  # 全书 498 章原文（未讲章也有），给引文认章用
+    if not _QWA:
+        _f = sorted(glob.glob(os.path.join(YW_DIR, "论语原文-集注分章-v*.json")))
+        if _f: _QWA.update(json.load(open(_f[-1], encoding="utf-8")))
+    return _QWA
 def parse_gao(path, yw):
     L = NEIBU_DING.sub("", open(path, encoding="utf-8").read().replace("\r", "")).split("\n")
-    kmap, cur = {}, None
+    kmap, cur, khead = {}, None, {}
     for l in L:
         m = re.match(r"^### (?:篇题；)?第([〇一二三四五六七八九十百至、]+)[章节]", l)  # 11-16：《乡党》稿按“第N节”分（朱熹十七节）
         if m: cur = m.group(0)
         if re.match(r"^### (开场|片尾)", l): cur = None
         k = re.match(r"^\*\*(K\d+)", l)
-        if k and cur and "引子" not in l: kmap[k.group(1)] = cur  # 下篇引子不算本章
+        if k and cur and "引子" not in l:
+            kmap[k.group(1)] = cur  # 下篇引子不算本章
+            kh = re.search(r"第([〇一二三四五六七八九十百]+)章", l.split("**")[1] if l.count("**") >= 2 else l)
+            if kh: khead[k.group(1)] = kh.group(1)  # 11-23：合讲一节里，K 段段头写明“第十章”的，引文就归那一章
     pnum = next((v for k2, v in PIAN_NUM.items() if k2 in os.path.basename(path)), None)
     out = {}
     sec2ch = {sec: [f"{pnum}.{n}" for n in cn_chs(re.match(r'^### (?:篇题；)?第([〇一二三四五六七八九十百至、]+)[章节]', sec).group(1))] for sec in set(kmap.values())} if pnum else {}
     HAN = lambda t: set(re.sub(r"[^\u3400-\u9fff]", "", t)) - set("之也者而其不以为于曰子乎矣焉则所")
     def pick(cs, text):  # 合讲一节：引文挂到字面最贴的那一章（数相同字），并列取前一章
         if len(cs) == 1: return cs[0]
+        fr = [_zj_norm(f) for f in re.split(r"……|…|；", INTERNAL.sub("", text))]; fr = [f for f in fr if len(f) >= 4]
+        sc = {c: sum(1 for f in fr if f in _zj_corpus(c)) for c in cs}  # 11-23 主人点卡：先看引文片段落在哪一章的逐句朱注里（原先只比经文字面，13.6—15.38 挂错 44 条）
+        if fr and max(sc.values()) > 0: return max(cs, key=lambda c: (sc[c], -cs.index(c)))
         h = HAN(text)
         return max(cs, key=lambda c: (len(h & HAN(yw.get(c, ""))), -cs.index(c)))
     for row in md_tables(L, r"^## 引文取处"):
         if len(row) < 4: continue
         k, text, src, page = row[:4]
         km = re.match(r"\s*(K\d+)", k); cs = sec2ch.get(kmap.get(km.group(1) if km else k))
+        if cs and km and km.group(1) in khead and pnum:
+            _kc = [f"{pnum}.{n}" for n in cn_chs(khead[km.group(1)])]
+            if len(_kc) == 1 and _kc[0] in cs: cs = _kc
         if cs and ("待核" in page or "待核" in text):
             HD_DAIHE.setdefault(pick(cs, text), set()).add(INTERNAL.sub("", text).strip("；; "))
         if not cs or "待核" in page or "待核" in text: continue
         if src == "经文":
+            if re.search(r"（\d+\.\d+", text): continue  # 11-23：别章经文只并排一闪（如 1.16 的“人不知而不愠（1.1 经文）”），不算本章经文页
             for c in cs: out.setdefault(c, {"cites": [], "reads": []}).setdefault("qw_pages", []).extend(pdf_pages(page))
             continue
         c = pick(cs, text)
@@ -710,10 +734,27 @@ def parse_gao(path, yw):
         if not text: continue
         pages = pdf_pages(page)
         other = ""
+        if pages and re.search(r"何晏|集解|刘宝楠|正义|皇侃|邢昺|示儿编", src):  # 11-23：别家书的页码不是朱注本页码，不链朱注原页，写进“另本”
+            other = re.sub(r"（[^（）]*）|\*\*", "", src).split("所记")[0] + f' 第 {"、".join(pages)} 页'; pages = []
         if not pages:
             m = re.search(r"核到（([^（）]*)", page)
             other = m.group(1).split("，")[0].split("；")[0] if m else ""
-        out.setdefault(c, {"cites": [], "reads": []})["cites"].append({"text": text, "src": re.sub(r"（Codex[^（）]*）", "", src.replace("**", "")), "pages": pages, "para": para, "other": other})
+        parts = [(c, text)]
+        if len(cs) > 1 and "；" in text:  # 11-23：合讲一节里一行引文跨了两章的注（如“居谓意所便安处也；危高峻也……”），按分号逐段认章，认不出的段跟前一段
+            segs = [x for x in text.split("；") if x.strip()]; last = None; grp = []
+            for g in segs:
+                fr = [_zj_norm(f) for f in re.split(r"……|…", g)]; fr = [f for f in fr if len(f) >= 4]
+                sc = {cc: sum(1 for f in fr if f in _zj_corpus(cc)) for cc in cs}
+                gc = max(cs, key=lambda cc: (sc[cc], -cs.index(cc))) if fr and max(sc.values()) > 0 else None
+                if gc is None:  # 逐句朱注里找不到的段（底稿异文，如 15.39“善恶邪正之异/之类”）：段首的词出现在哪章经文就挂哪章，都没有才跟前一段
+                    _h = _zj_norm(g)[:2]; _hc = [cc for cc in cs if len(_h) == 2 and _h in _zj_norm(yw.get(cc) or _qw_all().get(cc, {}).get("text", ""))]
+                    gc = _hc[0] if len(_hc) == 1 else (last or c)
+                if grp and grp[-1][0] == gc: grp[-1][1].append(g)
+                else: grp.append((gc, [g]))
+                last = gc
+            if len(grp) > 1: parts = [(gc, "；".join(gs)) for gc, gs in grp]
+        for c, text in parts:
+            out.setdefault(c, {"cites": [], "reads": []})["cites"].append({"text": text, "src": re.sub(r"（Codex[^（）]*）", "", src.replace("**", "")), "pages": pages, "para": para, "other": other})
     for row in md_tables(L, r"^## 读音"):
         if len(row) < 3: continue
         zi, pos, du = row[:3]
@@ -721,8 +762,9 @@ def parse_gao(path, yw):
         for c in dict.fromkeys(c for cs in sec2ch.values() for c in cs):
             if c in yw and pos and any(x and x in yw[c] for x in pos.split("、")):
                 r = out.setdefault(c, {"cites": [], "reads": []})["reads"]
-                if (zi, pos) not in [(a["zi"], a["pos"]) for a in r]:
-                    r.append({"zi": zi, "pos": pos, "du": du})
+                pc = "、".join(x for x in pos.split("、") if x and (x in yw[c] or _zj_norm(x) in _zj_corpus(c))) or pos  # 11-23 挑错 B03：合讲一节的读音行只留本章原文、本章朱注里有的词
+                if (zi, pc) not in [(a["zi"], a["pos"]) for a in r]:
+                    r.append({"zi": zi, "pos": pc, "du": du})
     return out
 
 def parse_kanwu(path):
@@ -794,7 +836,7 @@ def ykan(code, ours, common, keys, basis=None):
             t = (add + ("；" if cjk else "; ") + g) if add else g
             if len(out) + len(bs) + len(t) + 2 > hi: break
             add = t
-        if add: out += sp + bs + add + ("" if add[-1] in "。.」”）)" else ("。" if cjk else "."))
+        if add: out += sp + bs + add + ("" if add[-1] in "。.」）)" or add[-2:] in ("。”", "？”", "！”") else ("。" if cjk else "."))  # 11-23 挑错 C23：引号收尾的也补句号
     return lab, out
 CSSV = __import__("hashlib").md5(open(os.path.join(HERE, "style.css"), "rb").read()).hexdigest()[:8]
 A2V = __import__("hashlib").md5(open(os.path.join(HERE, "assets", "a2hs.js"), "rb").read()).hexdigest()[:8]
@@ -2375,7 +2417,12 @@ def build_mengzi(L, write, P, S_IDX=None):
     if not MZ or not (L.code.startswith("zh") or (L.code in MZ_FL and MZ["tri"])): return []
     if not L.code.startswith("zh"): return build_mengzi_fl(L, write, P)
     hant = L.code == "zh-Hant"; _t2s = __import__("opencc").OpenCC("t2s").convert
-    Y = (lambda s_: f"{s_}" if s_ else s_) if hant else _t2s
+    _MZFIX = (("于牣鱼跃", "於牣鱼跃"), ("征招角招", "徵招角招"))  # 11-23 孟子读音修改单 M01、M14：叹词“於”、乐名“徵招”简体也保留原字形
+    def _mzs(s_):
+        s_ = _t2s(s_)
+        for a_, b_ in _MZFIX: s_ = s_.replace(a_, b_)
+        return s_
+    Y = (lambda s_: f"{s_}" if s_ else s_) if hant else (lambda s_: _mzs(s_) if s_ else s_)
     qw, cfg, urls = MZ["qw"], MZ["cfg"], []
     # 11-22 繁体页转错字回正（主人 11-21 点卡）：讲读、争议、互见是简体撰写夹繁体引文，原先整栏 s2t 再整页 s2twp，引文被转两遍（“凶”成“兇”、“范”成“範”）；
     # 改为引文（“…”里带繁体的）护住原样，简体正文只经整页转换一次；逐句注本来就是繁体录文，整条护住。白话的转错用 MZ_HANT_POST 只在孟子页回正。
@@ -3572,15 +3619,26 @@ def build_lang(L, D, write):
         bh_h2 = f'{L.t("baihua")}：“{esc(seo_q(yw[c]))}”是什么意思' if L.code.startswith("zh") else L.t("baihua")  # 主人 11-07 定：标题带读者会问的话
         bh_html = f'<section class="sec sec-白"><h2><i>白</i>{bh_h2}</h2><p lang="zh-Hans">{esc(bh)}</p></section>' if bh else ""  # 11-17 主人：白话下不加提示行
         if not ZHAI_OFF and L.code.startswith("zh"):  # 11-15 十一项之 2 可摘段：每段单独复制出去也看得出书名、章号、原句、页码、网址；只用页面上已有的话拼
-            _qp = sorted(set(g.get("qw_pages") or ([str(D["qw"][c]["pdf_page"])] if D["qw"].get(c, {}).get("pdf_page") else [])), key=int)  # 讲稿未写经文页的章，退到原页表
+            _qp = sorted({x for r in g["cites"] if "经文" not in r["src"] and not re.search(r"（\d+\.\d+", r["text"]) for x in r["pages"]} | set(g.get("qw_pages", [])), key=int) or sorted(set([str(D["qw"][c]["pdf_page"])] if D["qw"].get(c, {}).get("pdf_page") else []), key=int)  # 11-23 挑错：摘段页码按经文页加本章引文页算首尾（别章互见的引文不算）；都没有时退到原页表
             _pg = f'朱熹《论语集注》《四部备要》本第 {"—".join(dict.fromkeys([_qp[0], _qp[-1]])) if _qp else "?"} 页'
             _sig = f"一孔录 yikonglu.com/lunyu/{c}"; _hd = f"《论语》{c}“{title_of(c)}”"
             _tail = lambda t: f'<small class="zhai">（{esc(t)}）</small>'
             gist_html = re.sub(r'(<b class="anlab">[^<]*</b>)(.*?)</p>', lambda m: f'{m.group(1)}<span class="zhai">{esc(_hd)}，</span>{m.group(2)}{_tail(_pg + "；" + _sig)}</p>', gist_html, count=1, flags=re.S)
             if bh_html: bh_html = re.sub(r'(<p lang="zh-Hans">)(.*?)</p>', lambda m: f'{m.group(1)}<span class="zhai">《论语》{c} 全章“{esc(yw[c])}”的白话：</span>{m.group(2)}{_tail("一孔录的读法；" + _sig)}</p>', bh_html, count=1, flags=re.S)
             if g["reads"]:
-                _gl = {k.split("|")[0]: gg for _, _, k, gg, _ in ZD["per"].get(c, []) if gg}
-                _rd = "；".join(f'“{x["pos"]}”的“{x["zi"]}”读 {x["du"]}' + (f'（今多读 {x["jin"]}）' if x.get("jin") else "") + (f'，朱熹注“{_gl[x["zi"]].rstrip("。")}”' if x["zi"] in _gl else "") for x in g["reads"])
+                _glk = {}  # 11-23 挑错 B01、B06、B14：同一字两读（弟子 dì／则弟 tì）按“字|音”配朱注，不再后一条盖前一条；音对不上不配
+                for _, _, k_, gg_, sr_ in ZD["per"].get(c, []):
+                    if gg_: _glk.setdefault(k_, (gg_, sr_))
+                def _glf(x):
+                    du_ = re.sub(r"（.*?）", "", x["du"]).strip()
+                    gs = _glk.get(f'{x["zi"]}|{du_}') or _glk.get(f'{x["zi"]}|{du_.split()[0] if du_ else ""}')
+                    if not gs: return ""
+                    gg_ = "。".join(dict.fromkeys(t for t in gs[0].rstrip("。").split("。") if t))  # B04：同一句重复的只留一次
+                    m_ = re.match(r"(\S{1,3})之" + re.escape(x["zi"]) + "，", gg_)  # B01、B07：“弟子之弟”“以上之上”只配给位置里有“弟子”“以上”的那条
+                    if m_ and m_.group(1) not in x["pos"]: return ""
+                    lab_ = gs[1].split("，")[0] if gs[1].startswith("朱注引") else "朱熹注"  # B13：朱注引程子等，照实署名
+                    return f'，{lab_}“{gg_}”'
+                _rd = "；".join(f'“{x["pos"]}”的“{x["zi"]}”读 {x["du"]}' + (f'（今多读 {x["jin"]}）' if x.get("jin") else "") + _glf(x) for x in g["reads"])
                 extra = extra.replace(f'<section class="sec reads"><h2><i>音</i>{L.t("reads")}</h2>', f'<section class="sec reads"><h2><i>音</i>{L.t("reads")}</h2><p class="zhaip">{esc(f"《论语》{c} 的读音：{_rd}。")}{_tail(_pg + "；" + _sig)}</p>', 1)
             if g["cites"]:
                 _c5 = "；".join(f'“{x["text"]}”（{L.src(x["src"])}，原页 {"、".join(x["pages"])}）' for x in g["cites"] if not x["para"] and x["pages"])
@@ -4872,7 +4930,7 @@ def main(zdir, outdir, kanwu=None):
     gao = {}
     for f in sorted(glob.glob(os.path.join(GAO_DIR, "*", "*稿*.md"))):
         for c, v in parse_gao(f, yw).items():
-            gao.setdefault(c, {"cites": [], "reads": []}); gao[c]["cites"] += v["cites"]; gao[c]["reads"] += v["reads"]; gao[c].setdefault("qw_pages", []).extend(v.get("qw_pages", []))
+            gao.setdefault(c, {"cites": [], "reads": []}); gao[c]["cites"] += [x for x in v["cites"] if (x["text"], x["src"]) not in {(y["text"], y["src"]) for y in gao[c]["cites"]}]; gao[c]["reads"] += [x for x in v["reads"] if (x["zi"], x["pos"]) not in {(y["zi"], y["pos"]) for y in gao[c]["reads"]}]; gao[c].setdefault("qw_pages", []).extend(v.get("qw_pages", []))  # 11-23：同一章出现在两份稿里（9.4—9.6）时引文不重列
     for c, rows in json.load(open(os.path.join(HERE, "duyin_ding.json"), encoding="utf-8")).items():  # 11-16 主人定：照朱注音，另注今读
         if c.startswith("_") or c not in gao: continue
         for zi, pos, du, jin in rows:

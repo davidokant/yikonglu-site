@@ -39,7 +39,7 @@ def section(G, c, P, href, short):
     row = []
     for g in dict.fromkeys(r["group"] for r in T["同问异答"]):
         w = G["wd"][g]
-        li = "".join(f'<li{" class=on" if _c(it["c"]) == c else ""}><a href="{href(_c(it["c"]))}">{_c(it["c"])}</a> {esc(it["who"])}：{esc(it["a"])}</li>' for it in w["items"])
+        li = "".join(f'<li{" class=on" if _c(it["c"]) == c else ""}><a href="{href(_c(it["c"]))}">{_c(it["c"])}</a> {esc(it["who"])}{"（" + esc(it["note"]) + "）" if it.get("note") else ""}：{esc(it["a"])}</li>' for it in w["items"])  # 11-23 挑错 F02：问士收 12.20（问达），加注
         row.append(("同问异答", f'<p>{esc(w["q"])}，全书 {len(w["items"])} 次，问的人不同，答得不同：</p><ol class="gxwd">{li}</ol><p class="gxmore"><a href="{P}lunyu/guanxi/#{g}">同问异答对照表</a></p>'))
     if T["互见"]:
         row.append(("互见", "<ul>" + "".join(f'<li><a href="{href(_c(r["b"]))}">论语 {_c(r["b"])}</a> {esc(short(_c(r["b"])))}</li>' for r in T["互见"]) + "</ul>"))
