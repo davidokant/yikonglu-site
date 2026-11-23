@@ -2699,7 +2699,8 @@ if ZY_OPEN:
     try:
         _q = json.load(open(os.path.join(ZY_DIR, "_原文", "周易原文-v1.json"), encoding="utf-8"))
         ZY_N = {"gua": sum(1 for k in _q if k.isdigit()), "zhuan": sum(1 for k in _q if not k.isdigit() and k.split("-")[0] in ("xs", "xx", "sg", "xg", "zg")),
-                "hj": len(json.load(open(os.path.join(ZY_DIR, "论语互见.json"), encoding="utf-8"))["条"])}
+                "hj": len(json.load(open(os.path.join(ZY_DIR, "论语互见.json"), encoding="utf-8"))["条"]),
+                "hjm": sum(1 for r in json.load(open(os.path.join(ZY_DIR, "论语互见.json"), encoding="utf-8"))["条"] if r.get("kind") in ("出处", "注家引"))}
     except Exception as e: print("周易书架计数读不到：", e)
 ZY_TRI = {}  # 11-22 英日逐句译文（_外文/zy-tri-v0.json：{页键: {"逐句": {句id: {en, ja}}}}）
 if ZY_OPEN and os.path.exists(os.path.join(ZY_DIR, "_外文", "zy-tri-v0.json")):
@@ -2738,7 +2739,7 @@ def mz_xt_gx(gx):
         print("孟子星图关系读不到：", e); return gx
     _s = __import__("opencc").OpenCC("t2s").convert
     pn = {str(v["起"]).split(".")[0]: _s(k) for k, v in PM.items() if isinstance(v, dict)}
-    rank = {"出处": 0, "注家引": 1}; best = {}
+    rank = {"出处": 0, "注家引": 1, "相通": 2}; best = {}  # 11-23 主人点卡：星图也含一孔录对读，跟首页一致
     for r in HJ:
         if r.get("kind") not in rank: continue
         k = (str(r["zhang"]), str(r["c"]))
@@ -2752,7 +2753,7 @@ def mz_xt_gx(gx):
 def dxzy_xt_gx(gx):
     """11-23 主人“大学中庸也在星图上建好连接”：两书论语互见-v0.json 里明引（出处、注家引）作“书外互见 · 大学／中庸”进中文星图；一孔录对读“相通”不画（同孟子口径）。"""
     if not DXZY_LIVE or not gx or "raw" not in gx: return gx
-    _s = __import__("opencc").OpenCC("t2s").convert; rank = {"出处": 0, "注家引": 1}; add = []
+    _s = __import__("opencc").OpenCC("t2s").convert; rank = {"出处": 0, "注家引": 1, "相通": 2}; add = []  # 11-23 主人点卡：星图也含一孔录对读，跟首页一致
     for sl in sorted(DXZY_LIVE):
         B = DXZY[sl]; bk = DXZY_META[sl]["zh"]; best = {}
         for r in B["lyhj"]:
@@ -3921,7 +3922,9 @@ def build_lang(L, D, write):
              + (([(f"{P}nianli/", "《论语》年历", "")] if D["lx"]["nl"] else []) + [(f"{P}zhuanti/keben.html", LU["kb"], ""), (f"{P}duben.html", LU["db"], "")] if home and zhL else [])
         return (f'<div class="zhushu"><a class="cvbig" href="{P}lunyu/" aria-label="{esc(L.t("lunyu"))}"><span class="qb" lang="zh-Hans">论语</span></a><div><h3><a href="{P}lunyu/">{"《" + L.t("lunyu") + "》" if zhL else esc(L.t("lunyu"))}</a></h3>'
                 f'<p class="zk">{esc(LU["k"])}</p>' + "" + '<p class="zl">' + "".join(f'<a href="{u}"{c}>{esc(x)}</a>' for u, x, c in lk if x) + '</p></div></div>')
-    _hjn = {"daodejing": len(DDJ_LYHJ), "sanzijing": len(SZJ_LYHJ), "zhouyi": ZY_N.get("hj", 0)}
+    # 11-23 主人：首页“从《论语》读出去”各书都标互见数，口径统一为全部互见（明引＋一孔录对读），主人 11-23：主要目的是挖掘关系
+    _hjn = {"daodejing": len(DDJ_LYHJ), "sanzijing": len(SZJ_LYHJ), "zhouyi": ZY_N.get("hj", 0), "mengzi": len(MZ["lyhj"]) if MZ else 0,
+            **{sl: len(DXZY[sl]["lyhj"]) for sl in DXZY_LIVE}}
     shelfline = (f'<p class="shelfline">{esc(LU["more"])}' + " · ".join(f'<a href="{P if (zhL or (sl == "sanzijing" and L.code in SZJ_TR) or (sl == "daodejing" and L.code in DDJ_TR) or (sl == "zhouyi" and L.code in ZY_CODES)) else "/"}{sl}/">{"《" + zh + "》" if zhL else esc(L.t("bk_" + sl))}</a>' + (f'<small>（互见 {_hjn[sl]} 条）</small>' if zhL and _hjn.get(sl) else "")
                  for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB and sl != "lunyu") + f' · <a href="{P}shumu/">{esc(LU["soon"].format(n=n_soon))}</a></p>')
     bcards_home = '<div class="bcards">' + "".join(bcard(sl, zh, True) for _, bs in BOOK_GROUPS for sl, zh in bs if sl in LB) + f'</div><p class="soonline"><a href="{P}shumu/">{L.t("soon_line", n=n_soon)}</a></p>'
