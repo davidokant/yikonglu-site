@@ -374,7 +374,18 @@
   "bk_sub_qianziwen": "1.000 chữ",
   "bk_dizigui": "Đệ tử quy",
   "bk_sub_dizigui": "360 câu",
-  "gxiao": "Tiểu thuyết cổ điển"
+  "gxiao": "Tiểu thuyết cổ điển",
+  "gshiwen": "Thi văn",
+  "bk_chuci": "Sở từ",
+  "bk_sub_chuci": "Chu Hy tập chú · 8 quyển",
+  "bk_tangshi": "Đường thi tam bách thủ",
+  "bk_sub_tangshi": "Hành Đường thoái sĩ biên",
+  "bk_guwen": "Cổ văn quan chỉ",
+  "bk_sub_guwen": "Ngô Sở Tài, Ngô Điệu Hầu biên · 12 quyển",
+  "bk_xixiang": "Tây sương ký",
+  "bk_sub_xixiang": "Vương Thực Phủ · bản Kim Thánh Thán",
+  "bk_qianjiashi": "Thiên gia thi",
+  "bk_sub_qianjiashi": "Tạ Phương Đắc, Vương Tương tuyển"
  },
  "books": {
   "1": "Học nhi (thiên 1)",

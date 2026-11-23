@@ -374,7 +374,18 @@
   "bk_sub_qianziwen": "1000 Zeichen",
   "bk_dizigui": "Regeln für Schüler",
   "bk_sub_dizigui": "360 Verse",
-  "gxiao": "Klassische Romane"
+  "gxiao": "Klassische Romane",
+  "gshiwen": "Dichtung und Prosa",
+  "bk_chuci": "Lieder von Chu",
+  "bk_sub_chuci": "Kommentar von Zhu Xi · 8 Juan",
+  "bk_tangshi": "Dreihundert Tang-Gedichte",
+  "bk_sub_tangshi": "hg. von Hengtang Tuishi",
+  "bk_guwen": "Das Beste der alten Prosa",
+  "bk_sub_guwen": "hg. von Wu Chucai und Wu Diaohou · 12 Juan",
+  "bk_xixiang": "Das Westzimmer",
+  "bk_sub_xixiang": "Wang Shifu · Ausgabe Jin Shengtan",
+  "bk_qianjiashi": "Gedichte der tausend Dichter",
+  "bk_sub_qianjiashi": "Auswahl von Xie Fangde und Wang Xiang"
  },
  "books": {
   "1": "Xue er (Buch 1)",

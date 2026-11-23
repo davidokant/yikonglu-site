@@ -374,7 +374,18 @@
   "bk_sub_qianziwen": "1.000 aksara",
   "bk_dizigui": "Aturan bagi Murid",
   "bk_sub_dizigui": "360 baris",
-  "gxiao": "Novel klasik"
+  "gxiao": "Novel klasik",
+  "gshiwen": "Puisi dan prosa",
+  "bk_chuci": "Nyanyian Chu",
+  "bk_sub_chuci": "komentar Zhu Xi · 8 juan",
+  "bk_tangshi": "Tiga Ratus Puisi Tang",
+  "bk_sub_tangshi": "disusun Hengtang Tuishi",
+  "bk_guwen": "Prosa Klasik Terbaik",
+  "bk_sub_guwen": "disusun Wu Chucai dan Wu Diaohou · 12 juan",
+  "bk_xixiang": "Kisah Paviliun Barat",
+  "bk_sub_xixiang": "Wang Shifu · edisi Jin Shengtan",
+  "bk_qianjiashi": "Puisi Seribu Penyair",
+  "bk_sub_qianjiashi": "pilihan Xie Fangde dan Wang Xiang"
  },
  "books": {
   "1": "Xue er (Kitab 1)",
