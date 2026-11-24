@@ -6,6 +6,7 @@ const BOTS = [["gptbot","gptbot"],["chatgpt-user","chatgpt"],["oai-searchbot","o
   ["bingbot","bingbot"],["baiduspider","baiduspider"],["yandex","yandex"],["applebot","applebot"],["amazonbot","amazonbot"],["meta-externalagent","meta"],["facebookexternalhit","facebook"],["ccbot","ccbot"],
   ["petalbot","petalbot"],["duckduckbot","duckduckbot"],["sogou","sogou"],["360spider","so360"],["yisouspider","yisou"],["semrushbot","semrush"],["ahrefsbot","ahrefs"],["mj12bot","mj12"],["dotbot","dotbot"],
   ["diffbot","diffbot"],["cohere-ai","cohere"],["youbot","youbot"],["mistralai-user","mistral"],["deepseekbot","deepseek"],["kimi","kimi"],["timpibot","timpi"],["imagesiftbot","imagesift"],["bot","otherbot"],["spider","otherbot"],["crawl","otherbot"]];
+const VER = "2611241015";  // 推 main 后改成新值再部署，旧边缘缓存全部作废
 const VERIFY = { "www.yikonglu.com": "shenma-site-verification:a5e7bb02c2a161c7fe33c178f0f96ed5_1795511830", "yikonglu.com": "shenma-site-verification:f005659bf9e0a2c96251cd7da2796949_1795513544" };
 export default {
   async fetch(req, env, ctx) {
@@ -19,6 +20,28 @@ export default {
         if (hit && env.LIVE) ctx.waitUntil(env.LIVE.fetch("https://live/bot", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ k: hit[1] }) }).catch(() => {}));
       }
     } catch (e) {}
+    // 11-24 主人点卡：边缘缓存。正常页面在 Cloudflare 存一天、首页与 /data/ 存 10 分钟（影响力数字自动更新）、404 存 1 分钟。
+    // 令牌没有清缓存权限，所以用 Cache API 自管：缓存键带 VER，每次推 main 后把 VER 改成新值重新部署 Worker，旧缓存就全部作废。浏览器拿到的缓存头照原样。
+    if (req.method === "GET") {
+      try {
+        const u = new URL(req.url), p = u.pathname;
+        const ok = s => s === 200 || s === 301 || s === 302 || s === 404;
+        const ttl = (/^\/([a-z]{2}(-[a-z]+)?\/)?(index\.html)?$/.test(p) || p.startsWith("/data/")) ? 600 : 86400;
+        const key = new Request("https://" + u.hostname + "/__edge/" + VER + p + u.search);
+        const cache = caches.default;
+        const hit = await cache.match(key);
+        if (hit) { const h = new Response(hit.body, hit); h.headers.set("Cache-Control", h.headers.get("X-Orig-CC") || "max-age=600"); h.headers.delete("X-Orig-CC"); h.headers.set("X-Edge", "hit"); return h; }
+        const r = await fetch(req);
+        if (ok(r.status)) {
+          const c = new Response(r.clone().body, r);
+          c.headers.set("X-Orig-CC", r.headers.get("Cache-Control") || "max-age=600");
+          c.headers.set("Cache-Control", "public, max-age=" + (r.status === 404 ? 60 : ttl));
+          c.headers.delete("Set-Cookie");
+          ctx.waitUntil(cache.put(key, c));
+        }
+        return r;
+      } catch (e) {}
+    }
     return fetch(req);
   }
 };
