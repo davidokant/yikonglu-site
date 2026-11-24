@@ -6,9 +6,12 @@ const BOTS = [["gptbot","gptbot"],["chatgpt-user","chatgpt"],["oai-searchbot","o
   ["bingbot","bingbot"],["baiduspider","baiduspider"],["yandex","yandex"],["applebot","applebot"],["amazonbot","amazonbot"],["meta-externalagent","meta"],["facebookexternalhit","facebook"],["ccbot","ccbot"],
   ["petalbot","petalbot"],["duckduckbot","duckduckbot"],["sogou","sogou"],["360spider","so360"],["yisouspider","yisou"],["semrushbot","semrush"],["ahrefsbot","ahrefs"],["mj12bot","mj12"],["dotbot","dotbot"],
   ["diffbot","diffbot"],["cohere-ai","cohere"],["youbot","youbot"],["mistralai-user","mistral"],["deepseekbot","deepseek"],["kimi","kimi"],["timpibot","timpi"],["imagesiftbot","imagesift"],["bot","otherbot"],["spider","otherbot"],["crawl","otherbot"]];
+const VERIFY = { shenma: "shenma-site-verification:a5e7bb02c2a161c7fe33c178f0f96ed5_1795511830" };
 export default {
   async fetch(req, env, ctx) {
     ctx.passThroughOnException();
+    // 11-24 神马站长登记的是 www.yikonglu.com，而 www 由 GitHub Pages 301 到裸域，验证跟不过去：站长验证文件在 www 上直接给 200（主人点卡）
+    try { const v = new URL(req.url); if (v.hostname === "www.yikonglu.com" && v.pathname === "/shenma-site-verification.txt") return new Response(VERIFY.shenma, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-cache" } }); } catch (e) {}
     try {
       const u = new URL(req.url), ua = (req.headers.get("user-agent") || "").toLowerCase();
       if (req.method === "GET" && ua && /(^|\/)[^.\/]*$|\.(html|txt|xml)$|\/data\/[^\/]+\.json$/.test(u.pathname)) {
