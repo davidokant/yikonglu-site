@@ -1179,6 +1179,9 @@ LANGDU_JS = ('<script>(function(){var B=document.currentScript.previousElementSi
 LANGDU_DDJ = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-ddj.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-ddj.json")) else set()  # 道德经原文朗读（11-13 主人要上），文件在 langdu/daodejing/<章>.mp3
 LANGDU_MZ = set(json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-mz.json"), encoding="utf-8"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "langdu-mz.json")) else set()  # 11-19 孟子原文朗读（主人定做），文件在 langdu/mengzi/<章>.mp3
 ZY_NOTE = "读音逐字核过，多音字按文义定。"
+# 11-26 主人点卡“按今音，说明里注朱注旧读”（孟子修改单 v2 P01—P07）：朱注旧读今天字典不收的，注音用今音，本章读音说明补一句
+MZ_JIUDU = {"6.1": "乘，朱注去声，读 shèng；今读 chéng。", "6.4": "羡，朱注延面反，读 yàn；今读 xiàn。", "9.9": "屈，朱注求勿反，读 jué；今读 qū。",
+            "10.5": "柝，朱注音托，读 tuō；今读 tuò。", "11.6": "蓰，朱注音师，读 shī；今读 xǐ。", "13.9": "离，朱注力智反，读 lì；今读 lí。", "14.6": "茹，朱注音汝，读 rǔ；今读 rú。"}
 def zy_tag(zy):  # 注音卡数据（tools/kaijuan.js 读）
     return f'<script type="application/json" class="zjzy">{json.dumps(zy, separators=(",", ":"))}</script>' if zy else ""
 
@@ -2433,6 +2436,11 @@ def build_mengzi(L, write, P, S_IDX=None):
     if hant:
         _wmz = write
         def write(rel, text): _wmz(rel, text.replace("</main>", MZ_HANT_MARK + "</main>", 1))
+    else:  # 11-26 孟子修改单 v2 Z02、Z08、Z09、Z10、Z12、Z13：繁转简把底本字形转丢的，简体页回正（罃、乾、徵、旂、闢）；8.24 原文“衞”OpenCC 不转，补成“卫”
+        _wmz = write
+        def write(rel, text):
+            for a_, b_ in (("魏侯䓨", "魏侯罃"), ("纯干", "纯乾"), ("宫、商、角、征、羽", "宫、商、角、徵、羽"), ("士以旗", "士以旂"), ("辟与辟同", "辟与闢同"), ("衞", "卫")): text = text.replace(a_, b_)
+            _wmz(rel, text)
     is_open = bool(cfg.get("open")); img = cfg.get("img", "")
     NOIDX = "" if is_open else '<meta name="robots" content="noindex,follow">'
     key = lambda c: tuple(map(int, c.split(".")))
@@ -2502,7 +2510,7 @@ def build_mengzi(L, write, P, S_IDX=None):
         bh_html = (f'<section class="sec sec-白"><h2><i>白</i>{L.t("baihua")}：“{esc(re.sub(r"[“”‘’「」『』]", "", Y(seo_q(text))))}”是什么意思</h2><p lang="zh-Hans">{esc(b)}</p><p class="note">按朱熹《孟子集注》的读法直译；注家有分歧的地方，见下面的争议读法。</p></section>') if b else ""
         zhu_all = "".join(f'<p><span lang="zh-Hant">{esc(Y(z[0]))}</span> <small>（{esc(z[1])}）</small></p>' for x in ss for z in x["zhu"])
         zhu_html = f'<section class="sec sec-注"><h2><i>注</i>朱熹集注（全章）</h2>{zhu_all}<p class="note">注文照底本录出，未加标点；有疑处请对照原页。</p></section>' if zhu_all else ""
-        deep = ((ZJ.zy_section(c, [Y(x) for x in sents], zy_, rows, esc, ZY_NOTE) if zy_ else "") + (_jdr if jd else zhu_html))
+        deep = ((ZJ.zy_section(c, [Y(x) for x in sents], zy_, rows, esc, ZY_NOTE + ((__import__("opencc").OpenCC("s2twp").convert(MZ_JIUDU.get(c, "")).replace("註", "注")) if hant else Y(MZ_JIUDU.get(c, "")))) if zy_ else "") + (_jdr if jd else zhu_html))
         prev_c = cs[k-1] if k > 0 else None; next_c = cs[k+1] if k+1 < len(cs) else None
         pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{esc(Y(ttl_of(cc)))}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P, "", False, "mengzi", "孟子")}
