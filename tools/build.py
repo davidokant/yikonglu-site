@@ -2300,7 +2300,8 @@ def szj_jd_html(jd, hant=False):
         out += sec("读", "一孔之见", (f'<p class="note">常见的问法：{quotes(K(jd["常见读法"]))}</p>' if jd.get("常见读法") else "") + f"<p>{pg(jd['一孔之见'])}</p>"
                    + (f'<p class="zhaojin"><b>放到今天：</b>{quotes(K(jd["照今"]))}</p>' if jd.get("照今") else ""))
     return out
-LYHJ_SRC = [("wx-", "王相"), ("yinshu", "《三字经音疏》"), ("beiyao", "《三字经备要》"), ("zengzhu", "《增注三字经》"), ("jizhu", "渥美《三字经集注》")]
+# 12-03 三字经挑错 S15：章太炎系世界书局本是《三字经增注》（zengzhu-ntl/nlc），朝鲜本才是《增注三字经》（zengzhu-cnts）
+LYHJ_SRC = [("wx-", "王相"), ("yinshu", "《三字经音疏》"), ("beiyao", "《三字经备要》"), ("zengzhu-ntl", "《三字经增注》"), ("zengzhu-nlc", "《三字经增注》"), ("zengzhu-cnts", "《增注三字经》"), ("jizhu", "渥美《三字经集注》")]
 DDJ_LYHJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_lyhj.json")  # 道德经各章《论语》互见（11-14 主人“全上”，138 条；表见 评审/2026-11-14-论语互见/道德经-论语互见-v1.md）
 DDJ_LYHJ = json.load(open(DDJ_LYHJ_FILE, encoding="utf-8")) if os.path.exists(DDJ_LYHJ_FILE) else []
 # 11-16 首页定位（主人：“以论语为主，牵出一整套经典系列”）：首页副标、标题、摘要
