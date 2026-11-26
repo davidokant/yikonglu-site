@@ -103,3 +103,23 @@ def build(L, write, page, P, href, DOMAIN, MAIL, outdir, all_ch):
     write("zhaji/index.html", page(L, "一孔札记：一孔录在古籍原页里读出的新东西｜一孔录", D.get("列表说明", ""), "zhaji/", body, codes=["zh-Hans"]))
     urls.append(f"{DOMAIN}/zhaji/")
     return urls
+
+
+def pub_items():
+    return [x for x in load().get("篇", []) if x.get("pub")]
+
+
+def nav_link(L, P):
+    """“更多”菜单里的入口，只在简体、且有已发篇时出现。"""
+    return f'<a href="{P}zhaji/">一孔札记</a>' if L.code == "zh-Hans" and pub_items() else ""
+
+
+def footer_line(L, c, P):
+    """章页末行：本章若是某篇札记讨论的章，就链过去（只简体）。"""
+    if L.code != "zh-Hans": return ""
+    xs = [x for x in pub_items() if c in x.get("chapters", [])]
+    if not xs: return ""
+    def one(x):
+        other = "、".join(k for k in x["chapters"] if k != c)
+        return f'<a href="{P}zhaji/{x["no"]}/">{esc(x["id"])} {esc(x["title"].split("：")[0])}</a>' + (f"（与 {other} 连读）" if other else "")
+    return '<p class="note zjline">本章有一孔札记：' + "；".join(one(x) for x in xs) + "</p>"

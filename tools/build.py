@@ -15,6 +15,7 @@ import zhuju as ZJ
 import shuyuan as SY
 import wenyi as WY  # 11-20 问易试运营
 import zjyuanye as ZJY  # 11-16 诸家原页
+import zhaji as ZHAJI  # 11-27 一孔札记
 import lunyu_extra as LX  # 11-14 只为《论语》做的：年历、场合用句、课本带读
 import zizhuan as ZZ  # 11-15 一字一页 /zi/
 import xingtu as XT  # 11-15《论语》星图：首页招牌、关系图页
@@ -1559,7 +1560,7 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
 <header class="top"><div class="wrap">
 <a href="{P}" class="brand"><img src="/assets/seal-180.png" alt="" width="30" height="30">一孔录</a>{'<span class="livep" id="livep" hidden></span>' if ANALYTICS.get("live") else ""}
 <nav><a href="{P}lunyu/" class="lynav">{lyui(L)["nav"]}</a><a href="{P}shumu/">{L.t("nav_books")}</a><a href="{P}zhuanti/">{L.t("nav_topics")}</a><a href="{P}search.html">{L.t("nav_search")}</a><a href="{P}duben.html">{NAV_DB.get(L.code, L.t("db_link"))}</a>{f'<a href="/wenyi/" class="gsnav">问易</a>' if gs else ""}
-<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{"" if rw else (f'<a href="{P}lunyu/guanxi/">{esc(GX.TR[L.code]["S"]["gx_h1"])}</a>' if not L.code.startswith("zh") and GXD and GX.has_lang(L.code) else "")}{f'<a href="{P}shuyuan/">题名</a>' if gs else ""}<a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a>{f'<a href="{P}jieru/">接入智器</a>' if L.code.startswith("zh") else ""}<a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
+<details class="lang more"><summary>{L.t("nav_more")}</summary><div>{"" if rw else (f'<a href="{P}lunyu/guanxi/">{esc(GX.TR[L.code]["S"]["gx_h1"])}</a>' if not L.code.startswith("zh") and GXD and GX.has_lang(L.code) else "")}{f'<a href="{P}shuyuan/">题名</a>' if gs else ""}{ZHAJI.nav_link(L, P)}<a href="{P}kanwu.html">{L.t("nav_errata")}</a><a href="{P}fangfa.html">{lang_tab(FANGFA, L.code)["link"]}</a><a href="{P}kaifang.html">{L.t("dt_link")}</a>{f'<a href="{P}jieru/">接入智器</a>' if L.code.startswith("zh") else ""}<a href="{P}feed.xml">{L.t("feed")}</a><a href="{P}about.html">{L.t("nav_about")}</a><a href="{P}zhichi.html" class="zc">{L.t("zc_link")}</a></div></details>
 <details class="lang"><summary><span class="lfull">{L.name}</span><span class="lshort" aria-hidden="true">{LANG_SHORT.get(L.code, L.code[:2].upper())}</span></summary><div>{sw}</div></details></nav>
 </div></header>{'<script>(function(){var l=document.querySelector(".top nav>.lang:not(.more)"),w=document.querySelector(".top .wrap");if(l&&w&&innerWidth<=700)w.style.setProperty("--lw",(l.offsetWidth+10)+"px")})()</script>' if ANALYTICS.get("live") else ""}
 {note}
@@ -3751,7 +3752,7 @@ def build_lang(L, D, write):
 {fold(he_zhujia(he_yin((ZJ.zy_section(c, sents, zy_, zrows, esc) if dz and zy_ else "") + secs + yiwen_html(c) + extra + (GB.section(c, D["gb"].get(c), epname, yt, st, quotes) if L.code.startswith("zh") and yt and not future else "")), fenqi_html, L.t("f_others")))}
 {citeit}
 </div>
-<p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>{RW.chip_line(D.get("renwu"), c, P) if L.code.startswith("zh") else ""}{GS.footer_line(D.get("gushi"), c, P) if L.code.startswith("zh") else ""}
+<p class="tags">{''.join(f'<span>#{esc(t)}</span>' for t in n['tags'])}</p>{RW.chip_line(D.get("renwu"), c, P) if L.code.startswith("zh") else ""}{GS.footer_line(D.get("gushi"), c, P) if L.code.startswith("zh") else ""}{ZHAJI.footer_line(L, c, P)}
 <nav class="pn">{card(prev_c, L.t("prev"), 'prev')}{card(next_c, L.t("next"), 'next')}</nav>
 </article>
 <aside><h3>{bname}</h3><ol>{side}</ol></aside>
@@ -4586,7 +4587,6 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
         write("jihua/bairi.html", page(L, "百日读完《论语》：每天五章，一百天读完全书｜一孔录", "《论语》498 章分成一百天，每天约五章、十分钟。免登录，进度存在自己的设备上，哪天没读第二天接着读。", "jihua/bairi.html", body))
         urls.append(f"{DOMAIN}/{L.prefix}jihua/bairi.html")
         if L.code == "zh-Hans":  # 11-27 主人点卡“开栏发首篇”：一孔札记，只出简体
-            import zhaji as ZHAJI
             urls += ZHAJI.build(L, write, page, P, href, DOMAIN, MAIL, globals().get("OUT_ROOT"), set(D["qw"]))
         GX.RWID = GX.rw_ids(GXD, D.get("renwu"))  # 关系图人物 id → 人物卡 id
         urls += GX.build(L, GXD, write, page, P, href, gx_short, PIAN, pubset, DOMAIN)
