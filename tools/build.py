@@ -2386,7 +2386,7 @@ def mz_jd_html(jd, T):
         out += sec("本", "别本怎么写", '<p class="note">底本是《四部备要》本朱熹《孟子集注》；对照赵岐注《孟子注疏》等通行本。</p><table class="bbt"><tbody>'
                    + "".join(f'<tr><th>{esc(T(b["处"]))}</th><td>{esc(T(b["说"]))}{f"<br><b>意思：</b>{esc(T(b[chr(21464)]))}" if b.get("变") else ""}</td></tr>' for b in jd["别本"]) + "</tbody></table>")
     if jd.get("诸家"):
-        zj = [x for x in re.split(r"(?<=。)(?=(?:旧题|东汉|西汉|北宋|南宋|宋代|元代|明代|清代|近人|民国)[^：。]{0,16}：)", jd["诸家"]) if x.strip()]
+        zj = [x for x in re.split(r"(?<=。)(?=(?:旧题|东汉|西汉|北宋|南宋|宋代|元代|明代|清代|近人|民国)[^：。]{0,20}：)", jd["诸家"]) if x.strip()]
         out += sec("说", "诸家怎么说", "".join(f'<p class="zj1">{quotes(T(x))}</p>' for x in zj))
     if jd.get("一孔之见"):
         out += sec("读", "一孔之见", f"<p>{quotes(T(jd['一孔之见']))}</p>" + (f'<p class="zhaojin"><b>放到今天：</b>{quotes(T(jd["照今"]))}</p>' if jd.get("照今") else ""))
