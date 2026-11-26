@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "N": 20,
  "chapters": 258,
- "score": 1.0,
- "share": 0.98,
+ "score": 1.5,
+ "share": 1.14,
  "platforms": [
   {
    "key": "gsc",
@@ -22,9 +22,9 @@
   {
    "key": "yt",
    "name": "YouTube",
-   "score": 2.0,
-   "share": 0.98,
-   "measured": 92,
+   "score": 3.4,
+   "share": 1.14,
+   "measured": 134,
    "partial": true
   }
  ],
@@ -46,8 +46,8 @@
   },
   {
    "week": "2026-11-23",
-   "score": 1.0,
-   "share": 0.98
+   "score": 1.5,
+   "share": 1.14
   }
  ],
  "books": [
@@ -55,13 +55,13 @@
    "key": "lunyu",
    "name": "论语",
    "chapters": 257,
-   "score": 1.0,
+   "score": 1.5,
    "platforms": [
     {
      "key": "yt",
      "name": "YouTube",
-     "score": 2.0,
-     "measured": 92,
+     "score": 3.4,
+     "measured": 134,
      "partial": true
     },
     {
@@ -182,6 +182,70 @@
      "gsc": 10
     },
     {
+     "ch": "5.1",
+     "yt": 5
+    },
+    {
+     "ch": "5.6",
+     "yt": 2
+    },
+    {
+     "ch": "5.7",
+     "yt": 20
+    },
+    {
+     "ch": "5.14",
+     "yt": 20
+    },
+    {
+     "ch": "5.17",
+     "yt": 17
+    },
+    {
+     "ch": "5.19",
+     "yt": 13
+    },
+    {
+     "ch": "5.23",
+     "yt": 16
+    },
+    {
+     "ch": "5.27",
+     "yt": 2
+    },
+    {
+     "ch": "6.2",
+     "yt": 10
+    },
+    {
+     "ch": "6.3",
+     "yt": 13
+    },
+    {
+     "ch": "6.4",
+     "yt": 16
+    },
+    {
+     "ch": "6.6",
+     "yt": 18
+    },
+    {
+     "ch": "6.9",
+     "yt": 12
+    },
+    {
+     "ch": "6.11",
+     "yt": 17
+    },
+    {
+     "ch": "6.12",
+     "yt": 14
+    },
+    {
+     "ch": "6.15",
+     "yt": 19
+    },
+    {
      "ch": "6.16",
      "bing": 5
     },
@@ -236,9 +300,9 @@
  ],
  "index": {
   "bing": {
-   "indexed": 9,
+   "indexed": 21,
    "total": 10,
-   "date": "/Date(1795392000000)/"
+   "date": "/Date(1795564800000)/"
   },
   "google": {
    "indexed": 0,
@@ -250,6 +314,6 @@
   "ratio": 16.3,
   "episodes": 70,
   "segments": 2094,
-  "updated": "2026-11-24"
+  "updated": "2026-11-26"
  }
 }
