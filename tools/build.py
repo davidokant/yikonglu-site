@@ -1184,7 +1184,7 @@ ZY_NOTE = "读音逐字核过，多音字按文义定。"
 MZ_JIUDU = {"6.1": "乘，朱注去声，读 shèng；今读 chéng。", "6.4": "羡，朱注延面反，读 yàn；今读 xiàn。", "9.9": "屈，朱注求勿反，读 jué；今读 qū。",
             "10.5": "柝，朱注音托，读 tuō；今读 tuò。", "11.6": "蓰，朱注音师，读 shī；今读 xǐ。", "13.9": "离，朱注力智反，读 lì；今读 lí。", "14.6": "茹，朱注音汝，读 rǔ；今读 rú。"}
 # 11-26 主人定（周易修改单）：小畜、大畜卦名读 xù，观卦卦名读 guān，读音说明注朱注旧读；周易全书挑错的今音条同此
-ZY_JIUDU = {"9": "小畜的“畜”，朱注读 chù；今读 xù。六四“血去惕出”的“去”，朱注读上声；今读 qù。", "26": "大畜的“畜”，朱注读 chù；今读 xù。九三“曰闲舆卫”的“曰”，本义说当作日月的“日”，读 rì。", "20": "卦名“观”，朱注读 guàn；今读 guān。", "59": "上九“涣其血去逖出”的“去”，朱注读上声；今读 qù。"}
+ZY_JIUDU = {"9": "小畜的“畜”，朱注读 chù；今读 xù。六四“血去惕出”的“去”，朱注读上声；今读 qù。", "26": "大畜的“畜”，朱注读 chù；今读 xù。九三“曰闲舆卫”的“曰”，本义说当作日月的“日”，读 rì。", "20": "卦名“观”，朱注读 guàn；今读 guān。", "59": "上九“涣其血去逖出”的“去”，朱注读上声；今读 qù。", "24": "初九“无祗悔”的“祗”，朱注读 qí；今读 zhī。", "28": "“栋桡”的“桡”，朱注读 nào；今读 náo。", "xx-5": "“无祗悔”的“祗”，朱注读 qí；今读 zhī。"}
 def zy_tag(zy):  # 注音卡数据（tools/kaijuan.js 读）
     return f'<script type="application/json" class="zjzy">{json.dumps(zy, separators=(",", ":"))}</script>' if zy else ""
 
@@ -3078,7 +3078,7 @@ def _zhouyi_zhuan(L, write, P, c, zs, QW, zj, jd, bh, jl, hb, zyq, ywl, hj):
     lyhj = lyhj_html([dict(r, note=r.get("q", ""), szj=zid.get(r.get("ju"), "")) for r in hj], P, "zyz")
     zhu_all = "".join(f'<p><span lang="zh-Hant">{esc(z[0])}</span> <small>（{esc(z[1])}）</small></p>' for x in main_ for z in (x.get("zhu") or [])) + "".join(f'<p><span lang="zh-Hant">○{esc(x["yw"])}</span> <small>（朱熹章旨）</small></p>' for x in zj if x["kind"] == "章旨")
     zhu_html = f'<section class="sec sec-注"><h2><i>注</i>朱熹本义（全章）</h2>{zhu_all}</section>' if zhu_all else ""
-    deep = (ZJ.zy_section(c, sents, zy_, [{"bh": x.get("bh", "")} for x in main_], esc, ZY_NOTE) if zy_ else "") + _jdr + zhu_html
+    deep = (ZJ.zy_section(c, sents, zy_, [{"bh": x.get("bh", "")} for x in main_], esc, ZY_NOTE + ZY_JIUDU.get(c, "")) if zy_ else "") + _jdr + zhu_html
     same = [k for k in zs if QW[k]["篇"] == pt]; i_ = same.index(c)
     pv, nx = (same[i_ - 1] if i_ else None), (same[i_ + 1] if i_ + 1 < len(same) else None)
     _pn = '<nav class="pn">' + "".join(f'<a class="pncard {cl}" href="{P}{zy_zrel(g)}"><small>{L.t(lb)}</small><b>{esc(QW[g].get("章", ""))}　{esc(QW[g].get("章名", ""))}</b></a>' if g else "<span></span>" for g, lb, cl in ((pv, "prev", "prev"), (nx, "next", "next"))) + "</nav>"
