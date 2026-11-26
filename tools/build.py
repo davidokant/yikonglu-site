@@ -63,6 +63,8 @@ HUANG_SCAN = "https://commons.wikimedia.org/w/index.php?title=File:SSID-13146346
 SUPPORT = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "support.json"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "support.json")) else {}
 ANALYTICS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "analytics.json"))) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "analytics.json")) else {}
 KANWU_DEFAULT = "/mnt/project-files/一孔学-内-自媒体/数据/网站勘误.md"
+NEIBU_FILE = "/mnt/project-files/一孔学-内-自媒体/规范/闸/内部词.txt"  # 11-27 全项目一份内部说法表；“换:”行建站时整页替换，检查（check.py、wz_zha Z6）读同一份
+NEIBU_HUAN = [tuple(ln.strip()[2:].split("→", 1)) for ln in (open(NEIBU_FILE, encoding="utf-8") if os.path.exists(NEIBU_FILE) else []) if ln.startswith(("换:", "換:")) and "→" in ln]
 INTERNAL = re.compile(r"（[^（）]*(只|转述|不上屏|不念|常识|核不到|见注|今读)[^（）]*）")
 
 HANT_FIX = {"余力": "餘力", "余，": "餘，", "余者": "餘者", "托看": "託看", "诗云": "詩云", "子云": "子云", "干禄": "干祿"}  # 护住后手工给的繁体
@@ -2707,7 +2709,7 @@ def build_dxzy(L, write, P, S_IDX, slug):
             bz_html = f'<section class="sec sec-补 dxzm"><h2><i>补</i>朱子补传：格物致知</h2><p lang="zh-Hant">{bzs}</p><p class="note">传的第五章原文已缺，这一段是朱熹“取程子之意”补写的，不是《大学》原文；{esc(Y(bz.get("出处", "")))}。点一句，原页上框出。</p></section>'
         deep = ZJ.zy_section(c, [Y(x) for x in sents], zy_, rows, esc, ZY_NOTE) if zy_ else ""
         zhu_all = "".join(f'<p><span lang="zh-Hant">{esc(Y(z[0]))}</span> <small>（{esc(z[1])}）</small></p>' for x in ss for z in x["zhu"])
-        if zhu_all: deep += f'<section class="sec sec-注"><h2><i>注</i>朱熹章句（全章）</h2>{zhu_all}<p class="note">注文照底本录出、小编标点；有疑处请对照原页。</p></section>'
+        if zhu_all: deep += f'<section class="sec sec-注"><h2><i>注</i>朱熹章句（全章）</h2>{zhu_all}<p class="note">注文照底本录出、一孔录标点；有疑处请对照原页。</p></section>'
         prev_c = cs[k - 1] if k > 0 else None; next_c = cs[k + 1] if k + 1 < len(cs) else None
         pn = "".join(f'<a class="pncard {cl}" href="{P}{rel_of(cc)}"><small>{L.t(lb)}</small><b>{cc}　{esc(Y(ttl_of(cc)))}</b></a>' if cc else "<span></span>" for cc, lb, cl in ((prev_c, "prev", "prev"), (next_c, "next", "next")))
         body = f"""<div class="chhead bk"><div class="wrap">{cover_s}
@@ -5086,6 +5088,7 @@ def main(zdir, outdir, kanwu=None):
             if prefix in ("", "zh-hant"): text = daiyan(rel, text)
             text = post(text) if post else text
             for a_, b_ in DIZI_FIX.get(rel, []): text = text.replace(a_, b_)
+            for a_, b_ in NEIBU_HUAN: text = text.replace(a_, b_)  # 外文页也带中文讲读片段，一起换
             if rel.endswith(".html"): text = rare_fix(text, prefix == "zh-hant")
             key = (prefix + "/" if prefix else "") + rel
             h = content_fp(text)  # 11-20 收录：只认 <main> 里的正文文字，模板、样式、脚本、版式改动都不换修改日期

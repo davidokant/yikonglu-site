@@ -7,6 +7,16 @@ css = open(os.path.join(out, "style.css"), encoding="utf-8").read()
 css_nc = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
 if css_nc.count("{") != css_nc.count("}"): bad.append(f"style.css 花括号不配对：{{ {css_nc.count('{')} 对 }} {css_nc.count('}')}")
 WORDS = ["一孔按", "Codex", "标题问", "封面问", "片头问", "短片问", "标题候选", "本集只上", "外参", "工坊", "定版稿", "插科", "特别期", "发布线程", "主人选定", "待主人", "主人選定", "主人定", "主人看片", "主人在", "一孔之见：一孔之见", "一孔之見：一孔之見", "片里照", "片裡照", "无明显误读", "無明顯誤讀", "带读包", "帶讀包", "", "", ""]
+# 11-27 内部说法全项目一份：规范/闸/内部词.txt（词、re: 正则、不算: 放行；换: 行是建站替换，不在这里查）。只查页面正文 <main>。
+NB = "/mnt/project-files/一孔学-内-自媒体/规范/闸/内部词.txt"
+NB_W, NB_R, NB_OK = [], [], []
+if os.path.exists(NB):
+    for ln in open(NB, encoding="utf-8"):
+        w = ln.rstrip("\n").split("  #")[0].strip()
+        if not w or w.startswith(("#", "换:", "換:")): continue
+        if w.startswith("re:"): NB_R.append(re.compile(w[3:]))
+        elif w.startswith("不算:"): NB_OK.append(re.compile(w[3:]))
+        else: NB_W.append(w)
 n = 0
 for f in glob.glob(os.path.join(out, "**", "*.*"), recursive=True):
     if not f.endswith((".html", ".json", ".xml", ".js", ".css", ".txt")): continue
@@ -19,6 +29,13 @@ for f in glob.glob(os.path.join(out, "**", "*.*"), recursive=True):
     if re.search(r"主人\s*\d{1,2}-\d{1,2}", t): bad.append(f"{f} 含内部定稿记录（主人+日期）")
     if f.endswith(".html") and (m := re.search(r">([a-z]{2,6}_[a-z0-9_]+)<", t)): bad.append(f"{f} 有没翻出的界面字键 {m.group(1)!r}")
     if f.endswith(".html") and t.count("<main") != t.count("</main>"): bad.append(f"{f} <main> 不配对")
+    if f.endswith(".html") and NB_W and (mm := re.search(r"<main.*?</main>", t, re.S)):
+        mt = re.sub(r"<[^>]+>", "", re.sub(r"<(script|style)\b.*?</\1>", "", mm.group(0), flags=re.S))
+        for o in NB_OK: mt = o.sub("", mt)
+        for w in NB_W:
+            if w in mt: bad.append(f"{f} 正文含内部说法 {w!r}（规范/闸/内部词.txt）")
+        for r in NB_R:
+            if (m2 := r.search(mt)): bad.append(f"{f} 正文含内部说法 {m2.group()!r}")
 try:
     def _sm_old():  # 11-18 起站点地图分卷：总目录 sitemap.xml＋sitemap-*.xml；旧版是单个 sitemap.xml
         ls = subprocess.run(["git", "ls-tree", "--name-only", "HEAD", out + "/"], capture_output=True, text=True).stdout.split()
