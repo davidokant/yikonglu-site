@@ -72,7 +72,7 @@ def build(L, write, page, P, href, DOMAIN, MAIL, outdir, all_ch):
         sf_html = (f'<section class="zj-sec"><h2>首发记录</h2><ul>' + "".join(f"<li>{esc(a)}：{esc(b)}</li>" for a, b in sf) + "</ul></section>") if sf else ""
         chs = "、".join(f'<a href="{href(c)}">{c}</a>' for c in x.get("chapters", []))
         body = f'''{CSS}<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}zhaji/">一孔札记</a> › {esc(x["id"])}</p>
-<h1><span class="no">一孔札记 {esc(x["id"])}</span>{esc(x["title"])}</h1>
+<h1>{esc(x["title"])}</h1>
 <p class="zj-meta">编号 <b>{esc(x["id"])}</b> · 发表 <b>{esc(date_s)}</b> · 版本 <b>{esc(x["ver"])}</b> · DOI <b>{doi_s}</b> · 署名 <b>一孔录</b> · 本章 {chs}</p></div></div>
 <main class="wrap narrow zhaji">
 <p class="zj-jl"><b>一句话：</b>{_link_ch(esc(x["jielun"]), href, all_ch)}</p>
