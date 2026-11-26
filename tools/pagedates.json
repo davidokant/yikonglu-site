@@ -4,7 +4,7 @@
 "2026-11-23"
 ],
 "about.html": [
-"t:c4cb45ad8411da2c",
+"t:b04b957dc7738836",
 "2026-11-26"
 ],
 "banben/index.html": [
@@ -168,7 +168,7 @@
 "2026-11-26"
 ],
 "daodejing/32.html": [
-"t:3239c3a3fb9500e2",
+"t:836b067a6323a65b",
 "2026-11-26"
 ],
 "daodejing/33.html": [
@@ -248,7 +248,7 @@
 "2026-11-26"
 ],
 "daodejing/50.html": [
-"t:c7814f2864155901",
+"t:6a175f3f3c9f7d62",
 "2026-11-26"
 ],
 "daodejing/51.html": [
@@ -260,7 +260,7 @@
 "2026-11-26"
 ],
 "daodejing/53.html": [
-"t:b84e5ba65e997044",
+"t:ee71fa73df485d9d",
 "2026-11-26"
 ],
 "daodejing/54.html": [
@@ -336,7 +336,7 @@
 "2026-11-26"
 ],
 "daodejing/70.html": [
-"t:39dfc006ea44ff44",
+"t:9813000b1a86c65d",
 "2026-11-26"
 ],
 "daodejing/71.html": [
@@ -500,7 +500,7 @@
 "2026-11-16"
 ],
 "de/kanwu.html": [
-"t:05aef06ae987ed97",
+"t:5cfc7324931baec8",
 "2026-11-26"
 ],
 "de/llms.txt": [
@@ -3872,7 +3872,7 @@
 "2026-11-17"
 ],
 "en/kanwu.html": [
-"t:bcd110914f113015",
+"t:d61a8dfd1a175717",
 "2026-11-26"
 ],
 "en/llms.txt": [
@@ -8660,7 +8660,7 @@
 "2026-11-17"
 ],
 "es/kanwu.html": [
-"t:83e25ed5a3322519",
+"t:1e1c1a512836d64f",
 "2026-11-26"
 ],
 "es/llms.txt": [
@@ -11652,7 +11652,7 @@
 "2026-11-13"
 ],
 "fangfa.html": [
-"t:c95d8b4f327b222f",
+"t:e9ea33c5ac6b7dc6",
 "2026-11-26"
 ],
 "feed.xml": [
@@ -11692,7 +11692,7 @@
 "2026-11-17"
 ],
 "fr/kanwu.html": [
-"t:ad568aaf3032e3c1",
+"t:7ee780f181296f26",
 "2026-11-26"
 ],
 "fr/llms.txt": [
@@ -14684,7 +14684,7 @@
 "2026-11-13"
 ],
 "gaidong.html": [
-"t:af697c5ec3c6f973",
+"t:d1284019f9c1ed61",
 "2026-11-26"
 ],
 "guanxi/index.html": [
@@ -14780,7 +14780,7 @@
 "2026-11-16"
 ],
 "id/kanwu.html": [
-"t:afeb29469e96d0a6",
+"t:bdd687aacc886d17",
 "2026-11-26"
 ],
 "id/llms.txt": [
@@ -17772,7 +17772,7 @@
 "2026-11-13"
 ],
 "index.html": [
-"t:392899ec56c930fc",
+"t:877050cdccac4fc1",
 "2026-11-26"
 ],
 "ja/about.html": [
@@ -18148,7 +18148,7 @@
 "2026-11-17"
 ],
 "ja/kanwu.html": [
-"t:55c491da8ab62af7",
+"t:1ec13a022fb3d096",
 "2026-11-26"
 ],
 "ja/llms.txt": [
@@ -22916,7 +22916,7 @@
 "2026-11-17"
 ],
 "kanwu.html": [
-"t:ad7d25f02f5ef611",
+"t:a12d00c16d4677ff",
 "2026-11-26"
 ],
 "ko/about.html": [
@@ -22952,7 +22952,7 @@
 "2026-11-17"
 ],
 "ko/kanwu.html": [
-"t:0bde2aa2d28fc5d4",
+"t:8fd4ff186d8d75de",
 "2026-11-26"
 ],
 "ko/llms.txt": [
@@ -29984,7 +29984,7 @@
 "2026-11-16"
 ],
 "ru/kanwu.html": [
-"t:703b7cf29fb1df2c",
+"t:4aa2aca01c02d497",
 "2026-11-26"
 ],
 "ru/llms.txt": [
@@ -33004,7 +33004,7 @@
 "2026-11-26"
 ],
 "sanzijing/16.html": [
-"t:476d877204329141",
+"t:bf6c66ab1ce515af",
 "2026-11-26"
 ],
 "sanzijing/17.html": [
@@ -33068,7 +33068,7 @@
 "2026-11-26"
 ],
 "sanzijing/30.html": [
-"t:def5c032da594994",
+"t:731514cc23114971",
 "2026-11-26"
 ],
 "sanzijing/31.html": [
@@ -33164,7 +33164,7 @@
 "2026-11-26"
 ],
 "search.json": [
-"t:b90fcf03d6afaf0b",
+"t:aa7b145e818a1d25",
 "2026-11-26"
 ],
 "shumu/index.html": [
@@ -33340,7 +33340,7 @@
 "2026-11-16"
 ],
 "vi/kanwu.html": [
-"t:1d2224f4a01121ee",
+"t:22399c7e5c297caf",
 "2026-11-26"
 ],
 "vi/llms.txt": [
@@ -36604,7 +36604,7 @@
 "2026-11-16"
 ],
 "zh-hant/about.html": [
-"t:77ee016d7bfb8d0d",
+"t:e02796b88234e56e",
 "2026-11-26"
 ],
 "zh-hant/banben/index.html": [
@@ -36768,7 +36768,7 @@
 "2026-11-26"
 ],
 "zh-hant/daodejing/32.html": [
-"t:d93dd5cadbf0467e",
+"t:794f3a7fb0812d67",
 "2026-11-26"
 ],
 "zh-hant/daodejing/33.html": [
@@ -36848,7 +36848,7 @@
 "2026-11-26"
 ],
 "zh-hant/daodejing/50.html": [
-"t:00addc2a97c5bfb0",
+"t:d5331b3f7504c1ee",
 "2026-11-26"
 ],
 "zh-hant/daodejing/51.html": [
@@ -36860,7 +36860,7 @@
 "2026-11-26"
 ],
 "zh-hant/daodejing/53.html": [
-"t:d50fbe42722446da",
+"t:20eaa9b286c1a96e",
 "2026-11-26"
 ],
 "zh-hant/daodejing/54.html": [
@@ -36936,7 +36936,7 @@
 "2026-11-26"
 ],
 "zh-hant/daodejing/70.html": [
-"t:ed807484810ef2d2",
+"t:44462e1b5122ac81",
 "2026-11-26"
 ],
 "zh-hant/daodejing/71.html": [
@@ -37076,7 +37076,7 @@
 "2026-11-08"
 ],
 "zh-hant/fangfa.html": [
-"t:de0f2e8942f27153",
+"t:7d5732199e67fc46",
 "2026-11-26"
 ],
 "zh-hant/feed.xml": [
@@ -37084,7 +37084,7 @@
 "2026-11-21"
 ],
 "zh-hant/gaidong.html": [
-"t:1cc045951a44f4a4",
+"t:29240e5036ddab75",
 "2026-11-26"
 ],
 "zh-hant/guanxi/index.html": [
@@ -37148,7 +37148,7 @@
 "2026-11-09"
 ],
 "zh-hant/index.html": [
-"t:06b120a64bec5df8",
+"t:282a09563a1cb7c2",
 "2026-11-26"
 ],
 "zh-hant/jieru/index.html": [
@@ -37164,7 +37164,7 @@
 "2026-11-17"
 ],
 "zh-hant/kanwu.html": [
-"t:eda77a8c042ef293",
+"t:496d1778f2aa6500",
 "2026-11-26"
 ],
 "zh-hant/llms.txt": [
@@ -41204,7 +41204,7 @@
 "2026-11-26"
 ],
 "zh-hant/sanzijing/16.html": [
-"t:1973d80c46a373ef",
+"t:ded9cb99e60426f5",
 "2026-11-26"
 ],
 "zh-hant/sanzijing/17.html": [
@@ -41268,7 +41268,7 @@
 "2026-11-26"
 ],
 "zh-hant/sanzijing/30.html": [
-"t:fa128b3e29db4d69",
+"t:babcf8bc2a55423e",
 "2026-11-26"
 ],
 "zh-hant/sanzijing/31.html": [
@@ -41364,7 +41364,7 @@
 "2026-11-26"
 ],
 "zh-hant/search.json": [
-"t:9a0ee46d7ef20e8a",
+"t:711db3f0c3bd7a23",
 "2026-11-26"
 ],
 "zh-hant/shumu/index.html": [
@@ -41916,7 +41916,7 @@
 "2026-11-26"
 ],
 "zh-hant/zhouyi/63.html": [
-"t:efdb181dfefd5d13",
+"t:d181ac3e4c4f2ba0",
 "2026-11-26"
 ],
 "zh-hant/zhouyi/64.html": [
@@ -42008,8 +42008,8 @@
 "2026-11-26"
 ],
 "zh-hant/zhouyi/xici-shang/12.html": [
-"t:72764a4d5d5d97c1",
-"2026-11-21"
+"t:70273723e15552e1",
+"2026-11-26"
 ],
 "zh-hant/zhouyi/xici-shang/2.html": [
 "t:36cd57b9f44bd8fc",
@@ -42036,7 +42036,7 @@
 "2026-11-26"
 ],
 "zh-hant/zhouyi/xici-shang/8.html": [
-"t:47d440189172765d",
+"t:18da8c361cac5dc0",
 "2026-11-26"
 ],
 "zh-hant/zhouyi/xici-shang/9.html": [
@@ -42683,6 +42683,14 @@
 "t:ea3ae085ec7ce0ca",
 "2026-11-16"
 ],
+"zhaji/0001/index.html": [
+"t:d6183bfc80c82f0e",
+"2026-11-26"
+],
+"zhaji/index.html": [
+"t:db61f406af2554b0",
+"2026-11-26"
+],
 "zhichi.html": [
 "t:a1371e343bb86163",
 "2026-11-22"
@@ -43080,7 +43088,7 @@
 "2026-11-26"
 ],
 "zhouyi/63.html": [
-"t:38446e42675fbcd0",
+"t:ec4a13b22675425d",
 "2026-11-26"
 ],
 "zhouyi/64.html": [
@@ -43172,8 +43180,8 @@
 "2026-11-26"
 ],
 "zhouyi/xici-shang/12.html": [
-"t:dc3df9ac98a44616",
-"2026-11-21"
+"t:62fc6a5c9421006e",
+"2026-11-26"
 ],
 "zhouyi/xici-shang/2.html": [
 "t:372b56f35d5fc4f0",
@@ -43200,7 +43208,7 @@
 "2026-11-26"
 ],
 "zhouyi/xici-shang/8.html": [
-"t:1fbaab9ffe9492db",
+"t:f8e39b3d8961cb31",
 "2026-11-26"
 ],
 "zhouyi/xici-shang/9.html": [

@@ -4585,6 +4585,9 @@ document.getElementById("brstop").onclick=function(){{if(!confirm("不跟这个�
 go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()}})();</script>'''
         write("jihua/bairi.html", page(L, "百日读完《论语》：每天五章，一百天读完全书｜一孔录", "《论语》498 章分成一百天，每天约五章、十分钟。免登录，进度存在自己的设备上，哪天没读第二天接着读。", "jihua/bairi.html", body))
         urls.append(f"{DOMAIN}/{L.prefix}jihua/bairi.html")
+        if L.code == "zh-Hans":  # 11-27 主人点卡“开栏发首篇”：一孔札记，只出简体
+            import zhaji as ZHAJI
+            urls += ZHAJI.build(L, write, page, P, href, DOMAIN, MAIL, globals().get("OUT_ROOT"), set(D["qw"]))
         GX.RWID = GX.rw_ids(GXD, D.get("renwu"))  # 关系图人物 id → 人物卡 id
         urls += GX.build(L, GXD, write, page, P, href, gx_short, PIAN, pubset, DOMAIN)
         XT.write_data(write, XT.data(dxzy_xt_gx(mz_xt_gx(zy_xt_gx(GXD))), PIAN, pubset, href, ctitle, tx, D["lx"]))  # 11-21 主人：星图加上周易关系（只进星图，不动论语章页）
