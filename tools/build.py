@@ -1182,6 +1182,8 @@ ZY_NOTE = "读音逐字核过，多音字按文义定。"
 # 11-26 主人点卡“按今音，说明里注朱注旧读”（孟子修改单 v2 P01—P07）：朱注旧读今天字典不收的，注音用今音，本章读音说明补一句
 MZ_JIUDU = {"6.1": "乘，朱注去声，读 shèng；今读 chéng。", "6.4": "羡，朱注延面反，读 yàn；今读 xiàn。", "9.9": "屈，朱注求勿反，读 jué；今读 qū。",
             "10.5": "柝，朱注音托，读 tuō；今读 tuò。", "11.6": "蓰，朱注音师，读 shī；今读 xǐ。", "13.9": "离，朱注力智反，读 lì；今读 lí。", "14.6": "茹，朱注音汝，读 rǔ；今读 rú。"}
+# 11-26 主人定（周易修改单）：小畜、大畜卦名读 xù，观卦卦名读 guān，读音说明注朱注旧读；周易全书挑错的今音条同此
+ZY_JIUDU = {"9": "小畜的“畜”，朱注读 chù；今读 xù。六四“血去惕出”的“去”，朱注读上声；今读 qù。", "26": "大畜的“畜”，朱注读 chù；今读 xù。九三“曰闲舆卫”的“曰”，本义说当作日月的“日”，读 rì。", "20": "卦名“观”，朱注读 guàn；今读 guān。", "59": "上九“涣其血去逖出”的“去”，朱注读上声；今读 qù。"}
 def zy_tag(zy):  # 注音卡数据（tools/kaijuan.js 读）
     return f'<script type="application/json" class="zjzy">{json.dumps(zy, separators=(",", ":"))}</script>' if zy else ""
 
@@ -2294,7 +2296,8 @@ def szj_jd_html(jd, hant=False):
         out += sec("读", "一孔之见", (f'<p class="note">常见的问法：{quotes(K(jd["常见读法"]))}</p>' if jd.get("常见读法") else "") + f"<p>{pg(jd['一孔之见'])}</p>"
                    + (f'<p class="zhaojin"><b>放到今天：</b>{quotes(K(jd["照今"]))}</p>' if jd.get("照今") else ""))
     return out
-LYHJ_SRC = [("wx-", "王相"), ("yinshu", "《三字经音疏》"), ("beiyao", "《三字经备要》"), ("zengzhu", "《增注三字经》"), ("jizhu", "渥美《三字经集注》")]
+# 12-03 三字经挑错 S15：章太炎系世界书局本是《三字经增注》（zengzhu-ntl/nlc），朝鲜本才是《增注三字经》（zengzhu-cnts）
+LYHJ_SRC = [("wx-", "王相"), ("yinshu", "《三字经音疏》"), ("beiyao", "《三字经备要》"), ("zengzhu-ntl", "《三字经增注》"), ("zengzhu-nlc", "《三字经增注》"), ("zengzhu-cnts", "《增注三字经》"), ("jizhu", "渥美《三字经集注》")]
 DDJ_LYHJ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ddj_lyhj.json")  # 道德经各章《论语》互见（11-14 主人“全上”，138 条；表见 评审/2026-11-14-论语互见/道德经-论语互见-v1.md）
 DDJ_LYHJ = json.load(open(DDJ_LYHJ_FILE, encoding="utf-8")) if os.path.exists(DDJ_LYHJ_FILE) else []
 # 11-16 首页定位（主人：“以论语为主，牵出一整套经典系列”）：首页副标、标题、摘要
@@ -2749,7 +2752,7 @@ MZ_HANT_POST = _HANT_COMMON + [("週三代", "周三代"), ("塗鍾", "塗鐘"),
                                ("濛濛", "蒙蒙"), ("矇蔽", "蒙蔽"), ("生髮出", "生發出"), ("洩柳", "泄柳"), ("洩洩", "泄泄"), ("蹠", "跖"), ("徐闢", "徐辟"), ("段幹木", "段干木")]
 DDJ_HANT_POST = _HANT_COMMON + [("儘性", "盡性"), ("衝氣", "沖氣"), ("若衝", "若沖"), ("“衝”", "“沖”"), ("衝而用", "沖而用"), ("衝／盅", "沖／盅"), ("而不衝", "而不沖"), ("如衝者", "如沖者"),
                                 ("迴歸", "回歸"), ("華髮外", "華發外"), ("上下週旋", "上下周旋"), ("社群繪本館", "社區繪本館"), ("社群診所", "社區診所"), ("社群藥", "社區藥")]
-ZY_HANT_POST = [("佔", "占"), ("兇", "凶"), ("徵凶", "征凶"), ("出徵", "出征"), ("迴圈", "循環"), ("儘性", "盡性"), ("頭髮展", "頭發展"), ("生髮", "生發"), ("幹寶", "干寶"), ("水就幹", "水就乾"),
+ZY_HANT_POST = [("佔", "占"), ("朱註", "朱注"), ("兇", "凶"), ("徵凶", "征凶"), ("出徵", "出征"), ("迴圈", "循環"), ("儘性", "盡性"), ("頭髮展", "頭發展"), ("生髮", "生發"), ("幹寶", "干寶"), ("水就幹", "水就乾"),
                 ("見鬥", "見斗"), ("大瞭然後", "大了然後"), ("訊息", "消息"), ("臘肉", "腊肉")]
 ZYX = {}  # 本语种出页时的开关：open、img、noidx、codes、urls、S、hant、P
 ZY_N = {}  # 书架用：{"gua": 64, "zhuan": 37, "hj": 互见条数}
@@ -2980,7 +2983,7 @@ def _zhouyi_one(L, write, P, gua, gs, QW, qw, zj, jd, bh, jl, hb, zyq, ywl, hj):
     zhu_all = "".join(f'<p><span lang="zh-Hant">{esc(z[0])}</span> <small>（{esc(z[1])}）</small></p>' for x in zj for z in (x.get("zhu") or []))
     zhu_html = f'<section class="sec sec-注"><h2><i>注</i>朱熹本义（全卦）</h2>{zhu_all}</section>' if zhu_all else ""
     bhrows = [{"bh": x.get("bh", "")} for x in zj]
-    deep = (ZJ.zy_section(c, sents, zy_, bhrows, esc, ZY_NOTE) if zy_ else "") + _jdr + zhu_html
+    deep = (ZJ.zy_section(c, sents, zy_, bhrows, esc, ZY_NOTE + ZY_JIUDU.get(c, "")) if zy_ else "") + _jdr + zhu_html
     k_ = gs.index(c); pv, nx = (gs[k_ - 1] if k_ else None), (gs[k_ + 1] if k_ + 1 < len(gs) else None)
     _pn = '<nav class="pn">' + "".join(f'<a class="pncard {cl}" href="{P}zhouyi/{g}.html"><small>{L.t(lb)}</small><b>{g}　{esc(QW[g]["卦"])}卦</b></a>' if g else "<span></span>" for g, lb, cl in ((pv, "prev", "prev"), (nx, "next", "next"))) + "</nav>"
     body = f"""<div class="chhead bk"><div class="wrap">
