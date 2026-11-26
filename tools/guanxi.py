@@ -40,7 +40,7 @@ def section(G, c, P, href, short):
     for g in dict.fromkeys(r["group"] for r in T["同问异答"]):
         w = G["wd"][g]
         li = "".join(f'<li{" class=on" if _c(it["c"]) == c else ""}><a href="{href(_c(it["c"]))}">{_c(it["c"])}</a> {esc(it["who"])}{"（" + esc(it["note"]) + "）" if it.get("note") else ""}：{esc(it["a"])}</li>' for it in w["items"])  # 11-23 挑错 F02：问士收 12.20（问达），加注
-        row.append(("同问异答", f'<p>{esc(w["q"])}，全书 {len(w["items"])} 次，问的人不同，答得不同：</p><ol class="gxwd">{li}</ol><p class="gxmore"><a href="{P}lunyu/guanxi/#{g}">同问异答对照表</a></p>'))
+        row.append(("同问异答", f'<p>{esc(w["q"])}，全书 {len(w["items"])} 次，{"问的人不同，" if len({it["who"] for it in w["items"]}) > 1 else ""}答得不同：</p><ol class="gxwd">{li}</ol><p class="gxmore"><a href="{P}lunyu/guanxi/#{g}">同问异答对照表</a></p>'))
     if T["互见"]:
         row.append(("互见", "<ul>" + "".join(f'<li><a href="{href(_c(r["b"]))}">论语 {_c(r["b"])}</a> {esc(short(_c(r["b"])))}</li>' for r in T["互见"]) + "</ul>"))
     if T["书外互见"]:
@@ -61,10 +61,10 @@ def section(G, c, P, href, short):
             ch.append(f'<a href="{P}lunyu/guanxi/#p-{r.get("group")}">{esc(nm)}{f"<small>全书 {n} 章</small>" if n > 1 else ""}</a>')
         row.append(("人物", '<p class="gxchips">' + "".join(ch) + "</p>"))
     if T["场合"]:
-        row.append(("场合", "<ul>" + "".join(f'<li><span class="gxk">{CH_KIND.get(r.get("kind"), "")}</span><a href="{P}changhe/{r.get("group")}.html">{esc(r["note"].split("：")[0])}</a>：{esc(r.get("txt") or r["note"])}</li>' for r in T["场合"]) + "</ul>"))
+        row.append(("场合", "<ul>" + "".join((f'<li><span class="gxk">{CH_KIND.get(r.get("kind"), "")}</span><a href="{P}changhe/{r.get("group")}.html">{esc(r["note"].split("：")[0])}</a>：{esc(r.get("txt") or r["note"])}</li>' if "：" in r["note"] else f'<li><span class="gxk">{CH_KIND.get(r.get("kind"), "")}</span><a href="{P}changhe/{r.get("group")}.html">{esc(r.get("txt") or r["note"])}</a></li>') for r in T["场合"]) + "</ul>"))  # 12-03 挑错 E01：说明里没有冒号时链接字就是说明的截头，不再重复一遍
     zy = [p_ for p_ in (re.sub(r"^[甲乙丙丁戊]\s*", "", r.get("pick", "") or "").strip() for r in T["争议"]) if p_]  # 11-16：还没选定的争议读法（pick 空）不出空引号
     if zy:
-        row.append(("争议", "<ul>" + "".join(f'<li>一孔录取“{esc(p_)}”。<a href="#ykan">看一孔之见</a></li>' for p_ in zy) + "</ul>"))
+        row.append(("争议", "<ul>" + "".join((f'<li>一孔录取“{esc(p_)}”。<a href="#ykan">看一孔之见</a></li>' if not re.search(r"[甲乙丙丁]", p_) else '<li>一孔录在几家读法里选定了一种。<a href="#ykan">看一孔之见</a></li>') for p_ in zy) + "</ul>"))  # 12-03 挑错 E06：甲乙代号是内部方案编号，不上页
     if T["异文"]:
         row.append(("异文", "<ul>" + "".join(f'<li>{esc(r["note"])}</li>' for r in T["异文"]) + "</ul>"))
     if T["年历"]:

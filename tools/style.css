@@ -1119,3 +1119,4 @@ details.legge p.note{font-style:normal;font-size:.82em;color:var(--mute,#666)}
 .tome[data-jia]:not(.on) .cv{background-color:#cfc8b6;background-color:color-mix(in srgb,var(--jc) 32%,#e9e4d6)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tome[data-jia]:not(.on) .cv{background-color:color-mix(in srgb,var(--jc) 40%,#3a3f3a)}:root:not([data-theme="light"]) .tome.on[data-jia]:not([data-jia=ru]) .cv{background-color:color-mix(in srgb,var(--jc) 82%,#ffffff)}}
 :root[data-theme="dark"] .tome[data-jia]:not(.on) .cv{background-color:color-mix(in srgb,var(--jc) 40%,#3a3f3a)}:root[data-theme="dark"] .tome.on[data-jia]:not([data-jia=ru]) .cv{background-color:color-mix(in srgb,var(--jc) 82%,#ffffff)}
+.lw1{padding:10px 0;border-bottom:1px solid var(--line)}.lw1 p{margin:4px 0}.lw1 b{display:inline-block;margin-right:8px;color:var(--mute);font-weight:400;font-size:13px}.lw1 .lwsig{text-align:right;font-size:13px;color:var(--mute)}

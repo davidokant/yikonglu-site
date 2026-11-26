@@ -632,7 +632,7 @@ def parse_zhaji(path):
         m = re.match(r"^- ([^：]+)：(.*)$", line)
         if m and m.group(1) in {f[0] for f in FIELDS}:
             v = re.sub(r"[，；]?(?:主人|小编)(?:选|定)前(?:先)?照朱注", "", NEIBU_ZHU.sub("", clean(m.group(2)))).strip()  # 11-17 札记里“主人定前照朱注”这类编辑话不上网站  # 11-15 主人：札记里给做片看的备注（“（标题、封面问）”“（本集只上朱注）”）不上网站
-            if v and not v.startswith("这里只取"): cur["fields"][m.group(1)] = v
+            if v and not v.startswith("这里只取") and not (m.group(1) == "常见读法" and v.startswith("无（重出")): cur["fields"][m.group(1)] = v  # 12-03 挑错 E05：重出章“无（重出……）”不出常见理解栏
     return out
 
 NEIBU_ZHU = re.compile(r"（[^（）]{0,16}(?:标题|封面|片头|片尾|短片|本集|本片|这集|下集|插科|字幕|镜头|主人|小编)[^（）]{0,16}）")
@@ -819,7 +819,7 @@ def ykan(code, ours, common, keys, basis=None):
         if cut > 30: o = o[:cut]
     if o and o[-1] not in "。！？.!?": o += "。" if cjk else "."
     c = (common or "").strip(); second = ""
-    if re.match(r"(无|無)(明显|明顯)?(误读|誤讀)?([；;，,。]|$)", c): c = ""  # 11-23 常见读法写“无明显误读”是编辑备注，不出补句
+    if re.match(r"(无|無)(明显|明顯)?(误读|誤讀)?([；;，,。（(]|$)", c): c = ""  # 11-23 常见读法写“无明显误读”是编辑备注，不出补句；12-03 挑错 E05：“无（重出……）”同样不出
     if c:
         isq = c[-1] in "？?"
         c = c.rstrip("。.？?！!；; ")
@@ -838,6 +838,7 @@ def ykan(code, ours, common, keys, basis=None):
             t = (add + ("；" if cjk else "; ") + g) if add else g
             if len(out) + len(bs) + len(t) + 2 > hi: break
             add = t
+        if add and re.match(r"朱注|朱熹|朱子", add): bs = ""  # 12-03 挑错 E04：字眼本身以“朱注……”开头，不再拼“朱注原话：”
         if add: out += sp + bs + add + ("" if add[-1] in "。.」）)" or add[-2:] in ("。”", "？”", "！”") else ("。" if cjk else "."))  # 11-23 挑错 C23：引号收尾的也补句号
     return lab, out
 CSSV = __import__("hashlib").md5(open(os.path.join(HERE, "style.css"), "rb").read()).hexdigest()[:8]
@@ -1477,12 +1478,16 @@ ZHANGHAO = _zhanghao()
 ZC_FREE = {"zh": ("不花钱的支持", "不花钱也能帮一孔录。如果哪一章帮你把一句话查明白了，请在你的博客、网站、豆瓣、知乎回答或公众号文章里放一条那一章的链接。新站外面的链接少，搜索引擎就很难找到它；你放的一条链接，就是下一个想查这句话的人找到这里的路。章页上复制原文会自动带出章号和网址，直接贴出去就行。"),
            "en": ("Support that costs nothing", "You can help Yikonglu without spending anything. If a chapter here helped you make sense of a line, please link to that chapter from your blog, website, forum answer or article. A new site has few links pointing to it, so search engines have a hard time finding it; the link you post is how the next person looking up that line finds their way here. When you copy text from a chapter page, the chapter number and address come with it, so you can paste it straight in."),
            "ja": ("お金のかからない支援", "お金をかけずに一孔録を助けることもできます。どこかの章で一句の意味がはっきりしたら、ブログやウェブサイト、Q&A サイトの回答、記事などにその章へのリンクを一つ貼ってください。新しいサイトは外からのリンクが少なく、検索エンジンに見つけてもらいにくいのです。あなたの貼るリンク一つが、次にその一句を調べる人がここへたどり着く道になります。章のページで原文をコピーすると、章番号とアドレスが自動で付くので、そのまま貼れます。")}
+LAIWEN = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "laiwen.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "laiwen.json")) else {}
 MISC_NOIDX = ("about.html", "yinsi.html", "zhichi.html", "kaifang.html", "kanwu.html", "fangfa.html", "duben.html", "shuyuan/ruyuan.html", "gaidong.html")
 def misc_noidx(code, rel): return rel == "search.html" or (not code.startswith("zh") and rel in MISC_NOIDX)
+# 12-03 谷歌减量（主人 11-25 点卡“解冻后做减量”，改法单 评审/2026-11-20-谷歌收录下滑/改法单-减量-1203.md）：
+# 繁体全部、简繁字页 /zi/ 与人物页 /renwu/ 都 noindex,follow、移出站点地图；别的页的 hreflang 不再指向它们。页面照开，网址不变。
+def jl_noidx(code, rel): return code == "zh-Hant" or (code.startswith("zh") and rel.startswith(("zi/", "renwu/")))
 
 def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None, head_extra="", codes=None):
     """rel：不带语种前缀的站内路径（"" 为首页）。"""
-    if misc_noidx(L.code, rel) and 'name="robots"' not in head_extra: head_extra = FL_NOIDX + head_extra
+    if (misc_noidx(L.code, rel) or jl_noidx(L.code, rel)) and 'name="robots"' not in head_extra: head_extra = FL_NOIDX + head_extra
     if L.code.startswith("zh") and rel in DESC_ZH: desc = DESC_ZH[rel]  # 11-21 主人：栏目、书页写各自的描述，不再拿正文开头凑长
     desc = pad_desc(L, desc, body)
     desc = fl_desc(L, title, desc, rel)
@@ -1502,8 +1507,9 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
     elif rel.startswith(("gushi/", "zhuanti/lu-")) or (rel.startswith("shuyuan/") and rel != "shuyuan/ruyuan.html") or rel in ("zhuanti/keben.html", "jihua/bairi.html"): codes = ["zh-Hans", "zh-Hant"]  # 课本专题只有简繁（11-09 谷歌报外文版 404）
     if re.fullmatch(r"lunyu/[a-z-]+/\d+\.html", rel): codes = [k for k in codes if k not in FL_NOIDX_L]  # 11-19 七小语种章页 noindex，互指里也去掉
     if rel == "404.html": codes = ["zh-Hans"]  # 404 页只有一份，不指向不存在的外文 404
-    alt_links = "".join(f'<link rel="alternate" hreflang="{LANGS[k][2]}" href="{DOMAIN}/{LANGS[k][0]}{rel}">' for k in codes)
-    alt_links += f'<link rel="alternate" hreflang="x-default" href="{DOMAIN}/{rel}">'
+    acodes = codes if jl_noidx(L.code, rel) else [k for k in codes if not jl_noidx(k, rel)]  # 12-03 减量：可收的页不再互指 noindex 页
+    alt_links = "".join(f'<link rel="alternate" hreflang="{LANGS[k][2]}" href="{DOMAIN}/{LANGS[k][0]}{rel}">' for k in acodes)
+    if "zh-Hans" in acodes: alt_links += f'<link rel="alternate" hreflang="x-default" href="{DOMAIN}/{rel}">'
     sw = "".join(f'<a href="{DOMAIN}/{LANGS[k][0]}{rel if k in codes else ""}" data-lang="{k}"{" class=cur" if k == L.code else ""}>{LANGS[k][1]}</a>' for k in LANGS)
     gs = GUSHI_ON and L.code.startswith("zh")
     rw = RENWU_ON and L.code.startswith("zh")
@@ -2132,7 +2138,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
 </div></div>
 <main class="wrap chapter">
 <article>
-{"" if ddj_has_vid(c) else f'<p class="wjlead">{L.t("wj_lead")}</p>'}
+{""}
 {fig}
 {gist if F else bh_html}
 {bh_html if F else (_du or gist)}
@@ -2519,7 +2525,7 @@ def build_mengzi(L, write, P, S_IDX=None):
 </div></div>
 <main class="wrap chapter">
 <article>
-<p class="wjlead">这一章的视频还在制作。网站先放原文、原页、朱注和白话。</p>
+
 {fig}
 {bh_html}
 {_du}
@@ -2706,7 +2712,7 @@ def build_dxzy(L, write, P, S_IDX, slug):
 </div></div>
 <main class="wrap chapter">
 <article>
-<p class="wjlead">这一章的视频还在制作。网站先放原文、原页、朱注和白话。</p>
+
 {fig}
 {bh_html}
 {bz_html}
@@ -3435,7 +3441,7 @@ def build_szj(L, write, P, S_IDX=None):
 </div></div>
 <main class="wrap chapter">
 <article>
-<p class="wjlead">{esc(SU["vlead"]) if F else ("这一讲的视频还在制作。网站先放原文、核定白话、王相注和一孔录的读法，视频上线后补上。" if jd else "这一讲的视频还在制作。网站先放原文、白话和朗读，视频上线后补全讲解。")}</p>
+
 {fig}
 {bh_html}
 {_du or (f'<section class="gist ykan"><h2>这一讲讲什么</h2><p>{quotes(jd["落点"])}</p></section>' if jd.get("落点") else "")}
@@ -3616,6 +3622,9 @@ def build_lang(L, D, write):
         if mine:
             extra += (f'<section class="sec kw" id="kw"><h2><i>勘</i>{L.t("kw")}</h2>{"<p class=note>" + L.t("kw_note") + "</p>" if L.t("kw_note") else ""}<ul lang="zh-Hans">' + "".join(
                 f'<li><b>{esc(r[0])}　{esc(r[3])}</b>原来：{esc(r[4])}；改为：{esc(r[5])}（依据：{esc(r[6])}；勘误者：{esc(r[7])}）</li>' for r in mine) + '</ul></section>')
+        if L.code.startswith("zh") and LAIWEN.get(c):  # 12-03 读者来问（与“本章勘误”分开：勘误记改错，这里记答问；数据 tools/laiwen.json）
+            extra += ('<section class="sec kw lw" id="lw"><h2><i>问</i>读者来问</h2>' + "".join(
+                f'<div class="lw1"><p><b>问</b>{quotes(esc(x["q"]))}</p><p><b>答</b>{quotes(esc(x["a"]))}</p><p class="lwsig">一孔录 · {esc(x["date"])}</p></div>' for x in LAIWEN[c]) + '</section>')
         cite_txt = L.t("cite_fmt", book=(pname if L.code == "zh-Hans" else bname), c=c, title=title_of(c), url=url, d=today)
         citeit = f'<section class="citeit"><b>{L.t("cite")}</b><code>{esc(cite_txt)}</code><button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent=\'{L.t("copied")}\'">{L.t("copy")}</button><p>{L.t("checked", d=today)}<a href="{P}kanwu.html">{L.t("errata_page")}</a>.</p><p class="mailp">{L.t("report")} {MAIL}</p></section>'
         search_idx.append({"c": c, "t": title_of(c), "u": P + rel, "y": yw[c],
@@ -3689,13 +3698,13 @@ def build_lang(L, D, write):
             _rp = (_pill("ok", f"对过朱注反切 {len(_rz)}") if _rz else "") + (_pill("mid", f"已核 {_rn}") if _rn else "")
             _nv = not ch2ep[c][1].get("youtube")  # 视频还没出的章：讲稿未经审片定版
             _ng = bool(ch2ep[c][1].get("nogao"))  # 还没写讲稿、据原页整理的章
-            _yk = "一孔录选定" if c in D["zy"] else ("据原页 · 视频制作中" if _ng else "讲稿 · 视频制作中" if _nv else "审片版讲稿")
+            _yk = "一孔录选定" if c in D["zy"] else ("据原页" if _ng else "讲稿" if _nv else "审片版讲稿")
             extra = extra.replace(f'<h2><i>核</i>{L.t("cites")}</h2>', f'<h2><i>核</i>{L.t("cites")}{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}</h2>', 1)
             extra = extra.replace(f'<h2><i>音</i>{L.t("reads")}</h2>', f'<h2><i>音</i>{L.t("reads")}{_rp}</h2>', 1)
             _qp = sorted(set(g.get("qw_pages") or ([str(D["qw"][c]["pdf_page"])] if D["qw"].get(c, {}).get("pdf_page") else [])), key=int)  # 讲稿未写经文页的章，退到原页表
             _li = [f'<li><b>原文</b>{_pill("ok", "对过原页")}朱注本第 {"、".join(_qp) or "?"} 页' + ("，每个字框到原页的列上" if c in ZJD["on"] else "") + "</li>",
-                   (f'<li><b>白话</b>{_pill("mid", "据原页")}按底本原页直译，这章还没写讲稿、视频还在制作，网页整理由智器完成</li>' if _ng else f'<li><b>白话</b>{_pill("mid", "讲稿")}取自讲稿，视频还在制作、讲稿还没审片定版，网页整理由智器完成</li>' if _nv else f'<li><b>白话</b>{_pill("mid", "已核")}取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成</li>'),
-                   f'<li><b>一孔之见</b>{_pill("mid", _yk)}一孔录自己的读法，不是古注；' + ("这章各家读法不同，一孔录在几家里选定一种" if c in D["zy"] else ("据原页整理，还没写讲稿，视频还在制作" if _ng else "取自讲稿，视频还在制作" if _nv else "取自视频讲稿（讲稿经一孔审片定版）")) + "</li>"]
+                   (f'<li><b>白话</b>{_pill("mid", "据原页")}按底本原页直译</li>' if _ng else f'<li><b>白话</b>{_pill("mid", "讲稿")}取自讲稿，讲稿还没审片定版</li>' if _nv else f'<li><b>白话</b>{_pill("mid", "已核")}取自视频讲稿，讲稿经一孔审片定版</li>'),
+                   f'<li><b>一孔之见</b>{_pill("mid", _yk)}一孔录自己的读法，不是古注；' + ("这章各家读法不同，一孔录在几家里选定一种" if c in D["zy"] else ("据原页整理" if _ng else "取自讲稿" if _nv else "取自视频讲稿，讲稿经一孔审片定版")) + "</li>"]
             if g["cites"]: _li.append(f'<li><b>引文</b>{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}共 {len(g["cites"])} 条，点页码看原页' + (f"；其中 {len(_pa)} 条是转述，不是原话" if _pa else "") + "</li>")
             if g["reads"]: _li.append(f'<li><b>读音</b>{_rp}共 {len(g["reads"])} 处；有朱注反切的照反切</li>')
             _dh = len(HD_DAIHE.get(c, ()))
@@ -3703,13 +3712,11 @@ def build_lang(L, D, write):
             _three = ('<div class="hd3">'
                       + (f'<p class="hd3yk"><b>一孔审片版</b><span>{_yk3[-1][0]} 一孔看过本章视频、定版' + (f'（视频' + (f'第 {esc(_yk3[-1][1])} 版' if _yk3[-1][1] else "") + '）' if _yk3[-1][1] else '') + (f'；此前另有 {len(_yk3) - 1} 次定版' if len(_yk3) > 1 else "") + '</span></p>' if _yk3
                          else '<p class="hd3yk no"><b>一孔审片版</b><span>还没有定版记录，有了再标，不往前补日期</span></p>')
-                      + (f'<p><b>智器核</b><span>{hd3_date(*_zq3)}：智器对着原页图找出原文、引文、读音的页码，见下</span></p>' if _zq3 else "")
                       + (f'<p><b>读者报错后改过</b><span>' + "；".join(f'{esc(r[0])} {esc(r[7])}报“{esc(r[4])}”，改为“{esc(r[5])}”' for r in _rd3) + f'，<a href="{P}kanwu.html">见勘误页</a></span></p>' if _rd3
                          else f'<p class="no"><b>读者报错后改过</b><span>暂无。看到错处请写信，改过会署您的网名（经您同意）</span></p>')
                       + '</div>')
-            citeit = (f'<details class="hedui-d"><summary>这一页的内容从哪来、核到哪了</summary><section class="hedui" id="hedui"><h2>本章核到哪了</h2>{_three}<ul>{"".join(_li)}</ul>'
-                      + (f'<p class="note">{_pill("todo", f"待核 {_dh}")}另有 {_dh} 条引文还在核，核完才上页面。</p>' if _dh else "")
-                      + f'<p class="note"><a href="{P}fangfa.html#hedui">“对过原页”“已核”“待核”各指什么，全站核到哪了 →</a></p></section></details>') + citeit
+            citeit = (f'<details class="hedui-d"><summary>这一页的内容从哪来</summary><section class="hedui" id="hedui"><h2>本章内容的出处</h2>{_three}<ul>{"".join(_li)}</ul>'
+                      + f'<p class="note"><a href="{P}fangfa.html#hedui">“对过原页”“已核”各指什么 →</a></p></section></details>') + citeit
         if L.code.startswith("zh") and not FQ_OFF:  # 11-16 改动单三：诸家分歧块。只用已核数据（注本 CSV 里“异读”且把握为定／较稳的行），不硬造；无分歧的章不出
             _zb = D["zhuben"].get(c, {}); _fq = []
             for _k, _nm in (("yang", "杨伯峻《论语译注》"), ("qian", "钱穆《论语新解》")):
@@ -3719,7 +3726,7 @@ def build_lang(L, D, write):
                 _keys = list(dict.fromkeys(z["key"] for _, z in _fq if z.get("key")))
                 _fqh = f'诸家分歧：{"、".join("“" + k + "”" for k in _keys)}怎么讲' if _keys else "诸家分歧：这一章各家讲法不同"
                 fenqi_html = (f'<div class="fenqi" id="fenqi"><h3>{esc(_fqh)}</h3><ul>'
-                              f'<li><b>朱熹《论语集注》</b>一孔录主朱注，本页的白话和逐句注照朱注讲' + ("；这章是争议读法，一孔之见里写明了取舍" if c in D["zy"] else "") + "。</li>"
+                              f'<li><b>朱熹《论语集注》</b>' + ("一孔录平时主朱注；这一章各家读法不同，一孔录选定的读法和取舍见上面的一孔之见" if c in D["zy"] else "一孔录主朱注，本页的白话和逐句注照朱注讲") + "。</li>"  # 12-03 挑错 E02
                               + "".join(f'<li><b>{_nm}</b><span class="sure {z["sure"]}">{L.t(z["sure"])}</span>{esc(z["say"])}<a class="fqyin" href="#zb-{ {"yang": "yangbojun", "qian": "qianmu"}[_k0]}">看原句</a></li>' for _nm, z in _fq for _k0 in [z["_k0"]])
                               + f'</ul><p class="note">“把握”是我们对这条异同判断的把握，“定”最稳。现代注本版权期内，只短引一句，页码核过正版书后再补；皇侃义疏等古注原页见 <a href="#zhuben">各家注本</a>。</p></div>')
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
@@ -3898,7 +3905,7 @@ def build_lang(L, D, write):
 </div></div>
 <main class="wrap chapter">
 <article>
-{(f'<p class="wjlead">这一章的视频已经上线，就在下面；网站上的逐句讲解还在补。</p>' if zhL else "") if _von else f'<p class="wjlead">{L.t("wj_lead")}</p>'}
+{""}
 {wj_fig}{zi_tail(L.code, c, P)}
 {wj_gist}
 {bh_html}
@@ -4693,7 +4700,8 @@ a.sort(function(x,y){{return x[0]<y[0]?-1:1}});a.forEach(function(x){{var li=doc
 
 # 11-23 主人点卡“只改网站，稿子交论语线程”：讲稿引文取处里朱注字形与底本原页不一的，网站页面照原页回正（稿子由论语线程恢复出片时改）
 # 11-26 论语 86 稿已改“朞月”，但这条仍要留：原页引文经 OpenCC t2s 会把“朞”转成“期”，繁体 s2twp 又把“周一歲”转成“週一歲”，删了 13.10 页“本句互见”和繁体引文会回退（11-26 删后重建实测）
-DIZI_FIX = {"lunyu/zi-lu/10.html": [(x + y, x.replace("期", "朞") + y) for x, y in (("期月", "谓周一岁"), ("期月，", "谓周一岁"), ("期月", "謂周一歲"), ("期月，", "謂周一歲"))] + [("期月謂週一歲", "朞月謂周一歲"), ("期月，謂週一歲", "朞月，謂周一歲")]}
+DIZI_FIX = {"daodejing/42.html": [("寡、不谷", "寡、不穀")],  # 12-03 道德经挑错 D09：简体页原文“不穀”被繁转简转成“不谷”，回正，与第 39 章“不毂”对照看得出
+            "lunyu/zi-lu/10.html": [(x + y, x.replace("期", "朞") + y) for x, y in (("期月", "谓周一岁"), ("期月，", "谓周一岁"), ("期月", "謂周一歲"), ("期月，", "謂周一歲"))] + [("期月謂週一歲", "朞月謂周一歲"), ("期月，謂週一歲", "朞月，謂周一歲")]}
 
 def write_data(D, outdir):
     """开放数据：每篇一份 JSON 和 CSV（核对用的底子：原文、白话、引文出处、皇疏首句；11-17 主人定撤读音，免得成批拿去做配音；不含一孔录读法与现代注本引文）。"""
@@ -5169,6 +5177,15 @@ def main(zdir, outdir, kanwu=None):
         for pf, hl in pre:
             if k.startswith(pf): return hl, k[len(pf):]
         return LANGS["zh-Hans"][2], k
+    def _code_rel(u):
+        k = u[len(DOMAIN) + 1:]
+        for code, v in sorted(LANGS.items(), key=lambda kv: -len(kv[1][0])):
+            if v[0] and k.startswith(v[0]): return code, k[len(v[0]):]
+        return "zh-Hans", k
+    _n0 = len(urls); urls = [u for u in urls if not misc_noidx(*_code_rel(u))]
+    print(f"  站点地图：外文杂页 noindex 移出 {_n0 - len(urls)} 条")
+    _n0 = len(urls); urls = [u for u in urls if not jl_noidx(*_code_rel(u))]  # 12-03 减量，先滤再算互指，站点地图里也不指向 noindex 页
+    print(f"  站点地图：减量（繁体、字页、人物页）移出 {_n0 - len(urls)} 条")
     groups = {}
     for u in urls:
         hl, r = split_lang(u); groups.setdefault(r, {})[hl] = u
@@ -5181,13 +5198,6 @@ def main(zdir, outdir, kanwu=None):
     def lastmod(u):
         k = u[len(DOMAIN) + 1:]
         return pdates.get(k + "index.html" if k.endswith("/") or not k else k, [None, today])[1]
-    def _code_rel(u):
-        k = u[len(DOMAIN) + 1:]
-        for code, v in sorted(LANGS.items(), key=lambda kv: -len(kv[1][0])):
-            if v[0] and k.startswith(v[0]): return code, k[len(v[0]):]
-        return "zh-Hans", k
-    _n0 = len(urls); urls = [u for u in urls if not misc_noidx(*_code_rel(u))]
-    print(f"  站点地图：外文杂页 noindex 移出 {_n0 - len(urls)} 条")
     # 11-18 必应只认出 3.2K：站点地图拆卷。sitemap.xml 改为总目录；简繁合一卷 sitemap-core.xml（先交必应），外文各一卷
     vols = {}
     for u in urls:
