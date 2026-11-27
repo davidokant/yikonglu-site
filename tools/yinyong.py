@@ -50,7 +50,8 @@ def _cn(n):
     return d[n // 10] + "十" + (d[n % 10] if n % 10 else "")
 
 
-YWPG = {"daxue": "_大学/_原文/大学原文-v1.json", "zhongyong": "_中庸/_原文/中庸原文-v1.json"}  # 孟子、论语等是否同病另查
+YWPG = {"daxue": "_大学/_原文/大学原文-v1.json", "zhongyong": "_中庸/_原文/中庸原文-v1.json", "mengzi": "_孟子/_原文/孟子原文-v1.json",
+        "lunyu": "_原文/论语原文-集注分章-v1.json", "daodejing": "_道德经/_原文/道德经原文-v*.json"}  # 11-27 主人点卡孟子、论语、道德经一起修
 _jl = {}
 
 
@@ -67,10 +68,11 @@ def pages(top, cid):
                 if len(z) > 1: srcs.append(z[1])
     ps = [int(x) for s in srcs for x in re.findall(r"(\d+)\s*(?=页|[—–-]\s*\d+\s*页)", s)]
     # 11-27 大学中庸修改单 X24：只有正文、没有朱注的页也要算进去，取原文书单里本章的 pages（与章页“底本第 N 页”同源）
-    ywf = YWPG.get(top)
-    if ywf and os.path.exists(os.path.join(W, ywf)):
-        _jl.setdefault(top, json.load(open(os.path.join(W, ywf), encoding="utf-8")))
-        pg = (_jl[top].get(cid) or {}).get("pages") if isinstance(_jl[top].get(cid), dict) else None
+    ywf = sorted(glob.glob(os.path.join(W, YWPG[top])))[-1:] if top in YWPG else []
+    if ywf:
+        _jl.setdefault(top, json.load(open(ywf[0], encoding="utf-8")))
+        q = _jl[top].get(cid) if isinstance(_jl[top].get(cid), dict) else {}
+        pg = q.get("pages") or ([q["pdf_page"]] if q.get("pdf_page") else [])
         if pg: ps += [int(x) for x in (json.loads(pg) if isinstance(pg, str) else pg)]
     ye = [(m.group(1), _cnum(m.group(2))) for s in srcs for m in re.finditer(r"([上下]經|[^\s，、；《》]{1,5}?傳|[^\s，、；《》]{1,3}卦)第([〇一二三四五六七八九十]+)葉", s)]
     if not ps and not ye:
