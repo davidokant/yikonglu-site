@@ -798,13 +798,13 @@ def head_fonts(code):
 HEAD_FONTS = head_fonts("zh-Hans")
 MAIL = '<picture class="mail"><source srcset="/assets/mail-dark.png" media="(prefers-color-scheme:dark)"><img src="/assets/mail.png" alt="email (image)" width="211" height="26"></picture>'
 HF_DATASET = "https://huggingface.co/datasets/yikonglu/lunyu"  # 11-27 主人建的 Hugging Face 数据集（与 /data/ 同一份）
-LINKS_DOI = "10.5281/zenodo.24581319"  # 11-27 星图连线表线程发布：《论语》可核连线表（主人点“发布”）；对外只说“明引 89 条可核”，对读不算
-LINKS_DS_ZH = (f'<p><b>《论语》可核连线表</b>（2026-11-27 版）：《论语》与《孟子》《周易》《中庸》等书之间的明引 89 条可核，每条写明引用的原话和底本页码；另收书内互见、同问异答。'
+LINKS_DOI = "10.5281/zenodo.24581318"  # 11-27 星图连线表线程发布：《论语》可核连线表总 DOI（总指最新版；第二版本版 DOI 10.5281/zenodo.24582279）；对外只说明引条数可核，对读不算
+LINKS_DS_ZH = (f'<p><b>《论语》可核连线表</b>（2026-11-27 第二版）：《论语》与《孟子》《道德经》《周易》《三字经》《中庸》等书之间的明引 182 条可核，每条写明引用的原话和底本页码；另收书内互见 44 条、同问异答 32 条。'
                f'下载：<a href="{HF_DATASET}/tree/main" rel="noopener" target="_blank">Hugging Face（lunyu-links.csv、lunyu-links.json、方法说明）</a>；'
-               f'DOI：<a href="https://doi.org/{LINKS_DOI}" rel="noopener" target="_blank">{LINKS_DOI}</a>。</p>'
-               f'<p class="note">引用格式：一孔录. 一孔录《论语》可核连线表（2026-11-27 版）[DS]. DOI:{LINKS_DOI}.</p>')
-LINKS_DS_EN = (f'<p><b>Analects verifiable links table</b> (2026-11-27 release): 89 explicit quotations between the Analects and other classics, each with the quoted words and the base-text page. '
-               f'Download on <a href="{HF_DATASET}/tree/main" rel="noopener" target="_blank">Hugging Face</a> (lunyu-links.csv, lunyu-links.json); DOI <a href="https://doi.org/{LINKS_DOI}" rel="noopener" target="_blank">{LINKS_DOI}</a>.</p>')
+               f'DOI：<a href="https://doi.org/{LINKS_DOI}" rel="noopener" target="_blank">{LINKS_DOI}</a>（总指最新版）。</p>'
+               f'<p class="note">引用格式：一孔录. 一孔录《论语》可核连线表（2026-11-27 第二版）[DS]. Zenodo, 2026. https://doi.org/{LINKS_DOI}</p>')
+LINKS_DS_EN = (f'<p><b>Analects verifiable links table</b> (2026-11-27, second release): 182 explicit quotations between the Analects and other classics, each with the quoted words and the base-text page; plus 44 internal cross-references and 32 same-question pairs. '
+               f'Download on <a href="{HF_DATASET}/tree/main" rel="noopener" target="_blank">Hugging Face</a> (lunyu-links.csv, lunyu-links.json); DOI <a href="https://doi.org/{LINKS_DOI}" rel="noopener" target="_blank">{LINKS_DOI}</a> (always resolves to the latest release).</p>')
 SAME_AS = ["https://www.youtube.com/@yikonglu", "https://x.com/yikonglu", "https://ko-fi.com/yikonglu", HF_DATASET]  # 各平台账号另由 PLAT_LINKS 补进（见 main 里的首页 Organization）
 # 一孔之见署名短答（智器引用，主人 11-08 定）：落点（片里落点）作首句结论，第二句说与通行读法差在哪；素材只取札记里已有的“片里落点”“常见读法”“字眼”，不另编。
 YKAN = {  # 主人 11-09 晚：署名只写“一孔之见”，不带括号解释（解释在方法页、关于页）。语种: (署名开头, 常见读法是陈述时, 常见读法里自带引号时, 常见读法是问句时, 朱注依据句开头)
