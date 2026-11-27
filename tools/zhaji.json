@@ -6,7 +6,7 @@
    "no": "0001",
    "id": "YKZ-0001",
    "pub": true,
-   "date": "2026-11-29",
+   "date": "2026-11-27",
    "ver": "v1.0",
    "doi": "10.5281/zenodo.24564420",
    "status": "已发",
@@ -128,10 +128,24 @@
    "chazheng_date": "2026-11-26",
    "tuifan": "如果有人查到前人已经明说宰予章与申枨章是“立规矩、用规矩”前后相承，尤其是日本江户时代的注本，程树德《论语集释》没有收进去的明清讲章，或薛永武那篇短文的原刊本，这条札记就改署“前人已发，一孔录补证”，在勘误记录里写明是谁、在哪本书、哪一页，并致谢来信的人。",
    "kanwu": [],
-   "cite_cn": "一孔录. 一孔札记 0001：孔子刚改的看人规矩，下一章就用上了[EB/OL]. (2026-11-29). https://yikonglu.com/zhaji/0001/. DOI: 10.5281/zenodo.24564420.",
-   "cite_en": "Yikonglu. Yikong Zhaji 0001: Analects 5.9 and 5.10 (Zhu Xi numbering) read as rule and application [Working paper]. 2026-11-29. https://doi.org/10.5281/zenodo.24564420",
+   "cite_cn": "一孔录. 一孔札记 0001：孔子刚改的看人规矩，下一章就用上了[EB/OL]. (2026-11-27). https://yikonglu.com/zhaji/0001/. DOI: 10.5281/zenodo.24564420.",
+   "cite_en": "Yikonglu. Yikong Zhaji 0001: Analects 5.9 and 5.10 (Zhu Xi numbering) read as rule and application [Working paper]. 2026-11-27. https://doi.org/10.5281/zenodo.24564420",
    "pdf": "yikong-zhaji-0001-v1.0.pdf",
-   "sha256": "b935f1f0221f02292b28e19df6ad62c4d3feabadef7f7f4133b8b6207b96d996"
+   "sha256": "b935f1f0221f02292b28e19df6ad62c4d3feabadef7f7f4133b8b6207b96d996",
+   "shoufa": [
+    [
+     "网站",
+     "2026-11-27"
+    ],
+    [
+     "Zenodo 存档",
+     "2026-11-27（https://doi.org/10.5281/zenodo.24564420）"
+    ],
+    [
+     "公众号",
+     "2026-11-29（待发）"
+    ]
+   ]
   }
  ]
 }
