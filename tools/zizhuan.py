@@ -21,6 +21,10 @@ def plan(ZD):
     for c, rows in ZD["per"].items():
         for s, i, key, g, src in rows:
             if g: has_g[key].append(c)
+    _kf = os.path.join(os.path.dirname(os.path.abspath(__file__)), "zizhuan_keys.json")
+    if os.path.exists(_kf):  # 11-27 冻结已上线的 100 页（字|音 与网址），不随读音改动换网址
+        fz = json.load(open(_kf, encoding="utf-8"))["pages"]
+        return [(k, v) for k, v in fz.items() if k in ZD["occ"]]
     keys = sorted([k for k in ZD["occ"] if has_g.get(k)], key=lambda k: (-len(ZD["occ"][k]), k))[:FIRST]
     slugs, seen = {}, collections.defaultdict(list)
     for k in ZD["occ"]:

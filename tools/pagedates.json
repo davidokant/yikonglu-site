@@ -4,7 +4,7 @@
 "2026-11-23"
 ],
 "about.html": [
-"t:918adcff39e283e4",
+"t:3225e73911f1a1b9",
 "2026-11-27"
 ],
 "banben/index.html": [
@@ -500,7 +500,7 @@
 "2026-11-27"
 ],
 "de/kanwu.html": [
-"t:b3c00901174036ef",
+"t:ebb293978bbfe4f2",
 "2026-11-27"
 ],
 "de/llms.txt": [
@@ -3872,7 +3872,7 @@
 "2026-11-27"
 ],
 "en/kanwu.html": [
-"t:61d8506c7547da28",
+"t:a6b8008efee54576",
 "2026-11-27"
 ],
 "en/llms.txt": [
@@ -8664,7 +8664,7 @@
 "2026-11-27"
 ],
 "es/kanwu.html": [
-"t:99650ff4587a41aa",
+"t:e18579480cc75643",
 "2026-11-27"
 ],
 "es/llms.txt": [
@@ -11656,7 +11656,7 @@
 "2026-11-13"
 ],
 "fangfa.html": [
-"t:ccbc4c069181c66f",
+"t:05116a568c23c1c3",
 "2026-11-27"
 ],
 "feed.xml": [
@@ -11696,7 +11696,7 @@
 "2026-11-27"
 ],
 "fr/kanwu.html": [
-"t:e39b707a8ce64372",
+"t:35fbf8b470780381",
 "2026-11-27"
 ],
 "fr/llms.txt": [
@@ -14688,7 +14688,7 @@
 "2026-11-13"
 ],
 "gaidong.html": [
-"t:c3314b5a24826e7a",
+"t:ffecdb4e9a8203b6",
 "2026-11-27"
 ],
 "guanxi/index.html": [
@@ -14784,7 +14784,7 @@
 "2026-11-27"
 ],
 "id/kanwu.html": [
-"t:338ea1b23a45256f",
+"t:ea9dfdaccdbf0cdb",
 "2026-11-27"
 ],
 "id/llms.txt": [
@@ -17776,7 +17776,7 @@
 "2026-11-13"
 ],
 "index.html": [
-"t:e86c5a68fe614729",
+"t:95448e10c3f3be83",
 "2026-11-27"
 ],
 "ja/about.html": [
@@ -18152,7 +18152,7 @@
 "2026-11-27"
 ],
 "ja/kanwu.html": [
-"t:c6585060ad38e7d6",
+"t:a80ae1b922e39d30",
 "2026-11-27"
 ],
 "ja/llms.txt": [
@@ -22920,7 +22920,7 @@
 "2026-11-27"
 ],
 "kanwu.html": [
-"t:0684bab7a08d6567",
+"t:3be0c3d40c5ba0e0",
 "2026-11-27"
 ],
 "ko/about.html": [
@@ -22956,7 +22956,7 @@
 "2026-11-27"
 ],
 "ko/kanwu.html": [
-"t:d758c6acedec459d",
+"t:58a0f13743f9be49",
 "2026-11-27"
 ],
 "ko/llms.txt": [
@@ -26576,7 +26576,7 @@
 "2026-11-27"
 ],
 "lunyu/tai-bo/5.html": [
-"t:bd84cc8997e1da6b",
+"t:5a20dfc8010d4052",
 "2026-11-27"
 ],
 "lunyu/tai-bo/6.html": [
@@ -27228,7 +27228,7 @@
 "2026-11-27"
 ],
 "lunyu/xiang-dang/13.html": [
-"t:1d688374e3785bcf",
+"t:bed2715c8b4b42d4",
 "2026-11-27"
 ],
 "lunyu/xiang-dang/14.html": [
@@ -27244,7 +27244,7 @@
 "2026-11-27"
 ],
 "lunyu/xiang-dang/17.html": [
-"t:220c474a6fc721b8",
+"t:152321e2ea7f724a",
 "2026-11-27"
 ],
 "lunyu/xiang-dang/2.html": [
@@ -27256,7 +27256,7 @@
 "2026-11-27"
 ],
 "lunyu/xiang-dang/4.html": [
-"t:a870201cd0177251",
+"t:aff04f121dbfc4d7",
 "2026-11-27"
 ],
 "lunyu/xiang-dang/5.html": [
@@ -27264,7 +27264,7 @@
 "2026-11-27"
 ],
 "lunyu/xiang-dang/6.html": [
-"t:98bba8df27491d76",
+"t:3839dd2eff151dfe",
 "2026-11-27"
 ],
 "lunyu/xiang-dang/7.html": [
@@ -27272,7 +27272,7 @@
 "2026-11-27"
 ],
 "lunyu/xiang-dang/8.html": [
-"t:8b11c841af6b90aa",
+"t:6fc0ff5c08940a2b",
 "2026-11-27"
 ],
 "lunyu/xiang-dang/9.html": [
@@ -27332,7 +27332,7 @@
 "2026-11-27"
 ],
 "lunyu/xue-er/5.html": [
-"t:f073518465710969",
+"t:fe205a97b2fc6127",
 "2026-11-27"
 ],
 "lunyu/xue-er/6.html": [
@@ -27772,7 +27772,7 @@
 "2026-11-27"
 ],
 "lunyu/zi-han/26.html": [
-"t:3c22290377e86f48",
+"t:a8f5aab42047a268",
 "2026-11-27"
 ],
 "lunyu/zi-han/27.html": [
@@ -27816,7 +27816,7 @@
 "2026-11-27"
 ],
 "lunyu/zi-han/9.html": [
-"t:8495a64f3989fcf4",
+"t:02fc92f66d4622b3",
 "2026-11-27"
 ],
 "lunyu/zi-han/index.html": [
@@ -29996,7 +29996,7 @@
 "2026-11-27"
 ],
 "ru/kanwu.html": [
-"t:99cc4e2f4973b868",
+"t:5e904db9352ead5b",
 "2026-11-27"
 ],
 "ru/llms.txt": [
@@ -33352,7 +33352,7 @@
 "2026-11-27"
 ],
 "vi/kanwu.html": [
-"t:41eed2d5f0631283",
+"t:226e140645ba2048",
 "2026-11-27"
 ],
 "vi/llms.txt": [
@@ -36616,7 +36616,7 @@
 "2026-11-16"
 ],
 "zh-hant/about.html": [
-"t:ea9525b632e9cfb3",
+"t:1ffa1699a3830429",
 "2026-11-27"
 ],
 "zh-hant/banben/index.html": [
@@ -37088,7 +37088,7 @@
 "2026-11-08"
 ],
 "zh-hant/fangfa.html": [
-"t:ef984f0e4b2d49e5",
+"t:618b244cd6e50e45",
 "2026-11-27"
 ],
 "zh-hant/feed.xml": [
@@ -37096,7 +37096,7 @@
 "2026-11-21"
 ],
 "zh-hant/gaidong.html": [
-"t:00ebf3a442411c57",
+"t:779d228aa8fec9d3",
 "2026-11-27"
 ],
 "zh-hant/guanxi/index.html": [
@@ -37160,7 +37160,7 @@
 "2026-11-09"
 ],
 "zh-hant/index.html": [
-"t:644ac659bcdc9ba5",
+"t:27fb08322ada5091",
 "2026-11-27"
 ],
 "zh-hant/jieru/index.html": [
@@ -37176,7 +37176,7 @@
 "2026-11-27"
 ],
 "zh-hant/kanwu.html": [
-"t:7270827beef2194a",
+"t:ec4a7baad9fdd779",
 "2026-11-27"
 ],
 "zh-hant/llms.txt": [
@@ -37804,7 +37804,7 @@
 "2026-11-27"
 ],
 "zh-hant/lunyu/tai-bo/5.html": [
-"t:c2b296a0abfb4f68",
+"t:048bcba37be6ee16",
 "2026-11-27"
 ],
 "zh-hant/lunyu/tai-bo/6.html": [
@@ -38456,7 +38456,7 @@
 "2026-11-27"
 ],
 "zh-hant/lunyu/xiang-dang/13.html": [
-"t:99074afffc44bd90",
+"t:8c58147b8b543eae",
 "2026-11-27"
 ],
 "zh-hant/lunyu/xiang-dang/14.html": [
@@ -38472,7 +38472,7 @@
 "2026-11-27"
 ],
 "zh-hant/lunyu/xiang-dang/17.html": [
-"t:1fda1accec88b00b",
+"t:6cac1707a09fb261",
 "2026-11-27"
 ],
 "zh-hant/lunyu/xiang-dang/2.html": [
@@ -38484,7 +38484,7 @@
 "2026-11-27"
 ],
 "zh-hant/lunyu/xiang-dang/4.html": [
-"t:fd4e89fe4e72b71b",
+"t:453189cc6a0a58bc",
 "2026-11-27"
 ],
 "zh-hant/lunyu/xiang-dang/5.html": [
@@ -38492,7 +38492,7 @@
 "2026-11-27"
 ],
 "zh-hant/lunyu/xiang-dang/6.html": [
-"t:9b40cb8910621021",
+"t:26c45b481f3b4e73",
 "2026-11-27"
 ],
 "zh-hant/lunyu/xiang-dang/7.html": [
@@ -38500,7 +38500,7 @@
 "2026-11-27"
 ],
 "zh-hant/lunyu/xiang-dang/8.html": [
-"t:2cc0790ca26a20bd",
+"t:71dc15aa35777399",
 "2026-11-27"
 ],
 "zh-hant/lunyu/xiang-dang/9.html": [
@@ -38560,7 +38560,7 @@
 "2026-11-27"
 ],
 "zh-hant/lunyu/xue-er/5.html": [
-"t:a75f431a3e764b24",
+"t:d6875108ab8e815a",
 "2026-11-27"
 ],
 "zh-hant/lunyu/xue-er/6.html": [
@@ -39000,7 +39000,7 @@
 "2026-11-27"
 ],
 "zh-hant/lunyu/zi-han/26.html": [
-"t:6c949deba991ae1c",
+"t:4f7c6f66eaccb722",
 "2026-11-27"
 ],
 "zh-hant/lunyu/zi-han/27.html": [
@@ -39044,7 +39044,7 @@
 "2026-11-27"
 ],
 "zh-hant/lunyu/zi-han/9.html": [
-"t:d4fe274c176b243e",
+"t:cd273fb23609fc06",
 "2026-11-27"
 ],
 "zh-hant/lunyu/zi-han/index.html": [
@@ -42296,8 +42296,8 @@
 "2026-11-13"
 ],
 "zh-hant/zi/index.html": [
-"t:7f431cf3bb45808f",
-"2026-11-20"
+"t:b7903f4f60a64974",
+"2026-11-27"
 ],
 "zh-hant/zi/三-san1/index.html": [
 "t:2310972092ec7236",
@@ -42420,8 +42420,8 @@
 "2026-11-20"
 ],
 "zh-hant/zi/共-gong/index.html": [
-"t:f9a4df12beb99663",
-"2026-11-20"
+"t:3e709c1b24222b1d",
+"2026-11-27"
 ],
 "zh-hant/zi/兴-xing/index.html": [
 "t:454b397661d8067d",
@@ -42436,8 +42436,8 @@
 "2026-11-16"
 ],
 "zh-hant/zi/去-qu/index.html": [
-"t:398f54f0f532e8ba",
-"2026-11-16"
+"t:9607a2e53cfe18c7",
+"2026-11-27"
 ],
 "zh-hant/zi/叶-she/index.html": [
 "t:8441b820be16e29f",
@@ -42620,8 +42620,8 @@
 "2026-11-16"
 ],
 "zh-hant/zi/见-xian/index.html": [
-"t:19c8e1b89c9d326d",
-"2026-11-16"
+"t:e2fba4c4ff8d2dcd",
+"2026-11-27"
 ],
 "zh-hant/zi/识-zhi/index.html": [
 "t:bab5ea2f630f9758",
@@ -42656,32 +42656,32 @@
 "2026-11-16"
 ],
 "zh-hant/zi/道-dao3/index.html": [
-"t:06e6e836e424fda2",
-"2026-11-15"
+"t:3125ceeb2d0c78ed",
+"2026-11-27"
 ],
 "zh-hant/zi/道-dao4/index.html": [
-"t:be1a7a34cb3842cb",
-"2026-11-15"
+"t:6d27c7968141b923",
+"2026-11-27"
 ],
 "zh-hant/zi/量-liang/index.html": [
 "t:fe9a55d039212451",
 "2026-11-16"
 ],
 "zh-hant/zi/长-zhang3/index.html": [
-"t:b23943507d6ed852",
-"2026-11-16"
+"t:3b2ece93424406c2",
+"2026-11-27"
 ],
 "zh-hant/zi/间-jian/index.html": [
 "t:431706cdc65578f6",
 "2026-11-16"
 ],
 "zh-hant/zi/陈-chen/index.html": [
-"t:24f21c0acb1acb2a",
-"2026-11-16"
+"t:f8101c9b31678b65",
+"2026-11-27"
 ],
 "zh-hant/zi/食-si/index.html": [
-"t:b6ca2177e0014541",
-"2026-11-16"
+"t:c29b8c113c070173",
+"2026-11-27"
 ],
 "zh-hant/zi/饭-fan/index.html": [
 "t:4293966814721e77",
@@ -43468,8 +43468,8 @@
 "2026-11-13"
 ],
 "zi/index.html": [
-"t:7816e9d417dbc8c6",
-"2026-11-20"
+"t:0b4be59a609a119d",
+"2026-11-27"
 ],
 "zi/三-san1/index.html": [
 "t:1a58b92778f42abe",
@@ -43592,8 +43592,8 @@
 "2026-11-20"
 ],
 "zi/共-gong/index.html": [
-"t:f2be5cd6a5784977",
-"2026-11-20"
+"t:0647a478fab572d6",
+"2026-11-27"
 ],
 "zi/兴-xing/index.html": [
 "t:2f6e1e808eb83bf4",
@@ -43608,8 +43608,8 @@
 "2026-11-16"
 ],
 "zi/去-qu/index.html": [
-"t:d7504d3a65e50f28",
-"2026-11-16"
+"t:e80cc202090e9648",
+"2026-11-27"
 ],
 "zi/叶-she/index.html": [
 "t:dafd087e8aa64ff0",
@@ -43792,8 +43792,8 @@
 "2026-11-16"
 ],
 "zi/见-xian/index.html": [
-"t:f39110d0b787e911",
-"2026-11-16"
+"t:f7d10382ed74021f",
+"2026-11-27"
 ],
 "zi/识-zhi/index.html": [
 "t:0bf5ac5abf33af37",
@@ -43828,32 +43828,32 @@
 "2026-11-16"
 ],
 "zi/道-dao3/index.html": [
-"t:650e460bb63e2e13",
-"2026-11-15"
+"t:68bbd2deb6288249",
+"2026-11-27"
 ],
 "zi/道-dao4/index.html": [
-"t:1aff4765afc8cf1e",
-"2026-11-15"
+"t:8cad4717254a918a",
+"2026-11-27"
 ],
 "zi/量-liang/index.html": [
 "t:b07cee656fa96f34",
 "2026-11-16"
 ],
 "zi/长-zhang3/index.html": [
-"t:44cfa9c9c3370047",
-"2026-11-16"
+"t:0c46ce1c0b5cd27d",
+"2026-11-27"
 ],
 "zi/间-jian/index.html": [
 "t:c373e31cd53e9758",
 "2026-11-16"
 ],
 "zi/陈-chen/index.html": [
-"t:4f3be16a3da78ae2",
-"2026-11-16"
+"t:2ed00069e6860fb3",
+"2026-11-27"
 ],
 "zi/食-si/index.html": [
-"t:a8531437b5950e53",
-"2026-11-16"
+"t:963fad1d4d1fba1d",
+"2026-11-27"
 ],
 "zi/饭-fan/index.html": [
 "t:fe4554d8848e7498",
