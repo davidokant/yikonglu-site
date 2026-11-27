@@ -18,6 +18,7 @@ import zjyuanye as ZJY  # 11-16 诸家原页
 import zhaji as ZHAJI  # 11-27 一孔札记
 import yinyong as YY  # 11-27 引用本页：六本书一处模板
 import lunyu_extra as LX  # 11-14 只为《论语》做的：年历、场合用句、课本带读
+import lunyu_duyin as DY  # 11-27 《论语》易读错字速查页（数据 lunyu_duyin.json）
 import zizhuan as ZZ  # 11-15 一字一页 /zi/
 import xingtu as XT  # 11-15《论语》星图：首页招牌、关系图页
 import gaoben as GB
@@ -797,6 +798,13 @@ def head_fonts(code):
 HEAD_FONTS = head_fonts("zh-Hans")
 MAIL = '<picture class="mail"><source srcset="/assets/mail-dark.png" media="(prefers-color-scheme:dark)"><img src="/assets/mail.png" alt="email (image)" width="211" height="26"></picture>'
 HF_DATASET = "https://huggingface.co/datasets/yikonglu/lunyu"  # 11-27 主人建的 Hugging Face 数据集（与 /data/ 同一份）
+LINKS_DOI = "10.5281/zenodo.24581319"  # 11-27 星图连线表线程发布：《论语》可核连线表（主人点“发布”）；对外只说“明引 89 条可核”，对读不算
+LINKS_DS_ZH = (f'<p><b>《论语》可核连线表</b>（2026-11-27 版）：《论语》与《孟子》《周易》《中庸》等书之间的明引 89 条可核，每条写明引用的原话和底本页码；另收书内互见、同问异答。'
+               f'下载：<a href="{HF_DATASET}/tree/main" rel="noopener" target="_blank">Hugging Face（lunyu-links.csv、lunyu-links.json、方法说明）</a>；'
+               f'DOI：<a href="https://doi.org/{LINKS_DOI}" rel="noopener" target="_blank">{LINKS_DOI}</a>。</p>'
+               f'<p class="note">引用格式：一孔录. 一孔录《论语》可核连线表（2026-11-27 版）[DS]. DOI:{LINKS_DOI}.</p>')
+LINKS_DS_EN = (f'<p><b>Analects verifiable links table</b> (2026-11-27 release): 89 explicit quotations between the Analects and other classics, each with the quoted words and the base-text page. '
+               f'Download on <a href="{HF_DATASET}/tree/main" rel="noopener" target="_blank">Hugging Face</a> (lunyu-links.csv, lunyu-links.json); DOI <a href="https://doi.org/{LINKS_DOI}" rel="noopener" target="_blank">{LINKS_DOI}</a>.</p>')
 SAME_AS = ["https://www.youtube.com/@yikonglu", "https://x.com/yikonglu", "https://ko-fi.com/yikonglu", HF_DATASET]  # 各平台账号另由 PLAT_LINKS 补进（见 main 里的首页 Organization）
 # 一孔之见署名短答（智器引用，主人 11-08 定）：落点（片里落点）作首句结论，第二句说与通行读法差在哪；素材只取札记里已有的“片里落点”“常见读法”“字眼”，不另编。
 YKAN = {  # 主人 11-09 晚：署名只写“一孔之见”，不带括号解释（解释在方法页、关于页）。语种: (署名开头, 常见读法是陈述时, 常见读法里自带引号时, 常见读法是问句时, 朱注依据句开头)
@@ -1738,6 +1746,7 @@ hero_webp()
 HERO_V = __import__("hashlib").md5(b"".join(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", f), "rb").read() for f in ("hero-w.jpg", "hero-m.jpg"))).hexdigest()[:8]  # 横幅换图后换地址，免得手机上旧图配新比例（11-14 主人见柯基只剩头）
 
 LY_ICON = {
+    "dy": '<path d="M5 4h14v16H5z"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/><path d="M17.5 14.5l1.5 1.5 3-3"/>',  # 11-27 易读错字速查
     "xs": '<path d="M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5z"/><path d="M12 6v13.5"/>',  # 《论语》书页入口图标（11-14 主人：一行一条，配图标）：线描，跟随文字色
  "nl": '<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M8 13h2M12 13h2M16 13h0.01M8 16.5h2M12 16.5h2"/>',
  "gx": '<circle cx="12" cy="5.5" r="2.3"/><circle cx="5" cy="18" r="2.3"/><circle cx="19" cy="18" r="2.3"/><circle cx="12" cy="13" r="1.6"/><path d="M12 7.8v3.6M10.7 14.1l-4 2.4M13.3 14.1l4 2.4M7.3 18h9.4"/>',
@@ -1757,12 +1766,14 @@ def ly_links(L, D, P):
         if D["lx"]["ch"]: rows.append(("ch", f"{P}changhe/", "场合用句", "取名、开学、结婚、送别，该说哪一句"))
         rows.append(("kb", f"{P}zhuanti/keben.html", "语文课本里的《论语》", "初中、高中课文选的各章"))
         if D["lx"]["dd"]: rows.append(("dd", f"{P}daidu/", "课本十二章带读", "给老师和家长：怎么带孩子读"))
+        if DY.DATA: rows.append(("dy", f"{P}lunyu/duyin/", "易读错字速查", f"{len(DY.DATA['entries'])} 个字的读音，条条对到朱注原页"))
         rows.append(("bb", f"{P}lunyu/banben/", "版本说明", "五家注本用的哪个本子，原页从哪来"))
         rows.append(("xs", f"{P}lunyu/xuanshu.html", "想读纸本", "读哪个版本：朱注、杨伯峻、钱穆怎么选"))
         if L.code == "zh-Hant":
             T = __import__("opencc").OpenCC("s2twp").convert
             rows = [(k, h, T(a), T(b)) for k, h, a, b in rows]
     else:
+        if DY.DATA and L.code == "en": rows.append(("dy", f"{P}lunyu/duyin/", "Commonly misread characters", f"{len(DY.DATA['entries'])} readings, each checked against Zhu Xi's page"))
         rows.append(("bb", f"{P}lunyu/banben/", L.t("bb_title"), L.t("bb_sub")))
     li = "".join(f'<li><a href="{h}"><span class="lyi" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{LY_ICON[k]}</svg></span>'
                  f'<span class="lyt"><b>{esc(a)}</b><small>{esc(b)}</small></span><span class="lya" aria-hidden="true">›</span></a></li>' for k, h, a, b in rows)
@@ -4436,6 +4447,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
     body = f'''<div class="chhead"><div class="wrap"><p class="crumb"><a href="{P}shumu/">{L.t("nav_books")}</a> › <a href="{P}lunyu/">{L.t("lunyu")}</a></p><h1><span class="no">{L.t("bb_sub")}</span>{L.t("bb_title")}</h1></div></div>
 <main class="wrap narrow prose"><p>{L.t("bb_p")}</p>{cards}{f'<p><a href="{P}lunyu/zhanghao/">《论语》章号对照：朱熹集注本 498 章与杨伯峻译注本 512 章 →</a></p>' if L.code.startswith("zh") and ZHANGHAO else ""}</main>'''
     write("lunyu/banben/index.html", page(L, f'《论语》{L.t("bb_title")}｜一孔录' if L.code.startswith("zh") else f'{L.t("bb_title")}｜一孔录', L.t("bb_sub"), "lunyu/banben/", body)); urls.append(f"{DOMAIN}/{L.prefix}lunyu/banben/")
+    urls += DY.build(L, write, page, P, DOMAIN, lambda c: f"{P}lunyu/{PIAN[c.split('.')[0]][1]}/{c.split('.')[1]}.html", None)  # 11-27 易读错字速查（简繁英）
     if L.code.startswith("zh") and ZHANGHAO:  # 11-23 主人放行（对手调研三改之二）：章号对照页，朱注 498 ↔ 杨伯峻 512；只放章号与拆合，不放杨本文字页码
         _pn = lambda c: PIAN[c.split(".")[0]][0].split("第")[0]
         def _zrow(r, hl):
@@ -4664,7 +4676,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
     rows = "".join(f'<tr><td>{L.book(p)}</td><td><a href="/data/lunyu-{PIAN[p][1]}.json">JSON</a> · <a href="/data/lunyu-{PIAN[p][1]}.csv">CSV</a></td><td>{len(by_pian[p])}</td></tr>' for p in sorted(by_pian, key=int))
     body = f'''<div class="chhead"><div class="wrap"><h1><span class="no">{L.t("dt_sub")}</span>{L.t("dt_title")}</h1></div></div>
 <main class="wrap narrow prose"><p>{L.t("dt_p")}</p><div class="tw"><table class="zitab"><thead><tr><th>{L.t("lunyu")}</th><th>{L.t("dt_file")}</th><th>{L.t("dt_rows")}</th></tr></thead><tbody>{rows}</tbody></table></div>
-<p>{"同一份数据也在 Hugging Face：" if L.code.startswith("zh") else "The same data is on Hugging Face: "}<a href="{HF_DATASET}" rel="noopener" target="_blank">huggingface.co/datasets/yikonglu/lunyu</a></p>
+<p>{"同一份数据也在 Hugging Face：" if L.code.startswith("zh") else "The same data is on Hugging Face: "}<a href="{HF_DATASET}" rel="noopener" target="_blank">huggingface.co/datasets/yikonglu/lunyu</a></p>{LINKS_DS_ZH if L.code.startswith("zh") else LINKS_DS_EN if L.code == "en" else ""}
 <p class="note">{L.t("dt_lic")} · <a href="https://creativecommons.org/licenses/by/4.0/deed.zh-hans" rel="license noopener" target="_blank">CC BY 4.0</a> · <a href="{P}lunyu/banben/">{L.t("bb_link")}</a></p>{kf_html(L)}</main>'''
     write("kaifang.html", page(L, f'{L.t("dt_title")}｜一孔录', L.t("dt_sub"), "kaifang.html", body)); urls.append(f"{DOMAIN}/{L.prefix}kaifang.html")
     # 读音索引页撤掉（11-13 主人：读者不会一个个字看下来）；旧地址转到检索页，不进站点地图。章页读音、难字字典不动

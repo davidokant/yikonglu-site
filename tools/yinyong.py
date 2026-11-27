@@ -24,6 +24,7 @@ def shudan(top):
 
 def key_of(rel, pian):
     """站内路径 → (书目录名, 章号)。pian：论语篇号 → (篇名, 网址段, …)。不是章页就给 None。"""
+    if rel == "lunyu/duyin/": return ("lunyu", "duyin")  # 11-27 易读错字速查页也出引用本页
     m = re.fullmatch(r"lunyu/([a-z-]+)/(\d+)\.html", rel)
     if m:
         p = next((k for k, v in pian.items() if v[1] == m.group(1)), None)
