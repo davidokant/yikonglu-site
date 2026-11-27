@@ -1,0 +1,10 @@
+{
+ "孙子兵法": {
+  "dir": "_孙子",
+  "slug": "sunzi",
+  "open": false,
+  "img": "",
+  "说明": "open 为 false 时页面 noindex、不进站点地图；主人准推上线时改 true。img 为原页图根地址（裁图传 yikonglu-img 后填）",
+  "src": "国家图书馆藏宋刻《十一家注孙子》"
+ }
+}

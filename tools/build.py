@@ -3958,6 +3958,7 @@ def build_lang(L, D, write):
     urls += build_zhouyi(L, write, P, search_idx if L.code.startswith("zh") else None)  # 11-21 周易（简繁）
     urls += build_mengzi(L, write, P, search_idx if L.code.startswith("zh") else None)
     for _dsl in DXZY_META: urls += build_dxzy(L, write, P, search_idx if L.code.startswith("zh") else None, _dsl)  # 11-23 大学、中庸（只简繁）  # 孟子（只简繁；先不对外）  # 三字经（只简繁）  # 道德经（只简繁；没开就是空）
+    urls += __import__("zhangdan").build_all(sys.modules[__name__], L, write, P, search_idx if L.code.startswith("zh") else None)  # 11-27 通用章单生成器（孙子兵法起，新书不写 build_X；登记见 tools/zhangdan.json）
     if ANALYTICS.get("live") and "OUT_ROOT" in globals() and os.path.exists(_lf := os.path.join(OUT_ROOT, "data", f"live-{L.code}.json")):  # 道德经、三字经也进“今天有人读了”；本语种没有的书链简体页
         _up = "../" * L.prefix.count("/"); _ex = {k: [v[0], _up + v[1]] for k, v in LIVE_A.get("zh-Hans", {}).items()} if L.code != "zh-Hans" else {}
         _ex.update(LIVE_A.get(L.code, {})); _J = json.load(open(_lf, encoding="utf-8")); _J.setdefault("a", {}).update(_ex)
