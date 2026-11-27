@@ -466,11 +466,18 @@ def seo_head(text, n=22):
     """给标题用的首句：去掉“子曰：”“子贡问曰：”一类引导语，按句末标点取句，不够 8 字就再取一句，最长 n 字（主人 11-07 定：标题写读者会搜的话）。"""
     t = re.sub(r"^[^：，。]{1,12}[曰云]：", "", text.strip())
     s = ""
-    for m in re.finditer(r"[^。？！]+[。？！]?", t):
+    for m in re.finditer(r"[^。？！]+[。？！]?[”’]?", t):
         s += m.group(0)
         if len(s) >= 8: break
     s = s.strip() or t
-    return s if len(s) <= n else s[:n - 1] + "…"
+    s = s if len(s) <= n else s[:n - 1] + "…"
+    # 11-27 大学中庸修改单 X23：删了说话人留下的前引号、截断留下的半个引号，补齐或去掉，不让标题引号不配对
+    for a, b in (("“", "”"), ("‘", "’")):
+        while s.count(a) > s.count(b):
+            if s.startswith(a): s = s[1:]
+            else: s += b
+        while s.count(b) > s.count(a) and s.startswith(b): s = s[1:]
+    return s
 
 YKCITE = '<p class="ykcite"><button type="button" onclick="var s=this.closest(\'.ykan\'),t=s.querySelector(\'p\').textContent,u=location.origin+location.pathname+\'#ykan\',b=this,d=function(){b.textContent=\'已复制\';setTimeout(function(){b.textContent=\'引用这段一孔之见\'},1200)};var q=document.querySelector(\'blockquote[data-short]\');t=q&&q.dataset.short?t+\'——\'+q.dataset.src+\' \'+q.dataset.short:t+\'——\'+document.querySelector(\'h1\').textContent+\'，一孔录 \'+u;navigator.clipboard?navigator.clipboard.writeText(t).then(d):prompt(\'\',t)">引用这段一孔之见</button></p>'
 # 书页观感（11-13 主人：从书架点进去，章页跟着书的逻辑）：书目录、篇目录、章页头部放一册小书封；本篇章节读过的打勾；篇卡显示“你读过几章”
@@ -2069,7 +2076,7 @@ def build_ddj(L, D, write, P, S_IDX=None):
     cs = sorted(qw, key=int); tt = ddj_title(qw)
     if F: tt = {c: ddj_tr_title(L.code, TRD.get(c, "")) or tt[c] for c in cs}
     # 底本录文是四库本繁体：简体页转简体；繁体页用 \ue010…\ue011 包住，to_hant 整页转繁时不碰，原样还底本字形（11-13 主人要道德经先上网站）
-    hant = L.code == "zh-Hant"; _t2s = __import__("opencc").OpenCC("t2s").convert
+    hant = L.code == "zh-Hant"; _t2s = __import__("fanjian").t2s
     Y = (lambda s_: s_) if F else (lambda s_: f"\ue010{s_}\ue011" if s_ else s_) if hant else _t2s
     if hant and not F:  # 11-22 道德经繁体页白话转错（佔有、兇等）用 DDJ_HANT_POST 只在道德经页回正
         _wdj = write
@@ -2316,7 +2323,7 @@ SZJ_JD = {int(os.path.basename(f_)[:-5]): json.load(open(f_, encoding="utf-8")) 
 def szj_jd_html(jd, hant=False):
     """三字经讲页讲读四块（11-17，照道德经 ddj_jd_html）：注（王相训诂关键字）、本（别本怎么写）、说（诸家怎么说）、读（一孔之见＋放到今天）。"""
     if not jd: return ""
-    _t2s = __import__("opencc").OpenCC("t2s").convert
+    _t2s = __import__("fanjian").t2s
     # 王相等原话本来是繁体：繁体页上护住不再转（\ue010…\ue011），免得“爲”被改成“為”
     K = (lambda t: re.sub(r"“([^”]+)”", lambda m: f"“\ue010{m.group(1)}\ue011”" if _t2s(m.group(1)) != m.group(1) else m.group(0), t)) if hant else (lambda t: t)
     sec = lambda mark, h, inner: f'<section class="sec sec-{mark}"><h2><i>{mark}</i>{h}</h2>{inner}</section>'
@@ -2434,7 +2441,7 @@ def mz_jd_html(jd, T):
     return re.sub(r"〔注疏([^〕]*)〕", lambda m: f'<small class="pgref">（《孟子注疏》{m.group(1)}）</small>', out)
 
 MZ_KJ_BAD = []
-_MZT2S = __import__("opencc").OpenCC("t2s").convert
+_MZT2S = __import__("fanjian").t2s
 def mz_kj_tag(chars, sents):
     """11-19 孟子开卷飞字（向论语看齐）：逐字原页框 [字, 页, 列, x0, y0, x1, y1]（坐标即图床原页像素）→ 论语同格式 z=[页, x, y, w, h]。字序、字数对不上就不给。"""
     if not chars or not isinstance(chars, list): return ""
@@ -2461,7 +2468,7 @@ def hant_only_simp(t):
 def build_mengzi(L, write, P, S_IDX=None):
     if not MZ or not (L.code.startswith("zh") or (L.code in MZ_FL and MZ["tri"])): return []
     if not L.code.startswith("zh"): return build_mengzi_fl(L, write, P)
-    hant = L.code == "zh-Hant"; _t2s = __import__("opencc").OpenCC("t2s").convert
+    hant = L.code == "zh-Hant"; _t2s = __import__("fanjian").t2s
     _MZFIX = (("于牣鱼跃", "於牣鱼跃"), ("征招角招", "徵招角招"))  # 11-23 孟子读音修改单 M01、M14：叹词“於”、乐名“徵招”简体也保留原字形
     def _mzs(s_):
         s_ = _t2s(s_)
@@ -2618,7 +2625,7 @@ var r=F.querySelector('.yyp .hl[data-s="'+n+'"]');if(r){var a=r.closest('.yyp');
 def build_dxzy(L, write, P, S_IDX, slug):
     B = DXZY.get(slug); M = DXZY_META[slug]
     if not B or not L.code.startswith("zh"): return []
-    hant = L.code == "zh-Hant"; _t2s = __import__("opencc").OpenCC("t2s").convert
+    hant = L.code == "zh-Hant"; _t2s = __import__("fanjian").t2s
     Y = (lambda s_: s_) if hant else _t2s
     ZY = (lambda t: re.sub(r"“([^”]+)”", lambda m: f"“{hant_only_simp(m.group(1))}”" if _t2s(m.group(1)) != m.group(1) else m.group(0), t) if t else t) if hant else _t2s
     PZ = (lambda s_: f"{hant_only_simp(s_)}" if s_ else s_) if hant else _t2s
@@ -2835,7 +2842,7 @@ def mz_xt_gx(gx):
         PM = json.load(open(os.path.join(MZ_DIR, "篇目.json"), encoding="utf-8"))
     except Exception as e:
         print("孟子星图关系读不到：", e); return gx
-    _s = __import__("opencc").OpenCC("t2s").convert
+    _s = __import__("fanjian").t2s
     pn = {str(v["起"]).split(".")[0]: _s(k) for k, v in PM.items() if isinstance(v, dict)}
     rank = {"出处": 0, "注家引": 1, "相通": 2}; best = {}  # 11-23 主人点卡：星图也含一孔录对读，跟首页一致
     for r in HJ:
@@ -2851,7 +2858,7 @@ def mz_xt_gx(gx):
 def dxzy_xt_gx(gx):
     """11-23 主人“大学中庸也在星图上建好连接”：两书论语互见-v0.json 里明引（出处、注家引）作“书外互见 · 大学／中庸”进中文星图；一孔录对读“相通”不画（同孟子口径）。"""
     if not DXZY_LIVE or not gx or "raw" not in gx: return gx
-    _s = __import__("opencc").OpenCC("t2s").convert; rank = {"出处": 0, "注家引": 1, "相通": 2}; add = []  # 11-23 主人点卡：星图也含一孔录对读，跟首页一致
+    _s = __import__("fanjian").t2s; rank = {"出处": 0, "注家引": 1, "相通": 2}; add = []  # 11-23 主人点卡：星图也含一孔录对读，跟首页一致
     for sl in sorted(DXZY_LIVE):
         B = DXZY[sl]; bk = DXZY_META[sl]["zh"]; best = {}
         for r in B["lyhj"]:
@@ -3057,7 +3064,7 @@ _ZYT2S = None
 def zy_reg(L, P, key, k, head, title, rel, url, sents, bh, oghead):
     """11-21 周易每页：人物卡与读经日历卡、三语分享卡数据、每页分享图（底本经文照录繁体，不转简：t2s 会把“乾”转“干”）、站内搜索、站点地图。"""
     global _ZYT2S
-    if _ZYT2S is None: _ZYT2S = __import__("opencc").OpenCC("t2s").convert
+    if _ZYT2S is None: _ZYT2S = __import__("fanjian").t2s
     y0 = sents[0] if sents else ""
     bk_share_x(key, k, 0, k)
     _t1 = next(iter(((ZY_TRI.get(key[3:]) or {}).get("逐句") or {}).values()), {})  # 11-22 分享图补英日（第一句）
@@ -3290,7 +3297,7 @@ def build_zhouyi_fl(L, write, P):
 def build_mengzi_fl(L, write, P):
     """11-19 孟子英日版（主人：外文只做英日）：书页篇卡、篇页、章页（原文＋原页点句红框＋一孔录译文），照道德经外文页。"""
     U = MZ_FU[L.code]; qw, cfg, urls, tri = MZ["qw"], MZ["cfg"], [], MZ["tri"]
-    _t2s = __import__("opencc").OpenCC("t2s").convert
+    _t2s = __import__("fanjian").t2s
     is_open = bool(cfg.get("open")); img = cfg.get("img", "")
     NOIDX = "" if is_open else '<meta name="robots" content="noindex,follow">'
     key = lambda c: tuple(map(int, c.split("."))); cs = sorted(qw, key=key)
@@ -5089,7 +5096,7 @@ def main(zdir, outdir, kanwu=None):
             if off < acc: return k
         return len(dst)
     from opencc import OpenCC
-    t2s = OpenCC("t2s")
+    t2s = __import__("fanjian")
     for c, rs in hujian.items():
         for r in rs:
             if r["ju"].isdigit(): r["ju"] = str(jmap(c, int(r["ju"])))

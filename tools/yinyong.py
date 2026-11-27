@@ -50,6 +50,10 @@ def _cn(n):
     return d[n // 10] + "十" + (d[n % 10] if n % 10 else "")
 
 
+YWPG = {"daxue": "_大学/_原文/大学原文-v1.json", "zhongyong": "_中庸/_原文/中庸原文-v1.json"}  # 孟子、论语等是否同病另查
+_jl = {}
+
+
 def pages(top, cid):
     """本章用到的底本页码（或叶次），给人看的一小段字，如“第 65—66 页”“上经第八叶至第九叶”。查不到给空串。"""
     k = (top, cid)
@@ -62,6 +66,12 @@ def pages(top, cid):
             for z in s.get("zhu", []) or []:
                 if len(z) > 1: srcs.append(z[1])
     ps = [int(x) for s in srcs for x in re.findall(r"(\d+)\s*(?=页|[—–-]\s*\d+\s*页)", s)]
+    # 11-27 大学中庸修改单 X24：只有正文、没有朱注的页也要算进去，取原文书单里本章的 pages（与章页“底本第 N 页”同源）
+    ywf = YWPG.get(top)
+    if ywf and os.path.exists(os.path.join(W, ywf)):
+        _jl.setdefault(top, json.load(open(os.path.join(W, ywf), encoding="utf-8")))
+        pg = (_jl[top].get(cid) or {}).get("pages") if isinstance(_jl[top].get(cid), dict) else None
+        if pg: ps += [int(x) for x in (json.loads(pg) if isinstance(pg, str) else pg)]
     ye = [(m.group(1), _cnum(m.group(2))) for s in srcs for m in re.finditer(r"([上下]經|[^\s，、；《》]{1,5}?傳|[^\s，、；《》]{1,3}卦)第([〇一二三四五六七八九十]+)葉", s)]
     if not ps and not ye:
         jd = os.path.join(W, d, "_讲读", f"{cid}.json")

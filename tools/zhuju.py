@@ -61,7 +61,7 @@ def _vn(t): return t.translate(_VAR)
 
 def spans_of(c, sents, Z):
     from opencc import OpenCC
-    t2s = OpenCC("t2s").convert
+    t2s = __import__("fanjian").t2s
     """返回 (pages, per)：pages={页:{w,h}}；per[i]=这一句在各页各列的框 [[页,x0,y0,x1,y1],...]，合并同列相邻字。"""
     d = Z["jl"].get(c)
     if not d: return None, None
@@ -222,7 +222,7 @@ def kj_data(c, sents, Z, ydir):
     d = Z["jl"].get(c)
     if not d: return None
     from opencc import OpenCC
-    t2s = OpenCC("t2s").convert
+    t2s = __import__("fanjian").t2s
     text = "".join(sents); zs = CJK.findall(text)
     chars = d.get("chars") or [ch for s in d.get("sentences", []) for ch in s.get("chars", [])]
     if len(chars) < len(zs) or _vn(t2s("".join(x[0] for x in chars[:len(zs)]))) != _vn("".join(zs)): return None
@@ -273,7 +273,7 @@ def zhuyin(c, sents, reads):
     zi = json.load(open(f, encoding="utf-8")).get("zi") or []
     if any("待核" in str(x[-1]) for x in zi): ZY_SKIP[c] = "待核"; return None
     from opencc import OpenCC
-    t2s = OpenCC("t2s").convert
+    t2s = __import__("fanjian").t2s
     zs = CJK.findall("".join(sents))
     if len(zs) != len(zi) or _vn(t2s("".join(zs))) != _vn(t2s("".join(x[0] for x in zi))): ZY_SKIP[c] = "字对不上"; return None
     for r in reads or []:
@@ -302,7 +302,7 @@ def zhuyin_book(book, c, sents):
     zi = json.load(open(f, encoding="utf-8")).get("zi") or []
     if any("待核" in str(x[-1]) for x in zi): ZY_SKIP[f"{book}{c}"] = "待核"; return None
     from opencc import OpenCC
-    t2s = OpenCC("t2s").convert
+    t2s = __import__("fanjian").t2s
     zs = CJK.findall("".join(sents))
     if len(zs) != len(zi) or _vn(t2s("".join(zs))) != _vn(t2s("".join(x[0] for x in zi))): ZY_SKIP[f"{book}{c}"] = "字对不上"; return None
     return [[x[1], x[2], 1 if len(x) > 4 and x[3] == 1 and x[4] else 0] for x in zi]
