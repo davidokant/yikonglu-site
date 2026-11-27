@@ -93,24 +93,43 @@ def ld_extra(top, cid, date):
     return x
 
 
+def title_cn(top, headline):
+    s = shudan(top) or {}; bk = s.get("书名", ""); t = headline.strip()
+    return f"《{bk}》{t[len(bk):].strip()}" if bk and t.startswith(bk) else t
+
+
+def short_cn(t):
+    """“《孟子》1.2 孟子见梁惠王”→“《孟子》1.2”；复制出处与原文句出处共用这一种写法（11-27 统一）。"""
+    return t.split(" ")[0]
+
+
+# 复制超过 20 字（白话、一孔之见、讲读、诸家等）自动在末尾附一行出处，不提示、不拦（11-27 主人：“带出处”不用提醒别人）。
+# 原文句另有自己的复制处理（已带出处、已 preventDefault），这里跳过。
+CP = ("<script>(function(){var S=document.querySelector('.citeit.yy');if(!S||!S.dataset.cp)return;"
+      "document.addEventListener('copy',function(e){if(e.defaultPrevented||!e.clipboardData)return;var g=getSelection(),t=String(g);"
+      "if(t.replace(/\\s+/g,'').length<=20||/yikonglu\\.com/i.test(t))return;var n=g.anchorNode;n=n&&(n.nodeType===1?n:n.parentNode);"
+      "if(!n||!n.closest||!n.closest('main')||n.closest('.citeit,code,input,textarea,.jubar,#jubar'))return;"
+      "e.clipboardData.setData('text/plain',t.replace(/\\s+$/,'')+'\\n'+S.dataset.cp);e.preventDefault()})})();</script>")
+
+
 def block(top, cid, headline, url, kanwu_href, mail_html, report, date):
     """“引用本页”整块（简体字写，繁体页由建站统一转繁）。headline 形如“论语 5.10 · 公冶长 吾未见刚者”。"""
     s = shudan(top); b = s and s["底本"]
     if not b: return None
     bk = s["书名"]
-    t = headline.strip()
-    t = f"《{bk}》{t[len(bk):].strip()}" if t.startswith(bk) else t
+    t = title_cn(top, headline)
     pg = pages(top, cid)
     src = f"据{b['作者']}《{b['书名']}》（{b['版本']}）" + (pg if pg else "")
     src_apa = f"据{b['作者']}《{b['书名']}》，{b['版本']}" + (f"，{pg}" if pg else "")
     acc = '<span class="yya">引用日期</span>'
     gb = f'一孔录. {esc(t)}：{esc(src)}[EB/OL]. ({date})[{acc}]. {esc(url)}.'
     apa = f'一孔录.（<span class="yyz">{date}</span>）. {esc(t)}（{esc(src_apa)}）. 检索于 <span class="yyb">引用日期</span>，{esc(url)}'
-    return (f'<section class="citeit yy" data-d="{date}"><b>引用本页</b>'
+    cp = f"\u2014\u2014{short_cn(t)} \u00b7 一孔录 {url}"
+    return (f'<section class="citeit yy" data-d="{date}" data-cp="{esc(cp)}"><b>引用本页</b>'
             f'<p class="yyf"><span class="yyl">GB/T 7714</span><code>{gb}</code><button type="button">复制</button></p>'
             f'<p class="yyf"><span class="yyl">APA</span><code>{apa}</code><button type="button">复制</button></p>'
             f'<p>本页更新于 {date}，改动都记在<a href="{kanwu_href}">勘误页</a>。本页以 CC BY 4.0 许可公开，转载、摘引请署“一孔录”并附本页网址。</p>'
-            f'<p class="mailp">{report} {mail_html}</p></section>' + JS)
+            f'<p class="mailp">{report} {mail_html}</p></section>' + JS + CP)
 
 
 JS = ("<script>(function(){var S=document.querySelector('.citeit.yy');if(!S)return;var n=new Date(),p=function(x){return(x<10?'0':'')+x},"
@@ -147,11 +166,12 @@ def block_en(top, cid, headline, url, kanwu_href, mail_html, report, date):
     key = "yikonglu_" + re.sub(r"[^a-z0-9]+", "_", f"{top}_{cid}".lower()).strip("_")
     bib = ("@misc{" + key + ",\n  author = {{Yikonglu}},\n  title = {" + esc(t) + "},\n  year = {" + (date[:4] if date[:1].isdigit() else date.replace("DATE", "DATEYR", 1)) + "},\n  url = {" + esc(url) + "},\n"
            "  note = {" + esc(based_t.replace("\u2013", "--")) + ". Last modified " + date + ". Accessed <span class=\"yya\">today</span>}\n}")
-    return (f'<section class="citeit yy" data-d="{date}"><b>Cite this page</b>'
+    cp = f"\u2014 Yikonglu, \u201c{t}\u201d, {url}"
+    return (f'<section class="citeit yy" data-d="{date}" data-cp="{esc(cp)}"><b>Cite this page</b>'
             f'<p class="yyf"><span class="yyl">Chicago</span><code>{chi}</code><button type="button">Copy</button></p>'
             f'<p class="yyf"><span class="yyl">BibTeX</span><code style="white-space:pre-wrap">{bib}</code><button type="button">Copy</button></p>'
             f'<p>Last modified {date}; every correction is logged on the <a href="{kanwu_href}">errata page</a>. Licensed CC BY 4.0: please credit \u201cYikonglu\u201d and link to this page.</p>'
-            f'<p class="mailp">{report} {mail_html}</p></section>' + JS_EN)
+            f'<p class="mailp">{report} {mail_html}</p></section>' + JS_EN + CP)
 
 
 JS_EN = ("<script>(function(){var S=document.querySelector('.citeit.yy');if(!S)return;var n=new Date(),M=['January','February','March','April','May','June','July','August','September','October','November','December'],"

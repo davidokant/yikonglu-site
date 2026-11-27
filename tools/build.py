@@ -66,6 +66,8 @@ ANALYTICS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__
 KANWU_DEFAULT = "/mnt/project-files/一孔学-内-自媒体/数据/网站勘误.md"
 NEIBU_FILE = "/mnt/project-files/一孔学-内-自媒体/规范/闸/内部词.txt"  # 11-27 全项目一份内部说法表；“换:”行建站时整页替换，检查（check.py、wz_zha Z6）读同一份
 NEIBU_HUAN = [tuple(ln.strip()[2:].split("→", 1)) for ln in (open(NEIBU_FILE, encoding="utf-8") if os.path.exists(NEIBU_FILE) else []) if ln.startswith(("换:", "換:")) and "→" in ln]
+CUOCI_FILE = "/mnt/project-files/一孔学-内-自媒体/规范/闸/对外措辞换.txt"  # 11-27 主人定：发表看法的主语写“一孔”，指作品加书名号，网站名照写一孔录；数据散在各线程的源文件里，建站时统一换（札记另由札记线程改，不在此换）
+CUOCI_HUAN = [tuple(ln.strip()[2:].split("→", 1)) for ln in (open(CUOCI_FILE, encoding="utf-8") if os.path.exists(CUOCI_FILE) else []) if ln.startswith(("换:", "換:")) and "→" in ln]
 INTERNAL = re.compile(r"（[^（）]*(只|转述|不上屏|不念|常识|核不到|见注|今读)[^（）]*）")
 
 HANT_FIX = {"余力": "餘力", "余，": "餘，", "余者": "餘者", "托看": "託看", "诗云": "詩云", "子云": "子云", "干禄": "干祿"}  # 护住后手工给的繁体
@@ -145,7 +147,7 @@ ZH_UI = {
  "p3t": "勘误公开", "p3": "讲错的地方改了就记：哪集哪句、原来怎么说、改成什么、依据是什么。",
  "books": "书架", "recent": "最近收录", "lunyu": "论语", "lunyu_sub": "二十篇 · 持续更新",
  "by_chapter": f"按篇按章排。底本：{SOURCE}。",
- "book_lead": "每章有原文、注里的关键字、诸家说法和一孔录的读法，附视频。", "covered": "{total} 章",
+ "book_lead": "每章有原文、注里的关键字、诸家说法和一孔的读法，附视频。", "covered": "{total} 章",
  "f_common": "常见的理解", "f_keys": "注里的关键字", "f_others": "诸家怎么说", "f_ours": "一孔录这样读",
  "cites": "本章引文逐条核对", "cites_note": "视频里引到的每一句注：原话、出自谁、在底本哪一页。标“转述”的是我们概括的意思，不是原话。",
  "th_quote": "引文原话", "th_src": "出自", "th_page": "底本页", "para": "转述", "pg": "原页 {n}", "other_ed": "另本",
@@ -160,9 +162,9 @@ ZH_UI = {
  "errata_p2": "发现错误，请写邮件到下面这个邮箱，写明哪集哪句、依据是什么，再写上你想署的网名。核实后记入此页，勘误者一栏署你的网名。也可以在任一平台「一孔录」视频下留言。", "mail_note": "邮箱做成了图片防垃圾邮件，请手动输入。", "report": "本章有错？写信告诉我们，核实后署你的网名记入勘误：", "errata_empty": "目前没有勘误。",
  "search_title": "检索", "search_sub": "原文 · 注家原话 · 读法", "search_ph2": "输入几个字，如：鸟数飞、主一无适、孝弟",
  "search_n": "找到 {n} 章", "search_none": "没有找到。未讲各章只收原文和白话。",
- "about_def": "一孔录（Yikonglu）是一个逐字逐章讲读中国经典原文的中文项目，2026 年起以视频、播客和本网站逐章讲读《论语》；原文与注据朱熹《论语集注》（《四部备要》本），每条引文标出底本页码，原页可查；一孔录自己的读法称“一孔之见”。独立编纂，无机构或基金资助。", "about_title": "关于一孔录", "about_p": "一孔录是一个逐字逐章读中国经典原文的频道，用讲书动画和几位固定的人物，把一句原文落到具体的人和处境上。默认你没读过原书，也不用看过前几期。",
+ "about_def": "一孔录（Yikonglu）是一个逐字逐章讲读中国经典原文的中文项目，2026 年起以视频、播客和本网站逐章讲读《论语》；原文与注据朱熹《论语集注》（《四部备要》本），每条引文标出底本页码，原页可查；一孔自己的读法称“一孔之见”。独立编纂，无机构或基金资助。", "about_title": "关于一孔录", "about_p": "一孔录是一个逐字逐章读中国经典原文的频道，用讲书动画和几位固定的人物，把一句原文落到具体的人和处境上。默认你没读过原书，也不用看过前几期。",
  "about_h1": "这个网站做什么", "about_site": "平台上的视频面向大众，这里面向想核对的人：一孔录讲过的每一句，原文、底本页码、注家原话、读音、我们的读法，都能在这里查到，讲错的地方在<a href=\"kanwu.html\">勘误页</a>公开记录。",
- "about_h2": "我们的承诺", "about_c1": "原文和注家的话都据各家底本原页，页面写明底本。", "about_c2": "先讲注家怎么说，再讲我们怎么读；我们自己的看法明说是一孔录的读法，不冒充古人。", "about_c3": "核不到出处的话不放。发现错误请告诉我们，勘误公开。",
+ "about_h2": "我们的承诺", "about_c1": "原文和注家的话都据各家底本原页，页面写明底本。", "about_c2": "先讲注家怎么说，再讲我们怎么读；我们自己的看法明说是一孔的读法，不冒充古人。", "about_c3": "核不到出处的话不放。发现错误请告诉我们，勘误公开。",
  "about_h3": "在哪里看", "about_where": "YouTube、哔哩哔哩、视频号「一孔录」，播客「一孔录」（Spotify、Apple 播客、小宇宙、喜马拉雅），公众号「一孔录」。",
  "follow_h": "关注一孔录，轻松读经典", "follow_wx": "关注公众号「一孔录」。发现错处、想看哪本书，都可以留言告诉我们。", "follow_yt": "在 YouTube 订阅", "foot_src": "引文据各家底本原页，各页注明底本。发现错误请告诉我们，勘误公开。", "foot_where": "YouTube · 哔哩哔哩 · 视频号 · 公众号 · 播客：搜「一孔录」",
  "lang_bar": "", "lang_go": "", "lang_close": "", "translated_note": "",
@@ -172,7 +174,7 @@ ZH_UI = {
 
 # 11-03 第一批新增界面字（各语种；缺的回落简体）
 EXTRA_UI = {
- "zh-Hans": {"db_k_cj": "《论语》智器重建本", "db_k_cj_who": "想把整部《论语》连起来读的人：这一章连着哪几章，同一个问题孔子怎样答不同的人。", "db_k_cj_how": "《论语》智器重建本：498 章、931 条关系、条条对得上原页，免费、可转载（署名即可）。手机上看，点章号就跳过去；也可以打印。", "db_cj": "《论语》智器重建本", "db_cj_meta": "498 章 · 292 页 · 约 12 MB", "db_link": "读本", "db_title": "读本", "db_k_adult": "成人逐字读本", "db_k_adult_who": "想自己读懂原文的成年人，从头读或者查某一章都行。", "db_k_adult_how": "每篇一本，原文、读音、朱注读法、白话、一孔之见、注家原页都在里面。可以配着视频一章一章读，也可以打印出来，一天读一章。", "db_k_kids": "亲子讲读本", "db_k_kids_who": "十岁以前孩子的家长，主要是父亲。", "db_k_kids_how": "每周一讲，一年读完。父亲每周讲一堂，三十到四十分钟：讲典故、讲道理、答孩子的问题；平日跟读交给孩子自己，或家人陪读。每讲附孩子填的学习单和生字栏。", "db_szj": "《三字经》父亲讲义", "db_szj_meta": "六卷三十九讲 · 138 页 · 约 12 MB", "db_who": "给谁：", "db_how": "怎么用：", "db_xueer_full": "《论语》学而篇", "db_sub": "PDF 版，能在手机上看，也能打印", "db_p": "一孔录的读本永远免费。最新一本是《论语》智器重建本，全书 498 章连成一张网，另有英文、日文版；还有家长带孩子用的亲子讲读本。每种都写明给谁用、怎么用。", "db_xueer": "学而篇", "db_meta": "十六章 · 60 页 · 约 6 MB", "db_hans": "简体版", "db_hant": "繁體版", "db_note": "发现错处请告诉我们，勘误公开，署你的网名。", "db_wx": "国内读者也可以在公众号「一孔录」回复“读本”领取链接。", "zt_sub": "按一个字、一个概念读各书", "zt_p": "每个专题按书分段，列出原文里说到它的各章：已讲的章带一孔录的读法，没讲的标“未讲”，只放原文。", "zt_all": "《{b}》全部章节", "zt_routes": "跟着一个人读", "zt_routes_p": "跟着一孔录原创角色，按一个问题读：每条路线串起几章，导语是角色说的，读法以章节页为准。", "zt_nb": "{n} 本书 · {m} 章", "zt_n": "已收 {n} 章", "gzi": "子部", "gxiao": "小说", "bk_jiayu": "孔子家语", "bk_sub_jiayu": "王肃注 · 十卷", "bk_neijing": "黄帝内经", "bk_sub_neijing": "素问、灵枢各八十一篇", "bk_shanhaijing": "山海经", "bk_sub_shanhaijing": "郭璞传 · 十八卷", "bk_sanyan": "三言二拍", "bk_sub_sanyan": "喻世明言等五书", "bk_sanguo": "三国演义", "bk_sub_sanguo": "毛本 · 一百二十回", "bk_shuihu": "水浒传", "bk_sub_shuihu": "容与堂本 · 一百回", "bk_xiyouji": "西游记", "bk_sub_xiyouji": "世德堂本 · 一百回", "bk_jinpingmei": "金瓶梅", "bk_sub_jinpingmei": "词话本 · 一百回", "bk_dongzhou": "东周列国志", "bk_sub_dongzhou": "一百八回", "bk_liaozhai": "聊斋志异", "bk_sub_liaozhai": "青柯亭本 · 十六卷", "bk_rulin": "儒林外史", "bk_sub_rulin": "卧闲草堂本 · 五十六回", "bk_honglou": "红楼梦", "bk_sub_honglou": "程甲本 · 一百二十回", "gshiwen": "诗文", "bk_chuci": "楚辞", "bk_sub_chuci": "朱熹集注 · 八卷", "bk_tangshi": "唐诗三百首", "bk_sub_tangshi": "蘅塘退士编", "bk_guwen": "古文观止", "bk_sub_guwen": "吴楚材、吴调侯编 · 十二卷", "bk_xixiang": "西厢记", "bk_sub_xixiang": "王实甫 · 金圣叹第六才子书", "bk_qianjiashi": "千家诗", "bk_sub_qianjiashi": "谢枋得、王相选", "bk_qianziwen": "千字文", "bk_sub_qianziwen": "一千字", "bk_dizigui": "弟子规", "bk_sub_dizigui": "三百六十句", "gmeng": "蒙学", "bk_sanzijing": "三字经", "bk_sub_sanzijing": "三字一句", "gshi": "史部", "gbing": "兵家", "bk_tanjing": "六祖坛经", "bk_shiji": "史记", "bk_zizhi": "资治通鉴", "bk_sunzi": "孙子兵法", "bk_sub_tanjing": "十品", "bk_liezi": "列子", "bk_sub_liezi": "八篇", "bk_huainanzi": "淮南子", "bk_sub_huainanzi": "二十一篇", "bk_yinfujing": "黄帝阴符经", "bk_sub_yinfujing": "三四百字", "bk_qingjingjing": "清静经", "bk_sub_qingjingjing": "约四百字", "bk_baopuzi": "抱朴子", "bk_sub_baopuzi": "内篇二十卷", "bk_ganyingpian": "太上感应篇", "bk_sub_ganyingpian": "约一千二百字", "bk_jingang": "金刚经", "bk_sub_jingang": "三十二分", "bk_sishierzhang": "四十二章经", "bk_sub_sishierzhang": "四十二章", "bk_baiyu": "百喻经", "bk_sub_baiyu": "九十八喻", "bk_weimojie": "维摩诘经", "bk_sub_weimojie": "十四品", "bk_fahua": "法华经", "bk_sub_fahua": "二十八品", "bk_amituo": "阿弥陀经", "bk_sub_amituo": "一卷", "bk_dizang": "地藏经", "bk_sub_dizang": "十三品", "bk_lengyan": "楞严经", "bk_sub_lengyan": "十卷", "bk_guoyu": "国语", "bk_sub_guoyu": "二十一卷", "bk_zhanguoce": "战国策", "bk_sub_zhanguoce": "三十三篇", "bk_hanshu": "汉书", "bk_sub_hanshu": "一百篇", "bk_houhanshu": "后汉书", "bk_sub_houhanshu": "一百二十卷", "bk_sanguozhi": "三国志", "bk_sub_sanguozhi": "六十五卷", "bk_zhenguan": "贞观政要", "bk_sub_zhenguan": "十卷", "bk_xunzi": "荀子", "bk_sub_xunzi": "三十二篇 · 韩非、李斯之师", "bk_jinsilu": "近思录", "bk_sub_jinsilu": "十四卷", "bk_hanfeizi": "韩非子", "bk_sub_hanfeizi": "五十五篇", "bk_mozi": "墨子", "bk_sub_mozi": "五十三篇", "bk_lvshi": "吕氏春秋", "bk_sub_lvshi": "二十六卷", "bk_yanshi": "颜氏家训", "bk_sub_yanshi": "二十篇", "bk_shishuo": "世说新语", "bk_sub_shishuo": "三十六门", "bk_caigentan": "菜根谭", "bk_sub_caigentan": "三百多则", "bk_sub_shiji": "一百三十卷", "bk_sub_zizhi": "二百九十四卷", "bk_sub_sunzi": "十三篇", "g13": "儒家", "gdao": "道家", "gfo": "佛典", "bk_sub_daxue": "朱子章句 · 经一传十", "bk_sub_zhongyong": "朱子章句 · 三十三章", "grp_main": "主线", "grp_13": "儒家", "grp_13_p": "《周易》《论语》《孟子》见上。", "bk_shijing": "诗经", "bk_shangshu": "尚书", "bk_zhouli": "周礼", "bk_yili": "仪礼", "bk_liji": "礼记", "bk_zuozhuan": "春秋左传", "bk_gongyang": "春秋公羊传", "bk_guliang": "春秋谷梁传", "bk_xiaojing": "孝经", "bk_erya": "尔雅", "bk_sub_shijing": "三百〇五篇", "bk_sub_shangshu": "五十八篇", "bk_sub_zhouli": "六官", "bk_sub_yili": "十七篇", "bk_sub_liji": "四十九篇", "bk_sub_zuozhuan": "编年二百五十五年", "bk_sub_gongyang": "春秋三传之一", "bk_sub_guliang": "春秋三传之一", "bk_sub_xiaojing": "十八章", "bk_sub_erya": "十九篇", "shumu_title": "书架", "shumu_sub": "一生一本《论语》", "shumu_p": "一本一本读，逐字读原文。", "soon": "筹备中", "soon_line": "《道德经》等 {n} 部筹备中 · 完整书目 ›", "bk_prog": "已讲 {done} / {total} 章", "bk_lunyu": "论语", "bk_daodejing": "道德经", "bk_xinjing": "心经", "bk_zhouyi": "周易", "bk_zhuangzi": "庄子", "bk_mengzi": "孟子", "bk_chuanxilu": "传习录", "bk_daxue": "大学", "bk_zhongyong": "中庸", "bk_sub_lunyu": "二十篇 · 朱熹集注本", "bk_sub_daodejing": "八十一章", "bk_sub_xinjing": "二百六十字", "bk_sub_zhouyi": "六十四卦与易传", "bk_sub_zhuangzi": "内七篇与名篇", "bk_sub_mengzi": "七篇十四卷", "bk_sub_chuanxilu": "王阳明语录", "off_t": "离线", "off_h": "现在没有网络", "off_p": "看过的页面已经存在这台设备上，离线也能打开。下面是存着的章节；有网后自动更新。", "off_none": "还没有存下的章节。联网时打开几章，下次离线就能看。", "off_home": "回首页", "zb_huang_meta2": "梁 · 1750 年日本和刻本 · 卷{j}", "zb_scan2": "和刻本扫描 第 {ce} 册第 {n} 页", "wj": "未讲", "wj_tag": "未讲", "wj_lead": "这一章的视频还在制作。网站先放原文、原页、白话和注，视频上线后补全讲解。", "wj_bh_note": "白话为初稿，按朱注直译；开讲时再核。", "wj_src": "原文据{src}，底本第 {n} 页。", "wj_yang": "杨伯峻《论语译注》分章作 {y}。", "yiwen": "异文", "yiwen_note": "底本与通行本用字不同处，原文照底本。", "th_di": "底本", "th_tong": "通行本", "th_shuo": "说明", "toc_wj": "未讲", "wj_title": "{head}｜原文与白话｜论语·{book} {c}｜一孔录", "foot_org": "一孔录 · 独立编纂，无机构或基金资助", "nav_topics": "专题", "nav_more": "更多", "grp_read": "读", "grp_check": "核", "grp_use": "用", "tools_h": "查与用", "t_zt": "按仁、孝、礼等十个字读全书", "t_zi": "配音照读的每个字音", "t_bb": "每家注本用的哪个本子", "t_dt": "按篇下载，CC BY 4.0", "zc_usdt": "加密货币（USDT）", "zc_usdt_net": "网络：{n}。只能用这个网络转 USDT，转错网络或别的币会丢失，无法找回。", "zc_link": "支持一孔录", "zc_title": "支持一孔录", "zc_sub": "内容全部免费，自愿赞助", "zc_p": "一孔录的原文、注、读法、勘误和开放数据永远免费，不会因为赞助多少而锁住任何一页。如果这里帮到了你，可以请我们喝杯茶，钱用在底本、扫描和配音上。", "zc_kofi": "海外读者：在 Ko-fi 赞助", "zc_wx": "国内读者：在公众号「一孔录」任一篇原创文章末尾点“赞赏”。", "zc_soon": "海外赞助页即将开通。", "cp_entry": "复制此条", "cp_link": "复制此条链接", "bb_link": "版本说明", "hj_h": "本句互见", "hj_zb": "本章各家注", "hj_cites": "引文逐条核对", "hj_video": "视频里讲本章：{t} 起", "hj_book": "本书互见", "hj_other": "他书出处", "hj_note": "注", "bb_title": "版本与许可", "bb_sub": "每家注本用的哪个本子、页码怎么算、能不能转用", "bb_p": "一孔录引到的每一家注，都在这里说明底本、影像来源、页码算法和许可。章节页每条注旁的“版本说明”链到这里。", "bb_base": "底本", "bb_img": "影像来源", "bb_page": "页码", "bb_lic": "许可", "bb_use": "本站怎么用", "zt_title": "专题", "zt_link": "专题", "zt_none": "已讲章节里还没有。", "dt_title": "开放数据", "dt_sub": "按篇下载原文、白话与引文出处", "dt_p": "本站数据按篇出 JSON 和 CSV，随网站每周更新。原文与古注是公版，照公版使用；一孔录写的白话、一孔之见、引文出处表等文字，按 CC BY 4.0 许可：可以转载、改编，也可以商用，只须署名“一孔录 yikonglu.com”并附原页链接。数据包里暂时只有核对用的内容；现代注本（杨伯峻、钱穆）的引文不在许可内。", "dt_file": "文件", "dt_rows": "章数", "dt_lic": "许可：CC BY 4.0（公版部分照公版）", "dt_link": "开放数据", "feed": "订阅更新（RSS）", "zi_title": "读音索引", "zi_sub": "各章配音照读的字音", "zi_p": "一孔录配音时照这里的读音读。点章号看那一章。", "th_ch": "章", "zi_link": "读音索引", "ju_reads": "本句读音：", "kw_stats": "已记 {n} 处勘误（{cats}），其中读者指出 {m} 处。", "thanks_h": "致谢", "thanks_p": "以下读者指出过一孔录的错误，按首次来信先后排：", "thanks_none": "还没有读者来信勘误。第一位指出错误的读者，网名会记在这里。", "baihua": "白话", "baihua_note": "按一孔录的读法直译，和视频一致；别家读法见下。", "ju_copy": "复制本句", "ju_link": "复制本句链接", "ju_tip": "点原文任一句，看白话和注，也可复制。",
+ "zh-Hans": {"db_k_cj": "《论语》智器重建本", "db_k_cj_who": "想把整部《论语》连起来读的人：这一章连着哪几章，同一个问题孔子怎样答不同的人。", "db_k_cj_how": "《论语》智器重建本：498 章、931 条关系、条条对得上原页，免费、可转载（署名即可）。手机上看，点章号就跳过去；也可以打印。", "db_cj": "《论语》智器重建本", "db_cj_meta": "498 章 · 292 页 · 约 12 MB", "db_link": "读本", "db_title": "读本", "db_k_adult": "成人逐字读本", "db_k_adult_who": "想自己读懂原文的成年人，从头读或者查某一章都行。", "db_k_adult_how": "每篇一本，原文、读音、朱注读法、白话、一孔之见、注家原页都在里面。可以配着视频一章一章读，也可以打印出来，一天读一章。", "db_k_kids": "亲子讲读本", "db_k_kids_who": "十岁以前孩子的家长，主要是父亲。", "db_k_kids_how": "每周一讲，一年读完。父亲每周讲一堂，三十到四十分钟：讲典故、讲道理、答孩子的问题；平日跟读交给孩子自己，或家人陪读。每讲附孩子填的学习单和生字栏。", "db_szj": "《三字经》父亲讲义", "db_szj_meta": "六卷三十九讲 · 138 页 · 约 12 MB", "db_who": "给谁：", "db_how": "怎么用：", "db_xueer_full": "《论语》学而篇", "db_sub": "PDF 版，能在手机上看，也能打印", "db_p": "一孔录的读本永远免费。最新一本是《论语》智器重建本，全书 498 章连成一张网，另有英文、日文版；还有家长带孩子用的亲子讲读本。每种都写明给谁用、怎么用。", "db_xueer": "学而篇", "db_meta": "十六章 · 60 页 · 约 6 MB", "db_hans": "简体版", "db_hant": "繁體版", "db_note": "发现错处请告诉我们，勘误公开，署你的网名。", "db_wx": "国内读者也可以在公众号「一孔录」回复“读本”领取链接。", "zt_sub": "按一个字、一个概念读各书", "zt_p": "每个专题按书分段，列出原文里说到它的各章：已讲的章带一孔的读法，没讲的标“未讲”，只放原文。", "zt_all": "《{b}》全部章节", "zt_routes": "跟着一个人读", "zt_routes_p": "跟着一孔录原创角色，按一个问题读：每条路线串起几章，导语是角色说的，读法以章节页为准。", "zt_nb": "{n} 本书 · {m} 章", "zt_n": "已收 {n} 章", "gzi": "子部", "gxiao": "小说", "bk_jiayu": "孔子家语", "bk_sub_jiayu": "王肃注 · 十卷", "bk_neijing": "黄帝内经", "bk_sub_neijing": "素问、灵枢各八十一篇", "bk_shanhaijing": "山海经", "bk_sub_shanhaijing": "郭璞传 · 十八卷", "bk_sanyan": "三言二拍", "bk_sub_sanyan": "喻世明言等五书", "bk_sanguo": "三国演义", "bk_sub_sanguo": "毛本 · 一百二十回", "bk_shuihu": "水浒传", "bk_sub_shuihu": "容与堂本 · 一百回", "bk_xiyouji": "西游记", "bk_sub_xiyouji": "世德堂本 · 一百回", "bk_jinpingmei": "金瓶梅", "bk_sub_jinpingmei": "词话本 · 一百回", "bk_dongzhou": "东周列国志", "bk_sub_dongzhou": "一百八回", "bk_liaozhai": "聊斋志异", "bk_sub_liaozhai": "青柯亭本 · 十六卷", "bk_rulin": "儒林外史", "bk_sub_rulin": "卧闲草堂本 · 五十六回", "bk_honglou": "红楼梦", "bk_sub_honglou": "程甲本 · 一百二十回", "gshiwen": "诗文", "bk_chuci": "楚辞", "bk_sub_chuci": "朱熹集注 · 八卷", "bk_tangshi": "唐诗三百首", "bk_sub_tangshi": "蘅塘退士编", "bk_guwen": "古文观止", "bk_sub_guwen": "吴楚材、吴调侯编 · 十二卷", "bk_xixiang": "西厢记", "bk_sub_xixiang": "王实甫 · 金圣叹第六才子书", "bk_qianjiashi": "千家诗", "bk_sub_qianjiashi": "谢枋得、王相选", "bk_qianziwen": "千字文", "bk_sub_qianziwen": "一千字", "bk_dizigui": "弟子规", "bk_sub_dizigui": "三百六十句", "gmeng": "蒙学", "bk_sanzijing": "三字经", "bk_sub_sanzijing": "三字一句", "gshi": "史部", "gbing": "兵家", "bk_tanjing": "六祖坛经", "bk_shiji": "史记", "bk_zizhi": "资治通鉴", "bk_sunzi": "孙子兵法", "bk_sub_tanjing": "十品", "bk_liezi": "列子", "bk_sub_liezi": "八篇", "bk_huainanzi": "淮南子", "bk_sub_huainanzi": "二十一篇", "bk_yinfujing": "黄帝阴符经", "bk_sub_yinfujing": "三四百字", "bk_qingjingjing": "清静经", "bk_sub_qingjingjing": "约四百字", "bk_baopuzi": "抱朴子", "bk_sub_baopuzi": "内篇二十卷", "bk_ganyingpian": "太上感应篇", "bk_sub_ganyingpian": "约一千二百字", "bk_jingang": "金刚经", "bk_sub_jingang": "三十二分", "bk_sishierzhang": "四十二章经", "bk_sub_sishierzhang": "四十二章", "bk_baiyu": "百喻经", "bk_sub_baiyu": "九十八喻", "bk_weimojie": "维摩诘经", "bk_sub_weimojie": "十四品", "bk_fahua": "法华经", "bk_sub_fahua": "二十八品", "bk_amituo": "阿弥陀经", "bk_sub_amituo": "一卷", "bk_dizang": "地藏经", "bk_sub_dizang": "十三品", "bk_lengyan": "楞严经", "bk_sub_lengyan": "十卷", "bk_guoyu": "国语", "bk_sub_guoyu": "二十一卷", "bk_zhanguoce": "战国策", "bk_sub_zhanguoce": "三十三篇", "bk_hanshu": "汉书", "bk_sub_hanshu": "一百篇", "bk_houhanshu": "后汉书", "bk_sub_houhanshu": "一百二十卷", "bk_sanguozhi": "三国志", "bk_sub_sanguozhi": "六十五卷", "bk_zhenguan": "贞观政要", "bk_sub_zhenguan": "十卷", "bk_xunzi": "荀子", "bk_sub_xunzi": "三十二篇 · 韩非、李斯之师", "bk_jinsilu": "近思录", "bk_sub_jinsilu": "十四卷", "bk_hanfeizi": "韩非子", "bk_sub_hanfeizi": "五十五篇", "bk_mozi": "墨子", "bk_sub_mozi": "五十三篇", "bk_lvshi": "吕氏春秋", "bk_sub_lvshi": "二十六卷", "bk_yanshi": "颜氏家训", "bk_sub_yanshi": "二十篇", "bk_shishuo": "世说新语", "bk_sub_shishuo": "三十六门", "bk_caigentan": "菜根谭", "bk_sub_caigentan": "三百多则", "bk_sub_shiji": "一百三十卷", "bk_sub_zizhi": "二百九十四卷", "bk_sub_sunzi": "十三篇", "g13": "儒家", "gdao": "道家", "gfo": "佛典", "bk_sub_daxue": "朱子章句 · 经一传十", "bk_sub_zhongyong": "朱子章句 · 三十三章", "grp_main": "主线", "grp_13": "儒家", "grp_13_p": "《周易》《论语》《孟子》见上。", "bk_shijing": "诗经", "bk_shangshu": "尚书", "bk_zhouli": "周礼", "bk_yili": "仪礼", "bk_liji": "礼记", "bk_zuozhuan": "春秋左传", "bk_gongyang": "春秋公羊传", "bk_guliang": "春秋谷梁传", "bk_xiaojing": "孝经", "bk_erya": "尔雅", "bk_sub_shijing": "三百〇五篇", "bk_sub_shangshu": "五十八篇", "bk_sub_zhouli": "六官", "bk_sub_yili": "十七篇", "bk_sub_liji": "四十九篇", "bk_sub_zuozhuan": "编年二百五十五年", "bk_sub_gongyang": "春秋三传之一", "bk_sub_guliang": "春秋三传之一", "bk_sub_xiaojing": "十八章", "bk_sub_erya": "十九篇", "shumu_title": "书架", "shumu_sub": "一生一本《论语》", "shumu_p": "一本一本读，逐字读原文。", "soon": "筹备中", "soon_line": "《道德经》等 {n} 部筹备中 · 完整书目 ›", "bk_prog": "已讲 {done} / {total} 章", "bk_lunyu": "论语", "bk_daodejing": "道德经", "bk_xinjing": "心经", "bk_zhouyi": "周易", "bk_zhuangzi": "庄子", "bk_mengzi": "孟子", "bk_chuanxilu": "传习录", "bk_daxue": "大学", "bk_zhongyong": "中庸", "bk_sub_lunyu": "二十篇 · 朱熹集注本", "bk_sub_daodejing": "八十一章", "bk_sub_xinjing": "二百六十字", "bk_sub_zhouyi": "六十四卦与易传", "bk_sub_zhuangzi": "内七篇与名篇", "bk_sub_mengzi": "七篇十四卷", "bk_sub_chuanxilu": "王阳明语录", "off_t": "离线", "off_h": "现在没有网络", "off_p": "看过的页面已经存在这台设备上，离线也能打开。下面是存着的章节；有网后自动更新。", "off_none": "还没有存下的章节。联网时打开几章，下次离线就能看。", "off_home": "回首页", "zb_huang_meta2": "梁 · 1750 年日本和刻本 · 卷{j}", "zb_scan2": "和刻本扫描 第 {ce} 册第 {n} 页", "wj": "未讲", "wj_tag": "未讲", "wj_lead": "这一章的视频还在制作。网站先放原文、原页、白话和注，视频上线后补全讲解。", "wj_bh_note": "白话为初稿，按朱注直译；开讲时再核。", "wj_src": "原文据{src}，底本第 {n} 页。", "wj_yang": "杨伯峻《论语译注》分章作 {y}。", "yiwen": "异文", "yiwen_note": "底本与通行本用字不同处，原文照底本。", "th_di": "底本", "th_tong": "通行本", "th_shuo": "说明", "toc_wj": "未讲", "wj_title": "{head}｜原文与白话｜论语·{book} {c}｜一孔录", "foot_org": "一孔录 · 独立编纂，无机构或基金资助", "nav_topics": "专题", "nav_more": "更多", "grp_read": "读", "grp_check": "核", "grp_use": "用", "tools_h": "查与用", "t_zt": "按仁、孝、礼等十个字读全书", "t_zi": "配音照读的每个字音", "t_bb": "每家注本用的哪个本子", "t_dt": "按篇下载，CC BY 4.0", "zc_usdt": "加密货币（USDT）", "zc_usdt_net": "网络：{n}。只能用这个网络转 USDT，转错网络或别的币会丢失，无法找回。", "zc_link": "支持一孔录", "zc_title": "支持一孔录", "zc_sub": "内容全部免费，自愿赞助", "zc_p": "一孔录的原文、注、读法、勘误和开放数据永远免费，不会因为赞助多少而锁住任何一页。如果这里帮到了你，可以请我们喝杯茶，钱用在底本、扫描和配音上。", "zc_kofi": "海外读者：在 Ko-fi 赞助", "zc_wx": "国内读者：在公众号「一孔录」任一篇原创文章末尾点“赞赏”。", "zc_soon": "海外赞助页即将开通。", "cp_entry": "复制此条", "cp_link": "复制此条链接", "bb_link": "版本说明", "hj_h": "本句互见", "hj_zb": "本章各家注", "hj_cites": "引文逐条核对", "hj_video": "视频里讲本章：{t} 起", "hj_book": "本书互见", "hj_other": "他书出处", "hj_note": "注", "bb_title": "版本与许可", "bb_sub": "每家注本用的哪个本子、页码怎么算、能不能转用", "bb_p": "一孔录引到的每一家注，都在这里说明底本、影像来源、页码算法和许可。章节页每条注旁的“版本说明”链到这里。", "bb_base": "底本", "bb_img": "影像来源", "bb_page": "页码", "bb_lic": "许可", "bb_use": "本站怎么用", "zt_title": "专题", "zt_link": "专题", "zt_none": "已讲章节里还没有。", "dt_title": "开放数据", "dt_sub": "按篇下载原文、白话与引文出处", "dt_p": "本站数据按篇出 JSON 和 CSV，随网站每周更新。原文与古注是公版，照公版使用；一孔录写的白话、一孔之见、引文出处表等文字，按 CC BY 4.0 许可：可以转载、改编，也可以商用，只须署名“一孔录 yikonglu.com”并附原页链接。数据包里暂时只有核对用的内容；现代注本（杨伯峻、钱穆）的引文不在许可内。", "dt_file": "文件", "dt_rows": "章数", "dt_lic": "许可：CC BY 4.0（公版部分照公版）", "dt_link": "开放数据", "feed": "订阅更新（RSS）", "zi_title": "读音索引", "zi_sub": "各章配音照读的字音", "zi_p": "一孔录配音时照这里的读音读。点章号看那一章。", "th_ch": "章", "zi_link": "读音索引", "ju_reads": "本句读音：", "kw_stats": "已记 {n} 处勘误（{cats}），其中读者指出 {m} 处。", "thanks_h": "致谢", "thanks_p": "以下读者指出过一孔录的错误，按首次来信先后排：", "thanks_none": "还没有读者来信勘误。第一位指出错误的读者，网名会记在这里。", "baihua": "白话", "baihua_note": "按一孔的读法直译，和视频一致；别家读法见下。", "ju_copy": "复制本句", "ju_link": "复制本句链接", "ju_tip": "点原文任一句，看白话和注，也可复制。",
    "zb_h": "各家注本", "zb_note": "本站底本是朱熹《论语集注》，见上文。这里并列别家：古注录疏文第一句，附原刻本扫描页；现代注本只短引一句译文，作通行读法对照。“与朱注异同”是一孔录写的说明，不是注本原文。",
    "zb_huang": "皇侃《论语义疏》", "zb_huang_meta": "梁 · 知不足斋丛书本 · 卷{j}", "zb_scan": "原刻本扫描第 {n} 页",
    "zb_yang": "杨伯峻《论语译注》", "zb_yang_meta": "中华书局 · 现代通行本，短引", "zb_qian": "钱穆《论语新解》", "zb_qian_meta": "现代通行本，短引",
@@ -218,7 +220,7 @@ REUSE_UI = {
   "about_r2": "一孔录写的文字，包括白话、一孔之见和读法、引文核对表、读音表、专题编排和译文，按 CC BY 4.0 许可：谁都可以转载、改编，也可以商用，只须署名“一孔录 yikonglu.com”、附原页链接、注明有没有改动。",
   "about_r3": "现代注本（杨伯峻、钱穆等）的引文版权归原作者和出版方，不在这个许可之内，本站只作短引。",
   "about_r4": "视频、配音、一孔录原创角色和插图保留权利，不在这个许可之内，转载请先来信。",
-  "about_r5": "引一句时，点原文任一句，复制出来就带着章号和网址，例如“——论语 2.1 · 一孔录 yikonglu.com/lunyu/2.1”，照这样贴出去就算署了名。原页图角上印着“一孔录”和卷页，转用时请保留。要成批转载，可以直接用<a href=\"{p}kaifang.html\">开放数据</a>。看到没署名的转载，或者照搬全站的网站，也请告诉我们：",
+  "about_r5": "引一句时，点原文任一句，或在章页上选中白话、一孔之见等一段复制，复制出来就带着章号和网址，例如“——《论语》2.1 · 一孔录 https://yikonglu.com/lunyu/wei-zheng/1.html”，照这样贴出去就算署了名。原页图角上印着“一孔录”和卷页，转用时请保留。要成批转载，可以直接用<a href=\"{p}kaifang.html\">开放数据</a>。看到没署名的转载，或者照搬全站的网站，也请告诉我们：",
   "mirror_bar": "本页原载一孔录 yikonglu.com，最新版本和勘误请看原站", "mirror_go": "去原站"},
  "en": {"foot_reuse": "Original texts and old commentaries are public domain. Everything Yikonglu writes (plain renderings, our readings, citation checks) is licensed <a href=\"https://creativecommons.org/licenses/by/4.0/deed.en\" rel=\"license noopener\" target=\"_blank\">CC BY 4.0</a>: share, adapt and use it commercially, as long as you credit “Yikonglu yikonglu.com” with a link to the original page. Videos, narration, Yikonglu’s original characters and illustrations: all rights reserved; please write to us before reusing them. <a href=\"{p}about.html#zhuanzai\">Reuse guide</a>",
   "about_h4": "Reuse and citation",
@@ -226,7 +228,7 @@ REUSE_UI = {
   "about_r2": "Everything Yikonglu writes, including plain renderings, our own readings, citation tables, pronunciation tables, topic arrangements and translations, is licensed CC BY 4.0: anyone may share and adapt it, commercially too, as long as they credit “Yikonglu yikonglu.com”, link to the original page and say whether they changed it.",
   "about_r3": "Quotations from modern commentaries (Yang Bojun, Qian Mu and others) belong to their authors and publishers, are not covered by this license, and appear here only as short quotations.",
   "about_r4": "Videos, narration, Yikonglu’s original characters and illustrations are not covered by this license: all rights reserved; please write to us before reusing them.",
-  "about_r5": "To quote a line, tap any sentence of the original: the copy carries its chapter number and address, and pasting it as is counts as credit. Page images carry “Yikonglu” and the volume and page in the corner; please keep that mark. For bulk reuse, use our <a href=\"{p}kaifang.html\">open data</a>. If you see an uncredited copy or a mirror of this site, please let us know:",
+  "about_r5": "To quote a line, tap any sentence of the original, or select a passage on a chapter page and copy it: the copy carries its chapter number and address, and pasting it as is counts as credit. Page images carry “Yikonglu” and the volume and page in the corner; please keep that mark. For bulk reuse, use our <a href=\"{p}kaifang.html\">open data</a>. If you see an uncredited copy or a mirror of this site, please let us know:",
   "mirror_bar": "This page was first published on Yikonglu (yikonglu.com). See the original for the latest version and corrections.", "mirror_go": "Go to original"},
  "ja": {"foot_reuse": "原文と古注はパブリックドメインです。一孔録が書いた文章（現代語訳・一孔之見・引用照合）は <a href=\"https://creativecommons.org/licenses/by/4.0/deed.ja\" rel=\"license noopener\" target=\"_blank\">CC BY 4.0</a> で公開しています。「一孔録 yikonglu.com」と元ページへのリンクを明記すれば、転載・改変・商用利用ができます。<a href=\"{p}about.html#zhuanzai\">転載について</a>",
   "about_h4": "転載と引用",
@@ -322,7 +324,7 @@ BANBEN = [
    ("bb_lic", "在版权期。本站每章只短引一句，作通行读法对照，属适当引用；不收进开放数据。"),
    ("bb_use", "同上。")]),
  ("yikonglu", "一孔录自己的内容", [
-   ("bb_base", "白话直译、“一孔录这样读”、引文逐条核对表、读音表、勘误记录。"),
+   ("bb_base", "白话直译、“一孔这样读”、引文逐条核对表、读音表、勘误记录。"),
    ("bb_img", "—"),
    ("bb_page", "—"),
    ("bb_lic", '<a href="https://creativecommons.org/licenses/by/4.0/deed.zh-hans" target="_blank" rel="license noopener">CC BY 4.0</a>：可以转载、改编，也可以商用，只须署名“一孔录 yikonglu.com”并附原页链接。'),
@@ -798,7 +800,7 @@ HF_DATASET = "https://huggingface.co/datasets/yikonglu/lunyu"  # 11-27 主人建
 SAME_AS = ["https://www.youtube.com/@yikonglu", "https://x.com/yikonglu", "https://ko-fi.com/yikonglu", HF_DATASET]  # 各平台账号另由 PLAT_LINKS 补进（见 main 里的首页 Organization）
 # 一孔之见署名短答（智器引用，主人 11-08 定）：落点（片里落点）作首句结论，第二句说与通行读法差在哪；素材只取札记里已有的“片里落点”“常见读法”“字眼”，不另编。
 YKAN = {  # 主人 11-09 晚：署名只写“一孔之见”，不带括号解释（解释在方法页、关于页）。语种: (署名开头, 常见读法是陈述时, 常见读法里自带引号时, 常见读法是问句时, 朱注依据句开头)
- "zh": ("一孔之见：", "通行说法多是“{c}”，一孔录的落点不在这里。", "通行说法多是：{c}；一孔录的落点不在这里。", "常有人问“{c}”，上面是一孔录的回答。", "朱注原话："),
+ "zh": ("一孔之见：", "通行说法多是“{c}”，一孔的落点不在这里。", "通行说法多是：{c}；一孔的落点不在这里。", "常有人问“{c}”，上面是一孔的回答。", "朱注原话："),
  "en": ("Yikonglu's reading: ", "The common view is “{c}”; Yikonglu's reading puts the weight elsewhere.", "The common view: {c}. Yikonglu's reading puts the weight elsewhere.", "A common question is “{c}” — the line above is Yikonglu's answer.", "Zhu Xi's commentary: "),
  "ja": ("一孔之見：", "よくある読みは「{c}」。一孔録の読みの重心はそこにない。", "よくある読み：{c}。一孔録の読みの重心はそこにない。", "よく出る問いは「{c}」。上がその一孔録の答え。", "朱注の原文："),
  "ko": ("일공안: ", "흔한 읽기는 “{c}”이지만, 일공록의 읽기는 무게를 다른 데 둔다.", "흔한 읽기: {c}. 일공록의 읽기는 무게를 다른 데 둔다.", "흔히 “{c}”라고 묻는데, 위가 일공록의 답이다.", "주희 주석 원문: "),
@@ -833,7 +835,7 @@ def ykan(code, ours, common, keys, basis=None):
                 if sep in c: c = (c.split(sep)[-1] if isq else c.split(sep)[0]); break
         inner = any(q in c for q in "“”「」«»„\"")
         if isq and len(c) < (9 if cjk else 24): second = ""  # “为什么？”这类离了上下文看不懂的短问句不放，改由朱注原话补足
-        elif isq and inner and zh: second = f"常有人问：{c}？上面是一孔录的回答。"  # 问句里已有引号，不再外套一层
+        elif isq and inner and zh: second = f"常有人问：{c}？上面是一孔的回答。"  # 问句里已有引号，不再外套一层
         else: second = (qt if isq else (st2 if inner else st)).format(c=c)
     out = (o + sp + second).strip()
     if len(out) < lo and keys:  # 太短：补朱注原话，按分号一段段加，不超上限
@@ -1279,6 +1281,9 @@ for _l in ("en", "ja", "ko", "fr", "es", "de", "vi", "id", "ru"):
     if os.path.exists(_f): FILL[_l] = json.load(open(_f, encoding="utf-8"))
 NLTR = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "nianli-tr.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "i18n", "nianli-tr.json")) else {}
 WJ_FL = ("en", "ja")  # 未讲章出页的外文（11-13：译文现成 tri-weijiang.json；其余七语没有译文，先不出空壳页，外文页未讲章仍链简体）
+CH_TITLES = {f[7:-5]: json.load(open(os.path.join(HERE, "i18n", f), encoding="utf-8"))["chapters"] for f in os.listdir(os.path.join(HERE, "i18n")) if f.startswith("titles-") and f.endswith(".json")}  # 11-27 外文章名补表（数据，不进代码）
+
+
 def wj_tr_title(code, c):
     """外文未讲章标题：取译文首句（去掉“The Master said:”“先生が言われた。”一类引导语），英文最长 64 字母，日文 24 字。"""
     t = (WJ_TR.get(c, {}).get(code) or "").strip()
@@ -1419,13 +1424,13 @@ def _strip_js_notes(h):
 # 不足 60 字的从本页正文接一段（每页各不相同，不用全站同一句，免得简介大量重复）
 DESC_ZH = {
 "shumu/": "一孔录书架：主经《论语》498 章逐章对朱熹集注原页，另有《孟子》《大学》《中庸》《道德经》《三字经》；儒家、道家、佛典、史部、诸子按类排开，开讲一本亮一本。",
-"zhuanti/": "按一个字读各书：仁、孝、礼、学、君子、天命等专题，把各书里说到这个字的章按书列出，附一孔录的读法；另有跟着一个人读的路线和逐关点亮的闯关。",
-"search.html": "检索一孔录各书原文、白话、朱熹注与诸家注原话：输入一句或几个字，就能找到出自哪一章，点进去看底本原页、读音和一孔录的读法。",
+"zhuanti/": "按一个字读各书：仁、孝、礼、学、君子、天命等专题，把各书里说到这个字的章按书列出，附一孔的读法；另有跟着一个人读的路线和逐关点亮的闯关。",
+"search.html": "检索一孔录各书原文、白话、朱熹注与诸家注原话：输入一句或几个字，就能找到出自哪一章，点进去看底本原页、读音和一孔的读法。",
 "duben.html": "一孔录读本：《论语》智器重建本（498 章连成一张网，有中、英、日文版）、按篇的成人逐字读本、《三字经》父亲讲义等 PDF，手机能看，也能打印。",
 "shuyuan/": "题名：2027 年元旦起，书友可以把自己的名字和一句题记，题在《论语》年历的某一天上。一孔录的片子、原文、白话和读本照旧全部免费。",
 "kanwu.html": "一孔录勘误表：讲错、说满的地方，改了就公开记在这里，写明原来怎么说、改成什么、依据是什么、是谁指出的，按时间倒排，旧记录不删。",
 "lunyu/": "《论语》二十篇 498 章，按朱熹《论语集注》（《四部备要》本）分章：每章原文、白话、读音、朱熹注与诸家说法，句句对得上底本原页，附讲读视频。",
-"daodejing/": "《道德经》八十一章，王弼本，道经第 1—37 章、德经第 38—81 章：逐章原文、白话直译和底本原页，注家说法与一孔录的读法随章附上，另附《论语》互见。",
+"daodejing/": "《道德经》八十一章，王弼本，道经第 1—37 章、德经第 38—81 章：逐章原文、白话直译和底本原页，注家说法与一孔的读法随章附上，另附《论语》互见。",
 "sanzijing/": "《三字经》一千二百字、一百零一组，按一孔录《父亲讲义》分六卷三十九讲，一周一讲、一年读完：每讲原文、逐组白话、原文朗读，附王相训诂本原页。",
 "mengzi/": "《孟子》七篇十四卷，按朱熹《孟子集注》分 260 章：逐章原文、底本原页、朱注与白话，注家有分歧的地方列出争议读法，附《论语》互见。",
 "jihua/bairi.html": "百日读完《论语》：498 章分成一百天，每天约五章、十分钟。不用登录，进度存在自己的设备上；哪天没读，第二天接着读，讲过的章附一孔录的片子。",
@@ -1463,7 +1468,7 @@ def pad_desc(L, d, body=""):
     return (d.rstrip() + " " + t).strip()
 def zh_ch_desc(L, yw, bh):
     head = yw if len(yw) <= 60 else yw[:58] + "……"
-    tail = "朱熹注原页、诸家说法与一孔录的读法。"
+    tail = "朱熹注原页、诸家说法与一孔的读法。"
     d = head + (" 白话：" + bh if bh else "")
     room = 110 - len(tail) - 1
     if len(d) > room: d = d[:room - 2].rstrip("，。；：、 ") + "……"
@@ -1507,6 +1512,9 @@ def page(L, title, desc, rel, body, jsonld=None, cls="", alts=None, og_img=None,
         _yb = (YY.block if L.code.startswith("zh") else YY.block_en)(*yk, next((x.get("headline", "") for x in ((jsonld or {}).get("@graph") or [jsonld or {}]) if isinstance(x, dict) and x.get("@type") == "Article"), ""),
                        f"{DOMAIN}/{L.prefix}{rel}", f"/{L.prefix}kanwu.html", MAIL, L.t("report"), DATE_TOK)
         if _yb: body = re.sub(r'<section class="citeit"><p class="mailp">.*?</p></section>', lambda m: _yb, body, count=1, flags=re.S)
+        if _yb and L.code.startswith("zh"):  # 11-27 原文句复制出处各书统一成“——《书》章 · 一孔录 网址#句”
+            _st = esc(YY.short_cn(YY.title_cn(yk[0], next((x.get("headline", "") for x in ((jsonld or {}).get("@graph") or [jsonld or {}]) if isinstance(x, dict) and x.get("@type") == "Article"), ""))))
+            body = re.sub(r'(<blockquote [^>]*?)data-src="[^"]*"([^>]*?)data-short="[^"]*" data-sep="[^"]*"', lambda m: f'{m.group(1)}data-src="{_st} · 一孔录"{m.group(2)}data-short="" data-sep=" "', body)
     def _own(d):
         if not isinstance(d, dict) or d.get("@type") in (None, "Organization", "BreadcrumbList", "Person"): return d
         if yk and d.get("@type") == "Article": d = dict(d, **YY.ld_extra(*yk, DATE_TOK))
@@ -3495,7 +3503,7 @@ def build_lang(L, D, write):
     def rel_of(c):
         p, n = c.split("."); return f"lunyu/{PIAN[p][1]}/{n}.html"
     WJF = L.code in WJ_FL  # 本语种也出未讲章页（英日）
-    def title_of(c): return L.ch(c).get("title") or (notes[c]["title"] if c in notes else ((WJF and wj_tr_title(L.code, c)) or wj_titles(D["qw"])[c]))
+    def title_of(c): return L.ch(c).get("title") or CH_TITLES.get(L.code, {}).get(c) or (notes[c]["title"] if c in notes else ((WJF and wj_tr_title(L.code, c)) or wj_titles(D["qw"])[c]))  # 11-27 外文章名补表 i18n/titles-<语种>.json 优先
     if ANALYTICS.get("live") and "OUT_ROOT" in globals():  # 页脚“今天有人读了”、首页“最常被抄走的一句”查标题用
         os.makedirs(os.path.join(OUT_ROOT, "data"), exist_ok=True)
         _pl = lambda t: re.sub(r"\s*[（(][^（）()]*[）)]", "", t).strip() or t  # 11-13 主人：“今天有人读了”等只显示章名，括号里的补充不进阅读记录
@@ -3658,7 +3666,7 @@ def build_lang(L, D, write):
             _sig = f"一孔录 yikonglu.com/lunyu/{c}"; _hd = f"《论语》{c}“{title_of(c)}”"
             _tail = lambda t: f'<small class="zhai">（{esc(t)}）</small>'
             gist_html = re.sub(r'(<b class="anlab">[^<]*</b>)(.*?)</p>', lambda m: f'{m.group(1)}<span class="zhai">{esc(_hd)}，</span>{m.group(2)}{_tail(_pg + "；" + _sig)}</p>', gist_html, count=1, flags=re.S)
-            if bh_html: bh_html = re.sub(r'(<p lang="zh-Hans">)(.*?)</p>', lambda m: f'{m.group(1)}<span class="zhai">《论语》{c} 全章“{esc(yw[c])}”的白话：</span>{m.group(2)}{_tail("一孔录的读法；" + _sig)}</p>', bh_html, count=1, flags=re.S)
+            if bh_html: bh_html = re.sub(r'(<p lang="zh-Hans">)(.*?)</p>', lambda m: f'{m.group(1)}<span class="zhai">《论语》{c} 全章“{esc(yw[c])}”的白话：</span>{m.group(2)}{_tail("一孔的读法；" + _sig)}</p>', bh_html, count=1, flags=re.S)
             if g["reads"]:
                 _glk = {}  # 11-23 挑错 B01、B06、B14：同一字两读（弟子 dì／则弟 tì）按“字|音”配朱注，不再后一条盖前一条；音对不上不配
                 for _, _, k_, gg_, sr_ in ZD["per"].get(c, []):
@@ -3713,13 +3721,13 @@ def build_lang(L, D, write):
             _rp = (_pill("ok", f"对过朱注反切 {len(_rz)}") if _rz else "") + (_pill("mid", f"已核 {_rn}") if _rn else "")
             _nv = not ch2ep[c][1].get("youtube")  # 视频还没出的章：讲稿未经审片定版
             _ng = bool(ch2ep[c][1].get("nogao"))  # 还没写讲稿、据原页整理的章
-            _yk = "一孔录选定" if c in D["zy"] else ("据原页" if _ng else "讲稿" if _nv else "审片版讲稿")
+            _yk = "一孔选定" if c in D["zy"] else ("据原页" if _ng else "讲稿" if _nv else "审片版讲稿")
             extra = extra.replace(f'<h2><i>核</i>{L.t("cites")}</h2>', f'<h2><i>核</i>{L.t("cites")}{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}</h2>', 1)
             extra = extra.replace(f'<h2><i>音</i>{L.t("reads")}</h2>', f'<h2><i>音</i>{L.t("reads")}{_rp}</h2>', 1)
             _qp = sorted(set(g.get("qw_pages") or ([str(D["qw"][c]["pdf_page"])] if D["qw"].get(c, {}).get("pdf_page") else [])), key=int)  # 讲稿未写经文页的章，退到原页表
             _li = [f'<li><b>原文</b>{_pill("ok", "对过原页")}朱注本第 {"、".join(_qp) or "?"} 页' + ("，每个字框到原页的列上" if c in ZJD["on"] else "") + "</li>",
                    (f'<li><b>白话</b>{_pill("mid", "据原页")}按底本原页直译</li>' if _ng else f'<li><b>白话</b>{_pill("mid", "讲稿")}取自讲稿，讲稿还没审片定版</li>' if _nv else f'<li><b>白话</b>{_pill("mid", "已核")}取自视频讲稿，讲稿经一孔审片定版</li>'),
-                   f'<li><b>一孔之见</b>{_pill("mid", _yk)}一孔录自己的读法，不是古注；' + ("这章各家读法不同，一孔录在几家里选定一种" if c in D["zy"] else ("据原页整理" if _ng else "取自讲稿" if _nv else "取自视频讲稿，讲稿经一孔审片定版")) + "</li>"]
+                   f'<li><b>一孔之见</b>{_pill("mid", _yk)}一孔自己的读法，不是古注；' + ("这章各家读法不同，一孔在几家里选定一种" if c in D["zy"] else ("据原页整理" if _ng else "取自讲稿" if _nv else "取自视频讲稿，讲稿经一孔审片定版")) + "</li>"]
             if g["cites"]: _li.append(f'<li><b>引文</b>{_pill("ok", f"对过原页 {len(_ok)}") if _ok else ""}{_pill("mid", f"核到他本 {len(_oth)}") if _oth else ""}共 {len(g["cites"])} 条，点页码看原页' + (f"；其中 {len(_pa)} 条是转述，不是原话" if _pa else "") + "</li>")
             if g["reads"]: _li.append(f'<li><b>读音</b>{_rp}共 {len(g["reads"])} 处；有朱注反切的照反切</li>')
             _dh = len(HD_DAIHE.get(c, ()))
@@ -3741,7 +3749,7 @@ def build_lang(L, D, write):
                 _keys = list(dict.fromkeys(z["key"] for _, z in _fq if z.get("key")))
                 _fqh = f'诸家分歧：{"、".join("“" + k + "”" for k in _keys)}怎么讲' if _keys else "诸家分歧：这一章各家讲法不同"
                 fenqi_html = (f'<div class="fenqi" id="fenqi"><h3>{esc(_fqh)}</h3><ul>'
-                              f'<li><b>朱熹《论语集注》</b>' + ("一孔录平时主朱注；这一章各家读法不同，一孔录选定的读法和取舍见上面的一孔之见" if c in D["zy"] else "一孔录主朱注，本页的白话和逐句注照朱注讲") + "。</li>"  # 12-03 挑错 E02
+                              f'<li><b>朱熹《论语集注》</b>' + ("一孔平时主朱注；这一章各家读法不同，一孔选定的读法和取舍见上面的一孔之见" if c in D["zy"] else "一孔主朱注，本页的白话和逐句注照朱注讲") + "。</li>"  # 12-03 挑错 E02
                               + "".join(f'<li><b>{_nm}</b><span class="sure {z["sure"]}">{L.t(z["sure"])}</span>{esc(z["say"])}<a class="fqyin" href="#zb-{ {"yang": "yangbojun", "qian": "qianmu"}[_k0]}">看原句</a></li>' for _nm, z in _fq for _k0 in [z["_k0"]])
                               + f'</ul><p class="note">“把握”是我们对这条异同判断的把握，“定”最稳。现代注本版权期内，只短引一句，页码核过正版书后再补；皇侃义疏等古注原页见 <a href="#zhuben">各家注本</a>。</p></div>')
         body = f"""<div class="chhead bk"><div class="wrap">{mcv(P)}
@@ -4377,7 +4385,7 @@ const p=new URLSearchParams(location.search).get('q');if(p){{q.value=p;go()}}
                + _tr("引文（朱注等）", f"{_cok} 条", f"{_coth} 条", f"{_cdh} 条", f"已讲 {len(pub)} 章视频里引到的话；{_cpa} 条标“转述”，是概括意思")
                + _tr("读音", f"{_rz} 处", f"{len(_rd) - _rz} 处", "—", "有朱注反切的照反切，和今天通行读法不同的另注“今多读”")
                + _tr("白话", "—", f"{len(pub) + _bok} 章", f"{_bdraft} 章", (f"已讲 {len(pub)} 章取自讲稿：已出视频的 {len(pub) - _nvn} 章讲稿经一孔审片定版，视频制作中的 {_nvn - _ngn} 章先用讲稿、页上标明{f"；还没写讲稿的 {_ngn} 章按底本原页直译、页上标“据原页”" if _ngn else ""}；网页整理由智器完成；未讲章是按底本直译的初稿，页上标明" if _nvn else f"已讲 {len(pub)} 章取自视频讲稿（讲稿经一孔审片定版），网页整理由智器完成；未讲章是按底本直译的初稿，页上标明"))
-               + _tr("一孔之见", "—", f"{len(pub)} 章", "—", f"一孔录自己的读法，不是古注；其中 {_zy} 章各家读法不同，一孔录在几家里选定一种")
+               + _tr("一孔之见", "—", f"{len(pub)} 章", "—", f"一孔自己的读法，不是古注；其中 {_zy} 章各家读法不同，一孔在几家里选定一种")
                + f'</tbody></table><p>做法：引文、读音的页码由智器对着原页图逐条找出，页上可点开核对；白话和一孔之见取自讲稿（已出视频的讲稿经一孔审片定版，视频还在制作的章页上另标“讲稿”），网页整理由智器完成。错了公开改，记在<a href="{P}kanwu.html">勘误页</a>，现有 {_kw} 条。</p>')
     elif DC and DC.get("rows"):
         s5 += f'<p>{F["s5c"].format(n=DC["episodes"], s=DC["segments"], c=DC["changed"], r=DC["ratio"], d=DC["updated"])}</p>'
@@ -4630,7 +4638,7 @@ go.onclick=function(){{S.plan={{id:"bairi",s:Date.now()}};save();show()}};show()
     if L.code in XT.langs() and GXD and GX.has_lang(L.code):  # 11-21 主人点卡“全翻”：首页星图英日版
         _ztx = lambda c: yw.get(c) or (D["qw"].get(c) or {}).get("text", "")
         _ftx = lambda c: (L.ch(c).get("yw") if hasattr(L, "ch") else "") or (WJ_TR.get(c) or {}).get(L.code, "") or _ztx(c)
-        _ftt = lambda c: L.ch(c).get("title") or wj_tr_title(L.code, c) or ctitle(c)
+        _ftt = lambda c: L.ch(c).get("title") or CH_TITLES.get(L.code, {}).get(c) or wj_tr_title(L.code, c) or ctitle(c)
         XT.write_data(write, XT.data(*zy_xt_gx_fl(GXD, L.code, GX.TR[L.code])[:1], PIAN, pubset, href, _ftt, _ftx, D["lx"], L.code, zy_xt_gx_fl(GXD, L.code, GX.TR[L.code])[1], _ztx))  # 11-22 英日星图也加周易
     # 一孔影响力方法页（先只简繁；外文页由语种切换链到简体）
     if L.code.startswith("zh"):
@@ -4722,7 +4730,7 @@ DIZI_FIX = {"daodejing/42.html": [("寡、不谷", "寡、不穀")],  # 12-03 �
             "lunyu/zi-lu/10.html": [(x + y, x.replace("期", "朞") + y) for x, y in (("期月", "谓周一岁"), ("期月，", "谓周一岁"), ("期月", "謂周一歲"), ("期月，", "謂周一歲"))] + [("期月謂週一歲", "朞月謂周一歲"), ("期月，謂週一歲", "朞月，謂周一歲")]}
 
 def write_data(D, outdir):
-    """开放数据：每篇一份 JSON 和 CSV（核对用的底子：原文、白话、引文出处、皇疏首句；11-17 主人定撤读音，免得成批拿去做配音；不含一孔录读法与现代注本引文）。"""
+    """开放数据：每篇一份 JSON 和 CSV（核对用的底子：原文、白话、引文出处、皇疏首句；11-17 主人定撤读音，免得成批拿去做配音；不含一孔读法与现代注本引文）。"""
     os.makedirs(os.path.join(outdir, "data"), exist_ok=True)
     lic = {"license": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); 原文与古注为公版", "attribution": "一孔录 Yikonglu, https://yikonglu.com"}
     for p, cs in D["by_pian"].items():
@@ -4782,7 +4790,7 @@ configs:
 
 - 《论语》原文与古注：公版。
 - 一孔录所写的白话、一孔之见、引文出处表：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)，可转载、改编、商用（含训练模型与再分发），只须署名“一孔录 yikonglu.com”并附原链接。
-- 一孔录自己的读法（常见读法、注里的关键字、诸家、一孔之见）与现代注本引文不在本数据集里。
+- 一孔自己的读法（常见读法、注里的关键字、诸家、一孔之见）与现代注本引文不在本数据集里。
 
 ## 引用
 
@@ -5099,6 +5107,8 @@ def main(zdir, outdir, kanwu=None):
             text = post(text) if post else text
             for a_, b_ in DIZI_FIX.get(rel, []): text = text.replace(a_, b_)
             for a_, b_ in NEIBU_HUAN: text = text.replace(a_, b_)  # 外文页也带中文讲读片段，一起换
+            if not rel.startswith("zhaji/") and rel not in ("kanwu.html", "gaidong.html"):  # 勘误、改动记录里引的是旧原话，不换
+                for a_, b_ in CUOCI_HUAN: text = text.replace(a_, b_)
             if rel.endswith(".html"): text = rare_fix(text, prefix == "zh-hant")
             key = (prefix + "/" if prefix else "") + rel
             h = content_fp(text)  # 11-20 收录：只认 <main> 里的正文文字，模板、样式、脚本、版式改动都不换修改日期
