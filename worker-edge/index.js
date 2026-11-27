@@ -6,7 +6,7 @@ const BOTS = [["gptbot","gptbot"],["chatgpt-user","chatgpt"],["oai-searchbot","o
   ["bingbot","bingbot"],["baiduspider","baiduspider"],["yandex","yandex"],["applebot","applebot"],["amazonbot","amazonbot"],["meta-externalagent","meta"],["facebookexternalhit","facebook"],["ccbot","ccbot"],
   ["petalbot","petalbot"],["duckduckbot","duckduckbot"],["sogou","sogou"],["360spider","so360"],["yisouspider","yisou"],["semrushbot","semrush"],["ahrefsbot","ahrefs"],["mj12bot","mj12"],["dotbot","dotbot"],
   ["diffbot","diffbot"],["cohere-ai","cohere"],["youbot","youbot"],["mistralai-user","mistral"],["deepseekbot","deepseek"],["kimi","kimi"],["timpibot","timpi"],["imagesiftbot","imagesift"],["bot","otherbot"],["spider","otherbot"],["crawl","otherbot"]];
-const VER = "2611271843";  // 推 main 后改成新值再部署，旧边缘缓存全部作废
+const VER = "2611271917";  // 推 main 后改成新值再部署，旧边缘缓存全部作废
 const VERIFY = { "www.yikonglu.com": "shenma-site-verification:a5e7bb02c2a161c7fe33c178f0f96ed5_1795511830", "yikonglu.com": "shenma-site-verification:f005659bf9e0a2c96251cd7da2796949_1795513544" };
 export default {
   async fetch(req, env, ctx) {
