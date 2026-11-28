@@ -125,6 +125,14 @@ CP = ("<script>(function(){var S=document.querySelector('.citeit.yy');if(!S||!S.
       "e.clipboardData.setData('text/plain',t.replace(/\\s+$/,'')+'\\n'+S.dataset.cp);e.preventDefault()})})();</script>")
 
 
+def wiki_pg(top, cid, en=False):
+    """维基 cite book 的页码参数（11-28 对手外链调研，主人点卡“两件都做”）：单页 page=，跨页 pages=，周易叶次 at=。"""
+    pages(top, cid); r = _raw.get((top, cid))
+    if not r: return ""
+    if r[0] == "p": return f" |page={r[1]}" if r[1] == r[2] else f" |pages={r[1]}\u2013{r[2]}"
+    return " |at=" + (pages_en(top, cid) if en else pages(top, cid))
+
+
 def block(top, cid, headline, url, kanwu_href, mail_html, report, date):
     """“引用本页”整块（简体字写，繁体页由建站统一转繁）。headline 形如“论语 5.10 · 公冶长 吾未见刚者”。"""
     s = shudan(top); b = s and s["底本"]
@@ -138,10 +146,13 @@ def block(top, cid, headline, url, kanwu_href, mail_html, report, date):
     gb = f'一孔录. {esc(t)}：{esc(src)}[EB/OL]. ({date})[{acc}]. {esc(url)}.'
     apa = f'一孔录.（<span class="yyz">{date}</span>）. {esc(t)}（{esc(src_apa)}）. 检索于 <span class="yyb">引用日期</span>，{esc(url)}'
     cp = f"\u2014\u2014{short_cn(t)} \u00b7 一孔录 {url}"
+    wk = ("{{cite book |author=" + b["作者"] + " |title=" + b["书名"] + " |edition=" + b["版本"].replace("《", "").replace("》", "") + wiki_pg(top, cid)
+          + " |chapter=" + headline.replace(" · ", " ").strip() + " |url=" + url + " |via=一孔录 |access-date=" + acc + " |language=zh}}")
     return (f'<section class="citeit yy" data-d="{date}" data-cp="{esc(cp)}"><b>引用本页</b>'
             f'<p class="yyf"><span class="yyl">GB/T 7714</span><code>{gb}</code><button type="button">复制</button></p>'
             f'<p class="yyf"><span class="yyl">APA</span><code>{apa}</code><button type="button">复制</button></p>'
-            f'<p>本页更新于 {date}，改动都记在<a href="{kanwu_href}">勘误页</a>。本页以 CC BY 4.0 许可公开，转载、摘引请署“一孔录”并附本页网址。</p>'
+            f'<p class="yyf"><span class="yyl">维基百科</span><code>{wk.replace(acc, "@@A@@").replace("&", "&amp;").replace("<", "&lt;").replace("@@A@@", acc)}</code><button type="button">复制</button></p>'
+            f'<p>本页更新于 {date}，改动都记在<a href="{kanwu_href}">勘误页</a>。本页以 CC BY 4.0 许可公开，转载、摘引请署“一孔录”并附本页网址。觉得有用？把本章链接贴到你常去的地方，就是对一孔录最大的帮助。</p>'
             f'<p class="mailp">{report} {mail_html}</p></section>' + JS + CP)
 
 
@@ -180,10 +191,13 @@ def block_en(top, cid, headline, url, kanwu_href, mail_html, report, date):
     bib = ("@misc{" + key + ",\n  author = {{Yikonglu}},\n  title = {" + esc(t) + "},\n  year = {" + (date[:4] if date[:1].isdigit() else date.replace("DATE", "DATEYR", 1)) + "},\n  url = {" + esc(url) + "},\n"
            "  note = {" + esc(based_t.replace("\u2013", "--")) + ". Last modified " + date + ". Accessed <span class=\"yya\">today</span>}\n}")
     cp = f"\u2014 Yikonglu, \u201c{t}\u201d, {url}"
+    wk = ("{{cite book |author=" + b["作者"] + " |title=" + b["书名"] + " |edition=" + re.sub(r"\s*edition$", "", b["版本"]) + wiki_pg(top, cid, True)
+          + " |chapter=" + t.replace(" \u00b7 ", " ") + " |url=" + url + ' |via=Yikonglu |access-date=<span class="yya">today</span> |language=zh}}')
     return (f'<section class="citeit yy" data-d="{date}" data-cp="{esc(cp)}"><b>Cite this page</b>'
             f'<p class="yyf"><span class="yyl">Chicago</span><code>{chi}</code><button type="button">Copy</button></p>'
             f'<p class="yyf"><span class="yyl">BibTeX</span><code style="white-space:pre-wrap">{bib}</code><button type="button">Copy</button></p>'
-            f'<p>Last modified {date}; every correction is logged on the <a href="{kanwu_href}">errata page</a>. Licensed CC BY 4.0: please credit \u201cYikonglu\u201d and link to this page.</p>'
+            f'<p class="yyf"><span class="yyl">Wikipedia</span><code>{wk.replace("&", "&amp;").replace("<span", "@@S@@").replace("</span>", "@@E@@").replace("<", "&lt;").replace("@@S@@", "<span").replace("@@E@@", "</span>")}</code><button type="button">Copy</button></p>'
+            f'<p>Last modified {date}; every correction is logged on the <a href="{kanwu_href}">errata page</a>. Licensed CC BY 4.0: please credit \u201cYikonglu\u201d and link to this page. Found this useful? Linking to this chapter from your notes, course page or blog is the best way to help Yikonglu.</p>'
             f'<p class="mailp">{report} {mail_html}</p></section>' + JS_EN + CP)
 
 
