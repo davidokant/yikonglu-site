@@ -279,7 +279,7 @@ function cardCanvas(){
   const qr=qrcode(0,"M"); qr.addData(SHARE_URL); qr.make(); const n=qr.getModuleCount(), qs=176, cell=qs/n, qx=W-140-qs, qy=1135;
   g.fillStyle="#fff"; g.fillRect(qx-12,qy-12,qs+24,qs+24); g.fillStyle=INK;
   for(let r=0;r<n;r++) for(let k=0;k<n;k++) if(qr.isDark(r,k)) g.fillRect(qx+k*cell,qy+r*cell,Math.ceil(cell),Math.ceil(cell));
-  g.textAlign="left"; g.fillStyle=INK; g.font="600 40px "+SERIF; g.fillText("一生一本《论语》",140,1210);
+  g.textAlign="left"; g.fillStyle=INK; g.font="600 36px "+SERIF; g.fillText("从《论语》开始 · 对着原页读经典",140,1210);  // 11-28 主人定口号统一，“一生一本”停用；36px 不压右边二维码
   g.font="26px sans-serif"; g.fillStyle=MUTE; g.fillText("一孔录 yikonglu.com",140,1262);
   return c;
 }

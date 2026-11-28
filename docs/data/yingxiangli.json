@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-27",
+ "updated": "2026-11-28",
  "N": 20,
  "chapters": 258,
- "score": 1.5,
- "share": 1.1,
+ "score": 1.8,
+ "share": 1.04,
  "platforms": [
   {
    "key": "gsc",
@@ -22,9 +22,9 @@
   {
    "key": "yt",
    "name": "YouTube",
-   "score": 3.5,
-   "share": 1.1,
-   "measured": 140,
+   "score": 4.3,
+   "share": 1.04,
+   "measured": 183,
    "partial": true
   }
  ],
@@ -46,8 +46,8 @@
   },
   {
    "week": "2026-11-23",
-   "score": 1.5,
-   "share": 1.1
+   "score": 1.8,
+   "share": 1.04
   }
  ],
  "books": [
@@ -55,13 +55,13 @@
    "key": "lunyu",
    "name": "论语",
    "chapters": 257,
-   "score": 1.5,
+   "score": 1.8,
    "platforms": [
     {
      "key": "yt",
      "name": "YouTube",
-     "score": 3.5,
-     "measured": 140,
+     "score": 4.3,
+     "measured": 183,
      "partial": true
     },
     {
@@ -260,6 +260,38 @@
     {
      "ch": "6.19",
      "bing": 5
+    },
+    {
+     "ch": "6.22",
+     "yt": 18
+    },
+    {
+     "ch": "7.6",
+     "yt": 15
+    },
+    {
+     "ch": "7.9",
+     "yt": 18
+    },
+    {
+     "ch": "7.10",
+     "yt": 6
+    },
+    {
+     "ch": "7.12",
+     "yt": 7
+    },
+    {
+     "ch": "7.15",
+     "yt": 3
+    },
+    {
+     "ch": "7.17",
+     "yt": 16
+    },
+    {
+     "ch": "7.35",
+     "yt": 16
     }
    ]
   },
@@ -304,9 +336,9 @@
  ],
  "index": {
   "bing": {
-   "indexed": 21,
+   "indexed": 24,
    "total": 10,
-   "date": "/Date(1795564800000)/"
+   "date": "/Date(1795651200000)/"
   },
   "google": {
    "indexed": 0,
@@ -318,6 +350,6 @@
   "ratio": 16.3,
   "episodes": 70,
   "segments": 2094,
-  "updated": "2026-11-26"
+  "updated": "2026-11-27"
  }
 }
